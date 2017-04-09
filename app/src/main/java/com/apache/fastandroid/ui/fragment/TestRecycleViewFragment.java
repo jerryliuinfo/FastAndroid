@@ -53,6 +53,7 @@ public class TestRecycleViewFragment extends ARecycleViewSwipeRefreshFragment<Ho
     @Override
     protected void setUpRefreshConfig(RefreshConfig refreshConfig) {
         super.setUpRefreshConfig(refreshConfig);
+        refreshConfig.footerMoreEnable = false;
         refreshConfig.positionKey = "main";
     }
 
@@ -61,7 +62,7 @@ public class TestRecycleViewFragment extends ARecycleViewSwipeRefreshFragment<Ho
         if (mode == RefreshMode.refresh){
             mode = RefreshMode.reset;
         }
-        new LoadDataTask(mode).execute();
+        //new LoadDataTask(mode).execute();
 
     }
 
@@ -149,6 +150,23 @@ public class TestRecycleViewFragment extends ARecycleViewSwipeRefreshFragment<Ho
         }
     }
 
+    @Override
+    protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
+        super.layoutInit(inflater, savedInstanceSate);
+        setItems(generateDatas());
+    }
 
+    public ArrayList<HomeBean> generateDatas(){
+        ArrayList<HomeBean> persons = new ArrayList<>();
+        HomeBean person;
+        int index = 1;
+        int pageSize = 10;
+        for (int i = 0; i < 8; i++){
+            person = new HomeBean("name:"+(index * pageSize + i), "age: "+ (index * pageSize + i));
+            persons.add(person);
+        }
+
+        return persons;
+    }
 
 }

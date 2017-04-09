@@ -136,4 +136,39 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
     }
 
 
+
+    /**
+     * 初始化ListView
+     *
+     * @param items
+     */
+    public void setItems(ArrayList<T> items) {
+        if (items == null)
+            return;
+
+        setViewVisiable(loadingLayout, View.GONE);
+        setViewVisiable(loadFailureLayout, View.GONE);
+        if (items.size() == 0 && emptyLayout != null) {
+            setViewVisiable(emptyLayout, View.VISIBLE);
+            setViewVisiable(contentLayout, View.GONE);
+        }
+        else {
+            setViewVisiable(emptyLayout, View.GONE);
+            setViewVisiable(contentLayout, View.VISIBLE);
+        }
+        setAdapterItems(items);
+        if (getRefreshView().getAdapter() == null) {
+            bindAdapter(getAdapter());
+        }
+        else {
+            if (getRefreshView().getLayoutManager() instanceof LinearLayoutManager) {
+                final LinearLayoutManager manager = (LinearLayoutManager) getRefreshView().getLayoutManager();
+                manager.scrollToPositionWithOffset(0,0);
+            }
+            getAdapter().notifyDataSetChanged();
+        }
+
+
+    }
+
 }
