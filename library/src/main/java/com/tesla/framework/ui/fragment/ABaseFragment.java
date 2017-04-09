@@ -1,6 +1,5 @@
 package com.tesla.framework.ui.fragment;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +23,7 @@ import com.tesla.framework.network.task.TaskManager;
 import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
+import com.tesla.framework.ui.activity.BaseActivity;
 
 import java.text.SimpleDateFormat;
 
@@ -75,17 +75,15 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
 
     };
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
 
-//        if (activity instanceof BaseActivity)
-//            ((BaseActivity) activity).addFragment(toString(), this);
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Logger.d(TAG, "onAttach context = %s", context);
+
+        if (getActivity() != null && getActivity() instanceof BaseActivity)
+            ((BaseActivity) getActivity()).addFragment(toString(), this);
     }
 
     @Override
@@ -462,7 +460,8 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
     public void onDetach() {
         super.onDetach();
 
-
+        if (getActivity() != null && getActivity() instanceof BaseActivity)
+            ((BaseActivity) getActivity()).removeFragment(this.toString());
     }
 
 

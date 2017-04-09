@@ -643,5 +643,14 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
 
     }
 
+    // 重构需要实现的方法
+    public void refreshUI() {
+
+    }
+
+    public void releaseImageViewByIds() {
+
+    }
+
 
 }

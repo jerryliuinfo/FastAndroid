@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.ui.fragment.TestRecycleViewFragment;
+import com.apache.fastandroid.ui.fragment.TestTabFragment;
 import com.tesla.framework.ui.activity.BaseActivity;
 
 public class MainActivity extends BaseActivity {
@@ -14,7 +14,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //MainFragment.newFragment();
-        Fragment fragment = TestRecycleViewFragment.newFragment();
+        Fragment fragment = TestTabFragment.newFragment();
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.lay_content, fragment)
