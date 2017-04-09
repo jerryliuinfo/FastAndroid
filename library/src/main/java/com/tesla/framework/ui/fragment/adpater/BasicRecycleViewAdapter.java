@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.tesla.framework.R;
 import com.tesla.framework.ui.fragment.APagingFragment;
@@ -32,6 +33,9 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
      * new int[][]{ { R.layout.ui_search_headerview, 100 },R.layout.ui_search_headerview2, 101 } }
      */
     private int[][] mHeaderItemTypes;
+
+    private AdapterView.OnItemClickListener onItemClickListener;
+    private AdapterView.OnItemLongClickListener onItemLongClickListener;
 
 
     private APagingFragment ownerFragment;
@@ -88,8 +92,43 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
                 itemViewHolder.onBindData(itemViewHolder.getConvertView(), getDatas().get(realPosition), realPosition);
             }
 
+            if (onItemClickListener != null){
+                itemViewHolder.getConvertView().setOnClickListener(innerOnClickListener);
+            }else {
+                itemViewHolder.getConvertView().setOnClickListener(null);
+            }
+
+            if (onItemLongClickListener != null){
+                itemViewHolder.getConvertView().setOnLongClickListener(innerLongClickClickListener);
+            }else {
+                itemViewHolder.getConvertView().setOnLongClickListener(null);
+            }
+
         }
     }
+
+    private View.OnClickListener innerOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            IITemView<T> itemView = (IITemView<T>) v.getTag(R.id.itemview);
+            if (itemView != null && onItemClickListener != null){
+                onItemClickListener.onItemClick(null,itemView.getConvertView(),itemView.itemPosition(), getItemId(itemView.itemPosition()));
+            }
+        }
+    };
+
+    private View.OnLongClickListener innerLongClickClickListener = new View.OnLongClickListener() {
+
+        @Override
+        public boolean onLongClick(View v) {
+            IITemView<T> itemView = (IITemView<T>) v.getTag(R.id.itemview);
+            if (itemView != null && innerLongClickClickListener != null){
+                onItemLongClickListener.onItemLongClick(null,itemView.getConvertView(),itemView.itemPosition(),getItemId(itemView.itemPosition()));
+            }
+            return false;
+        }
+    };
+
 
 
     @Override
@@ -161,4 +200,19 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
       return mHeaderItemTypes != null? mHeaderItemTypes.length:0;
     }
 
+    public AdapterView.OnItemClickListener getOnItemClickListener() {
+        return onItemClickListener;
+    }
+
+    public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public AdapterView.OnItemLongClickListener getOnItemLongClickListener() {
+        return onItemLongClickListener;
+    }
+
+    public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
 }

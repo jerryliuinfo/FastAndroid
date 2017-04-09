@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.tesla.framework.R;
+import com.tesla.framework.common.util.Logger;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.adpater.BasicRecycleViewAdapter;
 import com.tesla.framework.ui.fragment.adpater.IPagingAdapter;
@@ -84,9 +85,9 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
             getRefreshView().setAdapter((BasicRecycleViewAdapter) adapter);
         }
 
-        /*if (((BasicRecycleViewAdapter) getAdapter()).getOnItemClickListener() != this) {
+        if (((BasicRecycleViewAdapter) getAdapter()).getOnItemClickListener() != this) {
             ((BasicRecycleViewAdapter) getAdapter()).setOnItemClickListener(this);
-        }*/
+        }
     }
 
 
@@ -102,14 +103,9 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
         ((BasicRecycleViewAdapter) getAdapter()).addHeaderViewCreator(headerItemViewCreator);
     }
 
-    /*@Override
-    protected void setupRefreshView(Bundle savedInstanceSate) {
-        super.setupRefreshView(savedInstanceSate);
-    }*/
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        Logger.d(TAG, "onItemClick postion = %s", position);
     }
 
     @Override

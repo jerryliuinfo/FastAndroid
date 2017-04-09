@@ -19,7 +19,7 @@ import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
 import com.tesla.framework.support.sdk.TeslaSDK;
-import com.tesla.framework.ui.fragment.ARecycleViewFragment;
+import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
@@ -33,7 +33,7 @@ import java.util.Random;
  * Created by jerryliu on 2017/4/3.
  */
 
-public class TestRecycleViewFragment extends ARecycleViewFragment<HomeBean,ArrayList<HomeBean>,HeaderBean> {
+public class TestRecycleViewFragment extends ARecycleViewSwipeRefreshFragment<HomeBean,ArrayList<HomeBean>,HeaderBean> {
 
     public static TestRecycleViewFragment newFragment() {
         Bundle args = new Bundle();
@@ -58,7 +58,9 @@ public class TestRecycleViewFragment extends ARecycleViewFragment<HomeBean,Array
 
     public void requestData(RefreshMode mode) {
         super.requestData(mode);
-
+        if (mode == RefreshMode.refresh){
+            mode = RefreshMode.reset;
+        }
         new LoadDataTask(mode).execute();
 
     }

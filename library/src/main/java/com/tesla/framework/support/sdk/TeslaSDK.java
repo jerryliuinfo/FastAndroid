@@ -2,7 +2,6 @@ package com.tesla.framework.support.sdk;
 
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.biz.ABizLogic;
-import com.tesla.framework.network.cache.HomeCacheUtility;
 import com.tesla.framework.network.http.HomeHttpUtility;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.Params;
@@ -39,7 +38,7 @@ public class TeslaSDK extends ABizLogic {
         Setting setting = newSetting("loadPerson","loadPerson", "加载主页");
 
         setting.getExtras().put(HTTP_UTILITY, newSettingExtra(HTTP_UTILITY,HomeHttpUtility.class.getName(),""));
-        setting.getExtras().put(CACHE_UTILITY,newSettingExtra(CACHE_UTILITY,HomeCacheUtility.class.getName(),"" ));
+        //setting.getExtras().put(CACHE_UTILITY,newSettingExtra(CACHE_UTILITY,HomeCacheUtility.class.getName(),"" ));
         return doGet(configHttpConfig(), setting, params, HomeBeans.class);
     }
 

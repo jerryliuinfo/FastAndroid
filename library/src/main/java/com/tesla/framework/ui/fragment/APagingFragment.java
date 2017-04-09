@@ -37,11 +37,11 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
 
     public static final String TAG = "AFragment-Paging";
 
-    public static final String PAGING_TASK_ID = "org.aisen.android.PAGING_TASK";
+    public static final String PAGING_TASK_ID = "org.tesla.android.PAGING_TASK";
 
-    private static final String SAVED_DATAS = "org.aisen.android.ui.Datas";
-    private static final String SAVED_PAGING = "org.aisen.android.ui.Paging";
-    private static final String SAVED_CONFIG = "org.aisen.android.ui.Config";
+    private static final String SAVED_DATAS = "org.tesla.android.ui.Datas";
+    private static final String SAVED_PAGING = "org.tesla.android.ui.Paging";
+    private static final String SAVED_CONFIG = "org.tesla.android.ui.Config";
 
     private IPaging mPaging;
     private RefreshConfig refreshConfig;
@@ -102,7 +102,18 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
     @Override
     public void requestData() {
         RefreshMode mode = RefreshMode.reset;
+        // 如果没有Loading视图，且数据为空，就显示FootView加载状态
+        if (getAdapter().getDatas().size() == 0 && loadingLayout == null)
+            mode = RefreshMode.update;
         requestData(mode);
+    }
+
+    @Override
+    public void requestDataOutofdate() {
+        super.requestDataOutofdate();
+        putLastReadPosition(0);
+        putLastReadTop(0);
+        requestDataSetRefreshing();
     }
 
     public void requestData(RefreshMode mode){
@@ -133,7 +144,11 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
     protected void setUpRefreshViewWithConfig(RefreshConfig refreshConfig){
 
     }
-
+    /**
+     * 设置列表控件状态为刷新结束,可以做一些收尾工作，例如SwipeRefreshLayout可以设置
+     * 消失了
+     * @param mode
+     */
     protected void onRefreshViewFinished(RefreshMode mode){
 
     }
@@ -264,6 +279,35 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
         return false;
     }
 
+
+
+    /**
+     * 设置刷新控件为刷新状态且刷新数据
+     *
+     */
+    public void requestDataSetRefreshing() {
+        // 如果没有正在刷新，设置刷新控件，且子类没有自动刷新
+        if (!isRefreshing() && !setRefreshViewToLoading())
+            requestData(RefreshMode.reset);
+    }
+
+    /**
+     * 设置列表控件状态为刷新状态
+     *
+     * @return true:某些控件，设置它的刷新状态，它会自己自动回调Callback去刷新数据，true即这种情况
+     */
+    public boolean setRefreshViewToLoading() {
+        return false;
+    }
+
+    /**
+     * 当前页面是否正在加载刷新
+     *
+     * @return
+     */
+    public boolean isRefreshing() {
+        return mPagingTask != null;
+    }
 
     APagingTask mPagingTask;
 
