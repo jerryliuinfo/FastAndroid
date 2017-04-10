@@ -29,14 +29,14 @@ public abstract class ATabsTabLayoutFragment<T extends TabItem> extends ATabsFra
 
     @Override
     protected void setupViewPage(Bundle savedInstanceSate) {
+        super.setupViewPage(savedInstanceSate);
         setupTabLayout(savedInstanceSate);
     }
 
     protected void setupTabLayout(Bundle savedInstanceSate) {
-        super.setupViewPage(savedInstanceSate);
-
         getTablayout().setTabMode(TabLayout.MODE_FIXED);
         getTablayout().setTabTextColors(Color.parseColor("#b3ffffff"), Color.WHITE);
+        //TabLayout将自动出现在ViewPager的标题位置
         getTablayout().setupWithViewPager(getViewPage());
         new Handler().postDelayed(new Runnable() {
 

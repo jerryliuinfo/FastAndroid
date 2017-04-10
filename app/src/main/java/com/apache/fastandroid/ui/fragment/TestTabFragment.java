@@ -27,8 +27,8 @@ public class TestTabFragment extends ATabsTabLayoutFragment<TabItem> {
     protected ArrayList<TabItem> generateTabs() {
         ArrayList<TabItem> tabItems = new ArrayList<>();
         tabItems.add(new TabItem("0", "推荐"));
-        tabItems.add(new TabItem("0", "热点"));
-        tabItems.add(new TabItem("0", "新闻"));
+        tabItems.add(new TabItem("1", "热点"));
+        tabItems.add(new TabItem("2", "新闻"));
         return tabItems;
     }
 

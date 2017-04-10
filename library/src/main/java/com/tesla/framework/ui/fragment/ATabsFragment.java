@@ -54,7 +54,6 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
         }else {
             mCurrentPosition = 0;
             mTabs = generateTabs();
-
         }
         initTabs(savedInstanceSate);
     }

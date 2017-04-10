@@ -14,11 +14,13 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 
 import com.tesla.framework.R;
+import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.Logger;
 import com.tesla.framework.common.util.ViewUtils;
 import com.tesla.framework.network.task.ITaskManager;
 import com.tesla.framework.network.task.TaskManager;
 import com.tesla.framework.network.task.WorkTask;
+import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.CustomToolbar;
@@ -102,8 +104,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
         if (savedInstanceState == null) {
             theme = configTheme();
 
-//            language = new Locale(SettingUtility.getPermanentSettingAsStr("language", Locale.getDefault().getLanguage()),
-//                    SettingUtility.getPermanentSettingAsStr("language-country", Locale.getDefault().getCountry()));
+            language = new Locale(SettingUtility.getPermanentSettingAsStr("language", Locale.getDefault().getLanguage()),
+                    SettingUtility.getPermanentSettingAsStr("language-country", Locale.getDefault().getCountry()));
         } else {
             theme = savedInstanceState.getInt("theme");
 
@@ -173,7 +175,7 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
         super.setContentView(view, params);
 
         rootView = view;
-
+        InjectUtility.initInjectedView(this, this, rootView);
 
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -186,6 +188,7 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
         super.setContentView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         rootView = view;
+        InjectUtility.initInjectedView(this, this, this.rootView);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolbar != null)
