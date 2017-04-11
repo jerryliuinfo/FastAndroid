@@ -16,8 +16,9 @@ import com.apache.fastandroid.R;
 import com.apache.fastandroid.ui.fragment.FavoriteFragment;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements SwipeActivityHelper.EnableSwipeback{
     public static final String TAG = MainActivity.class.getSimpleName();
     public static void launch(Activity from){
         from.startActivity(new Intent(from,MainActivity.class));
@@ -40,8 +41,6 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main_v2);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
-        /*mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        mNavigationView = (NavigationView) findViewById(R.id.navigation_view);*/
         setupDrawer(savedInstanceState);
         setupNavigationView();
 
@@ -71,31 +70,16 @@ public class MainActivity extends BaseActivity {
 
         };
         mDrawerLayout.setDrawerListener(drawerToggle);
-        mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-
-            }
-        });
     }
 
     private void setupNavigationView(){
         View headerView = mNavigationView.getHeaderView(0);
+        headerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -109,6 +93,8 @@ public class MainActivity extends BaseActivity {
     public void onMenuItemClicked(MenuItem item){
         Fragment fragment = null;
         fragment = FavoriteFragment.newFragment(item);
+
+        getSupportActionBar().setTitle(item.getTitle());
         getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();
         closeDrawer();
 
@@ -129,5 +115,10 @@ public class MainActivity extends BaseActivity {
 
         if (drawerToggle != null)
             drawerToggle.syncState();
+    }
+
+    @Override
+    public boolean canSwipe() {
+        return false;
     }
 }

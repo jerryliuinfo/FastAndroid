@@ -15,6 +15,7 @@ public class MyApplication extends Application{
         super.onCreate();
         FrameworkApplication.onCreate(getApplicationContext());
         TeslaDB.setDB();
+        //BaseActivity.setHelper(SwipeActivityHelper.class);
 
     }
 
