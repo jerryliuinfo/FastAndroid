@@ -3,17 +3,14 @@
     <item
         android:id="@+id/favorite"
         android:icon="@mipmap/ic_launcher"
-        android:title="收藏"/>
+        android:title="@string/nav_pic"/>
     <item
         android:id="@+id/wallet"
         android:icon="@mipmap/ic_launcher"
-        android:title="钱包"/>
+        android:title="@string/nav_video"/>
     <item
         android:id="@+id/photo"
         android:icon="@mipmap/ic_launcher"
-        android:title="相册"/>
-    <item
-        android:id="@+id/file"
-        android:icon="@mipmap/ic_launcher"
-        android:title="文件"/>
+        android:title="@string/nav_musici"/>
+
 </menu>

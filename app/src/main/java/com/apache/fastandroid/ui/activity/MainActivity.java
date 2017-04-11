@@ -13,12 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.ui.fragment.FavoriteFragment;
+import com.apache.fastandroid.ui.fragment.pic.PicTabsFragment;
+import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
-public class MainActivity extends BaseActivity implements SwipeActivityHelper.EnableSwipeback{
+public class MainActivity extends BaseActivity{
     public static final String TAG = MainActivity.class.getSimpleName();
     public static void launch(Activity from){
         from.startActivity(new Intent(from,MainActivity.class));
@@ -35,6 +35,8 @@ public class MainActivity extends BaseActivity implements SwipeActivityHelper.En
 
     private ActionBarDrawerToggle drawerToggle;
 
+    private int selecteId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,13 +47,14 @@ public class MainActivity extends BaseActivity implements SwipeActivityHelper.En
         setupNavigationView();
 
 
-        /*//MainFragment.newFragment();
-        Fragment fragment = TestTabFragment.newFragment();
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.lay_content, fragment)
-                .commit();
-        getSupportActionBar().setTitle("news");*/
+        onMenuItemClicked(R.id.favorite, ResUtil.getString(R.string.nav_pic));
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("selecteId", selecteId);
 
     }
 
@@ -84,19 +87,21 @@ public class MainActivity extends BaseActivity implements SwipeActivityHelper.En
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                onMenuItemClicked(item);
+                onMenuItemClicked(item.getItemId(), item.getTitle().toString());
                 return false;
             }
         });
     }
 
-    public void onMenuItemClicked(MenuItem item){
+    public void onMenuItemClicked(int itemId, String title){
         Fragment fragment = null;
-        fragment = FavoriteFragment.newFragment(item);
+        fragment = PicTabsFragment.newFragment();
 
-        getSupportActionBar().setTitle(item.getTitle());
+        getSupportActionBar().setTitle(title);
         getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();
         closeDrawer();
+
+        selecteId = itemId;
 
     }
 
@@ -117,8 +122,5 @@ public class MainActivity extends BaseActivity implements SwipeActivityHelper.En
             drawerToggle.syncState();
     }
 
-    @Override
-    public boolean canSwipe() {
-        return false;
-    }
+
 }

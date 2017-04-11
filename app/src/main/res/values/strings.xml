@@ -2,4 +2,23 @@
     <string name="app_name">FastAndroid</string>
     <string name="draw_open">打开</string>
     <string name="draw_close">关闭</string>
+
+
+    <!--导航栏-->
+    <string name="nav_pic">图片浏览</string>
+    <string name="nav_video">视频爽看</string>
+    <string name="nav_musici">音乐轻听</string>
+
+
+
+    <string name="tab_beanuty">美女</string>
+    <string name="tab_carton">动漫</string>
+    <string name="tab_star">明星</string>
+    <string name="tab_car">汽车</string>
+    <string name="tab_take_photo">摄影</string>
+    <string name="tab_food">美食</string>
+
+
+
+
 </resources>

@@ -2,7 +2,6 @@ package com.apache.fastandroid.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
@@ -14,10 +13,10 @@ import com.tesla.framework.ui.fragment.ABaseFragment;
  */
 
 public class FavoriteFragment extends ABaseFragment {
-    public static FavoriteFragment newFragment(MenuItem item) {
-         Bundle args = new Bundle();
-         FavoriteFragment fragment = new FavoriteFragment();
-        args.putString("title", item.getTitle().toString());
+    public static FavoriteFragment newFragment(String title) {
+        Bundle args = new Bundle();
+        FavoriteFragment fragment = new FavoriteFragment();
+        args.putString("title", title);
         fragment.setArguments(args);
         return fragment;
     }
