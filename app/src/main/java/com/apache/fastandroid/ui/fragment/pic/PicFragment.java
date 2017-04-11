@@ -10,7 +10,7 @@ import com.apache.fastandroid.MyApplication;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.bean.ImageBean;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
-import com.apache.fastandroid.support.sdk.FastAndroidSDK;
+import com.apache.fastandroid.support.sdk.PicSDK;
 import com.apache.fastandroid.ui.widget.PicImageView;
 import com.apache.fastandroid.ui.widget.SpaceItemDecoration;
 import com.bumptech.glide.Glide;
@@ -112,7 +112,7 @@ public class PicFragment extends ARecycleViewStaggeredGridFragment<ImageBean,Ima
         @Override
         protected ImageResultBeans workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params) throws TaskException {
             int pageNum = Integer.parseInt(nextPage);
-            ImageResultBeans result =  FastAndroidSDK.newInstance().loadImageData(mCategory,pageNum);
+            ImageResultBeans result =  PicSDK.newInstance(getTaskCacheMode(this)).loadImageData(mCategory,pageNum);
             Logger.d(TAG, "result = %s", result);
             return result;
         }

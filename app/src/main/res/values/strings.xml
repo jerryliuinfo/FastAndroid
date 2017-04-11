@@ -11,14 +11,18 @@
 
 
 
-    <string name="tab_beanuty">美女</string>
-    <string name="tab_carton">动漫</string>
-    <string name="tab_star">明星</string>
-    <string name="tab_car">汽车</string>
-    <string name="tab_take_photo">摄影</string>
-    <string name="tab_food">美食</string>
+    <string name="tab_pic_beanuty">美女</string>
+    <string name="tab_pic_carton">动漫</string>
+    <string name="tab_pic_star">明星</string>
+    <string name="tab_pic_car">汽车</string>
+    <string name="tab_pic_take_photo">摄影</string>
+    <string name="tab_pic_food">美食</string>
 
 
 
+    <string name="tab_video_hot">热门</string>
+    <string name="tab_video_laungh">搞笑</string>
+    <string name="tab_video_carton">动漫</string>
+    <string name="tab_video_variety">综艺</string>
 
 </resources>

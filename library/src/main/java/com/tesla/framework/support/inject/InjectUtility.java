@@ -113,8 +113,9 @@ public class InjectUtility {
 			}
 		}
 
-		if (Logger.DEBUG)
-			Logger.v(TAG, "耗时 %s ms : " + injectedSource, String.valueOf(System.currentTimeMillis() - start));
+		if (Logger.DEBUG){
+			//Logger.v(TAG, "耗时 %s ms : " + injectedSource, String.valueOf(System.currentTimeMillis() - start));
+		}
 	}
 
 

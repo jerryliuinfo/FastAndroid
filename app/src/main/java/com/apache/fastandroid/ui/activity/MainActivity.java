@@ -14,6 +14,7 @@ import android.view.View;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.ui.fragment.pic.PicTabsFragment;
+import com.apache.fastandroid.ui.fragment.video.VideoTabsFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
@@ -48,7 +49,7 @@ public class MainActivity extends BaseActivity{
 
 
 
-        onMenuItemClicked(R.id.favorite, ResUtil.getString(R.string.nav_pic));
+        onMenuItemClicked(R.id.nav_item_pic, ResUtil.getString(R.string.nav_pic));
     }
 
     @Override
@@ -95,7 +96,14 @@ public class MainActivity extends BaseActivity{
 
     public void onMenuItemClicked(int itemId, String title){
         Fragment fragment = null;
-        fragment = PicTabsFragment.newFragment();
+        if (itemId == R.id.nav_item_pic){
+            fragment = PicTabsFragment.newFragment();
+        }else if (itemId == R.id.nav_item_video){
+            fragment = VideoTabsFragment.newFragment();
+        }else if (itemId == R.id.nav_item_music){
+            fragment = VideoTabsFragment.newFragment();
+        }
+
 
         getSupportActionBar().setTitle(title);
         getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/favorite"
+        android:id="@+id/nav_item_pic"
         android:icon="@mipmap/ic_launcher"
         android:title="@string/nav_pic"/>
     <item
-        android:id="@+id/wallet"
+        android:id="@+id/nav_item_video"
         android:icon="@mipmap/ic_launcher"
         android:title="@string/nav_video"/>
     <item
-        android:id="@+id/photo"
+        android:id="@+id/nav_item_music"
         android:icon="@mipmap/ic_launcher"
         android:title="@string/nav_musici"/>
 

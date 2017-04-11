@@ -26,12 +26,12 @@ public class PicTabsFragment extends ATabsTabLayoutFragment<TabItem> {
     @Override
     protected ArrayList<TabItem> generateTabs() {
         ArrayList<TabItem> tabItems = new ArrayList<>();
-        tabItems.add(new TabItem("0", ResUtil.getString(R.string.tab_beanuty)));
-        tabItems.add(new TabItem("1", ResUtil.getString(R.string.tab_carton)));
-        tabItems.add(new TabItem("2", ResUtil.getString(R.string.tab_star)));
-        tabItems.add(new TabItem("3", ResUtil.getString(R.string.tab_car)));
-        tabItems.add(new TabItem("4", ResUtil.getString(R.string.tab_take_photo)));
-        tabItems.add(new TabItem("5", ResUtil.getString(R.string.tab_food)));
+        tabItems.add(new TabItem("0", ResUtil.getString(R.string.tab_pic_beanuty)));
+        tabItems.add(new TabItem("1", ResUtil.getString(R.string.tab_pic_carton)));
+        tabItems.add(new TabItem("2", ResUtil.getString(R.string.tab_pic_star)));
+        tabItems.add(new TabItem("3", ResUtil.getString(R.string.tab_pic_car)));
+        tabItems.add(new TabItem("4", ResUtil.getString(R.string.tab_pic_take_photo)));
+        tabItems.add(new TabItem("5", ResUtil.getString(R.string.tab_pic_food)));
         return tabItems;
     }
 

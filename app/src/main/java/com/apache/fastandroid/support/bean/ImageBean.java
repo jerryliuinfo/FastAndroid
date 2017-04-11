@@ -1,5 +1,7 @@
 package com.apache.fastandroid.support.bean;
 
+import com.tesla.framework.component.orm.annotation.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -8,7 +10,7 @@ import java.util.List;
  */
 
 public class ImageBean implements Serializable {
-
+    @PrimaryKey(column = "id")
     public String id;
     public String desc;
     public List<String> tags;
