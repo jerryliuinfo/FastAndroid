@@ -60,5 +60,11 @@ public class IAction {
     public void setChild(IAction mChild) {
         this.mChild = mChild;
     }
+
+
+
+    public Activity getContext(){
+        return mContext;
+    }
 }
 
