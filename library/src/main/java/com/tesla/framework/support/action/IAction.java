@@ -7,16 +7,16 @@ import android.app.Activity;
  */
 
 public class IAction {
-    public static final String TAG = IAction.class.getCanonicalName();
+    public static final String TAG = IAction.class.getSimpleName();
 
-    private IAction mPparent;
+    private IAction mParent;
     private IAction mChild;
     private Activity mContext;
 
 
     public IAction(Activity context, IAction parent){
         this.mContext = context;
-        this.mPparent = parent;
+        this.mParent = parent;
         if (parent != null){
             parent.setChild(this);
         }
@@ -28,7 +28,7 @@ public class IAction {
 
 
     public void run(){
-        if (mPparent == null || !mPparent.interrupt()){
+        if (mParent == null || !mParent.interrupt()){
             doAction();
         }
     }
@@ -46,11 +46,11 @@ public class IAction {
 
 
     public IAction getPparent() {
-        return mPparent;
+        return mParent;
     }
 
     public void setPparent(IAction mPparent) {
-        this.mPparent = mPparent;
+        this.mParent = mPparent;
     }
 
     public IAction getChild() {
