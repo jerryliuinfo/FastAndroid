@@ -32,6 +32,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.common.util.log.NLog;
 
 
 import java.io.File;
@@ -397,7 +398,7 @@ import java.util.List;
 			context.startActivity(intent);
 		} catch (Exception e) {
 			// e.printStackTrace();
-			Logger.printExc(SystemUtils.class, e);
+			NLog.printStackTrace(e);
 		}
 	}
 

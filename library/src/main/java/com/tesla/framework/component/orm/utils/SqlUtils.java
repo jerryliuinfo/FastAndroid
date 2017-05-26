@@ -2,6 +2,7 @@ package com.tesla.framework.component.orm.utils;
 
 import android.text.TextUtils;
 
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.orm.SqliteUtility;
 import com.tesla.framework.component.orm.extra.AutoIncrementTableColumn;
 import com.tesla.framework.component.orm.extra.Extra;

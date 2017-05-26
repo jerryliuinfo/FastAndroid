@@ -16,6 +16,8 @@ import com.apache.fastandroid.R;
 import com.apache.fastandroid.ui.fragment.pic.PicTabsFragment;
 import com.apache.fastandroid.ui.fragment.video.VideoTabsFragment;
 import com.tesla.framework.common.util.ResUtil;
+import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 
@@ -38,6 +40,14 @@ public class MainActivity extends BaseActivity{
 
     private int selecteId;
 
+    private static NetworkHelper.NetworkInductor mNetworkInductor = new NetworkHelper.NetworkInductor() {
+        @Override
+        public void onNetworkChanged(NetworkHelper.NetworkStatus status) {
+            NLog.d(TAG, "onNetworkChanged status = %s", status);
+        }
+    };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +60,14 @@ public class MainActivity extends BaseActivity{
 
 
         onMenuItemClicked(R.id.nav_item_pic, ResUtil.getString(R.string.nav_pic));
+
+        NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        NetworkHelper.getInstance().removeNetworkInductor(mNetworkInductor);
     }
 
     @Override

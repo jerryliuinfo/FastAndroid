@@ -25,7 +25,7 @@ public class PicCacheUtility implements ICacheUtility {
 
             ImageResultBeans result = (ImageResultBeans) iResult;
             getDB().insert(null,result.imgs);
-            NLog.d(Logger.TAG, "PicCacheUtility保存缓存耗时: %s ms", (System.currentTimeMillis()));
+            NLog.d(NLog.TAG, "PicCacheUtility保存缓存耗时: %s ms", (System.currentTimeMillis()));
         }
 
     }

@@ -5,6 +5,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 
+import com.tesla.framework.common.util.log.NLog;
+
 import java.util.ArrayDeque;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;

@@ -311,10 +311,10 @@ public class Logger
 		sb.append(ps[priority]);
 		sb.append("/");
 		sb.append(tag);
-		int pid = java.lang.Process.myPid();
+		/*int pid = java.lang.Process.myPid();
 		sb.append("(");
 		sb.append(pid);
-		sb.append("):");
+		sb.append("):");*/
 		sb.append(msg);
 		sb.append("\n");
 		

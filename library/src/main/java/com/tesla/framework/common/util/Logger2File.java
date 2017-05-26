@@ -3,6 +3,7 @@ package com.tesla.framework.common.util;
 import android.content.Context;
 
 import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.common.util.log.NLog;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -22,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Logger2File {
 
-    public static boolean DEBUG = NLog.dEBUG;
+    public static boolean DEBUG = NLog.isDebug();
 
     private static Calendar mCal;
 

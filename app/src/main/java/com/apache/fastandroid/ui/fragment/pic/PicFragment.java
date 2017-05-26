@@ -16,6 +16,7 @@ import com.apache.fastandroid.ui.widget.SpaceItemDecoration;
 import com.bumptech.glide.Glide;
 import com.tesla.framework.common.util.DimensUtil;
 import com.tesla.framework.common.util.SystemUtils;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.support.paging.IPaging;

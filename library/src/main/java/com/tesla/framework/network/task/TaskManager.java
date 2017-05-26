@@ -3,6 +3,8 @@ package com.tesla.framework.network.task;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.tesla.framework.common.util.log.NLog;
+
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.LinkedHashMap;

@@ -3,6 +3,7 @@ package com.tesla.framework.component.orm.utils;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.orm.SqliteUtility;
 import com.tesla.framework.component.orm.annotation.TableName;
 import com.tesla.framework.component.orm.extra.TableColumn;

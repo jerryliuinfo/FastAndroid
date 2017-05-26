@@ -127,8 +127,10 @@ public class BitmapUtil {
 			try {
 				if (resId != 0)
 					return BitmapFactory.decodeResource(context.getResources(), resId);
-				else
-					NLog.e(String.format("配置的图片ResourceId=%s不存在", resName));
+				else{
+
+				}
+					NLog.e("",String.format("配置的图片ResourceId=%s不存在", resName));
 			} catch (OutOfMemoryError e) {
 				e.printStackTrace();
 			}
@@ -155,7 +157,7 @@ public class BitmapUtil {
 			if (resId != 0)
 				return Bitmap2InputStream(BitmapFactory.decodeResource(resources, resId));
 			else
-				NLog.e(String.format("配置的图片ResourceId=%s不存在", resName));
+				NLog.e("",String.format("配置的图片ResourceId=%s不存在", resName));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

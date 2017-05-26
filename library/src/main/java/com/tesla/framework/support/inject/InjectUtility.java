@@ -6,6 +6,8 @@ import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.tesla.framework.common.util.log.NLog;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -102,7 +104,7 @@ public class InjectUtility {
 									continue;
 								}
 							} catch (Exception e) {
-								Logger.printExc(InjectUtility.class, e);
+								e.printStackTrace();
 							}
 						}
 
@@ -111,7 +113,7 @@ public class InjectUtility {
 			}
 		}
 
-		if (NLog.dEBUG){
+		if (NLog.isDebug()){
 			//NLog.v(TAG, "耗时 %s ms : " + injectedSource, String.valueOf(System.currentTimeMillis() - start));
 		}
 	}

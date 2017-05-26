@@ -7,6 +7,7 @@ import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.action.IAction;
 
 /**
@@ -108,7 +109,7 @@ public abstract class APermissionsAction extends IAction implements IPermissions
         try {
             getContext().requestPermissions(new String[]{ permission }, requestCode);
         } catch (IllegalArgumentException e) {
-            Logger.printExc(APermissionsAction.class, e);
+            e.printStackTrace();
         }
     }
 

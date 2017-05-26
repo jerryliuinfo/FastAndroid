@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.ViewUtils;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.task.ITaskManager;
@@ -363,7 +364,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
 
             onTaskStateChanged(ABaseTaskState.success, null);
 
-            if (NLog.dEBUG)
+            if (NLog.isDebug())
                 NLog.d(TAG, "Result获取时间：%s", new SimpleDateFormat("HH:mm:ss").format(lastResultGetTime));
 
             if (result instanceof IResult) {

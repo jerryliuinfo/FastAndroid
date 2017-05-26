@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.apache.fastandroid.ui.fragment.TestRecycleViewFragment;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.bean.HeaderBean;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;

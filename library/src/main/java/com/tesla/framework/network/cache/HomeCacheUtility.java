@@ -2,6 +2,7 @@ package com.tesla.framework.network.cache;
 
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.util.KeyGenerator;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.orm.extra.Extra;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.biz.IResult;

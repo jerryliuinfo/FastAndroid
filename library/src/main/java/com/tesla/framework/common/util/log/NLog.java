@@ -21,6 +21,7 @@ import java.io.File;
  */
 public final class NLog
 {
+	public static final String TAG = "NLog";
 	private final static String	LOG_FILENAME	= "tcl_logcat.log";
 	private static boolean		debug			= false;			// 是否记录日志
 	private static Logger		logger			= null;
@@ -141,7 +142,7 @@ public final class NLog
 	{
 		if (debug)
 		{
-			NLog.v(tag, buildWholeMessage(format, args));
+			logger.v(tag, buildWholeMessage(format, args));
 		}
 	}
 

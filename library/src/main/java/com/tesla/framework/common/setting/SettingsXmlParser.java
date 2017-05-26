@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.util.Xml;
 
 import com.alibaba.fastjson.JSON;
+import com.tesla.framework.common.util.log.NLog;
 
 import org.xmlpull.v1.XmlPullParser;
 
@@ -35,7 +36,6 @@ public class SettingsXmlParser {
 			String packageName = context.getPackageName();
 			Resources resources = context.getPackageManager().getResourcesForApplication(packageName);
 
-			NLog.d("read xml resource, filename = " + fileName);
 
 			int resId = resources.getIdentifier(fileName, "raw", packageName);
 
@@ -123,7 +123,7 @@ public class SettingsXmlParser {
 				eventType = xmlResParser.next();
 			}
 		} catch (Exception e) {
-			Logger.printExc(SettingsXmlParser.class, e);
+			e.printStackTrace();
 		} finally {
 //			if (xmlResParser != null)
 //				xmlResParser.close();

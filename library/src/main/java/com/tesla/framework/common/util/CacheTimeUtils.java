@@ -3,6 +3,8 @@ package com.tesla.framework.common.util;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.tesla.framework.common.util.log.NLog;
+
 /**
  * Created by JerryLiu on 17/04/08.
  */
@@ -32,7 +34,7 @@ public class CacheTimeUtils {
 
             return expired;
         } catch (Throwable e) {
-            Logger.printExc(CacheTimeUtils.class, e);
+            e.printStackTrace();
 
             return true;
         }

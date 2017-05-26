@@ -2,6 +2,8 @@ package com.tesla.framework;
 
 import android.content.Context;
 
+import com.tesla.framework.common.util.network.NetworkHelper;
+
 import okhttp3.OkHttpClient;
 
 /**
@@ -16,7 +18,7 @@ public class FrameworkApplication  {
         if (context != null){
             mContext = context.getApplicationContext();
         }
-
+        NetworkHelper.getInstance().registerNetworkSensor(context);
 
     }
 

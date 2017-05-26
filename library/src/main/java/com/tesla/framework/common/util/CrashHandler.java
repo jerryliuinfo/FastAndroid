@@ -44,7 +44,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             dumpHprof(context.getExternalFilesDir("logs").getAbsolutePath() + File.separator + "crash" + File.separator);
         }
 
-        Logger.printExc(CrashHandler.class, ex);
+        ex.printStackTrace();
 
         save2File(ex);
 

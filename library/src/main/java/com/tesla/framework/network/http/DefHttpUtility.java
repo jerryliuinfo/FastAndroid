@@ -7,6 +7,7 @@ import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.SystemUtils;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.task.TaskException;
 
@@ -161,7 +162,7 @@ public class DefHttpUtility implements IHttpUtility {
 			if (!(response.code() == HttpURLConnection.HTTP_OK || response.code() == HttpURLConnection.HTTP_PARTIAL)) {
 				String responseStr = response.body().string();
 
-				if (NLog.dEBUG) {
+				if (NLog.isDebug()) {
 					NLog.w(getTag(action, method), responseStr);
 				}
 
@@ -176,22 +177,18 @@ public class DefHttpUtility implements IHttpUtility {
 				return parseResponse(responseStr, responseCls);
 			}
 		} catch (SocketTimeoutException e) {
-			Logger.printExc(DefHttpUtility.class, e);
 			NLog.w(getTag(action, method), e + "");
 
 			throw new TaskException(TaskException.TaskError.timeout.toString());
 		} catch (IOException e) {
-			Logger.printExc(DefHttpUtility.class, e);
 			NLog.w(getTag(action, method), e + "");
 
 			throw new TaskException(TaskException.TaskError.timeout.toString());
 		} catch (TaskException e) {
-			Logger.printExc(DefHttpUtility.class, e);
 			NLog.w(getTag(action, method), e + "");
 
 			throw e;
 		} catch (Exception e) {
-			Logger.printExc(DefHttpUtility.class, e);
 			NLog.w(getTag(action, method), e + "");
 
 			throw new TaskException(TaskException.TaskError.resultIllegal.toString());
@@ -261,7 +258,6 @@ public class DefHttpUtility implements IHttpUtility {
 							}
 						}
 					} catch (IOException e) {
-						Logger.printExc(DefHttpUtility.class, e);
 						throw e;
 					} finally {
 						Util.closeQuietly(source);
@@ -271,7 +267,6 @@ public class DefHttpUtility implements IHttpUtility {
 					try {
 						sink.writeAll(source);
 					} catch (IOException e) {
-						Logger.printExc(DefHttpUtility.class, e);
 						throw e;
 					} finally {
 						Util.closeQuietly(source);
