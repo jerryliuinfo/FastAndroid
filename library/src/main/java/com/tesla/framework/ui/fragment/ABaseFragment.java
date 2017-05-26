@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.Logger;
 import com.tesla.framework.common.util.ViewUtils;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.biz.IResult;
@@ -80,7 +79,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Logger.d(TAG, "onAttach context = %s", context);
+        NLog.d(TAG, "onAttach context = %s", context);
 
         if (getActivity() != null && getActivity() instanceof BaseActivity)
             ((BaseActivity) getActivity()).addFragment(toString(), this);
@@ -364,8 +363,8 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
 
             onTaskStateChanged(ABaseTaskState.success, null);
 
-            if (Logger.DEBUG)
-                Logger.d(TAG, "Result获取时间：%s", new SimpleDateFormat("HH:mm:ss").format(lastResultGetTime));
+            if (NLog.dEBUG)
+                NLog.d(TAG, "Result获取时间：%s", new SimpleDateFormat("HH:mm:ss").format(lastResultGetTime));
 
             if (result instanceof IResult) {
                 IResult iResult = (IResult) result;
@@ -378,7 +377,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
 
                             @Override
                             public void run() {
-                                Logger.d(TAG, "数据过期，开始刷新, " + toString());
+                                NLog.d(TAG, "数据过期，开始刷新, " + toString());
 
                                 requestDataOutofdate();
                             }

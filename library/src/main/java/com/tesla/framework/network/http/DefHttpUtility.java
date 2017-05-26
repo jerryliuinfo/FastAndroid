@@ -6,7 +6,6 @@ import com.alibaba.fastjson.JSON;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.setting.SettingUtility;
-import com.tesla.framework.common.util.Logger;
 import com.tesla.framework.common.util.SystemUtils;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.task.TaskException;
@@ -51,14 +50,14 @@ public class DefHttpUtility implements IHttpUtility {
 		if (bodyParams != null) {
 			String requestBodyStr = ParamsUtil.encodeToURLParams(bodyParams);
 
-			Logger.d(getTag(action, "Post"), requestBodyStr);
+			NLog.d(getTag(action, "Post"), requestBodyStr);
 
 			builder.post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), requestBodyStr));
 		}
 		else if (requestObj != null) {
 			String requestBodyStr = JSON.toJSONString(requestObj);
 
-			Logger.d(getTag(action, "Post"), requestBodyStr);
+			NLog.d(getTag(action, "Post"), requestBodyStr);
 
 			builder.post(RequestBody.create(MediaType.parse("application/json; charset=UTF-8"), requestBodyStr));
 		}
@@ -84,7 +83,7 @@ public class DefHttpUtility implements IHttpUtility {
 				String value = bodyParams.getParameter(key);
 				multipartBuilder.addFormDataPart(key, value);
 
-				Logger.d(getTag(action, method), "BodyParam[%s, %s]", key, value);
+				NLog.d(getTag(action, method), "BodyParam[%s, %s]", key, value);
 			}
 		}
 
@@ -96,13 +95,13 @@ public class DefHttpUtility implements IHttpUtility {
 
 					multipartBuilder.addFormDataPart(file.getKey(), file.getKey(), createRequestBody(file));
 
-					Logger.d(getTag(action, method), "Multipart bytes, length = " + file.getBytes().length);
+					NLog.d(getTag(action, method), "Multipart bytes, length = " + file.getBytes().length);
 				}
 				// 文件
 				else if (file.getFile() != null) {
 					multipartBuilder.addFormDataPart(file.getKey(), file.getFile().getName(), createRequestBody(file));
 
-					Logger.d(getTag(action, method), "Multipart file, name = %s, path = %s", file.getFile().getName(), file.getFile().getAbsolutePath());
+					NLog.d(getTag(action, method), "Multipart file, name = %s, path = %s", file.getFile().getName(), file.getFile().getAbsolutePath());
 				}
 			}
 
@@ -117,13 +116,13 @@ public class DefHttpUtility implements IHttpUtility {
 	private Request.Builder createRequestBuilder(HttpConfig config, Setting action, Params urlParams, String method) throws TaskException {
 		// 是否有网络连接
 		if (FrameworkApplication.getContext() != null && SystemUtils.getNetworkType(FrameworkApplication.getContext()) == SystemUtils.NetWorkType.none) {
-			Logger.w(getTag(action, method), "没有网络连接");
+			NLog.w(getTag(action, method), "没有网络连接");
 
 			throw new TaskException(TaskException.TaskError.noneNetwork.toString());
 		}
 
 		String url = (config.baseUrl + action.getValue() + (urlParams == null ? "" : "?" + ParamsUtil.encodeToURLParams(urlParams))).replaceAll(" ", "");
-		Logger.d(getTag(action, method), url);
+		NLog.d(getTag(action, method), url);
 
 		Request.Builder builder = new Request.Builder();
 		builder.url(url);
@@ -132,7 +131,7 @@ public class DefHttpUtility implements IHttpUtility {
 		if (!TextUtils.isEmpty(config.cookie)) {
 			builder.header("Cookie", config.cookie);
 
-			Logger.d(getTag(action, method), "Cookie = " + config.cookie);
+			NLog.d(getTag(action, method), "Cookie = " + config.cookie);
 		}
 		// add header
 		if (config.headerMap.size() > 0) {
@@ -140,7 +139,7 @@ public class DefHttpUtility implements IHttpUtility {
 			for (String key : keySet) {
 				builder.addHeader(key, config.headerMap.get(key));
 
-				Logger.d(getTag(action, method), "Header[%s, %s]", key, config.headerMap.get(key));
+				NLog.d(getTag(action, method), "Header[%s, %s]", key, config.headerMap.get(key));
 			}
 		}
 
@@ -158,12 +157,12 @@ public class DefHttpUtility implements IHttpUtility {
 		try {
 			Response response = getOkHttpClient().newCall(request).execute();
 
-			Logger.w(getTag(action, method), "Http-code = %d", response.code());
+			NLog.w(getTag(action, method), "Http-code = %d", response.code());
 			if (!(response.code() == HttpURLConnection.HTTP_OK || response.code() == HttpURLConnection.HTTP_PARTIAL)) {
 				String responseStr = response.body().string();
 
-				if (Logger.DEBUG) {
-					Logger.w(getTag(action, method), responseStr);
+				if (NLog.dEBUG) {
+					NLog.w(getTag(action, method), responseStr);
 				}
 
 				TaskException.checkResponse(responseStr);
@@ -172,28 +171,28 @@ public class DefHttpUtility implements IHttpUtility {
 			} else {
 				String responseStr = response.body().string();
 
-				Logger.v(getTag(action, method), "Response = %s", responseStr);
+				NLog.v(getTag(action, method), "Response = %s", responseStr);
 
 				return parseResponse(responseStr, responseCls);
 			}
 		} catch (SocketTimeoutException e) {
 			Logger.printExc(DefHttpUtility.class, e);
-			Logger.w(getTag(action, method), e + "");
+			NLog.w(getTag(action, method), e + "");
 
 			throw new TaskException(TaskException.TaskError.timeout.toString());
 		} catch (IOException e) {
 			Logger.printExc(DefHttpUtility.class, e);
-			Logger.w(getTag(action, method), e + "");
+			NLog.w(getTag(action, method), e + "");
 
 			throw new TaskException(TaskException.TaskError.timeout.toString());
 		} catch (TaskException e) {
 			Logger.printExc(DefHttpUtility.class, e);
-			Logger.w(getTag(action, method), e + "");
+			NLog.w(getTag(action, method), e + "");
 
 			throw e;
 		} catch (Exception e) {
 			Logger.printExc(DefHttpUtility.class, e);
-			Logger.w(getTag(action, method), e + "");
+			NLog.w(getTag(action, method), e + "");
 
 			throw new TaskException(TaskException.TaskError.resultIllegal.toString());
 		}

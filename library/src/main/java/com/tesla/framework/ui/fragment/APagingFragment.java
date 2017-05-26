@@ -9,7 +9,6 @@ import android.widget.AbsListView;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.ActivityHelper;
-import com.tesla.framework.common.util.Logger;
 import com.tesla.framework.common.util.ViewUtils;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.task.TaskException;
@@ -338,7 +337,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
         protected void onPrepare() {
             super.onPrepare();
 
-            Logger.d(TAG, toString() + "-" + ABaseTaskState.prepare + " - " + mode);
+            NLog.d(TAG, toString() + "-" + ABaseTaskState.prepare + " - " + mode);
             onTaskStateChanged(ABaseTaskState.prepare, null, mode);
         }
 
@@ -422,7 +421,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
 
             setUpRefreshViewWithConfig(refreshConfig);
 
-            Logger.d(TAG, toString() + "-" + ABaseTaskState.success + " - " + mode);
+            NLog.d(TAG, toString() + "-" + ABaseTaskState.success + " - " + mode);
             onTaskStateChanged(ABaseTaskState.success, null, mode);
 
             super.onSuccess(result);
@@ -432,7 +431,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
         protected void onFailure(TaskException exception) {
             super.onFailure(exception);
 
-            Logger.d(TAG, toString() + "-" + ABaseTaskState.falid + " - " + mode + "-" + exception.getMessage());
+            NLog.d(TAG, toString() + "-" + ABaseTaskState.falid + " - " + mode + "-" + exception.getMessage());
             onTaskStateChanged(ABaseTaskState.falid, exception, mode);
         }
 
@@ -440,7 +439,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
         protected void onCancelled() {
             super.onCancelled();
 
-            Logger.d(TAG, toString() + "-" + ABaseTaskState.canceled + " - " + mode);
+            NLog.d(TAG, toString() + "-" + ABaseTaskState.canceled + " - " + mode);
             onTaskStateChanged(ABaseTaskState.canceled, null, mode);
         }
 
@@ -448,7 +447,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
         protected void onFinished() {
             super.onFinished();
 
-            Logger.d(TAG, toString() + "-" + ABaseTaskState.finished + " - " + mode);
+            NLog.d(TAG, toString() + "-" + ABaseTaskState.finished + " - " + mode);
             onTaskStateChanged(ABaseTaskState.finished, null, mode);
 
             mPagingTask = null;
@@ -532,7 +531,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
             if (!TextUtils.isEmpty(refreshConfig.positionKey) && getRefreshView() != null) {
                 int firstVisiblePostion = getFirstVisiblePosition();
                 int top = getRefreshView().getChildAt(0).getTop();
-                Logger.d(TAG, "firstVisiblePostion = %s, top = %s", firstVisiblePostion, top);
+                NLog.d(TAG, "firstVisiblePostion = %s, top = %s", firstVisiblePostion, top);
                 putLastReadPosition(firstVisiblePostion);
 
                 putLastReadTop(getRefreshView().getChildAt(0).getTop());

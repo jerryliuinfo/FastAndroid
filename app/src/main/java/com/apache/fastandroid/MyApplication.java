@@ -22,6 +22,7 @@ public class MyApplication extends Application{
         TeslaDB.setDB();
         BaseActivity.setHelper(SwipeActivityHelper.class);
 
+
     }
 
     public static Context getContext(){

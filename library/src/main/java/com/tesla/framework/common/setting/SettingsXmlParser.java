@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.util.Xml;
 
 import com.alibaba.fastjson.JSON;
-import com.tesla.framework.common.util.Logger;
 
 import org.xmlpull.v1.XmlPullParser;
 
@@ -36,7 +35,7 @@ public class SettingsXmlParser {
 			String packageName = context.getPackageName();
 			Resources resources = context.getPackageManager().getResourcesForApplication(packageName);
 
-			Logger.d("read xml resource, filename = " + fileName);
+			NLog.d("read xml resource, filename = " + fileName);
 
 			int resId = resources.getIdentifier(fileName, "raw", packageName);
 
@@ -96,13 +95,13 @@ public class SettingsXmlParser {
 								settingMap.put(readSetting.getType(), readSetting);
 							}
 						}
-						Logger.d(TAG, String.format("parse new setting --->%s", JSON.toJSONString(readSetting)));
+						NLog.d(TAG, String.format("parse new setting --->%s", JSON.toJSONString(readSetting)));
 						readSetting = null;
 					}
 
 					if ("setting-array".equals(xmlResParser.getName())) {
 						settingArray.add(readSettingArray);
-						Logger.d(TAG, String.format("parse new settingArray --->%s", JSON.toJSONString(readSettingArray)));
+						NLog.d(TAG, String.format("parse new settingArray --->%s", JSON.toJSONString(readSettingArray)));
 						readSettingArray = null;
 					}
 
@@ -116,7 +115,7 @@ public class SettingsXmlParser {
 
 					if ("extra".equals(xmlResParser.getName())) {
 						settingExtras.add(readSettingExtra);
-						Logger.d(TAG, String.format("parse new settingExtra --->%s", JSON.toJSONString(settingExtras)));
+						NLog.d(TAG, String.format("parse new settingExtra --->%s", JSON.toJSONString(settingExtras)));
 						readSettingExtra = null;
 					}
 				}

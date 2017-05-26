@@ -2,7 +2,6 @@ package com.tesla.framework.network.cache;
 
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.util.KeyGenerator;
-import com.tesla.framework.common.util.Logger;
 import com.tesla.framework.component.orm.extra.Extra;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.biz.IResult;
@@ -26,7 +25,7 @@ public class HomeCacheUtility implements ICacheUtility {
         if (homeBeans.beans != null && homeBeans.beans.size() > 0){
             long startTime = System.currentTimeMillis();
             TeslaDB.getDB().insert(extra, homeBeans.beans);
-            Logger.d(ABizLogic.TAG, "HomeCacheUtility addCache cost time: %s ms", System.currentTimeMillis() - startTime);
+            NLog.d(ABizLogic.TAG, "HomeCacheUtility addCache cost time: %s ms", System.currentTimeMillis() - startTime);
         }
     }
 
@@ -41,8 +40,8 @@ public class HomeCacheUtility implements ICacheUtility {
         Extra extra = new Extra(null,null);
         long startTime = System.currentTimeMillis();
         List<HomeBean> list = TeslaDB.getDB().select(extra, HomeBean.class);
-        Logger.w(ABizLogic.TAG, String.format("HomeCacheUtility find cache const time: %s ms", String.valueOf(System.currentTimeMillis() - startTime)));
-        Logger.d(ABizLogic.TAG, "HomeCacheUtility findCacheData key =  %s", extra.getKey());
+        NLog.w(ABizLogic.TAG, String.format("HomeCacheUtility find cache const time: %s ms", String.valueOf(System.currentTimeMillis() - startTime)));
+        NLog.d(ABizLogic.TAG, "HomeCacheUtility findCacheData key =  %s", extra.getKey());
         if (list != null && list.size() > 0){
             HomeBeans result = new HomeBeans();
             result.beans = (ArrayList<HomeBean>) list;

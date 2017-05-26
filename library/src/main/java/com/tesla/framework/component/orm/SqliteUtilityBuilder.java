@@ -5,8 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.tesla.framework.common.util.Logger;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -51,14 +49,14 @@ public class SqliteUtilityBuilder {
 			writableDB = openSdcardDb(path, dbName, version);
 			readableDB = writableDB;
 
-            Logger.d(TAG, String.format(String.format("打开app库 %s, version = %d", dbName, readableDB.getVersion())));
+            NLog.d(TAG, String.format(String.format("打开app库 %s, version = %d", dbName, readableDB.getVersion())));
 		}
 		else {
 			SqliteDbHelper dbHelper = new SqliteDbHelper(context, dbName, version);
 			writableDB = dbHelper.getWritableDatabase();
 			readableDB = dbHelper.getReadableDatabase();
 
-            Logger.d(TAG, String.format(String.format("打开sdcard库 %s, version = %d", dbName, readableDB.getVersion())));
+            NLog.d(TAG, String.format(String.format("打开sdcard库 %s, version = %d", dbName, readableDB.getVersion())));
 		}
 
 		return new SqliteUtility(dbName, writableDB, readableDB);
@@ -69,14 +67,14 @@ public class SqliteUtilityBuilder {
 		File dbf = new File(path + File.separator + dbName + ".db");
 		
 		if (dbf.exists()) {
-			Logger.d(TAG, "打开库 %s", dbName);
+			NLog.d(TAG, "打开库 %s", dbName);
 			db = SQLiteDatabase.openOrCreateDatabase(dbf, null);
 		} else {
 			dbf.getParentFile().mkdirs();
 			
 			try {
 				if (dbf.createNewFile()) {
-					Logger.d(TAG, "新建一个库在sd卡, 库名 = %s, 路径 = %s", dbName, dbf.getAbsolutePath());
+					NLog.d(TAG, "新建一个库在sd卡, 库名 = %s, 路径 = %s", dbName, dbf.getAbsolutePath());
 					db = SQLiteDatabase.openOrCreateDatabase(dbf, null);
 				}
 			} catch (IOException ioex) {
@@ -88,7 +86,7 @@ public class SqliteUtilityBuilder {
 		
 		if (db != null) {
 			int dbVersion = db.getVersion();
-			Logger.d(TAG, "表 %s 的version = %d, newVersion = %d", dbName, dbVersion, version);
+			NLog.d(TAG, "表 %s 的version = %d, newVersion = %d", dbName, dbVersion, version);
 			
 			if (dbVersion < version) {
 				dropDb(db);
@@ -135,7 +133,7 @@ public class SqliteUtilityBuilder {
 			while (cursor.moveToNext()) {
 				db.execSQL("DROP TABLE " + cursor.getString(0));
 
-                Logger.d(TAG, "删除表 = " + cursor.getString(0));
+                NLog.d(TAG, "删除表 = " + cursor.getString(0));
 			}
 		}
 		if (cursor != null) {

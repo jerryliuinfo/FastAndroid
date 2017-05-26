@@ -77,7 +77,7 @@ public class FileUtils {
 		}
 
 		String content = sb.toString();
-		Logger.d(TAG, String.format("read file's content = %s", content.length() >= 150 ? content.substring(0, 150) : content));
+		NLog.d(TAG, String.format("read file's content = %s", content.length() >= 150 ? content.substring(0, 150) : content));
 		return sb.toString();
 	}
 
@@ -114,7 +114,7 @@ public class FileUtils {
 			out.write(content.getBytes());
 			out.flush();
 
-			Logger.d(TAG, String.format("write file's content = %s", content.length() >= 150 ? content.substring(0, 150) : content));
+			NLog.d(TAG, String.format("write file's content = %s", content.length() >= 150 ? content.substring(0, 150) : content));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;

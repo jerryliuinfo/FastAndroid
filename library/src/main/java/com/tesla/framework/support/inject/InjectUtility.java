@@ -6,8 +6,6 @@ import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.tesla.framework.common.util.Logger;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -97,8 +95,8 @@ public class InjectUtility {
 								if (field.get(injectedSource) == null) {
 									field.set(injectedSource, sourceView.findViewById(viewId));
 
-//									if (Logger.DEBUG) {
-//										Logger.v(TAG, "id = %d, view = %s", viewId, field.get(injectedSource) + "");
+//									if (NLog.dEBUG) {
+//										NLog.v(TAG, "id = %d, view = %s", viewId, field.get(injectedSource) + "");
 //									}
 								} else {
 									continue;
@@ -113,8 +111,8 @@ public class InjectUtility {
 			}
 		}
 
-		if (Logger.DEBUG){
-			//Logger.v(TAG, "耗时 %s ms : " + injectedSource, String.valueOf(System.currentTimeMillis() - start));
+		if (NLog.dEBUG){
+			//NLog.v(TAG, "耗时 %s ms : " + injectedSource, String.valueOf(System.currentTimeMillis() - start));
 		}
 	}
 

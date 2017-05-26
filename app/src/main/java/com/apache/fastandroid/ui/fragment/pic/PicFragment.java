@@ -15,7 +15,6 @@ import com.apache.fastandroid.ui.widget.PicImageView;
 import com.apache.fastandroid.ui.widget.SpaceItemDecoration;
 import com.bumptech.glide.Glide;
 import com.tesla.framework.common.util.DimensUtil;
-import com.tesla.framework.common.util.Logger;
 import com.tesla.framework.common.util.SystemUtils;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
@@ -75,7 +74,7 @@ public class PicFragment extends ARecycleViewStaggeredGridFragment<ImageBean,Ima
     @Override
     public void requestData(RefreshMode mode) {
         super.requestData(mode);
-        Logger.d(TAG, "requestData mCategory = %s", mCategory);
+        NLog.d(TAG, "requestData mCategory = %s", mCategory);
         if (mode == RefreshMode.refresh){
             mode = RefreshMode.reset;
         }
@@ -113,7 +112,7 @@ public class PicFragment extends ARecycleViewStaggeredGridFragment<ImageBean,Ima
         protected ImageResultBeans workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params) throws TaskException {
             int pageNum = Integer.parseInt(nextPage);
             ImageResultBeans result =  PicSDK.newInstance(getTaskCacheMode(this)).loadImageData(mCategory,pageNum);
-            Logger.d(TAG, "result = %s", result);
+            NLog.d(TAG, "result = %s", result);
             return result;
         }
     }

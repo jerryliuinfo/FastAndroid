@@ -14,7 +14,6 @@ import com.apache.fastandroid.support.bean.VideoBean;
 import com.apache.fastandroid.support.bean.VideoResultBean;
 import com.apache.fastandroid.support.sdk.VideoSDK;
 import com.bumptech.glide.Glide;
-import com.tesla.framework.common.util.Logger;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.support.paging.IPaging;
@@ -68,7 +67,7 @@ public class VideoFragment extends ARecycleViewFragment<VideoBean,VideoResultBea
     @Override
     public void requestData(RefreshMode mode) {
         super.requestData(mode);
-        Logger.d(TAG, "requestData mCategory = %s", mCategory);
+        NLog.d(TAG, "requestData mCategory = %s", mCategory);
         if (mode == RefreshMode.refresh){
             mode = RefreshMode.reset;
         }
@@ -107,7 +106,7 @@ public class VideoFragment extends ARecycleViewFragment<VideoBean,VideoResultBea
                 params) throws TaskException {
             int page = Integer.parseInt(nextPage);
             VideoResultBean result = VideoSDK.newInstance(getTaskCacheMode(this)).loadViedoData(mCategory,page);
-            Logger.d(TAG, "result = %s", result);
+            NLog.d(TAG, "result = %s", result);
             return result;
         }
 

@@ -50,7 +50,7 @@ public class PicImageView extends android.support.v7.widget.AppCompatImageView {
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
-        //Logger.d(TAG, "onMeasure width = %s, height = %s, imageHeight = %s", width,height,imageHeight);
+        //NLog.d(TAG, "onMeasure width = %s, height = %s, imageHeight = %s", width,height,imageHeight);
         if (imageHeight == 0){
             super.onMeasure(widthMeasureSpec,heightMeasureSpec);
             return;

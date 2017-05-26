@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.setting.SettingExtra;
 import com.tesla.framework.common.setting.SettingUtility;
-import com.tesla.framework.common.util.Logger;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.cache.CacheExecutor;
 import com.tesla.framework.network.cache.ICacheUtility;
 import com.tesla.framework.network.http.DefHttpUtility;
@@ -78,20 +78,20 @@ public abstract class ABizLogic implements IHttpUtility{
                     cacheUtility = (ICacheUtility) Class.forName(action.getExtras().get(CACHE_UTILITY).getValue()).newInstance();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Logger.e(TAG, "CacheUtility配置错误 ");
+                    NLog.e(TAG, "CacheUtility配置错误 ");
                 }
             }
         }else {
-            Logger.e(TAG, "没有配置CacheUtility");
+            NLog.e(TAG, "没有配置CacheUtility");
         }
-        Logger.e(TAG, "mCacheMode = %s", mCacheMode);
+        NLog.e(TAG, "mCacheMode = %s", mCacheMode);
         //没有禁止缓存 则先读取缓存
         if (mCacheMode != CacheMode.disable){
             if (cacheUtility != null){
                 long startTime = System.currentTimeMillis();
                 cache = (T) cacheUtility.findCacheData(action,params);
                 if (cache != null){
-                    Logger.d(TAG, "读取缓存耗时 %s ms", System.currentTimeMillis() - startTime);
+                    NLog.d(TAG, "读取缓存耗时 %s ms", System.currentTimeMillis() - startTime);
                 }
             }
         }
@@ -101,25 +101,25 @@ public abstract class ABizLogic implements IHttpUtility{
             try {
                 long time = System.currentTimeMillis();
                 T result = getHttpUtility(action).doGet(resetHttpConfig(config, action), action, params, responseCls);
-                Logger.d(getTag(action, "Get-Http"), "耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
+                NLog.d(getTag(action, "Get-Http"), "耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
 
                 if (result != null && result instanceof IResult) {
                     putToCache(action, params, (IResult) result, cacheUtility);
                 }
 
-                Logger.d(getTag(action, "Get-Http"), "返回服务器数据");
+                NLog.d(getTag(action, "Get-Http"), "返回服务器数据");
                 return result;
             } catch (TaskException e) {
-                Logger.w(getTag(action, "Exception"), e + "");
+                NLog.w(getTag(action, "Exception"), e + "");
                 throw e;
             } catch (Exception e) {
-                Logger.w(getTag(action, "Exception"), e + "");
+                NLog.w(getTag(action, "Exception"), e + "");
                 throw new TaskException(TextUtils.isEmpty(e.getMessage()) ? "服务器错误" : e.getMessage());
             }
 
         }else {
             if (cache != null) {
-                Logger.d(getTag(action, "Cache"), "返回缓存数据");
+                NLog.d(getTag(action, "Cache"), "返回缓存数据");
                 // 缓存存在，且有效
                 return cache;
             }
@@ -165,7 +165,7 @@ public abstract class ABizLogic implements IHttpUtility{
             if(!TextUtils.isEmpty(SettingUtility.getStringSetting("http")))
                 return (IHttpUtility) Class.forName(SettingUtility.getStringSetting("http")).newInstance();
         } catch (Exception e) {
-            Logger.printExc(ABizLogic.class, e);
+            NLog.printStackTrace(e);
         }
 
         return new DefHttpUtility();
@@ -220,11 +220,11 @@ public abstract class ABizLogic implements IHttpUtility{
         public Void workInBackground(Void... p) throws TaskException {
             long time = System.currentTimeMillis();
 
-            Logger.d(getTag(setting, "Cache"), "开始保存缓存");
+            NLog.d(getTag(setting, "Cache"), "开始保存缓存");
 
             cacheUtility.addCache(setting, params, o);
 
-            Logger.d(getTag(setting, "Cache"), "保存缓存耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
+            NLog.d(getTag(setting, "Cache"), "保存缓存耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
 
             return null;
         }

@@ -3,8 +3,6 @@ package com.tesla.framework.network.task;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.tesla.framework.common.util.Logger;
-
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -32,7 +30,7 @@ public class TaskManager implements ITaskManager {
 
 			taskCache.put(task.getTaskId(), new WeakReference<WorkTask>(task));
 
-			Logger.d(TAG, String.format("addTask() --->%s", task.getTaskId()));
+			NLog.d(TAG, String.format("addTask() --->%s", task.getTaskId()));
 		}
 	}
 
@@ -56,7 +54,7 @@ public class TaskManager implements ITaskManager {
 		WorkTask existTask = getTaskById(taskId);
 
 		if (existTask != null)
-			Logger.d(TAG, String.format("interrupt exist task --->%s", taskId));
+			NLog.d(TAG, String.format("interrupt exist task --->%s", taskId));
 
 		if (existTask != null)
 			existTask.cancel(mayInterruptIfRunning);

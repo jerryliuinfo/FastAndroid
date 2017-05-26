@@ -17,6 +17,8 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
+import com.tesla.framework.common.util.log.NLog;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -80,7 +82,7 @@ public class BitmapUtil {
 		matrix.setScale(scale, scale);
 		Bitmap result = Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
 		try {
-			Logger.d(
+			NLog.d(
 					TAG,
 					String.format("zoom bitmap, source(%d,%d) result(%d,%d)", source.getWidth(), source.getHeight(), result.getWidth(),
 							result.getHeight()));
@@ -105,7 +107,7 @@ public class BitmapUtil {
 		matrix.setRotate(degrees, source.getWidth() / 2, source.getHeight() / 2);
 		Bitmap result = Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
 		try {
-			Logger.d(
+			NLog.d(
 					TAG,
 					String.format("rotate bitmap, source(%d,%d) result(%d,%d)", source.getWidth(), source.getHeight(), result.getWidth(),
 							result.getHeight()));
@@ -126,7 +128,7 @@ public class BitmapUtil {
 				if (resId != 0)
 					return BitmapFactory.decodeResource(context.getResources(), resId);
 				else
-					Logger.e(String.format("配置的图片ResourceId=%s不存在", resName));
+					NLog.e(String.format("配置的图片ResourceId=%s不存在", resName));
 			} catch (OutOfMemoryError e) {
 				e.printStackTrace();
 			}
@@ -153,7 +155,7 @@ public class BitmapUtil {
 			if (resId != 0)
 				return Bitmap2InputStream(BitmapFactory.decodeResource(resources, resId));
 			else
-				Logger.e(String.format("配置的图片ResourceId=%s不存在", resName));
+				NLog.e(String.format("配置的图片ResourceId=%s不存在", resName));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

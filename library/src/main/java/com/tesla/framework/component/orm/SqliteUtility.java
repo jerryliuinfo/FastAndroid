@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteStatement;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
-import com.tesla.framework.common.util.Logger;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.orm.extra.AutoIncrementTableColumn;
 import com.tesla.framework.component.orm.extra.Extra;
 import com.tesla.framework.component.orm.extra.TableColumn;
@@ -48,7 +48,7 @@ public class SqliteUtility {
 		
 		dbCache.put(dbName, this);
 
-        Logger.d(TAG, "将库 %s 放到缓存中", dbName);
+        NLog.d(TAG, "将库 %s 放到缓存中", dbName);
 	}
 	
 	public static SqliteUtility getInstance() {
@@ -106,8 +106,8 @@ public class SqliteUtility {
 
         ArrayList<T> list = new ArrayList<T>();
 
-        if (Logger.DEBUG) {
-            Logger.d(TAG, " method[select], table[%s], selection[%s], selectionArgs%s, groupBy[%s], having[%s], orderBy[%s], limit[%s] ",
+        if (NLog.isDebug()) {
+            NLog.d(TAG, " method[select], table[%s], selection[%s], selectionArgs%s, groupBy[%s], having[%s], orderBy[%s], limit[%s] ",
                     tableInfo.getTableName(), selection, JSON.toJSON(selectionArgs), String.valueOf(groupBy), String.valueOf(having), String.valueOf(orderBy), String.valueOf(limit));
         }
 
@@ -119,7 +119,7 @@ public class SqliteUtility {
         long start = System.currentTimeMillis();
         Cursor cursor = getReadableDB().query(tableInfo.getTableName(), columnList.toArray(new String[0]),
                                     selection, selectionArgs, groupBy, having, orderBy, limit);
-        Logger.d(TAG, "table[%s] 查询数据结束，耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
+        NLog.d(TAG, "table[%s] 查询数据结束，耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
 
         start = System.currentTimeMillis();
         try {
@@ -144,9 +144,9 @@ public class SqliteUtility {
         } finally {
             cursor.close();
         }
-        Logger.d(TAG, "table[%s], 设置数据结束，耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
+        NLog.d(TAG, "table[%s], 设置数据结束，耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
 
-        Logger.d(TAG, "查询到数据 %d 条", list.size());
+        NLog.d(TAG, "查询到数据 %d 条", list.size());
 
         return list;
     }
@@ -164,7 +164,7 @@ public class SqliteUtility {
             if (entities != null && entities.length > 0)
                 insert(extra, Arrays.asList(entities));
             else
-                Logger.d(TAG, "method[insert(Extra extra, T... entities)], entities is empty");
+                NLog.d(TAG, "method[insert(Extra extra, T... entities)], entities is empty");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -181,7 +181,7 @@ public class SqliteUtility {
             if (entities != null && entities.length > 0)
                 insert(extra, Arrays.asList(entities), "INSERT OR REPLACE INTO ");
             else
-                Logger.d(TAG, "method[insertOrReplace(Extra extra, T... entities)], entities is empty");
+                NLog.d(TAG, "method[insertOrReplace(Extra extra, T... entities)], entities is empty");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -205,7 +205,7 @@ public class SqliteUtility {
 
     private <T> void insert(Extra extra, List<T> entityList, String insertInto) {
         if (entityList == null || entityList.size() == 0) {
-            Logger.d(TAG, "method[insert(Extra extra, List<T> entityList)], entityList is empty");
+            NLog.d(TAG, "method[insert(Extra extra, List<T> entityList)], entityList is empty");
             return;
         }
 
@@ -217,7 +217,7 @@ public class SqliteUtility {
             try {
                 String sql = SqlUtils.createSqlInsert(insertInto, tableInfo);
 
-                Logger.v(TAG, insertInto + " sql = %s", sql);
+                NLog.v(TAG, insertInto + " sql = %s", sql);
 
                 SQLiteStatement insertStatement = getWritableDB().compileStatement(sql);
                 long bindTime = 0;
@@ -228,13 +228,13 @@ public class SqliteUtility {
                     startTime = System.currentTimeMillis();
                     insertStatement.execute();
                 }
-                Logger.d(TAG, "bindvalues 耗时 %s ms", bindTime + "");
+                NLog.d(TAG, "bindvalues 耗时 %s ms", bindTime + "");
 
                 getWritableDB().setTransactionSuccessful();
             } finally {
                 getWritableDB().endTransaction();
             }
-            Logger.d(TAG, "表 %s %s 数据 %d 条， 执行时间 %s ms",
+            NLog.d(TAG, "表 %s %s 数据 %d 条， 执行时间 %s ms",
                     tableInfo.getTableName(),
                     insertInto,
                     entityList.size(),
@@ -248,7 +248,7 @@ public class SqliteUtility {
                     if(cursor.moveToFirst()) {
                         int newId = cursor.getInt(0);
 
-                        Logger.d(TAG, "表%s自增主键[%d]", tableInfo.getTableName(), newId);
+                        NLog.d(TAG, "表%s自增主键[%d]", tableInfo.getTableName(), newId);
 
                         T bean = entityList.get(0);
                         try {
@@ -307,14 +307,14 @@ public class SqliteUtility {
                     }
 
                     int rowId = getWritableDB().update(tableInfo.getTableName(), values, whereClause, whereArgs);
-                    if (Logger.DEBUG) {
-                        Logger.d(TAG, " method[update], table[%s], whereClause[%s], whereArgs[%s], rowId[%d]",
+                    if (NLog.isDebug()) {
+                        NLog.d(TAG, " method[update], table[%s], whereClause[%s], whereArgs[%s], rowId[%d]",
                                 tableInfo.getTableName(), whereClause, JSON.toJSON(whereArgs), rowId);
                     }
                 }
             }
             else {
-                Logger.d(TAG, "method[update(Extra extra, T... entities)], entities is empty");
+                NLog.d(TAG, "method[update(Extra extra, T... entities)], entities is empty");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -344,11 +344,11 @@ public class SqliteUtility {
                 where = " where " + where;
             String sql = "DELETE FROM '" + tableInfo.getTableName() + "' " + where;
 
-            Logger.d(TAG, "method[delete] table[%s], sql[%s]", tableInfo.getTableName(), sql);
+            NLog.d(TAG, "method[delete] table[%s], sql[%s]", tableInfo.getTableName(), sql);
 
             long start = System.currentTimeMillis();
             getWritableDB().execSQL(sql);
-            Logger.d(TAG, "表 %s 清空数据, 耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
+            NLog.d(TAG, "表 %s 清空数据, 耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -370,15 +370,15 @@ public class SqliteUtility {
                 whereArgList.addAll(Arrays.asList(extraWhereArgs));
             String[] whereArgs = whereArgList.toArray(new String[0]);
 
-            if (Logger.DEBUG) {
-                Logger.d(TAG, " method[deleteById], table[%s], id[%s], whereClause[%s], whereArgs%s ",
+            if (NLog.isDebug()) {
+                NLog.d(TAG, " method[deleteById], table[%s], id[%s], whereClause[%s], whereArgs%s ",
                                 tableInfo.getTableName(), String.valueOf(id), whereClause, JSON.toJSON(whereArgs));
             }
 
             long start = System.currentTimeMillis();
             int rowCount = getWritableDB().delete(tableInfo.getTableName(), whereClause, whereArgs);
 
-            Logger.d(TAG, "表 %s 删除数据 %d 条, 耗时 %s ms", tableInfo.getTableName(), rowCount, String.valueOf(System.currentTimeMillis() - start));
+            NLog.d(TAG, "表 %s 删除数据 %d 条, 耗时 %s ms", tableInfo.getTableName(), rowCount, String.valueOf(System.currentTimeMillis() - start));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -391,11 +391,11 @@ public class SqliteUtility {
             long start = System.currentTimeMillis();
             int rowCount = getWritableDB().delete(tableInfo.getTableName(), whereClause, whereArgs);
 
-            if (Logger.DEBUG) {
-                Logger.d(TAG, "method[delete], table[%s], whereClause[%s], whereArgs%s ",
+            if (NLog.isDebug()) {
+                NLog.d(TAG, "method[delete], table[%s], whereClause[%s], whereArgs%s ",
                         tableInfo.getTableName(), whereClause, JSON.toJSON(whereArgs));
             }
-            Logger.d(TAG, "表 %s 删除数据 %d 条，耗时 %s ms", tableInfo.getTableName(), rowCount, String.valueOf(System.currentTimeMillis() - start));
+            NLog.d(TAG, "表 %s 删除数据 %d 条，耗时 %s ms", tableInfo.getTableName(), rowCount, String.valueOf(System.currentTimeMillis() - start));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -418,20 +418,19 @@ public class SqliteUtility {
         	sql = String.format(" select sum(%s) as _sum_ from %s where %s ", column, tableInfo.getTableName(), whereClause);
         }
 
-        Logger.d(TAG, "sum() --- > " + sql);
-        Logger.d(TAG, whereArgs);
+        NLog.d(TAG, "sum() --- > " + sql);
 
         try {
             long time = System.currentTimeMillis();
             Cursor cursor = getReadableDB().rawQuery(sql, whereArgs);
             if (cursor.moveToFirst()) {
                 long sum = cursor.getLong(cursor.getColumnIndex("_sum_"));
-                Logger.d(TAG, "sum = %s 耗时%sms", String.valueOf(sum) , String.valueOf(System.currentTimeMillis() - time));
+                NLog.d(TAG, "sum = %s 耗时%sms", String.valueOf(sum) , String.valueOf(System.currentTimeMillis() - time));
                 cursor.close();
                 return sum;
             }
         } catch (Exception e) {
-            Logger.printExc(SqliteUtility.class, e);
+            NLog.printStackTrace(e);
         }
         return 0;
     }
@@ -448,20 +447,19 @@ public class SqliteUtility {
         	sql = String.format(" select count(*) as _count_ from %s where %s ", tableInfo.getTableName(), whereClause);
         }
 
-        Logger.d(TAG, "count --- > " + sql);
-        Logger.d(TAG, whereArgs);
+        NLog.d(TAG, "count --- > " + sql);
 
         try {
             long time = System.currentTimeMillis();
             Cursor cursor = getReadableDB().rawQuery(sql, whereArgs);
             if (cursor.moveToFirst()) {
                 long count = cursor.getLong(cursor.getColumnIndex("_count_"));
-                Logger.d(TAG, "count = %s 耗时%sms", String.valueOf(count) , String.valueOf(System.currentTimeMillis() - time));
+                NLog.d(TAG, "count = %s 耗时%sms", String.valueOf(count) , String.valueOf(System.currentTimeMillis() - time));
                 cursor.close();
                 return count;
             }
         } catch (Exception e) {
-            Logger.printExc(SqliteUtility.class, e);
+            e.printStackTrace();
         }
         return 0;
     }
@@ -513,8 +511,8 @@ public class SqliteUtility {
                 return;
             }
 
-            if (Logger.DEBUG) {
-                Logger.v(TAG, " method[bindValue_ContentValues], key[%s], value[%s]", column.getColumn(), value + "");
+            if (NLog.isDebug()) {
+                NLog.v(TAG, " method[bindValue_ContentValues], key[%s], value[%s]", column.getColumn(), value + "");
             }
 
             if ("object".equalsIgnoreCase(column.getDataType())) {
@@ -535,7 +533,7 @@ public class SqliteUtility {
         } catch (Exception e) {
             e.printStackTrace();
 
-            Logger.w(TAG, "属性 %s bindvalue 异常", column.getField().getName());
+            NLog.w(TAG, "属性 %s bindvalue 异常", column.getField().getName());
         }
     }
 
@@ -549,8 +547,8 @@ public class SqliteUtility {
                 return;
             }
 
-            if (Logger.DEBUG) {
-                Logger.v(TAG, " method[bindValue_SQLiteStatement], key[%s], value[%s]", column.getColumn(), value + "");
+            if (NLog.isDebug()) {
+                NLog.v(TAG, " method[bindValue_SQLiteStatement], key[%s], value[%s]", column.getColumn(), value + "");
             }
 
             if ("object".equalsIgnoreCase(column.getDataType())) {
@@ -571,7 +569,7 @@ public class SqliteUtility {
         } catch (Exception e) {
             e.printStackTrace();
 
-            Logger.w(TAG, "属性 %s bindvalue 异常", column.getField().getName());
+            NLog.w(TAG, "属性 %s bindvalue 异常", column.getField().getName());
         }
     }
 

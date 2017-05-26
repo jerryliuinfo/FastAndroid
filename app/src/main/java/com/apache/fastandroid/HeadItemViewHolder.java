@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.apache.fastandroid.ui.fragment.TestRecycleViewFragment;
-import com.tesla.framework.common.util.Logger;
 import com.tesla.framework.support.bean.HeaderBean;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
@@ -27,7 +26,7 @@ public class HeadItemViewHolder extends ARecycleViewItemViewHolder<HeaderBean> {
         headView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Logger.d(TestRecycleViewFragment.TAG, "onclick header view");
+                NLog.d(TestRecycleViewFragment.TAG, "onclick header view");
             }
         });
     }

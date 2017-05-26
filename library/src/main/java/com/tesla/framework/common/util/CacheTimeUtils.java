@@ -13,7 +13,7 @@ public class CacheTimeUtils {
 
         ActivityHelper.putShareData(context, key, time);
 
-        Logger.d("CacheTimeUtils", String.format("保存缓存 %s, saveTime = %s", key, time));
+        NLog.d("CacheTimeUtils", String.format("保存缓存 %s, saveTime = %s", key, time));
     }
 
     public static long getSaveTime(Context context, String key) {
@@ -28,7 +28,7 @@ public class CacheTimeUtils {
 
             boolean expired = Math.abs((System.currentTimeMillis() / 1000 - saveTime) * 1000) >= refreshInterval;
 
-            Logger.d("CacheTimeUtils", String.format("缓存有效性 %s, expired = %s", key, String.valueOf(expired)));
+            NLog.d("CacheTimeUtils", String.format("缓存有效性 %s, expired = %s", key, String.valueOf(expired)));
 
             return expired;
         } catch (Throwable e) {

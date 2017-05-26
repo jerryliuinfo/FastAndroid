@@ -3,7 +3,7 @@ package com.apache.fastandroid.support.cache;
 import com.apache.fastandroid.support.bean.ImageBean;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
 import com.tesla.framework.common.setting.Setting;
-import com.tesla.framework.common.util.Logger;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.cache.ICacheUtility;
 import com.tesla.framework.network.http.Params;
@@ -25,7 +25,7 @@ public class PicCacheUtility implements ICacheUtility {
 
             ImageResultBeans result = (ImageResultBeans) iResult;
             getDB().insert(null,result.imgs);
-            Logger.d(Logger.TAG, "PicCacheUtility保存缓存耗时: %s ms", (System.currentTimeMillis()));
+            NLog.d(Logger.TAG, "PicCacheUtility保存缓存耗时: %s ms", (System.currentTimeMillis()));
         }
 
     }
