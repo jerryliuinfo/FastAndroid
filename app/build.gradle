@@ -17,6 +17,50 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    /*渠道信息配置*/
+    productFlavors {
+        buildVersion {
+            //不同渠道，不同包名
+            applicationId "com.fast.adnroid.test"
+            versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染
+            manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name,PACKAGE_NAME: applicationId]
+        }
+
+        gp {
+            applicationId "com.fast.adnroid"
+            manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
+        }
+
+        baidu {
+            applicationId "com.fast.adnroid"
+            manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
+        }
+
+        hawk {
+            applicationId "com.fast.adnroid"
+            manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
+        }
+
+    }
+
+
+    signingConfigs {
+        buildVersion {
+            storeFile file('Camry')
+            storePassword '123456789'
+            keyAlias 'tcl'
+            keyPassword '123456789'
+
+        }
+
+        gp{
+            storeFile file('pc.jks')
+            storePassword 'myclean'
+            keyAlias 'myclean123'
+            keyPassword 'myclean1234'
+        }
+    }
 }
 
 dependencies {

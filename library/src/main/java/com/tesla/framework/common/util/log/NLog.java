@@ -114,6 +114,14 @@ public final class NLog
 		}
 	}
 
+	public static void d(String format, Object...args)
+	{
+		if (debug)
+		{
+			logger.d(TAG, buildWholeMessage(format, args));
+		}
+	}
+
 	public static void i(String tag, String format, Object...args)
 	{
 		if (debug)

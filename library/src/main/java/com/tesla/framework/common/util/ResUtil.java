@@ -121,16 +121,6 @@ public class ResUtil {
 
 
 
-    public static int dip2px(float dp){
-        Context context = FrameworkApplication.getContext();
-        int px = (int) (dp + 0.5f);
-        try {
-            px = (int) (context.getResources().getDisplayMetrics().density * dp + 0.5f);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return px;
-    }
 
 
 }

@@ -29,6 +29,18 @@
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             />
+
+
+
+        <!-- 配置信息 start -->
+        <meta-data
+            android:name="CHANNEL"
+            android:value="${CHANNEL_VALUE}"/>
+
+        <!-- value: 是否是测试环境 测试环境 TESTING 正式环境 PRD -->
+        <meta-data
+            android:name="ISTEST"
+            android:value="${ISTEST_VALUE}"/>
     </application>
 
 </manifest>
