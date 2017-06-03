@@ -14,7 +14,7 @@ import com.apache.fastandroid.support.sdk.PicSDK;
 import com.apache.fastandroid.ui.widget.PicImageView;
 import com.apache.fastandroid.ui.widget.SpaceItemDecoration;
 import com.bumptech.glide.Glide;
-import com.tesla.framework.common.util.DimensUtil;
+import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.common.util.SystemUtils;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.task.TaskException;
@@ -47,7 +47,7 @@ public class PicFragment extends ARecycleViewStaggeredGridFragment<ImageBean,Ima
     @Override
     protected void setUpRefreshView() {
         super.setUpRefreshView();
-        getRefreshView().addItemDecoration(new SpaceItemDecoration(DimensUtil.dip2px(8)));
+        getRefreshView().addItemDecoration(new SpaceItemDecoration(DimensUtil.dp2px(8)));
     }
 
     @Override
@@ -135,7 +135,7 @@ public class PicFragment extends ARecycleViewStaggeredGridFragment<ImageBean,Ima
             iv_pic.setImageHeight(height);
             iv_pic.setImageWidth(width);
             Glide.with(getContext()).load(data.thumbnailUrl).
-                    override(SystemUtils.getScreenWidth(MyApplication.getContext()), DimensUtil.dip2px(100)).into(iv_pic);
+                    override(SystemUtils.getScreenWidth(MyApplication.getContext()), DimensUtil.dp2px(100)).into(iv_pic);
         }
     }
 

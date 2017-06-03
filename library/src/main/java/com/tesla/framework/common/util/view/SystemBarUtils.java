@@ -1,4 +1,4 @@
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.view;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;

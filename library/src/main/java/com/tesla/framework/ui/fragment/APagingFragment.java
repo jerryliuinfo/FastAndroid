@@ -9,7 +9,7 @@ import android.widget.AbsListView;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.ActivityHelper;
-import com.tesla.framework.common.util.ViewUtils;
+import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.task.TaskException;

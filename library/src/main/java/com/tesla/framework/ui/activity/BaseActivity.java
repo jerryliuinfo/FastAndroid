@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.setting.SettingUtility;
-import com.tesla.framework.common.util.ViewUtils;
+import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.task.ITaskManager;
 import com.tesla.framework.network.task.TaskManager;

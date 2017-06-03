@@ -1,9 +1,8 @@
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.log;
 
 import android.content.Context;
 
 import com.tesla.framework.FrameworkApplication;
-import com.tesla.framework.common.util.log.NLog;
 
 import java.io.File;
 import java.io.FileWriter;

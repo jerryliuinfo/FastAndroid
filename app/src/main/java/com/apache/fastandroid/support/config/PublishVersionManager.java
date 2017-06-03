@@ -1,6 +1,7 @@
 package com.apache.fastandroid.support.config;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
 
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.XmlUtil;
@@ -30,7 +31,9 @@ public class PublishVersionManager {
 
     private static boolean sIsHawkInnerChannel; //是否企业内部渠道
 
-
+    //应用版本名称和版本号
+    private static String sVersionName;
+    private static int sVersionCode;
 
 
 
@@ -42,9 +45,20 @@ public class PublishVersionManager {
     static {
         initIsTest(FrameworkApplication.getContext());
         initChannelInfo(FrameworkApplication.getContext());
-
+        initVersionInfo(FrameworkApplication.getContext());
     }
 
+
+    private static void initVersionInfo(Context context) {
+        try {
+            PackageInfo pkgInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            sVersionName = pkgInfo.versionName;
+            sVersionCode = pkgInfo.versionCode;
+        } catch (Exception e) {
+            sVersionName = "";
+            sVersionCode = 0;
+        }
+    }
     /**
      * 初始化渠道信息
      * @param context

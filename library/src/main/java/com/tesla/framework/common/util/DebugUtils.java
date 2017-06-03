@@ -17,6 +17,10 @@ public class DebugUtils {
 
     private static Boolean isDebug = null;
 
+    /**
+     * debug版本时，返回true， release版本返回false
+     * @return
+     */
     public static Boolean isDebug(){
         return isDebug == null ? false : isDebug.booleanValue();
     }

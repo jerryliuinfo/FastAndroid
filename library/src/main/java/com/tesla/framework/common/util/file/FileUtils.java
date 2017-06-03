@@ -1,4 +1,4 @@
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.file;
 
 import android.annotation.SuppressLint;
 import android.content.ContentUris;

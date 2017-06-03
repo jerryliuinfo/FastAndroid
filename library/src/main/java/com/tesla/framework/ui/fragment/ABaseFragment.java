@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.ViewUtils;
+import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.biz.IResult;

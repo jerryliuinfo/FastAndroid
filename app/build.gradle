@@ -11,6 +11,26 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+
+
+    signingConfigs {
+        buildVersion {
+            storeFile file('Camry')
+            storePassword '123456789'
+            keyAlias 'tcl'
+            keyPassword '123456789'
+
+        }
+        gp { // 外发包 签名
+            storeFile file('hawkSog')
+            storePassword 'HAWK19930721'
+            keyAlias 'hawk_sog'
+            keyPassword 'HAWK19930721'
+        }
+
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -23,6 +43,7 @@ android {
         buildVersion {
             //不同渠道，不同包名
             applicationId "com.fast.adnroid.test"
+            signingConfig signingConfigs.buildVersion
             versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染
             manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name,PACKAGE_NAME: applicationId]
         }
@@ -45,22 +66,7 @@ android {
     }
 
 
-    signingConfigs {
-        buildVersion {
-            storeFile file('Camry')
-            storePassword '123456789'
-            keyAlias 'tcl'
-            keyPassword '123456789'
 
-        }
-
-        gp{
-            storeFile file('pc.jks')
-            storePassword 'myclean'
-            keyAlias 'myclean123'
-            keyPassword 'myclean1234'
-        }
-    }
 }
 
 dependencies {

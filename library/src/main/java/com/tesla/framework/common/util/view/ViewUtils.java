@@ -1,4 +1,4 @@
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.view;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

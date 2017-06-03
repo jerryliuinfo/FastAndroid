@@ -1,6 +1,7 @@
 package com.apache.fastandroid.ui.activity;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.config.PublishVersionManager;
+import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
@@ -29,27 +31,13 @@ public class SplashActivity extends BaseActivity {
 
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(layBg,"scaleX", 1, 1.2f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(layBg,"scaleY", 1, 1.2f);
-        animatorSet.setDuration(2000);
+        animatorSet.setDuration(5000);
         animatorSet.playTogether(scaleX,scaleY);
-        animatorSet.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-
-            }
-
+        animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
                 toMain();
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
             }
         });
         animatorSet.start();
@@ -57,6 +45,7 @@ public class SplashActivity extends BaseActivity {
         PublishVersionManager.isTest();
         NLog.d("IsTest = %s, channel = %s, channelId = %s", PublishVersionManager.isTest(),PublishVersionManager.getChannel(),PublishVersionManager.getChannelId());
 
+        NLog.d(NLog.TAG, "debug util = %s", DebugUtils.isDebug());
 
     }
 
