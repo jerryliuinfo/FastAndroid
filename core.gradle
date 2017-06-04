@@ -22,7 +22,8 @@ ext {
             cardview         :  "com.android.support:cardview-v7:$designVersion",
             design           :  "com.android.support:design:$designVersion",
             fastjson         :  "com.alibaba:fastjson:$fastjsonVersion",
-            junit            :  "junit:junit:$junitVersion"
+            junit            :  "junit:junit:$junitVersion",
+            multidex         :  "com.android.support:multidex:1.0.1"
 
     ]
 

@@ -7,6 +7,7 @@ import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.View;
 
+import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.config.PublishVersionManager;
 import com.tesla.framework.common.util.log.NLog;
@@ -45,6 +46,8 @@ public class SplashActivity extends BaseActivity {
         NLog.d("IsTest = %s, channel = %s, channelId = %s", PublishVersionManager.isTest(),PublishVersionManager.getChannel(),PublishVersionManager.getChannelId());
 
         NLog.d(NLog.TAG, "version code = %s, version name = %s", PublishVersionManager.getVersionCode(),PublishVersionManager.getVersionName() );
+        NLog.d(NLog.TAG, "log enable = %s", BuildConfig.LOG_DEBUG);
+
 
     }
 

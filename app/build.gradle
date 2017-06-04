@@ -9,6 +9,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
+        //dex突破65535的限制
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -34,7 +36,14 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+            buildConfigField("boolean","LOG_DEBUG","false")
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            buildConfigField("boolean","LOG_DEBUG","true")
         }
     }
 
@@ -44,7 +53,7 @@ android {
             //不同渠道，不同包名
             applicationId "com.fast.adnroid.test"
             signingConfig signingConfigs.buildVersion
-            /*versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染*/
+            versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染
             manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name,PACKAGE_NAME: applicationId]
         }
 
@@ -53,10 +62,6 @@ android {
             manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
         }
 
-        baidu {
-            applicationId "com.fast.adnroid"
-            manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
-        }
 
         hawk {
             applicationId "com.fast.adnroid"
@@ -65,9 +70,39 @@ android {
 
     }
 
+    //修改apk输出名字格式
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def appName = "FastAndroid"
+                def flavorsName = variant.productFlavors[0].name
+                def code = rootProject.ext.versionCode
+                if (flavorsName.equals("buildVersion")) {
+                    code = 434
+                }else {
+                }
+                def pubversionName = defaultConfig.versionName + "." + code
+                def buildTypeName = buildType.name
+
+                def time = getDate();
+                def fileName = "Module_${appName}_${pubversionName}_${time}_${flavorsName}_${buildTypeName}.apk"
+
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
 
 
 }
+
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('MMddHHmm')
+    return formattedDate
+}
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -77,4 +112,5 @@ dependencies {
     compile project(':library')
     compile dep.glide
     compile dep.appcompatV7
+    compile dep.multidex
 }

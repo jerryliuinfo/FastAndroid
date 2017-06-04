@@ -1,7 +1,7 @@
 package com.apache.fastandroid;
 
-import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
 import com.tesla.framework.FrameworkApplication;
@@ -15,7 +15,7 @@ import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
  * Created by jerryliu on 2017/3/26.
  */
 
-public class MyApplication extends Application{
+public class MyApplication extends MultiDexApplication{
     public static final String TAG = MyApplication.class.getSimpleName();
     private static Context mContext;
     private ActivityLifecycleCallbacks activityLifecycleCallbacks;
@@ -23,7 +23,9 @@ public class MyApplication extends Application{
     public void onCreate() {
         super.onCreate();
         mContext = this;
-        NLog.setDebug(true, Logger.DEBUG);
+        if (BuildConfig.LOG_DEBUG){
+            NLog.setDebug(true, Logger.DEBUG);
+        }
         FrameworkApplication.onCreate(getApplicationContext());
 
         TeslaDB.setDB();
