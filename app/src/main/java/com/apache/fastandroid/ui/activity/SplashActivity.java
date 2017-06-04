@@ -27,6 +27,8 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
+
         AnimatorSet animatorSet = new AnimatorSet();
 
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(layBg,"scaleX", 1, 1.2f);
@@ -48,12 +50,16 @@ public class SplashActivity extends BaseActivity {
         NLog.d(NLog.TAG, "version code = %s, version name = %s", PublishVersionManager.getVersionCode(),PublishVersionManager.getVersionName() );
         NLog.d(NLog.TAG, "log enable = %s", BuildConfig.LOG_DEBUG);
 
+        //
+
+
 
     }
 
 
 
     private void toMain(){
+        String str = null;
         MainActivity.launch(this);
         finish();
     }

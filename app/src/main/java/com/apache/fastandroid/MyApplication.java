@@ -4,7 +4,9 @@ import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.common.util.CrashHandler;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.db.TeslaDB;
@@ -27,6 +29,7 @@ public class MyApplication extends MultiDexApplication{
             NLog.setDebug(true, Logger.DEBUG);
         }
         FrameworkApplication.onCreate(getApplicationContext());
+        setUpCrashAndAnalysis();
 
         TeslaDB.setDB();
         BaseActivity.setHelper(SwipeActivityHelper.class);
@@ -34,6 +37,16 @@ public class MyApplication extends MultiDexApplication{
             activityLifecycleCallbacks = new ActivityLifeCycleReportCallback();
         }
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
+
+    }
+
+
+    private void setUpCrashAndAnalysis(){
+        //本地crash日志收集
+        CrashHandler.setupCrashHandler(getApplicationContext());
+        //bugly统计
+        CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
+
 
     }
 

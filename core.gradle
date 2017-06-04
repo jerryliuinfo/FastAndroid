@@ -23,7 +23,9 @@ ext {
             design           :  "com.android.support:design:$designVersion",
             fastjson         :  "com.alibaba:fastjson:$fastjsonVersion",
             junit            :  "junit:junit:$junitVersion",
-            multidex         :  "com.android.support:multidex:1.0.1"
+            multidex         :  "com.android.support:multidex:1.0.1",
+            //crash统计 //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
+            bugly            :  "com.tencent.bugly:crashreport:latest.release"
 
     ]
 
