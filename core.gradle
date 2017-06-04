@@ -11,8 +11,6 @@ ext {
     fastjsonVersion = "1.2.29"
     junitVersion = "4.12"
 
-    versionCode = 102
-    versionName = "1.0.2"
 
     sourceCompatibilityVersion = JavaVersion.VERSION_1_7
     targetCompatibilityVersion = JavaVersion.VERSION_1_7

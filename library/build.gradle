@@ -2,14 +2,14 @@ apply plugin: 'com.android.library'
 apply plugin: 'android-apt'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -30,13 +30,10 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile dep.junit
 
-    compile dep.fastjson
-
-    compile dep.cardview
-    //添加这行
     compile dep.design
-    compile dep.okhttp3
-
-
     compile dep.appcompatV7
+    compile dep.cardview
+
+    compile dep.fastjson
+    compile dep.okhttp3
 }

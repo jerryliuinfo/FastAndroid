@@ -44,7 +44,7 @@ android {
             //不同渠道，不同包名
             applicationId "com.fast.adnroid.test"
             signingConfig signingConfigs.buildVersion
-            versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染
+            /*versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染*/
             manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name,PACKAGE_NAME: applicationId]
         }
 
