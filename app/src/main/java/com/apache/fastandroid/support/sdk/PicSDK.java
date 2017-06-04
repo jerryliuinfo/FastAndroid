@@ -1,7 +1,6 @@
 package com.apache.fastandroid.support.sdk;
 
 import com.apache.fastandroid.support.bean.ImageResultBeans;
-import com.apache.fastandroid.support.cache.PicCacheUtility;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
@@ -38,7 +37,7 @@ public class PicSDK extends ABizLogic {
 
     public ImageResultBeans loadImageData(String category, int pageNum) throws TaskException{
         Setting setting = newSetting("loadImages","data/imgs","加载图片");
-        setting.getExtras().put(CACHE_UTILITY, newSettingExtra("loadImages",PicCacheUtility.class.getName(),"加载图片缓存"));
+        //setting.getExtras().put(CACHE_UTILITY, newSettingExtra("loadImages",PicCacheUtility.class.getName(),"加载图片缓存"));
 
         Params params = new Params();
         params.addParameter("col",category);

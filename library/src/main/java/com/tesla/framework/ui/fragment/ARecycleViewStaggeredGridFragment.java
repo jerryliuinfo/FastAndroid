@@ -14,6 +14,8 @@ public abstract class ARecycleViewStaggeredGridFragment<T extends Serializable,T
     @Override
     protected RecyclerView.LayoutManager configLayoutManager() {
 
-        return new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        return new StaggeredGridLayoutManager(getSpanCount(),StaggeredGridLayoutManager.VERTICAL);
     }
+
+    protected abstract int getSpanCount();
 }

@@ -274,6 +274,11 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
         if (!TextUtils.isEmpty(configLastTabKey())){
             ActivityHelper.putShareData(getContext(),"pageLastTab"+configLastTabKey(), mTabs.get(mCurrentPosition).getTitle());
         }
+
+        Fragment fragment = this.getCurrentFragment();
+        if(fragment instanceof ATabsFragment.ITabInitData) {
+            ((ATabsFragment.ITabInitData)fragment).onTabRequestData();
+        }
     }
 
     @Override

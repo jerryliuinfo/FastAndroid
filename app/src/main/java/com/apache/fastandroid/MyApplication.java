@@ -41,6 +41,7 @@ public class MyApplication extends MultiDexApplication{
     }
 
 
+
     private void setUpCrashAndAnalysis(){
         //本地crash日志收集
         CrashHandler.setupCrashHandler(getApplicationContext());

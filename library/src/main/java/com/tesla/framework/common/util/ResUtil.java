@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 
 import com.tesla.framework.FrameworkApplication;
 
@@ -84,6 +85,7 @@ public class ResUtil {
         int color = 0x00000000;
         try {
             color = context.getResources().getColor(resId);
+            color = ContextCompat.getColor(context,resId);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -94,7 +96,7 @@ public class ResUtil {
         Context context = FrameworkApplication.getContext();
         ColorStateList result = null;
         try {
-            result = context.getResources().getColorStateList(resId);
+            result = ContextCompat.getColorStateList(context,resId);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -110,7 +112,7 @@ public class ResUtil {
         Context context = FrameworkApplication.getContext();
         Drawable drawable = null;
         try {
-            drawable = context.getResources().getDrawable(resId);
+            drawable = ContextCompat.getDrawable(context,resId);
         } catch (Exception e) {
             e.printStackTrace();
         }

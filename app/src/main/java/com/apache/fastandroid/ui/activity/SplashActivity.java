@@ -33,7 +33,7 @@ public class SplashActivity extends BaseActivity {
 
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(layBg,"scaleX", 1, 1.2f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(layBg,"scaleY", 1, 1.2f);
-        animatorSet.setDuration(5000);
+        animatorSet.setDuration(2000);
         animatorSet.playTogether(scaleX,scaleY);
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -59,7 +59,6 @@ public class SplashActivity extends BaseActivity {
 
 
     private void toMain(){
-        String str = null;
         MainActivity.launch(this);
         finish();
     }

@@ -2,46 +2,65 @@ package com.apache.fastandroid.ui.fragment.pic;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.apache.fastandroid.MyApplication;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.bean.ImageBean;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
 import com.apache.fastandroid.support.sdk.PicSDK;
-import com.apache.fastandroid.ui.widget.PicImageView;
+import com.apache.fastandroid.support.utils.FastAndroidUtils;
 import com.apache.fastandroid.ui.widget.SpaceItemDecoration;
 import com.bumptech.glide.Glide;
-import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.common.util.SystemUtils;
+import com.tesla.framework.common.util.dimen.DimensUtil;
+import com.tesla.framework.common.util.dimen.ScreenUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
-import com.tesla.framework.ui.fragment.ARecycleViewStaggeredGridFragment;
+import com.tesla.framework.ui.fragment.ARecycleViewFragment;
+import com.tesla.framework.ui.fragment.ATabsFragment;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by jerryliu on 2017/4/11.
  */
 
-public class PicFragment extends ARecycleViewStaggeredGridFragment<ImageBean,ImageResultBeans,ImageBean> {
-
+public class PicFragment extends ARecycleViewFragment<ImageBean,ImageResultBeans,ImageBean> implements ATabsFragment.ITabInitData{
+    public static final String TAG = PicFragment.class.getSimpleName();
     public static final String EXTRA_CATEGORY = "category";
     private String mCategory;
     public static PicFragment newFragment(String category) {
-         Bundle args = new Bundle();
+        PicFragment fragment = new PicFragment();
+        Bundle args = new Bundle();
         args.putString(EXTRA_CATEGORY, category);
-         PicFragment fragment = new PicFragment();
+
         fragment.setArguments(args);
         return fragment;
+    }
+    public static final int SPAN_COUNT = 2;
+
+    protected int getSpanCount() {
+        return SPAN_COUNT;
+    }
+
+    @Override
+    protected RecyclerView.LayoutManager configLayoutManager() {
+        return new StaggeredGridLayoutManager(getSpanCount(),StaggeredGridLayoutManager.VERTICAL);
     }
 
     @Override
@@ -75,12 +94,20 @@ public class PicFragment extends ARecycleViewStaggeredGridFragment<ImageBean,Ima
     @Override
     public void requestData(RefreshMode mode) {
         super.requestData(mode);
-        NLog.d(TAG, "requestData mCategory = %s", mCategory);
-        if (mode == RefreshMode.refresh){
-            mode = RefreshMode.reset;
+        boolean load = true;
+        //通过这个checkTabsFragmentCanRequestData方法实现懒加载
+        if (getTaskCount(PAGING_TASK_ID) == 0){
+            load = FastAndroidUtils.checkTabsFragmentCanRequestData(this);
         }
-        new LoadImageTask(mode).execute();
-    }
+        NLog.d(TAG, "requestData mCategory = %s, task count = %s,load = %s", mCategory,getTaskCount(PAGING_TASK_ID),load);
+        if (load){
+            if (mode == RefreshMode.refresh){
+                mode = RefreshMode.reset;
+            }
+            new LoadImageTask(mode).execute();
+        }
+        }
+
 
     @Override
     protected IItemViewCreator<ImageBean> configItemViewCreator() {
@@ -97,6 +124,15 @@ public class PicFragment extends ARecycleViewStaggeredGridFragment<ImageBean,Ima
         };
     }
 
+    @Override
+    public void onTabRequestData() {
+        NLog.d(TAG, "onTabRequestData task count = %s", getTaskCount(PAGING_TASK_ID));
+        // 如果还没有加载过数据，就开始加载,否则不加载
+        if (getTaskCount(PAGING_TASK_ID) == 0) {
+            requestData(RefreshMode.reset);
+        }
+    }
+
 
     class LoadImageTask extends APagingTask<Void,Void,ImageResultBeans>{
 
@@ -106,14 +142,26 @@ public class PicFragment extends ARecycleViewStaggeredGridFragment<ImageBean,Ima
 
         @Override
         protected List<ImageBean> parseResult(ImageResultBeans imageResultBeans) {
-            return imageResultBeans.imgs;
+            final List<ImageBean> tempImages = new ArrayList<>();
+            if (imageResultBeans.imgs != null && imageResultBeans.imgs.size() > 0){
+                for (ImageBean imageBean: imageResultBeans.imgs){
+                    if (imageBean.imageWidth > 0 && imageBean.imageHeight > 0){
+                        tempImages.add(imageBean);
+                    }
+                }
+            }
+            return tempImages;
         }
 
         @Override
         protected ImageResultBeans workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params) throws TaskException {
             int pageNum = Integer.parseInt(nextPage);
             ImageResultBeans result =  PicSDK.newInstance(getTaskCacheMode(this)).loadImageData(mCategory,pageNum);
-            NLog.d(TAG, "result = %s", result);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             return result;
         }
     }
@@ -122,26 +170,28 @@ public class PicFragment extends ARecycleViewStaggeredGridFragment<ImageBean,Ima
     static class ImageItemView extends ARecycleViewItemViewHolder<ImageBean>{
         public static final int LAY_RES = R.layout.item_pic;
         @ViewInject(id = R.id.iv_pic)
-        PicImageView iv_pic;
+        ImageView iv_pic;
+
+        int width;
 
         public ImageItemView(Activity context, View itemView) {
             super(context, itemView);
+            width = (ScreenUtil.getScreenWidth(context) - DimensUtil.dp2px(8))  / SPAN_COUNT ;
         }
 
         @Override
         public void onBindData(View convertView, ImageBean data, int position) {
-            int width = data.thumbnailWidth;
-            int height = data.thumbnailHeight;
-            iv_pic.setImageHeight(height);
-            iv_pic.setImageWidth(width);
-            Glide.with(getContext()).load(data.thumbnailUrl).
-                    override(SystemUtils.getScreenWidth(MyApplication.getContext()), DimensUtil.dp2px(100)).into(iv_pic);
+            int imageWidth = data.thumbnailWidth;
+            int imageHeight = data.thumbnailHeight;
+
+            int height = width * imageHeight / imageWidth;
+            iv_pic.setLayoutParams(new RelativeLayout.LayoutParams(width,height));
+
+            if (!TextUtils.isEmpty(data.thumbnailUrl)){
+                Glide.with(getContext()).load(data.thumbnailUrl).
+                        override(SystemUtils.getScreenWidth(MyApplication.getContext()), DimensUtil.dp2px(100)).into(iv_pic);
+            }
+
         }
     }
-
-
-
-
-
-
 }
