@@ -9,7 +9,6 @@ import android.view.View;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.config.PublishVersionManager;
-import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
@@ -45,7 +44,7 @@ public class SplashActivity extends BaseActivity {
         PublishVersionManager.isTest();
         NLog.d("IsTest = %s, channel = %s, channelId = %s", PublishVersionManager.isTest(),PublishVersionManager.getChannel(),PublishVersionManager.getChannelId());
 
-        NLog.d(NLog.TAG, "debug util = %s", DebugUtils.isDebug());
+        NLog.d(NLog.TAG, "version code = %s, version name = %s", PublishVersionManager.getVersionCode(),PublishVersionManager.getVersionName() );
 
     }
 

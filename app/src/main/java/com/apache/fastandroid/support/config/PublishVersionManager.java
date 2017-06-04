@@ -134,4 +134,18 @@ public class PublishVersionManager {
         return sChannelId;
     }
 
+    /**
+     * @return 返回VersionName
+     */
+    public static String getVersionName() {
+        return sVersionName;
+    }
+
+    /**
+     * @return 返回VersionCode
+     */
+    public static int getVersionCode() {
+        return sVersionCode;
+    }
+
 }
