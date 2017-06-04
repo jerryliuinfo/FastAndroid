@@ -17,7 +17,6 @@ import com.apache.fastandroid.support.bean.ImageBean;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
 import com.apache.fastandroid.support.sdk.PicSDK;
 import com.apache.fastandroid.support.utils.FastAndroidUtils;
-import com.apache.fastandroid.ui.widget.SpaceItemDecoration;
 import com.bumptech.glide.Glide;
 import com.tesla.framework.common.util.SystemUtils;
 import com.tesla.framework.common.util.dimen.DimensUtil;
@@ -27,7 +26,7 @@ import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
-import com.tesla.framework.ui.fragment.ARecycleViewFragment;
+import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.ATabsFragment;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
@@ -40,7 +39,7 @@ import java.util.List;
  * Created by jerryliu on 2017/4/11.
  */
 
-public class PicFragment extends ARecycleViewFragment<ImageBean,ImageResultBeans,ImageBean> implements ATabsFragment.ITabInitData{
+public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,ImageResultBeans,ImageBean> implements ATabsFragment.ITabInitData{
     public static final String TAG = PicFragment.class.getSimpleName();
     public static final String EXTRA_CATEGORY = "category";
     private String mCategory;
@@ -66,7 +65,8 @@ public class PicFragment extends ARecycleViewFragment<ImageBean,ImageResultBeans
     @Override
     protected void setUpRefreshView() {
         super.setUpRefreshView();
-        getRefreshView().addItemDecoration(new SpaceItemDecoration(DimensUtil.dp2px(8)));
+        int padding = DimensUtil.dp2px(4);
+        getRefreshView().setPadding(padding, 0, padding, 0);
     }
 
     @Override
@@ -127,7 +127,8 @@ public class PicFragment extends ARecycleViewFragment<ImageBean,ImageResultBeans
     @Override
     public void onTabRequestData() {
         NLog.d(TAG, "onTabRequestData task count = %s", getTaskCount(PAGING_TASK_ID));
-        // 如果还没有加载过数据，就开始加载,否则不加载
+        // 如果还没有加载过数据，就开始加载,否则不加载, 这里必须要做taskCount为0的判断，否则每次切换tab的时候都会
+        //重新拉取数据
         if (getTaskCount(PAGING_TASK_ID) == 0) {
             requestData(RefreshMode.reset);
         }
@@ -194,4 +195,18 @@ public class PicFragment extends ARecycleViewFragment<ImageBean,ImageResultBeans
 
         }
     }
+
+    @Override
+    public boolean OnToolbarDoubleClick() {
+        if (FastAndroidUtils.checkTabsFragmentCanRequestData(this)){
+            requestDataDelaySetRefreshing(500);
+            getRefreshView().scrollToPosition(0);
+            return true;
+        }
+        return false;
+    }
+
+
+
+
 }

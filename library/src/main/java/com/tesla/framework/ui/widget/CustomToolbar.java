@@ -6,6 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import com.tesla.framework.ui.activity.BaseActivity;
+
 /**
  * Created by jerryliu on 2017/3/28.
  */
@@ -26,10 +28,19 @@ public class CustomToolbar extends Toolbar {
     private long lastClickTime;
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (ev.getAction() == MotionEvent.ACTION_UP){
+        boolean handler = super.onTouchEvent(ev);
+        if(ev.getAction() == MotionEvent.ACTION_UP) {
+            if(this.lastClickTime != 0L && System.currentTimeMillis() - this.lastClickTime <= 500L) {
+                BaseActivity activity = BaseActivity.getRunningActivity();
+                if(activity != null && activity instanceof CustomToolbar.OnToolbarDoubleClickListener) {
+                    activity.OnToolbarDoubleClick();
+                }
+            }
 
+            this.lastClickTime = System.currentTimeMillis();
         }
-        return super.onTouchEvent(ev);
+
+        return handler;
     }
 
 

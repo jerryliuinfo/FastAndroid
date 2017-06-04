@@ -292,6 +292,20 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
     }
 
     /**
+     * 延迟刷新
+     * @param delay
+     */
+    public void requestDataDelaySetRefreshing(long delay) {
+        Runnable requestDelayRunnable = new Runnable() {
+            public void run() {
+                NLog.d("AFragment-Paging", "延迟刷新，开始刷新, " + this.toString());
+                APagingFragment.this.requestDataSetRefreshing();
+            }
+        };
+        this.runUIRunnable(requestDelayRunnable, delay);
+    }
+
+    /**
      * 设置列表控件状态为刷新状态
      *
      * @return true:某些控件，设置它的刷新状态，它会自己自动回调Callback去刷新数据，true即这种情况
