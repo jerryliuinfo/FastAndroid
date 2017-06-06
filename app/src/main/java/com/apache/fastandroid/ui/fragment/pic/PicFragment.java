@@ -156,7 +156,10 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
 
         @Override
         protected ImageResultBeans workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params) throws TaskException {
-            int pageNum = Integer.parseInt(nextPage);
+            int pageNum = 1;
+            if (!TextUtils.isEmpty(nextPage)){
+                pageNum = Integer.parseInt(nextPage);
+            }
             ImageResultBeans result =  PicSDK.newInstance(getTaskCacheMode(this)).loadImageData(mCategory,pageNum);
             try {
                 Thread.sleep(2000);
