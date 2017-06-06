@@ -8,4 +8,6 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+
+    <color name="statusForeground">#40000000</color>
 </resources>

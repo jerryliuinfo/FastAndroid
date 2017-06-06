@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/nav_item_pic"
-        android:icon="@mipmap/ic_launcher"
-        android:title="@string/nav_pic"/>
-    <item
-        android:id="@+id/nav_item_video"
-        android:icon="@mipmap/ic_launcher"
-        android:title="@string/nav_video"/>
-    <item
-        android:id="@+id/nav_item_music"
-        android:icon="@mipmap/ic_launcher"
-        android:title="@string/nav_musici"/>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_item_pic"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/nav_pic"/>
+        <item
+            android:id="@+id/nav_item_video"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/nav_video"/>
+        <item
+            android:id="@+id/nav_item_music"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Slideshow"/>
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share"/>
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send"/>
+        </menu>
+    </item>
+
 
 </menu>

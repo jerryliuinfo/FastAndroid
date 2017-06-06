@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_v2);
+        setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
@@ -106,6 +106,7 @@ public class MainActivity extends BaseActivity{
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.setChecked(true);
                 onMenuItemClicked(item.getItemId(), item.getTitle().toString());
                 return false;
             }
@@ -136,7 +137,10 @@ public class MainActivity extends BaseActivity{
     }
 
     public void closeDrawer() {
-        mDrawerLayout.closeDrawers();
+        if (isDrawerOpened()){
+            mDrawerLayout.closeDrawers();
+        }
+
     }
 
 

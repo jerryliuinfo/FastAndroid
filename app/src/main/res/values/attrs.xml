@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--主题颜色-->
+    <attr name="themeColor" format="reference|color"/>
+    <attr name="themeStatusbarColor" format="reference|color"/>
+    <!--是否适配Windows-->
+    <attr name="fitSystemWindows" format="boolean"/>
+    <!--Draw的Header高度-->
+    <attr name="menuHeaderHeight" format="dimension"/>
+</resources>
