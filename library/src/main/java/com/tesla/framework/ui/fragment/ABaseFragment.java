@@ -80,7 +80,6 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        NLog.d(TAG, "onAttach context = %s", context);
 
         if (getActivity() != null && getActivity() instanceof BaseActivity)
             ((BaseActivity) getActivity()).addFragment(toString(), this);

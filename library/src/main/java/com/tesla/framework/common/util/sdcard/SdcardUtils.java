@@ -1,13 +1,19 @@
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.sdcard;
 
 import android.annotation.SuppressLint;
 import android.os.Environment;
 import android.os.StatFs;
+import android.text.TextUtils;
+
+import java.io.File;
 
 public class SdcardUtils {
+	public static String sdCardPath;
+
+
 	
 	public static boolean hasSDCard() {
-		boolean mHasSDcard = false;
+		boolean mHasSDcard;
 		if (Environment.MEDIA_MOUNTED.endsWith(Environment.getExternalStorageState())) {
 			mHasSDcard = true;
 		} else {
@@ -17,11 +23,16 @@ public class SdcardUtils {
 		return mHasSDcard;
 	}
 
-	@SuppressLint("SdCardPath") public static String getSdcardPath() {
+	@SuppressLint("SdCardPath")
+	public static String getSdcardPath() {
+		if (!TextUtils.isEmpty(sdCardPath)){
+			return sdCardPath;
+		}
 
-		if (hasSDCard())
-			return Environment.getExternalStorageDirectory().getAbsolutePath();
-
+		if (hasSDCard()){
+			sdCardPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+			return sdCardPath;
+		}
 		return "/sdcard/";
 	}
 
@@ -57,6 +68,22 @@ public class SdcardUtils {
 
 		return 0;
 	}
+
+
+
+	/**
+	 * 获取内置SD卡空间大小
+	 * @return
+	 */
+	public static long getTotalInternalStorageSize() {
+		File path = Environment.getDataDirectory();
+		StatFs stat = new StatFs(path.getPath());
+		long blockSize = stat.getBlockSize();
+		long totalBlocks = stat.getBlockCount();
+		return totalBlocks * blockSize;
+	}
+
+
 
 
 }

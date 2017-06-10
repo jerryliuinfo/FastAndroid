@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.apache.fastandroid.R;
+import com.apache.fastandroid.clean.DownloadManager;
+import com.apache.fastandroid.clean.IDownLoadCallback;
 import com.apache.fastandroid.ui.fragment.pic.PicTabsFragment;
 import com.apache.fastandroid.ui.fragment.video.VideoTabsFragment;
 import com.tesla.framework.common.util.ResUtil;
@@ -48,6 +50,8 @@ public class MainActivity extends BaseActivity{
     };
 
 
+
+    private DownloadManager downloadManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,35 @@ public class MainActivity extends BaseActivity{
         onMenuItemClicked(R.id.nav_item_pic, ResUtil.getString(R.string.nav_pic));
 
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
+
+        downloadManager = new DownloadManager();
+        downloadManager.setCallback(new IDownLoadCallback() {
+            @Override
+            public void onStart() {
+                NLog.d(TAG, "IDownLoadCallback onStart");
+            }
+
+            @Override
+            public void onProgressUpdate() {
+                NLog.d(TAG, "IDownLoadCallback onProgressUpdate");
+            }
+
+            @Override
+            public void onSuccess() {
+                NLog.d(TAG, "IDownLoadCallback onSuccess");
+            }
+
+            @Override
+            public void onFailed() {
+                NLog.d(TAG, "IDownLoadCallback onFailed");
+            }
+
+            @Override
+            public void onFinish() {
+                NLog.d(TAG, "IDownLoadCallback onFinish");
+            }
+        });
+        downloadManager.execute("www.baidu.com");
     }
 
     @Override
@@ -151,6 +184,10 @@ public class MainActivity extends BaseActivity{
         if (drawerToggle != null)
             drawerToggle.syncState();
     }
+
+
+
+
 
 
 }

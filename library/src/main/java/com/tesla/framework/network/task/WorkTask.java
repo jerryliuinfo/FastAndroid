@@ -90,7 +90,7 @@ public abstract class WorkTask<Params, Progress, Result> {
 	private final AtomicBoolean mTaskInvoked = new AtomicBoolean();
 
 	private static class SerialExecutor implements Executor {
-		final ArrayDeque<Runnable> mTasks = new ArrayDeque<Runnable>();
+		final ArrayDeque<Runnable> mTasks = new ArrayDeque<>();
 		Runnable mActive;
 
 		public synchronized void execute(final Runnable r) {
