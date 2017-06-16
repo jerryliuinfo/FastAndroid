@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
+import com.tesla.framework.common.util.log.NLog;
+
 /**
  * Created by jerryliu on 2017/4/11.
  */
@@ -12,10 +14,12 @@ public class PicImageView extends android.support.v7.widget.AppCompatImageView {
     public static final String TAG = PicImageView.class.getSimpleName();
     public PicImageView(Context context) {
         this(context,null);
+        init();
     }
 
     public PicImageView(Context context, @Nullable AttributeSet attrs) {
         this(context,attrs,0);
+        init();
     }
 
     public PicImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -23,9 +27,6 @@ public class PicImageView extends android.support.v7.widget.AppCompatImageView {
         init();
     }
 
-    private boolean scaleToWidth = false; // this flag determines if should
-    // measure height manually dependent
-    // of width
 
 
     private void init() {
@@ -46,15 +47,24 @@ public class PicImageView extends android.support.v7.widget.AppCompatImageView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
         //NLog.d(TAG, "onMeasure width = %s, height = %s, imageHeight = %s", width,height,imageHeight);
-        if (imageHeight == 0){
+        if (imageWidth == 0){
             super.onMeasure(widthMeasureSpec,heightMeasureSpec);
             return;
         }
-        setMeasuredDimension(width, imageHeight);
+        int iw = imageWidth;
+        int ih = imageHeight;
+        int heightC = width * ih / iw;
+        NLog.d(TAG, "width = %s, height = %s, iw = %s, ih = %s, heightC = %s",width,height,iw,ih,heightC);
+        if (height > 0){
+            if (heightC > height){
+                heightC = height;
+                width = heightC * iw / ih;
+            }
+        }
+        setScaleType(ScaleType.CENTER_CROP);
+        setMeasuredDimension(width, heightC);
     }
 }

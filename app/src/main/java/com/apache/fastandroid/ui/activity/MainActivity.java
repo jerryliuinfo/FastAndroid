@@ -124,7 +124,7 @@ public class MainActivity extends BaseActivity{
             }
 
         };
-        mDrawerLayout.setDrawerListener(drawerToggle);
+        mDrawerLayout.addDrawerListener(drawerToggle);
     }
 
     private void setupNavigationView(){

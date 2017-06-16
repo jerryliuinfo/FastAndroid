@@ -11,14 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.apache.fastandroid.MyApplication;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.bean.ImageBean;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
 import com.apache.fastandroid.support.sdk.PicSDK;
 import com.apache.fastandroid.support.utils.FastAndroidUtils;
 import com.bumptech.glide.Glide;
-import com.tesla.framework.common.util.SystemUtils;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
 import com.tesla.framework.common.util.log.NLog;
@@ -176,6 +174,9 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
         @ViewInject(id = R.id.iv_pic)
         ImageView iv_pic;
 
+//        @ViewInject(id = R.id.pic_img)
+//        PicImageView pic_img;
+
         int width;
 
         public ImageItemView(Activity context, View itemView) {
@@ -192,8 +193,7 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
             iv_pic.setLayoutParams(new RelativeLayout.LayoutParams(width,height));
 
             if (!TextUtils.isEmpty(data.thumbnailUrl)){
-                Glide.with(getContext()).load(data.thumbnailUrl).
-                        override(SystemUtils.getScreenWidth(MyApplication.getContext()), DimensUtil.dp2px(100)).into(iv_pic);
+                Glide.with(getContext()).load(data.thumbnailUrl).into(iv_pic);
             }
 
         }
