@@ -1,5 +1,6 @@
 package com.tesla.framework.common.util.view;
 
+import android.graphics.Paint;
 import android.view.View;
 
 /**
@@ -14,11 +15,24 @@ public class MeasureUtil {
      * @return
      */
     public static int getMeasuredLength(int measureSpec, int defaultSize){
-        int measureSize = View.MeasureSpec.getSize(measureSpec);
-        int measureMode = View.MeasureSpec.getMode(measureSpec);
-        if (measureMode == View.MeasureSpec.EXACTLY){
-            return measureSize;
+        int result = defaultSize;
+        int specSize = View.MeasureSpec.getSize(measureSpec);
+        int specMode = View.MeasureSpec.getMode(measureSpec);
+        if (specMode == View.MeasureSpec.EXACTLY){
+            result = specSize;
+        }else if (specMode == View.MeasureSpec.AT_MOST){
+            result = Math.min(result,specSize);
         }
-        return defaultSize;
+        return result;
+    }
+
+    /**
+     * 测量文字高度
+     * @param paint
+     * @return
+     */
+    public static float measureTextHeight(Paint paint) {
+        Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+        return (Math.abs(fontMetrics.ascent) - fontMetrics.descent);
     }
 }

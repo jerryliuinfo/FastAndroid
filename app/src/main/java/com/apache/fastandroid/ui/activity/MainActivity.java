@@ -16,6 +16,7 @@ import com.apache.fastandroid.R;
 import com.apache.fastandroid.clean.DownloadManager;
 import com.apache.fastandroid.clean.IDownLoadCallback;
 import com.apache.fastandroid.ui.fragment.pic.PicTabsFragment;
+import com.apache.fastandroid.ui.fragment.setting.SettingFragment;
 import com.apache.fastandroid.ui.fragment.video.VideoTabsFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
@@ -55,7 +56,7 @@ public class MainActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mai);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
@@ -148,17 +149,41 @@ public class MainActivity extends BaseActivity{
 
     public void onMenuItemClicked(int itemId, String title){
         Fragment fragment = null;
+        switch (itemId){
+            case R.id.nav_item_pic:
+                fragment = PicTabsFragment.newFragment();
+                break;
+            case R.id.nav_item_video:
+                fragment = VideoTabsFragment.newFragment();
+                break;
+            case R.id.nav_item_music:
+                fragment = VideoTabsFragment.newFragment();
+                break;
+            case R.id.nav_item_setting:
+                SettingFragment.launch(this);
+                break;
+        }
+
+        /*
         if (itemId == R.id.nav_item_pic){
-            fragment = PicTabsFragment.newFragment();
+
         }else if (itemId == R.id.nav_item_video){
-            fragment = VideoTabsFragment.newFragment();
+
         }else if (itemId == R.id.nav_item_music){
-            fragment = VideoTabsFragment.newFragment();
+
+        }else if (itemId == R.id.nav_item_setting){
+            SettingFragment.launch(this);
+            closeDrawer();
+
+            selecteId = itemId;
+            return;
+        }*/
+        if (fragment != null){
+            getSupportActionBar().setTitle(title);
+            getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();
         }
 
 
-        getSupportActionBar().setTitle(title);
-        getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();
         closeDrawer();
 
         selecteId = itemId;

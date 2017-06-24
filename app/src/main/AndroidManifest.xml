@@ -33,7 +33,8 @@
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             />
-
+        <activity android:name=".ui.fragment.setting.SettingActivity"/>
+        <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"/>
 
 
         <!-- 配置信息 start -->

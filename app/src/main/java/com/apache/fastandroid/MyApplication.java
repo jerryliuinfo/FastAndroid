@@ -1,6 +1,9 @@
 package com.apache.fastandroid;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.support.multidex.MultiDexApplication;
 
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
@@ -61,5 +64,29 @@ public class MyApplication extends MultiDexApplication{
         if (activityLifecycleCallbacks != null){
             unregisterActivityLifecycleCallbacks(activityLifecycleCallbacks);
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.fontScale != 1)//非默认值
+            getResources();
+        super.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public Resources getResources() {
+        Resources res = super.getResources();
+        if (res.getConfiguration().fontScale != 1) {//非默认值
+            Configuration newConfig = new Configuration();
+            newConfig.setToDefaults();
+            //强制字体不随着系统改变而改变
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                createConfigurationContext(newConfig);
+            } else {
+                res.updateConfiguration(newConfig, res.getDisplayMetrics());
+            }
+        }
+        return res;
     }
 }

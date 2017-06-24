@@ -41,4 +41,6 @@ dependencies {
 
     compile dep.fastjson
     compile dep.okhttp3
+    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
+
 }

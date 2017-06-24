@@ -120,6 +120,5 @@ dependencies {
     compile dep.multidex
     compile dep.bugly
     compile dep.junit
-
-
+    compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
 }
