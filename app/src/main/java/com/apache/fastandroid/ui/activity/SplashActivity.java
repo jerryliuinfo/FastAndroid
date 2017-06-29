@@ -1,16 +1,11 @@
 package com.apache.fastandroid.ui.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Handler;
 
-import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.support.config.PublishVersionManager;
-import com.tesla.framework.common.util.log.NLog;
+import com.apache.fastandroid.ui.widget.SplashCountDownView;
+import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 
@@ -19,47 +14,57 @@ import com.tesla.framework.ui.activity.BaseActivity;
  */
 
 public class SplashActivity extends BaseActivity {
-    @ViewInject(id = R.id.lay_bg)
-    View layBg;
+    public static final String TAG = SplashActivity.class.getSimpleName();
+    @ViewInject(id = R.id.splash_coutdown_view)
+    private SplashCountDownView coutDownView;
 
+
+    private int mDuration = 5000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-
-
-        AnimatorSet animatorSet = new AnimatorSet();
-
-        ObjectAnimator scaleX = ObjectAnimator.ofFloat(layBg,"scaleX", 1, 1.2f);
-        ObjectAnimator scaleY = ObjectAnimator.ofFloat(layBg,"scaleY", 1, 1.2f);
-        animatorSet.setDuration(2000);
-        animatorSet.playTogether(scaleX,scaleY);
-        animatorSet.addListener(new AnimatorListenerAdapter() {
+        coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(mDuration).setCallback(new SplashCountDownView.ICountDownCallback() {
             @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                toMain();
+            public void onStart() {
+
             }
-        });
-        animatorSet.start();
 
-        PublishVersionManager.isTest();
-        NLog.d("IsTest = %s, channel = %s, channelId = %s", PublishVersionManager.isTest(),PublishVersionManager.getChannel(),PublishVersionManager.getChannelId());
+            @Override
+            public void onTick(long millisUntilFinished) {
 
-        NLog.d(NLog.TAG, "version code = %s, version name = %s", PublishVersionManager.getVersionCode(),PublishVersionManager.getVersionName() );
-        NLog.d(NLog.TAG, "log enable = %s", BuildConfig.LOG_DEBUG);
+            }
 
-        //
+            @Override
+            public void onFinish(long delay) {
+                toMain(delay);
+            }
 
-
-
+            @Override
+            public void onClicked() {
+                toMain(0);
+            }
+        }).start();
     }
 
 
 
-    private void toMain(){
-        MainActivity.launch(this);
-        finish();
+
+
+
+
+    private void toMain(long delay){
+        if (delay > 0){
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    MainActivity.launch(SplashActivity.this);
+                    finish();
+                }
+            },delay);
+        }else {
+            MainActivity.launch(SplashActivity.this);
+            finish();
+        }
     }
 }

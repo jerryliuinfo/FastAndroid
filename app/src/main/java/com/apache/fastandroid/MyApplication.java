@@ -7,7 +7,6 @@ import android.os.Build;
 import android.support.multidex.MultiDexApplication;
 
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
-import com.tencent.bugly.crashreport.CrashReport;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.CrashHandler;
 import com.tesla.framework.common.util.log.Logger;
@@ -49,7 +48,7 @@ public class MyApplication extends MultiDexApplication{
         //本地crash日志收集
         CrashHandler.setupCrashHandler(getApplicationContext());
         //bugly统计
-        CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
+        //CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
 
 
     }

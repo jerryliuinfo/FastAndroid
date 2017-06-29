@@ -25,4 +25,12 @@
     <string name="tab_video_carton">动漫</string>
     <string name="tab_video_variety">综艺</string>
 
+
+    <!--Splash页面开始-->
+    <string name="splash_countdown_count">跳过 %1$s</string>
+    <string name="splash_redirecting">正在跳转</string>
+
+
+    <!--Splash页面结束-->
+
 </resources>

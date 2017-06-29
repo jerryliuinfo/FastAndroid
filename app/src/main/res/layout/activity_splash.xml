@@ -29,4 +29,26 @@
         android:layout_marginTop="10dp"
         android:layout_below="@id/splash_app_name"/>
 
+
+    <TextView
+        android:id="@+id/tv_count_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/splash_countdown_bg"
+        android:layout_margin="20dp"
+        android:padding="5dp"
+        android:layout_alignParentRight="true"
+        android:text="@string/splash_countdown_count"
+        android:visibility="gone"
+        />
+    <com.apache.fastandroid.ui.widget.SplashCountDownView
+        android:id="@+id/splash_coutdown_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="5dp"
+        android:layout_alignParentRight="true"
+        android:text="@string/splash_countdown_count"
+        />
+
 </RelativeLayout>
