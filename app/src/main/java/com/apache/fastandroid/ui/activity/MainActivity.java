@@ -21,6 +21,7 @@ import com.apache.fastandroid.ui.fragment.video.VideoTabsFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
+import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 
@@ -56,7 +57,7 @@ public class MainActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mai);
+        setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
@@ -211,8 +212,10 @@ public class MainActivity extends BaseActivity{
     }
 
 
+    @Override
+    protected void setStatusBar() {
+        int mStatusBarColor = ResUtil.getColor(R.color.colorPrimary);
+        StatusBarUtil.setColorForDrawerLayout(this, (DrawerLayout) findViewById(R.id.drawer), mStatusBarColor, 112);
 
-
-
-
+    }
 }

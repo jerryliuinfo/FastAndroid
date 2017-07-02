@@ -84,7 +84,6 @@ public class ResUtil {
         Context context = FrameworkApplication.getContext();
         int color = 0x00000000;
         try {
-            color = context.getResources().getColor(resId);
             color = ContextCompat.getColor(context,resId);
         } catch (Exception e) {
             e.printStackTrace();

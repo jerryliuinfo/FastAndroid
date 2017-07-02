@@ -15,8 +15,10 @@ import android.view.ViewGroup;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.setting.SettingUtility;
-import com.tesla.framework.common.util.view.ViewUtils;
+import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.view.StatusBarUtil;
+import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.network.task.ITaskManager;
 import com.tesla.framework.network.task.TaskManager;
 import com.tesla.framework.network.task.WorkTask;
@@ -187,6 +189,7 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     public void setContentView(View view) {
         super.setContentView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
+        setStatusBar();
         rootView = view;
         InjectUtility.initInjectedView(this, this, this.rootView);
 
@@ -463,6 +466,10 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
 
     public BaseActivityHelper getActivityHelper() {
         return mHelper;
+    }
+
+    protected void setStatusBar() {
+        StatusBarUtil.setColor(this, ResUtil.getColor(R.color.colorPrimary));
     }
 
 }
