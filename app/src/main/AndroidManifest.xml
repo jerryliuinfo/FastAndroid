@@ -35,6 +35,7 @@
             />
         <activity android:name=".ui.fragment.setting.SettingActivity"/>
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"/>
+        <activity android:name=".ui.activity.DatabindingActivivity"/>
 
 
         <!-- 配置信息 start -->

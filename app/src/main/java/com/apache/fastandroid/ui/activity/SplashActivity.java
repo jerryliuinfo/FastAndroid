@@ -67,12 +67,14 @@ public class SplashActivity extends BaseActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    MainActivity.launch(SplashActivity.this);
+                    //MainActivity.launch(SplashActivity.this);
+                    DatabindingActivivity.start(SplashActivity.this);
                     finish();
                 }
             },delay);
         }else {
-            MainActivity.launch(SplashActivity.this);
+            //MainActivity.launch(SplashActivity.this);
+            DatabindingActivivity.start(SplashActivity.this);
             finish();
         }
     }
