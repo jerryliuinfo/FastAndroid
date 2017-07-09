@@ -10,10 +10,12 @@ import android.widget.Button;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.bean.UserBean;
+import com.apache.fastandroid.support.config.UserConfigManager;
 import com.apache.fastandroid.support.presenter.LoginPresenterImpl;
 import com.apache.fastandroid.support.presenter.LoginView;
 import com.apache.fastandroid.ui.activity.MainActivity;
 import com.apache.fastandroid.ui.mvp.BaseMvpFragment;
+import com.tesla.framework.common.util.KeyGenerator;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 /**
@@ -90,6 +92,12 @@ public class LoginFragment extends BaseMvpFragment<LoginPresenterImpl>
     @Override
     public void loginSuccess(UserBean userBean) {
         showMessage("loginSuccess");
+        //保存登陆信息
+        String encypedUserName = KeyGenerator.generateMD5(userBean.userName);
+        String encrypedPwd = KeyGenerator.generateMD5(userBean.password);
+
+        UserConfigManager.getInstance().setUserName(encypedUserName);
+        UserConfigManager.getInstance().setPwd(encrypedPwd);
 
         MainActivity.launch(getActivity());
         getActivity().finish();

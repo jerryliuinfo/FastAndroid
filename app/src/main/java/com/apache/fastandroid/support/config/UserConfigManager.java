@@ -1,7 +1,5 @@
 package com.apache.fastandroid.support.config;
 
-import com.alibaba.fastjson.JSON;
-import com.apache.fastandroid.support.bean.UserBean;
 import com.tesla.framework.common.util.BaseSharedPreferenceConfigManager;
 
 /**
@@ -15,8 +13,37 @@ public class UserConfigManager extends BaseSharedPreferenceConfigManager{
         return SP_NAME;
     }
 
-
-    public void saveUserInfo(UserBean userBean){
-        setStringValue("user_info", JSON.toJSONString(userBean));
+    private static UserConfigManager instance = null;
+    private UserConfigManager(){}
+    public static UserConfigManager getInstance() {
+        if (instance == null) {
+            synchronized (UserConfigManager.class) {
+                if (instance == null){
+                    instance = new UserConfigManager();
+                }
+            }
+        }
+        return instance;
     }
+
+    public void setUserName(String userName){
+        setStringValue("user_name", userName);
+    }
+
+    public void setPwd(String pwd){
+        setStringValue("user_pwd", pwd);
+    }
+
+    public String getUserName(){
+        return getStringValue("user_name","");
+    }
+
+    public String getPwd(){
+        return getStringValue("user_pwd","");
+    }
+
+
+
+
 }
+
