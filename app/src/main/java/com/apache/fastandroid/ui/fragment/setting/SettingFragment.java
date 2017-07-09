@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 
 import com.apache.fastandroid.R;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 /**
  * Created by jerryliu on 2017/6/24.
@@ -15,7 +14,7 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 public class SettingFragment extends PreferenceFragment {
     public static void launch(Activity from){
-        FragmentContainerActivity.launch(from,SettingFragment.class,null );
+        //FragmentContainerActivity.launch(from,SettingFragment.class,null );
     }
 
     @Override

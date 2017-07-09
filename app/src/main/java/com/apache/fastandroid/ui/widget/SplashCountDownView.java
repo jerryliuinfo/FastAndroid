@@ -128,6 +128,34 @@ public class SplashCountDownView extends android.support.v7.widget.AppCompatText
         return this;
     }
 
+
+    public static class CountDownCallbackImpl implements ICountDownCallback{
+
+        @Override
+        public void onStart() {
+
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+
+        }
+
+        @Override
+        public void onFinish(long delay) {
+
+        }
+
+        @Override
+        public void onClicked() {
+
+        }
+    }
+
+
+
+
+
     public interface ICountDownCallback{
         void onStart();
         void onTick(long millisUntilFinished);

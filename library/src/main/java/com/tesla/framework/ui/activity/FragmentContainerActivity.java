@@ -1,9 +1,9 @@
 package com.tesla.framework.ui.activity;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import com.tesla.framework.R;
@@ -99,7 +99,7 @@ public class FragmentContainerActivity extends BaseActivity {
 //        BizFragment.getBizFragment(this);
 
         if (fragment != null) {
-            getFragmentManager().beginTransaction().add(R.id.fragmentContainer, fragment, FRAGMENT_TAG).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, fragment, FRAGMENT_TAG).commit();
         }
 
         if (getSupportActionBar() != null)

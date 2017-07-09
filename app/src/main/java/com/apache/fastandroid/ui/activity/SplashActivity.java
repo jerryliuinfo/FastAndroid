@@ -1,10 +1,10 @@
 package com.apache.fastandroid.ui.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.config.CommonConfigManager;
+import com.apache.fastandroid.ui.fragment.user.LoginFragment;
 import com.apache.fastandroid.ui.widget.SplashCountDownView;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.inject.ViewInject;
@@ -26,56 +26,38 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         if (CommonConfigManager.getInstance().isFirstSplash()){
-            coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(mDuration).setCallback(new SplashCountDownView.ICountDownCallback() {
-                @Override
-                public void onStart() {
+            coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(mDuration)
+                    .setCallback(new SplashCountDownView.CountDownCallbackImpl(){
+                        @Override
+                        public void onFinish(long delay) {
+                            toMain();
+                        }
 
-                }
-
-                @Override
-                public void onTick(long millisUntilFinished) {
-
-                }
-
-                @Override
-                public void onFinish(long delay) {
-                    toMain(delay);
-                }
-
-                @Override
-                public void onClicked() {
-                    toMain(0);
-                }
-            }).start();
+                        @Override
+                        public void onClicked() {
+                            toMain();
+                        }
+                    });
         }else {
-            toMain(0);
+            toMain();
         }
+    }
 
+    private void toLogin(){
+        LoginFragment.start(this);
     }
 
 
 
 
-
-
-
-    private void toMain(long delay){
+    private void toMain(){
         if (CommonConfigManager.getInstance().isFirstSplash()){
             CommonConfigManager.getInstance().setFirstSplash(false);
         }
-        if (delay > 0){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    MainActivity.launch(SplashActivity.this);
-                    //DatabindingActivivity.start(SplashActivity.this);
-                    finish();
-                }
-            },delay);
-        }else {
-            MainActivity.launch(SplashActivity.this);
-            //DatabindingActivivity.start(SplashActivity.this);
-            finish();
-        }
+        //MainActivity.launch(SplashActivity.this);
+        toLogin();
+        finish();
+
+
     }
 }
