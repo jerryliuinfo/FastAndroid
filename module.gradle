@@ -1,0 +1,44 @@
+def initModuleCompile() {
+    try {
+        Properties properties = new Properties();
+        File file = new File(rootDir.getAbsolutePath() + "/module.properties")
+        def stream = file.newDataInputStream();
+        properties.load(stream)
+        Iterator itr = properties.entrySet().iterator();
+        while (itr.hasNext()) {
+            Map.Entry e = (Map.Entry) itr.next();
+            String key = e.getKey();
+            rootProject.ext.setProperty(key, e.getValue());
+            println("module.gradle key = ${key}, value = ${e.getValue()}")
+        }
+    } catch (Exception e) {
+        println '\n' + e.printStackTrace()
+    } finally {
+        stream.close()
+    }
+}
+
+initModuleCompile()
+
+ext {
+    compileDependenciesModule = this.&compileDependenciesModule
+    compile_library = this.&compile_library
+
+
+}
+
+
+
+
+
+def compile_library(Project projectModule){
+    projectModule.dependencies{
+        if (isAllDebug.toBoolean() || isLibraryDebug.toBoolean()) {
+            compile project(':library')
+            println("compile library \n")
+        } else {
+            compile(name: 'library-release', ext: 'aar')
+            println("compile library-release \n")
+        }
+    }
+}

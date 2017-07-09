@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: rootProject.file('module.gradle')
 
 def getAppVersionName() {
     return rootProject.ext.versionName
@@ -38,26 +39,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    sourceSets{
-
-        // 开发测试版本
-        dev {
-            manifest.srcFile 'src/sf/AndroidManifest.xml'
-            res.srcDirs = ['src/sf/res']
-            java.srcDirs = ['src/sf/java']
-        }
-
-        if (isAllDebug.toBoolean()){
-            // 外发正式版本
-            gp {
-                manifest.srcFile 'src/gp/AndroidManifest.xml'
-                res.srcDirs = ['src/gp/res']
-                java.srcDirs = ['src/gp/java']
-
-            }
-        }
-
-    }
 
     splits {
         density {
@@ -178,12 +159,7 @@ android {
 
 
 
-class MyGroovyClass{
-    String greeting;
-    String getGreeting(){
-        retrn 'hello'
-    }
-}
+
 
 
 dependencies {

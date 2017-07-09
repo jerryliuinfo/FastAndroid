@@ -1,1 +1,2 @@
 include ':app', ':library'
+apply from: 'setting_config.gradle'
