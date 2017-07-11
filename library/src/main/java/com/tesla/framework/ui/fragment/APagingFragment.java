@@ -51,6 +51,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
 
     private IItemViewCreator<T> mFooterItemViewCreator;
     private AFooterItemViewHolder<T> mFooterItemView;
+    //test
 
 
     public enum RefreshMode {
