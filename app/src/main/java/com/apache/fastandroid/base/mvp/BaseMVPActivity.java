@@ -1,9 +1,9 @@
-package com.apache.fastandroid.ui.mvp;
+package com.apache.fastandroid.base.mvp;
 
 import android.os.Bundle;
 
-import com.apache.fastandroid.ui.mvp.base.MvpPresenter;
-import com.apache.fastandroid.ui.mvp.base.MvpView;
+import com.apache.fastandroid.base.mvp.base.MvpPresenter;
+import com.apache.fastandroid.base.mvp.base.MvpView;
 import com.tesla.framework.ui.activity.BaseActivity;
 
 /**

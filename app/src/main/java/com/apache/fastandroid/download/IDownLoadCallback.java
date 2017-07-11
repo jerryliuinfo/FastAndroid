@@ -1,4 +1,4 @@
-package com.apache.fastandroid.clean;
+package com.apache.fastandroid.download;
 
 /**
  * Created by jerryliu on 2017/6/8.

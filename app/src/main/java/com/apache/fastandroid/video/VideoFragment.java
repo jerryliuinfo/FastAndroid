@@ -1,4 +1,4 @@
-package com.apache.fastandroid.ui.fragment.video;
+package com.apache.fastandroid.video;
 
 import android.app.Activity;
 import android.os.Bundle;

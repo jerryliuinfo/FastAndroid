@@ -3,8 +3,8 @@ package com.apache.fastandroid.support.presenter;
 import android.os.Handler;
 
 import com.apache.fastandroid.support.bean.UserBean;
-import com.apache.fastandroid.ui.fragment.user.LoginFragment;
-import com.apache.fastandroid.ui.mvp.base.BaseMvpPresenter;
+import com.apache.fastandroid.user.LoginFragment;
+import com.apache.fastandroid.base.mvp.base.BaseMvpPresenter;
 
 /**
  * Created by jerryliu on 2017/7/9.

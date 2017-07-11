@@ -1,4 +1,4 @@
-package com.apache.fastandroid.ui.fragment.user;
+package com.apache.fastandroid.user;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import com.apache.fastandroid.support.bean.UserBean;
 import com.apache.fastandroid.support.config.UserConfigManager;
 import com.apache.fastandroid.support.presenter.LoginPresenterImpl;
 import com.apache.fastandroid.support.presenter.LoginView;
-import com.apache.fastandroid.ui.activity.MainActivity;
-import com.apache.fastandroid.ui.mvp.BaseMvpFragment;
+import com.apache.fastandroid.MainActivity;
+import com.apache.fastandroid.base.mvp.BaseMvpFragment;
 import com.tesla.framework.common.util.KeyGenerator;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 

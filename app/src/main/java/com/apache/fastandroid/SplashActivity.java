@@ -1,12 +1,11 @@
-package com.apache.fastandroid.ui.activity;
+package com.apache.fastandroid;
 
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.config.CommonConfigManager;
 import com.apache.fastandroid.support.config.UserConfigManager;
-import com.apache.fastandroid.ui.fragment.user.LoginFragment;
+import com.apache.fastandroid.user.LoginFragment;
 import com.apache.fastandroid.ui.widget.SplashCountDownView;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.inject.ViewInject;

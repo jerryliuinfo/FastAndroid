@@ -1,4 +1,4 @@
-package com.apache.fastandroid.clean;
+package com.apache.fastandroid.download;
 
 import android.os.Handler;
 import android.os.Looper;

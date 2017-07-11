@@ -1,9 +1,9 @@
-package com.apache.fastandroid.ui.mvp;
+package com.apache.fastandroid.base.mvp;
 
 import android.content.Context;
 
-import com.apache.fastandroid.ui.mvp.base.MvpPresenter;
-import com.apache.fastandroid.ui.mvp.base.MvpView;
+import com.apache.fastandroid.base.mvp.base.MvpPresenter;
+import com.apache.fastandroid.base.mvp.base.MvpView;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 
 /**
@@ -26,7 +26,7 @@ public abstract class BaseMvpFragment<P extends MvpPresenter> extends ABaseFragm
         mPresenter.detachView(false);
     }
 
-    public P getPresenter(){
+    protected P getPresenter(){
         return mPresenter;
     }
 

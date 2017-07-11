@@ -1,4 +1,4 @@
-package com.apache.fastandroid.ui.activity;
+package com.apache.fastandroid;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,12 +12,11 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.apache.fastandroid.R;
-import com.apache.fastandroid.clean.DownloadManager;
-import com.apache.fastandroid.clean.IDownLoadCallback;
+import com.apache.fastandroid.download.DownloadManager;
+import com.apache.fastandroid.download.IDownLoadCallback;
 import com.apache.fastandroid.ui.fragment.pic.PicTabsFragment;
-import com.apache.fastandroid.ui.fragment.setting.SettingFragment;
-import com.apache.fastandroid.ui.fragment.video.VideoTabsFragment;
+import com.apache.fastandroid.setting.SettingFragment;
+import com.apache.fastandroid.video.VideoTabsFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;

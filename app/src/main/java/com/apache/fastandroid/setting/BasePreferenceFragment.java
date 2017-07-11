@@ -1,4 +1,4 @@
-package com.apache.fastandroid.ui.fragment.setting;
+package com.apache.fastandroid.setting;
 
 import android.os.Bundle;
 import android.preference.ListPreference;

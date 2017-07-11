@@ -1,6 +1,4 @@
-package com.apache.fastandroid.ui.mvp.base;
-
-import com.tesla.framework.common.util.log.NLog;
+package com.apache.fastandroid.base.mvp.base;
 
 import java.lang.ref.WeakReference;
 

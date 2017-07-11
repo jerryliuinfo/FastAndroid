@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.ui.fragment.base.BizFragment;
+import com.apache.fastandroid.base.BizFragment;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.fragment.ABaseFragment;

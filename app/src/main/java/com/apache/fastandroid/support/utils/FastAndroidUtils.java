@@ -3,7 +3,7 @@ package com.apache.fastandroid.support.utils;
 
 import android.support.v4.app.Fragment;
 
-import com.apache.fastandroid.ui.activity.MainActivity;
+import com.apache.fastandroid.MainActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.fragment.ATabsFragment;
 

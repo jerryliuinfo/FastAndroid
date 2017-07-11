@@ -1,4 +1,4 @@
-package com.apache.fastandroid.ui.fragment.base;
+package com.apache.fastandroid.base;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
@@ -20,7 +20,7 @@ public class BizFragment extends ABaseFragment {
 
     public static BizFragment createBizFragment(ABaseFragment fragment){
         if (fragment != null && fragment.getActivity() != null){
-            String fragmentTag = "com.apache.fastandroid.ui.fragment.base.BizFragment";
+            String fragmentTag = "com.apache.fastandroid.base.BizFragment";
             BizFragment bizFragment = (BizFragment) fragment.getActivity().getSupportFragmentManager().findFragmentByTag(fragmentTag);
             if (fragment == null){
                 fragment = new BizFragment();
