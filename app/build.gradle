@@ -174,4 +174,8 @@ dependencies {
     /*compile dep.bugly*/
     compile dep.junit
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
+
+
+    compile 'io.reactivex:rxandroid:1.2.0'
+    compile 'io.reactivex:rxjava:1.1.5'
 }

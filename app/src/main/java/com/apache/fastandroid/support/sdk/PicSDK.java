@@ -1,5 +1,6 @@
 package com.apache.fastandroid.support.sdk;
 
+
 import com.apache.fastandroid.support.bean.ImageResultBeans;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.biz.ABizLogic;
@@ -45,6 +46,14 @@ public class PicSDK extends ABizLogic {
         params.addParameter("pn",String.valueOf(pageNum));
         params.addParameter("rn","10");
         params.addParameter("from", "1");
+
+//        Observable.create(new Observable.OnSubscribe<String>(){
+//
+//            @Override
+//            public void call(Subscriber<? super String> subscriber) {
+//                subscriber.onNext();
+//            }
+//        });
 
         return doGet(configHttpConfig(),setting,params,ImageResultBeans.class);
     }
