@@ -217,4 +217,6 @@ public class MainActivity extends BaseActivity{
         StatusBarUtil.setColorForDrawerLayout(this, (DrawerLayout) findViewById(R.id.drawer), mStatusBarColor, 112);
 
     }
+
+    //test cherry-pick
 }
