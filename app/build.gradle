@@ -1,5 +1,17 @@
 apply plugin: 'com.android.application'
+apply plugin: 'AndResGuard'
 apply from: rootProject.file('module.gradle')
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath dep.andResGuardPlugin
+    }
+
+
+}
 
 def getAppVersionName() {
     return rootProject.ext.versionName
@@ -20,6 +32,52 @@ def getDate() {
     def formattedDate = date.format('MMddHHmmss')
     return formattedDate
 }
+
+
+
+andResGuard {
+    mappingFile = null
+    use7zip = true
+    useSign = true
+    keepRoot = false
+    whiteList = [
+            //for your icon
+            "R.drawable.ic_launcher",
+            //for umeng update
+            "R.string.umeng*",
+            "R.string.UM*",
+            "R.string.tb_*",
+            "R.layout.umeng*",
+            "R.layout.tb_*",
+            "R.drawable.umeng*",
+            "R.drawable.tb_*",
+            "R.anim.umeng*",
+            "R.color.umeng*",
+            "R.color.tb_*",
+            "R.style.*UM*",
+            "R.style.umeng*",
+            "R.id.umeng*",
+
+            //umeng share for sina
+            "R.drawable.sina*",
+
+
+    ]
+    compressFilePattern = [
+            "*.png",
+            "*.jpg",
+            "*.jpeg",
+            "*.gif",
+            "resources.arsc"
+    ]
+    sevenzip {
+//        artifact = 'com.tencent.mm:SevenZip:1.1.8'
+        artifact = 'com.tencent.mm:SevenZip:1.1.9'
+        //path = "D:\\Program Files\\7-Zip\\7z.exe"
+    }
+}
+
+
 
 
 

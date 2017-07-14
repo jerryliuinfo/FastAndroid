@@ -7,12 +7,140 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'com.android.tools.build:gradle:2.2.3'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' // 添加这行
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.1.9'
     }
 }
+
+
+
+
+
+String SDK_DIR = System.getenv("ANDROID_SDK_HOME")
+if (SDK_DIR == null) {
+    Properties props = new Properties()
+    props.load(new FileInputStream(project.rootProject.file("local.properties")))
+    SDK_DIR = props.get('sdk.dir');
+}
+
+/**
+ * 复制APK
+ */
+def copyApk = {
+    srcFile, name ->
+        def inFile = file(srcFile)
+        def outFile = new File("${gradle.outApk}/${name}")//输出的文件
+        outFile.withOutputStream { os -> inFile.withInputStream { ins -> os << ins } }
+
+}
+/**
+ * 压缩APK
+ */
+def compressDev = {
+    name ->
+        //减去.apk
+        def path = name.substring(0, name.length() - 4)
+        def guardJarFile = file('./AndResGuard/AndResGuard-cli-1.1.10.jar')
+        def guardConfigFile = file('./AndResGuard/config_dev.xml')
+        def originApkFile = file("./outapk/archives/${name}")
+        def outputDir = file("./build/${path}")
+        // 开始执行压缩命令
+        def proc = """java -jar ${guardJarFile} ${originApkFile} -config ${guardConfigFile}
+                    -out ${outputDir} -zipalign  $SDK_DIR/build-tools/23.0.2/zipalign""".execute()
+        proc.waitFor()
+        if (proc.exitValue() == 0) {
+            println "压缩开始:\t\n${proc.in.text}"
+            def preApk = Math.round(originApkFile.length() / 1024*100)/100
+            println "压缩前：${preApk}K"
+            outputDir.eachFile {
+                if (it.name.contains("7zip_aligned")) {
+                    def afterApk = Math.round(it.length() / 1024*100)/100
+                    println "压缩后：${afterApk}K"
+                    copyApk.call(it.getAbsolutePath(), name)
+                }
+            }
+        } else {
+            println "错误日志：\n${proc.err.text}"
+        }
+}
+
+/**
+ * 压缩APK 包名带hawk
+ */
+def compressGp = {
+    name ->
+        //减去.apk
+        def path = name.substring(0, name.length() - 4)
+        def guardJarFile = file('./AndResGuard/AndResGuard-cli-1.1.10.jar')
+        def guardConfigFile = file('./AndResGuard/config_gp.xml')
+        def originApkFile = file("./outapk/archives/${name}")
+        def outputDir = file("./build/${path}")
+        // 开始执行压缩命令
+        def proc = """java -jar ${guardJarFile} ${originApkFile} -config ${guardConfigFile}
+                    -out ${outputDir} -zipalign  $SDK_DIR/build-tools/23.0.2/zipalign""".execute()
+        proc.waitFor()
+        if (proc.exitValue() == 0) {
+            println "压缩开始:\t\n${proc.in.text}"
+            def preApk = Math.round(originApkFile.length() / 1024*100)/100
+            println "压缩前：${preApk}K"
+            outputDir.eachFile {
+                if (it.name.contains("7zip_aligned")) {
+                    def afterApk = Math.round(it.length() / 1024*100)/100
+                    println "压缩后：${afterApk}K"
+                    copyApk.call(it.getAbsolutePath(), name)
+                }
+            }
+        } else {
+            println "错误日志：\n${proc.err.text}"
+        }
+}
+
+
+/**
+ * gradlew  compressApp
+ * 对包进行微信资源压缩
+ */
+
+/*
+task compressApp {
+    doLast{
+        //清理build目录，可不加
+//    delete rootProject.buildDir
+        //遍历apk文件
+        new File("./outapk/archives").eachFile {
+            if (it.name.endsWith(".apk")) {
+                println "**************${it.name}******************"
+
+
+                if (it.name.contains("dev")) {
+                    compressDev.call(it.name)
+                } else if (it.name.contains("gp")) {
+                    compressGp.call(it.name)
+                }
+                println "********${it.name}压缩完成***********"
+            }
+        }
+        println "压缩完成"
+    }
+
+}
+*/
+
+/**
+ *获取apk
+ */
+task archiveOutApks(type: Copy){
+    from('app/build/outputs/apk')
+    exclude '*unaligned*'
+    into('./outapk/archives')
+}
+
+
+
 
 allprojects {
     repositories {
