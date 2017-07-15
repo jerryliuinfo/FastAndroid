@@ -1,0 +1,112 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+
+def name = 'Andy'
+def greeting = "hello $name"
+println("greeting = " +greeting)
+
+class MyGrovyClass {
+    String greeting
+
+    String getGreeting(){
+        return 'Hello'
+    }
+}
+
+
+def instance = new MyGrovyClass()
+println("value get is "+ instance.getGreeting() )
+println("value is "+ instance.greeting)
+
+
+def square(def num){
+    return num * num
+}
+def value = square 4;
+println("square value is ${value}")
+
+def square2 = { num ->
+    num * num
+}
+def value2 = square2 5
+println("square2 value is ${value2}")
+
+Closure square3 = {
+    it * it
+}
+println("square2 value is ${square3 6}")
+
+
+List list = [1,2,3,4,5]
+list.each (){
+    println(it)
+}
+
+list.each (){ aa ->
+    def result = aa
+    if (aa < 4){
+        result = square(aa)
+    }
+    println(result)
+}
+
+Map map = [key1: "aaaa", key2: "bbbb"]
+println("key1 = ${map.get('key1')}, key2 = ${map.get("key2")} ")
+println("key1 aaa = ${map.key1}, key2 = ${map.key2} ")
+println("key1 bbb = ${map['key1']}, key2 = ${map['key2']} ")
+
+task logger <<{
+    println('hello task Execution')
+}
+logger{
+    println('hello task2 Configuration')
+}
+
+
+task(hello){
+    println('task hello Configuration')
+
+    doLast{
+        println('doLast')
+    }
+
+    doFirst{
+        println('doFirst')
+    }
+}
+
+task mindTheOrder{
+    doFirst{
+        println('really First')
+    }
+    doFirst{
+        println('not really first')
+    }
+
+
+
+
+    doLast{
+        println('not really Last')
+    }
+    doLast{
+        println('really last')
+    }
+}
+
+
+task task1 << {
+    println('task1')
+}
+
+task task2 << {
+    println("task2")
+}
+
+task task3 <<{
+    tasks.each() {
+        println("task name is ${it.name}")
+    }
+}
+
+

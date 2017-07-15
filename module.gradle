@@ -18,7 +18,30 @@ def initModuleCompile() {
     }
 }
 
+
+def initPrivatePropertiesFile() {
+    try {
+        Properties properties = new Properties();
+        File file = new File(rootDir.getAbsolutePath() + "/private.properties")
+        def stream = file.newDataInputStream();
+        properties.load(stream)
+        Iterator itr = properties.entrySet().iterator();
+        while (itr.hasNext()) {
+            Map.Entry e = (Map.Entry) itr.next();
+            String key = e.getKey();
+            rootProject.ext.setProperty(key, e.getValue());
+            println("private.properties key = ${key}, value = ${e.getValue()}")
+        }
+    } catch (Exception e) {
+        println '\n' + e.printStackTrace()
+    } finally {
+        stream.close()
+    }
+}
+
+
 initModuleCompile()
+initPrivatePropertiesFile()
 
 ext {
     compileDependenciesModule = this.&compileDependenciesModule
