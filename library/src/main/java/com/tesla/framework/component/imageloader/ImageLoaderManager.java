@@ -44,10 +44,5 @@ public class ImageLoaderManager implements IImageLoaderstrategy {
         loaderstrategy.cleanMemory(context);
     }
 
-    // 在application的oncreate中初始化
-    @Override
-    public void init(Context context) {
-
-    }
 
 }

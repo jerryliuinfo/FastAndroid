@@ -39,14 +39,9 @@ public class GlideImageLoader implements IImageLoaderstrategy {
     public void cleanMemory(Context context) {
         if (Looper.myLooper() == Looper.getMainLooper()) {
             Glide.get(context).clearMemory();
-
         }
     }
 
-    @Override
-    public void init(Context context) {
-
-    }
 
 
     public DrawableTypeRequest getGenericRequestBuilder(RequestManager manager, ImageLoaderOptions options) {
@@ -57,23 +52,15 @@ public class GlideImageLoader implements IImageLoaderstrategy {
         return manager.load(options.getResource());
     }
 
-    public RequestManager getRequestManager(Context context) {
-        return Glide.with(context);
-
-    }
-
     public GenericRequestBuilder init(ImageLoaderOptions options) {
         View v = options.getViewContainer();
 
         //存在问题
         // java.lang.IllegalArgumentException You cannot start a load for a destroyed activity
         //RequestManager manager=getRequestManager(v.getContext());
-        RequestManager manager = getRequestManager(v.getContext());
+        RequestManager manager = Glide.with(v.getContext());
         if (v instanceof ImageView) {
             GenericRequestBuilder mDrawableTypeRequest = getGenericRequestBuilder(manager, options).asBitmap();
-            if (options.isAsGif()) {
-                mDrawableTypeRequest = getGenericRequestBuilder(manager, options);
-            }
             //装载参数
             mDrawableTypeRequest = loadGenericParams(mDrawableTypeRequest, options);
             return mDrawableTypeRequest;
