@@ -33,12 +33,13 @@ ext {
 
 def compile_library(Project projectModule){
     projectModule.dependencies{
+        println("isLibraryDebug = ${isLibraryDebug.toBoolean()}")
         if (isAllDebug.toBoolean() || isLibraryDebug.toBoolean()) {
             compile project(':library')
-            println("compile library \n")
+            println("use source code \n")
         } else {
             compile(name: 'library-release', ext: 'aar')
-            println("compile library-release \n")
+            println("use aar \n")
         }
     }
 }

@@ -5,6 +5,9 @@ apply from: rootProject.file('version.gradle')
 buildscript {
     repositories {
         jcenter()
+        flatDir {
+            dirs rootDir.getAbsolutePath()+'/libs'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'

@@ -9,8 +9,14 @@ buildscript {
     dependencies {
         classpath dep.andResGuardPlugin
     }
+}
 
+repositories {
+    mavenCentral()
 
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 def getAppVersionName() {
@@ -89,7 +95,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode getCommitVersionCode()
-        versionName rootProject.ext.versionName
+        versionName getAppVersionName()
 
         //archivesBaseName = "FastAndroid-$versionName"
         //dex突破65535的限制
@@ -225,11 +231,14 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project(':library')
+    //compile project(':library')
     compile dep.glide
     compile dep.appcompatV7
     compile dep.multidex
     /*compile dep.bugly*/
+
+    compile_library(getProject())
+
     compile dep.junit
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
 

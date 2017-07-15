@@ -1,6 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'android-apt'
 
+repositories {
+    mavenCentral()
+
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion

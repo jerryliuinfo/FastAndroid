@@ -13,8 +13,8 @@ import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.bean.VideoBean;
 import com.apache.fastandroid.support.bean.VideoResultBean;
 import com.apache.fastandroid.support.sdk.VideoSDK;
-import com.bumptech.glide.Glide;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.support.paging.IPaging;
@@ -131,7 +131,7 @@ public class VideoFragment extends ARecycleViewFragment<VideoBean,VideoResultBea
 
         @Override
         public void onBindData(View convertView, VideoBean data, int position) {
-            Glide.with(getContext()).load(data.thumbnail_v2).into(iv_cover);
+            ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(iv_cover,data.thumbnail_v2));
             tv_desc.setText(data.title);
             ib_play.setOnClickListener(new View.OnClickListener() {
                 @Override

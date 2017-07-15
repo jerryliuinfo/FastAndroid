@@ -6,11 +6,13 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.support.multidex.MultiDexApplication;
 
+import com.apache.fastandroid.support.imageloader.GlideImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.CrashHandler;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.db.TeslaDB;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
@@ -39,6 +41,7 @@ public class MyApplication extends MultiDexApplication{
             activityLifecycleCallbacks = new ActivityLifeCycleReportCallback();
         }
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
+        ImageLoaderManager.getInstance().setImageLoaderStrategy(new GlideImageLoader());
 
     }
 

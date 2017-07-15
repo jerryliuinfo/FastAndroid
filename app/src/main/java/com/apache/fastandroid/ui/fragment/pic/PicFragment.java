@@ -16,10 +16,10 @@ import com.apache.fastandroid.support.bean.ImageBean;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
 import com.apache.fastandroid.support.sdk.PicSDK;
 import com.apache.fastandroid.support.utils.FastAndroidUtils;
-import com.bumptech.glide.Glide;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.support.paging.IPaging;
@@ -193,7 +193,7 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
             iv_pic.setLayoutParams(new RelativeLayout.LayoutParams(width,height));
 
             if (!TextUtils.isEmpty(data.thumbnailUrl)){
-                Glide.with(getContext()).load(data.thumbnailUrl).into(iv_pic);
+                ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(iv_pic,data.thumbnailUrl));
             }
 
         }

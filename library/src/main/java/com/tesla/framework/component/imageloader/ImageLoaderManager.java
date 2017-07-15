@@ -41,7 +41,9 @@ public class ImageLoaderManager implements IImageLoaderstrategy {
 
     @Override
     public void cleanMemory(Context context) {
-        loaderstrategy.cleanMemory(context);
+        if (loaderstrategy != null){
+            loaderstrategy.cleanMemory(context);
+        }
     }
 
 

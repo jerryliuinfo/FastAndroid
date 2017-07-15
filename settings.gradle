@@ -1,2 +1,12 @@
 include ':app', ':library'
 apply from: 'setting_config.gradle'
+
+//初始化gradle时调用
+def initGradleEnvironment() {
+    Properties properties = new Properties();
+    File file = new File(rootDir.getAbsolutePath() + "/config.properties")
+    properties.load(file.newDataInputStream())
+    gradle.ext.outApk = properties.getProperty("out.apk")
+}
+
+initGradleEnvironment()
