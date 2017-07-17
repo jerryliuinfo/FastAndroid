@@ -37,30 +37,8 @@ Closure square3 = {
 println("square2 value is ${square3 6}")
 
 
-List list = [1,2,3,4,5]
-list.each (){
-    println(it)
-}
 
-list.each (){ aa ->
-    def result = aa
-    if (aa < 4){
-        result = square(aa)
-    }
-    println(result)
-}
 
-Map map = [key1: "aaaa", key2: "bbbb"]
-println("key1 = ${map.get('key1')}, key2 = ${map.get("key2")} ")
-println("key1 aaa = ${map.key1}, key2 = ${map.key2} ")
-println("key1 bbb = ${map['key1']}, key2 = ${map['key2']} ")
-
-task logger <<{
-    println('hello task Execution')
-}
-logger{
-    println('hello task2 Configuration')
-}
 
 
 task(hello){
@@ -95,18 +73,5 @@ task mindTheOrder{
 }
 
 
-task task1 << {
-    println('task1')
-}
-
-task task2 << {
-    println("task2")
-}
-
-task task3 <<{
-    tasks.each() {
-        println("task name is ${it.name}")
-    }
-}
 
 

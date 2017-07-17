@@ -1,17 +1,19 @@
-def initModuleCompile() {
+def initModuleCompile(def path) {
     Properties properties = new Properties();
-    File file = new File(rootDir.getAbsolutePath() + "/module.properties")
+    File file = new File(path)
     properties.load(file.newDataInputStream())
     Iterator itr = properties.entrySet().iterator();
+    println("paht = ${path}")
     while (itr.hasNext()) {
         Map.Entry e = (Map.Entry) itr.next();
         String key = e.getKey();
         ext.setProperty(key, e.getValue());
-        println("setting_config.gradle key = ${key}, value = ${e.getValue()}")
+        println("key = ${key}, value = ${e.getValue()}")
     }
 }
 
-initModuleCompile()
+initModuleCompile(rootDir.getAbsolutePath() + "/module.properties")
+initModuleCompile(rootDir.getAbsolutePath() + "/productFlavor.properties")
 
 gradle.addListener new TaskTimeMonitor()
 

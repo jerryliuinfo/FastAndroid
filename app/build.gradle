@@ -35,7 +35,7 @@ def getCommitVersionCode() {
 
 def getDate() {
     def date = new Date()
-    def formattedDate = date.format('MMddHHmmss')
+    def formattedDate = date.format('MMddHHmm')
     return formattedDate
 }
 
@@ -101,6 +101,9 @@ android {
         //dex突破65535的限制
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //getJackOptions().setEnabled(true)
+
     }
 
 
@@ -118,9 +121,6 @@ android {
         abortOnError false
     }
 
-    dataBinding {
-        enabled = true
-    }
 
 
     signingConfigs {
@@ -142,8 +142,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-            shrinkResources false
+            minifyEnabled true
+            shrinkResources true
             zipAlignEnabled false
             buildConfigField("boolean","LOG_DEBUG","false")
             buildConfigField("String","BUGLY_APP_ID","\"a397701fd5\"")
@@ -154,6 +154,8 @@ android {
             minifyEnabled false
             buildConfigField("boolean","LOG_DEBUG","true")
             buildConfigField("String","BUGLY_APP_ID","\"272afe1108\"")
+
+
         }
     }
 
@@ -165,14 +167,20 @@ android {
             signingConfig signingConfigs.dev
             versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染
             manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name,PACKAGE_NAME: applicationId]
+
+            //使用multiDex 如果minsdkersion小雨20 会增加构建时间
+            minSdkVersion 21
+
+
+
         }
-        if (isAllDebug.toBoolean()){
+        //if (isAllDebug.toBoolean()){
             gp {
                 applicationId "com.fast.adnroid"
                 signingConfig signingConfigs.gp
                 manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
             }
-        }
+        //}
     }
     /**
      * release构建忽略dev这一个渠道
