@@ -41,10 +41,10 @@ def compile_library(Project projectModule){
         println("isLibraryDebug = ${isLibraryDebug.toBoolean()}")
         if (isAllDebug.toBoolean() || isLibraryDebug.toBoolean()) {
             compile project(':library')
-            println("use source code \n")
+            println("compile with  source code \n")
         } else {
             compile(name: 'library-release', ext: 'aar')
-            println("use aar \n")
+            println("compile with aar \n")
         }
     }
 }
