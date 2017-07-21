@@ -98,7 +98,7 @@ public class ImageLoaderOptions {
         return mDiskCacheStrategy;
     }
 
-
+    //test
 
     public final static  class Builder{
 
