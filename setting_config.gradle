@@ -3,7 +3,6 @@ def initModuleCompile(def path) {
     File file = new File(path)
     properties.load(file.newDataInputStream())
     Iterator itr = properties.entrySet().iterator();
-    println("paht = ${path}")
     while (itr.hasNext()) {
         Map.Entry e = (Map.Entry) itr.next();
         String key = e.getKey();

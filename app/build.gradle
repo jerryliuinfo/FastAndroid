@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'AndResGuard'
-apply from: rootProject.file('module.gradle')
+
 
 buildscript {
     repositories {
@@ -170,17 +170,15 @@ android {
 
             //使用multiDex 如果minsdkersion小雨20 会增加构建时间
             minSdkVersion 21
-
-
-
         }
-        //if (isAllDebug.toBoolean()){
+
+        if (isGpFlavorEnable.toBoolean()){
             gp {
                 applicationId "com.fast.adnroid"
                 signingConfig signingConfigs.gp
                 manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
             }
-        //}
+        }
     }
     /**
      * release构建忽略dev这一个渠道
@@ -191,6 +189,8 @@ android {
                 if (flavor.name.equals('dev')){
                     variant.setIgnore(true);
                 }
+
+
             }
         }
     }
@@ -269,7 +269,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    //compile project(':library')
     compile dep.glide
     compile dep.appcompatV7
     compile dep.multidex
