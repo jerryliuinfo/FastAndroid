@@ -1,12 +1,16 @@
 package com.apache.fastandroid.support.sdk;
 
 
+import com.apache.fastandroid.MyApplication;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
+import com.apache.fastandroid.support.http.BaseHttpUtils;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.Params;
 import com.tesla.framework.network.task.TaskException;
+
+import retrofit2.Call;
 
 /**
  * Created by jerryliu on 2017/4/11.
@@ -47,15 +51,23 @@ public class PicSDK extends ABizLogic {
         params.addParameter("rn","10");
         params.addParameter("from", "1");
 
-//        Observable.create(new Observable.OnSubscribe<String>(){
-//
-//            @Override
-//            public void call(Subscriber<? super String> subscriber) {
-//                subscriber.onNext();
-//            }
-//        });
-
         return doGet(configHttpConfig(),setting,params,ImageResultBeans.class);
+    }
+    public Call<ImageResultBeans> loadImageDataV2(String category, int pageNum) throws TaskException{
+//        Setting setting = newSetting("loadImages","data/imgs","加载图片");
+//
+//        Params params = new Params();
+//        params.addParameter("col",category);
+//        params.addParameter("tag","全部");
+//        params.addParameter("pn",String.valueOf(pageNum));
+//        params.addParameter("rn","10");
+//        params.addParameter("from", "1");
+
+
+        BaseHttpUtils httpUtils = BaseHttpUtils.getInstance(MyApplication.getContext(),ApiConstans.Urls.BAIDU_IMAGES_URLS);
+        //httpUtils.setLogLevel(true, HttpLoggingInterceptor.Level.BODY);
+        APIService apiService = httpUtils.getRetrofit().create(APIService.class);
+        return apiService.loadImages(category,"全部",String.valueOf(pageNum),"10","1");
     }
 
 

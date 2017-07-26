@@ -287,5 +287,11 @@ dependencies {
     compile dep.rxandroid
     compile dep.rxjava
 
+    compile ("com.squareup.retrofit2:retrofit:2.1.0"){
+        //exclude group: "com.squareup.okhttp3"
+    }
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    //compile 'com.squareup.okhttp3:logging-interceptor:2.1.0'
+
 
 }

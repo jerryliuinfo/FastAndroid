@@ -33,6 +33,9 @@ import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Response;
+
 /**
  * Created by jerryliu on 2017/4/11.
  */
@@ -104,7 +107,7 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
             }
             new LoadImageTask(mode).execute();
         }
-        }
+    }
 
 
     @Override
@@ -158,12 +161,26 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
             if (!TextUtils.isEmpty(nextPage)){
                 pageNum = Integer.parseInt(nextPage);
             }
-            ImageResultBeans result =  PicSDK.newInstance(getTaskCacheMode(this)).loadImageData(mCategory,pageNum);
+            ImageResultBeans result = null;
+            // result =  PicSDK.newInstance(getTaskCacheMode(this)).loadImageData(mCategory,pageNum);
+
+            Call<ImageResultBeans> call = PicSDK.newInstance(getTaskCacheMode(this)).loadImageDataV2(mCategory,pageNum);
+
+            Response<ImageResultBeans> response = null;
             try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
+                response = call.execute();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+            if (response != null ){
+                result = response.body();
+            }
+
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
             return result;
         }
     }

@@ -55,7 +55,7 @@ public class SplashActivity extends BaseActivity {
         if (CommonConfigManager.getInstance().isFirstSplash()){
             CommonConfigManager.getInstance().setFirstSplash(false);
         }
-        if (!TextUtils.isEmpty(UserConfigManager.getInstance().getUserName())
+        if (true || !TextUtils.isEmpty(UserConfigManager.getInstance().getUserName())
                 && !TextUtils.isEmpty(UserConfigManager.getInstance().getPwd()))               {
             MainActivity.launch(SplashActivity.this);
         }else {
