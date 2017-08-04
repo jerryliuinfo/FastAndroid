@@ -129,8 +129,17 @@ android {
             minSdkVersion 21
         }
         //这里的isGpFlavorCreate和isAllFlavorCreate必须定义在gradle.properties文件，放在自定义文件无效
-        if (isGpFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
-            gp {
+        if (is360FlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
+            360 {
+                applicationId "com.fast.adnroid"
+                signingConfig signingConfigs.gp
+                manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
+            }
+        }
+
+        //这里的isGpFlavorCreate和isAllFlavorCreate必须定义在gradle.properties文件，放在自定义文件无效
+        if (isWandoujiaFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
+            wandoujia {
                 applicationId "com.fast.adnroid"
                 signingConfig signingConfigs.gp
                 manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]

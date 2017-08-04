@@ -1,25 +1,17 @@
-def initModuleCompile() {
-    try {
-        Properties properties = new Properties();
-        File file = new File(rootDir.getAbsolutePath() + "/module.properties")
-        def stream = file.newDataInputStream();
-        properties.load(stream)
-        Iterator itr = properties.entrySet().iterator();
-        while (itr.hasNext()) {
-            Map.Entry e = (Map.Entry) itr.next();
-            String key = e.getKey();
-            rootProject.ext.setProperty(key, e.getValue());
-            println("module.gradle key = ${key}, value = ${e.getValue()}")
-        }
-    } catch (Exception e) {
-        println '\n' + e.printStackTrace()
-    } finally {
-        stream.close()
+def initModuleCompile(def path) {
+    Properties properties = new Properties();
+    File file = new File(path)
+    properties.load(file.newDataInputStream())
+    Iterator itr = properties.entrySet().iterator();
+    while (itr.hasNext()) {
+        Map.Entry e = (Map.Entry) itr.next();
+        String key = e.getKey();
+        ext.setProperty(key, e.getValue());
+        println("key = ${key}, value = ${e.getValue()}")
     }
-    //
 }
 
-initModuleCompile()
+initModuleCompile(rootDir.getAbsolutePath() + "/module.properties")
 
 ext {
     compileDependenciesModule = this.&compileDependenciesModule
