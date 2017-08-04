@@ -38,7 +38,8 @@ public class SplashActivity extends BaseActivity {
                         public void onClicked() {
                             toMain();
                         }
-                    });
+                    }).start();
+
         }else {
             toMain();
         }

@@ -14,9 +14,8 @@ def initModuleCompile(def path) {
 initModuleCompile(rootDir.getAbsolutePath() + "/module.properties")
 
 ext {
-    compileDependenciesModule = this.&compileDependenciesModule
+    println("module.gradle compile_library")
     compile_library = this.&compile_library
-
 
 }
 

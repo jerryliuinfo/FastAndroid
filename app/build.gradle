@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: rootProject.file('module.gradle')
 println('app gradle----->')
 
 
@@ -114,6 +115,7 @@ android {
 
 
         }
+
     }
 
     /*渠道信息配置*/
@@ -129,8 +131,8 @@ android {
             minSdkVersion 21
         }
         //这里的isGpFlavorCreate和isAllFlavorCreate必须定义在gradle.properties文件，放在自定义文件无效
-        if (is360FlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
-            360 {
+        if (isbaiduFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
+            baidu {
                 applicationId "com.fast.adnroid"
                 signingConfig signingConfigs.gp
                 manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
@@ -138,13 +140,13 @@ android {
         }
 
         //这里的isGpFlavorCreate和isAllFlavorCreate必须定义在gradle.properties文件，放在自定义文件无效
-        if (isWandoujiaFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
+        /*if (isWandoujiaFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
             wandoujia {
                 applicationId "com.fast.adnroid"
                 signingConfig signingConfigs.gp
                 manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
             }
-        }
+        }*/
     }
     /**
      * release构建忽略dev这一个渠道

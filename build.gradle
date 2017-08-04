@@ -7,6 +7,7 @@ buildscript {
     repositories {
         jcenter()
         flatDir {
+            println('libs path = '+rootDir.getAbsolutePath()+'/libs')
             dirs rootDir.getAbsolutePath()+'/libs'
         }
     }
@@ -19,7 +20,15 @@ buildscript {
         //classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.1.9'
     }
 }
-
+allprojects{
+    repositories {
+        jcenter()
+        mavenCentral()
+        flatDir {
+            dirs rootDir.getAbsolutePath()+'/libs'
+        }
+    }
+}
 
 
 
