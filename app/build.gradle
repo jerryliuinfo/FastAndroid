@@ -79,7 +79,13 @@ android {
         abortOnError false
     }
 
-
+    sourceSets{
+        baidu{
+            manifest.srcFile('src/baidu/AndroidManifest.xml')
+            res.srcDirs('src/baidu/res')
+            java.srcDirs('src/baidu/java')
+        }
+    }
 
     signingConfigs {
         dev {
@@ -129,6 +135,8 @@ android {
 
             //使用multiDex 如果minsdkersion小雨20 会增加构建时间
             minSdkVersion 21
+
+
         }
         //这里的isGpFlavorCreate和isAllFlavorCreate必须定义在gradle.properties文件，放在自定义文件无效
         if (isbaiduFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
@@ -166,7 +174,7 @@ android {
     //修改apk输出名字格式
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
-            if (variant.buildType.name.equals("release")){
+            //if (variant.buildType.name.equals("release")){
                 def outputFile = output.outputFile
                 if (outputFile != null && outputFile.name.endsWith('.apk')) {
                     def appName = "FastAndroid"
@@ -181,13 +189,11 @@ android {
                     def buildTypeName = buildType.name
 
 
-                    def time = getDate();
-                    def fileName = "Module_${appName}_${pubversionName}_${time}_${flavorsName}_${buildTypeName}.apk"
-                    def str = "flavorsName = $flavorsName,time = $time, code = $code, buildTypeName = $buildTypeName";
-                    println str
+                    def fileName = "Module_${appName}_${pubversionName}_${flavorsName}_${buildTypeName}.apk"
+
                     output.outputFile = new File(outputFile.parent, fileName)
                 }
-            }
+            //}
         }
     }
 
