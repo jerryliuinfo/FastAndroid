@@ -11,8 +11,9 @@ def initModuleCompile(def path) {
     }
 }
 
+println("----------------开始解析module.properties文件----------------------------->")
+//
 initModuleCompile(rootDir.getAbsolutePath() + "/module.properties")
-initModuleCompile(rootDir.getAbsolutePath() + "/productFlavor.properties")
 
 gradle.addListener new TaskTimeMonitor()
 

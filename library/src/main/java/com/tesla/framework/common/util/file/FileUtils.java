@@ -18,7 +18,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
@@ -28,40 +27,6 @@ import java.io.Serializable;
 public class FileUtils {
 
 	private static final String TAG = FileUtils.class.getSimpleName();
-
-	public static void writeFile(InputStream in, File file) {
-		if (!file.getParentFile().exists())
-			file.getParentFile().mkdirs();
-
-		try {
-			FileOutputStream out = new FileOutputStream(file);
-			byte[] buffer = new byte[1024 * 128];
-			int len = -1;
-			while ((len = in.read(buffer)) != -1)
-				out.write(buffer, 0, len);
-			out.flush();
-			out.close();
-			in.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static String readAssetsFile(String file, Context context) {
-		StringBuffer sb = new StringBuffer();
-		try {
-			InputStream is = context.getResources().getAssets().open(file);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-			String readLine = null;
-			while ((readLine = reader.readLine()) != null) {
-				sb.append(readLine);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return sb.toString();
-	}
 
 	public static String readFileToString(File file) {
 		StringBuffer sb = new StringBuffer();
@@ -83,28 +48,24 @@ public class FileUtils {
 		return sb.toString();
 	}
 
-	public static byte[] readFileToBytes(File file) {
+	public static void writeFile(InputStream in, File file) {
+		if (!file.getParentFile().exists())
+			file.getParentFile().mkdirs();
+
 		try {
-			return readStreamToBytes(new FileInputStream(file));
+			FileOutputStream out = new FileOutputStream(file);
+			byte[] buffer = new byte[1024 * 128];
+			int len = -1;
+			while ((len = in.read(buffer)) != -1)
+				out.write(buffer, 0, len);
+			out.flush();
+			out.close();
+			in.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
 	}
 
-	public static byte[] readStreamToBytes(InputStream in) throws Exception {
-		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		byte[] buffer = new byte[1024 * 8];
-		int length = -1;
-		while ((length = in.read(buffer)) != -1) {
-			out.write(buffer, 0, length);
-		}
-		out.flush();
-		byte[] result = out.toByteArray();
-		in.close();
-		out.close();
-		return result;
-	}
 
 	public static boolean writeFile(File file, String content) {
 		if (!file.getParentFile().exists())
@@ -130,6 +91,36 @@ public class FileUtils {
 
 		return true;
 	}
+
+
+
+
+
+
+	public static byte[] readFileToBytes(File file) {
+		try {
+			return readStreamToBytes(new FileInputStream(file));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static byte[] readStreamToBytes(InputStream in) throws Exception {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		byte[] buffer = new byte[1024 * 8];
+		int length = -1;
+		while ((length = in.read(buffer)) != -1) {
+			out.write(buffer, 0, length);
+		}
+		out.flush();
+		byte[] result = out.toByteArray();
+		in.close();
+		out.close();
+		return result;
+	}
+
+
 	
 	public static boolean writeFile(File file, byte[] bytes) {
 		if (!file.getParentFile().exists())

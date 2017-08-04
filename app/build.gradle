@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'AndResGuard'
+println('app gradle----->')
 
 
 buildscript {
@@ -7,7 +7,6 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath dep.andResGuardPlugin
     }
 }
 
@@ -40,48 +39,6 @@ def getDate() {
 }
 
 
-
-andResGuard {
-    mappingFile = null
-    use7zip = true
-    useSign = true
-    keepRoot = false
-    whiteList = [
-            //for your icon
-            "R.drawable.ic_launcher",
-            //for umeng update
-            "R.string.umeng*",
-            "R.string.UM*",
-            "R.string.tb_*",
-            "R.layout.umeng*",
-            "R.layout.tb_*",
-            "R.drawable.umeng*",
-            "R.drawable.tb_*",
-            "R.anim.umeng*",
-            "R.color.umeng*",
-            "R.color.tb_*",
-            "R.style.*UM*",
-            "R.style.umeng*",
-            "R.id.umeng*",
-
-            //umeng share for sina
-            "R.drawable.sina*",
-
-
-    ]
-    compressFilePattern = [
-            "*.png",
-            "*.jpg",
-            "*.jpeg",
-            "*.gif",
-            "resources.arsc"
-    ]
-    sevenzip {
-//        artifact = 'com.tencent.mm:SevenZip:1.1.8'
-        artifact = 'com.tencent.mm:SevenZip:1.1.9'
-        //path = "D:\\Program Files\\7-Zip\\7z.exe"
-    }
-}
 
 
 
@@ -171,8 +128,8 @@ android {
             //使用multiDex 如果minsdkersion小雨20 会增加构建时间
             minSdkVersion 21
         }
-
-        if (isGpFlavorEnable.toBoolean()){
+        //这里的isGpFlavorCreate和isAllFlavorCreate必须定义在gradle.properties文件，放在自定义文件无效
+        if (isGpFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
             gp {
                 applicationId "com.fast.adnroid"
                 signingConfig signingConfigs.gp

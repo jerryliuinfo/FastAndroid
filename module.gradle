@@ -19,10 +19,6 @@ def initModuleCompile() {
     //
 }
 
-
-
-
-
 initModuleCompile()
 
 ext {
@@ -38,7 +34,7 @@ ext {
 
 def compile_library(Project projectModule){
     projectModule.dependencies{
-        println("isLibraryDebug = ${isLibraryDebug.toBoolean()}")
+        //println("isLibraryDebug = ${isLibraryDebug.toBoolean()}")
         if (isAllDebug.toBoolean() || isLibraryDebug.toBoolean()) {
             compile project(':library')
             println("compile with  source code \n")

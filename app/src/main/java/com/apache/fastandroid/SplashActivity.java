@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.apache.fastandroid.support.config.CommonConfigManager;
 import com.apache.fastandroid.support.config.UserConfigManager;
 import com.apache.fastandroid.user.LoginFragment;
-import com.apache.fastandroid.ui.widget.SplashCountDownView;
+import com.apache.fastandroid.ui.widget.  SplashCountDownView;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
