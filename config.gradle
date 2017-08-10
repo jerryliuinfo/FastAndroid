@@ -1,8 +1,16 @@
 ext {
-    compileSdkVersion = 25
-    buildToolsVersion = '25.0.2'
-    minSdkVersion = 15
-    targetSdkVersion = 25
+
+    //Android编译版本管理
+    android = [
+               compileSdkVersion: 25,
+               buildToolsVersion: "25.0.2",
+               minSdkVersion    : 17,
+               targetSdkVersion : 25
+    ]
+
+    sourceCompatibilityVersion = JavaVersion.VERSION_1_7
+    targetCompatibilityVersion = JavaVersion.VERSION_1_7
+
 
     supportLibrariesVersion = '25.0.0'
     glideVersion = "3.7.0"
@@ -14,12 +22,11 @@ ext {
 
     rxandroidVersion = "1.2.0"
     rxjavaVersion = "1.1.5"
+    constraintLayoutVersion = "1.0.0"
 
 
-    sourceCompatibilityVersion = JavaVersion.VERSION_1_7
-    targetCompatibilityVersion = JavaVersion.VERSION_1_7
-
-    dep = [
+    //第三方依赖库
+    thirddependencies = [
             appcompatV7      :  "com.android.support:appcompat-v7:$supportLibrariesVersion",
             glide            :  "com.github.bumptech.glide:glide:$glideVersion",
             okhttp3          :  "com.squareup.okhttp3:okhttp:$okhttp3Version",
@@ -33,8 +40,11 @@ ext {
 
             design           : "com.android.support:design:$designVersion",
             rxandroid        : "io.reactivex:rxandroid:$rxandroidVersion",
-            rxjava           : "io.reactivex:rxjava:$rxjavaVersion"
-    ]
+            rxjava           : "io.reactivex:rxjava:$rxjavaVersion",
+            constraintLayout : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
 
+
+
+    ]
 
 }

@@ -1,6 +1,9 @@
 package com.tesla.framework;
 
 import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.common.util.network.NetworkHelper;
@@ -21,6 +24,10 @@ public class FrameworkApplication  {
         }
         NetworkHelper.getInstance().registerNetworkSensor(context);
         DebugUtils.syncDebugStatus(context);
+        View view;
+        ViewGroup viewGroup;
+        LinearLayout linearLayout;
+        //test Maven
 
     }
 

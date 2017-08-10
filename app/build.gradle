@@ -40,18 +40,14 @@ def getDate() {
 }
 
 
-
-
-
-
-
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
         applicationId "com.apache.fastandroid"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode getCommitVersionCode()
         versionName getAppVersionName()
 
@@ -139,13 +135,13 @@ android {
 
         }
         //这里的isGpFlavorCreate和isAllFlavorCreate必须定义在gradle.properties文件，放在自定义文件无效
-        if (isbaiduFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
+       /* if (isbaiduFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
             baidu {
                 applicationId "com.fast.adnroid"
                 signingConfig signingConfigs.gp
                 manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
             }
-        }
+        }*/
 
         //这里的isGpFlavorCreate和isAllFlavorCreate必须定义在gradle.properties文件，放在自定义文件无效
         /*if (isWandoujiaFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
@@ -243,23 +239,23 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile dep.glide
-    compile dep.appcompatV7
-    compile dep.multidex
+    compile thirddependencies.glide
+    compile thirddependencies.appcompatV7
+    compile thirddependencies.multidex
     /*compile dep.bugly*/
 
     compile_library(getProject())
 
-    compile dep.junit
+    compile thirddependencies.junit
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
 
-    compile dep.cardview
+    compile thirddependencies.cardview
 
-    compile dep.design
+    compile thirddependencies.design
 
 
-    compile dep.rxandroid
-    compile dep.rxjava
+    compile thirddependencies.rxandroid
+    compile thirddependencies.rxjava
 
     compile ("com.squareup.retrofit2:retrofit:2.1.0"){
         //exclude group: "com.squareup.okhttp3"

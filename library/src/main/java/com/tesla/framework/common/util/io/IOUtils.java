@@ -2,52 +2,72 @@ package com.tesla.framework.common.util.io;
 
 import android.database.Cursor;
 
-import com.tesla.framework.common.util.DebugUtils;
-import com.tesla.framework.common.util.log.NLog;
-
 import java.io.Closeable;
+import java.io.IOException;
 import java.util.zip.ZipFile;
 
 /**
- * @author Davis
- * @Description: IO工具类
- * @date 2016/4/6 13:49
- * @copyright TCL-MIG
+ * 和关闭流有关的帮助类
  */
 public class IOUtils {
-    public static void closeSilently(Closeable closeable) {
-        if (closeable == null)
-            return;
+    /**
+     * 大部分Close关闭流，以及实现Closeable的功能可使用此方法
+     *
+     * @param c Closeable对象，包括Stream等
+     */
+    public static void closeQuietly(Closeable c) {
         try {
-            closeable.close();
-        } catch (Exception e) {
-            if (DebugUtils.isDebug()){
-                NLog.printStackTrace(e);
+            if (c != null) {
+                c.close();
             }
+        } catch (final IOException ioe) {
+            // ignore
         }
     }
 
-    public static void closeSilently(ZipFile zipFile) {
-        if (zipFile == null)
+    /**
+     * 允许“一口气”关闭多个Closeable的方法
+     *
+     * @param closeables 多个Closeable对象
+     */
+    public static void closeQuietly(final Closeable... closeables) {
+        if (closeables == null) {
             return;
-        try {
-            zipFile.close();
-        } catch (Exception e) {
-            if (DebugUtils.isDebug()){
-                NLog.printStackTrace(e);
-            }
+        }
+        for (final Closeable closeable : closeables) {
+            closeQuietly(closeable);
         }
     }
 
-    public static void closeSilently(Cursor cursor) {
-        if (cursor == null)
-            return;
+    /**
+     * 解决API 15及以下的Cursor都没有实现Closeable接口，因此调用Closeable参数会出现转换异常的问题
+     * java.lang.IncompatibleClassChangeError: interface not implemented,
+     *
+     * @param c Cursor对象
+     */
+    public static void closeQuietly(Cursor c) {
         try {
-            cursor.close();
-        } catch (Exception e) {
-            if (DebugUtils.isDebug()){
-                NLog.printStackTrace(e);
+            if (c != null) {
+                c.close();
             }
+        } catch (Exception e) {
+            // ignore
+        }
+    }
+
+    /**
+     * 解决API 18及以下的ZipFile都没有实现Closeable接口，因此调用Closeable参数会出现转换异常的问题
+     * java.lang.IncompatibleClassChangeError: interface not implemented,
+     *
+     * @param c Cursor对象
+     */
+    public static void closeQuietly(ZipFile c) {
+        try {
+            if (c != null) {
+                c.close();
+            }
+        } catch (Exception e) {
+            // ignore
         }
     }
 }

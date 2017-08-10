@@ -10,8 +10,9 @@ repositories {
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
 
 
     lintOptions {
@@ -19,8 +20,8 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -39,15 +40,14 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile dep.junit
+    testCompile thirddependencies.junit
 
-    compile dep.design
-    compile dep.appcompatV7
-    compile dep.cardview
+    compile thirddependencies.design
+    compile thirddependencies.appcompatV7
+    compile thirddependencies.cardview
 
-    compile dep.fastjson
-    compile dep.okhttp3
+    compile thirddependencies.fastjson
+    compile thirddependencies.okhttp3
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
 
 }

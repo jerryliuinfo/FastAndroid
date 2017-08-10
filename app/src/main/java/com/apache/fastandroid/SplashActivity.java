@@ -42,6 +42,7 @@ public class SplashActivity extends BaseActivity {
 
         }else {
             toMain();
+            //test maven
         }
     }
 
@@ -63,5 +64,8 @@ public class SplashActivity extends BaseActivity {
             toLogin();
         }
         finish();
+
+
+
     }
 }
