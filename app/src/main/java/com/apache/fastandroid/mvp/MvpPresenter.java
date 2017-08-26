@@ -1,4 +1,4 @@
-package com.apache.fastandroid.base.mvp.base;
+package com.apache.fastandroid.mvp;
 
 /**
  * Created by jerryliu on 2017/7/9.

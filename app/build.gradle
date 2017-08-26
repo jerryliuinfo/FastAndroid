@@ -75,13 +75,7 @@ android {
         abortOnError false
     }
 
-    sourceSets{
-        baidu{
-            manifest.srcFile('src/baidu/AndroidManifest.xml')
-            res.srcDirs('src/baidu/res')
-            java.srcDirs('src/baidu/java')
-        }
-    }
+
 
     signingConfigs {
         dev {

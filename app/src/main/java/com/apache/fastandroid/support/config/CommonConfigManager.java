@@ -4,6 +4,7 @@ import com.tesla.framework.common.util.BaseSharedPreferenceConfigManager;
 
 /**
  * Created by jerryliu on 2017/6/30.
+ * 一些通用信息的配置
  */
 
 public class CommonConfigManager extends BaseSharedPreferenceConfigManager {
@@ -27,11 +28,6 @@ public class CommonConfigManager extends BaseSharedPreferenceConfigManager {
         return SP_NAME;
     }
     
-    public boolean isFirstSplash(){
-        return getBooleanValue("isFirstSplash", true);
-    }
-    
-    public void setFirstSplash(boolean value){
-        setBooleanValue("isFirstSplash",value);
-    }
+
+
 }

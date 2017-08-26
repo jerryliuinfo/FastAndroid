@@ -1,5 +1,7 @@
 package com.apache.fastandroid.support.config;
 
+import android.text.TextUtils;
+
 import com.tesla.framework.common.util.BaseSharedPreferenceConfigManager;
 
 /**
@@ -43,6 +45,10 @@ public class UserConfigManager extends BaseSharedPreferenceConfigManager{
     }
 
 
+    public boolean autoLogin(){
+        return !TextUtils.isEmpty(UserConfigManager.getInstance().getUserName())
+                && !TextUtils.isEmpty(UserConfigManager.getInstance().getPwd());
+    }
 
 
 }

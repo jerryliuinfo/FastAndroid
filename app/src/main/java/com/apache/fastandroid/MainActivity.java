@@ -1,6 +1,7 @@
 package com.apache.fastandroid;
 
 import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,10 +13,8 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.apache.fastandroid.download.DownloadManager;
-import com.apache.fastandroid.download.IDownLoadCallback;
-import com.apache.fastandroid.ui.fragment.pic.PicTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
+import com.apache.fastandroid.ui.fragment.pic.PicTabsFragment;
 import com.apache.fastandroid.video.VideoTabsFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
@@ -68,34 +67,7 @@ public class MainActivity extends BaseActivity{
 
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
 
-        downloadManager = new DownloadManager();
-        downloadManager.setCallback(new IDownLoadCallback() {
-            @Override
-            public void onStart() {
-                NLog.d(TAG, "IDownLoadCallback onStart");
-            }
 
-            @Override
-            public void onProgressUpdate() {
-                NLog.d(TAG, "IDownLoadCallback onProgressUpdate");
-            }
-
-            @Override
-            public void onSuccess() {
-                NLog.d(TAG, "IDownLoadCallback onSuccess");
-            }
-
-            @Override
-            public void onFailed() {
-                NLog.d(TAG, "IDownLoadCallback onFailed");
-            }
-
-            @Override
-            public void onFinish() {
-                NLog.d(TAG, "IDownLoadCallback onFinish");
-            }
-        });
-        downloadManager.execute("www.baidu.com");
     }
 
     @Override
@@ -161,7 +133,10 @@ public class MainActivity extends BaseActivity{
                 break;
             case R.id.nav_item_setting:
                 SettingFragment.launch(this);
-                break;
+                closeDrawer();
+
+                selecteId = itemId;
+                return;
         }
 
         /*
@@ -187,7 +162,6 @@ public class MainActivity extends BaseActivity{
         closeDrawer();
 
         selecteId = itemId;
-
     }
 
     public boolean isDrawerOpened() {

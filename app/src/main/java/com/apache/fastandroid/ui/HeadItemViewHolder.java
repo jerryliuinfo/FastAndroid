@@ -1,4 +1,4 @@
-package com.apache.fastandroid;
+package com.apache.fastandroid.ui;
 
 import android.app.Activity;
 import android.view.View;

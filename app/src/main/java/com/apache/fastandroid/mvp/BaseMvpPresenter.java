@@ -1,4 +1,4 @@
-package com.apache.fastandroid.base.mvp.base;
+package com.apache.fastandroid.mvp;
 
 import java.lang.ref.WeakReference;
 

@@ -1,12 +1,11 @@
 package com.apache.fastandroid;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 
-import com.apache.fastandroid.support.config.CommonConfigManager;
+import com.apache.fastandroid.support.config.ADConfigManager;
 import com.apache.fastandroid.support.config.UserConfigManager;
+import com.apache.fastandroid.ui.widget.SplashCountDownView;
 import com.apache.fastandroid.user.LoginFragment;
-import com.apache.fastandroid.ui.widget.  SplashCountDownView;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
@@ -26,23 +25,23 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        if (CommonConfigManager.getInstance().isFirstSplash()){
+        if (ADConfigManager.getInstance().isNeedToShowAd()){
+            ADConfigManager.getInstance().setLastShowADTime(System.currentTimeMillis());
             coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(mDuration)
                     .setCallback(new SplashCountDownView.CountDownCallbackImpl(){
                         @Override
                         public void onFinish(long delay) {
-                            toMain();
+                            jump();
                         }
 
                         @Override
                         public void onClicked() {
-                            toMain();
+                            jump();
                         }
                     }).start();
 
         }else {
-            toMain();
-            //test maven
+            jump();
         }
     }
 
@@ -50,22 +49,18 @@ public class SplashActivity extends BaseActivity {
         LoginFragment.start(this);
     }
 
-
-
-
     private void toMain(){
-        if (CommonConfigManager.getInstance().isFirstSplash()){
-            CommonConfigManager.getInstance().setFirstSplash(false);
-        }
-        if (true || !TextUtils.isEmpty(UserConfigManager.getInstance().getUserName())
-                && !TextUtils.isEmpty(UserConfigManager.getInstance().getPwd()))               {
-            MainActivity.launch(SplashActivity.this);
+        MainActivity.launch(SplashActivity.this);
+    }
+
+    private void jump(){
+        if (true || UserConfigManager.getInstance().autoLogin())               {
+            toMain();
         }else {
             toLogin();
         }
         finish();
-
-
-
     }
+
+
 }

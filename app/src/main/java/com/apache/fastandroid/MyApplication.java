@@ -42,6 +42,7 @@ public class MyApplication extends MultiDexApplication{
         }
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
         ImageLoaderManager.getInstance().setImageLoaderStrategy(new GlideImageLoader());
+        BaseActivity.setHelper(FastActivityHelper.class);
 
     }
 

@@ -8,6 +8,10 @@ import android.view.View;
 
 /**
  * 用户注册回调BaseActivity的生命周期及相关的方法，自行添加
+ * 1.可以在Activity生命周期方法内做一些业务处理
+ * 2.按home键，返回键,toolbar向左返回箭头处理
+ * 3.主题配置
+ *
  *
  * Created by JerryLiu on 17/04/08.
  */

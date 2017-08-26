@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.apache.fastandroid.HeadItemViewHolder;
+import com.apache.fastandroid.ui.HeadItemViewHolder;
 import com.apache.fastandroid.R;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.bean.HeaderBean;

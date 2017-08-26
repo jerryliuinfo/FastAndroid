@@ -14,7 +14,7 @@ import com.apache.fastandroid.support.config.UserConfigManager;
 import com.apache.fastandroid.support.presenter.LoginPresenterImpl;
 import com.apache.fastandroid.support.presenter.LoginView;
 import com.apache.fastandroid.MainActivity;
-import com.apache.fastandroid.base.mvp.BaseMvpFragment;
+import com.apache.fastandroid.mvp.BaseMvpFragment;
 import com.tesla.framework.common.util.KeyGenerator;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
