@@ -1,9 +1,11 @@
 package com.apache.fastandroid;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
 
 import com.apache.fastandroid.support.config.ADConfigManager;
-import com.apache.fastandroid.support.config.UserConfigManager;
+import com.apache.fastandroid.user.UserConfigManager;
 import com.apache.fastandroid.ui.widget.SplashCountDownView;
 import com.apache.fastandroid.user.LoginFragment;
 import com.tesla.framework.common.util.ResUtil;
@@ -26,6 +28,7 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         if (ADConfigManager.getInstance().isNeedToShowAd()){
+            coutDownView.setVisibility(View.VISIBLE);
             ADConfigManager.getInstance().setLastShowADTime(System.currentTimeMillis());
             coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(mDuration)
                     .setCallback(new SplashCountDownView.CountDownCallbackImpl(){
@@ -41,7 +44,12 @@ public class SplashActivity extends BaseActivity {
                     }).start();
 
         }else {
-            jump();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    jump();
+                }
+            },2000);
         }
     }
 
@@ -54,7 +62,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void jump(){
-        if (true || UserConfigManager.getInstance().autoLogin())               {
+        if (false && UserConfigManager.getInstance().autoLogin())               {
             toMain();
         }else {
             toLogin();

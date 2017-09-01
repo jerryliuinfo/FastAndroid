@@ -49,6 +49,7 @@
         android:padding="5dp"
         android:layout_alignParentRight="true"
         android:text="@string/splash_countdown_count"
+        android:visibility="gone"
         />
 
 </RelativeLayout>

@@ -33,26 +33,24 @@ public class TaskException extends Exception {
 		resultIllegal
 	}
 	
-	private int code;
+	private String code;
 
     private String msg = "";
 	
 	private static IExceptionDeclare exceptionDeclare;
 	private Context mCcontext;
 	
-	public TaskException(int code) {
+	public TaskException(String code) {
 		this.code = code;
 	}
-	public TaskException(String msg) {
+	public TaskException(String code,String msg) {
+		this.code = code;
 		this.msg = msg;
 	}
 
-    public TaskException(int code, String msg) {
-        this(code);
-        this.msg = msg;
-    }
 
-    public int getCode() {
+
+    public String getCode() {
         return code;
     }
 
@@ -62,7 +60,7 @@ public class TaskException extends Exception {
 		if (!TextUtils.isEmpty(msg))
 			return msg + "";
 
-		if (!TextUtils.isEmpty(String.valueOf(code)) && exceptionDeclare != null) {
+		if (!TextUtils.isEmpty(code) && exceptionDeclare != null) {
 			String msg = exceptionDeclare.checkCode(String.valueOf(code));
 			if (!TextUtils.isEmpty(msg)) {
 				return msg + "";

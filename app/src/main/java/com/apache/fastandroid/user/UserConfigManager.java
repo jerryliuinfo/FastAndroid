@@ -1,4 +1,4 @@
-package com.apache.fastandroid.support.config;
+package com.apache.fastandroid.user;
 
 import android.text.TextUtils;
 

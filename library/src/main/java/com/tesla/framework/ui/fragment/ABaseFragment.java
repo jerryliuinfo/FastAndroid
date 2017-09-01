@@ -13,8 +13,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.view.ViewUtils;
+import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.task.ITaskManager;
@@ -581,5 +582,18 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
 
     public View getEmptyLayout() {
         return emptyLayout;
+    }
+
+
+
+    protected void setToolbarTitle(String msg){
+        BaseActivity baseActivity = (BaseActivity) getActivity();
+        baseActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        baseActivity.getSupportActionBar().setTitle(msg);
+
+    }
+
+    protected void setToolbarTitle(int resId){
+        setToolbarTitle(ResUtil.getString(resId));
     }
 }
