@@ -5,10 +5,12 @@ import android.os.Handler;
 import android.view.View;
 
 import com.apache.fastandroid.support.config.ADConfigManager;
-import com.apache.fastandroid.user.UserConfigManager;
 import com.apache.fastandroid.ui.widget.SplashCountDownView;
 import com.apache.fastandroid.user.LoginFragment;
+import com.apache.fastandroid.user.UserSDK;
 import com.tesla.framework.common.util.ResUtil;
+import com.tesla.framework.network.task.TaskException;
+import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 
@@ -62,12 +64,33 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void jump(){
-        if (false && UserConfigManager.getInstance().autoLogin())               {
-            toMain();
-        }else {
-            toLogin();
-        }
-        finish();
+        new WorkTask<Void,Void,Boolean>(){
+
+            @Override
+            public Boolean workInBackground(Void... params) throws TaskException {
+                return UserSDK.newInstance().autoLoginSuccess();
+            }
+
+            @Override
+            protected void onSuccess(Boolean aBoolean) {
+                super.onSuccess(aBoolean);
+                if (aBoolean){
+                    toMain();
+                }else {
+                    toLogin();
+                }
+                SplashActivity.this.finish();
+            }
+
+            @Override
+            protected void onFailure(TaskException exception) {
+                super.onFailure(exception);
+                toLogin();
+                SplashActivity.this.finish();
+            }
+
+        }.execute();
+
     }
 
 

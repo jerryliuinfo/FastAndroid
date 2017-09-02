@@ -139,8 +139,10 @@ public class LoginFragment extends BaseFragment {
         String encypedUserName = KeyGenerator.generateMD5(userBean.getUserName());
         String encrypedPwd = KeyGenerator.generateMD5(userBean.getPassword());
 
-        UserConfigManager.getInstance().setUserName(encypedUserName);
-        UserConfigManager.getInstance().setPwd(encrypedPwd);
+        //UserConfigManager.getInstance().setUserName(encypedUserName);
+        //UserConfigManager.getInstance().setPwd(encrypedPwd);
+        UserConfigManager.getInstance().saveUserBean(userBean);
+
 
         MainActivity.launch(getActivity());
         getActivity().finish();

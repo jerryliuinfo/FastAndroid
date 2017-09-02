@@ -2,6 +2,8 @@ package com.apache.fastandroid.user;
 
 import android.text.TextUtils;
 
+import com.apache.fastandroid.user.bean.UserBean;
+import com.google.gson.Gson;
 import com.tesla.framework.common.util.BaseSharedPreferenceConfigManager;
 
 /**
@@ -28,26 +30,40 @@ public class UserConfigManager extends BaseSharedPreferenceConfigManager{
         return instance;
     }
 
-    public void setUserName(String userName){
-        setStringValue("user_name", userName);
+
+
+
+    private UserBean userBean;
+
+    /**
+     *
+     * @return
+     */
+    public boolean isLastTimeLogined(){
+        UserBean userBean = getUserBean();
+        return userBean != null && !TextUtils.isEmpty(userBean.getUserName()) && !TextUtils.isEmpty(userBean.getPassword());
     }
 
-    public void setPwd(String pwd){
-        setStringValue("user_pwd", pwd);
+    public void saveUserBean(UserBean userBean){
+        if (userBean == null){
+            return;
+        }
+        //对密码进行加密
+       /* if (!TextUtils.isEmpty(userBean.getPassword())){
+            userBean.setPassword(KeyGenerator.generateMD5(userBean.getPassword()));
+        }*/
+        setStringValue("user_info", new Gson().toJson(userBean));
     }
 
-    public String getUserName(){
-        return getStringValue("user_name","");
-    }
-
-    public String getPwd(){
-        return getStringValue("user_pwd","");
-    }
-
-
-    public boolean autoLogin(){
-        return !TextUtils.isEmpty(UserConfigManager.getInstance().getUserName())
-                && !TextUtils.isEmpty(UserConfigManager.getInstance().getPwd());
+    public UserBean getUserBean(){
+        if (userBean != null){
+            return userBean;
+        }
+        String userInfoStr = getStringValue("user_info", "");
+        if (!TextUtils.isEmpty(userInfoStr)){
+            userBean =  new Gson().fromJson(userInfoStr,UserBean.class);
+        }
+        return userBean;
     }
 
 

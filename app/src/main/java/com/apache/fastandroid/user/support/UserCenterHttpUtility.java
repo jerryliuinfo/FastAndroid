@@ -25,6 +25,7 @@ public class UserCenterHttpUtility implements IHttpUtility {
             userBean.setPassword(pwd);
             if ("zhangsan".equals(userName) && "123456".equals(pwd)){
                 userBean.setCode("0");
+                //userBean.setToken("invalid");
             }else {
                 userBean.setCode("100");
             }

@@ -35,15 +35,11 @@ public class UserSDK extends ABizLogic {
 
 
         UserBean result =  doGet(configHttpConfig(),setting,params,UserBean.class);
-        checkResponseCode(result);
-        if (result instanceof ICheck){
-            ((ICheck) result).check();
-        }
+        checkRepsonse(result);
         return result;
-
     }
 
-    private <T> boolean checkResponseCode(T result) throws TaskException {
+    public <T> void checkRepsonse(T result)throws TaskException{
         if (result == null){
             throw new TaskException("数据为空");
         }
@@ -54,8 +50,29 @@ public class UserSDK extends ABizLogic {
                 throw taskException;
             }
         }
-        return true;
+
+        if (result instanceof ICheck){
+            ((ICheck) result).check();
+        }
     }
+
+    public boolean autoLoginSuccess(){
+        if (!UserConfigManager.getInstance().isLastTimeLogined()){
+            return false;
+        }
+        UserBean userBean = UserConfigManager.getInstance().getUserBean();
+        try {
+            UserBean loginResult =  doLogin(userBean.getUserName(),userBean.getPassword());
+            checkRepsonse(loginResult);
+            return true;
+        } catch (TaskException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+
 
 
 
