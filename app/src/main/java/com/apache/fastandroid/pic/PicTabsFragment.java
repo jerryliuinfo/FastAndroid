@@ -1,4 +1,4 @@
-package com.apache.fastandroid.ui.fragment.pic;
+package com.apache.fastandroid.pic;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

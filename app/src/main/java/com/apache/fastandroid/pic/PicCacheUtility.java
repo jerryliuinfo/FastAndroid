@@ -1,4 +1,4 @@
-package com.apache.fastandroid.support.cache;
+package com.apache.fastandroid.pic;
 
 import com.apache.fastandroid.support.bean.ImageBean;
 import com.apache.fastandroid.support.bean.ImageResultBeans;

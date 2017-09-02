@@ -1,4 +1,4 @@
-package com.apache.fastandroid.ui.fragment.pic;
+package com.apache.fastandroid.pic;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import android.widget.RelativeLayout;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.bean.ImageBean;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
-import com.apache.fastandroid.support.sdk.PicSDK;
 import com.apache.fastandroid.support.utils.FastAndroidUtils;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.common.util.dimen.ScreenUtil;

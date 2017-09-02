@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.setting.SettingUtility;
+import com.tesla.framework.common.util.ActivityTaskMgr;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.StatusBarUtil;
@@ -87,6 +88,7 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityTaskMgr.getInstance().pushToActivityStack(this);
         if (mHelper == null) {
             try {
                 if (mHelperClass != null) {
@@ -297,6 +299,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
 
         if (mHelper != null)
             mHelper.onDestroy();
+
+        ActivityTaskMgr.getInstance().popFromActivityStack(this);
     }
 
     @Override

@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.apache.fastandroid.setting.SettingFragment;
-import com.apache.fastandroid.ui.fragment.pic.PicTabsFragment;
+import com.apache.fastandroid.pic.PicTabsFragment;
 import com.apache.fastandroid.video.VideoTabsFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
@@ -67,6 +67,8 @@ public class MainActivity extends BaseActivity{
 
 
     }
+
+
 
     @Override
     public void onDestroy() {

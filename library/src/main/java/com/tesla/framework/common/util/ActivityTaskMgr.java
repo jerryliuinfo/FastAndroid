@@ -250,10 +250,16 @@ public class ActivityTaskMgr {
     }
 
     public void pushToActivityStack(Activity activity) {
+        if (activityList == null){
+            activityList = new ArrayList<>();
+        }
         activityList.add(new WeakReference<Activity>(activity));
     }
 
     public void popFromActivityStack(Activity activity) {
+        if (activityList == null){
+            return;
+        }
         for(int x=0; x<activityList.size(); x++){
             WeakReference<Activity> ref = activityList.get(x);
             if(ref!=null && ref.get()!=null && ref.get()==activity){
@@ -264,6 +270,9 @@ public class ActivityTaskMgr {
 
     public void clearActivityStack(){
         try {
+            if (activityList == null){
+                return;
+            }
             for (WeakReference<Activity> ref : activityList) {
                 if (ref != null && ref.get() != null && !ref.get().isFinishing()) {
                     ref.get().finish();
@@ -277,11 +286,11 @@ public class ActivityTaskMgr {
     }
 
     public boolean isActivityStackEmpty() {
-        return activityList.size() == 0;
+        return !(activityList != null && activityList.size() > 0);
     }
     
 	public int sizeOfActivityStack() {
-		return activityList.size();
+		return activityList != null ? activityList.size() : 0;
 	}
 
 

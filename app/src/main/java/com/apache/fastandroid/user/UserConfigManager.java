@@ -33,7 +33,6 @@ public class UserConfigManager extends BaseSharedPreferenceConfigManager{
 
 
 
-    private UserBean userBean;
 
     /**
      *
@@ -46,6 +45,7 @@ public class UserConfigManager extends BaseSharedPreferenceConfigManager{
 
     public void saveUserBean(UserBean userBean){
         if (userBean == null){
+            setStringValue("user_info", "");
             return;
         }
         //对密码进行加密
@@ -56,14 +56,11 @@ public class UserConfigManager extends BaseSharedPreferenceConfigManager{
     }
 
     public UserBean getUserBean(){
-        if (userBean != null){
-            return userBean;
-        }
         String userInfoStr = getStringValue("user_info", "");
         if (!TextUtils.isEmpty(userInfoStr)){
-            userBean =  new Gson().fromJson(userInfoStr,UserBean.class);
+            return  new Gson().fromJson(userInfoStr,UserBean.class);
         }
-        return userBean;
+        return null;
     }
 
 

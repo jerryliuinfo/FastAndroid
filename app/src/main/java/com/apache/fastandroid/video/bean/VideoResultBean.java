@@ -1,4 +1,4 @@
-package com.apache.fastandroid.support.bean;
+package com.apache.fastandroid.video.bean;
 
 import com.tesla.framework.network.biz.ResultBean;
 

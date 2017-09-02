@@ -1,9 +1,11 @@
-package com.apache.fastandroid.support.sdk;
+package com.apache.fastandroid.pic;
 
 
 import com.apache.fastandroid.app.MyApplication;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
 import com.apache.fastandroid.support.http.BaseHttpUtils;
+import com.apache.fastandroid.support.sdk.APIService;
+import com.apache.fastandroid.support.sdk.ApiConstans;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;

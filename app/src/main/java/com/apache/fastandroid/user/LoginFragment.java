@@ -1,6 +1,8 @@
 package com.apache.fastandroid.user;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
@@ -10,6 +12,7 @@ import android.widget.Button;
 
 import com.apache.fastandroid.MainActivity;
 import com.apache.fastandroid.R;
+import com.apache.fastandroid.base.AppContext;
 import com.apache.fastandroid.base.BaseFragment;
 import com.apache.fastandroid.user.bean.UserBean;
 import com.tesla.framework.common.util.KeyGenerator;
@@ -32,6 +35,19 @@ public class LoginFragment extends BaseFragment {
 
     @ViewInject(idStr = "btn_login")
     private Button btn_login;
+
+
+    public static void start(Context from) {
+        Intent intent = new Intent(from, FragmentContainerActivity.class);
+        intent.putExtra("className", LoginFragment.class.getName());
+
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        from.startActivity(intent);
+
+
+        //FragmentContainerActivity.launch(from,LoginFragment.class,null);
+    }
+
 
     public static void start(Activity from) {
         FragmentContainerActivity.launch(from,LoginFragment.class,null);
@@ -124,10 +140,10 @@ public class LoginFragment extends BaseFragment {
     public void loginSuccess(UserBean userBean) {
         showMessage("登录成功");
         //保存登陆信息
-        String encypedUserName = KeyGenerator.generateMD5(userBean.getUserName());
         String encrypedPwd = KeyGenerator.generateMD5(userBean.getPassword());
 
         UserConfigManager.getInstance().saveUserBean(userBean);
+        AppContext.login(userBean);
 
 
         MainActivity.launch(getActivity());

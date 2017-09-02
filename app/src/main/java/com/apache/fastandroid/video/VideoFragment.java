@@ -10,9 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.support.bean.VideoBean;
-import com.apache.fastandroid.support.bean.VideoResultBean;
-import com.apache.fastandroid.support.sdk.VideoSDK;
+import com.apache.fastandroid.video.bean.VideoBean;
+import com.apache.fastandroid.video.bean.VideoResultBean;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
