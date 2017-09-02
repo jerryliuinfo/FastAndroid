@@ -16,6 +16,7 @@ import com.tesla.framework.common.util.KeyGenerator;
 import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.network.task.WorkTask;
+import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 /**
@@ -23,9 +24,13 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
  */
 
 public class LoginFragment extends BaseFragment {
-
+    @ViewInject(idStr = "inputLayout_username")
     private TextInputLayout mUserNameinputLayout;
+
+    @ViewInject(idStr = "inputLayout_pwd")
     private TextInputLayout mPwdInputLayout;
+
+    @ViewInject(idStr = "btn_login")
     private Button btn_login;
 
     public static void start(Activity from) {
@@ -43,15 +48,8 @@ public class LoginFragment extends BaseFragment {
 
         setToolbarTitle("");
 
-
-        btn_login = (Button) findViewById(R.id.btn_login);
-
-        mUserNameinputLayout = (TextInputLayout) findViewById(R.id.inputLayout_username);
-        mPwdInputLayout = (TextInputLayout) findViewById(R.id.inputLayout_pwd);
-
         mUserNameinputLayout.setHint("UserName");
         mPwdInputLayout.setHint("Password");
-
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,16 +61,6 @@ public class LoginFragment extends BaseFragment {
     public void doLogin(){
         String userName = mUserNameinputLayout.getEditText().getText().toString();
         String pwd = mPwdInputLayout.getEditText().getText().toString();
-       /* if (!validateUserName(userName)){
-            mUserNameinputLayout.setError("用户名不合法");
-            return;
-        }else if (!validatePwd(pwd)){
-            mPwdInputLayout.setError("密码不合法");
-            return;
-        }else {
-            mUserNameinputLayout.setErrorEnabled(false);
-            mPwdInputLayout.setErrorEnabled(false);
-        }*/
         if (checkUserNameAndPwdInvalidaty(userName,pwd)){
             new LoginTask().execute(userName,pwd);
         }
@@ -139,8 +127,6 @@ public class LoginFragment extends BaseFragment {
         String encypedUserName = KeyGenerator.generateMD5(userBean.getUserName());
         String encrypedPwd = KeyGenerator.generateMD5(userBean.getPassword());
 
-        //UserConfigManager.getInstance().setUserName(encypedUserName);
-        //UserConfigManager.getInstance().setPwd(encrypedPwd);
         UserConfigManager.getInstance().saveUserBean(userBean);
 
 

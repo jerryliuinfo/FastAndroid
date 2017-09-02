@@ -3,12 +3,6 @@ package com.tesla.framework.common.util;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 
-/**
- * @author shunyou.huang
- * @Description:
- * @date 2017/3/22 10:35
- * @copyright TCL-MIG
- */
 
 
 public class DebugUtils {

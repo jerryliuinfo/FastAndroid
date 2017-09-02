@@ -1,4 +1,4 @@
-package com.apache.fastandroid;
+package com.apache.fastandroid.app;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -6,6 +6,8 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.support.multidex.MultiDexApplication;
 
+import com.apache.fastandroid.BuildConfig;
+import com.apache.fastandroid.FastActivityHelper;
 import com.apache.fastandroid.support.exception.FastAndroidErrorMsg;
 import com.apache.fastandroid.support.imageloader.GlideImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;

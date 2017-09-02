@@ -2,14 +2,13 @@ package com.apache.fastandroid.support.bean;
 
 import com.tesla.framework.network.biz.ResultBean;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by jerryliu on 2017/4/11.
  */
 
-public class ImageResultBeans extends ResultBean implements Serializable{
+public class ImageResultBeans extends ResultBean {
     public String col;
     public String tag;
     public String tag3;

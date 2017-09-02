@@ -1,7 +1,6 @@
 package com.apache.fastandroid;
 
 import android.app.Activity;
-import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -51,7 +50,6 @@ public class MainActivity extends BaseActivity{
 
 
 
-    private DownloadManager downloadManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

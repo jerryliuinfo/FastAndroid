@@ -1,11 +1,10 @@
 package com.apache.fastandroid.user;
 
-import com.apache.fastandroid.support.bean.BaseBean;
-import com.apache.fastandroid.support.exception.ICheck;
+import com.apache.fastandroid.support.sdk.BaseBizLogic;
 import com.apache.fastandroid.user.bean.UserBean;
+import com.apache.fastandroid.user.bean.UserResponseBean;
 import com.apache.fastandroid.user.support.UserCenterHttpUtility;
 import com.tesla.framework.common.setting.Setting;
-import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.Params;
 import com.tesla.framework.network.task.TaskException;
@@ -14,7 +13,7 @@ import com.tesla.framework.network.task.TaskException;
  * Created by 01370340 on 2017/9/1.
  */
 
-public class UserSDK extends ABizLogic {
+public class UserSDK extends BaseBizLogic {
 
     public static UserSDK newInstance(){
         return new UserSDK();
@@ -34,27 +33,15 @@ public class UserSDK extends ABizLogic {
         params.addParameter("pwd",pwd);
 
 
-        UserBean result =  doGet(configHttpConfig(),setting,params,UserBean.class);
+        UserResponseBean result =  doGet(configHttpConfig(),setting,params,UserResponseBean.class);
         checkRepsonse(result);
-        return result;
+        if (result.data == null){
+            throw new TaskException("data字段为空");
+        }
+        return result.data;
     }
 
-    public <T> void checkRepsonse(T result)throws TaskException{
-        if (result == null){
-            throw new TaskException("数据为空");
-        }
-        if (result instanceof BaseBean){
-            BaseBean baseBean = (BaseBean) result;
-            if (!"0".equals(baseBean.getCode())){
-                TaskException taskException =  new TaskException(baseBean.getCode(),baseBean.getMsg());
-                throw taskException;
-            }
-        }
 
-        if (result instanceof ICheck){
-            ((ICheck) result).check();
-        }
-    }
 
     public boolean autoLoginSuccess(){
         if (!UserConfigManager.getInstance().isLastTimeLogined()){
@@ -63,7 +50,6 @@ public class UserSDK extends ABizLogic {
         UserBean userBean = UserConfigManager.getInstance().getUserBean();
         try {
             UserBean loginResult =  doLogin(userBean.getUserName(),userBean.getPassword());
-            checkRepsonse(loginResult);
             return true;
         } catch (TaskException e) {
             e.printStackTrace();

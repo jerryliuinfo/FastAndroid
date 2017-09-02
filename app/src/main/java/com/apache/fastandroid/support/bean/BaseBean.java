@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by 01370340 on 2017/9/1.
  */
 
-public class BaseBean implements Serializable {
+public class BaseBean<T> implements Serializable {
     private String code;
     private String msg;
 

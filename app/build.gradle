@@ -118,7 +118,7 @@ android {
     productFlavors {
         dev {
             //不同渠道，不同包名
-            applicationId "com.fast.adnroid.test"
+            applicationId "com.fast.adnroid"
             signingConfig signingConfigs.dev
             versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染
             manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name,PACKAGE_NAME: applicationId]

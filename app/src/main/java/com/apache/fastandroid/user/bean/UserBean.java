@@ -1,6 +1,5 @@
 package com.apache.fastandroid.user.bean;
 
-import com.apache.fastandroid.support.bean.BaseBean;
 import com.apache.fastandroid.support.exception.ICheck;
 import com.tesla.framework.network.task.TaskException;
 
@@ -8,7 +7,7 @@ import com.tesla.framework.network.task.TaskException;
  * Created by jerryliu on 2017/7/9.
  */
 
-public class UserBean extends BaseBean implements ICheck {
+public class UserBean  implements ICheck {
     private String userName;
     private String password;
     private String token;
