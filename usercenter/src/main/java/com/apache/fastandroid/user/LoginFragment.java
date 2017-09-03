@@ -12,9 +12,12 @@ import android.widget.Button;
 
 import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserBean;
+import com.apache.fastandroid.user.sdk.UserSDK;
 import com.apache.fastandroid.usercenter.R;
 import com.tesla.framework.common.util.KeyGenerator;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.network.task.WorkTask;
@@ -65,6 +68,9 @@ public class LoginFragment extends BaseFragment {
 
         mUserNameinputLayout.setHint("UserName");
         mPwdInputLayout.setHint("Password");
+
+        mUserNameinputLayout.getEditText().setText("liuxiangxiang1234@163.com");
+        mPwdInputLayout.getEditText().setText("gree3502");
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,8 +104,7 @@ public class LoginFragment extends BaseFragment {
 
 
 
-
-    class LoginTask extends WorkTask<String,Void,UserBean>{
+    class LoginTask extends WorkTask<String,Void,Token>{
 
         @Override
         protected void onPrepare() {
@@ -108,20 +113,32 @@ public class LoginFragment extends BaseFragment {
         }
 
         @Override
-        public UserBean workInBackground(String... params) throws TaskException {
+        public Token workInBackground(String... params) throws TaskException {
+
+            boolean result = false;
+            Token token = null;
             try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
+                token = UserSDK.newInstance().login(params[0],params[1]);
+                NLog.d(TAG, "token = %s", token);
+                if (token != null){
+                    result = true;
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            return UserSDK.newInstance().doLogin(params[0],params[1]);
+            if (result){
+                return token;
+            }
+            throw new TaskException("Get token error");
+
         }
 
         @Override
-        protected void onSuccess(UserBean userBean) {
-            super.onSuccess(userBean);
-            loginSuccess(userBean);
+        protected void onSuccess(Token token) {
+            super.onSuccess(token);
+            loginSuccess(token);
         }
+
 
         @Override
         protected void onFailure(TaskException exception) {
@@ -134,6 +151,28 @@ public class LoginFragment extends BaseFragment {
             super.onFinished();
             ViewUtils.dismissProgressDialog();
         }
+    }
+
+
+    public void loginSuccess(Token token) {
+        showMessage("登录成功");
+
+
+        UserBean userBean = new UserBean();
+        userBean.setUserName(mUserNameinputLayout.getEditText().getText().toString());
+        userBean.setPassword(mPwdInputLayout.getEditText().getText().toString());
+        UserConfigManager.getInstance().saveUserBean(userBean);
+        UserConfigManager.getInstance().saveToken(token);
+
+
+        //MainActivity.launch(getActivity());
+        Object[] extras = new Object[]{getActivity()};
+        try {
+            ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:moduleMain:startMainActivity",null,null,extras);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        getActivity().finish();
     }
 
     public void loginSuccess(UserBean userBean) {

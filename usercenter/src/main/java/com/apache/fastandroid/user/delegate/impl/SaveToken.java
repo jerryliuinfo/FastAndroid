@@ -4,20 +4,22 @@ import android.os.Bundle;
 
 import com.apache.fastandroid.artemis.comBridge.DelegateException;
 import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
-import com.apache.fastandroid.user.sdk.UserSDK;
-import com.tesla.framework.network.task.TaskException;
+import com.apache.fastandroid.artemis.support.bean.Token;
+import com.apache.fastandroid.user.UserConfigManager;
 
 /**
  * Created by 01370340 on 2017/9/3.
  */
 
-public class AutoLogin implements IActionDelegate {
+public class SaveToken implements IActionDelegate {
     @Override
     public void runAction(Bundle args, IActionCallback callback, Object... extras) throws DelegateException {
-        try {
-            UserSDK.newInstance().doAutoLogin(callback);
-        } catch (TaskException e) {
-            e.printStackTrace();
+
+        if (args != null){
+            Token token = (Token) args.getSerializable("token");
+            if (token != null){
+                UserConfigManager.getInstance().saveToken(token);
+            }
         }
     }
 }

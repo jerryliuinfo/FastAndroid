@@ -81,7 +81,9 @@ public class MainActivity extends BaseActivity{
         ImageView iv_arrow = (ImageView) headView.findViewById(R.id.iv_arrow);
 
 
-        tv_username.setText(AppContext.getUserBean().getUserName());
+        if (AppContext.getUserBean() != null){
+            tv_username.setText(AppContext.getUserBean().getUserName());
+        }
 
     }
 
@@ -160,20 +162,7 @@ public class MainActivity extends BaseActivity{
                 return;
         }
 
-        /*
-        if (itemId == R.id.nav_item_pic){
 
-        }else if (itemId == R.id.nav_item_video){
-
-        }else if (itemId == R.id.nav_item_music){
-
-        }else if (itemId == R.id.nav_item_setting){
-            SettingFragment.launch(this);
-            closeDrawer();
-
-            selecteId = itemId;
-            return;
-        }*/
         if (fragment != null){
             getSupportActionBar().setTitle(title);
             getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();

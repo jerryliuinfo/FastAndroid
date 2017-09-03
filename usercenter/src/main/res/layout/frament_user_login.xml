@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:hint="账号"
+            android:text="liuxiangxiang1234@163.com"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:hint="密码"
+            android:text="gree3502"
             />
     </android.support.design.widget.TextInputLayout>
 

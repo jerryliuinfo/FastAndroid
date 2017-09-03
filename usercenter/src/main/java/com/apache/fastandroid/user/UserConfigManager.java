@@ -71,7 +71,6 @@ public class UserConfigManager extends BaseSharedPreferenceConfigManager{
     }
 
     public Token getToken(){
-        //return (Token) cache.getAsObject("token");
         String token = getStringValue("token", null);
         if (!TextUtils.isEmpty(token)){
             return new Gson().fromJson(token,Token.class);

@@ -3,6 +3,7 @@ package com.apache.fastandroid.app;
 import android.content.Context;
 
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserBean;
 import com.tesla.framework.common.util.ActivityTaskMgr;
 
@@ -42,5 +43,10 @@ public class AppContext {
     public static void login(UserBean userBean){
         setUserBean(userBean);
     }
+
+    public static void login(Token token){
+
+    }
+
 
 }

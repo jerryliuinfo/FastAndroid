@@ -1,26 +1,16 @@
 package com.apache.fastandroid.video;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.apache.fastandroid.R;
 import com.apache.fastandroid.video.bean.VideoBean;
 import com.apache.fastandroid.video.bean.VideoResultBean;
+import com.apache.fastandroid.video.view.VideoItemViewCreator;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
-import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
 import com.tesla.framework.ui.fragment.ARecycleViewFragment;
-import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
-import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
 import java.util.List;
@@ -76,17 +66,7 @@ public class VideoFragment extends ARecycleViewFragment<VideoBean,VideoResultBea
 
     @Override
     protected IItemViewCreator<VideoBean> configItemViewCreator() {
-        return new IItemViewCreator<VideoBean>() {
-            @Override
-            public View newContentView(LayoutInflater inflater, ViewGroup parent, int viewType) {
-                return inflater.inflate(ImageItemView.LAY_RES,parent,false);
-            }
-
-            @Override
-            public IITemView<VideoBean> newItemView(View contentView, int viewType) {
-                return new ImageItemView(getActivity(),contentView);
-            }
-        };
+        return new VideoItemViewCreator(getActivity());
     }
 
 
@@ -114,31 +94,5 @@ public class VideoFragment extends ARecycleViewFragment<VideoBean,VideoResultBea
     }
 
 
-    static class ImageItemView extends ARecycleViewItemViewHolder<VideoBean> {
-        public static final int LAY_RES = R.layout.item_video;
-        @ViewInject(id = R.id.iv_cover)
-        ImageView iv_cover;
-        @ViewInject(id = R.id.tv_desc)
-        TextView tv_desc;
-
-        @ViewInject(id = R.id.ib_play)
-        ImageButton ib_play;
-
-        public ImageItemView(Activity context, View itemView) {
-            super(context, itemView);
-        }
-
-        @Override
-        public void onBindData(View convertView, VideoBean data, int position) {
-            ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(iv_cover,data.thumbnail_v2));
-            tv_desc.setText(data.title);
-            ib_play.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-        }
-    }
 
 }

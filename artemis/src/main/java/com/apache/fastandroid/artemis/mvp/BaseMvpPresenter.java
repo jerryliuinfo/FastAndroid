@@ -1,4 +1,4 @@
-package com.apache.fastandroid.mvp;
+package com.apache.fastandroid.artemis.mvp;
 
 import java.lang.ref.WeakReference;
 
