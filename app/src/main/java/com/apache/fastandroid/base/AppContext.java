@@ -17,6 +17,11 @@ public class AppContext {
         mUserBean =  userBean;
     }
 
+    public static UserBean getUserBean(){
+        return mUserBean;
+    }
+
+
     public static void logout(){
         mUserBean = null;
 

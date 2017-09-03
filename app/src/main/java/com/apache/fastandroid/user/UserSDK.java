@@ -1,5 +1,6 @@
 package com.apache.fastandroid.user;
 
+import com.apache.fastandroid.base.AppContext;
 import com.apache.fastandroid.support.sdk.BaseBizLogic;
 import com.apache.fastandroid.user.bean.UserBean;
 import com.apache.fastandroid.user.bean.UserResponseBean;
@@ -50,12 +51,16 @@ public class UserSDK extends BaseBizLogic {
         UserBean userBean = UserConfigManager.getInstance().getUserBean();
         try {
             UserBean loginResult =  doLogin(userBean.getUserName(),userBean.getPassword());
-            return true;
+            if (loginResult != null){
+                AppContext.login(loginResult);
+                return true;
+            }
         } catch (TaskException e) {
             e.printStackTrace();
         }
         return false;
     }
+
 
 
 

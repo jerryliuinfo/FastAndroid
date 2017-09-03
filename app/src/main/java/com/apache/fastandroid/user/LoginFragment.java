@@ -12,7 +12,6 @@ import android.widget.Button;
 
 import com.apache.fastandroid.MainActivity;
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.base.AppContext;
 import com.apache.fastandroid.base.BaseFragment;
 import com.apache.fastandroid.user.bean.UserBean;
 import com.tesla.framework.common.util.KeyGenerator;
@@ -143,7 +142,7 @@ public class LoginFragment extends BaseFragment {
         String encrypedPwd = KeyGenerator.generateMD5(userBean.getPassword());
 
         UserConfigManager.getInstance().saveUserBean(userBean);
-        AppContext.login(userBean);
+
 
 
         MainActivity.launch(getActivity());

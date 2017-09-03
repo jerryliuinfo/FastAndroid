@@ -12,7 +12,7 @@ ext {
     targetCompatibilityVersion = JavaVersion.VERSION_1_7
 
 
-    supportLibrariesVersion = '25.0.0'
+    supportLibrariesVersion = '25.3.1'
     glideVersion = "3.7.0"
     okhttp3Version = "3.6.0"
     designVersion = "25.3.1"

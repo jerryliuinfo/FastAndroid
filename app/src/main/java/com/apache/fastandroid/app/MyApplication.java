@@ -8,6 +8,7 @@ import android.support.multidex.MultiDexApplication;
 
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.FastActivityHelper;
+import com.apache.fastandroid.base.bean.OAuth;
 import com.apache.fastandroid.support.exception.FastAndroidErrorMsg;
 import com.apache.fastandroid.support.imageloader.GlideImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
@@ -29,6 +30,10 @@ public class MyApplication extends MultiDexApplication{
     public static final String TAG = MyApplication.class.getSimpleName();
     private static Context mContext;
     private ActivityLifecycleCallbacks activityLifecycleCallbacks;
+
+    public static final String client_id = "7024a413";
+    public static final String client_secret = "8404fa33ae48d3014cfa89deaa674e4cbe6ec894a57dbef4e40d083dbbaa5cf4";
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -48,6 +53,7 @@ public class MyApplication extends MultiDexApplication{
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
         ImageLoaderManager.getInstance().setImageLoaderStrategy(new GlideImageLoader());
         BaseActivity.setHelper(FastActivityHelper.class);
+        initAuth();
 
     }
 
@@ -96,5 +102,11 @@ public class MyApplication extends MultiDexApplication{
             }
         }
         return res;
+    }
+
+
+    private void initAuth(){
+        OAuth.client_id = client_id;
+        OAuth.client_secret = client_secret;
     }
 }

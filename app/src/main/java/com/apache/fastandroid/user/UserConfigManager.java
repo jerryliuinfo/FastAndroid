@@ -1,7 +1,9 @@
 package com.apache.fastandroid.user;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.apache.fastandroid.user.bean.Token;
 import com.apache.fastandroid.user.bean.UserBean;
 import com.google.gson.Gson;
 import com.tesla.framework.common.util.BaseSharedPreferenceConfigManager;
@@ -61,6 +63,24 @@ public class UserConfigManager extends BaseSharedPreferenceConfigManager{
             return  new Gson().fromJson(userInfoStr,UserBean.class);
         }
         return null;
+    }
+
+
+    public void saveToken(@NonNull Token token){
+        setStringValue("token", new Gson().toJson(token));
+    }
+
+    public Token getToken(){
+        //return (Token) cache.getAsObject("token");
+        String token = getStringValue("token", null);
+        if (!TextUtils.isEmpty(token)){
+            return new Gson().fromJson(token,Token.class);
+        }
+        return null;
+    }
+
+    public void clearToken(){
+        setStringValue("token", "");
     }
 
 

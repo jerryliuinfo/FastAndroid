@@ -4,12 +4,12 @@
               android:layout_width="match_parent"
               android:layout_height="148dp"
               android:orientation="vertical"
-              android:background="@drawable/bg_banner_dialog"
+              android:background="@drawable/nav_menu_header_bg"
     >
 
 
     <com.tesla.framework.ui.widget.CircleImageView
-        android:id="@+id/material_drawer_account_header_current"
+        android:id="@+id/iv_user_avator"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_alignParentLeft="true"
@@ -23,7 +23,7 @@
 
 
         <RelativeLayout
-            android:id="@+id/material_drawer_account_header_text_section"
+            android:id="@+id/layout_user"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"
@@ -36,7 +36,7 @@
             >
 
             <TextView
-                android:id="@+id/material_drawer_account_header_name"
+                android:id="@+id/tv_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -48,7 +48,7 @@
                 android:textSize="14sp"/>
 
             <ImageView
-                android:id="@+id/material_drawer_account_header_text_switcher"
+                android:id="@+id/iv_arrow"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_alignParentRight="true"

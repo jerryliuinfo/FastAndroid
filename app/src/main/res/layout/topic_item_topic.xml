@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2017 GcsSloop
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Last modified 2017-03-08 01:01:18
+  ~
+  ~ GitHub:  https://github.com/GcsSloop
+  ~ Website: http://www.gcssloop.com
+  ~ Weibo:   http://weibo.com/GcsSloop
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".4dp"
+        android:background="@color/diy_gray"/>
+
+    <RelativeLayout
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/diy_white"
+        android:paddingBottom="16dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="16dp">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/avatar"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            tools:text="diytest"/>
+
+        <TextView
+            android:id="@+id/point"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/username"
+            android:gravity="center_vertical"
+            android:text="·"
+            android:textColor="@color/diy_gray"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_toRightOf="@+id/point"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/diy_gray"
+            android:textSize="12sp"
+            tools:text="1分钟前"/>
+
+        <LinearLayout
+            android:id="@+id/content_wrap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/avatar"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/avatar"
+                android:layout_marginRight="16dp"
+                android:paddingTop="8dp"
+                android:text="GcsTest(测试节点)"
+                android:textColor="@color/diy_black"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:maxLines="3"
+                android:text="《提问的智慧》就是一个敲门砖，它把黑客间的礼仪和准则明白地写下来。它会让你了解到一个事实，为什么那些看起来很牛的人几乎从不提问，似乎他们一进入这个行业就是牛人了。不是的，他们也有问题，但是通常在提问之前就自己解决了；不是因为他们本来就懂得怎么解决，而是解决问题的经历让他们成为牛人；最终，你只会看到网络上多了一篇文章：关于解决XXX问题的方案。」"
+                android:textColor="@color/diy_gray2"
+                android:textSize="12sp"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/content_wrap"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp">
+
+            <TextView
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:background="@drawable/topic_node_name_bg"
+                android:textColor="@color/diy_red2"
+                android:id="@+id/node_name"
+                tools:text="Android"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_marginLeft="4dp"
+                android:textSize="12sp"
+                android:textColor="@color/diy_gray2"
+                android:id="@+id/state"
+                tools:text="阅读100 · 评论0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/collection"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/content_wrap"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="12dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_collection_default"
+            android:visibility="gone"/>
+
+
+        <ImageView
+            android:id="@+id/like"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_below="@+id/content_wrap"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="11dp"
+            android:layout_toLeftOf="@+id/collection"
+            android:padding="2dp"
+            android:src="@drawable/ic_like_default"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+</LinearLayout>

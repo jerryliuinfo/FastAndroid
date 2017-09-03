@@ -11,9 +11,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.apache.fastandroid.setting.SettingFragment;
+import com.apache.fastandroid.base.AppContext;
 import com.apache.fastandroid.pic.PicTabsFragment;
+import com.apache.fastandroid.setting.SettingFragment;
+import com.apache.fastandroid.topic.MainTabsFragment;
 import com.apache.fastandroid.video.VideoTabsFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
@@ -21,6 +25,7 @@ import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.ui.widget.CircleImageView;
 
 public class MainActivity extends BaseActivity{
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -58,13 +63,24 @@ public class MainActivity extends BaseActivity{
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
         setupNavigationView();
-
+        loadMenuData();
 
 
         onMenuItemClicked(R.id.nav_item_pic, ResUtil.getString(R.string.nav_pic));
 
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
 
+
+    }
+
+    private void loadMenuData(){
+        View headView = mNavigationView.getHeaderView(0);
+        CircleImageView circleImageView = (CircleImageView) headView.findViewById(R.id.iv_user_avator);
+        TextView tv_username = (TextView) headView.findViewById(R.id.tv_username);
+        ImageView iv_arrow = (ImageView) headView.findViewById(R.id.iv_arrow);
+
+
+        tv_username.setText(AppContext.getUserBean().getUserName());
 
     }
 
@@ -122,6 +138,9 @@ public class MainActivity extends BaseActivity{
     public void onMenuItemClicked(int itemId, String title){
         Fragment fragment = null;
         switch (itemId){
+            case R.id.nav_item_posts:
+                fragment = MainTabsFragment.newFragment();
+                break;
             case R.id.nav_item_pic:
                 fragment = PicTabsFragment.newFragment();
                 break;

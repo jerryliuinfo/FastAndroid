@@ -238,7 +238,8 @@ dependencies {
     compile thirddependencies.multidex
     /*compile dep.bugly*/
 
-    compile_library(getProject())
+    //compile_library(getProject())
+    compile project(':library')
 
     compile thirddependencies.junit
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'

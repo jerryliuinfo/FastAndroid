@@ -5,6 +5,7 @@
 
 
     <!--导航栏-->
+    <string name="nav_posts">主题帖子</string>
     <string name="nav_pic">图片浏览</string>
     <string name="nav_video">视频爽看</string>
     <string name="nav_musici">音乐轻听</string>
