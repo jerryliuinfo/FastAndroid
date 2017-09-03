@@ -8,10 +8,13 @@ import android.support.multidex.MultiDexApplication;
 
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.FastActivityHelper;
+import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.base.bean.OAuth;
+import com.apache.fastandroid.delegate.MainDelegateFactory;
 import com.apache.fastandroid.support.exception.FastAndroidErrorMsg;
 import com.apache.fastandroid.support.imageloader.GlideImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
+import com.apache.fastandroid.user.delegate.UsercenterDelegateFactory;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.CrashHandler;
 import com.tesla.framework.common.util.log.Logger;
@@ -38,6 +41,8 @@ public class MyApplication extends MultiDexApplication{
     public void onCreate() {
         super.onCreate();
         mContext = this;
+        ModularizationDelegate.getInstance().register("com.apache.fastandroid:moduleMain",new MainDelegateFactory());
+        ModularizationDelegate.getInstance().register("com.apache.fastandroid:userCenter",new UsercenterDelegateFactory());
         if (BuildConfig.LOG_DEBUG){
             NLog.setDebug(true, Logger.DEBUG);
         }

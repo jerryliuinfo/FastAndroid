@@ -1,4 +1,4 @@
-package com.apache.fastandroid.base;
+package com.apache.fastandroid.artemis.base;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;

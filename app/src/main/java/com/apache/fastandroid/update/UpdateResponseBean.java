@@ -1,6 +1,6 @@
 package com.apache.fastandroid.update;
 
-import com.apache.fastandroid.support.bean.BaseBean;
+import com.apache.fastandroid.artemis.support.bean.BaseBean;
 
 /**
  * Created by 01370340 on 2017/9/2.

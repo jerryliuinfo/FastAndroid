@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 
 android {
-
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
 
@@ -12,7 +11,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -22,23 +20,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-//    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    })
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
     compile thirddependencies.appcompatV7
 
-    compile thirddependencies.cardview
-
-    compile thirddependencies.design
-    compile thirddependencies.rxandroid
-    compile thirddependencies.rxjava
-
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    //compile 'com.squareup.okhttp3:logging-interceptor:2.1.0'
-    compile ("com.squareup.retrofit2:retrofit:2.1.0"){
-        exclude group: "com.squareup.okhttp3"
-    }
-
-    compile project(':library')
+    compile project(':artemis')
 }

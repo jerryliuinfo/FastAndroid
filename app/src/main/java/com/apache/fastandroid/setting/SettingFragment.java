@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.base.AppContext;
+import com.apache.fastandroid.app.AppContext;
+import com.apache.fastandroid.app.MyApplication;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
@@ -42,7 +43,7 @@ public class SettingFragment extends ABaseFragment {
         tv_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppContext.logout();
+                AppContext.logout(MyApplication.getContext());
             }
         });
     }

@@ -1,4 +1,4 @@
-package com.apache.fastandroid.base;
+package com.apache.fastandroid.artemis.base;
 
 import com.tesla.framework.ui.activity.BaseActivity;
 

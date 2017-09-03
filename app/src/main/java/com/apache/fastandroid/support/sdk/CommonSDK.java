@@ -1,6 +1,7 @@
 package com.apache.fastandroid.support.sdk;
 
 import com.apache.fastandroid.app.MyApplication;
+import com.apache.fastandroid.artemis.BaseBizLogic;
 import com.apache.fastandroid.support.config.PublishVersionManager;
 import com.apache.fastandroid.support.http.BaseHttpUtils;
 import com.apache.fastandroid.update.UpdateBean;
@@ -16,7 +17,7 @@ import retrofit2.Response;
  * 一些公用的接口请求，例如版本更新
  */
 
-public class CommonSDK extends BaseBizLogic{
+public class CommonSDK extends BaseBizLogic {
     @Override
     protected HttpConfig configHttpConfig() {
         return new HttpConfig();

@@ -1,4 +1,4 @@
-package com.apache.fastandroid.support.exception;
+package com.apache.fastandroid.artemis.support.exception;
 
 import com.tesla.framework.network.task.TaskException;
 

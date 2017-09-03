@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import com.apache.fastandroid.app.AppContext;
+import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
+import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.support.bean.UserBean;
 import com.apache.fastandroid.support.config.ADConfigManager;
 import com.apache.fastandroid.ui.widget.SplashCountDownView;
-import com.apache.fastandroid.user.LoginFragment;
-import com.apache.fastandroid.user.UserSDK;
 import com.tesla.framework.common.util.ResUtil;
-import com.tesla.framework.network.task.TaskException;
-import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 
@@ -56,40 +56,85 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void toLogin(){
-        LoginFragment.start(this);
+        //LoginFragment.start(this);
+        Object[] extras = new Object[]{SplashActivity.this};
+        try {
+            ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:startLoginActivity",null,null,extras);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        SplashActivity.this.finish();
     }
 
     private void toMain(){
         MainActivity.launch(SplashActivity.this);
+        SplashActivity.this.finish();
     }
 
     private void jump(){
-        new WorkTask<Void,Void,Boolean>(){
-
+        IActionDelegate.IActionCallback callback = new IActionDelegate.IActionCallback() {
             @Override
-            public Boolean workInBackground(Void... params) throws TaskException {
-                return UserSDK.newInstance().autoLoginSuccess();
+            public void onActionPrepare() {
+
             }
 
             @Override
-            protected void onSuccess(Boolean aBoolean) {
-                super.onSuccess(aBoolean);
-                if (aBoolean){
+            public void onActionSuccess(Object... result) {
+                toMain();
+                AppContext.login((UserBean) result[0]);
+            }
+
+            @Override
+            public void onActionFailed(int code, String msg) {
+                toLogin();
+            }
+
+            @Override
+            public void onActionFinish() {
+
+            }
+        };
+        try {
+            ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:autoLogin", null, callback, new Object[]{});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+       /* new WorkTask<Void,Void,UserBean>(){
+
+            @Override
+            public UserBean workInBackground(Void... params) throws TaskException {
+                return UserSDK.newInstance().doAutoLogin();
+            }
+
+            @Override
+            protected void onSuccess(UserBean userBean) {
+                super.onSuccess(userBean);
+                if (userBean != null){
                     toMain();
                 }else {
                     toLogin();
                 }
-                SplashActivity.this.finish();
             }
+
+            *//*@Override
+            protected void onSuccess(UserBean aBoolean) {
+                super.onSuccess(aBoolean);
+                if (aBoolean){
+                    toMain();
+
+                }else {
+                    toLogin();
+                }
+            }*//*
 
             @Override
             protected void onFailure(TaskException exception) {
                 super.onFailure(exception);
                 toLogin();
-                SplashActivity.this.finish();
             }
 
-        }.execute();
+        }.execute();*/
 
     }
 

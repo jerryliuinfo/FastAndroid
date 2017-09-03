@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
-import com.apache.fastandroid.MainActivity;
-import com.apache.fastandroid.R;
-import com.apache.fastandroid.base.BaseFragment;
-import com.apache.fastandroid.user.bean.UserBean;
+import com.apache.fastandroid.artemis.base.BaseFragment;
+import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.support.bean.UserBean;
+import com.apache.fastandroid.usercenter.R;
 import com.tesla.framework.common.util.KeyGenerator;
 import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.network.task.TaskException;
@@ -145,7 +145,13 @@ public class LoginFragment extends BaseFragment {
 
 
 
-        MainActivity.launch(getActivity());
+        //MainActivity.launch(getActivity());
+        Object[] extras = new Object[]{getActivity()};
+        try {
+            ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:moduleMain:startMainActivity",null,null,extras);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         getActivity().finish();
     }
 

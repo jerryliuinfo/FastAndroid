@@ -1,4 +1,4 @@
-package com.apache.fastandroid.support.bean;
+package com.apache.fastandroid.artemis.support.bean;
 
 import java.io.Serializable;
 

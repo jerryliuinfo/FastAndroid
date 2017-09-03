@@ -1,7 +1,7 @@
-package com.apache.fastandroid.support.sdk;
+package com.apache.fastandroid.artemis;
 
-import com.apache.fastandroid.support.bean.BaseBean;
-import com.apache.fastandroid.support.exception.ICheck;
+import com.apache.fastandroid.artemis.support.bean.BaseBean;
+import com.apache.fastandroid.artemis.support.exception.ICheck;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.task.TaskException;
 

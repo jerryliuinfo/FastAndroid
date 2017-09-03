@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from: rootProject.file('config.gradle')
 apply from: rootProject.file('version.gradle')
-apply from: rootProject.file('module.gradle')
+//apply from: rootProject.file('module.gradle')
 
 buildscript {
     repositories {

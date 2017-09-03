@@ -1,6 +1,6 @@
 package com.apache.fastandroid.user.support;
 
-import com.apache.fastandroid.user.bean.UserBean;
+import com.apache.fastandroid.artemis.support.bean.UserBean;
 import com.apache.fastandroid.user.bean.UserResponseBean;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.http.HttpConfig;

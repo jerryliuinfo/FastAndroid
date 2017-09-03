@@ -1,13 +1,13 @@
-package com.apache.fastandroid.user.bean;
+package com.apache.fastandroid.artemis.support.bean;
 
-import com.apache.fastandroid.support.exception.ICheck;
+import com.apache.fastandroid.artemis.support.exception.ICheck;
 import com.tesla.framework.network.task.TaskException;
 
 /**
  * Created by jerryliu on 2017/7/9.
  */
 
-public class UserBean  implements ICheck {
+public class UserBean implements ICheck {
     private String userName;
     private String password;
     private String token;

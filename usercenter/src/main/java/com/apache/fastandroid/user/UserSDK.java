@@ -1,8 +1,8 @@
 package com.apache.fastandroid.user;
 
-import com.apache.fastandroid.base.AppContext;
-import com.apache.fastandroid.support.sdk.BaseBizLogic;
-import com.apache.fastandroid.user.bean.UserBean;
+import com.apache.fastandroid.artemis.BaseBizLogic;
+import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
+import com.apache.fastandroid.artemis.support.bean.UserBean;
 import com.apache.fastandroid.user.bean.UserResponseBean;
 import com.apache.fastandroid.user.support.UserCenterHttpUtility;
 import com.tesla.framework.common.setting.Setting;
@@ -44,7 +44,7 @@ public class UserSDK extends BaseBizLogic {
 
 
 
-    public boolean autoLoginSuccess(){
+    public boolean canAutoLogin(){
         if (!UserConfigManager.getInstance().isLastTimeLogined()){
             return false;
         }
@@ -52,17 +52,45 @@ public class UserSDK extends BaseBizLogic {
         try {
             UserBean loginResult =  doLogin(userBean.getUserName(),userBean.getPassword());
             if (loginResult != null){
-                AppContext.login(loginResult);
                 return true;
             }
         } catch (TaskException e) {
             e.printStackTrace();
         }
-        return false;
+        return   false;
     }
 
 
+    public void doAutoLogin(IActionDelegate.IActionCallback callback) throws TaskException{
+        if (!UserConfigManager.getInstance().isLastTimeLogined()){
+            callback.onActionFailed(-1, "");
+            callback.onActionFinish();
+            return ;
+        }else {
+            UserBean userBean = UserConfigManager.getInstance().getUserBean();
+            boolean result = false;
+            UserBean loginResult = null;
+            try {
+                loginResult =  doLogin(userBean.getUserName(),userBean.getPassword());
+                if (loginResult != null){
+                    result = true;
+                }
+            } catch (TaskException e) {
+                e.printStackTrace();
 
+            }
+            if (result){
+                callback.onActionSuccess(loginResult);
+
+            }else {
+                callback.onActionFailed(-1, "");
+            }
+            callback.onActionFinish();
+        }
+
+
+
+    }
 
 
 

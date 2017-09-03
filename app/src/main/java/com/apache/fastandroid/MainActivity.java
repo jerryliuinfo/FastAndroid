@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.apache.fastandroid.base.AppContext;
+import com.apache.fastandroid.app.AppContext;
 import com.apache.fastandroid.pic.PicTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.topic.MainTabsFragment;
@@ -66,7 +66,8 @@ public class MainActivity extends BaseActivity{
         loadMenuData();
 
 
-        onMenuItemClicked(R.id.nav_item_pic, ResUtil.getString(R.string.nav_pic));
+        onMenuItemClicked(R.id.nav_item_posts, ResUtil.getString(R.string.nav_posts));
+
 
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
 
