@@ -2,11 +2,11 @@ package com.apache.fastandroid.support.http;
 
 import android.content.Context;
 
-import com.apache.fastandroid.base.bean.OAuth;
+import com.apache.fastandroid.artemis.support.bean.OAuth;
+import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.user.TokenService;
 import com.apache.fastandroid.user.UserConfigManager;
 import com.apache.fastandroid.user.UserConstans;
-import com.apache.fastandroid.user.bean.Token;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -91,7 +91,6 @@ public class BaseHttpUtilsV2 {
     }
 
     public static Hashtable<String,BaseHttpUtilsV2> cacheMap = new Hashtable<>();
-//    private static volatile BaseHttpUtils baseHttpUtils;
     public static BaseHttpUtilsV2 getInstance(Context context, String serverUrl){
         BaseHttpUtilsV2 baseHttpUtils = cacheMap.get(serverUrl);
         if (baseHttpUtils == null){
@@ -145,11 +144,6 @@ public class BaseHttpUtilsV2 {
 
             mOKHttpClient = okBuilder.build();
         }
-
-
-
-
-
         builder.client(mOKHttpClient);
         builder.addConverterFactory(new StringConverterFactory());
         builder.addConverterFactory(GsonConverterFactory.create());
@@ -219,18 +213,7 @@ public class BaseHttpUtilsV2 {
     }
 
 
-    /**
-     * Generate a default OKHttpClient with default parameter.
-     * If you have special requirements, please create by yourself.
-     * @return
-     */
-    public static synchronized OkHttpClient getDefaultOkHttpClient(OkHttpClient.Builder builder ) {
-        if( sDefaultHttpClient == null) {
-//        builder.addInterceptor()
-            sDefaultHttpClient = builder.build();
-        }
-        return sDefaultHttpClient;
-    }
+
 
     public OkHttpClient.Builder buildDefalutClient(Context context) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -244,8 +227,4 @@ public class BaseHttpUtilsV2 {
         return builder;
     }
 
-
-//    public static void setDefaultUrl(String defaultUrl) {
-//        DEFAULT_URL = defaultUrl;
-//    }
 }

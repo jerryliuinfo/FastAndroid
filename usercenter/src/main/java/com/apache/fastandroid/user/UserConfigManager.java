@@ -3,8 +3,8 @@ package com.apache.fastandroid.user;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserBean;
-import com.apache.fastandroid.user.bean.Token;
 import com.google.gson.Gson;
 import com.tesla.framework.common.util.BaseSharedPreferenceConfigManager;
 

@@ -1,6 +1,7 @@
 package com.apache.fastandroid.topic.sdk;
 
 import com.apache.fastandroid.app.MyApplication;
+import com.apache.fastandroid.topic.TopicConstans;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
 import com.apache.fastandroid.support.http.BaseHttpUtilsV2;
@@ -27,7 +28,7 @@ public class TopicSDK extends ABizLogic {
     }
 
     public TopicBeans getTopicsList(String type, Integer node_id, int offset, int limit) throws Exception{
-        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(MyApplication.getContext(), "https://diycode.cc/api/v3/");
+        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(MyApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
         Call<List<TopicBean>> call =  apiService.getTopicsList(type,node_id,offset,limit);
         if (call != null){

@@ -5,6 +5,7 @@ import com.apache.fastandroid.artemis.comBridge.IDataDelegate;
 import com.apache.fastandroid.artemis.comBridge.IDelegateFactory;
 import com.apache.fastandroid.artemis.comBridge.IObjectDataDelegate;
 import com.apache.fastandroid.delegate.impl.Login;
+import com.apache.fastandroid.delegate.impl.Logout;
 import com.apache.fastandroid.delegate.impl.StartMainActivity;
 
 /**
@@ -14,6 +15,7 @@ import com.apache.fastandroid.delegate.impl.StartMainActivity;
 public class MainDelegateFactory implements IDelegateFactory {
     public static final String ACTION_START_MAINACTIVITY = "startMainActivity";
     public static final String ACTION_LOGIN= "login";
+    public static final String ACTION_LOGOUT= "logout";
     @Override
     public IDataDelegate getDataTransfer(String action) {
         return null;
@@ -26,6 +28,8 @@ public class MainDelegateFactory implements IDelegateFactory {
                 return new StartMainActivity();
             case ACTION_LOGIN:
                 return new Login();
+            case ACTION_LOGOUT:
+                return new Logout();
         }
         return null;
     }

@@ -41,7 +41,7 @@
         android:text="@string/splash_countdown_count"
         android:visibility="gone"
         />
-    <com.apache.fastandroid.ui.widget.SplashCountDownView
+    <com.apache.fastandroid.widget.SplashCountDownView
         android:id="@+id/splash_coutdown_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

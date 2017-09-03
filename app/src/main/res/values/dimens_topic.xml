@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <dimen name="topic_item_padding_vertical">16dp</dimen>
+    <dimen name="topic_item_padding_horizontal">20dp</dimen>
+
+
     <dimen name="panel_space_1">24dp</dimen>
     <dimen name="panel_text_1">12sp</dimen>
     <dimen name="panel_space_2">36dp</dimen>
     <dimen name="panel_text_2">16dp</dimen>
+
+
+
 </resources>

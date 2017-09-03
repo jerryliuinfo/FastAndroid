@@ -65,13 +65,12 @@ public class MainActivity extends BaseActivity{
         setupNavigationView();
         loadMenuData();
 
-
-        onMenuItemClicked(R.id.nav_item_posts, ResUtil.getString(R.string.nav_posts));
+        MenuItem menuItem = mNavigationView.getMenu().findItem(R.id.nav_item_posts);
+        menuItem.setChecked(true);
+        onMenuItemClicked(R.id.nav_item_posts,menuItem.getTitle().toString());
 
 
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
-
-
     }
 
     private void loadMenuData(){
@@ -129,9 +128,10 @@ public class MainActivity extends BaseActivity{
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                NLog.d(TAG, "onNavigationItemSelected item title = %s", item.getTitle());
                 item.setChecked(true);
                 onMenuItemClicked(item.getItemId(), item.getTitle().toString());
-                return false;
+                return true;
             }
         });
     }

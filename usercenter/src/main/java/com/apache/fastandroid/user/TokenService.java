@@ -1,6 +1,6 @@
 package com.apache.fastandroid.user;
 
-import com.apache.fastandroid.user.bean.Token;
+import com.apache.fastandroid.artemis.support.bean.Token;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

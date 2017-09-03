@@ -1,4 +1,4 @@
-package com.apache.fastandroid.ui.widget;
+package com.apache.fastandroid.widget;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

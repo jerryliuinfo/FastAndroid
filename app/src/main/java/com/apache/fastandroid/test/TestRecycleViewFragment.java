@@ -1,4 +1,4 @@
-package com.apache.fastandroid.ui.fragment;
+package com.apache.fastandroid.test;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.apache.fastandroid.ui.HeadItemViewHolder;
 import com.apache.fastandroid.R;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.bean.HeaderBean;

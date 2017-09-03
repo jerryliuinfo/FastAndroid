@@ -1,10 +1,9 @@
-package com.apache.fastandroid.ui;
+package com.apache.fastandroid.test;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.apache.fastandroid.ui.fragment.TestRecycleViewFragment;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.bean.HeaderBean;
 import com.tesla.framework.support.inject.ViewInject;

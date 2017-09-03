@@ -20,7 +20,7 @@
  * Weibo:   http://weibo.com/GcsSloop
  */
 
-package com.apache.fastandroid.base.bean;
+package com.apache.fastandroid.artemis.support.bean;
 
 public class OAuth {
     // 认证类型

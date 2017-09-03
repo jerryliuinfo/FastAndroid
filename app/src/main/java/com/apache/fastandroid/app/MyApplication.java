@@ -9,7 +9,7 @@ import android.support.multidex.MultiDexApplication;
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.FastActivityHelper;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
-import com.apache.fastandroid.base.bean.OAuth;
+import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.delegate.MainDelegateFactory;
 import com.apache.fastandroid.support.exception.FastAndroidErrorMsg;
 import com.apache.fastandroid.support.imageloader.GlideImageLoader;

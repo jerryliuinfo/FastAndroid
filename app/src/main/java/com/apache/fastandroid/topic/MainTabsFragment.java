@@ -2,7 +2,7 @@ package com.apache.fastandroid.topic;
 
 import android.support.v4.app.Fragment;
 
-import com.apache.fastandroid.topic.fragment.TopicFragment;
+import com.apache.fastandroid.news.NewsFragment;
 import com.tesla.framework.support.bean.TabItem;
 import com.tesla.framework.ui.fragment.ATabsTabLayoutFragment;
 
@@ -21,14 +21,19 @@ public class MainTabsFragment extends ATabsTabLayoutFragment<TabItem> {
     @Override
     protected ArrayList<TabItem> generateTabs() {
         ArrayList<TabItem> tabItems = new ArrayList<>();
-        tabItems.add(new TabItem("0", "Topics"));
-        tabItems.add(new TabItem("1", "News"));
-        tabItems.add(new TabItem("2", "Sites"));
+        tabItems.add(new TabItem("0", "主题"));
+        tabItems.add(new TabItem("1", "资讯"));
+        tabItems.add(new TabItem("2", "站点"));
         return tabItems;
     }
 
     @Override
     public Fragment newFragment(TabItem tabItem) {
-        return TopicFragment.newInstance();
+        if ("0".equals(tabItem.getType())){
+            return TopicFragment.newFragment();
+        }else if ("1".equals(tabItem.getType())){
+            return NewsFragment.newFragment();
+        }
+        return TopicFragment.newFragment();
     }
 }

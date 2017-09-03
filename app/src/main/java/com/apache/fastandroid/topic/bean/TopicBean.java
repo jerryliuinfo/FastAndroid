@@ -23,8 +23,8 @@
 package com.apache.fastandroid.topic.bean;
 
 
-import com.apache.fastandroid.base.bean.Abilities;
-import com.apache.fastandroid.user.bean.User;
+import com.apache.fastandroid.artemis.support.bean.Abilities;
+import com.apache.fastandroid.artemis.support.bean.User;
 
 import java.io.Serializable;
 

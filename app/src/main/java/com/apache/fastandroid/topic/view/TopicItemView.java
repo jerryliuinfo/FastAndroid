@@ -1,4 +1,4 @@
-package com.apache.fastandroid.topic.fragment;
+package com.apache.fastandroid.topic.view;
 
 import android.app.Activity;
 import android.text.TextUtils;
@@ -7,9 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.topic.bean.TopicBean;
+import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.support.utils.TimeUtil;
-import com.apache.fastandroid.user.bean.User;
+import com.apache.fastandroid.topic.bean.TopicBean;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 

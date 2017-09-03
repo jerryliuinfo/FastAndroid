@@ -9,7 +9,7 @@ import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.UserBean;
 import com.apache.fastandroid.support.config.ADConfigManager;
-import com.apache.fastandroid.ui.widget.SplashCountDownView;
+import com.apache.fastandroid.widget.SplashCountDownView;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;

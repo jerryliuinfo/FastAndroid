@@ -1,4 +1,4 @@
-package com.apache.fastandroid.ui.widget;
+package com.apache.fastandroid.widget;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
