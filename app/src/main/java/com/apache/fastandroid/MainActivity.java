@@ -3,6 +3,7 @@ package com.apache.fastandroid;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -213,4 +214,28 @@ public class MainActivity extends BaseActivity{
     }
 
     //test cherry-pick
+
+
+    private boolean canFinish = false;
+    @Override
+    public boolean onBackClick() {
+        if (!canFinish) {
+            canFinish = true;
+
+            showMessage("再按一次退出");
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    canFinish = false;
+                }
+
+            }, 1500);
+
+            return true;
+        }
+
+        return super.onBackClick();
+    }
 }
