@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.apache.fastandroid.artemis.Constants;
-import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.api.TokenService;
+import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.support.bean.Token;
 
@@ -22,6 +22,7 @@ import okhttp3.Response;
 import okhttp3.Route;
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -134,13 +135,12 @@ public class BaseHttpUtilsV2 {
 //                interceptor.setLevel(mLogLevel);
 //                okBuilder.addInterceptor(interceptor);
             }
-
-
             mOKHttpClient = okBuilder.build();
         }
         builder.client(mOKHttpClient);
         builder.addConverterFactory(new StringConverterFactory());
         builder.addConverterFactory(GsonConverterFactory.create());
+        builder.addCallAdapterFactory(RxJavaCallAdapterFactory.create());
 
 
         builder.baseUrl(mServerUrl);

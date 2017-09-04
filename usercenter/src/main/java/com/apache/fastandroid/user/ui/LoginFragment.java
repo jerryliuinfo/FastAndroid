@@ -1,4 +1,4 @@
-package com.apache.fastandroid.user;
+package com.apache.fastandroid.user.ui;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,25 +10,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
+import com.apache.fastandroid.artemis.CacheUtil;
 import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.Token;
-import com.apache.fastandroid.artemis.support.bean.UserBean;
+import com.apache.fastandroid.artemis.support.bean.UserDetail;
 import com.apache.fastandroid.user.sdk.UserSDK;
-import com.apache.fastandroid.user.support.UserConfigManager;
+import com.apache.fastandroid.user.support.cache.UserCache;
 import com.apache.fastandroid.usercenter.R;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+import rx.Observable;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 
 /**
@@ -44,6 +42,8 @@ public class LoginFragment extends BaseFragment {
 
     @ViewInject(idStr = "btn_login")
     private Button btn_login;
+
+
 
 
     public static void start(Context from) {
@@ -91,42 +91,25 @@ public class LoginFragment extends BaseFragment {
         final String pwd = mPwdInputLayout.getEditText().getText().toString();
 
         if (checkUserNameAndPwdInvalidaty(userName,pwd)){
-            Observable.create(new ObservableOnSubscribe<Token>() {
-                @Override
-                public void subscribe(@NonNull ObservableEmitter<Token> e) throws Exception {
-                    Token token = UserSDK.newInstance().login(userName,pwd);
-                    if (token != null){
-                        e.onNext(token);
-                    }else{
-                        e.onError(new TaskException("login error"));
-                    }
+            Observable<Token> observable = UserSDK.newInstance().loginV2(userName,pwd);
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<Token>() {
+                        @Override
+                        public void onCompleted() {
 
-                }
-            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Observer<Token>() {
-                @Override
-                public void onSubscribe(@NonNull Disposable d) {
+                        }
 
-                }
+                        @Override
+                        public void onError(Throwable e) {
+                            loginFailed(new TaskException(e.getMessage()));
+                        }
 
-                @Override
-                public void onNext(@NonNull Token token) {
-                    loginSuccess(token);
-                }
-
-                @Override
-                public void onError(@NonNull Throwable e) {
-                    loginFailed(new TaskException(e.getMessage()));
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            });
-
-
-
+                        @Override
+                        public void onNext(Token token) {
+                            loginSuccess(token);
+                        }
+                    });
         }
     }
 
@@ -151,11 +134,14 @@ public class LoginFragment extends BaseFragment {
     public void loginSuccess(Token token) {
         showMessage("登录成功");
 
-        UserBean userBean = new UserBean();
-        userBean.setUserName(mUserNameinputLayout.getEditText().getText().toString());
-        userBean.setPassword(mPwdInputLayout.getEditText().getText().toString());
-        UserConfigManager.getInstance().saveUserBean(userBean);
-        UserConfigManager.getInstance().saveToken(token);
+//        UserBean userBean = new UserBean();
+//        userBean.setUserName(mUserNameinputLayout.getEditText().getText().toString());
+//        userBean.setPassword(mPwdInputLayout.getEditText().getText().toString());
+        //UserConfigManager.getInstance().saveUserBean(userBean);
+        //UserConfigManager.getInstance().saveToken(token);
+
+
+        CacheUtil.saveToken(token);
 
         //MainActivity.launch(getActivity());
         try {
@@ -164,6 +150,38 @@ public class LoginFragment extends BaseFragment {
             e.printStackTrace();
         }
         getActivity().finish();
+
+
+        //获取个人信息
+        getMe();
+
+    }
+
+
+    private void getMe(){
+        Observable<UserDetail> observable = UserSDK.newInstance().getMe();
+        observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<UserDetail>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        NLog.d(TAG, "getMe onError = %s", e);
+                    }
+
+                    @Override
+                    public void onNext(UserDetail userDetail) {
+                        NLog.d(TAG, "getMe onNext userDetail = %s", userDetail);
+
+                        UserCache.saveMe(userDetail);
+                    }
+
+
+                });
     }
 
 

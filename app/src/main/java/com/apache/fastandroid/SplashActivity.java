@@ -3,15 +3,10 @@ package com.apache.fastandroid;
 import android.os.Bundle;
 import android.view.View;
 
-import com.apache.fastandroid.app.AppContext;
-import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
-import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.support.config.ADConfigManager;
 import com.apache.fastandroid.widget.SplashCountDownView;
 import com.tesla.framework.common.util.ResUtil;
-import com.tesla.framework.network.task.TaskException;
-import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 
@@ -61,13 +56,13 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void toMain(){
-//        MainActivity.launch(SplashActivity.this);
-//        SplashActivity.this.finish();
-        toLogin();
+        MainActivity.launch(SplashActivity.this);
+        SplashActivity.this.finish();
     }
 
     private void jump(){
-        final IActionDelegate.IActionCallback callback = new IActionDelegate.IActionCallback() {
+        toLogin();
+        /*final IActionDelegate.IActionCallback callback = new IActionDelegate.IActionCallback() {
             @Override
             public void onActionPrepare() {
 
@@ -92,7 +87,6 @@ public class SplashActivity extends BaseActivity {
             }
         };
 
-
         new WorkTask<Void,Void,Void>(){
             @Override
             public Void workInBackground(Void... params) throws TaskException {
@@ -104,36 +98,7 @@ public class SplashActivity extends BaseActivity {
                 return null;
             }
 
-        }.execute();
-
-        /*Observable.create(new Observable.OnSubscribe<Token>() {
-            @Override
-            public void call(Subscriber<? super Token> subscriber) {
-                try {
-                    ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:doLogin", null, callback, new Object[]{});
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).subscribe(new Subscriber<Token>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(Token s) {
-                toMain();
-                AppContext.login(s);
-            }
-        });*/
-
-
+        }.execute();*/
     }
 
 

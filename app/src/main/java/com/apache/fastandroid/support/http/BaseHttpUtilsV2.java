@@ -2,10 +2,10 @@ package com.apache.fastandroid.support.http;
 
 import android.content.Context;
 
+import com.apache.fastandroid.artemis.CacheUtil;
 import com.apache.fastandroid.artemis.api.TokenService;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.support.bean.Token;
-import com.apache.fastandroid.user.support.UserConfigManager;
 import com.apache.fastandroid.user.support.UserConstans;
 
 import java.io.IOException;
@@ -161,10 +161,10 @@ public class BaseHttpUtilsV2 {
         public Response intercept(Chain chain) throws IOException {
             Request originalRequest = chain.request();
             // 如果当前没有缓存 token 或者请求已经附带 token 了，就不再添加
-            if (UserConfigManager.getInstance().getToken() == null || alreadyHasAuthorizationHeader(originalRequest)) {
+            if (CacheUtil.getToken() == null || alreadyHasAuthorizationHeader(originalRequest)) {
                 return chain.proceed(originalRequest);
             }
-            String token = OAuth.TOKEN_PREFIX + UserConfigManager.getInstance().getToken().getAccess_token();
+            String token = OAuth.TOKEN_PREFIX + CacheUtil.getToken().getAccess_token();
             // 为请求附加 token
             Request authorised = originalRequest.newBuilder()
                     .header(OAuth.KEY_TOKEN, token)
@@ -181,14 +181,14 @@ public class BaseHttpUtilsV2 {
             TokenService tokenService = getRetrofit().create(TokenService.class);
             String accessToken = "";
             try {
-                if (null != UserConfigManager.getInstance().getToken()) {
+                if (null != CacheUtil.getToken()) {
                     Call<Token> call = tokenService.refreshToken(OAuth.client_id,
                             OAuth.client_secret, OAuth.GRANT_TYPE_REFRESH,
-                            UserConfigManager.getInstance().getToken().getRefresh_token());
+                            CacheUtil.getToken().getRefresh_token());
                     retrofit2.Response<Token> tokenResponse = call.execute();
                     Token token = tokenResponse.body();
                     if (null != token) {
-                        UserConfigManager.getInstance().saveToken(token);
+                        CacheUtil.saveToken(token);
                         accessToken = token.getAccess_token();
                     }
                 }

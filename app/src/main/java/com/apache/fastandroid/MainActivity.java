@@ -15,7 +15,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.apache.fastandroid.app.AppContext;
+import com.apache.fastandroid.artemis.ArtemisContext;
+import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.pic.PicTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.topic.MainTabsFragment;
@@ -24,6 +25,7 @@ import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.common.util.view.StatusBarUtil;
+import com.tesla.framework.support.cache.DataCache;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
@@ -54,11 +56,16 @@ public class MainActivity extends BaseActivity{
         }
     };
 
+    private DataCache mCache;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mCache = new DataCache("fastAndroid");
+
         setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
@@ -79,10 +86,26 @@ public class MainActivity extends BaseActivity{
         CircleImageView circleImageView = (CircleImageView) headView.findViewById(R.id.iv_user_avator);
         TextView tv_username = (TextView) headView.findViewById(R.id.tv_username);
         ImageView iv_arrow = (ImageView) headView.findViewById(R.id.iv_arrow);
+        View layout_user= headView.findViewById(R.id.layout_user);
+        layout_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:startLoginActivity",null,null,new Object[]{});
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
+        if (ArtemisContext.getUserBean() != null){
+            tv_username.setText(ArtemisContext.getUserBean().getName());
+        }else {
+            tv_username.setText("未登录");
+        }
 
-        if (AppContext.getUserBean() != null){
-            tv_username.setText(AppContext.getUserBean().getUserName());
+        if (ArtemisContext.getUserBean() != null){
+            tv_username.setText(ArtemisContext.getUserBean().getName());
         }
 
     }

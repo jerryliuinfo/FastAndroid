@@ -1,19 +1,25 @@
 package com.apache.fastandroid.artemis;
 
-import com.apache.fastandroid.artemis.support.bean.Token;
+import com.apache.fastandroid.artemis.support.bean.UserDetail;
 
 /**
  * Created by 01370340 on 2017/9/3.
  */
 
 public class ArtemisContext {
-    private static Token mToken;
+    private static UserDetail mUserBean;
 
-    public static void setToken(Token token){
-        mToken = token;
+
+
+
+    public static void setUserBean(UserDetail userBean){
+        mUserBean =  userBean;
     }
 
-    public static Token getToken(){
-        return mToken;
+    public static UserDetail getUserBean(){
+        return mUserBean;
     }
+
+
+
 }

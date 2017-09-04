@@ -1,7 +1,5 @@
 package com.apache.fastandroid.user.support;
 
-import com.apache.fastandroid.artemis.support.bean.UserBean;
-import com.apache.fastandroid.user.bean.UserResponseBean;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.IHttpUtility;
@@ -18,22 +16,6 @@ public class UserCenterHttpUtility implements IHttpUtility {
     public <T> T doGet(HttpConfig config, Setting action, Params urlParams, Class<T> responseCls) throws TaskException {
         if ("doLogin".equals(action.getType())){
 
-            String userName = urlParams.getParameter("userName");
-            String pwd = urlParams.getParameter("pwd");
-
-            UserResponseBean result = new UserResponseBean();
-
-            UserBean data = new UserBean();
-            data.setUserName(userName);
-            data.setPassword(pwd);
-            if ("zhangsan".equals(userName) && "123456".equals(pwd)){
-                result.setCode("0");
-                //userBean.setToken("invalid");
-            }else {
-                result.setCode("100");
-            }
-            result.data = data;
-            return (T) result;
 
 
         }

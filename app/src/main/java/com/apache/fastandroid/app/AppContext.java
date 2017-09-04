@@ -2,9 +2,10 @@ package com.apache.fastandroid.app;
 
 import android.content.Context;
 
+import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.Token;
-import com.apache.fastandroid.artemis.support.bean.UserBean;
+import com.apache.fastandroid.artemis.support.bean.UserDetail;
 import com.tesla.framework.common.util.ActivityTaskMgr;
 
 /**
@@ -12,19 +13,10 @@ import com.tesla.framework.common.util.ActivityTaskMgr;
  */
 
 public class AppContext {
-    private static UserBean mUserBean;
-
-    public static void setUserBean(UserBean userBean){
-        mUserBean =  userBean;
-    }
-
-    public static UserBean getUserBean(){
-        return mUserBean;
-    }
 
 
     public static void logout(Context context){
-        mUserBean = null;
+        ArtemisContext.setUserBean(null);
         ActivityTaskMgr.getInstance().clearActivityStack();
         try {
             ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:ClearLoginInfo",null,null,new Object[]{});
@@ -39,8 +31,8 @@ public class AppContext {
 
 
 
-    public static void login(UserBean userBean){
-        setUserBean(userBean);
+    public static void login(UserDetail userBean){
+        ArtemisContext.setUserBean(userBean);
     }
 
     public static void login(Token token){
