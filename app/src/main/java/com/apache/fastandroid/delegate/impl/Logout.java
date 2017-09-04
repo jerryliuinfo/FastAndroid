@@ -9,6 +9,7 @@ import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
 
 /**
  * Created by 01370340 on 2017/9/3.
+ * 退出登录后 做一些业务处理，例如清空登录信息,跳转到登录界面等
  */
 
 public class Logout implements IActionDelegate {

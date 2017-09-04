@@ -61,8 +61,9 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void toMain(){
-        MainActivity.launch(SplashActivity.this);
-        SplashActivity.this.finish();
+//        MainActivity.launch(SplashActivity.this);
+//        SplashActivity.this.finish();
+        toLogin();
     }
 
     private void jump(){
@@ -104,6 +105,34 @@ public class SplashActivity extends BaseActivity {
             }
 
         }.execute();
+
+        /*Observable.create(new Observable.OnSubscribe<Token>() {
+            @Override
+            public void call(Subscriber<? super Token> subscriber) {
+                try {
+                    ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:doLogin", null, callback, new Object[]{});
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).subscribe(new Subscriber<Token>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Token s) {
+                toMain();
+                AppContext.login(s);
+            }
+        });*/
+
 
     }
 

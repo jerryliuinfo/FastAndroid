@@ -1,4 +1,4 @@
-package com.apache.fastandroid.artemis.http;
+package com.apache.fastandroid.artemis.retrofit;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

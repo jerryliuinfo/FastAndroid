@@ -2,12 +2,12 @@ package com.apache.fastandroid.user.sdk;
 
 import com.apache.fastandroid.artemis.BaseBizLogic;
 import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
-import com.apache.fastandroid.artemis.http.BaseHttpUtilsV2;
-import com.apache.fastandroid.artemis.http.TokenService;
+import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
+import com.apache.fastandroid.artemis.api.TokenService;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserBean;
-import com.apache.fastandroid.user.UserConfigManager;
+import com.apache.fastandroid.user.support.UserConfigManager;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.task.TaskException;

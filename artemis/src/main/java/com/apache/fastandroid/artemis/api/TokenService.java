@@ -1,4 +1,4 @@
-package com.apache.fastandroid.artemis.http;
+package com.apache.fastandroid.artemis.api;
 
 import com.apache.fastandroid.artemis.Constants;
 import com.apache.fastandroid.artemis.support.bean.Token;

@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.apache.fastandroid.artemis.comBridge.DelegateException;
 import com.apache.fastandroid.artemis.comBridge.IDataDelegate;
-import com.apache.fastandroid.user.UserConfigManager;
+import com.apache.fastandroid.user.support.UserConfigManager;
 
 /**
  * Created by 01370340 on 2017/9/3.

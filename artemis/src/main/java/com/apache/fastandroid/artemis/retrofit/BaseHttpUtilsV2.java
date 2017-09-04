@@ -1,10 +1,11 @@
-package com.apache.fastandroid.artemis.http;
+package com.apache.fastandroid.artemis.retrofit;
 
 import android.content.Context;
 import android.os.Bundle;
 
 import com.apache.fastandroid.artemis.Constants;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.api.TokenService;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.support.bean.Token;
 

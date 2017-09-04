@@ -30,7 +30,6 @@ public class AppContext {
             ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:ClearLoginInfo",null,null,new Object[]{});
             ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:startLoginActivityNewTask",null,null,new Object[]{context});
 
-            //LoginFragment.start(MyApplication.getContext());
         } catch (Exception e) {
             e.printStackTrace();
         }

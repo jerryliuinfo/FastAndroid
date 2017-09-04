@@ -1,4 +1,4 @@
-package com.apache.fastandroid.user;
+package com.apache.fastandroid.user.support;
 
 /**
  * Created by 01370340 on 2017/9/2.

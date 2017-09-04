@@ -15,13 +15,21 @@ import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserBean;
 import com.apache.fastandroid.user.sdk.UserSDK;
+import com.apache.fastandroid.user.support.UserConfigManager;
 import com.apache.fastandroid.usercenter.R;
-import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.network.task.TaskException;
-import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * Created by jerryliu on 2017/7/9.
@@ -79,10 +87,46 @@ public class LoginFragment extends BaseFragment {
     }
 
     public void doLogin(){
-        String userName = mUserNameinputLayout.getEditText().getText().toString();
-        String pwd = mPwdInputLayout.getEditText().getText().toString();
+        final String userName = mUserNameinputLayout.getEditText().getText().toString();
+        final String pwd = mPwdInputLayout.getEditText().getText().toString();
+
         if (checkUserNameAndPwdInvalidaty(userName,pwd)){
-            new LoginTask().execute(userName,pwd);
+            Observable.create(new ObservableOnSubscribe<Token>() {
+                @Override
+                public void subscribe(@NonNull ObservableEmitter<Token> e) throws Exception {
+                    Token token = UserSDK.newInstance().login(userName,pwd);
+                    if (token != null){
+                        e.onNext(token);
+                    }else{
+                        e.onError(new TaskException("login error"));
+                    }
+
+                }
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Observer<Token>() {
+                @Override
+                public void onSubscribe(@NonNull Disposable d) {
+
+                }
+
+                @Override
+                public void onNext(@NonNull Token token) {
+                    loginSuccess(token);
+                }
+
+                @Override
+                public void onError(@NonNull Throwable e) {
+                    loginFailed(new TaskException(e.getMessage()));
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            });
+
+
+
         }
     }
 
@@ -102,55 +146,6 @@ public class LoginFragment extends BaseFragment {
     }
 
 
-
-    class LoginTask extends WorkTask<String,Void,Token>{
-
-        @Override
-        protected void onPrepare() {
-            super.onPrepare();
-            ViewUtils.createProgressDialog(getActivity(),"正在登录中...",0).show();
-        }
-
-        @Override
-        public Token workInBackground(String... params) throws TaskException {
-
-            boolean result = false;
-            Token token = null;
-            try {
-                token = UserSDK.newInstance().login(params[0],params[1]);
-                NLog.d(TAG, "token = %s", token);
-                if (token != null){
-                    result = true;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (result){
-                return token;
-            }
-            throw new TaskException("Get token error");
-
-        }
-
-        @Override
-        protected void onSuccess(Token token) {
-            super.onSuccess(token);
-            loginSuccess(token);
-        }
-
-
-        @Override
-        protected void onFailure(TaskException exception) {
-            super.onFailure(exception);
-            loginFailed(exception);
-        }
-
-        @Override
-        protected void onFinished() {
-            super.onFinished();
-            ViewUtils.dismissProgressDialog();
-        }
-    }
 
 
     public void loginSuccess(Token token) {

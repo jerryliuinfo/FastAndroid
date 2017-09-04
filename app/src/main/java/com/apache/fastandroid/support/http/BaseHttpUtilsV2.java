@@ -2,11 +2,11 @@ package com.apache.fastandroid.support.http;
 
 import android.content.Context;
 
-import com.apache.fastandroid.artemis.http.TokenService;
+import com.apache.fastandroid.artemis.api.TokenService;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.support.bean.Token;
-import com.apache.fastandroid.user.UserConfigManager;
-import com.apache.fastandroid.user.UserConstans;
+import com.apache.fastandroid.user.support.UserConfigManager;
+import com.apache.fastandroid.user.support.UserConstans;
 
 import java.io.IOException;
 import java.util.Hashtable;

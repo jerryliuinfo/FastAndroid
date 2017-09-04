@@ -1,4 +1,4 @@
-package com.apache.fastandroid.user;
+package com.apache.fastandroid.user.support;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
