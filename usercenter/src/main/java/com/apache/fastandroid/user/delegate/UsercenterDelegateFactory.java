@@ -4,7 +4,7 @@ import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
 import com.apache.fastandroid.artemis.comBridge.IDataDelegate;
 import com.apache.fastandroid.artemis.comBridge.IDelegateFactory;
 import com.apache.fastandroid.artemis.comBridge.IObjectDataDelegate;
-import com.apache.fastandroid.user.delegate.impl.AutoLogin;
+import com.apache.fastandroid.user.delegate.impl.DoLogin;
 import com.apache.fastandroid.user.delegate.impl.GetToken;
 import com.apache.fastandroid.user.delegate.impl.SaveToken;
 import com.apache.fastandroid.user.delegate.impl.StartLoginActivity;
@@ -17,7 +17,7 @@ import com.apache.fastandroid.user.delegate.impl.StartLoginActivityWithNewTask;
 public class UsercenterDelegateFactory implements IDelegateFactory {
     public static final String ACTION_START_LOGINACTIVITY = "startLoginActivity";
     public static final String ACTION_START_LOGINACTIVITY_NEWTASK = "startLoginActivityNewTask";
-    public static final String ACTION_AUTO_LOGIN = "autoLogin";
+    public static final String ACTION_DO_LOGIN = "doLogin";
     public static final String ACTION_GET_TOKEN = "getToken";
     public static final String ACTION_SAVE_TOKEN = "saveToken";
     @Override
@@ -36,8 +36,8 @@ public class UsercenterDelegateFactory implements IDelegateFactory {
                 return new StartLoginActivity();
             case ACTION_START_LOGINACTIVITY_NEWTASK:
                 return new StartLoginActivityWithNewTask();
-            case ACTION_AUTO_LOGIN:
-                return new AutoLogin();
+            case ACTION_DO_LOGIN:
+                return new DoLogin();
             case ACTION_SAVE_TOKEN:
                 return new SaveToken();
 

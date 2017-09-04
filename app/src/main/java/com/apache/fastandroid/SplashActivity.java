@@ -1,7 +1,6 @@
 package com.apache.fastandroid;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 
 import com.apache.fastandroid.app.AppContext;
@@ -48,18 +47,11 @@ public class SplashActivity extends BaseActivity {
                     }).start();
 
         }else {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    jump();
-                }
-            },2000);
+            jump();
         }
     }
 
     private void toLogin(){
-        //LoginFragment.start(this);
-
         try {
             ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:startLoginActivity",null,null,new Object[]{SplashActivity.this});
         } catch (Exception e) {
@@ -89,6 +81,7 @@ public class SplashActivity extends BaseActivity {
 
             @Override
             public void onActionFailed(int code, String msg) {
+                showMessage(msg);
                 toLogin();
             }
 
@@ -103,7 +96,7 @@ public class SplashActivity extends BaseActivity {
             @Override
             public Void workInBackground(Void... params) throws TaskException {
                 try {
-                    ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:autoLogin", null, callback, new Object[]{});
+                    ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:doLogin", null, callback, new Object[]{});
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

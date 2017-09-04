@@ -11,7 +11,7 @@ import com.tesla.framework.network.task.TaskException;
  * Created by 01370340 on 2017/9/3.
  */
 
-public class AutoLogin implements IActionDelegate {
+public class DoLogin implements IActionDelegate {
     @Override
     public void runAction(Bundle args, IActionCallback callback, Object... extras) throws DelegateException {
         try {

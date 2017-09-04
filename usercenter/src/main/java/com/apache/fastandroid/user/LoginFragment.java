@@ -16,7 +16,6 @@ import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserBean;
 import com.apache.fastandroid.user.sdk.UserSDK;
 import com.apache.fastandroid.usercenter.R;
-import com.tesla.framework.common.util.KeyGenerator;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.network.task.TaskException;
@@ -157,42 +156,21 @@ public class LoginFragment extends BaseFragment {
     public void loginSuccess(Token token) {
         showMessage("登录成功");
 
-
         UserBean userBean = new UserBean();
         userBean.setUserName(mUserNameinputLayout.getEditText().getText().toString());
         userBean.setPassword(mPwdInputLayout.getEditText().getText().toString());
         UserConfigManager.getInstance().saveUserBean(userBean);
         UserConfigManager.getInstance().saveToken(token);
 
-
         //MainActivity.launch(getActivity());
-        Object[] extras = new Object[]{getActivity()};
         try {
-            ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:moduleMain:startMainActivity",null,null,extras);
+            ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:moduleMain:startMainActivity",null,null,new Object[]{getActivity()});
         } catch (Exception e) {
             e.printStackTrace();
         }
         getActivity().finish();
     }
 
-    public void loginSuccess(UserBean userBean) {
-        showMessage("登录成功");
-        //保存登陆信息
-        String encrypedPwd = KeyGenerator.generateMD5(userBean.getPassword());
-
-        UserConfigManager.getInstance().saveUserBean(userBean);
-
-
-
-        //MainActivity.launch(getActivity());
-        Object[] extras = new Object[]{getActivity()};
-        try {
-            ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:moduleMain:startMainActivity",null,null,extras);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        getActivity().finish();
-    }
 
 
     public void loginFailed(TaskException exception) {

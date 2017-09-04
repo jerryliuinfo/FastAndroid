@@ -49,8 +49,11 @@ public class UserSDK extends BaseBizLogic {
     }
 
 
-
-
+    /**
+     * 执行自动登录
+     * @param callback
+     * @throws TaskException
+     */
     public void doAutoLogin(IActionDelegate.IActionCallback callback) throws TaskException{
         if (!UserConfigManager.getInstance().isLastTimeLogined()){
             callback.onActionFailed(-1, "");
@@ -67,14 +70,11 @@ public class UserSDK extends BaseBizLogic {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-
             }
             if (result){
                 callback.onActionSuccess(loginResult);
-
-
             }else {
-                callback.onActionFailed(-1, "");
+                callback.onActionFailed(-1, "自动登录失败");
             }
             callback.onActionFinish();
         }
