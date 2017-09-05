@@ -17,7 +17,7 @@ import com.apache.fastandroid.user.delegate.impl.StartLoginActivityWithNewTask;
 public class UsercenterDelegateFactory implements IDelegateFactory {
     public static final String ACTION_START_LOGINACTIVITY = "startLoginActivity";
     public static final String ACTION_START_LOGINACTIVITY_NEWTASK = "startLoginActivityNewTask";
-    public static final String ACTION_DO_LOGIN = "doLogin";
+    public static final String ACTION_DOLOGIN = "doLogin";
     public static final String ACTION_GET_TOKEN = "getToken";
     public static final String ACTION_SAVE_TOKEN = "saveToken";
     @Override
@@ -36,10 +36,11 @@ public class UsercenterDelegateFactory implements IDelegateFactory {
                 return new StartLoginActivity();
             case ACTION_START_LOGINACTIVITY_NEWTASK:
                 return new StartLoginActivityWithNewTask();
-            case ACTION_DO_LOGIN:
-                return new DoLogin();
+
             case ACTION_SAVE_TOKEN:
                 return new SaveToken();
+            case ACTION_DOLOGIN:
+                return new DoLogin();
 
         }
         return null;
@@ -47,6 +48,9 @@ public class UsercenterDelegateFactory implements IDelegateFactory {
 
     @Override
     public IObjectDataDelegate getObjectDataTransfer(String action) {
+        switch (action){
+
+        }
         return null;
     }
 }

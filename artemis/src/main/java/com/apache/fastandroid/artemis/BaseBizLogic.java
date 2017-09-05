@@ -11,9 +11,12 @@ import com.tesla.framework.network.task.TaskException;
 
 public abstract class BaseBizLogic extends ABizLogic {
 
-    public <T> void checkRepsonse(T result)throws TaskException {
+    public <T extends BaseBean> void checkRepsonse(T result)throws TaskException {
         if (result == null){
             throw new TaskException("数据为空");
+        }
+        if (result.getData() == null){
+            throw new TaskException("data字段为空");
         }
         if (result instanceof BaseBean){
             BaseBean baseBean = (BaseBean) result;
@@ -22,8 +25,8 @@ public abstract class BaseBizLogic extends ABizLogic {
                 throw taskException;
             }
         }
-
-        if (result instanceof ICheck){
+        //检查一些业务异常
+        if (result.getData() instanceof ICheck){
             ((ICheck) result).check();
         }
     }

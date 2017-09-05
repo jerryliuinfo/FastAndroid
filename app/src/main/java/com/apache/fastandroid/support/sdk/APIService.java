@@ -1,7 +1,8 @@
 package com.apache.fastandroid.support.sdk;
 
+import com.apache.fastandroid.artemis.support.bean.BaseBean;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
-import com.apache.fastandroid.update.UpdateResponseBean;
+import com.apache.fastandroid.update.UpdateBean;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -19,5 +20,5 @@ public interface APIService {
                                       @Query("from")String from);
 
     @GET("/checkAppVersion")
-    Call<UpdateResponseBean> checkAppVersion(@Query("col")int versionCode);
+    Call<BaseBean<UpdateBean>> checkAppVersion(@Query("col")int versionCode);
 }

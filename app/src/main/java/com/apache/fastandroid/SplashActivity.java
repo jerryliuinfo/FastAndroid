@@ -3,10 +3,14 @@ package com.apache.fastandroid;
 import android.os.Bundle;
 import android.view.View;
 
+import com.apache.fastandroid.app.AppContext;
+import com.apache.fastandroid.artemis.comBridge.ActionCallback;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.support.config.ADConfigManager;
 import com.apache.fastandroid.widget.SplashCountDownView;
 import com.tesla.framework.common.util.ResUtil;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 
@@ -20,7 +24,6 @@ public class SplashActivity extends BaseActivity {
     private SplashCountDownView coutDownView;
 
 
-    private int mDuration = 5000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +31,7 @@ public class SplashActivity extends BaseActivity {
         if (ADConfigManager.getInstance().isNeedToShowAd()){
             coutDownView.setVisibility(View.VISIBLE);
             ADConfigManager.getInstance().setLastShowADTime(System.currentTimeMillis());
-            coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(mDuration)
+            coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(5000)
                     .setCallback(new SplashCountDownView.CountDownCallbackImpl(){
                         @Override
                         public void onFinish(long delay) {
@@ -55,50 +58,39 @@ public class SplashActivity extends BaseActivity {
         SplashActivity.this.finish();
     }
 
+
     private void toMain(){
         MainActivity.launch(SplashActivity.this);
         SplashActivity.this.finish();
     }
 
+    /**
+     * 执行登录，如果不能自动登录， 则执行onFailed,如果能
+     */
     private void jump(){
-        toLogin();
-        /*final IActionDelegate.IActionCallback callback = new IActionDelegate.IActionCallback() {
-            @Override
-            public void onActionPrepare() {
-
-            }
+        final ActionCallback callback = new ActionCallback(){
 
             @Override
-            public void onActionSuccess(Object... result) {
+            public void onActionSuccess(final Object... result) {
+                NLog.d(TAG, "onActionSuccess (Token) result[0] = %s",(Token) result[0]);
                 toMain();
                 AppContext.login((Token) result[0]);
 
             }
 
             @Override
-            public void onActionFailed(int code, String msg) {
+            public void onActionFailed(int code, final String msg) {
+                NLog.d(TAG, "onActionFailed code = %s, msg = %s",code,msg);
+
                 showMessage(msg);
                 toLogin();
             }
-
-            @Override
-            public void onActionFinish() {
-
-            }
         };
-
-        new WorkTask<Void,Void,Void>(){
-            @Override
-            public Void workInBackground(Void... params) throws TaskException {
-                try {
-                    ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:doLogin", null, callback, new Object[]{});
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-        }.execute();*/
+        try {
+            ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:doLogin",null,callback,new Object[]{});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.apache.fastandroid.artemis.CacheUtil;
 import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.rx.RxUtils;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
 import com.apache.fastandroid.user.sdk.UserSDK;
@@ -25,7 +26,9 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import rx.Observable;
 import rx.Observer;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 
@@ -42,7 +45,6 @@ public class LoginFragment extends BaseFragment {
 
     @ViewInject(idStr = "btn_login")
     private Button btn_login;
-
 
 
 
@@ -86,14 +88,12 @@ public class LoginFragment extends BaseFragment {
         });
     }
 
-    public void doLogin(){
+    private void doLogin(){
         final String userName = mUserNameinputLayout.getEditText().getText().toString();
         final String pwd = mPwdInputLayout.getEditText().getText().toString();
 
         if (checkUserNameAndPwdInvalidaty(userName,pwd)){
-            Observable<Token> observable = UserSDK.newInstance().loginV2(userName,pwd);
-            observable.subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
+            Subscription subscription = UserSDK.newInstance().login(userName,pwd).compose(RxUtils.<Token>defaultSchedulers())
                     .subscribe(new Observer<Token>() {
                         @Override
                         public void onCompleted() {
@@ -110,7 +110,10 @@ public class LoginFragment extends BaseFragment {
                             loginSuccess(token);
                         }
                     });
+            getCompositeSubscription().add(subscription);
         }
+
+
     }
 
 
@@ -133,17 +136,7 @@ public class LoginFragment extends BaseFragment {
 
     public void loginSuccess(Token token) {
         showMessage("登录成功");
-
-//        UserBean userBean = new UserBean();
-//        userBean.setUserName(mUserNameinputLayout.getEditText().getText().toString());
-//        userBean.setPassword(mPwdInputLayout.getEditText().getText().toString());
-        //UserConfigManager.getInstance().saveUserBean(userBean);
-        //UserConfigManager.getInstance().saveToken(token);
-
-
         CacheUtil.saveToken(token);
-
-        //MainActivity.launch(getActivity());
         try {
             ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:moduleMain:startMainActivity",null,null,new Object[]{getActivity()});
         } catch (Exception e) {
@@ -159,6 +152,12 @@ public class LoginFragment extends BaseFragment {
 
 
     private void getMe(){
+        Action1 action1 = new Action1() {
+            @Override
+            public void call(Object o) {
+
+            }
+        };
         Observable<UserDetail> observable = UserSDK.newInstance().getMe();
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -182,6 +181,7 @@ public class LoginFragment extends BaseFragment {
 
 
                 });
+
     }
 
 

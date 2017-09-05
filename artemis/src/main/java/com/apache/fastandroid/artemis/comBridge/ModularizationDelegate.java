@@ -89,6 +89,10 @@ public class ModularizationDelegate {
     }
 
 
+    public Object getObjectData(String group_artifact_action, Bundle args, Object... extras) throws Exception {
+        return getObjectData(group_artifact_action,null,args,extras);
+    }
+
     /**
      *
      * @param group_artifact_action  传过来的参数格式必须为groupId:artifactId:action的形式
@@ -98,7 +102,7 @@ public class ModularizationDelegate {
      * @return
      * @throws DelegateException
      */
-    public Object getObjectData(String group_artifact_action, Bundle args, Object... extras) throws Exception {
+    public Object getObjectData(String group_artifact_action, IActionDelegate.IActionCallback callback, Bundle args, Object... extras) throws Exception {
         if (TextUtils.isEmpty(group_artifact_action)){
             throw new DelegateException("非法路由参数");
         }
@@ -117,7 +121,7 @@ public class ModularizationDelegate {
             IObjectDataDelegate transfer = factory.getObjectDataTransfer(action);
 
             if (transfer != null) {
-                return transfer.getObjectData(args, extras);
+                return transfer.getObjectData(args,callback, extras);
             }
         }else {
             String factoryName = getCreateFactoryName(groupArtifact);
@@ -126,7 +130,7 @@ public class ModularizationDelegate {
                 mFactoryMap.put(groupArtifact,delegateFactory);
                 IObjectDataDelegate transfer = delegateFactory.getObjectDataTransfer(action);
                 if (transfer != null){
-                    return transfer.getObjectData(args,extras);
+                    return transfer.getObjectData(args,callback,extras);
                 }
             }
         }
