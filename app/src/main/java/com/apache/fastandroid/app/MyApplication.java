@@ -4,13 +4,16 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.Environment;
 import android.support.multidex.MultiDexApplication;
 
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.FastActivityHelper;
+import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.delegate.MainDelegateFactory;
+import com.apache.fastandroid.support.TUncaughtExceptionHandler;
 import com.apache.fastandroid.support.exception.FastAndroidErrorMsg;
 import com.apache.fastandroid.support.imageloader.GlideImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
@@ -24,6 +27,8 @@ import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.db.TeslaDB;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
+
+import java.io.File;
 
 /**
  * Created by jerryliu on 2017/3/26.
@@ -41,14 +46,15 @@ public class MyApplication extends MultiDexApplication{
     public void onCreate() {
         super.onCreate();
         mContext = this;
-        ModularizationDelegate.getInstance().register("com.apache.fastandroid:moduleMain",new MainDelegateFactory());
-        ModularizationDelegate.getInstance().register("com.apache.fastandroid:userCenter",new UsercenterDelegateFactory());
-        if (BuildConfig.LOG_DEBUG){
-            NLog.setDebug(true, Logger.DEBUG);
-        }
         FrameworkApplication.onCreate(getApplicationContext());
+
+
+        initLog();
+        initModuleBridge();
+        initCrashAndAnalysis();
+
         TaskException.config(new FastAndroidErrorMsg());
-        setUpCrashAndAnalysis();
+
 
         TeslaDB.setDB();
         BaseActivity.setHelper(SwipeActivityHelper.class);
@@ -63,15 +69,44 @@ public class MyApplication extends MultiDexApplication{
     }
 
 
+    private void initLog(){
+        if (BuildConfig.LOG_DEBUG){
+            NLog.setDebug(true, Logger.DEBUG);
+        }
+    }
 
-    private void setUpCrashAndAnalysis(){
+    private void initModuleBridge(){
+        ModularizationDelegate.getInstance().register("com.apache.fastandroid:moduleMain",new MainDelegateFactory());
+        ModularizationDelegate.getInstance().register("com.apache.fastandroid:userCenter",new UsercenterDelegateFactory());
+    }
+
+
+    private void initCrashAndAnalysis(){
         //本地crash日志收集
         CrashHandler.setupCrashHandler(getApplicationContext());
         //bugly统计
         //CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
-
+        TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, true, 0, SplashActivity.class);
 
     }
+
+    private String configCrashFilePath(){
+        String path = "";
+        try {
+            String storageStr = Environment.getExternalStorageState();
+            if (storageStr != null && storageStr.equals(Environment.MEDIA_MOUNTED)) {
+                File file = this.getExternalFilesDir(null);
+                if (file != null) {
+                    path = file + File.separator + "crash"; // Android/data/pkgName/files/crash
+                }
+            }
+        } catch (Exception e) {
+        } catch (NoSuchMethodError e) {
+        }
+        return path;
+    }
+
+
 
     public static Context getContext(){
         return mContext;

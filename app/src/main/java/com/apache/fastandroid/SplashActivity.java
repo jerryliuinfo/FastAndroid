@@ -47,6 +47,7 @@ public class SplashActivity extends BaseActivity {
         }else {
             jump();
         }
+
     }
 
     private void toLogin(){
