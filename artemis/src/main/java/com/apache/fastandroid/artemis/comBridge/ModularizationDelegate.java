@@ -2,7 +2,6 @@ package com.apache.fastandroid.artemis.comBridge;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -164,7 +163,6 @@ public class ModularizationDelegate {
         //根据groupArtifact找到对应的aar模块
         IDelegateFactory factory = mFactoryMap.get(groupArtifact);
         if (factory != null) {
-            Log.d(TAG, "runStaticAction groupArtifact 缓存实例已存在 ");
 
             //调用对应aar模块的action方法
             IActionDelegate transfer = factory.getActionTransfer(action);
@@ -173,7 +171,6 @@ public class ModularizationDelegate {
                 transfer.runAction(args, callback, extras);
             }
         }else{
-            Log.d(TAG, "runStaticAction groupArtifact 缓存实例不存在 ");
             String factoryName = getCreateFactoryName(groupArtifact);
             IDelegateFactory delegateFactory = getDelegateFactory(factoryName);
             if (delegateFactory != null){

@@ -4,7 +4,7 @@ import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
 import com.apache.fastandroid.artemis.comBridge.IDataDelegate;
 import com.apache.fastandroid.artemis.comBridge.IDelegateFactory;
 import com.apache.fastandroid.artemis.comBridge.IObjectDataDelegate;
-import com.apache.fastandroid.user.delegate.impl.DoLogin;
+import com.apache.fastandroid.user.delegate.impl.DoAutoLogin;
 import com.apache.fastandroid.user.delegate.impl.GetToken;
 import com.apache.fastandroid.user.delegate.impl.SaveToken;
 import com.apache.fastandroid.user.delegate.impl.StartLoginActivity;
@@ -40,7 +40,7 @@ public class UsercenterDelegateFactory implements IDelegateFactory {
             case ACTION_SAVE_TOKEN:
                 return new SaveToken();
             case ACTION_DOLOGIN:
-                return new DoLogin();
+                return new DoAutoLogin();
 
         }
         return null;

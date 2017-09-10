@@ -10,13 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
-import com.apache.fastandroid.artemis.CacheUtil;
 import com.apache.fastandroid.artemis.base.BaseFragment;
+import com.apache.fastandroid.artemis.comBridge.ActionCallback;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
-import com.apache.fastandroid.artemis.rx.RxUtils;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
 import com.apache.fastandroid.user.UserCenterLog;
+import com.apache.fastandroid.user.delegate.LoginTask;
 import com.apache.fastandroid.user.sdk.UserSDK;
 import com.apache.fastandroid.user.support.UserConfigManager;
 import com.apache.fastandroid.user.support.cache.UserCache;
@@ -29,7 +29,6 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 
@@ -92,48 +91,24 @@ public class LoginFragment extends BaseFragment {
     private void doLogin(){
         final String userName = mUserNameinputLayout.getEditText().getText().toString();
         pwd = mPwdInputLayout.getEditText().getText().toString();
-
+        final Token[] loginToken = {null};
         if (checkUserNameAndPwdInvalidaty(userName,pwd)){
-            UserSDK.newInstance().login(userName,pwd).compose(RxUtils.<Token>defaultSchedulers())
-                    .doOnNext(new Action1<Token>() {
-                        @Override
-                        public void call(Token token) {
-                            NLog.d(TAG, "call token = %s" ,token);
-                        }
-                    })
-                    /*.observeOn(Schedulers.io())//注意 这里不是subsribeOn
-                    .flatMap(new Func1<Token, Observable<UserDetail>>() {
 
-                        @Override
-                        public Observable<UserDetail> call(Token token) {
-                            NLog.d(TAG, "flatMap call token = %s", token);
-                            return UserSDK.newInstance().getMe();
-                        }
-                    })*/
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Observer<Token>() {
-                        @Override
-                        public void onCompleted() {
+            final ActionCallback callback = new ActionCallback() {
+                @Override
+                public void onActionSuccess(Object... result) {
+                    if (result != null && result.length > 0 && result[0] instanceof Token) {
+                        Token token = (Token) result[0];
+                        loginSuccess(token);
+                    }
+                }
 
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            NLog.d(TAG, "onError : %s", e.getMessage());
-                            loginFailed(new TaskException(e.getMessage()));
-                        }
-
-                        @Override
-                        public void onNext(Token Token) {
-                            NLog.d(TAG, "onNext userDetail = %s", Token);
-                           // Token token = new Token();
-                           // token.setAccess_token(Token);
-                            loginSuccess(Token);
-                        }
-
-
-                    });
-            //getCompositeSubscription().add(subscription);
+                @Override
+                public void onActionFailed(int code, String msg) {
+                    loginFailed(new TaskException(msg));
+                }
+            };
+            new LoginTask().doLogin(userName,pwd,callback);
         }
 
 
@@ -159,18 +134,13 @@ public class LoginFragment extends BaseFragment {
 
     public void loginSuccess(Token token) {
         showMessage("登录成功");
-        CacheUtil.saveToken(token);
+        UserConfigManager.getInstance().savePwd(pwd);
         try {
             ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:moduleMain:startMainActivity",null,null,new Object[]{getActivity()});
         } catch (Exception e) {
             e.printStackTrace();
         }
         getActivity().finish();
-        UserConfigManager.getInstance().savePwd(pwd);
-
-
-        //获取个人信息
-        getMe();
 
     }
 
