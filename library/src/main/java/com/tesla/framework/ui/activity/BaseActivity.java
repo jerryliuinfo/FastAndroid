@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -402,7 +403,9 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
      * @param msg
      */
     public void showMessage(CharSequence msg) {
-        ViewUtils.showMessage(this, msg.toString());
+        if (!TextUtils.isEmpty(msg) && msg.length() != 0){
+            ViewUtils.showMessage(this, msg.toString());
+        }
     }
 
     /**

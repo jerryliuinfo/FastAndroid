@@ -9,9 +9,6 @@ import com.apache.fastandroid.artemis.support.bean.UserDetail;
 public class ArtemisContext {
     private static UserDetail mUserBean;
 
-
-
-
     public static void setUserBean(UserDetail userBean){
         mUserBean =  userBean;
     }

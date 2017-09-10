@@ -27,13 +27,6 @@ public interface TokenService {
      */
     @POST(Constants.OAUTH.OAUTH_URL)
     @FormUrlEncoded
-    Call<Token> getToken(
-            @Field("client_id") String client_id, @Field("client_secret") String client_secret,
-            @Field("grant_type") String grant_type, @Field("username") String username,
-            @Field("password") String password);
-    @POST(Constants.OAUTH.OAUTH_URL)
-
-    @FormUrlEncoded
     Observable<Token> getTokenV2(
             @Field("client_id") String client_id, @Field("client_secret") String client_secret,
             @Field("grant_type") String grant_type, @Field("username") String username,

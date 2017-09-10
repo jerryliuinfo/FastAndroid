@@ -1,13 +1,14 @@
 package com.apache.fastandroid.artemis.retrofit;
 
 import android.content.Context;
-import android.os.Bundle;
+import android.text.TextUtils;
 
+import com.apache.fastandroid.artemis.CacheUtil;
 import com.apache.fastandroid.artemis.Constants;
 import com.apache.fastandroid.artemis.api.TokenService;
-import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.support.bean.Token;
+import com.tesla.framework.common.util.log.NLog;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -20,6 +21,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.Route;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -82,16 +84,6 @@ public class BaseHttpUtilsV2 {
                 }
             }
         }
-
-        // 如果当前没有缓存 token 或者请求已经附带 token 了，就不再添加
-        try {
-            Bundle result = ModularizationDelegate.getInstance().getData("com.apache.fastandroid:userCenter:getToken",null,null,new Object[]{});
-            if (result != null){
-                mTokenBean = (Token) result.getSerializable("token");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return mRetrofit;
     }
 
@@ -124,16 +116,15 @@ public class BaseHttpUtilsV2 {
     }
 
 
-    Token mTokenBean = null;
 
     private Retrofit initDefault() {
         Retrofit.Builder builder = new Retrofit.Builder();
         if( mOKHttpClient == null) {
             OkHttpClient.Builder okBuilder = buildDefalutClient(mContext);
             if( mEnableLog) {
-//                HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-//                interceptor.setLevel(mLogLevel);
-//                okBuilder.addInterceptor(interceptor);
+                HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+                //interceptor.setLevel(mLogLevel);
+                okBuilder.addInterceptor(interceptor);
             }
             mOKHttpClient = okBuilder.build();
         }
@@ -154,11 +145,15 @@ public class BaseHttpUtilsV2 {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request originalRequest = chain.request();
+            Token tokenBean = CacheUtil.getToken();
+            NLog.d(TAG, "------>mTokenInterceptor intercept token = %s", tokenBean);
 
-            if (mTokenBean == null || alreadyHasAuthorizationHeader(originalRequest)) {
+            //如果缓存中没有token 或者已经添加token 则不用添加token了
+            if (tokenBean == null || alreadyHasAuthorizationHeader(originalRequest)) {
                 return chain.proceed(originalRequest);
             }
-            String token = OAuth.TOKEN_PREFIX + mTokenBean.getAccess_token();
+            //Token不为空
+            String token = OAuth.TOKEN_PREFIX + CacheUtil.getToken().getAccess_token();
             // 为请求附加 token
             Request authorised = originalRequest.newBuilder()
                     .header(OAuth.KEY_TOKEN, token)
@@ -172,20 +167,18 @@ public class BaseHttpUtilsV2 {
         @Override
         public Request authenticate(Route route, Response response) {
             //Log.i("自动刷新 token 开始");
-
+            NLog.d(TAG, "------>mAuthenticator 自动刷新 token 开始");
             TokenService tokenService = getRetrofit().create(TokenService.class);
             String accessToken = "";
             try {
-                if (mTokenBean != null) {
+                if (CacheUtil.getToken() != null) {
                     Call<Token> call = tokenService.refreshToken(OAuth.client_id,
                             OAuth.client_secret, OAuth.GRANT_TYPE_REFRESH,
-                            mTokenBean.getRefresh_token());
+                            CacheUtil.getToken().getRefresh_token());
                     retrofit2.Response<Token> tokenResponse = call.execute();
                     Token token = tokenResponse.body();
                     if (token != null) {
-                        mTokenBean = token;
-                        //UserConfigManager.getInstance().saveToken(token);
-                        ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:saveToken",null,null,new Object[]{});
+                        CacheUtil.saveToken(token);
                         accessToken = token.getAccess_token();
                     }
                 }
@@ -204,9 +197,15 @@ public class BaseHttpUtilsV2 {
             return true;
         }
         String token = originalRequest.header(OAuth.KEY_TOKEN);
-        // 如果本身是请求 token 的 URL，直接返回 true
-        // 如果不是，则判断 header 中是否已经添加过 Authorization 这个字段，以及是否为空
-        return !(null == token || token.isEmpty() || originalRequest.url().toString().contains(Constants.OAUTH.OAUTH_URL));
+        //判断 header 中是否已经添加过 Authorization 这个字段，以及是否为空
+        if (TextUtils.isEmpty(token)){
+            return false;
+        }
+        //如果本身是请求 token 的 URL，直接返回 true
+        if (originalRequest.url().toString().contains(Constants.OAUTH.OAUTH_URL)){
+            return true;
+        }
+        return true;
     }
 
 

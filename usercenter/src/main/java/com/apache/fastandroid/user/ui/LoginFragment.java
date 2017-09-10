@@ -16,7 +16,9 @@ import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.rx.RxUtils;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
+import com.apache.fastandroid.user.UserCenterLog;
 import com.apache.fastandroid.user.sdk.UserSDK;
+import com.apache.fastandroid.user.support.UserConfigManager;
 import com.apache.fastandroid.user.support.cache.UserCache;
 import com.apache.fastandroid.usercenter.R;
 import com.tesla.framework.common.util.log.NLog;
@@ -26,7 +28,6 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import rx.Observable;
 import rx.Observer;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
@@ -87,13 +88,29 @@ public class LoginFragment extends BaseFragment {
             }
         });
     }
-
+    String pwd;
     private void doLogin(){
         final String userName = mUserNameinputLayout.getEditText().getText().toString();
-        final String pwd = mPwdInputLayout.getEditText().getText().toString();
+        pwd = mPwdInputLayout.getEditText().getText().toString();
 
         if (checkUserNameAndPwdInvalidaty(userName,pwd)){
-            Subscription subscription = UserSDK.newInstance().login(userName,pwd).compose(RxUtils.<Token>defaultSchedulers())
+            UserSDK.newInstance().login(userName,pwd).compose(RxUtils.<Token>defaultSchedulers())
+                    .doOnNext(new Action1<Token>() {
+                        @Override
+                        public void call(Token token) {
+                            NLog.d(TAG, "call token = %s" ,token);
+                        }
+                    })
+                    /*.observeOn(Schedulers.io())//注意 这里不是subsribeOn
+                    .flatMap(new Func1<Token, Observable<UserDetail>>() {
+
+                        @Override
+                        public Observable<UserDetail> call(Token token) {
+                            NLog.d(TAG, "flatMap call token = %s", token);
+                            return UserSDK.newInstance().getMe();
+                        }
+                    })*/
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<Token>() {
                         @Override
                         public void onCompleted() {
@@ -102,15 +119,21 @@ public class LoginFragment extends BaseFragment {
 
                         @Override
                         public void onError(Throwable e) {
+                            NLog.d(TAG, "onError : %s", e.getMessage());
                             loginFailed(new TaskException(e.getMessage()));
                         }
 
                         @Override
-                        public void onNext(Token token) {
-                            loginSuccess(token);
+                        public void onNext(Token Token) {
+                            NLog.d(TAG, "onNext userDetail = %s", Token);
+                           // Token token = new Token();
+                           // token.setAccess_token(Token);
+                            loginSuccess(Token);
                         }
+
+
                     });
-            getCompositeSubscription().add(subscription);
+            //getCompositeSubscription().add(subscription);
         }
 
 
@@ -143,6 +166,7 @@ public class LoginFragment extends BaseFragment {
             e.printStackTrace();
         }
         getActivity().finish();
+        UserConfigManager.getInstance().savePwd(pwd);
 
 
         //获取个人信息
@@ -152,12 +176,6 @@ public class LoginFragment extends BaseFragment {
 
 
     private void getMe(){
-        Action1 action1 = new Action1() {
-            @Override
-            public void call(Object o) {
-
-            }
-        };
         Observable<UserDetail> observable = UserSDK.newInstance().getMe();
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -169,17 +187,15 @@ public class LoginFragment extends BaseFragment {
 
                     @Override
                     public void onError(Throwable e) {
-                        NLog.d(TAG, "getMe onError = %s", e);
+                        NLog.d(UserCenterLog.getLogTag(), "getMe onError = %s", e);
                     }
 
                     @Override
                     public void onNext(UserDetail userDetail) {
-                        NLog.d(TAG, "getMe onNext userDetail = %s", userDetail);
+                        NLog.d(UserCenterLog.getLogTag(), "getMe onNext userDetail = %s", userDetail);
 
                         UserCache.saveMe(userDetail);
                     }
-
-
                 });
 
     }

@@ -2,8 +2,8 @@ package com.apache.fastandroid.pic;
 
 
 import com.apache.fastandroid.app.MyApplication;
+import com.apache.fastandroid.artemis.retrofit.BaseHttpUtils;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
-import com.apache.fastandroid.support.http.BaseHttpUtils;
 import com.apache.fastandroid.support.sdk.APIService;
 import com.apache.fastandroid.support.sdk.ApiConstans;
 import com.tesla.framework.common.setting.Setting;

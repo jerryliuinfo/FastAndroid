@@ -31,6 +31,9 @@ public class UserDetail implements Serializable {
 
     private int id;                     // ID
     private String login;               // 用户名
+
+    private String pwd;                 //密码
+
     private String name;                // 昵称
     private String avatar_url;          // 头像链接
     private String location;            // 城市

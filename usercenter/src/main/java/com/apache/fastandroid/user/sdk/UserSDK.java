@@ -6,6 +6,7 @@ import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
+import com.apache.fastandroid.user.support.UserConstans;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.network.http.HttpConfig;
 
@@ -28,14 +29,14 @@ public class UserSDK extends BaseBizLogic {
 
 
     public Observable<Token> login(String user_name, String password) {
-        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), "https://diycode.cc/api/v3/");
+        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), UserConstans.BASE_URL);
         TokenService apiService = httpUtils.getRetrofit().create(TokenService.class);
         Observable<Token> observable =  apiService.getTokenV2(OAuth.client_id, OAuth.client_secret, OAuth.GRANT_TYPE_LOGIN, user_name, password);
         return observable;
     }
 
     public Observable<UserDetail> getMe(){
-        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), "https://diycode.cc/api/v3/");
+        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), UserConstans.BASE_URL);
         UserApi apiService = httpUtils.getRetrofit().create(UserApi.class);
         Observable<UserDetail> observable =  apiService.getMe();
         return observable;

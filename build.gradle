@@ -7,7 +7,6 @@ buildscript {
     repositories {
         jcenter()
         flatDir {
-            println('libs path = '+rootDir.getAbsolutePath()+'/libs')
             dirs rootDir.getAbsolutePath()+'/libs'
         }
     }

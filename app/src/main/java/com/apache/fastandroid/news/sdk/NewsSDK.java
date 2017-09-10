@@ -2,9 +2,9 @@ package com.apache.fastandroid.news.sdk;
 
 import com.apache.fastandroid.app.MyApplication;
 import com.apache.fastandroid.artemis.BaseBizLogic;
+import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.news.bean.NewsBean;
 import com.apache.fastandroid.news.bean.NewsBeans;
-import com.apache.fastandroid.support.http.BaseHttpUtilsV2;
 import com.apache.fastandroid.topic.TopicConstans;
 import com.tesla.framework.network.http.HttpConfig;
 

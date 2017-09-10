@@ -25,5 +25,16 @@ public class UserConfigManager extends BaseSharedPreferenceConfigManager{
         }
         return instance;
     }
+
+
+    public void savePwd(String pwd){
+        setStringValue("password", pwd);
+    }
+
+    public String getPwd(){
+        return getStringValue("password", "");
+    }
+
+
 }
 
