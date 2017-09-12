@@ -67,7 +67,6 @@ public class TopicFragment extends ARecycleViewSwipeRefreshFragment<TopicBean,To
             if (!TextUtils.isEmpty(nextPage)){
                 offset = Integer.parseInt(nextPage);
             }
-
             try {
                 TopicBeans beans =  TopicSDK.newInstance().getTopicsList(null,null,offset,20);
                 NLog.d(TAG, "workInBackground beans = %s", beans);

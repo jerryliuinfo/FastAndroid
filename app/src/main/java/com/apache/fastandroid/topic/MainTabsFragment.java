@@ -3,6 +3,7 @@ package com.apache.fastandroid.topic;
 import android.support.v4.app.Fragment;
 
 import com.apache.fastandroid.news.NewsFragment;
+import com.apache.fastandroid.site.SitesListFragment;
 import com.tesla.framework.support.bean.TabItem;
 import com.tesla.framework.ui.fragment.ATabsTabLayoutFragment;
 
@@ -33,7 +34,9 @@ public class MainTabsFragment extends ATabsTabLayoutFragment<TabItem> {
             return TopicFragment.newFragment();
         }else if ("1".equals(tabItem.getType())){
             return NewsFragment.newFragment();
+        }else if ("2".equals(tabItem.getType())){
+            return SitesListFragment.newFragment();
         }
-        return TopicFragment.newFragment();
+        return null;
     }
 }

@@ -69,7 +69,8 @@ public class SplashActivity extends BaseActivity {
     }
 
     /**
-     * 执行登录，如果不能自动登录， 则执行onFailed,如果能
+     * 执行登录，如果不能自动登录， 则执行onFailed进入登录界面,
+     * 否则进入主界面
      */
     private void jump(){
         final ActionCallback callback = new ActionCallback(){
