@@ -29,4 +29,6 @@ public abstract class BaseFragment extends ABaseFragment {
     public CompositeSubscription getCompositeSubscription() {
         return compositeSubscription;
     }
+
+
 }

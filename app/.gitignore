@@ -17,6 +17,8 @@ out/
 .gradle/
 build/
 
+/captures
+
 # Local configuration file (sdk path, etc)
 local.properties
 
@@ -37,7 +39,7 @@ captures/
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/gradle.xml
-.idea/dictionariesgit c
+.idea/dictionaries
 .idea/libraries
 .idea/misc.xml
 .idea
@@ -54,3 +56,7 @@ google-services.json
 freeline.py
 freeline/
 freeline_project_description.json
+
+
+
+.DS_Store

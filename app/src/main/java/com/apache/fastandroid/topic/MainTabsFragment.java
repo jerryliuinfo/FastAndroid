@@ -31,7 +31,7 @@ public class MainTabsFragment extends ATabsTabLayoutFragment<TabItem> {
     @Override
     public Fragment newFragment(TabItem tabItem) {
         if ("0".equals(tabItem.getType())){
-            return TopicFragment.newFragment();
+            return TopicListFragment.newFragment();
         }else if ("1".equals(tabItem.getType())){
             return NewsFragment.newFragment();
         }else if ("2".equals(tabItem.getType())){

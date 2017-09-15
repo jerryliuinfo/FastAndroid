@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.apache.fastandroid.site.bean.SiteItem;
 import com.apache.fastandroid.site.bean.Siteable;
+import com.apache.fastandroid.site.bean.SitesItem;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 
@@ -26,8 +26,8 @@ public class SizeItemHeaderView extends ARecycleViewItemViewHolder<Siteable> {
 
     @Override
     public void onBindData(View convertView, Siteable bean, int position) {
-        if (bean instanceof SiteItem){
-            SiteItem item = (SiteItem) bean;
+        if (bean instanceof SitesItem){
+            SitesItem item = (SitesItem) bean;
             tv_type.setText(item.getName());
         }
     }

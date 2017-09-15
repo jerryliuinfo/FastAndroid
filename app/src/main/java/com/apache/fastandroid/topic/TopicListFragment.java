@@ -2,6 +2,8 @@ package com.apache.fastandroid.topic;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
 
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
@@ -20,11 +22,11 @@ import java.util.List;
  * Created by 01370340 on 2017/9/2.
  */
 
-public class TopicFragment extends ARecycleViewSwipeRefreshFragment<TopicBean,TopicBeans,TopicBean> {
+public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBean,TopicBeans,TopicBean> {
 
-    public static TopicFragment newFragment() {
+    public static TopicListFragment newFragment() {
         Bundle args = new Bundle();
-        TopicFragment fragment = new TopicFragment();
+        TopicListFragment fragment = new TopicListFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -77,5 +79,11 @@ public class TopicFragment extends ARecycleViewSwipeRefreshFragment<TopicBean,To
             return null;
 
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        super.onItemClick(parent, view, position, id);
+        TopicDetailFragment.start(getActivity(),getAdapterItems().get(position));
     }
 }

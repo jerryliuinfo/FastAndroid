@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.support.utils.TimeUtil;
+import com.apache.fastandroid.topic.TopicDetailFragment;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
@@ -18,7 +19,7 @@ import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
  */
 
 public class TopicItemView  extends ARecycleViewItemViewHolder<TopicBean> {
-
+    public static final int LAYOUT_RES = R.layout.topic_item_topic;
 
     TextView username;
     TextView node_name;
@@ -39,7 +40,7 @@ public class TopicItemView  extends ARecycleViewItemViewHolder<TopicBean> {
     }
 
     @Override
-    public void onBindData(View convertView, TopicBean bean, int position) {
+    public void onBindData(View convertView, final TopicBean bean, int position) {
         final User user = bean.user;
         username.setText(user.getLogin());
         node_name.setText(bean.node_name);
@@ -55,5 +56,15 @@ public class TopicItemView  extends ARecycleViewItemViewHolder<TopicBean> {
         if (!TextUtils.isEmpty(url)) {
             ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(avatar, url));
         }
+
+
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TopicDetailFragment.start(getContext(),bean);
+            }
+        });
+
     }
 }

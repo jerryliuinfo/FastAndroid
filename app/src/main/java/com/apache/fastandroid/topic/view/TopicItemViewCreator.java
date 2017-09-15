@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.apache.fastandroid.R;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
@@ -22,7 +21,7 @@ public class TopicItemViewCreator implements IItemViewCreator<TopicBean> {
 
     @Override
     public View newContentView(LayoutInflater inflater, ViewGroup parent, int viewType) {
-        return inflater.inflate(R.layout.topic_item_topic,parent,false);
+        return inflater.inflate(TopicItemView.LAYOUT_RES,parent,false);
     }
 
     @Override

@@ -5,11 +5,18 @@
               android:layout_height="match_parent"
               android:padding="20dp"
     >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_logo"/>
+
     <android.support.design.widget.TextInputLayout
         android:id="@+id/inputLayout_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="40dp"
         >
         <EditText
             android:id="@+id/et_userName"
@@ -37,46 +44,7 @@
             />
     </android.support.design.widget.TextInputLayout>
 
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="账号"
-            />
-        <EditText
-            android:id="@+id/et_userName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:background="@null"
-            />
-    </LinearLayout>-->
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        android:gravity="center_vertical"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="密码"
-            />
-        <EditText
-            android:id="@+id/et_pwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:background="@null"
-            />
-    </LinearLayout>-->
+
 
 
     <Button
