@@ -16,7 +16,12 @@ public class StartLoginActivity implements IActionDelegate {
     public void runAction(Bundle args, IActionCallback callback, Object... extras) throws DelegateException {
         if (extras != null && extras.length > 0 && extras[0] instanceof Activity){
             Activity from = (Activity) extras[0];
-            LoginFragment.start(from);
+            if (extras.length >= 2){
+                LoginFragment.start(from, (Boolean) extras[1]);
+            }else {
+                LoginFragment.start(from);
+            }
+
         }
     }
 }

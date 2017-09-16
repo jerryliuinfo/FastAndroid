@@ -3,6 +3,7 @@ package com.apache.fastandroid.app;
 import android.content.Context;
 
 import com.apache.fastandroid.artemis.ArtemisContext;
+import com.apache.fastandroid.artemis.CacheUtil;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
@@ -18,6 +19,7 @@ public class AppContext {
     public static void logout(Context context){
         ArtemisContext.setUserBean(null);
         ActivityTaskMgr.getInstance().clearActivityStack();
+        CacheUtil.clearToken();
         try {
             ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:ClearLoginInfo",null,null,new Object[]{});
             ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:startLoginActivityNewTask",null,null,new Object[]{context});

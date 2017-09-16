@@ -81,6 +81,12 @@ public class MainActivity extends BaseActivity{
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
     }
 
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+    }
+
     private void loadMenuData(){
         View headView = mNavigationView.getHeaderView(0);
         CircleImageView circleImageView = (CircleImageView) headView.findViewById(R.id.iv_user_avator);
@@ -104,9 +110,6 @@ public class MainActivity extends BaseActivity{
             tv_username.setText("未登录");
         }
 
-        if (ArtemisContext.getUserBean() != null){
-            tv_username.setText(ArtemisContext.getUserBean().getName());
-        }
 
     }
 

@@ -1,5 +1,6 @@
 package com.apache.fastandroid.user.delegate.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -15,7 +16,7 @@ public class StartLoginActivityWithNewTask implements IActionDelegate {
     @Override
     public void runAction(Bundle args, IActionCallback callback, Object... extras) throws DelegateException {
         if (extras != null && extras.length > 0 && extras[0] instanceof Context){
-            Context from = (Context) extras[0];
+            Activity from = (Activity) extras[0];
             LoginFragment.start(from);
         }
     }

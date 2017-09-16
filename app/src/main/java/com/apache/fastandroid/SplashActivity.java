@@ -61,7 +61,9 @@ public class SplashActivity extends BaseActivity {
 
 
     private void toMain(Token token){
-        showMessage("自动登录成功");
+        if (token != null){
+            showMessage("自动登录成功");
+        }
         AppContext.login(token);
         MainActivity.launch(SplashActivity.this);
         SplashActivity.this.finish();
@@ -88,7 +90,8 @@ public class SplashActivity extends BaseActivity {
                 NLog.d(TAG, "onActionFailed code = %s, msg = %s",code,msg);
 
                 //showMessage(msg);
-                toLogin();
+                //toLogin();
+                toMain(null);
             }
         };
         try {

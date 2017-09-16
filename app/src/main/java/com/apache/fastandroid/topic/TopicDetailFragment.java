@@ -3,20 +3,23 @@ package com.apache.fastandroid.topic;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewStub;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.artemis.base.BaseFragment;
+import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.User;
-import com.apache.fastandroid.support.utils.TimeUtil;
 import com.apache.fastandroid.topic.bean.TopicBean;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.FragmentArgs;
@@ -29,17 +32,13 @@ import com.tesla.framework.ui.widget.CircleImageView;
 
 public class TopicDetailFragment extends BaseFragment {
 
-    @ViewInject(idStr = "activity_topic_detail")
-    RelativeLayout activityTopicDetail;
 
-    @ViewInject(idStr = "toolbar")
-    Toolbar toolbar;
-
-    @ViewInject(idStr = "panel")
-    RelativeLayout panel;
 
     @ViewInject(idStr = "avatar")
     CircleImageView iv_avatar;
+
+    @ViewInject(idStr = "lay_header")
+    private View mHeaderView;
 
     @ViewInject(idStr = "username")
     TextView tv_username;
@@ -74,6 +73,14 @@ public class TopicDetailFragment extends BaseFragment {
     @ViewInject(idStr = "my_reply")
     EditText et_myReply;
 
+    @ViewInject(idStr = "stub_not_login")
+    ViewStub stub_not_login;
+    View mBottomNotLogin;
+
+    @ViewInject(idStr = "stub_can_reply")
+    ViewStub stub_can_reply;
+    View mBottomCanReply;
+
 
 
 
@@ -98,13 +105,23 @@ public class TopicDetailFragment extends BaseFragment {
         super.layoutInit(inflater, savedInstanceSate);
 
         setToolbarTitle("话题");
-
+        //NLog.d(TAG, "layoutInit lay_header = %s", lay_header);
+        stub_not_login = (ViewStub) findViewById(R.id.stub_not_login);
+        stub_can_reply = (ViewStub) findViewById(R.id.stub_can_reply);
         if (savedInstanceSate == null){
             mTopicBean = (TopicBean) getArguments().getSerializable("topic");
         }else {
             mTopicBean = (TopicBean) savedInstanceSate.getSerializable("topic");
         }
         showUserInfo();
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        showBottom();
     }
 
     @Override
@@ -114,19 +131,70 @@ public class TopicDetailFragment extends BaseFragment {
     }
 
     private void showUserInfo(){
+
+        View mHeaderView = findViewById(R.id.layout_content_header);
+        NLog.d(TAG, "showUserInfo mHeaderView = %s", mHeaderView);
+
         User user = mTopicBean.user;
-        tv_username.setText(user.getName());
-        tv_time.setText(TimeUtil.computePastTime(mTopicBean.updated_at));
-        tv_title.setText(mTopicBean.title);
-        tv_replyCount.setText("共收到 " + mTopicBean.replies_count + "条回复");
+        ((TextView)mHeaderView.findViewById(R.id.username)).setText(user.getName());
+
+        ((TextView)mHeaderView.findViewById(R.id.time)).setText(mTopicBean.updated_at);
+
+        ((TextView)mHeaderView.findViewById(R.id.title)).setText(mTopicBean.title);
+
         if (!TextUtils.isEmpty(user.getAvatar_url())){
+            ImageView iv_avatar = (ImageView) findViewById(R.id.avatar);
             ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(iv_avatar,user.getAvatar_url()));
         }
         iv_avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                try {
+                    ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:startLoginActivity",null,null,new Object[]{getActivity()});
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
+        TextView tv_reply_count = (TextView) findViewById(R.id.reply_count);
+        tv_reply_count.setText("共收到 " + mTopicBean.replies_count + "条回复");
+    }
+
+    private void showBottom(){
+        try {
+            Bundle result = ModularizationDelegate.getInstance().getData("com.apache.fastandroid:userCenter:isLogined",null,new Object[]{});
+            if (result != null && result.containsKey("result")){
+                boolean isLogined = result.getBoolean("result");
+                if (isLogined){
+                    if (mBottomCanReply == null){
+                        mBottomCanReply = stub_can_reply.inflate();
+                    }
+                    stub_can_reply.setVisibility(View.VISIBLE);
+                    stub_not_login.setVisibility(View.GONE);
+
+                }else {
+                    if (mBottomNotLogin == null){
+                        mBottomNotLogin = stub_not_login.inflate();
+                    }
+                    stub_not_login.setVisibility(View.VISIBLE);
+                    stub_can_reply.setVisibility(View.GONE);
+                    Button login = (Button) mBottomNotLogin.findViewById(R.id.login);
+                    login.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            try {
+                                ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:startLoginActivity",null,null,new Object[]{getActivity(),true});
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
