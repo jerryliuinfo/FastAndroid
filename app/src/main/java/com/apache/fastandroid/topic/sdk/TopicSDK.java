@@ -5,6 +5,7 @@ import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.topic.TopicConstans;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
+import com.apache.fastandroid.topic.bean.TopicContent;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
 
@@ -46,6 +47,13 @@ public class TopicSDK extends ABizLogic {
         BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(MyApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
         Observable<List<TopicBean>> observable =  apiService.getTopicsListV2(type,node_id,offset,limit);
+        return observable;
+    }
+
+    public Observable<TopicContent> getTopicsDetail(int id) {
+        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(MyApplication.getContext(), TopicConstans.BASE_URL);
+        TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
+        Observable<TopicContent> observable =  apiService.getTopic(id);
         return observable;
     }
 

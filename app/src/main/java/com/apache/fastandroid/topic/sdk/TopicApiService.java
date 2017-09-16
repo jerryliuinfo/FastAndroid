@@ -1,11 +1,13 @@
 package com.apache.fastandroid.topic.sdk;
 
 import com.apache.fastandroid.topic.bean.TopicBean;
+import com.apache.fastandroid.topic.bean.TopicContent;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -30,4 +32,14 @@ public interface TopicApiService {
     @GET("topics.json")
     Observable<List<TopicBean>> getTopicsListV2(@Query("type") String type, @Query("node_id") Integer node_id,
                                                 @Query("offset") int offset, @Query("limit") int limit);
+
+
+    /**
+     * 获取 topic 内容
+     *
+     * @param id topic 的 id
+     * @return 内容详情
+     */
+    @GET("topics/{id}.json")
+    Observable<TopicContent> getTopic(@Path("id") int id);
 }

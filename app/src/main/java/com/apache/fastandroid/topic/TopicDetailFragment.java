@@ -2,16 +2,14 @@ package com.apache.fastandroid.topic;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
@@ -19,69 +17,42 @@ import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.topic.bean.TopicBean;
+import com.apache.fastandroid.topic.bean.TopicContent;
+import com.apache.fastandroid.topic.sdk.TopicSDK;
+import com.apache.fastandroid.widget.webview.GcsMarkdownViewClient;
+import com.apache.fastandroid.widget.webview.MarkdownView;
+import com.apache.fastandroid.widget.webview.WebImageListener;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
+import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
+
+import rx.Observable;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by 01370340 on 2017/9/14.
  */
 
 public class TopicDetailFragment extends BaseFragment {
-
-
-
     @ViewInject(idStr = "avatar")
     CircleImageView iv_avatar;
 
-    @ViewInject(idStr = "lay_header")
-    private View mHeaderView;
-
-    @ViewInject(idStr = "username")
-    TextView tv_username;
-
-    @ViewInject(idStr = "point")
-    TextView tv_point;
-
-    @ViewInject(idStr = "node_name")
-    TextView tv_nodeName;
-
-    @ViewInject(idStr = "time")
-    TextView tv_time;
-
-    @ViewInject(idStr = "title")
-    TextView tv_title;
-
-    @ViewInject(idStr = "webview_container")
-    FrameLayout webviewContainer;
-
-    @ViewInject(idStr = "reply_count")
-    TextView tv_replyCount;
-
-    @ViewInject(idStr = "reply_list")
-    RecyclerView replyList;
-
-    @ViewInject(idStr = "reply_list")
-    RelativeLayout needLogin;
-
-    @ViewInject(idStr = "can_reply")
-    RelativeLayout canReply;
-
-    @ViewInject(idStr = "my_reply")
-    EditText et_myReply;
-
     @ViewInject(idStr = "stub_not_login")
     ViewStub stub_not_login;
-    View mBottomNotLogin;
+    View mNotLoginView;
 
     @ViewInject(idStr = "stub_can_reply")
     ViewStub stub_can_reply;
-    View mBottomCanReply;
+    View mReplyView;
 
-
+    private MarkdownView mMarkdownView;
+    private GcsMarkdownViewClient mWebViewClient;
 
 
     private TopicBean mTopicBean;
@@ -114,6 +85,7 @@ public class TopicDetailFragment extends BaseFragment {
             mTopicBean = (TopicBean) savedInstanceSate.getSerializable("topic");
         }
         showUserInfo();
+        initMarkdownView();
 
 
     }
@@ -125,23 +97,24 @@ public class TopicDetailFragment extends BaseFragment {
     }
 
     @Override
+    public void requestData() {
+        super.requestData();
+        loadTopicDetail();
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable("topic", mTopicBean);
     }
 
     private void showUserInfo(){
-
         View mHeaderView = findViewById(R.id.layout_content_header);
         NLog.d(TAG, "showUserInfo mHeaderView = %s", mHeaderView);
-
         User user = mTopicBean.user;
         ((TextView)mHeaderView.findViewById(R.id.username)).setText(user.getName());
-
         ((TextView)mHeaderView.findViewById(R.id.time)).setText(mTopicBean.updated_at);
-
         ((TextView)mHeaderView.findViewById(R.id.title)).setText(mTopicBean.title);
-
         if (!TextUtils.isEmpty(user.getAvatar_url())){
             ImageView iv_avatar = (ImageView) findViewById(R.id.avatar);
             ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(iv_avatar,user.getAvatar_url()));
@@ -166,19 +139,19 @@ public class TopicDetailFragment extends BaseFragment {
             if (result != null && result.containsKey("result")){
                 boolean isLogined = result.getBoolean("result");
                 if (isLogined){
-                    if (mBottomCanReply == null){
-                        mBottomCanReply = stub_can_reply.inflate();
+                    if (mReplyView == null){
+                        mReplyView = stub_can_reply.inflate();
                     }
                     stub_can_reply.setVisibility(View.VISIBLE);
                     stub_not_login.setVisibility(View.GONE);
 
                 }else {
-                    if (mBottomNotLogin == null){
-                        mBottomNotLogin = stub_not_login.inflate();
+                    if (mNotLoginView == null){
+                        mNotLoginView = stub_not_login.inflate();
                     }
                     stub_not_login.setVisibility(View.VISIBLE);
                     stub_can_reply.setVisibility(View.GONE);
-                    Button login = (Button) mBottomNotLogin.findViewById(R.id.login);
+                    Button login = (Button) mNotLoginView.findViewById(R.id.login);
                     login.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -195,6 +168,47 @@ public class TopicDetailFragment extends BaseFragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
+    private void loadTopicDetail(){
+        Observable<TopicContent> observable = TopicSDK.newInstance().getTopicsDetail(mTopicBean.id);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<TopicContent>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        NLog.d(TAG, "onError e = %s", e);
+                    }
+
+                    @Override
+                    public void onNext(TopicContent topicContent) {
+                        NLog.d(TAG, "onNext topicContent = %s", topicContent);
+                        showWebviewData(topicContent);
+                    }
+                });
+    }
+
+
+    private void initMarkdownView() {
+        FrameLayout layout = (FrameLayout) findViewById(R.id.webview_container);
+        mMarkdownView = new MarkdownView(getContext());
+        mMarkdownView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+        layout.addView(mMarkdownView);
+
+        WebImageListener listener = new WebImageListener(getContext(), BaseActivity.class);
+        mMarkdownView.addJavascriptInterface(listener, "listener");
+        mWebViewClient = new GcsMarkdownViewClient(getContext());
+        mMarkdownView.setWebViewClient(mWebViewClient);
+    }
+
+
+    private void showWebviewData(TopicContent topic){
+        mMarkdownView.setMarkDownText(topic.getBody());
+    }
+
 }
