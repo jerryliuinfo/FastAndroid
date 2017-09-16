@@ -2,6 +2,8 @@ package com.apache.fastandroid.topic.sdk;
 
 import com.apache.fastandroid.app.MyApplication;
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
+import com.apache.fastandroid.artemis.rx.DefaultHttpResultObserver;
+import com.apache.fastandroid.artemis.rx.ICallback;
 import com.apache.fastandroid.topic.TopicConstans;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
@@ -14,6 +16,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Response;
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by 01370340 on 2017/9/2.
@@ -50,10 +54,11 @@ public class TopicSDK extends ABizLogic {
         return observable;
     }
 
-    public Observable<TopicContent> getTopicsDetail(int id) {
+    public Observable<TopicContent> getTopicsDetail(int id, final ICallback<TopicContent> callback) {
         BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(MyApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
         Observable<TopicContent> observable =  apiService.getTopic(id);
+        observable.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new DefaultHttpResultObserver<>(callback));
         return observable;
     }
 

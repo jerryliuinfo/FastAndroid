@@ -10,7 +10,7 @@ import rx.Subscriber;
  * Created by 01370340 on 2017/9/4.
  */
 
-public abstract class HttpResultSubsriber<T> extends Subscriber<BaseBean<T>> {
+public abstract class HttpResultObserver<T> extends Subscriber<T> implements ICallback<T>{
 
     @Override
     public void onCompleted() {
@@ -23,13 +23,9 @@ public abstract class HttpResultSubsriber<T> extends Subscriber<BaseBean<T>> {
     }
 
     @Override
-    public void onNext(BaseBean<T> result) {
+    public void onNext(T result) {
         if (result == null){
             onFailed(new TaskException("数据为空"));
-            return;
-        }
-        if (result.getData() == null){
-            onFailed(new TaskException("data字段为空"));
             return;
         }
         //检查code
@@ -41,8 +37,9 @@ public abstract class HttpResultSubsriber<T> extends Subscriber<BaseBean<T>> {
                 return;
             }
         }
+
         //检查一些业务异常
-        if (result.getData() instanceof ICheck){
+        if (result instanceof ICheck){
             try {
                 ((ICheck) result).check();
             } catch (TaskException e) {
@@ -51,14 +48,8 @@ public abstract class HttpResultSubsriber<T> extends Subscriber<BaseBean<T>> {
                 return;
             }
         }
-        onSuccess(result.getData());
-
-
+        onSuccess(result);
     }
 
-    public abstract void onSuccess(T t);
 
-    public abstract void onFailed(Throwable e);
-
-    public abstract void onFinished();
 }

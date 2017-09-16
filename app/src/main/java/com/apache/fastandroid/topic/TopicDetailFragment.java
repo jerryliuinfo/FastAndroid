@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.rx.ICallback;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicContent;
@@ -31,9 +32,6 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
 
 import rx.Observable;
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by 01370340 on 2017/9/14.
@@ -171,25 +169,25 @@ public class TopicDetailFragment extends BaseFragment {
     }
 
     private void loadTopicDetail(){
-        Observable<TopicContent> observable = TopicSDK.newInstance().getTopicsDetail(mTopicBean.id);
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<TopicContent>() {
-                    @Override
-                    public void onCompleted() {
+        Observable<TopicContent> observable = TopicSDK.newInstance().getTopicsDetail(mTopicBean.id, new ICallback<TopicContent>() {
 
-                    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        NLog.d(TAG, "onError e = %s", e);
-                    }
+            @Override
+            public void onSuccess(TopicContent topicContent) {
+                showWebviewData(topicContent);
+            }
 
-                    @Override
-                    public void onNext(TopicContent topicContent) {
-                        NLog.d(TAG, "onNext topicContent = %s", topicContent);
-                        showWebviewData(topicContent);
-                    }
-                });
+            @Override
+            public void onFailed(Throwable e) {
+                NLog.d(TAG, "onFailed e = %s", e);
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+
     }
 
 
