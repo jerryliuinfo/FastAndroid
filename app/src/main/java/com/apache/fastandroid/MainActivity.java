@@ -19,7 +19,6 @@ import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.pic.PicTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
-import com.apache.fastandroid.topic.MainTabsFragment;
 import com.apache.fastandroid.video.VideoTabsFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
@@ -169,7 +168,15 @@ public class MainActivity extends BaseActivity{
         Fragment fragment = null;
         switch (itemId){
             case R.id.nav_item_posts:
-                fragment = MainTabsFragment.newFragment();
+                try {
+                    Object obj = ModularizationDelegate.getInstance().getObjectData("com.apache.fastandroid:topic:getMainTabsFragment",null,new Object[]{});
+                    if (obj != null && obj instanceof Fragment){
+                        fragment = (Fragment) obj;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 break;
             case R.id.nav_item_pic:
                 fragment = PicTabsFragment.newFragment();

@@ -1,4 +1,4 @@
-include ':app', ':library', ':usercenter', 'artemis'
+include ':app', ':library', ':usercenter', ':topic', 'artemis'
 println('settings.gradle')
 apply from: 'setting_config.gradle'
 

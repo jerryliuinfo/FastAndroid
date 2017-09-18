@@ -2,7 +2,7 @@ package com.apache.fastandroid.support.sdk;
 
 import com.apache.fastandroid.artemis.support.bean.BaseBean;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
-import com.apache.fastandroid.update.UpdateBean;
+import com.apache.fastandroid.support.sdk.bean.UpdateBean;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

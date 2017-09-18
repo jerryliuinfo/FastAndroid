@@ -5,7 +5,7 @@ import com.apache.fastandroid.artemis.BaseBizLogic;
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtils;
 import com.apache.fastandroid.artemis.support.bean.BaseBean;
 import com.apache.fastandroid.support.config.PublishVersionManager;
-import com.apache.fastandroid.update.UpdateBean;
+import com.apache.fastandroid.support.sdk.bean.UpdateBean;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.task.TaskException;
 

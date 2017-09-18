@@ -50,20 +50,6 @@ public class VideoSDK extends ABizLogic {
         params.addParameter("orderby","published");
         params.addParameter("client_id", "6ecd6970268b4c53");
 
-//        sb.append("?keyword=");
-//        try {
-//            sb.append(URLEncoder.encode(category, "UTF-8"));
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-//        sb.append("&page=");
-//        sb.append(pageNum);
-//        sb.append("&count=");
-//        sb.append(PAGE_LIMIT);
-//        sb.append("&public_type=all&paid=0&period=today&orderby=published&client_id=6ecd6970268b4c53");
-
-
-
         return doGet(configHttpConfig(),setting,params,VideoResultBean.class);
     }
 

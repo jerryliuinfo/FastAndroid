@@ -13,12 +13,12 @@ import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.delegate.MainDelegateFactory;
+import com.apache.fastandroid.delegate.TopicDelegateFactory;
 import com.apache.fastandroid.support.TUncaughtExceptionHandler;
 import com.apache.fastandroid.support.exception.FastAndroidErrorMsg;
 import com.apache.fastandroid.support.imageloader.GlideImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
 import com.apache.fastandroid.user.delegate.UsercenterDelegateFactory;
-import com.sgs.unite.comui.utils.ToastUtils;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.CrashHandler;
 import com.tesla.framework.common.util.log.Logger;
@@ -79,6 +79,7 @@ public class MyApplication extends MultiDexApplication{
     private void initModuleBridge(){
         ModularizationDelegate.getInstance().register("com.apache.fastandroid:moduleMain",new MainDelegateFactory());
         ModularizationDelegate.getInstance().register("com.apache.fastandroid:userCenter",new UsercenterDelegateFactory());
+        ModularizationDelegate.getInstance().register("com.apache.fastandroid:topic",new TopicDelegateFactory());
     }
 
 

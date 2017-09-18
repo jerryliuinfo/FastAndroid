@@ -250,6 +250,7 @@ dependencies {
     //compile project(':library')
     //compile project(':artemis')
     compile project(':usercenter')
+    compile project(':topic')
 
 
     compile(name: 'artemis', ext: 'aar')
