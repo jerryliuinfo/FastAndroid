@@ -2,6 +2,7 @@ package com.apache.fastandroid.topic;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.rx.ICallback;
 import com.apache.fastandroid.artemis.support.bean.User;
+import com.apache.fastandroid.support.utils.TimeUtil;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicContent;
 import com.apache.fastandroid.topic.sdk.TopicSDK;
@@ -85,6 +87,9 @@ public class TopicDetailFragment extends BaseFragment {
         showUserInfo();
         initMarkdownView();
 
+        Fragment fragment = TopicReplyListFragment.newInstance(mTopicBean);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.reply_list_container,fragment).commit();
+
 
     }
 
@@ -111,7 +116,7 @@ public class TopicDetailFragment extends BaseFragment {
         NLog.d(TAG, "showUserInfo mHeaderView = %s", mHeaderView);
         User user = mTopicBean.user;
         ((TextView)mHeaderView.findViewById(R.id.username)).setText(user.getName());
-        ((TextView)mHeaderView.findViewById(R.id.time)).setText(mTopicBean.updated_at);
+        ((TextView)mHeaderView.findViewById(R.id.time)).setText(TimeUtil.computePastTime(mTopicBean.updated_at));
         ((TextView)mHeaderView.findViewById(R.id.title)).setText(mTopicBean.title);
         if (!TextUtils.isEmpty(user.getAvatar_url())){
             ImageView iv_avatar = (ImageView) findViewById(R.id.avatar);
@@ -187,6 +192,7 @@ public class TopicDetailFragment extends BaseFragment {
 
             }
         });
+        //getCompositeSubscription().add(observable);
 
     }
 

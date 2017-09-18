@@ -21,8 +21,8 @@ public abstract class BaseFragment extends ABaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (compositeSubscription != null){
-            compositeSubscription.clear();
+        if (getCompositeSubscription() != null){
+            getCompositeSubscription().clear();
         }
     }
 

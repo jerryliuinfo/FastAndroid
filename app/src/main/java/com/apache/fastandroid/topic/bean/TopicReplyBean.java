@@ -28,7 +28,7 @@ import com.apache.fastandroid.artemis.support.bean.User;
 
 import java.io.Serializable;
 
-public class TopicReply implements Serializable {
+public class TopicReplyBean implements Serializable {
     /**
      * id : 2839
      * body_html : <p>期待 GcsSloop版的 diycode  客户端</p>
@@ -121,5 +121,12 @@ public class TopicReply implements Serializable {
 
     public void setAbilities(Abilities abilities) {
         this.abilities = abilities;
+    }
+
+    @Override
+    public String toString() {
+        return "TopicReplyBean{" + "id=" + id + ", body_html='" + body_html + '\'' + ", created_at='" + created_at +
+                '\'' + ", updated_at='" + updated_at + '\'' + ", deleted=" + deleted + ", topic_id=" + topic_id + ", " +
+                "user=" + user + ", likes_count=" + likes_count + ", abilities=" + abilities + '}';
     }
 }

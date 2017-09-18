@@ -55,6 +55,13 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
             </android.support.v7.widget.RecyclerView>
 
+            <FrameLayout
+                android:id="@+id/reply_list_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </FrameLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="12dp"

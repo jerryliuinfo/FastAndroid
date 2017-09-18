@@ -2,6 +2,7 @@ package com.apache.fastandroid.topic.sdk;
 
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicContent;
+import com.apache.fastandroid.topic.bean.TopicReplyBean;
 
 import java.util.List;
 
@@ -42,4 +43,17 @@ public interface TopicApiService {
      */
     @GET("topics/{id}.json")
     Observable<TopicContent> getTopic(@Path("id") int id);
+
+
+    /**
+     * 获取 topic 回复列表
+     *
+     * @param id     topic 的 id
+     * @param offset 偏移数值 默认 0
+     * @param limit  数量极限，默认值 20，值范围 1...150
+     * @return 回复列表
+     */
+    @GET("topics/{id}/replies.json")
+    Call<List<TopicReplyBean>> getTopicRepliesList(@Path("id") int id, @Query("offset") Integer offset,
+                                                        @Query("limit") Integer limit);
 }
