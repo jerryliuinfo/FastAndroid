@@ -36,11 +36,33 @@ public class ModularizationDelegate {
         mFactoryMap.put(key,factory);
     }
 
-    private void unRegister(String key){
+    public void unRegister(String key){
         if (mFactoryMap.containsKey(key)){
             mFactoryMap.remove(key);
         }
     }
+
+
+    public static void registerComponent(String className){
+        try {
+            Class clz = Class.forName(className);
+            IApplicationLike applicationLike = (IApplicationLike) clz.newInstance();
+            applicationLike.onCreate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void unRegisterComponent(String className){
+        try {
+            Class clz = Class.forName(className);
+            IApplicationLike applicationLike = (IApplicationLike) clz.newInstance();
+            applicationLike.onStop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      *
