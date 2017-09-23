@@ -9,7 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/artemis" />
+            <option value="$PROJECT_DIR$/baselib" />
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/topic" />
             <option value="$PROJECT_DIR$/usercenter" />

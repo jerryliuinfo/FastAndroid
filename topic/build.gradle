@@ -27,7 +27,7 @@ dependencies {
     })
     compile thirddependencies.appcompatV7
 
-    compile project(':artemis')
+    compile project(':baselib')
 
     testCompile 'junit:junit:4.12'
 }
