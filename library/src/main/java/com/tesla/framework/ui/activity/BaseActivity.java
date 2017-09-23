@@ -47,6 +47,11 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     private static Class<? extends BaseActivityHelper> mHelperClass;
     private BaseActivityHelper mHelper;
 
+
+    private static Class<? extends PermissionActivityHelper> mPermissionHelperClass;
+    private PermissionActivityHelper mPermissionHelper;
+
+
     private int theme = 0;// 当前界面设置的主题
 
     private Locale language = null;// 当前界面的语言
@@ -76,6 +81,9 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     public static void setHelper(Class<? extends BaseActivityHelper> clazz) {
         mHelperClass = clazz;
     }
+    public static void setPermissionHelper(Class<? extends PermissionActivityHelper> clazz) {
+        mPermissionHelperClass = clazz;
+    }
 
     protected int configTheme() {
         if (mHelper != null) {
@@ -95,6 +103,15 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
                 if (mHelperClass != null) {
                     mHelper = mHelperClass.newInstance();
                     mHelper.bindActivity(this);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (mPermissionHelper == null) {
+            try {
+                if (mPermissionHelperClass != null) {
+                    mPermissionHelper = mPermissionHelperClass.newInstance();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -468,7 +485,12 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-
+        if (mHelper != null){
+            mHelper.notifyActivityResult(requestCode,permissions,grantResults);
+        }
+        if (mPermissionHelper != null){
+            mPermissionHelper.onRequestPermissionsResult(requestCode,permissions,grantResults);
+        }
     }
 
     public BaseActivityHelper getActivityHelper() {

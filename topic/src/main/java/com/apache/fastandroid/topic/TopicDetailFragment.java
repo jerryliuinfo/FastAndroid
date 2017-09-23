@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
-import com.apache.fastandroid.artemis.rx.ICallback;
+import com.apache.fastandroid.artemis.rx.DefaultCallback;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.artemis.util.TimeUtil;
 import com.apache.fastandroid.topic.bean.TopicBean;
@@ -174,7 +174,7 @@ public class TopicDetailFragment extends BaseFragment {
     }
 
     private void loadTopicDetail(){
-        Observable<TopicContent> observable = TopicSDK.newInstance().getTopicsDetail(mTopicBean.id, new ICallback<TopicContent>() {
+        Observable<TopicContent> observable = TopicSDK.newInstance().getTopicsDetail(mTopicBean.id, new DefaultCallback<TopicContent>() {
 
 
             @Override
@@ -187,10 +187,7 @@ public class TopicDetailFragment extends BaseFragment {
                 NLog.d(ABaseFragment.TAG, "onFailed e = %s", e);
             }
 
-            @Override
-            public void onFinished() {
 
-            }
         });
         //getCompositeSubscription().add(observable);
 

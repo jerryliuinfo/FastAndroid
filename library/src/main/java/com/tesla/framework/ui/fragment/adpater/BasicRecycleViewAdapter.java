@@ -92,7 +92,8 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
                 itemViewHolder.onBindData(itemViewHolder.getConvertView(), getDatas().get(realPosition), realPosition);
             }
 
-            if (onItemClickListener != null){
+            // 不设置item点击监听事件，由各个item自行处理
+           /* if (onItemClickListener != null){
                 itemViewHolder.getConvertView().setOnClickListener(innerOnClickListener);
             }else {
                 itemViewHolder.getConvertView().setOnClickListener(null);
@@ -102,7 +103,7 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
                 itemViewHolder.getConvertView().setOnLongClickListener(innerLongClickClickListener);
             }else {
                 itemViewHolder.getConvertView().setOnLongClickListener(null);
-            }
+            }*/
 
         }
     }

@@ -39,6 +39,9 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.util.List;
 
+import static com.tesla.framework.common.util.sdcard.SdcardUtils.getSdcardPath;
+import static com.tesla.framework.common.util.sdcard.SdcardUtils.hasSDCard;
+
 @SuppressLint("SdCardPath") public class SystemUtils {
 
 	private static int screenWidth;
@@ -114,74 +117,7 @@ import java.util.List;
 		return density;
 	}
 
-	public static boolean hasSDCard() {
-		boolean mHasSDcard = false;
-		if (Environment.MEDIA_MOUNTED.endsWith(Environment.getExternalStorageState())) {
-			mHasSDcard = true;
-		} else {
-			mHasSDcard = false;
-		}
 
-		return mHasSDcard;
-	}
-
-	public static String getSdcardPath() {
-
-		if (hasSDCard())
-			return Environment.getExternalStorageDirectory().getAbsolutePath();
-
-		return "/sdcard/";
-	}
-
-	private static boolean sdcardCanWrite() {
-		return Environment.getExternalStorageDirectory().canWrite();
-	}
-
-	public static boolean hasSdcardAndCanWrite() {
-		return hasSDCard() && sdcardCanWrite();
-	}
-
-	/**
-	 * 获取SDCARD的可用大小,单位字节
-	 *
-	 * @return
-	 */
-	@SuppressWarnings("deprecation")
-	public long getSdcardtAvailableStore() {
-
-		if (hasSdcardAndCanWrite()) {
-			String path = getSdcardPath();
-			if (path != null) {
-				StatFs statFs = new StatFs(path);
-
-				long blocSize = statFs.getBlockSize();
-
-				long availaBlock = statFs.getAvailableBlocks();
-
-				return availaBlock * blocSize;
-			}
-		}
-
-		return 0;
-	}
-
-	public static NetWorkType getNetworkType(Context context) {
-
-		ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-
-		if (networkInfo != null) {
-			switch (networkInfo.getType()) {
-				case ConnectivityManager.TYPE_MOBILE:
-					return NetWorkType.mobile;
-				case ConnectivityManager.TYPE_WIFI:
-					return NetWorkType.wifi;
-			}
-		}
-
-		return NetWorkType.none;
-	}
 
 	/**
 	 * mac地址
@@ -216,15 +152,6 @@ import java.util.List;
 		return transformIp(wifi.getConnectionInfo().getIpAddress());
 	}
 
-	public static String getVersionName(Context context) {
-		try {
-			PackageManager packageManager = context.getPackageManager();
-			PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
-			return packageInfo.versionName;
-		} catch (Exception e) {
-		}
-		return "";
-	}
 
 	public static int getVersionCode(Context context) {
 		try {

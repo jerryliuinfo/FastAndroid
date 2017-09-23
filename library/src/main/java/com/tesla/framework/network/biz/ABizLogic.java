@@ -131,7 +131,11 @@ public abstract class ABizLogic implements IHttpUtility{
     @Override
     public <T> T doPost(HttpConfig config, Setting action, Params urlParams, Params bodyParams, Object requestObj,
                         Class<T> responseCls) throws TaskException {
-        return null;
+        long time = System.currentTimeMillis();
+        T result = getHttpUtility(action).doPost(resetHttpConfig(config, action), action, urlParams, bodyParams, requestObj, responseCls);
+        NLog.d(getTag(action, "Post"), "耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
+
+        return result;
     }
 
     @Override

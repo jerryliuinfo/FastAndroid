@@ -76,4 +76,5 @@ public class NewsFragment extends ARecycleViewSwipeRefreshFragment<NewsBean,Topi
             throw new TaskException("server error");
         }
     }
+
 }

@@ -38,6 +38,7 @@ ext {
             constraintLayout : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
             cardview         :  "com.android.support:cardview-v7:$designVersion",
             design           :  "com.android.support:design:$designVersion",
+            support_customtabs: "com.android.support:customtabs:$supportLibrariesVersion",
             junit            :  "junit:junit:$junitVersion",
             multidex         :  "com.android.support:multidex:1.0.1",
 

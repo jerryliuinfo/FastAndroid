@@ -9,11 +9,9 @@ import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
 import com.apache.fastandroid.topic.sdk.TopicSDK;
 import com.apache.fastandroid.topic.view.TopicItemViewCreator;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
-import com.tesla.framework.ui.fragment.APagingFragment;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
@@ -70,14 +68,7 @@ public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBea
             if (!TextUtils.isEmpty(nextPage)){
                 offset = Integer.parseInt(nextPage);
             }
-            try {
-                TopicBeans beans =  TopicSDK.newInstance().getTopicsList(null,null,offset,20);
-                NLog.d(APagingFragment.TAG, "workInBackground beans = %s", beans);
-                return beans;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
+            return TopicSDK.newInstance().getTopicsList(null,null,offset,20);
 
         }
     }

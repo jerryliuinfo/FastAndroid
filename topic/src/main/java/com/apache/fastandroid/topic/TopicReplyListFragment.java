@@ -58,14 +58,8 @@ public class TopicReplyListFragment extends ARecycleViewFragment<TopicReplyBean,
 
             @Override
             public ArrayList<TopicReplyBean> workInBackground(Void... params) throws TaskException {
-                ArrayList<TopicReplyBean> replyList = null;
-                try {
-                     replyList = TopicSDK.newInstance().getReplyList(mTopicBean.id,null,mTopicBean.replies_count);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
 
-                return replyList;
+                return TopicSDK.newInstance().getReplyList(mTopicBean.id,null,mTopicBean.replies_count);
             }
 
             @Override

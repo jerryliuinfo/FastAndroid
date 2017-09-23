@@ -23,9 +23,17 @@
 package com.apache.fastandroid.artemis.util;
 
 import android.content.Context;
-import android.util.Log;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.support.customtabs.CustomTabsIntent;
+import android.text.TextUtils;
+
+import com.tesla.framework.common.util.ResUtil;
+
+import caom.apache.fastandroid.artemis.R;
 
 public class IntentUtil {
+
 
 
     /**
@@ -36,13 +44,26 @@ public class IntentUtil {
      * @param url     url
      */
     public static void openUrl(Context context, String url) {
+
         // TODO Chrome Custom Tabs
-        if (null == url || url.isEmpty()) {
-            Log.i("Diyocde", "Url地址错误");
+        if (TextUtils.isEmpty(url)) {
             return;
         }
-        //CustomTabsHelper.openUrl(context, url);
+
+
+        CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
+        // 修改 ActionBar 的颜色
+        intentBuilder.setToolbarColor(ResUtil.getColor(R.color.comm_white));
+        //是否显示网页标题
+        intentBuilder.setShowTitle(true);
+        //自定义关闭 Custom tabs 的图标
+        intentBuilder.setCloseButtonIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_arrow_back_black_24dp));
+        // 最后调用助手类 CustomTabActivityHelper 的 openCustomTab 函数来打开一个网址
+
+        intentBuilder.build().launchUrl(context, Uri.parse(url));
     }
+
+
 
     /**
      * 打开支付宝

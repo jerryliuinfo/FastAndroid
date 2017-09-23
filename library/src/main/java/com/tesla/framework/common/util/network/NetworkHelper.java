@@ -192,6 +192,30 @@ public class NetworkHelper {
 			}
 		}
 	}
-	
+
+
+
+	public static NetworkStatus getNetworkType(Context context) {
+
+		ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
+		if (networkInfo != null) {
+			switch (networkInfo.getType()) {
+				case ConnectivityManager.TYPE_MOBILE:
+					return NetworkStatus.NetworkReachableViaWWAN;
+				case ConnectivityManager.TYPE_WIFI:
+					return NetworkStatus.NetworkReachableViaWiFi;
+			}
+		}
+
+		return NetworkStatus.NetworkNotReachable;
+	}
+
+
+	public static boolean isNetworkAvailable(Context context){
+		return getNetworkType(context) != NetworkStatus.NetworkNotReachable;
+	}
 
 }

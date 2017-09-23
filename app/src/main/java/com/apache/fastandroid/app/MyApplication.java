@@ -8,12 +8,11 @@ import android.os.Environment;
 import android.support.multidex.MultiDexApplication;
 
 import com.apache.fastandroid.BuildConfig;
-import com.apache.fastandroid.FastActivityHelper;
 import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.support.TUncaughtExceptionHandler;
-import com.apache.fastandroid.support.exception.FastAndroidErrorMsg;
+import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegate;
 import com.apache.fastandroid.support.imageloader.GlideImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
 import com.tesla.framework.FrameworkApplication;
@@ -24,6 +23,7 @@ import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.db.TeslaDB;
 import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.ui.activity.PermissionActivityHelper;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
 import java.io.File;
@@ -51,17 +51,17 @@ public class MyApplication extends MultiDexApplication{
         initModuleBridge();
         initCrashAndAnalysis();
 
-        TaskException.config(new FastAndroidErrorMsg());
+        TaskException.config(new FastAndroidExceptionDelegate());
 
 
         TeslaDB.setDB();
         BaseActivity.setHelper(SwipeActivityHelper.class);
+        BaseActivity.setPermissionHelper(PermissionActivityHelper.class);
         if (activityLifecycleCallbacks == null){
             activityLifecycleCallbacks = new ActivityLifeCycleReportCallback();
         }
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
         ImageLoaderManager.getInstance().setImageLoaderStrategy(new GlideImageLoader());
-        BaseActivity.setHelper(FastActivityHelper.class);
         initAuth();
 
     }

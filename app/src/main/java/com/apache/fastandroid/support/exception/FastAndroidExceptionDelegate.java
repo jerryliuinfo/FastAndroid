@@ -1,5 +1,6 @@
 package com.apache.fastandroid.support.exception;
 
+import android.app.Activity;
 import android.text.TextUtils;
 
 import com.tesla.framework.network.task.IExceptionDeclare;
@@ -12,8 +13,8 @@ import java.util.Map;
  * Created by 01370340 on 2017/9/1.
  */
 
-public class FastAndroidErrorMsg  implements IExceptionDeclare{
-    private static final Map<String, String> errorMap = new HashMap<String, String>();
+public class FastAndroidExceptionDelegate implements IExceptionDeclare{
+    private static final Map<String, String> errorMap = new HashMap<>();
 
     /**
      * 根据服务器返回的错误代码，返回错误信息
@@ -46,5 +47,24 @@ public class FastAndroidErrorMsg  implements IExceptionDeclare{
             return errorMap.get(code);
 
         return null;
+    }
+
+
+    public static String getMessage(Activity context, TaskException exception, int defRes) {
+        try {
+            if (context != null) {
+                String message = exception.getMessage();
+                if (!TextUtils.isEmpty(message)) {
+                    return message;
+                }
+                else {
+                    return context.getString(defRes);
+                }
+            }
+        } catch (Exception ignore) {
+            ignore.printStackTrace();
+        }
+
+        return "";
     }
 }

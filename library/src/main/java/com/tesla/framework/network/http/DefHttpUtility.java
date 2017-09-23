@@ -6,8 +6,8 @@ import com.alibaba.fastjson.JSON;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.setting.SettingUtility;
-import com.tesla.framework.common.util.SystemUtils;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.task.TaskException;
 
@@ -116,7 +116,7 @@ public class DefHttpUtility implements IHttpUtility {
 
 	private Request.Builder createRequestBuilder(HttpConfig config, Setting action, Params urlParams, String method) throws TaskException {
 		// 是否有网络连接
-		if (FrameworkApplication.getContext() != null && SystemUtils.getNetworkType(FrameworkApplication.getContext()) == SystemUtils.NetWorkType.none) {
+		if (!NetworkHelper.isNetworkAvailable(FrameworkApplication.getContext())) {
 			NLog.w(getTag(action, method), "没有网络连接");
 
 			throw new TaskException(TaskException.TaskError.noneNetwork.toString());
