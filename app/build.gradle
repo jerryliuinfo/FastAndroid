@@ -33,11 +33,6 @@ def getCommitVersionCode() {
     }
 }
 
-def getDate() {
-    def date = new Date()
-    def formattedDate = date.format('MMddHHmm')
-    return formattedDate
-}
 
 
 android {
@@ -79,35 +74,36 @@ android {
 
     signingConfigs {
         dev {
-            storeFile file('debug.jks')
-            storePassword '654321'
-            keyAlias 'jerry321'
-            keyPassword 'jerrry123'
+            try {
+                storeFile file("./keystore/release.jks")
+                storePassword KEYSTORE_PASSWORD
+                keyAlias "jerry123"
+                keyPassword KEY_PASSWORD
+            }
+            catch (ex) {
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+            }
 
-        }
-        gp { // 外发包 签名
-            storeFile file('release.jks')
-            storePassword '123456'
-            keyAlias 'jerry123'
-            keyPassword 'jerry321'
         }
 
     }
 
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
-            zipAlignEnabled false
+//            minifyEnabled false
+//            shrinkResources true
+//            zipAlignEnabled false
             buildConfigField("boolean","LOG_DEBUG","false")
             buildConfigField("String","BUGLY_APP_ID","\"a397701fd5\"")
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
+            manifestPlaceholders = [appName: "FastAnd"]
         }
         debug {
             minifyEnabled false
             buildConfigField("boolean","LOG_DEBUG","true")
             buildConfigField("String","BUGLY_APP_ID","\"272afe1108\"")
+            applicationIdSuffix '.debug'
+            manifestPlaceholders = [appName: "FastAndDebug"]
 
 
         }
@@ -128,37 +124,19 @@ android {
 
 
         }
-        //这里的isGpFlavorCreate和isAllFlavorCreate必须定义在gradle.properties文件，放在自定义文件无效
-       /* if (isbaiduFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
-            baidu {
-                applicationId "com.fast.adnroid"
-                signingConfig signingConfigs.gp
-                manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
-            }
-        }*/
 
-        //这里的isGpFlavorCreate和isAllFlavorCreate必须定义在gradle.properties文件，放在自定义文件无效
-        /*if (isWandoujiaFlavorCreate.toBoolean() || isAllFlavorCreate.toBoolean()){
-            wandoujia {
-                applicationId "com.fast.adnroid"
-                signingConfig signingConfigs.gp
-                manifestPlaceholders = [ISTEST_VALUE: "PRD", CHANNEL_VALUE: name, PACKAGE_NAME: applicationId]
-            }
-        }*/
     }
     /**
      * release构建忽略dev这一个渠道
      */
     variantFilter { variant ->
-        if (variant.buildType.name.equals('release')) {
+       /* if (variant.buildType.name.equals('release')) {
             variant.getFlavors().each() { flavor ->
                 if (flavor.name.equals('dev')){
                     variant.setIgnore(true);
                 }
-
-
             }
-        }
+        }*/
     }
 
     //修改apk输出名字格式
@@ -179,7 +157,7 @@ android {
                     def buildTypeName = buildType.name
 
 
-                    def fileName = "Module_${appName}_${pubversionName}_${flavorsName}_${buildTypeName}.apk"
+                    def fileName = "${appName}_${pubversionName}_${flavorsName}_${buildTypeName}.apk"
 
                     output.outputFile = new File(outputFile.parent, fileName)
                 }
@@ -192,10 +170,8 @@ android {
         options.encoding = "UTF-8"
     }
     dexOptions {
-//        incremental = true;
         preDexLibraries = true
-//        javaMaxHeapSize "4g" // 2g should be also OK
-//        maxProcessCount 8
+
     }
 
 }
@@ -236,19 +212,12 @@ dependencies {
     compile thirddependencies.glide
     compile thirddependencies.appcompatV7
     compile thirddependencies.multidex
-    /*compile dep.bugly*/
-
-    //compile_library(getProject())
-    //compile project(':library')
 
     compile thirddependencies.junit
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
 
 
-    /*compile dep.bugly*/
-    //compile_library(getProject())
-    //compile project(':library')
-    //compile project(':artemis')
+
     compile project(':usercenter')
     compile project(':topic')
 }

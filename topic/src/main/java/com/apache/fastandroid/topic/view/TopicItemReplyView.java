@@ -44,24 +44,6 @@ public class TopicItemReplyView extends ARecycleViewItemViewHolder<TopicReplyBea
 
     @Override
     public void onBindData(View convertView, TopicReplyBean bean, int position) {
-        /*final User user = bean.getUser();
-        holder.setText(R.id.username, user.getLogin());
-        holder.setText(R.id.time, TimeUtil.computePastTime(bean.getUpdated_at()));
-
-        ImageView avatar = holder.get(R.id.avatar);
-        ImageUtils.loadImage(mContext, user.getAvatar_url(), avatar);
-        TextView content = holder.get(R.id.content);
-        // TODO 评论区代码问题
-        content.setText(Html.fromHtml(HtmlUtil.removeP(bean.getBody_html()), new GlideImageGetter(mContext, content), null));
-
-        holder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, UserActivity.class);
-                intent.putExtra(UserActivity.USER, user);
-                mContext.startActivity(intent);
-            }
-        }, R.id.avatar, R.id.username);*/
 
         final User user = bean.getUser();
         username.setText(user.getLogin());
@@ -77,9 +59,6 @@ public class TopicItemReplyView extends ARecycleViewItemViewHolder<TopicReplyBea
             ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(avatar, url));
         }
 
-
-
     }
-
 
 }

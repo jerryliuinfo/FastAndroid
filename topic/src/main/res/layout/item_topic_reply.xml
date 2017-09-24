@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/avatar"
             android:paddingTop="@dimen/topic_item_padding_vertical"
-            android:text="GcsTest(测试节点)"
+            tools:text="GcsTest(测试节点)"
             android:textColor="@color/diy_black"
             android:textSize="16sp"/>
     </RelativeLayout>
