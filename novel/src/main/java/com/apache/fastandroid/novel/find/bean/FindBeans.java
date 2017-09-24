@@ -1,4 +1,4 @@
-package com.fast.android.novel.find.bean;
+package com.apache.fastandroid.novel.find.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;

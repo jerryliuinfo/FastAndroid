@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fast.android.novel.find.bean;
+package com.apache.fastandroid.novel.find.bean;
 
 import java.io.Serializable;
 

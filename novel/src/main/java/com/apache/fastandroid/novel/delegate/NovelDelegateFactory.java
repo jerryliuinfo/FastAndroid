@@ -1,10 +1,10 @@
-package com.fast.android.novel.delegate;
+package com.apache.fastandroid.novel.delegate;
 
 import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
 import com.apache.fastandroid.artemis.comBridge.IDataDelegate;
 import com.apache.fastandroid.artemis.comBridge.IDelegateFactory;
 import com.apache.fastandroid.artemis.comBridge.IObjectDataDelegate;
-import com.fast.android.novel.delegate.impl.GetNovelHomeTabsFragment;
+import com.apache.fastandroid.novel.delegate.impl.GetNovelHomeTabsFragment;
 
 /**
  * Created by 01370340 on 2017/9/24.

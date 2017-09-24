@@ -1,10 +1,10 @@
-package com.fast.android.novel.recommand.view;
+package com.apache.fastandroid.novel.recommand.view;
 
 import android.app.Activity;
 import android.view.View;
 
-import com.fast.android.novel.R;
-import com.fast.android.novel.recommand.bean.RecommendBeans;
+import com.apache.fastandroid.novel.R;
+import com.apache.fastandroid.novel.recommand.bean.RecommendBeans;
 import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 

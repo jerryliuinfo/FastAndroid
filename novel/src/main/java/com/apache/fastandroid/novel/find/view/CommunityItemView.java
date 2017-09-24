@@ -1,12 +1,12 @@
-package com.fast.android.novel.find.view;
+package com.apache.fastandroid.novel.find.view;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fast.android.novel.R;
-import com.fast.android.novel.find.bean.FindBean;
+import com.apache.fastandroid.novel.R;
+import com.apache.fastandroid.novel.find.bean.FindBean;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 

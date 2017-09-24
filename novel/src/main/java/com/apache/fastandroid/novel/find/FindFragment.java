@@ -1,12 +1,12 @@
-package com.fast.android.novel.find;
+package com.apache.fastandroid.novel.find;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
-import com.fast.android.novel.R;
-import com.fast.android.novel.find.bean.FindBean;
-import com.fast.android.novel.find.bean.FindBeans;
-import com.fast.android.novel.find.view.CommunityItemViewCreator;
+import com.apache.fastandroid.novel.R;
+import com.apache.fastandroid.novel.find.bean.FindBean;
+import com.apache.fastandroid.novel.find.bean.FindBeans;
+import com.apache.fastandroid.novel.find.view.CommunityItemViewCreator;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.bean.RefreshConfig;
 import com.tesla.framework.ui.fragment.ARecycleViewFragment;

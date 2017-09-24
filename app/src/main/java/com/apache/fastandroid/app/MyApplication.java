@@ -84,7 +84,7 @@ public class MyApplication extends MultiDexApplication{
         //主题模块
         ModularizationDelegate.registerComponent("com.apache.fastandroid.applike.TopicAppLike");
         //小说模块
-        ModularizationDelegate.registerComponent("com.fast.android.novel.applike.NovelAppLike");
+        ModularizationDelegate.registerComponent("com.apache.fastandroid.novel.applike.NovelAppLike");
     }
 
 

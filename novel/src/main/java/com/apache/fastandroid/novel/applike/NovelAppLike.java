@@ -1,9 +1,9 @@
-package com.fast.android.novel.applike;
+package com.apache.fastandroid.novel.applike;
 
 import com.apache.fastandroid.artemis.comBridge.IApplicationLike;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
-import com.fast.android.novel.delegate.NovelDelegateFactory;
+import com.apache.fastandroid.novel.delegate.NovelDelegateFactory;
 
 /**
  * Created by 01370340 on 2017/9/24.

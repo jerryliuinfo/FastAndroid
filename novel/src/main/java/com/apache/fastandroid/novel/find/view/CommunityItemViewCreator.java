@@ -1,9 +1,9 @@
-package com.fast.android.novel.find.view;
+package com.apache.fastandroid.novel.find.view;
 
 import android.app.Activity;
 import android.view.View;
 
-import com.fast.android.novel.find.bean.FindBean;
+import com.apache.fastandroid.novel.find.bean.FindBean;
 import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 

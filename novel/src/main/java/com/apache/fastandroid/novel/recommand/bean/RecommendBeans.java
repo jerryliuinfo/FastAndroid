@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fast.android.novel.recommand.bean;
+package com.apache.fastandroid.novel.recommand.bean;
 
 
-import com.fast.android.novel.support.bean.Base;
+import com.apache.fastandroid.novel.bean.Base;
 
 import java.io.Serializable;
 import java.util.List;
