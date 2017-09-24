@@ -6,6 +6,10 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/nav_posts"/>
         <item
+            android:id="@+id/nav_item_novel"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/nav_novel"/>
+        <item
             android:id="@+id/nav_item_pic"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/nav_pic"/>

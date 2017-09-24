@@ -11,4 +11,6 @@ public class ModuleConstans {
     public static final String MODULE_USER_CENTER_NAME = "com.apache.fastandroid:userCenter";
 
     public static final String MODULE_TOPIC_NAME = "com.apache.fastandroid:topic";
+
+    public static final String MODULE_NOVEL_NAME = "com.apache.fastandroid:novel";
 }

@@ -50,7 +50,7 @@ public class MainActivity extends MyBaseActivity{
 
     private ActionBarDrawerToggle drawerToggle;
 
-    private int selecteId;
+    private int selecteId = -1;
 
     private static NetworkHelper.NetworkInductor mNetworkInductor = new NetworkHelper.NetworkInductor() {
         @Override
@@ -189,12 +189,24 @@ public class MainActivity extends MyBaseActivity{
         });
     }
 
+
     public void onMenuItemClicked(int itemId, String title){
         Fragment fragment = null;
         switch (itemId){
             case R.id.nav_item_posts:
                 try {
                     Object obj = ModularizationDelegate.getInstance().getObjectData(ModuleConstans.MODULE_TOPIC_NAME+":getMainTabsFragment",null,new Object[]{});
+                    if (obj != null && obj instanceof Fragment){
+                        fragment = (Fragment) obj;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                break;
+            case R.id.nav_item_novel:
+                try {
+                    Object obj = ModularizationDelegate.getInstance().getObjectData(ModuleConstans.MODULE_NOVEL_NAME+":getMainTabsFragment",null,new Object[]{});
                     if (obj != null && obj instanceof Fragment){
                         fragment = (Fragment) obj;
                     }
@@ -222,7 +234,7 @@ public class MainActivity extends MyBaseActivity{
         }
 
 
-        if (fragment != null){
+        if (fragment != null && selecteId != itemId){
             getSupportActionBar().setTitle(title);
             getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();
         }

@@ -21,7 +21,12 @@ public class RefreshConfig implements Serializable{
 
     public String emptyHint = "数据为空";// 如果EmptyLayout中有R.id.txtLoadEmpty这个控件，将这个提示绑定显示
 
-    public boolean footerMoreEnable = true;// FooterView加载更多
+    public boolean footerMoreEnable = true;// 是否允许FooterView加载更多
 
     public int pageSize = 10;
+
+
+    public void disalbeFooterMore(){
+        footerMoreEnable = false;
+    }
 }

@@ -23,10 +23,6 @@ public abstract class BaseItemViewCreator<T extends Serializable> implements IIt
         return inflater.inflate(inflateItemView(),parent,false);
     }
 
-    @Override
-    public IITemView<T> newItemView(View contentView, int viewType) {
-        return null;
-    }
 
     protected abstract int inflateItemView();
 

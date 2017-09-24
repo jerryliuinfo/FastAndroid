@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">novel</string>
+
+
+    <string name="novel_general_discussion_area">综合讨论区</string>
+    <string name="novel_book_evaluate_area">书评区</string>
+    <string name="novel_book_shortage_area">书荒互助区</string>
+    <string name="novel_girl_area">女生区</string>
+    <string name="novel_original_area">原创区</string>
+
+
+</resources>

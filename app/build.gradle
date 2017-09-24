@@ -220,4 +220,5 @@ dependencies {
 
     compile project(':usercenter')
     compile project(':topic')
+    compile project(':novel')
 }

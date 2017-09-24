@@ -36,7 +36,7 @@ public class SitesListFragment extends ARecycleViewFragment<Siteable,ArrayList<S
     @Override
     protected void setUpRefreshConfig(RefreshConfig refreshConfig) {
         super.setUpRefreshConfig(refreshConfig);
-        refreshConfig.footerMoreEnable = false;
+        refreshConfig.disalbeFooterMore();
     }
 
     @Override
