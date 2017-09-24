@@ -2,6 +2,7 @@ package com.apache.fastandroid.user.applike;
 
 import com.apache.fastandroid.artemis.comBridge.IApplicationLike;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.user.delegate.UsercenterDelegateFactory;
 
 /**
@@ -11,12 +12,12 @@ import com.apache.fastandroid.user.delegate.UsercenterDelegateFactory;
 public class UserCenterAppLike implements IApplicationLike {
     @Override
     public void onCreate() {
-        ModularizationDelegate.getInstance().register("com.apache.fastandroid:userCenter",new UsercenterDelegateFactory());
+        ModularizationDelegate.getInstance().register(ModuleConstans.MODULE_USER_CENTER_NAME,new UsercenterDelegateFactory());
 
     }
 
     @Override
     public void onStop() {
-        ModularizationDelegate.getInstance().unRegister("com.apache.fastandroid:userCenter");
+        ModularizationDelegate.getInstance().unRegister(ModuleConstans.MODULE_USER_CENTER_NAME);
     }
 }

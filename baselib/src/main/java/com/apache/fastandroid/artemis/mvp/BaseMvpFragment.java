@@ -2,13 +2,13 @@ package com.apache.fastandroid.artemis.mvp;
 
 import android.content.Context;
 
-import com.tesla.framework.ui.fragment.ABaseFragment;
+import com.apache.fastandroid.artemis.base.BaseFragment;
 
 /**
  * Created by jerryliu on 2017/7/9.
  */
 
-public abstract class BaseMvpFragment<P extends MvpPresenter> extends ABaseFragment implements MvpView {
+public abstract class BaseMvpFragment<P extends MvpPresenter> extends BaseFragment implements MvpView {
     private P mPresenter;
 
     @Override

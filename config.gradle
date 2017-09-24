@@ -31,6 +31,8 @@ ext {
 
     constraintLayoutVersion = "1.0.0"
 
+    leakcanary = "1.5.4"
+
 
     //第三方依赖库
     thirddependencies = [
@@ -54,7 +56,8 @@ ext {
             rxjava           : "io.reactivex:rxjava:$rxjavaVersion",
             //crash统计 //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
             bugly            :  "com.tencent.bugly:crashreport:2.0.0",
-
+            leakcanary_android:  "com.squareup.leakcanary:leakcanary-android:$leakcanary",
+            leakcanary_android:  "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary"
 
 
     ]

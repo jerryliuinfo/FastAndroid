@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -16,7 +17,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apache.fastandroid.artemis.ArtemisContext;
+import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.pic.PicTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.video.VideoTabsFragment;
@@ -26,15 +29,16 @@ import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.support.cache.DataCache;
 import com.tesla.framework.support.inject.ViewInject;
-import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
 
-public class MainActivity extends BaseActivity{
+public class MainActivity extends MyBaseActivity{
     public static final String TAG = MainActivity.class.getSimpleName();
     public static void launch(Activity from){
         from.startActivity(new Intent(from,MainActivity.class));
     }
+    private static Fragment mPicFragment;
 
+    private static View mBackgroundView;
 
     @ViewInject(id = R.id.drawer)
     DrawerLayout mDrawerLayout;
@@ -57,13 +61,20 @@ public class MainActivity extends BaseActivity{
 
     private DataCache mCache;
 
-
+    private final Handler myHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            //doSomething
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //ConfigManager.getInstance(this);
         mCache = new DataCache("fastAndroid");
+
 
         setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -78,6 +89,14 @@ public class MainActivity extends BaseActivity{
 
 
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
+
+
+        /*myHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //doSomething
+            }
+        },60*10*1000);*/
     }
 
 
@@ -96,7 +115,7 @@ public class MainActivity extends BaseActivity{
             @Override
             public void onClick(View v) {
                 try {
-                    ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:startLoginActivity",null,null,new Object[]{});
+                    ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginActivity",null,null,new Object[]{});
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -118,6 +137,12 @@ public class MainActivity extends BaseActivity{
     public void onDestroy() {
         super.onDestroy();
         NetworkHelper.getInstance().removeNetworkInductor(mNetworkInductor);
+
+        try {
+            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_MAIN_NAME+":watchLeakCancary",null,null,new Object[]{MainActivity.this});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -169,7 +194,7 @@ public class MainActivity extends BaseActivity{
         switch (itemId){
             case R.id.nav_item_posts:
                 try {
-                    Object obj = ModularizationDelegate.getInstance().getObjectData("com.apache.fastandroid:topic:getMainTabsFragment",null,new Object[]{});
+                    Object obj = ModularizationDelegate.getInstance().getObjectData(ModuleConstans.MODULE_TOPIC_NAME+":getMainTabsFragment",null,new Object[]{});
                     if (obj != null && obj instanceof Fragment){
                         fragment = (Fragment) obj;
                     }
@@ -180,6 +205,7 @@ public class MainActivity extends BaseActivity{
                 break;
             case R.id.nav_item_pic:
                 fragment = PicTabsFragment.newFragment();
+                mPicFragment = fragment;
                 break;
             case R.id.nav_item_video:
                 fragment = VideoTabsFragment.newFragment();
@@ -260,4 +286,6 @@ public class MainActivity extends BaseActivity{
 
         return super.onBackClick();
     }
+
+
 }

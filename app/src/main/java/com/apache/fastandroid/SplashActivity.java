@@ -6,6 +6,7 @@ import android.view.View;
 import com.apache.fastandroid.app.AppContext;
 import com.apache.fastandroid.artemis.comBridge.ActionCallback;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.support.config.ADConfigManager;
 import com.apache.fastandroid.widget.SplashCountDownView;
@@ -52,7 +53,7 @@ public class SplashActivity extends BaseActivity {
 
     private void toLogin(){
         try {
-            ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:startLoginActivity",null,null,new Object[]{SplashActivity.this});
+            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginActivity",null,null,new Object[]{SplashActivity.this});
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,7 +96,7 @@ public class SplashActivity extends BaseActivity {
             }
         };
         try {
-            ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:doLogin",null,callback,new Object[]{});
+            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":doLogin",null,callback,new Object[]{});
         } catch (Exception e) {
             e.printStackTrace();
         }

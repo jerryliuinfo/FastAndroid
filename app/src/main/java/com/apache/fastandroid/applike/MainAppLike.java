@@ -2,6 +2,7 @@ package com.apache.fastandroid.applike;
 
 import com.apache.fastandroid.artemis.comBridge.IApplicationLike;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.delegate.MainDelegateFactory;
 
 /**
@@ -11,12 +12,12 @@ import com.apache.fastandroid.delegate.MainDelegateFactory;
 public class MainAppLike implements IApplicationLike {
     @Override
     public void onCreate() {
-        ModularizationDelegate.getInstance().register("com.apache.fastandroid:moduleMain",new MainDelegateFactory());
+        ModularizationDelegate.getInstance().register(ModuleConstans.MODULE_MAIN_NAME,new MainDelegateFactory());
 
     }
 
     @Override
     public void onStop() {
-        ModularizationDelegate.getInstance().unRegister("com.apache.fastandroid:moduleMain");
+        ModularizationDelegate.getInstance().unRegister(ModuleConstans.MODULE_MAIN_NAME);
     }
 }

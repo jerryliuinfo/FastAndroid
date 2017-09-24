@@ -229,7 +229,7 @@ public class ModularizationDelegate {
      * @return
      */
     public String getCreateFactoryName(String groupArtifact) throws Exception {
-        IDelegateFactory mainDelegateFactory = mFactoryMap.get("com.apache.fastandroid:moduleMain");
+        IDelegateFactory mainDelegateFactory = mFactoryMap.get(ModuleConstans.MODULE_MAIN_NAME);
         //通过主模块去获取工厂，达到实现懒加载功能
         if (mainDelegateFactory != null && mainDelegateFactory instanceof ICreateFactory){
             ICreateFactory createFactory = (ICreateFactory) mainDelegateFactory;

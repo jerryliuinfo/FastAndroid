@@ -41,7 +41,6 @@ public class NewsItemView extends ARecycleViewItemViewHolder<NewsBean> {
 
     @Override
     public void onBindData(View convertView, final NewsBean bean, int position) {
-        NLog.d(TopicLog.getLogTag(), "onBindData bean = %s", bean);
         final User user = bean.getUser();
         username.setText(user.getLogin());
         node_name.setText(bean.getNode_name());

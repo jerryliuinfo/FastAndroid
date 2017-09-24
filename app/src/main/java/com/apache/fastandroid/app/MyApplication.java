@@ -15,6 +15,8 @@ import com.apache.fastandroid.support.TUncaughtExceptionHandler;
 import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegate;
 import com.apache.fastandroid.support.imageloader.GlideImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.CrashHandler;
 import com.tesla.framework.common.util.log.Logger;
@@ -63,6 +65,7 @@ public class MyApplication extends MultiDexApplication{
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
         ImageLoaderManager.getInstance().setImageLoaderStrategy(new GlideImageLoader());
         initAuth();
+        initLeakCanry();
 
     }
 
@@ -74,12 +77,11 @@ public class MyApplication extends MultiDexApplication{
     }
 
     private void initModuleBridge(){
-//        ModularizationDelegate.getInstance().register("com.apache.fastandroid:moduleMain",new MainDelegateFactory());
-//        ModularizationDelegate.getInstance().register("com.apache.fastandroid:userCenter",new UsercenterDelegateFactory());
-//        ModularizationDelegate.getInstance().register("com.apache.fastandroid:topic",new TopicDelegateFactory());
-
+        //主模块
         ModularizationDelegate.registerComponent("com.apache.fastandroid.applike.MainAppLike");
+        //用户模块
         ModularizationDelegate.registerComponent("com.apache.fastandroid.user.applike.UserCenterAppLike");
+        //主题模块
         ModularizationDelegate.registerComponent("com.apache.fastandroid.applike.TopicAppLike");
     }
 
@@ -151,5 +153,16 @@ public class MyApplication extends MultiDexApplication{
     private void initAuth(){
         OAuth.client_id = client_id;
         OAuth.client_secret = client_secret;
+    }
+
+    private RefWatcher mRefWatcher;
+
+    private void initLeakCanry(){
+        mRefWatcher = LeakCanary.install(this);
+    }
+
+    public static RefWatcher getRefWatcher(Context context) {
+        MyApplication application = (MyApplication) context.getApplicationContext();
+        return application.mRefWatcher;
     }
 }

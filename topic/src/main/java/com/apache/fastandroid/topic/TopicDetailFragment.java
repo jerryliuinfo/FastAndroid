@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.artemis.rx.DefaultCallback;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.artemis.util.TimeUtil;
@@ -126,7 +127,7 @@ public class TopicDetailFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 try {
-                    ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:startLoginActivity",null,null,new Object[]{getActivity()});
+                    ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":userCenter:startLoginActivity",null,null,new Object[]{getActivity()});
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -138,7 +139,7 @@ public class TopicDetailFragment extends BaseFragment {
 
     private void showBottom(){
         try {
-            Bundle result = ModularizationDelegate.getInstance().getData("com.apache.fastandroid:userCenter:isLogined",null,new Object[]{});
+            Bundle result = ModularizationDelegate.getInstance().getData(ModuleConstans.MODULE_USER_CENTER_NAME+":userCenter:isLogined",null,new Object[]{});
             if (result != null && result.containsKey("result")){
                 boolean isLogined = result.getBoolean("result");
                 if (isLogined){
@@ -159,7 +160,7 @@ public class TopicDetailFragment extends BaseFragment {
                         @Override
                         public void onClick(View v) {
                             try {
-                                ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:userCenter:startLoginActivity",null,null,new Object[]{getActivity(),true});
+                                ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginActivity",null,null,new Object[]{getActivity(),true});
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

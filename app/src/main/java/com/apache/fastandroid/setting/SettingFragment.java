@@ -8,17 +8,18 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.app.MyApplication;
+import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
-import com.tesla.framework.ui.fragment.ABaseFragment;
 
 /**
  * Created by jerryliu on 2017/6/24.
  */
 
-public class SettingFragment extends ABaseFragment {
+public class SettingFragment extends BaseFragment {
     public static void launch(Activity from){
         FragmentContainerActivity.launch(from,SettingFragment.class,null );
     }
@@ -45,7 +46,7 @@ public class SettingFragment extends ABaseFragment {
             public void onClick(View v) {
                 //AppContext.logout(MyApplication.getContext());
                 try {
-                    ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:moduleMain:logout",null,null,new Object[]{MyApplication.getContext()});
+                    ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_MAIN_NAME+":logout",null,null,new Object[]{MyApplication.getContext()});
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

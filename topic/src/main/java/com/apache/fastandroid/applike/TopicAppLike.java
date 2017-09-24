@@ -2,6 +2,7 @@ package com.apache.fastandroid.applike;
 
 import com.apache.fastandroid.artemis.comBridge.IApplicationLike;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.delegate.TopicDelegateFactory;
 
 /**
@@ -11,12 +12,12 @@ import com.apache.fastandroid.delegate.TopicDelegateFactory;
 public class TopicAppLike implements IApplicationLike {
     @Override
     public void onCreate() {
-        ModularizationDelegate.getInstance().register("com.apache.fastandroid:topic",new TopicDelegateFactory());
+        ModularizationDelegate.getInstance().register(ModuleConstans.MODULE_TOPIC_NAME,new TopicDelegateFactory());
 
     }
 
     @Override
     public void onStop() {
-        ModularizationDelegate.getInstance().unRegister("com.apache.fastandroid:topic");
+        ModularizationDelegate.getInstance().unRegister(ModuleConstans.MODULE_TOPIC_NAME);
     }
 }

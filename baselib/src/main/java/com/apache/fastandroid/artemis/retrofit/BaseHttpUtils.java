@@ -78,7 +78,7 @@ public class BaseHttpUtils {
     }
 
     public static Hashtable<String,BaseHttpUtils> cacheMap = new Hashtable<>();
-//    private static volatile BaseHttpUtils baseHttpUtils;
+
     public static BaseHttpUtils getInstance(Context context, String serverUrl){
         BaseHttpUtils baseHttpUtils = cacheMap.get(serverUrl);
         if (baseHttpUtils == null){

@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.comBridge.ActionCallback;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.user.delegate.LoginTask;
 import com.apache.fastandroid.user.support.UserConfigManager;
@@ -143,7 +144,7 @@ public class LoginFragment extends BaseFragment {
             getActivity().finish();
         }else {
             try {
-                ModularizationDelegate.getInstance().runStaticAction("com.apache.fastandroid:moduleMain:startMainActivity",null,null,new Object[]{getActivity()});
+                ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_MAIN_NAME+":startMainActivity",null,null,new Object[]{getActivity()});
             } catch (Exception e) {
                 e.printStackTrace();
             }
