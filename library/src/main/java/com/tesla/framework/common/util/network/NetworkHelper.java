@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.telephony.TelephonyManager;
 
 import com.tesla.framework.common.util.log.NLog;
 
@@ -217,5 +220,100 @@ public class NetworkHelper {
 	public static boolean isNetworkAvailable(Context context){
 		return getNetworkType(context) != NetworkStatus.NetworkNotReachable;
 	}
+
+
+
+	/**
+	 * 打开网络设置界面
+	 * <p>3.0以下打开设置界面</p>
+	 *
+	 * @param context 上下文
+	 */
+	public static void openWirelessSettings(Context context) {
+		if (android.os.Build.VERSION.SDK_INT > 10) {
+			context.startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
+		} else {
+			context.startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+		}
+	}
+
+
+	/**
+	 * 判断网络是否是4G
+	 * <p>需添加权限 {@code <uses-permission android:name="android.permission
+	 * .ACCESS_NETWORK_STATE"/>}</p>
+	 *
+	 * @param context 上下文
+	 * @return {@code true}: 是<br>{@code false}: 不是
+	 */
+	public static boolean is4G(Context context) {
+		ConnectivityManager cm = (ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo info = cm.getActiveNetworkInfo();
+		return info != null && info.isAvailable() && info.getSubtype() == TelephonyManager
+				.NETWORK_TYPE_LTE;
+	}
+
+	/**
+	 * 判断wifi是否连接状态
+	 * <p>需添加权限 {@code <uses-permission android:name="android.permission
+	 * .ACCESS_NETWORK_STATE"/>}</p>
+	 *
+	 * @param context 上下文
+	 * @return {@code true}: 连接<br>{@code false}: 未连接
+	 */
+	public static boolean isWifiConnected(Context context) {
+		ConnectivityManager cm = (ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
+		return cm != null && cm.getActiveNetworkInfo() != null
+				&& cm.getActiveNetworkInfo().getType() == ConnectivityManager.TYPE_WIFI;
+	}
+
+	/**
+	 * 获取移动网络运营商名称
+	 * <p>如中国联通、中国移动、中国电信</p>
+	 *
+	 * @param context 上下文
+	 * @return 移动网络运营商名称
+	 */
+	public static String getNetworkOperatorName(Context context) {
+		TelephonyManager tm = (TelephonyManager) context
+				.getSystemService(Context.TELEPHONY_SERVICE);
+		return tm != null ? tm.getNetworkOperatorName() : null;
+	}
+
+	/**
+	 * 获取当前连接wifi的名称
+	 *
+	 * @return
+	 */
+	public static String getConnectWifiSsid(Context context) {
+		if (isWifiConnected(context)) {
+			WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+			WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+			return wifiInfo.getSSID();
+		}
+		return null;
+	}
+
+	/**
+	 * 获取当前连接wifi的名称
+	 *
+	 * @return
+	 */
+	public static String getConnectWifiIp(Context context) {
+		if (isWifiConnected(context)) {
+			WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+			WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+			int ipAddress = wifiInfo.getIpAddress();
+			if (ipAddress == 0) {
+				return null;
+			}
+			return ((ipAddress & 0xff) + "." + (ipAddress >> 8 & 0xff) + "."
+					+ (ipAddress >> 16 & 0xff) + "." + (ipAddress >> 24 & 0xff));
+		}
+		return null;
+	}
+
 
 }

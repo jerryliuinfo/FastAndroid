@@ -48,23 +48,30 @@ public class MyApplication extends MultiDexApplication{
         mContext = this;
         FrameworkApplication.onCreate(getApplicationContext());
 
-
+        //初始化日志
         initLog();
-        initModuleBridge();
+        //初始化crash统计
         initCrashAndAnalysis();
 
+        //初始化模块间通讯
+        initModuleBridge();
+
+
+        //初始化异常处理
         TaskException.config(new FastAndroidExceptionDelegate());
-
-
+        //初始化db
         TeslaDB.setDB();
+
         BaseActivity.setHelper(SwipeActivityHelper.class);
         BaseActivity.setPermissionHelper(PermissionActivityHelper.class);
         if (activityLifecycleCallbacks == null){
             activityLifecycleCallbacks = new ActivityLifeCycleReportCallback();
         }
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
+        //初始化图片加载
         ImageLoaderManager.getInstance().setImageLoaderStrategy(new GlideImageLoader());
         initAuth();
+        //监测内存泄漏
         initLeakCanry();
 
     }

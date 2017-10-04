@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.task.ITaskManager;
@@ -25,6 +24,7 @@ import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.ui.widget.MToast;
 
 import java.text.SimpleDateFormat;
 
@@ -325,12 +325,14 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
 
 
     public void showMessage(CharSequence msg) {
-        if (!TextUtils.isEmpty(msg) && getActivity() != null)
-            ViewUtils.showMessage(getActivity(), msg.toString());
+        if (!TextUtils.isEmpty(msg) && getActivity() != null){
+            MToast.showMessage(getActivity(),msg.toString());
+        }
+
     }
 
     public void showMessage(int msgId) {
-        if (getActivity() != null)
+        if (getActivity() != null){}
             showMessage(getString(msgId));
     }
 

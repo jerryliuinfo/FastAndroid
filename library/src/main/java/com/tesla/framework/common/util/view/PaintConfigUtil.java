@@ -9,9 +9,13 @@ import android.graphics.Paint;
 public class PaintConfigUtil {
 
     public static void configStrokePaint(Paint paint, int color,float strokeWidth) {
+        configNormal(paint,color,strokeWidth,Paint.Style.STROKE);
+    }
+
+    public static void configNormal(Paint paint, int color, float strokeWidth, Paint.Style style){
         paint.setColor(color);
+        paint.setStyle(style);
         paint.setStrokeWidth(strokeWidth);
-        paint.setStyle(Paint.Style.STROKE);
     }
 
     public static void configFillPaint(Paint paint, int color) {

@@ -16,6 +16,27 @@ import retrofit2.Response;
 
 public abstract class BaseBizLogic extends ABizLogic {
 
+    public <T extends BaseBean> T getResponseBody(Call<T> call) throws IOException, TaskException {
+        if (call != null){
+            Response<T> response = call.execute();
+            if (response != null && response.isSuccessful()){
+                BaseBean<T> baseBean = response.body();
+                checkRepsonse(baseBean);
+
+                return baseBean.getData();
+            }
+        }
+        return null;
+
+    }
+
+
+    /**
+     * 对服务器返回的数据做一些通用检查
+     * @param result
+     * @param <T>
+     * @throws TaskException
+     */
     public <T extends BaseBean> void checkRepsonse(T result)throws TaskException {
         if (result == null){
             throw new TaskException("数据为空");
@@ -23,12 +44,10 @@ public abstract class BaseBizLogic extends ABizLogic {
         if (result.getData() == null){
             throw new TaskException("data字段为空");
         }
-        if (result instanceof BaseBean){
-            BaseBean baseBean = (BaseBean) result;
-            if (!"0".equals(baseBean.getCode())){
-                TaskException taskException =  new TaskException(baseBean.getCode(),baseBean.getMsg());
-                throw taskException;
-            }
+        final BaseBean baseBean =  result;
+        if (!"0".equals(baseBean.getCode())){
+            TaskException taskException =  new TaskException(baseBean.getCode(),baseBean.getMsg());
+            throw taskException;
         }
         //检查一些业务异常
         if (result.getData() instanceof ICheck){
@@ -59,4 +78,9 @@ public abstract class BaseBizLogic extends ABizLogic {
             throw new TaskException(e.getMessage());
         }
     }
+
+
+
+
+
 }

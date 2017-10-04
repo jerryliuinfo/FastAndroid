@@ -33,8 +33,7 @@ public class FrameworkApplication  {
 
     public static void configOkHttpClient(int connTimeout, int socketTimeout) {
         if(mOkHttpClient != null) {
-            /*mOkHttpClient.((long)connTimeout, TimeUnit.MILLISECONDS);
-            mOkHttpClient.setReadTimeout((long)socketTimeout, TimeUnit.MILLISECONDS);*/
+
         }
 
     }

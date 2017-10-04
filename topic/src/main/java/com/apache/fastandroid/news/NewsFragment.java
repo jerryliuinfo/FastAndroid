@@ -9,7 +9,6 @@ import com.apache.fastandroid.news.sdk.NewsSDK;
 import com.apache.fastandroid.news.view.NewsItemViewCreator;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
@@ -61,19 +60,7 @@ public class NewsFragment extends ARecycleViewSwipeRefreshFragment<NewsBean,Topi
             if (!TextUtils.isEmpty(nextPage)){
                 offset = Integer.parseInt(nextPage);
             }
-            boolean result = false;
-            NewsBeans beans = null;
-            try {
-                beans = NewsSDK.newInstance().getNewsList(null,offset,20);
-                NLog.d(TAG, "LoadNewsTask beans = %s", beans);
-                result = true;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (result && beans != null){
-                return beans;
-            }
-            throw new TaskException("server error");
+            return NewsSDK.newInstance().getNewsList(null,offset,20);
         }
     }
 

@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.SystemUtils;
+import com.tesla.framework.common.util.dimen.ScreenUtil;
 
 
 /**
@@ -55,13 +55,13 @@ public class KitkatViewGroup extends LinearLayout {
 
                 setWillNotDraw(false);
 
-                mInsets = new Rect(0, SystemUtils.getStatusBarHeight(getContext()), 0, 0);
+                mInsets = new Rect(0, ScreenUtil.getStatusBarHeight(getContext()), 0, 0);
 
                 ViewCompat.postInvalidateOnAnimation(this);
             }
 
             setPadding(getPaddingLeft(),
-                        getPaddingTop() + SystemUtils.getStatusBarHeight(getContext()),
+                        getPaddingTop() + ScreenUtil.getStatusBarHeight(getContext()),
                         getPaddingRight(),
                         0);
         }

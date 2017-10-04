@@ -27,6 +27,8 @@ public class CommonSDK extends BaseBizLogic {
         BaseHttpUtils httpUtils = BaseHttpUtils.getInstance(MyApplication.getContext(),ApiConstans.Urls.BAIDU_IMAGES_URLS);
         APIService apiService = httpUtils.getRetrofit().create(APIService.class);
         Call<BaseBean<UpdateBean>> call =  apiService.checkAppVersion(PublishVersionManager.getVersionCode());
+
+
         if (call != null){
             Response<BaseBean<UpdateBean>> response = call.execute();
             if (response != null && response.body() != null){

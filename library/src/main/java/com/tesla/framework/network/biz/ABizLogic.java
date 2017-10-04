@@ -100,7 +100,10 @@ public abstract class ABizLogic implements IHttpUtility{
         if (cache == null || mCacheMode == CacheMode.servicePriority){
             try {
                 long time = System.currentTimeMillis();
-                T result = getHttpUtility(action).doGet(resetHttpConfig(config, action), action, params, responseCls);
+                //发送http请求
+                //T result = getHttpUtility(action).doGet(resetHttpConfig(config, action), action, params, responseCls);
+                T result = doHttpRequest(resetHttpConfig(config, action), action, params, responseCls);
+
                 NLog.d(getTag(action, "Get-Http"), "耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
 
                 if (result != null && result instanceof IResult) {
@@ -127,7 +130,9 @@ public abstract class ABizLogic implements IHttpUtility{
 
         return null;
     }
-
+    protected <T> T doHttpRequest(HttpConfig config, Setting action, Params params, Class<T> responseCls) throws TaskException{
+        return getHttpUtility(action).doGet(resetHttpConfig(config, action), action, params, responseCls);
+    }
     @Override
     public <T> T doPost(HttpConfig config, Setting action, Params urlParams, Params bodyParams, Object requestObj,
                         Class<T> responseCls) throws TaskException {
@@ -157,6 +162,9 @@ public abstract class ABizLogic implements IHttpUtility{
         return configHttpUtility();
 
     }
+
+
+
 
     /**
      * 配置网络交互

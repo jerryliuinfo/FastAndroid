@@ -466,4 +466,48 @@ public class FileUtils {
 	}
 
 
+
+	/**
+	 * 递归创建文件夹
+	 *
+	 * @param file
+	 * @return 创建失败返回""
+	 */
+	public static String createFile(File file) {
+		try {
+			if (file.getParentFile().exists()) {
+				file.createNewFile();
+				return file.getAbsolutePath();
+			} else {
+				createDir(file.getParentFile().getAbsolutePath());
+				file.createNewFile();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	/**
+	 * 递归创建文件夹
+	 *
+	 * @param dirPath
+	 * @return 创建失败返回""
+	 */
+	public static String createDir(String dirPath) {
+		try {
+			File file = new File(dirPath);
+			if (file.getParentFile().exists()) {
+				file.mkdir();
+				return file.getAbsolutePath();
+			} else {
+				createDir(file.getParentFile().getAbsolutePath());
+				file.mkdir();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dirPath;
+	}
+
 }

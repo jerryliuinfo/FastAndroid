@@ -75,9 +75,10 @@ android {
     signingConfigs {
         dev {
             try {
-                storeFile file("./keystore/release.jks")
+                //storeFile file("./keystore/release.jks")
+                storeFile file(KEYSTORE_FILE)
                 storePassword KEYSTORE_PASSWORD
-                keyAlias "jerry123"
+                keyAlias KEY_ALIAS
                 keyPassword KEY_PASSWORD
             }
             catch (ex) {

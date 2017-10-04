@@ -3,7 +3,7 @@ package com.apache.fastandroid.support.report;
 import android.content.Context;
 
 import com.apache.fastandroid.support.config.PublishVersionManager;
-import com.tesla.framework.common.util.PhoneUtil;
+import com.tesla.framework.common.util.DeviceUtil;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
 
 import java.util.HashMap;
@@ -66,7 +66,7 @@ public class ReportPublicUtil {
     }
 
     private static void initMCC(Context context){
-        mBasicPublicParamMap.put(MCC, PhoneUtil.getIMSI(context));
+        mBasicPublicParamMap.put(MCC, DeviceUtil.getIMSI(context));
     }
 
     private static void initLang(){
@@ -78,7 +78,7 @@ public class ReportPublicUtil {
     }
 
     private static void initOsVer(){
-        mBasicPublicParamMap.put(OSVER, PhoneUtil.getOsVersionName());
+        mBasicPublicParamMap.put(OSVER, DeviceUtil.getOsVersionName());
     }
 
     private static void initArea(){
@@ -86,11 +86,11 @@ public class ReportPublicUtil {
     }
 
     private static void initBrand(){
-        mBasicPublicParamMap.put(BRAND, PhoneUtil.getPhoneBrand());
+        mBasicPublicParamMap.put(BRAND, DeviceUtil.getPhoneBrand());
     }
 
     private static void initModel(){
-        mBasicPublicParamMap.put(MODEL, PhoneUtil.getPhoneModel());
+        mBasicPublicParamMap.put(MODEL, DeviceUtil.getDeviceModel());
     }
 
     private static void initScreenWidth(Context context){

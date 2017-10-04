@@ -44,8 +44,6 @@ public class TopicSDK extends BaseBizLogic {
      */
     public TopicBeans getTopicsList(String type, Integer node_id, int offset, int limit) throws TaskException {
         //1.判断有没有缓存
-
-
         BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
         Call<List<TopicBean>> call =  apiService.getTopicsList(type,node_id,offset,limit);

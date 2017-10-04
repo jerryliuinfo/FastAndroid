@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.lang.reflect.Field;
 
@@ -73,17 +72,7 @@ public class ViewUtils {
 		((ImageView) container.findViewById(imgId)).setImageBitmap(source);
 	}
 
-	public static void showMessage(Context context, String message) {
-		if (context != null) {
-			Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-		}
-	}
 
-	public static void showMessage(Context context, int messageId) {
-		if (context != null) {
-			Toast.makeText(context, messageId, Toast.LENGTH_SHORT).show();
-		}
-	}
 
 	public static ProgressDialog progressDialog2;
 

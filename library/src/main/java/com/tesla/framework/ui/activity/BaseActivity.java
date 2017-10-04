@@ -20,7 +20,6 @@ import com.tesla.framework.common.util.ActivityTaskMgr;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.StatusBarUtil;
-import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.network.task.ITaskManager;
 import com.tesla.framework.network.task.TaskManager;
 import com.tesla.framework.network.task.WorkTask;
@@ -28,6 +27,7 @@ import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.CustomToolbar;
+import com.tesla.framework.ui.widget.MToast;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -421,7 +421,7 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
      */
     public void showMessage(CharSequence msg) {
         if (!TextUtils.isEmpty(msg) && msg.length() != 0){
-            ViewUtils.showMessage(this, msg.toString());
+            MToast.showMessage(this,msg.toString());
         }
     }
 
