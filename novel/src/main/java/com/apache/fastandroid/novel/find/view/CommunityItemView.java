@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.novel.R;
 import com.apache.fastandroid.novel.find.bean.FindBean;
+import com.apache.fastandroid.novel.find.rank.TopRankListFragment;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 
@@ -32,5 +33,11 @@ public class CommunityItemView extends ARecycleViewItemViewHolder<FindBean> {
     public void onBindData(View convertView, FindBean data, int position) {
         ivIcon.setImageResource(data.getIconResId());
         tvTitle.setText(data.getTitle());
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TopRankListFragment.launch(getContext());
+            }
+        });
     }
 }

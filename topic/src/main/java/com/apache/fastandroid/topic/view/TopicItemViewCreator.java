@@ -19,7 +19,7 @@ public class TopicItemViewCreator extends BaseItemViewCreator<TopicBean> {
     }
 
     @Override
-    protected int inflateItemView() {
+    protected int inflateItemView(int viewType) {
         return TopicItemView.LAYOUT_RES;
     }
 

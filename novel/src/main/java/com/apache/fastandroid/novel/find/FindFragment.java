@@ -20,11 +20,12 @@ import java.util.ArrayList;
 
 public class FindFragment extends ARecycleViewFragment<FindBean,FindBeans,FindBean> {
 
-    private String type;
+    private String mType;
+
     public static FindFragment newFragment(String type) {
         FindFragment fragment = new FindFragment();
         Bundle args = new Bundle();
-        args.putString("type",type);
+        args.putString("mType",type);
         fragment.setArguments(args);
         return fragment;
     }
@@ -43,30 +44,45 @@ public class FindFragment extends ARecycleViewFragment<FindBean,FindBeans,FindBe
     @Override
     protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
-
+        ArrayList<FindBean> items = null;
         if (savedInstanceSate == null){
-            type = getArguments().getString("type");
+            mType = getArguments().getString("mType");
         }else {
-            type = savedInstanceSate.getString("type");
+            mType = savedInstanceSate.getString("mType");
         }
-
-        ArrayList<FindBean> items = new ArrayList<>();
-        items.add(new FindBean(ResUtil.getString(R.string.novel_general_discussion_area),R.drawable.novel_general_discussion));
-        items.add(new FindBean(ResUtil.getString(R.string.novel_book_evaluate_area),R.drawable.novel_book_evaluate_area));
-        items.add(new FindBean(ResUtil.getString(R.string.novel_book_shortage_area),R.drawable.novel_book_shortage_area));
-        items.add(new FindBean(ResUtil.getString(R.string.novel_girl_area),R.drawable.novel_girl_area));
-        items.add(new FindBean(ResUtil.getString(R.string.novel_original_area),R.drawable.novel_original_area));
-
-        setItems(items);
+        setItems(generateItems());
     }
 
 
 
+    private ArrayList<FindBean> generateItems(){
+        ArrayList<FindBean> items = new ArrayList<>();
+        //社区
+        if ("1".equals(mType)){
+            items.add(new FindBean(ResUtil.getString(R.string.novel_general_discussion_area),R.drawable.novel_general_discussion));
+            items.add(new FindBean(ResUtil.getString(R.string.novel_book_evaluate_area),R.drawable.novel_book_evaluate_area));
+            items.add(new FindBean(ResUtil.getString(R.string.novel_book_shortage_area),R.drawable.novel_book_shortage_area));
+            items.add(new FindBean(ResUtil.getString(R.string.novel_girl_area),R.drawable.novel_girl_area));
+            items.add(new FindBean(ResUtil.getString(R.string.novel_original_area),R.drawable.novel_original_area));
+        }
+        //发现
+        else if ("2".equals(mType)){
+            //排行榜
+            items.add(new FindBean(ResUtil.getString(R.string.novel_rank),R.drawable.home_find_rank));
+            //主题书单
+            items.add(new FindBean(ResUtil.getString(R.string.novel_topic),R.drawable.home_find_topic));
+            //分类
+            items.add(new FindBean(ResUtil.getString(R.string.novel_category),R.drawable.home_find_category));
+            //官方QQ群
+            items.add(new FindBean(ResUtil.getString(R.string.novel_offical_qq),R.drawable.home_find_listen));
+        }
+        return items;
+    }
 
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("type",type);
+        outState.putString("mType", mType);
     }
 }

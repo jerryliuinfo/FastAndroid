@@ -24,7 +24,7 @@ public class TopicIDetailReplyViewCreator extends BaseItemViewCreator<TopicReply
     }
 
     @Override
-    protected int inflateItemView() {
+    protected int inflateItemView(int viewType) {
         return TopicItemReplyView.LAYOUT_RES;
     }
 

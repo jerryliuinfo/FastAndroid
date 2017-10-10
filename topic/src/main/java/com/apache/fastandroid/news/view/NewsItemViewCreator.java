@@ -18,7 +18,7 @@ public class NewsItemViewCreator extends BaseItemViewCreator<NewsBean> {
     }
 
     @Override
-    protected int inflateItemView() {
+    protected int inflateItemView(int viewType) {
         return R.layout.news_item_news;
     }
 

@@ -38,6 +38,10 @@ public class ImageLoaderManager implements IImageLoaderstrategy {
         }
     }
 
+    public void showImage(View container, String url) {
+        showImage(getDefaultOptions(container,url));
+    }
+
 
     @Override
     public void cleanMemory(Context context) {

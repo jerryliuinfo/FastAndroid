@@ -18,7 +18,7 @@ public class RecommandViewCreator extends BaseItemViewCreator<RecommendBeans.Rec
     }
 
     @Override
-    protected int inflateItemView() {
+    protected int inflateItemView(int viewType) {
         return R.layout.novel_item_recommand;
     }
 

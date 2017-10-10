@@ -17,9 +17,10 @@ public class CommunityItemViewCreator extends BaseItemViewCreator<FindBean> {
     }
 
     @Override
-    protected int inflateItemView() {
+    protected int inflateItemView(int viewType) {
         return CommunityItemView.LAY_RES;
     }
+
 
     @Override
     public IITemView<FindBean> newItemView(View contentView, int viewType) {

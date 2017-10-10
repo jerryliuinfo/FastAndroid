@@ -134,11 +134,16 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
 
     @Override
     public int getItemViewType(int position) {
+        //footer
         if (mFooterView != null && position == getItemCount() - 1){
             return IPagingAdapter.TYPE_FOOTER;
-        }else if (mHeaderItemViewCreator != null && position < mHeaderItemTypes.length){
+        }
+        //header
+        else if (mHeaderItemViewCreator != null && position < mHeaderItemTypes.length){
             return mHeaderItemTypes[position][1];
         }
+
+        // 自定义type
         if (position >= getHeaderCount()){
             T t = getDatas().get(position - getHeaderCount() );
             if (t instanceof IPagingAdapter.ItemTypeData){

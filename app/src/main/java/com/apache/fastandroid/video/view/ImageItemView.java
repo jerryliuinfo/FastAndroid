@@ -1,6 +1,7 @@
 package com.apache.fastandroid.video.view;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -32,7 +33,9 @@ public class ImageItemView  extends ARecycleViewItemViewHolder<VideoBean> {
 
     @Override
     public void onBindData(View convertView, VideoBean data, int position) {
-        ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(iv_cover,data.thumbnail_v2));
+        if (!TextUtils.isEmpty(data.thumbnail_v2)){
+            ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(iv_cover,data.thumbnail_v2));
+        }
         tv_desc.setText(data.title);
         ib_play.setOnClickListener(new View.OnClickListener() {
             @Override

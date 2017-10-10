@@ -20,11 +20,11 @@ public abstract class BaseItemViewCreator<T extends Serializable> implements IIt
 
     @Override
     public View newContentView(LayoutInflater inflater, ViewGroup parent, int viewType) {
-        return inflater.inflate(inflateItemView(),parent,false);
+        return inflater.inflate(inflateItemView(viewType),parent,false);
     }
 
 
-    protected abstract int inflateItemView();
+    protected abstract int inflateItemView(int viewType);
 
     public Activity getContext() {
         return context;

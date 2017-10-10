@@ -35,6 +35,7 @@ public class GlideImageLoader implements IImageLoaderstrategy {
         }
     }
 
+
     @Override
     public void cleanMemory(Context context) {
         if (Looper.myLooper() == Looper.getMainLooper()) {

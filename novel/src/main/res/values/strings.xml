@@ -9,4 +9,12 @@
     <string name="novel_original_area">原创区</string>
 
 
+
+
+    <string name="novel_rank">排行榜</string>
+    <string name="novel_topic">主题书单</string>
+    <string name="novel_category">分类</string>
+    <string name="novel_offical_qq">官方QQ群</string>
+
+
 </resources>
