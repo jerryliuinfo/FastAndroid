@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.apache.fastandroid.novel.find.rank.bean;
+package com.apache.fastandroid.novel.find.bean;
 
 
 import com.apache.fastandroid.novel.bean.Base;

@@ -4,12 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
-import com.apache.fastandroid.novel.find.rank.bean.RankingList;
+import com.apache.fastandroid.novel.find.bean.RankingList;
 import com.apache.fastandroid.novel.find.rank.view.RankItemViewCreator;
 import com.apache.fastandroid.novel.support.NovelSdk;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.bean.RefreshConfig;
+import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.fragment.ARecycleViewFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
@@ -18,16 +19,15 @@ import java.util.ArrayList;
 
 /**
  * Created by 01370340 on 2017/9/24.
+ * "排行榜"的Fragment
  */
 
 public class TopRankListFragment extends ARecycleViewFragment<RankingList.MaleBean,ArrayList<RankingList.MaleBean>,RankingList.MaleBean> {
 
-
     public static void launch(Activity from) {
-        FragmentContainerActivity.launch(from,TopRankListFragment.class,null);
+        FragmentArgs args =  new FragmentArgs();
+        FragmentContainerActivity.launch(from,TopRankListFragment.class,args);
     }
-
-
 
     @Override
     protected void setUpRefreshConfig(RefreshConfig refreshConfig) {

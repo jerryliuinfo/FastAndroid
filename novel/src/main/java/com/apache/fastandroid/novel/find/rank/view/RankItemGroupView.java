@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.apache.fastandroid.novel.R;
-import com.apache.fastandroid.novel.find.rank.bean.RankingList;
+import com.apache.fastandroid.novel.find.bean.RankingList;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 
@@ -26,7 +26,6 @@ public class RankItemGroupView extends ARecycleViewItemViewHolder<RankingList.Ma
 
     @Override
     public void onBindData(View convertView, RankingList.MaleBean data, int position) {
-
 
         tvTitle.setText(data.title);
     }

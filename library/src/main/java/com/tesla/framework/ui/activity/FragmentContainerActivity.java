@@ -65,7 +65,7 @@ public class FragmentContainerActivity extends BaseActivity {
                 Class clazz = Class.forName(className);
                 fragment = (Fragment) clazz.newInstance();
                 // 设置参数给Fragment
-                if (values != null) {
+                if (values != null && values.getValues().size() > 0) {
                     try {
                         Method method = clazz.getMethod("setArguments", new Class[] { Bundle.class });
                         method.invoke(fragment, FragmentArgs.transToBundle(values));

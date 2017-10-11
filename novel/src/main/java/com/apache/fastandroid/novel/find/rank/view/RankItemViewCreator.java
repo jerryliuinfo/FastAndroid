@@ -3,7 +3,7 @@ package com.apache.fastandroid.novel.find.rank.view;
 import android.app.Activity;
 import android.view.View;
 
-import com.apache.fastandroid.novel.find.rank.bean.RankingList;
+import com.apache.fastandroid.novel.find.bean.RankingList;
 import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 

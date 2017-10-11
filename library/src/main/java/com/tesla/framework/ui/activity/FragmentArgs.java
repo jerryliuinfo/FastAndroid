@@ -12,7 +12,7 @@ public class FragmentArgs implements Serializable {
 
     private static final long serialVersionUID = 5526514482404853100L;
 
-    private Map<String, Serializable> values = new HashMap<String, Serializable>();
+    private Map<String, Serializable> values = new HashMap<>();
 
     public FragmentArgs add(String key, Serializable value) {
         if (!TextUtils.isEmpty(key) && value != null)
@@ -50,4 +50,7 @@ public class FragmentArgs implements Serializable {
         return bundle;
     }
 
+    public Map<String, Serializable> getValues() {
+        return values;
+    }
 }

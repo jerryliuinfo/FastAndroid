@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.apache.fastandroid.novel.find.FindFragment;
-import com.apache.fastandroid.novel.recommand.RecommandFragment;
+import com.apache.fastandroid.novel.bookshelf.RecommandFragment;
 import com.tesla.framework.support.bean.TabItem;
 import com.tesla.framework.ui.fragment.ATabsTabLayoutFragment;
 

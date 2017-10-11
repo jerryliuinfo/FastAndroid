@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 /**
  * Created by 01370340 on 2017/9/24.
+ * "发现"的Fragment
  */
 
 public class FindFragment extends ARecycleViewFragment<FindBean,FindBeans,FindBean> {

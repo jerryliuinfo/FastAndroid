@@ -1,7 +1,8 @@
 package com.apache.fastandroid.novel.support;
 
 import com.apache.fastandroid.artemis.BaseBizLogic;
-import com.apache.fastandroid.novel.find.rank.bean.RankingList;
+import com.apache.fastandroid.novel.find.bean.RankingList;
+import com.apache.fastandroid.novel.find.bean.Rankings;
 import com.apache.fastandroid.novel.find.rank.view.RankItemViewCreator;
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.tesla.framework.common.setting.Setting;
@@ -43,7 +44,6 @@ public class NovelSdk extends BaseBizLogic {
                     newRankingList.male.add(maleBean);
                 }
             }
-
         }
         if (originalRankingList != null && originalRankingList.female != null && originalRankingList.female.size() > 0){
             RankingList.MaleBean femaleGroupBean = new RankingList.MaleBean("女生");
@@ -56,13 +56,37 @@ public class NovelSdk extends BaseBizLogic {
                     newRankingList.female.add(femaleBean);
                 }
             }
-
         }
-
         ArrayList<RankingList.MaleBean> list = new ArrayList<>();
         list.addAll(newRankingList.male);
         list.addAll(newRankingList.female);
 
         return list;
     }
+
+
+
+
+
+    /**
+     * 获取单一排行榜
+     * 周榜：rankingId->_id
+     * 月榜：rankingId->monthRank
+     * 总榜：rankingId->totalRank
+     * http://api.zhuishushenqi.com/ranking/54d42d92321052167dfb75e3
+     *
+     * @return
+     */
+     public Rankings getRanking(String rankingId) throws TaskException{
+
+         Setting setting = newSetting("getRanking", "ranking/"+rankingId, "获取单一排行榜");
+         Rankings rankings = doGet(getHttpConfig(),setting,null,Rankings.class);
+
+
+
+         return rankings;
+     }
+
+
+
 }

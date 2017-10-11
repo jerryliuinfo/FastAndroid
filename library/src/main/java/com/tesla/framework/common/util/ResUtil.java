@@ -35,6 +35,21 @@ public class ResUtil {
         return string;
     }
 
+
+    public static final String[] getStringArray(int resId) {
+        Context context = FrameworkApplication.getContext();
+        if (context == null || context.getResources() == null){
+            return  new String[]{};
+        }
+        String[] string = null;
+        try {
+            string =  context.getResources().getStringArray(resId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return string;
+    }
+
     /**
      * 获取本地资源字符串
      * @param  resStr

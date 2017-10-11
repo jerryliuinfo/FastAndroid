@@ -1,9 +1,9 @@
-package com.apache.fastandroid.novel.recommand;
+package com.apache.fastandroid.novel.bookshelf;
 
 import android.os.Bundle;
 
-import com.apache.fastandroid.novel.recommand.bean.RecommendBeans;
-import com.apache.fastandroid.novel.recommand.view.RecommandViewCreator;
+import com.apache.fastandroid.novel.bookshelf.bean.RecommendBeans;
+import com.apache.fastandroid.novel.bookshelf.view.RecommandViewCreator;
 import com.tesla.framework.ui.fragment.ARecycleViewFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 

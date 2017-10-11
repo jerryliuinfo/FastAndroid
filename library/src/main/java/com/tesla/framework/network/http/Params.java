@@ -34,9 +34,7 @@ public class Params implements Serializable {
 		mParameters.put(key, value);
 	}
 
-	public int size() {
-		return mKeys.size();
-	}
+
 
 	public boolean containsKey(String key) {
 		return mKeys.contains(key);
@@ -99,6 +97,10 @@ public class Params implements Serializable {
 		}
 
 		return sb.toString();
+	}
+
+	public int size(){
+		return mKeys.size();
 	}
 
 }

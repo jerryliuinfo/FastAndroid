@@ -122,7 +122,7 @@ public class DefHttpUtility implements IHttpUtility {
 			throw new TaskException(TaskException.TaskError.noneNetwork.toString());
 		}
 
-		String url = (config.baseUrl + action.getValue() + (urlParams == null ? "" : "?" + ParamsUtil.encodeToURLParams(urlParams))).replaceAll(" ", "");
+		String url = (config.baseUrl + action.getValue() + (urlParams == null || urlParams.size() == 0? "" : "?" + ParamsUtil.encodeToURLParams(urlParams))).replaceAll(" ", "");
 		NLog.d(getTag(action, method), url);
 
 		Request.Builder builder = new Request.Builder();
@@ -159,7 +159,7 @@ public class DefHttpUtility implements IHttpUtility {
 			Response response = getOkHttpClient().newCall(request).execute();
 
 			NLog.w(getTag(action, method), "Http-code = %d", response.code());
-			if (!(response.code() == HttpURLConnection.HTTP_OK || response.code() == HttpURLConnection.HTTP_PARTIAL)) {
+			if (! (response.code() == HttpURLConnection.HTTP_OK || response.code() == HttpURLConnection.HTTP_PARTIAL)) {
 				String responseStr = response.body().string();
 
 				if (NLog.isDebug()) {
