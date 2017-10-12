@@ -171,8 +171,8 @@ public class DefHttpUtility implements IHttpUtility {
 				throw new TaskException(TaskException.TaskError.timeout.toString());
 			} else {
 				String responseStr = response.body().string();
-
-				NLog.v(getTag(action, method), "Response = %s", responseStr);
+                TaskException.checkResponse(responseStr);
+                NLog.v(getTag(action, method), "Response = %s", responseStr);
 
 				return parseResponse(responseStr, responseCls);
 			}

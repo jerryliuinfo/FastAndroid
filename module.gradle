@@ -16,6 +16,9 @@ initModuleCompile(rootDir.getAbsolutePath() + "/module.properties")
 ext {
     println("module.gradle compile_library")
     compile_library = this.&compile_library
+    /*compile_usercenter = this.&compile_usercenter
+    compile_topic = this.&compile_topic
+    compile_novel = this.&compile_novel*/
 
 }
 
@@ -25,13 +28,64 @@ ext {
 
 def compile_library(Project projectModule){
     projectModule.dependencies{
-        //println("isLibraryDebug = ${isLibraryDebug.toBoolean()}")
+        println("isLibraryDebug = ${isLibraryDebug.toBoolean()}")
         if (isAllDebug.toBoolean() || isLibraryDebug.toBoolean()) {
             compile project(':library')
-            println("compile with  source code \n")
+            println("compile library  with  source code \n")
         } else {
             compile(name: 'library-release', ext: 'aar')
-            println("compile with aar \n")
+            println("compile usercenter with aar \n")
+        }
+    }
+}
+
+
+def compile_baselib(Project projectModule){
+    projectModule.dependencies{
+        println("isBaselibDebug = ${isBaselibDebug.toBoolean()}")
+        if (isAllDebug.toBoolean() || isBaselibDebug.toBoolean()) {
+            compile project(':baselib')
+            println("compile baselib  with  source code \n")
+        } else {
+            compile(name: 'baselib-release', ext: 'aar')
+            println("compile baselib with aar \n")
+        }
+    }
+}
+
+def compile_usercenter(Project projectModule){
+    projectModule.dependencies{
+        println("isUserCenterDebug = ${isUserCenterDebug.toBoolean()}")
+        if (isAllDebug.toBoolean() || isUserCenterDebug.toBoolean()) {
+            compile project(':usercenter')
+            println("compile usercenter with  source code \n")
+        } else {
+            compile(name: 'usercenter-release', ext: 'aar')
+            println("compile usercenter with aar \n")
+        }
+    }
+}
+def compile_topic(Project projectModule){
+    projectModule.dependencies{
+        println("isTopicDebug = ${isTopicDebug.toBoolean()}")
+        if (isAllDebug.toBoolean() || isTopicDebug.toBoolean()) {
+            compile project(':topic')
+            println("compile topic with  source code \n")
+        } else {
+            compile(name: 'topic-release', ext: 'aar')
+            println("compile topic with aar \n")
+        }
+    }
+}
+def compile_novel(Project projectModule){
+    projectModule.dependencies{
+        println("isNovelDebug = ${isNovelDebug.toBoolean()}")
+        if (isAllDebug.toBoolean() || isNovelDebug.toBoolean()) {
+            compile project(':novel')
+            println("compile novel with  source code \n")
+        } else {
+            compile(name: 'novel-release', ext: 'aar')
+            println("compile novel with aar \n")
         }
     }
 }

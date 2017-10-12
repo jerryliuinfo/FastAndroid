@@ -46,7 +46,8 @@ public abstract class BaseBizLogic extends ABizLogic {
         }
         final BaseBean baseBean =  result;
         if (!"0".equals(baseBean.getCode())){
-            TaskException taskException =  new TaskException(baseBean.getCode(),baseBean.getMsg());
+            TaskException taskException = new TaskException(baseBean.getCode());
+            taskException.setMsg(taskException.getMessage());
             throw taskException;
         }
         //检查一些业务异常

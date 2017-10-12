@@ -80,19 +80,26 @@ public class FastAndroidExceptionDelegate implements IExceptionDeclare{
         if (!TextUtils.isEmpty(response)){
             try {
                 JSONObject jsonObject = new JSONObject(response);
-                if (jsonObject != null && jsonObject.has("code")){
-                    code =  jsonObject.getString("code");
-                    msg = checkCode(code);
+                if (jsonObject.has("code")){
+                    code = jsonObject.getString("code");
+                    if (jsonObject.has("msg")){
+                        msg = jsonObject.getString("msg");
+                    }
+                    if (TextUtils.isEmpty(msg)){
+                        msg = checkCode(code);
+                    }
                 }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            msg = response;
         }
-        if (!TextUtils.isEmpty(msg)){
+        if (!TextUtils.isEmpty(code) && !TextUtils.isEmpty(msg)){
             throw new TaskException(code,msg);
         }
-        throw new TaskException(code);
+        if (!TextUtils.isEmpty(code)){
+            throw new TaskException(code);
+        }
     }
 
     @Override

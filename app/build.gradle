@@ -116,7 +116,7 @@ android {
         dev {
             //不同渠道，不同包名
             applicationId "com.fast.adnroid"
-            signingConfig signingConfigs.dev
+            //signingConfig signingConfigs.dev
             versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染
             manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name,PACKAGE_NAME: applicationId]
 
@@ -217,9 +217,12 @@ dependencies {
     compile thirddependencies.junit
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
 
-
+    /*compile_usercenter(getProject())
+    compile_topic(getProject())
+    compile_novel(getProject())*/
 
     compile project(':usercenter')
     compile project(':topic')
     compile project(':novel')
+
 }

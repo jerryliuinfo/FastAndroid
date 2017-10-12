@@ -48,9 +48,11 @@ public class TaskException extends Exception {
 		this.msg = msg;
 	}
 
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 
-
-    public String getCode() {
+	public String getCode() {
         return code;
     }
 

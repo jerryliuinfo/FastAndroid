@@ -24,6 +24,29 @@ if (isLibraryDebug.toBoolean() || isAllDebug.toBoolean()) {
     println("not include library \n")
 }
 
+/*if (isUserCenterDebug.toBoolean() || isAllDebug.toBoolean()) {
+    include ':usercenter'
+    println("include usercenter \n")
+}else {
+    println("not include usercenter \n")
+}
+
+if (isTopicDebug.toBoolean() || isAllDebug.toBoolean()) {
+    include ':topic'
+    println("include topic \n")
+}else {
+    println("not include topic \n")
+}
+
+if (isNovelDebug.toBoolean() || isAllDebug.toBoolean()) {
+    include ':novel'
+    println("include novel \n")
+}else {
+    println("not include novel \n")
+}*/
+
+
+
 
 class TaskTimeMonitor implements TaskExecutionListener, BuildListener {
     private final Map<Task, Timing> timings = Collections.synchronizedMap(new LinkedHashMap())
