@@ -6,13 +6,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.apache.fastandroid.TopicLog;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.artemis.util.IntentUtil;
 import com.apache.fastandroid.artemis.util.TimeUtil;
 import com.apache.fastandroid.artemis.util.UrlUtil;
 import com.apache.fastandroid.news.bean.NewsBean;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
@@ -53,7 +51,7 @@ public class NewsItemView extends ARecycleViewItemViewHolder<NewsBean> {
             url = url.replace("large_avatar", "avatar");
         }
         if (!TextUtils.isEmpty(url)) {
-            ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(avatar, url));
+            ImageLoaderManager.getInstance().showImage(avatar,url,getContext());
         }
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

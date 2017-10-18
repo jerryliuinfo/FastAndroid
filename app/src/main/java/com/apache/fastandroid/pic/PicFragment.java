@@ -209,7 +209,7 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
             iv_pic.setLayoutParams(new RelativeLayout.LayoutParams(width,height));
 
             if (!TextUtils.isEmpty(data.thumbnailUrl)){
-                ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(iv_pic,data.thumbnailUrl));
+                ImageLoaderManager.getInstance().showImage(iv_pic,data.thumbnailUrl,getContext());
             }
 
         }

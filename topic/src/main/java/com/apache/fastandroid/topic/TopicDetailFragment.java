@@ -121,7 +121,8 @@ public class TopicDetailFragment extends BaseFragment {
         ((TextView)mHeaderView.findViewById(R.id.title)).setText(mTopicBean.title);
         if (!TextUtils.isEmpty(user.getAvatar_url())){
             ImageView iv_avatar = (ImageView) findViewById(R.id.avatar);
-            ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(iv_avatar,user.getAvatar_url()));
+            ImageLoaderManager.getInstance().showImage(iv_avatar,user.getAvatar_url(),getContext());
+
         }
         iv_avatar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.novel.R;
 import com.apache.fastandroid.novel.find.bean.BookBean;
+import com.apache.fastandroid.novel.find.detail.BookDetailActivity;
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
@@ -40,8 +41,8 @@ public class SubRankItemView extends ARecycleViewItemViewHolder<BookBean> {
         super(context, itemView);
     }
     @Override
-    public void onBindData(View convertView, BookBean item, int position) {
-        ImageLoaderManager.getInstance().showImage(ivSubCateCover, NovelConstans.IMG_BASE_URL + item.cover);
+    public void onBindData(View convertView, final BookBean item, int position) {
+        ImageLoaderManager.getInstance().showImage(ivSubCateCover, NovelConstans.IMG_BASE_URL + item.cover,getContext());
         tvSubCateTitle.setText(item.title);
         String subCateAuthor = (item.author == null ? "未知" : item.author) + " | " + (item.majorCate == null ? "未知" : item.majorCate);
         tvSubCateAuthor.setText(subCateAuthor);
@@ -49,6 +50,13 @@ public class SubRankItemView extends ARecycleViewItemViewHolder<BookBean> {
 
         String subCateMsg = String.format(ResUtil.getString(R.string.category_book_msg),item.latelyFollower, TextUtils.isEmpty(item.retentionRatio)? "0":item.retentionRatio);
         tvSubCateMsg.setText(subCateMsg);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookDetailActivity.launch(getContext(),item._id);
+            }
+        });
 
     }
 }

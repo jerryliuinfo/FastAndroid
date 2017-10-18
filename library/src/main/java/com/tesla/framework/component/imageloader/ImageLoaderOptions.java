@@ -1,5 +1,6 @@
 package com.tesla.framework.component.imageloader;
 
+import android.content.Context;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.view.View;
  * Created by Administrator on 2017/3/20 0020.
  */
 public class ImageLoaderOptions {
+
+    private Context context;
     private View viewContainer;  // 图片容器
     private String url;  // 图片地址
     private Integer resource;  // 图片地址
@@ -24,7 +27,8 @@ public class ImageLoaderOptions {
     //private BaseTarget target = null; //target
 
     private ImageLoaderOptions (Builder builder ){
-        this.asGif=builder.asGif;
+        this.context = builder.context;
+        this.asGif = builder.asGif;
         this.errorDrawable=builder.errorDrawable;
         this.holderDrawable=builder.holderDrawable;
         this.imageSize=builder.mImageSize;
@@ -35,7 +39,7 @@ public class ImageLoaderOptions {
         this.resource=builder.resource;
         this.viewContainer=builder.mViewContainer;
         this.blurImage=builder.blurImage;
-        //this.target=builder.target;
+
     }
 
 //    public BaseTarget getTarget() {
@@ -98,10 +102,15 @@ public class ImageLoaderOptions {
         return mDiskCacheStrategy;
     }
 
+    public Context getContext() {
+        return context;
+    }
+
+
     //test  ..
 
     public final static  class Builder{
-
+        private Context context;
         private int holderDrawable=-1;  // 设置展位图
         private View mViewContainer;  // 图片容器
         private String url;  // 图片地址
@@ -115,13 +124,28 @@ public class ImageLoaderOptions {
         private  DiskCacheStrategy mDiskCacheStrategy = DiskCacheStrategy.DEFAULT; //磁盘缓存策略
         //private BaseTarget target = null; //target
 
-        public Builder(@NonNull View v, @NonNull String url){
+        public Builder(@NonNull View v, @NonNull String url,Context context){
             this.url=url;
             this.mViewContainer=v;
+            this.context = context;
         }
         public Builder(@NonNull View v, @NonNull Integer resource){
             this.resource=resource;
             this.mViewContainer=v;
+        }
+
+        public Builder url(String url){
+            this.url = url;
+            return this;
+        }
+
+        public Builder imageView(View view){
+            this.mViewContainer = view;
+            return this;
+        }
+        public Builder context(Context context){
+            this.context = context;
+            return this;
         }
 
         public Builder placeholder(@DrawableRes int holderDrawable){
@@ -191,4 +215,8 @@ public class ImageLoaderOptions {
     public enum DiskCacheStrategy{
         All,NONE,SOURCE,RESULT,DEFAULT
     }
+
+
+
+
 }

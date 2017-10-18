@@ -1,6 +1,7 @@
 package com.apache.fastandroid.novel.support;
 
 import com.apache.fastandroid.artemis.BaseBizLogic;
+import com.apache.fastandroid.novel.find.bean.BookDetail;
 import com.apache.fastandroid.novel.find.bean.RankingList;
 import com.apache.fastandroid.novel.find.bean.Rankings;
 import com.apache.fastandroid.novel.find.rank.view.RankItemViewCreator;
@@ -39,7 +40,6 @@ public class NovelSdk extends BaseBizLogic {
             newRankingList.male.add(maleGroupBean);
 
             for (RankingList.MaleBean maleBean : originalRankingList.male) {
-                maleBean.cover = NovelConstans.IMG_BASE_URL + maleBean.cover;
                 if (!maleBean.collapse){
                     newRankingList.male.add(maleBean);
                 }
@@ -51,7 +51,6 @@ public class NovelSdk extends BaseBizLogic {
             newRankingList.female.add(femaleGroupBean);
 
             for (RankingList.MaleBean femaleBean : originalRankingList.female) {
-                femaleBean.cover = NovelConstans.IMG_BASE_URL + femaleBean.cover;
                 if (!femaleBean.collapse){
                     newRankingList.female.add(femaleBean);
                 }
@@ -81,10 +80,13 @@ public class NovelSdk extends BaseBizLogic {
 
          Setting setting = newSetting("getRanking", "ranking/"+rankingId, "获取单一排行榜");
          Rankings rankings = doGet(getHttpConfig(),setting,null,Rankings.class);
-
-
-
          return rankings;
+     }
+
+
+     public BookDetail getBookDetail(String bookId) throws TaskException{
+         Setting setting = newSetting("getBookDetail", "book/"+bookId, "获取书籍详情");
+         return doGet(getHttpConfig(),setting,null,BookDetail.class);
      }
 
 

@@ -8,7 +8,6 @@ import com.apache.fastandroid.novel.find.bean.RankingList;
 import com.apache.fastandroid.novel.find.rank.view.RankItemViewCreator;
 import com.apache.fastandroid.novel.support.NovelSdk;
 import com.tesla.framework.network.task.TaskException;
-import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.bean.RefreshConfig;
 import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
@@ -16,6 +15,7 @@ import com.tesla.framework.ui.fragment.ARecycleViewFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 01370340 on 2017/9/24.
@@ -45,16 +45,26 @@ public class TopRankListFragment extends ARecycleViewFragment<RankingList.MaleBe
         super.layoutInit(inflater, savedInstanceSate);
         setToolbarTitle("排行榜");
     }
-
+/*
     @Override
     public void requestData() {
         super.requestData();
 
         new LoadRankListData().execute();
+    }*/
+
+    @Override
+    public void requestData(RefreshMode mode) {
+        super.requestData(mode);
+        new LoadRankListData(mode).execute();
     }
 
-    class LoadRankListData extends WorkTask<Void,Void,ArrayList<RankingList.MaleBean>>{
+    class LoadRankListData extends APagingTask<Void,Void,ArrayList<RankingList.MaleBean>>{
 
+
+        public LoadRankListData(RefreshMode mode) {
+            super(mode);
+        }
 
         @Override
         protected void onSuccess(ArrayList<RankingList.MaleBean> maleBeen) {
@@ -63,9 +73,19 @@ public class TopRankListFragment extends ARecycleViewFragment<RankingList.MaleBe
         }
 
         @Override
-        public ArrayList<RankingList.MaleBean> workInBackground(Void... params) throws TaskException {
+        protected List<RankingList.MaleBean> parseResult(ArrayList<RankingList.MaleBean> maleBeen) {
+            return maleBeen;
+        }
+
+        @Override
+        protected ArrayList<RankingList.MaleBean> workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params) throws TaskException {
             return NovelSdk.newInstance().getRankingList();
         }
+
+        /*@Override
+        public ArrayList<RankingList.MaleBean> workInBackground(Void... params) throws TaskException {
+            return NovelSdk.newInstance().getRankingList();
+        }*/
     }
 
 

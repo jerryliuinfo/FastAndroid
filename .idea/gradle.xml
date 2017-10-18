@@ -13,7 +13,6 @@
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/novel" />
             <option value="$PROJECT_DIR$/topic" />
-            <option value="$PROJECT_DIR$/usercenter" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

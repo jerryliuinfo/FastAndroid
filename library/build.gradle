@@ -47,4 +47,5 @@ dependencies {
     compile thirddependencies.okhttp3
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
 
+    testCompile 'junit:junit:4.12'
 }

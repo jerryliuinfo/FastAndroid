@@ -67,6 +67,7 @@ public class MyApplication extends MultiDexApplication{
         if (activityLifecycleCallbacks == null){
             activityLifecycleCallbacks = new ActivityLifeCycleReportCallback();
         }
+        //注册生命周期回调
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
         //初始化图片加载
         ImageLoaderManager.getInstance().setImageLoaderStrategy(new GlideImageLoader());

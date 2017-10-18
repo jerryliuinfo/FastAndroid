@@ -34,7 +34,7 @@ public class ImageItemView  extends ARecycleViewItemViewHolder<VideoBean> {
     @Override
     public void onBindData(View convertView, VideoBean data, int position) {
         if (!TextUtils.isEmpty(data.thumbnail_v2)){
-            ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(iv_cover,data.thumbnail_v2));
+            ImageLoaderManager.getInstance().showImage(iv_cover,data.thumbnail_v2,getContext());
         }
         tv_desc.setText(data.title);
         ib_play.setOnClickListener(new View.OnClickListener() {

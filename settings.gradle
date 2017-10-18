@@ -1,4 +1,4 @@
-include ':app',  ':usercenter', ':topic', ':novel', 'baselib'
+include ':app',  /*':usercenter',*/ ':topic', ':novel', 'baselib'
 println('settings.gradle')
 apply from: 'setting_config.gradle'
 

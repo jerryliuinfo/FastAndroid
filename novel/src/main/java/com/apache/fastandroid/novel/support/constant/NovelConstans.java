@@ -1,5 +1,7 @@
 package com.apache.fastandroid.novel.support.constant;
 
+import android.graphics.Color;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
@@ -74,4 +76,16 @@ public class NovelConstans {
         put(BookType.HXYQ, "幻想言情");
         put(BookType.DMTR, "耽美同人");
     }};*/
+
+
+
+    public static final int[] tagColors = new int[]{
+            Color.parseColor("#90C5F0"),
+            Color.parseColor("#91CED5"),
+            Color.parseColor("#F88F55"),
+            Color.parseColor("#C0AFD0"),
+            Color.parseColor("#E78F8F"),
+            Color.parseColor("#67CCB7"),
+            Color.parseColor("#F6BC7E")
+    };
 }

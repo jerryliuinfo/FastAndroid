@@ -23,8 +23,14 @@ if (isLibraryDebug.toBoolean() || isAllDebug.toBoolean()) {
 }else {
     println("not include library \n")
 }
+if (isBaselibDebug.toBoolean() || isAllDebug.toBoolean()) {
+    include ':baselib'
+    println("include baselib \n")
+}else {
+    println("not include baselib \n")
+}
 
-/*if (isUserCenterDebug.toBoolean() || isAllDebug.toBoolean()) {
+if (isUserCenterDebug.toBoolean() || isAllDebug.toBoolean()) {
     include ':usercenter'
     println("include usercenter \n")
 }else {
@@ -38,7 +44,7 @@ if (isTopicDebug.toBoolean() || isAllDebug.toBoolean()) {
     println("not include topic \n")
 }
 
-if (isNovelDebug.toBoolean() || isAllDebug.toBoolean()) {
+/*if (isNovelDebug.toBoolean() || isAllDebug.toBoolean()) {
     include ':novel'
     println("include novel \n")
 }else {

@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.reflection;
 
 import android.content.Context;
 
@@ -99,13 +99,10 @@ public final class ReflectUtils {
 
     public static Object readField(Class<?> c, Object target, String fieldName) throws IllegalAccessException, NoSuchFieldException {
         Field f = getField(c, fieldName);
-
-        return readField(f, target);
+        return f.get(target);
     }
 
-    public static Object readField(final Field field, final Object target) throws IllegalAccessException {
-        return field.get(target);
-    }
+
 
     public static void writeField(Object target, String fName, Object value) throws NoSuchFieldException, IllegalAccessException {
         writeField(target.getClass(), target, fName, value);
@@ -113,7 +110,7 @@ public final class ReflectUtils {
 
     public static void writeField(Class<?> c, Object object, String fName, Object value) throws NoSuchFieldException, IllegalAccessException {
         Field f = getField(c, fName);
-        writeField(f, object, value);
+        f.set(object, value);
     }
 
     public static void writeField(final Field field, final Object target, final Object value) throws IllegalAccessException {

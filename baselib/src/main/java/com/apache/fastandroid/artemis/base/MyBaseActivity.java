@@ -2,6 +2,7 @@ package com.apache.fastandroid.artemis.base;
 
 import android.os.Bundle;
 
+import com.apache.fastandroid.artemis.TypeInfoManager;
 import com.tesla.framework.ui.activity.BaseActivity;
 
 /**
@@ -26,5 +27,8 @@ public class MyBaseActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }*/
+
+        TypeInfoManager typeInfoManager = new TypeInfoManager();
+        typeInfoManager.getTypeBean(TypeInfoManager.GET_FIVE);
     }
 }

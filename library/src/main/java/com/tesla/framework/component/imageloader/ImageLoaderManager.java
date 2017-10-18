@@ -12,6 +12,9 @@ import android.view.View;
 public class ImageLoaderManager implements IImageLoaderstrategy {
     private static final ImageLoaderManager INSTANCE=new ImageLoaderManager();
     private  IImageLoaderstrategy loaderstrategy;
+
+
+
     private ImageLoaderManager(){
     }
     public static ImageLoaderManager getInstance(){
@@ -27,8 +30,8 @@ public class ImageLoaderManager implements IImageLoaderstrategy {
      *    请自行new一个Imageview传入即可
      *  内部只需要获取Context
      */
-    public static ImageLoaderOptions getDefaultOptions(@NonNull View container, @NonNull String url){
-        return new ImageLoaderOptions.Builder(container,url).isCrossFade(true).build();
+    public static ImageLoaderOptions getDefaultOptions(@NonNull View container, @NonNull String url,Context context){
+        return new ImageLoaderOptions.Builder(container,url,context).isCrossFade(true).build();
     }
 
     @Override
@@ -38,8 +41,8 @@ public class ImageLoaderManager implements IImageLoaderstrategy {
         }
     }
 
-    public void showImage(View container, String url) {
-        showImage(getDefaultOptions(container,url));
+    public void showImage(View container, String url,Context context) {
+        showImage(getDefaultOptions(container,url,context));
     }
 
 

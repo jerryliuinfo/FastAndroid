@@ -9,7 +9,6 @@
     android:paddingTop="25dp"
     >
 
-
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
@@ -19,7 +18,6 @@
         android:text="男生"
         android:textColor="@color/common_h1"
         android:textSize="18sp" />
-
 
 
 </RelativeLayout>

@@ -38,8 +38,7 @@ public class TaskException extends Exception {
     private String msg = "";
 	
 	private static IExceptionDeclare exceptionDeclare;
-	private Context mCcontext;
-	
+
 	public TaskException(String code) {
 		this.code = code;
 	}
@@ -71,7 +70,7 @@ public class TaskException extends Exception {
 
 		try {
 			Context context = FrameworkApplication.getContext();
-			if (mCcontext != null) {
+			if (context != null) {
 				Resources res = context.getResources();
 
 				TaskError error = TaskError.valueOf(String.valueOf(code));

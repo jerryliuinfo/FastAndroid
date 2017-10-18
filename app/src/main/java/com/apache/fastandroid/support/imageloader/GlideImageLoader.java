@@ -59,7 +59,7 @@ public class GlideImageLoader implements IImageLoaderstrategy {
         //存在问题
         // java.lang.IllegalArgumentException You cannot start a load for a destroyed activity
         //RequestManager manager=getRequestManager(v.getContext());
-        RequestManager manager = Glide.with(v.getContext());
+        RequestManager manager = Glide.with(options.getContext());
         if (v instanceof ImageView) {
             GenericRequestBuilder mDrawableTypeRequest = getGenericRequestBuilder(manager, options).asBitmap();
             //装载参数

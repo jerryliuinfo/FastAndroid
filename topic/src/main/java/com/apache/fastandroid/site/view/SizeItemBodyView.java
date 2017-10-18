@@ -34,8 +34,7 @@ public class SizeItemBodyView extends ARecycleViewItemViewHolder<Siteable> {
         if (bean instanceof SiteItem){
             SiteItem item = (SiteItem) bean;
             if (!TextUtils.isEmpty(item.getAvatar_url())){
-                ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(iv_icon, item.getAvatar_url()));
-
+                ImageLoaderManager.getInstance().showImage(iv_icon,item.getAvatar_url(),getContext());
             }
             tv_name.setText(item.getName());
         }

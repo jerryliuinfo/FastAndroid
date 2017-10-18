@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.apache.fastandroid.novel.R;
 import com.apache.fastandroid.novel.find.bean.RankingList;
 import com.apache.fastandroid.novel.find.rank.subrank.SubRankTabsFragment;
+import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
@@ -37,7 +38,7 @@ public class RankItemView extends ARecycleViewItemViewHolder<RankingList.MaleBea
     public void onBindData(View convertView, final RankingList.MaleBean data, int position) {
 
         if (!TextUtils.isEmpty(data.cover)){
-            ImageLoaderManager.getInstance().showImage(ivIcon,data.cover);
+            ImageLoaderManager.getInstance().showImage(ivIcon, NovelConstans.IMG_BASE_URL + data.cover,getContext());
         }
         tvTitle.setText(data.title);
         convertView.setOnClickListener(new View.OnClickListener() {

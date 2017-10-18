@@ -54,7 +54,7 @@ public class TopicItemView  extends ARecycleViewItemViewHolder<TopicBean> {
             url = url.replace("large_avatar", "avatar");
         }
         if (!TextUtils.isEmpty(url)) {
-            ImageLoaderManager.getInstance().showImage(ImageLoaderManager.getDefaultOptions(avatar, url));
+            ImageLoaderManager.getInstance().showImage(avatar,url,getContext());
         }
 
 
