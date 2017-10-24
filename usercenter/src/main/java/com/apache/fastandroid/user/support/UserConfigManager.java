@@ -1,25 +1,33 @@
 package com.apache.fastandroid.user.support;
 
-import com.tesla.framework.common.util.BaseSharedPreferenceConfigManager;
+import android.content.Context;
+
+import com.tesla.framework.common.util.BaseSPConfigManager;
 
 /**
  * Created by jerryliu on 2017/7/9.
  */
 
-public class UserConfigManager extends BaseSharedPreferenceConfigManager{
+public class UserConfigManager extends BaseSPConfigManager {
     public static final String SP_NAME = "user";
+
+
+    public UserConfigManager(Context context) {
+        super(context);
+    }
+
     @Override
     public String configSPFileName() {
         return SP_NAME;
     }
 
     private static UserConfigManager instance = null;
-    private UserConfigManager(){}
-    public static UserConfigManager getInstance() {
+    //private UserConfigManager(){}
+    public static UserConfigManager getInstance(Context context) {
         if (instance == null) {
             synchronized (UserConfigManager.class) {
                 if (instance == null){
-                    instance = new UserConfigManager();
+                    instance = new UserConfigManager(context);
                 }
             }
         }

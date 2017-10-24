@@ -33,7 +33,6 @@ public class FrameworkApplication  {
 
     public static void configOkHttpClient(int connTimeout, int socketTimeout) {
         if(mOkHttpClient != null) {
-
         }
 
     }

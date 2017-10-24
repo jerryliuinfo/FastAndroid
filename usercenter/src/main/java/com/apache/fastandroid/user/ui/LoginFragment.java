@@ -5,19 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Button;
 
 import com.apache.fastandroid.artemis.base.BaseFragment;
-import com.apache.fastandroid.artemis.comBridge.ActionCallback;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.artemis.support.bean.Token;
-import com.apache.fastandroid.user.delegate.LoginTask;
 import com.apache.fastandroid.user.support.UserConfigManager;
-import com.apache.fastandroid.usercenter.R;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.FragmentArgs;
@@ -63,7 +58,8 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     public int inflateContentView() {
-        return R.layout.frament_user_login;
+        //return R.layout.frament_user_login;
+        return 0;
     }
 
     @Override
@@ -77,7 +73,7 @@ public class LoginFragment extends BaseFragment {
             fromTopicDetail = savedInstanceSate.getBoolean("fromTopicDetail");
         }
 
-        mUserNameinputLayout.setHint("UserName");
+       /* mUserNameinputLayout.setHint("UserName");
         mPwdInputLayout.setHint("Password");
 
         mUserNameinputLayout.getEditText().setText("liuxiangxiang1234@163.com");
@@ -87,7 +83,7 @@ public class LoginFragment extends BaseFragment {
             public void onClick(View v) {
                doLogin();
             }
-        });
+        });*/
     }
 
     @Override
@@ -98,7 +94,7 @@ public class LoginFragment extends BaseFragment {
 
     String pwd;
     private void doLogin(){
-        final String userName = mUserNameinputLayout.getEditText().getText().toString();
+        /*final String userName = mUserNameinputLayout.getEditText().getText().toString();
         pwd = mPwdInputLayout.getEditText().getText().toString();
         if (checkUserNameAndPwdInvalidaty(userName,pwd)){
 
@@ -117,14 +113,14 @@ public class LoginFragment extends BaseFragment {
                 }
             };
             new LoginTask().doLogin(userName,pwd,callback);
-        }
+        }*/
 
 
     }
 
 
     private boolean checkUserNameAndPwdInvalidaty(String userName,String pwd){
-        if (TextUtils.isEmpty(userName)){
+        /*if (TextUtils.isEmpty(userName)){
             mUserNameinputLayout.setError("用户名不合法");
             return false;
         }else if (TextUtils.isEmpty(pwd)){
@@ -133,13 +129,13 @@ public class LoginFragment extends BaseFragment {
         }else {
             mUserNameinputLayout.setErrorEnabled(false);
             mPwdInputLayout.setErrorEnabled(false);
-        }
+        }*/
         return true;
     }
 
     public void loginSuccess(Token token) {
         showMessage("登录成功");
-        UserConfigManager.getInstance().savePwd(pwd);
+        UserConfigManager.getInstance(getContext()).savePwd(pwd);
         if (fromTopicDetail){
             getActivity().finish();
         }else {

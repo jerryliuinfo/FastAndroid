@@ -13,7 +13,7 @@ import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.support.TUncaughtExceptionHandler;
 import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegate;
-import com.apache.fastandroid.support.imageloader.GlideImageLoader;
+import com.apache.fastandroid.support.imageloader.glide.GlideImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -45,6 +45,7 @@ public class MyApplication extends MultiDexApplication{
     @Override
     public void onCreate() {
         super.onCreate();
+        //FreelineCore.init(this);
         mContext = this;
         FrameworkApplication.onCreate(getApplicationContext());
 
@@ -74,6 +75,10 @@ public class MyApplication extends MultiDexApplication{
         initAuth();
         //监测内存泄漏
         initLeakCanry();
+
+        //freelin
+        //FreelineCore.init(this);
+
 
     }
 

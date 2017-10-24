@@ -24,7 +24,7 @@ import java.util.Date;
  * @author yuyh.
  * @date 16/9/2.
  */
-public class FormatUtils {
+public class FormatTimeUtil {
 
     private static final long ONE_MINUTE = 60000L;
     private static final long ONE_HOUR = 3600000L;

@@ -23,6 +23,8 @@ public class AppUtils {
 
     private static Context mContext;
 
+
+
     private static Handler sHandler = new Handler(Looper.getMainLooper());
 
 

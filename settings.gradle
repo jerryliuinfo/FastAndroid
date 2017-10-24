@@ -1,6 +1,6 @@
-include ':app',  /*':usercenter',*/ ':topic', ':novel', 'baselib'
+include ':app',  ':usercenter', ':topic', ':novel', 'baselib', 'library'
 println('settings.gradle')
-apply from: 'setting_config.gradle'
+//apply from: 'setting_config.gradle'
 
 //初始化gradle时调用
 def initGradleEnvironment() {

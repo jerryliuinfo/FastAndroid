@@ -1,4 +1,4 @@
-package com.apache.fastandroid.support.imageloader;
+package com.apache.fastandroid.support.imageloader.glide;
 
 import android.content.Context;
 import android.content.res.Resources;

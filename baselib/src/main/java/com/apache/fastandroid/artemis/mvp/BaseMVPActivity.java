@@ -8,7 +8,7 @@ import com.tesla.framework.ui.activity.BaseActivity;
  * Created by jerryliu on 2017/7/9.
  */
 
-public abstract class BaseMVPActivity<P extends MvpPresenter> extends BaseActivity implements MvpView {
+public abstract class BaseMVPActivity<P extends MvPresenter> extends BaseActivity implements BaseContract.BaseView {
     private P mPresenter;
 
     @Override
@@ -21,7 +21,7 @@ public abstract class BaseMVPActivity<P extends MvpPresenter> extends BaseActivi
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPresenter.detachView(false);
+        mPresenter.detachView();
     }
 
     public abstract P createPresenter();

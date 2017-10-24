@@ -8,9 +8,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
+import com.apache.fastandroid.video.action.WifiAction;
 import com.apache.fastandroid.video.bean.VideoBean;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
+import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.support.inject.ViewInject;
+import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 
 /**
@@ -40,7 +44,14 @@ public class ImageItemView  extends ARecycleViewItemViewHolder<VideoBean> {
         ib_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                new IAction(getContext(),new WifiAction(getContext(),null)){
+                    @Override
+                    public void doAction() {
+                        super.doAction();
+                        ((BaseActivity)getContext()).showMessage("开始播放");
+                        NLog.d(TAG, "开始播放");
+                    }
+                }.run();
             }
         });
     }

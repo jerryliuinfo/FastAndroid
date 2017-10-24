@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply from: rootProject.file('module.gradle')
+//apply plugin: 'com.antfortune.freeline'
 println('app gradle----->')
 
 
@@ -122,11 +123,16 @@ android {
 
             //使用multiDex 如果minsdkersion小雨20 会增加构建时间
             minSdkVersion 21
-
-
         }
-
     }
+
+
+  /*  freelin{
+        hack true
+        productFlavor "dev"
+        applicationProxy false
+    }*/
+
     /**
      * release构建忽略dev这一个渠道
      */
@@ -220,7 +226,7 @@ dependencies {
     compile_usercenter(getProject())
     compile_topic(getProject())
     compile_novel(getProject())
-
+    compile 'com.antfortune.freeline:runtime:0.8.5'
 //    compile project(':usercenter')
 //    compile project(':topic')
     //compile project(':novel')

@@ -14,6 +14,8 @@ public class DoLogin implements IActionDelegate {
     @Override
     public void runAction(Bundle args, final IActionCallback callback, Object... extras) throws DelegateException {
         new LoginTask().doAutoLogin(callback);
+
+
     }
 
 

@@ -294,6 +294,8 @@
                     android:textSize="15sp" />
             </LinearLayout>
 
+
+
            <!-- <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvHotReview"
                 android:layout_width="match_parent"

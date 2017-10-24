@@ -3,8 +3,6 @@ package com.tesla.framework.common.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.tesla.framework.FrameworkApplication;
-
 /**
  * @author Jerry
  * @Description:
@@ -12,11 +10,18 @@ import com.tesla.framework.FrameworkApplication;
  * @copyright TCL-MIG
  */
 
-public abstract class BaseSharedPreferenceConfigManager {
+public abstract class BaseSPConfigManager {
+
+    private Context mContext;
+
+    public BaseSPConfigManager(Context context) {
+        this.mContext = context;
+    }
+
     private SharedPreferences sharedPreference;
     protected   SharedPreferences getSharedPreference(){
         if (sharedPreference == null){
-            sharedPreference = FrameworkApplication.getContext().getSharedPreferences(configSPFileName(), Context.MODE_PRIVATE);
+            sharedPreference = mContext.getSharedPreferences(configSPFileName(), Context.MODE_PRIVATE);
         }
         return sharedPreference;
     }

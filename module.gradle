@@ -77,7 +77,6 @@ def compile_topic(Project projectModule){
 }
 def compile_novel(Project projectModule){
     projectModule.dependencies{
-        println("isNovelDebug = ${isNovelDebug.toBoolean()}")
         if (isAllDebug.toBoolean() || isNovelDebug.toBoolean()) {
             compile project(':novel')
             println("compile novel with  source code \n")

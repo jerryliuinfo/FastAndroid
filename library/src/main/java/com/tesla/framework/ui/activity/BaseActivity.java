@@ -501,4 +501,11 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
         StatusBarUtil.setColor(this, ResUtil.getColor(R.color.colorPrimary));
     }
 
+
+    protected void setToolbarTitle(String msg){
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(msg);
+
+    }
+
 }

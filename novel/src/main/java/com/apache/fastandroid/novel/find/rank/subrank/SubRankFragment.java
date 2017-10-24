@@ -7,7 +7,7 @@ import com.apache.fastandroid.novel.find.bean.BookBean;
 import com.apache.fastandroid.novel.find.bean.BooksByCats;
 import com.apache.fastandroid.novel.find.bean.Rankings;
 import com.apache.fastandroid.novel.find.rank.view.SubRankItemViewCreator;
-import com.apache.fastandroid.novel.support.NovelSdk;
+import com.apache.fastandroid.novel.support.sdk.NovelSdk;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;

@@ -22,6 +22,10 @@ public class IAction {
         }
     }
 
+    /**
+     * 是否拦截
+     * @return
+     */
     public boolean interrupt(){
         return false;
     }
@@ -43,13 +47,11 @@ public class IAction {
 
     }
 
-
-
-    public IAction getPparent() {
+    public IAction getParent() {
         return mParent;
     }
 
-    public void setPparent(IAction mPparent) {
+    public void setParent(IAction mPparent) {
         this.mParent = mPparent;
     }
 
@@ -60,8 +62,6 @@ public class IAction {
     public void setChild(IAction mChild) {
         this.mChild = mChild;
     }
-
-
 
     public Activity getContext(){
         return mContext;

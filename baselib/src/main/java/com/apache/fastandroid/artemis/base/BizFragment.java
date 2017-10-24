@@ -13,6 +13,22 @@ import com.tesla.framework.ui.fragment.ABaseFragment;
 
 public class BizFragment extends ABaseFragment {
     private Activity mActivity;
+
+    private Activity getRealActivity() {
+        if (getActivity() != null)
+            return getActivity();
+
+        return mActivity;
+    }
+
+    private String getRealString(int resId) {
+        if (getActivity() != null && getResources() != null) {
+            return getString(resId);
+        }
+
+        return mActivity.getString(resId);
+    }
+
     @Override
     public int inflateContentView() {
         return -1;

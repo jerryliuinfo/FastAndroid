@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 
 import com.apache.fastandroid.novel.find.bean.RankingList;
 import com.apache.fastandroid.novel.find.rank.view.RankItemViewCreator;
-import com.apache.fastandroid.novel.support.NovelSdk;
+import com.apache.fastandroid.novel.support.sdk.NovelSdk;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.bean.RefreshConfig;
 import com.tesla.framework.ui.activity.FragmentArgs;

@@ -10,7 +10,6 @@ import com.tesla.framework.ui.activity.BaseActivity;
 /**
  * SD卡读写权限检查
  *
- * Created by wangdan on 16/8/29.
  */
 public class SdcardPermissionAction extends APermissionsAction {
 

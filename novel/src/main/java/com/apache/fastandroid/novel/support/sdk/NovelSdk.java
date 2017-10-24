@@ -1,13 +1,16 @@
-package com.apache.fastandroid.novel.support;
+package com.apache.fastandroid.novel.support.sdk;
 
 import com.apache.fastandroid.artemis.BaseBizLogic;
 import com.apache.fastandroid.novel.find.bean.BookDetail;
+import com.apache.fastandroid.novel.find.bean.HotReviewBean;
 import com.apache.fastandroid.novel.find.bean.RankingList;
 import com.apache.fastandroid.novel.find.bean.Rankings;
+import com.apache.fastandroid.novel.find.bean.RecommandBeans;
 import com.apache.fastandroid.novel.find.rank.view.RankItemViewCreator;
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.http.HttpConfig;
+import com.tesla.framework.network.http.Params;
 import com.tesla.framework.network.task.TaskException;
 
 import java.util.ArrayList;
@@ -84,11 +87,44 @@ public class NovelSdk extends BaseBizLogic {
      }
 
 
+    /**
+     * 获得书籍详情
+     * @param bookId
+     * @return
+     * @throws TaskException
+     */
      public BookDetail getBookDetail(String bookId) throws TaskException{
          Setting setting = newSetting("getBookDetail", "book/"+bookId, "获取书籍详情");
          return doGet(getHttpConfig(),setting,null,BookDetail.class);
      }
 
+    /**
+     * 获取推荐书籍列表
+     * @param bookId
+     * @param limit
+     * @return
+     * @throws TaskException
+     */
+     public RecommandBeans getRecommandBookList(String bookId, String limit)throws TaskException{
+         Setting setting = newSetting("getRecommendBookList", "book-list/"+bookId +"/recommend", "获取书籍详情");
+         Params params = new Params();
+         params.addParameter("limit",limit);
+         return doGet(getHttpConfig(),setting,params,RecommandBeans.class);
+     }
+
+
+     /**
+     * 热门评论
+     *
+     * @param bookId
+     * @return
+     */
+     public HotReviewBean getHotReview(String bookId) throws TaskException{
+         Setting action = newSetting("getHotReview","post/review/best-by-book","获取热门评论");
+         Params params = new Params();
+         params.addParameter("book",bookId);
+         return doGet(configHttpConfig(),action,params,HotReviewBean.class);
+     }
 
 
 }
