@@ -43,4 +43,9 @@ public class NovelHomeTabsFragment extends ATabsTabLayoutFragment<TabItem> {
 
         return null;
     }
+
+
+    public void selectFindFragment(){
+        getViewPage().setCurrentItem(2);
+    }
 }

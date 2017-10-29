@@ -23,7 +23,7 @@ import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
-import com.tesla.framework.support.db.TeslaDB;
+import com.tesla.framework.support.db.FastAndroidDB;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.PermissionActivityHelper;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
@@ -61,7 +61,7 @@ public class MyApplication extends MultiDexApplication{
         //初始化异常处理
         TaskException.config(new FastAndroidExceptionDelegate());
         //初始化db
-        TeslaDB.setDB();
+        FastAndroidDB.setDB();
 
         BaseActivity.setHelper(SwipeActivityHelper.class);
         BaseActivity.setPermissionHelper(PermissionActivityHelper.class);

@@ -97,6 +97,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (inflateContentView() > 0) {

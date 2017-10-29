@@ -78,7 +78,7 @@ public class SubRankFragment extends ARecycleViewSwipeRefreshFragment<BookBean,B
         @Override
         protected Rankings workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params)
                 throws TaskException {
-            return NovelSdk.newInstance().getRanking(mRankingId);
+            return NovelSdk.getInstance().getRanking(mRankingId);
         }
     }
 }

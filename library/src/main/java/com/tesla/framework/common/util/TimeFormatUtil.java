@@ -119,4 +119,15 @@ public class TimeFormatUtil {
     private static long toYears(long date) {
         return toMonths(date) / 365L;
     }
+
+
+    /**
+     * 格式化追书神器返回的时间字符串
+     *
+     * @param dateString 时间字符串
+     * @return
+     */
+    public static String formatZhuiShuDateString(String dateString) {
+        return dateString.replaceAll("T", " ").replaceAll("Z", "");
+    }
 }

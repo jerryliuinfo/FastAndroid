@@ -2,13 +2,15 @@ package com.apache.fastandroid.novel.find.detail;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 
+import com.apache.fastandroid.novel.R;
 import com.apache.fastandroid.novel.find.bean.RecommandBeans;
-import com.apache.fastandroid.novel.find.bean.RecommendBook;
-import com.apache.fastandroid.novel.find.rank.view.detail.RecommandItemViewCreator;
+import com.apache.fastandroid.novel.find.detail.view.RecommandItemViewCreator;
 import com.apache.fastandroid.novel.support.sdk.NovelSdk;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.bean.RefreshConfig;
+import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.ARecycleViewFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
@@ -18,7 +20,7 @@ import java.util.List;
  * Created by 01370340 on 2017/10/18.
  */
 
-public class RecommandBooksFragment extends ARecycleViewFragment<RecommendBook,RecommandBeans,RecommendBook> {
+public class RecommandBooksFragment extends ARecycleViewFragment<RecommandBeans.RecommendBean,RecommandBeans,RecommandBeans.RecommendBean> {
 
     public static RecommandBooksFragment newFragment(String bookId) {
         Bundle args = new Bundle();
@@ -26,6 +28,14 @@ public class RecommandBooksFragment extends ARecycleViewFragment<RecommendBook,R
         RecommandBooksFragment fragment = new RecommandBooksFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @ViewInject(idStr = "lay_recommand")
+    View lay_recommand;
+
+    @Override
+    public int inflateContentView() {
+        return R.layout.novel_book_detail_recommand_list;
     }
 
     private String mBookId;
@@ -47,7 +57,7 @@ public class RecommandBooksFragment extends ARecycleViewFragment<RecommendBook,R
     }
 
     @Override
-    protected IItemViewCreator<RecommendBook> configItemViewCreator() {
+    protected IItemViewCreator<RecommandBeans.RecommendBean> configItemViewCreator() {
         return new RecommandItemViewCreator(getActivity());
     }
 
@@ -76,7 +86,7 @@ public class RecommandBooksFragment extends ARecycleViewFragment<RecommendBook,R
         }
 
         @Override
-        protected List<RecommendBook> parseResult(RecommandBeans recommandBeans) {
+        protected List<RecommandBeans.RecommendBean> parseResult(RecommandBeans recommandBeans) {
 
             return recommandBeans.booklists;
         }
@@ -84,7 +94,13 @@ public class RecommandBooksFragment extends ARecycleViewFragment<RecommendBook,R
         @Override
         protected RecommandBeans workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params) throws TaskException {
 
-            return NovelSdk.newInstance().getRecommandBookList(mBookId, "3");
+            return NovelSdk.getInstance().getRecommandBookList(mBookId, "3");
+        }
+
+        @Override
+        protected void onSuccess(RecommandBeans recommandBeans) {
+            super.onSuccess(recommandBeans);
+            lay_recommand.setVisibility(View.VISIBLE);
         }
     }
 }

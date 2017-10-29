@@ -66,12 +66,10 @@ public class ACache {
     private static Map<String, ACache> mInstanceMap = new HashMap<String, ACache>();
     private ACacheManager mCache;
 
-    public static ACache get(Context ctx) {
-        return get(ctx, "ACache");
-    }
 
-    public static ACache get(Context ctx, String cacheName) {
-        File f = new File(ctx.getCacheDir(), cacheName);
+
+    public static ACache get(Context ctx,String cacheDir, String cacheName) {
+        File f = new File(cacheDir, cacheName);
         return get(f, MAX_SIZE, MAX_COUNT);
     }
 
@@ -79,10 +77,7 @@ public class ACache {
         return get(cacheDir, MAX_SIZE, MAX_COUNT);
     }
 
-    public static ACache get(Context ctx, long max_zise, int max_count) {
-        File f = new File(ctx.getCacheDir(), "ACache");
-        return get(f, max_zise, max_count);
-    }
+
 
     public static ACache get(File cacheDir, long max_zise, int max_count) {
         ACache manager = mInstanceMap.get(cacheDir.getAbsoluteFile() + myPid());

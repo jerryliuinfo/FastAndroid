@@ -71,7 +71,7 @@ public class HotReviewBean extends Base {
         public String created;
         public int commentCount;
 
-        public static class Author {
+        public static class Author implements Serializable{
             public String _id;
             public String avatar;
             public String nickname;
@@ -80,7 +80,7 @@ public class HotReviewBean extends Base {
             public String gender;
         }
 
-        public static class Helpful {
+        public static class Helpful implements Serializable {
             public int yes;
             public int total;
             public int no;

@@ -26,14 +26,18 @@ import android.support.annotation.NonNull;
 
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.common.util.sdcard.SdcardUtils;
 import com.tesla.framework.support.cache.ACache;
+
+import java.io.File;
 
 /**
  * 缓存工具类，用于缓存各类数据
  */
 public class CacheUtil {
 
-    private static ACache cache = ACache.get(FrameworkApplication.getContext());
+    private static String CACHE_DIR = SdcardUtils.getSdcardPath()+ File.separator;
+    private static ACache cache = ACache.get(FrameworkApplication.getContext(),CACHE_DIR, "ACache");
 
 
     //--- token ------------------------------------------------------------------------------------

@@ -363,7 +363,7 @@ public class SqliteUtility {
             if (!TextUtils.isEmpty(extraWhereClause))
                 whereClause = String.format("%s and %s", whereClause, extraWhereClause);
 
-            List<String> whereArgList = new ArrayList<String>();
+            List<String> whereArgList = new ArrayList<>();
             whereArgList.add(String.valueOf(id));
             String[] extraWhereArgs = SqlUtils.appendExtraWhereArgs(extra);
             if (extraWhereArgs != null && extraWhereArgs.length > 0)

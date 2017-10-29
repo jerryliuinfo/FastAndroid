@@ -11,7 +11,18 @@ import java.util.List;
 
 public class RecommandBeans extends Base implements Serializable {
 
-    public List<RecommendBook> booklists;
+    public List<RecommendBean> booklists;
+
+
+    public static class RecommendBean implements Serializable {
+        public String id;
+        public String title;
+        public String author;
+        public String desc;
+        public int bookCount;
+        public String cover;
+        public int collectorCount;
+    }
 
 
 }

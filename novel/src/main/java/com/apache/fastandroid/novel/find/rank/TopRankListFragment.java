@@ -79,12 +79,12 @@ public class TopRankListFragment extends ARecycleViewFragment<RankingList.MaleBe
 
         @Override
         protected ArrayList<RankingList.MaleBean> workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params) throws TaskException {
-            return NovelSdk.newInstance().getRankingList();
+            return NovelSdk.getInstance().getRankingList();
         }
 
         /*@Override
         public ArrayList<RankingList.MaleBean> workInBackground(Void... params) throws TaskException {
-            return NovelSdk.newInstance().getRankingList();
+            return NovelSdk.getInstance().getRankingList();
         }*/
     }
 

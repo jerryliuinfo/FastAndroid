@@ -9,7 +9,7 @@ import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.http.Params;
 import com.tesla.framework.support.bean.HomeBean;
 import com.tesla.framework.support.bean.HomeBeans;
-import com.tesla.framework.support.db.TeslaDB;
+import com.tesla.framework.support.db.FastAndroidDB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class HomeCacheUtility implements ICacheUtility {
         HomeBeans homeBeans = (HomeBeans) iResult;
         if (homeBeans.beans != null && homeBeans.beans.size() > 0){
             long startTime = System.currentTimeMillis();
-            TeslaDB.getDB().insert(extra, homeBeans.beans);
+            FastAndroidDB.getDB().insert(extra, homeBeans.beans);
             NLog.d(ABizLogic.TAG, "HomeCacheUtility addCache cost time: %s ms", System.currentTimeMillis() - startTime);
         }
     }
@@ -40,7 +40,7 @@ public class HomeCacheUtility implements ICacheUtility {
     public IResult findCacheData(Setting action, Params params) {
         Extra extra = new Extra(null,null);
         long startTime = System.currentTimeMillis();
-        List<HomeBean> list = TeslaDB.getDB().select(extra, HomeBean.class);
+        List<HomeBean> list = FastAndroidDB.getDB().select(extra, HomeBean.class);
         NLog.w(ABizLogic.TAG, String.format("HomeCacheUtility find cache const time: %s ms", String.valueOf(System.currentTimeMillis() - startTime)));
         NLog.d(ABizLogic.TAG, "HomeCacheUtility findCacheData key =  %s", extra.getKey());
         if (list != null && list.size() > 0){

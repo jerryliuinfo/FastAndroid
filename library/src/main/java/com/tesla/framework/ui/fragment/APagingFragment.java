@@ -538,7 +538,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
             }
         }
         int childCount = getRefreshView().getChildCount();
-        if (childCount > 0 && getRefreshView().getChildAt(childCount - 1) == mFooterItemView.getConvertView()) {
+        if (mFooterItemView != null && childCount > 0 && getRefreshView().getChildAt(childCount - 1) == mFooterItemView.getConvertView()) {
             setFooterViewToRefreshing();
         }
 

@@ -82,11 +82,9 @@ public class MainActivity extends MyBaseActivity{
         setupDrawer(savedInstanceState);
         setupNavigationView();
         loadMenuData();
-
-        MenuItem menuItem = mNavigationView.getMenu().findItem(R.id.nav_item_posts);
+        MenuItem menuItem = mNavigationView.getMenu().getItem(0);
         menuItem.setChecked(true);
-        onMenuItemClicked(R.id.nav_item_posts,menuItem.getTitle().toString());
-
+        onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
 

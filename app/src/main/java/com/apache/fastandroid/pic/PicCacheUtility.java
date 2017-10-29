@@ -7,11 +7,11 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.cache.ICacheUtility;
 import com.tesla.framework.network.http.Params;
-import com.tesla.framework.support.db.TeslaDB;
+import com.tesla.framework.support.db.FastAndroidDB;
 
 import java.util.List;
 
-import static com.tesla.framework.support.db.TeslaDB.getDB;
+import static com.tesla.framework.support.db.FastAndroidDB.getDB;
 
 /**
  * Created by jerryliu on 2017/4/11.
@@ -32,7 +32,7 @@ public class PicCacheUtility implements ICacheUtility {
 
     @Override
     public IResult findCacheData(Setting action, Params params) {
-        List<ImageBean> imageBeanList = TeslaDB.getDB().select(null, ImageBean.class);
+        List<ImageBean> imageBeanList = FastAndroidDB.getDB().select(null, ImageBean.class);
         if (imageBeanList != null && imageBeanList.size() > 0){
             ImageResultBeans result = new ImageResultBeans();
             result.imgs = imageBeanList;

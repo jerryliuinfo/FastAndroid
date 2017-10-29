@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+
+
+
+
     <declare-styleable name="TagGroup">
         <attr name="atg_isAppendMode" format="boolean" />
         <attr name="atg_inputHint" format="string" />

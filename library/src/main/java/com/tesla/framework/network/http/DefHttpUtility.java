@@ -68,49 +68,6 @@ public class DefHttpUtility implements IHttpUtility {
 
 	@Override
 	public <T> T doPostFiles(HttpConfig config, Setting action, Params urlParams, Params bodyParams, MultipartFile[] files, Class<T> responseCls) throws TaskException {
-		/*String method = "doPostFiles";
-
-		Request.Builder builder = createRequestBuilder(config, action, urlParams, method);
-
-
-
-
-		MultipartBuilder multipartBuilder = new MultipartBuilder();
-		multipartBuilder.type(MultipartBuilder.FORM);
-
-		// 处理Body参数
-		if (bodyParams != null && bodyParams.getKeys().size() > 0) {
-			for (String key : bodyParams.getKeys()) {
-				String value = bodyParams.getParameter(key);
-				multipartBuilder.addFormDataPart(key, value);
-
-				NLog.d(getTag(action, method), "BodyParam[%s, %s]", key, value);
-			}
-		}
-
-		// 处理文件数据
-		if (files != null && files.length > 0) {
-			for (MultipartFile file : files) {
-				// 普通字节流
-				if (file.getBytes() != null) {
-
-					multipartBuilder.addFormDataPart(file.getKey(), file.getKey(), createRequestBody(file));
-
-					NLog.d(getTag(action, method), "Multipart bytes, length = " + file.getBytes().length);
-				}
-				// 文件
-				else if (file.getFile() != null) {
-					multipartBuilder.addFormDataPart(file.getKey(), file.getFile().getName(), createRequestBody(file));
-
-					NLog.d(getTag(action, method), "Multipart file, name = %s, path = %s", file.getFile().getName(), file.getFile().getAbsolutePath());
-				}
-			}
-
-		}
-
-		RequestBody requestBody = multipartBuilder.build();
-		builder.post(requestBody);
-		return executeRequest(builder.build(), responseCls, action, method);*/
 		return null;
 	}
 

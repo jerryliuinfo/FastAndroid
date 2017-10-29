@@ -1,4 +1,4 @@
-package com.apache.fastandroid.novel.find.rank.view.detail;
+package com.apache.fastandroid.novel.find.detail.view;
 
 import android.app.Activity;
 import android.view.View;

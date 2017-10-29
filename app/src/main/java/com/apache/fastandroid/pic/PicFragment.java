@@ -161,7 +161,7 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
                 pageNum = Integer.parseInt(nextPage);
             }
             ImageResultBeans result = null;
-            // result =  PicSDK.newInstance(getTaskCacheMode(this)).loadImageData(mCategory,pageNum);
+            // result =  PicSDK.getInstance(getTaskCacheMode(this)).loadImageData(mCategory,pageNum);
 
             Call<ImageResultBeans> call = PicSDK.newInstance(getTaskCacheMode(this)).loadImageDataV2(mCategory,pageNum);
 
