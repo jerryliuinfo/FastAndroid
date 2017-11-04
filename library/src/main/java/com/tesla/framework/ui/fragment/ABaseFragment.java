@@ -24,7 +24,7 @@ import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.widget.MToast;
+import com.tesla.framework.ui.widget.ToastUtils;
 
 import java.text.SimpleDateFormat;
 
@@ -327,7 +327,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
 
     public void showMessage(CharSequence msg) {
         if (!TextUtils.isEmpty(msg) && getActivity() != null){
-            MToast.showMessage(getActivity(),msg.toString());
+            ToastUtils.showMessage(getActivity(),msg.toString());
         }
 
     }

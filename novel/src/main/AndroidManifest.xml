@@ -8,6 +8,7 @@
                  android:supportsRtl="true"
     >
         <activity android:name=".find.detail.BookDetailActivity"/>
+        <activity android:name=".bookshelf.ReadActivity"/>
     </application>
 
 </manifest>

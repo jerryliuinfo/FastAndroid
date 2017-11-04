@@ -295,6 +295,8 @@ public class SqliteUtility {
 
                     List<String> selectionArgList = new ArrayList<>();
                     selectionArgList.add(String.valueOf(id));
+
+                    //拼装Extra
                     String[] extraSelectionArgs = SqlUtils.appendExtraWhereArgs(extra);
                     if (extraSelectionArgs != null && extraSelectionArgs.length > 0)
                         selectionArgList.addAll(Arrays.asList(extraSelectionArgs));

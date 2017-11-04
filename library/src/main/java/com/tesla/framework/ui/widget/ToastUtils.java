@@ -3,26 +3,28 @@ package com.tesla.framework.ui.widget;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.tesla.framework.FrameworkApplication;
+
 /**
  * Created by wangdan on 15/4/15.
  */
-public class MToast {
+public class ToastUtils {
 
     private static Toast mToast;
 
 
     /********************** 非连续弹出的Toast ***********************/
-    public static void showSingleToast(Context context,int resId) { //R.string.**
-        showSingleToast(context,context.getString(resId));
+    public static void showSingleToast(int resId) { //R.string.**
+        showSingleToast(FrameworkApplication.getContext().getString(resId));
     }
 
-    public static void showSingleToast(Context context,String text) {
-        getSingleToast(context,text, Toast.LENGTH_SHORT).show();
+    public static void showSingleToast(String text) {
+        getSingleToast(text, Toast.LENGTH_SHORT).show();
     }
 
-    private static Toast getSingleToast(Context context,String text, int duration) {
+    private static Toast getSingleToast(String text, int duration) {
         if (mToast == null) {
-            mToast = Toast.makeText(context, text, duration);
+            mToast = Toast.makeText(FrameworkApplication.getContext(), text, duration);
         } else {
             mToast.setText(text);
         }

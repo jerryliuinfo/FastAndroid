@@ -75,11 +75,18 @@ public class ScreenUtil {
             setScreenInfo(context);
         return screenWidth;
     }
+    public static int getScreenWidth() {
+        return getScreenWidth(FrameworkApplication.getContext());
+    }
 
     public static int getScreenHeight(Context context) {
         if (screenHeight == 0)
             setScreenInfo(context);
         return screenHeight;
+    }
+    public static int getScreenHeight() {
+
+        return getScreenHeight(FrameworkApplication.getContext());
     }
 
     public static int getTitleBarHeight(Activity activity) {

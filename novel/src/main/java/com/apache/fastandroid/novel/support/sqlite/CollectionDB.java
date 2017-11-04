@@ -2,6 +2,7 @@ package com.apache.fastandroid.novel.support.sqlite;
 
 import com.apache.fastandroid.novel.find.bean.CollectionBeans;
 import com.apache.fastandroid.novel.find.bean.RecommendBook;
+import com.apache.fastandroid.novel.support.util.FormatTimeUtil;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.component.orm.extra.Extra;
 import com.tesla.framework.network.biz.IResult;
@@ -16,6 +17,7 @@ import java.util.List;
  */
 
 public class CollectionDB implements ICacheUtility{
+
     public static void insert(RecommendBook book){
         Extra extra = new Extra();
         FastAndroidDB.getDB().insertOrReplace(extra, book);
@@ -24,6 +26,12 @@ public class CollectionDB implements ICacheUtility{
     public static List<RecommendBook> selectAll(){
         Extra extra = new Extra();
         return FastAndroidDB.getDB().select(extra,RecommendBook.class);
+    }
+
+    public static void update(RecommendBook book){
+        Extra extra = new Extra();
+
+        FastAndroidDB.getDB().update(extra,book);
     }
 
     public static void remove(String bookId){
@@ -58,5 +66,19 @@ public class CollectionDB implements ICacheUtility{
             }
         }
         return false;
+    }
+
+    public static void setRecentReadingTime(String bookId){
+        List<RecommendBook> list = selectAll();
+        if (list == null || list.isEmpty()){
+            return ;
+        }
+        for (RecommendBook bean : list) {
+            if (bookId.equals(bean._id)){
+                bean.recentReadingTime = FormatTimeUtil.getCurrentTimeString(FormatTimeUtil.FORMAT_DATE_TIME);
+                update(bean);
+                break;
+            }
+        }
     }
 }

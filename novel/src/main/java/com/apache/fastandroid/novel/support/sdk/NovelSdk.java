@@ -1,6 +1,7 @@
 package com.apache.fastandroid.novel.support.sdk;
 
 import com.apache.fastandroid.novel.find.bean.BookDetail;
+import com.apache.fastandroid.novel.find.bean.BookMixAToc;
 import com.apache.fastandroid.novel.find.bean.CollectionBeans;
 import com.apache.fastandroid.novel.find.bean.HotReviewBean;
 import com.apache.fastandroid.novel.find.bean.RankingList;
@@ -9,6 +10,7 @@ import com.apache.fastandroid.novel.find.bean.RecommandBeans;
 import com.apache.fastandroid.novel.find.rank.view.RankItemViewCreator;
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.apache.fastandroid.novel.support.sqlite.CollectionDB;
+import com.apache.fastandroid.novel.support.util.NovelLog;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
@@ -148,8 +150,6 @@ public class NovelSdk extends ABizLogic {
          return hotReviewBean;
      }
 
-
-
      public CollectionBeans getCollection() throws TaskException{
 //        Setting setting = newSetting("getCollection", "","获取收藏列表");
 //        setting.getExtras().put(CACHE_UTILITY, newSettingExtra("getCollection",CollectionDB.class.getName(),"获取收藏"));
@@ -157,4 +157,17 @@ public class NovelSdk extends ABizLogic {
 
          return new CollectionBeans(CollectionDB.selectAll());
      }
+
+     public BookMixAToc getBookMixAToc(String bookId, String viewChapters) throws TaskException{
+         Setting action = newSetting("getBookMixAToc", "mix-atoc/"+bookId, "获取书籍章节");
+
+         Params params = new Params();
+         params.addParameter("view",viewChapters);
+
+         BookMixAToc bean = doGet(getHttpConfig(),action,params,BookMixAToc.class);
+
+         NovelLog.d("getBookMixAToc bean = %s", bean);
+         return bean;
+     }
+
 }

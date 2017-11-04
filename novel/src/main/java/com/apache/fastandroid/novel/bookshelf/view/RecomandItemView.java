@@ -117,7 +117,7 @@ public class RecomandItemView extends ARecycleViewItemViewHolder<RecommendBook> 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReadActivity.start(getContext());
+                ReadActivity.launch(getContext(),item,true);
             }
         });
     }

@@ -25,7 +25,6 @@ package com.apache.fastandroid.artemis;
 import android.support.annotation.NonNull;
 
 import com.apache.fastandroid.artemis.support.bean.Token;
-import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.sdcard.SdcardUtils;
 import com.tesla.framework.support.cache.ACache;
 
@@ -37,7 +36,7 @@ import java.io.File;
 public class CacheUtil {
 
     private static String CACHE_DIR = SdcardUtils.getSdcardPath()+ File.separator;
-    private static ACache cache = ACache.get(FrameworkApplication.getContext(),CACHE_DIR, "ACache");
+    private static ACache cache = ACache.get(new File(CACHE_DIR));
 
 
     //--- token ------------------------------------------------------------------------------------

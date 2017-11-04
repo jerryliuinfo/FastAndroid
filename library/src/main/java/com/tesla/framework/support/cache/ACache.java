@@ -21,7 +21,6 @@
  */
 package com.tesla.framework.support.cache;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -68,14 +67,14 @@ public class ACache {
 
 
 
-    public static ACache get(Context ctx,String cacheDir, String cacheName) {
-        File f = new File(cacheDir, cacheName);
-        return get(f, MAX_SIZE, MAX_COUNT);
-    }
+
 
     public static ACache get(File cacheDir) {
         return get(cacheDir, MAX_SIZE, MAX_COUNT);
     }
+
+
+
 
 
 

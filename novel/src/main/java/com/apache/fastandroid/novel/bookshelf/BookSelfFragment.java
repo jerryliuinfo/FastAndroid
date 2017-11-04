@@ -120,13 +120,7 @@ public class BookSelfFragment extends ARecycleViewSwipeRefreshFragment<Recommend
     }
 
 
-   /* public void refresh(){
-        NovelLog.d("BookSelfFragment refresh mDataChanged = %s--------->haha", mDataChanged);
-        if (mDataChanged){
-            requestData(RefreshMode.refresh);
-            mDataChanged = false;
-        }
-    }*/
+
 
     @Override
     protected IItemViewCreator<RecommendBook> configFooterItemViewCreator() {

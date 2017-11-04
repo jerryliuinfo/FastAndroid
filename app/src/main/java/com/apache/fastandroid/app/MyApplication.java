@@ -22,6 +22,7 @@ import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.CrashHandler;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.sp.SharedPreferencesUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.db.FastAndroidDB;
@@ -50,6 +51,8 @@ public class MyApplication extends MultiDexApplication{
         FreelineCore.init(this);
         mContext = this;
         FrameworkApplication.onCreate(getApplicationContext());
+        SharedPreferencesUtil.init(getApplicationContext(), getPackageName() + "_preference", Context.MODE_MULTI_PROCESS);
+
 
         //初始化日志
         initLog();

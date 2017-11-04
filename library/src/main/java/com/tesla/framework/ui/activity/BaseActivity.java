@@ -27,7 +27,7 @@ import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.CustomToolbar;
-import com.tesla.framework.ui.widget.MToast;
+import com.tesla.framework.ui.widget.ToastUtils;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -421,7 +421,7 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
      */
     public void showMessage(CharSequence msg) {
         if (!TextUtils.isEmpty(msg) && msg.length() != 0){
-            MToast.showMessage(this,msg.toString());
+            ToastUtils.showMessage(this,msg.toString());
         }
     }
 

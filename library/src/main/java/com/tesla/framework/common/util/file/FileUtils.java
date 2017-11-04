@@ -18,11 +18,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.DecimalFormat;
 
 public class FileUtils {
 
@@ -92,8 +94,23 @@ public class FileUtils {
 		return true;
 	}
 
-
-
+	/**
+	 * 将内容写入文件
+	 *
+	 * @param filePath eg:/mnt/sdcard/demo.txt
+	 * @param content  内容
+	 * @param isAppend 是否追加
+	 */
+	public static void writeFile(String filePath, String content, boolean isAppend) {
+		try {
+			FileOutputStream fout = new FileOutputStream(filePath, isAppend);
+			byte[] bytes = content.getBytes();
+			fout.write(bytes);
+			fout.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 
 
@@ -510,4 +527,82 @@ public class FileUtils {
 		return dirPath;
 	}
 
+
+
+	/**
+	 * 删除指定文件，如果是文件夹，则递归删除
+	 *
+	 * @param file
+	 * @return
+	 * @throws IOException
+	 */
+	public static boolean deleteFileOrDirectory(File file) throws IOException {
+		try {
+			if (file != null && file.isFile()) {
+				return file.delete();
+			}
+			if (file != null && file.isDirectory()) {
+				File[] childFiles = file.listFiles();
+				// 删除空文件夹
+				if (childFiles == null || childFiles.length == 0) {
+					return file.delete();
+				}
+				// 递归删除文件夹下的子文件
+				for (int i = 0; i < childFiles.length; i++) {
+					deleteFileOrDirectory(childFiles[i]);
+				}
+				return file.delete();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	/**
+	 * 获取文件夹大小
+	 *
+	 * @return
+	 * @throws Exception
+	 */
+	public static long getFolderSize(String dir) throws Exception {
+		File file = new File(dir);
+		long size = 0;
+		try {
+			File[] fileList = file.listFiles();
+			for (int i = 0; i < fileList.length; i++) {
+				// 如果下面还有文件
+				if (fileList[i].isDirectory()) {
+					size = size + getFolderSize(fileList[i].getAbsolutePath());
+				} else {
+					size = size + fileList[i].length();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+
+
+	/**
+	 * 转换文件大小
+	 *
+	 * @param fileLen 单位B
+	 * @return
+	 */
+	public static String formatFileSizeToString(long fileLen) {
+		DecimalFormat df = new DecimalFormat("0.00");
+		String fileSizeString = "";
+		if (fileLen < 1024) {
+			fileSizeString = df.format((double) fileLen) + "B";
+		} else if (fileLen < 1048576) {
+			fileSizeString = df.format((double) fileLen / 1024) + "K";
+		} else if (fileLen < 1073741824) {
+			fileSizeString = df.format((double) fileLen / 1048576) + "M";
+		} else {
+			fileSizeString = df.format((double) fileLen / 1073741824) + "G";
+		}
+		return fileSizeString;
+	}
 }

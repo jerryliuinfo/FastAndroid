@@ -38,6 +38,10 @@ public class NovelLog {
         NLog.d(getLogTag(),format, args);
 
     }
+    public static void i(String format, Object... args) {
+        NLog.i(getLogTag(),format, args);
+
+    }
 
 
 
