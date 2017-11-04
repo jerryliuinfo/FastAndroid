@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apache.fastandroid.novel.R;
+import com.apache.fastandroid.novel.bookshelf.ReadActivity;
 import com.apache.fastandroid.novel.find.bean.RecommendBook;
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.apache.fastandroid.novel.support.util.NovelUtils;
@@ -112,6 +113,13 @@ public class RecomandItemView extends ARecycleViewItemViewHolder<RecommendBook> 
         ivUnReadDot.setVisibility(TimeFormatUtil.formatZhuiShuDateString(item.updated)
                 .compareTo(item.recentReadingTime) > 0?View.VISIBLE:View.GONE);
         showImage(item,ivRecommendCover);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReadActivity.start(getContext());
+            }
+        });
     }
 
 

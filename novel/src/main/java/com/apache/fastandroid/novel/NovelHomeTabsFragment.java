@@ -3,8 +3,8 @@ package com.apache.fastandroid.novel;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.apache.fastandroid.novel.bookshelf.BookSelfFragment;
 import com.apache.fastandroid.novel.find.FindFragment;
-import com.apache.fastandroid.novel.bookshelf.RecommandFragment;
 import com.tesla.framework.support.bean.TabItem;
 import com.tesla.framework.ui.fragment.ATabsTabLayoutFragment;
 
@@ -34,7 +34,7 @@ public class NovelHomeTabsFragment extends ATabsTabLayoutFragment<TabItem> {
     @Override
     public Fragment newFragment(TabItem tabItem) {
         if ("0".equals(tabItem.getType())){
-            return RecommandFragment.newFragment();
+            return BookSelfFragment.newFragment();
         }else if ("1".equals(tabItem.getType())){
             return FindFragment.newFragment("1");
         } else if ("2".equals(tabItem.getType())){
@@ -48,4 +48,10 @@ public class NovelHomeTabsFragment extends ATabsTabLayoutFragment<TabItem> {
     public void selectFindFragment(){
         getViewPage().setCurrentItem(2);
     }
+
+
+
+
+
+
 }

@@ -88,7 +88,7 @@ public class MainActivity extends MyBaseActivity{
 
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
 
-
+        //EventBus.getDefault().register(this);
         /*myHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -141,6 +141,8 @@ public class MainActivity extends MyBaseActivity{
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        //EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -296,6 +298,18 @@ public class MainActivity extends MyBaseActivity{
 
         return super.onBackClick();
     }
+
+
+   /* private boolean mDataChanged = false;
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void refreshCollectionList(RefreshCollectionListEvent event){
+        NovelLog.d("refreshCollectionList--------->");
+
+        setToolbarTitle(String.valueOf(event.count));
+
+    }*/
+
+
 
 
 }

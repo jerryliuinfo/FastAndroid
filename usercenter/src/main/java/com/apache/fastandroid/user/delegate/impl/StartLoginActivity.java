@@ -19,7 +19,7 @@ public class StartLoginActivity implements IActionDelegate {
             if (extras.length >= 2){
                 LoginFragment.start(from, (Boolean) extras[1]);
             }else {
-                LoginFragment.start(from);
+                LoginFragment.start(from,false);
             }
 
         }

@@ -5,4 +5,6 @@ package com.apache.fastandroid.novel.support.event;
  */
 
 public class RefreshCollectionListEvent {
+
+    public int count;
 }

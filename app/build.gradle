@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
-apply from: rootProject.file('module.gradle')
-//apply plugin: 'com.antfortune.freeline'
+//apply from: rootProject.file('module.gradle')
+apply plugin: 'com.antfortune.freeline'
 println('app gradle----->')
 
 
@@ -127,11 +127,10 @@ android {
     }
 
 
-  /*  freelin{
+    freeline{
         hack true
         productFlavor "dev"
-        applicationProxy false
-    }*/
+    }
 
     /**
      * release构建忽略dev这一个渠道
@@ -223,12 +222,12 @@ dependencies {
     compile thirddependencies.junit
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
 
-    compile_usercenter(getProject())
-    compile_topic(getProject())
-    compile_novel(getProject())
-    compile 'com.antfortune.freeline:runtime:0.8.5'
-//    compile project(':usercenter')
-//    compile project(':topic')
-    //compile project(':novel')
+//    compile_usercenter(getProject())
+//    compile_topic(getProject())
+//    compile_novel(getProject())
+    compile 'com.antfortune.freeline:runtime:0.8.7'
+    compile project(':usercenter')
+    compile project(':topic')
+    compile project(':novel')
 
 }

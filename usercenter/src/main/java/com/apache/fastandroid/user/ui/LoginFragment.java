@@ -1,18 +1,20 @@
 package com.apache.fastandroid.user.ui;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 
 import com.apache.fastandroid.artemis.base.BaseFragment;
+import com.apache.fastandroid.artemis.comBridge.ActionCallback;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.artemis.support.bean.Token;
+import com.apache.fastandroid.user.delegate.LoginTask;
 import com.apache.fastandroid.user.support.UserConfigManager;
+import com.apache.fastandroid.usercenter.R;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.FragmentArgs;
@@ -33,21 +35,7 @@ public class LoginFragment extends BaseFragment {
     @ViewInject(idStr = "btn_login")
     private Button btn_login;
 
-    public static void start(Context from) {
-        Intent intent = new Intent(from, FragmentContainerActivity.class);
-        intent.putExtra("className", LoginFragment.class.getName());
-
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        from.startActivity(intent);
-    }
-
-
-    public static void start(Activity from) {
-        FragmentContainerActivity.launch(from,LoginFragment.class,null);
-    }
-
-
-    private boolean fromTopicDetail;
+    private Boolean fromTopicDetail;
     public static void start(Activity from,Boolean fromTopicDetail) {
         FragmentArgs args = new FragmentArgs();
         if (fromTopicDetail != null){
@@ -58,8 +46,7 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     public int inflateContentView() {
-        //return R.layout.frament_user_login;
-        return 0;
+        return R.layout.frament_user_login;
     }
 
     @Override
@@ -67,13 +54,13 @@ public class LoginFragment extends BaseFragment {
         super.layoutInit(inflater, savedInstanceSate);
 
         setToolbarTitle("");
-        if (savedInstanceSate == null){
+        if (savedInstanceSate == null && getArguments() != null && getArguments().containsKey("fromTopicDetail")){
             fromTopicDetail = getArguments().getBoolean("fromTopicDetail");
         }else {
             fromTopicDetail = savedInstanceSate.getBoolean("fromTopicDetail");
         }
 
-       /* mUserNameinputLayout.setHint("UserName");
+        mUserNameinputLayout.setHint("UserName");
         mPwdInputLayout.setHint("Password");
 
         mUserNameinputLayout.getEditText().setText("liuxiangxiang1234@163.com");
@@ -83,18 +70,20 @@ public class LoginFragment extends BaseFragment {
             public void onClick(View v) {
                doLogin();
             }
-        });*/
+        });
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putBoolean("fromTopicDetail", fromTopicDetail);
+        if (fromTopicDetail != null){
+            outState.putBoolean("fromTopicDetail", fromTopicDetail);
+        }
     }
 
     String pwd;
     private void doLogin(){
-        /*final String userName = mUserNameinputLayout.getEditText().getText().toString();
+        final String userName = mUserNameinputLayout.getEditText().getText().toString();
         pwd = mPwdInputLayout.getEditText().getText().toString();
         if (checkUserNameAndPwdInvalidaty(userName,pwd)){
 
@@ -113,7 +102,7 @@ public class LoginFragment extends BaseFragment {
                 }
             };
             new LoginTask().doLogin(userName,pwd,callback);
-        }*/
+        }
 
 
     }
@@ -136,7 +125,7 @@ public class LoginFragment extends BaseFragment {
     public void loginSuccess(Token token) {
         showMessage("登录成功");
         UserConfigManager.getInstance(getContext()).savePwd(pwd);
-        if (fromTopicDetail){
+        if (fromTopicDetail != null){
             getActivity().finish();
         }else {
             try {

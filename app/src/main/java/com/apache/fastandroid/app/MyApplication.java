@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.support.multidex.MultiDexApplication;
 
+import com.antfortune.freeline.FreelineCore;
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
@@ -45,7 +46,8 @@ public class MyApplication extends MultiDexApplication{
     @Override
     public void onCreate() {
         super.onCreate();
-        //FreelineCore.init(this);
+        //freeline
+        FreelineCore.init(this);
         mContext = this;
         FrameworkApplication.onCreate(getApplicationContext());
 
@@ -76,8 +78,7 @@ public class MyApplication extends MultiDexApplication{
         //监测内存泄漏
         initLeakCanry();
 
-        //freelin
-        //FreelineCore.init(this);
+
 
 
     }
@@ -106,7 +107,7 @@ public class MyApplication extends MultiDexApplication{
         CrashHandler.setupCrashHandler(getApplicationContext());
         //bugly统计
         //CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
-        TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, true, 0, SplashActivity.class);
+        TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, false, 0, SplashActivity.class);
 
     }
 

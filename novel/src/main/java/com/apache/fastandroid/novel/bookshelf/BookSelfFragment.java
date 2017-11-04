@@ -12,11 +12,11 @@ import com.apache.fastandroid.novel.find.bean.RecommandBeans;
 import com.apache.fastandroid.novel.find.bean.RecommendBook;
 import com.apache.fastandroid.novel.support.event.RefreshCollectionListEvent;
 import com.apache.fastandroid.novel.support.sdk.NovelSdk;
-import com.apache.fastandroid.novel.support.sqlite.CollectionDB;
 import com.apache.fastandroid.novel.support.util.NovelLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.bean.RefreshConfig;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
+import com.tesla.framework.ui.fragment.ATabsFragment;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
@@ -30,10 +30,10 @@ import java.util.List;
  * Created by 01370340 on 2017/9/24.
  */
 
-public class RecommandFragment extends ARecycleViewSwipeRefreshFragment<RecommendBook,RecommandBeans,RecommendBook> {
+public class BookSelfFragment extends ARecycleViewSwipeRefreshFragment<RecommendBook,RecommandBeans,RecommendBook> implements ATabsFragment.ITabInitData {
 
-    public static RecommandFragment newFragment() {
-        RecommandFragment fragment = new RecommandFragment();
+    public static BookSelfFragment newFragment() {
+        BookSelfFragment fragment = new BookSelfFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -48,14 +48,23 @@ public class RecommandFragment extends ARecycleViewSwipeRefreshFragment<Recommen
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        NovelLog.e("RecommandFragment onViewCreated-------");
+        NovelLog.e("BookSelfFragment onViewCreated-------");
         EventBus.getDefault().register(this);
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        NovelLog.e("BookSelfFragment onResume");
+
+    }
+
+
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
-        NovelLog.e("RecommandFragment onDestroyView");
+        NovelLog.e("BookSelfFragment onDestroyView");
         EventBus.getDefault().unregister(this);
     }
 
@@ -71,6 +80,14 @@ public class RecommandFragment extends ARecycleViewSwipeRefreshFragment<Recommen
             mode = RefreshMode.reset;
         }
         new LoadDataTask(mode).execute();
+    }
+
+    @Override
+    public void onTabRequestData() {
+        if (mDataChanged){
+            requestData(RefreshMode.refresh);
+            mDataChanged = false;
+        }
     }
 
     class LoadDataTask extends APagingTask<Void,Void,CollectionBeans>{
@@ -94,23 +111,22 @@ public class RecommandFragment extends ARecycleViewSwipeRefreshFragment<Recommen
             super.onSuccess(collectionBeans);
         }
     }
-
     private boolean mDataChanged = false;
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void refreshCollectionList(RefreshCollectionListEvent event){
-        NovelLog.d("refreshCollectionList--------->");
         mDataChanged = true;
-        //requestData(RefreshMode.refresh);
-
-
-        getAdapter().getDatas().clear();
-        getAdapter().getDatas().addAll(CollectionDB.selectAll());
-        //不加下面这句代码会导致，添加本地书籍的时候，部分书籍添加后直接崩溃
-        //报错：Scrapped or attached views may not be recycled. isScrap:false isAttached:true
-        getAdapter().notifyDataSetChanged();
-
+        NovelLog.d("refreshCollectionList--------->set mDataChanged = true");
 
     }
+
+
+   /* public void refresh(){
+        NovelLog.d("BookSelfFragment refresh mDataChanged = %s--------->haha", mDataChanged);
+        if (mDataChanged){
+            requestData(RefreshMode.refresh);
+            mDataChanged = false;
+        }
+    }*/
 
     @Override
     protected IItemViewCreator<RecommendBook> configFooterItemViewCreator() {
