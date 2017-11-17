@@ -1,6 +1,7 @@
 package com.tesla.framework.ui.fragment.adpater;
 
 import android.app.Activity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;

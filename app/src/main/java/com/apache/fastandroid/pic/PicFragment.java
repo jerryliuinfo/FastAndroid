@@ -2,8 +2,8 @@ package com.apache.fastandroid.pic;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +59,8 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
 
     @Override
     protected RecyclerView.LayoutManager configLayoutManager() {
-        return new StaggeredGridLayoutManager(getSpanCount(),StaggeredGridLayoutManager.VERTICAL);
+        //return new GridLayoutManager(getSpanCount(),StaggeredGridLayoutManager.VERTICAL);
+        return new GridLayoutManager(getActivity(),getSpanCount());
     }
 
     @Override
@@ -225,6 +226,23 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
         return false;
     }
 
+
+    /*@Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+
+        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+        if (layoutManager instanceof GridLayoutManager){
+            final GridLayoutManager gridLayoutManager = (GridLayoutManager) layoutManager;
+            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    // 如果当前是footer的位置，那么该item占据2个单元格，正常情况下占据1个单元格
+                    return isFooter(getItemViewType(position)) ? gridLayoutManager.getSpanCount(): 1;
+                }
+            });
+        }
+    }*/
 
 
 

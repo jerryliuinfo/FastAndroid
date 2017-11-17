@@ -66,16 +66,9 @@ public class ACache {
     private ACacheManager mCache;
 
 
-
-
-
     public static ACache get(File cacheDir) {
         return get(cacheDir, MAX_SIZE, MAX_COUNT);
     }
-
-
-
-
 
 
     public static ACache get(File cacheDir, long max_zise, int max_count) {

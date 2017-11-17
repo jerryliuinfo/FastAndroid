@@ -3,6 +3,8 @@ package com.apache.fastandroid.artemis.comBridge;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.apache.fastandroid.artemis.applike.IApplicationLike;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

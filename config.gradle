@@ -15,6 +15,8 @@ ext {
 
 
     supportLibrariesVersion = '25.3.1'
+
+    buglyVersion = '2.0.0'
     glideVersion = "3.7.0"
     okhttp3Version = "3.6.0"
     designVersion = "25.3.1"
@@ -28,6 +30,9 @@ ext {
     rxandroidVersion = "1.2.0"
     rxjavaVersion = "1.1.5"
 
+    retrofitVersion = "2.1.0"
+
+    eventbusVersion = "3.1.0-RC"
 
     constraintLayoutVersion = "1.0.0"
 
@@ -49,15 +54,27 @@ ext {
 
             glide            :  "com.github.bumptech.glide:glide:$glideVersion",
             okhttp3          :  "com.squareup.okhttp3:okhttp:$okhttp3Version",
-            retrofit         : "com.squareup.retrofit2:retrofit:2.1.0'",
+            okhttp3_log_interceptor      :  "com.squareup.okhttp3:logging-interceptor:3.4.1",
+
 
             fastjson         :  "com.alibaba:fastjson:$fastjsonVersion",
             rxandroid        : "io.reactivex:rxandroid:$rxandroidVersion",
             rxjava           : "io.reactivex:rxjava:$rxjavaVersion",
+
+            retrofit         : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofit_adapter_rxjava   :"com.squareup.retrofit2:adapter-rxjava:$retrofitVersion",
+            retrofit_converter_gson   :"com.squareup.retrofit2:converter-gson:$retrofitVersion",
+
+            eventbus   :"org.greenrobot:eventbus:$eventbusVersion",
+
+
+
             //crash统计 //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
-            bugly            :  "com.tencent.bugly:crashreport:2.0.0",
+            bugly            :  "com.tencent.bugly:crashreport:$buglyVersion",
+
+            //内存泄漏检测
             leakcanary_android:  "com.squareup.leakcanary:leakcanary-android:$leakcanary",
-            leakcanary_android:  "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary"
+            leakcanary_android:  "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary",
 
 
     ]

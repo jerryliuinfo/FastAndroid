@@ -14,7 +14,7 @@ import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.support.TUncaughtExceptionHandler;
 import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegate;
-import com.apache.fastandroid.support.imageloader.glide.GlideImageLoader;
+import com.apache.fastandroid.support.imageloader.fresco.FrescoImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -76,7 +76,9 @@ public class MyApplication extends Application {
         //注册生命周期回调
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
         //初始化图片加载
-        ImageLoaderManager.getInstance().setImageLoaderStrategy(new GlideImageLoader());
+        //ImageLoaderManager.getInstance().setImageLoaderStrategy(new GlideImageLoader());
+        ImageLoaderManager.getInstance().setImageLoaderStrategy(new FrescoImageLoader());
+
         initAuth();
         //监测内存泄漏
         initLeakCanry();

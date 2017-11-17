@@ -1,6 +1,6 @@
 package com.apache.fastandroid.applike;
 
-import com.apache.fastandroid.artemis.comBridge.IApplicationLike;
+import com.apache.fastandroid.artemis.applike.IApplicationLike;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.delegate.MainDelegateFactory;

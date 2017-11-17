@@ -55,6 +55,7 @@ public class TopicItemView  extends ARecycleViewItemViewHolder<TopicBean> {
         }
         if (!TextUtils.isEmpty(url)) {
             ImageLoaderManager.getInstance().showImage(avatar,url,getContext());
+
         }
 
 
