@@ -47,8 +47,12 @@ public class NovelSdk extends ABizLogic {
     }
 
     public ArrayList<RankingList.MaleBean> getRankingList() throws TaskException{
-        Setting action  = newSetting("getRankingList","ranking/gender","getRankingList");
+        //Setting action  = newSetting("getRankingList","ranking/gender","getRankingList");
+
+
+        Setting action = getSetting("getRankingList");
         RankingList originalRankingList = doGet(getHttpConfig(),action,null,RankingList.class);
+
 
         RankingList newRankingList = new RankingList();
         if (originalRankingList != null && originalRankingList.male != null && originalRankingList.male.size() > 0){

@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.common.util.network.NetworkHelper;
-import com.tesla.framework.common.util.sp.SharedPreferencesUtil;
 
 import okhttp3.OkHttpClient;
 
@@ -22,6 +21,7 @@ public class FrameworkApplication  {
         }
         NetworkHelper.getInstance().registerNetworkSensor(context);
         DebugUtils.syncDebugStatus(context);
+
 
 
     }

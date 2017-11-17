@@ -5,13 +5,17 @@ import com.apache.fastandroid.artemis.BaseBizLogic;
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.artemis.rx.DefaultHttpResultObserver;
 import com.apache.fastandroid.artemis.rx.ICallback;
+import com.apache.fastandroid.artemis.support.http.HttpUrlConnectionUtility;
 import com.apache.fastandroid.topic.TopicConstans;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
 import com.apache.fastandroid.topic.bean.TopicContent;
 import com.apache.fastandroid.topic.bean.TopicReplyBean;
 import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.common.setting.Setting;
+import com.tesla.framework.common.util.ListUtil;
 import com.tesla.framework.network.http.HttpConfig;
+import com.tesla.framework.network.http.Params;
 import com.tesla.framework.network.task.TaskException;
 
 import java.util.ArrayList;
@@ -42,7 +46,7 @@ public class TopicSDK extends BaseBizLogic {
      * @return
      * @throws TaskException
      */
-    public TopicBeans getTopicsList(String type, Integer node_id, int offset, int limit) throws TaskException {
+    /*public TopicBeans getTopicsList(String type, Integer node_id, int offset, int limit) throws TaskException {
         //1.判断有没有缓存
         BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
@@ -50,9 +54,36 @@ public class TopicSDK extends BaseBizLogic {
         List<TopicBean> list =  checkCallResult(call);
 
         return new TopicBeans(list);
+    }*/
+
+    /**
+     * https://diycode.cc/api/v3/topics.json?offset=0&limit=20
+     * @param type
+     * @param node_id
+     * @param offset
+     * @param limit
+     * @return
+     * @throws TaskException
+     */
+    public TopicBeans getTopicsList(String type, Integer node_id, int offset, int limit) throws TaskException {
+        //1.判断有没有缓存
+        Setting action = newSetting("getTopicsList", "topics.json", "获取主题列表");
+        action.getExtras().put(HTTP_UTILITY,newSettingExtra("getTopicsList",HttpUrlConnectionUtility.class.getName(), "getTopicsList"));
+        Params params = new Params();
+      /*  params.addParameter("type",type);
+        params.addParameter("node_id",String.valueOf(node_id));*/
+        params.addParameter("offset",String.valueOf(offset));
+        params.addParameter("limit",String.valueOf(limit));
+        TopicBean[] topicBeanArray = doGet(getHttpConfig(),action,params,TopicBean[].class);
+
+        TopicBeans topicBeans = new TopicBeans(ListUtil.arrayToList(topicBeanArray));
+        return topicBeans;
     }
 
-    public Observable<List<TopicBean>> getTopicsListV2(String type, Integer node_id, int offset, int limit) throws Exception{
+
+
+
+    public Observable<List<TopicBean>> getTopicsListByObservable(String type, Integer node_id, int offset, int limit) throws Exception{
         BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
         Observable<List<TopicBean>> observable =  apiService.getTopicsListV2(type,node_id,offset,limit);
@@ -95,6 +126,8 @@ public class TopicSDK extends BaseBizLogic {
 
     @Override
     protected HttpConfig configHttpConfig() {
-        return null;
+        HttpConfig config = new HttpConfig();
+        config.baseUrl = TopicConstans.BASE_URL;
+        return config;
     }
 }

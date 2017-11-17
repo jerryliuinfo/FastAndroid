@@ -10,7 +10,7 @@ import com.tesla.framework.common.util.log.NLog;
  * Created by jerryliu on 2017/6/3.
  */
 
-public class XmlUtil {
+public class ManifestUtil {
 
     /**
      * 获取MetaData

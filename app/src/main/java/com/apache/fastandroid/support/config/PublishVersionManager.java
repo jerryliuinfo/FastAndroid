@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 
 import com.tesla.framework.FrameworkApplication;
-import com.tesla.framework.common.util.XmlUtil;
+import com.tesla.framework.common.util.ManifestUtil;
 
 /**
  * Created by jerryliu on 2017/6/3.
@@ -64,7 +64,7 @@ public class PublishVersionManager {
      * @param context
      */
     private static void initChannel(Context context) {
-        String channel = XmlUtil.getMetaData(context, "CHANNEL");
+        String channel = ManifestUtil.getMetaData(context, "CHANNEL");
         sChannel = channel == null ? "" : channel;
     }
 
@@ -101,7 +101,7 @@ public class PublishVersionManager {
      * @param context
      */
     private static void initIsTest(Context context) {
-        String isTest = XmlUtil.getMetaData(context, "ISTEST");
+        String isTest = ManifestUtil.getMetaData(context, "ISTEST");
         sIsTest = DOMAIN_TEST.equalsIgnoreCase(isTest) || DOMAIN_TEST_VALUE.equalsIgnoreCase(isTest);
     }
 

@@ -1,8 +1,6 @@
 package com.tesla.framework.component.cardmenu;
 
-/**
- * Created by wangdan on 16/9/13.
- */
+
 public class CardMenuOptions {
 
     int dropDownGravity = -1;

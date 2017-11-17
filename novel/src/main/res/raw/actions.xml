@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app-settings>
+	<!--获取排行表列表-->
+	<setting type="getRankingList">
+		<des>获取排名列表</des>
+		<value>ranking/gender</value>
+		<extras>
+			<extra type="base_url">
+				<des>排行榜的baseurl</des>
+				<value>http://api.zhuishushenqi.com/</value>
+			</extra>
+
+			<!--缓存的utility, 不需要从缓存机制则不用配置 -->
+			<extra type="cache_utility">
+				<value>com.apache.fastandroid.novel.support.cache.RankListCacheUtility</value>
+			</extra>
+			<!--服务器请求的utility, 不配置则用默认的DefHttpUtility -->
+			<extra type="cache_utility">
+				<value>com.apache.fastandroid.novel.support.cache.RankListHttpUtility</value>
+			</extra>
+		</extras>
+	</setting>
+
+	<!--配置默认的内存缓存过期时间-->
+	<setting type="memory_cache_validity">
+		<des>内存缓存数据有效期，等于0为不保持内存数据，单位(s)</des>
+		<value>0</value>
+	</setting>
+
+	<setting type="page_count">
+		<des>列表数据每次拉页码数</des>
+		<value>10</value>
+	</setting>
+
+	<!--配置默认的httpUtility-->
+	<setting type="http">
+		<value>com.tesla.framework.network.http.OkHttpUtility</value>
+	</setting>
+
+
+</app-settings>

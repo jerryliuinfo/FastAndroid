@@ -8,7 +8,7 @@ import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.cache.CacheExecutor;
 import com.tesla.framework.network.cache.ICacheUtility;
-import com.tesla.framework.network.http.DefHttpUtility;
+import com.tesla.framework.network.http.OkHttpUtility;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.IHttpUtility;
 import com.tesla.framework.network.http.Params;
@@ -101,7 +101,6 @@ public abstract class ABizLogic implements IHttpUtility{
             try {
                 long time = System.currentTimeMillis();
                 //发送http请求
-                //T result = getHttpUtility(action).doGet(resetHttpConfig(config, action), action, params, responseCls);
                 T result = doHttpRequest(resetHttpConfig(config, action), action, params, responseCls);
 
                 NLog.d(getTag(action, "Get-Http"), "耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
@@ -180,7 +179,7 @@ public abstract class ABizLogic implements IHttpUtility{
             NLog.printStackTrace(e);
         }
 
-        return new DefHttpUtility();
+        return new OkHttpUtility();
     }
 
 

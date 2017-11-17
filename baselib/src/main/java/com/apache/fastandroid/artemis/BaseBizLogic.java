@@ -63,9 +63,6 @@ public abstract class BaseBizLogic extends ABizLogic {
         }
         try {
             Response<T> response = call.execute();
-            if (response == null){
-                throw new TaskException("response is null");
-            }
             if (!response.isSuccessful()){
                 throw new TaskException("response.isSuccessful() = false");
             }

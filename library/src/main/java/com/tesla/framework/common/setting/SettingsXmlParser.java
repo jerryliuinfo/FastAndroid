@@ -59,7 +59,7 @@ public class SettingsXmlParser {
 					}
 
 					if ("extras".equals(xmlResParser.getName())) {
-						settingExtras = new ArrayList<SettingExtra>();
+						settingExtras = new ArrayList<>();
 					}
 
 					if ("extra".equals(xmlResParser.getName())) {

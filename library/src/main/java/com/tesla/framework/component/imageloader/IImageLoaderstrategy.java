@@ -9,8 +9,8 @@ import android.support.annotation.NonNull;
  */
 
 public interface IImageLoaderstrategy {
-    void showImage(@NonNull ImageLoaderOptions options);
 
+    void showImage(@NonNull ImageLoaderOptions options);
 
     void cleanMemory(Context context);
 }

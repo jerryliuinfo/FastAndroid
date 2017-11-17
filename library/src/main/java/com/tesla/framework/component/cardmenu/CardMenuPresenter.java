@@ -13,9 +13,7 @@ import android.support.v7.view.menu.SubMenuBuilder;
 import android.view.MenuItem;
 import android.view.View;
 
-/**
- * Created by wangdan on 16/9/13.
- */
+
 public class CardMenuPresenter extends BaseMenuPresenter {
 
     private OpenOverflowRunnable mPostedOpenRunnable;

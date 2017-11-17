@@ -1,11 +1,11 @@
 package com.apache.fastandroid.app;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
-import android.support.multidex.MultiDexApplication;
 
 import com.antfortune.freeline.FreelineCore;
 import com.apache.fastandroid.BuildConfig;
@@ -36,7 +36,7 @@ import java.io.File;
  * Created by jerryliu on 2017/3/26.
  */
 
-public class MyApplication extends MultiDexApplication{
+public class MyApplication extends Application {
     public static final String TAG = MyApplication.class.getSimpleName();
     private static Context mContext;
     private ActivityLifecycleCallbacks activityLifecycleCallbacks;

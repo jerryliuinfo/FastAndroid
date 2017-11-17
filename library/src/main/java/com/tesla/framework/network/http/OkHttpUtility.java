@@ -28,7 +28,7 @@ import okio.BufferedSink;
 import okio.Okio;
 import okio.Source;
 
-public class DefHttpUtility implements IHttpUtility {
+public class OkHttpUtility implements IHttpUtility {
 
 	static String getTag(Setting action, String append) {
 
@@ -128,7 +128,6 @@ public class DefHttpUtility implements IHttpUtility {
 				throw new TaskException(TaskException.TaskError.timeout.toString());
 			} else {
 				String responseStr = response.body().string();
-                TaskException.checkResponse(responseStr);
                 NLog.v(getTag(action, method), "Response = %s", responseStr);
 
 				return parseResponse(responseStr, responseCls);

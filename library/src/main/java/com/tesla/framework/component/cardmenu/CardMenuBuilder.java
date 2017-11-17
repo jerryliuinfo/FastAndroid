@@ -8,9 +8,7 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 
-/**
- * Created by wangdan on 16/9/13.
- */
+
 public class CardMenuBuilder {
 
     private final Activity mContext;

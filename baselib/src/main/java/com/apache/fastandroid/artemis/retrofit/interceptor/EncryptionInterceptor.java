@@ -36,6 +36,6 @@ public class EncryptionInterceptor implements Interceptor{
                 .header("Content-Length", String.valueOf(newRequestBody.contentLength()))
                 .method(original.method(),newRequestBody)
                 .build();
-        return null;
+        return chain.proceed(newRequest);
     }
 }

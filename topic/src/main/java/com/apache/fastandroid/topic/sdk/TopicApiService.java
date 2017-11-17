@@ -29,6 +29,8 @@ public interface TopicApiService {
      */
     @GET("topics.json")
     Call<List<TopicBean>> getTopicsList(@Query("type") String type, @Query("node_id") Integer node_id,
+
+
                                         @Query("offset") int offset, @Query("limit") int limit);
     @GET("topics.json")
     Observable<List<TopicBean>> getTopicsListV2(@Query("type") String type, @Query("node_id") Integer node_id,
