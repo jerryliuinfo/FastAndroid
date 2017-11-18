@@ -42,7 +42,7 @@ dependencies {
 
     compile thirddependencies.eventbus
 
-    compile 'com.squareup.picasso:picasso:2.5.2'
+
 
 
     compile(thirddependencies.retrofit) {

@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
+import android.text.TextUtils;
 
 import com.antfortune.freeline.FreelineCore;
 import com.apache.fastandroid.BuildConfig;
@@ -14,15 +15,16 @@ import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.support.TUncaughtExceptionHandler;
 import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegate;
-import com.apache.fastandroid.support.imageloader.fresco.FrescoImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.CrashHandler;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.SharedPreferencesUtil;
+import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.db.FastAndroidDB;
@@ -69,15 +71,22 @@ public class MyApplication extends Application {
         FastAndroidDB.setDB();
 
         BaseActivity.setHelper(SwipeActivityHelper.class);
+        //android 6.0权限适配
         BaseActivity.setPermissionHelper(PermissionActivityHelper.class);
         if (activityLifecycleCallbacks == null){
             activityLifecycleCallbacks = new ActivityLifeCycleReportCallback();
         }
         //注册生命周期回调
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
+
         //初始化图片加载
         //ImageLoaderManager.getInstance().setImageLoaderStrategy(new GlideImageLoader());
-        ImageLoaderManager.getInstance().setImageLoaderStrategy(new FrescoImageLoader());
+        //ImageLoaderManager.getInstance().setImageLoaderStrategy(new PicasoImageLoader());
+        IImageLoaderstrategy loaderstrategy = configImageLoader();
+        if (loaderstrategy != null){
+            ImageLoaderManager.getInstance().setImageLoaderStrategy(loaderstrategy);
+            ImageLoaderManager.getInstance().init(getApplicationContext());
+        }
 
         initAuth();
         //监测内存泄漏
@@ -186,4 +195,23 @@ public class MyApplication extends Application {
         MyApplication application = (MyApplication) context.getApplicationContext();
         return application.mRefWatcher;
     }
+
+    private IImageLoaderstrategy configImageLoader(){
+        String imageLoaderClassName = SettingUtility.getStringSetting("imageLoader");
+        if (!TextUtils.isEmpty(imageLoaderClassName)){
+            try {
+                try {
+                    return (IImageLoaderstrategy) Class.forName(imageLoaderClassName).newInstance();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
 }

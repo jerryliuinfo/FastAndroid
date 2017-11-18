@@ -1,5 +1,7 @@
 package com.apache.fastandroid.artemis.support.http;
 
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.util.log.NLog;
@@ -12,10 +14,11 @@ import com.tesla.framework.network.task.TaskException;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
@@ -30,6 +33,11 @@ import java.util.Set;
  */
 
 public class HttpUrlConnectionUtility implements IHttpUtility {
+
+
+    public static final String TAG = HttpUrlConnectionUtility.class.getSimpleName();
+
+
     @Override
     public <T> T doGet(HttpConfig config, Setting action, Params urlParams, Class<T> responseCls) throws TaskException {
         HttpURLConnection urlConnection = null;
@@ -38,39 +46,7 @@ public class HttpUrlConnectionUtility implements IHttpUtility {
             String requestUrl = (config.baseUrl + action.getValue() + (urlParams == null || urlParams.size() == 0? "" : "?" + ParamsUtil.encodeToURLParams(urlParams))).replaceAll(" ", "");
             URL url = new URL(requestUrl);
             urlConnection = (HttpURLConnection) url.openConnection();
-
-            urlConnection.setConnectTimeout(30 * 1000);
-            urlConnection.setReadTimeout(30 * 1000);
-
-            //HttpURLConnection默认就是用GET发送请求，所以下面的setRequestMethod可以省略
-            urlConnection.setRequestMethod("GET");
-            //HttpURLConnection默认也支持从服务端读取结果流，所以下面的setDoInput也可以省略
-            urlConnection.setDoInput(true);
-            //用setRequestProperty方法设置一个自定义的请求头:action，由于后端判断
-
-            urlConnection.setRequestProperty("action", "NETWORK_GET");
-
-            //设置请求中的媒体类型信息。
-            urlConnection.setRequestProperty("Content-Type", "application/json");
-            //设置客户端与服务连接类型
-            urlConnection.addRequestProperty("Connection", "Keep-Alive");
-
-
-
-            // add header
-            if (config.headerMap.size() > 0) {
-                Set<String> keySet = config.headerMap.keySet();
-                for (String key : keySet) {
-
-                    urlConnection.setRequestProperty(key,config.headerMap.get(key));
-                }
-            }
-            //禁用网络缓存
-            urlConnection.setUseCaches(false);
-            //获取请求头
-            String requestHeader = getReqeustHeader(urlConnection);
-            //在对各种参数配置完成后，通过调用connect方法建立TCP连接，但是并未真正获取数据
-            //conn.connect()方法不必显式调用，当调用conn.getInputStream()方法时内部也会自动调用connect方法
+            setConnectionParasms(urlConnection,config,true);
 
             //调用getInputStream方法后，服务端才会收到请求，并阻塞式地接收服务端返回的数据
             InputStream is = urlConnection.getInputStream();
@@ -101,53 +77,40 @@ public class HttpUrlConnectionUtility implements IHttpUtility {
     @Override
     public <T> T doPost(HttpConfig config, Setting action, Params urlParams, Params bodyParams, Object requestObj,
                         Class<T> responseCls) throws TaskException {
-        /*try {
-            String baseUrl = "https://xxx.com/getUsers";
-            //合成参数
-            StringBuilder tempParams = new StringBuilder();
-            int pos = 0;
-            for (String key : paramsMap.keySet()) {
-                if (pos > 0) {
-                    tempParams.append("&");
-                }
-                tempParams.append(String.format("%s=%s", key,  URLEncoder.encode(paramsMap.get(key),"utf-8")));
-                pos++;
-            }
-            String params =tempParams.toString();
-            // 请求的参数转换为byte数组
-            byte[] postData = params.getBytes();
+        try {
+            String requestUrl = (config.baseUrl + action.getValue() );
             // 新建一个URL对象
-            URL url = new URL(baseUrl);
+            URL url = new URL(requestUrl);
             // 打开一个HttpURLConnection连接
             HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
-            // 设置连接超时时间
-            urlConn.setConnectTimeout(5 * 1000);
-            //设置从主机读取数据超时
-            urlConn.setReadTimeout(5 * 1000);
-            // Post请求必须设置允许输出 默认false
-            urlConn.setDoOutput(true);
-            //设置请求允许输入 默认是true
-            urlConn.setDoInput(true);
-            // Post请求不能使用缓存
-            urlConn.setUseCaches(false);
-            // 设置为Post请求
-            urlConn.setRequestMethod("POST");
+
+            setConnectionParasms(urlConn,config,false);
+
             //设置本次连接是否自动处理重定向
             urlConn.setInstanceFollowRedirects(true);
-            // 配置请求Content-Type
-            urlConn.setRequestProperty("Content-Type", "application/json");
+
             // 开始连接
             urlConn.connect();
+
             // 发送请求参数
             DataOutputStream dos = new DataOutputStream(urlConn.getOutputStream());
+            // 请求的参数转换为byte数组
+            String params = ParamsUtil.encodeToURLParams(urlParams);
+            byte[] postData = params.getBytes();
             dos.write(postData);
             dos.flush();
             dos.close();
             // 判断请求是否成功
             if (urlConn.getResponseCode() == 200) {
                 // 获取返回的数据
-                String result = streamToString(urlConn.getInputStream());
-                Log.e(TAG, "Post方式请求成功，result--->" + result);
+
+                byte[] responseBody = getBytesByInputStream(urlConn.getInputStream());
+
+                String responseStr = new String(responseBody);
+                Log.e(TAG, "Post方式请求成功，result--->" + responseStr);
+
+
+                return parseResponse(responseStr, responseCls);
             } else {
                 Log.e(TAG, "Post方式请求失败");
             }
@@ -155,9 +118,43 @@ public class HttpUrlConnectionUtility implements IHttpUtility {
             urlConn.disconnect();
         } catch (Exception e) {
             Log.e(TAG, e.toString());
-        }*/
+        }
         return null;
     }
+
+
+    private void setConnectionParasms(HttpURLConnection urlConnection,HttpConfig config,boolean getMethod) throws ProtocolException {
+        urlConnection.setConnectTimeout(30 * 1000);
+        urlConnection.setReadTimeout(30 * 1000);
+
+        //HttpURLConnection默认就是用GET发送请求，所以下面的setRequestMethod可以省略
+        urlConnection.setRequestMethod(getMethod ? "GET":"POST");
+        //HttpURLConnection默认也支持从服务端读取结果流，所以下面的setDoInput也可以省略
+        urlConnection.setDoInput(true);
+
+        if (!getMethod){
+            // Post请求必须设置允许输出 默认false, 注意:Get请求不能设置这个为true
+            urlConnection.setDoOutput(true);
+        }
+        //Post请求不能使用缓存
+        urlConnection.setUseCaches(false);
+        //用setRequestProperty方法设置一个自定义的请求头:action，由于后端判断
+        urlConnection.setRequestProperty("action", "NETWORK_GET");
+        //设置请求中的媒体类型信息。
+        urlConnection.setRequestProperty("Content-Type", "application/json");
+        //设置客户端与服务连接类型
+        urlConnection.addRequestProperty("Connection", "Keep-Alive");
+        // add header
+        if (config.headerMap.size() > 0) {
+            Set<String> keySet = config.headerMap.keySet();
+            for (String key : keySet) {
+
+                urlConnection.setRequestProperty(key,config.headerMap.get(key));
+            }
+        }
+
+    }
+
 
     @Override
     public <T> T doPostFiles(HttpConfig config, Setting action, Params urlParams, Params bodyParams, MultipartFile[] files, Class<T> responseCls) throws TaskException {
@@ -209,16 +206,6 @@ public class HttpUrlConnectionUtility implements IHttpUtility {
         return sbResponseHeader.toString();
     }
 
-    //根据字节数组构建UTF-8字符串
-    private String getStringByBytes(byte[] bytes) {
-        String str = "";
-        try {
-            str = new String(bytes, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return str;
-    }
 
     //从InputStream中读取数据，转换成byte数组，最后关闭InputStream
     private byte[] getBytesByInputStream(InputStream is) {

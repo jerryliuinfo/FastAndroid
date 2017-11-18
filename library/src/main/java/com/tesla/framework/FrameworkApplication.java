@@ -2,6 +2,7 @@ package com.tesla.framework;
 
 import android.content.Context;
 
+import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.common.util.network.NetworkHelper;
 
@@ -22,6 +23,9 @@ public class FrameworkApplication  {
         NetworkHelper.getInstance().registerNetworkSensor(context);
         DebugUtils.syncDebugStatus(context);
 
+        // 添加一些配置项
+        SettingUtility.addSettings(context, "actions");
+        SettingUtility.addSettings(context, "settings");
 
 
     }

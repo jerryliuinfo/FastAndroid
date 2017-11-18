@@ -222,6 +222,13 @@ dependencies {
     compile thirddependencies.junit
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
 
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+
+
+
+
 //    compile_usercenter(getProject())
 //    compile_topic(getProject())
 //    compile_novel(getProject())

@@ -9,11 +9,20 @@ import android.view.View;
  * Created by Administrator on 2017/3/22 0022.
  */
 
-public class ImageLoaderManager implements IImageLoaderstrategy {
-    private static final ImageLoaderManager INSTANCE=new ImageLoaderManager();
+public class ImageLoaderManager implements IImageLoaderstrategy,IImageLoaderInit {
+    private static final ImageLoaderManager INSTANCE = new ImageLoaderManager();
+
     private  IImageLoaderstrategy loaderstrategy;
 
+    ImageLoaderOptions options;
 
+    /**
+     * 如果需要设置一些默认的参数,可以在这里设置
+     * @param options
+     */
+    public void setOptions(ImageLoaderOptions options) {
+        this.options = options;
+    }
 
     private ImageLoaderManager(){
     }
@@ -34,6 +43,10 @@ public class ImageLoaderManager implements IImageLoaderstrategy {
         return new ImageLoaderOptions.Builder(container,url,context).isCrossFade(true).build();
     }
 
+    /**
+     *
+     * @param options 外面传入options参数
+     */
     @Override
     public void showImage(@NonNull ImageLoaderOptions options) {
         if (loaderstrategy != null) {
@@ -42,7 +55,14 @@ public class ImageLoaderManager implements IImageLoaderstrategy {
     }
 
     public void showImage(View container, String url,Context context) {
-        showImage(getDefaultOptions(container,url,context));
+        if (options != null){
+            options.setContext(context.getApplicationContext());
+            options.setUrl(url);
+            options.setViewContainer(container);
+            showImage(options);
+        }else {
+            showImage(getDefaultOptions(container,url,context));
+        }
     }
 
 
@@ -54,4 +74,11 @@ public class ImageLoaderManager implements IImageLoaderstrategy {
     }
 
 
+    @Override
+    public void init(Context context) {
+        if (loaderstrategy != null && loaderstrategy instanceof IImageLoaderInit){
+            IImageLoaderInit imageLoaderInit = (IImageLoaderInit) loaderstrategy;
+            imageLoaderInit.init(context);
+        }
+    }
 }

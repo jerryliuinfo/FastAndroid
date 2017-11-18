@@ -1,4 +1,4 @@
-package com.apache.fastandroid.support.imageloader.glide;
+package com.apache.fastandroid.support.imageloader;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -17,6 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.tesla.framework.component.imageloader.IImageLoaderInit;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderOptions;
 
@@ -25,7 +26,7 @@ import com.tesla.framework.component.imageloader.ImageLoaderOptions;
  * Created by Administrator on 2017/3/21 0021.
  */
 
-public class GlideImageLoader implements IImageLoaderstrategy {
+public class GlideImageLoader implements IImageLoaderstrategy,IImageLoaderInit {
 
     @Override
     public void showImage(ImageLoaderOptions options) {
@@ -42,6 +43,7 @@ public class GlideImageLoader implements IImageLoaderstrategy {
             Glide.get(context).clearMemory();
         }
     }
+
 
 
 
@@ -81,19 +83,30 @@ public class GlideImageLoader implements IImageLoaderstrategy {
                 builder = ((DrawableTypeRequest) mGenericRequestBuilder).asGif();
             }
         }
-        builder.skipMemoryCache(options.isSkipMemoryCache());
+        builder.skipMemoryCache(options.isCacheInMemoryCache());
         if (options.getImageSize() != null) {
             int width = getSize(options.getImageSize().getWidth(), view);
             int height = getSize(options.getImageSize().getHeight(), view);
             Log.i("tag ","load params " + options.getImageSize().getWidth() + "  : " + options.getImageSize().getHeight());
             builder.override(width, height);
         }
-        if (options.getHolderDrawable() != -1) {
+        if (options.getHolderId() > 0) {
+            builder.placeholder(options.getHolderId());
+        }
+
+        if (options.getHolderDrawable() != null){
             builder.placeholder(options.getHolderDrawable());
         }
-        if (options.getErrorDrawable() != -1) {
-            builder.error(options.getErrorDrawable());
+
+        if (options.getErrorId() > 0) {
+            builder.error(options.getErrorId());
         }
+
+        if (options.getErrorDrawable() != null){
+            builder.placeholder(options.getErrorDrawable());
+        }
+
+
 
         if (options.getDiskCacheStrategy() != ImageLoaderOptions.DiskCacheStrategy.DEFAULT) {
             switch (options.getDiskCacheStrategy()) {
@@ -167,4 +180,8 @@ public class GlideImageLoader implements IImageLoaderstrategy {
         }
     }
 
+    @Override
+    public void init(Context context) {
+
+    }
 }

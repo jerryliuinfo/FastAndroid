@@ -81,6 +81,7 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     public static void setHelper(Class<? extends BaseActivityHelper> clazz) {
         mHelperClass = clazz;
     }
+
     public static void setPermissionHelper(Class<? extends PermissionActivityHelper> clazz) {
         mPermissionHelperClass = clazz;
     }
