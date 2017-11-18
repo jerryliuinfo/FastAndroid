@@ -80,8 +80,6 @@ public class MyApplication extends Application {
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
 
         //初始化图片加载
-        //ImageLoaderManager.getInstance().setImageLoaderStrategy(new GlideImageLoader());
-        //ImageLoaderManager.getInstance().setImageLoaderStrategy(new PicasoImageLoader());
         IImageLoaderstrategy loaderstrategy = configImageLoader();
         if (loaderstrategy != null){
             ImageLoaderManager.getInstance().setImageLoaderStrategy(loaderstrategy);

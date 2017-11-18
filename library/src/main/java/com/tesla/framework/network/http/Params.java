@@ -10,8 +10,8 @@ public class Params implements Serializable {
 
 	private static final long serialVersionUID = 5990125562753037686L;
 
-	private Map<String, String> mParameters = new HashMap<String, String>();
-	private List<String> mKeys = new ArrayList<String>();
+	private Map<String, String> mParameters = new HashMap<>();
+	private List<String> mKeys = new ArrayList<>();
 
 	// 某些时候，参数列表不需要进行编码，例如将参数作为URL QUERY时，防止进行了二次编码导致服务器不能解析
 	private boolean encodeAble = true;

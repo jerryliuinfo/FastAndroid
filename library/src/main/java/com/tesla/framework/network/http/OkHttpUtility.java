@@ -38,7 +38,6 @@ public class OkHttpUtility implements IHttpUtility {
 	@Override
 	public <T> T doGet(HttpConfig config, Setting action, Params urlParams, Class<T> responseCls) throws TaskException {
 		Request.Builder builder = createRequestBuilder(config, action, urlParams, "Get");
-
 		Request request = builder.build();
 
 		return executeRequest(request, responseCls, action, "Get");
@@ -79,7 +78,7 @@ public class OkHttpUtility implements IHttpUtility {
 			throw new TaskException(TaskException.TaskError.noneNetwork.toString());
 		}
 
-		String url = (config.baseUrl + action.getValue() + (urlParams == null || urlParams.size() == 0? "" : "?" + ParamsUtil.encodeToURLParams(urlParams))).replaceAll(" ", "");
+		String url = getUrl(config,action,urlParams);
 		NLog.d(getTag(action, method), url);
 
 		Request.Builder builder = new Request.Builder();
@@ -150,6 +149,31 @@ public class OkHttpUtility implements IHttpUtility {
 			throw new TaskException(TaskException.TaskError.resultIllegal.toString());
 		}
 	}
+
+	protected <T> T parseResponseBody(Response response, Class<T> responseCls) throws TaskException, IOException {
+		String responseStr = response.body().string();
+		NLog.d("DefHttpUtility", "responseStr = %s", response);
+		if (responseCls.getSimpleName().equals("String"))
+			return (T) responseStr;
+
+		T result = JSON.parseObject(responseStr, responseCls);
+		return result;
+	}
+
+
+
+	/**
+	 * 根据action和urlParams 组装请求url
+	 * https://diycode.cc/api/v3/topics.json?offset=0&limit=20,
+	 * 如果不是这种形式的url，例如是restful风格的url:https://api.example.com/v1/employees
+	 * 则可以重写这个方法去实现
+	 * @return
+	 */
+	public String getUrl(HttpConfig config, Setting action, Params urlParams){
+		String url = (config.baseUrl + action.getValue() + (urlParams == null ? "" : "?" + ParamsUtil.encodeToURLParams(urlParams))).replaceAll(" ", "");
+		return url;
+	}
+
 
 	protected <T> T parseResponse(String resultStr, Class<T> responseCls) throws TaskException  {
 		NLog.w("BizLogic",  "parseResponse = %s", resultStr);
@@ -233,5 +257,7 @@ public class OkHttpUtility implements IHttpUtility {
 
 		};
 	}
+
+
 
 }

@@ -5,7 +5,6 @@ import com.apache.fastandroid.artemis.BaseBizLogic;
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.artemis.rx.DefaultHttpResultObserver;
 import com.apache.fastandroid.artemis.rx.ICallback;
-import com.apache.fastandroid.artemis.support.http.HttpUrlConnectionUtility;
 import com.apache.fastandroid.topic.TopicConstans;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
@@ -13,6 +12,7 @@ import com.apache.fastandroid.topic.bean.TopicContent;
 import com.apache.fastandroid.topic.bean.TopicReplyBean;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.setting.Setting;
+import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.ListUtil;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.Params;
@@ -43,7 +43,7 @@ public class TopicSDK extends BaseBizLogic {
      * @param node_id
      * @param offset
      * @param limit
-     * @return
+     * @return Retrofit实现
      * @throws TaskException
      */
     /*public TopicBeans getTopicsList(String type, Integer node_id, int offset, int limit) throws TaskException {
@@ -62,13 +62,13 @@ public class TopicSDK extends BaseBizLogic {
      * @param node_id
      * @param offset
      * @param limit
-     * @return
+     * @return okhttp,HttpUrlConnection,Volley
      * @throws TaskException
      */
     public TopicBeans getTopicsList(String type, Integer node_id, int offset, int limit) throws TaskException {
         //1.判断有没有缓存
-        Setting action = newSetting("getTopicsList", "topics.json", "获取主题列表");
-        action.getExtras().put(HTTP_UTILITY,newSettingExtra("getTopicsList",HttpUrlConnectionUtility.class.getName(), "getTopicsList"));
+
+        Setting action = SettingUtility.getSetting("getTopicsList");
         Params params = new Params();
       /*  params.addParameter("type",type);
         params.addParameter("node_id",String.valueOf(node_id));*/

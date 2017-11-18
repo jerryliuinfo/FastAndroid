@@ -1,4 +1,4 @@
-package com.apache.fastandroid.artemis.support.http;
+package com.apache.fastandroid.support.http;
 
 import android.util.Log;
 

@@ -15,9 +15,27 @@
 				<value>com.apache.fastandroid.novel.support.cache.RankListCacheUtility</value>
 			</extra>
 			<!--服务器请求的utility, 不配置则用默认的DefHttpUtility -->
-			<extra type="cache_utility">
+			<extra type="http">
 				<value>com.apache.fastandroid.novel.support.cache.RankListHttpUtility</value>
 			</extra>
+		</extras>
+	</setting>
+
+
+
+	<setting type="getTopicsList">
+		<des>获取主题列表</des>
+		<value>topics.json</value>
+		<extras>
+			<!--服务器请求的utility, 不配置则用默认的DefHttpUtility -->
+			<extra type="http">
+				<!--<value>com.apache.fastandroid.support.http.HttpUrlConnectionUtility</value>-->
+				<value>com.apache.fastandroid.support.http.volly.VollyUtility</value>
+
+			</extra>
+
+
+
 		</extras>
 	</setting>
 

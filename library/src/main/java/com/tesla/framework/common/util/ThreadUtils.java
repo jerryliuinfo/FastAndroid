@@ -55,6 +55,7 @@ public class ThreadUtils {
         }
     }
 
+
     private static <T> T syncToMainThreadByOthers(final Callable<T> callable, int wait) throws Throwable {
         final AtomicReference<T> result = new AtomicReference<>();
         final AtomicReference<Throwable> ex = new AtomicReference<>();
