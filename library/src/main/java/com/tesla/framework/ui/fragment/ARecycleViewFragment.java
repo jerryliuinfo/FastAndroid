@@ -167,8 +167,9 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
             }
             getAdapter().notifyDataSetChanged();
         }
-
-
     }
+
+
+
 
 }

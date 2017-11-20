@@ -1,4 +1,4 @@
-package com.apache.fastandroid.support.http;
+package com.apache.fastandroid.support.http.urlconnection;
 
 import android.util.Log;
 

@@ -4,10 +4,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
-import com.apache.fastandroid.support.utils.MainLog;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.IImageLoaderInit;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderOptions;
@@ -54,7 +52,6 @@ public class PicasoImageLoader implements IImageLoaderstrategy,IImageLoaderInit 
 
     @Override
     public void init(Context context) {
-        NLog.d(MainLog.getLogTag(), "PicasoImageLoader init");
 
     }
 }

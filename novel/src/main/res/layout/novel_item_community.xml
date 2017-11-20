@@ -27,12 +27,12 @@
         android:layout_toRightOf="@id/ivIcon"
         android:text="排行榜"
         android:textColor="@color/common_h1"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
 
     <ImageView
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:src="@drawable/novel_arrow_right" />

@@ -15,7 +15,7 @@ import com.tesla.framework.common.util.ActivityTaskMgr;
  */
 
 public class AppContext {
-
+    private static UserDetail mUserBean;
 
     public static void logout(Context context){
         ArtemisContext.setUserBean(null);

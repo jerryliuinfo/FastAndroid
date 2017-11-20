@@ -73,7 +73,7 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
                     mCurrentPosition = Integer.parseInt(SET_INDEX);
                 }
             }else if (!TextUtils.isEmpty(configLastTabKey())){
-                String lastReadTab = ActivityHelper.getShareData(getContext(), "pageLastTab"+configLastTabKey());
+                String lastReadTab = ActivityHelper.getStringData(getContext(), "pageLastTab"+configLastTabKey());
                 if (!TextUtils.isEmpty(lastReadTab)){
                     for (int i = 0; i < mTabs.size(); i++){
                         TabItem tabItem = mTabs.get(i);
@@ -272,7 +272,7 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
     public void onPageSelected(int position) {
         mCurrentPosition = position;
         if (!TextUtils.isEmpty(configLastTabKey())){
-            ActivityHelper.putShareData(getContext(),"pageLastTab"+configLastTabKey(), mTabs.get(mCurrentPosition).getTitle());
+            ActivityHelper.putStringShareData(getContext(),"pageLastTab"+configLastTabKey(), mTabs.get(mCurrentPosition).getTitle());
         }
 
         Fragment fragment = this.getCurrentFragment();

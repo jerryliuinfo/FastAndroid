@@ -33,44 +33,45 @@ public class VollyUtility implements IHttpUtility {
     public <T> T doGet(HttpConfig config, Setting action, Params urlParams, final Class<T> responseCls) throws TaskException {
         final String requestUrl = (config.baseUrl + action.getValue() + (urlParams == null || urlParams.size() == 0? "" : "?" + ParamsUtil.encodeToURLParams(urlParams))).replaceAll(" ", "");
         //阻塞队列
-        final BlockingQueue<T> blockingQueue = new LinkedBlockingQueue<>(1);
-        //这里是第3方的http请求，是通过异步回调的，需要变为同步返回
+        final BlockingQueue<Object> blockingQueue = new LinkedBlockingQueue<>(1);
         StringRequest stringRequest = new MyStringRequest(Request.Method.GET, requestUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                T result;
                 try {
-                    //解析服务器返回的数据
-                    T result  = parseResponse(response,responseCls);
+                    result  = parseResponse(response,responseCls);
                     if (result != null){
                         blockingQueue.offer(result,5,TimeUnit.SECONDS);
                         NLog.d(MainLog.getLogTag(), "VollyUtility  offer time = %s",System.currentTimeMillis());
+                    }else {
+                        blockingQueue.offer(new TaskException("数据为空"));
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                }finally {
-                    //无论如何 在finnly 如果没有添加过元素,一定要添加一个元素 否则会一直阻塞
-                    if (blockingQueue.isEmpty()){
-                        //blockingQueue.put();
-                    }
+                    blockingQueue.offer(new TaskException(e.getMessage()));
                 }
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                //这里获取数据错误了，也需要添加一个元素到queue吧?要不然只能等待blockingQueue超时才能继续往下执行
+                blockingQueue.offer(new TaskException(error.getMessage()));
             }
         });
         Volley.newRequestQueue(FrameworkApplication.getContext()).add(stringRequest);
-
         try {
             //这里会一直等待,除非到了超时时间或者队列中有了元素
-            T result =  blockingQueue.poll(30, TimeUnit.SECONDS);
+            Object result =  blockingQueue.poll(30, TimeUnit.SECONDS);
             NLog.d(MainLog.getLogTag(), "VollyUtility  take time = %s",System.currentTimeMillis());
-            if (result == null){
-                throw new TaskException("VollyUtility onFailed");
+            //这里判断列队如果没有添加元素
+            if (result == null ){
+                throw new TaskException("timeout");
             }
-            return result;
+            if (result instanceof TaskException){
+                throw (TaskException) result;
+            }
+            return (T) result;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -79,18 +80,35 @@ public class VollyUtility implements IHttpUtility {
 
     @Override
     public <T> T doPost(HttpConfig config, Setting action, Params urlParams, final Params bodyParams, Object requestObj,
-                        Class<T> responseCls) throws TaskException {
-
-        String requestUrl = (config.baseUrl + action.getValue() + (urlParams == null || urlParams.size() == 0? "" : "?" + ParamsUtil.encodeToURLParams(urlParams))).replaceAll(" ", "");
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, requestUrl, new Response.Listener<String>() {
-
-
+                        final Class<T> responseCls) throws TaskException {
+        final String requestUrl = (config.baseUrl + action.getValue() + (urlParams == null || urlParams.size() == 0? "" : "?" + ParamsUtil.encodeToURLParams(urlParams))).replaceAll(" ", "");
+        //阻塞队列
+        final BlockingQueue<Object> blockingQueue = new LinkedBlockingQueue<>(1);
+        StringRequest stringRequest = new MyStringRequest(Request.Method.POST, requestUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                T result;
+                try {
+                    result  = parseResponse(response,responseCls);
+                    if (result != null){
+                        blockingQueue.offer(result,5,TimeUnit.SECONDS);
+                        NLog.d(MainLog.getLogTag(), "VollyUtility  offer time = %s",System.currentTimeMillis());
+                    }else {
+                        blockingQueue.offer(new TaskException("数据为空"));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    blockingQueue.offer(new TaskException(e.getMessage()));
+                }
 
             }
-        }, null){
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //这里获取数据错误了，也需要添加一个元素到queue吧?要不然只能等待blockingQueue超时才能继续往下执行
+                blockingQueue.offer(new TaskException(error.getMessage()));
+            }
+        }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
@@ -105,7 +123,21 @@ public class VollyUtility implements IHttpUtility {
             }
         };
         Volley.newRequestQueue(FrameworkApplication.getContext()).add(stringRequest);
-
+        try {
+            //这里会一直等待,除非到了超时时间或者队列中有了元素
+            Object result =  blockingQueue.poll(30, TimeUnit.SECONDS);
+            NLog.d(MainLog.getLogTag(), "VollyUtility  take time = %s",System.currentTimeMillis());
+            //这里判断列队如果没有添加元素
+            if (result == null ){
+                throw new TaskException("timeout");
+            }
+            if (result instanceof TaskException){
+                throw (TaskException) result;
+            }
+            return (T) result;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return null;
 
     }

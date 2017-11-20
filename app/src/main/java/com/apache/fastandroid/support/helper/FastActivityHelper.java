@@ -1,4 +1,4 @@
-package com.apache.fastandroid;
+package com.apache.fastandroid.support.helper;
 
 import com.tesla.framework.ui.activity.BaseActivityHelper;
 

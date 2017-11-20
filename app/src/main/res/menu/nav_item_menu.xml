@@ -10,7 +10,10 @@
             android:id="@+id/nav_item_posts"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/nav_posts"/>
-
+        <item
+            android:id="@+id/nav_item_wallpaer"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/nav_wallpaer"/>
         <item
             android:id="@+id/nav_item_pic"
             android:icon="@drawable/ic_menu_camera"
@@ -19,6 +22,10 @@
             android:id="@+id/nav_item_video"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/nav_video"/>
+        <item
+            android:id="@+id/nav_item_test"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Test"/>
         <item
             android:id="@+id/nav_item_music"
             android:icon="@drawable/ic_menu_slideshow"

@@ -28,7 +28,7 @@ public class SqlUtils {
         if (primaryKey instanceof AutoIncrementTableColumn) {
         	strSQL.append(" ")
         		  .append(primaryKey.getColumn()).append(" ")
-        		  .append(" INTEGER PRIMARY KEY AUTOINCREMENT ,");
+        		  .append(" INTEGER PRIMARY CONFIG AUTOINCREMENT ,");
         }
         else {
         	strSQL.append(" ").append(primaryKey.getColumn())
@@ -52,17 +52,17 @@ public class SqlUtils {
         if (primaryKey instanceof AutoIncrementTableColumn) {
         }
         else {
-            strSQL.append(", PRIMARY KEY ( ").append(primaryKey.getColumn()).append(" , ")
+            strSQL.append(", PRIMARY CONFIG ( ").append(primaryKey.getColumn()).append(" , ")
                     .append(FieldUtils.KEY).append(" , ")
                     .append(FieldUtils.OWNER).append(" )");
         }
 
-//        strSQL.append(" PRIMARY KEY ( ").append(primaryKey.getColumn()).append(" ) ");
+//        strSQL.append(" PRIMARY CONFIG ( ").append(primaryKey.getColumn()).append(" ) ");
 
-//        strSQL.append(" PRIMARY KEY ( ").append(primaryKey.getColumn()).append(" ), ");
-//        strSQL.append(" UNIQUE KEY (").append(primaryKey.getColumn()).append(", ")
+//        strSQL.append(" PRIMARY CONFIG ( ").append(primaryKey.getColumn()).append(" ), ");
+//        strSQL.append(" UNIQUE CONFIG (").append(primaryKey.getColumn()).append(", ")
 //                                      .append(FieldUtils.OWNER).append(", ")
-//                                      .append(FieldUtils.KEY).append(" )");
+//                                      .append(FieldUtils.CONFIG).append(" )");
 
 //        strSQL.deleteCharAt(strSQL.length() - 1);
         strSQL.append(" )");

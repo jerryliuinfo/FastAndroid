@@ -15,10 +15,15 @@ import java.util.Set;
  */
 public class ActivityHelper {
 	
-	public static final String KEY = "org.aisen.android.activityhelp_key";
+	public static final String CONFIG = "org.aisen.android.activityhelp_key";
 	
 	private ActivityHelper() {
 	}
+
+	public static SharedPreferences getSharedPreferences(Context context, String fileName){
+		return context.getSharedPreferences(fileName,Context.MODE_PRIVATE);
+	}
+
 
 	/**
 	 * 获取string，默认值为""
@@ -26,9 +31,8 @@ public class ActivityHelper {
 	 * @param key
 	 * @return
 	 */
-	public static String getShareData(Context context, String key) {
-		SharedPreferences sp = context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
-		return sp.getString(key, "");
+	public static String getStringData(Context context, String key) {
+		return getStringData(context,key,"");
 	}
 
 	/**
@@ -38,69 +42,74 @@ public class ActivityHelper {
 	 * @param defValue
 	 * @return
 	 */
-	public static String getShareData(Context context, String key, String defValue) {
-		SharedPreferences sp = context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+	public static String getStringData(Context context, String key, String defValue) {
+		SharedPreferences sp = getSharedPreferences(context,CONFIG);
 		return sp.getString(key, defValue);
 	}
 
-	/**
-	 * 获取int
-	 * 
-	 * @param key
-	 * @param defValue
-	 * @return
-	 */
+	public static Set<String> getSetShareData(Context context, String key) {
+		SharedPreferences sp = getSharedPreferences(context,CONFIG);
+		return sp.getStringSet(key, new HashSet<String>());
+	}
+
+
+	public static int getIntShareData(Context context, String key) {
+		return getIntShareData(context,key,-1);
+	}
+
 	public static int getIntShareData(Context context, String key, int defValue) {
-		SharedPreferences sp = context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+		SharedPreferences sp = getSharedPreferences(context,CONFIG);
+		return sp.getInt(key, defValue);
+	}
+	public static int getLongShareData(Context context, String key) {
+		return getLongShareData(context,key,-1);
+	}
+
+	public static int getLongShareData(Context context, String key, int defValue) {
+		SharedPreferences sp = getSharedPreferences(context,CONFIG);
 		return sp.getInt(key, defValue);
 	}
 
-	public static int getIntShareData(Context context, String key) {
-		SharedPreferences sp = context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
-		return sp.getInt(key, 0);
-	}
+
 
 	public static boolean getBooleanShareData(Context context, String key) {
-		SharedPreferences sp = context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
-		return sp.getBoolean(key, false);
+		return getBooleanShareData(context,key,false);
 	}
 
 	public static boolean getBooleanShareData(Context context, String key, boolean defValue) {
-		SharedPreferences sp = context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
+		SharedPreferences sp = getSharedPreferences(context,CONFIG);
 		return sp.getBoolean(key, defValue);
 	}
 
-	public static void putShareData(Context context, String key, String value) {
-		SharedPreferences sp = context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
-		Editor et = sp.edit();
+	public static void putStringShareData(Context context, String key, String value) {
+		Editor et = getSharedPreferences(context,CONFIG).edit();
 		et.putString(key, value);
 		et.commit();
 	}
 
 	public static void putIntShareData(Context context, String key, int value) {
-		SharedPreferences sp = context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
-		Editor et = sp.edit();
+		Editor et = getSharedPreferences(context,CONFIG).edit();
 		et.putInt(key, value);
+		et.commit();
+	}
+	public static void putLongShareData(Context context, String key, int value) {
+		Editor et = getSharedPreferences(context,CONFIG).edit();
+		et.putLong(key, value);
 		et.commit();
 	}
 
 	public static void putBooleanShareData(Context context, String key, boolean value) {
-		SharedPreferences sp = context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
-		Editor et = sp.edit();
+		Editor et = getSharedPreferences(context,CONFIG).edit();
 		et.putBoolean(key, value);
 		et.commit();
 	}
 
 	public static void putSetShareData(Context context, String key, Set<String> value) {
-		SharedPreferences sp = context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
-		Editor et = sp.edit();
+		Editor et = getSharedPreferences(context,CONFIG).edit();
 		et.putStringSet(key, value);
 		et.commit();
 	}
 
-	public static Set<String> getSetShareData(Context context, String key) {
-		SharedPreferences sp = context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
-		return sp.getStringSet(key, new HashSet<String>());
-	}
+
 
 }

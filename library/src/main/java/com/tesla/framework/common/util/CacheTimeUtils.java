@@ -13,13 +13,13 @@ public class CacheTimeUtils {
     public static void saveTime(Context context, String key) {
         String time = String.valueOf(System.currentTimeMillis() / 1000);
 
-        ActivityHelper.putShareData(context, key, time);
+        ActivityHelper.putStringShareData(context, key, time);
 
         NLog.d("CacheTimeUtils", String.format("保存缓存 %s, saveTime = %s", key, time));
     }
 
     public static long getSaveTime(Context context, String key) {
-        String time = ActivityHelper.getShareData(context, key, "");
+        String time = ActivityHelper.getStringData(context, key, "");
         long saveTime = Long.parseLong(TextUtils.isEmpty(time) ? "0" : time);
         return saveTime;
     }

@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 /**
  * Created by jerryliu on 2017/4/9.
+ * 带下啦刷新效果的
  */
 
 public abstract class ARecycleViewSwipeRefreshFragment<T extends Serializable,Ts extends Serializable,Header extends Serializable>
@@ -50,4 +51,7 @@ public abstract class ARecycleViewSwipeRefreshFragment<T extends Serializable,Ts
     public void onRefresh() {
         onPullDownToRefresh();
     }
+
+
+
 }

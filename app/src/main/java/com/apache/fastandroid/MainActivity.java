@@ -21,12 +21,15 @@ import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.pic.PicTabsFragment;
+import com.apache.fastandroid.pic.WallPaperFragment;
 import com.apache.fastandroid.setting.SettingFragment;
+import com.apache.fastandroid.support.action.IsLoginedAction;
 import com.apache.fastandroid.video.VideoTabsFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.common.util.view.StatusBarUtil;
+import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.support.cache.DataCache;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.widget.CircleImageView;
@@ -36,9 +39,7 @@ public class MainActivity extends MyBaseActivity{
     public static void launch(Activity from){
         from.startActivity(new Intent(from,MainActivity.class));
     }
-    private static Fragment mPicFragment;
 
-    private static View mBackgroundView;
 
     @ViewInject(id = R.id.drawer)
     DrawerLayout mDrawerLayout;
@@ -112,11 +113,18 @@ public class MainActivity extends MyBaseActivity{
         layout_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginActivity",null,null,new Object[]{});
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                //已经登录,跳转到用户列表界面去登录
+                new IAction(MainActivity.this,new IsLoginedAction(MainActivity.this,null)){
+                    @Override
+                    public void doAction() {
+                        try {
+                            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginedUserListActivity",null,null,new Object[]{getContext()});
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }.run();
             }
         });
 
@@ -171,12 +179,6 @@ public class MainActivity extends MyBaseActivity{
 
     private void setupNavigationView(){
         View headerView = mNavigationView.getHeaderView(0);
-        headerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -215,15 +217,20 @@ public class MainActivity extends MyBaseActivity{
                 }
 
                 break;
+            case R.id.nav_item_wallpaer:
+                fragment = WallPaperFragment.newFragment();
+                break;
             case R.id.nav_item_pic:
                 fragment = PicTabsFragment.newFragment();
-                mPicFragment = fragment;
                 break;
             case R.id.nav_item_video:
                 fragment = VideoTabsFragment.newFragment();
                 break;
             case R.id.nav_item_music:
                 fragment = VideoTabsFragment.newFragment();
+                break;
+            case R.id.nav_item_test:
+                fragment = TestFragment.newFragment();
                 break;
             case R.id.nav_item_setting:
                 SettingFragment.launch(this);

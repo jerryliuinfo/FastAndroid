@@ -10,6 +10,7 @@ import com.apache.fastandroid.user.delegate.impl.IsLogined;
 import com.apache.fastandroid.user.delegate.impl.SaveToken;
 import com.apache.fastandroid.user.delegate.impl.StartLoginActivity;
 import com.apache.fastandroid.user.delegate.impl.StartLoginActivityWithNewTask;
+import com.apache.fastandroid.user.delegate.impl.StartLoginedListActivity;
 
 /**
  * Created by 01370340 on 2017/9/3.
@@ -17,6 +18,10 @@ import com.apache.fastandroid.user.delegate.impl.StartLoginActivityWithNewTask;
 
 public class UsercenterDelegateFactory implements IDelegateFactory {
     public static final String ACTION_START_LOGINACTIVITY = "startLoginActivity";
+
+    public static final String ACTION_START_LOGINED_USER_LIST_ACTIVITY = "startLoginedUserListActivity";
+
+
     public static final String ACTION_START_LOGINACTIVITY_NEWTASK = "startLoginActivityNewTask";
     public static final String ACTION_DOLOGIN = "doLogin";
     public static final String ACTION_GET_TOKEN = "getToken";
@@ -39,6 +44,8 @@ public class UsercenterDelegateFactory implements IDelegateFactory {
         switch (action){
             case ACTION_START_LOGINACTIVITY:
                 return new StartLoginActivity();
+            case ACTION_START_LOGINED_USER_LIST_ACTIVITY:
+                return new StartLoginedListActivity();
             case ACTION_START_LOGINACTIVITY_NEWTASK:
                 return new StartLoginActivityWithNewTask();
 

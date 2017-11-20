@@ -81,11 +81,11 @@ public class SettingUtility {
 	}
 
 	public static void setPermanentSetting(String type, String value) {
-		ActivityHelper.putShareData(FrameworkApplication.getContext(), type, value);
+		ActivityHelper.putStringShareData(FrameworkApplication.getContext(), type, value);
 	}
 
 	public static String getPermanentSettingAsStr(String type, String def) {
-		return ActivityHelper.getShareData(FrameworkApplication.getContext(), type, settingMap.containsKey(type) ? settingMap.get(type).getValue() : def);
+		return ActivityHelper.getStringData(FrameworkApplication.getContext(), type, settingMap.containsKey(type) ? settingMap.get(type).getValue() : def);
 	}
 
 }

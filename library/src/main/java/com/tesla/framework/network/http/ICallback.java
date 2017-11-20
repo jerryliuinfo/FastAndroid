@@ -5,7 +5,7 @@ package com.tesla.framework.network.http;
  */
 
 public interface ICallback {
-    void onResponse(String response);
+    <T> void onResponse(T result);
 
     void onError(String code,String msg);
 }

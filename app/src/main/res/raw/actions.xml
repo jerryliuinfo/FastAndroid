@@ -29,7 +29,7 @@
 		<extras>
 			<!--服务器请求的utility, 不配置则用默认的DefHttpUtility -->
 			<extra type="http">
-				<!--<value>com.apache.fastandroid.support.http.HttpUrlConnectionUtility</value>-->
+				<!--<value>com.apache.fastandroid.support.http.urlconnection.HttpUrlConnectionUtility</value>-->
 				<value>com.apache.fastandroid.support.http.volly.VollyUtility</value>
 
 			</extra>

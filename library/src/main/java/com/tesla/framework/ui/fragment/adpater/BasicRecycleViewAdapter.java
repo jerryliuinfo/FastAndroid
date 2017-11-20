@@ -1,7 +1,6 @@
 package com.tesla.framework.ui.fragment.adpater;
 
 import android.app.Activity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -155,12 +154,12 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
         return IPagingAdapter.TYPE_NORMAL;
     }
 
-    private boolean isFooter(int viewType){
+    public boolean isFooter(int viewType){
         return viewType == IPagingAdapter.TYPE_FOOTER;
     }
 
 
-    private boolean isHeader(int viewType){
+    public boolean isHeader(int viewType){
         if (mHeaderItemTypes != null){
             for (int[] mHeaderItemType : mHeaderItemTypes) {
                 if (viewType == mHeaderItemType[1]){
@@ -222,4 +221,22 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
     public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener onItemLongClickListener) {
         this.onItemLongClickListener = onItemLongClickListener;
     }
+
+    /*@Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+
+        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+        if (layoutManager instanceof GridLayoutManager){
+            final GridLayoutManager gridLayoutManager = (GridLayoutManager) layoutManager;
+            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    //
+                    boolean isFooter = isFooter(getItemViewType(position));
+                    return isFooter ? 1: gridLayoutManager.getSpanCount();
+                }
+            });
+        }
+    }*/
 }

@@ -150,15 +150,7 @@ public class OkHttpUtility implements IHttpUtility {
 		}
 	}
 
-	protected <T> T parseResponseBody(Response response, Class<T> responseCls) throws TaskException, IOException {
-		String responseStr = response.body().string();
-		NLog.d("DefHttpUtility", "responseStr = %s", response);
-		if (responseCls.getSimpleName().equals("String"))
-			return (T) responseStr;
 
-		T result = JSON.parseObject(responseStr, responseCls);
-		return result;
-	}
 
 
 
