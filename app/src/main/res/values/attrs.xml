@@ -7,4 +7,10 @@
     <attr name="fitSystemWindows" format="boolean"/>
     <!--Draw的Header高度-->
     <attr name="menuHeaderHeight" format="dimension"/>
+
+
+
+    <declare-styleable name="Themes">
+        <attr name="waveViewStyle" format="reference" />
+    </declare-styleable>
 </resources>

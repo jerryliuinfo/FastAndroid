@@ -15,4 +15,6 @@ public interface IImageLoaderstrategy {
     void cleanMemory(Context context);
 
 
+
+
 }

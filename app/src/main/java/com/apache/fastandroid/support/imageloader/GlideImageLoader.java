@@ -2,6 +2,7 @@ package com.apache.fastandroid.support.imageloader;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,18 +16,23 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
+import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.tesla.framework.component.imageloader.IImageLoaderInit;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
+import com.tesla.framework.component.imageloader.IImagePahtFromCache;
 import com.tesla.framework.component.imageloader.ImageLoaderOptions;
+
+import java.io.File;
+import java.util.concurrent.ExecutionException;
 
 
 /**
  * Created by Administrator on 2017/3/21 0021.
  */
 
-public class GlideImageLoader implements IImageLoaderstrategy,IImageLoaderInit {
+public class GlideImageLoader implements IImageLoaderstrategy,IImageLoaderInit,IImagePahtFromCache {
 
     @Override
     public void showImage(ImageLoaderOptions options) {
@@ -180,8 +186,41 @@ public class GlideImageLoader implements IImageLoaderstrategy,IImageLoaderInit {
         }
     }
 
+    private Context mContext;
     @Override
     public void init(Context context) {
+        mContext = context;
+    }
 
+    @Override
+    public String getImagePahtFromCache(String url) {
+        FutureTarget<File>  futuer = Glide.with(mContext).load(url).downloadOnly(500,500);
+        try {
+            File cacheFile = futuer.get();
+            return cacheFile.getAbsolutePath();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Bitmap getBitmapFromCache(String url) {
+        Bitmap myBitmap = null;
+        try {
+            myBitmap = Glide.with(mContext)
+                    .load(url)
+                    .asBitmap() //必须
+                    .centerCrop()
+                    .into(500, 500)
+                    .get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return myBitmap;
     }
 }

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.bean.WallpaperBean;
 import com.apache.fastandroid.support.utils.MainLog;
+import com.apache.fastandroid.wallpaper.WallpaperSettingFragment;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.sp.ActivityHelper;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
@@ -56,5 +57,12 @@ public class WallpaperItemView extends ARecycleViewItemViewHolder<WallpaperBean>
             ImageLoaderManager.getInstance().showImage(img,data.getIndexThumbnailUrl(),getContext());
         }
 
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WallpaperSettingFragment.launch(getContext(),data.getIndexThumbnailUrl());
+            }
+        });
     }
 }

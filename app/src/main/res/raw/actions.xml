@@ -56,8 +56,8 @@
 	</setting>
 
 	<setting type="imageLoader">
-		<!--<value>com.apache.fastandroid.support.imageloader.GlideImageLoader</value>-->
-		<value>com.apache.fastandroid.support.imageloader.PicasoImageLoader</value>
+		<value>com.apache.fastandroid.support.imageloader.GlideImageLoader</value>
+		<!--<value>com.apache.fastandroid.support.imageloader.PicasoImageLoader</value>-->
 		<!--<value>com.apache.fastandroid.support.imageloader.UniversalImageLoader</value>-->
 	</setting>
 </app-settings>

@@ -1,6 +1,7 @@
 package com.tesla.framework.component.imageloader;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -9,7 +10,7 @@ import android.view.View;
  * Created by Administrator on 2017/3/22 0022.
  */
 
-public class ImageLoaderManager implements IImageLoaderstrategy,IImageLoaderInit {
+public class ImageLoaderManager implements IImageLoaderstrategy,IImageLoaderInit,IImagePahtFromCache {
     private static final ImageLoaderManager INSTANCE = new ImageLoaderManager();
 
     private  IImageLoaderstrategy loaderstrategy;
@@ -80,5 +81,23 @@ public class ImageLoaderManager implements IImageLoaderstrategy,IImageLoaderInit
             IImageLoaderInit imageLoaderInit = (IImageLoaderInit) loaderstrategy;
             imageLoaderInit.init(context);
         }
+    }
+
+    @Override
+    public String getImagePahtFromCache(String url) {
+        if (loaderstrategy != null && loaderstrategy instanceof IImagePahtFromCache){
+            IImagePahtFromCache iImagePahtFromCache = (IImagePahtFromCache) loaderstrategy;
+            return iImagePahtFromCache.getImagePahtFromCache(url);
+        }
+        return null;
+    }
+
+    @Override
+    public Bitmap getBitmapFromCache(String url) {
+        if (loaderstrategy != null && loaderstrategy instanceof IImagePahtFromCache){
+            IImagePahtFromCache iImagePahtFromCache = (IImagePahtFromCache) loaderstrategy;
+            return iImagePahtFromCache.getBitmapFromCache(url);
+        }
+        return null;
     }
 }
