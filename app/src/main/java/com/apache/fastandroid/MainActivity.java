@@ -21,7 +21,7 @@ import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
 import com.apache.fastandroid.pic.PicTabsFragment;
-import com.apache.fastandroid.pic.WallPaperFragment;
+import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.support.action.IsLoginedAction;
 import com.apache.fastandroid.video.VideoTabsFragment;

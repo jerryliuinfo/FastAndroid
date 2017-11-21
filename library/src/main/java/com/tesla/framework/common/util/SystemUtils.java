@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.SystemClock;
 import android.provider.Settings;
 
+import com.tesla.framework.common.util.io.CloseableUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 

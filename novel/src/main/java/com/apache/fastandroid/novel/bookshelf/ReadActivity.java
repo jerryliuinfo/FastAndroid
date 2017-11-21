@@ -16,7 +16,7 @@ import com.apache.fastandroid.novel.support.util.NovelLog;
 import com.apache.fastandroid.novel.view.readview.BaseReadView;
 import com.apache.fastandroid.novel.view.readview.OnReadStateChangeListener;
 import com.apache.fastandroid.novel.view.readview.PageWidget;
-import com.tesla.framework.common.util.sp.SharedPreferencesUtil;
+import com.tesla.framework.common.util.sp.SPUtils;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.ViewInject;
@@ -99,16 +99,11 @@ public class ReadActivity extends BaseActivity {
     private List<BookMixAToc.mixToc.Chapters> mChapterList = new ArrayList<>();
 
     private void initPagerWidget() {
-        if (SharedPreferencesUtil.getInstance().getInt(NovelConstans.FLIP_STYLE, 0) == 0) {
+        if (SPUtils.getInt(NovelConstans.FLIP_STYLE, 0) == 0) {
             mPageWidget = new PageWidget(this, bookId, mChapterList, new ReadListener());
         } else {
             //mPageWidget = new OverlappedWidget(this, bookId, mChapterList, new ReadListener());
         }
-       /* registerReceiver(receiver, intentFilter);
-        if (SharedPreferencesUtil.getInstance().getBoolean(Constant.ISNIGHT, false)) {
-            mPageWidget.setTextColor(ContextCompat.getColor(this, R.color.chapter_content_night),
-                    ContextCompat.getColor(this, R.color.chapter_title_night));
-        }*/
         flReadWidget.removeAllViews();
         flReadWidget.addView(mPageWidget);
     }

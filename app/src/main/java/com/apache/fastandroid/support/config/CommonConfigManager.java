@@ -2,7 +2,7 @@ package com.apache.fastandroid.support.config;
 
 import android.content.Context;
 
-import com.tesla.framework.common.util.BaseSPConfigManager;
+import com.tesla.framework.common.util.sp.BaseSPConfigManager;
 
 /**
  * Created by jerryliu on 2017/6/30.

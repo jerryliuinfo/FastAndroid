@@ -23,7 +23,7 @@ import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.CrashHandler;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.common.util.sp.SharedPreferencesUtil;
+import com.tesla.framework.common.util.sp.SPUtils;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
@@ -53,7 +53,7 @@ public class MyApplication extends Application {
         FreelineCore.init(this);
         mContext = this;
         FrameworkApplication.onCreate(getApplicationContext());
-        SharedPreferencesUtil.init(getApplicationContext(), getPackageName() + "_preference", Context.MODE_MULTI_PROCESS);
+        SPUtils.init(getApplicationContext(), getPackageName() + "_preference");
 
 
         //初始化日志

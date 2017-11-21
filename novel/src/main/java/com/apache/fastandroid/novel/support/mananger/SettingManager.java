@@ -16,15 +16,13 @@
 package com.apache.fastandroid.novel.support.mananger;
 
 
-import com.apache.fastandroid.novel.find.bean.BookMark;
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.SystemUtils;
 import com.tesla.framework.common.util.dimen.DimensUtil;
-import com.tesla.framework.common.util.sp.SharedPreferencesUtil;
+import com.tesla.framework.common.util.sp.SPUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import static com.tesla.framework.common.util.sp.SPUtils.putInt;
 
 /**
  * @author yuyh.
@@ -47,7 +45,7 @@ public class SettingManager {
      */
     public void saveFontSize(String bookId, int fontSizePx) {
         // 书籍对应
-        SharedPreferencesUtil.getInstance().putInt(getFontSizeKey(bookId), fontSizePx);
+        putInt(getFontSizeKey(bookId), fontSizePx);
     }
 
     /**
@@ -60,7 +58,7 @@ public class SettingManager {
     }
 
     public int getReadFontSize(String bookId) {
-        return SharedPreferencesUtil.getInstance().getInt(getFontSizeKey(bookId), DimensUtil.dp2px(16));
+        return SPUtils.getInt(getFontSizeKey(bookId), DimensUtil.dp2px(FrameworkApplication.getContext(),16));
     }
 
     public int getReadFontSize() {
@@ -72,7 +70,7 @@ public class SettingManager {
     }
 
     public int getReadBrightness() {
-        return SharedPreferencesUtil.getInstance().getInt(getLightnessKey(),
+        return SPUtils.getInt(getLightnessKey(),
                 (int) SystemUtils.getScreenBrightness(FrameworkApplication.getContext()));
     }
 
@@ -82,7 +80,7 @@ public class SettingManager {
      * @param percent 亮度比例 0~100
      */
     public void saveReadBrightness(int percent) {
-        SharedPreferencesUtil.getInstance().putInt(getLightnessKey(), percent);
+        putInt(getLightnessKey(), percent);
     }
 
     private String getLightnessKey() {
@@ -90,10 +88,9 @@ public class SettingManager {
     }
 
     public synchronized void saveReadProgress(String bookId, int currentChapter, int m_mbBufBeginPos, int m_mbBufEndPos) {
-        SharedPreferencesUtil.getInstance()
-                .putInt(getChapterKey(bookId), currentChapter)
-                .putInt(getStartPosKey(bookId), m_mbBufBeginPos)
-                .putInt(getEndPosKey(bookId), m_mbBufEndPos);
+        putInt(getChapterKey(bookId), currentChapter);
+        putInt(getStartPosKey(bookId), currentChapter);
+        putInt(getEndPosKey(bookId), currentChapter);
     }
 
     /**
@@ -103,19 +100,13 @@ public class SettingManager {
      * @return
      */
     public int[] getReadProgress(String bookId) {
-        int lastChapter = SharedPreferencesUtil.getInstance().getInt(getChapterKey(bookId), 1);
-        int startPos = SharedPreferencesUtil.getInstance().getInt(getStartPosKey(bookId), 0);
-        int endPos = SharedPreferencesUtil.getInstance().getInt(getEndPosKey(bookId), 0);
+        int lastChapter = SPUtils.getInt(getChapterKey(bookId), 1);
+        int startPos = SPUtils.getInt(getStartPosKey(bookId), 0);
+        int endPos = SPUtils.getInt(getEndPosKey(bookId), 0);
 
         return new int[]{lastChapter, startPos, endPos};
     }
 
-    public void removeReadProgress(String bookId) {
-        SharedPreferencesUtil.getInstance()
-                .remove(getChapterKey(bookId))
-                .remove(getStartPosKey(bookId))
-                .remove(getEndPosKey(bookId));
-    }
 
     private String getChapterKey(String bookId) {
         return bookId + "-chapter";
@@ -130,65 +121,21 @@ public class SettingManager {
     }
 
 
-    public boolean addBookMark(String bookId, BookMark mark) {
-        List<BookMark> marks = SharedPreferencesUtil.getInstance().getObject(getBookMarksKey(bookId), ArrayList.class);
-        if (marks != null && marks.size() > 0) {
-            for (BookMark item : marks) {
-                if (item.chapter == mark.chapter && item.startPos == mark.startPos) {
-                    return false;
-                }
-            }
-        } else {
-            marks = new ArrayList<>();
-        }
-        marks.add(mark);
-        SharedPreferencesUtil.getInstance().putObject(getBookMarksKey(bookId), marks);
-        return true;
-    }
-
-    public List<BookMark> getBookMarks(String bookId) {
-        return SharedPreferencesUtil.getInstance().getObject(getBookMarksKey(bookId), ArrayList.class);
-    }
-
-    public void clearBookMarks(String bookId) {
-        SharedPreferencesUtil.getInstance().remove(getBookMarksKey(bookId));
-    }
-
     private String getBookMarksKey(String bookId) {
         return bookId + "-marks";
     }
 
     public void saveReadTheme(int theme) {
-        SharedPreferencesUtil.getInstance().putInt("readTheme", theme);
+        SPUtils.putInt("readTheme", theme);
     }
 
     public int getReadTheme() {
-        if (SharedPreferencesUtil.getInstance().getBoolean(NovelConstans.ISNIGHT, false)) {
+        if (SPUtils.getBoolean(NovelConstans.ISNIGHT, false)) {
             return ThemeManager.NIGHT;
         }
-        return SharedPreferencesUtil.getInstance().getInt("readTheme", 3);
+        return SPUtils.getInt("readTheme", 3);
     }
 
-    /**
-     * 是否可以使用音量键翻页
-     *
-     * @param enable
-     */
-    public void saveVolumeFlipEnable(boolean enable) {
-        SharedPreferencesUtil.getInstance().putBoolean("volumeFlip", enable);
-    }
-
-    public boolean isVolumeFlipEnable() {
-        return SharedPreferencesUtil.getInstance().getBoolean("volumeFlip", true);
-    }
-
-    public void saveAutoBrightness(boolean enable) {
-        SharedPreferencesUtil.getInstance().putBoolean("autoBrightness", enable);
-    }
-
-    public boolean isAutoBrightness() {
-        return SharedPreferencesUtil.getInstance().getBoolean("autoBrightness", false);
-    }
 
     /**
      * 保存用户选择的性别
@@ -196,7 +143,7 @@ public class SettingManager {
      * @param sex male female
      */
     public void saveUserChooseSex(String sex) {
-        SharedPreferencesUtil.getInstance().putString("userChooseSex", sex);
+        SPUtils.putString("userChooseSex", sex);
     }
 
     /**
@@ -205,18 +152,7 @@ public class SettingManager {
      * @return
      */
     public String getUserChooseSex() {
-        return SharedPreferencesUtil.getInstance().getString("userChooseSex", NovelConstans.Gender.MALE);
+        return SPUtils.getString("userChooseSex", NovelConstans.Gender.MALE);
     }
 
-    public boolean isUserChooseSex() {
-        return SharedPreferencesUtil.getInstance().exists("userChooseSex");
-    }
-
-    public boolean isNoneCover() {
-        return SharedPreferencesUtil.getInstance().getBoolean("isNoneCover", false);
-    }
-
-    public void saveNoneCover(boolean isNoneCover) {
-        SharedPreferencesUtil.getInstance().putBoolean("isNoneCover", isNoneCover);
-    }
 }

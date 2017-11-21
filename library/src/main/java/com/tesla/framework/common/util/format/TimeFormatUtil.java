@@ -1,4 +1,4 @@
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.format;
 
 import android.text.TextUtils;
 

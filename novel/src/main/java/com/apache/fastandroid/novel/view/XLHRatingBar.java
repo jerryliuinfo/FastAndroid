@@ -56,8 +56,8 @@ public class XLHRatingBar extends LinearLayout {
         countSelected = typedArray.getInt(R.styleable.XlHRatingBar_countSelected, 0);
         canEdit = typedArray.getBoolean(R.styleable.XlHRatingBar_canEdit, false);
         differentSize = typedArray.getBoolean(R.styleable.XlHRatingBar_differentSize, false);
-        widthAndHeight = typedArray.getDimension(R.styleable.XlHRatingBar_widthAndHeight, DimensUtil.dp2px(0));
-        dividerWidth = typedArray.getDimension(R.styleable.XlHRatingBar_dividerWidth, DimensUtil.dp2px(0));
+        widthAndHeight = typedArray.getDimension(R.styleable.XlHRatingBar_widthAndHeight, DimensUtil.dp2px(context,0));
+        dividerWidth = typedArray.getDimension(R.styleable.XlHRatingBar_dividerWidth, DimensUtil.dp2px(context,0));
         stateResId = typedArray.getResourceId(R.styleable.XlHRatingBar_stateResId, -1);
         initView();
     }

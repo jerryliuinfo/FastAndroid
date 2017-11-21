@@ -110,7 +110,7 @@ public class PageFactory {
     private String charset = "UTF-8";
 
     public PageFactory(Context context, String bookId, List<BookMixAToc.mixToc.Chapters> chaptersList) {
-        this(context, ScreenUtil.getScreenWidth(), ScreenUtil.getScreenHeight(),
+        this(context, ScreenUtil.getScreenWidth(FrameworkApplication.getContext()), ScreenUtil.getScreenHeight(),
                 //SettingManager.getInstance().getReadFontSize(bookId),
                 SettingManager.getInstance().getReadFontSize(),
                 bookId, chaptersList);
@@ -123,9 +123,9 @@ public class PageFactory {
         mHeight = height;
         mFontSize = fontSize;
         mLineSpace = mFontSize / 5 * 2;
-        mNumFontSize = DimensUtil.dp2px(16);
-        marginWidth = DimensUtil.dp2px(15);
-        marginHeight = DimensUtil.dp2px(15);
+        mNumFontSize = DimensUtil.dp2px(context,16);
+        marginWidth = DimensUtil.dp2px(context,15);
+        marginHeight = DimensUtil.dp2px(context,15);
         mVisibleHeight = mHeight - marginHeight * 2 - mNumFontSize * 2 - mLineSpace * 2;
         mVisibleWidth = mWidth - marginWidth * 2;
         mPageLineCount = mVisibleHeight / (mFontSize + mLineSpace);
@@ -237,7 +237,7 @@ public class PageFactory {
             // 绘制提示内容
             if (batteryBitmap != null) {
                 canvas.drawBitmap(batteryBitmap, marginWidth + 2,
-                        mHeight - marginHeight - DimensUtil.dp2px(12), mTitlePaint);
+                        mHeight - marginHeight - DimensUtil.dp2px(mContext,12), mTitlePaint);
             }
 
             float percent = (float) currentChapter * 100 / chapterSize;
@@ -620,8 +620,8 @@ public class PageFactory {
                         R.drawable.seekbar_battery_bg : R.drawable.seekbar_battery_night_bg));
         batteryView.setProgress(battery);
         batteryView.setDrawingCacheEnabled(true);
-        batteryView.measure(View.MeasureSpec.makeMeasureSpec(DimensUtil.dp2px(26), View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(DimensUtil.dp2px(14), View.MeasureSpec.EXACTLY));
+        batteryView.measure(View.MeasureSpec.makeMeasureSpec(DimensUtil.dp2px(mContext,26), View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(DimensUtil.dp2px(mContext,14), View.MeasureSpec.EXACTLY));
         batteryView.layout(0, 0, batteryView.getMeasuredWidth(), batteryView.getMeasuredHeight());
         batteryView.buildDrawingCache();
         //batteryBitmap = batteryView.getDrawingCache();

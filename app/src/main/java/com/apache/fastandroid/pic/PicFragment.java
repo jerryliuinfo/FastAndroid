@@ -68,7 +68,7 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
     @Override
     protected void setUpRefreshView() {
         super.setUpRefreshView();
-        int padding = DimensUtil.dp2px(4);
+        int padding = DimensUtil.dp2px(getActivity(),4);
         getRefreshView().setPadding(padding, 0, padding, 0);
     }
 
@@ -200,7 +200,7 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
 
         public ImageItemView(Activity context, View itemView) {
             super(context, itemView);
-            width = (ScreenUtil.getScreenWidth(context) - DimensUtil.dp2px(8))  / SPAN_COUNT ;
+            width = (ScreenUtil.getScreenWidth(context) - DimensUtil.dp2px(context,8))  / SPAN_COUNT ;
         }
 
         @Override

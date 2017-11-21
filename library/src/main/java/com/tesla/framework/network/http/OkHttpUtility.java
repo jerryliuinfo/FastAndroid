@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -176,8 +177,22 @@ public class OkHttpUtility implements IHttpUtility {
 		return result;
 	}
 
+	private static  OkHttpClient mOkHttpClient;
+
 	public synchronized OkHttpClient getOkHttpClient() {
-		return FrameworkApplication.getOkHttpClient();
+		if (mOkHttpClient == null){
+			OkHttpClient.Builder okBuilder = new OkHttpClient.Builder();
+			okBuilder.readTimeout(20, TimeUnit.SECONDS);
+			okBuilder.connectTimeout(10, TimeUnit.SECONDS);
+			okBuilder.writeTimeout(20, TimeUnit.SECONDS);
+
+
+//			okBuilder.addInterceptor(new HttpHeadInterceptor());
+//			okBuilder.addInterceptor(getInterceptor());
+
+			mOkHttpClient = okBuilder.build();
+		}
+		return mOkHttpClient;
 	}
 
 	static RequestBody createRequestBody(final MultipartFile file) {

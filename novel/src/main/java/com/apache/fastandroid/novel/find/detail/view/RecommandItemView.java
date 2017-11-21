@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.apache.fastandroid.novel.R;
 import com.apache.fastandroid.novel.find.bean.RecommandBeans;
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
-import com.tesla.framework.common.util.FormatUtil;
+import com.tesla.framework.common.util.format.FormatUtil;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.component.imageloader.ImageLoaderOptions;

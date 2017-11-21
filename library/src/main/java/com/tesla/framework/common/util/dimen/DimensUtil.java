@@ -11,8 +11,7 @@ import com.tesla.framework.FrameworkApplication;
  */
 
 public class DimensUtil {
-    public static int dp2px(float dp){
-        Context context = FrameworkApplication.getContext();
+    public static int dp2px(Context context,float dp){
         int px = (int) (dp + 0.5f);
         try {
             px = (int) (context.getResources().getDisplayMetrics().density * dp + 0.5f);

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.tesla.framework.R;
+import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.adpater.BasicRecycleViewAdapter;
@@ -169,6 +170,12 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
         }
     }
 
+
+
+    protected void setViewPadding(View viewGroup) {
+        viewGroup.setPadding(viewGroup.getPaddingLeft(), viewGroup.getPaddingTop(),
+                viewGroup.getPaddingRight(), DimensUtil.dp2px(getActivity(), 56));
+    }
 
 
 

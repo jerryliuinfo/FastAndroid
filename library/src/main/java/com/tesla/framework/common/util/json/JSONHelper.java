@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.json;
 
 import org.json.JSONException;
 import org.json.JSONObject;

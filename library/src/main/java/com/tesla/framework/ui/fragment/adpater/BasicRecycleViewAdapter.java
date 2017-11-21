@@ -222,21 +222,5 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
         this.onItemLongClickListener = onItemLongClickListener;
     }
 
-    /*@Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
 
-        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
-        if (layoutManager instanceof GridLayoutManager){
-            final GridLayoutManager gridLayoutManager = (GridLayoutManager) layoutManager;
-            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                @Override
-                public int getSpanSize(int position) {
-                    //
-                    boolean isFooter = isFooter(getItemViewType(position));
-                    return isFooter ? 1: gridLayoutManager.getSpanCount();
-                }
-            });
-        }
-    }*/
 }

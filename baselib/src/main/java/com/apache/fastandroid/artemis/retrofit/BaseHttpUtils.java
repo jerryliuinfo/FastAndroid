@@ -2,7 +2,7 @@ package com.apache.fastandroid.artemis.retrofit;
 
 import android.content.Context;
 
-import com.apache.fastandroid.artemis.retrofit.builder.OKHttpClientBuilder;
+import com.tesla.framework.network.http.builder.OKHttpClientBuilder;
 
 import java.util.Hashtable;
 

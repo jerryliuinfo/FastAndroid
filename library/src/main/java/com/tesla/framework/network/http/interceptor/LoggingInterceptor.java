@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.apache.fastandroid.artemis.retrofit.interceptor;
+package com.tesla.framework.network.http.interceptor;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

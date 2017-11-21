@@ -1,4 +1,4 @@
-package com.apache.fastandroid.artemis.retrofit.interceptor;
+package com.tesla.framework.network.http.interceptor;
 
 import android.content.Context;
 

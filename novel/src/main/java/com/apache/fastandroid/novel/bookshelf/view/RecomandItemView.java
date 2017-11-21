@@ -13,7 +13,7 @@ import com.apache.fastandroid.novel.bookshelf.ReadActivity;
 import com.apache.fastandroid.novel.find.bean.RecommendBook;
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.apache.fastandroid.novel.support.util.NovelUtils;
-import com.tesla.framework.common.util.TimeFormatUtil;
+import com.tesla.framework.common.util.format.TimeFormatUtil;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 

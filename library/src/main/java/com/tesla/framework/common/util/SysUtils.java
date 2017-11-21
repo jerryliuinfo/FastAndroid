@@ -18,6 +18,8 @@ package com.tesla.framework.common.util;
 
 import android.util.Log;
 
+import com.tesla.framework.common.util.io.CloseableUtils;
+
 import java.io.FileInputStream;
 
 /**

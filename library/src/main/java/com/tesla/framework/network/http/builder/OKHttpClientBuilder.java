@@ -1,9 +1,9 @@
-package com.apache.fastandroid.artemis.retrofit.builder;
+package com.tesla.framework.network.http.builder;
 
 import android.content.Context;
 
-import com.apache.fastandroid.artemis.retrofit.interceptor.DefaultCacheInterceptor;
-import com.apache.fastandroid.artemis.retrofit.interceptor.HeaderInterceptor;
+import com.tesla.framework.network.http.interceptor.DefaultCacheInterceptor;
+import com.tesla.framework.network.http.interceptor.HeaderInterceptor;
 
 import java.util.concurrent.TimeUnit;
 

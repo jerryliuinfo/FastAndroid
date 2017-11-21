@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.ActivityHelper;
+import com.tesla.framework.common.util.sp.ActivityHelper;
 import com.tesla.framework.support.bean.TabItem;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;

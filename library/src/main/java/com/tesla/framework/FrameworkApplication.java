@@ -33,15 +33,7 @@ public class FrameworkApplication  {
         return mContext;
     }
 
-    public static OkHttpClient getOkHttpClient() {
-        return mOkHttpClient;
-    }
 
-    public static void configOkHttpClient(int connTimeout, int socketTimeout) {
-        if(mOkHttpClient != null) {
-        }
-
-    }
 
 
     public static Context getInstance(){

@@ -15,7 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.tesla.framework.FrameworkApplication;
-import com.tesla.framework.common.util.ActivityHelper;
+import com.tesla.framework.common.util.sp.ActivityHelper;
 
 import java.lang.reflect.Method;
 
@@ -75,9 +75,7 @@ public class ScreenUtil {
             setScreenInfo(context);
         return screenWidth;
     }
-    public static int getScreenWidth() {
-        return getScreenWidth(FrameworkApplication.getContext());
-    }
+
 
     public static int getScreenHeight(Context context) {
         if (screenHeight == 0)

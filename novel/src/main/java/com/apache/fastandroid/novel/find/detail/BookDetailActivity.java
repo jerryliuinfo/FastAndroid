@@ -22,7 +22,7 @@ import com.apache.fastandroid.novel.support.util.NovelLog;
 import com.apache.fastandroid.novel.view.DrawableCenterButton;
 import com.apache.fastandroid.novel.view.TagColor;
 import com.apache.fastandroid.novel.view.TagGroup;
-import com.tesla.framework.common.util.FormatUtil;
+import com.tesla.framework.common.util.format.FormatUtil;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;

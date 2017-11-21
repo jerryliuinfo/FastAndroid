@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.sp.ActivityHelper;
 
 /**
  * Created by JerryLiu on 17/04/08.

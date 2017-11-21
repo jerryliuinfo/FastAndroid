@@ -1,6 +1,4 @@
-package com.apache.fastandroid.artemis.retrofit.interceptor;
-
-import com.apache.fastandroid.artemis.retrofit.util.CodeMachine;
+package com.tesla.framework.network.http.interceptor;
 
 import java.io.IOException;
 

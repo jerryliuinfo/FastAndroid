@@ -104,7 +104,6 @@ android {
             minifyEnabled false
             buildConfigField("boolean","LOG_DEBUG","true")
             buildConfigField("String","BUGLY_APP_ID","\"272afe1108\"")
-            applicationIdSuffix '.debug'
             manifestPlaceholders = [appName: "FastAndDebug"]
 
 

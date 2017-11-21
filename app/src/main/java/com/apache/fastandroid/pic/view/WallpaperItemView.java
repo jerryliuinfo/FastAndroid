@@ -9,7 +9,8 @@ import android.widget.ImageView;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.bean.WallpaperBean;
 import com.apache.fastandroid.support.utils.MainLog;
-import com.tesla.framework.common.util.ActivityHelper;
+import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.common.util.sp.ActivityHelper;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
@@ -40,7 +41,7 @@ public class WallpaperItemView extends ARecycleViewItemViewHolder<WallpaperBean>
                 public boolean onPreDraw() {
                     img.getViewTreeObserver().removeOnPreDrawListener(this);
                     width = img.getWidth();
-                    NLog.d(MainLog.getLogTag(), "screen width = %s, img width = %s", ScreenUtil.getScreenWidth(),width);
+                    NLog.d(MainLog.getLogTag(), "screen width = %s, img width = %s", ScreenUtil.getScreenWidth(FrameworkApplication.getContext()),width);
                     ActivityHelper.putIntShareData(getContext(),"WallPaperWidth",width);
                     onBindData(convertView,data,position);
 

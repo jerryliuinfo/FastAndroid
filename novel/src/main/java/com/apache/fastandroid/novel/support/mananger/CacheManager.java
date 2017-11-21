@@ -27,7 +27,7 @@ import com.apache.fastandroid.novel.support.util.NovelLog;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.file.FileUtils;
 import com.tesla.framework.common.util.sdcard.SdcardUtils;
-import com.tesla.framework.common.util.sp.SharedPreferencesUtil;
+import com.tesla.framework.common.util.sp.SPUtils;
 import com.tesla.framework.support.cache.ACache;
 import com.tesla.framework.ui.widget.ToastUtils;
 
@@ -63,11 +63,11 @@ public class CacheManager {
     }
 
     public List<String> getSearchHistory() {
-        return SharedPreferencesUtil.getInstance().getObject(getSearchHistoryKey(), List.class);
+        return SPUtils.getObject(getSearchHistoryKey(), List.class);
     }
 
     public void saveSearchHistory(Object obj) {
-        SharedPreferencesUtil.getInstance().putObject(getSearchHistoryKey(), obj);
+        SPUtils.putObject(getSearchHistoryKey(), obj);
     }
 
     private String getSearchHistoryKey() {
@@ -209,7 +209,7 @@ public class CacheManager {
             if (clearReadPos) {
                 //防止再次弹出性别选择框，sp要重写入保存的性别
                 String chooseSex = SettingManager.getInstance().getUserChooseSex();
-                SharedPreferencesUtil.getInstance().removeAll();
+                SPUtils.removeAll();
                 SettingManager.getInstance().saveUserChooseSex(chooseSex);
             }
             // 清空书架

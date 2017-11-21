@@ -1,4 +1,4 @@
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.bitmap;
 
 import android.content.Context;
 import android.content.res.Resources;

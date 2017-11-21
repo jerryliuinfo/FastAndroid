@@ -23,6 +23,9 @@ public class Sdk extends ABizLogic {
         return new Sdk();
     }
 
+
+
+
     public WallpaperBeans getWallpaperList(int page) throws TaskException{
         Setting action = newSetting("getWallpaper", "wallpaper/newestorhot/content", "获取最新壁纸列表");
         action.getExtras().put(BASE_URL, newSettingExtra(BASE_URL, "http://apps.tclclouds.com/api/", ""));

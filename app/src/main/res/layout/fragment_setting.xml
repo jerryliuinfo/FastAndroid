@@ -41,6 +41,10 @@
             android:layout_width="match_parent"
             android:layout_height="8dp"
             android:background="#eee" />
+
+
+
+
         <TextView
             android:id="@+id/tv_logout"
             android:layout_width="match_parent"
@@ -51,7 +55,6 @@
             android:background="@color/colorAccent"
             android:textColor="@color/white"
             android:text="退出账号"
-
             />
 
 

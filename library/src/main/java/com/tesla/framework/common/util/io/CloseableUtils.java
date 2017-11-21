@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.io;
 
 import android.database.Cursor;
 

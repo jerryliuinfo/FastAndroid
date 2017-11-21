@@ -1,4 +1,4 @@
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.sp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
