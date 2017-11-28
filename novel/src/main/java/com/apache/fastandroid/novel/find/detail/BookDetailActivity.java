@@ -6,14 +6,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apache.fastandroid.novel.R;
 import com.apache.fastandroid.novel.find.bean.BookDetail;
 import com.apache.fastandroid.novel.find.bean.RecommendBook;
-import com.apache.fastandroid.novel.support.EventManager;
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.apache.fastandroid.novel.support.sdk.NovelSdk;
 import com.apache.fastandroid.novel.support.sqlite.CollectionDB;
@@ -22,8 +20,8 @@ import com.apache.fastandroid.novel.support.util.NovelLog;
 import com.apache.fastandroid.novel.view.DrawableCenterButton;
 import com.apache.fastandroid.novel.view.TagColor;
 import com.apache.fastandroid.novel.view.TagGroup;
-import com.tesla.framework.common.util.format.FormatUtil;
 import com.tesla.framework.common.util.ResUtil;
+import com.tesla.framework.common.util.format.FormatUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.network.task.WorkTask;
@@ -106,7 +104,7 @@ public class BookDetailActivity extends BaseActivity {
         }
         setToolbarTitle("书籍详情");
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container_hot_review,
+       /* getSupportFragmentManager().beginTransaction().replace(R.id.container_hot_review,
                 HotReviewFragment.newFragment(mBookId)).commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.container_recommand_book_list,
                 RecommandBooksFragment.newFragment(mBookId)).commit();
@@ -129,7 +127,7 @@ public class BookDetailActivity extends BaseActivity {
 
                 }
             }
-        });
+        });*/
 
 
     }

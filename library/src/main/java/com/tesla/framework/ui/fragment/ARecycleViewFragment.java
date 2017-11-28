@@ -1,8 +1,11 @@
 package com.tesla.framework.ui.fragment;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -12,6 +15,8 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.adpater.BasicRecycleViewAdapter;
 import com.tesla.framework.ui.fragment.adpater.IPagingAdapter;
+import com.tesla.framework.ui.fragment.adpater.drag.ItemDragHelperCallback;
+import com.tesla.framework.ui.fragment.adpater.drag.OnItemMoveListener;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.header.AHeaderItemViewCreator;
 
@@ -40,6 +45,15 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
     @Override
     public RecyclerView getRefreshView() {
         return mRecycleView;
+    }
+
+
+
+    @Override
+    protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
+        super.layoutInit(inflater, savedInstanceSate);
+        setupDragMove();
+
     }
 
     @Override
@@ -89,7 +103,18 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
         if (((BasicRecycleViewAdapter) getAdapter()).getOnItemClickListener() != this) {
             ((BasicRecycleViewAdapter) getAdapter()).setOnItemClickListener(this);
         }
+
+
     }
+
+    @Override
+    protected void setupDragMove(){
+        //设置滑动相关
+        ItemDragHelperCallback itemDragHelperCallback = new ItemDragHelperCallback((OnItemMoveListener) getAdapter());
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(itemDragHelperCallback);
+        itemTouchHelper.attachToRecyclerView(getRefreshView());
+    }
+
 
 
     @Override

@@ -12,8 +12,8 @@ import com.tesla.framework.ui.fragment.itemview.IITemView;
  * Created by 01370340 on 2017/9/3.
  */
 
-public class NewsItemViewCreator extends BaseItemViewCreator<NewsBean> {
-    public NewsItemViewCreator(Activity context) {
+public class InformationItemViewCreator extends BaseItemViewCreator<NewsBean> {
+    public InformationItemViewCreator(Activity context) {
         super(context);
     }
 
@@ -24,7 +24,7 @@ public class NewsItemViewCreator extends BaseItemViewCreator<NewsBean> {
 
     @Override
     public IITemView<NewsBean> newItemView(View contentView, int viewType) {
-        return new NewsItemView(getContext(),contentView);
+        return new InformationItemView(getContext(),contentView);
     }
 
 

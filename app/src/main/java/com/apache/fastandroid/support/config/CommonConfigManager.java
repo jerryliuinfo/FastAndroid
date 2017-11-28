@@ -10,15 +10,15 @@ import com.tesla.framework.common.util.sp.BaseSPConfigManager;
  */
 
 public class CommonConfigManager extends BaseSPConfigManager {
+
     public static final String SP_NAME = "sp_common";
     
     private static CommonConfigManager instance = null;
 
-    public CommonConfigManager(Context context) {
+    private CommonConfigManager(Context context) {
         super(context);
     }
 
-    //private CommonConfigManager(){}
     public static CommonConfigManager getInstance(Context context) {
         if (instance == null) {
             synchronized (CommonConfigManager.class) {

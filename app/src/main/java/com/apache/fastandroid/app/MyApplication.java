@@ -14,7 +14,8 @@ import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.support.TUncaughtExceptionHandler;
-import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegate;
+import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegateV2;
+import com.apache.fastandroid.support.imageloader.GlideImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -29,7 +30,6 @@ import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.db.FastAndroidDB;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.activity.PermissionActivityHelper;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
 import java.io.File;
@@ -66,13 +66,11 @@ public class MyApplication extends Application {
 
 
         //初始化异常处理
-        TaskException.config(new FastAndroidExceptionDelegate());
+        TaskException.config(new FastAndroidExceptionDelegateV2());
         //初始化db
         FastAndroidDB.setDB();
 
         BaseActivity.setHelper(SwipeActivityHelper.class);
-        //android 6.0权限适配
-        BaseActivity.setPermissionHelper(PermissionActivityHelper.class);
         if (activityLifecycleCallbacks == null){
             activityLifecycleCallbacks = new ActivityLifeCycleReportCallback();
         }
@@ -198,18 +196,13 @@ public class MyApplication extends Application {
         String imageLoaderClassName = SettingUtility.getStringSetting("imageLoader");
         if (!TextUtils.isEmpty(imageLoaderClassName)){
             try {
-                try {
-                    return (IImageLoaderstrategy) Class.forName(imageLoaderClassName).newInstance();
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                return (IImageLoaderstrategy) Class.forName(imageLoaderClassName).newInstance();
+            }catch (Exception e){
+                return new GlideImageLoader();
             }
         }
-        return null;
+        //如果没有配置，默认使用glide加载
+        return new GlideImageLoader();
     }
 
 }

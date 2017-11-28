@@ -10,15 +10,14 @@ import java.util.List;
 
 /**
  * Created by 01370340 on 2017/9/23.
+ * 用来处理权限相关
  */
 
-public  class PermissionActivityHelper extends BaseActivityHelper implements IPermissionsSubject,IActivityHelper {
+public  class PermissionActivityHelper  implements IPermissionsSubject,IActivityHelper {
 
     private List<IPermissionsObserver> observerList;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         observerList = new ArrayList<>();
     }
 
@@ -42,9 +41,5 @@ public  class PermissionActivityHelper extends BaseActivityHelper implements IPe
         for (IPermissionsObserver observer : observerList) {
             observer.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-    }
-
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        notifyActivityResult(requestCode, permissions, grantResults);
     }
 }

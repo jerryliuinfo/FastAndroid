@@ -9,8 +9,6 @@ import android.view.View;
 import com.tesla.framework.support.permission.IPermissionsObserver;
 import com.tesla.framework.support.permission.IPermissionsSubject;
 
-import java.util.List;
-
 /**
  * 用户注册回调BaseActivity的生命周期及相关的方法，自行添加
  * 1.可以在Activity生命周期方法内做一些业务处理
@@ -33,8 +31,7 @@ public class BaseActivityHelper implements IPermissionsSubject,IActivityHelper {
         return mActivity;
     }
 
-    protected void onCreate(Bundle savedInstanceState) {
-    }
+
 
     public void onPostCreate(Bundle savedInstanceState) {
 
@@ -112,24 +109,29 @@ public class BaseActivityHelper implements IPermissionsSubject,IActivityHelper {
         return false;
     }
 
-    private List<IPermissionsObserver> observerList;
+
+
+    private PermissionActivityHelper mPermissionActivityHelper = new PermissionActivityHelper();
+    protected void onCreate(Bundle savedInstanceState) {
+        mPermissionActivityHelper.onCreate(savedInstanceState);
+    }
     @Override
     public void attach(IPermissionsObserver observer) {
-        if (observerList != null && !observerList.contains(observer)){
-            observerList.add(observer);
-        }
+        mPermissionActivityHelper.attach(observer);
     }
 
     @Override
     public void detach(IPermissionsObserver observer) {
-        if (observerList != null && observerList.contains(observer)){
-            observerList.remove(observer);
-        }
+        mPermissionActivityHelper.detach(observer);
     }
 
     @Override
     public void notifyActivityResult(int requestCode, String[] permissions, int[] grantResults) {
+        mPermissionActivityHelper.notifyActivityResult(requestCode,permissions,grantResults);
+    }
 
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
+        notifyActivityResult(requestCode,permissions,grantResults);
     }
 
 }

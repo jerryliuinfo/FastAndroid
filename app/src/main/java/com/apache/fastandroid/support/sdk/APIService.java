@@ -21,4 +21,7 @@ public interface APIService {
 
     @GET("/checkAppVersion")
     Call<BaseBean<UpdateBean>> checkAppVersion(@Query("col")int versionCode);
+
+
+
 }

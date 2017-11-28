@@ -18,6 +18,8 @@ import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
 import com.tesla.framework.support.sdk.TeslaSDK;
+import com.tesla.framework.ui.activity.FragmentArgs;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
@@ -26,17 +28,20 @@ import com.tesla.framework.ui.fragment.itemview.header.AHeaderItemViewCreator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by jerryliu on 2017/4/3.
  */
 
-public class TestRecycleViewFragment extends ARecycleViewSwipeRefreshFragment<HomeBean,ArrayList<HomeBean>,HeaderBean> {
+public class TestRecycleHeaderViewFragment extends ARecycleViewSwipeRefreshFragment<HomeBean,ArrayList<HomeBean>,HeaderBean> {
 
-    public static TestRecycleViewFragment newFragment() {
+    public static void launch(Activity from) {
+        FragmentArgs args =  new FragmentArgs();
+        FragmentContainerActivity.launch(from,TestRecycleHeaderViewFragment.class,args);
+    }
+    public static TestRecycleHeaderViewFragment newFragment() {
         Bundle args = new Bundle();
-        TestRecycleViewFragment fragment = new TestRecycleViewFragment();
+        TestRecycleHeaderViewFragment fragment = new TestRecycleHeaderViewFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -61,7 +66,7 @@ public class TestRecycleViewFragment extends ARecycleViewSwipeRefreshFragment<Ho
         if (mode == RefreshMode.refresh){
             mode = RefreshMode.reset;
         }
-        //new LoadDataTask(mode).execute();
+        new LoadDataTask(mode).execute();
 
     }
 
@@ -70,19 +75,22 @@ public class TestRecycleViewFragment extends ARecycleViewSwipeRefreshFragment<Ho
         return new AHeaderItemViewCreator<HeaderBean>() {
             @Override
             public int[][] setHeaders() {
-                return new int[][]{{R.layout.home_item_header, 9}};
+                return new int[][]{{R.layout.home_item_header, 9},{R.layout.home_item_header2, 10}};
             }
 
             @Override
             public IITemView<HeaderBean> newItemView(View contentView, int viewType) {
-                headItemViewHolder = new HeadItemViewHolder(getActivity(), contentView);
-                return headItemViewHolder;
+                //headItemViewHolder = new HeadItemViewHolder(getActivity(), contentView);
+                if (viewType == 9){
+                    return new HeadItemViewHolder(getActivity(),contentView);
+                }
+                return new HeadItem2ViewHolder(getActivity(),contentView);
             }
         };
     }
 
     @Override
-    protected IItemViewCreator<HomeBean> configItemViewCreator() {
+    public IItemViewCreator<HomeBean> configItemViewCreator() {
         return new IItemViewCreator<HomeBean>() {
             @Override
             public View newContentView(LayoutInflater inflater, ViewGroup parent, int viewType) {
@@ -142,10 +150,10 @@ public class TestRecycleViewFragment extends ARecycleViewSwipeRefreshFragment<Ho
         @Override
         protected void onFinished() {
             super.onFinished();
-            if (headItemViewHolder != null){
+            /*if (headItemViewHolder != null){
                 HeaderBean headerBean = new HeaderBean("header:"+new Random().nextInt(20));
                 headItemViewHolder.updateHeaderView(headerBean);
-            }
+            }*/
         }
     }
 
@@ -160,7 +168,7 @@ public class TestRecycleViewFragment extends ARecycleViewSwipeRefreshFragment<Ho
         HomeBean person;
         int index = 1;
         int pageSize = 10;
-        for (int i = 0; i < 8; i++){
+        for (int i = 0; i < 3; i++){
             person = new HomeBean("name:"+(index * pageSize + i), "age: "+ (index * pageSize + i));
             persons.add(person);
         }

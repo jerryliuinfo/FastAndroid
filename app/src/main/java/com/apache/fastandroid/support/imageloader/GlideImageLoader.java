@@ -19,6 +19,7 @@ import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
 import com.tesla.framework.component.imageloader.IImageLoaderInit;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.IImagePahtFromCache;
@@ -194,7 +195,7 @@ public class GlideImageLoader implements IImageLoaderstrategy,IImageLoaderInit,I
 
     @Override
     public String getImagePahtFromCache(String url) {
-        FutureTarget<File>  futuer = Glide.with(mContext).load(url).downloadOnly(500,500);
+        FutureTarget<File>  futuer = Glide.with(mContext).load(url).downloadOnly(Target.SIZE_ORIGINAL,Target.SIZE_ORIGINAL);
         try {
             File cacheFile = futuer.get();
             return cacheFile.getAbsolutePath();
@@ -214,7 +215,7 @@ public class GlideImageLoader implements IImageLoaderstrategy,IImageLoaderInit,I
                     .load(url)
                     .asBitmap() //必须
                     .centerCrop()
-                    .into(500, 500)
+                    .into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                     .get();
         } catch (InterruptedException e) {
             e.printStackTrace();

@@ -14,12 +14,12 @@ public abstract class BaseSPConfigManager {
 
     private Context mContext;
 
-    public BaseSPConfigManager(Context context) {
+    protected BaseSPConfigManager(Context context) {
         this.mContext = context;
     }
 
     private SharedPreferences sharedPreference;
-    protected   SharedPreferences getSharedPreference(){
+    protected SharedPreferences getSharedPreference(){
         if (sharedPreference == null){
             sharedPreference = mContext.getSharedPreferences(configSPFileName(), Context.MODE_PRIVATE);
         }

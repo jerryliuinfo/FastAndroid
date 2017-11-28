@@ -9,15 +9,19 @@ import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.network.biz.ABizLogic;
+import com.tesla.framework.network.http.interceptor.DefaultCacheInterceptor;
+import com.tesla.framework.network.http.interceptor.HeaderInterceptor;
 import com.tesla.framework.network.task.TaskException;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -114,7 +118,6 @@ public class OkHttpUtility implements IHttpUtility {
 
 		try {
 			Response response = getOkHttpClient().newCall(request).execute();
-
 			NLog.w(getTag(action, method), "Http-code = %d", response.code());
 			if (! (response.code() == HttpURLConnection.HTTP_OK || response.code() == HttpURLConnection.HTTP_PARTIAL)) {
 				String responseStr = response.body().string();
@@ -169,7 +172,6 @@ public class OkHttpUtility implements IHttpUtility {
 
 
 	protected <T> T parseResponse(String resultStr, Class<T> responseCls) throws TaskException  {
-		NLog.w("BizLogic",  "parseResponse = %s", resultStr);
 		if (responseCls.getSimpleName().equals("String"))
 			return (T) resultStr;
 
@@ -179,13 +181,26 @@ public class OkHttpUtility implements IHttpUtility {
 
 	private static  OkHttpClient mOkHttpClient;
 
+	public static final int READ_TIMEOUT = 30;//单位:s
+	public static final int WRITE_TIMEOUT = 30;//单位:s
+	public static final int CONNECT_TIMEOUT = 30;//单位:s
+
+
+
 	public synchronized OkHttpClient getOkHttpClient() {
 		if (mOkHttpClient == null){
 			OkHttpClient.Builder okBuilder = new OkHttpClient.Builder();
-			okBuilder.readTimeout(20, TimeUnit.SECONDS);
-			okBuilder.connectTimeout(10, TimeUnit.SECONDS);
-			okBuilder.writeTimeout(20, TimeUnit.SECONDS);
+			okBuilder.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS);
+			okBuilder.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS);
+			okBuilder.writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS);
+			okBuilder.addInterceptor(new DefaultCacheInterceptor(FrameworkApplication.getContext()));
+			okBuilder.addNetworkInterceptor(new DefaultCacheInterceptor(FrameworkApplication.getContext()));
+			okBuilder.addInterceptor(new HeaderInterceptor());
 
+			//缓存
+			File cacheFile = new File(FrameworkApplication.getContext().getCacheDir(), "cache");
+			Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
+			okBuilder.cache(cache);
 
 //			okBuilder.addInterceptor(new HttpHeadInterceptor());
 //			okBuilder.addInterceptor(getInterceptor());

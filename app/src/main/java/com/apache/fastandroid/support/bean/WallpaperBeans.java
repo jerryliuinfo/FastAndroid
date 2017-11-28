@@ -6,9 +6,7 @@ import com.tesla.framework.network.biz.ResultBean;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by wangdan on 16/3/23.
- */
+
 public class WallpaperBeans extends ResultBean implements Serializable {
 
     private static final long serialVersionUID = 7798837539105164175L;

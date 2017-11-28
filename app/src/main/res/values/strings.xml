@@ -36,4 +36,7 @@
 
     <!--Splash页面结束-->
 
+
+    <string name="photo_collections">图集：%1$s</string>
+
 </resources>

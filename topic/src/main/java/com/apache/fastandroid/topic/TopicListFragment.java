@@ -1,5 +1,6 @@
 package com.apache.fastandroid.topic;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +13,8 @@ import com.apache.fastandroid.topic.view.TopicItemViewCreator;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
+import com.tesla.framework.ui.activity.FragmentArgs;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
@@ -23,6 +26,10 @@ import java.util.List;
 
 public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBean,TopicBeans,TopicBean> {
 
+    public static void launch(Activity from) {
+        FragmentArgs args =  new FragmentArgs();
+        FragmentContainerActivity.launch(from,TopicListFragment.class,args);
+    }
     public static TopicListFragment newFragment() {
         Bundle args = new Bundle();
         TopicListFragment fragment = new TopicListFragment();

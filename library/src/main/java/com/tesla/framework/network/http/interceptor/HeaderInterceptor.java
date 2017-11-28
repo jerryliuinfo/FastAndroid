@@ -28,7 +28,15 @@ public class HeaderInterceptor implements Interceptor {
                     .addHeader("If-Modified-Since", "Tue, 02 Aug 2016 03:20:06 UTC")
                     .build();
             return chain.proceed(request);
+        }else if (url.contains("c.m.163.com")){
+            Request build = chain.request().newBuilder()
+                    .addHeader("Content-Type", "application/json")
+                    .build();
+            return chain.proceed(build);
         }
+
+
+
         return chain.proceed(original);
     }
 }

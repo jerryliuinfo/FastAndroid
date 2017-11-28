@@ -20,14 +20,14 @@ public class IsLoginedAction extends IAction {
     public boolean interrupt() {
         boolean interupt =  ArtemisContext.getUserBean() == null;
         if (interupt){
-            doInterupt();
+            doInterrupt();
         }
         return interupt;
 
     }
 
     @Override
-    public void doInterupt() {
+    public void doInterrupt() {
         try {
             ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginActivity",null,null,new Object[]{getContext()});
         } catch (Exception e) {

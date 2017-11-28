@@ -16,6 +16,8 @@ import com.tesla.framework.common.util.StrUtil;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.bean.RefreshConfig;
+import com.tesla.framework.support.paging.IPaging;
+import com.tesla.framework.support.paging.index.IndexPaging;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
@@ -77,6 +79,10 @@ public class WallPaperFragment extends ARecycleViewSwipeRefreshFragment<Wallpape
         new WallPaperTask(mode).execute();
     }
 
+    @Override
+    protected IPaging<WallpaperBean, WallpaperBeans> newPaging() {
+        return new IndexPaging<>();
+    }
 
     class WallPaperTask extends APagingTask<Void,Void,WallpaperBeans>{
 

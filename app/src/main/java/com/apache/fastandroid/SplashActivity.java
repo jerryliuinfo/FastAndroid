@@ -36,7 +36,8 @@ public class SplashActivity extends BaseActivity {
                     .setCallback(new SplashCountDownView.CountDownCallbackImpl(){
                         @Override
                         public void onFinish(long delay) {
-                            jump();
+                            //jump();
+                            toMain(null);
                         }
 
                         @Override
@@ -46,7 +47,8 @@ public class SplashActivity extends BaseActivity {
                     }).start();
 
         }else {
-            jump();
+            //jump();
+            toMain(null);
         }
 
     }

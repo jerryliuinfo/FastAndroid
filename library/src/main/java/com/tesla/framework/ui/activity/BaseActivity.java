@@ -48,8 +48,6 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     private BaseActivityHelper mHelper;
 
 
-    private static Class<? extends PermissionActivityHelper> mPermissionHelperClass;
-    private PermissionActivityHelper mPermissionHelper;
 
 
     private int theme = 0;// 当前界面设置的主题
@@ -82,9 +80,7 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
         mHelperClass = clazz;
     }
 
-    public static void setPermissionHelper(Class<? extends PermissionActivityHelper> clazz) {
-        mPermissionHelperClass = clazz;
-    }
+
 
     protected int configTheme() {
         if (mHelper != null) {
@@ -104,15 +100,6 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
                 if (mHelperClass != null) {
                     mHelper = mHelperClass.newInstance();
                     mHelper.bindActivity(this);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        if (mPermissionHelper == null) {
-            try {
-                if (mPermissionHelperClass != null) {
-                    mPermissionHelper = mPermissionHelperClass.newInstance();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -487,11 +474,9 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (mHelper != null){
-            mHelper.notifyActivityResult(requestCode,permissions,grantResults);
+            mHelper.onRequestPermissionsResult(requestCode,permissions,grantResults);
         }
-        if (mPermissionHelper != null){
-            mPermissionHelper.onRequestPermissionsResult(requestCode,permissions,grantResults);
-        }
+
     }
 
     public BaseActivityHelper getActivityHelper() {

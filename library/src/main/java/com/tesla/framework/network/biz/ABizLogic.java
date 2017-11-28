@@ -189,6 +189,7 @@ public abstract class ABizLogic implements IHttpUtility{
             if (actionSetting != null && actionSetting.getExtras().containsKey(BASE_URL))
                 config.baseUrl = actionSetting.getExtras().get(BASE_URL).getValue().toString();
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return config;

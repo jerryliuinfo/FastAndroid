@@ -24,30 +24,22 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
-    compile thirddependencies.appcompatV7
     compile thirddependencies.support_customtabs
-
-    compile thirddependencies.cardview
-
-    compile thirddependencies.design
-
-
-    compile thirddependencies.rxandroid
-    compile thirddependencies.rxjava
-
-
-    compile thirddependencies.retrofit_adapter_rxjava
-    compile thirddependencies.retrofit_converter_gson
-    compile thirddependencies.okhttp3_log_interceptor
-
-    compile thirddependencies.eventbus
-
 
 
 
     compile(thirddependencies.retrofit) {
         exclude group: "com.squareup.okhttp3"
     }
+
+    compile thirddependencies.rxandroid
+    compile thirddependencies.rxjava
+    compile thirddependencies.retrofit_adapter_rxjava
+    compile thirddependencies.retrofit_converter_gson
+    compile thirddependencies.okhttp3_log_interceptor
+
+    compile thirddependencies.eventbus
+
     compile project(':library')
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'

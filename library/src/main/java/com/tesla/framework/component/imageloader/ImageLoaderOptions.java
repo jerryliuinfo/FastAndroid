@@ -169,9 +169,11 @@ public class ImageLoaderOptions {
         private String url;  // 图片地址
 
         private int holderId = -1;  // 设置展位图
-        private int errorId = -1;  //加载错误的图片
-
         private Drawable holderDrawable;  // 设置展位图
+
+
+
+        private int errorId = -1;  //加载错误的图片
         private Drawable errorDrawable;  //加载错误的图片
 
         private int emptyUrlId = 0;        //url为空时加载资源

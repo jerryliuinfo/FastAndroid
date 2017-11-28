@@ -1,11 +1,24 @@
 package com.apache.fastandroid.support.sdk;
 
+import com.apache.fastandroid.R;
+import com.apache.fastandroid.news.NewsApiConstants;
+import com.apache.fastandroid.news.http.NewsHttpUtility;
+import com.apache.fastandroid.support.bean.NewsChannelTable;
+import com.apache.fastandroid.support.bean.NewsSummary;
+import com.apache.fastandroid.support.bean.NewsSummaryBeans;
 import com.apache.fastandroid.support.bean.WallpaperBeans;
+import com.apache.fastandroid.support.sdk.bean.UpdateBean;
 import com.tesla.framework.common.setting.Setting;
+import com.tesla.framework.common.util.ListUtil;
+import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.Params;
 import com.tesla.framework.network.task.TaskException;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by 01370340 on 2017/11/19.
@@ -19,10 +32,42 @@ public class Sdk extends ABizLogic {
         return config;
     }
 
+    private Sdk(){
+
+    }
+    private Sdk(CacheMode cacheMode) {
+        super(cacheMode);
+    }
+
+    public static Sdk newInstance(CacheMode mode){
+        return new Sdk(mode);
+    }
+
     public static Sdk newInstance(){
         return new Sdk();
     }
 
+    /**
+     * 检测版本更新
+     * @return
+     * @throws Exception
+     */
+    public UpdateBean checkAppVersion() throws Exception{
+        /*BaseHttpUtils httpUtils = BaseHttpUtils.getInstance(MyApplication.getContext(),ApiConstans.Urls.BAIDU_IMAGES_URLS);
+        APIService apiService = httpUtils.getRetrofit().create(APIService.class);
+        Call<BaseBean<UpdateBean>> call =  apiService.checkAppVersion(PublishVersionManager.getVersionCode());
+
+
+        if (call != null){
+            Response<BaseBean<UpdateBean>> response = call.execute();
+            if (response != null && response.body() != null){
+                BaseBean<UpdateBean> responseBean = response.body();
+                checkRepsonse(responseBean);
+                return responseBean.getData();
+            }
+        }*/
+        throw new TaskException("server error");
+    }
 
 
 
@@ -45,4 +90,58 @@ public class Sdk extends ABizLogic {
         }
         return beans;
     }
+
+
+    public List<NewsChannelTable> loadNewsChannelsStatic(){
+        List<String> channelNameList = Arrays.asList(ResUtil.getStringArray(R.array.news_channel_name_static));
+        List<String> channelIdList = Arrays.asList(ResUtil.getStringArray(R.array.news_channel_id_static));
+        ArrayList<NewsChannelTable> newsChannelTables=new ArrayList<>();
+        for (int i = 0; i < channelNameList.size(); i++) {
+            NewsChannelTable entity = new NewsChannelTable(channelNameList.get(i), channelIdList.get(i)
+                    , NewsApiConstants.getType(channelIdList.get(i)), i <= 5, i, true);
+            newsChannelTables.add(entity);
+        }
+        return newsChannelTables;
+    }
+
+
+    /**
+     *
+     *  @GET("nc/article/{type}/{id}/{startPage}-20.html")
+     *  baseUrl:http://c.m.163.com/
+     * 获取新闻列表
+     * @param type
+     * @param id
+     * @param startPage
+     * @return
+     */
+    public NewsSummaryBeans getNewsListData(String type, final String id, String startPage)throws TaskException{
+        //http://c.m.163.com/
+        Setting action = newSetting("getNewsListData",assemblePath("nc/article",type,id,startPage) +("-20.html"),"获取最新壁纸列表");
+        action.getExtras().put(BASE_URL, newSettingExtra(BASE_URL, "http://c.m.163.com/", ""));
+        action.getExtras().put(HTTP_UTILITY, newSettingExtra(HTTP_UTILITY, NewsHttpUtility.class.getName(), ""));
+
+        HttpConfig httpConfig = getHttpConfig();
+        //httpConfig.addHeader("Cache-Control","max-age=0");
+
+        Params params = new Params();
+        params.addParameter("id",id);
+        NewsSummary[] beans = doGet(httpConfig,action, params, NewsSummary[].class);
+
+        List<NewsSummary> list =  ListUtil.arrayToList(beans);
+        return new NewsSummaryBeans(list);
+    }
+
+
+    public String assemblePath(String... params){
+        StringBuffer buffer = new StringBuffer();
+        for (int i = 0; i < params.length; i++) {
+            buffer.append(params[i]);
+            if (i < params.length - 1){
+                buffer.append("/");
+            }
+        }
+        return buffer.toString();
+    }
 }
+

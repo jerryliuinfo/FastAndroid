@@ -98,6 +98,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
         setUpRefreshView();
         setUpRefreshViewWithConfig(getRefreshConfig());
         bindAdapter(getAdapter());
+        //setupDragMove();
     }
 
     @Override
@@ -667,5 +668,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
 
     }
 
+    protected void setupDragMove(){
 
+    }
 }

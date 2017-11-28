@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_test_worktask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="test_worktask"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/btn_test_swipe_refresh_recycleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下来刷新,上来加载更多"
+        android:textAllCaps="false"
+        />
+    <Button
+        android:id="@+id/btn_test_recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="没有下拉刷新的Fragment"
+        android:textAllCaps="false"
+        />
+    <Button
+        android:id="@+id/btn_header_recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="带header的recycleView"
+        android:textAllCaps="false"
+        />
+    <Button
+        android:id="@+id/btn_multi_type_recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="item多个样式的recycleView"
+        android:textAllCaps="false"
+        />
+    <Button
+        android:id="@+id/btn_test_permission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="test_permission"
+        android:textAllCaps="false"
+        />
+</LinearLayout>

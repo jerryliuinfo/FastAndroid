@@ -5,9 +5,7 @@ import com.tesla.framework.component.orm.annotation.PrimaryKey;
 
 import java.io.Serializable;
 
-/**
- * Created by wangdan on 16/3/23.
- */
+
 public class WallpaperBean implements Serializable {
 
     private static final long serialVersionUID = -6886432578977226567L;

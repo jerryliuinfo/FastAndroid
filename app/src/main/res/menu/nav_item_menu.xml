@@ -7,7 +7,7 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/nav_novel"/>
         <item
-            android:id="@+id/nav_item_posts"
+            android:id="@+id/nav_item_topic"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/nav_posts"/>
         <item

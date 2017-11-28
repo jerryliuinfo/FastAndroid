@@ -11,6 +11,7 @@ import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.permission.SdcardPermissionAction;
 import com.apache.fastandroid.widget.WallpaperViewer;
 import com.apache.fastandroid.widget.WaveView;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.support.inject.ViewInject;
@@ -132,6 +133,7 @@ public class WallpaperSettingFragment extends ABaseFragment implements Wallpaper
         mPhotoView.setOnPhotoTapListener(new AttacherInterface.OnPhotoTapListener() {
             @Override
             public void onPhotoTap(View view, float x, float y) {
+                NLog.d(TAG, "onPhotoTap x = %s , y = %s", x,y);
                 getActivity().finish();
             }
         });
@@ -140,6 +142,7 @@ public class WallpaperSettingFragment extends ABaseFragment implements Wallpaper
 
     @Override
     public void onWallpaperViewerScroll(float percent) {
+        NLog.d(TAG, "onWallpaperViewerScroll percent = %s", percent);
         mPhotoView.getAttacher().onMove(percent);
     }
 }

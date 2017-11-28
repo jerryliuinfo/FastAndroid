@@ -43,7 +43,7 @@ public class IAction {
         }
     }
 
-    public void doInterupt(){
+    public void doInterrupt(){
 
     }
 

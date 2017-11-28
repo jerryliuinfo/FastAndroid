@@ -20,11 +20,12 @@ import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
-import com.apache.fastandroid.pic.PicTabsFragment;
-import com.apache.fastandroid.wallpaper.WallPaperFragment;
+import com.apache.fastandroid.news.MainNewsTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.support.action.IsLoginedAction;
+import com.apache.fastandroid.test.TestFragment;
 import com.apache.fastandroid.video.VideoTabsFragment;
+import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
@@ -195,7 +196,7 @@ public class MainActivity extends MyBaseActivity{
     public void onMenuItemClicked(int itemId, String title){
         Fragment fragment = null;
         switch (itemId){
-            case R.id.nav_item_posts:
+            case R.id.nav_item_topic:
                 try {
                     Object obj = ModularizationDelegate.getInstance().getObjectData(ModuleConstans.MODULE_TOPIC_NAME+":getMainTabsFragment",null,new Object[]{});
                     if (obj != null && obj instanceof Fragment){
@@ -221,7 +222,8 @@ public class MainActivity extends MyBaseActivity{
                 fragment = WallPaperFragment.newFragment();
                 break;
             case R.id.nav_item_pic:
-                fragment = PicTabsFragment.newFragment();
+                //fragment = PicTabsFragment.newFragment();
+                fragment = MainNewsTabsFragment.newFragment();
                 break;
             case R.id.nav_item_video:
                 fragment = VideoTabsFragment.newFragment();
@@ -231,6 +233,7 @@ public class MainActivity extends MyBaseActivity{
                 break;
             case R.id.nav_item_test:
                 fragment = TestFragment.newFragment();
+                //fragment = TestRecycleHeaderViewFragment.newFragment();
                 break;
             case R.id.nav_item_setting:
                 SettingFragment.launch(this);

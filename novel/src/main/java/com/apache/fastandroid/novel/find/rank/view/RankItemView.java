@@ -1,7 +1,6 @@
 package com.apache.fastandroid.novel.find.rank.view;
 
 import android.app.Activity;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,9 +36,7 @@ public class RankItemView extends ARecycleViewItemViewHolder<RankingList.MaleBea
     @Override
     public void onBindData(View convertView, final RankingList.MaleBean data, int position) {
 
-        if (!TextUtils.isEmpty(data.cover)){
-            ImageLoaderManager.getInstance().showImage(ivIcon, NovelConstans.IMG_BASE_URL + data.cover,getContext());
-        }
+        ImageLoaderManager.getInstance().showImage(ivIcon, NovelConstans.IMG_BASE_URL + data.cover,getContext());
         tvTitle.setText(data.title);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

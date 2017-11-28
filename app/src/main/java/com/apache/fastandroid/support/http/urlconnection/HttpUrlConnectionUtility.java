@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.tesla.framework.common.setting.Setting;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.IHttpUtility;
 import com.tesla.framework.network.http.Params;
@@ -162,7 +161,6 @@ public class HttpUrlConnectionUtility implements IHttpUtility {
     }
 
     protected <T> T parseResponse(String resultStr, Class<T> responseCls) throws TaskException {
-        NLog.w("BizLogic",  "parseResponse = %s", resultStr);
         if (responseCls.getSimpleName().equals("String"))
             return (T) resultStr;
 

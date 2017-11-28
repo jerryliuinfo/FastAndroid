@@ -35,7 +35,11 @@ public class ResUtil {
         return string;
     }
 
-
+    /**
+     * 获取xml中定义的字符串数组
+     * @param resId
+     * @return
+     */
     public static final String[] getStringArray(int resId) {
         Context context = FrameworkApplication.getContext();
         if (context == null || context.getResources() == null){
@@ -51,7 +55,8 @@ public class ResUtil {
     }
 
     /**
-     * 获取本地资源字符串
+     * 根据字符串名称获取字符串值,例如传"nav_posts" 获取到的值为主题帖子
+     *  <string name="nav_posts">主题帖子</string>
      * @param  resStr
      */
     public static final String getString(String resStr) {

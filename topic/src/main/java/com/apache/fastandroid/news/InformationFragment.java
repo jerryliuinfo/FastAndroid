@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.apache.fastandroid.news.bean.NewsBean;
 import com.apache.fastandroid.news.bean.NewsBeans;
 import com.apache.fastandroid.news.sdk.NewsSDK;
-import com.apache.fastandroid.news.view.NewsItemViewCreator;
+import com.apache.fastandroid.news.view.InformationItemViewCreator;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
 import com.tesla.framework.network.task.TaskException;
@@ -19,17 +19,17 @@ import java.util.List;
  * Created by 01370340 on 2017/9/3.
  */
 
-public class NewsFragment extends ARecycleViewSwipeRefreshFragment<NewsBean,TopicBeans,TopicBean> {
+public class InformationFragment extends ARecycleViewSwipeRefreshFragment<NewsBean,TopicBeans,TopicBean> {
 
-    public static NewsFragment newFragment() {
+    public static InformationFragment newFragment() {
         Bundle args = new Bundle();
-        NewsFragment fragment = new NewsFragment();
+        InformationFragment fragment = new InformationFragment();
         fragment.setArguments(args);
         return fragment;
     }
     @Override
     protected IItemViewCreator configItemViewCreator() {
-        return new NewsItemViewCreator(getActivity());
+        return new InformationItemViewCreator(getActivity());
     }
 
     @Override

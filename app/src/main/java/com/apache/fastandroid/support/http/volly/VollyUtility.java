@@ -150,7 +150,6 @@ public class VollyUtility implements IHttpUtility {
 
 
     protected <T> T parseResponse(String resultStr, Class<T> responseCls) throws TaskException  {
-        NLog.w("BizLogic",  "parseResponse = %s", resultStr);
         if (responseCls.getSimpleName().equals("String"))
             return (T) resultStr;
 

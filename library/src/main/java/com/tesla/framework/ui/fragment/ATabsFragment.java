@@ -22,6 +22,7 @@ import java.util.Map;
 
 /**
  * Created by jerryliu on 2017/4/9.
+ * 封装ViewPage左右切换的Fragment
  */
 
 public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment implements ViewPager.OnPageChangeListener {

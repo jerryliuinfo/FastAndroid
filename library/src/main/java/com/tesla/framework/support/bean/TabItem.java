@@ -16,13 +16,20 @@ public class TabItem implements Serializable {
 
     private Serializable tag;
 
-    public TabItem() {
-
-    }
-
+    //必须要有title属性
     public TabItem(String type, String title) {
         this.type = type;
         this.title = title;
+    }
+
+    /**
+     * 必须要有title属性
+     * @param title
+     * @param tag
+     */
+    public TabItem(String title,Serializable tag) {
+        this.title = title;
+        this.tag = tag;
     }
 
     public String getType() {

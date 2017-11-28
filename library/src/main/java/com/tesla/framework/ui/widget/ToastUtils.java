@@ -5,9 +5,7 @@ import android.widget.Toast;
 
 import com.tesla.framework.FrameworkApplication;
 
-/**
- * Created by wangdan on 15/4/15.
- */
+
 public class ToastUtils {
 
     private static Toast mToast;

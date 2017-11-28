@@ -29,7 +29,7 @@ public class PicSDK extends ABizLogic {
     public PicSDK() {
     }
 
-    public PicSDK(CacheMode cacheMode) {
+    private PicSDK(CacheMode cacheMode) {
         super(cacheMode);
     }
 

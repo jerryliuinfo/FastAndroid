@@ -3,9 +3,7 @@ package com.tesla.framework.support.permission;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by wangdan on 16/2/26.
- */
+
 public class DefPermissionsSubject implements IPermissionsSubject {
 
     private List<IPermissionsObserver> observers;

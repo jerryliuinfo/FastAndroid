@@ -14,9 +14,7 @@ import com.tesla.framework.R;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
 
 
-/**
- * Created by wangdan on 15/4/26.
- */
+
 public class KitkatViewGroup extends LinearLayout {
 
     private Drawable mInsetForeground;

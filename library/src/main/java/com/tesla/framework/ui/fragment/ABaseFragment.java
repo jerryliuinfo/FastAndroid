@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.biz.IResult;
@@ -44,16 +43,16 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
 
     @Nullable
     @ViewInject(idStr = "layoutLoading")
-    View loadingLayout;// 加载中视图
+    public View loadingLayout;// 加载中视图
     @Nullable
     @ViewInject(idStr = "layoutLoadFailed")
-    View loadFailureLayout;// 加载失败视图
+    public View loadFailureLayout;// 加载失败视图
     @Nullable
     @ViewInject(idStr = "layoutContent")
-    View contentLayout;// 内容视图
+    public View contentLayout;// 内容视图
     @Nullable
     @ViewInject(idStr = "layoutEmpty")
-    View emptyLayout;// 空视图
+    public View emptyLayout;// 空视图
 
 
     // 标志是否ContentView是否为空, 默认是没有数据的
@@ -597,6 +596,6 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
     }
 
     protected void setToolbarTitle(int resId){
-        setToolbarTitle(ResUtil.getString(resId));
+        setToolbarTitle(getString(resId));
     }
 }

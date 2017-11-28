@@ -19,7 +19,7 @@ import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
  * Created by 01370340 on 2017/9/3.
  */
 
-public class NewsItemView extends ARecycleViewItemViewHolder<NewsBean> {
+public class InformationItemView extends ARecycleViewItemViewHolder<NewsBean> {
 
     @ViewInject(idStr = "username")
     TextView username;
@@ -33,7 +33,7 @@ public class NewsItemView extends ARecycleViewItemViewHolder<NewsBean> {
     TextView host_name;
     @ViewInject(idStr = "avatar")
     ImageView avatar;
-    public NewsItemView(Activity context, View itemView) {
+    public InformationItemView(Activity context, View itemView) {
         super(context, itemView);
     }
 

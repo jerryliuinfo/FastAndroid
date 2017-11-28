@@ -13,7 +13,6 @@ import com.tesla.framework.support.action.IAction;
 /**
  * 申请一组权限
  *
- * Created by wangdan on 16/2/26.
  */
 public abstract class APermissionsAction extends IAction implements IPermissionsObserver {
 
@@ -54,14 +53,14 @@ public abstract class APermissionsAction extends IAction implements IPermissions
 
             NLog.d(TAG, "%s permission = %s", "PERMISSION_DENIED", permission);
 
-            doInterupt();
+            doInterrupt();
         }
 
         return interrupt;
     }
 
     @Override
-    public void doInterupt() {
+    public void doInterrupt() {
         // 对没有权限做出处理，默认申请权限
         if (!handlePermissionNone()) {
             NLog.d(TAG, "handlePermissionNone(false)");

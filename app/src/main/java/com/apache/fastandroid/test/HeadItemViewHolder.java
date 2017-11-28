@@ -26,7 +26,7 @@ public class HeadItemViewHolder extends ARecycleViewItemViewHolder<HeaderBean> {
         headView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NLog.d(TestRecycleViewFragment.TAG, "onclick header view");
+                NLog.d(TestRecycleHeaderViewFragment.TAG, "onclick header view");
             }
         });
     }

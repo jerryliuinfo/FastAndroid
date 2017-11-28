@@ -23,14 +23,14 @@ public class WifiAction extends IAction {
         //如果不是wifi就蓝记
         //boolean isWifi =  NetworkHelper.isWifiConnected(FrameworkApplication.getContext());
         if (!isWifi){
-            doInterupt();
+            doInterrupt();
         }
         return !isWifi;
     }
 
     @Override
-    public void doInterupt() {
-        super.doInterupt();
+    public void doInterrupt() {
+        super.doInterrupt();
         //弹出对话框
 
         new MaterialDialog.Builder(getContext())

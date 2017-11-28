@@ -45,13 +45,7 @@ public class TopRankListFragment extends ARecycleViewFragment<RankingList.MaleBe
         super.layoutInit(inflater, savedInstanceSate);
         setToolbarTitle("排行榜");
     }
-/*
-    @Override
-    public void requestData() {
-        super.requestData();
 
-        new LoadRankListData().execute();
-    }*/
 
     @Override
     public void requestData(RefreshMode mode) {
@@ -82,10 +76,7 @@ public class TopRankListFragment extends ARecycleViewFragment<RankingList.MaleBe
             return NovelSdk.getInstance().getRankingList();
         }
 
-        /*@Override
-        public ArrayList<RankingList.MaleBean> workInBackground(Void... params) throws TaskException {
-            return NovelSdk.getInstance().getRankingList();
-        }*/
+
     }
 
 
