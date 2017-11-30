@@ -65,7 +65,7 @@ public class HotReviewFragment extends ARecycleViewFragment<HotReviewBean.Review
     }
 
     @Override
-    protected IItemViewCreator<HotReviewBean.Reviews> configItemViewCreator() {
+    public IItemViewCreator<HotReviewBean.Reviews> configItemViewCreator() {
         return new HotReviewItemViewCreator(getActivity());
     }
 

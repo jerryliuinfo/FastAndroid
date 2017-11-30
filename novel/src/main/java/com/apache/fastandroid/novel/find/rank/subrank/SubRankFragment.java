@@ -47,7 +47,7 @@ public class SubRankFragment extends ARecycleViewSwipeRefreshFragment<BookBean,B
     }
 
     @Override
-    protected IItemViewCreator<BookBean> configItemViewCreator() {
+    public IItemViewCreator<BookBean> configItemViewCreator() {
         return new SubRankItemViewCreator(getActivity());
     }
 

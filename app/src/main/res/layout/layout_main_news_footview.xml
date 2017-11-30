@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layLoading"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/comm_footer_height"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingRight="52dip"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="@style/LoadingProgressBar"
+            android:layout_width="36dip"
+            android:layout_height="36dip"
+            android:layout_marginRight="16dip"/>
+
+        <TextView
+            android:id="@+id/txtLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/comm_footer_loading"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/btnMore"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/comm_footer_height"
+            android:gravity="center"
+            android:text="@string/comm_footer_more"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@id/btnMore"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/novel_arrow_right"
+            />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

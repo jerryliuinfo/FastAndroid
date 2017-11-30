@@ -36,7 +36,7 @@ public class TopRankListFragment extends ARecycleViewFragment<RankingList.MaleBe
     }
 
     @Override
-    protected IItemViewCreator<RankingList.MaleBean> configItemViewCreator() {
+    public IItemViewCreator<RankingList.MaleBean> configItemViewCreator() {
         return new RankItemViewCreator(getActivity());
     }
 

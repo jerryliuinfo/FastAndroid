@@ -32,7 +32,7 @@ public class FindFragment extends ARecycleViewFragment<FindBean,FindBeans,FindBe
     }
 
     @Override
-    protected IItemViewCreator<FindBean> configItemViewCreator() {
+    public IItemViewCreator<FindBean> configItemViewCreator() {
         return new CommunityItemViewCreator(getActivity());
     }
 

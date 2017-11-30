@@ -33,7 +33,7 @@ public class TopicReplyListFragment extends ARecycleViewFragment<TopicReplyBean,
     }
 
     @Override
-    protected IItemViewCreator<TopicReplyBean> configItemViewCreator() {
+    public IItemViewCreator<TopicReplyBean> configItemViewCreator() {
         return new TopicIDetailReplyViewCreator(getActivity());
     }
 

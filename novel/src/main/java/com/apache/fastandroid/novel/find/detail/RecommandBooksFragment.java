@@ -57,7 +57,7 @@ public class RecommandBooksFragment extends ARecycleViewFragment<RecommandBeans.
     }
 
     @Override
-    protected IItemViewCreator<RecommandBeans.RecommendBean> configItemViewCreator() {
+    public IItemViewCreator<RecommandBeans.RecommendBean> configItemViewCreator() {
         return new RecommandItemViewCreator(getActivity());
     }
 

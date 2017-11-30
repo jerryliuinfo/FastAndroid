@@ -50,25 +50,6 @@ public class FileUtils {
 		return sb.toString();
 	}
 
-	public static void writeFile(InputStream in, File file) {
-		if (!file.getParentFile().exists())
-			file.getParentFile().mkdirs();
-
-		try {
-			FileOutputStream out = new FileOutputStream(file);
-			byte[] buffer = new byte[1024 * 128];
-			int len = -1;
-			while ((len = in.read(buffer)) != -1)
-				out.write(buffer, 0, len);
-			out.flush();
-			out.close();
-			in.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-
 	public static boolean writeFile(File file, String content) {
 		if (!file.getParentFile().exists())
 			file.getParentFile().mkdirs();
@@ -93,6 +74,29 @@ public class FileUtils {
 
 		return true;
 	}
+
+
+
+	public static void writeFile(InputStream in, File file) {
+		if (!file.getParentFile().exists())
+			file.getParentFile().mkdirs();
+
+		try {
+			FileOutputStream out = new FileOutputStream(file);
+			byte[] buffer = new byte[1024 * 128];
+			int len = -1;
+			while ((len = in.read(buffer)) != -1)
+				out.write(buffer, 0, len);
+			out.flush();
+			out.close();
+			in.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
 
 	/**
 	 * 将内容写入文件

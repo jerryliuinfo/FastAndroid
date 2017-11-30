@@ -54,7 +54,7 @@ public class WallPaperFragment extends ARecycleViewSwipeRefreshFragment<Wallpape
 
 
     @Override
-    protected IItemViewCreator<WallpaperBean> configItemViewCreator() {
+    public IItemViewCreator<WallpaperBean> configItemViewCreator() {
         return new WallpaperItemViewCreator();
     }
 

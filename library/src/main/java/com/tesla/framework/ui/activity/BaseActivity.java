@@ -220,7 +220,7 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     }
 
     public void addFragment(String tag, ABaseFragment fragment) {
-        fragmentRefs.put(tag, new WeakReference<ABaseFragment>(fragment));
+        fragmentRefs.put(tag, new WeakReference<>(fragment));
     }
 
     public void removeFragment(String tag) {
@@ -493,5 +493,6 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
         getSupportActionBar().setTitle(msg);
 
     }
+
 
 }

@@ -15,7 +15,7 @@ import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
 import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
-import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
+import com.tesla.framework.ui.fragment.AListSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
 import java.util.List;
@@ -24,15 +24,15 @@ import java.util.List;
  * Created by 01370340 on 2017/9/2.
  */
 
-public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBean,TopicBeans,TopicBean> {
+public class TopicListFragmentByList extends AListSwipeRefreshFragment<TopicBean,TopicBeans,TopicBean> {
 
     public static void launch(Activity from) {
         FragmentArgs args =  new FragmentArgs();
-        FragmentContainerActivity.launch(from,TopicListFragment.class,args);
+        FragmentContainerActivity.launch(from,TopicListFragmentByList.class,args);
     }
-    public static TopicListFragment newFragment() {
+    public static TopicListFragmentByList newFragment() {
         Bundle args = new Bundle();
-        TopicListFragment fragment = new TopicListFragment();
+        TopicListFragmentByList fragment = new TopicListFragmentByList();
         fragment.setArguments(args);
         return fragment;
     }

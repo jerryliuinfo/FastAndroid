@@ -20,6 +20,13 @@ public class IndexPaging<T extends Serializable,Ts extends Serializable> impleme
 
     private String pageTotalField;//总的页码数
 
+    public IndexPaging(String pageTotalField) {
+        this.pageTotalField = pageTotalField;
+    }
+
+    public IndexPaging() {
+    }
+
     @Override
     public String getPreviousPage() {
         return String.valueOf(pageIndex);

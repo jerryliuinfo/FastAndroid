@@ -40,7 +40,7 @@ public class SitesListFragment extends ARecycleViewFragment<Siteable,ArrayList<S
     }
 
     @Override
-    protected IItemViewCreator<Siteable> configItemViewCreator() {
+    public IItemViewCreator<Siteable> configItemViewCreator() {
         return new SiteItemViewCreator(getActivity());
     }
 

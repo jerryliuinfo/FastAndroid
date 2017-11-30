@@ -145,4 +145,9 @@ public class WallpaperSettingFragment extends ABaseFragment implements Wallpaper
         NLog.d(TAG, "onWallpaperViewerScroll percent = %s", percent);
         mPhotoView.getAttacher().onMove(percent);
     }
+
+    @Override
+    public boolean canSwipe() {
+        return true;
+    }
 }

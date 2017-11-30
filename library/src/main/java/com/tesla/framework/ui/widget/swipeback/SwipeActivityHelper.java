@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.tesla.framework.ui.activity.BaseActivityHelper;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 
 /**
@@ -11,7 +12,7 @@ import com.tesla.framework.ui.activity.BaseActivityHelper;
  */
 public class SwipeActivityHelper extends BaseActivityHelper implements SwipeBackActivityBase {
 
-    public boolean swipeback = true;
+    public boolean swipeback;
 
     private SwipeBackActivityHelper mHelper;
     private SwipeBackLayout mSwipeBackLayout;
@@ -21,7 +22,12 @@ public class SwipeActivityHelper extends BaseActivityHelper implements SwipeBack
         super.onCreate(savedInstanceState);
 
         if (getActivity() instanceof EnableSwipeback) {
-            swipeback = ((EnableSwipeback) getActivity()).canSwipe();
+            if (getActivity() instanceof FragmentContainerActivity){
+                FragmentContainerActivity activity = (FragmentContainerActivity) getActivity();
+                swipeback = activity.canSwipe();
+            }else {
+                swipeback = ((EnableSwipeback) getActivity()).canSwipe();
+            }
         }
 
 //        swipeback = false;

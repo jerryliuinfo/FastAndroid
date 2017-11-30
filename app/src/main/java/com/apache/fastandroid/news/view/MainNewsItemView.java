@@ -34,25 +34,6 @@ public class MainNewsItemView extends ARecycleViewItemViewHolder<NewsSummary> {
 
 
 
-   /* String title = newsSummary.getLtitle();
-        if (title == null) {
-        title = newsSummary.getTitle();
-    }
-    String ptime = newsSummary.getPtime();
-    String digest = newsSummary.getDigest();
-    String imgSrc = newsSummary.getImgsrc();
-
-        holder.setText(R.id.news_summary_title_tv,title);
-        holder.setText(R.id.news_summary_ptime_tv,ptime);
-        holder.setText(R.id.news_summary_digest_tv,digest);
-        holder.setImageUrl(R.id.news_summary_photo_iv,imgSrc);
-        holder.setOnClickListener(R.id.rl_root, new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            NewsDetailActivity.startAction(mContext,holder.getView(R.id.news_summary_photo_iv),newsSummary.getPostid(),newsSummary.getImgsrc());
-        }
-    });*/
-
 
     public MainNewsItemView(Activity context, View itemView) {
         super(context, itemView);

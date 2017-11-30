@@ -16,8 +16,5 @@ public class ActivityHelperList {
     public PermissionActivityHelper permissionActivityHelper;
 
 
-    /**
-     * 处理埋点相关
-     */
-    public MainDianActivityHelper mainDianActivityHelper;
+
 }

@@ -113,7 +113,7 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
 
 
     @Override
-    protected IItemViewCreator<ImageBean> configItemViewCreator() {
+    public IItemViewCreator<ImageBean> configItemViewCreator() {
         return new IItemViewCreator<ImageBean>() {
             @Override
             public View newContentView(LayoutInflater inflater, ViewGroup parent, int viewType) {

@@ -139,7 +139,7 @@ public class TestRecycleHeaderViewFragment extends ARecycleViewSwipeRefreshFragm
         @Override
         protected ArrayList<HomeBean> workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params) throws TaskException {
             SystemClock.sleep(2000);
-            HomeBeans result = TeslaSDK.newInstance(getTaskCacheMode(this)).loadPerson(Integer.parseInt(nextPage), getRefreshConfig().pageSize);
+            HomeBeans result = TeslaSDK.newInstance(getTaskCacheMode(this)).loadPerson(Integer.parseInt(nextPage), 10);
             if (result != null){
                 return result.beans ;
             }

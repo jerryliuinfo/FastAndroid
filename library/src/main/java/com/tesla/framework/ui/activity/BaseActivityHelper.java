@@ -18,10 +18,14 @@ import com.tesla.framework.support.permission.IPermissionsSubject;
  *
  * Created by JerryLiu on 17/04/08.
  */
-public class BaseActivityHelper implements IPermissionsSubject,IActivityHelper {
+public class BaseActivityHelper implements IPermissionsSubject,IActivityLifeCycle {
 
 
     private BaseActivity mActivity;
+
+    private PermissionActivityHelper mPermissionActivityHelper = new PermissionActivityHelper();
+
+
 
     protected void bindActivity(BaseActivity activity) {
         this.mActivity = activity;
@@ -31,36 +35,47 @@ public class BaseActivityHelper implements IPermissionsSubject,IActivityHelper {
         return mActivity;
     }
 
-
-
-    public void onPostCreate(Bundle savedInstanceState) {
-
-    }
-
     public View findViewById(int id) {
         return mActivity.findViewById(id);
     }
 
-    protected void onStart() {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        mPermissionActivityHelper.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onPostCreate(Bundle savedInstanceState) {
 
     }
 
-    protected void onRestart() {
+    @Override
+    public void onStart() {
 
     }
 
-    protected void onResume() {
+    @Override
+    public void onRestart() {
 
     }
 
-    protected void onPause() {
+    @Override
+    public void onResume() {
 
     }
 
-    protected void onStop() {
+    @Override
+    public void onPause() {
 
     }
 
+    @Override
+    public void onStop() {
+
+    }
+
+    @Override
     public void onDestroy() {
 
     }
@@ -69,12 +84,21 @@ public class BaseActivityHelper implements IPermissionsSubject,IActivityHelper {
 
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
     }
 
+    @Override
     public void onSaveInstanceState(Bundle outState) {
 
     }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+
+    }
+
 
     // 这三个方法暂不支持
 //    public void setContentView(int layoutResID) {
@@ -111,10 +135,6 @@ public class BaseActivityHelper implements IPermissionsSubject,IActivityHelper {
 
 
 
-    private PermissionActivityHelper mPermissionActivityHelper = new PermissionActivityHelper();
-    protected void onCreate(Bundle savedInstanceState) {
-        mPermissionActivityHelper.onCreate(savedInstanceState);
-    }
     @Override
     public void attach(IPermissionsObserver observer) {
         mPermissionActivityHelper.attach(observer);

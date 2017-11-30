@@ -1,11 +1,14 @@
 package com.apache.fastandroid.novel;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.apache.fastandroid.novel.bookshelf.BookSelfFragment;
 import com.apache.fastandroid.novel.find.FindFragment;
 import com.tesla.framework.support.bean.TabItem;
+import com.tesla.framework.ui.activity.FragmentArgs;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.fragment.ATabsTabLayoutFragment;
 
 import java.util.ArrayList;
@@ -15,6 +18,10 @@ import java.util.ArrayList;
  */
 
 public class NovelHomeTabsFragment extends ATabsTabLayoutFragment<TabItem> {
+    public static void launch(Activity from) {
+        FragmentArgs args =  new FragmentArgs();
+        FragmentContainerActivity.launch(from,NovelHomeTabsFragment.class,args);
+    }
 
     public static NovelHomeTabsFragment newFragment() {
         Bundle args = new Bundle();

@@ -1,37 +1,36 @@
-package com.apache.fastandroid.news;
+package com.apache.fastandroid.test;
 
-import android.os.Bundle;
+import android.app.Activity;
 import android.text.TextUtils;
 
 import com.apache.fastandroid.news.bean.NewsBean;
 import com.apache.fastandroid.news.bean.NewsBeans;
 import com.apache.fastandroid.news.sdk.NewsSDK;
-import com.apache.fastandroid.news.view.InformationItemViewCreator;
+import com.apache.fastandroid.test.view.TestItemViewCreator;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.CustomIndexPaging;
+import com.tesla.framework.ui.activity.FragmentArgs;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
 import java.util.List;
 
 /**
- * Created by 01370340 on 2017/9/3.
+ * Created by 01370340 on 2017/11/30.
  */
 
-public class InformationFragment extends ARecycleViewSwipeRefreshFragment<NewsBean,NewsBeans,NewsBean> {
+public class TestSwipeRefreshLayoutRecycleViewFragment extends ARecycleViewSwipeRefreshFragment<NewsBean,NewsBeans,NewsBean> {
+   public static void launch(Activity from) {
+       FragmentArgs args =  new FragmentArgs();
+       FragmentContainerActivity.launch(from,TestSwipeRefreshLayoutRecycleViewFragment.class,args);
+   }
 
-    public static InformationFragment newFragment() {
-        Bundle args = new Bundle();
-        InformationFragment fragment = new InformationFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
     @Override
-    public IItemViewCreator configItemViewCreator() {
-        return new InformationItemViewCreator(getActivity());
+    public IItemViewCreator<NewsBean> configItemViewCreator() {
+        return new TestItemViewCreator(getActivity());
     }
-
 
     protected int pageSize = 20;                     // 每页加载条数
 
@@ -42,9 +41,11 @@ public class InformationFragment extends ARecycleViewSwipeRefreshFragment<NewsBe
         return paging;
     }
 
+
     @Override
     public void requestData(RefreshMode mode) {
         super.requestData(mode);
+        //对于index,offset 分页都是没有下拉的，重置为reset模式
         if (mode == RefreshMode.refresh){
             mode = RefreshMode.reset;
         }
@@ -62,7 +63,6 @@ public class InformationFragment extends ARecycleViewSwipeRefreshFragment<NewsBe
             return newsBeans.list;
         }
 
-
         @Override
         protected NewsBeans workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params)
                 throws TaskException {
@@ -70,8 +70,7 @@ public class InformationFragment extends ARecycleViewSwipeRefreshFragment<NewsBe
             if (!TextUtils.isEmpty(nextPage)){
                 offset = Integer.parseInt(nextPage);
             }
-            return NewsSDK.newInstance().getNewsList(null,offset,pageSize);
+            return NewsSDK.newInstance().getNewsList(null,offset,20);
         }
     }
-
 }

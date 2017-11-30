@@ -23,7 +23,6 @@ public class RefreshConfig implements Serializable{
 
     public boolean footerMoreEnable = true;// 是否允许FooterView加载更多
 
-    public int pageSize = 10;
 
 
     public void disalbeFooterMore(){

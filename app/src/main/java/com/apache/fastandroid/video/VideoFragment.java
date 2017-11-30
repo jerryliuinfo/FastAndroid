@@ -65,7 +65,7 @@ public class VideoFragment extends ARecycleViewFragment<VideoBean,VideoResultBea
     }
 
     @Override
-    protected IItemViewCreator<VideoBean> configItemViewCreator() {
+    public IItemViewCreator<VideoBean> configItemViewCreator() {
         return new VideoItemViewCreator(getActivity());
     }
 

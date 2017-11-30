@@ -24,6 +24,7 @@ import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.ToastUtils;
+import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
 import java.text.SimpleDateFormat;
 
@@ -34,7 +35,7 @@ import java.text.SimpleDateFormat;
  * 2、处理页面离开设定时间后，自动刷新页面<br/>
  *
  */
-public abstract class ABaseFragment extends Fragment implements ITaskManager{
+public abstract class ABaseFragment extends Fragment implements ITaskManager,SwipeActivityHelper.EnableSwipeback{
 
     public static final String TAG = "AFragment-Base";
 
@@ -597,5 +598,10 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
 
     protected void setToolbarTitle(int resId){
         setToolbarTitle(getString(resId));
+    }
+
+    @Override
+    public boolean canSwipe() {
+        return false;
     }
 }

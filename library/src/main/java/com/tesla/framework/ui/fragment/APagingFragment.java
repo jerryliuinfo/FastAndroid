@@ -15,6 +15,7 @@ import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.bean.RefreshConfig;
 import com.tesla.framework.support.paging.IPaging;
+import com.tesla.framework.support.paging.index.IndexPaging;
 import com.tesla.framework.ui.fragment.adpater.IPagingAdapter;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
@@ -183,7 +184,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
         };
     }
 
-    protected abstract IItemViewCreator<T> configItemViewCreator();
+    abstract public IItemViewCreator<T> configItemViewCreator();
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -235,7 +236,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
      * @return <tt>null</tt> 不分页
      */
     protected IPaging<T, Ts> newPaging() {
-        return null;
+        return new IndexPaging<>();
     }
 
 

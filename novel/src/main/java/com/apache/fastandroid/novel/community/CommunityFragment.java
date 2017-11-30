@@ -1,5 +1,6 @@
 package com.apache.fastandroid.novel.community;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
@@ -9,6 +10,8 @@ import com.apache.fastandroid.novel.find.bean.FindBeans;
 import com.apache.fastandroid.novel.find.view.CommunityItemViewCreator;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.bean.RefreshConfig;
+import com.tesla.framework.ui.activity.FragmentArgs;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.fragment.ARecycleViewFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
@@ -24,9 +27,14 @@ public class CommunityFragment extends ARecycleViewFragment<FindBean,FindBeans,F
         CommunityFragment fragment = new CommunityFragment();
         return fragment;
     }
+    
+    public static void launch(Activity from) {
+        FragmentArgs args =  new FragmentArgs();
+        FragmentContainerActivity.launch(from,CommunityFragment.class,args);
+    }
 
     @Override
-    protected IItemViewCreator<FindBean> configItemViewCreator() {
+    public IItemViewCreator<FindBean> configItemViewCreator() {
         return new CommunityItemViewCreator(getActivity());
     }
 
