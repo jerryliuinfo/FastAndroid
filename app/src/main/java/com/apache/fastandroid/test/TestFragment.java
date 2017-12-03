@@ -8,7 +8,6 @@ import android.view.View;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.news.MainNewsFragmentCustomFootView;
 import com.apache.fastandroid.news.MainNewsTabsFragment;
-import com.apache.fastandroid.novel.bookshelf.BookSelfFragmentV2;
 import com.apache.fastandroid.novel.community.CommunityFragment;
 import com.apache.fastandroid.novel.find.rank.TopRankListFragment;
 import com.apache.fastandroid.support.bean.NewsChannelTable;
@@ -115,7 +114,6 @@ public class TestFragment extends ABaseFragment {
         findViewById(R.id.btn_test_load_failed_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BookSelfFragmentV2.launch(getActivity());
             }
         });
 

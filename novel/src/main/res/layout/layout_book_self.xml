@@ -38,7 +38,7 @@
 
     <include
         android:id="@id/layoutEmpty"
-        layout="@layout/comm_lay_emptyview"
+        layout="@layout/layout_book_self_load_empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"/>

@@ -152,14 +152,23 @@ public class NovelSdk extends ABizLogic {
          return hotReviewBean;
      }
 
+    /**
+     * 获取书架收藏的书籍
+     * @return
+     * @throws TaskException
+     */
      public CollectionBeans getCollection() throws TaskException{
+         List<RecommendBook> list;
          try {
-             List<RecommendBook> list = CollectionDB.selectAll();
+             list = CollectionDB.selectAll();
+             if (list == null || list.size() == 0){
+                 return null;
+             }
              return new CollectionBeans(list);
          } catch (Exception e) {
              e.printStackTrace();
-             throw new TaskException("数据为空");
          }
+         return null;
      }
 
      public BookMixAToc getBookMixAToc(String bookId, String viewChapters) throws TaskException{

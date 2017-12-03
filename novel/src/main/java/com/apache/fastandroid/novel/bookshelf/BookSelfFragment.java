@@ -2,10 +2,14 @@ package com.apache.fastandroid.novel.bookshelf;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.apache.fastandroid.novel.NovelHomeTabsFragment;
+import com.apache.fastandroid.novel.R;
 import com.apache.fastandroid.novel.bookshelf.view.RecommandViewCreator;
 import com.apache.fastandroid.novel.find.bean.CollectionBeans;
 import com.apache.fastandroid.novel.find.bean.RecommandBeans;
@@ -15,6 +19,7 @@ import com.apache.fastandroid.novel.support.sdk.NovelSdk;
 import com.apache.fastandroid.novel.support.util.NovelLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.bean.RefreshConfig;
+import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.ATabsFragment;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
@@ -38,6 +43,28 @@ public class BookSelfFragment extends ARecycleViewSwipeRefreshFragment<Recommend
         fragment.setArguments(args);
         return fragment;
     }
+    @ViewInject(idStr = "layout_add_favorite")
+    Button layout_add_favorite;
+
+    @Override
+    public int inflateContentView() {
+        return R.layout.layout_book_self;
+    }
+
+    @Override
+    protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
+        super.layoutInit(inflater, savedInstanceSate);
+        layout_add_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = getActivity().getSupportFragmentManager().findFragmentByTag("MainFragment");
+                if (fragment != null && fragment instanceof NovelHomeTabsFragment){
+                    NovelHomeTabsFragment novelHomeTabsFragment = (NovelHomeTabsFragment) fragment;
+                    novelHomeTabsFragment.selectFindFragment();
+                }
+            }
+        });
+    }
 
     @Override
     protected void setUpRefreshConfig(RefreshConfig refreshConfig) {
@@ -60,6 +87,7 @@ public class BookSelfFragment extends ARecycleViewSwipeRefreshFragment<Recommend
 
 
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -70,6 +98,23 @@ public class BookSelfFragment extends ARecycleViewSwipeRefreshFragment<Recommend
     @Override
     public IItemViewCreator<RecommendBook> configItemViewCreator() {
         return new RecommandViewCreator(getActivity());
+    }
+
+
+    @Override
+    protected IItemViewCreator<RecommendBook> configFooterItemViewCreator() {
+        return new IItemViewCreator<RecommendBook>() {
+            @Override
+            public View newContentView(LayoutInflater inflater, ViewGroup parent, int viewType) {
+                return inflater.inflate(BookSelfFootView.LAY_RES,parent,false);
+            }
+
+            @Override
+            public IITemView<RecommendBook> newItemView(View contentView, int viewType) {
+                return new BookSelfFootView<>(getActivity(),contentView,null);
+            }
+        };
+
     }
 
     @Override
@@ -102,7 +147,7 @@ public class BookSelfFragment extends ARecycleViewSwipeRefreshFragment<Recommend
 
         @Override
         protected CollectionBeans workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params) throws TaskException {
-            return NovelSdk.getInstance(getTaskCacheMode(this)).getCollection();
+            return NovelSdk.getInstance().getCollection();
         }
 
         @Override
@@ -121,19 +166,5 @@ public class BookSelfFragment extends ARecycleViewSwipeRefreshFragment<Recommend
 
 
 
-    @Override
-    protected IItemViewCreator<RecommendBook> configFooterItemViewCreator() {
-        return new IItemViewCreator<RecommendBook>() {
-            @Override
-            public View newContentView(LayoutInflater inflater, ViewGroup parent, int viewType) {
-                return inflater.inflate(BookSelfFootView.LAY_RES,parent,false);
-            }
 
-            @Override
-            public IITemView<RecommendBook> newItemView(View contentView, int viewType) {
-                return new BookSelfFootView<>(getActivity(),contentView,null);
-            }
-        };
-
-    }
 }

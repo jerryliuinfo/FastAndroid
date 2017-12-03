@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-//apply from: rootProject.file('module.gradle')
 apply plugin: 'com.antfortune.freeline'
 println('app gradle----->')
 
@@ -214,25 +213,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile thirddependencies.glide
-    compile thirddependencies.multidex
 
-    compile thirddependencies.junit
-    compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
-
-
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
-
-
-    //compile 'com.mcxiaoke.volley:library:1.0.19'
-
-    compile 'com.android.volley:volley:1.0.0'
-
-//    compile_usercenter(getProject())
-//    compile_topic(getProject())
-//    compile_novel(getProject())
-    compile 'com.antfortune.freeline:runtime:0.8.7'
     compile project(':usercenter')
     compile project(':topic')
     compile project(':novel')

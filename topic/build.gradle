@@ -25,9 +25,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile thirddependencies.appcompatV7
 
     compile project(':baselib')
 
-    testCompile 'junit:junit:4.12'
 }
