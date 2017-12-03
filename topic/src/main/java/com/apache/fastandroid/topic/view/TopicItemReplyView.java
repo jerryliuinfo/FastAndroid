@@ -1,6 +1,7 @@
 package com.apache.fastandroid.topic.view;
 
 import android.app.Activity;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +11,8 @@ import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.artemis.util.TimeUtil;
 import com.apache.fastandroid.topic.R;
 import com.apache.fastandroid.topic.bean.TopicReplyBean;
+import com.apache.fastandroid.topic.view.glide.GlideImageGetter;
+import com.tesla.framework.common.util.HtmlUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
@@ -48,7 +51,7 @@ public class TopicItemReplyView extends ARecycleViewItemViewHolder<TopicReplyBea
         final User user = bean.getUser();
         username.setText(user.getLogin());
         time.setText(TimeUtil.computePastTime(bean.getUpdated_at()));
-        //content.setText(Html.fromHtml(HtmlUtil.removeP(bean.getBody_html()), new GlideImageGetter(mContext, content), null));
+        content.setText(Html.fromHtml(HtmlUtil.removeP(bean.getBody_html()), new GlideImageGetter(getContext(), content), null));
 
 
         String url = user.getAvatar_url();

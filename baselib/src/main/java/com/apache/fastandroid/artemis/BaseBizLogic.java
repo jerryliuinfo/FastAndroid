@@ -58,9 +58,6 @@ public abstract class BaseBizLogic extends ABizLogic {
 
 
     public <T> T checkCallResult(Call<T> call) throws TaskException{
-        if (call == null){
-            throw new TaskException("call is null");
-        }
         try {
             Response<T> response = call.execute();
             if (!response.isSuccessful()){

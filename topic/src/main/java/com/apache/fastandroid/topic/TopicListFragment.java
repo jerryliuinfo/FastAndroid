@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
 
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
@@ -94,9 +93,4 @@ public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBea
         }
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        super.onItemClick(parent, view, position, id);
-        TopicDetailFragment.start(getActivity(),getAdapterItems().get(position));
-    }
 }

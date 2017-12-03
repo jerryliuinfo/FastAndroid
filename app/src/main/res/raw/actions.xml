@@ -28,11 +28,11 @@
 		<value>topics.json</value>
 		<extras>
 			<!--服务器请求的utility, 不配置则用默认的DefHttpUtility -->
-			<extra type="http">
-				<!--<value>com.apache.fastandroid.support.http.urlconnection.HttpUrlConnectionUtility</value>-->
+			<!--<extra type="http">
+				&lt;!&ndash;<value>com.apache.fastandroid.support.http.urlconnection.HttpUrlConnectionUtility</value>&ndash;&gt;
 				<value>com.apache.fastandroid.support.http.volly.VollyUtility</value>
 
-			</extra>
+			</extra>-->
 
 
 

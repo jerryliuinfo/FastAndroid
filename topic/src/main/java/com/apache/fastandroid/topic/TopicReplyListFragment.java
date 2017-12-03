@@ -3,22 +3,21 @@ package com.apache.fastandroid.topic;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicReplyBean;
 import com.apache.fastandroid.topic.bean.TopicReplyBeans;
 import com.apache.fastandroid.topic.sdk.TopicSDK;
 import com.apache.fastandroid.topic.view.TopicItemReplyView;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.task.TaskException;
-import com.tesla.framework.network.task.WorkTask;
-import com.tesla.framework.ui.fragment.APagingFragment;
+import com.tesla.framework.support.bean.RefreshConfig;
 import com.tesla.framework.ui.fragment.ARecycleViewFragment;
 import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 01370340 on 2017/9/16.
@@ -33,6 +32,17 @@ public class TopicReplyListFragment extends ARecycleViewFragment<TopicReplyBean,
         args.putSerializable("topic",topicBean);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public int inflateContentView() {
+        return R.layout.fragment_topic_reply_list;
+    }
+
+    @Override
+    protected void setUpRefreshConfig(RefreshConfig refreshConfig) {
+        super.setUpRefreshConfig(refreshConfig);
+        refreshConfig.disalbeFooterMore();
     }
 
     @Override
@@ -58,29 +68,61 @@ public class TopicReplyListFragment extends ARecycleViewFragment<TopicReplyBean,
         }else {
             mTopicBean = (TopicBean) savedInstanceSate.getSerializable("topic");
         }
+
+
     }
+
+    private void updateReplyCountText(){
+        TextView tv_reply_count = (TextView) findViewById(R.id.reply_count);
+        tv_reply_count.setText("共收到 " + mTopicBean.replies_count + "条回复");
+        tv_reply_count.setVisibility(View.VISIBLE);
+    }
+
+    private void hideReplyCountText(){
+        TextView tv_reply_count = (TextView) findViewById(R.id.reply_count);
+        tv_reply_count.setVisibility(View.INVISIBLE);
+    }
+
+
 
     @Override
-    public void requestData() {
-        super.requestData();
-        loadReplyList();
+    public void requestData(RefreshMode mode) {
+        super.requestData(mode);
+        new LoadReplyTask(mode).execute();
     }
 
-    private void loadReplyList(){
-        new WorkTask<Void,Void,ArrayList<TopicReplyBean>>(){
 
-            @Override
-            public ArrayList<TopicReplyBean> workInBackground(Void... params) throws TaskException {
 
-                return TopicSDK.newInstance().getReplyList(mTopicBean.id,null,mTopicBean.replies_count);
-            }
 
-            @Override
-            protected void onSuccess(ArrayList<TopicReplyBean> topicReplyBeen) {
-                super.onSuccess(topicReplyBeen);
-                NLog.d(APagingFragment.TAG, "topicReplyBeen = %s", topicReplyBeen);
-                setItems(topicReplyBeen);
-            }
-        }.execute();
+    class LoadReplyTask extends APagingTask<Void,Void,TopicReplyBeans>{
+
+        public LoadReplyTask(RefreshMode mode) {
+            super(mode);
+        }
+
+        @Override
+        protected List<TopicReplyBean> parseResult(TopicReplyBeans topicReplyBeans) {
+            return topicReplyBeans.list;
+        }
+
+        @Override
+        protected TopicReplyBeans workInBackground(RefreshMode mode, String previousPage, String nextPage, Void...
+                params) throws TaskException {
+            TopicReplyBeans beans =  TopicSDK.newInstance().getReplyList(mTopicBean.id,null,mTopicBean.replies_count);
+
+            return beans;
+        }
+
+        @Override
+        protected void onSuccess(TopicReplyBeans topicReplyBeans) {
+            super.onSuccess(topicReplyBeans);
+            updateReplyCountText();
+        }
+
+        @Override
+        protected void onFailure(TaskException exception) {
+            super.onFailure(exception);
+            hideReplyCountText();
+        }
     }
 }

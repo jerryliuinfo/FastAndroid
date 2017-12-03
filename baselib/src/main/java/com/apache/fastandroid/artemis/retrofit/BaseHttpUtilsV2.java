@@ -149,7 +149,10 @@ public class BaseHttpUtilsV2 {
             NLog.d(TAG, "------>mTokenInterceptor intercept token = %s", tokenBean);
 
             //如果缓存中没有token 或者已经添加token 则不用添加token了
-            if (tokenBean == null || alreadyHasAuthorizationHeader(originalRequest)) {
+            if (alreadyHasAuthorizationHeader(originalRequest)) {
+                return chain.proceed(originalRequest);
+            }
+            if (tokenBean == null) {
                 return chain.proceed(originalRequest);
             }
             //Token不为空

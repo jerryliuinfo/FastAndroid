@@ -2,6 +2,7 @@ package com.apache.fastandroid.user.delegate;
 
 import android.text.TextUtils;
 
+import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.CacheUtil;
 import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
 import com.apache.fastandroid.artemis.support.bean.Token;
@@ -10,9 +11,9 @@ import com.apache.fastandroid.user.UserCenterLog;
 import com.apache.fastandroid.user.sdk.UserSDK;
 import com.apache.fastandroid.user.support.UserConfigManager;
 import com.apache.fastandroid.user.support.cache.UserCache;
+import com.apache.fastandroid.user.support.util.UserCenterLogUtil;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.network.task.TaskException;
 
 import rx.Observable;
 import rx.Observer;
@@ -35,7 +36,7 @@ public class LoginTask {
 
         UserDetail userDetail = UserCache.getMe();
         String pwd = UserConfigManager.getInstance(FrameworkApplication.getContext()).getPwd();
-        NLog.d(UserCenterLog.getLogTag(), "userDetail = %s", userDetail);
+        UserCenterLogUtil.d("userDetail = %s", userDetail);
         if (userDetail == null || TextUtils.isEmpty(userDetail.getEmail()) || TextUtils.isEmpty(pwd)){
             if (callback != null){
                 callback.onActionFailed(-1, "");
@@ -57,7 +58,9 @@ public class LoginTask {
                 .doOnNext(new Action1<Token>() {
                     @Override
                     public void call(Token token) {
-                        NLog.d(UserCenterLog.getLogTag(), "subscribeOn call token = %s", token);
+
+                        UserCenterLogUtil.d("doLogin subscribeOn call token = %s", token);
+
                         loginToken[0] = token;
                         CacheUtil.saveToken(token);
                     }
@@ -71,28 +74,31 @@ public class LoginTask {
                 .subscribe(new Observer<UserDetail>() {
                     @Override
                     public void onCompleted() {
-                        NLog.d(UserCenterLog.getLogTag(), "onCompleted");
+                        UserCenterLogUtil.d("getMe onCompleted");
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        NLog.d(UserCenterLog.getLogTag(), "onError");
+                        UserCenterLogUtil.d("getMe onError");
+
                         if (loginToken[0] != null){
                             callback.onActionSuccess(loginToken[0]);
                         }else {
-                            callback.onActionSuccess(new TaskException(e.getMessage()));
+                            callback.onActionFailed(-100, e.getMessage());
                         }
                     }
 
                     @Override
                     public void onNext(UserDetail userDetail) {
-                        NLog.d(UserCenterLog.getLogTag(), "onNext userDetail = %s",userDetail);
+                        NLog.d(UserCenterLog.getLogTag(), "getMe userDetail = %s",userDetail);
                         UserCache.saveMe(userDetail);
+                        ArtemisContext.setUserBean(userDetail);
                         if (loginToken[0] != null){
                             callback.onActionSuccess(loginToken[0]);
                         }else {
-                            callback.onActionSuccess(new TaskException(""));
+                            callback.onActionFailed(-100, "getMe onNext loginToken == null");
+
                         }
                     }
                 });

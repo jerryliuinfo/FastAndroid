@@ -23,11 +23,16 @@
 package com.apache.fastandroid.topic.bean;
 
 
-import java.io.Serializable;
+import com.tesla.framework.network.biz.ResultBean;
+
 import java.util.List;
 
-public class TopicReplyBeans implements Serializable {
+public class TopicReplyBeans extends ResultBean {
    public List<TopicReplyBean> list;
+
+    public TopicReplyBeans(List<TopicReplyBean> list) {
+        this.list = list;
+    }
 
     @Override
     public String toString() {

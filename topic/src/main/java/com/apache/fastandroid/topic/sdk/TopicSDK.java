@@ -10,6 +10,7 @@ import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
 import com.apache.fastandroid.topic.bean.TopicContent;
 import com.apache.fastandroid.topic.bean.TopicReplyBean;
+import com.apache.fastandroid.topic.bean.TopicReplyBeans;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.setting.SettingUtility;
@@ -18,7 +19,6 @@ import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.Params;
 import com.tesla.framework.network.task.TaskException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -37,24 +37,6 @@ public class TopicSDK extends BaseBizLogic {
         return new TopicSDK();
     }
 
-    /**
-     * 获取帖子列表
-     * @param type
-     * @param node_id
-     * @param offset
-     * @param limit
-     * @return Retrofit实现
-     * @throws TaskException
-     */
-    /*public TopicBeans getTopicsList(String type, Integer node_id, int offset, int limit) throws TaskException {
-        //1.判断有没有缓存
-        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
-        TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
-        Call<List<TopicBean>> call =  apiService.getTopicsList(type,node_id,offset,limit);
-        List<TopicBean> list =  checkCallResult(call);
-
-        return new TopicBeans(list);
-    }*/
 
     /**
      * https://diycode.cc/api/v3/topics.json?offset=0&limit=20
@@ -70,8 +52,6 @@ public class TopicSDK extends BaseBizLogic {
 
         Setting action = SettingUtility.getSetting("getTopicsList");
         Params params = new Params();
-      /*  params.addParameter("type",type);
-        params.addParameter("node_id",String.valueOf(node_id));*/
         params.addParameter("offset",String.valueOf(offset));
         params.addParameter("limit",String.valueOf(limit));
         TopicBean[] topicBeanArray = doGet(getHttpConfig(),action,params,TopicBean[].class);
@@ -112,15 +92,15 @@ public class TopicSDK extends BaseBizLogic {
      * @return
      * @throws TaskException
      */
-    public ArrayList<TopicReplyBean> getReplyList(int id, Integer offset, Integer limit)throws TaskException {
+    public TopicReplyBeans getReplyList(int id, Integer offset, Integer limit)throws TaskException {
         BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
         Call<List<TopicReplyBean>> call =  apiService.getTopicRepliesList(id,offset,limit);
         List<TopicReplyBean> list = checkCallResult(call);
-        if (list != null){
-            //缓存数据
+        if (list == null || list.size() == 0){
+            throw new TaskException("没有回复数据");
         }
-        return new ArrayList(list);
+        return new TopicReplyBeans(list);
     }
 
 

@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.artemis.util.TimeUtil;
 import com.apache.fastandroid.topic.R;
-import com.apache.fastandroid.topic.TopicDetailFragment;
+import com.apache.fastandroid.topic.TopicDetailActivity;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
@@ -63,7 +63,7 @@ public class TopicItemView  extends ARecycleViewItemViewHolder<TopicBean> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TopicDetailFragment.start(getContext(),bean);
+                TopicDetailActivity.launch(getContext(),bean);
             }
         });
 
