@@ -8,7 +8,7 @@ import com.apache.fastandroid.novel.find.bean.RankingList;
 import com.apache.fastandroid.novel.find.bean.Rankings;
 import com.apache.fastandroid.novel.find.bean.RecommandBeans;
 import com.apache.fastandroid.novel.find.bean.RecommendBook;
-import com.apache.fastandroid.novel.find.rank.view.RankItemViewCreator;
+import com.apache.fastandroid.novel.find.rank.view.RankItemView;
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.apache.fastandroid.novel.support.sqlite.CollectionDB;
 import com.apache.fastandroid.novel.support.util.NovelLog;
@@ -56,7 +56,7 @@ public class NovelSdk extends ABizLogic {
         if (originalRankingList != null && originalRankingList.male != null && originalRankingList.male.size() > 0){
             //cover: /ranking-cover/142319144267827
             RankingList.MaleBean maleGroupBean = new RankingList.MaleBean("男生");
-            maleGroupBean.itemType = RankItemViewCreator.TYPE_GROUP;
+            maleGroupBean.itemType = RankItemView.TYPE_GROUP;
             newRankingList.male.add(maleGroupBean);
 
             for (RankingList.MaleBean maleBean : originalRankingList.male) {
@@ -67,7 +67,7 @@ public class NovelSdk extends ABizLogic {
         }
         if (originalRankingList != null && originalRankingList.female != null && originalRankingList.female.size() > 0){
             RankingList.MaleBean femaleGroupBean = new RankingList.MaleBean("女生");
-            femaleGroupBean.itemType = RankItemViewCreator.TYPE_GROUP;
+            femaleGroupBean.itemType = RankItemView.TYPE_GROUP;
             newRankingList.female.add(femaleGroupBean);
 
             for (RankingList.MaleBean femaleBean : originalRankingList.female) {

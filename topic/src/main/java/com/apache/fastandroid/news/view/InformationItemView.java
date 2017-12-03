@@ -11,6 +11,7 @@ import com.apache.fastandroid.artemis.util.IntentUtil;
 import com.apache.fastandroid.artemis.util.TimeUtil;
 import com.apache.fastandroid.artemis.util.UrlUtil;
 import com.apache.fastandroid.news.bean.NewsBean;
+import com.apache.fastandroid.topic.R;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
@@ -20,6 +21,8 @@ import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
  */
 
 public class InformationItemView extends ARecycleViewItemViewHolder<NewsBean> {
+
+    public static final int LAY_RES = R.layout.news_item_news;
 
     @ViewInject(idStr = "username")
     TextView username;

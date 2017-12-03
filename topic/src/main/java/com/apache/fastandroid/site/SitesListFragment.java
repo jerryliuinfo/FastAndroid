@@ -3,6 +3,7 @@ package com.apache.fastandroid.site;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.apache.fastandroid.site.bean.SiteBeans;
 import com.apache.fastandroid.site.bean.SiteItem;
@@ -10,10 +11,14 @@ import com.apache.fastandroid.site.bean.Siteable;
 import com.apache.fastandroid.site.bean.SitesBean;
 import com.apache.fastandroid.site.bean.SitesItem;
 import com.apache.fastandroid.site.sdk.SiteSDK;
-import com.apache.fastandroid.site.view.SiteItemViewCreator;
+import com.apache.fastandroid.site.view.SizeItemBodyView;
+import com.apache.fastandroid.site.view.SizeItemHeaderView;
+import com.apache.fastandroid.topic.R;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.bean.RefreshConfig;
 import com.tesla.framework.ui.fragment.ARecycleViewFragment;
+import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
+import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
 import java.util.ArrayList;
@@ -41,7 +46,25 @@ public class SitesListFragment extends ARecycleViewFragment<Siteable,ArrayList<S
 
     @Override
     public IItemViewCreator<Siteable> configItemViewCreator() {
-        return new SiteItemViewCreator(getActivity());
+        return new BaseItemViewCreator<Siteable>(getActivity()) {
+            @Override
+            protected int inflateItemView(int viewType) {
+                if (viewType == 100){
+                    return R.layout.item_site_header;
+                }else {
+                    return R.layout.item_site_body;
+                }
+            }
+
+            @Override
+            public IITemView<Siteable> newItemView(View contentView, int viewType) {
+                if (viewType == 100){
+                    return new SizeItemHeaderView(getActivity(),contentView);
+                }else {
+                    return new SizeItemBodyView(getActivity(),contentView);
+                }
+            }
+        };
     }
 
     @Override

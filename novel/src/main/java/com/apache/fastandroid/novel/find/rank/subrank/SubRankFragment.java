@@ -2,14 +2,17 @@ package com.apache.fastandroid.novel.find.rank.subrank;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import com.apache.fastandroid.novel.find.bean.BookBean;
 import com.apache.fastandroid.novel.find.bean.BooksByCats;
 import com.apache.fastandroid.novel.find.bean.Rankings;
-import com.apache.fastandroid.novel.find.rank.view.SubRankItemViewCreator;
+import com.apache.fastandroid.novel.find.rank.view.SubRankItemView;
 import com.apache.fastandroid.novel.support.sdk.NovelSdk;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
+import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
+import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
 import java.util.List;
@@ -48,7 +51,17 @@ public class SubRankFragment extends ARecycleViewSwipeRefreshFragment<BookBean,B
 
     @Override
     public IItemViewCreator<BookBean> configItemViewCreator() {
-        return new SubRankItemViewCreator(getActivity());
+        return new BaseItemViewCreator<BookBean>(getActivity()) {
+            @Override
+            protected int inflateItemView(int viewType) {
+                return SubRankItemView.LAY_RES;
+            }
+
+            @Override
+            public IITemView<BookBean> newItemView(View contentView, int viewType) {
+                return new SubRankItemView(getActivity(),contentView);
+            }
+        };
     }
 
     @Override

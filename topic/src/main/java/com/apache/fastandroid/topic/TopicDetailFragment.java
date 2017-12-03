@@ -138,6 +138,7 @@ public class TopicDetailFragment extends BaseFragment {
         tv_reply_count.setText("共收到 " + mTopicBean.replies_count + "条回复");
     }
 
+
     private void showBottom(){
         try {
             Bundle result = ModularizationDelegate.getInstance().getData(ModuleConstans.MODULE_USER_CENTER_NAME+":userCenter:isLogined",null,new Object[]{});

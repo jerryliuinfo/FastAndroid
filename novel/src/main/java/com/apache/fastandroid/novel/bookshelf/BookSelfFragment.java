@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.apache.fastandroid.novel.NovelHomeTabsFragment;
 import com.apache.fastandroid.novel.R;
-import com.apache.fastandroid.novel.bookshelf.view.RecommandViewCreator;
+import com.apache.fastandroid.novel.bookshelf.view.BookSelfItemView;
 import com.apache.fastandroid.novel.find.bean.CollectionBeans;
 import com.apache.fastandroid.novel.find.bean.RecommandBeans;
 import com.apache.fastandroid.novel.find.bean.RecommendBook;
@@ -22,6 +22,7 @@ import com.tesla.framework.support.bean.RefreshConfig;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.ATabsFragment;
+import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
@@ -97,7 +98,17 @@ public class BookSelfFragment extends ARecycleViewSwipeRefreshFragment<Recommend
 
     @Override
     public IItemViewCreator<RecommendBook> configItemViewCreator() {
-        return new RecommandViewCreator(getActivity());
+        return new BaseItemViewCreator<RecommendBook>(getActivity()) {
+            @Override
+            protected int inflateItemView(int viewType) {
+                return R.layout.novel_item_recommand;
+            }
+
+            @Override
+            public IITemView<RecommendBook> newItemView(View contentView, int viewType) {
+                return new BookSelfItemView(getActivity(),contentView);
+            }
+        };
     }
 
 

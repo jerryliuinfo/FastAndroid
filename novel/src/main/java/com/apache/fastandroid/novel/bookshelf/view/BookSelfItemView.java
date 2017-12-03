@@ -21,9 +21,9 @@ import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
  * Created by 01370340 on 2017/9/24.
  */
 
-public class RecomandItemView extends ARecycleViewItemViewHolder<RecommendBook> {
+public class BookSelfItemView extends ARecycleViewItemViewHolder<RecommendBook> {
 
-    public RecomandItemView(Activity context, View itemView) {
+    public BookSelfItemView(Activity context, View itemView) {
         super(context, itemView);
     }
 

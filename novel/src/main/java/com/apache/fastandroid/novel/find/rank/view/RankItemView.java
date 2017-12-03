@@ -21,6 +21,10 @@ import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 
 public class RankItemView extends ARecycleViewItemViewHolder<RankingList.MaleBean> {
 
+
+    //用于区分"男生","女生"的item
+    public static final int TYPE_GROUP = 100;
+
     public static final int LAY_RES = R.layout.novel_item_rank;
 
     @ViewInject(idStr = "ivIcon")

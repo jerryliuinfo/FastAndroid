@@ -9,13 +9,15 @@ import android.widget.AdapterView;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
 import com.apache.fastandroid.topic.sdk.TopicSDK;
-import com.apache.fastandroid.topic.view.TopicItemViewCreator;
+import com.apache.fastandroid.topic.view.TopicItemView;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
 import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
+import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
+import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
 import java.util.List;
@@ -39,8 +41,20 @@ public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBea
 
     @Override
     public IItemViewCreator<TopicBean> configItemViewCreator() {
-        return new TopicItemViewCreator(getActivity());
+        return new BaseItemViewCreator<TopicBean>(getActivity()) {
+            @Override
+            protected int inflateItemView(int viewType) {
+                return TopicItemView.LAYOUT_RES;
+            }
+
+            @Override
+            public IITemView<TopicBean> newItemView(View contentView, int viewType) {
+                return new TopicItemView(getContext(),contentView);
+            }
+        };
     }
+
+
 
 
     @Override

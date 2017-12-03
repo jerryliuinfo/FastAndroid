@@ -2,15 +2,18 @@ package com.apache.fastandroid.news;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.apache.fastandroid.news.bean.NewsBean;
 import com.apache.fastandroid.news.bean.NewsBeans;
 import com.apache.fastandroid.news.sdk.NewsSDK;
-import com.apache.fastandroid.news.view.InformationItemViewCreator;
+import com.apache.fastandroid.news.view.InformationItemView;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.CustomIndexPaging;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
+import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
+import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
 import java.util.List;
@@ -29,7 +32,17 @@ public class InformationFragment extends ARecycleViewSwipeRefreshFragment<NewsBe
     }
     @Override
     public IItemViewCreator configItemViewCreator() {
-        return new InformationItemViewCreator(getActivity());
+        return new BaseItemViewCreator<NewsBean>(getActivity()) {
+            @Override
+            protected int inflateItemView(int viewType) {
+                return InformationItemView.LAY_RES;
+            }
+
+            @Override
+            public IITemView newItemView(View contentView, int viewType) {
+                return new InformationItemView(getActivity(),contentView);
+            }
+        };
     }
 
 

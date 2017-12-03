@@ -2,17 +2,20 @@ package com.apache.fastandroid.topic;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicReplyBean;
 import com.apache.fastandroid.topic.bean.TopicReplyBeans;
 import com.apache.fastandroid.topic.sdk.TopicSDK;
-import com.apache.fastandroid.topic.view.TopicIDetailReplyViewCreator;
+import com.apache.fastandroid.topic.view.TopicItemReplyView;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.ui.fragment.APagingFragment;
 import com.tesla.framework.ui.fragment.ARecycleViewFragment;
+import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
+import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
 import java.util.ArrayList;
@@ -34,7 +37,17 @@ public class TopicReplyListFragment extends ARecycleViewFragment<TopicReplyBean,
 
     @Override
     public IItemViewCreator<TopicReplyBean> configItemViewCreator() {
-        return new TopicIDetailReplyViewCreator(getActivity());
+        return new BaseItemViewCreator<TopicReplyBean>(getActivity()) {
+            @Override
+            protected int inflateItemView(int viewType) {
+                return TopicItemReplyView.LAYOUT_RES;
+            }
+
+            @Override
+            public IITemView<TopicReplyBean> newItemView(View contentView, int viewType) {
+                return new TopicItemReplyView(getActivity(),contentView);
+            }
+        };
     }
 
     @Override
