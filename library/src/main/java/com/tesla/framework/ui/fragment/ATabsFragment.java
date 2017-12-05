@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 
 import com.tesla.framework.R;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.ActivityHelper;
 import com.tesla.framework.support.bean.TabItem;
 import com.tesla.framework.support.inject.ViewInject;
@@ -18,6 +19,7 @@ import com.tesla.framework.ui.fragment.adpater.FragmentPagerAdapter;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -63,10 +65,8 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
     private void initTabs(Bundle savedInstanceSate){
         if (getActivity() == null){
             return;
-        }else if (getActivity() instanceof BaseActivity){
-            if (((BaseActivity)getActivity()).isDestory()){
-                return;
-            }
+        }else if (getActivity() instanceof BaseActivity && ((BaseActivity)getActivity()).isDestory()){
+            return;
         }
         if (savedInstanceSate == null){
             if (getArguments() != null && getArguments().containsKey(SET_INDEX)){
@@ -94,8 +94,8 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
 
                     try {
                         getActivity().getSupportFragmentManager().beginTransaction().remove(fragment).commit();
-                    } catch (Throwable e) {
-                        e.printStackTrace();
+                    } catch (Exception e) {
+                        NLog.printStackTrace(e);
                     }
                 }
 
@@ -192,8 +192,8 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
                     }
                 }
                 transaction.commit();
-            } catch (Throwable e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                NLog.printStackTrace(e);
             }
         }
     }
@@ -259,7 +259,7 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
 
 
 
-    public ArrayList<T> getTabs() {
+    public List<T> getTabs() {
         return mTabs;
     }
 

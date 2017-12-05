@@ -28,7 +28,6 @@ public class CustomIndexPaging<T extends Serializable,Ts extends Serializable> i
 
     @Override
     public String getNextPage() {
-        //return String.valueOf(pageIndex);
         return String.valueOf(pageIndex * pageSize);
     }
 

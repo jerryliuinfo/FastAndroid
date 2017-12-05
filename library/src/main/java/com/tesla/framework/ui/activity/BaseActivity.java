@@ -84,9 +84,9 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
 
     protected int configTheme() {
         if (mHelper != null) {
-            int theme = mHelper.configTheme();
-            if (theme > 0)
-                return theme;
+            int appTheheme = mHelper.configTheme();
+            if (appTheheme > 0)
+                return appTheheme;
         }
 
         return -1;
@@ -137,7 +137,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
                 menuKeyField.setAccessible(true);
                 menuKeyField.setBoolean(viewConfiguration, false);
             }
-        } catch (Throwable e) {
+        } catch (Exception e) {
+            NLog.printStackTrace(e);
         }
 
         super.onCreate(savedInstanceState);
@@ -317,13 +318,9 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
                 return true;
         }
 
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if (onHomeClick())
-                    return true;
-                break;
-            default:
-                break;
+        if (item.getItemId() == android.R.id.home){
+            if (onHomeClick())
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -382,23 +379,25 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
         return true;
     }
 
+
+
     @Override
-    final public void addTask(@SuppressWarnings("rawtypes") WorkTask task) {
+    public final void addTask(@SuppressWarnings("rawtypes") WorkTask task) {
         taskManager.addTask(task);
     }
 
     @Override
-    final public void removeTask(String taskId, boolean cancelIfRunning) {
+     public final void removeTask(String taskId, boolean cancelIfRunning) {
         taskManager.removeTask(taskId, cancelIfRunning);
     }
 
     @Override
-    final public void removeAllTask(boolean cancelIfRunning) {
+    public final void removeAllTask(boolean cancelIfRunning) {
         taskManager.removeAllTask(cancelIfRunning);
     }
 
     @Override
-    final public int getTaskCount(String taskId) {
+    public final int getTaskCount(String taskId) {
         return taskManager.getTaskCount(taskId);
     }
 

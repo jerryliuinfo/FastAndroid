@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import com.tesla.framework.R;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
@@ -19,6 +20,10 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
 
     public static final String FRAGMENT_TAG = "FRAGMENT_CONTAINER";
 
+
+    public static final String EXTRA_CLASS_NAME = "className";
+    public static final String EXTRA_ARGS = "args";
+
     /**
      * 启动一个界面
      *
@@ -28,9 +33,9 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
      */
     public static void launch(Activity activity, Class<? extends Fragment> clazz, FragmentArgs args) {
         Intent intent = new Intent(activity, FragmentContainerActivity.class);
-        intent.putExtra("className", clazz.getName());
+        intent.putExtra(EXTRA_CLASS_NAME, clazz.getName());
         if (args != null)
-            intent.putExtra("args", args);
+            intent.putExtra(EXTRA_ARGS, args);
         activity.startActivity(intent);
     }
 
@@ -40,16 +45,16 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
 
     public static void launchForResult(BaseActivity from, Class<? extends Fragment> clazz, FragmentArgs args, int requestCode) {
         Intent intent = new Intent(from, FragmentContainerActivity.class);
-        intent.putExtra("className", clazz.getName());
+        intent.putExtra(EXTRA_CLASS_NAME, clazz.getName());
         if (args != null)
-            intent.putExtra("args", args);
+            intent.putExtra(EXTRA_ARGS, args);
         from.startActivityForResult(intent, requestCode);
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String className = getIntent().getStringExtra("className");
+        String className = getIntent().getStringExtra(EXTRA_CLASS_NAME);
         if (TextUtils.isEmpty(className)) {
             finish();
             return;
@@ -57,7 +62,7 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
 
         int contentId = R.layout.comm_ui_fragment_container;
 
-        FragmentArgs values = (FragmentArgs) getIntent().getSerializableExtra("args");
+        FragmentArgs values = (FragmentArgs) getIntent().getSerializableExtra(EXTRA_ARGS);
 
         Fragment fragment = null;
         if (savedInstanceState == null) {
@@ -70,6 +75,7 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
                         Method method = clazz.getMethod("setArguments", new Class[] { Bundle.class });
                         method.invoke(fragment, FragmentArgs.transToBundle(values));
                     } catch (Exception e) {
+                        NLog.printStackTrace(e);
                     }
                 }
                 // 重写Activity的主题
@@ -85,9 +91,10 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
                     if (method != null)
                         contentId = Integer.parseInt(method.invoke(fragment).toString());
                 } catch (Exception e) {
+                    NLog.printStackTrace(e);
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                NLog.printStackTrace(e);
                 finish();
                 return;
             }
@@ -96,7 +103,6 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
         super.onCreate(savedInstanceState);
         setContentView(contentId);
 
-//        BizFragment.getBizFragment(this);
 
         if (fragment != null) {
             getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, fragment, FRAGMENT_TAG).commit();

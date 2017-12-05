@@ -108,7 +108,7 @@ public abstract class APermissionsAction extends IAction implements IPermissions
         try {
             getContext().requestPermissions(new String[]{ permission }, requestCode);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            NLog.printStackTrace(e);
         }
     }
 

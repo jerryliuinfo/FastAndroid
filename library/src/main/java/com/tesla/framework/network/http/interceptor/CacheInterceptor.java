@@ -22,9 +22,9 @@ import okhttp3.Response;
  * date 2016/2/29 14:52 <br>
  * copyright TCL-MIG<br>
  */
-public class DefaultCacheInterceptor implements Interceptor {
+public class CacheInterceptor implements Interceptor {
 
-    private static final String TAG = "DefaultCacheInterceptor";
+    private static final String TAG = "CacheInterceptor";
     public static final String DECREPT_KEY = "OGUiRDpWHv6B7cW&";
     private static final long DEFAULT_ONLINE_TIMEOUT = 60;  //60秒
     private static final long DEFAULT_OFFLINE_TIMEOUT = 60 * 60 * 24 * 28;  //一个月
@@ -35,11 +35,11 @@ public class DefaultCacheInterceptor implements Interceptor {
     //space+默认不进行压缩，鹰眼api时候需要设置为true
     private boolean isGzipEncode;
 
-    public DefaultCacheInterceptor(Context context) {
+    public CacheInterceptor(Context context) {
         this(context, DEFAULT_ONLINE_TIMEOUT, DEFAULT_OFFLINE_TIMEOUT);
     }
 
-    public DefaultCacheInterceptor(Context context, boolean gzipEncode){
+    public CacheInterceptor(Context context, boolean gzipEncode){
         this(context);
         isGzipEncode=gzipEncode;
     }
@@ -50,7 +50,7 @@ public class DefaultCacheInterceptor implements Interceptor {
      * @param onlineTimeout 有网络时的缓存有效时间
      * @param offlineTimeout 无网络时的缓存有效时间
      */
-    public DefaultCacheInterceptor(final Context context, final long onlineTimeout, final long offlineTimeout) {
+    public CacheInterceptor(final Context context, final long onlineTimeout, final long offlineTimeout) {
         mContext = context.getApplicationContext();
         mOnlineTimeout = onlineTimeout;
         mOfflineTimout = offlineTimeout;
@@ -62,14 +62,6 @@ public class DefaultCacheInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-       /* Request original = chain.request();
-        Request.Builder builder = original.newBuilder();
-        Request newRequest = builder.build();
-        Response response = chain.proceed(newRequest);
-
-        return response;*/
-
-
         Request request = chain.request();
         String cacheControl = request.cacheControl().toString();
         if (!NetworkHelper.isNetworkAvailable(FrameworkApplication.getContext())) {

@@ -217,7 +217,7 @@ public class BaseHttpUtilsV2 {
     public OkHttpClient.Builder buildDefalutClient(Context context) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.cache(new Cache(context.getCacheDir(), CACHE_SIZE));
-        //builder.addInterceptor(new DefaultCacheInterceptor(context,isGzipEncode));
+        //builder.addInterceptor(new CacheInterceptor(context,isGzipEncode));
         builder.connectTimeout(mNetworkTimeOut, TimeUnit.SECONDS);
         builder.addNetworkInterceptor(mTokenInterceptor);   // 自动附加 token
         builder.authenticator(mAuthenticator);

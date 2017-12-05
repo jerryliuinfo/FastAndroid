@@ -28,7 +28,7 @@ public class ModularizationDelegate {
         private SingletonHolder() {
         }
 
-        private    final static ModularizationDelegate INSTANCE = new ModularizationDelegate();
+        private  static final ModularizationDelegate INSTANCE = new ModularizationDelegate();
     }
     public static ModularizationDelegate getInstance() {
     
@@ -53,7 +53,7 @@ public class ModularizationDelegate {
             IApplicationLike applicationLike = (IApplicationLike) clz.newInstance();
             applicationLike.onCreate();
         } catch (Exception e) {
-            NLog.printStackTrace(e); ;
+            NLog.printStackTrace(e);
         }
     }
 
@@ -63,7 +63,7 @@ public class ModularizationDelegate {
             IApplicationLike applicationLike = (IApplicationLike) clz.newInstance();
             applicationLike.onStop();
         } catch (Exception e) {
-                            NLog.printStackTrace(e); ;
+            NLog.printStackTrace(e);
         }
     }
 
@@ -71,26 +71,26 @@ public class ModularizationDelegate {
 
     /**
      *
-     * @param group_artifact_action  传过来的参数格式必须为groupId:artifactId:action的形式
+     * @param groupArtifactAction  传过来的参数格式必须为groupId:artifactId:action的形式
      *                                例如 com.sgs.unite:moduleB:getOrderInfo
      * @param args
      * @param extras
      * @return
      * @throws DelegateException
      */
-    public Bundle getData(String group_artifact_action, Bundle args, Object... extras) throws Exception {
-        if (TextUtils.isEmpty(group_artifact_action)){
+    public Bundle getData(String groupArtifactAction, Bundle args, Object... extras) throws DelegateException {
+        if (TextUtils.isEmpty(groupArtifactAction)){
             throw new DelegateException(ILLEGAL_PARAMETER);
         }
-        String[] params = group_artifact_action.split(":");
+        String[] params = groupArtifactAction.split(":");
         if (params.length != 3){
             throw new DelegateException(ILLEGAL_PARAMETER);
         }
 
         //获取groupArtifact
-        String groupArtifact = group_artifact_action.substring(0,group_artifact_action.lastIndexOf(':'));
+        String groupArtifact = groupArtifactAction.substring(0,groupArtifactAction.lastIndexOf(':'));
         //解析action
-        String action = group_artifact_action.substring(group_artifact_action.lastIndexOf(':')+1,group_artifact_action.length());
+        String action = groupArtifactAction.substring(groupArtifactAction.lastIndexOf(':')+1,groupArtifactAction.length());
 
         IDelegateFactory factory = mFactoryMap.get(groupArtifact);
         if (factory != null) {
@@ -167,25 +167,25 @@ public class ModularizationDelegate {
 
     /**
      *
-     * @param group_artifact_action,  传过来的参数格式必须为groupId:artifactId:action的形式
+     * @param groupArtifactAction,  传过来的参数格式必须为groupId:artifactId:action的形式
      *                                例如 com.sgs.unite:moduleA:startActivity
      * @param args
      * @param callback
      * @param extras
      */
-    public void runStaticAction(String group_artifact_action, Bundle args, IActionDelegate.IActionCallback callback, Object... extras) throws Exception {
-        if (TextUtils.isEmpty(group_artifact_action)){
+    public void runStaticAction(String groupArtifactAction, Bundle args, IActionDelegate.IActionCallback callback, Object... extras) throws DelegateException {
+        if (TextUtils.isEmpty(groupArtifactAction)){
             throw new DelegateException(ILLEGAL_PARAMETER);
         }
-        String[] params = group_artifact_action.split(":");
+        String[] params = groupArtifactAction.split(":");
         if (params.length != 3){
             throw new DelegateException(ILLEGAL_PARAMETER);
         }
 
         //获取groupArtifact
-        String groupArtifact = group_artifact_action.substring(0,group_artifact_action.lastIndexOf(":"));
+        String groupArtifact = groupArtifactAction.substring(0,groupArtifactAction.lastIndexOf(':'));
         //解析action
-        String action = group_artifact_action.substring(group_artifact_action.lastIndexOf(":")+1,group_artifact_action.length());
+        String action = groupArtifactAction.substring(groupArtifactAction.lastIndexOf(':')+1,groupArtifactAction.length());
 
         //根据groupArtifact找到对应的aar模块
         IDelegateFactory factory = mFactoryMap.get(groupArtifact);

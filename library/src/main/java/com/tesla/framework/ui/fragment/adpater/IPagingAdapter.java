@@ -1,7 +1,6 @@
 package com.tesla.framework.ui.fragment.adpater;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,13 +14,16 @@ public interface IPagingAdapter<T extends Serializable> {
 
     int TYPE_FOOTER = 2000;
 
-    ArrayList<T> getDatas();
+    List<T> getDatas();
 
     void notifyDataSetChanged();
 
     class Utils {
 
-        public static <T extends Serializable> void setDatasAndRefresh(IPagingAdapter<T> adapter, ArrayList<T> datas) {
+        private Utils() {
+        }
+
+        public static <T extends Serializable> void setDatasAndRefresh(IPagingAdapter<T> adapter, List<T> datas) {
             adapter.getDatas().clear();
             adapter.getDatas().addAll(datas);
             

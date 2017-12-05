@@ -44,7 +44,7 @@ public class IAction {
     }
 
     public void doInterrupt(){
-
+        //中断后可以做一些事情,例如开始申请权限
     }
 
     public IAction getParent() {

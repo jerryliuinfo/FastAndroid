@@ -8,23 +8,23 @@ public  class ActionCallback implements IActionDelegate.IActionCallback {
 
     @Override
     public void onActionPrepare() {
-        //donothing
+        //提供默认的空实现
     }
 
     @Override
     public void onActionSuccess(Object... result) {
-        //donothing
+        //提供默认的空实现
     }
 
     @Override
     public void onActionFailed(int code, String msg) {
-        //donothing
+        //提供默认的空实现
     }
 
 
     @Override
     public void onActionFinish() {
-        //donothing
+        //提供默认的空实现
     }
 
 

@@ -19,13 +19,14 @@ import com.tesla.framework.ui.fragment.itemview.header.AHeaderItemViewCreator;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by jerryliu on 2017/4/3.
  */
 
 public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerView.Adapter implements IPagingAdapter<T>,OnItemMoveListener {
-    private ArrayList<T> datas;
+    private List<T> datas;
     private IITemView<T> mFooterView;
 
     private AHeaderItemViewCreator<T> mHeaderItemViewCreator;
@@ -45,7 +46,7 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
     private APagingFragment ownerFragment;
     private Activity mActivity;
 
-    public BasicRecycleViewAdapter(Activity activity,ArrayList<T> datas, IItemViewCreator<T> itemViewCreator,APagingFragment ownerFragment) {
+    public BasicRecycleViewAdapter(Activity activity, List<T> datas, IItemViewCreator<T> itemViewCreator, APagingFragment ownerFragment) {
 
         this.mActivity = activity;
         if (datas == null){
@@ -198,11 +199,11 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
         return datas.size() + headerCount + footerCount;
     }
 
-    public ArrayList<T> getDatas() {
+    public List<T> getDatas() {
         return datas;
     }
 
-    public void setDatas(ArrayList<T> datas) {
+    public void setDatas(List<T> datas) {
         this.datas = datas;
     }
 
@@ -238,6 +239,6 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
 
     @Override
     public void onItemDismiss(int position) {
-
+        //doNothing
     }
 }

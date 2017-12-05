@@ -1,5 +1,7 @@
 package com.tesla.framework.network.http;
 
+import com.tesla.framework.common.util.log.NLog;
+
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
@@ -38,7 +40,7 @@ public class HttpsUtility extends OkHttpUtility {
 
 					public X509Certificate[] getAcceptedIssuers() {
 
-						return null;
+						return new X509Certificate[0];
 
 					}
 
@@ -55,8 +57,8 @@ public class HttpsUtility extends OkHttpUtility {
 				});
 				mOKHttpClient = okBuilder.build();
 
-			} catch (Throwable e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				NLog.printStackTrace(e);
 			}
 		}
 

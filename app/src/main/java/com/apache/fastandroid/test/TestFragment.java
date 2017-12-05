@@ -1,11 +1,13 @@
 package com.apache.fastandroid.test;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import com.apache.fastandroid.R;
+import com.apache.fastandroid.TestMarathonFragment;
 import com.apache.fastandroid.news.MainNewsFragmentCustomFootView;
 import com.apache.fastandroid.news.MainNewsTabsFragment;
 import com.apache.fastandroid.novel.community.CommunityFragment;
@@ -13,6 +15,7 @@ import com.apache.fastandroid.novel.find.rank.TopRankListFragment;
 import com.apache.fastandroid.support.bean.NewsChannelTable;
 import com.apache.fastandroid.support.sdk.Sdk;
 import com.apache.fastandroid.topic.TopicListFragment;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;
@@ -114,6 +117,14 @@ public class TestFragment extends ABaseFragment {
         findViewById(R.id.btn_test_load_failed_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                TestMarathonFragment.launch(getActivity());
+            }
+        });
+        findViewById(R.id.btn_test_startactivity_forresult).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TestStartActivityResult.launch(getActivity());
+                TestStartActivityResult.launchForReulst(TestFragment.this);
             }
         });
 
@@ -130,5 +141,12 @@ public class TestFragment extends ABaseFragment {
             }
         });
 
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        NLog.d(TAG, "onActivityResult requestCode = %s, resultCode = %s, data = %s",requestCode,resultCode,data.getStringExtra("username"));
     }
 }

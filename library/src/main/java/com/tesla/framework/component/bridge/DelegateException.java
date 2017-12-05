@@ -8,8 +8,7 @@ public class DelegateException extends RuntimeException {
     private int code;
     private String msg;
 
-    public DelegateException(){
-        //donothing
+    private DelegateException(){
     }
     public DelegateException(int code, String msg){
         this.code = code;

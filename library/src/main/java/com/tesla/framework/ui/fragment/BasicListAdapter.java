@@ -5,13 +5,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.tesla.framework.R;
-import com.tesla.framework.ui.fragment.APagingFragment;
 import com.tesla.framework.ui.fragment.adpater.IPagingAdapter;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 1、支持能够使用BaseAdapter的控件
@@ -23,11 +23,12 @@ public class BasicListAdapter<T extends Serializable> extends BaseAdapter implem
 
     private APagingFragment holderFragment;
     private IItemViewCreator<T> itemViewCreator;
-    private ArrayList<T> datas;
+    private List<T> datas;
 
-    public BasicListAdapter(APagingFragment holderFragment, ArrayList<T> datas) {
-        if (datas == null)
-            datas = new ArrayList<T>();
+    public BasicListAdapter(APagingFragment holderFragment, List<T> datas) {
+        if (datas == null){
+            datas = new ArrayList<>();
+        }
         this.holderFragment = holderFragment;
         this.itemViewCreator = holderFragment.configItemViewCreator();
         this.datas = datas;
@@ -68,7 +69,7 @@ public class BasicListAdapter<T extends Serializable> extends BaseAdapter implem
     }
 
     @Override
-    public ArrayList<T> getDatas() {
+    public List<T> getDatas() {
         return datas;
     }
 

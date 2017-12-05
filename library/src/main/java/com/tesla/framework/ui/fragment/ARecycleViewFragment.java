@@ -22,6 +22,7 @@ import com.tesla.framework.ui.fragment.itemview.header.AHeaderItemViewCreator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 维护RecycleView
@@ -65,12 +66,6 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 ARecycleViewFragment.this.onScrollStateChanged(newState);
-
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
 
             }
 
@@ -168,13 +163,13 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
      *
      * @param items
      */
-    public void setItems(ArrayList<T> items) {
+    public void setItems(List<T> items) {
         if (items == null)
             return;
 
         setViewVisiable(loadingLayout, View.GONE);
         setViewVisiable(loadFailureLayout, View.GONE);
-        if (items.size() == 0 && emptyLayout != null) {
+        if (items.isEmpty() && emptyLayout != null) {
             setViewVisiable(emptyLayout, View.VISIBLE);
             setViewVisiable(contentLayout, View.GONE);
         }

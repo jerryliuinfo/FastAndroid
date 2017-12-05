@@ -7,6 +7,7 @@ import com.apache.fastandroid.support.bean.NewsChannelTable;
 import com.apache.fastandroid.support.bean.NewsSummary;
 import com.apache.fastandroid.support.bean.NewsSummaryBeans;
 import com.apache.fastandroid.support.bean.WallpaperBeans;
+import com.apache.fastandroid.support.http.MyHttpUtility;
 import com.apache.fastandroid.support.sdk.bean.UpdateBean;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.util.ListUtil;
@@ -142,6 +143,21 @@ public class Sdk extends ABizLogic {
             }
         }
         return buffer.toString();
+    }
+
+
+
+    public void submitScore(String result) throws TaskException{
+        Setting action = newSetting("submitScore", "test", "提交分数");
+        action.getExtras().put(HTTP_UTILITY, newSettingExtra(HTTP_UTILITY, MyHttpUtility.class.getName(), ""));
+
+        // 配置缓存器
+        HttpConfig config = new HttpConfig();
+        config.baseUrl = "http://10.118.125.217:8081";
+
+
+        doPost(getHttpConfig(),action,null,null,null,null);
+
     }
 }
 

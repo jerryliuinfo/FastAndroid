@@ -6,6 +6,7 @@ import android.text.TextUtils;
 
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.R;
+import com.tesla.framework.common.util.log.NLog;
 
 
 /**
@@ -33,15 +34,16 @@ public class TaskException extends Exception {
 		resultIllegal
 	}
 	
-	private String code;
+	private final String code;
 
     private String msg = "";
 	
-	private static IExceptionDeclare exceptionDeclare;
+	private static  IExceptionDeclare exceptionDeclare;
 
 	public TaskException(String code) {
 		this.code = code;
 	}
+
 	public TaskException(String code,String msg) {
 		this.code = code;
 		this.msg = msg;
@@ -62,9 +64,9 @@ public class TaskException extends Exception {
 			return msg + "";
 
 		if (!TextUtils.isEmpty(code) && exceptionDeclare != null) {
-			String msg = exceptionDeclare.checkCode(String.valueOf(code));
-			if (!TextUtils.isEmpty(msg)) {
-				return msg + "";
+			String messsage = exceptionDeclare.checkCode(String.valueOf(code));
+			if (!TextUtils.isEmpty(messsage)) {
+				return messsage + "";
 			}
 		}
 
@@ -84,6 +86,7 @@ public class TaskException extends Exception {
 					return msg + "";
 			}
 		} catch (Exception e) {
+			NLog.printStackTrace(e);
 		}
 
 		return super.getMessage() + "";

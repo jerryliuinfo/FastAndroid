@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.component.BitmapOwner;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.task.ITaskManager;
@@ -35,7 +36,7 @@ import java.text.SimpleDateFormat;
  * 2、处理页面离开设定时间后，自动刷新页面<br/>
  *
  */
-public abstract class ABaseFragment extends Fragment implements ITaskManager,SwipeActivityHelper.EnableSwipeback{
+public abstract class ABaseFragment extends Fragment implements ITaskManager,SwipeActivityHelper.EnableSwipeback,BitmapOwner{
 
     public static final String TAG = "AFragment-Base";
 
@@ -237,10 +238,12 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
      * @param view
      */
     public void onViewClicked(View view) {
-        if (view.getId() == R.id.layoutReload)
+        if (view.getId() == R.id.layoutReload){
             requestData();
-        else if (view.getId() == R.id.layoutRefresh)
+        }
+        else if (view.getId() == R.id.layoutRefresh){
             requestData();
+        }
     }
 
     protected void setViewVisiable(View v, int visibility) {
@@ -315,7 +318,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
         }
         // Task结束
         else if (state == ABaseTaskState.finished) {
-
+            //doNothing
 
         }
     }
@@ -333,8 +336,9 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     }
 
     public void showMessage(int msgId) {
-        if (getActivity() != null){}
+        if (getActivity() != null){
             showMessage(getString(msgId));
+        }
     }
 
 
@@ -469,22 +473,22 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
 
     @Override
-    final public void addTask(@SuppressWarnings("rawtypes") WorkTask task) {
+     public final void  addTask(@SuppressWarnings("rawtypes") WorkTask task) {
         taskManager.addTask(task);
     }
 
     @Override
-    final public void removeTask(String taskId, boolean cancelIfRunning) {
+     public final void removeTask(String taskId, boolean cancelIfRunning) {
         taskManager.removeTask(taskId, cancelIfRunning);
     }
 
     @Override
-    final public void removeAllTask(boolean cancelIfRunning) {
+    public final void removeAllTask(boolean cancelIfRunning) {
         taskManager.removeAllTask(cancelIfRunning);
     }
 
     @Override
-    final public int getTaskCount(String taskId) {
+     public final int getTaskCount(String taskId) {
         return taskManager.getTaskCount(taskId);
     }
 
@@ -495,7 +499,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
      * @param task
      * @return
      */
-    final protected ABizLogic.CacheMode getTaskCacheMode(WorkTask task) {
+    protected final ABizLogic.CacheMode getTaskCacheMode(WorkTask task) {
         if (task != null && !TextUtils.isEmpty(task.getTaskId()))
             return getTaskCount(task.getTaskId()) == 1 ? ABizLogic.CacheMode.auto : ABizLogic.CacheMode.disable;
         return ABizLogic.CacheMode.disable;
@@ -521,12 +525,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
     };
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
 
-
-    }
 
 
 
@@ -547,7 +546,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
      *
      * @return
      */
-    abstract public int inflateContentView();
+     public abstract int inflateContentView();
 
     /**
      * 指定Activity的ContentViewID
@@ -603,5 +602,14 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     @Override
     public boolean canSwipe() {
         return false;
+    }
+
+
+    /**
+     * 是否显示图片接口实现
+     */
+    @Override
+    public boolean canDisplay() {
+        return true;
     }
 }

@@ -6,15 +6,15 @@ import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.common.util.network.NetworkHelper;
 
-import okhttp3.OkHttpClient;
-
 /**
  * Created by jerryliu on 2017/3/26.
  */
 
 public class FrameworkApplication  {
     private static Context mContext;
-    private static  OkHttpClient mOkHttpClient = new OkHttpClient();
+
+    private FrameworkApplication() {
+    }
 
     public static void onCreate(Context context){
         if (context != null){

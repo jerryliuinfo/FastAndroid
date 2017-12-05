@@ -1,5 +1,7 @@
 package com.tesla.framework.network.http;
 
+import com.tesla.framework.common.util.log.NLog;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -7,6 +9,10 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class ParamsUtil {
+
+	private ParamsUtil() {
+	}
+
 	public static char[] base64Encode(byte[] data) {
 		final char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".toCharArray();
 		char[] out = new char[((data.length + 2) / 3) * 4];
@@ -42,7 +48,7 @@ public class ParamsUtil {
 	 * @return
 	 */
 	public static String appendParams(Params params) {
-		StringBuffer paramsBuffer = new StringBuffer();
+		StringBuilder paramsBuffer = new StringBuilder();
 		for (String key : params.getKeys()) {
 			if (paramsBuffer.length() != 0) {
 				paramsBuffer.append(",");
@@ -53,14 +59,14 @@ public class ParamsUtil {
 			try {
 				paramsBuffer.append("\"" + encode(params.getParameter(key)) + "\"");
 			} catch (Exception e) {
-				e.printStackTrace();
+				NLog.printStackTrace(e);
 			}
 		}
 		return paramsBuffer.toString();
 	}
 
 	public static String encodeParams(Params params, String splitStr, boolean encode) {
-		StringBuffer paramsBuffer = new StringBuffer();
+		StringBuilder paramsBuffer = new StringBuilder();
 		for (String key : params.getKeys()) {
 			if (params.getParameter(key) == null)
 				continue;
@@ -127,8 +133,12 @@ public class ParamsUtil {
 		try {
 			encoded = URLEncoder.encode(value, "UTF-8");
 		} catch (UnsupportedEncodingException ignore) {
+			NLog.printStackTrace(ignore);
 		}
-		StringBuffer buf = new StringBuffer(encoded.length());
+		if (encoded == null){
+			throw new NullPointerException("encoded must not be null");
+		}
+		StringBuilder buf = new StringBuilder(encoded.length());
 		char focus;
 		for (int i = 0; i < encoded.length(); i++) {
 			focus = encoded.charAt(i);
@@ -151,8 +161,8 @@ public class ParamsUtil {
 
 		try {
 			String decodeSource = "";
-			if (content.indexOf("?") != -1) {
-				decodeSource = content.substring(content.indexOf("?") + 1, content.length());
+			if (content.indexOf('?') != -1) {
+				decodeSource = content.substring(content.indexOf('?') + 1, content.length());
 			} else {
 				decodeSource = content;
 			}
@@ -163,13 +173,14 @@ public class ParamsUtil {
 				params.addParameter(keyValue[0], keyValue[1]);
 			}
 		} catch (Exception e) {
+			NLog.printStackTrace(e);
 		}
 
 		return params;
 	}
 
 	public static String encodeUrl(String url, Params params) {
-		StringBuffer urlBuffer = new StringBuffer();
+		StringBuilder urlBuffer = new StringBuilder();
 
 		urlBuffer.append(url + "?");
 

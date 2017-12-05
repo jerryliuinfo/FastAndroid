@@ -11,6 +11,7 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.action.IAction;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,7 +32,7 @@ public abstract class APermissionGroupAction extends IAction implements IPermiss
 
         this.subject = subject;
         this.permissions = permissions;
-        requestCode = permissions.hashCode();
+        requestCode = Arrays.hashCode(permissions);
     }
 
     @Override
@@ -59,7 +60,7 @@ public abstract class APermissionGroupAction extends IAction implements IPermiss
                 NLog.d(TAG, "%s permission = %s", "PERMISSION_DENIED", permissions[i]);
             }
         }
-        if (deniedList.size() == 0) {
+        if (deniedList.isEmpty()) {
 
         }
         else {
@@ -123,7 +124,7 @@ public abstract class APermissionGroupAction extends IAction implements IPermiss
         try {
             getContext().requestPermissions(permissions, requestCode);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            NLog.printStackTrace(e);
         }
     }
 
@@ -159,7 +160,6 @@ public abstract class APermissionGroupAction extends IAction implements IPermiss
                     if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                         if (i == permissions.length - 1) {
                             run();
-
                             return;
                         }
                     }

@@ -11,9 +11,9 @@ public class HttpConfig {
 
 	public Map<String, String> headerMap = new HashMap<>();
 	
-	@Override
-	public HttpConfig clone() throws CloneNotSupportedException {
-		super.clone();
+
+
+	public HttpConfig copy(){
 		HttpConfig httpConfig = new HttpConfig();
 		httpConfig.cookie = cookie;
 		httpConfig.baseUrl = baseUrl;

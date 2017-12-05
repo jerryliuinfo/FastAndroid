@@ -90,7 +90,7 @@ public class Params implements Serializable {
 
 	@Override
 	public String toString() {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 
 		for (String key : mKeys) {
 			sb.append(key).append("=").append(getParameter(key)).append(",");

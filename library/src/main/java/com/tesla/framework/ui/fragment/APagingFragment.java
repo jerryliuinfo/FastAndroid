@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 
 import com.tesla.framework.R;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.ActivityHelper;
 import com.tesla.framework.common.util.view.ViewUtils;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.bean.RefreshConfig;
@@ -184,7 +184,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
         };
     }
 
-    abstract public IItemViewCreator<T> configItemViewCreator();
+    public abstract IItemViewCreator<T> configItemViewCreator();
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -198,7 +198,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
 
     private void onSaveState(Bundle outState){
         if (getAdapter() != null && getAdapter().getDatas().size() > 0){
-            outState.putSerializable(SAVED_DATAS, getAdapter().getDatas());
+            outState.putSerializable(SAVED_DATAS, (Serializable) getAdapter().getDatas());
         }
     }
 
@@ -226,7 +226,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
      * @param datas
      * @return
      */
-    abstract protected IPagingAdapter<T> newAdapter(ArrayList<T> datas);
+    protected abstract IPagingAdapter<T> newAdapter(ArrayList<T> datas);
 
     protected abstract void bindAdapter(IPagingAdapter<T> adpater);
 
@@ -301,7 +301,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
     public void requestDataDelaySetRefreshing(long delay) {
         Runnable requestDelayRunnable = new Runnable() {
             public void run() {
-                NLog.d("AFragment-Paging", "延迟刷新，开始刷新, " + this.toString());
+                NLog.d(TAG, "延迟刷新，开始刷新, " + this.toString());
                 APagingFragment.this.requestDataSetRefreshing();
             }
         };
@@ -339,7 +339,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
      */
     public abstract class APagingTask<Params, Progress, Result extends Serializable> extends ABaseTask<Params, Progress, Result> {
 
-        final protected RefreshMode mode;
+        protected final RefreshMode mode;
 
         public APagingTask(RefreshMode mode) {
             super(PAGING_TASK_ID);
@@ -388,7 +388,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
             else {
                 resultList = parseResult(result);
                 if (resultList == null)
-                    resultList = new ArrayList<T>();
+                    resultList = new ArrayList<>();
             }
 
             // 如果子类没有处理新获取的数据刷新UI，默认替换所有数据
@@ -405,8 +405,8 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
             // 处理分页数据
             if (mPaging != null) {
                 if (getAdapter() != null && getAdapter().getDatas().size() != 0)
-                    mPaging.processData(result, (T) getAdapter().getDatas().get(0),
-                            (T) getAdapter().getDatas().get(getAdapter().getDatas().size() - 1));
+                    mPaging.processData(result,  getAdapter().getDatas().get(0),
+                             getAdapter().getDatas().get(getAdapter().getDatas().size() - 1));
                 else
                     mPaging.processData(result, null, null);
             }
@@ -415,9 +415,10 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
             if (mode == RefreshMode.reset)
                 refreshConfig.pagingEnd = false;
             // 如果数据少于这个值，默认加载完了
-            if (mode == RefreshMode.update || mode == RefreshMode.reset)
-                refreshConfig.pagingEnd = resultList.size() == 0;
-
+            if (mode == RefreshMode.update || mode == RefreshMode.reset){
+                //拉取到的数据小于分页大小 则认为没有更多数据了
+                refreshConfig.pagingEnd = resultList.size() < refreshConfig.pageSize;
+            }
             // 如果是缓存数据，且已经过期
             if (result instanceof IResult) {
                 // 这里增加一个自动刷新设置功能
@@ -492,7 +493,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
          *            List(T)
          * @return
          */
-        abstract protected List<T> parseResult(Result result);
+         protected abstract List<T> parseResult(Result result);
 
         /**
          * 异步执行方法
@@ -504,7 +505,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
          * @return
          * @throws TaskException
          */
-        abstract protected Result workInBackground(RefreshMode mode, String previousPage, String nextPage, Params... params) throws TaskException;
+         protected abstract Result workInBackground(RefreshMode mode, String previousPage, String nextPage, Params... params) throws TaskException;
 
     }
 
@@ -615,22 +616,20 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
 
 
     /**
+     * 是否显示图片接口实现
+     */
+    @Override
+    public boolean canDisplay() {
+        if (getRefreshConfig().displayWhenScrolling){
+            return true;
+        }
+        return isViewScrolling;
+    }
+    /**
      * 滑动到最后阅读的位置
      */
     protected void toLastReadPosition() {
-       /* if (getRefreshView() == null || TextUtils.isEmpty(refreshConfig.positionKey))
-            return;
 
-        if (getRefreshView() instanceof ListView) {
-            runUIRunnable(new Runnable() {
-
-                @Override
-                public void run() {
-                    ListView listView = (ListView) getRefreshView();
-                    listView.setSelectionFromTop(getLastReadPosition(), getLastReadTop() + listView.getPaddingTop());
-                }
-            });
-        }*/
     }
 
     protected int getLastReadPosition() {

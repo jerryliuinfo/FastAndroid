@@ -19,7 +19,7 @@ import java.util.Map;
 public abstract class AbstracExceptionDelegate implements IExceptionDeclare {
 
     private static  String[][] errorMsgs = null;
-    private static final Map<String, String> errorMap = new HashMap<>();
+    private  final Map<String, String> errorMap = new HashMap<>();
 
 
 

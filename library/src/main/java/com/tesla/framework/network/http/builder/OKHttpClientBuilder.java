@@ -2,7 +2,7 @@ package com.tesla.framework.network.http.builder;
 
 import android.content.Context;
 
-import com.tesla.framework.network.http.interceptor.DefaultCacheInterceptor;
+import com.tesla.framework.network.http.interceptor.CacheInterceptor;
 import com.tesla.framework.network.http.interceptor.HeaderInterceptor;
 
 import java.util.concurrent.TimeUnit;
@@ -16,17 +16,17 @@ import okhttp3.OkHttpClient;
 
 public class OKHttpClientBuilder {
     public static final int CACHE_SIZE = 4*1024*1024; //cache size
-    public static final int mNetworkTimeOut = 20; //network time out
+    public static final int NETWORK_TIMEOUT = 20; //network time out
 
     public static OkHttpClient.Builder getOKHttpClientBuilder(Context context,boolean isGzipEncode){
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.cache(new Cache(context.getCacheDir(), CACHE_SIZE));
         builder.addInterceptor(new HeaderInterceptor());
-        builder.addInterceptor(new DefaultCacheInterceptor(context,isGzipEncode));
+        builder.addInterceptor(new CacheInterceptor(context,isGzipEncode));
         builder.addInterceptor(new HeaderInterceptor());
-        builder.connectTimeout(mNetworkTimeOut, TimeUnit.SECONDS);
-        builder.readTimeout(mNetworkTimeOut, TimeUnit.SECONDS);
-        builder.writeTimeout(mNetworkTimeOut, TimeUnit.SECONDS);
+        builder.connectTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS);
+        builder.readTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS);
+        builder.writeTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS);
         return builder;
     }
 }

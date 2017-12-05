@@ -9,7 +9,7 @@ import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.network.biz.ABizLogic;
-import com.tesla.framework.network.http.interceptor.DefaultCacheInterceptor;
+import com.tesla.framework.network.http.interceptor.CacheInterceptor;
 import com.tesla.framework.network.http.interceptor.HeaderInterceptor;
 import com.tesla.framework.network.task.TaskException;
 
@@ -108,12 +108,19 @@ public class OkHttpUtility implements IHttpUtility {
 		return builder;
 	}
 
+
+
+	public String getRequestBodyStr(){
+		return null;
+	}
+
 	private <T> T executeRequest(Request request, Class<T> responseCls, Setting action, String method) throws TaskException {
 		try {
 			if (SettingUtility.getPermanentSettingAsInt("http_delay") > 0) {
 				Thread.sleep(SettingUtility.getPermanentSettingAsInt("http_delay"));
 			}
-		} catch (Throwable e) {
+		} catch (Exception e) {
+			NLog.printStackTrace(e);
 		}
 
 		try {
@@ -166,17 +173,15 @@ public class OkHttpUtility implements IHttpUtility {
 	 * @return
 	 */
 	public String getUrl(HttpConfig config, Setting action, Params urlParams){
-		String url = (config.baseUrl + action.getValue() + (urlParams == null ? "" : "?" + ParamsUtil.encodeToURLParams(urlParams))).replaceAll(" ", "");
-		return url;
+		return (config.baseUrl + action.getValue() + (urlParams == null ? "" : "?" + ParamsUtil.encodeToURLParams(urlParams))).replaceAll(" ", "");
 	}
 
 
 	protected <T> T parseResponse(String resultStr, Class<T> responseCls) throws TaskException  {
-		if (responseCls.getSimpleName().equals("String"))
+		if (responseCls.isAssignableFrom(String.class))
 			return (T) resultStr;
 
-		T result = JSON.parseObject(resultStr, responseCls);
-		return result;
+		return JSON.parseObject(resultStr, responseCls);
 	}
 
 	private static  OkHttpClient mOkHttpClient;
@@ -193,8 +198,8 @@ public class OkHttpUtility implements IHttpUtility {
 			okBuilder.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS);
 			okBuilder.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS);
 			okBuilder.writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS);
-			okBuilder.addInterceptor(new DefaultCacheInterceptor(FrameworkApplication.getContext()));
-			okBuilder.addNetworkInterceptor(new DefaultCacheInterceptor(FrameworkApplication.getContext()));
+			okBuilder.addInterceptor(new CacheInterceptor(FrameworkApplication.getContext()));
+			okBuilder.addNetworkInterceptor(new CacheInterceptor(FrameworkApplication.getContext()));
 			okBuilder.addInterceptor(new HeaderInterceptor());
 
 			//缓存
@@ -241,8 +246,8 @@ public class OkHttpUtility implements IHttpUtility {
 						long readLen = -1;
 						Buffer buffer = new Buffer();
 
-						long MIN_PROGRESS_STEP = 65536;
-						long MIN_PROGRESS_TIME = 300;
+						long MinProgressStep = 65536;
+						long MinProgressTime = 300;
 
 						long mLastUpdateBytes = 0;
 						long mLastUpdateTime = 0l;
@@ -251,8 +256,8 @@ public class OkHttpUtility implements IHttpUtility {
 							writeLen += readLen;
 
 							long now = System.currentTimeMillis();
-							if (((writeLen - mLastUpdateBytes) > MIN_PROGRESS_STEP &&
-									(now - mLastUpdateTime) > MIN_PROGRESS_TIME) ||
+							if (((writeLen - mLastUpdateBytes) > MinProgressStep &&
+									(now - mLastUpdateTime) > MinProgressTime) ||
 									writeLen == contentLength) {
 								onFileProgress.onProgress(writeLen, contentLength);
 
@@ -261,6 +266,7 @@ public class OkHttpUtility implements IHttpUtility {
 							}
 						}
 					} catch (IOException e) {
+						NLog.printStackTrace(e);
 						throw e;
 					} finally {
 						Util.closeQuietly(source);
@@ -279,6 +285,8 @@ public class OkHttpUtility implements IHttpUtility {
 
 		};
 	}
+
+
 
 
 

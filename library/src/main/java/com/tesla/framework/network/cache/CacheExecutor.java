@@ -13,6 +13,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 
 public class CacheExecutor {
+    private CacheExecutor() {
+    }
+
     static final int CORE_POOL_SIZE = 10;
     static final int MAXIMUM_POOL_SIZE = 128;
     static final int KEEP_ALIVE = 1;

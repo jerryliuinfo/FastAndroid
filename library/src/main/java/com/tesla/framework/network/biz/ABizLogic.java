@@ -77,7 +77,7 @@ public abstract class ABizLogic implements IHttpUtility{
                 try {
                     cacheUtility = (ICacheUtility) Class.forName(action.getExtras().get(CACHE_UTILITY).getValue()).newInstance();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    NLog.printStackTrace(e);
                     NLog.e(TAG, "CacheUtility配置错误 ");
                 }
             }
@@ -152,10 +152,10 @@ public abstract class ABizLogic implements IHttpUtility{
         if (action.getExtras().containsKey(HTTP_UTILITY) && !TextUtils.isEmpty(action.getExtras().get(HTTP_UTILITY).getValue())){
 
             try {
-                IHttpUtility httpUtility = (IHttpUtility) Class.forName(action.getExtras().get(HTTP_UTILITY).getValue()).newInstance();
-                return httpUtility;
+                return (IHttpUtility) Class.forName(action.getExtras().get(HTTP_UTILITY).getValue()).newInstance();
             } catch (Exception e) {
-                e.printStackTrace();
+                NLog.printStackTrace(e);
+
             }
         }
         return configHttpUtility();
@@ -189,7 +189,7 @@ public abstract class ABizLogic implements IHttpUtility{
             if (actionSetting != null && actionSetting.getExtras().containsKey(BASE_URL))
                 config.baseUrl = actionSetting.getExtras().get(BASE_URL).getValue().toString();
         } catch (Exception e) {
-            e.printStackTrace();
+            NLog.printStackTrace(e);
         }
 
         return config;
@@ -205,7 +205,7 @@ public abstract class ABizLogic implements IHttpUtility{
      *
      * @return
      */
-    abstract protected HttpConfig configHttpConfig();
+    protected abstract HttpConfig configHttpConfig();
 
 
     public void putToCache(Setting setting, Params params, IResult data, ICacheUtility cacheUtility) {

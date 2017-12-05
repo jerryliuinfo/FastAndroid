@@ -19,8 +19,8 @@ public class TaskManager implements ITaskManager {
 	private HashMap<String, Integer> taskCountMap;
 
 	public TaskManager() {
-		taskCountMap = new HashMap<String, Integer>();
-		taskCache = new LinkedHashMap<String, WeakReference<WorkTask>>();
+		taskCountMap = new HashMap<>();
+		taskCache = new LinkedHashMap<>();
 	}
 
 	@Override
