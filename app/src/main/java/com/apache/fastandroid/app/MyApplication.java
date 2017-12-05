@@ -11,7 +11,6 @@ import android.text.TextUtils;
 import com.antfortune.freeline.FreelineCore;
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.SplashActivity;
-import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.support.TUncaughtExceptionHandler;
 import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegateV2;
@@ -25,6 +24,7 @@ import com.tesla.framework.common.util.CrashHandler;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.SPUtils;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
@@ -99,6 +99,7 @@ public class MyApplication extends Application {
             NLog.setDebug(true, Logger.DEBUG);
         }
     }
+
 
     private void initModuleBridge(){
         //主模块

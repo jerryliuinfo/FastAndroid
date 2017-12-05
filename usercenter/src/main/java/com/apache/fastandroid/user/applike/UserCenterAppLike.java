@@ -1,9 +1,8 @@
 package com.apache.fastandroid.user.applike;
 
-import com.apache.fastandroid.artemis.applike.IApplicationLike;
-import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
-import com.apache.fastandroid.user.delegate.UsercenterDelegateFactory;
+import com.tesla.framework.applike.IApplicationLike;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 
 /**
  * Created by 01370340 on 2017/9/23.
@@ -12,7 +11,7 @@ import com.apache.fastandroid.user.delegate.UsercenterDelegateFactory;
 public class UserCenterAppLike implements IApplicationLike {
     @Override
     public void onCreate() {
-        ModularizationDelegate.getInstance().register(ModuleConstans.MODULE_USER_CENTER_NAME,new UsercenterDelegateFactory());
+        //ModularizationDelegate.getInstance().register(ModuleConstans.MODULE_USER_CENTER_NAME,new UsercenterDelegateFactory());
 
     }
 

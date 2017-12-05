@@ -1,7 +1,7 @@
 package com.apache.fastandroid.applike;
 
-import com.apache.fastandroid.artemis.applike.IApplicationLike;
-import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
+import com.tesla.framework.applike.IApplicationLike;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.delegate.MainDelegateFactory;
 

@@ -1,13 +1,16 @@
-package com.apache.fastandroid.artemis.bridge;
+package com.tesla.framework.component.bridge;
 
 /**
  * Created by jerryliu on 2017/7/11.
  */
 
 public class DelegateException extends RuntimeException {
-    public int code;
-    public String msg;
+    private int code;
+    private String msg;
 
+    public DelegateException(){
+        //donothing
+    }
     public DelegateException(int code, String msg){
         this.code = code;
         this.msg = msg;

@@ -1,4 +1,4 @@
-package com.apache.fastandroid.artemis.bridge;
+package com.tesla.framework.component.bridge;
 
 import android.os.Bundle;
 

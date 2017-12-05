@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.apache.fastandroid.app.AppContext;
-import com.apache.fastandroid.artemis.bridge.ActionCallback;
-import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
+import com.tesla.framework.component.bridge.ActionCallback;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.support.config.ADConfigManager;

@@ -3,7 +3,7 @@ package com.apache.fastandroid.artemis.base;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.ui.activity.BaseActivity;

@@ -2,8 +2,8 @@ package com.apache.fastandroid.novel.delegate.impl;
 
 import android.os.Bundle;
 
-import com.apache.fastandroid.artemis.bridge.IActionDelegate;
-import com.apache.fastandroid.artemis.bridge.IObjectDataDelegate;
+import com.tesla.framework.component.bridge.IActionDelegate;
+import com.tesla.framework.component.bridge.IObjectDataDelegate;
 import com.apache.fastandroid.novel.NovelHomeTabsFragment;
 
 /**

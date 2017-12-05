@@ -1,9 +1,8 @@
 package com.apache.fastandroid.novel.applike;
 
-import com.apache.fastandroid.artemis.applike.IApplicationLike;
-import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
-import com.apache.fastandroid.novel.delegate.NovelDelegateFactory;
+import com.tesla.framework.applike.IApplicationLike;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 
 /**
  * Created by 01370340 on 2017/9/24.
@@ -12,7 +11,7 @@ import com.apache.fastandroid.novel.delegate.NovelDelegateFactory;
 public class NovelAppLike implements IApplicationLike {
     @Override
     public void onCreate() {
-        ModularizationDelegate.getInstance().register(ModuleConstans.MODULE_NOVEL_NAME,new NovelDelegateFactory());
+        //ModularizationDelegate.getInstance().register(ModuleConstans.MODULE_NOVEL_NAME,new NovelDelegateFactory());
     }
 
     @Override

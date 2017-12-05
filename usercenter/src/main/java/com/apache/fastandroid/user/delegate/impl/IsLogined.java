@@ -3,8 +3,8 @@ package com.apache.fastandroid.user.delegate.impl;
 import android.os.Bundle;
 
 import com.apache.fastandroid.artemis.CacheUtil;
-import com.apache.fastandroid.artemis.bridge.DelegateException;
-import com.apache.fastandroid.artemis.bridge.IDataDelegate;
+import com.tesla.framework.component.bridge.DelegateException;
+import com.tesla.framework.component.bridge.IDataDelegate;
 
 /**
  * Created by 01370340 on 2017/9/16.

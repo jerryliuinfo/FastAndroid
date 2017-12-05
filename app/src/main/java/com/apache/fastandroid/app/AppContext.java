@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.CacheUtil;
-import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;

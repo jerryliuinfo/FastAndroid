@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.app.MyApplication;
 import com.apache.fastandroid.artemis.base.BaseFragment;
-import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;

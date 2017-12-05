@@ -1,9 +1,10 @@
-package com.apache.fastandroid.artemis.bridge;
+package com.tesla.framework.component.bridge;
 
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.apache.fastandroid.artemis.applike.IApplicationLike;
+import com.tesla.framework.applike.IApplicationLike;
+import com.tesla.framework.common.util.log.NLog;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,23 +15,24 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 public class ModularizationDelegate {
+    private static final String ILLEGAL_PARAMETER = "非法路由参数";
     public static final String TAG = ModularizationDelegate.class.getSimpleName();
-    private static ModularizationDelegate instance = null;
 
     //key: groupAritifact  value:IDelegateFactory
     private final Map<String,IDelegateFactory> mFactoryMap = new ConcurrentHashMap<>();
 
 
+   
     private ModularizationDelegate(){}
-    public static ModularizationDelegate getInstance() {
-        if (instance == null) {
-            synchronized (ModularizationDelegate.class) {
-                if (instance == null){
-                    instance = new ModularizationDelegate();
-                }
-            }
+    private static class SingletonHolder{
+        private SingletonHolder() {
         }
-        return instance;
+
+        private    final static ModularizationDelegate INSTANCE = new ModularizationDelegate();
+    }
+    public static ModularizationDelegate getInstance() {
+    
+        return SingletonHolder.INSTANCE;
     }
 
 
@@ -51,7 +53,7 @@ public class ModularizationDelegate {
             IApplicationLike applicationLike = (IApplicationLike) clz.newInstance();
             applicationLike.onCreate();
         } catch (Exception e) {
-            e.printStackTrace();
+            NLog.printStackTrace(e); ;
         }
     }
 
@@ -61,10 +63,11 @@ public class ModularizationDelegate {
             IApplicationLike applicationLike = (IApplicationLike) clz.newInstance();
             applicationLike.onStop();
         } catch (Exception e) {
-            e.printStackTrace();
+                            NLog.printStackTrace(e); ;
         }
     }
 
+    
 
     /**
      *
@@ -77,17 +80,17 @@ public class ModularizationDelegate {
      */
     public Bundle getData(String group_artifact_action, Bundle args, Object... extras) throws Exception {
         if (TextUtils.isEmpty(group_artifact_action)){
-            throw new DelegateException("非法路由参数");
+            throw new DelegateException(ILLEGAL_PARAMETER);
         }
         String[] params = group_artifact_action.split(":");
         if (params.length != 3){
-            throw new DelegateException("非法路由参数");
+            throw new DelegateException(ILLEGAL_PARAMETER);
         }
 
         //获取groupArtifact
-        String groupArtifact = group_artifact_action.substring(0,group_artifact_action.lastIndexOf(":"));
+        String groupArtifact = group_artifact_action.substring(0,group_artifact_action.lastIndexOf(':'));
         //解析action
-        String action = group_artifact_action.substring(group_artifact_action.lastIndexOf(":")+1,group_artifact_action.length());
+        String action = group_artifact_action.substring(group_artifact_action.lastIndexOf(':')+1,group_artifact_action.length());
 
         IDelegateFactory factory = mFactoryMap.get(groupArtifact);
         if (factory != null) {
@@ -112,7 +115,7 @@ public class ModularizationDelegate {
     }
 
 
-    public Object getObjectData(String group_artifact_action, Bundle args, Object... extras) throws Exception {
+    public Object getObjectData(String group_artifact_action, Bundle args, Object... extras) throws DelegateException {
         return getObjectData(group_artifact_action,null,args,extras);
     }
 
@@ -125,19 +128,19 @@ public class ModularizationDelegate {
      * @return
      * @throws DelegateException
      */
-    public Object getObjectData(String group_artifact_action, IActionDelegate.IActionCallback callback, Bundle args, Object... extras) throws Exception {
+    public Object getObjectData(String group_artifact_action, IActionDelegate.IActionCallback callback, Bundle args, Object... extras) throws DelegateException {
         if (TextUtils.isEmpty(group_artifact_action)){
-            throw new DelegateException("非法路由参数");
+            throw new DelegateException(ILLEGAL_PARAMETER);
         }
         String[] params = group_artifact_action.split(":");
         if (params.length != 3){
-            throw new DelegateException("非法路由参数");
+            throw new DelegateException(ILLEGAL_PARAMETER);
         }
 
         //获取groupArtifact
-        String groupArtifact = group_artifact_action.substring(0,group_artifact_action.lastIndexOf(":"));
+        String groupArtifact = group_artifact_action.substring(0,group_artifact_action.lastIndexOf(':'));
         //解析action
-        String action = group_artifact_action.substring(group_artifact_action.lastIndexOf(":")+1,group_artifact_action.length());
+        String action = group_artifact_action.substring(group_artifact_action.lastIndexOf(':')+1,group_artifact_action.length());
 
         IDelegateFactory factory = mFactoryMap.get(groupArtifact);
         if (factory != null) {
@@ -172,11 +175,11 @@ public class ModularizationDelegate {
      */
     public void runStaticAction(String group_artifact_action, Bundle args, IActionDelegate.IActionCallback callback, Object... extras) throws Exception {
         if (TextUtils.isEmpty(group_artifact_action)){
-            throw new DelegateException("非法路由参数");
+            throw new DelegateException(ILLEGAL_PARAMETER);
         }
         String[] params = group_artifact_action.split(":");
         if (params.length != 3){
-            throw new DelegateException("非法路由参数");
+            throw new DelegateException(ILLEGAL_PARAMETER);
         }
 
         //获取groupArtifact
@@ -210,11 +213,24 @@ public class ModularizationDelegate {
 
 
 
-    public IDelegateFactory getDelegateFactory(String factoryName) throws Exception {
+    public IDelegateFactory getDelegateFactory(String factoryName) throws DelegateException {
         if (!TextUtils.isEmpty(factoryName)){
-            Class clz = Class.forName(factoryName);
-            if (IDelegateFactory.class.isAssignableFrom(clz)){
-                IDelegateFactory delegateFactory = (IDelegateFactory) clz.newInstance();
+            Class clz = null;
+            try {
+                clz = Class.forName(factoryName);
+            } catch (ClassNotFoundException e) {
+                NLog.printStackTrace(e);
+            }
+            if (clz != null && IDelegateFactory.class.isAssignableFrom(clz)){
+                IDelegateFactory delegateFactory = null;
+                try {
+                    delegateFactory = (IDelegateFactory) clz.newInstance();
+                } catch (InstantiationException e) {
+                    NLog.printStackTrace(e);
+                } catch (IllegalAccessException e) {
+                    NLog.printStackTrace(e);
+
+                }
                 return delegateFactory;
             }else {
                 throw new DelegateException(String.format("clz name %s 没有实现IDelegateFactory接口",factoryName));
@@ -230,8 +246,8 @@ public class ModularizationDelegate {
      * @param groupArtifact
      * @return
      */
-    public String getCreateFactoryName(String groupArtifact) throws Exception {
-        IDelegateFactory mainDelegateFactory = mFactoryMap.get(ModuleConstans.MODULE_MAIN_NAME);
+    public String getCreateFactoryName(String groupArtifact) throws DelegateException {
+        IDelegateFactory mainDelegateFactory = mFactoryMap.get("com.apache.fastandroid:moduleMain");
         //通过主模块去获取工厂，达到实现懒加载功能
         if (mainDelegateFactory != null && mainDelegateFactory instanceof ICreateFactory){
             ICreateFactory createFactory = (ICreateFactory) mainDelegateFactory;
