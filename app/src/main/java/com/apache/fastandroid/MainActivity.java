@@ -18,8 +18,8 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
-import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
-import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
+import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.news.MainNewsTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.support.action.IsLoginedAction;

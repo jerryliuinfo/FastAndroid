@@ -11,7 +11,7 @@ import android.text.TextUtils;
 import com.antfortune.freeline.FreelineCore;
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.SplashActivity;
-import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.support.TUncaughtExceptionHandler;
 import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegateV2;
@@ -132,7 +132,7 @@ public class MyApplication extends Application {
                 }
             }
         } catch (Exception e) {
-        } catch (NoSuchMethodError e) {
+            e.printStackTrace();
         }
         return path;
     }

@@ -38,8 +38,8 @@ public class BizFragment extends ABaseFragment {
         if (fragment != null && fragment.getActivity() != null){
             String fragmentTag = "com.apache.fastandroid.base.BizFragment";
             BizFragment bizFragment = (BizFragment) fragment.getActivity().getSupportFragmentManager().findFragmentByTag(fragmentTag);
-            if (fragment == null){
-                fragment = new BizFragment();
+            if (bizFragment == null){
+                bizFragment = new BizFragment();
                 fragment.getActivity().getSupportFragmentManager().
                         beginTransaction().add(bizFragment,fragmentTag).commitAllowingStateLoss();
             }
@@ -54,10 +54,8 @@ public class BizFragment extends ABaseFragment {
             bizFragment = new BizFragment();
             bizFragment.mActivity = activity;
 
-            if (activity instanceof BaseActivity) {
-                if (((BaseActivity) activity).isDestory()) {
-                    return bizFragment;
-                }
+            if (activity instanceof BaseActivity && ((BaseActivity) activity).isDestory()) {
+                return bizFragment;
             }
 
             activity.getSupportFragmentManager().beginTransaction().add(bizFragment, "BizFragment").commit();

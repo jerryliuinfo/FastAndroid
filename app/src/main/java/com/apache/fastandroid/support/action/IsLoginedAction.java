@@ -3,8 +3,8 @@ package com.apache.fastandroid.support.action;
 import android.app.Activity;
 
 import com.apache.fastandroid.artemis.ArtemisContext;
-import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
-import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
+import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.tesla.framework.support.action.IAction;
 
 /**

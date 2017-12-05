@@ -1,4 +1,4 @@
-package com.apache.fastandroid.artemis.comBridge;
+package com.apache.fastandroid.artemis.bridge;
 
 /**
  * Created by jerryliu on 2017/7/18.

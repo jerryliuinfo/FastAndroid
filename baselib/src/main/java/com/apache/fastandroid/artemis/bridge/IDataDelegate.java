@@ -1,4 +1,4 @@
-package com.apache.fastandroid.artemis.comBridge;
+package com.apache.fastandroid.artemis.bridge;
 
 import android.os.Bundle;
 

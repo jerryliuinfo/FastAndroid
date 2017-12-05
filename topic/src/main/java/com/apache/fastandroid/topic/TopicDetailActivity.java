@@ -15,8 +15,8 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.TopicLog;
 import com.apache.fastandroid.artemis.ArtemisContext;
-import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
-import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
+import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.rx.DefaultCallback;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.artemis.util.TimeUtil;

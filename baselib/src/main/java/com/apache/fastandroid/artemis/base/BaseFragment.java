@@ -3,8 +3,9 @@ package com.apache.fastandroid.artemis.base;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
-import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
+import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.bridge.ModuleConstans;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 
@@ -36,6 +37,7 @@ public abstract class BaseFragment extends ABaseFragment {
                 ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_MAIN_NAME+":watchLeakCancary",null,null,new Object[]{activity});
             } catch (Exception e) {
                 e.printStackTrace();
+                NLog.printStackTrace(e);
             }
         }
 

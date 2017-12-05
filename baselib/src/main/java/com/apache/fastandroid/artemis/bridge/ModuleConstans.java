@@ -1,4 +1,4 @@
-package com.apache.fastandroid.artemis.comBridge;
+package com.apache.fastandroid.artemis.bridge;
 
 /**
  * Created by 01370340 on 2017/9/24.

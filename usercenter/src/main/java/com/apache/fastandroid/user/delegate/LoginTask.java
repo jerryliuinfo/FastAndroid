@@ -4,7 +4,7 @@ import android.text.TextUtils;
 
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.CacheUtil;
-import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
+import com.apache.fastandroid.artemis.bridge.IActionDelegate;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
 import com.apache.fastandroid.user.UserCenterLog;

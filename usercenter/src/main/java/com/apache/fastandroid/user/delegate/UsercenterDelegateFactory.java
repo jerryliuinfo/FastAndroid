@@ -1,9 +1,9 @@
 package com.apache.fastandroid.user.delegate;
 
-import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
-import com.apache.fastandroid.artemis.comBridge.IDataDelegate;
-import com.apache.fastandroid.artemis.comBridge.IDelegateFactory;
-import com.apache.fastandroid.artemis.comBridge.IObjectDataDelegate;
+import com.apache.fastandroid.artemis.bridge.IActionDelegate;
+import com.apache.fastandroid.artemis.bridge.IDataDelegate;
+import com.apache.fastandroid.artemis.bridge.IDelegateFactory;
+import com.apache.fastandroid.artemis.bridge.IObjectDataDelegate;
 import com.apache.fastandroid.user.delegate.impl.DoLogin;
 import com.apache.fastandroid.user.delegate.impl.GetToken;
 import com.apache.fastandroid.user.delegate.impl.IsLogined;

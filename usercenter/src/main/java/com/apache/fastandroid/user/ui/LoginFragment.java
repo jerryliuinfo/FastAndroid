@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.apache.fastandroid.artemis.base.BaseFragment;
-import com.apache.fastandroid.artemis.comBridge.ActionCallback;
-import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
-import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
+import com.apache.fastandroid.artemis.bridge.ActionCallback;
+import com.apache.fastandroid.artemis.bridge.ModularizationDelegate;
+import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.user.delegate.LoginTask;
 import com.apache.fastandroid.user.support.UserConfigManager;
@@ -34,12 +34,15 @@ public class LoginFragment extends BaseFragment {
 
     @ViewInject(idStr = "btn_login")
     private Button btn_login;
+    
+    
+    public static final String EXTRA_KEY = "fromTopicDetail";
 
     private Boolean fromTopicDetail;
     public static void start(Activity from,Boolean fromTopicDetail) {
         FragmentArgs args = new FragmentArgs();
         if (fromTopicDetail != null){
-            args.add("fromTopicDetail",fromTopicDetail);
+            args.add(EXTRA_KEY,fromTopicDetail);
         }
         FragmentContainerActivity.launch(from,LoginFragment.class,args);
     }
@@ -54,10 +57,10 @@ public class LoginFragment extends BaseFragment {
         super.layoutInit(inflater, savedInstanceSate);
 
         setToolbarTitle("");
-        if (savedInstanceSate == null && getArguments() != null && getArguments().containsKey("fromTopicDetail")){
-            fromTopicDetail = getArguments().getBoolean("fromTopicDetail");
+        if (savedInstanceSate == null && getArguments() != null && getArguments().containsKey(EXTRA_KEY)){
+            fromTopicDetail = getArguments().getBoolean(EXTRA_KEY);
         }else {
-            fromTopicDetail = savedInstanceSate.getBoolean("fromTopicDetail");
+            fromTopicDetail = savedInstanceSate.getBoolean(EXTRA_KEY);
         }
 
         mUserNameinputLayout.setHint("UserName");
@@ -77,7 +80,7 @@ public class LoginFragment extends BaseFragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         if (fromTopicDetail != null){
-            outState.putBoolean("fromTopicDetail", fromTopicDetail);
+            outState.putBoolean(EXTRA_KEY, fromTopicDetail);
         }
     }
 

@@ -3,10 +3,8 @@ package com.apache.fastandroid.user.delegate.impl;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.apache.fastandroid.artemis.comBridge.DelegateException;
-import com.apache.fastandroid.artemis.comBridge.IActionDelegate;
-import com.apache.fastandroid.artemis.comBridge.ModularizationDelegate;
-import com.apache.fastandroid.artemis.comBridge.ModuleConstans;
+import com.apache.fastandroid.artemis.bridge.DelegateException;
+import com.apache.fastandroid.artemis.bridge.IActionDelegate;
 import com.apache.fastandroid.user.ui.LoginedListFragment;
 
 /**
