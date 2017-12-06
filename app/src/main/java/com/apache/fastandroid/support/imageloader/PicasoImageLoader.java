@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
+import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 import com.tesla.framework.component.imageloader.IImageLoaderInit;
@@ -35,12 +36,14 @@ public class PicasoImageLoader implements IImageLoaderstrategy,IImageLoaderInit 
             requestCreator.error(options.getErrorDrawable());
         }
 
-
-
+        if (options.isSkipMemoryCache()){
+            requestCreator.memoryPolicy(MemoryPolicy.NO_CACHE);
+        }
 
         if (options.getImageSize() != null){
             requestCreator.resize(options.getImageSize().getWidth(),options.getImageSize().getHeight());
         }
+
         requestCreator.into((ImageView) options.getViewContainer());
     }
 

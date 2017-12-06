@@ -98,7 +98,7 @@ public class SplashActivity extends BaseActivity {
             }
         };
         try {
-            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":doLogin",null,callback,new Object[]{});
+            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":doLogin",null,callback,new Object[]{SplashActivity.this});
         } catch (Exception e) {
             e.printStackTrace();
         }

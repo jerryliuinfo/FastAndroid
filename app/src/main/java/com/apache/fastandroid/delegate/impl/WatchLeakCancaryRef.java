@@ -9,7 +9,7 @@ import com.tesla.framework.component.bridge.IActionDelegate;
 
 /**
  * Created by 01370340 on 2017/9/24.
- * 检测内存泄漏‰
+ * 检测内存泄漏
  */
 
 public class WatchLeakCancaryRef implements IActionDelegate {

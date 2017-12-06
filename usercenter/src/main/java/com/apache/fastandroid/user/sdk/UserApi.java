@@ -16,5 +16,5 @@ public interface UserApi {
      * @return 用户详情
      */
     @GET("users/me.json")
-    Observable<UserDetail> getMe();
+    Observable<UserDetail> getUserInfo();
 }

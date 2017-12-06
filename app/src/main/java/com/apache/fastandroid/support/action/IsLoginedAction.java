@@ -19,6 +19,7 @@ public class IsLoginedAction extends IAction {
     @Override
     public boolean interrupt() {
         boolean interupt =  ArtemisContext.getUserBean() == null;
+        interupt = true;
         if (interupt){
             doInterrupt();
         }

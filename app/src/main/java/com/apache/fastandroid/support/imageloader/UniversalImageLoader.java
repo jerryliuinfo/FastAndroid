@@ -92,7 +92,22 @@ public class UniversalImageLoader implements IImageLoaderstrategy {
                 builder.showImageForEmptyUri(options.getEmptyUrlDrawable());
             }
         }
-        builder.cacheInMemory(options.isCacheInMemoryCache());
+        builder.cacheInMemory(options.isSkipMemoryCache());
+
+        if (options.getDiskCacheStrategy() != ImageLoaderOptions.DiskCacheStrategy.DEFAULT) {
+            switch (options.getDiskCacheStrategy()) {
+                case NONE:
+                    builder.cacheOnDisk(false);
+                    break;
+                case All:
+                case SOURCE:
+                case RESULT:
+                   builder.cacheOnDisk(true);
+                    break;
+                default:
+                    break;
+            }
+        }
 
 
 

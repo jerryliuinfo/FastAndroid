@@ -36,7 +36,6 @@ public abstract class BaseFragment extends ABaseFragment {
             try {
                 ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_MAIN_NAME+":watchLeakCancary",null,null,new Object[]{activity});
             } catch (Exception e) {
-                e.printStackTrace();
                 NLog.printStackTrace(e);
             }
         }

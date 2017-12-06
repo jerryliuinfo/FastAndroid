@@ -26,6 +26,8 @@ import com.apache.fastandroid.novel.support.util.ChapterFileUtil;
 import com.apache.fastandroid.novel.support.util.NovelLog;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.file.FileUtils;
+import com.tesla.framework.common.util.file.FolderUtil;
+import com.tesla.framework.common.util.format.FormatUtil;
 import com.tesla.framework.common.util.sdcard.SdcardUtils;
 import com.tesla.framework.common.util.sp.SPUtils;
 import com.tesla.framework.support.cache.ACache;
@@ -179,16 +181,16 @@ public class CacheManager {
 
         try {
             String cacheDir = NovelConstans.BASE_PATH;
-            cacheSize += FileUtils.getFolderSize(cacheDir);
+            cacheSize += FolderUtil.getFolderSize(cacheDir);
             if (SdcardUtils.hasSDCard()) {
                 String extCacheDir = FrameworkApplication.getContext().getExternalCacheDir().getPath();
-                cacheSize += FileUtils.getFolderSize(extCacheDir);
+                cacheSize += FolderUtil.getFolderSize(extCacheDir);
             }
         } catch (Exception e) {
             NovelLog.e(e.toString());
         }
 
-        return FileUtils.formatFileSizeToString(cacheSize);
+        return FormatUtil.formatFileSizeToString(cacheSize);
     }
 
     /**
@@ -200,10 +202,10 @@ public class CacheManager {
         try {
             // 删除内存缓存
             String cacheDir = FrameworkApplication.getContext().getCacheDir().getPath();
-            FileUtils.deleteFileOrDirectory(new File(cacheDir));
+            FolderUtil.deleteFileOrDirectory(new File(cacheDir));
             if (SdcardUtils.hasSDCard()) {
                 // 删除SD书籍缓存
-                FileUtils.deleteFileOrDirectory(new File(NovelConstans.PATH_DATA));
+                FolderUtil.deleteFileOrDirectory(new File(NovelConstans.PATH_DATA));
             }
             // 删除阅读记录（SharePreference）
             if (clearReadPos) {

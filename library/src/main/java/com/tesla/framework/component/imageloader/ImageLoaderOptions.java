@@ -24,16 +24,17 @@ public class ImageLoaderOptions {
     private View viewContainer;  // 图片容器
     private String url;  // 图片地址
 
-    private int holderId = -1;  // 展位图
+    private int holderId = -1;  // 占位图
+
     private int errorId = -1;  //错误的图片
 
     private Drawable holderDrawable;  // 设置展位图
+
     private Drawable errorDrawable;  //加载错误的图片
 
     private int emptyUrlId = -1;
     private Drawable emptyUrlDrawable;
 
-    private boolean cacheInMemory = true;//是否使用缓存
 
     private Integer resource;  // 图片地址
     private ImageSize imageSize;  //设置图片的大小
@@ -41,7 +42,9 @@ public class ImageLoaderOptions {
 
     private boolean asGif = false;   //是否作为gif展示
     private boolean isCrossFade = false; //是否渐变平滑的显示图片
-    private  boolean cacheInMemoryCache = true; //是否使用内存缓存
+
+    private  boolean skipMemoryCache = false; //是否禁用内存缓存
+
     private  boolean blurImage = false; //是否使用高斯模糊
 
 
@@ -66,11 +69,9 @@ public class ImageLoaderOptions {
         this.emptyUrlId = builder.emptyUrlId;
         this.emptyUrlDrawable = builder.emptyUrlDrawable;
 
-        this.cacheInMemory = builder.cacheable;
-
         this.imageSize = builder.mImageSize;
         this.isCrossFade = builder.isCrossFade;
-        this.cacheInMemoryCache = builder.cacheInMemory;
+        this.skipMemoryCache = builder.skipMemoryCache;
         this.mDiskCacheStrategy = builder.mDiskCacheStrategy;
         this.url = builder.url;
         this.resource = builder.resource;
@@ -137,8 +138,8 @@ public class ImageLoaderOptions {
         return isCrossFade;
     }
 
-    public boolean isCacheInMemoryCache() {
-        return cacheInMemoryCache;
+    public boolean isSkipMemoryCache() {
+        return skipMemoryCache;
     }
 
     public DiskCacheStrategy getDiskCacheStrategy() {
@@ -184,13 +185,11 @@ public class ImageLoaderOptions {
         private ImageSize mImageSize;  //设置图片的大小
 
 
-        private boolean cacheable = true;//是否使用缓存
-
-
-
         private boolean asGif = false;   //是否作为gif展示
         private boolean isCrossFade = false; //是否渐变平滑的显示图片
-        private  boolean cacheInMemory = true; //是否跳过内存缓存
+        private  boolean skipMemoryCache = true; //是否跳过内存缓存
+
+
         private  boolean blurImage = false; //是否使用高斯模糊
 
         private int type;  //类型 (大图，中图，小图)
@@ -255,7 +254,7 @@ public class ImageLoaderOptions {
         }
 
         public Builder skipMemoryCache(boolean skip){
-            this. cacheable = !skip;
+            this.skipMemoryCache = skip;
             return this;
         }
 
@@ -269,11 +268,7 @@ public class ImageLoaderOptions {
             this.blurImage=blurImage;
             return this;
         }
-        public Builder cacheInMemory(boolean cacheInMemory){
-            this.cacheInMemory = cacheInMemory;
-            return this;
 
-        }
         public Builder override(int width,int height){
             this.mImageSize=new ImageSize(width,height);
             return this;
@@ -330,7 +325,11 @@ public class ImageLoaderOptions {
     }
     //对应磁盘缓存策略
     public enum DiskCacheStrategy{
-        All,NONE,SOURCE,RESULT,DEFAULT
+        All,//表示既缓存原始图片，也缓存转换过后的图片
+        NONE,//表示不缓存任何内容
+        SOURCE,//表示只缓存原始图片
+        RESULT,//表示只缓存转换过后的图片（默认选项）
+        DEFAULT
     }
 
 

@@ -37,7 +37,7 @@ public class AssetUtil {
      *  @param  assetFileName assets目录下的Apk源文件路径
      *  @param  newFileName 复制到/data/data/package_name/files/目录下文件名
      */
-    private void copyAssetsFileToAppFiles(Context context,String assetFileName, String newFileName) {
+    private void copyAssetsFileToAppCacheDirecotry(Context context,String assetFileName, String newFileName) {
         InputStream is = null;
         FileOutputStream fos = null;
         int buffsize = 1024;

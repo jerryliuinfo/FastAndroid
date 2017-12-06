@@ -15,10 +15,10 @@ import rx.Subscriber;
  * Created by 01370340 on 2017/9/3.
  */
 
-public class GetMe implements IActionDelegate {
+public class GetUserInfo implements IActionDelegate {
     @Override
     public void runAction(Bundle args, IActionCallback callback, Object... extras) throws DelegateException {
-        Observable<UserDetail> observable = UserSDK.newInstance().getMe();
+        Observable<UserDetail> observable = UserSDK.newInstance().getUserInfo();
         Subscriber subscriber = new Subscriber<UserDetail>() {
             @Override
             public void onCompleted() {

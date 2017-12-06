@@ -1,16 +1,15 @@
 package com.apache.fastandroid.user.delegate;
 
-import com.tesla.framework.component.bridge.IActionDelegate;
-import com.tesla.framework.component.bridge.IDataDelegate;
-import com.tesla.framework.component.bridge.IDelegateFactory;
-import com.tesla.framework.component.bridge.IObjectDataDelegate;
 import com.apache.fastandroid.user.delegate.impl.DoLogin;
 import com.apache.fastandroid.user.delegate.impl.GetToken;
-import com.apache.fastandroid.user.delegate.impl.IsLogined;
 import com.apache.fastandroid.user.delegate.impl.SaveToken;
 import com.apache.fastandroid.user.delegate.impl.StartLoginActivity;
 import com.apache.fastandroid.user.delegate.impl.StartLoginActivityWithNewTask;
 import com.apache.fastandroid.user.delegate.impl.StartLoginedListActivity;
+import com.tesla.framework.component.bridge.IActionDelegate;
+import com.tesla.framework.component.bridge.IDataDelegate;
+import com.tesla.framework.component.bridge.IDelegateFactory;
+import com.tesla.framework.component.bridge.IObjectDataDelegate;
 
 /**
  * Created by 01370340 on 2017/9/3.
@@ -26,15 +25,13 @@ public class UsercenterDelegateFactory implements IDelegateFactory {
     public static final String ACTION_DOLOGIN = "doLogin";
     public static final String ACTION_GET_TOKEN = "getToken";
     public static final String ACTION_SAVE_TOKEN = "saveToken";
-    public static final String ACTION_IS_LOGINED = "isLogined";
 
     @Override
     public IDataDelegate getDataTransfer(String action) {
         switch (action){
             case ACTION_GET_TOKEN:
                 return new GetToken();
-            case ACTION_IS_LOGINED:
-                return new IsLogined();
+
         }
         return null;
     }

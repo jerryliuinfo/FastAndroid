@@ -5,6 +5,7 @@ import android.content.Context;
 import com.tesla.framework.network.http.builder.OKHttpClientBuilder;
 
 import java.util.Hashtable;
+import java.util.Map;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -49,7 +50,7 @@ public class BaseHttpUtils {
         mContext = context.getApplicationContext();
     }
 
-    public BaseHttpUtils(Context context, String serverUrl) {
+    private BaseHttpUtils(Context context, String serverUrl) {
         mContext = context.getApplicationContext();
         mServerUrl = serverUrl;
     }
@@ -65,7 +66,19 @@ public class BaseHttpUtils {
         return mRetrofit;
     }
 
-    public static Hashtable<String,BaseHttpUtils> cacheMap = new Hashtable<>();
+    private BaseHttpUtils(){}
+    private static class SingletonHolder{
+        private SingletonHolder(){
+
+        }
+        private final static BaseHttpUtils INSTANCE = new BaseHttpUtils();
+    }
+    public static BaseHttpUtils getInstance() {
+
+        return SingletonHolder.INSTANCE;
+    }
+
+    private static final Map<String,BaseHttpUtils> cacheMap = new Hashtable<>();
 
     public static BaseHttpUtils getInstance(Context context, String serverUrl){
         BaseHttpUtils baseHttpUtils = cacheMap.get(serverUrl);

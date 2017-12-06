@@ -12,9 +12,6 @@ import rx.Subscriber;
 
 public abstract class HttpResultObserver<T> extends Subscriber<T> implements ICallback<T>{
 
-
-
-
     @Override
     public void onCompleted() {
         onFinished();

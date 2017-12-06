@@ -35,10 +35,10 @@ public class UserSDK extends BaseBizLogic {
         return observable;
     }
 
-    public Observable<UserDetail> getMe(){
+    public Observable<UserDetail> getUserInfo(){
         BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), UserConstans.BASE_URL);
         UserApi apiService = httpUtils.getRetrofit().create(UserApi.class);
-        Observable<UserDetail> observable =  apiService.getMe();
+        Observable<UserDetail> observable =  apiService.getUserInfo();
         return observable;
     }
 

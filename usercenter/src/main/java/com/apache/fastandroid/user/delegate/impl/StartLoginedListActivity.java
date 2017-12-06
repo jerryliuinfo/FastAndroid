@@ -9,6 +9,7 @@ import com.apache.fastandroid.user.ui.LoginedListFragment;
 
 /**
  * Created by 01370340 on 2017/9/3.
+ * 跳转到登录用户列表界面
  */
 
 public class StartLoginedListActivity implements IActionDelegate {

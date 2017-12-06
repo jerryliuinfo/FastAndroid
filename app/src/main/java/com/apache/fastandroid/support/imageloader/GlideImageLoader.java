@@ -90,7 +90,7 @@ public class GlideImageLoader implements IImageLoaderstrategy,IImageLoaderInit,I
                 builder = ((DrawableTypeRequest) mGenericRequestBuilder).asGif();
             }
         }
-        builder.skipMemoryCache(options.isCacheInMemoryCache());
+        builder.skipMemoryCache(options.isSkipMemoryCache());
         if (options.getImageSize() != null) {
             int width = getSize(options.getImageSize().getWidth(), view);
             int height = getSize(options.getImageSize().getHeight(), view);

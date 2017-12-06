@@ -75,6 +75,9 @@ public class ViewUtils {
 
 
 	public static ProgressDialog progressDialog2;
+	public static ProgressDialog createProgressDialog(Activity context, String message) {
+		return createProgressDialog(context,message,0);
+	}
 
 	public static ProgressDialog createProgressDialog(Activity context, String message, int widgetColor) {
 		dismissProgressDialog();

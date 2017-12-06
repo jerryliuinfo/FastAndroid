@@ -56,7 +56,7 @@ public class LoginFragment extends BaseFragment {
     protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
 
-        setToolbarTitle("");
+        setToolbarTitle("登录");
         if (savedInstanceSate == null && getArguments() != null && getArguments().containsKey(EXTRA_KEY)){
             fromTopicDetail = getArguments().getBoolean(EXTRA_KEY);
         }else {
@@ -104,7 +104,7 @@ public class LoginFragment extends BaseFragment {
                     loginFailed(new TaskException(msg));
                 }
             };
-            new LoginTask().doLogin(userName,pwd,callback);
+            new LoginTask().doLogin(getActivity(),userName,pwd,callback);
         }
 
 

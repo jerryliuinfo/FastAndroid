@@ -13,7 +13,6 @@ import com.apache.fastandroid.user.support.cache.UserCache;
 public class ClearLoginInfo implements IActionDelegate {
     @Override
     public void runAction(Bundle args, IActionCallback callback, Object... extras) throws DelegateException {
-        //UserConfigManager.getInstance().saveUserBean(null);
         UserCache.clearMe();
     }
 }

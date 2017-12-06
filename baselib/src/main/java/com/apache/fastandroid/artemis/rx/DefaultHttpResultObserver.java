@@ -15,7 +15,6 @@ public  class DefaultHttpResultObserver<T> extends HttpResultObserver<T> {
     public void onSuccess(T t) {
         if (callback != null){
             callback.onSuccess(t);
-
         }
     }
 

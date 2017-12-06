@@ -30,7 +30,7 @@ public class MainDelegateFactory implements IDelegateFactory,ICreateFactory {
     /**
      * 创建User模块的实现类
      */
-    public static final String ACTION_CREATE_MODULE_USER_FACTORY = "com.apache.fastandroid:usercenter";
+    public static final String ACTION_CREATE_MODULE_USER_FACTORY = "com.apache.fastandroid:userCenter";
 
 
 
