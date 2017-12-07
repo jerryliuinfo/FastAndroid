@@ -28,10 +28,10 @@ public class UserSDK extends BaseBizLogic {
     }
 
 
-    public Observable<Token> login(String user_name, String password) {
+    public Observable<Token> login(String username, String password) {
         BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), UserConstans.BASE_URL);
         TokenService apiService = httpUtils.getRetrofit().create(TokenService.class);
-        Observable<Token> observable =  apiService.getTokenV2(OAuth.client_id, OAuth.client_secret, OAuth.GRANT_TYPE_LOGIN, user_name, password);
+        Observable<Token> observable =  apiService.getTokenV2(OAuth.client_id, OAuth.client_secret, OAuth.GRANT_TYPE_LOGIN, username, password);
         return observable;
     }
 

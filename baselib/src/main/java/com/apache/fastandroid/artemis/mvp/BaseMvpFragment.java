@@ -9,7 +9,7 @@ import com.apache.fastandroid.artemis.base.BaseFragment;
  * Fragment的mvp封装
  */
 
-public abstract class BaseMvpFragment<P extends MvPresenter> extends BaseFragment implements BaseContract.BaseView {
+public abstract class BaseMvpFragment<P extends BaseContract.BasePresenter> extends BaseFragment implements BaseContract.BaseView {
     private P mPresenter;
 
     @Override
@@ -25,11 +25,28 @@ public abstract class BaseMvpFragment<P extends MvPresenter> extends BaseFragmen
         mPresenter.detachView();
     }
 
-    protected P getPresenter(){
+    public P getPresenter(){
         return mPresenter;
     }
 
 
     public abstract P createPresenter();
+
+
+    @Override
+    public void onFailed(Throwable e) {
+
+    }
+
+    @Override
+    public void onSuccess() {
+
+    }
+
+    @Override
+    public void onFinished() {
+
+    }
+
 
 }

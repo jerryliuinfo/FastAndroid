@@ -3,9 +3,9 @@ package com.apache.fastandroid.user.delegate.impl;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.apache.fastandroid.user.ui.presenter.LoginPresenter;
 import com.tesla.framework.component.bridge.DelegateException;
 import com.tesla.framework.component.bridge.IActionDelegate;
-import com.apache.fastandroid.user.delegate.LoginTask;
 
 /**
  * Created by 01370340 on 2017/9/3.
@@ -17,7 +17,7 @@ public class DoLogin implements IActionDelegate {
     public void runAction(Bundle args, final IActionCallback callback, Object... extras) throws DelegateException {
         if (extras != null && extras.length > 0 && extras[0] instanceof Activity){
             Activity activity = (Activity) extras[0];
-            new LoginTask().doAutoLogin(activity,callback);
+            new LoginPresenter().doAutoLogin(activity,callback);
         }
     }
 

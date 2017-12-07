@@ -8,14 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
-import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
+import com.apache.fastandroid.artemis.mvp.BaseMvpFragment;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.user.support.UserConfigManager;
+import com.apache.fastandroid.user.ui.contract.LoginContract;
 import com.apache.fastandroid.user.ui.presenter.LoginPresenter;
 import com.apache.fastandroid.usercenter.R;
-import com.tesla.framework.common.util.view.ViewUtils;
-import com.tesla.framework.component.bridge.ActionCallback;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
@@ -27,7 +26,7 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
  * Created by jerryliu on 2017/7/9.
  */
 
-public class LoginFragment extends BaseFragment {
+public class LoginFragmentMvp extends BaseMvpFragment<LoginContract.Presenter> {
     @ViewInject(idStr = "inputLayout_username")
     private TextInputLayout mUserNameinputLayout;
 
@@ -46,7 +45,7 @@ public class LoginFragment extends BaseFragment {
         if (fromTopicDetail != null){
             args.add(EXTRA_KEY,fromTopicDetail);
         }
-        FragmentContainerActivity.launch(from,LoginFragment.class,args);
+        FragmentContainerActivity.launch(from,LoginFragmentMvp.class,args);
     }
 
     @Override
@@ -86,35 +85,11 @@ public class LoginFragment extends BaseFragment {
         }
     }
 
-    String pwd;
     private void doLogin(){
         final String userName = mUserNameinputLayout.getEditText().getText().toString();
-        pwd = mPwdInputLayout.getEditText().getText().toString();
+        String pwd = mPwdInputLayout.getEditText().getText().toString();
         if (checkUserNameAndPwdInvalidaty(userName,pwd)){
-            final ActionCallback callback = new ActionCallback() {
-                @Override
-                public void onActionSuccess(Object... result) {
-                    if (result != null && result.length > 0 && result[0] instanceof Token) {
-                        Token token = (Token) result[0];
-                        loginSuccess(token);
-                    }
-                }
-
-                @Override
-                public void onActionFailed(int code, String msg) {
-                    loginFailed(new TaskException(msg));
-                }
-
-                @Override
-                public void onActionPrepare() {
-                    super.onActionPrepare();
-                    ViewUtils.createProgressDialog(getActivity(),"正在登录中....").show();
-
-                }
-            };
-            new LoginPresenter().doLogin(userName,pwd,callback);
-
-
+            getPresenter().doLogin(userName,pwd,null);
         }
 
 
@@ -137,7 +112,7 @@ public class LoginFragment extends BaseFragment {
 
     public void loginSuccess(Token token) {
         showMessage("登录成功");
-        UserConfigManager.getInstance(getContext()).savePwd(pwd);
+        UserConfigManager.getInstance(getContext()).savePwd(mPwdInputLayout.getEditText().getText().toString());
         if (fromTopicDetail != null){
             getActivity().finish();
         }else {
@@ -155,6 +130,15 @@ public class LoginFragment extends BaseFragment {
     public void loginFailed(TaskException exception) {
         showMessage(exception.getMessage());
     }
+
+
+
+
+    @Override
+    public LoginContract.Presenter createPresenter() {
+        return new LoginPresenter();
+    }
+
 
 
 }

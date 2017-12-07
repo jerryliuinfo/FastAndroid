@@ -4,14 +4,15 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.apache.fastandroid.app.AppContext;
-import com.tesla.framework.component.bridge.ActionCallback;
-import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.support.config.ADConfigManager;
 import com.apache.fastandroid.widget.SplashCountDownView;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.view.ViewUtils;
+import com.tesla.framework.component.bridge.ActionCallback;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 
@@ -29,27 +30,20 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        if (ADConfigManager.getInstance(this).isNeedToShowAd()){
-            coutDownView.setVisibility(View.VISIBLE);
-            ADConfigManager.getInstance(this).setLastShowADTime(System.currentTimeMillis());
-            coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(5000)
-                    .setCallback(new SplashCountDownView.CountDownCallbackImpl(){
-                        @Override
-                        public void onFinish(long delay) {
-                            //jump();
-                            toMain(null);
-                        }
+        coutDownView.setVisibility(View.VISIBLE);
+        ADConfigManager.getInstance(this).setLastShowADTime(System.currentTimeMillis());
+        coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(5000)
+                .setCallback(new SplashCountDownView.CountDownCallbackImpl(){
+                    @Override
+                    public void onFinish(long delay) {
+                        doAutoLogin();
+                    }
 
-                        @Override
-                        public void onClicked() {
-                            jump();
-                        }
-                    }).start();
-
-        }else {
-            //jump();
-            toMain(null);
-        }
+                    @Override
+                    public void onClicked() {
+                        doAutoLogin();
+                    }
+                }).start();
 
     }
 
@@ -77,8 +71,14 @@ public class SplashActivity extends BaseActivity {
      * 执行登录，如果不能自动登录， 则执行onFailed进入登录界面,
      * 否则进入主界面
      */
-    private void jump(){
+    private void doAutoLogin(){
         final ActionCallback callback = new ActionCallback(){
+
+            @Override
+            public void onActionPrepare() {
+                super.onActionPrepare();
+                ViewUtils.createProgressDialog(SplashActivity.this,"正在自动登录中....").show();
+            }
 
             @Override
             public void onActionSuccess(final Object... result) {
@@ -93,8 +93,9 @@ public class SplashActivity extends BaseActivity {
                 NLog.d(TAG, "onActionFailed code = %s, msg = %s",code,msg);
 
                 //showMessage(msg);
-                //toLogin();
-                toMain(null);
+                //自动登录失败 跳转到登录界面 执行手动登录
+                toLogin();
+                //toMain(null);
             }
         };
         try {

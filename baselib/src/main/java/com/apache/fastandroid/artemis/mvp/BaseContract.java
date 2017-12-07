@@ -16,8 +16,11 @@ public interface BaseContract {
 
     interface BaseView{
 
-        void showError();
+        void onFailed(Throwable e);
 
-        void showComplete();
+        void onSuccess();
+
+        void onFinished();
+
     }
 }
