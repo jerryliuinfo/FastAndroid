@@ -10,7 +10,6 @@ import com.apache.fastandroid.support.config.ADConfigManager;
 import com.apache.fastandroid.widget.SplashCountDownView;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.component.bridge.ActionCallback;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.support.inject.ViewInject;
@@ -77,7 +76,6 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onActionPrepare() {
                 super.onActionPrepare();
-                ViewUtils.createProgressDialog(SplashActivity.this,"正在自动登录中....").show();
             }
 
             @Override

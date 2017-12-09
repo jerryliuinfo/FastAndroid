@@ -2,7 +2,7 @@ package com.apache.fastandroid.user;
 
 import android.os.Bundle;
 
-import com.apache.fastandroid.user.ui.LoginFragment;
+import com.apache.fastandroid.user.ui.LoginFragmentMvp;
 import com.tesla.framework.ui.activity.BaseActivity;
 
 /**
@@ -14,7 +14,7 @@ public class UserCenterEntryActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        LoginFragment.start(this,false);
+        LoginFragmentMvp.start(this,false);
         finish();
     }
 }

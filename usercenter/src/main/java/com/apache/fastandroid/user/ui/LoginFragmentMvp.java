@@ -9,14 +9,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
-import com.apache.fastandroid.artemis.mvp.BaseMvpFragment;
-import com.apache.fastandroid.artemis.support.bean.Token;
+import com.apache.fastandroid.artemis.mvp.rx.BaseRxMvpFragment;
+import com.apache.fastandroid.artemis.support.bean.UserDetail;
 import com.apache.fastandroid.user.support.UserConfigManager;
 import com.apache.fastandroid.user.ui.contract.LoginContract;
 import com.apache.fastandroid.user.ui.presenter.LoginPresenter;
 import com.apache.fastandroid.usercenter.R;
+import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
-import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
@@ -26,7 +26,7 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
  * Created by jerryliu on 2017/7/9.
  */
 
-public class LoginFragmentMvp extends BaseMvpFragment<LoginContract.Presenter> {
+public class LoginFragmentMvp extends BaseRxMvpFragment<LoginPresenter> implements LoginContract.View {
     @ViewInject(idStr = "inputLayout_username")
     private TextInputLayout mUserNameinputLayout;
 
@@ -89,7 +89,7 @@ public class LoginFragmentMvp extends BaseMvpFragment<LoginContract.Presenter> {
         final String userName = mUserNameinputLayout.getEditText().getText().toString();
         String pwd = mPwdInputLayout.getEditText().getText().toString();
         if (checkUserNameAndPwdInvalidaty(userName,pwd)){
-            getPresenter().doLogin(userName,pwd,null);
+            ((LoginPresenter)getPresenter()).doLogin(userName,pwd);
         }
 
 
@@ -110,7 +110,18 @@ public class LoginFragmentMvp extends BaseMvpFragment<LoginContract.Presenter> {
         return true;
     }
 
-    public void loginSuccess(Token token) {
+
+
+
+
+    @Override
+    public LoginContract.Presenter createPresenter() {
+        return new LoginPresenter();
+    }
+
+
+    @Override
+    public void showLoginSuccess(UserDetail userDetail) {
         showMessage("登录成功");
         UserConfigManager.getInstance(getContext()).savePwd(mPwdInputLayout.getEditText().getText().toString());
         if (fromTopicDetail != null){
@@ -123,22 +134,23 @@ public class LoginFragmentMvp extends BaseMvpFragment<LoginContract.Presenter> {
             }
             getActivity().finish();
         }
-
-
     }
-
-    public void loginFailed(TaskException exception) {
-        showMessage(exception.getMessage());
-    }
-
-
-
 
     @Override
-    public LoginContract.Presenter createPresenter() {
-        return new LoginPresenter();
+    public void onFailed(Throwable e) {
+        super.onFailed(e);
+        showMessage(e.getMessage());
     }
 
+    @Override
+    public void onFinished() {
+        super.onFinished();
+        ViewUtils.dismissProgressDialog();
+    }
 
-
+    @Override
+    public void onPrepare() {
+        super.onPrepare();
+        showLoadingDialog();
+    }
 }

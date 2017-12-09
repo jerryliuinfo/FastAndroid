@@ -5,7 +5,7 @@ import android.text.TextUtils;
 
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.CacheUtil;
-import com.apache.fastandroid.artemis.mvp.MvPresenter;
+import com.apache.fastandroid.artemis.mvp.rx.RxPresenter;
 import com.apache.fastandroid.artemis.rx.HttpResultObserver;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
@@ -19,6 +19,7 @@ import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.component.bridge.IActionDelegate;
 
 import rx.Observable;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -27,10 +28,18 @@ import rx.schedulers.Schedulers;
  * Created by 01370340 on 2017/12/7.
  */
 
-public class LoginPresenter extends MvPresenter<LoginContract.View> implements LoginContract.Presenter {
+public class LoginPresenter extends RxPresenter<LoginContract.View> implements LoginContract.Presenter {
+
+    IActionDelegate.IActionCallback callback;
+
+    public void setCallback(IActionDelegate.IActionCallback callback) {
+        this.callback = callback;
+    }
+
+
 
     @Override
-    public void doAutoLogin(Activity activity,IActionDelegate.IActionCallback callback) {
+    public void doAutoLogin(Activity activity) {
         UserDetail userDetail = UserCache.getMe();
         String pwd = UserConfigManager.getInstance(FrameworkApplication.getContext()).getPwd();
         UserCenterLogUtil.d("userDetail = %s", userDetail);
@@ -41,23 +50,26 @@ public class LoginPresenter extends MvPresenter<LoginContract.View> implements L
 
         }else {
             //直接登录
-            doLogin(userDetail.getEmail(),pwd,callback);
+            doLogin(userDetail.getEmail(),pwd);
         }
 
 
     }
 
     @Override
-    public void doLogin(String userName, String password, final IActionDelegate.IActionCallback callback) {
+    public void doLogin(String userName, String password) {
 
         if (callback != null){
             callback.onActionPrepare();
+        }
+        if (getView() != null){
+            getView().onPrepare();
         }
 
         Observable<Token> loginObservable = UserSDK.newInstance().login(userName,password);
         final Token[] mToken = new Token[1];
 
-        loginObservable
+        Subscription subscription =loginObservable
                 .flatMap(new Func1<Token, Observable<UserDetail>>() {
                     @Override
                     public Observable<UserDetail> call(Token token) {
@@ -102,6 +114,9 @@ public class LoginPresenter extends MvPresenter<LoginContract.View> implements L
                         if (getView() != null){
                             getView().onFailed(e);
                         }
+                        if (callback != null){
+                            callback.onActionFailed(-100,"登录失败");
+                        }
 
                     }
 
@@ -113,9 +128,15 @@ public class LoginPresenter extends MvPresenter<LoginContract.View> implements L
                         if (getView() != null){
                             getView().onFinished();
                         }
+                        if (callback != null){
+                            callback.onActionFinish();
+                        }
 
                     }
                 });
+        addSubscribe(subscription);
+
+
     }
 
 

@@ -17,7 +17,9 @@ public class DoLogin implements IActionDelegate {
     public void runAction(Bundle args, final IActionCallback callback, Object... extras) throws DelegateException {
         if (extras != null && extras.length > 0 && extras[0] instanceof Activity){
             Activity activity = (Activity) extras[0];
-            new LoginPresenter().doAutoLogin(activity,callback);
+            LoginPresenter presenter = new LoginPresenter();
+            presenter.setCallback(callback);
+            presenter.doAutoLogin(activity);
         }
     }
 

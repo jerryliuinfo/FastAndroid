@@ -15,10 +15,12 @@ public interface BaseContract {
 
 
     interface BaseView{
+        /**
+         * 开始执行 可以弹出loading框之类业务操作
+         */
+        void onPrepare();
 
         void onFailed(Throwable e);
-
-        void onSuccess();
 
         void onFinished();
 

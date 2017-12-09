@@ -34,11 +34,16 @@ public class TaskException extends Exception {
 		resultIllegal
 	}
 	
-	private final String code;
+	private String code;//这里定义成int的原因是有时候 需要一个msg的构造方法，如果code和msg都定义成String会有冲突
 
     private String msg = "";
 	
 	private static  IExceptionDeclare exceptionDeclare;
+
+
+	public TaskException(){
+
+	}
 
 	public TaskException(String code) {
 		this.code = code;

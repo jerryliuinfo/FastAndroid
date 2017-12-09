@@ -22,7 +22,7 @@ public class MvPresenter<T extends BaseContract.BaseView> implements BaseContrac
         }
     }
 
-    protected T getView(){
+    public T getView(){
         if (mViewRef != null){
             return mViewRef.get();
         }

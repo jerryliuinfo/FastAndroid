@@ -112,14 +112,11 @@ public class LoginFragment extends BaseFragment {
 
                 }
             };
-            new LoginPresenter().doLogin(userName,pwd,callback);
-
-
+            LoginPresenter presenter = new LoginPresenter();
+            presenter.setCallback(callback);
+            presenter.doLogin(userName,pwd);
         }
-
-
     }
-
 
     private boolean checkUserNameAndPwdInvalidaty(String userName,String pwd){
         if (TextUtils.isEmpty(userName)){
@@ -148,13 +145,10 @@ public class LoginFragment extends BaseFragment {
             }
             getActivity().finish();
         }
-
-
     }
 
     public void loginFailed(TaskException exception) {
         showMessage(exception.getMessage());
     }
-
 
 }

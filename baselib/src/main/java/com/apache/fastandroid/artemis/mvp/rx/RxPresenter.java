@@ -1,7 +1,6 @@
 package com.apache.fastandroid.artemis.mvp.rx;
 
 import com.apache.fastandroid.artemis.mvp.BaseContract;
-import com.apache.fastandroid.artemis.mvp.MvPresenter;
 
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
@@ -11,28 +10,35 @@ import rx.subscriptions.CompositeSubscription;
  * 基于Rx的Presenter封装,控制订阅的生命周期
  */
 
-public class RxPresenter<T extends BaseContract.BaseView> extends MvPresenter {
+public class RxPresenter<T extends BaseContract.BaseView> implements BaseContract.BasePresenter<T> {
 
-    protected CompositeSubscription mCompositeSubscription;
-
-    @Override
-    public void detachView() {
-        super.detachView();
-        unSubscribe();
-    }
+    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+    private T mView;
 
     protected void unSubscribe(){
         if (mCompositeSubscription != null){
             mCompositeSubscription.unsubscribe();
+            mCompositeSubscription = null;
         }
     }
 
     protected void addSubscribe(Subscription subscription){
-        if (mCompositeSubscription == null){
-            mCompositeSubscription = new CompositeSubscription();
-        }
         mCompositeSubscription.add(subscription);
     }
 
 
+    @Override
+    public void attachView(T view) {
+        this.mView = view;
+    }
+
+    @Override
+    public void detachView() {
+        this.mView = null;
+        unSubscribe();
+    }
+
+    public T getView(){
+        return mView;
+    }
 }

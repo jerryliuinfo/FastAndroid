@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.component.BitmapOwner;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.biz.IResult;
@@ -341,6 +342,18 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
         }
     }
 
+    public void showLoadingDialog(String msg){
+        ViewUtils.createProgressDialog(getActivity(), msg).show();
+    }
+
+    public void showLoadingDialog(){
+        showLoadingDialog(getString(R.string.loading_msg));
+    }
+
+    public void hideLoadingDialog(){
+        ViewUtils.dismissProgressDialog();
+    }
+
 
     /**
      * Fragment主要的刷新任务线程，定义任务加载流程，耦合Fragment各个状态下的视图刷新方法
@@ -427,7 +440,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
          * @param result
          * @return
          */
-        protected boolean resultIsEmpty(Result result) {
+        public boolean resultIsEmpty(Result result) {
             return result == null ? true : false;
         }
 
@@ -612,4 +625,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     public boolean canDisplay() {
         return true;
     }
+
+
+
 }
