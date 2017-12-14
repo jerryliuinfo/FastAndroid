@@ -100,9 +100,13 @@ public class MainActivity extends MyBaseActivity{
     }
 
 
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        if ("".equals(intent.getAction())){
+
+        }
     }
 
     private void loadMenuData(){

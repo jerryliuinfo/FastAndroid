@@ -26,6 +26,4 @@ public  class ActionCallback implements IActionDelegate.IActionCallback {
     public void onActionFinish() {
         //提供默认的空实现
     }
-
-
 }

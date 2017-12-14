@@ -41,7 +41,7 @@ public abstract class BaseMvpFragment<P extends BaseContract.BasePresenter> exte
     @Override
     public void onFailed(Throwable e) {
         TaskException taskException = new TaskException();
-        taskException.setMsg(e.getMessage());
+        taskException.setMessage(e.getMessage());
         onTaskStateChanged(ABaseTaskState.falid, taskException);
     }
 

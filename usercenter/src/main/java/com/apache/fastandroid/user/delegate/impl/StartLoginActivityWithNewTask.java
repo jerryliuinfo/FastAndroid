@@ -17,7 +17,7 @@ public class StartLoginActivityWithNewTask implements IActionDelegate {
     public void runAction(Bundle args, IActionCallback callback, Object... extras) throws DelegateException {
         if (extras != null && extras.length > 0 && extras[0] instanceof Context){
             Activity from = (Activity) extras[0];
-            LoginFragmentMvp.start(from,false);
+            LoginFragmentMvp.launch(from,false);
         }
     }
 }

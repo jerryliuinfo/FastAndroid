@@ -21,6 +21,7 @@ public abstract class HttpResultObserver<T> extends Subscriber<T> implements ICa
     @Override
     public void onError(Throwable e) {
         onFailed(e);
+
     }
 
     @Override
@@ -50,6 +51,7 @@ public abstract class HttpResultObserver<T> extends Subscriber<T> implements ICa
             }
         }
         onSuccess(result);
+
     }
 
 

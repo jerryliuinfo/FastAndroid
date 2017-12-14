@@ -16,10 +16,11 @@ public class StartLoginActivity implements IActionDelegate {
     public void runAction(Bundle args, IActionCallback callback, Object... extras) throws DelegateException {
         if (extras != null && extras.length > 0 && extras[0] instanceof Activity){
             Activity from = (Activity) extras[0];
+            //从主题详情进入
             if (extras.length >= 2){
-                LoginFragmentMvp.start(from, (Boolean) extras[1]);
+                LoginFragmentMvp.launch(from, (Boolean) extras[1]);
             }else {
-                LoginFragmentMvp.start(from,false);
+                LoginFragmentMvp.launch(from,false);
             }
 
         }

@@ -98,7 +98,9 @@ public class FastAndroidExceptionDelegate implements IExceptionDeclare{
             throw new TaskException(code,msg);
         }
         if (!TextUtils.isEmpty(code)){
-            throw new TaskException(code);
+            TaskException taskException = new TaskException();
+            taskException.setCode(code);
+            throw taskException;
         }
     }
 

@@ -27,17 +27,6 @@ import java.util.List;
 
 public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBean,TopicBeans,TopicBean> {
 
-    public static void launch(Activity from) {
-        FragmentArgs args =  new FragmentArgs();
-        FragmentContainerActivity.launch(from,TopicListFragment.class,args);
-    }
-    public static TopicListFragment newFragment() {
-        Bundle args = new Bundle();
-        TopicListFragment fragment = new TopicListFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public IItemViewCreator<TopicBean> configItemViewCreator() {
         return new BaseItemViewCreator<TopicBean>(getActivity()) {
@@ -53,25 +42,7 @@ public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBea
         };
     }
 
-
-
-
-    @Override
-    public void requestData(RefreshMode mode) {
-        super.requestData(mode);
-        if (mode == RefreshMode.refresh){
-            mode = RefreshMode.reset;
-        }
-        new LoadTopicTask(mode).execute();
-    }
-
-    @Override
-    protected IPaging<TopicBean, TopicBeans> newPaging() {
-        return new IndexPaging<>();
-    }
-
     class LoadTopicTask extends APagingTask<Void,Void,TopicBeans>{
-
 
         public LoadTopicTask(RefreshMode mode) {
             super(mode);
@@ -93,4 +64,43 @@ public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBea
         }
     }
 
+
+
+
+
+
+
+
+
+
+    @Override
+    public void requestData(RefreshMode mode) {
+        super.requestData(mode);
+        if (mode == RefreshMode.refresh){
+            mode = RefreshMode.reset;
+        }
+        new LoadTopicTask(mode).execute();
+    }
+
+    @Override
+    protected IPaging<TopicBean, TopicBeans> newPaging() {
+        return new IndexPaging<>();
+    }
+
+
+
+
+
+
+
+    public static void launch(Activity from) {
+        FragmentArgs args =  new FragmentArgs();
+        FragmentContainerActivity.launch(from,TopicListFragment.class,args);
+    }
+    public static TopicListFragment newFragment() {
+        Bundle args = new Bundle();
+        TopicListFragment fragment = new TopicListFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 }

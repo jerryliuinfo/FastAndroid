@@ -10,8 +10,9 @@ import android.widget.Button;
 
 import com.apache.fastandroid.artemis.base.BaseFragment;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
-import com.apache.fastandroid.artemis.support.bean.Token;
+import com.apache.fastandroid.artemis.support.bean.UserDetail;
 import com.apache.fastandroid.user.support.UserConfigManager;
+import com.apache.fastandroid.user.ui.contract.LoginContract;
 import com.apache.fastandroid.user.ui.presenter.LoginPresenter;
 import com.apache.fastandroid.usercenter.R;
 import com.tesla.framework.common.util.view.ViewUtils;
@@ -27,7 +28,7 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
  * Created by jerryliu on 2017/7/9.
  */
 
-public class LoginFragment extends BaseFragment {
+public class LoginFragment extends BaseFragment implements LoginContract.View {
     @ViewInject(idStr = "inputLayout_username")
     private TextInputLayout mUserNameinputLayout;
 
@@ -94,15 +95,15 @@ public class LoginFragment extends BaseFragment {
             final ActionCallback callback = new ActionCallback() {
                 @Override
                 public void onActionSuccess(Object... result) {
-                    if (result != null && result.length > 0 && result[0] instanceof Token) {
-                        Token token = (Token) result[0];
-                        loginSuccess(token);
+                    if (result != null && result.length > 0 && result[0] instanceof UserDetail) {
+                        UserDetail userDetail = (UserDetail) result[0];
+                        getUserInfo(userDetail);
                     }
                 }
 
                 @Override
                 public void onActionFailed(int code, String msg) {
-                    loginFailed(new TaskException(msg));
+                    onFailed(new Throwable(msg));
                 }
 
                 @Override
@@ -132,9 +133,11 @@ public class LoginFragment extends BaseFragment {
         return true;
     }
 
-    public void loginSuccess(Token token) {
+
+    @Override
+    public void getUserInfo(UserDetail userDetail) {
         showMessage("登录成功");
-        UserConfigManager.getInstance(getContext()).savePwd(pwd);
+        UserConfigManager.getInstance(getContext()).savePwd(mPwdInputLayout.getEditText().getText().toString());
         if (fromTopicDetail != null){
             getActivity().finish();
         }else {
@@ -151,4 +154,18 @@ public class LoginFragment extends BaseFragment {
         showMessage(exception.getMessage());
     }
 
+    @Override
+    public void onPrepare() {
+
+    }
+
+    @Override
+    public void onFailed(Throwable e) {
+        showMessage(e.getMessage());
+    }
+
+    @Override
+    public void onFinished() {
+
+    }
 }

@@ -14,7 +14,7 @@ public class UserCenterEntryActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        LoginFragmentMvp.start(this,false);
+        LoginFragmentMvp.launch(this,false);
         finish();
     }
 }

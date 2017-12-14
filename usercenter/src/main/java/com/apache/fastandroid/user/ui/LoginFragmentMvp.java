@@ -40,7 +40,7 @@ public class LoginFragmentMvp extends BaseRxMvpFragment<LoginPresenter> implemen
     public static final String EXTRA_KEY = "fromTopicDetail";
 
     private Boolean fromTopicDetail;
-    public static void start(Activity from,Boolean fromTopicDetail) {
+    public static void launch(Activity from, Boolean fromTopicDetail) {
         FragmentArgs args = new FragmentArgs();
         if (fromTopicDetail != null){
             args.add(EXTRA_KEY,fromTopicDetail);
@@ -121,10 +121,11 @@ public class LoginFragmentMvp extends BaseRxMvpFragment<LoginPresenter> implemen
 
 
     @Override
-    public void showLoginSuccess(UserDetail userDetail) {
+    public void getUserInfo(UserDetail userDetail) {
         showMessage("登录成功");
         UserConfigManager.getInstance(getContext()).savePwd(mPwdInputLayout.getEditText().getText().toString());
-        if (fromTopicDetail != null){
+        //从主题列表转转过来的话,则进入主题界面
+        if (fromTopicDetail != null && fromTopicDetail){
             getActivity().finish();
         }else {
             try {

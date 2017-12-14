@@ -66,7 +66,7 @@ public class GlideImageLoader implements IImageLoaderstrategy,IImageLoaderInit,I
         View v = options.getViewContainer();
 
         //存在问题
-        // java.lang.IllegalArgumentException You cannot start a load for a destroyed activity
+        // java.lang.IllegalArgumentException You cannot launch a load for a destroyed activity
         //RequestManager manager=getRequestManager(v.getContext());
         RequestManager manager = Glide.with(options.getContext());
         if (v instanceof ImageView) {

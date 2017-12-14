@@ -12,7 +12,7 @@ import com.apache.fastandroid.artemis.support.bean.UserDetail;
 public interface LoginContract {
 
     interface View extends BaseContract.BaseView{
-        void showLoginSuccess(UserDetail userDetail);
+        void getUserInfo(UserDetail userDetail);
     }
 
      interface Presenter extends BaseContract.BasePresenter<View> {

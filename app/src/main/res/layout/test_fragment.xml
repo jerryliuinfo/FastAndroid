@@ -110,6 +110,7 @@
             android:text="test_permission"
             android:textAllCaps="false"
             />
+
     </LinearLayout>
 </ScrollView>
 

@@ -36,7 +36,7 @@ public class TaskException extends Exception {
 	
 	private String code;//这里定义成int的原因是有时候 需要一个msg的构造方法，如果code和msg都定义成String会有冲突
 
-    private String msg = "";
+    private String message = "";
 	
 	private static  IExceptionDeclare exceptionDeclare;
 
@@ -45,17 +45,17 @@ public class TaskException extends Exception {
 
 	}
 
-	public TaskException(String code) {
-		this.code = code;
+	public TaskException(String message) {
+		this.message = message;
 	}
 
 	public TaskException(String code,String msg) {
 		this.code = code;
-		this.msg = msg;
+		this.message = msg;
 	}
 
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	public String getCode() {
@@ -63,10 +63,14 @@ public class TaskException extends Exception {
     }
 
 
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	@Override
 	public String getMessage() {
-		if (!TextUtils.isEmpty(msg))
-			return msg + "";
+		if (!TextUtils.isEmpty(message))
+			return message + "";
 
 		if (!TextUtils.isEmpty(code) && exceptionDeclare != null) {
 			String messsage = exceptionDeclare.checkCode(String.valueOf(code));
@@ -82,13 +86,13 @@ public class TaskException extends Exception {
 
 				TaskError error = TaskError.valueOf(String.valueOf(code));
 				if (error == TaskError.noneNetwork || error == TaskError.failIOError)
-					msg = res.getString(R.string.comm_error_none_network);
+					message = res.getString(R.string.comm_error_none_network);
 				else if (error == TaskError.socketTimeout || error == TaskError.timeout)
-					msg = res.getString(R.string.comm_error_timeout);
+					message = res.getString(R.string.comm_error_timeout);
 				else if (error == TaskError.resultIllegal)
-					msg = res.getString(R.string.comm_error_result_illegal);
-				if (!TextUtils.isEmpty(msg))
-					return msg + "";
+					message = res.getString(R.string.comm_error_result_illegal);
+				if (!TextUtils.isEmpty(message))
+					return message + "";
 			}
 		} catch (Exception e) {
 			NLog.printStackTrace(e);

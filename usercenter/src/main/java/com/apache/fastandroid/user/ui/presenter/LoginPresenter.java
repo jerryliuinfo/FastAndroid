@@ -91,10 +91,10 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
 
                         if (mToken[0] != null){
                             if (callback != null){
-                                callback.onActionSuccess(mToken[0]);
+                                callback.onActionSuccess(userDetail);
                             }
                             if (getView() != null){
-                                getView().showLoginSuccess(userDetail);
+                                getView().getUserInfo(userDetail);
                             }
 
                         }else {
