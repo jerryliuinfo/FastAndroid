@@ -5,34 +5,15 @@ import com.apache.fastandroid.artemis.support.exception.ICheck;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.task.TaskException;
 
-import java.io.IOException;
-
-import retrofit2.Call;
-import retrofit2.Response;
-
 /**
  * Created by 01370340 on 2017/9/2.
  */
 
 public abstract class BaseBizLogic extends ABizLogic {
 
-    public <T extends BaseBean> T getResponseBody(Call<T> call) throws IOException, TaskException {
-        if (call != null){
-            Response<T> response = call.execute();
-            if (response != null && response.isSuccessful()){
-                BaseBean<T> baseBean = response.body();
-                checkRepsonse(baseBean);
-
-                return baseBean.getData();
-            }
-        }
-        return null;
-
-    }
-
 
     /**
-     * 对服务器返回的数据做一些通用检查
+     * 对服务器返回的数据做一些数据校验
      * @param result
      * @param <T>
      * @throws TaskException
@@ -57,22 +38,7 @@ public abstract class BaseBizLogic extends ABizLogic {
     }
 
 
-    public <T> T checkCallResult(Call<T> call) throws TaskException{
-        try {
-            Response<T> response = call.execute();
-            if (!response.isSuccessful()){
-                throw new TaskException("response.isSuccessful() = false");
-            }
-            T t =  response.body();
-            if (t == null){
-                throw new TaskException("response body is null");
-            }
-            return t;
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new TaskException(e.getMessage());
-        }
-    }
+
 
 
 

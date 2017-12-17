@@ -3,6 +3,7 @@ package com.apache.fastandroid.topic.sdk;
 
 import com.apache.fastandroid.artemis.BaseBizLogic;
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
+import com.apache.fastandroid.artemis.retrofit.RetrofitUtil;
 import com.apache.fastandroid.artemis.rx.DefaultHttpResultObserver;
 import com.apache.fastandroid.artemis.rx.ICallback;
 import com.apache.fastandroid.topic.TopicConstans;
@@ -96,7 +97,7 @@ public class TopicSDK extends BaseBizLogic {
         BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
         Call<List<TopicReplyBean>> call =  apiService.getTopicRepliesList(id,offset,limit);
-        List<TopicReplyBean> list = checkCallResult(call);
+        List<TopicReplyBean> list = RetrofitUtil.checkCallResult(call);
         if (list == null || list.size() == 0){
             throw new TaskException("没有回复数据");
         }

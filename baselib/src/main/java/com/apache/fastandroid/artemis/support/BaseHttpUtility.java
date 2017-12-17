@@ -3,7 +3,6 @@ package com.apache.fastandroid.artemis.support;
 import com.alibaba.fastjson.JSON;
 import com.apache.fastandroid.artemis.support.bean.BaseBean;
 import com.apache.fastandroid.artemis.support.exception.ICheck;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.http.OkHttpUtility;
 import com.tesla.framework.network.task.TaskException;
 
@@ -11,8 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-
-import okhttp3.Response;
 
 /**
  * Created by 01370340 on 2017/9/29.
@@ -23,7 +20,7 @@ import okhttp3.Response;
 public class BaseHttpUtility extends OkHttpUtility{
 
     /**
-     * @param response
+     * @param
      * @param responseCls
      * @param <T>
      * @return
@@ -31,18 +28,16 @@ public class BaseHttpUtility extends OkHttpUtility{
      * @throws IOException
      */
 
-    public  <T> T parseResponse(Response response, Class<T> responseCls) throws TaskException, IOException {
-        String responseStr = response.body().toString();
-        NLog.d("DefHttpUtility", "responseStr = %s", response);
+    @Override
+    protected <T> T parseResponse(String resultStr, Class<T> responseCls) throws TaskException {
         if (responseCls.isAssignableFrom(String.class))
-            return (T) responseStr;
+            return (T) resultStr;
 
-        return jsonToBean(responseStr,responseCls);
+        return jsonToBean(resultStr,responseCls);
     }
 
-
-
     /**
+     * /把公共字段 code,msg等字段塞到业务bean里面去
      * 将服务器返回的json字符串转换成业务实体bean
      * @param responseStr
      * @param responseCls
@@ -78,7 +73,7 @@ public class BaseHttpUtility extends OkHttpUtility{
 
                 try {
                     if (jsonObject.has("code")){
-                        baseResultBean.code = jsonObject.getString("code");
+                        baseResultBean.setCode(jsonObject.getString("code"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -86,7 +81,7 @@ public class BaseHttpUtility extends OkHttpUtility{
 
                 try {
                     if (jsonObject.has("msg")){
-                        baseResultBean.msg = jsonObject.getString("msg");
+                        baseResultBean.setMsg(jsonObject.getString("msg"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

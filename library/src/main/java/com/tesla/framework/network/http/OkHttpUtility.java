@@ -177,7 +177,7 @@ public class OkHttpUtility implements IHttpUtility {
 	}
 
 
-	public  <T> T parseResponse(String resultStr, Class<T> responseCls) throws TaskException  {
+	protected   <T> T parseResponse(String resultStr, Class<T> responseCls) throws TaskException  {
 		if (responseCls.isAssignableFrom(String.class))
 			return (T) resultStr;
 

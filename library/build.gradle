@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'android-apt'
 
+
 repositories {
     mavenCentral()
 
@@ -10,7 +11,7 @@ repositories {
 }
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    compileSdkVersion 25
     buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
@@ -52,3 +53,6 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 }
+
+apply from: 'bintray.gradle'
+

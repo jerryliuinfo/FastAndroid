@@ -17,6 +17,11 @@ buildscript {
         classpath 'com.antfortune.freeline:gradle:0.8.7'
 
         //classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.1.9'
+
+
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+
     }
 
 
