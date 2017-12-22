@@ -111,7 +111,7 @@ public class SqliteUtility {
                     tableInfo.getTableName(), selection, JSON.toJSON(selectionArgs), String.valueOf(groupBy), String.valueOf(having), String.valueOf(orderBy), String.valueOf(limit));
         }
 
-        List<String> columnList = new ArrayList<String>();
+        List<String> columnList = new ArrayList<>();
         columnList.add(tableInfo.getPrimaryKey().getColumn());
         for (TableColumn tableColumn : tableInfo.getColumns())
             columnList.add(tableColumn.getColumn());
@@ -637,7 +637,7 @@ public class SqliteUtility {
 	private <T> TableInfo checkTable(Class<T> clazz) {
 		TableInfo tableInfo = TableInfoUtils.exist(dbName, clazz);
 		if (tableInfo != null) {
-			;
+
 		}
 		else {
             tableInfo = TableInfoUtils.newTable(dbName, writableDB, clazz);

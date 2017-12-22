@@ -1,5 +1,6 @@
 package com.tesla.framework.component.bridge;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 
@@ -47,11 +48,11 @@ public class ModularizationDelegate {
     }
 
 
-    public static void registerComponent(String className){
+    public static void registerComponent(String className, Context context){
         try {
             Class clz = Class.forName(className);
             IApplicationLike applicationLike = (IApplicationLike) clz.newInstance();
-            applicationLike.onCreate();
+            applicationLike.onCreate(context);
         } catch (Exception e) {
             NLog.printStackTrace(e);
         }

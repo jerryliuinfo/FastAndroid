@@ -1,12 +1,12 @@
 package com.apache.fastandroid.news.sdk;
 
-import com.apache.fastandroid.artemis.BaseBizLogic;
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.artemis.retrofit.RetrofitUtil;
 import com.apache.fastandroid.news.bean.NewsBean;
 import com.apache.fastandroid.news.bean.NewsBeans;
 import com.apache.fastandroid.topic.TopicConstans;
 import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.task.TaskException;
 
@@ -18,7 +18,7 @@ import retrofit2.Call;
  * Created by 01370340 on 2017/9/3.
  */
 
-public class NewsSDK extends BaseBizLogic {
+public class NewsSDK extends ABizLogic {
     @Override
     protected HttpConfig configHttpConfig() {
         return new HttpConfig();

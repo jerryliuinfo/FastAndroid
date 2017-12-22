@@ -52,7 +52,7 @@ public class SqlUtils {
         if (primaryKey instanceof AutoIncrementTableColumn) {
         }
         else {
-            strSQL.append(", PRIMARY CONFIG ( ").append(primaryKey.getColumn()).append(" , ")
+            strSQL.append(", PRIMARY KEY ( ").append(primaryKey.getColumn()).append(" , ")
                     .append(FieldUtils.KEY).append(" , ")
                     .append(FieldUtils.OWNER).append(" )");
         }

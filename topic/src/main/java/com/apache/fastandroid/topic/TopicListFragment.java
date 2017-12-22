@@ -27,6 +27,17 @@ import java.util.List;
 
 public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBean,TopicBeans,TopicBean> {
 
+    public static void launch(Activity from) {
+        FragmentArgs args =  new FragmentArgs();
+        FragmentContainerActivity.launch(from,TopicListFragment.class,args);
+    }
+    public static TopicListFragment newFragment() {
+        Bundle args = new Bundle();
+        TopicListFragment fragment = new TopicListFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public IItemViewCreator<TopicBean> configItemViewCreator() {
         return new BaseItemViewCreator<TopicBean>(getActivity()) {
@@ -59,17 +70,10 @@ public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBea
             if (!TextUtils.isEmpty(nextPage)){
                 offset = Integer.parseInt(nextPage);
             }
-            return TopicSDK.newInstance().getTopicsList(null,null,offset,20);
+            return TopicSDK.newInstance(getTaskCacheMode(this)).getTopicsList(null,null,offset,20);
 
         }
     }
-
-
-
-
-
-
-
 
 
 
@@ -93,14 +97,5 @@ public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBea
 
 
 
-    public static void launch(Activity from) {
-        FragmentArgs args =  new FragmentArgs();
-        FragmentContainerActivity.launch(from,TopicListFragment.class,args);
-    }
-    public static TopicListFragment newFragment() {
-        Bundle args = new Bundle();
-        TopicListFragment fragment = new TopicListFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 }

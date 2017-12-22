@@ -16,7 +16,6 @@ import java.util.List;
 public class TableInfoUtils {
 
 	public static final String TAG = SqliteUtility.TAG;
-	
 	private static final HashMap<String, TableInfo> tableInfoMap;
 	
 	static {

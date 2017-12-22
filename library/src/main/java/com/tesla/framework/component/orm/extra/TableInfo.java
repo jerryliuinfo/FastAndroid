@@ -30,7 +30,7 @@ public class TableInfo {
 	private final List<TableColumn> columns;
 	
 	public TableInfo(Class<?> clazz) {
-		columns = new ArrayList<TableColumn>();
+		columns = new ArrayList<>();
 
 		this.clazz = clazz;
 		
@@ -38,7 +38,7 @@ public class TableInfo {
 	}
 
 	public TableInfo(String tableName, TableColumn primaryKey) {
-		columns = new ArrayList<TableColumn>();
+		columns = new ArrayList<>();
 
 		this.tableName = tableName;
 		this.primaryKey = primaryKey;

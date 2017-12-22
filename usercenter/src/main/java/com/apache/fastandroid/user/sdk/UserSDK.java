@@ -1,6 +1,5 @@
 package com.apache.fastandroid.user.sdk;
 
-import com.apache.fastandroid.artemis.BaseBizLogic;
 import com.apache.fastandroid.artemis.api.TokenService;
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
@@ -8,6 +7,7 @@ import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
 import com.apache.fastandroid.user.support.UserConstans;
 import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
 
 import rx.Observable;
@@ -16,7 +16,7 @@ import rx.Observable;
  * Created by 01370340 on 2017/9/1.
  */
 
-public class UserSDK extends BaseBizLogic {
+public class UserSDK extends ABizLogic {
 
     public static UserSDK newInstance(){
         return new UserSDK();

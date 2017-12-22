@@ -1,6 +1,9 @@
 package com.apache.fastandroid.applike;
 
+import android.content.Context;
+
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
+import com.apache.fastandroid.topic.cache.TopicDb;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
 
@@ -10,8 +13,9 @@ import com.tesla.framework.component.bridge.ModularizationDelegate;
 
 public class TopicAppLike implements IApplicationLike {
     @Override
-    public void onCreate() {
+    public void onCreate(Context context) {
         //ModularizationDelegate.getInstance().register(ModuleConstans.MODULE_TOPIC_NAME,new TopicDelegateFactory());
+        TopicDb.initDb(context);
     }
 
     @Override

@@ -103,13 +103,13 @@ public class MyApplication extends Application {
 
     private void initModuleBridge(){
         //主模块
-        ModularizationDelegate.registerComponent("com.apache.fastandroid.applike.MainAppLike");
+        ModularizationDelegate.registerComponent("com.apache.fastandroid.applike.MainAppLike",getApplicationContext());
         //用户模块
-        ModularizationDelegate.registerComponent("com.apache.fastandroid.user.applike.UserCenterAppLike");
+        ModularizationDelegate.registerComponent("com.apache.fastandroid.user.applike.UserCenterAppLike",getApplicationContext());
         //主题模块
-        ModularizationDelegate.registerComponent("com.apache.fastandroid.applike.TopicAppLike");
+        ModularizationDelegate.registerComponent("com.apache.fastandroid.applike.TopicAppLike",getApplicationContext());
         //小说模块
-        ModularizationDelegate.registerComponent("com.apache.fastandroid.novel.applike.NovelAppLike");
+        ModularizationDelegate.registerComponent("com.apache.fastandroid.novel.applike.NovelAppLike",getApplicationContext());
     }
 
 

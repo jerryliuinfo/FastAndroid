@@ -25,6 +25,7 @@ package com.apache.fastandroid.topic.bean;
 
 import com.apache.fastandroid.artemis.support.bean.Abilities;
 import com.apache.fastandroid.artemis.support.bean.User;
+import com.tesla.framework.component.orm.annotation.PrimaryKey;
 
 import java.io.Serializable;
 
@@ -32,6 +33,7 @@ import java.io.Serializable;
  * topic 简略信息
  */
 public class TopicBean implements Serializable {
+    @PrimaryKey(column = "id")
     public int id;                         // 唯一 id
     public String title;                   // 标题
     public String created_at;              // 创建时间

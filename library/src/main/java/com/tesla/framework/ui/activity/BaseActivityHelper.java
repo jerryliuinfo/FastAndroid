@@ -2,6 +2,7 @@ package com.tesla.framework.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,12 +21,9 @@ import com.tesla.framework.support.permission.IPermissionsSubject;
  */
 public class BaseActivityHelper implements IPermissionsSubject,IActivityLifeCycle {
 
-
     private BaseActivity mActivity;
 
     private PermissionActivityHelper mPermissionActivityHelper = new PermissionActivityHelper();
-
-
 
     protected void bindActivity(BaseActivity activity) {
         this.mActivity = activity;
@@ -42,7 +40,9 @@ public class BaseActivityHelper implements IPermissionsSubject,IActivityLifeCycl
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        mPermissionActivityHelper.onCreate(savedInstanceState);
+        if (mPermissionActivityHelper != null){
+            mPermissionActivityHelper.onCreate(savedInstanceState);
+        }
     }
 
     @Override

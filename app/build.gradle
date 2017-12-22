@@ -91,8 +91,8 @@ android {
 
     buildTypes {
         release {
-//            minifyEnabled false
-//            shrinkResources true
+            minifyEnabled true
+            //shrinkResources true
 //            zipAlignEnabled false
             buildConfigField("boolean","LOG_DEBUG","false")
             buildConfigField("String","BUGLY_APP_ID","\"a397701fd5\"")
@@ -105,22 +105,33 @@ android {
             buildConfigField("String","BUGLY_APP_ID","\"272afe1108\"")
             manifestPlaceholders = [appName: "FastAnd"]
 
-
+            debug {
+                resValue("string", "PORT_NUMBER", "8082")
+            }
         }
 
     }
 
-    /*渠道信息配置*/
+    /*渠道信息配置 这个一定要放在设置签名的前面*/
     productFlavors {
         dev {
             //不同渠道，不同包名
             applicationId "com.fast.adnroid"
-            //signingConfig signingConfigs.dev
+            signingConfig signingConfigs.dev
             versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染
             manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name,PACKAGE_NAME: applicationId]
 
             //使用multiDex 如果minsdkersion小雨20 会增加构建时间
             minSdkVersion 21
+        }
+    }
+
+    signingConfigs {
+        dev {
+            storeFile file(KEYSTORE_FILE)
+            storePassword KEYSTORE_PASSWORD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
         }
     }
 

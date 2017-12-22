@@ -140,12 +140,12 @@ public class TestFragment extends ABaseFragment {
                 TestPermissionFragment.launch(getActivity());
             }
         });
-        findViewById(R.id.btn_test_marathon).setOnClickListener(new View.OnClickListener() {
+       /* findViewById(R.id.btn_test_marathon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentContainerActivity.launch(getActivity(),MarathonFragment.class,null);
             }
-        });
+        });*/
 
     }
 

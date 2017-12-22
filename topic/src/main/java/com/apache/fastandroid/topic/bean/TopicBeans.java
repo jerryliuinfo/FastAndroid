@@ -11,7 +11,14 @@ import java.util.List;
 public class TopicBeans extends ResultBean {
     public List<TopicBean> list;
 
-    public TopicBeans(List<TopicBean> list) {
+    public TopicBeans() {
+    }
+
+    public List<TopicBean> getList() {
+        return list;
+    }
+
+    public void setList(List<TopicBean> list) {
         this.list = list;
     }
 

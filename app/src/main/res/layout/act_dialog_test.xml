@@ -4,13 +4,13 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <Button
+    <!--<Button
         android:id="@+id/btn_show_loading_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="show_loading_dialog"
         android:textAllCaps="false"
-        />
+        />-->
     <Button
         android:id="@+id/btn_require_sdcard_permission"
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:text="申请sd卡权限"
         android:textAllCaps="false"
         />
-    <Button
+    <!--<Button
         android:id="@+id/btn_require_contacts_permission"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,5 +54,5 @@
         android:layout_height="wrap_content"
         android:text="申请一组权限"
         android:textAllCaps="false"
-        />
+        />-->
 </LinearLayout>

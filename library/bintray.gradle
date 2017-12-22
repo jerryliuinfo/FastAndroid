@@ -92,7 +92,7 @@ bintray {
 
     pkg {
         repo = 'maven'
-        name = PROJ_ARTIFACT_ID
+        name = PROJ_ARTIFACTID
         licenses = ['Apache-2.0']
         vcsUrl = PROJ_VCSURL
         websiteUrl = PROJ_WEBSITEURL

@@ -18,11 +18,11 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
-import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.news.MainNewsTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.support.action.IsLoginedAction;
+import com.apache.fastandroid.support.utils.DebugDbUtils;
 import com.apache.fastandroid.test.TestFragment;
 import com.apache.fastandroid.video.VideoTabsFragment;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
@@ -30,6 +30,7 @@ import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.common.util.view.StatusBarUtil;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.support.cache.DataCache;
 import com.tesla.framework.support.inject.ViewInject;
@@ -76,6 +77,9 @@ public class MainActivity extends MyBaseActivity{
 
         //ConfigManager.getInstance(this);
         mCache = new DataCache("fastAndroid");
+
+        DebugDbUtils.showDebugDBAddressLogToast(getApplicationContext());
+        DebugDbUtils.setCustomDatabaseFiles(this);
 
 
         setContentView(R.layout.activity_main);

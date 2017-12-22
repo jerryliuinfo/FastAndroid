@@ -37,15 +37,16 @@ public abstract class APermissionsAction extends IAction implements IPermissions
         boolean interrupt = super.interrupt();
 
         if (requestCode == 0) {
-
+            return true;
         }
         // 低于SDK23
         else if (Build.VERSION.SDK_INT < 23) {
-
+            return false;
         }
         // 授予了权限
-        else if (PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(getContext(), permission)) {
+        if (PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(getContext(), permission)) {
             NLog.d(TAG, "已经授予了权限, permission = %s", permission);
+            return false;
         }
         // 没有或者拒绝了权限
         else if (PackageManager.PERMISSION_DENIED == ContextCompat.checkSelfPermission(getContext(), permission)) {
