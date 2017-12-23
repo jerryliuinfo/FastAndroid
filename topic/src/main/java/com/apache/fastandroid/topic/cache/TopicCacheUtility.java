@@ -3,6 +3,7 @@ package com.apache.fastandroid.topic.cache;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
 import com.tesla.framework.common.setting.Setting;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.orm.extra.Extra;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.cache.ICacheUtility;
@@ -27,6 +28,9 @@ public class TopicCacheUtility implements ICacheUtility {
             getDb().deleteAll(new Extra(null,null), TopicBean.class);
         }
         getDb().insert(new Extra(null,null),topicBeans.list);
+
+        List<TopicBean> list = TopicDb.getDb().select(null,TopicBean.class);
+        NLog.d("list size = %s", list.size());
     }
 
     @Override

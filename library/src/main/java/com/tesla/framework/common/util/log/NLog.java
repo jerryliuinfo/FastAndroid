@@ -116,10 +116,7 @@ public final class NLog
 
 	public static void d(String format, Object...args)
 	{
-		if (debug)
-		{
-			logger.d(TAG, buildWholeMessage(format, args));
-		}
+		d(TAG,format,args);
 	}
 
 	public static void i(String tag, String format, Object...args)
@@ -130,6 +127,10 @@ public final class NLog
 		}
 	}
 
+	public static void e(String format, Object...args)
+	{
+		e(TAG,format,args);
+	}
 	public static void e(String tag, String format, Object...args)
 	{
 		if (debug)
