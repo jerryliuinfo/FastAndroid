@@ -3,6 +3,7 @@ package com.tesla.framework;
 import android.content.Context;
 
 import com.tesla.framework.common.setting.SettingUtility;
+import com.tesla.framework.common.util.ContextUtil;
 import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.common.util.network.NetworkHelper;
 
@@ -20,6 +21,7 @@ public class FrameworkApplication  {
         if (context != null){
             mContext = context.getApplicationContext();
         }
+        ContextUtil.injectContext(mContext);
         NetworkHelper.getInstance().registerNetworkSensor(context);
         DebugUtils.syncDebugStatus(context);
 

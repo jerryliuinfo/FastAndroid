@@ -1,4 +1,4 @@
-package com.tesla.framework.common.util;
+package com.tesla.framework.support.crash;
 
 import android.content.Context;
 import android.os.Debug;

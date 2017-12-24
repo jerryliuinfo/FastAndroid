@@ -12,4 +12,12 @@ public abstract class DefaultCallback<T> implements ICallback<T> {
 
     }
 
+    @Override
+    public void onFailed(Throwable e) {
+
+    }
+
+    public void onPrepare(){
+
+    }
 }

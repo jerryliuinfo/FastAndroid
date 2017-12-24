@@ -20,7 +20,7 @@ import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.setting.SettingUtility;
-import com.tesla.framework.common.util.CrashHandler;
+import com.tesla.framework.support.crash.CrashHandler;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.SPUtils;

@@ -1,12 +1,14 @@
 package com.apache.fastandroid.support.sdk.bean;
 
+import java.io.Serializable;
+
 /**
  * @author haiyang.tan
  * @Description:
  * @date 2016/5/5 15:35
  * @copyright TCL-MIG
  */
-public class UpdateBean {
+public class UpdateBean implements Serializable{
     public String apkSize;
     public long innerVersion;
     public String version;
