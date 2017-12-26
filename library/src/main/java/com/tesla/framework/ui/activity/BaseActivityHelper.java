@@ -2,11 +2,11 @@ package com.tesla.framework.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.tesla.framework.common.util.ActivityTaskMgr;
 import com.tesla.framework.support.permission.IPermissionsObserver;
 import com.tesla.framework.support.permission.IPermissionsSubject;
 
@@ -20,7 +20,7 @@ import com.tesla.framework.support.permission.IPermissionsSubject;
  * Created by JerryLiu on 17/04/08.
  */
 public class BaseActivityHelper implements IPermissionsSubject,IActivityLifeCycle {
-
+    //当前Activity
     private BaseActivity mActivity;
 
     private PermissionActivityHelper mPermissionActivityHelper = new PermissionActivityHelper();
@@ -40,6 +40,7 @@ public class BaseActivityHelper implements IPermissionsSubject,IActivityLifeCycl
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        ActivityTaskMgr.getInstance().pushToActivityStack(mActivity);
         if (mPermissionActivityHelper != null){
             mPermissionActivityHelper.onCreate(savedInstanceState);
         }
@@ -77,7 +78,7 @@ public class BaseActivityHelper implements IPermissionsSubject,IActivityLifeCycl
 
     @Override
     public void onDestroy() {
-
+        ActivityTaskMgr.getInstance().popFromActivityStack(mActivity);
     }
 
     public void finish() {

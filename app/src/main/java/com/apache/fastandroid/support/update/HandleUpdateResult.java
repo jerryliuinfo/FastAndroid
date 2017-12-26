@@ -24,6 +24,8 @@ public class HandleUpdateResult implements Runnable {
     private static final int CHECK_VERSION_FINISHED = 4;
 
 
+
+    public static final int SHOW_UPDATE_DIALOG_REQUEST_CODE = 100;
     private UpdateHandler mUpdateHandler;
 
     public HandleUpdateResult(Activity activity) {
@@ -57,7 +59,7 @@ public class HandleUpdateResult implements Runnable {
                     case CHECK_HAS_NEW_VERSION:
                         //弹出更新版本的对话框
                         UpdateBean bean = (UpdateBean) msg.obj;
-                        UpdateDialog.launchForResult(activity,100,bean);
+                        UpdateDialog.launchForResult(activity,SHOW_UPDATE_DIALOG_REQUEST_CODE,bean);
                         break;
                     case CHECK_NO_NEW_VERSION:
                         Toast.makeText(activity, "当前已是最新版本", Toast.LENGTH_LONG).show();

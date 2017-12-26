@@ -9,12 +9,7 @@ import android.support.v4.content.ContextCompat;
 import com.tesla.framework.FrameworkApplication;
 
 
-/**
- * @author liangni
- * @Description:资源类Util
- * @date 2016/4/11 15:36
- * @copyright TCL-MIG
- */
+
 public class ResUtil {
 
     /**

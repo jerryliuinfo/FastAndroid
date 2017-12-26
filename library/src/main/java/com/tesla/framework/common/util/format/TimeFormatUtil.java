@@ -68,14 +68,18 @@ public class TimeFormatUtil {
      */
     public static String getDescriptionTimeFromDate(Date date) {
         long delta = new Date().getTime() - date.getTime();
+        //几秒钟前
         if (delta < 1L * ONE_MINUTE) {
             long seconds = toSeconds(delta);
+
             return (seconds <= 0 ? 1 : seconds) + ONE_SECOND_AGO;
         }
+        //几分钟前
         if (delta < 45L * ONE_MINUTE) {
             long minutes = toMinutes(delta);
             return (minutes <= 0 ? 1 : minutes) + ONE_MINUTE_AGO;
         }
+        //几小时前
         if (delta < 24L * ONE_HOUR) {
             long hours = toHours(delta);
             return (hours <= 0 ? 1 : hours) + ONE_HOUR_AGO;

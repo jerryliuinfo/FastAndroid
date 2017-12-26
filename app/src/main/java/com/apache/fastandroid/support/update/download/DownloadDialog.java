@@ -3,14 +3,15 @@ package com.apache.fastandroid.support.update.download;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.sdk.bean.UpdateBean;
 import com.tesla.framework.ui.activity.BaseActivity;
-
-import java.lang.ref.WeakReference;
 
 /**
  * Created by 01370340 on 2017/12/24.
@@ -18,10 +19,14 @@ import java.lang.ref.WeakReference;
 
 public class DownloadDialog extends BaseActivity {
 
-    public static final int SHOW_UPDATE_PROGRESS = 1;
-    public static final int SHOW_UPDATE_FINISHED = 2;
-    public static final int SHOW_UPDATE_FAILED = 3;
+
     private static final String EXTRA_UPDATE_BEAN = "EXTRA_UPDATE_BEAN";
+
+    DownloadTask sDownloadTask;
+
+    private ImageView close;
+    public ProgressBar progressBar;
+    public TextView textView;
 
     private UpdateBean mUpdateBean;
 
@@ -31,56 +36,63 @@ public class DownloadDialog extends BaseActivity {
         from.startActivity(intent);
     }
 
-    public static class DownloadHandler extends Handler {
 
-        private WeakReference<Activity> weakReference;
-
-        public DownloadHandler(Activity context) {
-            weakReference = new WeakReference<>(context);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-
-            Activity activity = weakReference.get();
-            if (activity == null || activity.isDestroyed() || activity.isFinishing() ){
-                switch (msg.what){
-                    case SHOW_UPDATE_PROGRESS:
-
-                        break;
-                    case SHOW_UPDATE_FINISHED:
-
-                        break;
-                    case SHOW_UPDATE_FAILED:
-                        Toast.makeText(activity, "下载失败", Toast.LENGTH_LONG).show();
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-        }
+    public void showDownloadProgress(int progress){
+        progressBar.setProgress(progress);
+        textView.setText(progress + "%");
     }
-    private DownloadHandler handler;
+    public void downloadFinished(){
+        finish();
+    }
+
+    public void downloadFailed(){
+        Toast.makeText(this, "下载失败", Toast.LENGTH_LONG).show();
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.download_dialog);
+        close = (ImageView) findViewById(R.id.downloaddialog_close);
+        progressBar = (ProgressBar) findViewById(R.id.downloaddialog_progress);
+        textView = (TextView) findViewById(R.id.downloaddialog_count);
 
         if (savedInstanceState == null){
             mUpdateBean = (UpdateBean) getIntent().getSerializableExtra(EXTRA_UPDATE_BEAN);
         }else {
             mUpdateBean = (UpdateBean) savedInstanceState.getSerializable(EXTRA_UPDATE_BEAN);
         }
-        handler = new DownloadHandler(this);
-        DownloadTask downloadTask = new DownloadTask();
-        downloadTask.setDownloadData(handler,mUpdateBean);
-        downloadTask.execute();
+
+        beginDownload();
+        close.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                cancelTask();
+                finish();
+            }
+        });
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable(EXTRA_UPDATE_BEAN,mUpdateBean);
+    }
+
+
+    private void beginDownload(){
+        cancelTask();
+        sDownloadTask = new DownloadTask(this,mUpdateBean);
+        sDownloadTask.execute();
+    }
+
+    private  void cancelTask(){
+        if (sDownloadTask != null){
+            sDownloadTask.cancel(true);
+            sDownloadTask = null;
+        }
     }
 }

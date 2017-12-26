@@ -1,9 +1,8 @@
 package com.tesla.framework.network.http.interceptor;
 
 import android.content.Context;
-import android.text.TextUtils;
 
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.common.util.ContextUtil;
 import com.tesla.framework.common.util.network.NetworkHelper;
 
 import java.io.IOException;
@@ -28,10 +27,9 @@ public class CacheInterceptor implements Interceptor {
     public static final String DECREPT_KEY = "OGUiRDpWHv6B7cW&";
     private static final long DEFAULT_ONLINE_TIMEOUT = 60;  //60秒
     private static final long DEFAULT_OFFLINE_TIMEOUT = 60 * 60 * 24 * 28;  //一个月
-    public static final String MIG_CACHE = "MIG-Cache";
     private final Context mContext;
-    private final long mOnlineTimeout;
-    private final long mOfflineTimout;
+    private  long mOnlineTimeout = DEFAULT_ONLINE_TIMEOUT;
+    private  long mOfflineTimout = DEFAULT_OFFLINE_TIMEOUT;
     //space+默认不进行压缩，鹰眼api时候需要设置为true
     private boolean isGzipEncode;
 
@@ -64,22 +62,25 @@ public class CacheInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
         String cacheControl = request.cacheControl().toString();
-        if (!NetworkHelper.isNetworkAvailable(FrameworkApplication.getContext())) {
+        boolean networkAvailable = NetworkHelper.isNetworkAvailable(ContextUtil.getContext());
+        //没有网络，则强制缓存
+        if (!networkAvailable) {
             request = request.newBuilder()
-                    .cacheControl(TextUtils.isEmpty(cacheControl)? CacheControl.FORCE_NETWORK:CacheControl.FORCE_CACHE)
+                    .cacheControl(CacheControl.FORCE_CACHE)
                     .build();
         }
         Response originalResponse = chain.proceed(request);
-        if (NetworkHelper.isNetworkAvailable(FrameworkApplication.getContext())) {
+        if (networkAvailable) {
             //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
-
+            long maxAge = DEFAULT_ONLINE_TIMEOUT;
             return originalResponse.newBuilder()
-                    .header("Cache-Control", cacheControl)
+                    .header("Cache-Control", "public, max-age=" + maxAge)
                     .removeHeader("Pragma")
                     .build();
         } else {
+            long maxStale = DEFAULT_OFFLINE_TIMEOUT;
             return originalResponse.newBuilder()
-                    .header("Cache-Control", "public, only-if-cached, max-stale=" + CACHE_STALE_SEC)
+                    .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
                     .removeHeader("Pragma")
                     .build();
         }
