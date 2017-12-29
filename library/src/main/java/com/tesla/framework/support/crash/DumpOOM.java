@@ -23,7 +23,6 @@ public class DumpOOM {
             try {
                 Debug.dumpHprofData(file.getAbsolutePath());
             } catch (IOException e) {
-
                 e.printStackTrace();
             }
         }

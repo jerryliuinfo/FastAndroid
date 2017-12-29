@@ -74,9 +74,10 @@ ext {
 
             //内存泄漏检测
             leakcanary_android:  "com.squareup.leakcanary:leakcanary-android:$leakcanary",
-            leakcanary_android:  "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary",
+            leakcanary_android_no_op:  "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary",
+            fastAndroid:  "com.apache.fastandroid:library:1.0.1",
 
-
+            bugly:  "com.tencent.bugly:crashreport:latest.release"
     ]
 
 }

@@ -221,13 +221,12 @@ public class TUncaughtExceptionHandler implements UncaughtExceptionHandler {
         if (TextUtils.isEmpty(mCrashDirPath)) {
             dirForCrashFile = mContext.getExternalFilesDir(null) + File.separator + "crash";
         }
-
         // 检查目录是否存在，不存在则创建
         File dir = new File(dirForCrashFile);
-        if (!dir.exists() && !dir.mkdirs()) {
-            return dirForCrashFile;
+        if (!dir.exists()) {
+            dir.mkdirs();
         }
-        return null;
+        return dirForCrashFile;
     }
 
 

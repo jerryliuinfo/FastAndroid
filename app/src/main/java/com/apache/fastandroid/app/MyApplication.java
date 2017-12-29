@@ -10,13 +10,13 @@ import android.text.TextUtils;
 
 import com.antfortune.freeline.FreelineCore;
 import com.apache.fastandroid.BuildConfig;
-import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.support.imageloader.GlideImageLoader;
 import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.Logger;
@@ -26,7 +26,6 @@ import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
-import com.tesla.framework.support.crash.TUncaughtExceptionHandler;
 import com.tesla.framework.support.db.FastAndroidDB;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
@@ -115,9 +114,9 @@ public class MyApplication extends Application {
     private void initCrashAndAnalysis(){
 
         //bugly统计
-        //CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
-        //本地crash日志收集
-        TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, false, 0, SplashActivity.class);
+        CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
+        //本地crash日志收集  使用bulgy时不能在本地手机日志
+        //TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, false, 0, SplashActivity.class);
 
     }
 

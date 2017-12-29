@@ -1,7 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.antfortune.freeline'
 println('app gradle----->')
-
+// 注：需要配置符号表时，使用bugly插件
+/*apply plugin: 'bugly'
+bugly {
+    appId = 'a397701fd5'
+    appKey = '740ff5f8-0445-4325-8eee-b117f92bdc6d'
+}*/
 
 buildscript {
     repositories {
@@ -102,7 +107,7 @@ android {
         debug {
             minifyEnabled false
             buildConfigField("boolean","LOG_DEBUG","true")
-            buildConfigField("String","BUGLY_APP_ID","\"272afe1108\"")
+            buildConfigField("String","BUGLY_APP_ID","\"a397701fd5\"")
             manifestPlaceholders = [appName: "FastAnd"]
 
             debug {
@@ -228,5 +233,7 @@ dependencies {
     compile project(':usercenter')
     compile project(':topic')
     compile project(':novel')
+
+    compile thirddependencies.bugly
 
 }

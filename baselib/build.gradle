@@ -57,6 +57,12 @@ dependencies {
     compile thirddependencies.eventbus
 
     compile project(':library')
+    //compile thirddependencies.fastAndroid
+
+
+
+
+
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     testCompile 'junit:junit:4.12'

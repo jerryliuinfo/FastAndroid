@@ -31,7 +31,7 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
         coutDownView.setVisibility(View.VISIBLE);
         ADConfigManager.getInstance(this).setLastShowADTime(System.currentTimeMillis());
-        coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(5000)
+        coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(3000)
                 .setCallback(new SplashCountDownView.CountDownCallbackImpl(){
                     @Override
                     public void onFinish(long delay) {

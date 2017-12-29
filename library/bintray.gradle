@@ -81,10 +81,12 @@ install {
     }
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
-    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : project.property('BINTRAY_USER')
-    key = project.hasProperty('bintrayKey') ? project.property('bintrayKey') : project.property('BINTRAY_KEY')
 
+    user = properties.getProperty("bintrayUser")
+    key = properties.getProperty("bintrayKey")
     configurations = ['archives']
 
     dryRun = false
@@ -92,7 +94,7 @@ bintray {
 
     pkg {
         repo = 'maven'
-        name = PROJ_ARTIFACTID
+        name = PROJ_POM_NAME
         licenses = ['Apache-2.0']
         vcsUrl = PROJ_VCSURL
         websiteUrl = PROJ_WEBSITEURL
