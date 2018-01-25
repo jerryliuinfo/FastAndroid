@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/FastAndroid.iml" filepath="$PROJECT_DIR$/FastAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselib/baselib.iml" filepath="$PROJECT_DIR$/baselib/baselib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/novel/novel.iml" filepath="$PROJECT_DIR$/novel/novel.iml" />
       <module fileurl="file://$PROJECT_DIR$/topic/topic.iml" filepath="$PROJECT_DIR$/topic/topic.iml" />
       <module fileurl="file://$PROJECT_DIR$/usercenter/usercenter.iml" filepath="$PROJECT_DIR$/usercenter/usercenter.iml" />

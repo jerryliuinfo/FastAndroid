@@ -50,30 +50,15 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode getCommitVersionCode()
         versionName getAppVersionName()
+        resConfigs('en','xhdpi')
 
         //archivesBaseName = "FastAndroid-$versionName"
         //dex突破65535的限制
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        //getJackOptions().setEnabled(true)
-
     }
 
-
-    splits {
-        density {
-            enable true
-            //清除默认的屏幕密度列表
-            reset()
-            //指定生成xhdpi的apk 减少包大小
-            include 'xhdpi'
-        }
-    }
-
-    lintOptions {
-        abortOnError false
-    }
 
 
 
@@ -108,11 +93,8 @@ android {
             minifyEnabled false
             buildConfigField("boolean","LOG_DEBUG","true")
             buildConfigField("String","BUGLY_APP_ID","\"a397701fd5\"")
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [appName: "FastAnd"]
-
-            debug {
-                resValue("string", "PORT_NUMBER", "8082")
-            }
         }
 
     }
@@ -121,10 +103,9 @@ android {
     productFlavors {
         dev {
             //不同渠道，不同包名
-            applicationId "com.fast.adnroid"
             signingConfig signingConfigs.dev
             versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染
-            manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name,PACKAGE_NAME: applicationId]
+            manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name]
 
             //使用multiDex 如果minsdkersion小雨20 会增加构建时间
             minSdkVersion 21
@@ -144,6 +125,20 @@ android {
     freeline{
         hack true
         productFlavor "dev"
+    }
+
+    splits {
+        density {
+            enable true
+            //清除默认的屏幕密度列表
+            reset()
+            //指定生成xhdpi的apk 减少包大小
+            include 'xhdpi'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
     /**

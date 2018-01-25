@@ -58,6 +58,21 @@ public class UniversalImageLoader implements IImageLoaderstrategy {
 
     }
 
+    @Override
+    public void init(Context context) {
+
+    }
+
+    @Override
+    public void pause(Context context) {
+
+    }
+
+    @Override
+    public void resume(Context context) {
+
+    }
+
     /*@Override
     public void init(Context context) {
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration

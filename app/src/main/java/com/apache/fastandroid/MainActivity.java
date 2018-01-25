@@ -37,7 +37,6 @@ import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.widget.CircleImageView;
 
 public class MainActivity extends MyBaseActivity{
-    public static final String TAG = MainActivity.class.getSimpleName();
     public static void launch(Activity from){
         from.startActivity(new Intent(from,MainActivity.class));
     }
@@ -74,6 +73,7 @@ public class MainActivity extends MyBaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        NLog.d(TAG,"onCreate");
 
         //ConfigManager.getInstance(this);
         mCache = new DataCache("fastAndroid");
@@ -93,6 +93,7 @@ public class MainActivity extends MyBaseActivity{
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
+
 
         //EventBus.getDefault().register(this);
         /*myHandler.postDelayed(new Runnable() {
@@ -148,19 +149,7 @@ public class MainActivity extends MyBaseActivity{
 
 
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        NetworkHelper.getInstance().removeNetworkInductor(mNetworkInductor);
 
-        try {
-            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_MAIN_NAME+":watchLeakCancary",null,null,new Object[]{MainActivity.this});
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        //EventBus.getDefault().unregister(this);
-    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -327,7 +316,56 @@ public class MainActivity extends MyBaseActivity{
 
     }*/
 
+   public static final String TAG = MainActivity.class.getSimpleName();
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NLog.d(TAG,"onResume");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        NLog.d(TAG,"onStart");
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        NLog.d(TAG,"onRestart");
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        NLog.d(TAG,"onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        NLog.d(TAG,"onStop");
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        NLog.d(TAG,"onDestroy");
+
+        NetworkHelper.getInstance().removeNetworkInductor(mNetworkInductor);
+
+        try {
+            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_MAIN_NAME+":watchLeakCancary",null,null,new Object[]{MainActivity.this});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //EventBus.getDefault().unregister(this);
+    }
 
 
 }

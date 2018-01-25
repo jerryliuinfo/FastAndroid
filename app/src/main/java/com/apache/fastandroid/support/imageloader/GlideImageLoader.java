@@ -20,7 +20,6 @@ import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
-import com.tesla.framework.component.imageloader.IImageLoaderInit;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.IImagePahtFromCache;
 import com.tesla.framework.component.imageloader.ImageLoaderOptions;
@@ -33,7 +32,7 @@ import java.util.concurrent.ExecutionException;
  * Created by Administrator on 2017/3/21 0021.
  */
 
-public class GlideImageLoader implements IImageLoaderstrategy,IImageLoaderInit,IImagePahtFromCache {
+public class GlideImageLoader implements IImageLoaderstrategy,IImagePahtFromCache {
 
     @Override
     public void showImage(ImageLoaderOptions options) {
@@ -191,6 +190,20 @@ public class GlideImageLoader implements IImageLoaderstrategy,IImageLoaderInit,I
     @Override
     public void init(Context context) {
         mContext = context;
+    }
+
+    @Override
+    public void pause(Context context) {
+        if (Looper.myLooper() == Looper.getMainLooper()){
+            Glide.with(context).pauseRequests();
+        }
+    }
+
+    @Override
+    public void resume(Context context) {
+        if (Looper.myLooper() == Looper.getMainLooper()){
+            Glide.with(context).resumeRequests();
+        }
     }
 
     @Override

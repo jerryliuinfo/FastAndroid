@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
-import com.tesla.framework.component.imageloader.IImageLoaderInit;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderOptions;
 
@@ -15,7 +14,7 @@ import com.tesla.framework.component.imageloader.ImageLoaderOptions;
  * Created by 01370340 on 2017/11/17.
  */
 
-public class PicasoImageLoader implements IImageLoaderstrategy,IImageLoaderInit {
+public class PicasoImageLoader implements IImageLoaderstrategy {
     @Override
     public void showImage(@NonNull ImageLoaderOptions options) {
 
@@ -55,6 +54,16 @@ public class PicasoImageLoader implements IImageLoaderstrategy,IImageLoaderInit 
 
     @Override
     public void init(Context context) {
+
+    }
+
+    @Override
+    public void pause(Context context) {
+
+    }
+
+    @Override
+    public void resume(Context context) {
 
     }
 }

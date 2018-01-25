@@ -38,6 +38,8 @@ ext {
 
     leakcanary = "1.5.4"
 
+    fastandroidVersion = "1.3.0"
+
 
     //第三方依赖库
     thirddependencies = [
@@ -50,12 +52,13 @@ ext {
             multidex         :  "com.android.support:multidex:1.0.1",
 
 
-
-
             glide            :  "com.github.bumptech.glide:glide:$glideVersion",
+            picasso          :  "com.squareup.picasso:picasso:2.5.2",
+            volly            : "com.android.volley:volley:1.0.0",
+
+
             okhttp3          :  "com.squareup.okhttp3:okhttp:$okhttp3Version",
             okhttp3_log_interceptor      :  "com.squareup.okhttp3:logging-interceptor:3.4.1",
-
 
             fastjson         :  "com.alibaba:fastjson:$fastjsonVersion",
             rxandroid        : "io.reactivex:rxandroid:$rxandroidVersion",
@@ -75,9 +78,9 @@ ext {
             //内存泄漏检测
             leakcanary_android:  "com.squareup.leakcanary:leakcanary-android:$leakcanary",
             leakcanary_android_no_op:  "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary",
-            fastAndroid:  "com.apache.fastandroid:library:1.0.1",
 
-            bugly:  "com.tencent.bugly:crashreport:latest.release"
+            bugly:  "com.tencent.bugly:crashreport:latest.release",
+            fastAndroid:  "com.xiangxiangliu:fastFramework:$fastandroidVersion",
     ]
 
 }

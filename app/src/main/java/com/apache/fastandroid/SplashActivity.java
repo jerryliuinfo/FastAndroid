@@ -15,6 +15,10 @@ import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by jerryliu on 2017/4/10.
  */
@@ -102,7 +106,49 @@ public class SplashActivity extends BaseActivity {
             e.printStackTrace();
         }*/
         toMain(null);
+
+
     }
 
+
+    public static void main(String[] args) {
+            testBubbleSort(num);
+
+        Collections collections;
+        Collection collection;
+        List list;
+    }
+
+
+    static int [] num =new int[]{10,20,18,45,17,3};
+
+    private static void testBubbleSort(int [] num){
+        int temp = 0;
+        int size = num.length;
+        for (int i = 0; i < size; i++) {
+
+            for (int j = 0; j < size - i - 1; j++){
+                if (num [j] > num[j+1] ){
+                    temp = num[j];
+                    num[j] = num[j+1];
+                    num[j+1] = temp;
+                }
+            }
+        }
+        print(num);
+
+
+
+    }
+
+
+    private static void print(int [] num){
+        StringBuffer buffer = new StringBuffer();
+        for (int i : num) {
+            buffer.append(i +"-");
+        }
+        System.out.println(buffer.toString());
+
+    }
 
 }

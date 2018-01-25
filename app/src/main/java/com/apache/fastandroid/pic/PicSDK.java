@@ -13,6 +13,8 @@ import com.tesla.framework.network.http.Params;
 import com.tesla.framework.network.task.TaskException;
 
 import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by jerryliu on 2017/4/11.
@@ -52,6 +54,17 @@ public class PicSDK extends ABizLogic {
         params.addParameter("pn",String.valueOf(pageNum));
         params.addParameter("rn","10");
         params.addParameter("from", "1");
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://fanyi.youdao.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
+
+
+
 
         return doGet(configHttpConfig(),setting,params,ImageResultBeans.class);
     }

@@ -34,12 +34,15 @@ dependencies {
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
     compile thirddependencies.support_customtabs
 
+
+
+
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
 
 
 
-    compile 'com.android.volley:volley:1.0.0'
+    compile thirddependencies.volly
 
 
     compile 'com.antfortune.freeline:runtime:0.8.7'
@@ -56,8 +59,8 @@ dependencies {
 
     compile thirddependencies.eventbus
 
-    compile project(':library')
-    //compile thirddependencies.fastAndroid
+    //compile project(':library')
+    compile thirddependencies.fastAndroid
 
 
 
