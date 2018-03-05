@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.tesla.framework.common.util.ManifestUtil;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -22,5 +24,14 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.apache.fastandroid", appContext.getPackageName());
+    }
+
+
+    @Test
+    public void testMetaData() throws Exception {
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        String value = ManifestUtil.getMetaData(appContext,"ISTEST");
+        System.out.println(value);
+
     }
 }

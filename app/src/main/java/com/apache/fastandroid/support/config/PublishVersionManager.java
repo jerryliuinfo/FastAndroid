@@ -3,6 +3,7 @@ package com.apache.fastandroid.support.config;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 
+import com.tesla.framework.BuildConfig;
 import com.tesla.framework.FrameworkApplication;
 import com.tesla.framework.common.util.ManifestUtil;
 
@@ -145,7 +146,7 @@ public class PublishVersionManager {
      * @return 返回VersionCode
      */
     public static int getVersionCode() {
-        return sVersionCode;
+        return BuildConfig.VERSION_CODE;
     }
 
 }

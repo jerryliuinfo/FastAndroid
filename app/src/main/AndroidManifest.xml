@@ -93,6 +93,8 @@
         <meta-data
             android:name="ISTEST"
             android:value="${ISTEST_VALUE}"/>
+
+
     </application>
 
 </manifest>

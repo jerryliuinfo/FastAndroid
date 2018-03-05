@@ -61,11 +61,6 @@ public class PicSDK extends ABizLogic {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-
-
-
-
-
         return doGet(configHttpConfig(),setting,params,ImageResultBeans.class);
     }
     public Call<ImageResultBeans> loadImageDataV2(String category, int pageNum) throws TaskException{

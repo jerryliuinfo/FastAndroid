@@ -2,8 +2,8 @@ ext {
 
     //Android编译版本管理
     android = [
-               compileSdkVersion: 25,
-               buildToolsVersion: "25.0.2",
+               compileSdkVersion: 26,
+               buildToolsVersion: "26.0.2",
                minSdkVersion    : 17,
                targetSdkVersion : 25,
                versionCode :"100",

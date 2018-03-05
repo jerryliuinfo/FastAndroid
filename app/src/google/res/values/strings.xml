@@ -1,0 +1,4 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name">Fast And</string>  <!-- XML中的一个名字也要改 -->
+    <string name="main_appname_for_applock">@string/app_name</string>
+</resources>

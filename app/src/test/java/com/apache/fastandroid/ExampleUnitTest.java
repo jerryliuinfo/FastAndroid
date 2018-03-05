@@ -16,4 +16,10 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 1);
         System.out.println("addition_isCorrect");
     }
+
+
+    @Test
+    public void testMetaData() throws Exception {
+
+    }
 }

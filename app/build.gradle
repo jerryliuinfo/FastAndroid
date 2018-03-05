@@ -50,17 +50,34 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode getCommitVersionCode()
         versionName getAppVersionName()
-        resConfigs('en','xhdpi')
+        resConfigs('en','zh','xhdpi')
 
         //archivesBaseName = "FastAndroid-$versionName"
         //dex突破65535的限制
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        flavorDimensions "debug","release"
+
+    }
+    useLibrary 'org.apache.http.legacy'
+
+    splits {
+        density {
+            enable true
+            reset()
+            include 'xhdpi'
+        }
     }
 
+    lintOptions {
+        abortOnError false
+    }
 
-
+    freeline{
+        hack true
+        productFlavor "dev"
+    }
 
     signingConfigs {
         dev {
@@ -77,24 +94,53 @@ android {
 
         }
 
+        prod {
+            try {
+                //storeFile file("./keystore/release.jks")
+                storeFile file(KEYSTORE_FILE)
+                storePassword KEYSTORE_PASSWORD
+                keyAlias KEY_ALIAS
+                keyPassword KEY_PASSWORD
+            }
+            catch (ex) {
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+            }
+
+        }
+
+    }
+
+
+    sourceSets{
+        dev {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            res.srcDirs = ['src/main/res']
+            java.srcDirs 'src/main/java'
+        }
+
+        google{
+            manifest.srcFile 'src/google/AndroidManifest.xml'
+            res.srcDirs = ['src/google/res']
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled true
-            //shrinkResources true
-//            zipAlignEnabled false
-            buildConfigField("boolean","LOG_DEBUG","false")
-            buildConfigField("String","BUGLY_APP_ID","\"a397701fd5\"")
+            shrinkResources true
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [appName: "FastAnd"]
+
+            buildConfigField('boolean','LOG_DEBUG',"false")
+            buildConfigField('String',"BUGLY_APP_ID","\"a397701fd5\"")
         }
         debug {
             minifyEnabled false
-            buildConfigField("boolean","LOG_DEBUG","true")
-            buildConfigField("String","BUGLY_APP_ID","\"a397701fd5\"")
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [appName: "FastAnd"]
+
+            buildConfigField('boolean','LOG_DEBUG',"true")
+            buildConfigField('String',"BUGLY_APP_ID","\"a397701fd5\"")
         }
 
     }
@@ -103,55 +149,51 @@ android {
     productFlavors {
         dev {
             //不同渠道，不同包名
+            applicationId "com.apache.fastandroid.dev"
             signingConfig signingConfigs.dev
             versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染
             manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name]
 
             //使用multiDex 如果minsdkersion小雨20 会增加构建时间
             minSdkVersion 21
+
+            resValue('string', 'channel_tips', 'Dev渠道欢迎你')
+            resValue('bool', 'login_enable', "false")
+
+            dimension "debug"
+
         }
+
+        /*google {
+            applicationId "com.apache.fastandroid.prod"
+            signingConfig signingConfigs.prod
+            manifestPlaceholders = [ISTEST_VALUE: "PROD", CHANNEL_VALUE: name]
+
+            resValue('string', 'channel_tips', 'Google渠道欢迎你')
+            resValue('bool', 'login_enable', "true")
+
+            dimension "release"
+        }*/
     }
 
-    signingConfigs {
-        dev {
-            storeFile file(KEYSTORE_FILE)
-            storePassword KEYSTORE_PASSWORD
-            keyAlias KEY_ALIAS
-            keyPassword KEY_PASSWORD
-        }
-    }
 
 
-    freeline{
-        hack true
-        productFlavor "dev"
-    }
 
-    splits {
-        density {
-            enable true
-            //清除默认的屏幕密度列表
-            reset()
-            //指定生成xhdpi的apk 减少包大小
-            include 'xhdpi'
-        }
-    }
 
-    lintOptions {
-        abortOnError false
-    }
+
+
 
     /**
      * release构建忽略dev这一个渠道
      */
     variantFilter { variant ->
-       /* if (variant.buildType.name.equals('release')) {
+        if (variant.buildType.name.equals('release')) {
             variant.getFlavors().each() { flavor ->
                 if (flavor.name.equals('dev')){
                     variant.setIgnore(true);
                 }
             }
-        }*/
+        }
     }
 
     //修改apk输出名字格式
@@ -168,13 +210,13 @@ android {
                         code = 434
                     }else {
                     }
+
                     def pubversionName = defaultConfig.versionName + "." + code
                     def buildTypeName = buildType.name
 
-
                     def fileName = "${appName}_${pubversionName}_${flavorsName}_${buildTypeName}.apk"
 
-                    output.outputFile = new File(outputFile.parent, fileName)
+                    //output.outputFile = new File(outputFile.parent, fileName)
                 }
             //}
         }
@@ -225,10 +267,12 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+
     compile project(':usercenter')
     compile project(':topic')
     compile project(':novel')
 
     compile thirddependencies.bugly
+    compile thirddependencies.multidex
 
 }
