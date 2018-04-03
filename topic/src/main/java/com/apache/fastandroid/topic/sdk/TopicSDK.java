@@ -50,6 +50,13 @@ public class TopicSDK extends ABizLogic {
         return new TopicSDK(mode);
     }
 
+    @Override
+    protected HttpConfig configHttpConfig() {
+        HttpConfig config = new HttpConfig();
+        config.baseUrl = TopicConstans.BASE_URL;
+        return config;
+    }
+
     /**
      * https://diycode.cc/api/v3/topics.json?offset=0&limit=20
      * @param type
@@ -115,7 +122,7 @@ public class TopicSDK extends ABizLogic {
     public TopicBeans getTopicsList(String type, Integer node_id, int offset, int limit) throws TaskException {
         //1.判断有没有缓存
 
-        Setting action = SettingUtility.getSetting("getTopicsList");
+        Setting action = SettingUtility.getSetting("topics.json");
         action.getExtras().put(CACHE_UTILITY,newSettingExtra(CACHE_UTILITY, TopicCacheUtility.class.getName(),"getTopicsList"));
         action.getExtras().put(HTTP_UTILITY,newSettingExtra(HTTP_UTILITY, TopicListHttpUtility.class.getName(),"getTopicsList"));
         Params params = new Params();
@@ -169,10 +176,5 @@ public class TopicSDK extends ABizLogic {
     }
 
 
-    @Override
-    protected HttpConfig configHttpConfig() {
-        HttpConfig config = new HttpConfig();
-        config.baseUrl = TopicConstans.BASE_URL;
-        return config;
-    }
+
 }

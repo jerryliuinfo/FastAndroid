@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TeslaForAndroid</string>
+
+    <string name="loading_msg">正在加载中...</string>
+</resources>

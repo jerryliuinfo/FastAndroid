@@ -1,4 +1,4 @@
-include ':app',  ':usercenter', ':topic', ':novel', 'baselib'
+include ':app', ':usercenter', ':topic', ':novel', 'baselib', ':fastFramework'
 //
 //include ':MailPortal'
 //project(':MailPortal').projectDir= new File(rootDir,'../Innovation/MailPortal')

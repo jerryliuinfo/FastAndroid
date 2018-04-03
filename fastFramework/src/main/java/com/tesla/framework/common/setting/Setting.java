@@ -1,0 +1,42 @@
+package com.tesla.framework.common.setting;
+
+import com.alibaba.fastjson.JSON;
+import com.tesla.framework.network.http.ICallback;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Setting extends SettingBean implements Serializable {
+
+	private static final long serialVersionUID = 4801654811733634325L;
+	
+	private Map<String, SettingExtra> extras;
+
+	public Setting() {
+		extras = new HashMap<>();
+	}
+
+	public Map<String, SettingExtra> getExtras() {
+		return extras;
+	}
+
+	public void setExtras(Map<String, SettingExtra> extras) {
+		this.extras = extras;
+	}
+
+	public Setting copy() {
+		return JSON.parseObject(JSON.toJSONString(this), Setting.class);
+	}
+
+	private ICallback callback;
+
+
+	public ICallback getCallback() {
+		return callback;
+	}
+
+	public void setCallback(ICallback callback) {
+		this.callback = callback;
+	}
+}

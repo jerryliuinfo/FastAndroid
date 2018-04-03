@@ -82,7 +82,6 @@ android {
     signingConfigs {
         dev {
             try {
-                //storeFile file("./keystore/release.jks")
                 storeFile file(KEYSTORE_FILE)
                 storePassword KEYSTORE_PASSWORD
                 keyAlias KEY_ALIAS
@@ -164,7 +163,7 @@ android {
 
         }
 
-        /*google {
+        google {
             applicationId "com.apache.fastandroid.prod"
             signingConfig signingConfigs.prod
             manifestPlaceholders = [ISTEST_VALUE: "PROD", CHANNEL_VALUE: name]
@@ -173,7 +172,7 @@ android {
             resValue('bool', 'login_enable', "true")
 
             dimension "release"
-        }*/
+        }
     }
 
 
