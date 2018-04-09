@@ -8,9 +8,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.apache.fastandroid.support.utils.MainLog;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.setting.Setting;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.IHttpUtility;
 import com.tesla.framework.network.http.Params;
@@ -42,7 +41,7 @@ public class VollyUtility implements IHttpUtility {
                     result  = parseResponse(response,responseCls);
                     if (result != null){
                         blockingQueue.offer(result,5,TimeUnit.SECONDS);
-                        NLog.d(MainLog.getLogTag(), "VollyUtility  offer time = %s",System.currentTimeMillis());
+                        MainLog.d( "VollyUtility  offer time = %s",System.currentTimeMillis());
                     }else {
                         blockingQueue.offer(new TaskException("数据为空"));
                     }
@@ -63,7 +62,7 @@ public class VollyUtility implements IHttpUtility {
         try {
             //这里会一直等待,除非到了超时时间或者队列中有了元素
             Object result =  blockingQueue.poll(30, TimeUnit.SECONDS);
-            NLog.d(MainLog.getLogTag(), "VollyUtility  take time = %s",System.currentTimeMillis());
+            MainLog.d( "VollyUtility  take time = %s",System.currentTimeMillis());
             //这里判断列队如果没有添加元素
             if (result == null ){
                 throw new TaskException("timeout");
@@ -92,7 +91,7 @@ public class VollyUtility implements IHttpUtility {
                     result  = parseResponse(response,responseCls);
                     if (result != null){
                         blockingQueue.offer(result,5,TimeUnit.SECONDS);
-                        NLog.d(MainLog.getLogTag(), "VollyUtility  offer time = %s",System.currentTimeMillis());
+                        MainLog.d( "VollyUtility  offer time = %s",System.currentTimeMillis());
                     }else {
                         blockingQueue.offer(new TaskException("数据为空"));
                     }
@@ -126,7 +125,7 @@ public class VollyUtility implements IHttpUtility {
         try {
             //这里会一直等待,除非到了超时时间或者队列中有了元素
             Object result =  blockingQueue.poll(30, TimeUnit.SECONDS);
-            NLog.d(MainLog.getLogTag(), "VollyUtility  take time = %s",System.currentTimeMillis());
+            MainLog.d("VollyUtility  take time = %s",System.currentTimeMillis());
             //这里判断列队如果没有添加元素
             if (result == null ){
                 throw new TaskException("timeout");

@@ -2,7 +2,7 @@ package com.tesla.framework.common.util.log;
 
 import android.content.Context;
 
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 
 import java.io.File;
 import java.io.FileWriter;

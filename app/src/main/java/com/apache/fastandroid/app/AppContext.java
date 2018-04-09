@@ -8,7 +8,7 @@ import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
-import com.tesla.framework.common.util.ActivityTaskMgr;
+import com.tesla.framework.common.util.activitytask.ActivityTaskMgr;
 
 /**
  * Created by 01370340 on 2017/9/2.

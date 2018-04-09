@@ -6,7 +6,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.tesla.framework.common.util.ActivityTaskMgr;
+import com.tesla.framework.common.util.activitytask.ActivityTaskMgr;
 import com.tesla.framework.support.permission.IPermissionsObserver;
 import com.tesla.framework.support.permission.IPermissionsSubject;
 

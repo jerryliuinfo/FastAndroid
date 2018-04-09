@@ -4,6 +4,8 @@ apply from: rootProject.file('version.gradle')
 //apply from: rootProject.file('module.gradle')
 
 buildscript {
+
+    //根工程配置了这些，自工程就不用重复配置了
     repositories {
         jcenter()
          maven {

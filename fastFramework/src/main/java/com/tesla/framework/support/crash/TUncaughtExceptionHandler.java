@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.tesla.framework.common.util.ActivityTaskMgr;
+import com.tesla.framework.common.util.activitytask.ActivityTaskMgr;
 import com.tesla.framework.common.util.log.NLog;
 
 import java.io.File;

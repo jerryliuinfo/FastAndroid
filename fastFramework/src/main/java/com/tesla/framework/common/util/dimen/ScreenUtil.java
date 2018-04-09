@@ -15,7 +15,7 @@ import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.sp.ActivityHelper;
 
 import java.lang.reflect.Method;

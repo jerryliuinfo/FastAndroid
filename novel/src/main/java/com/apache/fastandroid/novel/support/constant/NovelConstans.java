@@ -5,7 +5,7 @@ import android.graphics.Color;
 import android.os.Environment;
 import android.support.annotation.StringDef;
 
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

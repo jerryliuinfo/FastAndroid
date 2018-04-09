@@ -5,7 +5,7 @@ import android.text.TextUtils;
 
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.CacheUtil;
-import com.apache.fastandroid.artemis.mvp.rx.RxPresenter;
+import com.apache.fastandroid.artemis.mvp.presenter.BasePresenterNew;
 import com.apache.fastandroid.artemis.rx.HttpResultObserver;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
@@ -13,7 +13,7 @@ import com.apache.fastandroid.user.sdk.UserSDK;
 import com.apache.fastandroid.user.support.UserConfigManager;
 import com.apache.fastandroid.user.support.cache.UserCache;
 import com.apache.fastandroid.user.support.util.UserCenterLogUtil;
-import com.apache.fastandroid.user.ui.contract.LoginContract;
+import com.apache.fastandroid.user.ui.contract.LoginContractNew;
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.component.bridge.IActionDelegate;
@@ -23,12 +23,15 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by 01370340 on 2017/12/7.
  */
 
-public class LoginPresenter extends RxPresenter<LoginContract.View> implements LoginContract.Presenter {
+public class LoginPresenterNew extends BasePresenterNew<LoginContractNew.View> implements LoginContractNew.Presenter {
+    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+
 
     IActionDelegate.IActionCallback callback;
 
@@ -36,10 +39,8 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
         this.callback = callback;
     }
 
-
-
     @Override
-    public void doAutoLogin(Activity activity) {
+    public void doAutoLogin(Activity activityk) {
         UserDetail userDetail = UserCache.getMe();
         String pwd = UserConfigManager.getInstance(FrameworkApplication.getContext()).getPwd();
         UserCenterLogUtil.d("userDetail = %s", userDetail);
@@ -53,20 +54,18 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
             doLogin(userDetail.getEmail(),pwd);
         }
 
-
     }
 
     @Override
-    public void doLogin(String userName, String password) {
-
+    public void doLogin(String userName, String pwd) {
         if (callback != null){
             callback.onActionPrepare();
         }
         if (getView() != null){
-            getView().onPrepare();
+            getView().showLoading("正在登陆中");
         }
 
-        Observable<Token> loginObservable = UserSDK.newInstance().login(userName,password);
+        Observable<Token> loginObservable = UserSDK.newInstance().login(userName,pwd);
         final Token[] mToken = new Token[1];
 
         Subscription subscription =loginObservable
@@ -102,7 +101,8 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                                 callback.onActionFailed(-100, "getUserInfo onNext loginToken == null");
                             }
                             if (getView() != null){
-                                getView().onFailed(new Exception(""));
+                                //getView().onFailed(new Exception(""));
+                                getView().showError();
                             }
 
                         }
@@ -112,7 +112,8 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                     public void onFailed(Throwable e) {
                         UserCenterLogUtil.d("onError thread = %s",Thread.currentThread().getName(), e);
                         if (getView() != null){
-                            getView().onFailed(e);
+                            //getView().onFailed(e);
+                            getView().showFail();
                         }
                         if (callback != null){
                             callback.onActionFailed(-100,"登录失败");
@@ -125,9 +126,9 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                         UserCenterLogUtil.d("onCompleted thread = %s",Thread.currentThread().getName());
 
                         ViewUtils.dismissProgressDialog();
-                        if (getView() != null){
+                       /* if (getView() != null){
                             getView().onFinished();
-                        }
+                        }*/
                         if (callback != null){
                             callback.onActionFinish();
                         }
@@ -135,8 +136,23 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                     }
                 });
         addSubscribe(subscription);
+    }
 
+    @Override
+    public void detachView() {
+        super.detachView();
+        unSubscribe();
+    }
 
+    protected void unSubscribe(){
+        if (mCompositeSubscription != null){
+            mCompositeSubscription.unsubscribe();
+            mCompositeSubscription = null;
+        }
+    }
+
+    protected void addSubscribe(Subscription subscription){
+        mCompositeSubscription.add(subscription);
     }
 
 

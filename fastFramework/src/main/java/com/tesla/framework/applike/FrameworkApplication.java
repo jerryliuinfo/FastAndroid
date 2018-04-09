@@ -1,5 +1,6 @@
-package com.tesla.framework;
+package com.tesla.framework.applike;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.tesla.framework.common.setting.SettingUtility;
@@ -14,6 +15,7 @@ import com.tesla.framework.common.util.network.NetworkHelper;
 public class FrameworkApplication  {
     private static Context mContext;
 
+    private static Application sApplication;
     private FrameworkApplication() {
     }
 
@@ -21,13 +23,17 @@ public class FrameworkApplication  {
         if (context != null){
             mContext = context.getApplicationContext();
         }
+        sApplication = (Application) context.getApplicationContext();
         ContextUtil.injectContext(mContext);
         NetworkHelper.getInstance().registerNetworkSensor(context);
         DebugUtils.syncDebugStatus(context);
 
         // 添加一些配置项
         SettingUtility.addSettings(context, "actions");
+    }
 
+
+    public static void onDestroy(){
 
     }
 
@@ -36,9 +42,4 @@ public class FrameworkApplication  {
     }
 
 
-
-
-    public static Context getInstance(){
-        return mContext;
-    }
 }

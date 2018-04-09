@@ -1,6 +1,6 @@
 
 
-package com.tesla.framework.common.util;
+package com.tesla.framework.common.util.activitytask;
 
 import android.app.Activity;
 
@@ -81,7 +81,7 @@ public class ActivityTaskMgr {
     }
 
     public boolean isActivityStackEmpty() {
-        return !(activityList != null && activityList.size() > 0);
+        return sizeOfActivityStack() == 0;
     }
     
 	public int sizeOfActivityStack() {

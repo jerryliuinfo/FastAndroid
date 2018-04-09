@@ -17,7 +17,7 @@ package com.apache.fastandroid.novel.support.mananger;
 
 
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.SystemUtils;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.common.util.sp.SPUtils;

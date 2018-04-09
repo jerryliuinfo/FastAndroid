@@ -25,7 +25,7 @@ package com.tesla.framework.support.cache;
 import android.support.annotation.NonNull;
 import android.util.LruCache;
 
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.file.FileUtils;
 
 import java.io.File;

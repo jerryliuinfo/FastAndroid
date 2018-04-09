@@ -4,7 +4,7 @@ import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.site.bean.SiteBeans;
 import com.apache.fastandroid.site.bean.SitesBean;
 import com.apache.fastandroid.topic.TopicConstans;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.task.TaskException;

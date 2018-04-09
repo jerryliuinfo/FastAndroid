@@ -3,7 +3,7 @@ package com.tesla.framework.network.http;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.NLog;

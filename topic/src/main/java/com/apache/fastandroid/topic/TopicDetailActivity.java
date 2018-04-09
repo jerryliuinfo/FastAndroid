@@ -15,11 +15,11 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.TopicLog;
 import com.apache.fastandroid.artemis.ArtemisContext;
+import com.tesla.framework.common.util.date.FormatTimeUtil;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.rx.DefaultCallback;
 import com.apache.fastandroid.artemis.support.bean.User;
-import com.apache.fastandroid.artemis.util.TimeUtil;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicContent;
 import com.apache.fastandroid.topic.sdk.TopicSDK;
@@ -35,7 +35,7 @@ import com.tesla.framework.ui.widget.CircleImageView;
 
 import rx.Observable;
 
-import static com.tesla.framework.FrameworkApplication.getContext;
+import static com.tesla.framework.applike.FrameworkApplication.getContext;
 
 /**
  * Created by 01370340 on 2017/12/3.
@@ -117,7 +117,7 @@ public class TopicDetailActivity extends BaseActivity {
         NLog.d(ABaseFragment.TAG, "showUserInfo mHeaderView = %s", mHeaderView);
         User user = mTopicBean.user;
         ((TextView)mHeaderView.findViewById(R.id.username)).setText(user.getName());
-        ((TextView)mHeaderView.findViewById(R.id.time)).setText(TimeUtil.computePastTime(mTopicBean.updated_at));
+        ((TextView)mHeaderView.findViewById(R.id.time)).setText(FormatTimeUtil.computePastTime(mTopicBean.updated_at));
         ((TextView)mHeaderView.findViewById(R.id.title)).setText(mTopicBean.title);
         if (!TextUtils.isEmpty(user.getAvatar_url())){
             ImageView iv_avatar = (ImageView) findViewById(R.id.avatar);

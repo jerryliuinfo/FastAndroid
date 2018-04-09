@@ -2,7 +2,7 @@ package com.apache.fastandroid;
 
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.topic.TopicConstans;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.IHttpUtility;

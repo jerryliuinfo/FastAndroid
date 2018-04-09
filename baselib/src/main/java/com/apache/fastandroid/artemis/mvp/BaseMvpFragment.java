@@ -3,37 +3,57 @@ package com.apache.fastandroid.artemis.mvp;
 import android.content.Context;
 
 import com.apache.fastandroid.artemis.base.BaseFragment;
-import com.tesla.framework.network.task.TaskException;
+import com.apache.fastandroid.artemis.mvp.presenter.BasePresenterNew;
+import com.apache.fastandroid.artemis.mvp.view.IView;
 
 /**
  * Created by jerryliu on 2017/7/9.
  * Fragment的mvp封装
  */
 
-public abstract class BaseMvpFragment<P extends BaseContract.BasePresenter> extends BaseFragment implements BaseContract.BaseView {
+public abstract class BaseMvpFragment<P extends BasePresenterNew<V>, V extends IView> extends BaseFragment implements IView {
     private P mPresenter;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mPresenter = createPresenter();
-        mPresenter.attachView(this);
+        attachView();
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mPresenter.detachView();
+    private void attachView(){
+        if (getPresenter() != null){
+            getPresenter().attachView((V) this);
+        }
     }
+
+    private void detachView(){
+        if (getPresenter() != null){
+            getPresenter().detachView();
+        }
+    }
+
+    private void cancelRequestTags(){
+        if (getPresenter() != null){
+            getPresenter().cancelRequestTags();
+        }
+    }
+
 
     public P getPresenter(){
         return mPresenter;
     }
 
+    @Override
+    public void onDestroy() {
+        detachView();
+        cancelRequestTags();
+        super.onDestroy();
+    }
 
     public abstract P createPresenter();
 
-    @Override
+    /*@Override
     public void onPrepare() {
 
     }
@@ -51,7 +71,32 @@ public abstract class BaseMvpFragment<P extends BaseContract.BasePresenter> exte
     @Override
     public void onFinished() {
         onTaskStateChanged(ABaseTaskState.finished, null);
+    }*/
+
+
+    @Override
+    public void showLoading(String msg) {
+
     }
 
+    @Override
+    public void hideLoading() {
 
+    }
+
+    @Override
+    public void showFail() {
+
+    }
+
+    @Override
+    public void showEmpty() {
+
+    }
+
+    @Override
+    public void showError() {
+
+    }
 }
+

@@ -59,12 +59,13 @@ dependencies {
 
     compile thirddependencies.eventbus
 
-    if (compileFramewokdSourceCode){
+    compile project(':fastFramework')
+    /*if (compileFramewokdSourceCode){
         compile project(':fastFramework')
     }else {
         compile thirddependencies.fastAndroid
     }
-
+*/
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     testCompile 'junit:junit:4.12'

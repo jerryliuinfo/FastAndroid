@@ -7,15 +7,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apache.fastandroid.artemis.support.bean.User;
-import com.apache.fastandroid.artemis.util.TimeUtil;
 import com.apache.fastandroid.topic.R;
 import com.apache.fastandroid.topic.TopicDetailActivity;
 import com.apache.fastandroid.topic.bean.TopicBean;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.date.FormatTimeUtil;
+import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
 
 /**
@@ -48,7 +44,7 @@ public class TopicItemView  extends ARecycleViewItemViewHolder<TopicBean> {
         final User user = bean.user;
         username.setText(user.getLogin());
         node_name.setText(bean.node_name);
-        time.setText(TimeUtil.computePastTime(bean.updated_at));
+        time.setText(FormatTimeUtil.computePastTime(bean.updated_at));
         title.setText(bean.title);
         state.setText("评论 " + bean.replies_count);
 
@@ -57,12 +53,9 @@ public class TopicItemView  extends ARecycleViewItemViewHolder<TopicBean> {
         if (!TextUtils.isEmpty(url) && url.contains("diycode")) {   // 添加判断，防止替换掉其他网站掉图片
             url = url.replace("large_avatar", "avatar");
         }
-        url = "https://timgsa.baidu.com/timg?image=&quality=80&size=b9999_10000&sec=1513606616748&di=bcc33cd71d6cdb3734cde2216b8e984b&imgtype=0&src=http%3A%2F%2Fwww.86wan.com%2Fuploads%2Fallimg%2F1308%2F2111-130P6110Q0.jpg";
-
-        //ImageLoaderManager.getInstance().showImage(avatar,url,getContext());
         //Glide.with(getContext()).load(url).into(avatar);
         final String finalUrl = url;
-        Glide.with(getContext()).load(url).listener(new RequestListener<String, GlideDrawable>() {
+        /*Glide.with(getContext()).load(url).listener(new RequestListener<String, GlideDrawable>() {
             @Override
             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean
                     isFirstResource) {
@@ -74,8 +67,8 @@ public class TopicItemView  extends ARecycleViewItemViewHolder<TopicBean> {
             public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
                 return false;
             }
-        }).into(avatar);
-
+        }).into(avatar);*/
+        ImageLoaderManager.getInstance().showImage(avatar,finalUrl,getContext());
 
 
        convertView.setOnClickListener(new View.OnClickListener() {

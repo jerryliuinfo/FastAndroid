@@ -20,7 +20,7 @@ import android.view.View;
 
 import com.apache.fastandroid.novel.R;
 import com.apache.fastandroid.novel.find.bean.ReadTheme;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
 

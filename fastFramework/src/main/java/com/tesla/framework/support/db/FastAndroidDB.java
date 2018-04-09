@@ -1,6 +1,6 @@
 package com.tesla.framework.support.db;
 
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.component.orm.SqliteUtility;
 import com.tesla.framework.component.orm.SqliteUtilityBuilder;
 

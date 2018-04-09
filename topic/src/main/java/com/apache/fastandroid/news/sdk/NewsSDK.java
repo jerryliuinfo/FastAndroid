@@ -5,7 +5,7 @@ import com.apache.fastandroid.artemis.retrofit.RetrofitUtil;
 import com.apache.fastandroid.news.bean.NewsBean;
 import com.apache.fastandroid.news.bean.NewsBeans;
 import com.apache.fastandroid.topic.TopicConstans;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.task.TaskException;

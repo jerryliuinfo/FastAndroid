@@ -13,11 +13,10 @@ import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.support.imageloader.GlideImageLoader;
-import com.apache.fastandroid.support.report.ActivityLifeCycleReportCallback;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import com.tencent.bugly.crashreport.CrashReport;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
@@ -39,7 +38,6 @@ import java.io.File;
 public class MyApplication extends Application {
     public static final String TAG = MyApplication.class.getSimpleName();
     private static Context mContext;
-    private ActivityLifecycleCallbacks activityLifecycleCallbacks;
 
     public static final String client_id = "7024a413";
     public static final String client_secret = "8404fa33ae48d3014cfa89deaa674e4cbe6ec894a57dbef4e40d083dbbaa5cf4";
@@ -52,7 +50,6 @@ public class MyApplication extends Application {
         mContext = this;
         FrameworkApplication.onCreate(getApplicationContext());
         SPUtils.init(getApplicationContext(), getPackageName() + "_preference");
-
 
         //初始化日志
         initLog();
@@ -69,11 +66,6 @@ public class MyApplication extends Application {
         FastAndroidDB.setDB();
 
         BaseActivity.setHelper(SwipeActivityHelper.class);
-        if (activityLifecycleCallbacks == null){
-            activityLifecycleCallbacks = new ActivityLifeCycleReportCallback();
-        }
-        //注册生命周期回调
-        registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
 
         //初始化图片加载
         IImageLoaderstrategy loaderstrategy = configImageLoader();
@@ -145,9 +137,6 @@ public class MyApplication extends Application {
     @Override
     public void onTerminate() {
         super.onTerminate();
-        if (activityLifecycleCallbacks != null){
-            unregisterActivityLifecycleCallbacks(activityLifecycleCallbacks);
-        }
     }
 
     @Override

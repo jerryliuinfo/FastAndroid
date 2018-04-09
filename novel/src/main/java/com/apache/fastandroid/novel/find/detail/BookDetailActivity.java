@@ -15,7 +15,7 @@ import com.apache.fastandroid.novel.find.bean.RecommendBook;
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.apache.fastandroid.novel.support.sdk.NovelSdk;
 import com.apache.fastandroid.novel.support.sqlite.CollectionDB;
-import com.apache.fastandroid.novel.support.util.FormatTimeUtil;
+import com.tesla.framework.common.util.date.FormatTimeUtil;
 import com.apache.fastandroid.novel.support.util.NovelLog;
 import com.apache.fastandroid.novel.view.DrawableCenterButton;
 import com.apache.fastandroid.novel.view.TagColor;

@@ -8,15 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
-import com.apache.fastandroid.artemis.bridge.ModuleConstans;
-import com.apache.fastandroid.artemis.mvp.rx.BaseRxMvpFragment;
-import com.apache.fastandroid.artemis.support.bean.UserDetail;
-import com.apache.fastandroid.user.support.UserConfigManager;
-import com.apache.fastandroid.user.ui.contract.LoginContract;
-import com.apache.fastandroid.user.ui.presenter.LoginPresenter;
+import com.apache.fastandroid.artemis.mvp.BaseMvpFragment;
+import com.apache.fastandroid.user.ui.contract.LoginContractNew;
+import com.apache.fastandroid.user.ui.presenter.LoginPresenterNew;
 import com.apache.fastandroid.usercenter.R;
-import com.tesla.framework.common.util.view.ViewUtils;
-import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
@@ -26,7 +21,7 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
  * Created by jerryliu on 2017/7/9.
  */
 
-public class LoginFragmentMvp extends BaseRxMvpFragment<LoginPresenter> implements LoginContract.View {
+public class LoginFragmentMvp extends BaseMvpFragment<LoginPresenterNew,LoginContractNew.View> {
     @ViewInject(idStr = "inputLayout_username")
     private TextInputLayout mUserNameinputLayout;
 
@@ -89,7 +84,7 @@ public class LoginFragmentMvp extends BaseRxMvpFragment<LoginPresenter> implemen
         final String userName = mUserNameinputLayout.getEditText().getText().toString();
         String pwd = mPwdInputLayout.getEditText().getText().toString();
         if (checkUserNameAndPwdInvalidaty(userName,pwd)){
-            ((LoginPresenter)getPresenter()).doLogin(userName,pwd);
+            getPresenter().doLogin(userName,pwd);
         }
 
 
@@ -110,11 +105,16 @@ public class LoginFragmentMvp extends BaseRxMvpFragment<LoginPresenter> implemen
         return true;
     }
 
-
-
-
-
     @Override
+    public LoginPresenterNew createPresenter() {
+        return new LoginPresenterNew();
+    }
+
+
+
+
+
+   /* @Override
     public LoginContract.Presenter createPresenter() {
         return new LoginPresenter();
     }
@@ -135,9 +135,9 @@ public class LoginFragmentMvp extends BaseRxMvpFragment<LoginPresenter> implemen
             }
             getActivity().finish();
         }
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void onFailed(Throwable e) {
         super.onFailed(e);
         showMessage(e.getMessage());
@@ -153,5 +153,5 @@ public class LoginFragmentMvp extends BaseRxMvpFragment<LoginPresenter> implemen
     public void onPrepare() {
         super.onPrepare();
         showLoadingDialog();
-    }
+    }*/
 }

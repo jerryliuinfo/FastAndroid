@@ -3,7 +3,7 @@ package com.tesla.framework.ui.widget;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 
 
 public class ToastUtils {

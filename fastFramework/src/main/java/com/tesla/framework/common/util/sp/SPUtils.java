@@ -13,7 +13,7 @@ import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 
 /**
- * Created by jingbin on 2015/2/26.
+ *
  */
 public class SPUtils {
 

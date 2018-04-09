@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 
 import com.tesla.framework.BuildConfig;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.ManifestUtil;
 
 /**

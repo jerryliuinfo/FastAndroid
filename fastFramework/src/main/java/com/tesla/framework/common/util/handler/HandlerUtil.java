@@ -13,6 +13,9 @@ import java.lang.ref.WeakReference;
 public class HandlerUtil {
     private static Handler sUiHandler = new Handler(Looper.getMainLooper());
 
+    public static Handler getUIHandler(){
+        return sUiHandler;
+    }
     /**
      * 在UI线程运行
      *

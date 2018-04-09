@@ -2,7 +2,7 @@ package com.tesla.framework.common.setting;
 
 import android.content.Context;
 
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.sp.ActivityHelper;
 
 import java.util.HashMap;

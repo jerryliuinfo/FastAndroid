@@ -6,11 +6,11 @@ import java.lang.ref.WeakReference;
  * Created by 01370340 on 2017/10/21.
  */
 
-public class MvPresenter<T extends BaseContract.BaseView> implements BaseContract.BasePresenter<T> {
+public class MvPresenter<V extends BaseContract.BaseView> implements BaseContract.BasePresenter<V> {
 
-    protected WeakReference<T> mViewRef;
+    protected WeakReference<V> mViewRef;
     @Override
-    public void attachView(T view) {
+    public void attachView(V view) {
         mViewRef = new WeakReference<>(view);
     }
 
@@ -22,7 +22,7 @@ public class MvPresenter<T extends BaseContract.BaseView> implements BaseContrac
         }
     }
 
-    public T getView(){
+    public V getView(){
         if (mViewRef != null){
             return mViewRef.get();
         }

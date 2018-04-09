@@ -19,10 +19,12 @@ import android.widget.TextView;
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
+import com.apache.fastandroid.artemis.util.activitytask.ActivityLifeCallback;
 import com.apache.fastandroid.news.MainNewsTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.support.action.IsLoginedAction;
 import com.apache.fastandroid.support.utils.DebugDbUtils;
+import com.apache.fastandroid.support.utils.MainLog;
 import com.apache.fastandroid.test.TestFragment;
 import com.apache.fastandroid.video.VideoTabsFragment;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
@@ -93,8 +95,9 @@ public class MainActivity extends MyBaseActivity{
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
+        MainLog.d("top activity = %s", ActivityLifeCallback.get().topActivity());
 
-
+        //MainLog.d("topActivity = %s ", ActivityHelperList);
         //EventBus.getDefault().register(this);
         /*myHandler.postDelayed(new Runnable() {
             @Override

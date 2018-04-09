@@ -9,9 +9,9 @@ import android.widget.TextView;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.artemis.util.IntentUtil;
-import com.apache.fastandroid.artemis.util.TimeUtil;
 import com.apache.fastandroid.artemis.util.UrlUtil;
 import com.apache.fastandroid.news.bean.NewsBean;
+import com.tesla.framework.common.util.date.FormatTimeUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
@@ -45,7 +45,7 @@ public class TestItemView extends ARecycleViewItemViewHolder<NewsBean> {
         final User user = bean.getUser();
         username.setText(user.getLogin());
         node_name.setText(bean.getNode_name());
-        time.setText(TimeUtil.computePastTime(bean.getUpdated_at()));
+        time.setText(FormatTimeUtil.computePastTime(bean.getUpdated_at()));
         title.setText(bean.getTitle());
         host_name.setText(UrlUtil.getHost(bean.getAddress()));
 

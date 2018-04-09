@@ -24,9 +24,6 @@ repositories {
     }
 }
 
-def getAppVersionName() {
-    return rootProject.ext.versionName
-}
 
 //commit次数作为版本号,因为commit只增不减
 def getCommitVersionCode() {
@@ -49,7 +46,7 @@ android {
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode getCommitVersionCode()
-        versionName getAppVersionName()
+        versionName rootProject.ext.versionName
         resConfigs('en','zh','xhdpi')
 
         //archivesBaseName = "FastAndroid-$versionName"
@@ -79,6 +76,7 @@ android {
         productFlavor "dev"
     }
 
+
     signingConfigs {
         dev {
             try {
@@ -90,12 +88,10 @@ android {
             catch (ex) {
                 throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
             }
-
         }
 
         prod {
             try {
-                //storeFile file("./keystore/release.jks")
                 storeFile file(KEYSTORE_FILE)
                 storePassword KEYSTORE_PASSWORD
                 keyAlias KEY_ALIAS
@@ -104,9 +100,7 @@ android {
             catch (ex) {
                 throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
             }
-
         }
-
     }
 
 
@@ -127,7 +121,10 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
+            //zipAlignEnabled能提供系统和应用的运行效率
             zipAlignEnabled true
+            //获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk
+            //安装目录下的tools/prlguard
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [appName: "FastAnd"]
 
@@ -136,7 +133,7 @@ android {
         }
         debug {
             minifyEnabled false
-            manifestPlaceholders = [appName: "FastAnd"]
+            manifestPlaceholders = [appName: "FastAndDebug"]
 
             buildConfigField('boolean','LOG_DEBUG',"true")
             buildConfigField('String',"BUGLY_APP_ID","\"a397701fd5\"")
@@ -160,6 +157,8 @@ android {
             resValue('bool', 'login_enable', "false")
 
             dimension "debug"
+
+
 
         }
 
@@ -273,5 +272,8 @@ dependencies {
 
     compile thirddependencies.bugly
     compile thirddependencies.multidex
+
+
+
 
 }

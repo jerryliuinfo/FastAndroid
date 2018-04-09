@@ -31,7 +31,7 @@ import com.apache.fastandroid.novel.find.bean.BookMixAToc;
 import com.apache.fastandroid.novel.support.mananger.SettingManager;
 import com.apache.fastandroid.novel.support.util.ChapterFileUtil;
 import com.apache.fastandroid.novel.support.util.NovelLog;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
 

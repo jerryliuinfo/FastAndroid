@@ -1,4 +1,4 @@
-package com.apache.fastandroid.support.utils;
+package com.apache.fastandroid.artemis;
 
 import com.tesla.framework.common.util.log.NLog;
 
@@ -6,9 +6,9 @@ import com.tesla.framework.common.util.log.NLog;
  * Created by 01370340 on 2017/11/24.
  */
 
-public class MainLog {
+public class BaselibLog {
     private static String getLogTag(){
-        return "MainLib";
+        return "baseLib";
     }
 
 

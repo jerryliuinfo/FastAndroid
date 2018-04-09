@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.support.bean.NewsSummary;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;

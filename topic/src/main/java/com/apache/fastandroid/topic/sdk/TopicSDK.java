@@ -13,9 +13,8 @@ import com.apache.fastandroid.topic.bean.TopicReplyBean;
 import com.apache.fastandroid.topic.bean.TopicReplyBeans;
 import com.apache.fastandroid.topic.cache.TopicCacheUtility;
 import com.apache.fastandroid.topic.http.TopicListHttpUtility;
-import com.tesla.framework.FrameworkApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.setting.Setting;
-import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.Params;
@@ -121,8 +120,7 @@ public class TopicSDK extends ABizLogic {
      */
     public TopicBeans getTopicsList(String type, Integer node_id, int offset, int limit) throws TaskException {
         //1.判断有没有缓存
-
-        Setting action = SettingUtility.getSetting("topics.json");
+        Setting action = newSetting("topicsList","topics.json","主题列表");
         action.getExtras().put(CACHE_UTILITY,newSettingExtra(CACHE_UTILITY, TopicCacheUtility.class.getName(),"getTopicsList"));
         action.getExtras().put(HTTP_UTILITY,newSettingExtra(HTTP_UTILITY, TopicListHttpUtility.class.getName(),"getTopicsList"));
         Params params = new Params();

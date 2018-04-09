@@ -2,7 +2,7 @@ package com.apache.fastandroid.novel.support.sqlite;
 
 import com.apache.fastandroid.novel.find.bean.CollectionBeans;
 import com.apache.fastandroid.novel.find.bean.RecommendBook;
-import com.apache.fastandroid.novel.support.util.FormatTimeUtil;
+import com.tesla.framework.common.util.date.FormatTimeUtil;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.component.orm.extra.Extra;
 import com.tesla.framework.network.biz.IResult;
