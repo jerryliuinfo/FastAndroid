@@ -1,15 +1,9 @@
 package com.apache.fastandroid;
 
-import android.content.Context;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-
-import com.tesla.framework.common.util.ManifestUtil;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import static org.junit.Assert.*;
 
 /**
  * Instrumentation test, which will execute on an Android device.
@@ -20,18 +14,11 @@ import static org.junit.Assert.*;
 public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() throws Exception {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
-
-        assertEquals("com.apache.fastandroid", appContext.getPackageName());
     }
 
 
     @Test
     public void testMetaData() throws Exception {
-        Context appContext = InstrumentationRegistry.getTargetContext();
-        String value = ManifestUtil.getMetaData(appContext,"ISTEST");
-        System.out.println(value);
 
     }
 }

@@ -1,4 +1,4 @@
-package com.tesla.framework;
+package com.apache.fastandroid.artemis;
 
 import com.tesla.framework.common.util.log.NLog;
 

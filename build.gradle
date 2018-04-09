@@ -5,34 +5,27 @@ apply from: rootProject.file('version.gradle')
 
 buildscript {
 
-    //根工程配置了这些，自工程就不用重复配置了
     repositories {
-        jcenter()
-         maven {
-
-            url 'https://dl.bintray.com/jerryliuinfo/maven/'
-
+        jcenter()   //JCenter仓库
+        maven {
+            url 'https://dl.bintray.com/xiangxiangliu/maven'
         }
         flatDir {
             dirs rootDir.getAbsolutePath()+'/libs'
         }
 
-        //google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
 
-        //classpath 'com.android.tools.build.gradle:3.0.0-alpha3'
-
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' // 添加这行
 
-        classpath 'com.antfortune.freeline:gradle:0.8.7'
-
-        //classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.1.9'
+        //classpath 'com.antfortune.freeline:gradle:0.8.7'
 
 
+        //定义在这里，这样每个module都可以使用
+        classpath 'com.novoda:bintray-release:0.3.4'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
 
 
         // 配置自动上传符号表插件，注：为了能快速并准确地定位用户APP发生Crash的代码位置，Bugly使用符号表对APP发生Crash的程序堆栈进行解析和还原
@@ -42,17 +35,24 @@ buildscript {
 
 
 }
+
+
+
 allprojects{
     repositories {
-        jcenter()
-        mavenCentral()
+        jcenter()  //JCenter仓库
+        mavenCentral()//mvenCenter仓库
+        maven { url "https://jitpack.io" }   // jitpack仓库
         flatDir {
             dirs rootDir.getAbsolutePath()+'/libs'
         }
-        //google()
+    }
+
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
     }
 }
-
 
 
 

@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.antfortune.freeline'
+//apply plugin: 'com.antfortune.freeline'
 println('app gradle----->')
 // 注：需要配置符号表时，使用bugly插件
 /*apply plugin: 'bugly'
@@ -57,6 +57,9 @@ android {
         flavorDimensions "debug","release"
 
     }
+
+   
+
     useLibrary 'org.apache.http.legacy'
 
     splits {
@@ -71,10 +74,10 @@ android {
         abortOnError false
     }
 
-    freeline{
+    /*freeline{
         hack true
         productFlavor "dev"
-    }
+    }*/
 
 
     signingConfigs {
@@ -266,7 +269,7 @@ dependencies {
     })
 
 
-    compile project(':usercenter')
+//    compile project(':usercenter')
     compile project(':topic')
     compile project(':novel')
 

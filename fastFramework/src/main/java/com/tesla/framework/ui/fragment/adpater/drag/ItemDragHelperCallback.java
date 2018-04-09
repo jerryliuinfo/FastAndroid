@@ -22,9 +22,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-import com.tesla.framework.LibraryLog;
-import com.tesla.framework.common.util.log.NLog;
-
 public class ItemDragHelperCallback extends ItemTouchHelper.Callback {
 
     private OnItemMoveListener mOnItemMoveListener;
@@ -95,7 +92,6 @@ public class ItemDragHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-        NLog.d(LibraryLog.getLogTag(), "onSwiped direction = %s",direction);
 
     }
 

@@ -5,8 +5,6 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.tesla.framework.LibraryLog;
-
 import java.util.LinkedList;
 
 /**
@@ -27,7 +25,6 @@ public class ActivityLifeCallback implements Application.ActivityLifecycleCallba
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-        LibraryLog.d("onActivityCreated activity name = %s",activity.getClass().getName());
         if (!stack.contains(activity)){
             stack.add(activity);
         }
@@ -60,7 +57,6 @@ public class ActivityLifeCallback implements Application.ActivityLifecycleCallba
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-        LibraryLog.d("onActivityDestroyed activity name = %s",activity.getClass().getName());
 
         if (stack.contains(activity)){
             stack.remove(activity);

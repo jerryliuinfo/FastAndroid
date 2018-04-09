@@ -6,9 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.tesla.framework.LibraryLog;
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.ui.fragment.APagingFragment;
 import com.tesla.framework.ui.fragment.adpater.drag.OnItemMoveListener;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
@@ -230,7 +228,6 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends RecyclerVie
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
-        NLog.d(LibraryLog.getLogTag(), "onItemMove fromPosition = %s, toPosition = %s",fromPosition,toPosition);
 
         Collections.swap(getDatas(), fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
