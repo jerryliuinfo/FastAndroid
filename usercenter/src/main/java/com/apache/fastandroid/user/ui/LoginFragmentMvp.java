@@ -8,10 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
+import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.mvp.BaseMvpFragment;
+import com.apache.fastandroid.artemis.support.bean.UserDetail;
+import com.apache.fastandroid.user.support.UserConfigManager;
 import com.apache.fastandroid.user.ui.contract.LoginContractNew;
 import com.apache.fastandroid.user.ui.presenter.LoginPresenterNew;
 import com.apache.fastandroid.usercenter.R;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
@@ -21,7 +25,7 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
  * Created by jerryliu on 2017/7/9.
  */
 
-public class LoginFragmentMvp extends BaseMvpFragment<LoginPresenterNew,LoginContractNew.View> {
+public class LoginFragmentMvp extends BaseMvpFragment<LoginPresenterNew,LoginContractNew.View> implements LoginContractNew.View{
     @ViewInject(idStr = "inputLayout_username")
     private TextInputLayout mUserNameinputLayout;
 
@@ -110,16 +114,6 @@ public class LoginFragmentMvp extends BaseMvpFragment<LoginPresenterNew,LoginCon
         return new LoginPresenterNew();
     }
 
-
-
-
-
-   /* @Override
-    public LoginContract.Presenter createPresenter() {
-        return new LoginPresenter();
-    }
-
-
     @Override
     public void getUserInfo(UserDetail userDetail) {
         showMessage("登录成功");
@@ -135,7 +129,8 @@ public class LoginFragmentMvp extends BaseMvpFragment<LoginPresenterNew,LoginCon
             }
             getActivity().finish();
         }
-    }*/
+    }
+
 
     /*@Override
     public void onFailed(Throwable e) {

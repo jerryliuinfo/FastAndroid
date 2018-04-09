@@ -5,7 +5,6 @@ import android.text.TextUtils;
 
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.CacheUtil;
-import com.apache.fastandroid.artemis.mvp.rx.RxPresenter;
 import com.apache.fastandroid.artemis.rx.HttpResultObserver;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;

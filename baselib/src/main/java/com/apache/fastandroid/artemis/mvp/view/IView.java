@@ -11,7 +11,7 @@ public interface IView {
     void hideLoading();
 
 
-    void showFail();
+    void showFail(String errorMsg);
 
     void showError();
 

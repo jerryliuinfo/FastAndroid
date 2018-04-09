@@ -2,32 +2,36 @@ package com.apache.fastandroid.artemis.mvp.presenter;
 
 import com.apache.fastandroid.artemis.mvp.view.IView;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by 01370340 on 2018/4/8.
  */
 
 public class BasePresenterNew<V extends IView> implements IPresenter<V> {
-    private V view;
+    private WeakReference<V> mViewRef;
     @Override
     public void attachView(V view) {
-        this.view = view;
+        this.mViewRef = new WeakReference<>(view);
     }
 
     @Override
     public void detachView() {
-        this.view = null;
+        this.mViewRef = null;
     }
 
     @Override
     public void checkAttachView() {
-        if (view == null){
-            throw new RuntimeException("You have no binding this view");
+        if (getViewRef() == null){
+            throw new RuntimeException("You have no binding this mViewRef");
         }
     }
 
-    @Override
-    public V getView() {
-        return view;
+    public V getViewRef() {
+        if (mViewRef != null){
+            return mViewRef.get();
+        }
+        return null;
     }
 
     @Override

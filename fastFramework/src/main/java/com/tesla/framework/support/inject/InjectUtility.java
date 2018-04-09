@@ -71,6 +71,8 @@ public class InjectUtility {
 					if (viewInject != null) {
 						// ViewId可以是id配置，也可以是IdStr配置
 						int viewId = viewInject.id();
+
+						//idstr的形式
 						if (viewId == 0) {
 							String idStr = viewInject.idStr();
 							if (!TextUtils.isEmpty(idStr)) {

@@ -85,7 +85,7 @@ public abstract class BaseMvpFragment<P extends BasePresenterNew<V>, V extends I
     }
 
     @Override
-    public void showFail() {
+    public void showFail(String errorMsg) {
 
     }
 

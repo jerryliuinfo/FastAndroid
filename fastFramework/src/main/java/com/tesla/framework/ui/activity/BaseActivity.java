@@ -44,10 +44,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     static final String TAG = "Activity-Base";
 
     private static Class<? extends BaseActivityHelper> mHelperClass;
+
     private BaseActivityHelper mHelper;
-
-
-
 
     private int theme = 0;// 当前界面设置的主题
 
@@ -65,6 +63,7 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     private View rootView;
 
     @ViewInject(idStr = "toolbar")
+
     Toolbar mToolbar;
 
     public static BaseActivity getRunningActivity() {
@@ -79,34 +78,21 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
         mHelperClass = clazz;
     }
 
-
-
     protected int configTheme() {
         if (mHelper != null) {
             int appTheheme = mHelper.configTheme();
             if (appTheheme > 0)
                 return appTheheme;
         }
-
         return -1;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+       injectActivityHelper();
 
-        if (mHelper == null) {
-            try {
-                if (mHelperClass != null) {
-                    mHelper = mHelperClass.newInstance();
-                    mHelper.bindActivity(this);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (mHelper != null)
-            mHelper.onCreate(savedInstanceState);
+        if (getActivityHelper() != null)
+            getActivityHelper().onCreate(savedInstanceState);
 
         fragmentRefs = new HashMap<>();
 
@@ -143,28 +129,40 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
         super.onCreate(savedInstanceState);
     }
 
+
+    public void injectActivityHelper(){
+        if (mHelper == null) {
+            try {
+                if (mHelperClass != null) {
+                    mHelper = mHelperClass.newInstance();
+                    mHelper.bindActivity(this);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        if (mHelper != null)
-            mHelper.onPostCreate(savedInstanceState);
+        if (getActivityHelper() != null)
+            getActivityHelper().onPostCreate(savedInstanceState);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
-        if (mHelper != null)
-            mHelper.onStart();
+        if (getActivityHelper() != null)
+            getActivityHelper().onStart();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-
-        if (mHelper != null)
-            mHelper.onRestart();
+        if (getActivityHelper() != null)
+            getActivityHelper().onRestart();
     }
 
     public Toolbar getToolbar() {
@@ -186,7 +184,6 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
 
         rootView = view;
         InjectUtility.initInjectedView(this, this, rootView);
-
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolbar != null)
@@ -231,8 +228,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     protected void onResume() {
         super.onResume();
 
-        if (mHelper != null)
-            mHelper.onResume();
+        if (getActivityHelper() != null)
+            getActivityHelper().onResume();
 
         setRunningActivity(this);
 
@@ -262,8 +259,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     protected void onPause() {
         super.onPause();
 
-        if (mHelper != null)
-            mHelper.onPause();
+        if (getActivityHelper() != null)
+            getActivityHelper().onPause();
     }
 
     public void setLanguage(Locale locale) {
@@ -303,8 +300,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
 
         super.onDestroy();
 
-        if (mHelper != null)
-            mHelper.onDestroy();
+        if (getActivityHelper() != null)
+            getActivityHelper().onDestroy();
 
 
     }
@@ -326,8 +323,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     }
 
     protected boolean onHomeClick() {
-        if (mHelper != null) {
-            boolean handle = mHelper.onHomeClick();
+        if (getActivityHelper() != null) {
+            boolean handle = getActivityHelper().onHomeClick();
             if (handle)
                 return true;
         }
@@ -359,8 +356,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     }
 
     public boolean onBackClick() {
-        if (mHelper != null) {
-            boolean handle = mHelper.onBackClick();
+        if (getActivityHelper() != null) {
+            boolean handle = getActivityHelper().onBackClick();
             if (handle)
                 return true;
         }
@@ -425,8 +422,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
 
         super.finish();
 
-        if (mHelper != null) {
-            mHelper.finish();
+        if (getActivityHelper() != null) {
+            getActivityHelper().finish();
         }
     }
 
@@ -444,8 +441,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (mHelper != null) {
-            mHelper.onActivityResult(requestCode, resultCode, data);
+        if (getActivityHelper() != null) {
+            getActivityHelper().onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -471,8 +468,8 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (mHelper != null){
-            mHelper.onRequestPermissionsResult(requestCode,permissions,grantResults);
+        if (getActivityHelper() != null){
+            getActivityHelper().onRequestPermissionsResult(requestCode,permissions,grantResults);
         }
 
     }

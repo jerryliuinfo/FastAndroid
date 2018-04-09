@@ -61,8 +61,8 @@ public class LoginPresenterNew extends BasePresenterNew<LoginContractNew.View> i
         if (callback != null){
             callback.onActionPrepare();
         }
-        if (getView() != null){
-            getView().showLoading("正在登陆中");
+        if (getViewRef() != null){
+            getViewRef().showLoading("正在登陆中");
         }
 
         Observable<Token> loginObservable = UserSDK.newInstance().login(userName,pwd);
@@ -92,17 +92,17 @@ public class LoginPresenterNew extends BasePresenterNew<LoginContractNew.View> i
                             if (callback != null){
                                 callback.onActionSuccess(userDetail);
                             }
-                            if (getView() != null){
-                                getView().getUserInfo(userDetail);
+                            if (getViewRef() != null){
+                                getViewRef().getUserInfo(userDetail);
                             }
 
                         }else {
                             if (callback != null){
                                 callback.onActionFailed(-100, "getUserInfo onNext loginToken == null");
                             }
-                            if (getView() != null){
-                                //getView().onFailed(new Exception(""));
-                                getView().showError();
+                            if (getViewRef() != null){
+                                //getViewRef().onFailed(new Exception(""));
+                                getViewRef().showError();
                             }
 
                         }
@@ -111,9 +111,9 @@ public class LoginPresenterNew extends BasePresenterNew<LoginContractNew.View> i
                     @Override
                     public void onFailed(Throwable e) {
                         UserCenterLogUtil.d("onError thread = %s",Thread.currentThread().getName(), e);
-                        if (getView() != null){
-                            //getView().onFailed(e);
-                            getView().showFail();
+                        if (getViewRef() != null){
+                            //getViewRef().onFailed(e);
+                            getViewRef().showFail("\"登录失败\"");
                         }
                         if (callback != null){
                             callback.onActionFailed(-100,"登录失败");
@@ -126,8 +126,8 @@ public class LoginPresenterNew extends BasePresenterNew<LoginContractNew.View> i
                         UserCenterLogUtil.d("onCompleted thread = %s",Thread.currentThread().getName());
 
                         ViewUtils.dismissProgressDialog();
-                       /* if (getView() != null){
-                            getView().onFinished();
+                       /* if (getViewRef() != null){
+                            getViewRef().onFinished();
                         }*/
                         if (callback != null){
                             callback.onActionFinish();

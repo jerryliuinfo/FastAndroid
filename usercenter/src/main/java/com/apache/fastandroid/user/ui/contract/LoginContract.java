@@ -2,7 +2,6 @@ package com.apache.fastandroid.user.ui.contract;
 
 import android.app.Activity;
 
-import com.apache.fastandroid.artemis.mvp.BaseContract;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
 
 /**

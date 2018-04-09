@@ -14,7 +14,7 @@ public interface IPresenter<V extends IView> {
 
     void checkAttachView();
 
-    V getView();
+    V getViewRef();
 
     void cancelRequestTags();
 
