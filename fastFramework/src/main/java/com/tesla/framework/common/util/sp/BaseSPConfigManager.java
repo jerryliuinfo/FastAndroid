@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
  * @author Jerry
  * @Description:
  * @date 2016/8/4 10:47
- * @copyright TCL-MIG
  */
 
 public abstract class BaseSPConfigManager {

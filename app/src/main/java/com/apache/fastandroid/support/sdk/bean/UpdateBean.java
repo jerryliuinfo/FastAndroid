@@ -6,7 +6,6 @@ import java.io.Serializable;
  * @author haiyang.tan
  * @Description:
  * @date 2016/5/5 15:35
- * @copyright TCL-MIG
  */
 public class UpdateBean implements Serializable{
     public String apkSize;

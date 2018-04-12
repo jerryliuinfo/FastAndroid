@@ -5,10 +5,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 
 /**
- * @author wangtianbao
- * @Description:
- * @date 2016/8/6 13:48
- * @copyright TCL-MIG
+ *
  */
 
 public class AnimatorReleaseUtils {

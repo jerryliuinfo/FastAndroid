@@ -61,8 +61,7 @@ dependencies {
 
 publish {
     artifactId = 'fastFramework'// bintray创建的package
-    publishVersion = '1.3.4'
-
+    publishVersion = rootProject.publishVersion
     userOrg = rootProject.userOrg// bintray注册的用户名
     groupId = rootProject.groupId
     desc = rootProject.desc

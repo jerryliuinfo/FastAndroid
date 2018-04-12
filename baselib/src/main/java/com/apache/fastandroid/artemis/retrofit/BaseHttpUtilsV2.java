@@ -31,9 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  *
  * @desc A tool based on http, using Okhttp and Retrofit to get/post request.
  *
- * @date 2016/2/18 19:24
- * @copyright TCL-MIG
- * @author REXZOU
+
  */
 public class BaseHttpUtilsV2 {
 

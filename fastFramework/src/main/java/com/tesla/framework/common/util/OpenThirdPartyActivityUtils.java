@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 
 /**
- * @author yaodingding
  * @Description: 打开第三方app 工具类
  * @date 2016/8/9
- * @copyright TCL-MIG
  */
 public class OpenThirdPartyActivityUtils {
     private static final String TAG = OpenThirdPartyActivityUtils.class.getSimpleName();

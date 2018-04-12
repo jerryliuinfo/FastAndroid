@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.novoda.bintray-release'
 android {
 
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -22,6 +22,27 @@ android {
         abortOnError false
     }
 }
+
+
+
+
+publish {
+    artifactId = 'topic'// bintray创建的package
+    publishVersion = rootProject.publishVersion
+    userOrg = rootProject.userOrg// bintray注册的用户名
+    groupId = rootProject.groupId
+    desc = rootProject.desc
+    website = rootProject.website
+    licences = rootProject.rootProject
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

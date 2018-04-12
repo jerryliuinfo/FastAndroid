@@ -6,7 +6,6 @@ import android.text.TextUtils;
  * @author wangtianbao
  * @Description: 防抖动计时器，为解决列表连续刷新同时滑动时的卡顿问题
  * @date 2016/6/14 16:13
- * @copyright TCL-MIG
  */
 public class ThrottleFirstTimer {
     private long mThrottleTime=500;//500毫抖动时间

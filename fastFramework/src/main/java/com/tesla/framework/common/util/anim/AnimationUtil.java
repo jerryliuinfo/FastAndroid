@@ -4,12 +4,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 
-/**
- * @author zeming_liu
- * @Description: 动画工具类
- * @date 2016/8/1.
- * @copyright TCL-MIG
- */
+
 public class AnimationUtil {
 
     /**

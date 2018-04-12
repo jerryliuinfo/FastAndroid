@@ -19,7 +19,6 @@ import okhttp3.Response;
  * 或使用默认时间 MIG-Cache:enable
  * 不需要缓存 不写Header或MIG-Cache:disable
  * date 2016/2/29 14:52 <br>
- * copyright TCL-MIG<br>
  */
 public class CacheInterceptor implements Interceptor {
 

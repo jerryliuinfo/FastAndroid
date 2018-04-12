@@ -2,12 +2,7 @@ package com.tesla.framework.common.util.view;
 
 import android.graphics.Paint;
 
-/**
- * @author wangtianbao
- * @Description:
- * @date 2016/11/4 13:59
- * @copyright TCL-MIG
- */
+
 
 public class PaintConfigUtils {
 

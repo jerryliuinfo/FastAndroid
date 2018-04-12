@@ -8,7 +8,6 @@ import android.graphics.RectF;
  * @author wangtianbao
  * @Description: 半径计算器
  * @date 2016/11/4 14:35
- * @copyright TCL-MIG
  */
 
 public class RComputer {
