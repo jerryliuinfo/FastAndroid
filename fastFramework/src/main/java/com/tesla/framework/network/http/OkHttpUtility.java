@@ -9,8 +9,6 @@ import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.network.biz.ABizLogic;
-import com.tesla.framework.network.http.interceptor.CacheInterceptor;
-import com.tesla.framework.network.http.interceptor.HeaderInterceptor;
 import com.tesla.framework.network.task.TaskException;
 
 import java.io.ByteArrayInputStream;
@@ -184,31 +182,24 @@ public class OkHttpUtility implements IHttpUtility {
 		return JSON.parseObject(resultStr, responseCls);
 	}
 
-	private static  OkHttpClient mOkHttpClient;
 
 	public static final int READ_TIMEOUT = 30;//单位:s
 	public static final int WRITE_TIMEOUT = 30;//单位:s
 	public static final int CONNECT_TIMEOUT = 30;//单位:s
 
-
-
+	OkHttpClient mOkHttpClient;
 	public synchronized OkHttpClient getOkHttpClient() {
 		if (mOkHttpClient == null){
 			OkHttpClient.Builder okBuilder = new OkHttpClient.Builder();
 			okBuilder.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS);
 			okBuilder.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS);
 			okBuilder.writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS);
-			okBuilder.addInterceptor(new CacheInterceptor(FrameworkApplication.getContext()));
-			okBuilder.addNetworkInterceptor(new CacheInterceptor(FrameworkApplication.getContext()));
-			okBuilder.addInterceptor(new HeaderInterceptor());
 
 			//缓存
 			File cacheFile = new File(FrameworkApplication.getContext().getCacheDir(), "cache");
 			Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
 			okBuilder.cache(cache);
 
-//			okBuilder.addInterceptor(new HttpHeadInterceptor());
-//			okBuilder.addInterceptor(getInterceptor());
 
 			mOkHttpClient = okBuilder.build();
 		}

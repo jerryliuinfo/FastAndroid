@@ -85,7 +85,7 @@ public class MainNewsItemPhotoView extends ARecycleViewItemViewHolder<NewsSummar
                 imgSrcRight = adsBeanList.get(2).getImgsrc();
                 layoutParams.height = PhotoThreeHeight;
 //                holder.setText(R.id.news_summary_title_tv, AppApplication.getAppContext()
-//                        .getString(R.string.photo_collections, adsBeanList.get(0).getTitle()));
+//                        .getString(R.string.photo_collections, adsBeanList.getString(0).getTitle()));
 
                 news_summary_title_tv.setText(String.format(ResUtil.getString(R.string.photo_collections),adsBeanList.get(0).getTitle() ));
             } else if (size >= 2) {

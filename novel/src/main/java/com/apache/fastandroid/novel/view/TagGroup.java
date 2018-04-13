@@ -419,7 +419,7 @@ public class TagGroup extends ViewGroup {
     /**
      * Returns the tag view at the specified position in the group.
      *
-     * @param index the position at which to get the tag view from.
+     * @param index the position at which to getString the tag view from.
      * @return the tag view at the specified position or null if the position
      * does not exists within this group.
      */

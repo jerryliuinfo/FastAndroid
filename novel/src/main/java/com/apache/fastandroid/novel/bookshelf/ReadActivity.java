@@ -16,7 +16,7 @@ import com.apache.fastandroid.novel.support.util.NovelLog;
 import com.apache.fastandroid.novel.view.readview.BaseReadView;
 import com.apache.fastandroid.novel.view.readview.OnReadStateChangeListener;
 import com.apache.fastandroid.novel.view.readview.PageWidget;
-import com.tesla.framework.common.util.sp.SPUtils;
+import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.ViewInject;
@@ -99,7 +99,7 @@ public class ReadActivity extends BaseActivity {
     private List<BookMixAToc.mixToc.Chapters> mChapterList = new ArrayList<>();
 
     private void initPagerWidget() {
-        if (SPUtils.getInt(NovelConstans.FLIP_STYLE, 0) == 0) {
+        if (SPUtil.getInt(NovelConstans.FLIP_STYLE, 0) == 0) {
             mPageWidget = new PageWidget(this, bookId, mChapterList, new ReadListener());
         } else {
             //mPageWidget = new OverlappedWidget(this, bookId, mChapterList, new ReadListener());
@@ -116,7 +116,7 @@ public class ReadActivity extends BaseActivity {
         if (CacheManager.getInstance().getChapterFile(bookId, currentChapter) != null) {
             showChapterRead(null, currentChapter);
         } else {
-            //mPresenter.getChapterRead(mChapterList.get(currentChapter - 1).link, currentChapter);
+            //mPresenter.getChapterRead(mChapterList.getString(currentChapter - 1).link, currentChapter);
         }
     }
 
@@ -164,7 +164,7 @@ public class ReadActivity extends BaseActivity {
             for (int i = chapter - 1; i <= chapter + 3 && i <= mChapterList.size(); i++) {
                 if (i > 0 && i != chapter
                         && CacheManager.getInstance().getChapterFile(bookId, i) == null) {
-                    mPresenter.getChapterRead(mChapterList.get(i - 1).link, i);
+                    mPresenter.getChapterRead(mChapterList.getString(i - 1).link, i);
                 }
             }*/
         }
@@ -179,7 +179,7 @@ public class ReadActivity extends BaseActivity {
             NovelLog.i("onLoadChapterFailure:" + chapter);
 //            startRead = false;
 //            if (CacheManager.getInstance().getChapterFile(bookId, chapter) == null)
-//                mPresenter.getChapterRead(mChapterList.get(chapter - 1).link, chapter);
+//                mPresenter.getChapterRead(mChapterList.getString(chapter - 1).link, chapter);
         }
 
         @Override

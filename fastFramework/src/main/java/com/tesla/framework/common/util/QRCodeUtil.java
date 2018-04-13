@@ -14,15 +14,13 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.tesla.framework.common.util.sp.SPUtils;
+import com.tesla.framework.common.util.sp.SPUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.tesla.framework.common.util.sp.SPUtils.getString;
 
 
 /**
@@ -51,7 +49,7 @@ public class QRCodeUtil {
             //容错级别
             hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             //设置空白边距的宽度
-//            hints.put(EncodeHintType.MARGIN, 2); //default is 4
+//            hints.putString(EncodeHintType.MARGIN, 2); //default is 4
 
             // 图像数据转换，使用了矩阵转换
             BitMatrix bitMatrix = new QRCodeWriter().encode(content, BarcodeFormat.QR_CODE, widthPix, heightPix, hints);
@@ -148,15 +146,15 @@ public class QRCodeUtil {
      * @param centerPhoto 二维码中间的图片
      */
     public static void showThreadImage(final Activity mContext, final String text, final ImageView imageView, final int centerPhoto) {
-        String preContent = SPUtils.getString("share_code_content","");
+        String preContent = SPUtil.getString("share_code_content","");
         if (text.equals(preContent)) {
-            String preFilePath = getString("share_code_filePath","");
+            String preFilePath = SPUtil.getString("share_code_filePath","");
             imageView.setImageBitmap(BitmapFactory.decodeFile(preFilePath));
 
         } else {
-            SPUtils.putString("share_code_content",text);
+            SPUtil.putString("share_code_content",text);
             final String filePath = getFileRoot(mContext) + File.separator + "qr_" + System.currentTimeMillis() + ".jpg";
-            SPUtils.putString("share_code_filePath",filePath);
+            SPUtil.putString("share_code_filePath",filePath);
 
             //二维码图片较大时，生成图片、保存文件的时间可能较长，因此放在新线程中
             new Thread(new Runnable() {

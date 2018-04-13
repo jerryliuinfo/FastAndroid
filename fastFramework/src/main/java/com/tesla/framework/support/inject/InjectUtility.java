@@ -100,7 +100,7 @@ public class InjectUtility {
 									field.set(injectedSource, sourceView.findViewById(viewId));
 
 //									if (NLog.dEBUG) {
-//										NLog.v(TAG, "id = %d, view = %s", viewId, field.get(injectedSource) + "");
+//										NLog.v(TAG, "id = %d, view = %s", viewId, field.getString(injectedSource) + "");
 //									}
 								} else {
 									continue;

@@ -1079,7 +1079,7 @@ public class AdvancedWebView extends WebView {
 			return true;
 		}
 
-		// get the actual hostname of the URL that is to be checked
+		// getString the actual hostname of the URL that is to be checked
 		final String actualHost = Uri.parse(url).getHost();
 
 		// for every hostname in the set of permitted hosts

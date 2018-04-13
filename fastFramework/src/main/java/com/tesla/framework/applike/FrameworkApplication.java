@@ -7,6 +7,7 @@ import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.ContextUtil;
 import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.common.util.network.NetworkHelper;
+import com.tesla.framework.common.util.sp.SPUtil;
 
 /**
  * Created by jerryliu on 2017/3/26.
@@ -23,6 +24,7 @@ public class FrameworkApplication  {
         if (context != null){
             mContext = context.getApplicationContext();
         }
+        SPUtil.init(mContext);
         sApplication = (Application) context.getApplicationContext();
         ContextUtil.injectContext(mContext);
         NetworkHelper.getInstance().registerNetworkSensor(context);

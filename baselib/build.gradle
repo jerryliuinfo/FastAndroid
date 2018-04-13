@@ -39,14 +39,34 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
     compile thirddependencies.volly
     compile 'com.antfortune.freeline:runtime:0.8.7'
+
+
+    compile thirddependencies.okhttp3_log_interceptor
+
+    //rxjava&rxandroid
+    compile thirddependencies.rxjava
+    compile thirddependencies.rxandroid
+
+
+
+    //retrofit
     compile(thirddependencies.retrofit) {
         exclude group: "com.squareup.okhttp3"
     }
-    compile thirddependencies.rxandroid
-    compile thirddependencies.rxjava
-    compile thirddependencies.retrofit_adapter_rxjava
+
     compile thirddependencies.retrofit_converter_gson
-    compile thirddependencies.okhttp3_log_interceptor
+    compile thirddependencies.retrofit_adapter_rxjava
+    compile 'com.squareup.retrofit2:converter-scalars:2.2.0'
+
+  /*  compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'*/
+
+
+
+
+
     compile thirddependencies.eventbus
 
     compile project(':fastFramework')

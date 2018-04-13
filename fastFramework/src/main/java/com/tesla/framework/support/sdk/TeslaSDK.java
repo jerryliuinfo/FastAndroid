@@ -36,8 +36,8 @@ public class TeslaSDK extends ABizLogic {
         params.addParameter("pageSize", String.valueOf(pageSize));
         Setting setting = newSetting("loadPerson","loadPerson", "加载主页");
 
-        //setting.getExtras().put(HTTP_UTILITY, newSettingExtra(HTTP_UTILITY,HomeHttpUtility.class.getName(),""));
-        //setting.getExtras().put(CACHE_UTILITY,newSettingExtra(CACHE_UTILITY,HomeCacheUtility.class.getName(),"" ));
+        //setting.getExtras().putString(HTTP_UTILITY, newSettingExtra(HTTP_UTILITY,HomeHttpUtility.class.getName(),""));
+        //setting.getExtras().putString(CACHE_UTILITY,newSettingExtra(CACHE_UTILITY,HomeCacheUtility.class.getName(),"" ));
         return doGet(configHttpConfig(), setting, params, HomeBeans.class);
     }
 

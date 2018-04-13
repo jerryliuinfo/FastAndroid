@@ -6,11 +6,11 @@ import com.apache.fastandroid.topic.bean.TopicReplyBean;
 
 import java.util.List;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * Created by 01370340 on 2017/9/2.

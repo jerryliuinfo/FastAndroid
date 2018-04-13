@@ -12,7 +12,7 @@ import com.apache.fastandroid.support.utils.MainLog;
 import com.apache.fastandroid.wallpaper.WallpaperSettingFragment;
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
-import com.tesla.framework.common.util.sp.ActivityHelper;
+import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
@@ -30,7 +30,7 @@ public class WallpaperItemView extends ARecycleViewItemViewHolder<WallpaperBean>
     int width;
     public WallpaperItemView(Activity context, View itemView) {
         super(context, itemView);
-        width = ActivityHelper.getIntShareData(getContext(),"WallPaperWidth",0);
+        width = SPUtil.getInt("WallPaperWidth",0);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class WallpaperItemView extends ARecycleViewItemViewHolder<WallpaperBean>
                     img.getViewTreeObserver().removeOnPreDrawListener(this);
                     width = img.getWidth();
                     MainLog.d("screen width = %s, img width = %s", ScreenUtil.getScreenWidth(FrameworkApplication.getContext()),width);
-                    ActivityHelper.putIntShareData(getContext(),"WallPaperWidth",width);
+                    SPUtil.putInt("WallPaperWidth",width);
                     onBindData(convertView,data,position);
 
                     return true;

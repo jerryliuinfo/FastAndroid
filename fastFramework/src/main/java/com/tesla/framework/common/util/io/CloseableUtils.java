@@ -61,7 +61,7 @@ public class CloseableUtils {
 
     /**
      * 解决API 15及以下的Cursor都没有实现Closeable接口，因此调用Closeable参数会出现转换异常的问题
-     * java.lang.IncompatibleClassChangeError: interface not implemented,
+     * java.lang.IncompatibleClassChangeError: interfaces not implemented,
      *
      * @param c Cursor对象
      */
@@ -77,7 +77,7 @@ public class CloseableUtils {
 
     /**
      * 解决API 18及以下的ZipFile都没有实现Closeable接口，因此调用Closeable参数会出现转换异常的问题
-     * java.lang.IncompatibleClassChangeError: interface not implemented,
+     * java.lang.IncompatibleClassChangeError: interfaces not implemented,
      *
      * @param c Cursor对象
      */

@@ -5,6 +5,9 @@ package com.apache.fastandroid.artemis.rx;
  */
 
 public interface ICallback<T> {
+
+    void onPrepare();
+
     void onSuccess(T t);
 
     void onFailed(Throwable e);

@@ -2,7 +2,7 @@ package com.apache.fastandroid.pic;
 
 
 import com.apache.fastandroid.app.MyApplication;
-import com.apache.fastandroid.artemis.retrofit.BaseHttpUtils;
+import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.support.bean.ImageResultBeans;
 import com.apache.fastandroid.support.sdk.APIService;
 import com.apache.fastandroid.support.sdk.ApiConstans;
@@ -46,7 +46,7 @@ public class PicSDK extends ABizLogic {
 
     public ImageResultBeans loadImageData(String category, int pageNum) throws TaskException{
         Setting setting = newSetting("loadImages","data/imgs","加载图片");
-        //setting.getExtras().put(CACHE_UTILITY, newSettingExtra("loadImages",PicCacheUtility.class.getName(),"加载图片缓存"));
+        //setting.getExtras().putString(CACHE_UTILITY, newSettingExtra("loadImages",PicCacheUtility.class.getName(),"加载图片缓存"));
 
         Params params = new Params();
         params.addParameter("col",category);
@@ -64,7 +64,7 @@ public class PicSDK extends ABizLogic {
         return doGet(configHttpConfig(),setting,params,ImageResultBeans.class);
     }
     public Call<ImageResultBeans> loadImageDataV2(String category, int pageNum) throws TaskException{
-        BaseHttpUtils httpUtils = BaseHttpUtils.getInstance(MyApplication.getContext(),ApiConstans.Urls.BAIDU_IMAGES_URLS);
+        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(MyApplication.getContext(),ApiConstans.Urls.BAIDU_IMAGES_URLS);
         //httpUtils.setLogLevel(true, HttpLoggingInterceptor.Level.BODY);
         APIService apiService = httpUtils.getRetrofit().create(APIService.class);
         return apiService.loadImages(category,"全部",String.valueOf(pageNum),"10","1");

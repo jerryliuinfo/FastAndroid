@@ -1,8 +1,14 @@
 package com.apache.fastandroid.artemis.retrofit;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.tesla.framework.network.http.HttpClient;
+import com.tesla.framework.network.task.TaskException;
+
+import java.io.IOException;
 
 import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -18,6 +24,8 @@ public class RetrofitClient {
     private RetrofitClient(){
         mOkHttpBuilder = HttpClient.getInstance().getBuilder();
         mRetrofitBuilder = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create());
+        mRetrofitBuilder.addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
     }
     public static RetrofitClient getInstance() {
         if (instance == null) {
@@ -30,14 +38,52 @@ public class RetrofitClient {
         return instance;
     }
 
+    /**
+     *  获取全局的Retrofit.Builder对象
+     * @return
+     */
     public Retrofit.Builder getRetrofitBuilder(){
         return mRetrofitBuilder;
     }
 
+    /**
+     * 获取全局的Retrofit对象
+     * @return
+     */
     public Retrofit getRetrofit(){
         return mRetrofitBuilder.client(mOkHttpBuilder.build()).build();
     }
 
 
 
+    public static Retrofit.Builder newBuilder(){
+        return new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create());
+    }
+
+
+
+
+    /**
+     * 对Retrofit的call做数据解析
+     * @param call
+     * @param <T>
+     * @return
+     * @throws TaskException
+     */
+    public static <T> T checkCallResult(Call<T> call) throws TaskException {
+        try {
+            Response<T> response = call.execute();
+            if (!response.isSuccessful()){
+                throw new TaskException("response.isSuccessful() = false");
+            }
+            T t =  response.body();
+            if (t == null){
+                throw new TaskException("response body is null");
+            }
+            return t;
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new TaskException(e.getMessage());
+        }
+    }
 }

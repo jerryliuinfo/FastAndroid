@@ -18,11 +18,11 @@ package com.apache.fastandroid.novel.support.mananger;
 
 import com.apache.fastandroid.novel.support.constant.NovelConstans;
 import com.tesla.framework.applike.FrameworkApplication;
-import com.tesla.framework.common.util.SystemUtils;
 import com.tesla.framework.common.util.dimen.DimensUtil;
-import com.tesla.framework.common.util.sp.SPUtils;
+import com.tesla.framework.common.util.sp.SPUtil;
 
-import static com.tesla.framework.common.util.sp.SPUtils.putInt;
+import static com.tesla.framework.common.util.sp.SPUtil.putInt;
+
 
 /**
  * @author yuyh.
@@ -45,7 +45,7 @@ public class SettingManager {
      */
     public void saveFontSize(String bookId, int fontSizePx) {
         // 书籍对应
-        putInt(getFontSizeKey(bookId), fontSizePx);
+        SPUtil.putInt(getFontSizeKey(bookId), fontSizePx);
     }
 
     /**
@@ -58,7 +58,7 @@ public class SettingManager {
     }
 
     public int getReadFontSize(String bookId) {
-        return SPUtils.getInt(getFontSizeKey(bookId), DimensUtil.dp2px(FrameworkApplication.getContext(),16));
+        return SPUtil.getInt(getFontSizeKey(bookId), DimensUtil.dp2px(FrameworkApplication.getContext(), 16));
     }
 
     public int getReadFontSize() {
@@ -69,28 +69,16 @@ public class SettingManager {
         return bookId + "-readFontSize";
     }
 
-    public int getReadBrightness() {
-        return SPUtils.getInt(getLightnessKey(),
-                (int) SystemUtils.getScreenBrightness(FrameworkApplication.getContext()));
-    }
 
-    /**
-     * 保存阅读界面屏幕亮度
-     *
-     * @param percent 亮度比例 0~100
-     */
-    public void saveReadBrightness(int percent) {
-        putInt(getLightnessKey(), percent);
-    }
 
     private String getLightnessKey() {
         return "readLightness";
     }
 
     public synchronized void saveReadProgress(String bookId, int currentChapter, int m_mbBufBeginPos, int m_mbBufEndPos) {
-        putInt(getChapterKey(bookId), currentChapter);
-        putInt(getStartPosKey(bookId), currentChapter);
-        putInt(getEndPosKey(bookId), currentChapter);
+        SPUtil.putInt(getChapterKey(bookId), currentChapter);
+        SPUtil.putInt(getStartPosKey(bookId), currentChapter);
+        SPUtil.putInt(getEndPosKey(bookId), currentChapter);
     }
 
     /**
@@ -100,9 +88,9 @@ public class SettingManager {
      * @return
      */
     public int[] getReadProgress(String bookId) {
-        int lastChapter = SPUtils.getInt(getChapterKey(bookId), 1);
-        int startPos = SPUtils.getInt(getStartPosKey(bookId), 0);
-        int endPos = SPUtils.getInt(getEndPosKey(bookId), 0);
+        int lastChapter = SPUtil.getInt(getChapterKey(bookId), 1);
+        int startPos = SPUtil.getInt(getStartPosKey(bookId), 0);
+        int endPos = SPUtil.getInt(getEndPosKey(bookId), 0);
 
         return new int[]{lastChapter, startPos, endPos};
     }
@@ -126,14 +114,14 @@ public class SettingManager {
     }
 
     public void saveReadTheme(int theme) {
-        SPUtils.putInt("readTheme", theme);
+        putInt("readTheme", theme);
     }
 
     public int getReadTheme() {
-        if (SPUtils.getBoolean(NovelConstans.ISNIGHT, false)) {
+        if (SPUtil.getBoolean(NovelConstans.ISNIGHT, false)) {
             return ThemeManager.NIGHT;
         }
-        return SPUtils.getInt("readTheme", 3);
+        return SPUtil.getInt("readTheme", 3);
     }
 
 
@@ -143,7 +131,7 @@ public class SettingManager {
      * @param sex male female
      */
     public void saveUserChooseSex(String sex) {
-        SPUtils.putString("userChooseSex", sex);
+        SPUtil.putString("userChooseSex", sex);
     }
 
     /**
@@ -152,7 +140,7 @@ public class SettingManager {
      * @return
      */
     public String getUserChooseSex() {
-        return SPUtils.getString("userChooseSex", NovelConstans.Gender.MALE);
+        return SPUtil.getString("userChooseSex", NovelConstans.Gender.MALE);
     }
 
 }

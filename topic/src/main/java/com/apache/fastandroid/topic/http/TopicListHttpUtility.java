@@ -3,9 +3,10 @@ package com.apache.fastandroid.topic.http;
 import com.alibaba.fastjson.JSON;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
-import com.tesla.framework.common.util.ListUtil;
 import com.tesla.framework.network.http.OkHttpUtility;
 import com.tesla.framework.network.task.TaskException;
+
+import java.util.Arrays;
 
 /**
  * Created by 01370340 on 2017/12/22.
@@ -19,7 +20,7 @@ public class TopicListHttpUtility extends OkHttpUtility {
 
         TopicBean[] array = JSON.parseObject(resultStr, TopicBean[].class);
         TopicBeans beans = new TopicBeans();
-        beans.setList(ListUtil.arrayToList(array));
+        beans.setList(Arrays.asList(array));
         return (T) beans;
 
     }

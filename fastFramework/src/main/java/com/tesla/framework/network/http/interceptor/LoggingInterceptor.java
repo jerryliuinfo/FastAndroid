@@ -107,7 +107,7 @@ public final class LoggingInterceptor implements Interceptor {
         Logger DEFAULT = new Logger() {
             @Override
             public void log(String message) {
-                //Platform.get().log(4, message, null);
+                //Platform.getString().log(4, message, null);
             }
         };
     }

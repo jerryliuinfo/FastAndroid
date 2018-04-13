@@ -76,7 +76,7 @@ public final class ReflectUtils {
                 //如果这里的异常打印或者往外抛，则就不会执行clazz = clazz.getSuperclass(),最后就不会进入到父类中了
             }
         }
-        // check the public interface case. This must be manually searched for
+        // check the public interfaces case. This must be manually searched for
         // incase there is a public supersuperclass field hidden by a private/package
         // superclass field.
         Field match = null;
@@ -180,7 +180,7 @@ public final class ReflectUtils {
                 // ignore
             }
         }
-        // check the public interface case. This must be manually searched for
+        // check the public interfaces case. This must be manually searched for
         // incase there is a public supersuperclass field hidden by a private/package
         // superclass field.
         Method match = null;

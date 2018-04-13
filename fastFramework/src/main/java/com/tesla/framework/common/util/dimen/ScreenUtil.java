@@ -16,7 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.tesla.framework.applike.FrameworkApplication;
-import com.tesla.framework.common.util.sp.ActivityHelper;
+import com.tesla.framework.common.util.sp.SPUtil;
 
 import java.lang.reflect.Method;
 
@@ -49,7 +49,7 @@ public class ScreenUtil {
             try {
                 @SuppressWarnings("rawtypes")
                 Class c = Class.forName("android.os.SystemProperties");
-                @SuppressWarnings("unchecked") Method m = c.getDeclaredMethod("get", String.class);
+                @SuppressWarnings("unchecked") Method m = c.getDeclaredMethod("getString", String.class);
                 m.setAccessible(true);
                 sNavBarOverride = (String) m.invoke(null, "qemu.hw.mainkeys");
             } catch (Throwable e) {
@@ -166,10 +166,10 @@ public class ScreenUtil {
         int height = getScreenHeight(paramActivity) - getStatusBarHeight(paramActivity)
                 - getAppHeight(paramActivity);
         if (height == 0) {
-            height = ActivityHelper.getIntShareData(FrameworkApplication.getContext(), "KeyboardHeight", 400);
+            height = SPUtil.getInt("KeyboardHeight", 400);
         }
         else {
-            ActivityHelper.putIntShareData(FrameworkApplication.getContext(), "KeyboardHeight", height);
+            SPUtil.putInt("KeyboardHeight", height);
         }
 
 

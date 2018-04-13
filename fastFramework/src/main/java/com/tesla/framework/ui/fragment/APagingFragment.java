@@ -9,7 +9,7 @@ import android.widget.AbsListView;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.common.util.sp.ActivityHelper;
+import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.task.TaskException;
@@ -633,21 +633,23 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
     }
 
     protected int getLastReadPosition() {
-        return ActivityHelper.getIntShareData(getContext(), refreshConfig.positionKey + "Position", 0);
+        return SPUtil.getInt(refreshConfig.positionKey + "Position", 0);
     }
 
     protected void putLastReadPosition(int position) {
-        if (!TextUtils.isEmpty(refreshConfig.positionKey))
-            ActivityHelper.putIntShareData(getContext(), refreshConfig.positionKey + "Position", position);
+        if (!TextUtils.isEmpty(refreshConfig.positionKey)){
+            SPUtil.putInt(refreshConfig.positionKey + "Position", position);
+        }
     }
 
     protected int getLastReadTop() {
-        return ActivityHelper.getIntShareData(getContext(), refreshConfig.positionKey + "Top", 0);
+        return SPUtil.getInt(refreshConfig.positionKey + "Top", 0);
     }
 
     protected void putLastReadTop(int top) {
-        if (!TextUtils.isEmpty(refreshConfig.positionKey))
-            ActivityHelper.putIntShareData(getContext(), refreshConfig.positionKey + "Top", top);
+        if (!TextUtils.isEmpty(refreshConfig.positionKey)){
+            SPUtil.putInt(refreshConfig.positionKey + "Top", top);
+        }
     }
 
 

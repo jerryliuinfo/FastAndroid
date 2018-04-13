@@ -1,9 +1,9 @@
 package com.apache.fastandroid.topic.sdk;
 
 
+import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
-import com.apache.fastandroid.artemis.retrofit.RetrofitUtil;
-import com.apache.fastandroid.artemis.rx.DefaultHttpResultObserver;
+import com.apache.fastandroid.artemis.retrofit.RetrofitClient;
 import com.apache.fastandroid.artemis.rx.ICallback;
 import com.apache.fastandroid.topic.TopicConstans;
 import com.apache.fastandroid.topic.bean.TopicBean;
@@ -22,10 +22,9 @@ import com.tesla.framework.network.task.TaskException;
 
 import java.util.List;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+
 
 
 /**
@@ -134,8 +133,12 @@ public class TopicSDK extends ABizLogic {
 
 
     public Observable<List<TopicBean>> getTopicsListByObservable(String type, Integer node_id, int offset, int limit) throws Exception{
-        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
+       /* BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
+        Observable<List<TopicBean>> observable =  apiService.getTopicsListV2(type,node_id,offset,limit);
+        return observable;*/
+
+        TopicApiService apiService = GlobalHttp.getInstance().getGlobalRetrofit().create(TopicApiService.class);
         Observable<List<TopicBean>> observable =  apiService.getTopicsListV2(type,node_id,offset,limit);
         return observable;
     }
@@ -147,10 +150,14 @@ public class TopicSDK extends ABizLogic {
      * @return
      */
     public Observable<TopicContent> getTopicsDetail(int id, final ICallback<TopicContent> callback) {
-        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
+        /*BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
         Observable<TopicContent> observable =  apiService.getTopic(id);
         observable.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new DefaultHttpResultObserver<>(callback));
+        return observable;*/
+
+        TopicApiService apiService = GlobalHttp.getInstance().getGlobalRetrofit().create(TopicApiService.class);
+        Observable<TopicContent> observable =  apiService.getTopic(id);
         return observable;
     }
 
@@ -166,7 +173,7 @@ public class TopicSDK extends ABizLogic {
         BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
         Call<List<TopicReplyBean>> call =  apiService.getTopicRepliesList(id,offset,limit);
-        List<TopicReplyBean> list = RetrofitUtil.checkCallResult(call);
+        List<TopicReplyBean> list = RetrofitClient.checkCallResult(call);
         if (list == null || list.size() == 0){
             throw new TaskException("没有回复数据");
         }

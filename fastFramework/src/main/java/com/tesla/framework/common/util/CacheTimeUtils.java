@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.common.util.sp.ActivityHelper;
+import com.tesla.framework.common.util.sp.SPUtil;
 
 /**
  * Created by JerryLiu on 17/04/08.
@@ -14,13 +14,13 @@ public class CacheTimeUtils {
     public static void saveTime(Context context, String key) {
         String time = String.valueOf(System.currentTimeMillis() / 1000);
 
-        ActivityHelper.putStringShareData(context, key, time);
+        SPUtil.putString(key, time);
 
         NLog.d("CacheTimeUtils", String.format("保存缓存 %s, saveTime = %s", key, time));
     }
 
     public static long getSaveTime(Context context, String key) {
-        String time = ActivityHelper.getStringData(context, key, "");
+        String time = SPUtil.getString(key, "");
         long saveTime = Long.parseLong(TextUtils.isEmpty(time) ? "0" : time);
         return saveTime;
     }

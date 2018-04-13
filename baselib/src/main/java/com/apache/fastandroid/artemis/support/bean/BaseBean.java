@@ -35,4 +35,10 @@ public class BaseBean<T> implements Serializable {
     public void setData(T data) {
         this.data = data;
     }
+
+
+    @Override
+    public String toString() {
+        return "BaseBean{" + "code='" + code + '\'' + ", msg='" + msg + '\'' + ", data=" + data + '}';
+    }
 }

@@ -13,27 +13,22 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.apache.fastandroid.TopicLog;
 import com.apache.fastandroid.artemis.ArtemisContext;
-import com.tesla.framework.common.util.date.FormatTimeUtil;
-import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
-import com.apache.fastandroid.artemis.rx.DefaultCallback;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicContent;
-import com.apache.fastandroid.topic.sdk.TopicSDK;
 import com.apache.fastandroid.widget.webview.GcsMarkdownViewClient;
 import com.apache.fastandroid.widget.webview.MarkdownView;
 import com.apache.fastandroid.widget.webview.WebImageListener;
+import com.tesla.framework.common.util.date.FormatTimeUtil;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.CircleImageView;
-
-import rx.Observable;
 
 import static com.tesla.framework.applike.FrameworkApplication.getContext;
 
@@ -173,7 +168,7 @@ public class TopicDetailActivity extends BaseActivity {
     }
 
     private void loadTopicDetail(){
-        Observable<TopicContent> observable = TopicSDK.newInstance().getTopicsDetail(mTopicBean.id, new DefaultCallback<TopicContent>() {
+        /*Observable<TopicContent> observable = TopicSDK.newInstance().getTopicsDetail(mTopicBean.id, new DefaultCallback<TopicContent>() {
 
 
             @Override
@@ -188,7 +183,10 @@ public class TopicDetailActivity extends BaseActivity {
             }
 
 
-        });
+        });*/
+
+
+
 
     }
 

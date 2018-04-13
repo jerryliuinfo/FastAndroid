@@ -38,7 +38,7 @@ public class VideoSDK extends ABizLogic {
 
     public VideoResultBean loadViedoData(String category, int pageNum) throws TaskException{
         Setting setting = newSetting("loadImages","v2/searches/video/by_keyword.json","加载图片");
-        //setting.getExtras().put(CACHE_UTILITY, newSettingExtra("loadImages",PicCacheUtility.class.getName(),"加载图片缓存"));
+        //setting.getExtras().putString(CACHE_UTILITY, newSettingExtra("loadImages",PicCacheUtility.class.getName(),"加载图片缓存"));
 
         Params params = new Params();
         params.addParameter("keyword",category);

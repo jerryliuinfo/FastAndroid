@@ -8,6 +8,7 @@ import com.apache.fastandroid.artemis.Constants;
 import com.apache.fastandroid.artemis.api.TokenService;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.support.bean.Token;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.tesla.framework.common.util.log.NLog;
 
 import java.io.IOException;
@@ -24,12 +25,11 @@ import okhttp3.Route;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  *
- * @desc A tool based on http, using Okhttp and Retrofit to get/post request.
+ * @desc A tool based on http, using Okhttp and Retrofit to getString/post request.
  *
 
  */
@@ -129,7 +129,7 @@ public class BaseHttpUtilsV2 {
         builder.client(mOKHttpClient);
         builder.addConverterFactory(new StringConverterFactory());
         builder.addConverterFactory(GsonConverterFactory.create());
-        builder.addCallAdapterFactory(RxJavaCallAdapterFactory.create());
+        builder.addCallAdapterFactory(RxJava2CallAdapterFactory.create());
 
 
         builder.baseUrl(mServerUrl);
@@ -215,7 +215,7 @@ public class BaseHttpUtilsV2 {
     public OkHttpClient.Builder buildDefalutClient(Context context) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.cache(new Cache(context.getCacheDir(), CACHE_SIZE));
-        //builder.addInterceptor(new CacheInterceptor(context,isGzipEncode));
+        //builder.addInterceptor(new CacheDataInterceptor(context,isGzipEncode));
         builder.connectTimeout(mNetworkTimeOut, TimeUnit.SECONDS);
         builder.addNetworkInterceptor(mTokenInterceptor);   // 自动附加 token
         builder.authenticator(mAuthenticator);

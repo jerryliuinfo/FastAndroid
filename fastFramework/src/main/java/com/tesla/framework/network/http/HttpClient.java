@@ -24,9 +24,16 @@ public class HttpClient {
        return instance;
    }
 
+    /**
+     * 上层模块可以拿到全局的OkHttpClient.Builder设置参数
+     * @return
+     */
     public OkHttpClient.Builder getBuilder(){
         return mBuilder;
     }
+
+
+
 
 
 }

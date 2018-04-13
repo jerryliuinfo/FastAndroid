@@ -10,7 +10,6 @@ import com.apache.fastandroid.support.bean.WallpaperBeans;
 import com.apache.fastandroid.support.http.MyHttpUtility;
 import com.apache.fastandroid.support.sdk.bean.UpdateBean;
 import com.tesla.framework.common.setting.Setting;
-import com.tesla.framework.common.util.ListUtil;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
@@ -83,7 +82,7 @@ public class Sdk extends ABizLogic {
         params.addParameter("encoder", "debug");
 
         // 配置缓存器
-        //action.getExtras().put(CACHE_UTILITY, newSettingExtra(CACHE_UTILITY, WallpaperCacheUtility.class.getName(), ""));
+        //action.getExtras().putString(CACHE_UTILITY, newSettingExtra(CACHE_UTILITY, WallpaperCacheUtility.class.getName(), ""));
 
         WallpaperBeans beans = doGet(getHttpConfig(),action, params, WallpaperBeans.class);
         if (beans.getItem() == null || beans.getItem().getWallpaperList() == null) {
@@ -129,7 +128,7 @@ public class Sdk extends ABizLogic {
         params.addParameter("id",id);
         NewsSummary[] beans = doGet(httpConfig,action, params, NewsSummary[].class);
 
-        List<NewsSummary> list =  ListUtil.arrayToList(beans);
+        List<NewsSummary> list = Arrays.asList(beans);
         return new NewsSummaryBeans(list);
     }
 
