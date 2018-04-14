@@ -3,6 +3,11 @@ package com.apache.fastandroid.artemis.mvp.rx;
 import com.apache.fastandroid.artemis.mvp.presenter.BasePresenterNew;
 import com.apache.fastandroid.artemis.mvp.view.IView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.disposables.Disposable;
+
 
 /**
  * Created by 01370340 on 2017/10/10.
@@ -10,19 +15,23 @@ import com.apache.fastandroid.artemis.mvp.view.IView;
  */
 
 public class RxPresenterNew<V extends IView> extends BasePresenterNew<V> {
+    private List<Disposable> disposables = new ArrayList<>();
 
-//    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
-//
-//    protected void unSubscribe(){
-//        if (mCompositeSubscription != null){
-//            mCompositeSubscription.unsubscribe();
-//            mCompositeSubscription = null;
-//        }
-//    }
-//
-//    protected void addSubscribe(Subscription subscription){
-//        mCompositeSubscription.add(subscription);
-//    }
+
+    protected void unSubscribe(){
+        if (disposables != null && !disposables.isEmpty()){
+            for (Disposable disposable : disposables) {
+                disposable.dispose();
+                disposable = null;
+            }
+        }
+    }
+
+    protected void addSubscribe(Disposable d){
+        if (!disposables.contains(d)){
+            disposables.add(d);
+        }
+    }
 
 
 

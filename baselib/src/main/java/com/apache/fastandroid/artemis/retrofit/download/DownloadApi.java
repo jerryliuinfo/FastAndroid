@@ -4,6 +4,7 @@ import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Streaming;
+import retrofit2.http.Url;
 
 /**
  * Created by 01370340 on 2018/4/13.
@@ -20,5 +21,5 @@ public interface DownloadApi {
 
     @Streaming
     @GET
-    Observable<ResponseBody> downloadFile(String fileUrl);
+    Observable<ResponseBody> downloadFile(@Url  String fileUrl);
 }

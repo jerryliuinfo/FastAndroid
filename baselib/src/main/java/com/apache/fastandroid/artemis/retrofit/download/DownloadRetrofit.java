@@ -17,7 +17,8 @@ public class DownloadRetrofit {
     private static volatile DownloadRetrofit instance = null;
 
     private Retrofit mRetrofit;
-    public static final String BASE_URL = "";
+    private static String BASE_URL = "https://api.github.com/";
+
 
     private DownloadRetrofit(){
         mRetrofit = new Retrofit.Builder().addCallAdapterFactory(RxJava2CallAdapterFactory.create())

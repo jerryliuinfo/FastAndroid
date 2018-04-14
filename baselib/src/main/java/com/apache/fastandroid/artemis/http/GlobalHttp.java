@@ -1,7 +1,6 @@
 package com.apache.fastandroid.artemis.http;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.apache.fastandroid.artemis.http.interceptor.AddCookiesInterceptor;
 import com.apache.fastandroid.artemis.http.interceptor.CacheDataInterceptor;
@@ -63,7 +62,7 @@ public class GlobalHttp {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
                 @Override
                 public void log(String message) {
-                    Log.e("RxHttpUtils", message);
+                    //Log.e("RxHttpUtils", message);
                 }
             });
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

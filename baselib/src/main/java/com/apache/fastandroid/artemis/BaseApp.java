@@ -12,7 +12,23 @@ public class BaseApp {
     public static void onCreate(Context context){
         FrameworkApplication.onCreate(context);
 
-
     }
 
+    public static String getFilePath(){
+        return FrameworkApplication.getContext().getFilesDir().getAbsolutePath();
+    }
+
+
+    public static String getCachePath(){
+        return FrameworkApplication.getContext().getCacheDir().getAbsolutePath();
+    }
+
+
+    public static String getExternalFilePath(){
+        return FrameworkApplication.getContext().getExternalFilesDir(null).getAbsolutePath();
+    }
+
+    public static String getExternalCachePath(){
+        return FrameworkApplication.getContext().getExternalCacheDir().getAbsolutePath();
+    }
 }

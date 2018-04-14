@@ -5,9 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.TestMarathonFragment;
+import com.apache.fastandroid.artemis.BaseApp;
+import com.apache.fastandroid.artemis.http.DownloadUploadUtils;
+import com.apache.fastandroid.artemis.retrofit.download.DownloadObserver;
 import com.apache.fastandroid.news.MainNewsFragmentCustomFootView;
 import com.apache.fastandroid.news.MainNewsTabsFragment;
 import com.apache.fastandroid.novel.community.CommunityFragment;
@@ -20,6 +24,7 @@ import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -48,6 +53,34 @@ public class TestFragment extends ABaseFragment {
     protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
         setToolbarTitle("test");
+
+        final Button btn_test_download = (Button) findViewById(R.id.btn_test_download);
+        btn_test_download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String destFileDir = BaseApp.getExternalFilePath() + File.separator;
+                String url = "https://t.alipayobjects.com/L1/71/100/and/alipay_wap_main.apk";
+                final String fileName = "alipay.apk";
+                btn_test_download.setEnabled(false);
+                DownloadUploadUtils.downloadFile(url).subscribe(new DownloadObserver(destFileDir,fileName) {
+                    @Override
+                    public void success(long bytesRead, long contentLength, int progress, boolean done, String filePath) {
+                        btn_test_download.setText("下载中：" + progress + "%");
+                        if (done){
+                            btn_test_download.setEnabled(true);
+                            btn_test_download.setText(String.format("完成下载, 路径: %s",filePath));
+                        }
+                    }
+
+                    @Override
+                    protected void onFailed(String msg) {
+                        showMessage("下载失败: "+msg);
+                    }
+                });
+            }
+        });
+
+
         findViewById(R.id.btn_test_worktask).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

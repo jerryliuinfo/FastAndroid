@@ -21,19 +21,16 @@ public abstract class CommonObserver<T> extends BaseObserver<T>{
         onSuccess(t);
     }
 
-
-
     @Override
     public void doOnError(String msg) {
         onFailed(msg);
     }
 
-    /**
-     * 失败回调
-     *
-     * @param errorMsg 错误信息
-     */
-    protected abstract void onFailed(String errorMsg);
+    @Override
+    public void doOnComplete() {
+        onFinished();
+    }
+
 
     /**
      * 成功回调
@@ -41,11 +38,13 @@ public abstract class CommonObserver<T> extends BaseObserver<T>{
      */
     protected abstract void onSuccess(T  t);
 
+    protected abstract void onFailed(String msg);
 
-    @Override
-    public void doOnComplete() {
+    public void onFinished(){
 
     }
+
+
 
 
 }
