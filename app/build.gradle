@@ -280,7 +280,7 @@ dependencies {
     compile project(':novel')
 
     compile thirddependencies.bugly
-    compile thirddependencies.multidex
+    compile supportDependencies.multidex
 
 
 

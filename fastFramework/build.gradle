@@ -44,9 +44,9 @@ dependencies {
 //        exclude group: 'com.android.support', module: 'support-annotations'
 //    })
 
-    compile thirddependencies.design
-    compile thirddependencies.appcompatV7
-    compile thirddependencies.cardview
+    compile supportDependencies.design
+    compile supportDependencies.appcompatV7
+    compile supportDependencies.cardview
 
     compile thirddependencies.fastjson
     compile thirddependencies.gson
