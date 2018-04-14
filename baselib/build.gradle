@@ -29,16 +29,26 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
+    compile supportDependencies.junit
+    compile supportDependencies.multidex
+    compile supportDependencies.support_customtabs
+
+
+
+
 
     compile thirddependencies.glide
-    compile thirddependencies.multidex
-    compile thirddependencies.junit
+    compile thirddependencies.picasso
+    compile thirddependencies.imageLoader
+
+
+
+
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
-    compile thirddependencies.support_customtabs
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+
+
     compile thirddependencies.volly
-    compile 'com.antfortune.freeline:runtime:0.8.7'
+    compile thirddependencies.freeline
 
 
     compile thirddependencies.okhttp3_log_interceptor
@@ -53,21 +63,13 @@ dependencies {
     compile(thirddependencies.retrofit) {
         exclude group: "com.squareup.okhttp3"
     }
-
     compile thirddependencies.retrofit_converter_gson
     compile thirddependencies.retrofit_adapter_rxjava
     compile 'com.squareup.retrofit2:converter-scalars:2.2.0'
 
-  /*  compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
-    compile 'com.squareup.retrofit2:converter-scalars:2.2.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'*/
-
-
-
-
 
     compile thirddependencies.eventbus
+
 
     compile project(':fastFramework')
     //compile thirddependencies.fastAndroid
