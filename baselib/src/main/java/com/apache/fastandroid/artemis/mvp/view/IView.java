@@ -10,10 +10,18 @@ public interface IView {
 
     void hideLoading();
 
-
+    /**
+     * 显示错误
+     */
     void showFail(String errorMsg);
 
+    /**
+     * 显示错误
+     */
     void showError();
 
+    /**
+     * 显示没有数据
+     */
     void showEmpty();
 }

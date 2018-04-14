@@ -3,6 +3,7 @@ package com.apache.fastandroid.novel.applike;
 import android.content.Context;
 
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
+import com.apache.fastandroid.novel.delegate.NovelDelegateFactory;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
 
@@ -13,7 +14,7 @@ import com.tesla.framework.component.bridge.ModularizationDelegate;
 public class NovelAppLike implements IApplicationLike {
     @Override
     public void onCreate(Context context) {
-        //ModularizationDelegate.getInstance().register(ModuleConstans.MODULE_NOVEL_NAME,new NovelDelegateFactory());
+        ModularizationDelegate.getInstance().register(ModuleConstans.MODULE_NOVEL_NAME,new NovelDelegateFactory());
     }
 
     @Override

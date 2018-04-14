@@ -143,7 +143,6 @@ public class MyApplication extends Application {
         }
     }
 
-
     private void initModuleBridge(){
         //主模块
         ModularizationDelegate.registerComponent("com.apache.fastandroid.applike.MainAppLike",getApplicationContext());

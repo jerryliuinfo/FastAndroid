@@ -1,14 +1,16 @@
 package com.apache.fastandroid.topic.sdk;
 
 
-import com.apache.fastandroid.artemis.http.GlobalHttp;
+import android.text.TextUtils;
+
+import com.apache.fastandroid.artemis.http.SingleRxHttp;
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.artemis.retrofit.RetrofitClient;
-import com.apache.fastandroid.artemis.rx.ICallback;
+import com.apache.fastandroid.artemis.rx.TransformerHelper;
+import com.apache.fastandroid.artemis.rx.observer.CommonObserver;
 import com.apache.fastandroid.topic.TopicConstans;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicBeans;
-import com.apache.fastandroid.topic.bean.TopicContent;
 import com.apache.fastandroid.topic.bean.TopicReplyBean;
 import com.apache.fastandroid.topic.bean.TopicReplyBeans;
 import com.apache.fastandroid.topic.cache.TopicCacheUtility;
@@ -21,6 +23,8 @@ import com.tesla.framework.network.http.Params;
 import com.tesla.framework.network.task.TaskException;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
@@ -132,15 +136,52 @@ public class TopicSDK extends ABizLogic {
 
 
 
-    public Observable<List<TopicBean>> getTopicsListByObservable(String type, Integer node_id, int offset, int limit) throws Exception{
-       /* BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
-        TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
-        Observable<List<TopicBean>> observable =  apiService.getTopicsListV2(type,node_id,offset,limit);
-        return observable;*/
+    public TopicBeans getTopicsListByObservable(String type, Integer node_id, int offset, int limit) throws TaskException {
+        TopicApiService apiService = SingleRxHttp.newInstance().baseUrl(TopicConstans.BASE_URL).createSApi(TopicApiService.class);
+        Observable<List<TopicBean>> observable =  apiService.getTopicsListByRetrofit(type,node_id,offset,limit);
 
-        TopicApiService apiService = GlobalHttp.getInstance().getGlobalRetrofit().create(TopicApiService.class);
-        Observable<List<TopicBean>> observable =  apiService.getTopicsListV2(type,node_id,offset,limit);
-        return observable;
+        //异步变同步
+        final CountDownLatch latch = new CountDownLatch(1);
+        final TopicBeans[] beans = {null};
+
+        final String[] errMsg = {""};
+        observable.compose(TransformerHelper.<List<TopicBean>>switchSchedulers()).subscribe(new CommonObserver<List<TopicBean>>() {
+
+
+            @Override
+            protected void onFailed(String errorMsg) {
+                errMsg[0] = errorMsg;
+                latch.countDown();
+
+            }
+
+            @Override
+            protected void onSuccess(List<TopicBean> t) {
+                beans[0] = new TopicBeans();
+                beans[0].setList(t);
+                latch.countDown();
+            }
+
+            @Override
+            public void doOnComplete() {
+                super.doOnComplete();
+                latch.countDown();
+            }
+        });
+        try {
+            latch.await(30, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (beans[0] == null){
+            TaskException exception = new TaskException();
+            if(TextUtils.isEmpty(errMsg[0])){
+                errMsg[0] = "网络异常";
+            }
+            exception.setMessage(errMsg[0]);
+            throw exception;
+        }
+        return beans[0];
     }
 
     /**
@@ -149,17 +190,17 @@ public class TopicSDK extends ABizLogic {
      * @param callback
      * @return
      */
-    public Observable<TopicContent> getTopicsDetail(int id, final ICallback<TopicContent> callback) {
-        /*BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
+   /* public Observable<TopicContent> getTopicsDetail(int id, final ICallback<TopicContent> callback) {
+        *//*BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FrameworkApplication.getContext(), TopicConstans.BASE_URL);
         TopicApiService apiService = httpUtils.getRetrofit().create(TopicApiService.class);
         Observable<TopicContent> observable =  apiService.getTopic(id);
         observable.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new DefaultHttpResultObserver<>(callback));
-        return observable;*/
+        return observable;*//*
 
         TopicApiService apiService = GlobalHttp.getInstance().getGlobalRetrofit().create(TopicApiService.class);
         Observable<TopicContent> observable =  apiService.getTopic(id);
         return observable;
-    }
+    }*/
 
     /**
      * 获取评论列表

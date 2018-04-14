@@ -70,10 +70,12 @@ public class TopicListFragment extends ARecycleViewSwipeRefreshFragment<TopicBea
             if (!TextUtils.isEmpty(nextPage)){
                 offset = Integer.parseInt(nextPage);
             }
-            return TopicSDK.newInstance(getTaskCacheMode(this)).getTopicsList(null,null,offset,20);
+            //return TopicSDK.newInstance(getTaskCacheMode(this)).getTopicsList(null,null,offset,20);
+            return TopicSDK.newInstance(getTaskCacheMode(this)).getTopicsListByObservable(null,null,offset,20);
 
         }
     }
+
 
 
 
