@@ -1,11 +1,13 @@
 package com.apache.fastandroid.app;
 
 import android.app.Application;
+import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
+import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 
 import com.antfortune.freeline.FreelineCore;
@@ -51,7 +53,6 @@ public class MyApplication extends Application {
 
 
         mContext = this;
-        //FrameworkApplication.onCreate(getApplicationContext());
         BaseApp.onCreate(this);
 
         SPUtil.init(getApplicationContext(),getPackageName() +"_share");
@@ -82,8 +83,27 @@ public class MyApplication extends Application {
         initHttp();
         //监测内存泄漏
         initLeakCanry();
+
+        registerComponentCallbacks(new ComponentCallbacks() {
+            @Override
+            public void onConfigurationChanged(Configuration newConfig) {
+
+            }
+
+            @Override
+            public void onLowMemory() {
+
+            }
+
+            
+        });
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(base);
+    }
 
     private void initHttp(){
 

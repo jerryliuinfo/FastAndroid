@@ -134,7 +134,9 @@ public class ResUtil {
     }
 
 
-
+    public static int getResourceId(Context context,String name,String defType,String pkgName){
+        return context.getResources().getIdentifier(name,defType,pkgName);
+    }
 
 
 

@@ -32,6 +32,8 @@ public class FrameworkApplication  {
 
         // 添加一些配置项
         SettingUtility.addSettings(context, "actions");
+
+
     }
 
 

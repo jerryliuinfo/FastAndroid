@@ -11,4 +11,8 @@ public interface IApplicationLike {
     void onCreate(Context context);
 
     void onStop();
+
+    void onTrimMemory();
+
+
 }
