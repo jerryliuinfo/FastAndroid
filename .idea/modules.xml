@@ -8,7 +8,6 @@
       <module fileurl="file://$PROJECT_DIR$/fastFramework/fastFramework.iml" filepath="$PROJECT_DIR$/fastFramework/fastFramework.iml" />
       <module fileurl="file://$PROJECT_DIR$/novel/novel.iml" filepath="$PROJECT_DIR$/novel/novel.iml" />
       <module fileurl="file://$PROJECT_DIR$/topic/topic.iml" filepath="$PROJECT_DIR$/topic/topic.iml" />
-      <module fileurl="file://$PROJECT_DIR$/usercenter/usercenter.iml" filepath="$PROJECT_DIR$/usercenter/usercenter.iml" />
     </modules>
   </component>
 </project>

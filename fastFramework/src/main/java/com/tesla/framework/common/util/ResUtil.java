@@ -134,9 +134,18 @@ public class ResUtil {
     }
 
 
-    public static int getResourceId(Context context,String name,String defType,String pkgName){
-        return context.getResources().getIdentifier(name,defType,pkgName);
+    public static int getResourceId(Context context,String name,String defType){
+        return context.getResources().getIdentifier(name,defType,context.getPackageName());
     }
+
+    public static int getStringResourceId(Context context,String name){
+        return getResourceId(context,name, "string");
+    }
+
+    public static int getArrayResourceId(Context context,String name){
+        return getResourceId(context,name, "array");
+    }
+
 
 
 
