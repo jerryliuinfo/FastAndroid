@@ -10,12 +10,8 @@ import android.widget.Button;
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.TestMarathonFragment;
 import com.apache.fastandroid.artemis.BaseApp;
-import com.apache.fastandroid.artemis.http.DownloadUploadUtils;
-import com.apache.fastandroid.artemis.retrofit.download.DownloadObserver;
 import com.apache.fastandroid.news.MainNewsFragmentCustomFootView;
 import com.apache.fastandroid.news.MainNewsTabsFragment;
-import com.apache.fastandroid.novel.community.CommunityFragment;
-import com.apache.fastandroid.novel.find.rank.TopRankListFragment;
 import com.apache.fastandroid.support.bean.NewsChannelTable;
 import com.apache.fastandroid.support.sdk.Sdk;
 import com.apache.fastandroid.topic.TopicListFragment;
@@ -62,21 +58,6 @@ public class TestFragment extends ABaseFragment {
                 String url = "https://t.alipayobjects.com/L1/71/100/and/alipay_wap_main.apk";
                 final String fileName = "alipay.apk";
                 btn_test_download.setEnabled(false);
-                DownloadUploadUtils.downloadFile(url).subscribe(new DownloadObserver(destFileDir,fileName) {
-                    @Override
-                    public void success(long bytesRead, long contentLength, int progress, boolean done, String filePath) {
-                        btn_test_download.setText("下载中：" + progress + "%");
-                        if (done){
-                            btn_test_download.setEnabled(true);
-                            btn_test_download.setText(String.format("完成下载, 路径: %s",filePath));
-                        }
-                    }
-
-                    @Override
-                    protected void onFailed(String msg) {
-                        showMessage("下载失败: "+msg);
-                    }
-                });
             }
         });
 
@@ -91,7 +72,6 @@ public class TestFragment extends ABaseFragment {
         findViewById(R.id.btn_test_recycleView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TopRankListFragment.launch(getActivity());
             }
         });
 
@@ -128,7 +108,6 @@ public class TestFragment extends ABaseFragment {
         findViewById(R.id.btn_set_items).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommunityFragment.launch(getActivity());
             }
         });
         findViewById(R.id.btn_test_custom_footview).setOnClickListener(new View.OnClickListener() {

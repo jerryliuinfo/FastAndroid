@@ -47,7 +47,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/novel_arrow_right"
             />
     </RelativeLayout>
 
