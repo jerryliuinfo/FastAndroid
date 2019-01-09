@@ -40,7 +40,7 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
 
     private int mCurrentPosition;
 
-    private HashMap<String,WeakReference<Fragment>> fragments;
+
     private boolean isRetainFragments = false;// 如果系统先调用onSaveInstanceState方法，说明添加的Fragments是需要保留的
 
     @Override
@@ -114,6 +114,9 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
 
     }
 
+
+
+    private HashMap<String,WeakReference<Fragment>> fragments;
     class TabFragmentAdapter extends FragmentPagerAdapter {
 
 

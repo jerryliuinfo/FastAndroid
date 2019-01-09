@@ -276,7 +276,6 @@ dependencies {
     })
 
 
-//    compile project(':usercenter')
     compile project(':topic')
 
     compile thirddependencies.bugly

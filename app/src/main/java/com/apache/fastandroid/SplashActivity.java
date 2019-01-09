@@ -2,19 +2,16 @@ package com.apache.fastandroid;
 
 import android.os.Bundle;
 import android.view.View;
-
 import com.apache.fastandroid.app.AppContext;
-import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.apache.fastandroid.support.config.ADConfigManager;
+import com.apache.fastandroid.test.TestSwipeRefreshLayoutRecycleViewFragment;
 import com.apache.fastandroid.widget.SplashCountDownView;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.bridge.ActionCallback;
-import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -52,12 +49,14 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void toLogin(){
-        try {
+       /* try {
             ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginActivity",null,null,new Object[]{SplashActivity.this});
         } catch (Exception e) {
             e.printStackTrace();
         }
-        SplashActivity.this.finish();
+        SplashActivity.this.finish();*/
+
+        TestSwipeRefreshLayoutRecycleViewFragment.launch(this);
     }
 
 
@@ -68,7 +67,9 @@ public class SplashActivity extends BaseActivity {
         AppContext.login(token);
         MainActivity.launch(SplashActivity.this);
         SplashActivity.this.finish();
-        //toLogin();
+
+
+        //TestSwipeRefreshLayoutRecycleViewFragment.launch(this);
     }
 
     /**

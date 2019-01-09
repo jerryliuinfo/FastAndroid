@@ -84,8 +84,10 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if (getActivity() != null && getActivity() instanceof BaseActivity)
-            ((BaseActivity) getActivity()).addFragment(toString(), this);
+        if (getActivity() != null && getActivity() instanceof BaseActivity){
+           // ((BaseActivity) getActivity()).addFractivitylgment(toString(), this);
+        }
+
     }
 
     @Override

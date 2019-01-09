@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 网络帮助模块
- * @author wenbiao.xie
+ *
+ *
  *
  */
 public class NetworkHelper {

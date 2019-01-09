@@ -63,4 +63,13 @@ public class ActivityUtil {
         } catch (Exception e) {
         }
     }
+
+    public static boolean isIntentAvailable(Context context, Intent intent) {
+        if (context == null || intent == null)
+            return false;
+        PackageManager packageManager = context.getApplicationContext().getPackageManager();
+        List<ResolveInfo> list = packageManager.queryIntentActivities(intent,
+                PackageManager.MATCH_DEFAULT_ONLY);
+        return list.size() > 0;
+    }
 }

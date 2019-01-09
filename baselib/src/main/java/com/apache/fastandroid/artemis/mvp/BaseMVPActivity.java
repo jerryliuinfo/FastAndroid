@@ -2,7 +2,7 @@ package com.apache.fastandroid.artemis.mvp;
 
 import android.os.Bundle;
 
-import com.apache.fastandroid.artemis.mvp.presenter.BasePresenterNew;
+import com.apache.fastandroid.artemis.mvp.presenter.BasePresenter;
 import com.apache.fastandroid.artemis.mvp.view.IView;
 import com.tesla.framework.ui.activity.BaseActivity;
 
@@ -11,7 +11,7 @@ import com.tesla.framework.ui.activity.BaseActivity;
  * Activity的MVP封装
  */
 
-public abstract class BaseMVPActivity<P extends BasePresenterNew<V>, V extends IView> extends BaseActivity implements IView {
+public abstract class BaseMVPActivity<P extends BasePresenter<V>, V extends IView> extends BaseActivity implements IView {
     protected P mPresenter;
 
     @Override
@@ -52,4 +52,6 @@ public abstract class BaseMVPActivity<P extends BasePresenterNew<V>, V extends I
     }
 
     public abstract P createPresenter();
+
+
 }

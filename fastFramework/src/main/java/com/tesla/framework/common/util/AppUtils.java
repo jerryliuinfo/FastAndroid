@@ -15,41 +15,67 @@
  */
 package com.tesla.framework.common.util;
 
+import android.app.ActivityManager;
+import android.app.Application;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+
+import java.util.List;
 
 public class AppUtils {
 
-    private static Context mContext;
 
-
-
-    private static Handler sHandler = new Handler(Looper.getMainLooper());
-
-
-
-    public static void runOnUI(Runnable r) {
-        runOnUIDelayed(r,0);
-
-    }
-
-    public static void runOnUIDelayed(Runnable r, long delayMills) {
-        sHandler.postDelayed(r, delayMills);
-    }
-
-    public static void removeRunnable(Runnable r) {
-        if (r == null) {
-            sHandler.removeCallbacksAndMessages(null);
-        } else {
-            sHandler.removeCallbacks(r);
+    public static boolean isAppInBackground(Context context) {
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
+        if (appProcesses == null)
+            return true;
+        for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
+            if (appProcess.processName.equals(context.getPackageName())) {
+                return appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_BACKGROUND;
+            }
         }
+        return false;
     }
 
+    public static String getAppName(Context context) {
+        PackageManager packageManager = null;
+        ApplicationInfo applicationInfo = null;
+        if (!(context instanceof Application))
+            context = context.getApplicationContext();
+        try {
+            packageManager = context.getPackageManager();
+            applicationInfo = packageManager.getApplicationInfo(context.getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            applicationInfo = null;
+        }
+        CharSequence charSequence = packageManager.getApplicationLabel(applicationInfo);
+        return charSequence == null ? "" : (String) charSequence;
+    }
 
+    public static boolean isMainProcess(Context context) {
+        try {
+            ActivityManager am = ((ActivityManager) context
+                    .getSystemService(Context.ACTIVITY_SERVICE));
+            List<ActivityManager.RunningAppProcessInfo> processInfo = am.getRunningAppProcesses();
+            String mainProcessName = context.getPackageName();
+            int myPid = android.os.Process.myPid();
+            for (ActivityManager.RunningAppProcessInfo info : processInfo) {
+                if (info.pid == myPid && mainProcessName.equals(info.processName)) {
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
-
-
+    public static void killProcess() {
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(10);
+    }
 
 
 }

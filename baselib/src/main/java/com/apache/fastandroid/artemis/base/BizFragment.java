@@ -3,6 +3,7 @@ package com.apache.fastandroid.artemis.base;
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
 
+import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 
@@ -23,7 +24,7 @@ public class BizFragment extends ABaseFragment {
 
     private String getRealString(int resId) {
         if (getActivity() != null && getResources() != null) {
-            return getString(resId);
+            return ResUtil.getString(resId);
         }
 
         return mActivity.getString(resId);

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.TestMarathonFragment;
 import com.apache.fastandroid.artemis.BaseApp;
@@ -19,7 +18,6 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;
-
 import java.io.File;
 import java.util.List;
 

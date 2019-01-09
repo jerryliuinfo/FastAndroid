@@ -10,27 +10,41 @@ import com.tesla.framework.applike.FrameworkApplication;
  */
 
 public class BaseApp {
+    private static Context sContext;
     public static void onCreate(Context context){
         FrameworkApplication.onCreate(context);
         ActivityLifeCallback.registSelf(context);
 
+        sContext = context.getApplicationContext();
     }
 
+    private static void checkContext(){
+        if (sContext == null){
+            throw new NullPointerException("must call onCreate() before call this method");
+        }
+    }
+
+    // /data/data/com.sgs.unite/files
     public static String getFilePath(){
-        return FrameworkApplication.getContext().getFilesDir().getAbsolutePath();
+        checkContext();
+        return sContext.getFilesDir().getAbsolutePath();
     }
 
-
+    // /data/data/com.sgs.unite/cache
     public static String getCachePath(){
-        return FrameworkApplication.getContext().getCacheDir().getAbsolutePath();
+        checkContext();
+        return sContext.getCacheDir().getAbsolutePath();
     }
 
-
+    //Android/data/com.sgs.unite/files
     public static String getExternalFilePath(){
-        return FrameworkApplication.getContext().getExternalFilesDir(null).getAbsolutePath();
+        checkContext();
+        return sContext.getExternalFilesDir(null).getAbsolutePath();
     }
 
+    //Android/data/com.sgs.unite/cache
     public static String getExternalCachePath(){
-        return FrameworkApplication.getContext().getExternalCacheDir().getAbsolutePath();
+        checkContext();
+        return sContext.getExternalCacheDir().getAbsolutePath();
     }
 }

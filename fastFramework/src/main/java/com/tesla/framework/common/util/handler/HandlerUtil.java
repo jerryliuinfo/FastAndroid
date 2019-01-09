@@ -34,6 +34,13 @@ public class HandlerUtil {
         sUiHandler.postDelayed(runnable, delayTime);
     }
 
+    public static void removeTask(Runnable r) {
+        if (r == null) {
+            sUiHandler.removeCallbacksAndMessages(null);
+        } else {
+            sUiHandler.removeCallbacks(r);
+        }
+    }
 
     public static class MyHandler extends Handler{
         private WeakReference<MessageReceiveListener> mWeakReference;
@@ -58,4 +65,7 @@ public class HandlerUtil {
         boolean isActivityDestroyed();
         void handleMessage(Message message);
     }
+
+
+
 }

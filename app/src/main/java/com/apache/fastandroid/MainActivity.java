@@ -10,6 +10,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.text.LoginFilter;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -199,17 +200,6 @@ public class MainActivity extends MyBaseActivity{
             case R.id.nav_item_topic:
                 try {
                     Object obj = ModularizationDelegate.getInstance().getObjectData(ModuleConstans.MODULE_TOPIC_NAME+":getMainTabsFragment",null,new Object[]{});
-                    if (obj != null && obj instanceof Fragment){
-                        fragment = (Fragment) obj;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                break;
-            case R.id.nav_item_novel:
-                try {
-                    Object obj = ModularizationDelegate.getInstance().getObjectData(ModuleConstans.MODULE_NOVEL_NAME+":getMainTabsFragment",null,new Object[]{});
                     if (obj != null && obj instanceof Fragment){
                         fragment = (Fragment) obj;
                     }

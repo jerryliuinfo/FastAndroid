@@ -1,6 +1,7 @@
 package com.tesla.framework.support.crash;
 
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -30,13 +31,14 @@ public class TUncaughtExceptionHandler implements UncaughtExceptionHandler {
     private Context mContext;
     // 用来存储设备信息和异常信息
     private String mDeviceInfos;
+    //crash文件路径
     private String mCrashDirPath;
 
 
     //是否是Debug模式
     private boolean mIsDebug;
     //是否重启APP
-    private boolean mIsRestartApp; // 默认需要重启
+    private boolean mIsRestartApp = false; // 默认需要重启
     //重启APP时间
     private long mDelayRestartTime;
 
@@ -58,21 +60,25 @@ public class TUncaughtExceptionHandler implements UncaughtExceptionHandler {
         iSaveCrashFile = new SaveCrashLog();
         collectDeviceInfo();
     }
-    public static TUncaughtExceptionHandler getInstance(Context context, String path) {
+    public static TUncaughtExceptionHandler getInstance(Context context, String dirPath) {
         if (instance == null) {
             synchronized (TUncaughtExceptionHandler.class) {
                 if (instance == null){
-                    instance = new TUncaughtExceptionHandler(context,path);
+                    instance = new TUncaughtExceptionHandler(context,dirPath);
                 }
             }
         }
         return instance;
     }
 
+    public void setSaveCrashFile(ISaveCrashFile saveCrashFile){
+        this.iSaveCrashFile = saveCrashFile;
+    }
 
-    public void init(Context context, boolean isDebug, boolean isRestartApp, long restartTime, Class restartActivity) {
+
+    public void init(Context context, boolean isDebug, boolean isRestartApp, long mDelayRestartTime, Class restartActivity) {
         this.mIsRestartApp = isRestartApp;
-        this.mDelayRestartTime = restartTime;
+        this.mDelayRestartTime = mDelayRestartTime;
         this.mRestartActivity = restartActivity;
         this.init(context, isDebug);
     }
@@ -94,7 +100,7 @@ public class TUncaughtExceptionHandler implements UncaughtExceptionHandler {
      * @param ex
      * @return true:如果处理了该异常信息;否则返回false.
      */
-    protected boolean handleException(Thread thread, Throwable ex) {
+    protected boolean handleException(Thread thread, final Throwable ex) {
         if (ex == null) {
             return false;
         }
@@ -107,7 +113,7 @@ public class TUncaughtExceptionHandler implements UncaughtExceptionHandler {
             @Override
             public void run() {
                 Looper.prepare();
-                Toast.makeText(mContext, "我崩溃啦~~~~~~~", Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, getTips(ex), Toast.LENGTH_LONG).show();
                 Looper.loop();
             }
         }.start();
@@ -130,22 +136,32 @@ public class TUncaughtExceptionHandler implements UncaughtExceptionHandler {
             } catch (InterruptedException e) {
                 Log.e(TAG, "error : ", e);
             }
-            //杀死该应用进程
-            ActivityTaskMgr.getInstance().clearActivityStack();
 
-            if (mIsRestartApp) { // 如果需要重启
-                Intent intent = new Intent(mContext.getApplicationContext(), mRestartActivity);
-                AlarmManager mAlarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
-                //重启应用，得使用PendingIntent
-                /*PendingIntent restartIntent = PendingIntent.getActivity(
-                        mContext.getApplicationContext(), 0, intent,
-                        Intent.FLAG_ACTIVITY_NEW_TASK);
-                mAlarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + mDelayRestartTime,
-                        restartIntent); // 重启应用*/
-            }
-
-            android.os.Process.killProcess(android.os.Process.myPid());
+            restartApp();
         }
+    }
+
+    private void restartApp(){
+        //关闭所有activiyt
+        ActivityTaskMgr.getInstance().clearActivityStack();
+        if (mIsRestartApp) { // 如果需要重启
+            Intent intent = new Intent(mContext.getApplicationContext(), mRestartActivity);
+            AlarmManager mAlarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
+            //重启应用，得使用PendingIntent
+            PendingIntent restartIntent = PendingIntent.getActivity(
+                    mContext.getApplicationContext(), 0, intent,
+                    Intent.FLAG_ACTIVITY_NEW_TASK);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                //Android6.0以上，包含6.0
+                mAlarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC, System.currentTimeMillis() + mDelayRestartTime, restartIntent); //解决Android6.0省电机制带来的不准时问题
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                //Android4.4到Android6.0之间，包含4.4
+                mAlarmManager.setExact(AlarmManager.RTC, System.currentTimeMillis() + mDelayRestartTime, restartIntent); // 解决set()在api19上不准时问题
+            } else {
+                mAlarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + mDelayRestartTime, restartIntent);
+            }
+        }
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 
     /**
@@ -203,7 +219,7 @@ public class TUncaughtExceptionHandler implements UncaughtExceptionHandler {
 
         //保存崩溃日志到本地
         if (iSaveCrashFile != null){
-            return new SaveCrashLog().saveFile(thread,ex,crashDirPath,mDeviceInfos);
+            return iSaveCrashFile.saveFile(thread,ex,crashDirPath,mDeviceInfos);
         }
         return false;
     }
@@ -241,5 +257,26 @@ public class TUncaughtExceptionHandler implements UncaughtExceptionHandler {
         File file = new File(dir, fileName + ".hprof");
 
         return file;
+    }
+
+
+
+    private String getTips(Throwable ex) {
+        if (ex instanceof SecurityException) {
+            if (ex.getMessage().contains("android.permission.CAMERA")) {
+                mTips = "请授予应用相机权限，程序出现异常，即将退出.";
+            } else if (ex.getMessage().contains("android.permission.RECORD_AUDIO")) {
+                mTips = "请授予应用麦克风权限，程序出现异常，即将退出。";
+            } else if (ex.getMessage().contains("android.permission.WRITE_EXTERNAL_STORAGE")) {
+                mTips = "请授予应用存储权限，程序出现异常，即将退出。";
+            } else if (ex.getMessage().contains("android.permission.READ_PHONE_STATE")) {
+                mTips = "请授予应用电话权限，程序出现异常，即将退出。";
+            } else if (ex.getMessage().contains("android.permission.ACCESS_COARSE_LOCATION") || ex.getMessage().contains("android.permission.ACCESS_FINE_LOCATION")) {
+                mTips = "请授予应用位置信息权，很抱歉，程序出现异常，即将退出。";
+            } else {
+                mTips = "很抱歉，程序出现异常，即将退出，请检查应用权限设置。";
+            }
+        }
+        return mTips;
     }
 }

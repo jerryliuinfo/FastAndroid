@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="textsize_normal">16sp</dimen>
-
-
-    <dimen name="book_read_bottom_text">12dp</dimen>
-    <dimen name="book_read_top_text">16sp</dimen>
-</resources>

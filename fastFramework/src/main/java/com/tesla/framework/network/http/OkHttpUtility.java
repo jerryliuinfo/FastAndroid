@@ -194,7 +194,6 @@ public class OkHttpUtility implements IHttpUtility {
 			okBuilder.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS);
 			okBuilder.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS);
 			okBuilder.writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS);
-
 			//缓存
 			File cacheFile = new File(FrameworkApplication.getContext().getCacheDir(), "cache");
 			Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb

@@ -2,13 +2,13 @@ package com.apache.fastandroid.support.config;
 
 import android.content.Context;
 
-import com.tesla.framework.common.util.sp.BaseSPConfigManager;
+import com.tesla.framework.common.util.sp.BaseSharedPreferenceConfigManager;
 
 /**
  * Created by jerryliu on 2017/8/26.
  */
 
-public class ADConfigManager extends BaseSPConfigManager {
+public class ADConfigManager extends BaseSharedPreferenceConfigManager {
     public ADConfigManager(Context context) {
         super(context);
     }

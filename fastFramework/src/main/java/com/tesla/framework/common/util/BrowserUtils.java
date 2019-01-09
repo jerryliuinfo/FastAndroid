@@ -7,10 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
 
-/**
- * Created by hugeterry(http://hugeterry.cn)
- * Date: 16/2/22 21:39
- */
+
 public class BrowserUtils {
 
     public static void copyToClipBoard(Context context, String text) {

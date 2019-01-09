@@ -2,14 +2,14 @@ package com.apache.fastandroid.support.config;
 
 import android.content.Context;
 
-import com.tesla.framework.common.util.sp.BaseSPConfigManager;
+import com.tesla.framework.common.util.sp.BaseSharedPreferenceConfigManager;
 
 /**
  * Created by jerryliu on 2017/6/30.
  * 一些通用信息的配置
  */
 
-public class CommonConfigManager extends BaseSPConfigManager {
+public class CommonConfigManager extends BaseSharedPreferenceConfigManager {
 
     public static final String SP_NAME = "sp_common";
     

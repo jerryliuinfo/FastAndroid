@@ -30,7 +30,6 @@ public class SwipeActivityHelper extends BaseActivityHelper implements SwipeBack
             }
         }
 
-//        swipeback = false;
         if (swipeback) {
             mHelper = new SwipeBackActivityHelper(getActivity());
             mHelper.onActivityCreate();

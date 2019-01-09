@@ -74,8 +74,6 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         if (savedInstanceState == null){
             refreshConfig = new RefreshConfig();
         }else {
@@ -89,6 +87,10 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
         ArrayList<T> datas = (ArrayList<T>) (savedInstanceState == null ? new ArrayList<>():savedInstanceState.getSerializable(SAVED_DATAS));
 
         mAdapter = newAdapter(datas);
+
+
+        super.onCreate(savedInstanceState);
+
 
     }
 

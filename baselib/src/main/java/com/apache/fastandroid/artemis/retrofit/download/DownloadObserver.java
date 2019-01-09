@@ -1,5 +1,6 @@
 package com.apache.fastandroid.artemis.retrofit.download;
 
+import android.annotation.SuppressLint;
 import com.apache.fastandroid.artemis.BaselibLog;
 import com.apache.fastandroid.artemis.rx.observer.CommonObserver;
 import com.tesla.framework.common.util.log.NLog;
@@ -25,6 +26,7 @@ public abstract class DownloadObserver extends CommonObserver<ResponseBody> {
         this.destFileName = destFileName;
     }
 
+    @SuppressLint("CheckResult")
     @Override
     protected void onSuccess(ResponseBody t) {
         Observable.just(t).subscribeOn(Schedulers.io())

@@ -16,6 +16,7 @@ import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by 01370340 on 2017/11/30.
@@ -27,12 +28,18 @@ public class TestSwipeRefreshLayoutRecycleViewFragment extends ARecycleViewSwipe
        FragmentContainerActivity.launch(from,TestSwipeRefreshLayoutRecycleViewFragment.class,args);
    }
 
+   private static AtomicInteger count = new AtomicInteger();
+
+    public static AtomicInteger getCount() {
+        return count;
+    }
+
     @Override
     public IItemViewCreator<NewsBean> configItemViewCreator() {
         return new TestItemViewCreator(getActivity());
     }
 
-    protected int pageSize = 20;                     // 每页加载条数
+    protected int pageSize = 30;                     // 每页加载条数
 
     @Override
     protected IPaging<NewsBean, NewsBeans> newPaging() {

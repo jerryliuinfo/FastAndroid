@@ -24,7 +24,7 @@ public class FrameworkApplication  {
         if (context != null){
             mContext = context.getApplicationContext();
         }
-        SPUtil.init(mContext);
+        SPUtil.init(mContext,"");
         sApplication = (Application) context.getApplicationContext();
         ContextUtil.injectContext(mContext);
         NetworkHelper.getInstance().registerNetworkSensor(context);

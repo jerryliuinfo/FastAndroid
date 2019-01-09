@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.view.View;
 
 import com.apache.fastandroid.news.bean.NewsBean;
+import com.apache.fastandroid.test.TestSwipeRefreshLayoutRecycleViewFragment;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 
@@ -18,6 +20,7 @@ public class TestItemViewCreator extends BaseItemViewCreator<NewsBean>{
 
     @Override
     public IITemView<NewsBean> newItemView(View contentView, int viewType) {
+        NLog.d("newItemView ->>>>>>>>>>count = %s", TestSwipeRefreshLayoutRecycleViewFragment.getCount().getAndAdd(1));
         return new TestItemView(getContext(),contentView);
     }
 

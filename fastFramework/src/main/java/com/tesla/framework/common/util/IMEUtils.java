@@ -25,8 +25,6 @@ import android.view.inputmethod.InputMethodManager;
 /**
  * 软键盘工具类
  *
- * @author yuyh.
- * @date 16/4/9.
  */
 @TargetApi(Build.VERSION_CODES.CUPCAKE)
 public class IMEUtils {

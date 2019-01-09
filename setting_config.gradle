@@ -44,12 +44,6 @@ if (isTopicDebug.toBoolean() || isAllDebug.toBoolean()) {
     println("not include topic \n")
 }
 
-if (isNovelDebug.toBoolean() || isAllDebug.toBoolean()) {
-    include ':novel'
-    println("include novel \n")
-}else {
-    println("not include novel \n")
-}
 
 
 

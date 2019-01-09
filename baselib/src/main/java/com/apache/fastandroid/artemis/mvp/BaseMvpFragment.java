@@ -3,7 +3,7 @@ package com.apache.fastandroid.artemis.mvp;
 import android.content.Context;
 
 import com.apache.fastandroid.artemis.base.BaseFragment;
-import com.apache.fastandroid.artemis.mvp.presenter.BasePresenterNew;
+import com.apache.fastandroid.artemis.mvp.presenter.BasePresenter;
 import com.apache.fastandroid.artemis.mvp.view.IView;
 
 /**
@@ -11,7 +11,7 @@ import com.apache.fastandroid.artemis.mvp.view.IView;
  * Fragment的mvp封装
  */
 
-public abstract class BaseMvpFragment<P extends BasePresenterNew<V>, V extends IView> extends BaseFragment implements IView {
+public abstract class BaseMvpFragment<P extends BasePresenter<V>, V extends IView> extends BaseFragment implements IView {
     private P mPresenter;
 
     @Override
@@ -53,25 +53,6 @@ public abstract class BaseMvpFragment<P extends BasePresenterNew<V>, V extends I
 
     public abstract P createPresenter();
 
-    /*@Override
-    public void onPrepare() {
-
-    }
-
-    @Override
-    public void onFailed(Throwable e) {
-        TaskException taskException = new TaskException();
-        taskException.setMessage(e.getMessage());
-        onTaskStateChanged(ABaseTaskState.falid, taskException);
-    }
-
-
-
-
-    @Override
-    public void onFinished() {
-        onTaskStateChanged(ABaseTaskState.finished, null);
-    }*/
 
 
     @Override

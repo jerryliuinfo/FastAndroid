@@ -32,7 +32,7 @@ public class ReceivedCookiesInterceptor implements Interceptor {
             for (String header : originalResponse.headers("Set-Cookie")) {
                 cookies.add(header);
             }
-            SPUtil.putSet(SPKeys.COOKIE, cookies);
+            //SPUtil.putSet(SPKeys.COOKIE, cookies);
         }
         //获取服务器相应时间--用于计算倒计时的时间差
         if (!originalResponse.header("Date").isEmpty()) {
