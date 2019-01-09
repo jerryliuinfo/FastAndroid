@@ -23,6 +23,7 @@
 package com.apache.fastandroid.artemis.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.customtabs.CustomTabsIntent;
@@ -34,7 +35,19 @@ import caom.apache.fastandroid.artemis.R;
 
 public class IntentUtil {
 
-
+    /**
+     * 打开外部actvitiy
+     * @param context
+     * @param intent
+     */
+    public static void startActivity(Context context, Intent intent){
+        try {
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        }
+    }
 
     /**
      * 打开链接

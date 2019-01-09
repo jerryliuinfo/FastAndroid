@@ -2,6 +2,7 @@ package com.apache.fastandroid.artemis;
 
 import android.content.Context;
 
+import com.apache.fastandroid.artemis.util.activitytask.ActivityLifeCallback;
 import com.tesla.framework.applike.FrameworkApplication;
 
 /**
@@ -11,6 +12,7 @@ import com.tesla.framework.applike.FrameworkApplication;
 public class BaseApp {
     public static void onCreate(Context context){
         FrameworkApplication.onCreate(context);
+        ActivityLifeCallback.registSelf(context);
 
     }
 

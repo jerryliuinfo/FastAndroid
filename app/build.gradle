@@ -235,6 +235,7 @@ android {
     }
     dexOptions {
         preDexLibraries = true
+        javaMaxHeapSize "4g"
 
     }
 
@@ -277,7 +278,6 @@ dependencies {
 
 //    compile project(':usercenter')
     compile project(':topic')
-    compile project(':novel')
 
     compile thirddependencies.bugly
     compile supportDependencies.multidex

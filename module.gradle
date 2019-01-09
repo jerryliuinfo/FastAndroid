@@ -18,8 +18,6 @@ ext {
     compile_baselib = this.&compile_baselib
     compile_usercenter = this.&compile_usercenter
     compile_topic = this.&compile_topic
-    compile_novel = this.&compile_novel
-
 }
 
 
@@ -74,14 +72,4 @@ def compile_topic(Project projectModule){
         }
     }
 }
-def compile_novel(Project projectModule){
-    projectModule.dependencies{
-        if (isAllDebug.toBoolean() || isNovelDebug.toBoolean()) {
-            compile project(':novel')
-            println("compile novel with  source code \n")
-        } else {
-            compile(name: 'novel-release', ext: 'aar')
-            println("compile novel with aar \n")
-        }
-    }
-}
+

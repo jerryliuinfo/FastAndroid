@@ -6,6 +6,17 @@ import android.view.animation.TranslateAnimation;
 
 
 public class AnimationUtil {
+    public static final String PROPERTY_TRANSLATION_X = "translationX";
+
+    public static final String PROPERTY_TRANSLATION_Y = "translationY";
+
+    public static final String  PROPERTY_ROTATION = "rotation";
+
+    public static final String  PROPERTY_ALPHA = "alpha";
+
+    public static final String PROPERTY_SCALE_X = "scaleX";
+
+    public static final String PROPERTY_SCALE_y = "scaleY";
 
     /**
      * 控件向左滑动的动画
