@@ -10,20 +10,17 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.text.LoginFilter;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.util.activitytask.ActivityLifeCallback;
 import com.apache.fastandroid.news.MainNewsTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
-import com.apache.fastandroid.support.action.IsLoginedAction;
 import com.apache.fastandroid.support.utils.DebugDbUtils;
 import com.apache.fastandroid.support.utils.MainLog;
 import com.apache.fastandroid.test.TestFragment;
@@ -34,7 +31,6 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
-import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.support.cache.DataCache;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.widget.CircleImageView;
@@ -124,23 +120,11 @@ public class MainActivity extends MyBaseActivity{
         TextView tv_username = (TextView) headView.findViewById(R.id.tv_username);
         ImageView iv_arrow = (ImageView) headView.findViewById(R.id.iv_arrow);
         View layout_user= headView.findViewById(R.id.layout_user);
-        layout_user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //已经登录,跳转到用户列表界面去登录
-                new IAction(MainActivity.this,new IsLoginedAction(MainActivity.this,null)){
-                    @Override
-                    public void doAction() {
-                        try {
-                            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginedUserListActivity",null,null,new Object[]{getContext()});
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }.run();
-            }
-        });
+        try {
+            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginedUserListActivity",null,null,new Object[]{this});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         if (ArtemisContext.getUserBean() != null){
             tv_username.setText(ArtemisContext.getUserBean().getName());
