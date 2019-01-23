@@ -1,4 +1,4 @@
-package com.tesla.framework.support.permission;
+package com.tesla.framework.component.permission;
 
 
 public interface IPermissionsSubject {

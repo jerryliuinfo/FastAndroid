@@ -7,8 +7,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.tesla.framework.common.util.activitytask.ActivityTaskMgr;
-import com.tesla.framework.support.permission.IPermissionsObserver;
-import com.tesla.framework.support.permission.IPermissionsSubject;
+import com.tesla.framework.component.permission.IPermissionsObserver;
+import com.tesla.framework.component.permission.IPermissionsSubject;
+import com.tesla.framework.component.permission.PermissionActivityHelper;
 
 /**
  * 用户注册回调BaseActivity的生命周期及相关的方法，自行添加

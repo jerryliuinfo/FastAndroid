@@ -1,4 +1,4 @@
-package com.tesla.framework.support.permission;
+package com.tesla.framework.component.permission;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -19,7 +19,7 @@ import java.util.List;
  *
  * Created by wangdan on 16/2/26.
  */
-public abstract class APermissionGroupAction extends IAction implements IPermissionsObserver {
+public abstract class AGroupPermissionAction extends IAction implements IPermissionsObserver {
 
     public static final String TAG = "Permission";
 
@@ -27,7 +27,7 @@ public abstract class APermissionGroupAction extends IAction implements IPermiss
     private String[] permissions;
     private int requestCode;
 
-    public APermissionGroupAction(Activity context, IAction parent, IPermissionsSubject subject, String[] permissions) {
+    public AGroupPermissionAction(Activity context, IAction parent, IPermissionsSubject subject, String[] permissions) {
         super(context, parent);
 
         this.subject = subject;
@@ -149,7 +149,7 @@ public abstract class APermissionGroupAction extends IAction implements IPermiss
             subject.detach(this);
         }
 
-        if (permissions.length != APermissionGroupAction.this.permissions.length ||
+        if (permissions.length != AGroupPermissionAction.this.permissions.length ||
                 permissions.length != grantResults.length) {
             return;
         }

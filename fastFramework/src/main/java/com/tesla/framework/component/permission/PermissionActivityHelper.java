@@ -1,9 +1,6 @@
-package com.tesla.framework.ui.activity;
+package com.tesla.framework.component.permission;
 
 import android.os.Bundle;
-
-import com.tesla.framework.support.permission.IPermissionsObserver;
-import com.tesla.framework.support.permission.IPermissionsSubject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +10,11 @@ import java.util.List;
  * 用来处理权限相关
  */
 
-public  class PermissionActivityHelper  implements IPermissionsSubject,IActivityHelper {
+public  class PermissionActivityHelper  implements IPermissionsSubject {
 
     private List<IPermissionsObserver> observerList;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         observerList = new ArrayList<>();
     }
 

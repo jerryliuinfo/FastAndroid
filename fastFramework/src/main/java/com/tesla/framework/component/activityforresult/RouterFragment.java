@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class RouterFragment extends Fragment {
 
-    private SparseArray<ActivityLauncher.Callback> mCallbacks = new SparseArray<>();
+    private SparseArray<ActivityResultHelper.Callback> mCallbacks = new SparseArray<>();
 
     private Random mCodeGenerator = new Random();
 
@@ -21,7 +21,7 @@ public class RouterFragment extends Fragment {
     }
 
 
-    public void startActivityForResult(Intent intent, ActivityLauncher.Callback callback ){
+    public void startActivityForResult(Intent intent, ActivityResultHelper.Callback callback ){
         int requestCode = makeRequestCode();
         NLog.d("RouterFragment startActivityForResult requestCode = %s", requestCode);
         mCallbacks.put(requestCode,callback);
@@ -41,7 +41,7 @@ public class RouterFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        ActivityLauncher.Callback callback = mCallbacks.get(requestCode);
+        ActivityResultHelper.Callback callback = mCallbacks.get(requestCode);
         mCallbacks.remove(requestCode);
         NLog.d("RouterFragment onActivityResult requestCode = %s, resultCode = %s", requestCode,resultCode);
         if (callback != null){

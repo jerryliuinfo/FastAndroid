@@ -1,4 +1,4 @@
-package com.tesla.framework.support.permission;
+package com.tesla.framework.component.permission;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -11,10 +11,10 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.action.IAction;
 
 /**
- * 申请一组权限
+ * 申请单个权限
  *
  */
-public abstract class APermissionsAction extends IAction implements IPermissionsObserver {
+public abstract class ASinglePermissionsAction extends IAction implements IPermissionsObserver {
 
     public static final String TAG = "Permission";
 
@@ -22,7 +22,7 @@ public abstract class APermissionsAction extends IAction implements IPermissions
     private String permission;
     private int requestCode;
 
-    public APermissionsAction(Activity context, IAction parent, IPermissionsSubject subject, String permission) {
+    public ASinglePermissionsAction(Activity context, IAction parent, IPermissionsSubject subject, String permission) {
         super(context, parent);
 
         this.subject = subject;

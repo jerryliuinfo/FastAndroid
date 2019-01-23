@@ -7,15 +7,19 @@ import android.content.Intent;
 /**
  * Created by 01370340 on 2018/12/4.
  */
-public class ActivityLauncher {
-    public static final String TAG = "com.apache.book.activityforresult.ActivityLauncher";
+public class ActivityResultHelper {
+    public static final String TAG = "com.apache.book.activityforresult.ActivityResultHelper";
 
     private RouterFragment mRouterFragment;
 
     private Activity mActivity;
-    public ActivityLauncher(Activity activity) {
+    private ActivityResultHelper(Activity activity) {
         this.mActivity = activity;
         mRouterFragment = getRouterFragment(mActivity);
+    }
+
+    public static ActivityResultHelper newInstance(Activity activity){
+        return new ActivityResultHelper(activity);
     }
 
     public void startActivityForResult(Class<?> clz, Callback callback ){

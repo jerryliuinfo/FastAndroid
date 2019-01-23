@@ -1,4 +1,4 @@
-package com.tesla.framework.component;
+package com.tesla.framework.component.imageloader;
 
 public interface BitmapOwner {
 
