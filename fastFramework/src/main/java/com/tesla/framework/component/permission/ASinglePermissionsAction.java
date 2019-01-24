@@ -123,7 +123,6 @@ public abstract class ASinglePermissionsAction extends IAction implements IPermi
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         NLog.d(TAG, "onRequestPermissionsResult , requestCode = " + requestCode);
-
         if (grantResults != null && grantResults.length > 0) {
             for (int i = 0; i < permissions.length; i++) {
                 NLog.d(TAG, "requestCode = %d, permission = %s, grantResult = %d", requestCode, permissions[i], grantResults[i]);
@@ -138,14 +137,12 @@ public abstract class ASinglePermissionsAction extends IAction implements IPermi
             if (permissions != null && permissions.length > 0 && permission.equals(permissions[0])) {
                 if (grantResults != null && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     run();
-
                     return;
                 }
             }
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(getContext(), permission)) {
                 NLog.d(TAG, "onPermissionDenied(false)");
-
                 onPermissionDenied(false);
             } else {
                 NLog.d(TAG, "onPermissionDenied(true)");

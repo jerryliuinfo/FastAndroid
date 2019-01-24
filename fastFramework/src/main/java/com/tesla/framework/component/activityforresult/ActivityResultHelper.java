@@ -10,7 +10,7 @@ import android.content.Intent;
 public class ActivityResultHelper {
     public static final String TAG = "com.apache.book.activityforresult.ActivityResultHelper";
 
-    private RouterFragment mRouterFragment;
+    private ActivityForResultRouterFragment mRouterFragment;
 
     private Activity mActivity;
     private ActivityResultHelper(Activity activity) {
@@ -31,11 +31,11 @@ public class ActivityResultHelper {
         mRouterFragment.startActivityForResult(intent,callback);
     }
 
-    private RouterFragment getRouterFragment(Activity activity){
+    private ActivityForResultRouterFragment getRouterFragment(Activity activity){
         FragmentManager fragmentManager = activity.getFragmentManager();
-        RouterFragment fragment = (RouterFragment) fragmentManager.findFragmentByTag(TAG);
+        ActivityForResultRouterFragment fragment = (ActivityForResultRouterFragment) fragmentManager.findFragmentByTag(TAG);
         if (fragment == null){
-            fragment = RouterFragment.newInstance();
+            fragment = ActivityForResultRouterFragment.newInstance();
             fragmentManager.beginTransaction().add(fragment,TAG).commitAllowingStateLoss();
             fragmentManager.executePendingTransactions();
         }
