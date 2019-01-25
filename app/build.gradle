@@ -282,3 +282,4 @@ dependencies {
     compile thirddependencies.arouter_api
     annotationProcessor thirddependencies.arouter_compiler
 }
+
