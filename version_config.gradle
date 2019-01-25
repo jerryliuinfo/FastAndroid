@@ -104,6 +104,12 @@ ext {
             //freeline
             freeline:  "com.antfortune.freeline:runtime:0.8.7",
 
+            //ARouter
+            arouter_api:  "com.alibaba:arouter-api:1.4.1",
+            arouter_compiler: "com.alibaba:arouter-compiler:1.2.2",
+            //Android DebugDatabase
+            android_debug_database:  "com.amitshekhar.android:debug-db:1.0.1",
+
     ]
 
 }

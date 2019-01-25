@@ -1,7 +1,6 @@
 package com.apache.fastandroid.app;
 
 import android.app.Application;
-import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -9,8 +8,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
-
-import com.antfortune.freeline.FreelineCore;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.BaseApp;
@@ -33,7 +31,6 @@ import com.tesla.framework.support.crash.TUncaughtExceptionHandler;
 import com.tesla.framework.support.db.FastAndroidDB;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
-
 import java.io.File;
 
 /**
@@ -44,8 +41,8 @@ public class MyApplication extends Application {
     public static final String TAG = MyApplication.class.getSimpleName();
     private static Context mContext;
 
-    public static final String client_id = "7024a413";
-    public static final String client_secret = "8404fa33ae48d3014cfa89deaa674e4cbe6ec894a57dbef4e40d083dbbaa5cf4";
+    private static final String client_id = "7024a413";
+    private static final String client_secret = "8404fa33ae48d3014cfa89deaa674e4cbe6ec894a57dbef4e40d083dbbaa5cf4";
 
     @Override
     public void onCreate() {
@@ -54,7 +51,12 @@ public class MyApplication extends Application {
             return;
         }
         //freeline
-        FreelineCore.init(this);
+        //FreelineCore.init(this);
+        if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
+            ARouter.openLog();     // 打印日志
+            ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        }
+        ARouter.init(this); // 尽可能早，推荐在Application中初始化
 
 
         mContext = this;
@@ -89,19 +91,8 @@ public class MyApplication extends Application {
         //监测内存泄漏
         initLeakCanry();
 
-        registerComponentCallbacks(new ComponentCallbacks() {
-            @Override
-            public void onConfigurationChanged(Configuration newConfig) {
 
-            }
 
-            @Override
-            public void onLowMemory() {
-
-            }
-
-            
-        });
     }
 
     @Override

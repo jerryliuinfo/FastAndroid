@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -15,13 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.util.activitytask.ActivityLifeCallback;
 import com.apache.fastandroid.news.MainNewsTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
-import com.apache.fastandroid.support.utils.DebugDbUtils;
 import com.apache.fastandroid.support.utils.MainLog;
 import com.apache.fastandroid.test.TestFragment;
 import com.apache.fastandroid.video.VideoTabsFragment;
@@ -31,10 +30,9 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
-import com.tesla.framework.support.cache.DataCache;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.widget.CircleImageView;
-
+@Route(path = "/home/MainActivity")
 public class MainActivity extends MyBaseActivity{
     public static void launch(Activity from){
         from.startActivity(new Intent(from,MainActivity.class));
@@ -60,26 +58,11 @@ public class MainActivity extends MyBaseActivity{
         }
     };
 
-    private DataCache mCache;
-
-    private final Handler myHandler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            //doSomething
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         NLog.d(TAG,"onCreate");
-
-        //ConfigManager.getInstance(this);
-        mCache = new DataCache("fastAndroid");
-
-        DebugDbUtils.showDebugDBAddressLogToast(getApplicationContext());
-        DebugDbUtils.setCustomDatabaseFiles(this);
-
 
         setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -93,15 +76,6 @@ public class MainActivity extends MyBaseActivity{
 
         NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
         MainLog.d("top activity = %s", ActivityLifeCallback.get().topActivity());
-
-        //MainLog.d("topActivity = %s ", ActivityHelperList);
-        //EventBus.getDefault().register(this);
-        /*myHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //doSomething
-            }
-        },60*10*1000);*/
     }
 
 
@@ -182,15 +156,7 @@ public class MainActivity extends MyBaseActivity{
         Fragment fragment = null;
         switch (itemId){
             case R.id.nav_item_topic:
-                try {
-                    Object obj = ModularizationDelegate.getInstance().getObjectData(ModuleConstans.MODULE_TOPIC_NAME+":getMainTabsFragment",null,new Object[]{});
-                    if (obj != null && obj instanceof Fragment){
-                        fragment = (Fragment) obj;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
+                fragment = MainNewsTabsFragment.newFragment();
                 break;
             case R.id.nav_item_wallpaer:
                 fragment = WallPaperFragment.newFragment();

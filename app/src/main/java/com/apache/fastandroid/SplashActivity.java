@@ -47,6 +47,8 @@ public class SplashActivity extends BaseActivity {
     private void toMain(){
         AppContext.login(new UserDetail());
         MainActivity.launch(SplashActivity.this);
+       // ARouter.getInstance().build("/home/MainActivity").navigation();
+
         SplashActivity.this.finish();
     }
 

@@ -56,6 +56,13 @@ android {
 
         flavorDimensions "debug","release"
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+
     }
 
     //为了解决部分第三方库重复打包了META-INF的问题
@@ -113,18 +120,6 @@ android {
     }
 
 
-    sourceSets{
-        dev {
-            manifest.srcFile 'src/main/AndroidManifest.xml'
-            res.srcDirs = ['src/main/res']
-            java.srcDirs 'src/main/java'
-        }
-
-        google{
-            manifest.srcFile 'src/google/AndroidManifest.xml'
-            res.srcDirs = ['src/google/res']
-        }
-    }
 
     buildTypes {
         release {
@@ -282,5 +277,8 @@ dependencies {
 
 
 
-
+    // 替换成最新版本, 需要注意的是api
+    // 要与compiler匹配使用，均使用最新版可以保证兼容
+    compile thirddependencies.arouter_api
+    annotationProcessor thirddependencies.arouter_compiler
 }

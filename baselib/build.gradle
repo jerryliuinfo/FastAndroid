@@ -11,6 +11,8 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+
+
     }
 
     lintOptions {
@@ -48,7 +50,7 @@ dependencies {
 
 
     compile thirddependencies.volly
-    compile thirddependencies.freeline
+    //compile thirddependencies.freeline
 
 
     compile thirddependencies.okhttp3_log_interceptor
@@ -72,19 +74,15 @@ dependencies {
 
 
     compile project(':fastFramework')
-    //compile thirddependencies.fastAndroid
-    /*if (compileFramewokdSourceCode){
-        compile project(':fastFramework')
-    }else {
-        compile thirddependencies.fastAndroid
-    }
-*/
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     testCompile 'junit:junit:4.12'
 
 
-    compile 'com.amitshekhar.android:debug-db:1.0.1'
+    compile thirddependencies.android_debug_database
+
+
+
 }
 
 
