@@ -1,6 +1,7 @@
 package com.tesla.framework.component.activityforresult;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 
@@ -8,7 +9,7 @@ import android.content.Intent;
  * Created by 01370340 on 2018/12/4.
  */
 public class ActivityResultHelper {
-    public static final String TAG = "com.apache.book.activityforresult.ActivityResultHelper";
+    private static final String TAG = ActivityForResultRouterFragment.class.getName();
 
     private ActivityForResultRouterFragment mRouterFragment;
 
@@ -33,13 +34,17 @@ public class ActivityResultHelper {
 
     private ActivityForResultRouterFragment getRouterFragment(Activity activity){
         FragmentManager fragmentManager = activity.getFragmentManager();
-        ActivityForResultRouterFragment fragment = (ActivityForResultRouterFragment) fragmentManager.findFragmentByTag(TAG);
+        ActivityForResultRouterFragment fragment = (ActivityForResultRouterFragment) findFragmentByTag(activity);
         if (fragment == null){
             fragment = ActivityForResultRouterFragment.newInstance();
             fragmentManager.beginTransaction().add(fragment,TAG).commitAllowingStateLoss();
             fragmentManager.executePendingTransactions();
         }
         return fragment;
+    }
+
+    public Fragment findFragmentByTag(Activity activity){
+        return  activity.getFragmentManager().findFragmentByTag(TAG);
     }
 
 

@@ -1,21 +1,16 @@
 package com.tesla.framework.component.permissionnew;
 
+import android.support.annotation.NonNull;
+
 /**
  * Created by Jerry on 2019/1/23.
  */
 public interface IPermissionListenerWrap {
 
-    interface IEachPermissionListener{
-
-        void onAccepted(Permission permission);
-
-        void onException(Throwable throwable);
-    }
 
     interface IPermissionsHelper{
+        void onPermissionGranted(String[] permissions);
 
-        void onAccepted(boolean isGranted);
-
-        void onException(Throwable throwable);
+        void onPermissionDenied(String[] permissions,@NonNull int[] grantResults,boolean[] alwaysDenied);
     }
 }

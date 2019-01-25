@@ -16,7 +16,6 @@ initModuleCompile(rootDir.getAbsolutePath() + "/module.properties")
 ext {
     compile_library = this.&compile_library
     compile_baselib = this.&compile_baselib
-    compile_usercenter = this.&compile_usercenter
     compile_topic = this.&compile_topic
 }
 
@@ -39,25 +38,12 @@ def compile_library(Project projectModule){
 
 def compile_baselib(Project projectModule){
     projectModule.dependencies{
-        println("isBaselibDebug = ${isBaselibDebug.toBoolean()}")
         if (isAllDebug.toBoolean() || isBaselibDebug.toBoolean()) {
             compile project(':baselib')
             println("compile baselib  with  source code \n")
         } else {
             compile(name: 'baselib-release', ext: 'aar')
             println("compile baselib with aar \n")
-        }
-    }
-}
-
-def compile_usercenter(Project projectModule){
-    projectModule.dependencies{
-        if (isAllDebug.toBoolean() || isUserCenterDebug.toBoolean()) {
-            compile project(':usercenter')
-            println("compile usercenter with  source code \n")
-        } else {
-            compile(name: 'usercenter-release', ext: 'aar')
-            println("compile usercenter with aar \n")
         }
     }
 }

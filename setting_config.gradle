@@ -30,12 +30,6 @@ if (isBaselibDebug.toBoolean() || isAllDebug.toBoolean()) {
     println("not include baselib \n")
 }
 
-if (isUserCenterDebug.toBoolean() || isAllDebug.toBoolean()) {
-    include ':usercenter'
-    println("include usercenter \n")
-}else {
-    println("not include usercenter \n")
-}
 
 if (isTopicDebug.toBoolean() || isAllDebug.toBoolean()) {
     include ':topic'
