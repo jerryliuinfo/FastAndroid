@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import com.apache.fastandroid.app.AppContext;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
-import com.apache.fastandroid.support.config.ADConfigManager;
+import com.apache.fastandroid.topic.support.config.ADConfigManager;
 import com.apache.fastandroid.widget.SplashCountDownView;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.inject.ViewInject;

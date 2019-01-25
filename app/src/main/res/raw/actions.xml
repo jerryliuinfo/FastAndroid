@@ -29,8 +29,8 @@
 		<extras>
 			<!--服务器请求的utility, 不配置则用默认的DefHttpUtility -->
 			<!--<extra type="http">
-				&lt;!&ndash;<value>com.apache.fastandroid.support.http.urlconnection.HttpUrlConnectionUtility</value>&ndash;&gt;
-				<value>com.apache.fastandroid.support.http.volly.VollyUtility</value>
+				&lt;!&ndash;<value>com.apache.fastandroid.topic.support.http.urlconnection.HttpUrlConnectionUtility</value>&ndash;&gt;
+				<value>com.apache.fastandroid.topic.support.http.volly.VollyUtility</value>
 
 			</extra>-->
 
@@ -56,8 +56,8 @@
 	</setting>
 
 	<setting type="imageLoader">
-		<value>com.apache.fastandroid.support.imageloader.GlideImageLoader</value>
-		<!--<value>com.apache.fastandroid.support.imageloader.PicasoImageLoader</value>-->
-		<!--<value>com.apache.fastandroid.support.imageloader.UniversalImageLoader</value>-->
+		<value>com.apache.fastandroid.topic.support.imageloader.GlideImageLoader</value>
+		<!--<value>com.apache.fastandroid.topic.support.imageloader.PicasoImageLoader</value>-->
+		<!--<value>com.apache.fastandroid.topic.support.imageloader.UniversalImageLoader</value>-->
 	</setting>
 </app-settings>

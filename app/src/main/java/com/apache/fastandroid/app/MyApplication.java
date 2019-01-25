@@ -14,8 +14,8 @@ import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.BaseApp;
 import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
-import com.apache.fastandroid.support.exception.FastAndroidExceptionDelegateV2;
-import com.apache.fastandroid.support.imageloader.GlideImageLoader;
+import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
+import com.apache.fastandroid.topic.support.imageloader.GlideImageLoader;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -161,11 +161,11 @@ public class MyApplication extends Application {
 
     private void initModuleBridge(){
         //主模块
-        ModularizationDelegate.registerComponent("com.apache.fastandroid.applike.MainAppLike",getApplicationContext());
+        ModularizationDelegate.registerComponent("com.apache.fastandroid.topic.applike.MainAppLike",getApplicationContext());
         //用户模块
         ModularizationDelegate.registerComponent("com.apache.fastandroid.user.applike.UserCenterAppLike",getApplicationContext());
         //主题模块
-        ModularizationDelegate.registerComponent("com.apache.fastandroid.applike.TopicAppLike",getApplicationContext());
+        ModularizationDelegate.registerComponent("com.apache.fastandroid.topic.applike.TopicAppLike",getApplicationContext());
         //小说模块
         ModularizationDelegate.registerComponent("com.apache.fastandroid.novel.applike.NovelAppLike",getApplicationContext());
     }

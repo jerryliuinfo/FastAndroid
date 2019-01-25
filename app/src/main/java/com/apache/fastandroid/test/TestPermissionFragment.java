@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.support.permission.SdcardPermissionAction;
+import com.apache.fastandroid.topic.support.permission.SdcardPermissionAction;
 import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentArgs;

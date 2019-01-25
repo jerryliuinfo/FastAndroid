@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.support.sdk.MarathonSdk;
+import com.apache.fastandroid.topic.support.sdk.MarathonSdk;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.ViewInject;

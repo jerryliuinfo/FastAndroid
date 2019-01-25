@@ -31,11 +31,12 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
-    compile supportDependencies.junit
-    compile supportDependencies.multidex
-    compile supportDependencies.support_customtabs
 
+    compile supportDependencies.design
+    compile supportDependencies.appcompatV7
+    compile supportDependencies.cardview
 
+    compile project(':fastFramework')
 
 
 
@@ -43,11 +44,7 @@ dependencies {
     compile thirddependencies.picasso
     compile thirddependencies.imageLoader
 
-
-
-
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
-
 
     compile thirddependencies.volly
     //compile thirddependencies.freeline
@@ -69,20 +66,20 @@ dependencies {
     compile thirddependencies.retrofit_adapter_rxjava
     compile 'com.squareup.retrofit2:converter-scalars:2.2.0'
 
-
     compile thirddependencies.eventbus
 
 
-    compile project(':fastFramework')
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-    testCompile 'junit:junit:4.12'
 
 
     compile thirddependencies.android_debug_database
+    compile supportDependencies.multidex
+    compile supportDependencies.support_customtabs
 
 
-
+    testCompile 'junit:junit:4.12'
+    compile supportDependencies.junit
 }
 
 

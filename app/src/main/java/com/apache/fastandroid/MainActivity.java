@@ -19,9 +19,9 @@ import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.util.activitytask.ActivityLifeCallback;
-import com.apache.fastandroid.news.MainNewsTabsFragment;
+import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
-import com.apache.fastandroid.support.utils.MainLog;
+import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.test.TestFragment;
 import com.apache.fastandroid.video.VideoTabsFragment;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
@@ -51,7 +51,7 @@ public class MainActivity extends MyBaseActivity{
 
     private int selecteId = -1;
 
-    private static NetworkHelper.NetworkInductor mNetworkInductor = new NetworkHelper.NetworkInductor() {
+    private  NetworkHelper.NetworkInductor mNetworkInductor = new NetworkHelper.NetworkInductor() {
         @Override
         public void onNetworkChanged(NetworkHelper.NetworkStatus status) {
             NLog.d(TAG, "onNetworkChanged status = %s", status);

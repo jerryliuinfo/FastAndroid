@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.support.permission.SdcardPermissionAction;
+import com.apache.fastandroid.topic.support.permission.SdcardPermissionAction;
 import com.apache.fastandroid.widget.WallpaperViewer;
 import com.apache.fastandroid.widget.WaveView;
 import com.tesla.framework.common.util.log.NLog;

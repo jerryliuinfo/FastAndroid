@@ -3,7 +3,7 @@ package com.apache.fastandroid.pic.view;
 import android.app.Activity;
 import android.view.View;
 
-import com.apache.fastandroid.support.bean.WallpaperBean;
+import com.apache.fastandroid.topic.support.bean.WallpaperBean;
 import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 

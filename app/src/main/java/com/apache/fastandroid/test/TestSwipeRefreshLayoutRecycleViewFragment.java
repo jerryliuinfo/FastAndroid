@@ -3,9 +3,9 @@ package com.apache.fastandroid.test;
 import android.app.Activity;
 import android.text.TextUtils;
 
-import com.apache.fastandroid.news.bean.NewsBean;
-import com.apache.fastandroid.news.bean.NewsBeans;
-import com.apache.fastandroid.news.sdk.NewsSDK;
+import com.apache.fastandroid.topic.news.bean.NewsBean;
+import com.apache.fastandroid.topic.news.bean.NewsBeans;
+import com.apache.fastandroid.topic.news.sdk.NewsSDK;
 import com.apache.fastandroid.test.view.TestItemViewCreator;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.paging.IPaging;

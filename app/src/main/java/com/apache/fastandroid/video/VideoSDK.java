@@ -1,6 +1,6 @@
 package com.apache.fastandroid.video;
 
-import com.apache.fastandroid.support.sdk.ApiConstans;
+import com.apache.fastandroid.topic.support.sdk.ApiConstans;
 import com.apache.fastandroid.video.bean.VideoResultBean;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.biz.ABizLogic;

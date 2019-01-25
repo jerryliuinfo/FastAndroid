@@ -3,7 +3,7 @@ package com.apache.fastandroid.test.view;
 import android.app.Activity;
 import android.view.View;
 
-import com.apache.fastandroid.news.bean.NewsBean;
+import com.apache.fastandroid.topic.news.bean.NewsBean;
 import com.apache.fastandroid.test.TestSwipeRefreshLayoutRecycleViewFragment;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.ui.fragment.itemview.BaseItemViewCreator;

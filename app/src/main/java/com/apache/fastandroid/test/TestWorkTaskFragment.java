@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.support.bean.NewsSummary;
-import com.apache.fastandroid.support.sdk.TestSdk;
+import com.apache.fastandroid.topic.support.bean.NewsSummary;
+import com.apache.fastandroid.topic.support.sdk.TestSdk;
 import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.network.task.WorkTask;

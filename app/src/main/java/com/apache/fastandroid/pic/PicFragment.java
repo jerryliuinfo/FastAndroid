@@ -12,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.support.bean.ImageBean;
-import com.apache.fastandroid.support.bean.ImageResultBeans;
-import com.apache.fastandroid.support.utils.FastAndroidUtils;
+import com.apache.fastandroid.topic.support.bean.ImageBean;
+import com.apache.fastandroid.topic.support.bean.ImageResultBeans;
+import com.apache.fastandroid.topic.support.utils.FastAndroidUtils;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
 import com.tesla.framework.common.util.log.NLog;

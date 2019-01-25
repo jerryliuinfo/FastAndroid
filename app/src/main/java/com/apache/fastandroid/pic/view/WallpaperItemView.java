@@ -7,8 +7,8 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.support.bean.WallpaperBean;
-import com.apache.fastandroid.support.utils.MainLog;
+import com.apache.fastandroid.topic.support.bean.WallpaperBean;
+import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.wallpaper.WallpaperSettingFragment;
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.dimen.ScreenUtil;

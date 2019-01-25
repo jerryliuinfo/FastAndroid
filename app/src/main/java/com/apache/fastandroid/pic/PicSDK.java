@@ -3,9 +3,9 @@ package com.apache.fastandroid.pic;
 
 import com.apache.fastandroid.app.MyApplication;
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
-import com.apache.fastandroid.support.bean.ImageResultBeans;
-import com.apache.fastandroid.support.sdk.APIService;
-import com.apache.fastandroid.support.sdk.ApiConstans;
+import com.apache.fastandroid.topic.support.bean.ImageResultBeans;
+import com.apache.fastandroid.topic.support.sdk.APIService;
+import com.apache.fastandroid.topic.support.sdk.ApiConstans;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;

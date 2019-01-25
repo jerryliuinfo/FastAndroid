@@ -10,7 +10,7 @@ import com.apache.fastandroid.R;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.artemis.util.IntentUtil;
 import com.apache.fastandroid.artemis.util.UrlUtil;
-import com.apache.fastandroid.news.bean.NewsBean;
+import com.apache.fastandroid.topic.news.bean.NewsBean;
 import com.tesla.framework.common.util.date.FormatTimeUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;

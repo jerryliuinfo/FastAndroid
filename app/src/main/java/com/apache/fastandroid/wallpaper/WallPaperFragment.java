@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.apache.fastandroid.pic.view.WallpaperItemView;
-import com.apache.fastandroid.support.bean.WallpaperBean;
-import com.apache.fastandroid.support.bean.WallpaperBeans;
-import com.apache.fastandroid.support.sdk.Sdk;
+import com.apache.fastandroid.topic.support.bean.WallpaperBean;
+import com.apache.fastandroid.topic.support.bean.WallpaperBeans;
+import com.apache.fastandroid.topic.support.sdk.Sdk;
 import com.tesla.framework.common.util.StrUtil;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.network.task.TaskException;
