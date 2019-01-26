@@ -45,9 +45,8 @@ android {
         applicationId "com.apache.fastandroid"
         minSdkVersion config.android.minSdkVersion
         targetSdkVersion config.android.targetSdkVersion
-        versionCode getCommitVersionCode()
-        versionName config.android.versionName
-        resConfigs('en','zh','xhdpi')
+        versionCode 100
+        versionName "V1.0.0"
 
         //archivesBaseName = "FastAndroid-$versionName"
         //dex突破65535的限制
@@ -61,10 +60,11 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }*/
-
-
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
     //为了解决部分第三方库重复打包了META-INF的问题
     packagingOptions {
         exclude 'META-INF/LICENSE.txt'
@@ -79,7 +79,6 @@ android {
         density {
             enable true
             reset()
-            include 'xhdpi'
         }
     }
 
@@ -93,7 +92,7 @@ android {
     }*/
 
 
-    signingConfigs {
+   /* signingConfigs {
         dev {
             try {
                 storeFile file(KEYSTORE_FILE)
@@ -117,7 +116,7 @@ android {
                 //throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
             }
         }
-    }
+    }*/
 
 
 
@@ -137,7 +136,7 @@ android {
         }
         debug {
             minifyEnabled false
-            manifestPlaceholders = [appName: "FastAndDebug"]
+            manifestPlaceholders = [appName: "FastAnd测试版"]
 
             buildConfigField('boolean','LOG_DEBUG',"true")
             buildConfigField('String',"BUGLY_APP_ID","\"a397701fd5\"")
@@ -200,14 +199,16 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
 
-    compile project(':topic')
+    if (isNeedTopicModule.toBoolean()) {
+        api project(':topic')
+    }
+    api config.supportDependencies.appcompatV7
 
-    compile config.thirddependencies.bugly
-    compile config.supportDependencies.multidex
+
+
+    //api config.thirddependencies.bugly
+    api config.supportDependencies.multidex
 
     debugImplementation config.thirddependencies.leakcanary_android
     releaseImplementation config.thirddependencies.leakcanary_android_no_op

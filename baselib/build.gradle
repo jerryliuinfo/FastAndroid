@@ -3,12 +3,12 @@ apply plugin: 'com.android.library'
 
 android {
 
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    compileSdkVersion config.android.compileSdkVersion
+    buildToolsVersion config.android.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        minSdkVersion config.android.minSdkVersion
+        targetSdkVersion config.android.targetSdkVersion
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -31,35 +31,34 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':fastFramework')
-    compile config.supportDependencies.design
-    compile config.supportDependencies.appcompatV7
-    compile config.supportDependencies.cardview
-    compile config.thirddependencies.glide
-    compile config.thirddependencies.picasso
-    compile config.thirddependencies.imageLoader
-    compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
-    compile config.thirddependencies.volly
-    //compile thirddependencies.freeline
-    compile config.thirddependencies.okhttp3_log_interceptor
+    api project(':fastFramework')
+    api config.supportDependencies.design
+    api config.supportDependencies.appcompatV7
+    api config.supportDependencies.cardview
+    api config.thirddependencies.glide
+    api config.thirddependencies.picasso
+    api config.thirddependencies.imageLoader
+    api 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
+    api config.thirddependencies.volly
+    api config.thirddependencies.okhttp3_log_interceptor
     //rxjava&rxandroid
-    compile config.thirddependencies.rxjava
-    compile config.thirddependencies.rxandroid
+    api config.thirddependencies.rxjava
+    api config.thirddependencies.rxandroid
     //retrofit
-    compile(config.thirddependencies.retrofit) {
+    api(config.thirddependencies.retrofit) {
         exclude group: "com.squareup.okhttp3"
     }
-    compile config.thirddependencies.retrofit_converter_gson
-    compile config.thirddependencies.retrofit_adapter_rxjava
-    compile config.thirddependencies.retrofit_converter_scalars
+    api config.thirddependencies.retrofit_converter_gson
+    api config.thirddependencies.retrofit_adapter_rxjava
+    api config.thirddependencies.retrofit_converter_scalars
     //compile config.thirddependencies.eventbus
 
     //compile config.thirddependencies.android_debug_database
     //compile config.supportDependencies.multidex
-    compile config.supportDependencies.support_customtabs
+    api config.supportDependencies.support_customtabs
     testCompile 'junit:junit:4.12'
-    compile supportDependencies.junit
-    compile 'com.android.support:support-annotations:25.3.1'
+    api supportDependencies.junit
+    api 'com.android.support:support-annotations:25.3.1'
 }
 
 

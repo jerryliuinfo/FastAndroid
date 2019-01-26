@@ -35,11 +35,8 @@ public class MainActivity extends MyBaseActivity{
     public static void launch(Activity from){
         from.startActivity(new Intent(from,MainActivity.class));
     }
-
-
     @ViewInject(id = R.id.drawer)
     DrawerLayout mDrawerLayout;
-
 
     @ViewInject(id = R.id.navigation_view)
     NavigationView mNavigationView;
@@ -63,8 +60,8 @@ public class MainActivity extends MyBaseActivity{
         NLog.d(TAG,"onCreate");
 
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
         setupNavigationView();
         loadMenuData();
@@ -183,7 +180,7 @@ public class MainActivity extends MyBaseActivity{
 
 
         if (fragment != null && selecteId != itemId){
-            getSupportActionBar().setTitle(title);
+//            getSupportActionBar().setTitle(title);
             getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();
         }
 

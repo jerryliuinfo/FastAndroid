@@ -11,6 +11,8 @@ android {
     defaultConfig {
         if (!isNeedTopicModule.toBoolean()){
             applicationId "com.apache.fastandroid.topic"
+            //dex突破65535的限制
+            multiDexEnabled true
         }
         minSdkVersion config.android.minSdkVersion
         targetSdkVersion config.android.targetSdkVersion
@@ -27,6 +29,11 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 tasks.withType(Javadoc) {
@@ -37,10 +44,7 @@ tasks.withType(Javadoc) {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-
-    compile project(':baselib')
+    api config.supportDependencies.multidex
+    api project(':baselib')
 
 }

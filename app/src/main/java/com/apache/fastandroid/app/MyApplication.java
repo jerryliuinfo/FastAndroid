@@ -15,7 +15,6 @@ import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.topic.support.imageloader.GlideImageLoader;
-import com.tencent.bugly.crashreport.CrashReport;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
@@ -158,20 +157,20 @@ public class MyApplication extends Application {
 
     private void initModuleBridge(){
         //主模块
-        ModularizationDelegate.registerComponent("com.apache.fastandroid.topic.applike.MainAppLike",getApplicationContext());
-        //用户模块
-        ModularizationDelegate.registerComponent("com.apache.fastandroid.user.applike.UserCenterAppLike",getApplicationContext());
-        //主题模块
-        ModularizationDelegate.registerComponent("com.apache.fastandroid.topic.applike.TopicAppLike",getApplicationContext());
-        //小说模块
-        ModularizationDelegate.registerComponent("com.apache.fastandroid.novel.applike.NovelAppLike",getApplicationContext());
+//        ModularizationDelegate.registerComponent("com.apache.fastandroid.topic.applike.MainAppLike",getApplicationContext());
+//        //用户模块
+//        ModularizationDelegate.registerComponent("com.apache.fastandroid.user.applike.UserCenterAppLike",getApplicationContext());
+//        //主题模块
+//        ModularizationDelegate.registerComponent("com.apache.fastandroid.topic.applike.TopicAppLike",getApplicationContext());
+//        //小说模块
+//        ModularizationDelegate.registerComponent("com.apache.fastandroid.novel.applike.NovelAppLike",getApplicationContext());
     }
 
 
     private void initCrashAndAnalysis(){
 
         //bugly统计
-        CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
+        //CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
         //本地crash日志收集  使用bulgy时不能在本地手机日志
         TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, false, 0, SplashActivity.class);
 

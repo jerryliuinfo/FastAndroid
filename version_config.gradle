@@ -93,7 +93,7 @@ ext {
 
             eventbus   :"org.greenrobot:eventbus:$eventbusVersion",
             //crash统计 //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
-            bugly            :  "com.tencent.bugly:crashreport:$buglyVersion",
+           // bugly            :  "com.tencent.bugly:crashreport:$buglyVersion",
 
             //内存泄漏检测
             leakcanary_android:  "com.squareup.leakcanary:leakcanary-android:$leakcanary",
