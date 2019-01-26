@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
+def config = rootProject.ext
 //apply plugin: 'com.antfortune.freeline'
-println('app gradle----->')
 // 注：需要配置符号表时，使用bugly插件
 /*apply plugin: 'bugly'
 bugly {
@@ -39,14 +39,14 @@ def getCommitVersionCode() {
 
 android {
 
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    compileSdkVersion config.android.compileSdkVersion
+    buildToolsVersion config.android.buildToolsVersion
     defaultConfig {
         applicationId "com.apache.fastandroid"
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        minSdkVersion config.android.minSdkVersion
+        targetSdkVersion config.android.targetSdkVersion
         versionCode getCommitVersionCode()
-        versionName rootProject.ext.versionName
+        versionName config.android.versionName
         resConfigs('en','zh','xhdpi')
 
         //archivesBaseName = "FastAndroid-$versionName"
@@ -56,11 +56,11 @@ android {
 
         flavorDimensions "debug","release"
 
-        javaCompileOptions {
+        /*javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
-        }
+        }*/
 
 
     }
@@ -102,7 +102,7 @@ android {
                 keyPassword KEY_PASSWORD
             }
             catch (ex) {
-                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+                //throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
             }
         }
 
@@ -114,7 +114,7 @@ android {
                 keyPassword KEY_PASSWORD
             }
             catch (ex) {
-                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+                //throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
             }
         }
     }
@@ -145,7 +145,7 @@ android {
 
     }
 
-    /*渠道信息配置 这个一定要放在设置签名的前面*/
+   /* *//*渠道信息配置 这个一定要放在设置签名的前面*//*
     productFlavors {
         dev {
             //不同渠道，不同包名
@@ -161,29 +161,8 @@ android {
             resValue('bool', 'login_enable', "false")
 
             dimension "debug"
-
-
-
         }
-
-        google {
-            applicationId "com.apache.fastandroid.prod"
-            signingConfig signingConfigs.prod
-            manifestPlaceholders = [ISTEST_VALUE: "PROD", CHANNEL_VALUE: name]
-
-            resValue('string', 'channel_tips', 'Google渠道欢迎你')
-            resValue('bool', 'login_enable', "true")
-
-            dimension "release"
-        }
-    }
-
-
-
-
-
-
-
+    }*/
 
     /**
      * release构建忽略dev这一个渠道
@@ -198,31 +177,6 @@ android {
         }
     }
 
-    //修改apk输出名字格式
-    applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            //if (variant.buildType.name.equals("release")){
-                def outputFile = output.outputFile
-                if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                    def appName = "FastAndroid"
-                    def flavorsName = variant.productFlavors[0].name
-                    def code = getCommitVersionCode()
-                    //测试版本code固定用434 防止bug统计平台被污染
-                    if (flavorsName.equals("dev")) {
-                        code = 434
-                    }else {
-                    }
-
-                    def pubversionName = defaultConfig.versionName + "." + code
-                    def buildTypeName = buildType.name
-
-                    def fileName = "${appName}_${pubversionName}_${flavorsName}_${buildTypeName}.apk"
-
-                    //output.outputFile = new File(outputFile.parent, fileName)
-                }
-            //}
-        }
-    }
 
     //gradle 打包 add end
     tasks.withType(JavaCompile) {
@@ -241,26 +195,6 @@ android {
 
 
 
-task getReleasePassword <<{
-    try {
-        Properties properties = new Properties();
-        File file = new File(rootDir.getAbsolutePath() + "/private.properties")
-        def stream = file.newDataInputStream();
-        properties.load(stream)
-        Iterator itr = properties.entrySet().iterator();
-        while (itr.hasNext()) {
-            Map.Entry e = (Map.Entry) itr.next();
-            String key = e.getKey();
-            rootProject.ext.setProperty(key, e.getValue());
-            println("private.properties key = ${key}, value = ${e.getValue()}")
-        }
-    } catch (Exception e) {
-        println '\n' + e.printStackTrace()
-    } finally {
-        stream.close()
-    }
-}
-
 
 
 
@@ -272,14 +206,18 @@ dependencies {
 
     compile project(':topic')
 
-    compile thirddependencies.bugly
-    compile supportDependencies.multidex
+    compile config.thirddependencies.bugly
+    compile config.supportDependencies.multidex
+
+    debugImplementation config.thirddependencies.leakcanary_android
+    releaseImplementation config.thirddependencies.leakcanary_android_no_op
+    debugImplementation config.thirddependencies.leakcanary_support_fragment
 
 
 
     // 替换成最新版本, 需要注意的是api
     // 要与compiler匹配使用，均使用最新版可以保证兼容
-    compile thirddependencies.arouter_api
-    annotationProcessor thirddependencies.arouter_compiler
+//    compile config.thirddependencies.arouter_api
+//    annotationProcessor thirddependencies.arouter_compiler
 }
 

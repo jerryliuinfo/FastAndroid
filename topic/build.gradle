@@ -1,20 +1,19 @@
+def config = rootProject.ext
 if (isNeedTopicModule.toBoolean()) {
     apply plugin: 'com.android.library'
 } else {
     apply plugin: 'com.android.application'
 }
-apply plugin: 'com.novoda.bintray-release'
+
 android {
-
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
-
+    compileSdkVersion config.android.compileSdkVersion
+    buildToolsVersion config.android.buildToolsVersion
     defaultConfig {
         if (!isNeedTopicModule.toBoolean()){
             applicationId "com.apache.fastandroid.topic"
         }
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        minSdkVersion config.android.minSdkVersion
+        targetSdkVersion config.android.targetSdkVersion
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -25,39 +24,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-
-//    sourceSets {
-//        main {
-//            if (!isNeedTopicModule.toBoolean()) {
-//                manifest.srcFile 'src/debug/AndroidManifest.xml'
-//            } else {
-//                manifest.srcFile 'src/main/AndroidManifest.xml'
-//                java {
-//                    exclude '**/debug/**'
-//                }
-//            }
-//        }
-//    }
-
-
-
     lintOptions {
         abortOnError false
     }
-}
-
-
-
-
-publish {
-    artifactId = 'topic'// bintray创建的package
-    publishVersion = rootProject.publishVersion
-    userOrg = rootProject.userOrg// bintray注册的用户名
-    groupId = rootProject.groupId
-    desc = rootProject.desc
-    website = rootProject.website
-    licences = rootProject.rootProject
 }
 
 tasks.withType(Javadoc) {
@@ -65,8 +34,6 @@ tasks.withType(Javadoc) {
     options.addStringOption('encoding', 'UTF-8')
     options.addStringOption('charSet', 'UTF-8')
 }
-
-
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

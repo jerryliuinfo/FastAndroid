@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
@@ -32,7 +31,6 @@ import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.widget.CircleImageView;
-@Route(path = "/home/MainActivity")
 public class MainActivity extends MyBaseActivity{
     public static void launch(Activity from){
         from.startActivity(new Intent(from,MainActivity.class));

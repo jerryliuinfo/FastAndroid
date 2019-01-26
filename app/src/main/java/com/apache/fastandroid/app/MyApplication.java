@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.BaseApp;
@@ -16,8 +15,6 @@ import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.topic.support.imageloader.GlideImageLoader;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.Logger;
@@ -47,16 +44,16 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (LeakCanary.isInAnalyzerProcess(this)){
+        /*if (LeakCanary.isInAnalyzerProcess(this)){
             return;
-        }
+        }*/
         //freeline
         //FreelineCore.init(this);
-        if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
-            ARouter.openLog();     // 打印日志
-            ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
-        }
-        ARouter.init(this); // 尽可能早，推荐在Application中初始化
+//        if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
+//            ARouter.openLog();     // 打印日志
+//            ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+//        }
+        //ARouter.init(this); // 尽可能早，推荐在Application中初始化
 
 
         mContext = this;
@@ -89,7 +86,7 @@ public class MyApplication extends Application {
         initAuth();
         initHttp();
         //监测内存泄漏
-        initLeakCanry();
+        //initLeakCanry();
 
 
 
@@ -237,7 +234,7 @@ public class MyApplication extends Application {
         OAuth.client_secret = client_secret;
     }
 
-    private RefWatcher mRefWatcher;
+    /*private RefWatcher mRefWatcher;
 
     private void initLeakCanry(){
 
@@ -248,7 +245,7 @@ public class MyApplication extends Application {
         MyApplication application = (MyApplication) context.getApplicationContext();
         return application.mRefWatcher;
     }
-
+*/
     private IImageLoaderstrategy configImageLoader(){
         String imageLoaderClassName = SettingUtility.getStringSetting("imageLoader");
         if (!TextUtils.isEmpty(imageLoaderClassName)){

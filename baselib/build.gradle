@@ -1,3 +1,4 @@
+def config = rootProject.ext
 apply plugin: 'com.android.library'
 
 android {
@@ -30,56 +31,35 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
-
-    compile supportDependencies.design
-    compile supportDependencies.appcompatV7
-    compile supportDependencies.cardview
-
     compile project(':fastFramework')
-
-
-
-    compile thirddependencies.glide
-    compile thirddependencies.picasso
-    compile thirddependencies.imageLoader
-
+    compile config.supportDependencies.design
+    compile config.supportDependencies.appcompatV7
+    compile config.supportDependencies.cardview
+    compile config.thirddependencies.glide
+    compile config.thirddependencies.picasso
+    compile config.thirddependencies.imageLoader
     compile 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
-
-    compile thirddependencies.volly
+    compile config.thirddependencies.volly
     //compile thirddependencies.freeline
-
-
-    compile thirddependencies.okhttp3_log_interceptor
-
+    compile config.thirddependencies.okhttp3_log_interceptor
     //rxjava&rxandroid
-    compile thirddependencies.rxjava
-    compile thirddependencies.rxandroid
-
-
-
+    compile config.thirddependencies.rxjava
+    compile config.thirddependencies.rxandroid
     //retrofit
-    compile(thirddependencies.retrofit) {
+    compile(config.thirddependencies.retrofit) {
         exclude group: "com.squareup.okhttp3"
     }
-    compile thirddependencies.retrofit_converter_gson
-    compile thirddependencies.retrofit_adapter_rxjava
-    compile 'com.squareup.retrofit2:converter-scalars:2.2.0'
+    compile config.thirddependencies.retrofit_converter_gson
+    compile config.thirddependencies.retrofit_adapter_rxjava
+    compile config.thirddependencies.retrofit_converter_scalars
+    //compile config.thirddependencies.eventbus
 
-    compile thirddependencies.eventbus
-
-
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-
-
-    compile thirddependencies.android_debug_database
-    compile supportDependencies.multidex
-    compile supportDependencies.support_customtabs
-
-
+    //compile config.thirddependencies.android_debug_database
+    //compile config.supportDependencies.multidex
+    compile config.supportDependencies.support_customtabs
     testCompile 'junit:junit:4.12'
     compile supportDependencies.junit
+    compile 'com.android.support:support-annotations:25.3.1'
 }
 
 
