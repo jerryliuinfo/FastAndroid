@@ -23,7 +23,7 @@
         tools:replace="android:label"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/AppCommonTheme"
 
         >
         <activity android:name=".SplashActivity">

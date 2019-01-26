@@ -2,8 +2,8 @@ ext {
 
     //Android编译版本管理
     android = [
-               compileSdkVersion: 28,
-               buildToolsVersion: "28.0.3",
+               compileSdkVersion: 26,
+               buildToolsVersion: "26.0.1",
                minSdkVersion    : 17,
                targetSdkVersion : 28,
                versionCode :"100",
@@ -14,7 +14,7 @@ ext {
     targetCompatibilityVersion = JavaVersion.VERSION_1_7
 
 
-    supportLibrariesVersion = '25.3.1'
+    supportLibrariesVersion = '26.0.1'
 
     buglyVersion = '2.1.1'
     glideVersion = "3.7.0"

@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-        <!--<include layout="@layout/comm_lay_toolbar"/>-->
+        <include layout="@layout/comm_lay_toolbar"/>
         <LinearLayout
             android:id="@+id/lay_content"
             android:layout_width="match_parent"
