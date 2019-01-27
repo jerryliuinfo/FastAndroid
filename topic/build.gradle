@@ -1,22 +1,28 @@
 def config = rootProject.ext
-if (isNeedTopicModule.toBoolean()) {
-    apply plugin: 'com.android.library'
-} else {
-    apply plugin: 'com.android.application'
-}
+//if (isNeedTopicModule.toBoolean()) {
+//    apply plugin: 'com.android.library'
+//} else {
+//    apply plugin: 'com.android.application'
+//}
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion config.android.compileSdkVersion
     buildToolsVersion config.android.buildToolsVersion
     defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
         if (!isNeedTopicModule.toBoolean()){
-            applicationId "com.apache.fastandroid.topic"
+            //applicationId "com.apache.fastandroid.topic"
             //dex突破65535的限制
-            multiDexEnabled true
+            //multiDexEnabled true
         }
         minSdkVersion config.android.minSdkVersion
         targetSdkVersion config.android.targetSdkVersion
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -46,5 +52,9 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     api config.supportDependencies.multidex
     api project(':baselib')
+
+    //ARouter
+    //api config.thirddependencies.arouter_api
+    annotationProcessor thirddependencies.arouter_compiler
 
 }

@@ -6,8 +6,9 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
-import android.support.multidex.MultiDex;
 import android.text.TextUtils;
+
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.BaseApp;
@@ -19,7 +20,6 @@ import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.SPUtil;
-import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
@@ -27,6 +27,7 @@ import com.tesla.framework.support.crash.TUncaughtExceptionHandler;
 import com.tesla.framework.support.db.FastAndroidDB;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
+
 import java.io.File;
 
 /**
@@ -48,11 +49,11 @@ public class MyApplication extends Application {
         }*/
         //freeline
         //FreelineCore.init(this);
-//        if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
-//            ARouter.openLog();     // 打印日志
-//            ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
-//        }
-        //ARouter.init(this); // 尽可能早，推荐在Application中初始化
+        if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
+            ARouter.openLog();     // 打印日志
+            ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        }
+        ARouter.init(this); // 尽可能早，推荐在Application中初始化
 
 
         mContext = this;
@@ -89,12 +90,13 @@ public class MyApplication extends Application {
 
 
 
+
     }
 
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        MultiDex.install(base);
+       // MultiDex.install(base);
     }
 
     private void initHttp(){

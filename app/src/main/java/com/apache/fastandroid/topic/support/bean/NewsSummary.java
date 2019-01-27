@@ -61,7 +61,7 @@ public class NewsSummary implements Serializable,IPagingAdapter.ItemTypeData {
 
 
 
-    public static class AdsBean {
+    public static class AdsBean implements Serializable{
         private String title;
         private String tag;
         private String imgsrc;
@@ -109,7 +109,7 @@ public class NewsSummary implements Serializable,IPagingAdapter.ItemTypeData {
         }
     }
 
-    public static class ImgextraBean {
+    public static class ImgextraBean implements Serializable{
         private String imgsrc;
 
         public String getImgsrc() {

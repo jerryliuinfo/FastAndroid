@@ -55,11 +55,11 @@ android {
 
         flavorDimensions "debug","release"
 
-        /*javaCompileOptions {
+        javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
-        }*/
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -202,7 +202,10 @@ dependencies {
 
     if (isNeedTopicModule.toBoolean()) {
         api project(':topic')
+    }else{
+        api project(':baselib')
     }
+
     api config.supportDependencies.appcompatV7
 
 
@@ -215,10 +218,8 @@ dependencies {
     debugImplementation config.thirddependencies.leakcanary_support_fragment
 
 
-
-    // 替换成最新版本, 需要注意的是api
-    // 要与compiler匹配使用，均使用最新版可以保证兼容
-//    compile config.thirddependencies.arouter_api
-//    annotationProcessor thirddependencies.arouter_compiler
+    //ARouter
+    api config.thirddependencies.arouter_api
+    annotationProcessor thirddependencies.arouter_compiler
 }
 

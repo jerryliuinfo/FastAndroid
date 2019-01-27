@@ -7,13 +7,15 @@ android {
     buildToolsVersion config.android.buildToolsVersion
 
     defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
         minSdkVersion config.android.minSdkVersion
         targetSdkVersion config.android.targetSdkVersion
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-
-
     }
 
     lintOptions {
@@ -59,6 +61,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
     api supportDependencies.junit
     api 'com.android.support:support-annotations:25.3.1'
+
+    //ARouter
+    api config.thirddependencies.arouter_api
+    annotationProcessor thirddependencies.arouter_compiler
 }
 
 

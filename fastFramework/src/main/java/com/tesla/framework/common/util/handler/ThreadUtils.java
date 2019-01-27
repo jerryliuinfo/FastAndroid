@@ -1,5 +1,8 @@
 package com.tesla.framework.common.util.handler;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -49,6 +52,22 @@ public class ThreadUtils {
 
     public static Executor getThreadPoolExecutor(){
         return THREAD_POOL_EXECUTOR;
+    }
+
+
+
+    private static Handler mHandler = new Handler(Looper.getMainLooper());
+    /**
+     * Be sure execute in main thread.
+     *
+     * @param runnable code
+     */
+    private void runInMainThread(Runnable runnable) {
+        if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
+            mHandler.post(runnable);
+        } else {
+            runnable.run();
+        }
     }
 
 }

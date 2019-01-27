@@ -2,6 +2,8 @@ package com.apache.fastandroid.topic;
 
 import android.support.v4.app.Fragment;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.apache.fastandroid.artemis.bridge.RouterMap;
 import com.apache.fastandroid.topic.news.InformationFragment;
 import com.apache.fastandroid.topic.site.SitesListFragment;
 import com.tesla.framework.support.bean.TabItem;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by 01370340 on 2017/9/2.
  */
-
+@Route(path = RouterMap.TOPIC.TOPIC_INFORMAGTION_FRAGMENT)
 public class MainTabsFragment extends ATabsTabLayoutFragment<TabItem> {
 
     public static MainTabsFragment newFragment(){

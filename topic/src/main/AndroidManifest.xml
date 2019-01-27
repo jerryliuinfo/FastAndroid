@@ -6,9 +6,12 @@
     <uses-sdk tools:overrideLibrary="com.android.support:multidex:1.0.2"/>
 
     <application android:allowBackup="true"
-                 android:supportsRtl="true"
-    >
+                 android:supportsRtl="true">
+
+
         <activity android:name=".ResultClientActivity"/>
+
+        <activity android:name=".TopicHomeActivity"/>
 
     </application>
 

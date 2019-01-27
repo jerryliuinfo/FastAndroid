@@ -14,14 +14,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
+import com.apache.fastandroid.artemis.bridge.RouterMap;
 import com.apache.fastandroid.artemis.util.activitytask.ActivityLifeCallback;
-import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.setting.SettingFragment;
+import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
-import com.apache.fastandroid.test.TestFragment;
 import com.apache.fastandroid.video.VideoTabsFragment;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.tesla.framework.common.util.ResUtil;
@@ -85,9 +87,9 @@ public class MainActivity extends MyBaseActivity{
 
     private void loadMenuData(){
         View headView = mNavigationView.getHeaderView(0);
-        CircleImageView circleImageView = (CircleImageView) headView.findViewById(R.id.iv_user_avator);
-        TextView tv_username = (TextView) headView.findViewById(R.id.tv_username);
-        ImageView iv_arrow = (ImageView) headView.findViewById(R.id.iv_arrow);
+        CircleImageView circleImageView =  headView.findViewById(R.id.iv_user_avator);
+        TextView tv_username = headView.findViewById(R.id.tv_username);
+        ImageView iv_arrow =  headView.findViewById(R.id.iv_arrow);
         View layout_user= headView.findViewById(R.id.layout_user);
         try {
             ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginedUserListActivity",null,null,new Object[]{this});
@@ -166,10 +168,16 @@ public class MainActivity extends MyBaseActivity{
             case R.id.nav_item_music:
                 fragment = VideoTabsFragment.newFragment();
                 break;
-            case R.id.nav_item_test:
-                fragment = TestFragment.newFragment();
+            case R.id.nav_item_topic2:
+                //fragment = TestFragment.newFragment();
                 //fragment = TestRecycleHeaderViewFragment.newFragment();
+                fragment = (Fragment) ARouter.getInstance().build(RouterMap.TOPIC.TOPIC_INFORMAGTION_FRAGMENT).navigation();
                 break;
+            case R.id.nav_item_topic_home:
+
+                ARouter.getInstance().build(RouterMap.TOPIC.TOPIC_HOMEACTIVITY).navigation();
+                closeDrawer();
+                return;
             case R.id.nav_item_setting:
                 SettingFragment.launch(this);
                 closeDrawer();
@@ -183,7 +191,6 @@ public class MainActivity extends MyBaseActivity{
             getSupportActionBar().setTitle(title);
             getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();
         }
-
 
         closeDrawer();
 
@@ -295,12 +302,6 @@ public class MainActivity extends MyBaseActivity{
         NLog.d(TAG,"onDestroy");
 
         NetworkHelper.getInstance().removeNetworkInductor(mNetworkInductor);
-
-        try {
-            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_MAIN_NAME+":watchLeakCancary",null,null,new Object[]{MainActivity.this});
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         //EventBus.getDefault().unregister(this);
     }
