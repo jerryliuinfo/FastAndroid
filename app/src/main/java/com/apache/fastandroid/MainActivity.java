@@ -31,16 +31,23 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
-import com.tesla.framework.support.inject.ViewInject;
+import com.tesla.framework.support.butterknife.BindLayout;
+import com.tesla.framework.support.butterknife.BindView;
+import com.tesla.framework.support.butterknife.RefBindApi;
 import com.tesla.framework.ui.widget.CircleImageView;
+
+@BindLayout(R.layout.activity_main)
 public class MainActivity extends MyBaseActivity{
     public static void launch(Activity from){
         from.startActivity(new Intent(from,MainActivity.class));
     }
-    @ViewInject(id = R.id.drawer)
+    //@ViewInject(id = R.id.drawer)
+
+    @BindView(R.id.drawer)
     DrawerLayout mDrawerLayout;
 
-    @ViewInject(id = R.id.navigation_view)
+    //@ViewInject(id = R.id.navigation_view)
+    @BindView(R.id.navigation_view)
     NavigationView mNavigationView;
 
 
@@ -60,8 +67,9 @@ public class MainActivity extends MyBaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         NLog.d(TAG,"onCreate");
+        RefBindApi.bind(this);
 
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
@@ -75,7 +83,12 @@ public class MainActivity extends MyBaseActivity{
         MainLog.d("top activity = %s", ActivityLifeCallback.get().topActivity());
     }
 
+    @Override
+    public void setContentView(View view) {
+        super.setContentView(view);
+        MainLog.d("called setContentView");
 
+    }
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -175,7 +188,7 @@ public class MainActivity extends MyBaseActivity{
                 break;
             case R.id.nav_item_topic_home:
 
-                ARouter.getInstance().build(RouterMap.TOPIC.TOPIC_HOMEACTIVITY).navigation();
+                ARouter.getInstance().build(RouterMap.TOPIC.TOPIC_HOMEACTIVITY).withInt("name",1).navigation();
                 closeDrawer();
                 return;
             case R.id.nav_item_setting:
