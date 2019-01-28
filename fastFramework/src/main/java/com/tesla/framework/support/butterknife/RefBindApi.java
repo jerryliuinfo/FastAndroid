@@ -60,15 +60,14 @@ public class RefBindApi {
                     Method method = clz.getMethod("findViewById",int.class);
                     method.setAccessible(true);
                     //得到view
-                    Object view = method.invoke(obj, id);
+                    //Object view = method.invoke(obj, id);
+                    Object view = obj.findViewById(id);
                     field.setAccessible(true);
                     //将view设置给Activiyt中定义的成员变量
                     field.set(obj,view);
                 } catch (NoSuchMethodException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
                     e.printStackTrace();
                 }
             }

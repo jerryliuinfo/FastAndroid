@@ -140,6 +140,16 @@
 -keepclassmembers class * extends android.webkit.WebViewClient {
     public void *(android.webkit.WebView, jav.lang.String);
 }
+
+
+
+
+-keep class com.tesla.framework.support.butterknife
+-keepclassmembers class * {
+    @class com.tesla.framework.support.butterknife *;
+}
+
+
 #----------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 
