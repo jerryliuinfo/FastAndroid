@@ -22,7 +22,12 @@ android {
         targetSdkVersion config.android.targetSdkVersion
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+                //                arguments = [moduleName: project.getName()]
+            }
+        }
     }
 
     lintOptions {
@@ -38,18 +43,20 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     //    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     //        exclude group: 'com.android.support', module: 'support-annotations'
     //    })
-    compile config.supportDependencies.design
-    compile config.supportDependencies.appcompatV7
-    compile config.supportDependencies.cardview
-    compile config.thirddependencies.fastjson
-    compile config.thirddependencies.gson
-    compile config.thirddependencies.okhttp3
-    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
-    implementation project(':artemis_compiler')
+    api config.supportDependencies.design
+    api config.supportDependencies.appcompatV7
+    api config.supportDependencies.cardview
+    api config.thirddependencies.fastjson
+    api config.thirddependencies.gson
+    api config.thirddependencies.okhttp3
+    api 'com.afollestad.material-dialogs:core:0.9.4.5'
+
+
+    api project(':artemis_compiler')
 }
 
 

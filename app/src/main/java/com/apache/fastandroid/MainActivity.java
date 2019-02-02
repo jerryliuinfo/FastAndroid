@@ -20,7 +20,6 @@ import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.bridge.RouterMap;
-import com.apache.fastandroid.artemis.util.activitytask.ActivityLifeCallback;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
@@ -28,26 +27,25 @@ import com.apache.fastandroid.video.VideoTabsFragment;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
-import com.tesla.framework.support.butterknife.BindLayout;
-import com.tesla.framework.support.butterknife.BindView;
-import com.tesla.framework.support.butterknife.RefBindApi;
+import com.tesla.framework.support.annotation.AnnotationHelper;
+import com.tesla.framework.support.butterknife.RefBindView;
+import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.widget.CircleImageView;
+import com.tesla.framework.ui.widget.ToastUtils;
 
-@BindLayout(R.layout.activity_main)
+//@RefBindLayout(R.layout.activity_main)
+
 public class MainActivity extends MyBaseActivity{
     public static void launch(Activity from){
         from.startActivity(new Intent(from,MainActivity.class));
     }
-    //@ViewInject(id = R.id.drawer)
 
-    @BindView(R.id.drawer)
+    @RefBindView(idStr = "drawer")
     DrawerLayout mDrawerLayout;
 
-    //@ViewInject(id = R.id.navigation_view)
-    @BindView(R.id.navigation_view)
+    @RefBindView(R.id.navigation_view)
     NavigationView mNavigationView;
 
 
@@ -55,21 +53,17 @@ public class MainActivity extends MyBaseActivity{
 
     private int selecteId = -1;
 
-    private  NetworkHelper.NetworkInductor mNetworkInductor = new NetworkHelper.NetworkInductor() {
-        @Override
-        public void onNetworkChanged(NetworkHelper.NetworkStatus status) {
-            NLog.d(TAG, "onNetworkChanged status = %s", status);
-        }
-    };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         NLog.d(TAG,"onCreate");
-        RefBindApi.bind(this);
 
-        //setContentView(R.layout.activity_main);
+
+        setContentView(R.layout.activity_main);
+        //RefBindApi.bind(this,this);
+        AnnotationHelper.inject(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
@@ -78,16 +72,17 @@ public class MainActivity extends MyBaseActivity{
         MenuItem menuItem = mNavigationView.getMenu().getItem(0);
         menuItem.setChecked(true);
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
-
-        NetworkHelper.getInstance().addNetworkInductor(mNetworkInductor);
-        MainLog.d("top activity = %s", ActivityLifeCallback.get().topActivity());
     }
 
     @Override
     public void setContentView(View view) {
         super.setContentView(view);
         MainLog.d("called setContentView");
+    }
 
+    @OnClick(R.id.btn_click)
+    public void testOnClick(View view){
+        ToastUtils.showMessage(this, "showToast");
     }
 
     @Override
@@ -98,6 +93,7 @@ public class MainActivity extends MyBaseActivity{
         }
     }
 
+    @OnClick
     private void loadMenuData(){
         View headView = mNavigationView.getHeaderView(0);
         CircleImageView circleImageView =  headView.findViewById(R.id.iv_user_avator);
@@ -246,9 +242,7 @@ public class MainActivity extends MyBaseActivity{
     public boolean onBackClick() {
         if (!canFinish) {
             canFinish = true;
-
             showMessage("再按一次退出");
-
             new Handler().postDelayed(new Runnable() {
 
                 @Override
@@ -257,7 +251,6 @@ public class MainActivity extends MyBaseActivity{
                 }
 
             }, 1500);
-
             return true;
         }
 
@@ -286,7 +279,6 @@ public class MainActivity extends MyBaseActivity{
     protected void onStart() {
         super.onStart();
         NLog.d(TAG,"onStart");
-
     }
 
     @Override
@@ -306,17 +298,12 @@ public class MainActivity extends MyBaseActivity{
     protected void onStop() {
         super.onStop();
         NLog.d(TAG,"onStop");
-
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         NLog.d(TAG,"onDestroy");
-
-        NetworkHelper.getInstance().removeNetworkInductor(mNetworkInductor);
-
-        //EventBus.getDefault().unregister(this);
     }
 
 

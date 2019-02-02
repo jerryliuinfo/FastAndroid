@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(':fastFramework')
     api config.supportDependencies.design
     api config.supportDependencies.appcompatV7
@@ -58,13 +58,22 @@ dependencies {
     //compile config.thirddependencies.android_debug_database
     //compile config.supportDependencies.multidex
     api config.supportDependencies.support_customtabs
-    testCompile 'junit:junit:4.12'
-    api supportDependencies.junit
-    api 'com.android.support:support-annotations:25.3.1'
+
 
     //ARouter
     api config.thirddependencies.arouter_api
     annotationProcessor thirddependencies.arouter_compiler
+
+
+
+
+
+
+
+
+    testImplementation 'junit:junit:4.12'
+    api supportDependencies.junit
+    api 'com.android.support:support-annotations:25.3.1'
 }
 
 

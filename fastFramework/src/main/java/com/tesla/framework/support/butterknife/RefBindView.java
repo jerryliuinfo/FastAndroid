@@ -10,6 +10,8 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD,ElementType.TYPE})
-public @interface BindView {
+public @interface RefBindView {
     int value() default 0;
+
+    String idStr() default "";
 }

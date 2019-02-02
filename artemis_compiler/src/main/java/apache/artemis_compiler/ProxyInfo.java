@@ -1,22 +1,40 @@
 package apache.artemis_compiler;
 
+import com.squareup.javapoet.ClassName;
+import com.squareup.javapoet.JavaFile;
+import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.TypeSpec;
 import java.util.HashMap;
 import java.util.Map;
-
+import javax.lang.model.element.ExecutableElement;
+import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 
+import static javax.lang.model.element.Modifier.PUBLIC;
 public class ProxyInfo {
+    /**
+     * 采用类名方式不能被混淆(否则编译阶段跟运行阶段，该字符串会不一样)，或者采用字符串方式
+     */
+    public static final String PROXY = "TA";
+    public static final String ClassSuffix = "_" + PROXY;
+
+
+
     //代表类
     private TypeElement typeElement;
-
+    /**
+     * 类注解的值(布局id)
+     */
     private int value;
 
     private String pkgName;
     /**
      * key为id，也就是成员变量注解的值，value为对应的成员变量
      */
-    private Map<Integer,VariableElement> injectElements = new HashMap<>();
+    private Map<Integer, VariableElement> mInjectElements = new HashMap<>();
+
+    private Map<Integer, ExecutableElement> mInjectMethods = new HashMap<>();
 
 
     public TypeElement getTypeElement() {
@@ -44,18 +62,20 @@ public class ProxyInfo {
     }
 
     public Map<Integer, VariableElement> getInjectElements() {
-        return injectElements;
+        return mInjectElements;
     }
 
     public void setInjectElements(Map<Integer, VariableElement> injectElements) {
-        this.injectElements = injectElements;
+        mInjectElements = injectElements;
     }
 
-    /**
-     * 采用类名方式不能被混淆(否则编译阶段跟运行阶段，该字符串会不一样)，或者采用字符串方式
-     */
-    public static final String PROXY = "TA";
-    public static final String ClassSuffix = "_" + PROXY;
+    public Map<Integer, ExecutableElement> getInjectMethods() {
+        return mInjectMethods;
+    }
+
+    public void setInjectMethods(Map<Integer, ExecutableElement> injectMethods) {
+        mInjectMethods = injectMethods;
+    }
 
     public String getProxyClassFullName() {
         return typeElement.getQualifiedName().toString() + ClassSuffix;
@@ -68,50 +88,61 @@ public class ProxyInfo {
     public String packageName;
 
     public String generateJavaCode(){
-        StringBuilder builder = new StringBuilder();
-        builder.append("//自动生成的注解类，勿动!!!\n");
-        builder.append("package ").append(packageName).append(";\n\n");
-        builder.append("import example.tb.com.module_api.*;\n");
-        builder.append("import android.support.annotation.Keep;\n");
-        builder.append('\n');
+        ClassName viewClass = ClassName.get("android.view", "View");
+        ClassName keepClass = ClassName.get("android.support.annotation", "Keep");
+        ClassName clickClass = ClassName.get("android.view", "View.OnClickListener");
+        String qualifiedName = typeElement.getQualifiedName().toString();
+        String simpleName = typeElement.getSimpleName().toString();
+        ClassName typeClass = ClassName.get(qualifiedName.replace("."+ simpleName, ""), simpleName);
+        MethodSpec.Builder builder = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC)
+                .addParameter(typeClass,"host",Modifier.PUBLIC)
+                .addParameter(typeClass,"object",Modifier.PUBLIC);
 
-        builder.append("@Keep").append("\n");//禁止混淆，否则被当作无用代码优化掉，反射的时候找不到该类
-        builder.append("public class ").append(getClassName()).append(" implements " + ProxyInfo.PROXY + "<" + typeElement.getQualifiedName() + ">");
-        builder.append(" {\n");
-
-        generateMethod(builder);
-
-        builder.append('\n');
-
-        builder.append("}\n");
-        return builder.toString();
-    }
-
-
-    private void generateMethod(StringBuilder builder) {
-        builder.append("@Override\n ");
-        builder.append("public void inject(" + typeElement.getQualifiedName() + " host, Object object ) {\n");
-
-        if (value > 0) {
-            builder.append("host.setContentView(" + value + ");\n");
+        if (value > 0){
+            builder.addStatement("host.setContentView($L)", value);
         }
-        for (int id : getInjectElements().keySet()) {
-            VariableElement variableElement = getInjectElements().get(id);
+
+        //findViewById
+        for (Integer id : mInjectElements.keySet()) {
+            VariableElement variableElement = mInjectElements.get(id);
             String name = variableElement.getSimpleName().toString();
             String type = variableElement.asType().toString();
-
             //这里object如果不为空，则可以传入view等对象
-            builder.append(" if(object instanceof android.view.View)");
-            builder.append("\n{\n");
-            builder.append("host." + name).append(" = ");
-            builder.append("(" + type + ")((android.view.View)object).findViewById(" + id + ");");
-            builder.append("\n}\n").append("else").append("\n{\n");
-            builder.append("host." + name).append(" = ");
-            builder.append("(" + type + ")host.findViewById(" + id + ");");
-            builder.append("\n}\n");
-        }
+            builder.addStatement("host.$L=($L)object.findViewById($L)", name, type, id);
 
-        builder.append("  }\n");
+        }
+        for (int id : mInjectMethods.keySet()) {
+            /*host.tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    host.clickTest(host.tv);
+                }
+            });*/
+            ExecutableElement executableElement = mInjectMethods.get(id);
+            VariableElement variableElement = mInjectElements.get(id);
+            String name = variableElement.getSimpleName().toString();
+            TypeSpec comparator = TypeSpec.anonymousClassBuilder("")
+                    .addSuperinterface(clickClass)
+                    .addMethod(MethodSpec.methodBuilder("onClick")
+                            .addAnnotation(Override.class)
+                            .addModifiers(PUBLIC)
+                            .addParameter(viewClass, "view")
+                            .addStatement("host.$L(host.$L)", executableElement.getSimpleName().toString(), name)
+                            .returns(void.class)
+                            .build())
+                    .build();
+            builder.addStatement("host.$L.setOnClickListener($L)", name, comparator);
+        }
+        MethodSpec methodSpec = builder.build();
+        TypeSpec typeSpec = TypeSpec.classBuilder(getClassName())
+                .addModifiers(PUBLIC)
+                .addAnnotation(keepClass)
+                .addMethod(methodSpec)
+                .build();
+        JavaFile javaFile = JavaFile.builder(packageName, typeSpec).build();
+        return javaFile.toString();
     }
+
+
 
 }

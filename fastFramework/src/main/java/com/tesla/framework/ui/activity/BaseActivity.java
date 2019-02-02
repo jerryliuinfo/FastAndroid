@@ -39,6 +39,7 @@ import java.util.Set;
 /**
  * Created by JerryLiu on 17/04/08.
  */
+
 public class BaseActivity extends AppCompatActivity implements ITaskManager,CustomToolbar.OnToolbarDoubleClickListener {
 
     static final String TAG = "Activity-Base";

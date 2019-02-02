@@ -13,6 +13,12 @@
         android:orientation="vertical"
         >
         <include layout="@layout/comm_lay_toolbar"/>
+        <Button
+            android:id="@+id/btn_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click Me"
+            />
         <LinearLayout
             android:id="@+id/lay_content"
             android:layout_width="match_parent"

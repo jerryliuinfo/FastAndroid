@@ -1,24 +1,25 @@
 package com.tesla.framework.support.butterknife;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.View;
-
 import com.tesla.framework.common.util.log.NLog;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
  * Created by Jerry on 2019/1/27.
+ * 通过反射的方式做findViewById和OnClick事件处理
  */
 public class RefBindApi {
 
-    public static void bind(Activity obj){
+    public static void bind(Activity obj,Context context){
         bindLayout(obj);
-        bindView(obj);
+        bindView(obj,context);
         bindOnClick(obj);
-
     }
 
 
@@ -28,8 +29,8 @@ public class RefBindApi {
             if (clz.getName().startsWith("android")){
                 break;
             }
-            if (clz.isAnnotationPresent(BindLayout.class)){
-                BindLayout bindId = clz.getAnnotation(BindLayout.class);
+            if (clz.isAnnotationPresent(RefBindLayout.class)){
+                RefBindLayout bindId = clz.getAnnotation(RefBindLayout.class);
                 int id = bindId.value();
                 try {
                     Method method = clz.getMethod("setContentView", int.class);
@@ -45,28 +46,33 @@ public class RefBindApi {
                 }
             }
         }
-
-
-
     }
-    public static void bindView(Activity obj){
-        Class<?> clz = obj.getClass();
+    public static void bindView(Activity injectedSource,Context context){
+        Class<?> clz = injectedSource.getClass();
         Field[] fields = clz.getDeclaredFields();
         for (Field field : fields) {
-            if (field.isAnnotationPresent(BindView.class)){
-                BindView bindView = field.getAnnotation(BindView.class);
+            if (field.isAnnotationPresent(RefBindView.class)){
+                RefBindView bindView = field.getAnnotation(RefBindView.class);
                 int id = bindView.value();
+                if (id == 0) {
+                    String idStr = bindView.idStr();
+                    if (!TextUtils.isEmpty(idStr)) {
+                        try {
+                            Resources resources = context.getPackageManager().getResourcesForApplication(context.getPackageName());
+                            id = resources.getIdentifier(idStr, "id", context.getPackageName());
+                            if (id == 0)
+                                throw new RuntimeException(String.format("%s 的属性%s关联了id=%s，但是这个id是无效的", injectedSource.getClass().getSimpleName(),
+                                        field.getName(), idStr));
+                        } catch (Exception e) {
+                            //									e.printStackTrace();
+                        }
+                    }
+                }
                 try {
-                    Method method = clz.getMethod("findViewById",int.class);
-                    method.setAccessible(true);
-                    //得到view
-                    //Object view = method.invoke(obj, id);
-                    Object view = obj.findViewById(id);
+                    Object view = injectedSource.findViewById(id);
                     field.setAccessible(true);
                     //将view设置给Activiyt中定义的成员变量
-                    field.set(obj,view);
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
+                    field.set(injectedSource,view);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
@@ -83,8 +89,8 @@ public class RefBindApi {
             }
             Method[] methods = clz.getDeclaredMethods();
             for (final Method method : methods) {
-                if (method.isAnnotationPresent(BindOnClick.class)){
-                    BindOnClick bindOnClick = method.getAnnotation(BindOnClick.class);
+                if (method.isAnnotationPresent(RefBindOnClick.class)){
+                    RefBindOnClick bindOnClick = method.getAnnotation(RefBindOnClick.class);
                     int [] ids = bindOnClick.value();
                     for (final int id : ids) {
                         final View view = obj.findViewById(id);
@@ -103,9 +109,8 @@ public class RefBindApi {
                                     }
                                 }
                             });
-                        }
-
-                    }
+                     }
+                }
                 }
             }
         }

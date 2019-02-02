@@ -6,11 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by Jerry on 2019/1/
- * 一次可以设置多个点击事件
+ * Created by Jerry on 2019/1/27.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface BindOnClick {
-    int[] value();
+@Target({ElementType.FIELD,ElementType.TYPE})
+public @interface RefBindLayout {
+    int value() default 0;
 }

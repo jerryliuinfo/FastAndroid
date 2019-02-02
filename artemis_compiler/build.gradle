@@ -1,9 +1,11 @@
 apply plugin: 'java-library'
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':artemis_annotation')
+
     api 'com.google.auto.service:auto-service:1.0-rc2'
-    implementation project(':artemis_annotation')
+    api 'com.squareup:javapoet:1.9.0'
 }
 
 sourceCompatibility = "7"

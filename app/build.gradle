@@ -60,6 +60,13 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+                //                arguments = [moduleName: project.getName()]
+            }
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -198,13 +205,14 @@ android {
 
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+  api fileTree(include: ['*.jar'], dir: 'libs')
 
     if (isNeedTopicModule.toBoolean()) {
         api project(':topic')
     }else{
         api project(':baselib')
     }
+    implementation project(':artemis_annotation')
 
     api config.supportDependencies.appcompatV7
 
