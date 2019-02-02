@@ -42,6 +42,8 @@
 
         <activity android:name=".topic.TopicDetailActivity"/>
 
+        <activity android:name=".AnnotationTestActivity"/>
+
       <!--  &lt;!&ndash; 配置信息 launch &ndash;&gt;
         <meta-data
             android:name="CHANNEL"

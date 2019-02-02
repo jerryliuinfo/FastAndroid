@@ -38,22 +38,18 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-//    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    })
-
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    //        exclude group: 'com.android.support', module: 'support-annotations'
+    //    })
     compile config.supportDependencies.design
     compile config.supportDependencies.appcompatV7
     compile config.supportDependencies.cardview
-
     compile config.thirddependencies.fastjson
     compile config.thirddependencies.gson
     compile config.thirddependencies.okhttp3
-
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
-
-
+    implementation project(':artemis_compiler')
 }
 
 
@@ -72,7 +68,6 @@ tasks.withType(Javadoc) {
     options.addStringOption('Xdoclint:none', '-quiet')
     options.addStringOption('encoding', 'UTF-8')
     options.addStringOption('charSet', 'UTF-8')
-
 
 
 

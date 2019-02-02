@@ -2,6 +2,8 @@ package apache.artemis_compiler;
 
 import com.apache.artemis_annotation.FindId;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -15,8 +17,9 @@ import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
+import javax.lang.model.element.VariableElement;
 import javax.lang.model.util.Elements;
-import javax.lang.model.util.Types;
+import javax.tools.JavaFileObject;
 
 /**
  * Created by Jerry on 2019/1/28.
@@ -29,7 +32,6 @@ public class TCompiler extends AbstractProcessor {
 
     private Filer mFiler;
 
-    private Types mTypes;
 
     private Map<String,ProxyInfo> mProxyMap = new HashMap<>();
 
@@ -41,13 +43,13 @@ public class TCompiler extends AbstractProcessor {
         messager = processingEnvironment.getMessager();
         mElements = processingEnvironment.getElementUtils();
         mFiler = processingEnvironment.getFiler();
-        mTypes = processingEnvironment.getTypeUtils();
     }
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
         collectionInfo(roundEnvironment);
-        return false;
+        generateClass();
+        return true;
     }
 
     @Override
@@ -70,25 +72,59 @@ public class TCompiler extends AbstractProcessor {
             int value = element.getAnnotation(FindId.class).value();
             //处理类注解
             if (element.getKind().isClass()){
+                System.out.println("collectionInfo element kind isClass ");
                 TypeElement typeElement = (TypeElement) element;
                 //类的完整路径
                 String qualifiedName = typeElement.getQualifiedName().toString();
                 String clzName = typeElement.getSimpleName().toString();
                 String packageName = mElements.getPackageOf(element).getQualifiedName().toString();
                 System.out.println("qualifiedName = "+qualifiedName +", clzName = "+clzName +", packageName = "+packageName);
+               /* ProxyInfo proxyInfo = mProxyMap.get(qualifiedName);
+                if (proxyInfo == null){
+                    proxyInfo = new ProxyInfo();
+                    mProxyMap.put(qualifiedName,proxyInfo);
+                }*/
+                ProxyInfo proxyInfo = new ProxyInfo();
+                proxyInfo.setValue(value);
+                proxyInfo.setPkgName(packageName);
+                proxyInfo.setTypeElement(typeElement);
+
+                mProxyMap.put(qualifiedName,proxyInfo);
+            }
+            //处理成员变量注解
+            else if (element.getKind().isField()){
+                System.out.println("collectionInfo element kind isField ");
+                VariableElement variableElement = (VariableElement) element;
+                //代表类
+                TypeElement typeElement = (TypeElement) variableElement.getEnclosingElement();
+                String qualifiedName = typeElement.getQualifiedName().toString();
+                System.out.println("qualifiedName = "+ qualifiedName +", simpleName = "+ typeElement.getSimpleName().toString());
                 ProxyInfo proxyInfo = mProxyMap.get(qualifiedName);
                 if (proxyInfo == null){
                     proxyInfo = new ProxyInfo();
                     mProxyMap.put(qualifiedName,proxyInfo);
                 }
-                proxyInfo.setValue(value);
-                proxyInfo.setPkgName(packageName);
-                proxyInfo.setTypeElement(typeElement);
-
+                proxyInfo.getInjectElements().put(value,variableElement);
+            }else {
+                System.out.println("not class or field");
+                continue;
             }
-            //处理成员变量注解
-            else if (element.getKind().isField()){
+        }
+    }
 
+    private void generateClass(){
+        for (String key : mProxyMap.keySet()) {
+            ProxyInfo proxyInfo = mProxyMap.get(key);
+            JavaFileObject sourceFile;
+
+            try {
+                sourceFile = mFiler.createSourceFile(proxyInfo.getProxyClassFullName(), proxyInfo.getTypeElement());
+                Writer writer = sourceFile.openWriter();
+                writer.write(proxyInfo.generateJavaCode());
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
