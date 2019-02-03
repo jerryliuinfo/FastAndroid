@@ -1,11 +1,11 @@
-package com.apache.fastandroid.video;
+package com.apache.fastandroid.topic.video;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
-import com.apache.fastandroid.video.bean.VideoBean;
-import com.apache.fastandroid.video.bean.VideoResultBean;
-import com.apache.fastandroid.video.view.VideoItemViewCreator;
+import com.apache.fastandroid.topic.video.bean.VideoBean;
+import com.apache.fastandroid.topic.video.bean.VideoResultBean;
+import com.apache.fastandroid.topic.video.view.VideoItemViewCreator;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.paging.IPaging;

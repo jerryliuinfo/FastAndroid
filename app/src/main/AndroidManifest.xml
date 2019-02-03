@@ -20,11 +20,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="${appName}"
-        tools:replace="android:label"
+        tools:replace="android:theme,android:icon,android:label"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppCommonTheme"
-
         >
         <activity android:name=".SplashActivity">
             <intent-filter>

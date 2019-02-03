@@ -38,8 +38,6 @@ public class SplashActivity extends BaseActivity {
                         toMain();
                     }
                 }).start();
-
-
     }
 
 

@@ -68,7 +68,7 @@ public class BizFragment extends ABaseFragment {
     }
 
     public static final int REQUEST_CODE_LOGIN_ACTIVITY = 1000;
-    private LoginAction mLoginAction;
+    private LoginAction requestWebLoginAction;
     class LoginAction extends IAction{
 
         @Override
@@ -77,14 +77,14 @@ public class BizFragment extends ABaseFragment {
             if (interupted){
                 doInterrupt();
             }else {
-                mLoginAction = null;
+                requestWebLoginAction = null;
             }
             return interupted;
         }
 
         @Override
         public void doInterrupt() {
-            mLoginAction = this;
+            requestWebLoginAction = this;
         }
 
         public LoginAction(Activity context, IAction parent) {
@@ -98,8 +98,8 @@ public class BizFragment extends ABaseFragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_CODE_LOGIN_ACTIVITY){
-            if (mLoginAction != null){
-                mLoginAction.run();
+            if (requestWebLoginAction != null){
+                requestWebLoginAction.run();
             }
         }
     }

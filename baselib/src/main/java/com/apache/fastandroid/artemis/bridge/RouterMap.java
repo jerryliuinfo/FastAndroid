@@ -6,8 +6,9 @@ package com.apache.fastandroid.artemis.bridge;
 public class RouterMap {
 
     public static final class TOPIC {
-        public static final String TOPIC_INFORMAGTION_FRAGMENT = "/topic/informagtion_fragment";
-        public static final String TOPIC_HOMEACTIVITY = "/topic/homeactivity ";
+        public static final String INFORMAGTION_FRAGMENT = "/topic/informagtion_fragment";
+        public static final String HOMEACTIVITY = "/topic/homeactivity ";
+        public static final String VIDEOS_FRAGMENT = "/topic/videos"; //视频
 
     }
 }

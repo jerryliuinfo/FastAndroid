@@ -53,7 +53,7 @@ dependencies {
     api config.thirddependencies.fastjson
     api config.thirddependencies.gson
     api config.thirddependencies.okhttp3
-    api config.material_dialogs
+    api config.thirddependencies.material_dialogs
 
 
     api project(':artemis_compiler')

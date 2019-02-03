@@ -1,4 +1,4 @@
-package com.apache.fastandroid.video.bean;
+package com.apache.fastandroid.topic.video.bean;
 
 import java.io.Serializable;
 

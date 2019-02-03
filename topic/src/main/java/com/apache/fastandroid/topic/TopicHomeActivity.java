@@ -9,7 +9,7 @@ import com.apache.fastandroid.artemis.bridge.RouterMap;
 /**
  * Created by Jerry on 2019/1/26.
  */
-@Route(path = RouterMap.TOPIC.TOPIC_HOMEACTIVITY)
+@Route(path = RouterMap.TOPIC.HOMEACTIVITY)
 public class TopicHomeActivity extends AppCompatActivity {
 
     @Override

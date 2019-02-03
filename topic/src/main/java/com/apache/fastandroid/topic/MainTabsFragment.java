@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by 01370340 on 2017/9/2.
  */
-@Route(path = RouterMap.TOPIC.TOPIC_INFORMAGTION_FRAGMENT)
+@Route(path = RouterMap.TOPIC.INFORMAGTION_FRAGMENT)
 public class MainTabsFragment extends ATabsTabLayoutFragment<TabItem> {
 
     public static MainTabsFragment newFragment(){

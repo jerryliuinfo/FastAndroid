@@ -207,10 +207,10 @@ android {
 dependencies {
   api fileTree(include: ['*.jar'], dir: 'libs')
 
-    if (isNeedTopicModule.toBoolean()) {
-        api project(':topic')
-    }else{
+    if (isTopicRunAlone.toBoolean()) {
         api project(':baselib')
+    }else{
+        api project(':topic')
     }
     implementation project(':artemis_annotation')
 

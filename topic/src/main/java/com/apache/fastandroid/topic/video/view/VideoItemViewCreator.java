@@ -1,11 +1,11 @@
-package com.apache.fastandroid.video.view;
+package com.apache.fastandroid.topic.video.view;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.apache.fastandroid.video.bean.VideoBean;
+import com.apache.fastandroid.topic.video.bean.VideoBean;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
 

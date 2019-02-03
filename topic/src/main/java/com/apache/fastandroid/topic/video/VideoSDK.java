@@ -1,7 +1,7 @@
-package com.apache.fastandroid.video;
+package com.apache.fastandroid.topic.video;
 
-import com.apache.fastandroid.topic.support.sdk.ApiConstans;
-import com.apache.fastandroid.video.bean.VideoResultBean;
+import com.apache.fastandroid.artemis.HttpUrlConstants;
+import com.apache.fastandroid.topic.video.bean.VideoResultBean;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
@@ -16,7 +16,7 @@ public class VideoSDK extends ABizLogic {
     @Override
     protected HttpConfig configHttpConfig() {
         HttpConfig httpConfig = new HttpConfig();
-        httpConfig.baseUrl = ApiConstans.Urls.YOUKU_VIDEOS_URLS;
+        httpConfig.baseUrl = HttpUrlConstants.YOUKU_VIDEOS_URLS;
         return httpConfig;
     }
 

@@ -1,4 +1,4 @@
-package com.apache.fastandroid.video.action;
+package com.apache.fastandroid.topic.video.action;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -43,7 +43,7 @@ public class WifiAction extends IAction {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         isWifi = true;
-                        run();
+                        doAction();
                     }
 
                 })
