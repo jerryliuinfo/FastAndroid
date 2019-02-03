@@ -3,7 +3,7 @@ package com.apache.fastandroid.artemis.rx.observer;
 import com.apache.fastandroid.artemis.exception.ApiException;
 import com.apache.fastandroid.artemis.rx.RxUtil;
 import com.apache.fastandroid.artemis.rx.base.BaseDataObserver;
-import com.apache.fastandroid.artemis.support.bean.BaseBean;
+import com.apache.fastandroid.artemis.support.bean.BaseResponseBean;
 import com.apache.fastandroid.artemis.support.exception.ICheck;
 import com.tesla.framework.network.task.TaskException;
 
@@ -31,7 +31,7 @@ public abstract class DataObserver<T> extends BaseDataObserver<T> {
     }
 
     @Override
-    public void doOnNext(BaseBean<T> data) {
+    public void doOnNext(BaseResponseBean<T> data) {
         if (data == null){
             doOnError("数据为空");
             return;

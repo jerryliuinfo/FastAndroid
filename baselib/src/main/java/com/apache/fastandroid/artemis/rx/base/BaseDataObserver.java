@@ -2,7 +2,7 @@ package com.apache.fastandroid.artemis.rx.base;
 
 import com.apache.fastandroid.artemis.exception.ApiException;
 import com.apache.fastandroid.artemis.rx.interfaces.IDataSubscribe;
-import com.apache.fastandroid.artemis.support.bean.BaseBean;
+import com.apache.fastandroid.artemis.support.bean.BaseResponseBean;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
@@ -13,7 +13,7 @@ import io.reactivex.disposables.Disposable;
  * 基类BaseObserver使用BaseData
  */
 
-public abstract class BaseDataObserver<T> implements Observer<BaseBean<T>>,IDataSubscribe<T> {
+public abstract class BaseDataObserver<T> implements Observer<BaseResponseBean<T>>,IDataSubscribe<T> {
 
     @Override
     public void onSubscribe(@NonNull Disposable d) {
@@ -21,7 +21,7 @@ public abstract class BaseDataObserver<T> implements Observer<BaseBean<T>>,IData
     }
 
     @Override
-    public void onNext(@NonNull BaseBean<T> baseBean) {
+    public void onNext(@NonNull BaseResponseBean<T> baseBean) {
         doOnNext(baseBean);
     }
 

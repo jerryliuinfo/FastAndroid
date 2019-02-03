@@ -20,41 +20,23 @@ public class ImageLoaderOptions {
     public static final int LOAD_STRATEGY_ONLY_WIFI = 1;
 
     private Context context;
-
     private View viewContainer;  // 图片容器
     private String url;  // 图片地址
-
     private int holderId = -1;  // 占位图
-
     private int errorId = -1;  //错误的图片
-
     private Drawable holderDrawable;  // 设置展位图
-
     private Drawable errorDrawable;  //加载错误的图片
-
     private int emptyUrlId = -1;
     private Drawable emptyUrlDrawable;
-
-
     private Integer resource;  // 图片地址
     private ImageSize imageSize;  //设置图片的大小
-
-
     private boolean asGif = false;   //是否作为gif展示
     private boolean isCrossFade = false; //是否渐变平滑的显示图片
-
     private  boolean skipMemoryCache = false; //是否禁用内存缓存
-
     private  boolean blurImage = false; //是否使用高斯模糊
-
-
     private  DiskCacheStrategy mDiskCacheStrategy;
-
     private int type;  //类型 (大图，中图，小图)
-
     private int wifiStrategy;//加载策略，是否在wifi下才加载
-
-    //private BaseTarget target = null; //target
 
     private ImageLoaderOptions (Builder builder ){
         this.context = builder.context;

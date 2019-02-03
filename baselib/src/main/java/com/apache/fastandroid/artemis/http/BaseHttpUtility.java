@@ -1,7 +1,7 @@
 package com.apache.fastandroid.artemis.http;
 
 import com.alibaba.fastjson.JSON;
-import com.apache.fastandroid.artemis.support.bean.BaseBean;
+import com.apache.fastandroid.artemis.support.bean.BaseResponseBean;
 import com.apache.fastandroid.artemis.support.exception.ICheck;
 import com.tesla.framework.network.http.OkHttpUtility;
 import com.tesla.framework.network.task.TaskException;
@@ -67,9 +67,9 @@ public class BaseHttpUtility extends OkHttpUtility{
             }
 
             //把公共字段 code,msg等字段塞进去
-            if (dataBean instanceof BaseBean){
+            if (dataBean instanceof BaseResponseBean){
 
-                BaseBean baseResultBean = (BaseBean) dataBean;
+                BaseResponseBean baseResultBean = (BaseResponseBean) dataBean;
 
                 try {
                     if (jsonObject.has("code")){

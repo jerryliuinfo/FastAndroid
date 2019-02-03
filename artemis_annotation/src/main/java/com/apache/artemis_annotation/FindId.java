@@ -1,15 +1,19 @@
 package com.apache.artemis_annotation;
 
-import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 /**
- * Created by Jerry on 2019/1/28.
+ * @auther tb
+ * @time 2018/3/20 下午2:09
+ * @desc 绑定view的id或者layout的id，包含findViewById和setContentView两个功能
  */
-@Retention(RetentionPolicy.CLASS)
-@Target({ElementType.FIELD,ElementType.TYPE})
+@Retention(RUNTIME)
+@Target({FIELD, TYPE})
 public @interface FindId {
     int value();
 }

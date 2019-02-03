@@ -1,6 +1,6 @@
 package com.apache.fastandroid.artemis;
 
-import com.apache.fastandroid.artemis.support.bean.BaseBean;
+import com.apache.fastandroid.artemis.support.bean.BaseResponseBean;
 import com.apache.fastandroid.artemis.support.exception.ICheck;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.task.TaskException;
@@ -18,14 +18,14 @@ public abstract class BaseBizLogic extends ABizLogic {
      * @param <T>
      * @throws TaskException
      */
-    public <T extends BaseBean> void checkRepsonse(T result)throws TaskException {
+    public <T extends BaseResponseBean> void checkRepsonse(T result)throws TaskException {
         if (result == null){
             throw new TaskException("数据为空");
         }
         if (result.getData() == null){
             throw new TaskException("data字段为空");
         }
-        final BaseBean baseBean =  result;
+        final BaseResponseBean baseBean =  result;
         if (!"0".equals(baseBean.getCode())){
             TaskException taskException = new TaskException();
             taskException.setCode(baseBean.getCode());

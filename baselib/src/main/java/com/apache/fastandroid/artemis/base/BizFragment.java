@@ -1,9 +1,12 @@
 package com.apache.fastandroid.artemis.base;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 
+import com.apache.fastandroid.artemis.AppContext;
 import com.tesla.framework.common.util.ResUtil;
+import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 
@@ -64,5 +67,40 @@ public class BizFragment extends ABaseFragment {
         return bizFragment;
     }
 
+    public static final int REQUEST_CODE_LOGIN_ACTIVITY = 1000;
+    private LoginAction mLoginAction;
+    class LoginAction extends IAction{
 
+        @Override
+        public boolean interrupt() {
+            boolean interupted = AppContext.isNotLogined();
+            if (interupted){
+                doInterrupt();
+            }else {
+                mLoginAction = null;
+            }
+            return interupted;
+        }
+
+        @Override
+        public void doInterrupt() {
+            mLoginAction = this;
+        }
+
+        public LoginAction(Activity context, IAction parent) {
+            super(context, parent);
+        }
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_LOGIN_ACTIVITY){
+            if (mLoginAction != null){
+                mLoginAction.run();
+            }
+        }
+    }
 }

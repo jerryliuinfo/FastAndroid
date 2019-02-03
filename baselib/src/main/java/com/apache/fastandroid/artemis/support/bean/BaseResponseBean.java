@@ -4,9 +4,10 @@ import java.io.Serializable;
 
 /**
  * Created by 01370340 on 2017/9/1.
+ * 与服务器交互
  */
 
-public class BaseBean<T> implements Serializable {
+public class BaseResponseBean<T> implements Serializable {
     private String code;
     private String msg;
     private T data;
@@ -37,8 +38,9 @@ public class BaseBean<T> implements Serializable {
     }
 
 
+
     @Override
     public String toString() {
-        return "BaseBean{" + "code='" + code + '\'' + ", msg='" + msg + '\'' + ", data=" + data + '}';
+        return "BaseResponseBean{" + "code='" + code + '\'' + ", msg='" + msg + '\'' + ", data=" + data + '}';
     }
 }

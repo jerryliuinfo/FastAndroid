@@ -1,6 +1,6 @@
 package com.apache.fastandroid.artemis.rx.interfaces;
 
-import com.apache.fastandroid.artemis.support.bean.BaseBean;
+import com.apache.fastandroid.artemis.support.bean.BaseResponseBean;
 
 import io.reactivex.disposables.Disposable;
 
@@ -17,7 +17,7 @@ public interface IDataSubscribe<T> {
      * 成功回调
      * @param baseData 基础泛型
      */
-    void doOnNext(BaseBean<T> baseData);
+    void doOnNext(BaseResponseBean<T> baseData);
 
     void doOnError(String msg);
 

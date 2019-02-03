@@ -114,6 +114,7 @@ ext {
             arouter_compiler: "com.alibaba:arouter-compiler:1.2.2",
             //Android DebugDatabase
             android_debug_database:  "com.amitshekhar.android:debug-db:1.0.1",
+            material_dialogs:  "com.afollestad.material-dialogs:core:0.9.4.5",
 
     ]
 

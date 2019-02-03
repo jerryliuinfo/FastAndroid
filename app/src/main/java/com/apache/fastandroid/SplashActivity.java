@@ -2,7 +2,7 @@ package com.apache.fastandroid;
 
 import android.os.Bundle;
 import android.view.View;
-import com.apache.fastandroid.app.AppContext;
+import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
 import com.apache.fastandroid.topic.support.config.ADConfigManager;
 import com.apache.fastandroid.widget.SplashCountDownView;
