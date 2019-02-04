@@ -1,13 +1,15 @@
 package apache.artemis_compiler;
 
-import com.apache.artemis_annotation.FindId;
-import com.apache.artemis_annotation.OnClick;
+import com.apache.artemis_annotation.AnFindId;
+import com.apache.artemis_annotation.AnOnClick;
+
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
+
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.Messager;
@@ -23,55 +25,76 @@ import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
-/**
- * Created by Jerry on 2019/1/28.
- */
-public class TCompiler extends AbstractProcessor {
 
+//@AutoService(Processor.class)
+//@SupportedSourceVersion(SourceVersion.RELEASE_8)//也可以采用下面的写法
+//@SupportedAnnotationTypes({"AnFindId"})//此写法混淆的时候需要保留FindId类
+public class TCompiler2 extends AbstractProcessor {
+    private Filer mFileUtils;
+    private Elements mElementUtils;
     private Messager messager;
-
-    private Elements mElements;
-
-    private Filer mFiler;
-
-
-    private Map<String,ProxyInfo> mProxyMap = new HashMap<>();
-
-
+    /**
+     * 一个需要生成的类的集合（key为类的全名，value为该类所有相关的需要的信息）
+     */
+    private Map<String, ProxyInfo2> mProxyMap = new HashMap<String, ProxyInfo2>();
+    
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
-
+        mFileUtils = processingEnvironment.getFiler();
+        mElementUtils = processingEnvironment.getElementUtils();
         messager = processingEnvironment.getMessager();
-        mElements = processingEnvironment.getElementUtils();
-        mFiler = processingEnvironment.getFiler();
     }
-
+    
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.RELEASE_8;
+    }
+    
+    @Override
+    public Set<String> getSupportedAnnotationTypes() {
+        Set<String> annotationTypes = new LinkedHashSet<String>();
+        annotationTypes.add(AnFindId.class.getCanonicalName());
+        annotationTypes.add(AnOnClick.class.getCanonicalName());
+        return annotationTypes;
+    }
+    
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
         collectionInfo(roundEnvironment);
         generateClass();
         return true;
     }
-
-    @Override
-    public SourceVersion getSupportedSourceVersion() {
-        return SourceVersion.RELEASE_8;
+    
+    /**
+     * 生成代理类
+     */
+    private void generateClass() {
+        for (String key : mProxyMap.keySet()) {
+            ProxyInfo2 proxyInfo = mProxyMap.get(key);
+            JavaFileObject sourceFile = null;
+            try {
+                sourceFile = mFileUtils.createSourceFile(proxyInfo.getProxyClassFullName(), proxyInfo.typeElement);
+                Writer writer = sourceFile.openWriter();
+                writer.write(proxyInfo.generateJavaCode());
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                error(proxyInfo.typeElement, "===tb===%s", e.getMessage());
+            }
+        }
     }
-
-    @Override
-    public Set<String> getSupportedAnnotationTypes() {
-        Set<String> hashSet = new LinkedHashSet<>();
-        hashSet.add(FindId.class.getCanonicalName());
-        System.out.println("getSupportedAnnotationTypes annotation name = "+FindId.class.getCanonicalName() );
-        return hashSet;
-    }
-
-    private void collectionInfo(RoundEnvironment roundEnvironment){
+    
+    /**
+     * 收集所需生成类的信息
+     *
+     * @param roundEnvironment
+     */
+    private void collectionInfo(RoundEnvironment roundEnvironment) {
         //process可能会多次调用，避免生成重复的代理类
         mProxyMap.clear();
         //获得被该注解声明的类和变量
-        Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(FindId.class);
+        Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(AnFindId.class);
         //收集信息
         for (Element element : elements) {
             if (element.getKind() == ElementKind.CLASS) {
@@ -82,48 +105,48 @@ public class TCompiler extends AbstractProcessor {
                 /*类名*/
                 String clsName = typeElement.getSimpleName().toString();
                 /*获取包名*/
-                String packageName = mElements.getPackageOf(typeElement).getQualifiedName().toString();
-
-                FindId findId = element.getAnnotation(FindId.class);
+                String packageName = mElementUtils.getPackageOf(typeElement).getQualifiedName().toString();
+                
+                AnFindId findId = element.getAnnotation(AnFindId.class);
                 if (findId != null) {
                     int value = findId.value();
                     //处理类注解
-                    ProxyInfo proxyInfo = mProxyMap.get(qualifiedName);
+                    ProxyInfo2 proxyInfo = mProxyMap.get(qualifiedName);
                     if (proxyInfo == null) {
-                        proxyInfo = new ProxyInfo();
+                        proxyInfo = new ProxyInfo2();
                         mProxyMap.put(qualifiedName, proxyInfo);
                     }
-
-                    proxyInfo.setValue(value);
-                    proxyInfo.setTypeElement(typeElement);
+                    
+                    proxyInfo.value = value;
+                    proxyInfo.typeElement = typeElement;
                     proxyInfo.packageName = packageName;
                 }
             } else if (element.getKind() == ElementKind.FIELD) {
                 //获取注解的值
-                FindId findId = element.getAnnotation(FindId.class);
+                AnFindId findId = element.getAnnotation(AnFindId.class);
                 if (findId != null) {
                     int value = findId.value();
                     //处理成员变量注解
                     VariableElement variableElement = (VariableElement) element;
                     //这里先要获取上层封装类型，然后强转为TypeElement
                     String qualifiedName = ((TypeElement) element.getEnclosingElement()).getQualifiedName().toString();
-                    ProxyInfo proxyInfo = mProxyMap.get(qualifiedName);
+                    ProxyInfo2 proxyInfo = mProxyMap.get(qualifiedName);
                     if (proxyInfo == null) {
-                        proxyInfo = new ProxyInfo();
+                        proxyInfo = new ProxyInfo2();
                         mProxyMap.put(qualifiedName, proxyInfo);
                     }
-                    proxyInfo.getInjectElements().put(value, variableElement);
+                    proxyInfo.mInjectElements.put(value, variableElement);
                 }
             } else {
                 continue;
             }
         }
         //获得被该注解声明的方法
-        Set<? extends Element> elementsMethod = roundEnvironment.getElementsAnnotatedWith(OnClick.class);
+        Set<? extends Element> elementsMethod = roundEnvironment.getElementsAnnotatedWith(AnOnClick.class);
         for (Element element : elementsMethod) {
             if (element.getKind() == ElementKind.METHOD) {
                 //获取注解的值
-                OnClick onClick = element.getAnnotation(OnClick.class);
+                AnOnClick onClick = element.getAnnotation(AnOnClick.class);
                 if (onClick != null) {
                     int[] value = onClick.value();
                     if (value != null && value.length > 0) {
@@ -131,12 +154,12 @@ public class TCompiler extends AbstractProcessor {
                             ExecutableElement executableElement = (ExecutableElement) element;
                             //这里先要获取上层封装类型，然后强转为TypeElement
                             String qualifiedName = ((TypeElement) element.getEnclosingElement()).getQualifiedName().toString();
-                            ProxyInfo proxyInfo = mProxyMap.get(qualifiedName);
+                            ProxyInfo2 proxyInfo = mProxyMap.get(qualifiedName);
                             if (proxyInfo == null) {
-                                proxyInfo = new ProxyInfo();
+                                proxyInfo = new ProxyInfo2();
                                 mProxyMap.put(qualifiedName, proxyInfo);
                             }
-                            proxyInfo.getInjectMethods().put(value[i], executableElement);
+                            proxyInfo.mInjectMethods.put(value[i], executableElement);
                         }
                     }
                 }
@@ -145,26 +168,11 @@ public class TCompiler extends AbstractProcessor {
             }
         }
     }
-
-    /**
-     * 生成代理类
-     */
-    private void generateClass() {
-        for (String key : mProxyMap.keySet()) {
-            ProxyInfo proxyInfo = mProxyMap.get(key);
-            JavaFileObject sourceFile = null;
-            try {
-                sourceFile = mFiler.createSourceFile(proxyInfo.getProxyClassFullName(), proxyInfo.getTypeElement());
-                Writer writer = sourceFile.openWriter();
-                writer.write(proxyInfo.generateJavaCode());
-                writer.flush();
-                writer.close();
-            } catch (IOException e) {
-                error(proxyInfo.getTypeElement(), "===tb===%s", e.getMessage());
-            }
-        }
+    
+    private void print(String message) {
+        messager.printMessage(Diagnostic.Kind.NOTE, message);
     }
-
+    
     private void error(Element element, String message, Object... args) {
         if (args.length > 0) {
             message = String.format(message, args);

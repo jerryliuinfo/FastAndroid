@@ -2,6 +2,7 @@ package com.apache.fastandroid;
 
 import android.os.Bundle;
 import android.view.View;
+
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
 import com.apache.fastandroid.topic.support.config.ADConfigManager;
@@ -46,7 +47,6 @@ public class SplashActivity extends BaseActivity {
         AppContext.login(new UserDetail());
         MainActivity.launch(SplashActivity.this);
        // ARouter.getInstance().build("/home/MainActivity").navigation();
-
         SplashActivity.this.finish();
     }
 

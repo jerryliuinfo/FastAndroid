@@ -7,7 +7,7 @@ import java.lang.reflect.Constructor;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import apache.artemis_compiler.ProxyInfo;
+import apache.artemis_compiler.ProxyInfo2;
 
 /**
  * Created by Jerry on 2019/1/31.
@@ -23,7 +23,7 @@ public class AnnotationHelper {
     }
 
     public static void inject(Activity host, View root) {
-        String classFullName = host.getClass().getName() + ProxyInfo.ClassSuffix;
+        String classFullName = host.getClass().getName() + ProxyInfo2.ClassSuffix;
         try {
             Constructor constructor = BINDINGS.get(host.getClass());
             if(constructor==null){

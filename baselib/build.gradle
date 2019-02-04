@@ -62,7 +62,7 @@ dependencies {
 
     //ARouter
     api config.thirddependencies.arouter_api
-    annotationProcessor thirddependencies.arouter_compiler
+    annotationProcessor config.thirddependencies.arouter_compiler
 
 
 

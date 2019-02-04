@@ -229,5 +229,8 @@ dependencies {
     //ARouter
     api config.thirddependencies.arouter_api
     annotationProcessor thirddependencies.arouter_compiler
+
+    implementation config.thirddependencies.butterknife
+    annotationProcessor config.thirddependencies.butterknife_compiler
 }
 

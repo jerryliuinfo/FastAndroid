@@ -28,11 +28,11 @@ import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
-import com.tesla.framework.support.butterknife.RefBindApi;
-import com.tesla.framework.support.butterknife.RefBindView;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.widget.CircleImageView;
-import com.tesla.framework.ui.widget.ToastUtils;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 //@RefBindLayout(R.layout.activity_main)
 
@@ -41,10 +41,12 @@ public class MainActivity extends MyBaseActivity{
         from.startActivity(new Intent(from,MainActivity.class));
     }
 
-    @RefBindView(idStr = "drawer")
+    //@RefBindView(idStr = "drawer")
+    @BindView((R.id.drawer))
     DrawerLayout mDrawerLayout;
 
-    @RefBindView(R.id.navigation_view)
+    //@RefBindView(R.id.navigation_view)
+    @BindView((R.id.navigation_view))
     NavigationView mNavigationView;
 
 
@@ -58,8 +60,8 @@ public class MainActivity extends MyBaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RefBindApi.bind(this,this);
-        //AnnotationHelper.inject(this);
+        //RefBindApi.bind(this,this);
+        ButterKnife.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
@@ -76,10 +78,6 @@ public class MainActivity extends MyBaseActivity{
         MainLog.d("called setContentView");
     }
 
-    @OnClick(R.id.btn_click)
-    public void testOnClick(View view){
-        ToastUtils.showMessage(this, "showToast");
-    }
 
     @Override
     protected void onNewIntent(Intent intent) {

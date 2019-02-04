@@ -41,7 +41,7 @@
 
         <activity android:name=".topic.TopicDetailActivity"/>
 
-        <activity android:name=".AnnotationTestActivity"/>
+        <activity android:name=".InjectTestActivity"/>
 
       <!--  &lt;!&ndash; 配置信息 launch &ndash;&gt;
         <meta-data
