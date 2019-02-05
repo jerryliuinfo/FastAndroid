@@ -56,7 +56,7 @@ dependencies {
     api config.thirddependencies.material_dialogs
 
 
-    api project(':artemis_compiler')
+    api project(':artemis_annotation')
 }
 
 
