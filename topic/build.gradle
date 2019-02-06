@@ -67,8 +67,6 @@ dependencies {
     api config.supportDependencies.multidex
     api project(':baselib')
 
-    //ARouter
-    //api config.thirddependencies.arouter_api
-    annotationProcessor thirddependencies.arouter_compiler
-
+    api config.thirddependencies.arouter_api
+    annotationProcessor config.thirddependencies.arouter_compiler
 }

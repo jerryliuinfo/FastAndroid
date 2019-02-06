@@ -204,7 +204,9 @@ public class DeviceUtil {
 
 
 
-
+    public static int getCpuCount(){
+        return Runtime.getRuntime().availableProcessors();
+    }
 
 
 

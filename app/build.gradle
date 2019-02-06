@@ -207,11 +207,10 @@ android {
 dependencies {
   api fileTree(include: ['*.jar'], dir: 'libs')
 
-    if (isTopicRunAlone.toBoolean()) {
-        api project(':baselib')
-    }else{
+    if (!isTopicRunAlone.toBoolean()) {
         api project(':topic')
     }
+    api project(':baselib')
     implementation project(':artemis_annotation')
 
     api config.supportDependencies.appcompatV7
@@ -226,11 +225,10 @@ dependencies {
     debugImplementation config.thirddependencies.leakcanary_support_fragment
 
 
-    //ARouter
-    api config.thirddependencies.arouter_api
-    annotationProcessor thirddependencies.arouter_compiler
-
     implementation config.thirddependencies.butterknife
     annotationProcessor config.thirddependencies.butterknife_compiler
+
+    api config.thirddependencies.arouter_api
+    annotationProcessor config.thirddependencies.arouter_compiler
 }
 

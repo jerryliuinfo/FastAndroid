@@ -12,7 +12,7 @@ import javax.lang.model.element.VariableElement;
  * @time 2018/3/27 下午2:44
  * @desc 对应需要生成某个类的全部相关信息
  */
-public class ProxyInfo2 {
+public class ProxyInfo {
     /**
      * 类
      */

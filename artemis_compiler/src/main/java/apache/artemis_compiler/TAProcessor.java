@@ -1,7 +1,7 @@
 package apache.artemis_compiler;
 
-import com.apache.artemis_annotation.AnFindId;
-import com.apache.artemis_annotation.AnOnClick;
+import com.apache.artemis_annotation.TaOnClick;
+import com.apache.artemis_annotation.ViewById;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -28,15 +28,15 @@ import javax.tools.JavaFileObject;
 
 //@AutoService(Processor.class)
 //@SupportedSourceVersion(SourceVersion.RELEASE_8)//也可以采用下面的写法
-//@SupportedAnnotationTypes({"AnFindId"})//此写法混淆的时候需要保留FindId类
-public class TCompiler2 extends AbstractProcessor {
+//@SupportedAnnotationTypes({"TaFindId"})//此写法混淆的时候需要保留FindId类
+public class TAProcessor extends AbstractProcessor {
     private Filer mFileUtils;
     private Elements mElementUtils;
     private Messager messager;
     /**
      * 一个需要生成的类的集合（key为类的全名，value为该类所有相关的需要的信息）
      */
-    private Map<String, ProxyInfo2> mProxyMap = new HashMap<String, ProxyInfo2>();
+    private Map<String, ProxyInfo> mProxyMap = new HashMap<String, ProxyInfo>();
     
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
@@ -54,8 +54,8 @@ public class TCompiler2 extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> annotationTypes = new LinkedHashSet<String>();
-        annotationTypes.add(AnFindId.class.getCanonicalName());
-        annotationTypes.add(AnOnClick.class.getCanonicalName());
+        annotationTypes.add(ViewById.class.getCanonicalName());
+        annotationTypes.add(TaOnClick.class.getCanonicalName());
         return annotationTypes;
     }
     
@@ -71,7 +71,7 @@ public class TCompiler2 extends AbstractProcessor {
      */
     private void generateClass() {
         for (String key : mProxyMap.keySet()) {
-            ProxyInfo2 proxyInfo = mProxyMap.get(key);
+            ProxyInfo proxyInfo = mProxyMap.get(key);
             JavaFileObject sourceFile = null;
             try {
                 sourceFile = mFileUtils.createSourceFile(proxyInfo.getProxyClassFullName(), proxyInfo.typeElement);
@@ -94,7 +94,7 @@ public class TCompiler2 extends AbstractProcessor {
         //process可能会多次调用，避免生成重复的代理类
         mProxyMap.clear();
         //获得被该注解声明的类和变量
-        Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(AnFindId.class);
+        Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(ViewById.class);
         //收集信息
         for (Element element : elements) {
             if (element.getKind() == ElementKind.CLASS) {
@@ -106,14 +106,14 @@ public class TCompiler2 extends AbstractProcessor {
                 String clsName = typeElement.getSimpleName().toString();
                 /*获取包名*/
                 String packageName = mElementUtils.getPackageOf(typeElement).getQualifiedName().toString();
-                
-                AnFindId findId = element.getAnnotation(AnFindId.class);
+
+                ViewById findId = element.getAnnotation(ViewById.class);
                 if (findId != null) {
                     int value = findId.value();
                     //处理类注解
-                    ProxyInfo2 proxyInfo = mProxyMap.get(qualifiedName);
+                    ProxyInfo proxyInfo = mProxyMap.get(qualifiedName);
                     if (proxyInfo == null) {
-                        proxyInfo = new ProxyInfo2();
+                        proxyInfo = new ProxyInfo();
                         mProxyMap.put(qualifiedName, proxyInfo);
                     }
                     
@@ -123,16 +123,16 @@ public class TCompiler2 extends AbstractProcessor {
                 }
             } else if (element.getKind() == ElementKind.FIELD) {
                 //获取注解的值
-                AnFindId findId = element.getAnnotation(AnFindId.class);
+                ViewById findId = element.getAnnotation(ViewById.class);
                 if (findId != null) {
                     int value = findId.value();
                     //处理成员变量注解
                     VariableElement variableElement = (VariableElement) element;
                     //这里先要获取上层封装类型，然后强转为TypeElement
                     String qualifiedName = ((TypeElement) element.getEnclosingElement()).getQualifiedName().toString();
-                    ProxyInfo2 proxyInfo = mProxyMap.get(qualifiedName);
+                    ProxyInfo proxyInfo = mProxyMap.get(qualifiedName);
                     if (proxyInfo == null) {
-                        proxyInfo = new ProxyInfo2();
+                        proxyInfo = new ProxyInfo();
                         mProxyMap.put(qualifiedName, proxyInfo);
                     }
                     proxyInfo.mInjectElements.put(value, variableElement);
@@ -142,11 +142,11 @@ public class TCompiler2 extends AbstractProcessor {
             }
         }
         //获得被该注解声明的方法
-        Set<? extends Element> elementsMethod = roundEnvironment.getElementsAnnotatedWith(AnOnClick.class);
+        Set<? extends Element> elementsMethod = roundEnvironment.getElementsAnnotatedWith(TaOnClick.class);
         for (Element element : elementsMethod) {
             if (element.getKind() == ElementKind.METHOD) {
                 //获取注解的值
-                AnOnClick onClick = element.getAnnotation(AnOnClick.class);
+                TaOnClick onClick = element.getAnnotation(TaOnClick.class);
                 if (onClick != null) {
                     int[] value = onClick.value();
                     if (value != null && value.length > 0) {
@@ -154,9 +154,9 @@ public class TCompiler2 extends AbstractProcessor {
                             ExecutableElement executableElement = (ExecutableElement) element;
                             //这里先要获取上层封装类型，然后强转为TypeElement
                             String qualifiedName = ((TypeElement) element.getEnclosingElement()).getQualifiedName().toString();
-                            ProxyInfo2 proxyInfo = mProxyMap.get(qualifiedName);
+                            ProxyInfo proxyInfo = mProxyMap.get(qualifiedName);
                             if (proxyInfo == null) {
-                                proxyInfo = new ProxyInfo2();
+                                proxyInfo = new ProxyInfo();
                                 mProxyMap.put(qualifiedName, proxyInfo);
                             }
                             proxyInfo.mInjectMethods.put(value[i], executableElement);

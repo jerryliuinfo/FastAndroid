@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.CLASS)
 @Target({ElementType.METHOD})
-public @interface AnOnClick {
+public @interface TaOnClick {
     int[] value();
 }

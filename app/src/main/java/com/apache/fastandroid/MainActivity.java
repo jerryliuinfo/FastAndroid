@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.apache.artemis_annotation.ViewById;
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
@@ -29,9 +28,11 @@ import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
-import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.widget.CircleImageView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 //@RefBindLayout(R.layout.activity_main)
 
@@ -40,13 +41,12 @@ public class MainActivity extends MyBaseActivity{
         from.startActivity(new Intent(from,MainActivity.class));
     }
 
-    //@RefBindView(idStr = "drawer")
-    //@BindView((R.id.drawer))
-    @ViewById((R.id.drawer))
+    @BindView((R.id.drawer))
+    //@ViewById((R.id.drawer))
     DrawerLayout mDrawerLayout;
 
-    //@RefBindView(R.id.navigation_view)
-    @ViewById((R.id.navigation_view))
+    @BindView((R.id.navigation_view))
+    //@ViewById((R.id.navigation_view))
     NavigationView mNavigationView;
 
 
@@ -61,8 +61,8 @@ public class MainActivity extends MyBaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //RefBindApi.bind(this,this);
-        //ButterKnife.bind(this);
-        ProxyTool.bind(this);
+        ButterKnife.bind(this);
+        //ProxyTool.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
