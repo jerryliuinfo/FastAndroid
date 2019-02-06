@@ -15,24 +15,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.launcher.ARouter;
+import com.apache.artemis_annotation.ViewById;
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
-import com.apache.fastandroid.artemis.bridge.RouterMap;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
+import com.apache.fastandroid.topic.video.VideoTabsFragment;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.bridge.ModularizationDelegate;
+import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.widget.CircleImageView;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 //@RefBindLayout(R.layout.activity_main)
 
@@ -41,12 +39,12 @@ public class MainActivity extends MyBaseActivity{
         from.startActivity(new Intent(from,MainActivity.class));
     }
 
-    @BindView((R.id.drawer))
-    //@ViewById((R.id.drawer))
+    //@BindView((R.id.drawer))
+    @ViewById((R.id.drawer))
     DrawerLayout mDrawerLayout;
 
-    @BindView((R.id.navigation_view))
-    //@ViewById((R.id.navigation_view))
+    //@BindView((R.id.navigation_view))
+    @ViewById((R.id.navigation_view))
     NavigationView mNavigationView;
 
 
@@ -61,8 +59,8 @@ public class MainActivity extends MyBaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //RefBindApi.bind(this,this);
-        ButterKnife.bind(this);
-        //ProxyTool.bind(this);
+        //ButterKnife.bind(this);
+        ProxyTool.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
@@ -167,20 +165,15 @@ public class MainActivity extends MyBaseActivity{
                 fragment = MainNewsTabsFragment.newFragment();
                 break;
             case R.id.nav_item_video:
-                //fragment = VideoTabsFragment.newFragment();
-                Object object = ARouter.getInstance().build(RouterMap.TOPIC.VIDEOS_FRAGMENT).navigation();
-                if (object != null && object instanceof Fragment){
-                    fragment = (Fragment) object;
-                }
-                break;
-            case R.id.nav_item_topic2:
-                //fragment = TestFragment.newFragment();
-                //fragment = TestRecycleHeaderViewFragment.newFragment();
-                fragment = (Fragment) ARouter.getInstance().build(RouterMap.TOPIC.INFORMAGTION_FRAGMENT).navigation();
+                fragment = VideoTabsFragment.newFragment();
+//                Object object = ARouter.getInstance().build(RouterMap.TOPIC.VIDEOS_FRAGMENT).navigation();
+//                if (object != null && object instanceof Fragment){
+//                    fragment = (Fragment) object;
+//                }
                 break;
             case R.id.nav_item_topic_home:
 
-                ARouter.getInstance().build(RouterMap.TOPIC.HOMEACTIVITY).withInt("name",1).navigation();
+                //ARouter.getInstance().build(RouterMap.TOPIC.HOMEACTIVITY).withInt("name",1).navigation();
                 closeDrawer();
                 return;
             case R.id.nav_item_setting:

@@ -3,8 +3,6 @@ package com.apache.fastandroid.topic.video;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.apache.fastandroid.artemis.bridge.RouterMap;
 import com.tesla.framework.support.bean.TabItem;
 import com.tesla.framework.ui.fragment.ATabsTabLayoutFragment;
 
@@ -13,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by jerryliu on 2017/4/11.
  */
-@Route(path = RouterMap.TOPIC.VIDEOS_FRAGMENT)
+//@Route(path = RouterMap.TOPIC.VIDEOS_FRAGMENT)
 public class VideoTabsFragment extends ATabsTabLayoutFragment<TabItem> {
 
     public static VideoTabsFragment newFragment() {

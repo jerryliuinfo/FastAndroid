@@ -15,8 +15,6 @@
 
         <activity android:name=".ResultClientActivity"/>
 
-        <activity android:name=".TopicHomeActivity"/>
-
     </application>
 
 </manifest>

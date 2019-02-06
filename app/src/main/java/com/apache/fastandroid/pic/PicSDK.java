@@ -1,7 +1,7 @@
 package com.apache.fastandroid.pic;
 
 
-import com.apache.fastandroid.app.MyApplication;
+import com.apache.fastandroid.app.FastAndroidApplication;
 import com.apache.fastandroid.artemis.retrofit.BaseHttpUtilsV2;
 import com.apache.fastandroid.topic.support.bean.ImageResultBeans;
 import com.apache.fastandroid.topic.support.sdk.APIService;
@@ -64,7 +64,7 @@ public class PicSDK extends ABizLogic {
         return doGet(configHttpConfig(),setting,params,ImageResultBeans.class);
     }
     public Call<ImageResultBeans> loadImageDataV2(String category, int pageNum) throws TaskException{
-        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(MyApplication.getContext(),ApiConstans.Urls.BAIDU_IMAGES_URLS);
+        BaseHttpUtilsV2 httpUtils = BaseHttpUtilsV2.getInstance(FastAndroidApplication.getContext(),ApiConstans.Urls.BAIDU_IMAGES_URLS);
         //httpUtils.setLogLevel(true, HttpLoggingInterceptor.Level.BODY);
         APIService apiService = httpUtils.getRetrofit().create(APIService.class);
         return apiService.loadImages(category,"全部",String.valueOf(pageNum),"10","1");

@@ -53,7 +53,7 @@ public class Sdk extends ABizLogic {
      * @throws Exception
      */
     public UpdateBean checkAppVersion() throws TaskException{
-        /*BaseHttpUtils httpUtils = BaseHttpUtils.getInstance(MyApplication.getContext(),ApiConstans.Urls.BAIDU_IMAGES_URLS);
+        /*BaseHttpUtils httpUtils = BaseHttpUtils.getInstance(FastAndroidApplication.getContext(),ApiConstans.Urls.BAIDU_IMAGES_URLS);
         APIService apiService = httpUtils.getRetrofit().create(APIService.class);
         Call<BaseResponseBean<UpdateBean>> call =  apiService.checkAppVersion(PublishVersionManager.getVersionCode());
 

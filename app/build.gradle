@@ -225,10 +225,15 @@ dependencies {
     debugImplementation config.thirddependencies.leakcanary_support_fragment
 
 
-    implementation config.thirddependencies.butterknife
-    annotationProcessor config.thirddependencies.butterknife_compiler
+    //implementation config.thirddependencies.butterknife
+    //annotationProcessor config.thirddependencies.butterknife_compiler
 
-    api config.thirddependencies.arouter_api
-    annotationProcessor config.thirddependencies.arouter_compiler
+    //ARouter
+//    api config.thirddependencies.arouter_api
+//    annotationProcessor config.thirddependencies.arouter_compiler
+
+
+    annotationProcessor project(':artemis_compiler')
+
 }
 

@@ -34,8 +34,8 @@ import java.io.File;
  * Created by jerryliu on 2017/3/26.
  */
 
-public class MyApplication extends Application {
-    public static final String TAG = MyApplication.class.getSimpleName();
+public class FastAndroidApplication extends Application {
+    public static final String TAG = FastAndroidApplication.class.getSimpleName();
     private static Context mContext;
 
     private static final String client_id = "7024a413";
@@ -243,7 +243,7 @@ public class MyApplication extends Application {
     }
 
     public static RefWatcher getRefWatcher(Context context) {
-        MyApplication application = (MyApplication) context.getApplicationContext();
+        FastAndroidApplication application = (FastAndroidApplication) context.getApplicationContext();
         return application.mRefWatcher;
     }
 */
