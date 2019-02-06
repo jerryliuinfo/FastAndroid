@@ -30,6 +30,7 @@ import static java.lang.reflect.Modifier.STATIC;
 
 /**
  * Created by Jerry on 2019/2/4.
+ *  调试方法参考 https://www.jianshu.com/p/80a14bc35000
  */
 @AutoService(Processor.class)
 public class ProxyToolProcessor extends AbstractProcessor {
@@ -48,6 +49,10 @@ public class ProxyToolProcessor extends AbstractProcessor {
         mMessager = processingEnv.getMessager();
     }
 
+    /**
+     * key: com.apache.fastandroid.MainActivity
+     * value:ProxyClass
+     */
     private Map<String, ProxyClass> mProxyClassMap = new HashMap<>();
 
     /**
@@ -55,8 +60,6 @@ public class ProxyToolProcessor extends AbstractProcessor {
      */
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-
-
         //处理被ViewById注解的元素
         for (Element element : roundEnv.getElementsAnnotatedWith(ViewById.class)) {
             if (!isValid(ViewById.class, "fields", element)) {
@@ -64,7 +67,6 @@ public class ProxyToolProcessor extends AbstractProcessor {
             }
             parseViewById(element);
         }
-
 
         //处理被Click注解的元素
         for (Element element : roundEnv.getElementsAnnotatedWith(OnClick.class)) {
@@ -125,6 +127,14 @@ public class ProxyToolProcessor extends AbstractProcessor {
         TypeElement classElement = (TypeElement) element.getEnclosingElement();
         String qualifiedName = classElement.getQualifiedName().toString();
         ProxyClass proxyClass = mProxyClassMap.get(qualifiedName);
+
+        System.out.println("getProxyClass element = "+element
+                +", element simpleName = "+element.getSimpleName()
+        +", kind = "+ element.getKind() +", Modifier = "+ element.getModifiers());
+
+        System.out.println("getProxyClass 父类名字 = "+qualifiedName
+        +", enclosing element = "+ element.getEnclosingElement() +", EnclosedElements = "+ element.getEnclosedElements());
+
         if (proxyClass == null) {
             //生成每个宿主类所对应的代理类，后面用于生产java文件
             proxyClass = new ProxyClass(classElement, mElementUtils);

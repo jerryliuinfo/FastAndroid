@@ -48,9 +48,7 @@ public class ProxyTool {
 
 
     public static void createBinding(@NonNull Object target, @NonNull View root) {
-
         try {
-
             //生成类名+后缀名的代理类，并执行注入操作
             Class<?> targetClass = target.getClass();
             Class<?> proxyClass = Class.forName(targetClass.getName() + SUFFIX);

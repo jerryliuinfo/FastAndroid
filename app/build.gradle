@@ -225,14 +225,14 @@ dependencies {
     debugImplementation config.thirddependencies.leakcanary_support_fragment
 
 
-    //implementation config.thirddependencies.butterknife
-    //annotationProcessor config.thirddependencies.butterknife_compiler
+    implementation config.thirddependencies.butterknife
+    annotationProcessor config.thirddependencies.butterknife_compiler
 
     //ARouter
-//    api config.thirddependencies.arouter_api
-//    annotationProcessor config.thirddependencies.arouter_compiler
+    api config.thirddependencies.arouter_api
+    annotationProcessor config.thirddependencies.arouter_compiler
 
-
+    //必须加行这行，否则roxyToolProcessor无法自动生成类
     annotationProcessor project(':artemis_compiler')
 
 }

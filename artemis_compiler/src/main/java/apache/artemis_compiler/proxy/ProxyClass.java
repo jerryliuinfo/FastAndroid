@@ -87,17 +87,20 @@ public class ProxyClass {
                 .addParameter(TypeName.get(mTypeElement.asType()), "target", Modifier.FINAL)
                 .addParameter(VIEW, "root");
 
+        System.out.println("bindViews.size() = "+ bindViews.size() );
+
         //在inject方法中，添加我们的findViewById逻辑
         for (FieldViewBinding model : bindViews) {
             // find views
             injectMethodBuilder.addStatement("target.$N = ($T)(root.findViewById($L))", model.getVariableName(),
                     ClassName.get(model.getTypeMirror()), model.getResId());
-            System.out.println("field name = "+ model.getVariableName() +", field type = "+ClassName.get(model.getTypeMirror())
+            System.out.println("inject views field name = "+ model.getVariableName() +", field type = "+ClassName.get(model.getTypeMirror())
                     +", resId = "+ model.getResId());
         }
 
         System.out.println("mMethods.size() = "+ mMethods.size() );
         if (mMethods.size() > 0) {
+           //生成 View.OnClickListener listener;
             injectMethodBuilder.addStatement("$T listener", VIEW_ON_CLICK_LISTENER);
         }
 
@@ -111,12 +114,14 @@ public class ProxyClass {
                             .addModifiers(Modifier.PUBLIC)
                             .returns(TypeName.VOID)
                             .addParameter(VIEW, "view")
+                            // target.myClick(view);
                             .addStatement("target.$N($L)", method.getMethodName(), method.isParameterEixt() ? method.getParameterName() : "")
                             .build())
                     .build();
             injectMethodBuilder.addStatement("listener = $L ", listener);
             for (int id : method.getIds()) {
                 // set listeners
+                //生成 (root.findViewById(2131427414)).setOnClickListener(listener);
                 injectMethodBuilder.addStatement("(root.findViewById($L)).setOnClickListener(listener)", id);
             }
         }

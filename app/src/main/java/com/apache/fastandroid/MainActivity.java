@@ -31,6 +31,7 @@ import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.widget.CircleImageView;
+import com.tesla.framework.ui.widget.ToastUtils;
 
 //@RefBindLayout(R.layout.activity_main)
 
@@ -84,6 +85,11 @@ public class MainActivity extends MyBaseActivity{
         if ("".equals(intent.getAction())){
 
         }
+    }
+
+    @OnClick(R.id.btn_click_me)
+    public void testOnClick(View view){
+        ToastUtils.showMessage(this,"testOnClick");
     }
 
     @OnClick
