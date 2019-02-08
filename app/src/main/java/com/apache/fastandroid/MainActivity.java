@@ -15,7 +15,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.apache.artemis_annotation.ViewById;
+import com.apache.artemis_annotation.BindOnClick;
+import com.apache.artemis_annotation.BindViewById;
 import com.apache.fastandroid.artemis.ArtemisContext;
 import com.apache.fastandroid.artemis.base.MyBaseActivity;
 import com.apache.fastandroid.artemis.bridge.ModuleConstans;
@@ -33,7 +34,6 @@ import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.widget.CircleImageView;
 import com.tesla.framework.ui.widget.ToastUtils;
 
-//@RefBindLayout(R.layout.activity_main)
 
 public class MainActivity extends MyBaseActivity{
     public static void launch(Activity from){
@@ -41,11 +41,11 @@ public class MainActivity extends MyBaseActivity{
     }
 
     //@BindView((R.id.drawer))
-    @ViewById((R.id.drawer))
+    @BindViewById((R.id.drawer))
     DrawerLayout mDrawerLayout;
 
     //@BindView((R.id.navigation_view))
-    @ViewById((R.id.navigation_view))
+    @BindViewById((R.id.navigation_view))
     NavigationView mNavigationView;
 
 
@@ -87,7 +87,7 @@ public class MainActivity extends MyBaseActivity{
         }
     }
 
-    @OnClick(R.id.btn_click_me)
+    @BindOnClick(R.id.btn_click_me)
     public void testOnClick(View view){
         ToastUtils.showMessage(this,"testOnClick");
     }

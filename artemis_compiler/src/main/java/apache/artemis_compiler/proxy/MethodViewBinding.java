@@ -1,7 +1,7 @@
 package apache.artemis_compiler.proxy;
 
 
-import com.apache.artemis_annotation.OnClick;
+import com.apache.artemis_annotation.BindOnClick;
 
 import java.util.List;
 
@@ -25,14 +25,14 @@ public class MethodViewBinding {
     public MethodViewBinding(Element element) throws IllegalArgumentException {
         mElement = (ExecutableElement) element;
 
-        OnClick viewById = element.getAnnotation(OnClick.class);
+        BindOnClick viewById = element.getAnnotation(BindOnClick.class);
         mIds = viewById.value();
         //方法名
         mMethodName = element.getSimpleName().toString();
         List<? extends VariableElement> parameters = mElement.getParameters();
         if (parameters.size() > 1) {  //参数不能超过1个
             throw new IllegalArgumentException(
-                    String.format("The method annotated with @%s must less two parameters", OnClick.class.getSimpleName()));
+                    String.format("The method annotated with @%s must less two parameters", BindOnClick.class.getSimpleName()));
         }
 
         if (parameters.size() == 1) { //如果有参数必须是View类型

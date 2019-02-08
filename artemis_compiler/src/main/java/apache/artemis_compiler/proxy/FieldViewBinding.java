@@ -1,7 +1,7 @@
 package apache.artemis_compiler.proxy;
 
 
-import com.apache.artemis_annotation.ViewById;
+import com.apache.artemis_annotation.BindViewById;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.VariableElement;
@@ -38,7 +38,7 @@ public class FieldViewBinding {
 
         mElement = (VariableElement) element;
 
-        ViewById viewById = element.getAnnotation(ViewById.class);
+        BindViewById viewById = element.getAnnotation(BindViewById.class);
         mResId = viewById.value();
 
         //变量名

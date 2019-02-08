@@ -106,17 +106,18 @@ public final class NLog
 		return msg;
 	}
 
+
+	public static void d(String format, Object...args)
+	{
+		d(TAG,format,args);
+	}
+
 	public static void d(String tag, String format, Object...args)
 	{
 		if (debug)
 		{
 			logger.d(tag, buildWholeMessage(format, args));
 		}
-	}
-
-	public static void d(String format, Object...args)
-	{
-		d(TAG,format,args);
 	}
 
 	public static void i(String tag, String format, Object...args)

@@ -43,6 +43,7 @@ public class TopicReplyListFragment extends ARecycleViewFragment<TopicReplyBean,
     protected void setUpRefreshConfig(RefreshConfig refreshConfig) {
         super.setUpRefreshConfig(refreshConfig);
         refreshConfig.disalbeFooterMore();
+
     }
 
     @Override
@@ -68,6 +69,7 @@ public class TopicReplyListFragment extends ARecycleViewFragment<TopicReplyBean,
         }else {
             mTopicBean = (TopicBean) savedInstanceSate.getSerializable("topic");
         }
+
 
 
     }

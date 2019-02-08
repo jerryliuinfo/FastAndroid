@@ -11,4 +11,7 @@ public class Consts {
 	// 内存缓存有效时间
 	public static final String MEMORY_CACHE_VALIDITY = "memory_cache_validity";
 
+	public static final String SDK_NAME = "f ";
+	public static final String TAG = SDK_NAME + "::";
+
 }

@@ -1,7 +1,7 @@
 package apache.artemis_compiler.proxy;
 
-import com.apache.artemis_annotation.OnClick;
-import com.apache.artemis_annotation.ViewById;
+import com.apache.artemis_annotation.BindOnClick;
+import com.apache.artemis_annotation.BindViewById;
 import com.google.auto.service.AutoService;
 
 import java.io.IOException;
@@ -61,16 +61,16 @@ public class ProxyToolProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         //处理被ViewById注解的元素
-        for (Element element : roundEnv.getElementsAnnotatedWith(ViewById.class)) {
-            if (!isValid(ViewById.class, "fields", element)) {
+        for (Element element : roundEnv.getElementsAnnotatedWith(BindViewById.class)) {
+            if (!isValid(BindViewById.class, "fields", element)) {
                 return true;
             }
             parseViewById(element);
         }
 
         //处理被Click注解的元素
-        for (Element element : roundEnv.getElementsAnnotatedWith(OnClick.class)) {
-            if (!isValid(OnClick.class, "methods", element)) {
+        for (Element element : roundEnv.getElementsAnnotatedWith(BindOnClick.class)) {
+            if (!isValid(BindOnClick.class, "methods", element)) {
                 return true;
             }
             try {
@@ -191,8 +191,8 @@ public class ProxyToolProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> types = new LinkedHashSet<>();
-        types.add(ViewById.class.getName());
-        types.add(OnClick.class.getName());
+        types.add(BindViewById.class.getName());
+        types.add(BindOnClick.class.getName());
         return types;
     }
 
