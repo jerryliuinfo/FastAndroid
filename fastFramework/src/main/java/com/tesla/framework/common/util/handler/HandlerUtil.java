@@ -22,7 +22,11 @@ public class HandlerUtil {
      * @param runnable
      */
     public static void runUITask(Runnable runnable) {
-        runUITask(runnable,0);
+        if (Thread.currentThread() == Looper.getMainLooper().getThread()){
+            runnable.run();
+        }else {
+           runUITask(runnable,0);
+        }
     }
 
     /**

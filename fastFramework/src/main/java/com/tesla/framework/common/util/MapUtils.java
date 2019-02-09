@@ -1,15 +1,17 @@
 package com.tesla.framework.common.util;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Copy from apache common.
  *
- * @author zhilong <a href="mailto:zhilong.lzl@alibaba-inc.com">Contact me.</a>
- * @version 1.0
- * @since 2017/3/10 下午3:26
  */
 public class MapUtils {
+
+    private HashMap<String,String> map = new HashMap<String, String>(){{put("zhangsan","18");put("lisi","21");}};
+
+
+
     /**
      * Null-safe check if the specified map is not empty.
      * <p>
