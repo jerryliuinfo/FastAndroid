@@ -78,6 +78,7 @@ public class InterceptorServiceImpl implements InterceptorService {
 
                 @Override
                 public void onInterrupt(Throwable exception) {
+                    //只要有一个拦截器执行了onInterrupt，就将CountDownLatch计数清0,执行onContinue函数
                     interceptorBean.setTag(null == exception ? new RuntimeException("No message.") : exception.getMessage());    // save the exception message for backup.
                     countDownLatch.cancel();
                 }
