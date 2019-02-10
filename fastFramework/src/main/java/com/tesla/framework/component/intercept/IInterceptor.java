@@ -1,4 +1,4 @@
-package com.tesla.framework.support.template;
+package com.tesla.framework.component.intercept;
 
 /**
  * Used for inject custom logic when navigation.

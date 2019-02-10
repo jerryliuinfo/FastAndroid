@@ -1,12 +1,10 @@
-package com.tesla.framework.common.util;
+package com.tesla.framework.component.intercept;
 
 import android.content.Context;
 import android.os.SystemClock;
 
 import com.tesla.framework.support.bean.InterceptorBean;
 import com.tesla.framework.support.execption.HandlerException;
-import com.tesla.framework.support.template.IInterceptor;
-import com.tesla.framework.support.template.InterceptorCallback;
 import com.tesla.framework.support.thread.CancelableCountDownLatch;
 import com.tesla.framework.support.thread.DefaultPoolExecutor;
 
@@ -19,7 +17,7 @@ import static com.tesla.framework.common.util.Consts.TAG;
 /**
  * Created by Jerry on 2019/2/9.
  */
-public class SynchronizedNotifyAllDemo {
+public class InterceptorServiceImpl implements InterceptorService {
     private static boolean interceptorHasInit;
     private static final Object interceptorInitLock = new Object();
     static List<IInterceptor> interceptors = new ArrayList<>();
@@ -38,6 +36,7 @@ public class SynchronizedNotifyAllDemo {
         });
     }
 
+    @Override
     public void doInterceptions(final InterceptorBean interceptorBean, final InterceptorCallback callback){
         //等待init初始化完成
         checkInterceptorsInitStatus();
