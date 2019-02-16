@@ -13,5 +13,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface BindViewById {
 
-    int value();
+     int value();
 }

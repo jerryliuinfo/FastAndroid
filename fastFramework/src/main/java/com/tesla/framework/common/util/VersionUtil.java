@@ -11,7 +11,7 @@ import android.text.TextUtils;
  */
 
 public class VersionUtil {
-    public static final String SP_VERSION_INFO = "version_info";
+    private static final String SP_VERSION_INFO = "version_info";
     private static int NEW_VERSION_CODE = -1;
     private static String NEW_VERSION_NAME = "";
 
@@ -35,7 +35,7 @@ public class VersionUtil {
             if (TextUtils.isEmpty(NEW_VERSION_NAME)){
                 PackageInfo packageInfo = getPackageInfo(context);
                 if (packageInfo != null){
-                    return packageInfo.versionName;
+                    NEW_VERSION_NAME = packageInfo.versionName;
                 }
             }
         } catch (Exception e) {
