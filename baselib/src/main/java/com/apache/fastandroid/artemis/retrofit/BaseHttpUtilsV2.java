@@ -40,7 +40,6 @@ public class BaseHttpUtilsV2 {
     public static final int CACHE_SIZE = 4*1024*1024; //cache size
     public static final int NETWORK_TIME_OUT = 20; //network time out
 
-    private static OkHttpClient sDefaultHttpClient;
 
     private Context mContext;
 

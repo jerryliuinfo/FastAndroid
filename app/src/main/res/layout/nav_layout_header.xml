@@ -18,7 +18,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
+        android:src="@mipmap/ic_launcher"
         app:border_color="@color/comm_white"
+
         app:border_width="1dp"/>
 
 
@@ -29,7 +31,6 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -44,7 +45,7 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:text="haha"
-                android:textColor="@color/comm_white"
+                android:textColor="@color/comm_red"
                 android:textSize="14sp"/>
 
             <ImageView

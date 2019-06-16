@@ -1,13 +1,14 @@
 package com.apache.fastandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-
+import android.os.Handler;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
+import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.topic.support.config.ADConfigManager;
 import com.apache.fastandroid.widget.SplashCountDownView;
-import com.tesla.framework.common.util.ResUtil;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 
@@ -20,35 +21,41 @@ public class SplashActivity extends BaseActivity {
     @ViewInject(id = R.id.splash_coutdown_view)
     private SplashCountDownView coutDownView;
 
+    @Override
+    public int inflateContentView() {
+        return R.layout.activity_splash;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-        coutDownView.setVisibility(View.VISIBLE);
-        ADConfigManager.getInstance(this).setLastShowADTime(System.currentTimeMillis());
-        coutDownView.setCountDowningText(ResUtil.getString(R.string.splash_countdown_count)).setDuraionn(5000)
-                .setCallback(new SplashCountDownView.CountDownCallbackImpl(){
-                    @Override
-                    public void onFinish(long delay) {
-                        toMain();
-                    }
+    protected void layoutInit(Bundle savedInstanceState) {
+        super.layoutInit(savedInstanceState);
 
-                    @Override
-                    public void onClicked() {
-                        toMain();
-                    }
-                }).start();
+        //coutDownView.setVisibility(View.VISIBLE);
+        ADConfigManager.getInstance(this).setLastShowADTime(System.currentTimeMillis());
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toMain();
+            }
+        },3000);
     }
+
 
 
 
     private void toMain(){
         AppContext.login(new UserDetail());
-        MainActivity.launch(SplashActivity.this);
-       // ARouter.getInstance().build("/home/MainActivity").navigation();
+        UserBean userBean = new UserBean();
+        MainActivity.launch(SplashActivity.this,userBean);
         SplashActivity.this.finish();
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data != null){
+            UserBean userBean = data.getParcelableExtra("userBean");
+            NLog.d("userBean = %s",userBean);
+        }
+    }
 }

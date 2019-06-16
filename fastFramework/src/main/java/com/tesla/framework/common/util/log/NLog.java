@@ -128,10 +128,6 @@ public final class NLog
 		}
 	}
 
-	public static void e(String format, Object...args)
-	{
-		e(TAG,format,args);
-	}
 	public static void e(String tag, String format, Object...args)
 	{
 		if (debug)

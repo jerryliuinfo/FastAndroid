@@ -31,7 +31,7 @@ public abstract class DoubleClickListener implements View.OnClickListener {
             NLog.d("onDoubleClick");
             return;
         }else {
-            NLog.d("间隔过短，不处理");
+            NLog.d("间隔过短，不处理","");
         }
     }
 

@@ -1,7 +1,7 @@
 package com.tesla.framework.component.intercept;
 
 /**
- * Callback after navigation.
+ * ActivityForResultCallback after navigation.
  *
  * @author Alex <a href="mailto:zhilong.liu@aliyun.com">Contact me.</a>
  * @version 1.0
@@ -10,25 +10,25 @@ package com.tesla.framework.component.intercept;
 public interface NavigationCallback {
 
     /**
-     * Callback when find the destination.
+     * ActivityForResultCallback when find the destination.
      *
      */
     void onFound();
 
     /**
-     * Callback after lose your way.
+     * ActivityForResultCallback after lose your way.
      *
      */
     void onLost();
 
     /**
-     * Callback after navigation.
+     * ActivityForResultCallback after navigation.
      *
      */
     void onArrival();
 
     /**
-     * Callback on interrupt.
+     * ActivityForResultCallback on interrupt.
      *
      */
     void onInterrupt();

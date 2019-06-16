@@ -113,6 +113,11 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
     }
 
     @Override
+    public int inflateContentView() {
+        return R.layout.comm_ui_fragment_container;
+    }
+
+    @Override
     protected int configTheme() {
         if (overrideTheme > 0)
             return overrideTheme;

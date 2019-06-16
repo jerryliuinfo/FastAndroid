@@ -42,7 +42,7 @@ public class MethodViewBinding {
                         String.format("The method parameter must be %s type", ProxyClass.VIEW.toString()));
             }
             mParameterEixt = true;
-            mParameterName=variableElement.getSimpleName().toString();
+            mParameterName = variableElement.getSimpleName().toString();
         }
 
     }

@@ -42,6 +42,18 @@ public class VersionUtil {
         }
         return NEW_VERSION_NAME;
     }
+    public static String getVersionNameAndFormat(Context context,String format) {
+        try {
+            if (TextUtils.isEmpty(NEW_VERSION_NAME)){
+                PackageInfo packageInfo = getPackageInfo(context);
+                if (packageInfo != null){
+                    NEW_VERSION_NAME = packageInfo.versionName;
+                }
+            }
+        } catch (Exception e) {
+        }
+        return NEW_VERSION_NAME +format;
+    }
 
 
     private static PackageInfo getPackageInfo(Context context) {

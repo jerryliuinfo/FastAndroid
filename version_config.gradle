@@ -19,7 +19,7 @@ ext {
 
     buglyVersion = '2.1.1'
     glideVersion = "3.7.0"
-    okhttp3Version = "3.6.0"
+    okhttp3Version = "3.7.0"
     fastjsonVersion = "1.2.29"
     junitVersion = "4.12"
 
@@ -71,7 +71,7 @@ ext {
 
             volly            : "com.android.volley:volley:1.0.0",
             okhttp3          :  "com.squareup.okhttp3:okhttp:$okhttp3Version",
-            okhttp3_log_interceptor      :  "com.squareup.okhttp3:logging-interceptor:3.5.0",
+            okhttp3_log_interceptor      :  "com.squareup.okhttp3:logging-interceptor:$okhttp3Version",
 
             //gson
             gson             :  "com.google.code.gson:gson:2.8.2",

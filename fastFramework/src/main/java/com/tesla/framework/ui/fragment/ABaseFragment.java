@@ -333,7 +333,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
     public void showMessage(CharSequence msg) {
         if (!TextUtils.isEmpty(msg) && getActivity() != null){
-            ToastUtils.showMessage(getActivity(),msg.toString());
+            ToastUtils.showToast(getActivity(),msg.toString());
         }
 
     }

@@ -38,7 +38,8 @@ public class ImageLoaderOptions {
     private int type;  //类型 (大图，中图，小图)
     private int wifiStrategy;//加载策略，是否在wifi下才加载
 
-    private ImageLoaderOptions (Builder builder ){
+
+    ImageLoaderOptions (Builder builder ){
         this.context = builder.context;
         this.asGif = builder.asGif;
 
@@ -61,8 +62,6 @@ public class ImageLoaderOptions {
         this.blurImage = builder.blurImage;
         this.type = builder.type;
         this.wifiStrategy = builder.wifiStrategy;
-
-
     }
 
     public Integer getResource() {
@@ -154,30 +153,22 @@ public class ImageLoaderOptions {
         private int holderId = -1;  // 设置展位图
         private Drawable holderDrawable;  // 设置展位图
 
-
-
         private int errorId = -1;  //加载错误的图片
         private Drawable errorDrawable;  //加载错误的图片
 
         private int emptyUrlId = 0;        //url为空时加载资源
         private Drawable emptyUrlDrawable; //url为空时加载资源
 
-
         private Integer resource;  // 图片地址
         private ImageSize mImageSize;  //设置图片的大小
-
 
         private boolean asGif = false;   //是否作为gif展示
         private boolean isCrossFade = false; //是否渐变平滑的显示图片
         private  boolean skipMemoryCache = true; //是否跳过内存缓存
 
-
         private  boolean blurImage = false; //是否使用高斯模糊
-
         private int type;  //类型 (大图，中图，小图)
-
         private int wifiStrategy;//加载策略，是否在wifi下才加载
-
 
         private  DiskCacheStrategy mDiskCacheStrategy = DiskCacheStrategy.DEFAULT; //磁盘缓存策略
         //private BaseTarget target = null; //target
@@ -240,8 +231,6 @@ public class ImageLoaderOptions {
             return this;
         }
 
-
-
         public Builder isCrossFade(boolean isCrossFade){
             this.isCrossFade=isCrossFade;
             return this;
@@ -260,14 +249,9 @@ public class ImageLoaderOptions {
             return this;
         }
 
-//        public Builder target(BaseTarget target){
-//            this.target=target;
-//            return this;
-//        }
         public Builder diskCacheStrategy(DiskCacheStrategy mDiskCacheStrategy){
             this.mDiskCacheStrategy=mDiskCacheStrategy;
             return this;
-
         }
 
 

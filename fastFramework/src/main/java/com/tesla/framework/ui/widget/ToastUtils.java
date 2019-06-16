@@ -32,11 +32,11 @@ public class ToastUtils {
     /********************** 非连续弹出的Toast ***********************/
 
 
-    public static void showMessage(Context context, String text) {
+    public static void showToast(Context context, String text) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
     }
 
-    public static void showMessage(Context context, int messageId) {
+    public static void showToast(Context context, int messageId) {
         if (context != null) {
             Toast.makeText(context, messageId, Toast.LENGTH_SHORT).show();
         }

@@ -29,17 +29,31 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            // 替换Manifest里${PROVIDER_B}占位符
+            manifestPlaceholders = [PROVIDER_TOPIC: 'PROVIDER_TOPIC']
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [PROVIDER_TOPIC: 'PROVIDER_TOPIC_DEBUG']
         }
     }
+
+    resourcePrefix "topic_"
 
     sourceSets {
         main {
             if (isTopicRunAlone.toBoolean()) {
-                manifest.srcFile 'src/debug/AndroidManifest.xml'
+                manifest.srcFile 'src/main/runalone/AndroidManifest.xml'
+                java.srcDirs = ['src/main/java', 'src/main/runalone/java']
+                res.srcDirs = ['src/main/res', 'src/main/runalone/res']
+                assets.srcDirs = ['src/main/assets', 'src/main/runalone/assets']
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 java {
-                    exclude '**/debug/**'
+                    exclude '**/runalone/**'
                 }
             }
         }
@@ -66,7 +80,6 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api config.supportDependencies.multidex
     api project(':baselib')
-    annotationProcessor config.thirddependencies.arouter_compiler
 
 
 }

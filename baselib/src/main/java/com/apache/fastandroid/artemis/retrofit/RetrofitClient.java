@@ -1,11 +1,10 @@
 package com.apache.fastandroid.artemis.retrofit;
 
+import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.tesla.framework.network.http.HttpClient;
 import com.tesla.framework.network.task.TaskException;
-
 import java.io.IOException;
-
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -86,4 +85,52 @@ public class RetrofitClient {
             throw new TaskException(e.getMessage());
         }
     }
+
+
+
+
+
+
+
+    /****************************Retrofit相关*****************************************/
+
+    /**
+     * 设置baseUrl
+     * @param baseUrl
+     * @return
+     */
+    public static GlobalHttp setBaseUrl(String baseUrl){
+        getGlobalRetrofitBuilder().baseUrl(baseUrl);
+        return GlobalHttp.getInstance();
+    }
+
+    /**
+     * 全局的 retrofit
+     * @return
+     */
+    public static Retrofit getGlobalRetrofit(){
+        return RetrofitClient.getInstance().getRetrofit();
+    }
+
+    /**
+     * 全局的 RetrofitBuilder
+     * @return
+     */
+    public static Retrofit.Builder getGlobalRetrofitBuilder(){
+        return RetrofitClient.getInstance().getRetrofitBuilder();
+    }
+
+    /**
+     * 使用全局变量的请求, 非全局变量请求不要用这个方法
+     *
+     * @param clz
+     * @param <K>
+     * @return
+     */
+    public static <K> K createApi(Class<K> clz ){
+        return getGlobalRetrofit().create(clz);
+    }
+
+
+    /****************************Retrofit相关*****************************************/
 }

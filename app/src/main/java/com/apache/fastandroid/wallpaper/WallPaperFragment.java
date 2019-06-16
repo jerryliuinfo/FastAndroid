@@ -7,12 +7,10 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.apache.fastandroid.pic.view.WallpaperItemView;
 import com.apache.fastandroid.topic.support.bean.WallpaperBean;
 import com.apache.fastandroid.topic.support.bean.WallpaperBeans;
 import com.apache.fastandroid.topic.support.sdk.Sdk;
-import com.tesla.framework.common.util.StrUtil;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.bean.RefreshConfig;
@@ -21,7 +19,6 @@ import com.tesla.framework.support.paging.index.IndexPaging;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
-
 import java.util.List;
 
 /**
@@ -100,7 +97,7 @@ public class WallPaperFragment extends ARecycleViewSwipeRefreshFragment<Wallpape
             int page = 1;
             //index分页是没有下拉的
             if (!TextUtils.isEmpty(nextPage)){
-                page = StrUtil.toInt(nextPage);
+//                page = StrUtil.toInt(nextPage);
             }
             WallpaperBeans beans = Sdk.newInstance().getWallpaperList(page);
             if(beans.getItem().getWallpaperList().size() == 0){

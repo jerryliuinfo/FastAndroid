@@ -23,12 +23,12 @@ public class ActivityResultHelper {
         return new ActivityResultHelper(activity);
     }
 
-    public void startActivityForResult(Class<?> clz, Callback callback ){
+    public void startActivityForResult(Class<?> clz, ActivityForResultCallback callback ){
         Intent intent = new Intent(mActivity,clz);
         startActivityForResult(intent,callback);
     }
 
-    public void startActivityForResult(Intent intent, Callback callback ){
+    public void startActivityForResult(Intent intent, ActivityForResultCallback callback ){
         mRouterFragment.startActivityForResult(intent,callback);
     }
 
@@ -48,7 +48,7 @@ public class ActivityResultHelper {
     }
 
 
-    public interface Callback{
+    public interface ActivityForResultCallback {
 
         void onActivityResult(int requestCode, int resultCode, Intent data);
     }

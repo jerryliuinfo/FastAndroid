@@ -1,8 +1,10 @@
 package com.tesla.framework.common.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +24,7 @@ public class CollectionUtils {
      * @return
      */
     public static boolean isEmpty(Collection collection){
-        return collection==null || collection.isEmpty();
+        return collection == null || collection.isEmpty();
     }
 
     /**
@@ -31,7 +33,7 @@ public class CollectionUtils {
      * @return
      */
     public static boolean isEmpty(Map collection){
-        return collection==null || collection.isEmpty();
+        return collection == null || collection.isEmpty();
     }
 
     public static boolean isEmpty(Object[] array) {
@@ -39,19 +41,36 @@ public class CollectionUtils {
     }
 
 
-
-
-    public static void printList(List<String> list){
+    public static String listToString(List<String> list){
+        StringBuilder stringBuilder1 = new StringBuilder();
         if (list != null && !list.isEmpty()){
-            StringBuilder stringBuilder1 = new StringBuilder();
-            for (int i = 0; i < list.size(); i++) {
+            for (int i = 0, size = list.size(); i < size; i++) {
                 stringBuilder1.append(list.get(i));
                 if (i != list.size() -1){
                     stringBuilder1.append("_");
                 }
             }
-            System.out.println(stringBuilder1.toString());
         }
+        return stringBuilder1.toString();
+    }
+
+
+    /**
+     * 返回一个只读的list，外部不能通过这个list去做修改操作，否则会throws java.lang.UnsupportedOperationException
+     * @param list
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> immutableList(List<T> list){
+        return Collections.unmodifiableList(list);
+    }
+
+
+
+
+    /** Returns an immutable list containing {@code elements}. */
+    public static <T> List<T> immutableList(T... elements) {
+        return Collections.unmodifiableList(Arrays.asList(elements.clone()));
     }
 
     /**
@@ -61,7 +80,7 @@ public class CollectionUtils {
      * @param <T>
      * @return  {bbb}
      */
-    public static <T> List<T> getIntersection(List<T> list1, List<T> list2){
+    public static <T> List<T> retailAll(List<T> list1, List<T> list2){
         if (list1 != null && list2 != null){
             List<T> tempList1 = new ArrayList<>(list1);
             List<T> tempList2 = new ArrayList<>(list2);
@@ -73,12 +92,12 @@ public class CollectionUtils {
 
     /**
      * 返回两个集合的交集,可以判断两个集合是否有交集（会修改源数据）
-     * @param list1
-     * @param list2
-     * @param <T>
-     * @return
+     * @param list1  {'aaa','bbb','ccc'}
+     * @param list2 {'ddd','bbb','eee'}
+     * @param <T> {bbb}
+     * @return 返回后list1也变为了 {bbb}
      */
-    public static <T> List<T> getIntersectionModify(List<T> list1, List<T> list2){
+    public static <T> List<T> retailAllModify(List<T> list1, List<T> list2){
         if (list1 != null){
             list1.retainAll(list2);
         }
@@ -95,11 +114,56 @@ public class CollectionUtils {
 
 
 
+    /**
+     * 返回两个数组中重合的元素
+     *
+     */
+    @SuppressWarnings("unchecked")
+    public static String[] intersect(
+            Comparator<? super String> comparator, String[] first, String[] second) {
+        List<String> result = new ArrayList<>();
+        for (String a : first) {
+            for (String b : second) {
+                if (comparator.compare(a, b) == 0) {
+                    result.add(a);
+                    break;
+                }
+            }
+        }
+        return result.toArray(new String[result.size()]);
+    }
+
+
+    /**
+     * 返回两个集合中重合的元素
+     * @param comparator
+     * @param first
+     * @param second
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> intersectArray(
+            Comparator<? super T> comparator, List<T> first, List<T> second) {
+        List<T> result = new ArrayList<>();
+        for (T a : first) {
+            for (T b : second) {
+                if (comparator.compare(a, b) == 0) {
+                    result.add(a);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
 
 
 
-
-
+    public static String[] concat(String[] array, String value) {
+        String[] result = new String[array.length + 1];
+        System.arraycopy(array, 0, result, 0, array.length);
+        result[result.length - 1] = value;
+        return result;
+    }
 
 
 

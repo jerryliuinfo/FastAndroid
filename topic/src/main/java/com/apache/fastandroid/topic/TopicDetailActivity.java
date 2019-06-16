@@ -62,9 +62,14 @@ public class TopicDetailActivity extends BaseActivity {
     private TopicBean mTopicBean;
 
     @Override
-    protected void onCreate(Bundle savedInstanceSate) {
-        super.onCreate(savedInstanceSate);
-        setContentView(R.layout.fragment_topic_detail);
+    public int inflateContentView() {
+        return R.layout.fragment_topic_detail;
+    }
+
+
+    @Override
+    protected void layoutInit(Bundle savedInstanceSate) {
+        super.layoutInit(savedInstanceSate);
         setToolbarTitle("话题");
         //NLog.d(TAG, "layoutInit lay_header = %s", lay_header);
         stub_not_login = (ViewStub) findViewById(R.id.stub_not_login);

@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-
 import com.tesla.framework.R;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.ResUtil;
@@ -27,7 +26,6 @@ import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.CustomToolbar;
 import com.tesla.framework.ui.widget.ToastUtils;
-
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -40,7 +38,7 @@ import java.util.Set;
  * Created by JerryLiu on 17/04/08.
  */
 
-public class BaseActivity extends AppCompatActivity implements ITaskManager,CustomToolbar.OnToolbarDoubleClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements ITaskManager,CustomToolbar.OnToolbarDoubleClickListener {
 
     static final String TAG = "Activity-Base";
 
@@ -128,6 +126,29 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
         }
 
         super.onCreate(savedInstanceState);
+
+
+        if (inflateContentView() > 0){
+            setContentView(inflateContentView());
+        }
+
+        layoutInit(savedInstanceState);
+    }
+    /**
+     * 指定Fragment的LayoutID
+     *
+     * @return
+     */
+    public abstract int inflateContentView();
+
+
+    /**
+     * 子类重写这个方法，初始化视图
+     *
+     *
+     */
+    protected void layoutInit(Bundle savedInstanceState) {
+
     }
 
 
@@ -405,7 +426,7 @@ public class BaseActivity extends AppCompatActivity implements ITaskManager,Cust
      */
     public void showMessage(CharSequence msg) {
         if (!TextUtils.isEmpty(msg) && msg.length() != 0){
-            ToastUtils.showMessage(this,msg.toString());
+            ToastUtils.showToast(this,msg.toString());
         }
     }
 

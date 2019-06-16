@@ -1,4 +1,4 @@
-package com.apache.fastandroid.topic.applike;
+package com.apache.fastandroid.topic.app;
 
 import android.content.Context;
 import com.tesla.framework.applike.DefApplicationLike;

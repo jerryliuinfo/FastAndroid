@@ -6,6 +6,7 @@ import android.text.TextUtils;
 
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.R;
+import com.tesla.framework.common.util.StrUtil;
 import com.tesla.framework.common.util.log.NLog;
 
 
@@ -84,7 +85,10 @@ public class TaskException extends Exception {
 			if (context != null) {
 				Resources res = context.getResources();
 
-				TaskError error = TaskError.valueOf(String.valueOf(code));
+				TaskError error = null;
+				if (!StrUtil.isEmpty(code)){
+					error = TaskError.valueOf(String.valueOf(code));
+				}
 				if (error == TaskError.noneNetwork || error == TaskError.failIOError)
 					message = res.getString(R.string.comm_error_none_network);
 				else if (error == TaskError.socketTimeout || error == TaskError.timeout)

@@ -15,7 +15,7 @@ import okhttp3.Response;
 /**
  * <p>
  *
- * @author Allen
+ * @author
  *         接受服务器发的cookie   并保存到本地
  */
 
@@ -32,7 +32,7 @@ public class ReceivedCookiesInterceptor implements Interceptor {
             for (String header : originalResponse.headers("Set-Cookie")) {
                 cookies.add(header);
             }
-            //SPUtil.putSet(SPKeys.COOKIE, cookies);
+            SPUtil.putSet(SPKeys.COOKIE, cookies);
         }
         //获取服务器相应时间--用于计算倒计时的时间差
         if (!originalResponse.header("Date").isEmpty()) {

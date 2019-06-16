@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by cry on 2016/9/21.
+ * Created by cry on 2016/9/21. findViewById 处理
  */
 
 @Retention(RetentionPolicy.SOURCE)

@@ -66,8 +66,8 @@ dependencies {
 
 
     //ARouter
-    api config.thirddependencies.arouter_api
-    annotationProcessor config.thirddependencies.arouter_compiler
+   // api config.thirddependencies.arouter_api
+   // annotationProcessor config.thirddependencies.arouter_compiler
 
     testImplementation 'junit:junit:4.12'
     api supportDependencies.junit

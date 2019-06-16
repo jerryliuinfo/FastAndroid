@@ -1,7 +1,7 @@
 package com.apache.fastandroid.artemis.retrofit.download;
 
 import android.annotation.SuppressLint;
-import com.apache.fastandroid.artemis.BaselibLog;
+import com.apache.fastandroid.artemis.BaselibLogUtil;
 import com.apache.fastandroid.artemis.rx.observer.CommonObserver;
 import com.tesla.framework.common.util.log.NLog;
 
@@ -41,7 +41,7 @@ public abstract class DownloadObserver extends CommonObserver<ResponseBody> {
                                             .subscribe(new Consumer<Integer>() {
                                                 @Override
                                                 public void accept(@NonNull Integer integer) throws Exception {
-                                                    BaselibLog.d("accept integer = %s", integer);
+                                                    BaselibLogUtil.d("accept integer = %s", integer);
                                                     success(bytesRead,contentLength,progress,done,filePath);
                                                 }
                                             });

@@ -93,11 +93,6 @@ android {
         abortOnError false
     }
 
-    /*freeline{
-        hack true
-        productFlavor "dev"
-    }*/
-
 
    /* signingConfigs {
         dev {
@@ -205,35 +200,40 @@ android {
 
 
 dependencies {
-  api fileTree(include: ['*.jar'], dir: 'libs')
-
+    api fileTree(include: ['*.jar'], dir: 'libs')
     if (!isTopicRunAlone.toBoolean()) {
-        api project(':topic')
+       // api project(':topic')
+      implementation project(':topic')
     }
-    api project(':baselib')
-    implementation project(':artemis_annotation')
 
-    api config.supportDependencies.appcompatV7
-
-
-
-    //api config.thirddependencies.bugly
-    api config.supportDependencies.multidex
 
     debugImplementation config.thirddependencies.leakcanary_android
     releaseImplementation config.thirddependencies.leakcanary_android_no_op
+
     debugImplementation config.thirddependencies.leakcanary_support_fragment
+
+    implementation project(':baselib')
+    implementation project(':artemis_annotation')
+    api config.supportDependencies.appcompatV7
+    //api config.thirddependencies.bugly
+    api config.supportDependencies.multidex
 
 
     implementation config.thirddependencies.butterknife
     annotationProcessor config.thirddependencies.butterknife_compiler
 
+
     //ARouter
     api config.thirddependencies.arouter_api
     annotationProcessor config.thirddependencies.arouter_compiler
 
-    //必须加行这行，否则roxyToolProcessor无法自动生成类
+
+
+    //必须加行这行，否则proxyToolProcessor无法自动生成类
     annotationProcessor project(':artemis_compiler')
 
+
+
+    implementation 'com.github.markzhai:blockcanary-android:1.5.0'
 }
 

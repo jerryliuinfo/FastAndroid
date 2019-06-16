@@ -17,7 +17,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.1'
+        classpath 'com.android.tools.build:gradle:3.1.4'
 
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' // 添加这行
         //定义在这里，这样每个module都可以使用

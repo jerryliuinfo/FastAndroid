@@ -35,6 +35,11 @@ public class UpdateDialog extends BaseActivity {
     }
 
     @Override
+    public int inflateContentView() {
+        return 0;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

@@ -14,31 +14,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.apache.artemis_annotation.BindOnClick;
 import com.apache.artemis_annotation.BindViewById;
 import com.apache.fastandroid.artemis.ArtemisContext;
-import com.apache.fastandroid.artemis.base.MyBaseActivity;
-import com.apache.fastandroid.artemis.bridge.ModuleConstans;
+import com.apache.fastandroid.artemis.modularization.provider.ProtocalA;
+import com.apache.fastandroid.artemis.modularization.provider.Protocols;
+import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
-import com.apache.fastandroid.topic.video.VideoTabsFragment;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.network.NetworkListener;
+import com.tesla.framework.common.util.network.NetworkType;
 import com.tesla.framework.common.util.view.StatusBarUtil;
-import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
+import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
 import com.tesla.framework.ui.widget.ToastUtils;
 
+public class MainActivity extends BaseActivity implements NetworkListener{
 
-public class MainActivity extends MyBaseActivity{
-    public static void launch(Activity from){
-        from.startActivity(new Intent(from,MainActivity.class));
-    }
 
     //@BindView((R.id.drawer))
     @BindViewById((R.id.drawer))
@@ -52,15 +50,21 @@ public class MainActivity extends MyBaseActivity{
     private ActionBarDrawerToggle drawerToggle;
 
     private int selecteId = -1;
-
-
+    public static void launch(Activity from, UserBean userBean){
+        Intent intent = new Intent(from, MainActivity.class);
+        intent.putExtra("userBean",userBean);
+        from.startActivity(intent);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //RefBindApi.bind(this,this);
-        //ButterKnife.bind(this);
+    public int inflateContentView() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void layoutInit(Bundle savedInstanceState) {
+        super.layoutInit(savedInstanceState);
+
         ProxyTool.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
@@ -70,7 +74,10 @@ public class MainActivity extends MyBaseActivity{
         MenuItem menuItem = mNavigationView.getMenu().getItem(0);
         menuItem.setChecked(true);
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
+
+
     }
+
 
     @Override
     public void setContentView(View view) {
@@ -89,7 +96,7 @@ public class MainActivity extends MyBaseActivity{
 
     @BindOnClick(R.id.btn_click_me)
     public void testOnClick(View view){
-        ToastUtils.showMessage(this,"testOnClick");
+        ToastUtils.showToast(this,"testOnClick");
     }
 
     @OnClick
@@ -99,18 +106,19 @@ public class MainActivity extends MyBaseActivity{
         TextView tv_username = headView.findViewById(R.id.tv_username);
         ImageView iv_arrow =  headView.findViewById(R.id.iv_arrow);
         View layout_user= headView.findViewById(R.id.layout_user);
-        try {
-            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginedUserListActivity",null,null,new Object[]{this});
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+       /* headView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginedUserListActivity",null,null,new Object[]{this});
+            }
+        });*/
 
         if (ArtemisContext.getUserBean() != null){
             tv_username.setText(ArtemisContext.getUserBean().getName());
         }else {
             tv_username.setText("未登录");
         }
-
 
     }
 
@@ -162,20 +170,25 @@ public class MainActivity extends MyBaseActivity{
         switch (itemId){
             case R.id.nav_item_topic:
                 fragment = MainNewsTabsFragment.newFragment();
+                ProtocalA protocalA = Protocols.getTopicProtocal();
+                if (protocalA != null){
+                    String msg = protocalA.getUserA("jerry");
+                    ToastUtils.showToast(this, msg);
+                }else {
+                    ToastUtils.showToast(this, "protocalA is null");
+                }
+
                 break;
             case R.id.nav_item_wallpaer:
                 fragment = WallPaperFragment.newFragment();
+
+
                 break;
             case R.id.nav_item_pic:
                 //fragment = PicTabsFragment.newFragment();
                 fragment = MainNewsTabsFragment.newFragment();
                 break;
             case R.id.nav_item_video:
-                fragment = VideoTabsFragment.newFragment();
-//                Object object = ARouter.getInstance().build(RouterMap.TOPIC.VIDEOS_FRAGMENT).navigation();
-//                if (object != null && object instanceof Fragment){
-//                    fragment = (Fragment) object;
-//                }
                 break;
             case R.id.nav_item_topic_home:
 
@@ -265,41 +278,12 @@ public class MainActivity extends MyBaseActivity{
    public static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        NLog.d(TAG,"onResume");
+    public void onConnected(NetworkType networkType) {
+
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        NLog.d(TAG,"onStart");
+    public void onDisconnected() {
+
     }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        NLog.d(TAG,"onRestart");
-    }
-
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        NLog.d(TAG,"onPause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        NLog.d(TAG,"onStop");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        NLog.d(TAG,"onDestroy");
-    }
-
-
 }

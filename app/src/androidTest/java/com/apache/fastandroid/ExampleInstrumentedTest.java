@@ -1,7 +1,9 @@
 package com.apache.fastandroid;
 
 import android.support.test.runner.AndroidJUnit4;
-
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,5 +22,15 @@ public class ExampleInstrumentedTest {
     @Test
     public void testMetaData() throws Exception {
 
+    }
+
+
+    @Test
+    public void testOkHttp()throws Exception{
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        OkHttpClient okHttpClient = builder.build();
+
+        Request request = new Request.Builder().url("").build();
+        Response response = okHttpClient.newCall(request).execute();
     }
 }

@@ -24,6 +24,11 @@ public class BaseApp {
         }
     }
 
+
+    public static Context getContext(){
+        return sContext;
+    }
+
     // /data/data/com.sgs.unite/files
     public static String getFilePath(){
         checkContext();

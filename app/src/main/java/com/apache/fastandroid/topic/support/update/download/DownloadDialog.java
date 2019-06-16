@@ -49,12 +49,15 @@ public class DownloadDialog extends BaseActivity {
         Toast.makeText(this, "下载失败", Toast.LENGTH_LONG).show();
     }
 
-
+    @Override
+    public int inflateContentView() {
+        return R.layout.download_dialog;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.download_dialog);
+    protected void layoutInit(Bundle savedInstanceState) {
+        super.layoutInit(savedInstanceState);
+
         close = (ImageView) findViewById(R.id.downloaddialog_close);
         progressBar = (ProgressBar) findViewById(R.id.downloaddialog_progress);
         textView = (TextView) findViewById(R.id.downloaddialog_count);
@@ -75,6 +78,7 @@ public class DownloadDialog extends BaseActivity {
             }
         });
     }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

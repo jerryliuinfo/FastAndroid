@@ -27,7 +27,7 @@ public class NetworkHelper {
 	boolean mRegistered = false;
 	NetworkStatus mStatus = NetworkStatus.NetworkNotReachable;
 	NetworkBroadcastReceiver mReceiver = new NetworkBroadcastReceiver();
-	List<WeakReference<NetworkInductor>> mInductors;
+	List<WeakReference<NetworkListener>> mInductors;
 
 	public enum NetworkStatus{
 		NetworkNotReachable,
@@ -35,7 +35,7 @@ public class NetworkHelper {
 		NetworkReachableViaWiFi,
 	}
 
-	public interface NetworkInductor
+	public interface NetworkListener
 	{
 		void onNetworkChanged(NetworkStatus status);
 	}
@@ -109,12 +109,12 @@ public class NetworkHelper {
 		return !mStatus.equals(NetworkStatus.NetworkNotReachable);
 	}
 	
-	public void addNetworkInductor(NetworkInductor inductor)
+	public void addNetworkInductor(NetworkListener inductor)
 	{
-		final List<WeakReference<NetworkInductor>> list = new ArrayList<>(mInductors);
+		final List<WeakReference<NetworkListener>> list = new ArrayList<>(mInductors);
 		for (int i = 0; i < list.size(); i++) {
-			WeakReference<NetworkInductor> inductorRef = list.get(i);
-			NetworkInductor ind = inductorRef.get();
+			WeakReference<NetworkListener> inductorRef = list.get(i);
+			NetworkListener ind = inductorRef.get();
 			if ( ind == inductor)
 				return;
 			else if (ind == null) {
@@ -125,12 +125,12 @@ public class NetworkHelper {
 		mInductors.add(new WeakReference<>(inductor));
 	}
 	
-	public void removeNetworkInductor(NetworkInductor inductor)
+	public void removeNetworkInductor(NetworkListener inductor)
 	{
-		final List<WeakReference<NetworkInductor>> list = new ArrayList<WeakReference<NetworkInductor>>(mInductors);
+		final List<WeakReference<NetworkListener>> list = new ArrayList<WeakReference<NetworkListener>>(mInductors);
 		for (int i = 0; i < list.size(); i++) {
-			WeakReference<NetworkInductor> inductorRef = list.get(i);
-			NetworkInductor ind = inductorRef.get();
+			WeakReference<NetworkListener> inductorRef = list.get(i);
+			NetworkListener ind = inductorRef.get();
 			if ( ind == inductor) {
 				mInductors.remove(inductorRef);
 				return;
@@ -144,10 +144,10 @@ public class NetworkHelper {
 		if (mInductors == null || mInductors.size() == 0)
 			return;
 		
-		final List<WeakReference<NetworkInductor>> list = new ArrayList<>(mInductors);
+		final List<WeakReference<NetworkListener>> list = new ArrayList<>(mInductors);
 		for (int i = 0; i < list.size(); i++) {
-			WeakReference<NetworkInductor> inductorRef = list.get(i);
-			NetworkInductor inductor = inductorRef.get();
+			WeakReference<NetworkListener> inductorRef = list.get(i);
+			NetworkListener inductor = inductorRef.get();
 			if (inductor != null) 
 				inductor.onNetworkChanged(mStatus);
 			else 

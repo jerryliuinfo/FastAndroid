@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by cry on 2016/9/25.
+ * Created by cry on 2016/9/25. 点击事件处理
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.SOURCE)

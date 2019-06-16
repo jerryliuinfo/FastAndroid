@@ -107,7 +107,11 @@ public class GlobalHttp {
         return this;
     }
 
-
+    /**
+     *  全局持久话cookie,保存本地每次都会携带在header中
+     * @param setCookie
+     * @return
+     */
     public GlobalHttp setCookie(boolean setCookie){
         if (setCookie){
             getGlobalOkHttpBuilder().addInterceptor(new AddCookiesInterceptor())
@@ -211,13 +215,6 @@ public class GlobalHttp {
         return GlobalHttp.getInstance();
     }
 
-    /**
-     * 全局的 retrofit
-     * @return
-     */
-    public static Retrofit getGlobalRetrofit(){
-        return RetrofitClient.getInstance().getRetrofit();
-    }
 
     /**
      * 全局的 RetrofitBuilder
@@ -235,7 +232,7 @@ public class GlobalHttp {
      * @return
      */
     public static <K> K createApi(Class<K> clz ){
-        return getGlobalRetrofit().create(clz);
+        return RetrofitClient.getInstance().getRetrofit().create(clz);
     }
 
 
