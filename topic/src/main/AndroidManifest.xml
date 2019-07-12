@@ -15,12 +15,12 @@
         >
 
 
-        <activity android:name=".ResultClientActivity"/>
+        <activity android:name=".TopicHomeActivity"/>
 
 
         <provider
             android:name=".TopicProvider"
-            android:authorities="${PROVIDER_TOPIC}"/>
+            android:authorities="PROVIDER_TOPIC"/>
 
     </application>
 

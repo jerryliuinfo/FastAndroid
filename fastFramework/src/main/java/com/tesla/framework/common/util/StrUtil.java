@@ -26,23 +26,8 @@ public class StrUtil {
         return sb.toString();
     }
 
-    public static boolean isNull(String str){
-        if (str == null || str.trim().length() == 0 || str.equalsIgnoreCase("null") ){
-            return true;
-        }
-        return false;
-    }
-    public static boolean isNotNull(String str){
-        return !isNull(str);
-    }
 
-    public static boolean isNotEmtpy(String str) {
-        return (str != null && !"".equalsIgnoreCase(str.trim()) && !"null".equalsIgnoreCase(str));
-    }
 
-    public static boolean isEmpty(String str){
-        return !isNotEmtpy(str);
-    }
 
     /**
      * Split query parameters

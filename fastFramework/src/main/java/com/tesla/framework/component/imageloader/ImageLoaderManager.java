@@ -15,7 +15,7 @@ public class ImageLoaderManager implements IImageLoaderstrategy,IImagePahtFromCa
 
     private  IImageLoaderstrategy loaderstrategy;
 
-    ImageLoaderOptions options;
+    private  ImageLoaderOptions options;
 
     /**
      * 如果需要设置一些默认的参数,可以在这里设置
@@ -41,7 +41,8 @@ public class ImageLoaderManager implements IImageLoaderstrategy,IImagePahtFromCa
      *  内部只需要获取Context
      */
     public static ImageLoaderOptions getDefaultOptions(@NonNull View container, @NonNull String url,Context context){
-        return new ImageLoaderOptions.Builder(container,url,context).isCrossFade(true).build();
+        //return new ImageLoaderOptions.Builder(container,url,context).isCrossFade(true).build();
+        return ImageLoaderOptions.obtainBuilder(null).container(container).context(context).url(url).corssFade(true).build();
     }
 
     /**
@@ -56,14 +57,8 @@ public class ImageLoaderManager implements IImageLoaderstrategy,IImagePahtFromCa
     }
 
     public void showImage(View container, String url,Context context) {
-        if (options != null){
-            options.setContext(context.getApplicationContext());
-            options.setUrl(url);
-            options.setViewContainer(container);
-            showImage(options);
-        }else {
-            showImage(getDefaultOptions(container,url,context));
-        }
+        ImageLoaderOptions  options = ImageLoaderOptions.obtainBuilder(null).container(container).context(context).url(url).corssFade(true).build();
+        showImage(options);
     }
 
 

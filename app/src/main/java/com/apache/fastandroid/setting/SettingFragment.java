@@ -5,12 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.app.FastAndroidApplication;
 import com.apache.fastandroid.artemis.base.BaseFragment;
-import com.tesla.framework.component.bridge.ModularizationDelegate;
-import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
@@ -44,12 +40,6 @@ public class SettingFragment extends BaseFragment {
         tv_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //AppContext.logout(FastAndroidApplication.getContext());
-                try {
-                    ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_MAIN_NAME+":logout",null,null,new Object[]{FastAndroidApplication.getContext()});
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         });
     }

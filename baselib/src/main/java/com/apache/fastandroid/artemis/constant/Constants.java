@@ -1,4 +1,4 @@
-package com.apache.fastandroid.artemis;
+package com.apache.fastandroid.artemis.constant;
 
 /**
  * Created by 01370340 on 2017/9/3.

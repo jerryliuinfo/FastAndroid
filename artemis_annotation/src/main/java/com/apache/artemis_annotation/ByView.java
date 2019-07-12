@@ -5,10 +5,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
+/**
+ * author: 01370340
+ * data: 2019/6/27
+ * description:
+ */
 @Target(ElementType.FIELD)
-@Retention(RetentionPolicy.SOURCE)
-public @interface BindViewById {
-
-     int value();
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ByView {
+    int value() default 0;
 }

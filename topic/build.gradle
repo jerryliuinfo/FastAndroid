@@ -1,9 +1,11 @@
 def config = rootProject.ext
-if (isTopicRunAlone.toBoolean()) {
+/*if (isTopicRunAlone.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
-}
+}*/
+apply from: rootProject.file('cc-settings-2.gradle')
+
 //apply plugin: 'com.android.library'
 android {
     compileSdkVersion config.android.compileSdkVersion

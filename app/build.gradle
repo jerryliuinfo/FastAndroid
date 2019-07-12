@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 def config = rootProject.ext
+apply from: rootProject.file('cc-settings-2.gradle')
+
 //apply plugin: 'com.antfortune.freeline'
 // 注：需要配置符号表时，使用bugly插件
 /*apply plugin: 'bugly'
@@ -39,12 +41,12 @@ def getCommitVersionCode() {
 
 android {
 
-    compileSdkVersion config.android.compileSdkVersion
-    buildToolsVersion config.android.buildToolsVersion
+    compileSdkVersion rootProject.android.compileSdkVersion
+    buildToolsVersion rootProject.android.buildToolsVersion
     defaultConfig {
         applicationId "com.apache.fastandroid"
-        minSdkVersion config.android.minSdkVersion
-        targetSdkVersion config.android.targetSdkVersion
+        minSdkVersion rootProject.android.minSdkVersion
+        targetSdkVersion rootProject.android.targetSdkVersion
         versionCode 100
         versionName "V1.0.0"
 
@@ -201,10 +203,9 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    if (!isTopicRunAlone.toBoolean()) {
-       // api project(':topic')
+    /*if (!isTopicRunAlone.toBoolean()) {
       implementation project(':topic')
-    }
+    }*/
 
 
     debugImplementation config.thirddependencies.leakcanary_android
@@ -213,7 +214,7 @@ dependencies {
     debugImplementation config.thirddependencies.leakcanary_support_fragment
 
     implementation project(':baselib')
-    implementation project(':artemis_annotation')
+
     api config.supportDependencies.appcompatV7
     //api config.thirddependencies.bugly
     api config.supportDependencies.multidex
@@ -230,10 +231,18 @@ dependencies {
 
 
     //必须加行这行，否则proxyToolProcessor无法自动生成类
+    implementation project(':artemis_annotation')
     annotationProcessor project(':artemis_compiler')
 
 
 
     implementation 'com.github.markzhai:blockcanary-android:1.5.0'
+
+
+    implementation 'com.google.android:flexbox:0.3.0'
+
+
+    addComponent 'topic'
+
 }
 

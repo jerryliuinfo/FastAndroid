@@ -114,7 +114,7 @@ public class GlideImageLoader implements IImageLoaderstrategy,IImagePahtFromCach
 
 
 
-        if (options.getDiskCacheStrategy() != ImageLoaderOptions.DiskCacheStrategy.DEFAULT) {
+        if (options.getDiskCacheStrategy() != null && options.getDiskCacheStrategy() != ImageLoaderOptions.DiskCacheStrategy.DEFAULT) {
             switch (options.getDiskCacheStrategy()) {
                 case NONE:
                     builder.diskCacheStrategy(DiskCacheStrategy.NONE);

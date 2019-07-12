@@ -3,6 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FastAndroid.iml" filepath="$PROJECT_DIR$/FastAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/artemis_annotation/artemis_annotation.iml" filepath="$PROJECT_DIR$/artemis_annotation/artemis_annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/artemis_compiler/artemis_compiler.iml" filepath="$PROJECT_DIR$/artemis_compiler/artemis_compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baselib/baselib.iml" filepath="$PROJECT_DIR$/baselib/baselib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fastFramework/fastFramework.iml" filepath="$PROJECT_DIR$/fastFramework/fastFramework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/topic/topic.iml" filepath="$PROJECT_DIR$/topic/topic.iml" />
     </modules>
   </component>
 </project>

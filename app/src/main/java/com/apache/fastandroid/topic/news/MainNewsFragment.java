@@ -1,20 +1,18 @@
 package com.apache.fastandroid.topic.news;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
-
 import com.apache.fastandroid.topic.news.view.MainNewsItemViewCreator;
 import com.apache.fastandroid.topic.support.bean.NewsChannelTable;
 import com.apache.fastandroid.topic.support.bean.NewsSummary;
 import com.apache.fastandroid.topic.support.bean.NewsSummaryBeans;
 import com.apache.fastandroid.topic.support.sdk.Sdk;
+import com.tesla.framework.common.util.N;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
-
 import java.util.List;
 
 /**
@@ -79,7 +77,7 @@ public class MainNewsFragment extends ARecycleViewSwipeRefreshFragment<NewsSumma
         protected NewsSummaryBeans workInBackground(RefreshMode mode, String previousPage, String nextPage, Void... params) throws TaskException {
             int page = 0;
             //上拉
-            if (TextUtils.isEmpty(nextPage)){
+            if (!N.isEmpty(nextPage)){
                 page = Integer.parseInt(nextPage);
             }
 

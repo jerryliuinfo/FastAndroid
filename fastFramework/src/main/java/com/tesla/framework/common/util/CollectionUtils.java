@@ -5,8 +5,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 集合工具类
@@ -18,27 +21,8 @@ public class CollectionUtils {
         //留空
     }
 
-    /**
-     * 判断集合是否为空
-     * @param collection
-     * @return
-     */
-    public static boolean isEmpty(Collection collection){
-        return collection == null || collection.isEmpty();
-    }
 
-    /**
-     * 判断集合是否为空
-     * @param collection
-     * @return
-     */
-    public static boolean isEmpty(Map collection){
-        return collection == null || collection.isEmpty();
-    }
 
-    public static boolean isEmpty(Object[] array) {
-        return array == null || array.length == 0;
-    }
 
 
     public static String listToString(List<String> list){
@@ -165,6 +149,48 @@ public class CollectionUtils {
         return result;
     }
 
+
+
+    public static <K, V> Map<K, List<V>> immutableMultimap(Map<K, List<V>> multimap) {
+        LinkedHashMap<K, List<V>> result = new LinkedHashMap<>();
+        for (Map.Entry<K, List<V>> entry : multimap.entrySet()) {
+            if (entry.getValue().isEmpty()) continue;
+            result.put(entry.getKey(), immutableList(entry.getValue()));
+        }
+        return Collections.unmodifiableMap(result);
+    }
+
+    public static <K, V> Map<K, V> immutableMap(Map<K, V> map) {
+        return Collections.unmodifiableMap(new LinkedHashMap<>(map));
+    }
+
+    public static void checkArgument(boolean condition, String format, Object... args) {
+        if (!condition) throw new IllegalArgumentException(String.format(format, args));
+    }
+
+    public static <T> T checkNotNull(T reference, String format, Object... args) {
+        if (reference == null) throw new NullPointerException(String.format(format, args));
+        return reference;
+    }
+
+    public static void checkState(boolean condition, String format, Object... args) {
+        if (!condition) throw new IllegalStateException(String.format(format, args));
+    }
+
+    public static <T> List<T> immutableList(Collection<T> collection) {
+        return Collections.unmodifiableList(new ArrayList<>(collection));
+    }
+
+    public static <T> Set<T> immutableSet(Collection<T> set) {
+        return Collections.unmodifiableSet(new LinkedHashSet<>(set));
+    }
+
+    static <T> Set<T> union(Set<T> a, Set<T> b) {
+        Set<T> result = new LinkedHashSet<>();
+        result.addAll(a);
+        result.addAll(b);
+        return result;
+    }
 
 
 

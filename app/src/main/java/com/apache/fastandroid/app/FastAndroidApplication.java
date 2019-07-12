@@ -10,17 +10,22 @@ import android.text.TextUtils;
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.BaseApp;
+import com.apache.fastandroid.artemis.constant.AppConfig;
 import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.topic.support.imageloader.GlideImageLoader;
+import com.billy.cc.core.component.CC;
 import com.squareup.leakcanary.LeakCanary;
+import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
+import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
+import com.tesla.framework.component.performance.BlockDetector;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.crash.TUncaughtExceptionHandler;
 import com.tesla.framework.support.db.FastAndroidDB;
@@ -54,6 +59,7 @@ public class FastAndroidApplication extends Application {
 
         mContext = this;
         BaseApp.onCreate(this);
+        initAppLike();
 
         SPUtil.init(getApplicationContext(),getPackageName() +"_share");
         //初始化日志
@@ -78,6 +84,10 @@ public class FastAndroidApplication extends Application {
 
         initAuth();
         initHttp();
+        if (DebugUtils.isDebug()){
+            BlockDetector.init();
+
+        }
 
 
     }
@@ -89,6 +99,18 @@ public class FastAndroidApplication extends Application {
             return;
         }
         LeakCanary.install(this);
+    }
+
+    private void initAppLike(){
+        for (String componentAppName: AppConfig.COMPONENT_APPLICATION_CONFIG) {
+            try {
+                Class<?> clz = Class.forName(componentAppName);
+                IApplicationLike applicationLike  = (IApplicationLike) clz.newInstance();
+                applicationLike.onCreate(this);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -112,6 +134,10 @@ public class FastAndroidApplication extends Application {
         if (BuildConfig.LOG_DEBUG){
             NLog.setDebug(true, Logger.DEBUG);
         }
+
+        CC.enableVerboseLog(true);
+        CC.enableDebug(true);
+        CC.enableRemoteCC(true);
     }
 
 

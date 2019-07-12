@@ -3,23 +3,46 @@ package com.apache.fastandroid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import android.widget.TextView;
+import com.apache.artemis_annotation.ByView;
+import com.apache.artemis_annotation.DIActivity;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.support.bean.UserDetail;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.topic.support.config.ADConfigManager;
 import com.apache.fastandroid.widget.SplashCountDownView;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 
 /**
  * Created by jerryliu on 2017/4/10.
  */
-
+@DIActivity
 public class SplashActivity extends BaseActivity {
     public static final String TAG = SplashActivity.class.getSimpleName();
-    @ViewInject(id = R.id.splash_coutdown_view)
+    //@ViewInject(id = R.id.splash_coutdown_view)
+
+
     private SplashCountDownView coutDownView;
+
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            NLog.d("handleMessage");
+            testBlock();
+        }
+    };
+
+    private void testBlock(){
+        SystemClock.sleep(600);
+    }
+
+    @ByView(R.id.splash_app_name)
+    TextView splash_app_name;
 
     @Override
     public int inflateContentView() {
@@ -36,8 +59,12 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void run() {
                 toMain();
+
+
             }
-        },3000);
+        },2000);
+        testBlock();
+
     }
 
 

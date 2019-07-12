@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -14,28 +15,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.apache.artemis_annotation.BindOnClick;
+import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindViewById;
 import com.apache.fastandroid.artemis.ArtemisContext;
-import com.apache.fastandroid.artemis.modularization.provider.ProtocalA;
-import com.apache.fastandroid.artemis.modularization.provider.Protocols;
+import com.apache.fastandroid.artemis.bridge.ModularizationConstans;
+import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
-import com.apache.fastandroid.wallpaper.WallPaperFragment;
+import com.billy.cc.core.component.CC;
+import com.billy.cc.core.component.CCResult;
+import com.billy.cc.core.component.IComponentCallback;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkListener;
 import com.tesla.framework.common.util.network.NetworkType;
 import com.tesla.framework.common.util.view.StatusBarUtil;
+import com.tesla.framework.route.Route;
 import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
 import com.tesla.framework.ui.widget.ToastUtils;
 
-public class MainActivity extends BaseActivity implements NetworkListener{
+@AptTest(path = "main")
+public class MainActivity extends BaseActivity implements NetworkListener, View.OnClickListener {
 
 
     //@BindView((R.id.drawer))
@@ -76,6 +81,8 @@ public class MainActivity extends BaseActivity implements NetworkListener{
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
 
+
+        //addOnClickListeners(R.id.btn_click_me);
     }
 
 
@@ -94,10 +101,6 @@ public class MainActivity extends BaseActivity implements NetworkListener{
         }
     }
 
-    @BindOnClick(R.id.btn_click_me)
-    public void testOnClick(View view){
-        ToastUtils.showToast(this,"testOnClick");
-    }
 
     @OnClick
     private void loadMenuData(){
@@ -107,12 +110,6 @@ public class MainActivity extends BaseActivity implements NetworkListener{
         ImageView iv_arrow =  headView.findViewById(R.id.iv_arrow);
         View layout_user= headView.findViewById(R.id.layout_user);
 
-       /* headView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginedUserListActivity",null,null,new Object[]{this});
-            }
-        });*/
 
         if (ArtemisContext.getUserBean() != null){
             tv_username.setText(ArtemisContext.getUserBean().getName());
@@ -170,19 +167,31 @@ public class MainActivity extends BaseActivity implements NetworkListener{
         switch (itemId){
             case R.id.nav_item_topic:
                 fragment = MainNewsTabsFragment.newFragment();
-                ProtocalA protocalA = Protocols.getTopicProtocal();
+                /*ProtocalA protocalA = Protocols.getTopicProtocal();
                 if (protocalA != null){
                     String msg = protocalA.getUserA("jerry");
                     ToastUtils.showToast(this, msg);
                 }else {
                     ToastUtils.showToast(this, "protocalA is null");
-                }
+                }*/
+
+
 
                 break;
             case R.id.nav_item_wallpaer:
-                fragment = WallPaperFragment.newFragment();
+                //fragment = WallPaperFragment.newFragment();
+                //CCResult ccResult = CC.obtainBuilder(ModularizationConstans.MODULE_TOPIC_NAME).setActionName("showActivity").build().call();
+                //NLog.d("ccResult = %s",ccResult);
 
+                //String callId = CC.obtainBuilder(ModularizationConstans.MODULE_TOPIC_NAME).setActionName("showActivity").build().callAsync();
+                //NLog.d("callId = %s",callId);
 
+                CC.obtainBuilder(ModularizationConstans.MODULE_TOPIC_NAME).setContext(this).setActionName("showActivity").build().callAsyncCallbackOnMainThread(new IComponentCallback() {
+                    @Override
+                    public void onResult(CC cc, CCResult result) {
+                        ToastUtils.showToast(MainActivity.this, "go topic activity");
+                    }
+                });
                 break;
             case R.id.nav_item_pic:
                 //fragment = PicTabsFragment.newFragment();
@@ -193,6 +202,7 @@ public class MainActivity extends BaseActivity implements NetworkListener{
             case R.id.nav_item_topic_home:
 
                 //ARouter.getInstance().build(RouterMap.TOPIC.HOMEACTIVITY).withInt("name",1).navigation();
+                Route.getInstance().getService(ITopicService.class.getSimpleName());
                 closeDrawer();
                 return;
             case R.id.nav_item_setting:
@@ -266,14 +276,6 @@ public class MainActivity extends BaseActivity implements NetworkListener{
     }
 
 
-   /* private boolean mDataChanged = false;
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void refreshCollectionList(RefreshCollectionListEvent event){
-        NovelLog.d("refreshCollectionList--------->");
-
-        setToolbarTitle(String.valueOf(event.count));
-
-    }*/
 
    public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -285,5 +287,24 @@ public class MainActivity extends BaseActivity implements NetworkListener{
     @Override
     public void onDisconnected() {
 
+    }
+
+
+
+    private void addOnClickListeners(@IdRes int... ids) {
+        if (ids != null) {
+            for (@IdRes int id : ids) {
+                findViewById(id).setOnClickListener(this);
+            }
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+
+            default:
+                break;
+        }
     }
 }

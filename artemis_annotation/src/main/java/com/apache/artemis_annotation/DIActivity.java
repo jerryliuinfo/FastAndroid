@@ -6,10 +6,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by Jerry on 2019/1/28.
+ * author: 01370340
+ * data: 2019/6/27
+ * description:
  */
-
-@Target({ElementType.FIELD, ElementType.TYPE, ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.ANNOTATION_TYPE, ElementType.PARAMETER})
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.CLASS)
-public @interface BindNoProguard {
+public @interface DIActivity {
 }

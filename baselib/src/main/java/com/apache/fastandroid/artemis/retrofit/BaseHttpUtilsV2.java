@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.apache.fastandroid.artemis.CacheUtil;
-import com.apache.fastandroid.artemis.Constants;
+import com.apache.fastandroid.artemis.constant.Constants;
 import com.apache.fastandroid.artemis.api.TokenService;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.support.bean.Token;
