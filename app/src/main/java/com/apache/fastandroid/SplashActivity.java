@@ -10,8 +10,8 @@ import com.apache.artemis_annotation.ByView;
 import com.apache.artemis_annotation.DIActivity;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.topic.support.config.ADConfigManager;
+import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.widget.SplashCountDownView;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.ui.activity.BaseActivity;
 
 /**
@@ -30,7 +30,7 @@ public class SplashActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-            NLog.d("handleMessage");
+            MainLogUtil.d("handleMessage");
             testBlock();
         }
     };
@@ -80,7 +80,7 @@ public class SplashActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null){
             UserBean userBean = data.getParcelableExtra("userBean");
-            NLog.d("userBean = %s",userBean);
+            MainLogUtil.d("userBean = %s",userBean);
         }
     }
 }

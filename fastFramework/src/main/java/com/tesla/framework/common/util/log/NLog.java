@@ -107,11 +107,6 @@ public final class NLog
 	}
 
 
-	public static void d(String format, Object...args)
-	{
-		d(TAG,format,args);
-	}
-
 	public static void d(String tag, String format, Object...args)
 	{
 		if (debug)

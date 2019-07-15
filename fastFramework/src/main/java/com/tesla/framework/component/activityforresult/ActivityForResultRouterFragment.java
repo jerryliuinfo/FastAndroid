@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.SparseArray;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.FrameworkLogUtil;
 import java.util.Random;
 
 /**
@@ -30,7 +30,7 @@ public class ActivityForResultRouterFragment extends Fragment {
 
     public void startActivityForResult(Intent intent, ActivityResultHelper.ActivityForResultCallback callback ){
         int requestCode = makeRequestCode();
-        NLog.d("ActivityForResultRouterFragment startActivityForResult requestCode = %s", requestCode);
+        FrameworkLogUtil.d("ActivityForResultRouterFragment startActivityForResult requestCode = %s", requestCode);
         mCallbacks.put(requestCode,callback);
         startActivityForResult(intent,requestCode);
     }
@@ -50,7 +50,7 @@ public class ActivityForResultRouterFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         ActivityResultHelper.ActivityForResultCallback callback = mCallbacks.get(requestCode);
         mCallbacks.remove(requestCode);
-        NLog.d("ActivityForResultRouterFragment onActivityResult requestCode = %s, resultCode = %s", requestCode,resultCode);
+        FrameworkLogUtil.d("ActivityForResultRouterFragment onActivityResult requestCode = %s, resultCode = %s", requestCode,resultCode);
         if (callback != null){
             callback.onActivityResult(requestCode,resultCode, data);
         }

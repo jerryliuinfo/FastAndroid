@@ -2,8 +2,7 @@ package com.tesla.framework.ui.widget;
 
 import android.os.SystemClock;
 import android.view.View;
-
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.FrameworkLogUtil;
 
 /**
  * Created by 01370340 on 2017/12/23.
@@ -33,10 +32,10 @@ public abstract class DoubleClickListener implements View.OnClickListener {
         if (currentTime - mLastClickTime > getMinClickInterval()){
             mLastClickTime = currentTime;
             onDoubleClick(v);
-            NLog.d("onDoubleClick");
+            FrameworkLogUtil.d("onDoubleClick");
             return;
         }else {
-            NLog.d("间隔过短，不处理");
+            FrameworkLogUtil.d("间隔过短，不处理");
         }
     }
 

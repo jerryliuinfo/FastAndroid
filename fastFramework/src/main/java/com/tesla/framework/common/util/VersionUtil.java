@@ -52,7 +52,7 @@ public class VersionUtil {
             }
         } catch (Exception e) {
         }
-        return NEW_VERSION_NAME +format;
+        return NEW_VERSION_NAME +" "+format;
     }
 
 

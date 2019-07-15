@@ -2,8 +2,8 @@ apply plugin: 'com.android.application'
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 def config = rootProject.ext
 apply from: rootProject.file('cc-settings-2.gradle')
-//apply plugin: 'smartdengg.clickdebounce'
-//apply plugin: 'com.antfortune.freeline'
+apply plugin: 'android-aspectjx'
+
 // 注：需要配置符号表时，使用bugly插件
 /*apply plugin: 'bugly'
 bugly {
@@ -231,7 +231,7 @@ dependencies {
 
 
 
-import org.aspectj.bridge.IMessage
+/*import org.aspectj.bridge.IMessage
 import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
 final def log = project.logger
@@ -274,7 +274,7 @@ android.applicationVariants.all{ variant ->
             }
         }
     }
-}
+}*/
 
 
 

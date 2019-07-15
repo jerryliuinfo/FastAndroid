@@ -15,15 +15,19 @@ buildscript {
     dependencies {
 
 
-        classpath 'org.aspectj:aspectjtools:1.8.9'
-        classpath 'org.aspectj:aspectjweaver:1.8.9'
+       /* classpath 'org.aspectj:aspectjtools:1.8.9'
+        classpath 'org.aspectj:aspectjweaver:1.8.9'*/
+
+        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.0'
+
+
+
 
 
         classpath 'com.android.tools.build:gradle:3.1.4'
 
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' // 添加这行
         //定义在这里，这样每个module都可以使用
-        //classpath 'com.novoda:bintray-release:0.3.4'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
         // 配置自动上传符号表插件，注：为了能快速并准确地定位用户APP发生Crash的代码位置，Bugly使用符号表对APP发生Crash的程序堆栈进行解析和还原
         //butterknife插件

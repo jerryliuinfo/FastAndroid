@@ -1,15 +1,14 @@
-package com.apache.fastandroid.annotations;
+package com.apache.fastandroid.aspect;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import com.apache.fastandroid.annotations.CheckLogin;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.LoginActivity;
-import org.aspectj.lang.JoinPoint;
+import com.apache.fastandroid.util.MainLogUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
@@ -20,7 +19,6 @@ import org.aspectj.lang.reflect.MethodSignature;
  */
 @Aspect
 public class CheckLoginAspectJ {
-    public static final String TAG = CheckLoginAspectJ.class.getSimpleName();
 
     /**
      *
@@ -43,43 +41,27 @@ public class CheckLoginAspectJ {
     }
     @Around("executeCheckLogin()")
     public Object checkLogin111(ProceedingJoinPoint point) throws Throwable {
-        Log.d(TAG, "checkLogin Around----->"+point.getSignature().toString() +", target = "+point.getTarget() +", args = "+ point.getArgs());
+        MainLogUtil.d("checkLogin Around----->"+point.getSignature().toString() +", target = "+point.getTarget() +", args = "+ point.getArgs());
         MethodSignature methodSignature = (MethodSignature) point.getSignature();
         CheckLogin checkLogin = methodSignature.getMethod().getAnnotation(CheckLogin.class);
         if (checkLogin != null){
             if (AppContext.isLogined()){
-                Log.d(TAG, "已登录,直接跳转");
-                return point.proceed();
+                MainLogUtil.d("已登录,直接跳转 value = %s", checkLogin.value());
+                Object result = point.proceed();
+                MainLogUtil.d("登录后干点啥事.....");
+                return result;
             }else {
                 Object object = point.getThis();
-                Log.d(TAG, "未登录,先跳转登录页面 object = "+ object);
+                MainLogUtil.d("未登录,先跳转登录页面 object = "+ object);
                 Context context = (Context) point.getThis();
                 context.startActivity(new Intent(context,LoginActivity.class));
 
                 return null;
             }
         }else {
-            return point.proceed();
+            MainLogUtil.d("未添加CheckLogin注解，啥也不用干");
+            Object result = point.proceed();
+            return result;
         }
     }
-
-
-
-
-
-
-
-    @Pointcut("execution(@com.apache.fastandroid.annotations.DebugTrace * *(..))")
-    public void debugTraceMethod(){
-
-    }
-
-    @Before("debugTraceMethod()")
-    public void beforeDebugTrace(JoinPoint point){
-        String key = point.getSignature().toString();
-        Log.d(TAG, "beforeDebugTrace:"+key);
-    }
-
-
-
 }

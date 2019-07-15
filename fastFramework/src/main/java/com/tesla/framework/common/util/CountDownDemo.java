@@ -1,10 +1,7 @@
 package com.tesla.framework.common.util;
 
 import android.os.SystemClock;
-
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.support.thread.DefaultPoolExecutor;
-
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -28,7 +25,7 @@ public class CountDownDemo {
                 }
             });
         }
-        NLog.d("doWork costTime = %s",(SystemClock.uptimeMillis() - startTime));
+        FrameworkLogUtil.d("doWork costTime = %s",(SystemClock.uptimeMillis() - startTime));
         latch.await();
     }
 }

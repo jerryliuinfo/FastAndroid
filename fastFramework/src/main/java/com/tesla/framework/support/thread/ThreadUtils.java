@@ -16,11 +16,16 @@ public class ThreadUtils {
      * @param runnable code
      */
     private void runInMainThread(Runnable runnable) {
-        if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
+        if (isMainThread()) {
             mHandler.post(runnable);
         } else {
             runnable.run();
         }
+    }
+
+
+    public static boolean isMainThread(){
+        return Looper.getMainLooper().getThread() != Thread.currentThread();
     }
 
 

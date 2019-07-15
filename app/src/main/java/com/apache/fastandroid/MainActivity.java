@@ -10,7 +10,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,14 +17,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindViewById;
-import com.apache.fastandroid.annotations.CheckLoginAspectJ;
-import com.apache.fastandroid.annotations.DebugTrace;
+import com.apache.fastandroid.annotations.CheckLogin;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
+import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
@@ -224,10 +223,9 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
      * @param itemId
      * @param title
      */
-    //@CheckLogin("")
-    @DebugTrace("")
+    @CheckLogin("")
     public void goToTopicActivity(int itemId, String title){
-        Log.d(CheckLoginAspectJ.TAG, "goToTopicActivity");
+        MainLogUtil.d("goToTopicActivity");
         Fragment  fragment = WallPaperFragment.newFragment();
         if (fragment != null && selecteId != itemId){
             getSupportActionBar().setTitle(title);
@@ -236,6 +234,7 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         closeDrawer();
         selecteId = itemId;
     }
+
 
 
     public boolean isDrawerOpened() {
