@@ -17,7 +17,7 @@ buildscript {
 
        /* classpath 'org.aspectj:aspectjtools:1.8.9'
         classpath 'org.aspectj:aspectjweaver:1.8.9'*/
-
+        //aspect插件， 替代上面两行
         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.0'
 
 
@@ -34,7 +34,7 @@ buildscript {
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'  //在library中使用需要添加这一行
 
 
-        classpath 'com.billy.android:cc-register:1.0.9' //集成cc
+        //classpath 'com.billy.android:cc-register:1.0.9' //集成cc
 
 
 

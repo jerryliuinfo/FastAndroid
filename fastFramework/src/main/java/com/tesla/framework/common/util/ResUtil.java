@@ -147,6 +147,15 @@ public class ResUtil {
     }
 
 
+    public static String getResourceName(int id){
+        Context context = FrameworkApplication.getContext();
+        if (context == null || context.getResources() == null){
+            return  "";
+        }
+        String string = "";
+        return context.getResources().getResourceEntryName(id);
+    }
+
 
 
 

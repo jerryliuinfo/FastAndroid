@@ -33,10 +33,9 @@ public class CostTimeAspectJ {
         point.proceed();
 
         long costTime = SystemClock.uptimeMillis() - startTime;
-        MainLogUtil.d("printcostTime costTime = %s ms, boolean isMainThread = %s", costTime,ThreadUtils.isMainThread());
+        MainLogUtil.d("printcostTime costTime = %s ms, boolean isMainThread = %s", costTime, ThreadUtils.isMainThread());
         if (costTime >= OVER_TIME_WARN){
             MainLogUtil.e("方法 %s run in main thread --->, cost time = %s ms, over %s ms",methodSignature.toString(), costTime,OVER_TIME_WARN);
         }
-
     }
 }

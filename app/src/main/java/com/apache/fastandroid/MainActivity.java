@@ -20,6 +20,7 @@ import com.apache.artemis_annotation.BindViewById;
 import com.apache.fastandroid.annotations.CheckLogin;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
+import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
@@ -79,8 +80,7 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
 
-
-        //addOnClickListeners(R.id.btn_click_me);
+        addOnClickListeners(R.id.btn_confirm);
     }
 
 
@@ -219,7 +219,7 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
     }
 
     /**
-     * 加上这个注解就会自动判断是否已登录，如果未登录则会先跳转到登录页面
+     * 加上这个注解就会自动判断是否已登录，如果未登录则会先跳转到登录页面,已登录，则直接执行业务逻辑
      * @param itemId
      * @param title
      */
@@ -314,13 +314,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-
-            default:
-                break;
-        }
-
-
-
+        BaseLibLogUtil.d("onClick v = %s, entryName = %s",v.getId(),ResUtil.getResourceName(v.getId()));
     }
 }

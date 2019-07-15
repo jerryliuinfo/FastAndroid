@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
+
+
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 def config = rootProject.ext
-apply from: rootProject.file('cc-settings-2.gradle')
+//apply from: rootProject.file('cc-settings-2.gradle')
 apply plugin: 'android-aspectjx'
-
 // 注：需要配置符号表时，使用bugly插件
 /*apply plugin: 'bugly'
 bugly {
@@ -225,7 +226,7 @@ dependencies {
     implementation 'com.google.android:flexbox:0.3.0'
 
 
-    addComponent 'topic'
+//    addComponent 'topic'
 
 }
 

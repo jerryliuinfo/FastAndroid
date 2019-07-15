@@ -13,9 +13,12 @@ import com.apache.fastandroid.artemis.BaseApp;
 import com.apache.fastandroid.artemis.constant.AppConfig;
 import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
+import com.apache.fastandroid.artemis.track.TrackPoint;
+import com.apache.fastandroid.artemis.track.TrackPointCallBack;
+import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.topic.support.imageloader.GlideImageLoader;
-import com.billy.cc.core.component.CC;
+import com.apache.fastandroid.util.MainLogUtil;
 import com.squareup.leakcanary.LeakCanary;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
@@ -88,7 +91,25 @@ public class FastAndroidApplication extends Application {
             BlockDetector.init();
 
         }
+        TrackPoint.init(new TrackPointCallBack() {
+            @Override
+            public void onClick(String pageClassName, String viewIdName) {
+                BaseLibLogUtil.d("onClick: " + pageClassName + "-" + viewIdName);
+                //添加你的操作
+            }
 
+            @Override
+            public void onPageOpen(String pageClassName) {
+                BaseLibLogUtil.d("onPageOpen: " + pageClassName);
+                //添加你的操作
+            }
+
+            @Override
+            public void onPageClose(String pageClassName) {
+                MainLogUtil.d("onPageClose: " + pageClassName);
+                //添加你的操作
+            }
+        });
 
     }
 
@@ -135,9 +156,9 @@ public class FastAndroidApplication extends Application {
             NLog.setDebug(true, Logger.DEBUG);
         }
 
-        CC.enableVerboseLog(true);
+       /* CC.enableVerboseLog(true);
         CC.enableDebug(true);
-        CC.enableRemoteCC(true);
+        CC.enableRemoteCC(true);*/
     }
 
 
