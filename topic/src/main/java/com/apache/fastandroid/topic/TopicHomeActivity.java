@@ -9,6 +9,7 @@ public class TopicHomeActivity extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.topic_activity_home);
+
     }
 
 }

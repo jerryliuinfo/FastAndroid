@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.apache.fastandroid.artemis.ArtemisContext;
+import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicContent;
@@ -129,8 +129,7 @@ public class TopicDetailActivity extends BaseActivity {
 
     private void showBottom(){
         try {
-            boolean isLogined = ArtemisContext.getUserBean() != null;
-            if (isLogined){
+            if (AppContext.isLogined()){
                 if (mReplyView == null){
                     mReplyView = stub_can_reply.inflate();
                 }
@@ -143,7 +142,8 @@ public class TopicDetailActivity extends BaseActivity {
                 }
                 stub_not_login.setVisibility(View.VISIBLE);
                 stub_can_reply.setVisibility(View.GONE);
-                Button login = (Button) mNotLoginView.findViewById(R.id.login);
+                //登陆后可以评论
+                Button login = (Button) mNotLoginView.findViewById(R.id.btn_login);
                 login.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

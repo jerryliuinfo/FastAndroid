@@ -8,9 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.SystemClock;
 import android.provider.Settings;
-
 import com.tesla.framework.common.util.io.CloseableUtils;
-
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -91,5 +89,8 @@ import java.io.FileInputStream;
 		intent.setAction("android.intent.action.VIEW");
 		activity.startActivityForResult(intent, 0);
 	}
+
+
+
 
 }

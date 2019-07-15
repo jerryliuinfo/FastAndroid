@@ -5,18 +5,20 @@ apply from: "version.gradle"
 buildscript {
 
     repositories {
-        jcenter()   //JCenter仓库
-        maven { url 'https://maven.google.com' }
-       /* maven {
-            url 'https://dl.bintray.com/xiangxiangliu/maven'
-        }*/
-        flatDir {
-            dirs rootDir.getAbsolutePath()+'/libs'
+        repositories {
+            google()
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            jcenter()
         }
-        google()
 
     }
     dependencies {
+
+
+        classpath 'org.aspectj:aspectjtools:1.8.9'
+        classpath 'org.aspectj:aspectjweaver:1.8.9'
+
+
         classpath 'com.android.tools.build:gradle:3.1.4'
 
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' // 添加这行
@@ -24,7 +26,6 @@ buildscript {
         //classpath 'com.novoda:bintray-release:0.3.4'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
         // 配置自动上传符号表插件，注：为了能快速并准确地定位用户APP发生Crash的代码位置，Bugly使用符号表对APP发生Crash的程序堆栈进行解析和还原
-        //classpath 'com.tencent.bugly:symtabfileuploader:1.3.9'
         //butterknife插件
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'  //在library中使用需要添加这一行
 
@@ -32,6 +33,8 @@ buildscript {
         classpath 'com.billy.android:cc-register:1.0.9' //集成cc
 
 
+
+        //classpath 'com.github.SmartDengg.asm-clickdebounce:click-debounce-gradle-plugin:1.2.0'
     }
 }
 
@@ -39,12 +42,9 @@ buildscript {
 
 allprojects{
     repositories {
-        jcenter()  //JCenter仓库
-        maven { url 'https://maven.google.com' }
-        flatDir {
-            dirs rootDir.getAbsolutePath()+'/libs'
-        }
         google()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        jcenter()
     }
 
     tasks.withType(Javadoc) {

@@ -15,6 +15,11 @@ public abstract class DoubleClickListener implements View.OnClickListener {
     private int mId = -1;
     private long mLastClickTime;
 
+    public DoubleClickListener() {
+    }
+
+
+
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -31,7 +36,7 @@ public abstract class DoubleClickListener implements View.OnClickListener {
             NLog.d("onDoubleClick");
             return;
         }else {
-            NLog.d("间隔过短，不处理","");
+            NLog.d("间隔过短，不处理");
         }
     }
 

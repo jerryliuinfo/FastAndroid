@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
+ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 def config = rootProject.ext
 apply from: rootProject.file('cc-settings-2.gradle')
-
+//apply plugin: 'smartdengg.clickdebounce'
 //apply plugin: 'com.antfortune.freeline'
 // 注：需要配置符号表时，使用bugly插件
 /*apply plugin: 'bugly'
@@ -148,24 +149,6 @@ android {
 
     }
 
-   /* *//*渠道信息配置 这个一定要放在设置签名的前面*//*
-    productFlavors {
-        dev {
-            //不同渠道，不同包名
-            applicationId "com.apache.fastandroid.dev"
-            signingConfig signingConfigs.dev
-            versionCode 434 //该渠道属于测试渠道，不走commit逻辑，避免fabric被污染
-            manifestPlaceholders = [ISTEST_VALUE: "TEST", CHANNEL_VALUE: name]
-
-            //使用multiDex 如果minsdkersion小雨20 会增加构建时间
-            minSdkVersion 21
-
-            resValue('string', 'channel_tips', 'Dev渠道欢迎你')
-            resValue('bool', 'login_enable', "false")
-
-            dimension "debug"
-        }
-    }*/
 
     /**
      * release构建忽略dev这一个渠道
@@ -213,7 +196,7 @@ dependencies {
 
     debugImplementation config.thirddependencies.leakcanary_support_fragment
 
-    implementation project(':baselib')
+    api project(':baselib')
 
     api config.supportDependencies.appcompatV7
     //api config.thirddependencies.bugly
@@ -245,4 +228,54 @@ dependencies {
     addComponent 'topic'
 
 }
+
+
+
+import org.aspectj.bridge.IMessage
+import org.aspectj.bridge.MessageHandler
+import org.aspectj.tools.ajc.Main
+final def log = project.logger
+
+android.applicationVariants.all{ variant ->
+    if (!variant.buildType.isDebuggable()) {
+        log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
+        return
+    }
+
+    JavaCompile javaCompile = variant.javaCompiler
+    javaCompile.doLast {
+        String[] args = ["-showWeaveInfo",
+            "-1.8",
+            "-inpath", javaCompile.destinationDir.toString(),
+            "-aspectpath", javaCompile.classpath.asPath,
+            "-d", javaCompile.destinationDir.toString(),
+            "-classpath", javaCompile.classpath.asPath,
+            "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
+        log.debug "ajc args: " + Arrays.toString(args)
+
+        MessageHandler handler = new MessageHandler(true)
+        new Main().run(args, handler)
+        for (IMessage message : handler.getMessages(null, true)) {
+            switch (message.getKind()) {
+                case IMessage.ABORT:
+                case IMessage.ERROR:
+                case IMessage.FAIL:
+                    log.error message.message, message.thrown
+                    break
+                case IMessage.WARNING:
+                    log.warn message.message, message.thrown
+                    break
+                case IMessage.INFO:
+                    log.info message.message, message.thrown
+                    break
+                case IMessage.DEBUG:
+                    log.debug message.message, message.thrown
+                    break
+            }
+        }
+    }
+}
+
+
+
 

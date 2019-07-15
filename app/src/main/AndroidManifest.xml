@@ -39,15 +39,15 @@
             />
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"/>
 
-      <!--  &lt;!&ndash; 配置信息 launch &ndash;&gt;
-      <meta-data
-          android:name="CHANNEL"
-          android:value="${CHANNEL_VALUE}"/>
+        <!--  &lt;!&ndash; 配置信息 launch &ndash;&gt;
+        <meta-data
+            android:name="CHANNEL"
+            android:value="${CHANNEL_VALUE}"/>
 
-      &lt;!&ndash; value: 是否是测试环境 测试环境 TESTING 正式环境 PRD &ndash;&gt;
-      <meta-data
-          android:name="ISTEST"
-          android:value="${ISTEST_VALUE}"/>-->
+        &lt;!&ndash; value: 是否是测试环境 测试环境 TESTING 正式环境 PRD &ndash;&gt;
+        <meta-data
+            android:name="ISTEST"
+            android:value="${ISTEST_VALUE}"/>-->
 
 
     </application>

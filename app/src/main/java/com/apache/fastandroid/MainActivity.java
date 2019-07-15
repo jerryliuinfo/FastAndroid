@@ -10,6 +10,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,16 +18,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindViewById;
-import com.apache.fastandroid.artemis.ArtemisContext;
-import com.apache.fastandroid.artemis.bridge.ModularizationConstans;
+import com.apache.fastandroid.annotations.CheckLoginAspectJ;
+import com.apache.fastandroid.annotations.DebugTrace;
+import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
-import com.billy.cc.core.component.CC;
-import com.billy.cc.core.component.CCResult;
-import com.billy.cc.core.component.IComponentCallback;
+import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkListener;
@@ -37,7 +37,6 @@ import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
-import com.tesla.framework.ui.widget.ToastUtils;
 
 @AptTest(path = "main")
 public class MainActivity extends BaseActivity implements NetworkListener, View.OnClickListener {
@@ -111,8 +110,8 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         View layout_user= headView.findViewById(R.id.layout_user);
 
 
-        if (ArtemisContext.getUserBean() != null){
-            tv_username.setText(ArtemisContext.getUserBean().getName());
+        if (AppContext.getUserInfoBean() != null){
+            tv_username.setText(AppContext.getUserInfoBean().getName());
         }else {
             tv_username.setText("未登录");
         }
@@ -180,19 +179,15 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
                 break;
             case R.id.nav_item_wallpaer:
                 //fragment = WallPaperFragment.newFragment();
-                //CCResult ccResult = CC.obtainBuilder(ModularizationConstans.MODULE_TOPIC_NAME).setActionName("showActivity").build().call();
-                //NLog.d("ccResult = %s",ccResult);
 
-                //String callId = CC.obtainBuilder(ModularizationConstans.MODULE_TOPIC_NAME).setActionName("showActivity").build().callAsync();
-                //NLog.d("callId = %s",callId);
-
-                CC.obtainBuilder(ModularizationConstans.MODULE_TOPIC_NAME).setContext(this).setActionName("showActivity").build().callAsyncCallbackOnMainThread(new IComponentCallback() {
+                /*CC.obtainBuilder(ModularizationConstans.MODULE_TOPIC_NAME).setContext(this).setActionName("showActivity").build().callAsyncCallbackOnMainThread(new IComponentCallback() {
                     @Override
                     public void onResult(CC cc, CCResult result) {
                         ToastUtils.showToast(MainActivity.this, "go topic activity");
                     }
-                });
-                break;
+                });*/
+                goToTopicActivity(itemId,title);
+                return;
             case R.id.nav_item_pic:
                 //fragment = PicTabsFragment.newFragment();
                 fragment = MainNewsTabsFragment.newFragment();
@@ -223,6 +218,25 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
 
         selecteId = itemId;
     }
+
+    /**
+     * 加上这个注解就会自动判断是否已登录，如果未登录则会先跳转到登录页面
+     * @param itemId
+     * @param title
+     */
+    //@CheckLogin("")
+    @DebugTrace("")
+    public void goToTopicActivity(int itemId, String title){
+        Log.d(CheckLoginAspectJ.TAG, "goToTopicActivity");
+        Fragment  fragment = WallPaperFragment.newFragment();
+        if (fragment != null && selecteId != itemId){
+            getSupportActionBar().setTitle(title);
+            getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();
+        }
+        closeDrawer();
+        selecteId = itemId;
+    }
+
 
     public boolean isDrawerOpened() {
         return mDrawerLayout.isDrawerOpen(Gravity.LEFT) || mDrawerLayout.isDrawerOpen(Gravity.RIGHT);
@@ -306,5 +320,8 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
             default:
                 break;
         }
+
+
+
     }
 }

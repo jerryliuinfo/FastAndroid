@@ -22,15 +22,17 @@
 
 package com.apache.fastandroid.artemis.support.bean;
 
+import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 /**
  * 用户详细信息
  */
-public class UserDetail implements Serializable {
+public class UserInfoBean implements Serializable {
 
     private int id;                     // ID
-    private String login;               // 用户名
+    @SerializedName("login")
+    private String userName;               // 用户名
 
     private String pwd;                 //密码
 
@@ -61,12 +63,12 @@ public class UserDetail implements Serializable {
         return this.id;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getLogin() {
-        return this.login;
+    public String getUserName() {
+        return this.userName;
     }
 
     public void setName(String name) {
@@ -213,15 +215,34 @@ public class UserDetail implements Serializable {
         return this.level_name;
     }
 
+    public UserInfoBean() {
+    }
+
     @Override
     public String toString() {
-        return "UserDetail{" + "id=" + id + ", login='" + login + '\'' + ", name='" + name + '\'' + ", avatar_url='"
-                + avatar_url + '\'' + ", location='" + location + '\'' + ", company='" + company + '\'' + ", " +
-                "twitter='" + twitter + '\'' + ", website='" + website + '\'' + ", bio='" + bio + '\'' + ", " +
-                "tagline='" + tagline + '\'' + ", github='" + github + '\'' + ", created_at='" + created_at + '\'' +
-                ", email='" + email + '\'' + ", topics_count=" + topics_count + ", replies_count=" + replies_count +
-                ", following_count=" + following_count + ", followers_count=" + followers_count + ", " +
-                "favorites_count=" + favorites_count + ", level='" + level + '\'' + ", level_name='" + level_name +
-                '\'' + '}';
+        final StringBuilder sb = new StringBuilder("UserInfoBean{");
+        sb.append("id=").append(id);
+        sb.append(", userName='").append(userName).append('\'');
+        sb.append(", pwd='").append(pwd).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", avatar_url='").append(avatar_url).append('\'');
+        sb.append(", location='").append(location).append('\'');
+        sb.append(", company='").append(company).append('\'');
+        sb.append(", twitter='").append(twitter).append('\'');
+        sb.append(", website='").append(website).append('\'');
+        sb.append(", bio='").append(bio).append('\'');
+        sb.append(", tagline='").append(tagline).append('\'');
+        sb.append(", github='").append(github).append('\'');
+        sb.append(", created_at='").append(created_at).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", topics_count=").append(topics_count);
+        sb.append(", replies_count=").append(replies_count);
+        sb.append(", following_count=").append(following_count);
+        sb.append(", followers_count=").append(followers_count);
+        sb.append(", favorites_count=").append(favorites_count);
+        sb.append(", level='").append(level).append('\'');
+        sb.append(", level_name='").append(level_name).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
