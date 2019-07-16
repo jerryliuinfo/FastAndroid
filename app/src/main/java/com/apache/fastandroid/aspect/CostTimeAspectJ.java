@@ -19,7 +19,12 @@ public class CostTimeAspectJ {
 
     public static final int OVER_TIME_WARN = 200;
 
-    @Pointcut("execution(@com.apache.fastandroid.annotations.CostTime * *(..))")
+
+    public static final String POINT_CUT_METHOD = "execution(@com.apache.fastandroid.annotations.CostTime * *(..))";
+
+
+
+    @Pointcut(POINT_CUT_METHOD)
     public void executeCostTime(){
 
     }

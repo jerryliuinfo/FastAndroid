@@ -19,8 +19,8 @@ import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindViewById;
 import com.apache.fastandroid.annotations.CheckLogin;
 import com.apache.fastandroid.artemis.AppContext;
+import com.apache.fastandroid.artemis.LoginActivity;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
-import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
@@ -314,6 +314,7 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
 
     @Override
     public void onClick(View v) {
-        BaseLibLogUtil.d("onClick v = %s, entryName = %s",v.getId(),ResUtil.getResourceName(v.getId()));
+        MainLogUtil.d("onClick view id = %s",v.getId());
+        LoginActivity.launch(this);
     }
 }

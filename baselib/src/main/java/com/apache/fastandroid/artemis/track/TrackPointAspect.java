@@ -1,10 +1,5 @@
 package com.apache.fastandroid.artemis.track;
 
-import android.view.View;
-import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
-import com.tesla.framework.common.util.N;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 
@@ -44,7 +39,7 @@ public class TrackPointAspect {
     public void fragmentV4OnDestroyPointcut() {
     }
 
-    @Around("onClickPointcut()")
+   /* @Around("onClickPointcut()")
     public void aroundJoinClickPoint(final ProceedingJoinPoint joinPoint) throws Throwable {
         String className = getTargetClassaName(joinPoint);
         //获取点击事件view对象及名称，可以对不同按钮的点击事件进行统计
@@ -86,5 +81,5 @@ public class TrackPointAspect {
             className = target.getClass().getName();
         }
         return className;
-    }
+    }*/
 }

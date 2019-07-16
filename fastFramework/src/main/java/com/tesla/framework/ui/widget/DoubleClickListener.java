@@ -1,55 +1,31 @@
 package com.tesla.framework.ui.widget;
 
-import android.os.SystemClock;
 import android.view.View;
-import com.tesla.framework.common.util.FrameworkLogUtil;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by 01370340 on 2017/12/23.
  */
 
 public abstract class DoubleClickListener implements View.OnClickListener {
-    private static final int MIN_CLICK_INTERVAL = 500;
-    private int mInterval = MIN_CLICK_INTERVAL;
-    private int mId = -1;
-    private long mLastClickTime;
+    private final long debounceIntervalInMillis;
+    private long previousClickTimestamp;
 
-    public DoubleClickListener() {
+    public DoubleClickListener(long debounceIntervalInMillis) {
+        this.debounceIntervalInMillis = debounceIntervalInMillis;
     }
-
-
 
     @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        long currentTime = SystemClock.elapsedRealtime();
-        if (mId != id){
-            mId = id;
-            mLastClickTime = currentTime;
-            onDoubleClick(v);
-            return;
-        }
-        if (currentTime - mLastClickTime > getMinClickInterval()){
-            mLastClickTime = currentTime;
-            onDoubleClick(v);
-            FrameworkLogUtil.d("onDoubleClick");
-            return;
-        }else {
-            FrameworkLogUtil.d("间隔过短，不处理");
+    public void onClick(View view) {
+        final long currentClickTimestamp = TimeUnit.NANOSECONDS.toMillis(System.nanoTime());
+
+        if (previousClickTimestamp == 0 || currentClickTimestamp - previousClickTimestamp >= debounceIntervalInMillis) {
+            //update click timestamp
+            previousClickTimestamp = currentClickTimestamp;
+
+            onDebouncedClick(view);
         }
     }
 
-    protected abstract void onDoubleClick(View v);
-
-
-    protected int setMinClickInterval(){
-        return MIN_CLICK_INTERVAL;
-    }
-
-    private int getMinClickInterval(){
-        if (mInterval != setMinClickInterval()){
-            return setMinClickInterval();
-        }
-        return mInterval;
-    }
+    protected abstract void onDebouncedClick(View v);
 }

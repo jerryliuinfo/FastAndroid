@@ -1,5 +1,7 @@
 package com.apache.fastandroid.artemis;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import caom.apache.fastandroid.artemis.R;
@@ -14,6 +16,11 @@ import com.tesla.framework.ui.activity.BaseActivity;
  * description:
  */
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
+    
+    public static void launch(Activity from) {
+        Intent intent = new Intent(from, LoginActivity.class);
+        from.startActivity(intent);
+    }
     @Override
     public int inflateContentView() {
         return R.layout.user_fragment_login;
