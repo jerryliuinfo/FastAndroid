@@ -109,6 +109,9 @@ ext {
             butterknife           :  "com.jakewharton:butterknife:$butterknifeVersion",
             butterknife_compiler  :  "com.jakewharton:butterknife-compiler:$butterknifeVersion",
 
+
+            maven_local_url       :  "/Users/jerry/project/github/FastAndroid/repos",
+
     ]
 
 }

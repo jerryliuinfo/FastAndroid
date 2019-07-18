@@ -81,6 +81,13 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
 
 
         addOnClickListeners(R.id.btn_confirm);
+        MainLogUtil.d("current classLoader = %s",getClassLoader().toString());
+        ClassLoader parentClassLoader = getClassLoader().getParent();
+        while (parentClassLoader != null){
+            MainLogUtil.d("parent classLoader = %s",parentClassLoader.toString());
+            parentClassLoader = parentClassLoader.getParent();
+
+        }
     }
 
 
@@ -314,7 +321,12 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
 
     @Override
     public void onClick(View v) {
-        MainLogUtil.d("onClick view id = %s",v.getId());
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        MainLogUtil.d("onClick view id = %s",ResUtil.getResourceName(v.getId()));
         LoginActivity.launch(this);
     }
 }

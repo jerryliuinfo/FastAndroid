@@ -1,16 +1,11 @@
 apply plugin: 'com.android.application'
-
+//com.hc.gradle为resources/META-INF/gradle-plugins
+//下的properties文件名称
 
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 def config = rootProject.ext
 //apply from: rootProject.file('cc-settings-2.gradle')
 apply plugin: 'android-aspectjx'
-// 注：需要配置符号表时，使用bugly插件
-/*apply plugin: 'bugly'
-bugly {
-    appId = 'a397701fd5'
-    appKey = '740ff5f8-0445-4325-8eee-b117f92bdc6d'
-}*/
 
 buildscript {
     repositories {
@@ -188,95 +183,24 @@ android {
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     /*if (!isTopicRunAlone.toBoolean()) {
-      implementation project(':topic')
-    }*/
-
-
+          implementation project(':topic')
+        }*/
     debugImplementation config.thirddependencies.leakcanary_android
     releaseImplementation config.thirddependencies.leakcanary_android_no_op
-
     debugImplementation config.thirddependencies.leakcanary_support_fragment
-
     api project(':baselib')
-
     api config.supportDependencies.appcompatV7
     //api config.thirddependencies.bugly
     api config.supportDependencies.multidex
-
-
     implementation config.thirddependencies.butterknife
     annotationProcessor config.thirddependencies.butterknife_compiler
-
-
     //ARouter
     api config.thirddependencies.arouter_api
     annotationProcessor config.thirddependencies.arouter_compiler
-
-
-
     //必须加行这行，否则proxyToolProcessor无法自动生成类
     implementation project(':artemis_annotation')
     annotationProcessor project(':artemis_compiler')
-
-
-
     implementation 'com.github.markzhai:blockcanary-android:1.5.0'
-
-
     implementation 'com.google.android:flexbox:0.3.0'
-
-
-//    addComponent 'topic'
-
 }
-
-
-
-/*import org.aspectj.bridge.IMessage
-import org.aspectj.bridge.MessageHandler
-import org.aspectj.tools.ajc.Main
-final def log = project.logger
-
-android.applicationVariants.all{ variant ->
-    if (!variant.buildType.isDebuggable()) {
-        log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
-        return
-    }
-
-    JavaCompile javaCompile = variant.javaCompiler
-    javaCompile.doLast {
-        String[] args = ["-showWeaveInfo",
-            "-1.8",
-            "-inpath", javaCompile.destinationDir.toString(),
-            "-aspectpath", javaCompile.classpath.asPath,
-            "-d", javaCompile.destinationDir.toString(),
-            "-classpath", javaCompile.classpath.asPath,
-            "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
-        log.debug "ajc args: " + Arrays.toString(args)
-
-        MessageHandler handler = new MessageHandler(true)
-        new Main().run(args, handler)
-        for (IMessage message : handler.getMessages(null, true)) {
-            switch (message.getKind()) {
-                case IMessage.ABORT:
-                case IMessage.ERROR:
-                case IMessage.FAIL:
-                    log.error message.message, message.thrown
-                    break
-                case IMessage.WARNING:
-                    log.warn message.message, message.thrown
-                    break
-                case IMessage.INFO:
-                    log.info message.message, message.thrown
-                    break
-                case IMessage.DEBUG:
-                    log.debug message.message, message.thrown
-                    break
-            }
-        }
-    }
-}*/
-
-
-
 

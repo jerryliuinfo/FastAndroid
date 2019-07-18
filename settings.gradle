@@ -1,1 +1,1 @@
-include ':app', ':topic', ':artemis_annotation', ':artemis_compiler', 'baselib', ':fastFramework'
+include ':app', ':topic', ':artemis_annotation', ':artemis_compiler',  'baselib', ':fastFramework'

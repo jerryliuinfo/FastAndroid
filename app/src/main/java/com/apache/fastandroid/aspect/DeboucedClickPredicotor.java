@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class DeboucedClickPredicotor {
 
-    public static long FROZEN_WINDOW_MILLIS = 300L;
+    public static long FROZEN_WINDOW_MILLIS = 600L;
     private static Map<View,FrozenView> sFrozenViewHashMap = new HashMap<>();
 
     public static boolean shouldDoClick(View targetView){
@@ -28,10 +28,10 @@ public class DeboucedClickPredicotor {
         long now = SystemClock.uptimeMillis();
         if (now >= frozenView.getFrozenWindowTime()){
             frozenView.setFrozenWindowTime(now + FROZEN_WINDOW_MILLIS);
-            MainLogUtil.d("非第一次点击，间隔大于300ms,不拦截");
+            MainLogUtil.d("非第一次点击，间隔大于 %s ms,不拦截",FROZEN_WINDOW_MILLIS);
             return true;
         }
-        MainLogUtil.d("非第一次点击，但是间隔小于300ms,拦截");
+        MainLogUtil.d("非第一次点击，但是间隔小于 %s ms,拦截",FROZEN_WINDOW_MILLIS);
 
         return false;
     }
