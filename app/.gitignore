@@ -15,6 +15,7 @@ out/
 
 # Gradle files
 .gradle/
+gradle/wrapper/gradle-wrapper.properties
 build/
 
 /captures
@@ -42,6 +43,8 @@ captures/
 .idea/dictionaries
 .idea/libraries
 .idea/misc.xml
+.idea/modules.xml
+
 .idea
 # Keystore files
 *.jks
@@ -60,3 +63,5 @@ freeline_project_description.json
 
 
 .DS_Store
+.keystore.properties
+

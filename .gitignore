@@ -65,3 +65,4 @@ freeline_project_description.json
 .DS_Store
 .keystore.properties
 
+!/app/build/outputs/
