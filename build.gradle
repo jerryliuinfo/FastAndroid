@@ -6,7 +6,7 @@ buildscript {
 
     repositories {
         jcenter()   //JCenter仓库
-        maven { url 'https://maven.google.com' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
        /* maven {
             url 'https://dl.bintray.com/xiangxiangliu/maven'
         }*/
@@ -35,7 +35,7 @@ buildscript {
 allprojects{
     repositories {
         jcenter()  //JCenter仓库
-        maven { url 'https://maven.google.com' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         flatDir {
             dirs rootDir.getAbsolutePath()+'/libs'
         }

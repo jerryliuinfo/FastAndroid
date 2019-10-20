@@ -21,12 +21,13 @@ public class FrameworkApplication  {
     }
 
     public static void onCreate(Context context){
-        if (context != null){
-            mContext = context.getApplicationContext();
+        if (context == null){
+            throw new NullPointerException("context can't be null");
         }
-        SPUtil.init(mContext,"");
+        mContext = context.getApplicationContext();
+        SPUtil.init(context,"");
         sApplication = (Application) context.getApplicationContext();
-        ContextUtil.injectContext(mContext);
+        ContextUtil.injectContext(context);
         NetworkHelper.getInstance().registerNetworkSensor(context);
         DebugUtils.syncDebugStatus(context);
 

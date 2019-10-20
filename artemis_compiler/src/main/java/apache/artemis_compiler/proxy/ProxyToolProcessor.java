@@ -47,6 +47,7 @@ public class ProxyToolProcessor extends AbstractProcessor {
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
+        System.out.println("ProxyToolProcessor init");
         mFiler = processingEnv.getFiler();
         mElementUtils = processingEnv.getElementUtils();
         mMessager = processingEnv.getMessager();
@@ -59,12 +60,51 @@ public class ProxyToolProcessor extends AbstractProcessor {
      */
     private Map<String, ProxyClass> mProxyClassMap = new HashMap<>();
 
+
+
+    public static final String PROXY = "$$APTPROXY";
+
     /**
      * 处理器的主方法，用于扫描处理注解，生成java文件
      */
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         System.out.println(TAG + "process ");
+
+       /* MethodSpec methodSpec = MethodSpec.methodBuilder("main")
+                .addModifiers(Modifier.PUBLIC,Modifier.STATIC).returns(TypeName.VOID)
+                .addParameter(String[].class, "args")
+                .addStatement("$T.out.println($S)",System.class, "Hello Javapoet")
+                .build();
+
+        TypeSpec typeSpec = TypeSpec.classBuilder("HelloWorld")
+                .addModifiers(Modifier.PUBLIC,Modifier.FINAL)
+                .addMethod(methodSpec)
+                .build();
+
+        Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(AptTest.class);
+        if (elements != null){
+            for (Element element : elements) {
+                //只能修饰类
+                if (!(element instanceof TypeElement)){
+                    continue;
+                }
+                //TypeElement typeElement = (TypeElement) element.getEnclosingElement();
+
+                JavaFile file = JavaFile.builder("com.apache.fastandroid.apt", typeSpec)
+                        .addFileComment(" This codes are generated automatically. Do not modify!")
+                        .build();
+                try {
+                    file.writeTo(mFiler);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+*/
+
+
+
 
         //处理被ViewById注解的元素
         for (Element element : roundEnv.getElementsAnnotatedWith(BindViewById.class)) {

@@ -3,10 +3,9 @@ package com.tesla.framework.network.task;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-
-import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.StrUtil;
+import com.tesla.framework.applike.FrameworkApplication;
+import com.tesla.framework.common.util.N;
 import com.tesla.framework.common.util.log.NLog;
 
 
@@ -86,7 +85,7 @@ public class TaskException extends Exception {
 				Resources res = context.getResources();
 
 				TaskError error = null;
-				if (!StrUtil.isEmpty(code)){
+				if (!N.isEmpty(code)){
 					error = TaskError.valueOf(String.valueOf(code));
 				}
 				if (error == TaskError.noneNetwork || error == TaskError.failIOError)

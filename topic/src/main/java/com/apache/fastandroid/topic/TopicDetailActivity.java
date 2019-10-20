@@ -12,9 +12,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.apache.fastandroid.artemis.ArtemisContext;
-import com.apache.fastandroid.artemis.bridge.ModuleConstans;
 import com.apache.fastandroid.artemis.support.bean.User;
 import com.apache.fastandroid.topic.bean.TopicBean;
 import com.apache.fastandroid.topic.bean.TopicContent;
@@ -23,7 +21,6 @@ import com.apache.fastandroid.topic.webview.MarkdownView;
 import com.apache.fastandroid.topic.webview.WebImageListener;
 import com.tesla.framework.common.util.date.FormatTimeUtil;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.component.bridge.ModularizationDelegate;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
@@ -123,11 +120,6 @@ public class TopicDetailActivity extends BaseActivity {
         iv_avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":userCenter:startLoginActivity",null,null,new Object[]{this});
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         });
 
@@ -154,11 +146,6 @@ public class TopicDetailActivity extends BaseActivity {
                 login.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        try {
-                            ModularizationDelegate.getInstance().runStaticAction(ModuleConstans.MODULE_USER_CENTER_NAME+":startLoginActivity",null,null,new Object[]{TopicDetailActivity.this,true});
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
                     }
                 });
 

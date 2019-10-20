@@ -1,6 +1,6 @@
 package com.apache.fastandroid.artemis.api;
 
-import com.apache.fastandroid.artemis.Constants;
+import com.apache.fastandroid.artemis.constant.Constants;
 import com.apache.fastandroid.artemis.support.bean.Token;
 
 import io.reactivex.Observable;

@@ -14,9 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindOnClick;
 import com.apache.artemis_annotation.BindViewById;
 import com.apache.fastandroid.artemis.ArtemisContext;
+import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.artemis.modularization.provider.ProtocalA;
 import com.apache.fastandroid.artemis.modularization.provider.Protocols;
 import com.apache.fastandroid.bean.UserBean;
@@ -29,12 +31,13 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkListener;
 import com.tesla.framework.common.util.network.NetworkType;
 import com.tesla.framework.common.util.view.StatusBarUtil;
+import com.tesla.framework.route.Route;
 import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
 import com.tesla.framework.ui.widget.ToastUtils;
-
+@AptTest(path = "main")
 public class MainActivity extends BaseActivity implements NetworkListener{
 
 
@@ -178,6 +181,7 @@ public class MainActivity extends BaseActivity implements NetworkListener{
                     ToastUtils.showToast(this, "protocalA is null");
                 }
 
+
                 break;
             case R.id.nav_item_wallpaer:
                 fragment = WallPaperFragment.newFragment();
@@ -193,6 +197,7 @@ public class MainActivity extends BaseActivity implements NetworkListener{
             case R.id.nav_item_topic_home:
 
                 //ARouter.getInstance().build(RouterMap.TOPIC.HOMEACTIVITY).withInt("name",1).navigation();
+                Route.getInstance().getService(ITopicService.class.getSimpleName());
                 closeDrawer();
                 return;
             case R.id.nav_item_setting:
