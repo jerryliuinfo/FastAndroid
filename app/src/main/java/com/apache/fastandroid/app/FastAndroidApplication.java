@@ -242,3 +242,4 @@ public class FastAndroidApplication extends Application {
     }
 
 }
+
