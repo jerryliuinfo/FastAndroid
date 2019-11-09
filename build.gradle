@@ -5,15 +5,16 @@ apply from: "version.gradle"
 buildscript {
 
     repositories {
-        jcenter()   //JCenter仓库
+        google()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        jcenter()   //JCenter仓库
        /* maven {
             url 'https://dl.bintray.com/xiangxiangliu/maven'
         }*/
         flatDir {
             dirs rootDir.getAbsolutePath()+'/libs'
         }
-        google()
+
 
     }
     dependencies {
@@ -34,12 +35,14 @@ buildscript {
 
 allprojects{
     repositories {
-        jcenter()  //JCenter仓库
+        google()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        jcenter()  //JCenter仓库
+
         flatDir {
             dirs rootDir.getAbsolutePath()+'/libs'
         }
-        google()
+
     }
 
     tasks.withType(Javadoc) {

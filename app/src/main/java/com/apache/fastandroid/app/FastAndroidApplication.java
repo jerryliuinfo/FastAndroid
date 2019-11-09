@@ -15,7 +15,6 @@ import com.apache.fastandroid.artemis.constant.AppConfig;
 import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
-import com.apache.fastandroid.topic.support.imageloader.GlideImageLoader;
 import com.squareup.leakcanary.LeakCanary;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
@@ -25,6 +24,7 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
+import com.tesla.framework.component.imageloader.impl.GlideImageLoader;
 import com.tesla.framework.component.performance.BlockDetector;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.crash.TUncaughtExceptionHandler;
@@ -33,8 +33,6 @@ import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
 import java.io.File;
-
-import scala.util.control.Exception;
 
 /**
  * Created by jerryliu on 2017/3/26.
@@ -110,7 +108,7 @@ public class FastAndroidApplication extends Application {
                 Class<?> clz = Class.forName(componentAppName);
                 IApplicationLike applicationLike  = (IApplicationLike) clz.newInstance();
                 applicationLike.onCreate(this);
-            } catch (Exception e) {
+            } catch (Throwable e) {
                 e.printStackTrace();
             }
         }
@@ -159,8 +157,8 @@ public class FastAndroidApplication extends Application {
                     path = file + File.separator + "crash"; // Android/data/pkgName/files/crash
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Throwable e) {
+            //e.printStackTrace();
         }
         return path;
     }
@@ -211,7 +209,7 @@ public class FastAndroidApplication extends Application {
         if (!TextUtils.isEmpty(imageLoaderClassName)){
             try {
                 return (IImageLoaderstrategy) Class.forName(imageLoaderClassName).newInstance();
-            }catch (Exception e){
+            }catch (Throwable e){
                 return new GlideImageLoader();
             }
         }

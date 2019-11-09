@@ -1,4 +1,4 @@
-package com.apache.fastandroid.topic.support.imageloader;
+package com.tesla.framework.component.imageloader.impl;
 
 import android.content.Context;
 import android.graphics.Bitmap;
