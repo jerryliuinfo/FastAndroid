@@ -52,7 +52,7 @@ public class SplashActivity extends BaseActivity {
         super.layoutInit(savedInstanceState);
 
         //coutDownView.setVisibility(View.VISIBLE);
-        ADConfigManager.getInstance(this).setLastShowADTime(System.currentTimeMillis());
+        ADConfigManager.getInstance(getApplicationContext()).setLastShowADTime(System.currentTimeMillis());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -61,7 +61,7 @@ public class SplashActivity extends BaseActivity {
 
             }
         },2000);
-        testBlock();
+        //testBlock();
 
     }
 

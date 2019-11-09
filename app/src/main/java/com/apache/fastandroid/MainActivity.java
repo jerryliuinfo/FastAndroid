@@ -19,7 +19,6 @@ import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindViewById;
 import com.apache.fastandroid.annotations.CheckLogin;
 import com.apache.fastandroid.artemis.AppContext;
-import com.apache.fastandroid.artemis.LoginActivity;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.setting.SettingFragment;
@@ -32,10 +31,14 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkListener;
 import com.tesla.framework.common.util.network.NetworkType;
 import com.tesla.framework.common.util.view.StatusBarUtil;
+import com.tesla.framework.component.eventbus.FastBus;
+import com.tesla.framework.component.eventbus.Subscribe;
+import com.tesla.framework.component.eventbus.ThreadMode;
 import com.tesla.framework.route.Route;
 import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
 
 @AptTest(path = "main")
@@ -88,6 +91,13 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
             parentClassLoader = parentClassLoader.getParent();
 
         }
+        FastBus.getInstance().registe(this);
+
+    }
+
+    @Subscribe(ThreadMode.MAIN)
+    public void getUser(UserEvent event){
+        MainLogUtil.d("getUser = %s",event);
     }
 
 
@@ -321,12 +331,19 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
 
     @Override
     public void onClick(View v) {
-        try {
+       /* try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
         MainLogUtil.d("onClick view id = %s",ResUtil.getResourceName(v.getId()));
-        LoginActivity.launch(this);
+        //LoginActivity.launch(this);
+        FragmentContainerActivity.launch(this,ANRTestFragment.class,null);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        FastBus.getInstance().unregiste(this);
     }
 }

@@ -33,7 +33,7 @@ public class AsmClassVisitor extends ClassVisitor {
 
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
-        MyLog.log("=====---------- visitMethod ----------=====");
+        //MyLog.log(String.format("=====----------visitMethod name = %s, desc = %s, signature = %s =====----------", name,desc,signature));
         MethodVisitor mv = cv.visitMethod(access, name, desc, signature, exceptions);
         AsmMethodVisitor mMethodVisitor = new AsmMethodVisitor(Opcodes.ASM5, mv, access, name, desc);
         return mMethodVisitor;

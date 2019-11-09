@@ -86,13 +86,13 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
                 } catch (Exception e) {
                 }
                 // 重写Activity的contentView
-                try {
-                    Method method = clazz.getMethod("setActivityContentView");
-                    if (method != null)
-                        contentId = Integer.parseInt(method.invoke(fragment).toString());
-                } catch (Exception e) {
-                    NLog.printStackTrace(e);
-                }
+                //try {
+                //    Method method = clazz.getMethod("setActivityContentView");
+                //    if (method != null)
+                //        contentId = Integer.parseInt(method.invoke(fragment).toString());
+                //} catch (Exception e) {
+                //    NLog.printStackTrace(e);
+                //}
             } catch (Exception e) {
                 NLog.printStackTrace(e);
                 finish();

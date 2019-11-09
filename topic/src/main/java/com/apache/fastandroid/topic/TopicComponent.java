@@ -1,17 +1,11 @@
 package com.apache.fastandroid.topic;
 
-import com.apache.fastandroid.artemis.bridge.ModularizationConstans;
-import com.billy.cc.core.component.CC;
-import com.billy.cc.core.component.CCResult;
-import com.billy.cc.core.component.CCUtil;
-import com.billy.cc.core.component.IComponent;
-
 /**
  * author: 01370340
  * data: 2019/7/12
  * description:
  */
-public class TopicComponent implements IComponent {
+/*public class TopicComponent implements IComponent {
 
     @Override
     public String getName() {
@@ -37,4 +31,4 @@ public class TopicComponent implements IComponent {
                 return false;
         }
     }
-}
+}*/

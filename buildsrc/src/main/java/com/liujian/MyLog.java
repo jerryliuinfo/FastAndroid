@@ -7,6 +7,6 @@ package com.liujian;
 public class MyLog {
 
     static void log(String s){
-        System.out.println(s);
+        System.err.println(s);
     }
 }

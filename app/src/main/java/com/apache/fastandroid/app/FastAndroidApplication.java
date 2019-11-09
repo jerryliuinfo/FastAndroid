@@ -129,7 +129,7 @@ public class FastAndroidApplication extends Application {
                 IApplicationLike applicationLike  = (IApplicationLike) clz.newInstance();
                 applicationLike.onCreate(this);
             } catch (Exception e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
     }

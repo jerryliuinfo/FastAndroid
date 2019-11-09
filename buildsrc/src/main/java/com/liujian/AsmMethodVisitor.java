@@ -26,12 +26,14 @@ public class AsmMethodVisitor extends AdviceAdapter{
 
     @Override
     protected void onMethodEnter() {
-        if("onClick".equals(methodName) && "(Landroid/view/View;)V".equals(methodDes)){
+        if(/*"launch".equals(methodName) || */("onClick".equals(methodName) && "(Landroid/view/View;)V".equals(methodDes))  ){
             // mv.visitLdcInsn("liujian");
+            MyLog.log(String.format("***********************onClick method methodName = %s, methodDes = %s***********************", methodName,methodDes));
+
             mv.visitVarInsn(ALOAD, 1);
             // mv.visitInsn(ICONST_1);
             //mv.visitMethodInsn(Opcodes.INVOKESTATIC, "android/view/View", "getId", "()I", false);
-            mv.visitMethodInsn(Opcodes.INVOKESTATIC, "com/example/liujian/asmdemo/LogUtils", "system", "(Landroid/view/View;)V", false);
+            mv.visitMethodInsn(Opcodes.INVOKESTATIC, "com/apache/fastandroid/LogUtils", "system", "(Landroid/view/View;)V", false);
 
         }
     }
