@@ -55,6 +55,10 @@ dependencies {
     api config.thirddependencies.okhttp3
     api config.thirddependencies.material_dialogs
 
+    implementation config.thirddependencies.glide
+    implementation config.thirddependencies.picasso
+    implementation config.thirddependencies.imageLoader
+
 
     api project(':artemis_annotation')
 }
