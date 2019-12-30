@@ -3,9 +3,12 @@ package com.apache.fastandroid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
+import android.util.Log;
 import android.widget.TextView;
+
 import com.apache.artemis_annotation.ByView;
 import com.apache.artemis_annotation.DIActivity;
 import com.apache.fastandroid.bean.UserBean;
@@ -25,15 +28,28 @@ public class SplashActivity extends BaseActivity {
 
     private SplashCountDownView coutDownView;
 
-    private Handler mHandler = new Handler(){
+
+
+    private Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-
-            MainLogUtil.d("handleMessage");
-            testBlock();
+            Log.d(MainActivity.class.getName(), "接收到信息 ->" + msg.what);
         }
     };
+
+
+    void doJob() {
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                mHandler.sendEmptyMessageDelayed(1, 60000L);
+            }
+        };
+        thread.start();
+    }
+
 
     private void testBlock(){
         SystemClock.sleep(600);
@@ -62,6 +78,7 @@ public class SplashActivity extends BaseActivity {
             }
         },2000);
         //testBlock();
+        doJob();
 
     }
 

@@ -2,8 +2,8 @@ package com.tesla.framework.component.imageloader;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
 import android.view.View;
+
 import com.tesla.framework.common.util.ObjPool;
 
 /**
@@ -166,30 +166,30 @@ public class ImageLoaderOptions {
             return this;
         }
 
-        public Builder placeholder(@DrawableRes int holderDrawable){
-            mOptions.holderId = holderDrawable;
-            return this;
-        }
+//        public Builder placeholder(@DrawableRes int holderDrawable){
+//            mOptions.holderId = holderDrawable;
+//            return this;
+//        }
 
         public Builder placeholder(Drawable holderDrawable){
             mOptions.holderDrawable = holderDrawable;
             return this;
         }
 
-        public Builder error(@DrawableRes int errorDrawable){
-            mOptions.errorId = errorDrawable;
-            return this;
-        }
+//        public Builder error(@DrawableRes int errorDrawable){
+//            mOptions.errorId = errorDrawable;
+//            return this;
+//        }
 
         public Builder error(Drawable errorDrawable){
             mOptions.errorDrawable = errorDrawable;
             return this;
         }
 
-        public Builder emptyUrl(@DrawableRes int emptyUrlDrawable){
-            mOptions.emptyUrlId = emptyUrlDrawable;
-            return this;
-        }
+//        public Builder emptyUrl(@DrawableRes int emptyUrlDrawable){
+//            mOptions.emptyUrlId = emptyUrlDrawable;
+//            return this;
+//        }
         public Builder emptyUrl(Drawable emptyUrlDrawable){
             mOptions.emptyUrlDrawable = emptyUrlDrawable;
             return this;

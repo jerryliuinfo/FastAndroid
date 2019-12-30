@@ -200,7 +200,9 @@ dependencies {
     //必须加行这行，否则proxyToolProcessor无法自动生成类
     implementation project(':artemis_annotation')
     annotationProcessor project(':artemis_compiler')
-    implementation 'com.github.markzhai:blockcanary-android:1.5.0'
-    implementation 'com.google.android:flexbox:0.3.0'
+    //implementation 'com.google.android:flexbox:0.3.0'
+//    implementation 'com.github.markzhai:blockcanary-android:1.5.0'
+
+
 }
 

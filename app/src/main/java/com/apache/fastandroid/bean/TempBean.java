@@ -20,6 +20,11 @@ public class TempBean implements Parcelable {
         this.map = map;
     }
 
+    private TempBean(Builder builder) {
+        setAge(builder.age);
+        setMap(builder.map);
+    }
+
     public int getAge() {
         return age;
     }
@@ -52,7 +57,7 @@ public class TempBean implements Parcelable {
         this.map = (HashMap<String, String>) in.readSerializable();
     }
 
-    public static final Parcelable.Creator<TempBean> CREATOR = new Parcelable.Creator<TempBean>() {
+    public static final Creator<TempBean> CREATOR = new Creator<TempBean>() {
         @Override
         public TempBean createFromParcel(Parcel source) {
             return new TempBean(source);
@@ -63,4 +68,27 @@ public class TempBean implements Parcelable {
             return new TempBean[size];
         }
     };
+
+
+    public static final class Builder {
+        private int age;
+        private HashMap<String, String> map;
+
+        public Builder() {
+        }
+
+        public Builder age(int val) {
+            age = val;
+            return this;
+        }
+
+        public Builder map(HashMap<String, String> val) {
+            map = val;
+            return this;
+        }
+
+        public TempBean build() {
+            return new TempBean(this);
+        }
+    }
 }
