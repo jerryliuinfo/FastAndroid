@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/btn_test_download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试下载"
+            android:textAllCaps="false"
+            />
+
+        <Button
+            android:id="@+id/btn_test_worktask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test_worktask"
+            android:textAllCaps="false"
+            />
+
+        <Button
+            android:id="@+id/btn_test_swipe_refresh_recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="下拉刷新,上来加载更多"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btn_test_recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="没有下拉刷新的Fragment"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btn_header_recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="带header的recycleView"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btn_multi_type_recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="item多个样式的recycleView"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btn_set_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="加载本地固定的数据"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btn_test_listfragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试List显示列表"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btn_test_custom_footview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试自定义footview"
+            android:textAllCaps="false"
+            />
+
+
+
+        <Button
+            android:id="@+id/btn_test_write_swiperefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自己动手撸一个列表"
+            android:textAllCaps="false"
+            />
+
+
+        <Button
+            android:id="@+id/btn_test_load_failed_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试加载失败视图"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btn_test_startactivity_forresult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试StartActivityForReuult"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btn_test_marathon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试马拉松"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btn_test_permission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test_permission"
+            android:textAllCaps="false"
+            />
+
+    </LinearLayout>
+</ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,3 @@
+# Referenced at /Users/jerry/project/FastAndroid/app/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml:9
+-keep class android.support.test.runner.AndroidJUnitRunner { <init>(...); }
+

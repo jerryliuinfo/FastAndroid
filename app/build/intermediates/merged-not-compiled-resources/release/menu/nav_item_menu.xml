@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_item_topic"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/nav_posts"/>
+        <item
+            android:id="@+id/nav_item_wallpaer"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/nav_wallpaer"/>
+        <item
+            android:id="@+id/nav_item_pic"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/nav_pic"/>
+        <item
+            android:id="@+id/nav_item_video"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/nav_video"/>
+        <item
+            android:id="@+id/nav_item_topic_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Topic主界面"/>
+        <item
+            android:id="@+id/nav_item_music"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Slideshow"/>
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_item_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share"/>
+            <item
+                android:id="@+id/nav_item_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send"/>
+            <item
+                android:id="@+id/nav_item_setting"
+                android:icon="@android:drawable/ic_menu_set_as"
+                android:title="设置"/>
+        </menu>
+    </item>
+
+
+</menu>

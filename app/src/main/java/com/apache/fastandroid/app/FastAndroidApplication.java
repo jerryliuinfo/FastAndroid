@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
+
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.BaseApp;
@@ -17,7 +18,6 @@ import com.apache.fastandroid.artemis.track.TrackPoint;
 import com.apache.fastandroid.artemis.track.TrackPointCallBack;
 import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
-import com.apache.fastandroid.topic.support.imageloader.GlideImageLoader;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.squareup.leakcanary.LeakCanary;
 import com.tesla.framework.applike.IApplicationLike;
@@ -28,12 +28,14 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
+import com.tesla.framework.component.imageloader.impl.GlideImageLoader;
 import com.tesla.framework.component.performance.BlockDetector;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.crash.TUncaughtExceptionHandler;
 import com.tesla.framework.support.db.FastAndroidDB;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
+
 import java.io.File;
 
 /**

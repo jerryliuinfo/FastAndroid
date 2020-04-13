@@ -1,0 +1,194 @@
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/design-27.0.1.aar/7d7392cd8b3fbc0c35b4551c100aa8d1/res/layout/design_bottom_navigation_item.xml:26
+-keep class android.support.design.internal.BaselineLayout { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/design-27.0.1.aar/7d7392cd8b3fbc0c35b4551c100aa8d1/res/layout/design_navigation_item.xml:17
+-keep class android.support.design.internal.NavigationMenuItemView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/design-27.0.1.aar/7d7392cd8b3fbc0c35b4551c100aa8d1/res/layout/design_navigation_menu.xml:17
+-keep class android.support.design.internal.NavigationMenuView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/design-27.0.1.aar/7d7392cd8b3fbc0c35b4551c100aa8d1/res/layout/design_layout_snackbar_include.xml:18
+-keep class android.support.design.internal.SnackbarContentLayout { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/design-27.0.1.aar/7d7392cd8b3fbc0c35b4551c100aa8d1/res/layout/design_text_input_password_icon.xml:18
+-keep class android.support.design.widget.CheckableImageButton { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/design-27.0.1.aar/7d7392cd8b3fbc0c35b4551c100aa8d1/res/layout/design_bottom_sheet_dialog.xml:26
+-keep class android.support.design.widget.CoordinatorLayout { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/activity_main.xml:35
+-keep class android.support.design.widget.NavigationView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/design-27.0.1.aar/7d7392cd8b3fbc0c35b4551c100aa8d1/res/layout-sw600dp-v13/design_layout_snackbar.xml:18
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/design-27.0.1.aar/7d7392cd8b3fbc0c35b4551c100aa8d1/res/layout/design_layout_snackbar.xml:18
+-keep class android.support.design.widget.Snackbar$SnackbarLayout { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/packaged_res/release/layout/comm_ui_tabs_tablayout.xml:8
+-keep class android.support.design.widget.TabLayout { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/frament_user_login.xml:8
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/frament_user_login.xml:23
+-keep class android.support.design.widget.TextInputLayout { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/packaged_res/release/layout/comm_ui_tabs.xml:5
+# Referenced at /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/packaged_res/release/layout/comm_ui_tabs_tablayout.xml:14
+-keep class android.support.v4.view.ViewPager { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/activity_main.xml:2
+-keep class android.support.v4.widget.DrawerLayout { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_alert_dialog_material.xml:41
+-keep class android.support.v4.widget.NestedScrollView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_alert_dialog_button_bar_material.xml:43
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_alert_dialog_material.xml:52
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_alert_dialog_material.xml:66
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_alert_dialog_title_material.xml:56
+-keep class android.support.v4.widget.Space { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/packaged_res/release/layout/comm_ui_list_swiperefresh.xml:8
+# Referenced at /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/packaged_res/release/layout/comm_ui_recycleview_swiperefresh.xml:13
+-keep class android.support.v4.widget.SwipeRefreshLayout { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_select_dialog_material.xml:23
+-keep class android.support.v7.app.AlertController$RecycleListView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_action_menu_item_layout.xml:17
+-keep class android.support.v7.view.menu.ActionMenuItemView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_expanded_menu_layout.xml:17
+-keep class android.support.v7.view.menu.ExpandedMenuView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_list_menu_item_layout.xml:17
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_popup_menu_item_layout.xml:17
+-keep class android.support.v7.view.menu.ListMenuItemView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout-v26/abc_screen_toolbar.xml:27
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_screen_toolbar.xml:27
+-keep class android.support.v7.widget.ActionBarContainer { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout-v26/abc_screen_toolbar.xml:44
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_action_mode_bar.xml:19
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_screen_toolbar.xml:43
+-keep class android.support.v7.widget.ActionBarContextView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout-v26/abc_screen_toolbar.xml:17
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_screen_toolbar.xml:17
+-keep class android.support.v7.widget.ActionBarOverlayLayout { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_action_menu_layout.xml:17
+-keep class android.support.v7.widget.ActionMenuView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_activity_chooser_view.xml:19
+-keep class android.support.v7.widget.ActivityChooserView$InnerLayout { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_alert_dialog_material.xml:18
+-keep class android.support.v7.widget.AlertDialogLayout { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout-ldrtl-v17/md_listitem_multichoice.xml:28
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_listitem_multichoice.xml:16
+-keep class android.support.v7.widget.AppCompatCheckBox { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout-ldrtl-v17/md_listitem_singlechoice.xml:28
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_listitem_singlechoice.xml:16
+-keep class android.support.v7.widget.AppCompatRadioButton { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_alert_dialog_button_bar_material.xml:26
+-keep class android.support.v7.widget.ButtonBarLayout { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/item_news.xml:2
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/item_news_photo.xml:3
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/item_person.xml:7
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/item_pic.xml:8
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/item_wallpaper.xml:7
+-keep class android.support.v7.widget.CardView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_screen_content_include.xml:19
+-keep class android.support.v7.widget.ContentFrameLayout { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_alert_dialog_title_material.xml:45
+-keep class android.support.v7.widget.DialogTitle { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_screen_simple_overlay_action_mode.xml:23
+-keep class android.support.v7.widget.FitWindowsFrameLayout { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_dialog_title_material.xml:22
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_screen_simple.xml:17
+-keep class android.support.v7.widget.FitWindowsLinearLayout { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_list.xml:38
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_list_check.xml:38
+# Referenced at /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/packaged_res/release/layout/comm_ui_recycleview.xml:13
+# Referenced at /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/packaged_res/release/layout/comm_ui_recycleview_swiperefresh.xml:18
+-keep class android.support.v7.widget.RecyclerView { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_search_view.xml:75
+-keep class android.support.v7.widget.SearchView$SearchAutoComplete { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout-v26/abc_screen_toolbar.xml:37
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_screen_toolbar.xml:36
+-keep class android.support.v7.widget.Toolbar { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_screen_simple.xml:25
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/res/layout/abc_screen_simple_overlay_action_mode.xml:32
+-keep class android.support.v7.widget.ViewStubCompat { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_stub_actionbuttons.xml:4
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_stub_actionbuttons.xml:9
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_stub_actionbuttons.xml:16
+-keep class com.afollestad.materialdialogs.internal.MDButton { <init>(...); }
+
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_basic.xml:1
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_basic_check.xml:1
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_custom.xml:1
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_input.xml:1
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_input_check.xml:1
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_list.xml:1
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_list_check.xml:1
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_progress.xml:1
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_progress_indeterminate.xml:1
+# Referenced at /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/res/layout/md_dialog_progress_indeterminate_horizontal.xml:1
+-keep class com.afollestad.materialdialogs.internal.MDRootLayout { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/build/intermediates/manifests/full/release/AndroidManifest.xml:39
+-keep class com.apache.fastandroid.MainActivity { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/build/intermediates/manifests/full/release/AndroidManifest.xml:32
+-keep class com.apache.fastandroid.SplashActivity { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/build/intermediates/manifests/full/release/AndroidManifest.xml:24
+-keep class com.apache.fastandroid.app.FastAndroidApplication { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/build/intermediates/manifests/full/release/AndroidManifest.xml:57
+-keep class com.apache.fastandroid.artemis.LoginActivity { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/activity_splash.xml:44
+-keep class com.apache.fastandroid.widget.SplashCountDownView { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/ui_wallpaper_setting.xml:45
+-keep class com.apache.fastandroid.widget.WallpaperViewer { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/ui_wallpaper_setting.xml:38
+-keep class com.apache.fastandroid.widget.WaveView { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/build/intermediates/manifests/full/release/AndroidManifest.xml:59
+-keep class com.tesla.framework.common.util.network.NetworkReceiver { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/build/intermediates/manifests/full/release/AndroidManifest.xml:43
+-keep class com.tesla.framework.ui.activity.FragmentContainerActivity { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/nav_layout_header.xml:11
+-keep class com.tesla.framework.ui.widget.CircleImageView { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/packaged_res/release/layout/comm_lay_toolbar.xml:2
+-keep class com.tesla.framework.ui.widget.CustomToolbar { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/ui_fragment_container.xml:2
+-keep class com.tesla.framework.ui.widget.KitkatViewGroup { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/app/src/main/res/layout/ui_wallpaper_setting.xml:10
+-keep class com.tesla.framework.ui.widget.photoview.PhotoView { <init>(...); }
+
+# Referenced at /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/packaged_res/release/layout/swipeback_layout.xml:2
+-keep class com.tesla.framework.ui.widget.swipeback.SwipeBackLayout { <init>(...); }
+

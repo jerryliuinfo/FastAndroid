@@ -1,0 +1,244 @@
+-- Merging decision tree log ---
+application
+INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:18:5-53:19
+MERGED from [:baselib] /Users/jerry/project/FastAndroid/baselib/build/intermediates/manifests/full/release/AndroidManifest.xml:9:5-14:19
+MERGED from [:baselib] /Users/jerry/project/FastAndroid/baselib/build/intermediates/manifests/full/release/AndroidManifest.xml:9:5-14:19
+MERGED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:15:5-26:19
+MERGED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:15:5-26:19
+MERGED from [com.afollestad.material-dialogs:core:0.9.4.5] /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/AndroidManifest.xml:13:5-20
+MERGED from [com.afollestad.material-dialogs:core:0.9.4.5] /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/AndroidManifest.xml:13:5-20
+MERGED from [com.android.volley:volley:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/volley-1.0.0.aar/2f0d73993fedd9ead628720990c4bba1/AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/volley-1.0.0.aar/2f0d73993fedd9ead628720990c4bba1/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-v13:25.3.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/388f2e97882f7fb426a7c650ee110b26/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v13:25.3.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/388f2e97882f7fb426a7c650ee110b26/AndroidManifest.xml:29:5-20
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/ec5d793caff843f551deff0ffc7511c0/AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/ec5d793caff843f551deff0ffc7511c0/AndroidManifest.xml:24:5-28:19
+	android:supportsRtl
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:25:9-35
+	android:label
+		INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:22:9-35
+		REJECTED from [:baselib] /Users/jerry/project/FastAndroid/baselib/build/intermediates/manifests/full/release/AndroidManifest.xml:11:9-41
+		REJECTED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:18:9-41
+	android:roundIcon
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:24:9-54
+	android:icon
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:21:9-43
+		REJECTED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:17:9-43
+	android:allowBackup
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:20:9-35
+	android:theme
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:26:9-46
+	tools:replace
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:23:9-65
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:19:9-51
+manifest
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:2:1-55:12
+INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:2:1-55:12
+INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:2:1-55:12
+INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:2:1-55:12
+MERGED from [:baselib] /Users/jerry/project/FastAndroid/baselib/build/intermediates/manifests/full/release/AndroidManifest.xml:2:1-16:12
+MERGED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:2:1-28:12
+MERGED from [com.android.support:design:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/design-27.0.1.aar/7d7392cd8b3fbc0c35b4551c100aa8d1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.afollestad.material-dialogs:core:0.9.4.5] /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/AndroidManifest.xml:2:1-15:12
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/library-1.4.1.aar/f027e909ce2e86016687a0c2527215f4/AndroidManifest.xml:6:1-16:12
+MERGED from [com.android.support:appcompat-v7:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:multidex:1.0.2] /Users/jerry/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/5c8066c411df47778a6dfd95edce7fe7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.alibaba:arouter-api:1.4.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/arouter-api-1.4.1.aar/99d206961a5943273223f492b178cf06/AndroidManifest.xml:2:1-10:12
+MERGED from [com.jakewharton:butterknife:8.5.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/butterknife-8.5.1.aar/8dcc84d1f30b7158cf6ce6c919e2b324/AndroidManifest.xml:2:1-7:12
+MERGED from [com.squareup.leakcanary:leakcanary-android-no-op:1.6.3] /Users/jerry/.gradle/caches/transforms-1/files-1.1/leakcanary-android-no-op-1.6.3.aar/aeed83b314d34ce01b6a30db239f0845/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.1.aar/03a009f6a13c6085284632b47f0ae495/AndroidManifest.xml:17:1-22:12
+MERGED from [io.taig.android:parcelable_2.11:3.0.0-BETA1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/parcelable_2.11-3.0.0-BETA1.aar/d66cdd468340f33a6c440cd283f8af4a/AndroidManifest.xml:3:1-50
+MERGED from [com.android.volley:volley:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/volley-1.0.0.aar/2f0d73993fedd9ead628720990c4bba1/AndroidManifest.xml:2:1-11:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/663d55e4b70f2845f7126d5c1bd42944/AndroidManifest.xml:15:1-21:12
+MERGED from [com.android.support:customtabs:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.1.aar/7f9d50cd70f5519120c6f79df9fd1adf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/transition-27.0.1.aar/673b8b6d98778039f8385341c2c5ea09/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v13:25.3.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/388f2e97882f7fb426a7c650ee110b26/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-v4:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.1.aar/a585b03e9609de9ec4d8b5d437f878d7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.1.aar/350159edb607bf344207899ec38a0624/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.1.aar/70dc59ff3f451ab3578e8245156b49ee/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.1.aar/01abedac9c2346298011ba90933e2ef5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.1.aar/43a6d6c8c4bbfcf7006a2fa253f6f9e9/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.1.aar/0075c706f31a237a0c8eb3e9fb23be14/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.1.aar/6fa1eb9d7bd60e7fd2de7added69dba9/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.1.aar/3cb9a81d5195cbef4ec09167c63014b1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.1.aar/b7ffd845185eb22caffe72882ec4e2d6/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/ec5d793caff843f551deff0ffc7511c0/AndroidManifest.xml:17:1-30:12
+INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:2:1-55:12
+INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:2:1-55:12
+INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:2:1-55:12
+	package
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:2:11-43
+		INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:2:1-55:12
+		INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:4:11-57
+	android:versionCode
+		INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:2:1-55:12
+		INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:3:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:6:5-66
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:6:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:7:5-78
+MERGED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:9:5-79
+MERGED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:9:5-79
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:7:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:8:5-75
+MERGED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:10:5-76
+MERGED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:10:5-76
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:8:22-73
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:10:5-75
+MERGED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:13:5-75
+MERGED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:13:5-75
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:10:22-72
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:12:5-80
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:12:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:13:5-80
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:13:22-77
+uses-sdk
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:15:5-75
+INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:15:5-75
+INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:15:5-75
+MERGED from [:baselib] /Users/jerry/project/FastAndroid/baselib/build/intermediates/manifests/full/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:baselib] /Users/jerry/project/FastAndroid/baselib/build/intermediates/manifests/full/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:design:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/design-27.0.1.aar/7d7392cd8b3fbc0c35b4551c100aa8d1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/design-27.0.1.aar/7d7392cd8b3fbc0c35b4551c100aa8d1/AndroidManifest.xml:20:5-44
+MERGED from [com.afollestad.material-dialogs:core:0.9.4.5] /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/AndroidManifest.xml:8:5-11:75
+MERGED from [com.afollestad.material-dialogs:core:0.9.4.5] /Users/jerry/.gradle/caches/transforms-1/files-1.1/core-0.9.4.5.aar/4da043b4e45d6d7a57b820343303c943/AndroidManifest.xml:8:5-11:75
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/library-1.4.1.aar/f027e909ce2e86016687a0c2527215f4/AndroidManifest.xml:12:5-14:41
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/library-1.4.1.aar/f027e909ce2e86016687a0c2527215f4/AndroidManifest.xml:12:5-14:41
+MERGED from [com.android.support:appcompat-v7:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/4486c2b3477e48205a0accaa78884577/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:multidex:1.0.2] /Users/jerry/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/5c8066c411df47778a6dfd95edce7fe7/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.2] /Users/jerry/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/5c8066c411df47778a6dfd95edce7fe7/AndroidManifest.xml:20:5-43
+MERGED from [com.alibaba:arouter-api:1.4.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/arouter-api-1.4.1.aar/99d206961a5943273223f492b178cf06/AndroidManifest.xml:6:5-8:41
+MERGED from [com.alibaba:arouter-api:1.4.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/arouter-api-1.4.1.aar/99d206961a5943273223f492b178cf06/AndroidManifest.xml:6:5-8:41
+MERGED from [com.jakewharton:butterknife:8.5.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/butterknife-8.5.1.aar/8dcc84d1f30b7158cf6ce6c919e2b324/AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton:butterknife:8.5.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/butterknife-8.5.1.aar/8dcc84d1f30b7158cf6ce6c919e2b324/AndroidManifest.xml:5:5-43
+MERGED from [com.squareup.leakcanary:leakcanary-android-no-op:1.6.3] /Users/jerry/.gradle/caches/transforms-1/files-1.1/leakcanary-android-no-op-1.6.3.aar/aeed83b314d34ce01b6a30db239f0845/AndroidManifest.xml:20:5-44
+MERGED from [com.squareup.leakcanary:leakcanary-android-no-op:1.6.3] /Users/jerry/.gradle/caches/transforms-1/files-1.1/leakcanary-android-no-op-1.6.3.aar/aeed83b314d34ce01b6a30db239f0845/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.1.aar/03a009f6a13c6085284632b47f0ae495/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.1.aar/03a009f6a13c6085284632b47f0ae495/AndroidManifest.xml:20:5-44
+MERGED from [com.android.volley:volley:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/volley-1.0.0.aar/2f0d73993fedd9ead628720990c4bba1/AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/volley-1.0.0.aar/2f0d73993fedd9ead628720990c4bba1/AndroidManifest.xml:7:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/663d55e4b70f2845f7126d5c1bd42944/AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/663d55e4b70f2845f7126d5c1bd42944/AndroidManifest.xml:19:5-43
+MERGED from [com.android.support:customtabs:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.1.aar/7f9d50cd70f5519120c6f79df9fd1adf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customtabs:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.1.aar/7f9d50cd70f5519120c6f79df9fd1adf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/transition-27.0.1.aar/673b8b6d98778039f8385341c2c5ea09/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/transition-27.0.1.aar/673b8b6d98778039f8385341c2c5ea09/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v13:25.3.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/388f2e97882f7fb426a7c650ee110b26/AndroidManifest.xml:21:5-23:55
+MERGED from [com.android.support:support-v13:25.3.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/388f2e97882f7fb426a7c650ee110b26/AndroidManifest.xml:21:5-23:55
+MERGED from [com.android.support:support-v4:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.1.aar/a585b03e9609de9ec4d8b5d437f878d7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.1.aar/a585b03e9609de9ec4d8b5d437f878d7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.1.aar/350159edb607bf344207899ec38a0624/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.1.aar/350159edb607bf344207899ec38a0624/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.1.aar/70dc59ff3f451ab3578e8245156b49ee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.1.aar/70dc59ff3f451ab3578e8245156b49ee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.1.aar/01abedac9c2346298011ba90933e2ef5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.1.aar/01abedac9c2346298011ba90933e2ef5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.1.aar/43a6d6c8c4bbfcf7006a2fa253f6f9e9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.1.aar/43a6d6c8c4bbfcf7006a2fa253f6f9e9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.1.aar/0075c706f31a237a0c8eb3e9fb23be14/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.1.aar/0075c706f31a237a0c8eb3e9fb23be14/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.1.aar/6fa1eb9d7bd60e7fd2de7added69dba9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.1.aar/6fa1eb9d7bd60e7fd2de7added69dba9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.1.aar/3cb9a81d5195cbef4ec09167c63014b1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.1.aar/3cb9a81d5195cbef4ec09167c63014b1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.1.aar/b7ffd845185eb22caffe72882ec4e2d6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.1.aar/b7ffd845185eb22caffe72882ec4e2d6/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/ec5d793caff843f551deff0ffc7511c0/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/ec5d793caff843f551deff0ffc7511c0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:15:5-75
+INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:15:5-75
+	tools:overrideLibrary
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:15:15-73
+	android:targetSdkVersion
+		INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:15:5-75
+		INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:15:5-75
+		INJECTED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml
+activity#com.apache.fastandroid.SplashActivity
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:28:9-34:20
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:28:19-49
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:29:13-33:29
+action#android.intent.action.MAIN
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:30:17-68
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:30:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:32:17-76
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:32:27-74
+activity#com.apache.fastandroid.MainActivity
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:35:9-39:15
+	android:screenOrientation
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:37:13-49
+	android:launchMode
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:38:13-44
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:36:13-41
+activity#com.tesla.framework.ui.activity.FragmentContainerActivity
+ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:40:9-93
+	android:name
+		ADDED from /Users/jerry/project/FastAndroid/app/src/main/AndroidManifest.xml:40:19-91
+activity#com.apache.fastandroid.artemis.LoginActivity
+ADDED from [:baselib] /Users/jerry/project/FastAndroid/baselib/build/intermediates/manifests/full/release/AndroidManifest.xml:13:9-81
+	android:name
+		ADDED from [:baselib] /Users/jerry/project/FastAndroid/baselib/build/intermediates/manifests/full/release/AndroidManifest.xml:13:19-78
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:11:22-76
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:12:5-76
+	android:name
+		ADDED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:12:22-73
+receiver#com.tesla.framework.common.util.network.NetworkReceiver
+ADDED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:21:9-25:20
+	android:name
+		ADDED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:21:19-89
+intent-filter#action:name:android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:22:13-24:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:23:17-79
+	android:name
+		ADDED from [:fastFramework] /Users/jerry/project/FastAndroid/fastFramework/build/intermediates/manifests/full/release/AndroidManifest.xml:23:25-76
+meta-data#android.support.VERSION
+ADDED from [com.android.support:support-v13:25.3.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/388f2e97882f7fb426a7c650ee110b26/AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:support-v13:25.3.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/388f2e97882f7fb426a7c650ee110b26/AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:support-v13:25.3.1] /Users/jerry/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/388f2e97882f7fb426a7c650ee110b26/AndroidManifest.xml:26:9-47
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/ec5d793caff843f551deff0ffc7511c0/AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/ec5d793caff843f551deff0ffc7511c0/AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/jerry/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/ec5d793caff843f551deff0ffc7511c0/AndroidManifest.xml:26:13-58
