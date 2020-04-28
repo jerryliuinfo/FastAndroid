@@ -30,6 +30,7 @@ import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
+import com.tesla.framework.common.util.FrameworkLogUtil;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkListener;
@@ -120,6 +121,11 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         FastBus.getInstance().registe(this);
         doJob();
 
+        int resId = R.color.cardview_dark_background;
+        String resourceTypeName =
+                getResources().getResourceTypeName(resId);
+        String resourceEntryName = getResources().getResourceEntryName(resId);
+        FrameworkLogUtil.d("resourceTypeName: %s, resourceEntryName:%s", resourceTypeName,resourceEntryName);
 
     }
 

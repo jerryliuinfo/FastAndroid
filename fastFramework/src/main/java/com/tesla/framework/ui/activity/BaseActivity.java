@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+
 import com.tesla.framework.R;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.ResUtil;
@@ -23,9 +24,11 @@ import com.tesla.framework.network.task.TaskManager;
 import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
+import com.tesla.framework.support.skin.SkinFactory;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.CustomToolbar;
 import com.tesla.framework.ui.widget.ToastUtils;
+
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -86,6 +89,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ITaskMan
         return -1;
     }
 
+    private SkinFactory skinFactory;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        injectActivityHelper();
@@ -128,12 +132,26 @@ public abstract class BaseActivity extends AppCompatActivity implements ITaskMan
         super.onCreate(savedInstanceState);
 
 
+        skinFactory = new SkinFactory();
+//        LayoutInflaterCompat.setFactory2(getLayoutInflater(),skinFactory );
+
+
         if (inflateContentView() > 0){
             setContentView(inflateContentView());
         }
 
         layoutInit(savedInstanceState);
     }
+
+    /**
+     * 执行换肤
+     */
+    public void apply(){
+        if (skinFactory != null){
+            skinFactory.apply();
+        }
+    }
+
     /**
      * 指定Fragment的LayoutID
      *
@@ -263,6 +281,9 @@ public abstract class BaseActivity extends AppCompatActivity implements ITaskMan
 
             return;
         }
+
+        //onResume 中执行，这样已经打开过的activity也可以换肤了
+        apply();
 
         /*String languageStr = SettingUtility.getPermanentSettingAsStr("language", Locale.getDefault().getLanguage());
         String country = SettingUtility.getPermanentSettingAsStr("language-country", Locale.getDefault().getCountry());
