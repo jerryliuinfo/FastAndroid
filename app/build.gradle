@@ -123,8 +123,14 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+
+//            multiDexKeepFile file('dex.keep')
+//            def myFile = file('dex.keep')
+//            println("isFileExists:"+myFile.exists())
+
+
+            //minifyEnabled true
+            //shrinkResources true
             //zipAlignEnabled能提供系统和应用的运行效率
             zipAlignEnabled true
             //获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk
@@ -138,7 +144,7 @@ android {
         debug {
             minifyEnabled false
             manifestPlaceholders = [appName: "FastAnd测试版"]
-
+            //shrinkResources true
             buildConfigField('boolean','LOG_DEBUG',"true")
             buildConfigField('String',"BUGLY_APP_ID","\"a397701fd5\"")
         }
@@ -182,9 +188,9 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    /*if (!isTopicRunAlone.toBoolean()) {
+    if (!isTopicRunAlone.toBoolean()) {
           implementation project(':topic')
-        }*/
+        }
     debugImplementation config.thirddependencies.leakcanary_android
     releaseImplementation config.thirddependencies.leakcanary_android_no_op
     debugImplementation config.thirddependencies.leakcanary_support_fragment

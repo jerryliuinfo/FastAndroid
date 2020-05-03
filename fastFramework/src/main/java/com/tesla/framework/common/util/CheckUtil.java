@@ -1,7 +1,5 @@
 package com.tesla.framework.common.util;
 
-import android.support.annotation.Nullable;
-
 /**
  * Created by 01370340 on 2018/5/2.
  */
@@ -9,10 +7,12 @@ import android.support.annotation.Nullable;
 public class CheckUtil {
 
 
-    public static <T> T checkNotNull(T reference, @Nullable Object errorMessage) {
+
+    public static <T> T checkNotNull(T reference, String format, Object... args) {
         if (reference == null) {
-            throw new NullPointerException(String.valueOf(errorMessage));
+            throw new NullPointerException(String.format(format, args));
+        } else {
+            return reference;
         }
-        return reference;
     }
 }

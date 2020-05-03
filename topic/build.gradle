@@ -83,5 +83,8 @@ dependencies {
     api config.supportDependencies.multidex
     api project(':baselib')
 
+    implementation project(':artemis_annotation')
+    annotationProcessor project(':artemis_compiler')
+
 
 }

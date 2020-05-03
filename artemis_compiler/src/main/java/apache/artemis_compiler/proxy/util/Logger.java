@@ -24,6 +24,8 @@ public class Logger {
      */
     public void info(CharSequence info) {
         msg.printMessage(Diagnostic.Kind.NOTE, info);
+        System.out.println(info.toString());
+        java.util.logging.Logger.getLogger("info").info(info.toString());
     }
 
     public void error(CharSequence error) {

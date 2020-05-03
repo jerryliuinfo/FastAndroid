@@ -53,7 +53,7 @@ public class TopicBean implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof TopicBean)) {
+         if (!(obj instanceof TopicBean)) {
             return false;
         }
         TopicBean temp = (TopicBean) obj;
@@ -64,11 +64,8 @@ public class TopicBean implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "TopicBean{" + "id=" + id + ", title='" + title + '\'' + ", created_at='" + created_at + '\'' + ", " +
-                "updated_at='" + updated_at + '\'' + ", replied_at='" + replied_at + '\'' + ", replies_count=" +
-                replies_count + ", node_name='" + node_name + '\'' + ", node_id=" + node_id + ", last_reply_user_id="
-                + last_reply_user_id + ", last_reply_user_login='" + last_reply_user_login + '\'' + ", user=" + user
-                + ", deleted=" + deleted + ", excellent=" + excellent + ", abilities=" + abilities + '}';
+    public int hashCode() {
+        return super.hashCode();
     }
+
 }

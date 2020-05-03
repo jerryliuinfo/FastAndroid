@@ -54,10 +54,7 @@ dependencies {
     api config.thirddependencies.retrofit_converter_gson
     api config.thirddependencies.retrofit_adapter_rxjava
     api config.thirddependencies.retrofit_converter_scalars
-    //compile config.thirddependencies.eventbus
 
-    //compile config.thirddependencies.android_debug_database
-    //compile config.supportDependencies.multidex
     api config.supportDependencies.support_customtabs
 
 

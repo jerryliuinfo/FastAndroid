@@ -1,19 +1,15 @@
 package apache.artemis_compiler.proxy;
 
-import apache.artemis_compiler.proxy.util.Logger;
 import com.apache.artemis_annotation.BindOnClick;
 import com.apache.artemis_annotation.BindViewById;
 import com.google.auto.service.AutoService;
+
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.processing.AbstractProcessor;
-import javax.annotation.processing.Filer;
-import javax.annotation.processing.Messager;
-import javax.annotation.processing.ProcessingEnvironment;
+
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
@@ -21,7 +17,6 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
-import javax.lang.model.util.Elements;
 
 import static java.lang.reflect.Modifier.PRIVATE;
 import static java.lang.reflect.Modifier.STATIC;
@@ -31,28 +26,8 @@ import static java.lang.reflect.Modifier.STATIC;
  *  调试方法参考 https://www.jianshu.com/p/80a14bc35000
  */
 @AutoService(Processor.class)
-public class ProxyToolProcessor extends AbstractProcessor {
-    public static final String TAG = ProxyToolProcessor.class.getSimpleName();
-    private Filer mFiler; //文件相关的辅助类
-    private Elements mElementUtils; //元素相关的辅助类
-    private Messager mMessager; //日志相关的辅助类
+public class ProxyToolProcessor extends ABaseProcessor {
 
-    /**
-     * 日志相关的辅助类
-     */
-    private Logger logger;
-    /**
-     * 处理器的初始化方法，可以获取相关的工具类
-     */
-    @Override
-    public synchronized void init(ProcessingEnvironment processingEnv) {
-        super.init(processingEnv);
-        System.out.println("ProxyToolProcessor init");
-        mFiler = processingEnv.getFiler();
-        mElementUtils = processingEnv.getElementUtils();
-        mMessager = processingEnv.getMessager();
-        logger = new Logger(processingEnv.getMessager());   // Package the log utils.
-    }
 
     /**
      * key: com.apache.fastandroid.MainActivity
@@ -61,15 +36,12 @@ public class ProxyToolProcessor extends AbstractProcessor {
     private Map<String, ProxyClass> mProxyClassMap = new HashMap<>();
 
 
-
-    public static final String PROXY = "$$APTPROXY";
-
     /**
      * 处理器的主方法，用于扫描处理注解，生成java文件
      */
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        System.out.println(TAG + "process ");
+        getLogger().info("ProxyToolProcessor process ");
 
        /* MethodSpec methodSpec = MethodSpec.methodBuilder("main")
                 .addModifiers(Modifier.PUBLIC,Modifier.STATIC).returns(TypeName.VOID)
@@ -130,7 +102,7 @@ public class ProxyToolProcessor extends AbstractProcessor {
         //为每个宿主类生成所对应的代理类
         for (ProxyClass proxyClass_ : mProxyClassMap.values()) {
             try {
-                proxyClass_.generateProxy().writeTo(mFiler);
+                proxyClass_.generateProxy().writeTo(getFile());
             } catch (IOException e) {
                 error(null, e.getMessage());
             }
@@ -174,16 +146,16 @@ public class ProxyToolProcessor extends AbstractProcessor {
         String qualifiedName = classElement.getQualifiedName().toString();
         ProxyClass proxyClass = mProxyClassMap.get(qualifiedName);
 
-        logger.info("getProxyClass element = "+element
+        getLogger().info("getProxyClass element = "+element
                 +", element simpleName = "+element.getSimpleName()
         +", kind = "+ element.getKind() +", Modifier = "+ element.getModifiers());
 
-        logger.info("getProxyClass 父类名字 = "+qualifiedName
+        getLogger().info("getProxyClass 父类名字 = "+qualifiedName
         +", enclosing element = "+ element.getEnclosingElement() +", EnclosedElements = "+ element.getEnclosedElements());
 
         if (proxyClass == null) {
             //生成每个宿主类所对应的代理类，后面用于生产java文件
-            proxyClass = new ProxyClass(classElement, mElementUtils);
+            proxyClass = new ProxyClass(classElement, getmElementUtils());
             mProxyClassMap.put(qualifiedName, proxyClass);
         }
         return proxyClass;
@@ -234,12 +206,18 @@ public class ProxyToolProcessor extends AbstractProcessor {
     /**
      *  指定哪些注解应该被注解处理器注册
      */
+//    @Override
+//    public Set<String> getSupportedAnnotationTypes() {
+//        Set<String> types = new LinkedHashSet<>();
+//        types.add(BindViewById.class.getName());
+//        types.add(BindOnClick.class.getName());
+//        return types;
+//    }
+
+
     @Override
-    public Set<String> getSupportedAnnotationTypes() {
-        Set<String> types = new LinkedHashSet<>();
-        types.add(BindViewById.class.getName());
-        types.add(BindOnClick.class.getName());
-        return types;
+    public Class[] getgetSupportedAnnotationTypesName() {
+        return new Class[]{BindViewById.class,BindOnClick.class};
     }
 
     /**
@@ -251,6 +229,6 @@ public class ProxyToolProcessor extends AbstractProcessor {
     }
 
     private void error(Element e, String msg, Object... args) {
-        logger.error(String.format(msg, args));
+        getLogger().error(String.format(msg, args));
     }
 }

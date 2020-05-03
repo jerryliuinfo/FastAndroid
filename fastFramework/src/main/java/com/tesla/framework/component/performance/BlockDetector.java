@@ -2,8 +2,8 @@ package com.tesla.framework.component.performance;
 
 import android.os.Looper;
 import android.util.Printer;
+
 import com.tesla.framework.common.util.DebugUtils;
-import com.tesla.framework.common.util.log.NLog;
 
 /**
  *
@@ -23,7 +23,7 @@ public class BlockDetector {
 
                 @Override
                 public void println(String x) {
-                    NLog.d(TAG,"BlockDetector init println x = %s",x);
+                   // NLog.d(TAG,"BlockDetector init println x = %s",x);
                     if (x.startsWith(START)) {
                         //开始计时
                         BlockMonitor.getInstance().startMonitor();

@@ -3,6 +3,9 @@ package com.apache.fastandroid.topic;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.apache.artemis_annotation.BindPath;
+
+@BindPath("topic/main")
 public class TopicHomeActivity extends AppCompatActivity {
 
     @Override

@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 
 public class FileUtils {
@@ -68,8 +69,10 @@ public class FileUtils {
 	}
 
 	public static boolean writeFile(File file, String content) {
-		if (!file.getParentFile().exists())
+		if (!file.getParentFile().exists()){
 			file.getParentFile().mkdirs();
+		}
+
 
 		FileOutputStream out = null;
 		try {
@@ -82,11 +85,13 @@ public class FileUtils {
 			e.printStackTrace();
 			return false;
 		} finally {
-			if (out != null)
+			if (out != null){
 				try {
 					out.close();
 				} catch (Exception e2) {
 				}
+			}
+
 		}
 
 		return true;
@@ -151,18 +156,30 @@ public class FileUtils {
 		return true;
 	}
 
-	public static void copyFile(File sourceFile, File targetFile) throws Exception {
-		FileInputStream in = new FileInputStream(sourceFile);
-		byte[] buffer = new byte[128 * 1024];
-		int len = -1;
-		FileOutputStream out = new FileOutputStream(targetFile);
-		while ((len = in.read(buffer)) != -1)
-			out.write(buffer, 0, len);
-		out.flush();
-		out.close();
-		in.close();
+	public static int copySdcardFile(String fromFile, String toFile)
+	{
+
+		try
+		{
+			InputStream fosfrom = new FileInputStream(fromFile);
+			OutputStream fosto = new FileOutputStream(toFile);
+			byte bt[] = new byte[1024];
+			int c;
+			while ((c = fosfrom.read(bt)) > 0)
+			{
+				fosto.write(bt, 0, c);
+			}
+			fosfrom.close();
+			fosto.close();
+			return 0;
+
+		} catch (Exception ex)
+		{
+			return -1;
+		}
 	}
-	
+
+
 	@SuppressWarnings("unchecked")
 	public static <T> T readObject(File file, Class<T> clazz) throws Exception {
 		ObjectInputStream in = null;
