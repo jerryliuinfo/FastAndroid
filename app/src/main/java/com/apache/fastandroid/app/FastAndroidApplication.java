@@ -18,7 +18,6 @@ import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.track.TrackPoint;
 import com.apache.fastandroid.artemis.track.TrackPointCallBack;
 import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
-import com.apache.fastandroid.tink.FixManager;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.squareup.leakcanary.LeakCanary;
@@ -120,7 +119,7 @@ public class FastAndroidApplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         MultiDex.install(base);
-        FixManager.getInstance().loadDex(base);
+        //FixManager.loadDex(base);
         super.attachBaseContext(base);
 
 

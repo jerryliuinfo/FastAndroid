@@ -3,6 +3,7 @@ package com.apache.fastandroid;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -107,6 +108,9 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
     @Override
     protected void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
+
+        Canvas canvas;
+
 
         ProxyTool.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -424,13 +428,13 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
             FixManager.loadDex(context);
         } catch (Exception e) {
             e.printStackTrace();
-            ToastUtils.showSingleToast("拷贝文件失败");
             MainLogUtil.e("拷贝文件失败: msg:"+e.getMessage());
         }
 
     }
 
     private void copyPatchFile(Context context){
+        //data/data/com.apache.fastandroid/app_odex/opt_dex
         File filesDir = context.getDir("odex", Context.MODE_PRIVATE);
         //获取到没有bug的dex文件
         String name = "out.dex";
@@ -439,45 +443,20 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         //系统datra/data/com.apache.fastandroid
         File targetFile = new File(filePath);
         File sourceFile = new File(Environment.getExternalStorageDirectory(),name);
-
         MainLogUtil.d("fix sourceFile path " +sourceFile.getAbsolutePath() +", targetFile path: " +filePath);
-
         if (targetFile.exists()){
             targetFile.delete();
         }
         try {
             String sourceContent = FileUtils.readFileToString(sourceFile);
             MainLogUtil.d(String.format("sourceFile: %s", sourceContent));
-            //FileUtils.copyFile(sourceFile,targetFile);
             int copyResult = FileUtils.copySdcardFile(sourceFile.getAbsolutePath(), targetFile.getAbsolutePath());
             MainLogUtil.d("copyResult: " + copyResult);
             if (copyResult == 0){
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        ToastUtils.showSingleToast("拷贝成功");
-                    }
-                });
-
+                ToastUtils.showSingleToastOnUIThread("拷贝成功");
             }else{
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        ToastUtils.showSingleToast("拷贝失败");
-                    }
-                });
+                ToastUtils.showSingleToastOnUIThread("拷贝失败");
             }
-
-
-            File[] targetListFiles = targetFile.getParentFile().listFiles();
-            MainLogUtil.d("targetFile: " + targetFile);
-
-            if (targetListFiles!= null && targetListFiles.length > 0){
-                for (File targetListFile : targetListFiles) {
-                    MainLogUtil.d("targetListFile name:" + targetListFile.getName() +",path: " +targetListFile.getAbsolutePath());
-                }
-            }
-
         } catch (Exception e) {
             e.printStackTrace();
             ToastUtils.showSingleToast("拷贝文件失败");

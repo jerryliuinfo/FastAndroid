@@ -1,6 +1,8 @@
 package com.tesla.framework.ui.widget;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Toast;
 
 import com.tesla.framework.applike.FrameworkApplication;
@@ -18,6 +20,19 @@ public class ToastUtils {
 
     public static void showSingleToast(String text) {
         getSingleToast(text, Toast.LENGTH_SHORT).show();
+    }
+    public static void showSingleToastOnUIThread(final String text) {
+        if (Thread.currentThread() != Looper.getMainLooper().getThread()){
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    getSingleToast(text, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else {
+            getSingleToast(text, Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private static Toast getSingleToast(String text, int duration) {

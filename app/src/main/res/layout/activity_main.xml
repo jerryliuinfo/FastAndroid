@@ -39,6 +39,12 @@
             android:text="修复"
             android:onClick="onFix"
             />
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_arrow_downward_black_24dp"
+            android:tint="@color/comm_red"
+            />
     </LinearLayout>
 
     <android.support.design.widget.NavigationView

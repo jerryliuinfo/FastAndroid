@@ -51,8 +51,21 @@ android {
         //dex突破65535的限制
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //5.0以下将svg图片生成指定维度的图片
+        vectorDrawables.generatedDensities('xhdpi','xxhdpi')
+
+        //5.0以上
+        //vectorDrawables.useSupoortLibrary = true
 
         flavorDimensions "debug","release"
+
+        //只保留指定和默认资源
+        resConfigs('zh-rCN')
+
+        //配置so库架构(arm真机,x86模拟器)
+        ndk{
+            abiFilter('armeabi')
+        }
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -66,6 +79,7 @@ android {
                 //                arguments = [moduleName: project.getName()]
             }
         }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -142,13 +156,21 @@ android {
             buildConfigField('String',"BUGLY_APP_ID","\"a397701fd5\"")
         }
         debug {
-            minifyEnabled false
+//            minifyEnabled true
+//            shrinkResources true
             manifestPlaceholders = [appName: "FastAnd测试版"]
-            //shrinkResources true
+
             buildConfigField('boolean','LOG_DEBUG',"true")
             buildConfigField('String',"BUGLY_APP_ID","\"a397701fd5\"")
         }
 
+    }
+
+    //将SO库打包到apk内
+    sourceSets{
+        main{
+            jniLibs.srcDirs = ['libs']
+        }
     }
 
 
