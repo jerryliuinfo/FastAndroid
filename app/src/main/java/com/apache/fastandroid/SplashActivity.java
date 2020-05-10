@@ -66,6 +66,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
+        MainLogUtil.d("SplashActivity layoutInit");
 
         //coutDownView.setVisibility(View.VISIBLE);
         ADConfigManager.getInstance(getApplicationContext()).setLastShowADTime(System.currentTimeMillis());

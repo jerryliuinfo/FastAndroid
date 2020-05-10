@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
 import android.support.multidex.MultiDex;
+import android.support.v4.os.TraceCompat;
 import android.text.TextUtils;
 
 import com.apache.fastandroid.BuildConfig;
@@ -18,9 +19,11 @@ import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.track.TrackPoint;
 import com.apache.fastandroid.artemis.track.TrackPointCallBack;
 import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
+import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.squareup.leakcanary.LeakCanary;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.DebugUtils;
@@ -53,6 +56,13 @@ public class FastAndroidApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        MainLogUtil.d("Application attachBaseContext ");
+        //traceview 开始检测
+       // Debug.startMethodTracing("APP");
+
+        //systrace 开始检测
+        TraceCompat.beginSection("trace");
+
         //监测内存泄漏
         initLeakCanry();
 
@@ -97,7 +107,7 @@ public class FastAndroidApplication extends Application {
         TrackPoint.init(new TrackPointCallBack() {
             @Override
             public void onClick(String pageClassName, String viewIdName) {
-                BaseLibLogUtil.d("onClick: " + pageClassName + "-" + viewIdName);
+                MainLogUtil.d("onClick: " + pageClassName + "-" + viewIdName);
                 //添加你的操作
             }
 
@@ -113,16 +123,21 @@ public class FastAndroidApplication extends Application {
                 //添加你的操作
             }
         });
+        //traceview 结束检测
+       // Debug.stopMethodTracing();
+
+        //systrace 结束检测
+        TraceCompat.endSection();
 
     }
 
     @Override
     protected void attachBaseContext(Context base) {
+        MainLogUtil.d("Application attachBaseContext ");
         MultiDex.install(base);
-        //FixManager.loadDex(base);
+        //HotFixManager.loadDex(base);
         super.attachBaseContext(base);
-
-
+        LaunchTimer.startRecord();
     }
 
     private void initLeakCanry(){
@@ -177,7 +192,7 @@ public class FastAndroidApplication extends Application {
 
     private void initCrashAndAnalysis(){
         //bugly统计
-        //CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
+        CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
         //本地crash日志收集  使用bulgy时不能在本地手机日志
         TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, false, 0, SplashActivity.class);
 
@@ -213,8 +228,10 @@ public class FastAndroidApplication extends Application {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if (newConfig.fontScale != 1)//非默认值
+        //非默认值
+        if (newConfig.fontScale != 1){
             getResources();
+        }
         super.onConfigurationChanged(newConfig);
     }
 

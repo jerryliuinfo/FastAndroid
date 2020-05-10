@@ -33,6 +33,7 @@ public class ActivityUtil {
             // e.printStackTrace();
             NLog.printStackTrace(e);
         }
+
     }
 
     private static void startActivityByApplication(Context context, String packageNameStr) {

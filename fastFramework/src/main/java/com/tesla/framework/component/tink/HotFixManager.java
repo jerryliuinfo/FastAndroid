@@ -16,9 +16,9 @@ import dalvik.system.PathClassLoader;
 /**
  * Created by Jerry on 2020-05-03.
  */
-public class FixManager {
-    private static volatile FixManager instance = null;
-    private FixManager(){}
+public class HotFixManager {
+    private static volatile HotFixManager instance = null;
+    private HotFixManager(){}
 
 
     private static Set<File> loadedDex = new HashSet<>();

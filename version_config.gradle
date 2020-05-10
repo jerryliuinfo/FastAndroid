@@ -17,7 +17,9 @@ ext {
     supportLibrariesVersion = '27.0.1'
     designVersion = "27.0.1"
 
-    buglyVersion = '2.1.1'
+    buglyVersion = '3.2.1'
+    buglyNativeVersion = '3.7.1'
+
     glideVersion = "3.7.0"
     okhttp3Version = "3.7.0"
     fastjsonVersion = "1.2.29"
@@ -88,8 +90,8 @@ ext {
 
             eventbus                  :"org.greenrobot:eventbus:$eventbusVersion",
             //crash统计 //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
-           // bugly            :  "com.tencent.bugly:crashreport:$buglyVersion",
-
+            bugly            :  "com.tencent.bugly:crashreport:$buglyVersion",
+            buglyNative            :  "com.tencent.bugly:nativecrashreport:$buglyNativeVersion",
             //内存泄漏检测
             leakcanary_android         :  "com.squareup.leakcanary:leakcanary-android:$leakcanary",
             leakcanary_android_no_op   :  "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary",

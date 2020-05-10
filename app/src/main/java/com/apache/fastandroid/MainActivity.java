@@ -3,7 +3,6 @@ package com.apache.fastandroid;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -29,6 +28,7 @@ import com.apache.fastandroid.annotations.CheckLogin;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
+import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.tink.FixManager;
 import com.apache.fastandroid.tink.TinkTest;
@@ -109,7 +109,7 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
     protected void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
 
-        Canvas canvas;
+        MainLogUtil.d("MainActivity layoutInit");
 
 
         ProxyTool.bind(this);
@@ -316,10 +316,16 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        if (drawerToggle != null)
+        if (drawerToggle != null){
             drawerToggle.syncState();
+        }
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        LaunchTimer.endRecord("onWindowFocusChanged");
+    }
 
     @Override
     protected void setStatusBar() {

@@ -36,7 +36,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        BaseLibLogUtil.d("onClick view id = %s, resource name = %s", v.getId(), ResUtil.getResourceName(v.getId()));
         if (v.getId() == R.id.btn_confirm){
             UserInfoBean userInfoBean = new UserInfoBean();
             AppContext.login(userInfoBean);

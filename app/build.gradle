@@ -63,9 +63,9 @@ android {
         resConfigs('zh-rCN')
 
         //配置so库架构(arm真机,x86模拟器)
-        ndk{
-            abiFilter('armeabi')
-        }
+//        ndk{
+//            abiFilter('armeabi')
+//        }
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -79,6 +79,12 @@ android {
                 //                arguments = [moduleName: project.getName()]
             }
         }
+
+//        manifestPlaceholders = [
+//                JPUSH_PKGNAME : applicationId,
+//                JPUSH_APPKEY : "你的 Appkey ", //JPush 上注册的包名对应的 Appkey.
+//                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//        ]
 
     }
     compileOptions {
@@ -95,12 +101,12 @@ android {
 
     useLibrary 'org.apache.http.legacy'
 
-    splits {
-        density {
-            enable true
-            reset()
-        }
-    }
+//    splits {
+//        density {
+//            enable true
+//            reset()
+//        }
+//    }
 
     lintOptions {
         abortOnError false
@@ -230,6 +236,10 @@ dependencies {
     annotationProcessor project(':artemis_compiler')
     //implementation 'com.google.android:flexbox:0.3.0'
 //    implementation 'com.github.markzhai:blockcanary-android:1.5.0'
+
+
+    implementation config.thirddependencies.bugly
+    implementation config.thirddependencies.buglyNative
 
 
 }
