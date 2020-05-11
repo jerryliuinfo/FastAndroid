@@ -9,7 +9,7 @@ import java.lang.Override;
 public class MainActivity$$Proxy implements IProxy<MainActivity> {
   @Override
   public void inject(final MainActivity target, View root) {
-    target.mNavigationView = (NavigationView)(root.findViewById(2131296467));
-    target.mDrawerLayout = (DrawerLayout)(root.findViewById(2131296360));
+    target.mDrawerLayout = (DrawerLayout)(root.findViewById(2131296371));
+    target.mNavigationView = (NavigationView)(root.findViewById(2131296490));
   }
 }

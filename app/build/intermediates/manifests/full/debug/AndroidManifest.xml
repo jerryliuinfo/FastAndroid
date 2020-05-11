@@ -6,17 +6,36 @@
 
     <uses-sdk
         android:minSdkVersion="17"
-        android:targetSdkVersion="28" />
+        android:targetSdkVersion="27" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <permission
+        android:name="com.optimize.performance.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.optimize.performance.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- To allow starting foreground services on Android P+ - https://developer.android.com/preview/behavior-changes#fg-svc -->
+
+    <!-- To allow starting foreground services on Android P+ - https://developer.android.com/preview/behavior-changes#fg-svc -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
     <meta-data
         android:name="android.support.VERSION"
@@ -30,6 +49,7 @@
         android:label="FastAnd测试版"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppCommonTheme" >
         <activity android:name="com.apache.fastandroid.SplashActivity" >
             <intent-filter>
@@ -40,29 +60,17 @@
         </activity>
         <activity
             android:name="com.apache.fastandroid.MainActivity"
+            android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity" />
+        <activity android:name="com.apache.fastandroid.topic.TopicHomeActivity" />
 
-        <!--
-        &lt;!&ndash; 配置信息 launch &ndash;&gt;
-        <meta-data
-            android:name="CHANNEL"
-            android:value="${CHANNEL_VALUE}"/>
-
-        &lt;!&ndash; value: 是否是测试环境 测试环境 TESTING 正式环境 PRD &ndash;&gt;
-        <meta-data
-            android:name="ISTEST"
-            android:value="${ISTEST_VALUE}"/>
-        -->
+        <provider
+            android:name="com.apache.fastandroid.topic.TopicProvider"
+            android:authorities="PROVIDER_TOPIC" />
 
         <activity android:name="com.apache.fastandroid.artemis.LoginActivity" />
-
-        <receiver android:name="com.tesla.framework.common.util.network.NetworkReceiver" >
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
 
         <service
             android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
@@ -107,6 +115,12 @@
             android:roundIcon="@mipmap/leak_canary_icon"
             android:taskAffinity="com.squareup.leakcanary.com.apache.fastandroid"
             android:theme="@style/leak_canary_Theme.Transparent" />
+
+        <receiver android:name="com.tesla.framework.common.util.network.NetworkReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
 
         <meta-data
             android:name="android.arch.lifecycle.VERSION"

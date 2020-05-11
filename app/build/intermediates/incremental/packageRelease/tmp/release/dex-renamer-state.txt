@@ -1,4 +1,0 @@
-#Wed Apr 08 10:28:13 CST 2020
-base.0=/Users/jerry/project/FastAndroid/app/build/intermediates/transforms/dexMerger/release/0
-path.0=classes.dex
-renamed.0=classes.dex

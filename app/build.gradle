@@ -4,7 +4,6 @@ apply plugin: 'com.android.application'
 
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 def config = rootProject.ext
-//apply from: rootProject.file('cc-settings-2.gradle')
 apply plugin: 'android-aspectjx'
 
 buildscript {
@@ -222,14 +221,14 @@ dependencies {
     debugImplementation config.thirddependencies.leakcanary_android
     releaseImplementation config.thirddependencies.leakcanary_android_no_op
     debugImplementation config.thirddependencies.leakcanary_support_fragment
-    api project(':baselib')
-    api config.supportDependencies.appcompatV7
+    implementation project(':baselib')
+    implementation config.supportDependencies.appcompatV7
     //api config.thirddependencies.bugly
-    api config.supportDependencies.multidex
+    implementation config.supportDependencies.multidex
     implementation config.thirddependencies.butterknife
     annotationProcessor config.thirddependencies.butterknife_compiler
     //ARouter
-    api config.thirddependencies.arouter_api
+    implementation config.thirddependencies.arouter_api
     annotationProcessor config.thirddependencies.arouter_compiler
     //必须加行这行，否则proxyToolProcessor无法自动生成类
     implementation project(':artemis_annotation')
@@ -240,6 +239,9 @@ dependencies {
 
     implementation config.thirddependencies.bugly
     implementation config.thirddependencies.buglyNative
+
+    implementation 'org.aspectj:aspectjrt:1.8.14'
+
 
 
 }

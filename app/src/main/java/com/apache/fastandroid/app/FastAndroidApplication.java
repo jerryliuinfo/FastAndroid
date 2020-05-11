@@ -166,7 +166,7 @@ public class FastAndroidApplication extends Application {
      * 全局请求的统一配置
      */
     private void initHttp(){
-        GlobalHttp.getInstance().setBaseUrl("https://api.douban.com/")
+        GlobalHttp.setBaseUrl("https://api.douban.com/")
                 //开启缓存策略
                 .setCache().setCookie(false).setSslSocketFactory()
                 //使用bks证书和密码管理客户端证书（双向认证），使用预埋证书，校验服务端证书（自签名证书）
