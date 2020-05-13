@@ -1,6 +1,14 @@
-package com.apache.fastandroid.aop;
+package com.apache.fastandroid.aop.debounce;
 
+import android.view.View;
+
+import com.apache.fastandroid.util.MainLogUtil;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 
 /**
  * author: 01370340
@@ -11,7 +19,7 @@ import org.aspectj.lang.annotation.Aspect;
 public class DebounceViewAspect {
 
 
-    /*@Pointcut("execution(* onClick(..))")
+    @Pointcut("execution(* onClick(..))")
     public void onClickPointcut() {
     }
 
@@ -29,6 +37,6 @@ public class DebounceViewAspect {
             joinPoint.proceed();
         }
 
-    }*/
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.apache.fastandroid.aop;
+package com.apache.fastandroid.aop.debounce;
 
 import android.os.SystemClock;
 import android.view.View;

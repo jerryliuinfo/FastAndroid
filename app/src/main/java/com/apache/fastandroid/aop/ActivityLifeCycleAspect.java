@@ -21,13 +21,15 @@ public class ActivityLifeCycleAspect {
      * 一些专业术语
 
 
-     Cross-cutting concerns（横切关注点）: 尽管面向对象模型中大多数类会实现单一特定的功能，但通常也会开放一些通用的附属功能给其他类。例如，我们希望在数据访问层中的类中添加日志，同时也希望当UI层中一个线程进入或者退出调用一个方法时添加日志。尽管每个类都有一个区别于其他类的主要功能，但在代码里，仍然经常需要添加一些相同的附属功能。
+     Cross-cutting concerns（横切关注点）: 尽管面向对象模型中大多数类会实现单一特定的功能，
+     但通常也会开放一些通用的附属功能给其他类。例如，我们希望在数据访问层中的类中添加日志，同时也希望当UI层中一个线程进入或者退出调用一个方法时添加日志。尽管每个类都有一个区别于其他类的主要功能，但在代码里，仍然经常需要添加一些相同的附属功能。
 
      Advice（通知）: 注入到class文件中的代码。典型的 Advice 类型有 before、after 和 around，分别表示在目标方法执行之前、执行后和完全替代目标方法执行的代码。 除了在方法中注入代码，也可能会对代码做其他修改，比如在一个class中增加字段或者接口。
 
      Joint point（连接点）: 程序中可能作为代码注入目标的特定的点，例如一个方法调用或者方法入口。
 
-     Pointcut（切入点）: 告诉代码注入工具，在何处注入一段特定代码的表达式。例如，在哪些 joint points 应用一个特定的 Advice。切入点可以选择唯一一个，比如执行某一个方法，也可以有多个选择，比如，标记了一个定义成@DebguTrace 的自定义注解的所有方法。
+     Pointcut（切入点）: 告诉代码注入工具，在何处注入一段特定代码的表达式。例如，在哪些 joint points 应用一个特定的 Advice。切入点可以选择唯一一个，比如执行某一个方法，也可以有多个选择
+     ，比如，标记了一个定义成@DebguTrace 的自定义注解的所有方法。
 
      Aspect（切面）: Pointcut 和 Advice 的组合看做切面。例如，我们在应用中通过定义一个 pointcut 和给定恰当的advice，添加一个日志切面。
 
@@ -48,18 +50,7 @@ public class ActivityLifeCycleAspect {
 
 
 
-    @Around("execution(* android.app.Activity.setContentView(..))")
-    public void getSetContentViewTime(ProceedingJoinPoint joinPoint) {
-        Signature signature = joinPoint.getSignature();
-        String name = signature.toShortString();
-        long time = System.currentTimeMillis();
-        try {
-            joinPoint.proceed();
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-        Log.d("MainLogUtil", name + " cost " + (System.currentTimeMillis() - time));
-    }
+
 
     @Around("execution(* com.apache.fastandroid.app.FastAndroidApplication.**(..))")
     public void getApplicationCostTime(ProceedingJoinPoint joinPoint) {
