@@ -16,13 +16,17 @@ import com.tesla.framework.ui.fragment.ABaseFragment;
  */
 
 public class BizFragment extends ABaseFragment {
-    private Activity mActivity;
-
+    private FragmentActivity mActivity;
+    private static final String BIZ_FRAGMENT_TAG = "com.apache.fastandroid.base.BizFragment";
     private Activity getRealActivity() {
-        if (getActivity() != null)
+        if (getActivity() != null){
             return getActivity();
+        }
 
         return mActivity;
+    }
+    static BizFragment get(FragmentActivity activity) {
+        return (BizFragment) activity.getSupportFragmentManager().findFragmentByTag(BIZ_FRAGMENT_TAG);
     }
 
     private String getRealString(int resId) {
@@ -40,12 +44,11 @@ public class BizFragment extends ABaseFragment {
 
     public static BizFragment createBizFragment(ABaseFragment fragment){
         if (fragment != null && fragment.getActivity() != null){
-            String fragmentTag = "com.apache.fastandroid.base.BizFragment";
-            BizFragment bizFragment = (BizFragment) fragment.getActivity().getSupportFragmentManager().findFragmentByTag(fragmentTag);
+            BizFragment bizFragment = (BizFragment) fragment.getActivity().getSupportFragmentManager().findFragmentByTag(BIZ_FRAGMENT_TAG);
             if (bizFragment == null){
                 bizFragment = new BizFragment();
                 fragment.getActivity().getSupportFragmentManager().
-                        beginTransaction().add(bizFragment,fragmentTag).commitAllowingStateLoss();
+                        beginTransaction().add(bizFragment,BIZ_FRAGMENT_TAG).commitAllowingStateLoss();
             }
             return bizFragment;
         }
@@ -53,7 +56,7 @@ public class BizFragment extends ABaseFragment {
     }
 
     public static BizFragment createBizFragment(FragmentActivity activity) {
-        BizFragment bizFragment = (BizFragment) activity.getSupportFragmentManager().findFragmentByTag("BizFragment");
+        BizFragment bizFragment = (BizFragment) activity.getSupportFragmentManager().findFragmentByTag(BIZ_FRAGMENT_TAG);
         if (bizFragment == null) {
             bizFragment = new BizFragment();
             bizFragment.mActivity = activity;
@@ -62,7 +65,7 @@ public class BizFragment extends ABaseFragment {
                 return bizFragment;
             }
 
-            activity.getSupportFragmentManager().beginTransaction().add(bizFragment, "BizFragment").commit();
+            activity.getSupportFragmentManager().beginTransaction().add(bizFragment, BIZ_FRAGMENT_TAG).commit();
         }
         return bizFragment;
     }

@@ -1,5 +1,7 @@
 package com.apache.fastandroid.artemis.mvp.presenter;
 
+import android.arch.lifecycle.LifecycleRegistry;
+
 import com.apache.fastandroid.artemis.mvp.view.IView;
 
 import java.lang.ref.WeakReference;
@@ -36,9 +38,9 @@ public class BasePresenter<V extends IView> implements IPresenter<V> {
 
     @Override
     public void cancelRequestTags() {
+        LifecycleRegistry lifecycleRegistry;
 
     }
-
 
 
 

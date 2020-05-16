@@ -3,6 +3,8 @@ package com.tesla.framework.common.util;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
 
+import com.tesla.framework.support.thread.ThreadUtils;
+
 /**
  * Created by 01370340 on 2018/1/30.
  */
@@ -196,5 +198,24 @@ public class Preconditions {
         }
 
         return builder.toString();
+    }
+
+
+    /**
+     * Throws an {@link IllegalArgumentException} if called on a thread other than the main thread.
+     */
+    public static void onMainThread() {
+        if (!ThreadUtils.isMainThread()) {
+            throw new IllegalArgumentException("You must call this method on the main thread");
+        }
+    }
+
+    /**
+     * Throws an {@link IllegalArgumentException} if called on the main thread.
+     */
+    public static void onBackgroundThread() {
+        if (ThreadUtils.isMainThread()) {
+            throw new IllegalArgumentException("You must call this method on a background thread");
+        }
     }
 }

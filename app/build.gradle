@@ -218,8 +218,9 @@ dependencies {
     if (!isTopicRunAlone.toBoolean()) {
           implementation project(':topic')
         }
-    debugImplementation config.thirddependencies.leakcanary_android
-    releaseImplementation config.thirddependencies.leakcanary_android_no_op
+//    debugImplementation config.thirddependencies.leakcanary_android
+//    releaseImplementation config.thirddependencies.leakcanary_android_no_op
+//
     debugImplementation config.thirddependencies.leakcanary_support_fragment
     implementation project(':baselib')
     implementation config.supportDependencies.appcompatV7
@@ -241,6 +242,8 @@ dependencies {
     implementation config.thirddependencies.buglyNative
 
     implementation 'org.aspectj:aspectjrt:1.8.14'
+
+    implementation "android.arch.lifecycle:extensions:1.1.1"
 
 
 

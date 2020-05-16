@@ -1,8 +1,6 @@
 package com.apache.fastandroid.util;
 
-import com.apache.fastandroid.artemis.BaseApp;
-import com.tesla.framework.common.util.VersionUtil;
-import com.tesla.framework.common.util.log.NLog;
+import android.util.Log;
 
 /**
  * author: 01370340
@@ -18,7 +16,7 @@ public class MainLogUtil {
      * @param args   格式化日志参数
      */
     public static void v(String format, Object... args) {
-        NLog.v(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
+        Log.v(TAG, buildWholeMessage(format,args));
     }
 
     /**
@@ -28,7 +26,16 @@ public class MainLogUtil {
      * @param args   格式化日志参数
      */
     public static void d(String format, Object... args) {
-        NLog.d(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
+        Log.d(TAG, buildWholeMessage(format,args));
+    }
+
+    private static String buildWholeMessage(String format, Object...args)
+    {
+        if (args == null || args.length == 0){
+            return format;
+        }
+        String msg = String.format(format, args);
+        return msg;
     }
 
     /**
@@ -38,7 +45,7 @@ public class MainLogUtil {
      * @param args   格式化日志参数
      */
     public static void w(String format, Object... args) {
-        NLog.w(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
+
     }
 
     /**
@@ -48,7 +55,8 @@ public class MainLogUtil {
      * @param args   格式化日志参数
      */
     public static void e(String format, Object... args) {
-        NLog.e(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
+        Log.e(TAG, buildWholeMessage(format,args));
+
     }
 
 

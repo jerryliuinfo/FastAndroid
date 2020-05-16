@@ -1,6 +1,8 @@
 package com.apache.fastandroid;
 
 import android.app.Activity;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -25,9 +28,11 @@ import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
 import com.apache.artemis_annotation.BindViewById;
 import com.apache.fastandroid.annotations.CheckLogin;
+import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
+import com.apache.fastandroid.jetpack.lifecycle.MyLifeCycleObserver;
 import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.tink.FixManager;
@@ -105,11 +110,34 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         return R.layout.activity_main;
     }
 
+    //private Handler handler = new LifecycleHandler(this);
+
+    @CostTime
     @Override
     protected void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
 
         MainLogUtil.d("MainActivity layoutInit");
+
+        getLifecycle().addObserver(new MyLifeCycleObserver());
+        MutableLiveData<String> mutableLiveData  = new MutableLiveData<>();
+
+        //1
+        mutableLiveData.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable final String s) {
+                Log.d(TAG, "onChanged:"+s);
+            }
+        });
+        //2
+        mutableLiveData.postValue("Android进阶三部曲");
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                MainLogUtil.d("postDelayed run");
+//            }
+//        },60 * 1000);
+
 
 
         ProxyTool.bind(this);
