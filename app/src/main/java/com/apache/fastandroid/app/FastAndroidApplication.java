@@ -56,7 +56,7 @@ public class FastAndroidApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        MainLogUtil.d("Application attachBaseContext ");
+        MainLogUtil.d("Application onCreate ");
         //traceview 开始检测
        // Debug.startMethodTracing("APP");
 

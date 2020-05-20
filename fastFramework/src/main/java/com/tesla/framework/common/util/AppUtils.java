@@ -20,7 +20,11 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 public class AppUtils {
@@ -54,22 +58,63 @@ public class AppUtils {
         return charSequence == null ? "" : (String) charSequence;
     }
 
+    private static String sCurProcessName = null;
+
     public static boolean isMainProcess(Context context) {
+        String processName = getCurProcessName(context);
+        if (processName != null && processName.contains(":")) {
+            return false;
+        }
+        return (processName != null && processName.equals(context.getPackageName()));
+    }
+
+
+    public static String getCurProcessName(Context context) {
+        String procName = sCurProcessName;
+        if (!TextUtils.isEmpty(procName)) {
+            return procName;
+        }
         try {
-            ActivityManager am = ((ActivityManager) context
-                    .getSystemService(Context.ACTIVITY_SERVICE));
-            List<ActivityManager.RunningAppProcessInfo> processInfo = am.getRunningAppProcesses();
-            String mainProcessName = context.getPackageName();
-            int myPid = android.os.Process.myPid();
-            for (ActivityManager.RunningAppProcessInfo info : processInfo) {
-                if (info.pid == myPid && mainProcessName.equals(info.processName)) {
-                    return true;
+            int pid = android.os.Process.myPid();
+            ActivityManager mActivityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+            for (ActivityManager.RunningAppProcessInfo appProcess : mActivityManager.getRunningAppProcesses()) {
+                if (appProcess.pid == pid) {
+                    sCurProcessName = appProcess.processName;
+                    return sCurProcessName;
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        sCurProcessName = getCurProcessNameFromProc();
+        return sCurProcessName;
+    }
+
+    private static String getCurProcessNameFromProc() {
+        BufferedReader cmdlineReader = null;
+        try {
+            cmdlineReader = new BufferedReader(new InputStreamReader(
+                    new FileInputStream(
+                            "/proc/" + android.os.Process.myPid() + "/cmdline"),
+                    "iso-8859-1"));
+            int c;
+            StringBuilder processName = new StringBuilder();
+            while ((c = cmdlineReader.read()) > 0) {
+                processName.append((char) c);
+            }
+            return processName.toString();
+        } catch (Throwable e) {
+            // ignore
+        } finally {
+            if (cmdlineReader != null) {
+                try {
+                    cmdlineReader.close();
+                } catch (Exception e) {
+                    // ignore
+                }
+            }
+        }
+        return null;
     }
 
     public static void killProcess() {

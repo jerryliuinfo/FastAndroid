@@ -22,6 +22,8 @@ public class DeviceUtil {
     private static final String CU_ISP = "46001";//中国联通
     private static final String CT_ISP = "46003";//中国电信
 
+
+
     /**
      * 获取设备的系统版本号
      */

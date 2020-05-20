@@ -19,6 +19,9 @@
         <item name="android:textColor">#5d5d5d</item>
     </style>
 
+    <style name="LAUNCHER">
+        <item name="android:background"> @drawable/lay_list</item>
+    </style>
 
 
 </resources>

@@ -1,10 +1,14 @@
 package com.apache.fastandroid;
 
 import android.app.Activity;
+import android.arch.core.util.Function;
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.Transformations;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -32,6 +36,7 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
+import com.apache.fastandroid.jetpack.lifecycle.LifecycleHandler;
 import com.apache.fastandroid.jetpack.lifecycle.MyLifeCycleObserver;
 import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.setting.SettingFragment;
@@ -73,13 +78,14 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
     @BindViewById((R.id.navigation_view))
     NavigationView mNavigationView;
 
-    private Handler mHandler = new Handler(Looper.getMainLooper()) {
+    private Handler mHandler = new LifecycleHandler(Looper.getMainLooper(),this) {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            Log.d(MainActivity.class.getName(), "接收到信息 ->" + msg.what);
+            MainLogUtil.d( "接收到信息 ->" + msg.what);
         }
     };
+
 
 
     void doJob() {
@@ -110,33 +116,63 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         return R.layout.activity_main;
     }
 
-    //private Handler handler = new LifecycleHandler(this);
+    MutableLiveData<String> mutableLiveData1;
+    MutableLiveData<String> mutableLiveData2;
+    MutableLiveData<Boolean> liveDataSwitch;
+
+
 
     @CostTime
     @Override
     protected void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
 
-        MainLogUtil.d("MainActivity layoutInit");
-
         getLifecycle().addObserver(new MyLifeCycleObserver());
-        MutableLiveData<String> mutableLiveData  = new MutableLiveData<>();
+        final MutableLiveData<String> mutableLiveData  = new MutableLiveData<>();
 
         //1
         mutableLiveData.observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable final String s) {
-                Log.d(TAG, "onChanged:"+s);
+                MainLogUtil.d(String.format("onChanged: %s, thread:%s",s,Thread.currentThread().getName()));
             }
         });
         //2
-        mutableLiveData.postValue("Android进阶三部曲");
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                MainLogUtil.d("postDelayed run");
-//            }
-//        },60 * 1000);
+        mutableLiveData.postValue("主线程Android进阶三部曲");
+
+        AsyncTask asyncTask;
+
+
+
+
+        mutableLiveData1 = new MutableLiveData<>();
+        mutableLiveData2 = new MutableLiveData<>();
+        //1
+        liveDataSwitch = new MutableLiveData<>();
+
+        LiveData transformedLiveData= Transformations.switchMap(liveDataSwitch, new Function<Boolean, LiveData<String>>() {
+            @Override
+            public LiveData<String> apply(Boolean input) {
+                if (input) {
+                    return mutableLiveData1;
+                } else {
+                    return mutableLiveData2;
+                }
+            }
+        });
+
+        transformedLiveData.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable final String s) {
+                Log.d(TAG, "onChanged:" + s);
+            }
+        });
+        liveDataSwitch.postValue(false);
+        mutableLiveData1.postValue("Android进阶之光11111");
+        mutableLiveData2.postValue("Android进阶解密22222");
+
+
+
 
 
 

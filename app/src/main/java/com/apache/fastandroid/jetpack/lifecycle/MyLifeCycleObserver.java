@@ -13,7 +13,7 @@ public class MyLifeCycleObserver implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreate2(){
-        MainLogUtil.d("MyLifeCycleObserver onCreate2");
+        MainLogUtil.d("MyLifeCycleObserver onCreate");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
