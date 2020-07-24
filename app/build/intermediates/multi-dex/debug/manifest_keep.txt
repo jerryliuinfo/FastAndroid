@@ -1,3 +1,0 @@
-# Referenced at /Users/jerry/work/FastAndroid/app/build/intermediates/manifests/full/debug/AndroidManifest.xml:42
--keep class com.apache.fastandroid.app.FastAndroidApplication { <init>(...); }
-
