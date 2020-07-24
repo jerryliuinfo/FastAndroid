@@ -2,7 +2,7 @@ package com.tesla.framework.common.util;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-
+import android.os.Debug;
 
 
 public class DebugUtils {
@@ -15,7 +15,7 @@ public class DebugUtils {
      * debug版本时，返回true， release版本返回false
      * @return
      */
-    public static Boolean isDebug(){
+    public static Boolean isDebugVersion(){
         return isDebug == null ? false : isDebug.booleanValue();
     }
 
@@ -31,5 +31,15 @@ public class DebugUtils {
             }
         }
     }
+
+    /**
+     * 是否正在执行debug调试
+     * @return
+     */
+    public static boolean isExecutingDebug(){
+        return Debug.isDebuggerConnected() || Debug.waitingForDebugger();
+    }
+
+
 
 }

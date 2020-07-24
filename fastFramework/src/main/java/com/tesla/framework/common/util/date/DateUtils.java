@@ -185,7 +185,7 @@ public class DateUtils {
 		try {
 			vl = SIMPLE_FORMAT_24.parse(value).getTime();
 		} catch (Exception e) {
-			if (DebugUtils.isDebug()) {
+			if (DebugUtils.isDebugVersion()) {
 				NLog.printStackTrace(e);
 			}
 		}

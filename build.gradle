@@ -14,7 +14,7 @@ buildscript {
 
     }
     dependencies {
-//        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         //aspect插件， 替代上面两行
         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.0'

@@ -14,7 +14,7 @@ public class BlockDetector {
 
     public static final String TAG = BlockDetector.class.getSimpleName();
     public static void init() {
-        if(DebugUtils.isDebug()) {
+        if(DebugUtils.isDebugVersion()) {
             Looper.getMainLooper().setMessageLogging(new Printer() {
                 //分发和处理消息开始前的log
                 private static final String START = ">>>>> Dispatching";
