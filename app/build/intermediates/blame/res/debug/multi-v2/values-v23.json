@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/jerry/project/FastAndroid/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+            "outputFile": "/Users/jerry/work/FastAndroid/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/jerry/.gradle/caches/transforms-2/files-2.1/6d4f074a1dde31e8e20cd8a8d34bfecb/res/values-v23/values-v23.xml",
+                    "source": "/Users/jerry/.gradle/caches/transforms-2/files-2.1/d5f56ec2e14a28ce0ffcf968531e873d/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -15,7 +15,7 @@
                     }
                 },
                 {
-                    "source": "/Users/jerry/.gradle/caches/transforms-2/files-2.1/05dcb83fa27a6c1714f575380b14b00e/res/values-v23/values-v23.xml",
+                    "source": "/Users/jerry/.gradle/caches/transforms-2/files-2.1/13051b20362b20f60cfcfd552b21cc9a/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

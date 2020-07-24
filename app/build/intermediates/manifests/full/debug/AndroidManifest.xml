@@ -32,10 +32,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <!-- To allow starting foreground services on Android P+ - https://developer.android.com/preview/behavior-changes#fg-svc -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- To allow starting foreground services on Android P+ - https://developer.android.com/preview/behavior-changes#fg-svc -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
     <meta-data
         android:name="android.support.VERSION"
@@ -71,6 +69,18 @@
             android:authorities="PROVIDER_TOPIC" />
 
         <activity android:name="com.apache.fastandroid.artemis.LoginActivity" />
+
+        <receiver android:name="com.tesla.framework.common.util.network.NetworkReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="android.arch.lifecycle.ProcessLifecycleOwnerInitializer"
+            android:authorities="com.apache.fastandroid.lifecycle-trojan"
+            android:exported="false"
+            android:multiprocess="true" />
 
         <service
             android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
@@ -115,16 +125,6 @@
             android:roundIcon="@mipmap/leak_canary_icon"
             android:taskAffinity="com.squareup.leakcanary.com.apache.fastandroid"
             android:theme="@style/leak_canary_Theme.Transparent" />
-
-        <receiver android:name="com.tesla.framework.common.util.network.NetworkReceiver" >
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-
-        <meta-data
-            android:name="android.arch.lifecycle.VERSION"
-            android:value="27.0.0-SNAPSHOT" />
     </application>
 
 </manifest>

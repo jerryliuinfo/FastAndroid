@@ -2359,6 +2359,9 @@
     <style name="CardView.Light">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
+    <style name="LAUNCHER">
+        <item name="android:background"> @drawable/lay_list</item>
+    </style>
     <style name="LoadingProgressBar">
         android:indeterminateDrawable="@drawable/loading_bar1
     </style>

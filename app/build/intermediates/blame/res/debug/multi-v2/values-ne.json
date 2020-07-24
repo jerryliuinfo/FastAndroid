@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/jerry/project/FastAndroid/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne.xml",
+            "outputFile": "/Users/jerry/work/FastAndroid/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne.xml",
             "map": [
                 {
-                    "source": "/Users/jerry/.gradle/caches/transforms-2/files-2.1/eb23ef93c8b3ec15c4f9a77d9d9082cb/res/values-ne/values-ne.xml",
+                    "source": "/Users/jerry/.gradle/caches/transforms-2/files-2.1/d5f56ec2e14a28ce0ffcf968531e873d/res/values-ne/values-ne.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,210,314,422,513,620,747,841,931,1019,1129,1245,1348,1463,1565,1680,1851,1963",
+                        "endColumns": "104,103,107,90,106,126,93,89,87,109,115,102,114,101,114,170,111,85",
+                        "endOffsets": "205,309,417,508,615,742,836,926,1014,1124,1240,1343,1458,1560,1675,1846,1958,2044"
+                    }
+                },
+                {
+                    "source": "/Users/jerry/.gradle/caches/transforms-2/files-2.1/ebddc68a22991a4e8cf6464022129b96/res/values-ne/values-ne.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -18,16 +28,6 @@
                         "startOffsets": "2049",
                         "endColumns": "100",
                         "endOffsets": "2145"
-                    }
-                },
-                {
-                    "source": "/Users/jerry/.gradle/caches/transforms-2/files-2.1/6d4f074a1dde31e8e20cd8a8d34bfecb/res/values-ne/values-ne.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,210,314,422,513,620,747,841,931,1019,1129,1245,1348,1463,1565,1680,1851,1963",
-                        "endColumns": "104,103,107,90,106,126,93,89,87,109,115,102,114,101,114,170,111,85",
-                        "endOffsets": "205,309,417,508,615,742,836,926,1014,1124,1240,1343,1458,1560,1675,1846,1958,2044"
                     }
                 }
             ]

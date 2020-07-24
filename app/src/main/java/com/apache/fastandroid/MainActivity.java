@@ -523,9 +523,9 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
             int copyResult = FileUtils.copySdcardFile(sourceFile.getAbsolutePath(), targetFile.getAbsolutePath());
             MainLogUtil.d("copyResult: " + copyResult);
             if (copyResult == 0){
-                ToastUtils.showSingleToastOnUIThread("拷贝成功");
+                ToastUtils.showToast(this,"拷贝成功");
             }else{
-                ToastUtils.showSingleToastOnUIThread("拷贝失败");
+                ToastUtils.showToast(this,"拷贝失败");
             }
         } catch (Exception e) {
             e.printStackTrace();

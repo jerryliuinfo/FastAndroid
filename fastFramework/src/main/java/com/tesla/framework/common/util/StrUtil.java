@@ -106,6 +106,44 @@ public class StrUtil {
         return sb.toString();
     }
 
+    /**
+     * 返回骆驼命名规则的字符串
+     * @param name
+     * @return
+     */
+    private String upperCamelCase(String name) {
+        if (name.contains("-")) {
+            String[] arr = name.split("-");
+            StringBuilder ret = new StringBuilder();
+            for (String s : arr) {
+                if (!isEmpty(s)) ret.append(capitalize(s));
+            }
+            return ret.toString();
+        }
+        return capitalize(name);
+    }
+
+    private String capitalize(String str) {
+        return !isEmpty(str) ? str.substring(0, 1).toUpperCase() + str.substring(1) : str;
+    }
+
+    private static boolean isEmpty(String str) {
+        return str == null || str.trim().length() <= 0;
+    }
+
+    /**
+     * 判断字符串是字母 或数字或下划线，且首字母必须是字母
+     * @param moduleName
+     * @return
+     */
+    private static boolean isModuleNameCorrect(String moduleName) {
+        final String reg = "[a-z]+(-|_*[a-z0-9]+)*";
+        if (isEmpty(moduleName)) {
+            return false;
+        }
+        return moduleName.matches(reg);
+    }
+
 
 
 
