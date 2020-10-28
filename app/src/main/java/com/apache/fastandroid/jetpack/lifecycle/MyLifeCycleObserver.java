@@ -18,13 +18,13 @@ public class MyLifeCycleObserver implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void onResume2(){
-        MainLogUtil.d("MyLifeCycleObserver onResume");
+        MainLogUtil.d("MyLifeCycleObserver onResumeAction");
 
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void onPause2(){
-        MainLogUtil.d("MyLifeCycleObserver onPause");
+        MainLogUtil.d("MyLifeCycleObserver onPauseAction");
 
     }
 

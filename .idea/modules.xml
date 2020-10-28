@@ -3,12 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FastAndroid.iml" filepath="$PROJECT_DIR$/FastAndroid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/artemis_annotation/artemis_annotation.iml" filepath="$PROJECT_DIR$/artemis_annotation/artemis_annotation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/artemis_compiler/artemis_compiler.iml" filepath="$PROJECT_DIR$/artemis_compiler/artemis_compiler.iml" />
-      <module fileurl="file://$PROJECT_DIR$/baselib/baselib.iml" filepath="$PROJECT_DIR$/baselib/baselib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/fastFramework/fastFramework.iml" filepath="$PROJECT_DIR$/fastFramework/fastFramework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/topic/topic.iml" filepath="$PROJECT_DIR$/topic/topic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FastAndroid.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FastAndroid.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/artemis_annotation/FastAndroid.artemis_annotation.iml" filepath="$PROJECT_DIR$/.idea/modules/artemis_annotation/FastAndroid.artemis_annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/artemis_compiler/FastAndroid.artemis_compiler.iml" filepath="$PROJECT_DIR$/.idea/modules/artemis_compiler/FastAndroid.artemis_compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/baselib/FastAndroid.baselib.iml" filepath="$PROJECT_DIR$/.idea/modules/baselib/FastAndroid.baselib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastFramework/FastAndroid.fastFramework.iml" filepath="$PROJECT_DIR$/.idea/modules/fastFramework/FastAndroid.fastFramework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/topic/FastAndroid.topic.iml" filepath="$PROJECT_DIR$/.idea/modules/topic/FastAndroid.topic.iml" />
     </modules>
   </component>
 </project>

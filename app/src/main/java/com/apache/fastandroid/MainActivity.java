@@ -8,7 +8,6 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.Transformations;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -36,6 +35,8 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
+import com.apache.fastandroid.jetpack.GpsCallback;
+import com.apache.fastandroid.jetpack.GpsEngine;
 import com.apache.fastandroid.jetpack.lifecycle.LifecycleHandler;
 import com.apache.fastandroid.jetpack.lifecycle.MyLifeCycleObserver;
 import com.apache.fastandroid.performance.LaunchTimer;
@@ -139,8 +140,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         });
         //2
         mutableLiveData.postValue("主线程Android进阶三部曲");
-
-        AsyncTask asyncTask;
 
 
 
@@ -264,6 +263,7 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
 
             }
 
+            @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
             }
@@ -532,5 +532,33 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
             ToastUtils.showSingleToast("拷贝文件失败");
             MainLogUtil.e("拷贝文件失败: msg:"+e.getMessage());
         }
+    }
+
+    private GpsCallback callback;
+    /**
+     * 第1种方式 统一问题，如果某个activity的onpause方法忘记调用GpsEngine.getInstance().onPauseAction();
+     * 就会出问题
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        GpsEngine.getInstance().onResumeAction();
+
+        //代码入侵
+        if (callback != null){
+            callback.onResumeAction();
+        }
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        GpsEngine.getInstance().onPauseAction();
+        //代码入侵
+        if (callback != null){
+            callback.onPauseAction();
+        }
+
     }
 }

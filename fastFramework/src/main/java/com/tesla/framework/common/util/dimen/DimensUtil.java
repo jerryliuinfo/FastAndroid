@@ -1,6 +1,7 @@
 package com.tesla.framework.common.util.dimen;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
@@ -14,7 +15,7 @@ public class DimensUtil {
     public static int dp2px(Context context,float dp){
         int px = (int) (dp + 0.5f);
         try {
-            px = (int) (context.getResources().getDisplayMetrics().density * dp + 0.5f);
+            px = (int) (Resources.getSystem().getDisplayMetrics().density * dp + 0.5f);
         } catch (Exception e) {
             e.printStackTrace();
         }

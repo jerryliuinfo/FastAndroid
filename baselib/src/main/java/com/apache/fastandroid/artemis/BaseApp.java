@@ -2,7 +2,6 @@ package com.apache.fastandroid.artemis;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.apache.fastandroid.artemis.util.activitytask.ActivityLifeCallback;
 import com.tesla.framework.applike.FrameworkApplication;
@@ -16,11 +15,51 @@ import java.lang.reflect.Method;
 
 public class BaseApp {
     private static Context sContext;
+
+    private static Application sApplication;
+
+    /**
+     * 获取全局 Application
+     */
+    public static Application getApplication() {
+        return sApplication;
+    }
+
+    /**
+     *
+     /**
+     * 这种方式获取全局的Application 是一种拓展思路。
+     * <p>
+     * 对于组件化项目,不可能把项目实际的Application下沉到Base,而且各个module也不需要知道Application真实名字
+     * <p>
+     * 这种一次反射就能获取全局Application对象的方式相比于在Application#OnCreate保存一份的方式显示更加通用了
+     */
+
+    static {
+        try {
+            Class<?> activityThread = Class.forName("android.app.ActivityThread");
+            Method m_currentActivityThread = activityThread.getDeclaredMethod("currentActivityThread");
+            Field f_mInitialApplication = activityThread.getDeclaredField("mInitialApplication");
+            f_mInitialApplication.setAccessible(true);
+            Object current = m_currentActivityThread.invoke(null);
+            Object app = f_mInitialApplication.get(current);
+            sApplication = (Application) app;
+
+            sContext = sApplication.getApplicationContext();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
     public static void onCreate(Context context){
-        FrameworkApplication.onCreate(context);
+        //FrameworkApplication.onCreate(context);
+        FrameworkApplication.onCreate(sApplication);
         ActivityLifeCallback.registSelf(context);
 
-        sContext = context.getApplicationContext();
+        //sContext = context.getApplicationContext();
     }
 
     private static void checkContext(){
@@ -28,6 +67,8 @@ public class BaseApp {
             throw new NullPointerException("must call onCreate() before call this method");
         }
     }
+
+
 
 
     public static Context getContext(){
@@ -58,33 +99,7 @@ public class BaseApp {
         return sContext.getExternalCacheDir().getAbsolutePath();
     }
 
-    private static Application sApplication;
 
-    static {
-        try {
-            Class<?> activityThread = Class.forName("android.app.ActivityThread");
-            Method m_currentActivityThread = activityThread.getDeclaredMethod("currentActivityThread");
-            Field f_mInitialApplication = activityThread.getDeclaredField("mInitialApplication");
-            f_mInitialApplication.setAccessible(true);
-            Object current = m_currentActivityThread.invoke(null);
-            Object app = f_mInitialApplication.get(current);
-            sApplication = (Application) app;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    /**
-     * 获取全局 Application
-     */
-    public static Application getApplication() {
-        return sApplication;
-    }
 
-    /**
-     * 设置全局 Application
-     */
-    public static void setupApplication(@NonNull Application application) {
-        sApplication = application;
-    }
 }
