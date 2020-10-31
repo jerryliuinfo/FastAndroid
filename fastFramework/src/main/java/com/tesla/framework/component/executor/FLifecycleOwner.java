@@ -1,7 +1,7 @@
 package com.tesla.framework.component.executor;
 
-import android.arch.lifecycle.Lifecycle;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
+import androidx.annotation.NonNull;
 
 /**
  * Created by Jerry on 2020-05-16.

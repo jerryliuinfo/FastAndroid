@@ -1,7 +1,7 @@
 package com.apache.fastandroid.pic;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.apache.fastandroid.R;
 import com.tesla.framework.common.util.ResUtil;

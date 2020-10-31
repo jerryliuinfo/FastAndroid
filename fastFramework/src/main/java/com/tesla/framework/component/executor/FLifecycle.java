@@ -1,7 +1,7 @@
 package com.tesla.framework.component.executor;
 
-import android.arch.lifecycle.LifecycleObserver;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.annotation.NonNull;
 
 /**
  * Created by Jerry on 2020-05-16.
@@ -14,7 +14,7 @@ public abstract class FLifecycle {
 
 
     @NonNull
-    public abstract android.arch.lifecycle.Lifecycle.State getCurrentState();
+    public abstract androidx.lifecycle.Lifecycle.State getCurrentState();
 
     @SuppressWarnings("WeakerAccess")
     public enum Event {

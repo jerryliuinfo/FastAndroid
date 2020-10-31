@@ -3,7 +3,7 @@ package com.tesla.framework.component.activityforresult;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.SparseArray;
 import com.tesla.framework.common.util.FrameworkLogUtil;
 import java.util.Random;

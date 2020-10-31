@@ -1,7 +1,7 @@
 package com.apache.fastandroid.pic.view;
 
 import android.app.Activity;
-import android.support.v7.widget.CardView;
+import androidx.cardview.widget.CardView;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;

@@ -1,6 +1,6 @@
 package com.tesla.framework.component.executor;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Created by Jerry on 2020-05-16.

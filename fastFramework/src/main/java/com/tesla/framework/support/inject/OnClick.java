@@ -1,6 +1,6 @@
 package com.tesla.framework.support.inject;
 
-import android.support.annotation.IdRes;
+import androidx.annotation.IdRes;
 import android.view.View;
 
 import java.lang.annotation.ElementType;

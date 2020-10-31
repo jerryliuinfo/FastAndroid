@@ -44,7 +44,7 @@ android {
         //archivesBaseName = "FastAndroid-$versionName"
         //dex突破65535的限制
         multiDexEnabled true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         //5.0以下将svg图片生成指定维度的图片
         vectorDrawables.generatedDensities('xhdpi','xxhdpi')
 
@@ -209,7 +209,7 @@ dependencies {
 
     implementation 'org.aspectj:aspectjrt:1.8.14'
 
-    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
 

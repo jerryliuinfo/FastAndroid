@@ -1,6 +1,6 @@
 package com.apache.fastandroid.artemis.componentService.topic;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * author: 01370340

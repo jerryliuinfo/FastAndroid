@@ -22,7 +22,7 @@
 
 package com.apache.fastandroid.artemis;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.tesla.framework.common.util.sdcard.SdcardUtils;

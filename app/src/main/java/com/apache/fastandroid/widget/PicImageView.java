@@ -1,7 +1,7 @@
 package com.apache.fastandroid.widget;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.tesla.framework.common.util.log.NLog;
@@ -10,7 +10,7 @@ import com.tesla.framework.common.util.log.NLog;
  * Created by jerryliu on 2017/4/11.
  */
 
-public class PicImageView extends android.support.v7.widget.AppCompatImageView {
+public class PicImageView extends androidx.appcompat.widget.AppCompatImageView {
     public static final String TAG = PicImageView.class.getSimpleName();
     public PicImageView(Context context) {
         this(context,null);

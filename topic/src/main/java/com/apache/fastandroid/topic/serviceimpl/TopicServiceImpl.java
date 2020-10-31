@@ -1,6 +1,6 @@
 package com.apache.fastandroid.topic.serviceimpl;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.topic.TopicTabsFragment;
 

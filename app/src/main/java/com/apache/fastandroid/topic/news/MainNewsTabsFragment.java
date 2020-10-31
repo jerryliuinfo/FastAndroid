@@ -2,7 +2,7 @@ package com.apache.fastandroid.topic.news;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.apache.fastandroid.topic.support.bean.NewsChannelTable;
 import com.apache.fastandroid.topic.support.sdk.Sdk;

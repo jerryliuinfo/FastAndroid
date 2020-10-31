@@ -1,6 +1,6 @@
 package com.tesla.framework.component.okhttp;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
 

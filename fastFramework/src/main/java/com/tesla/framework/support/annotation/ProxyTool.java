@@ -1,8 +1,8 @@
 package com.tesla.framework.support.annotation;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.UiThread;
 import android.view.View;
 
 /**

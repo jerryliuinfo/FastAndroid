@@ -1,6 +1,6 @@
 package com.apache.fastandroid.artemis.mvp.presenter;
 
-import android.arch.lifecycle.LifecycleRegistry;
+import androidx.lifecycle.LifecycleRegistry;
 
 import com.apache.fastandroid.artemis.mvp.view.IView;
 

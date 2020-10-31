@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FastAndroid.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FastAndroid.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/artemis_annotation/FastAndroid.artemis_annotation.iml" filepath="$PROJECT_DIR$/.idea/modules/artemis_annotation/FastAndroid.artemis_annotation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/artemis_compiler/FastAndroid.artemis_compiler.iml" filepath="$PROJECT_DIR$/.idea/modules/artemis_compiler/FastAndroid.artemis_compiler.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/baselib/FastAndroid.baselib.iml" filepath="$PROJECT_DIR$/.idea/modules/baselib/FastAndroid.baselib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastFramework/FastAndroid.fastFramework.iml" filepath="$PROJECT_DIR$/.idea/modules/fastFramework/FastAndroid.fastFramework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/topic/FastAndroid.topic.iml" filepath="$PROJECT_DIR$/.idea/modules/topic/FastAndroid.topic.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/work.FastAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/work.FastAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FastAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/FastAndroid.iml" group="FastAndroid" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="FastAndroid/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/artemis_annotation/artemis_annotation.iml" filepath="$PROJECT_DIR$/.idea/modules/artemis_annotation/artemis_annotation.iml" group="FastAndroid/artemis_annotation" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/artemis_compiler/artemis_compiler.iml" filepath="$PROJECT_DIR$/.idea/modules/artemis_compiler/artemis_compiler.iml" group="FastAndroid/artemis_compiler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/baselib/baselib.iml" filepath="$PROJECT_DIR$/.idea/modules/baselib/baselib.iml" group="FastAndroid/baselib" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastFramework/fastFramework.iml" filepath="$PROJECT_DIR$/.idea/modules/fastFramework/fastFramework.iml" group="FastAndroid/fastFramework" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/topic/topic.iml" filepath="$PROJECT_DIR$/.idea/modules/topic/topic.iml" group="FastAndroid/topic" />
     </modules>
   </component>
 </project>

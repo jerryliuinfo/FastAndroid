@@ -3,7 +3,7 @@ package com.tesla.framework.ui.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.TabLayout;
+import com.google.android.material.tabs.TabLayout;
 
 import com.tesla.framework.R;
 import com.tesla.framework.support.bean.TabItem;

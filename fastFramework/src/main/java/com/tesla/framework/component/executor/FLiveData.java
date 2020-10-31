@@ -1,7 +1,7 @@
 package com.tesla.framework.component.executor;
 
-import android.arch.lifecycle.LifecycleOwner;
-import android.support.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.annotation.Nullable;
 
 import com.alibaba.fastjson.JSON;
 import com.tesla.framework.common.util.FrameworkLogUtil;

@@ -17,10 +17,11 @@
 package com.tesla.framework.ui.fragment.adpater;
 
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ import com.tesla.framework.ui.fragment.APagingFragment;
  * view hierarchy may be destroyed when not visible. This can result in using a
  * significant amount of memory since fragment instances can hold on to an
  * arbitrary amount of state. For larger sets of pages, consider
- * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+ * {@link FragmentStatePagerAdapter}.
  * 
  * <p>
  * When using FragmentPagerAdapter the host ViewPager must have a valid ID set.

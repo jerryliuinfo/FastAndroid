@@ -2,7 +2,7 @@ package com.apache.fastandroid.widget;
 
 import android.content.Context;
 import android.os.CountDownTimer;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -14,7 +14,7 @@ import com.tesla.framework.common.util.log.NLog;
  * Created by jerryliu on 2017/6/29.
  */
 
-public class SplashCountDownView extends android.support.v7.widget.AppCompatTextView {
+public class SplashCountDownView extends androidx.appcompat.widget.AppCompatTextView {
     public static final String TAG = SplashCountDownView.class.getSimpleName();
 
     private MyCountDownTimer countDownTimer;

@@ -1,7 +1,7 @@
 package com.apache.fastandroid.topic.support.utils;
 
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.apache.fastandroid.MainActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;

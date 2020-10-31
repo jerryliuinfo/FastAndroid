@@ -1,6 +1,6 @@
 package com.tesla.framework.ui.fragment;
 
-import android.support.v4.widget.SwipeRefreshLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.tesla.framework.R;
 import com.tesla.framework.support.inject.ViewInject;

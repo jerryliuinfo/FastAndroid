@@ -22,7 +22,7 @@
 
 package com.tesla.framework.support.cache;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.LruCache;
 
 import com.tesla.framework.applike.FrameworkApplication;

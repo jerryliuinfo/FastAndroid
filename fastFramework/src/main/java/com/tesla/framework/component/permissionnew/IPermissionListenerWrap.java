@@ -1,6 +1,6 @@
 package com.tesla.framework.component.permissionnew;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Created by Jerry on 2019/1/23.

@@ -1,6 +1,6 @@
 package com.tesla.framework.support.thread;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.tesla.framework.common.util.log.NLog;
 

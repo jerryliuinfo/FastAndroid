@@ -8,8 +8,8 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
-import android.support.multidex.MultiDex;
-import android.support.v4.os.TraceCompat;
+import androidx.multidex.MultiDex;
+import androidx.core.os.TraceCompat;
 import android.text.TextUtils;
 
 import com.apache.fastandroid.BuildConfig;

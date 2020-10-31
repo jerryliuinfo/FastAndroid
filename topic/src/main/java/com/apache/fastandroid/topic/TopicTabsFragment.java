@@ -1,6 +1,6 @@
 package com.apache.fastandroid.topic;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import com.apache.fastandroid.topic.news.InformationFragment;
 import com.apache.fastandroid.topic.site.SitesListFragment;
 import com.tesla.framework.support.bean.TabItem;

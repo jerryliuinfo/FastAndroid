@@ -1,7 +1,7 @@
 package com.tesla.framework.common.util;
 
-import android.support.annotation.Nullable;
-import android.support.annotation.VisibleForTesting;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 
 import com.tesla.framework.support.thread.ThreadUtils;
 

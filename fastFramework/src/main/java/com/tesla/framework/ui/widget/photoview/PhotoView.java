@@ -10,7 +10,7 @@ import com.tesla.framework.ui.widget.photoview.AttacherInterface.OnMatrixChanged
 import com.tesla.framework.ui.widget.photoview.AttacherInterface.OnPhotoTapListener;
 import com.tesla.framework.ui.widget.photoview.AttacherInterface.OnViewTapListener;
 
-public class PhotoView extends android.support.v7.widget.AppCompatImageView implements IPhotoView {
+public class PhotoView extends androidx.appcompat.widget.AppCompatImageView implements IPhotoView {
 
     protected PhotoViewAttacher mAttacher;
     protected PhotoViewGestureAttacher mGestureAttacherr;

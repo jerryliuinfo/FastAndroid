@@ -1,8 +1,8 @@
 package com.tesla.framework.component.cardmenu;
 
 import android.app.Activity;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.view.menu.MenuItemImpl;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.menu.MenuItemImpl;
 import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.SubMenu;
