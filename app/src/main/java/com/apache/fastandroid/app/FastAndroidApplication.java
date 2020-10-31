@@ -1,5 +1,7 @@
 package com.apache.fastandroid.app;
 
+import java.io.File;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -22,6 +24,9 @@ import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
 import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.util.MainLogUtil;
+import com.github.anrwatchdog.ANRError;
+import com.github.anrwatchdog.ANRWatchDog;
+import com.github.anrwatchdog.ANRWatchDog.ANRListener;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tesla.framework.applike.IApplicationLike;
@@ -39,8 +44,6 @@ import com.tesla.framework.support.crash.TUncaughtExceptionHandler;
 import com.tesla.framework.support.db.FastAndroidDB;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
-
-import java.io.File;
 
 /**
  * Created by jerryliu on 2017/3/26.
@@ -100,7 +103,7 @@ public class FastAndroidApplication extends Application {
 
         initAuth();
         initHttp();
-        if (DebugUtils.isDebug()){
+        if (DebugUtils.isDebugVersion()){
             BlockDetector.init();
 
         }
@@ -128,6 +131,15 @@ public class FastAndroidApplication extends Application {
 
         //systrace 结束检测
         TraceCompat.endSection();
+        ANRWatchDog anrWatchDog = new ANRWatchDog();
+        anrWatchDog.setANRListener(new ANRListener() {
+            @Override
+            public void onAppNotResponding(ANRError error) {
+                error.printStackTrace();
+                MainLogUtil.d("发生anr了: trace:"+ error.getMessage());
+            }
+        });
+        anrWatchDog.start();
 
     }
 

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.os.SystemClock;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -23,8 +22,6 @@ import com.tesla.framework.ui.activity.BaseActivity;
 @DIActivity
 public class SplashActivity extends BaseActivity {
     public static final String TAG = SplashActivity.class.getSimpleName();
-    //@ViewInject(id = R.id.splash_coutdown_view)
-
 
     private SplashCountDownView coutDownView;
 
@@ -51,9 +48,6 @@ public class SplashActivity extends BaseActivity {
     }
 
 
-    private void testBlock(){
-        SystemClock.sleep(600);
-    }
 
     @ByView(R.id.splash_app_name)
     TextView splash_app_name;
@@ -75,12 +69,9 @@ public class SplashActivity extends BaseActivity {
             public void run() {
                 toMain();
 
-
             }
         },2000);
-        //testBlock();
         doJob();
-
     }
 
 

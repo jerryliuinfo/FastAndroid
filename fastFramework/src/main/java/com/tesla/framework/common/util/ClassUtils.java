@@ -140,7 +140,7 @@ public class ClassUtils {
             }
         }
 
-        if (DebugUtils.isDebug()) { // Search instant run support only debuggable
+        if (DebugUtils.isDebugVersion()) { // Search instant run support only debuggable
             sourcePaths.addAll(tryLoadInstantRunDexFile(applicationInfo));
         }
         return sourcePaths;

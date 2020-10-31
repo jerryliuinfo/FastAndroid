@@ -11,6 +11,8 @@ import com.tesla.framework.applike.FrameworkApplication;
 public class ToastUtils {
 
     private static Toast mToast;
+    private static Handler sUiHandler = new Handler(Looper.getMainLooper());
+
 
 
     /********************** 非连续弹出的Toast ***********************/
@@ -20,19 +22,17 @@ public class ToastUtils {
 
     public static void showSingleToast(String text) {
         getSingleToast(text, Toast.LENGTH_SHORT).show();
-    }
-    public static void showSingleToastOnUIThread(final String text) {
-        if (Thread.currentThread() != Looper.getMainLooper().getThread()){
-            new Handler(Looper.getMainLooper()).post(new Runnable() {
+        final Toast toast = getSingleToast(text, Toast.LENGTH_SHORT);
+        if (Thread.currentThread() == Looper.getMainLooper().getThread()){
+            toast.show();
+        }else{
+            sUiHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    getSingleToast(text, Toast.LENGTH_SHORT).show();
+                    toast.show();
                 }
             });
-        }else {
-            getSingleToast(text, Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private static Toast getSingleToast(String text, int duration) {

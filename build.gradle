@@ -3,35 +3,22 @@ apply from: "version_config.gradle"
 apply from: "version.gradle"
 
 buildscript {
-    ext {
-        kotlin_version = '1.3.61'
-    }
+    ext.kotlin_version = '1.3.72'
 
     repositories {
         repositories {
-            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-
             google()
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
             jcenter()
         }
 
     }
     dependencies {
-
-
-       /* classpath 'org.aspectj:aspectjtools:1.8.9'
-        classpath 'org.aspectj:aspectjweaver:1.8.9'*/
-        //aspect插件， 替代上面两行
-        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.0'
-
-
-
-
-
-        //classpath 'com.android.tools.build:gradle:3.1.4'
-        classpath 'com.android.tools.build:gradle:3.1.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
+        //aspect插件， 替代上面两行
+        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.0'
+        classpath 'com.android.tools.build:gradle:3.1.4'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' // 添加这行
         //定义在这里，这样每个module都可以使用
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
@@ -39,22 +26,14 @@ buildscript {
         //butterknife插件
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'  //在library中使用需要添加这一行
 
-
-        //classpath 'com.billy.android:cc-register:1.0.9' //集成cc
-
-
-
-        //classpath 'com.github.SmartDengg.asm-clickdebounce:click-debounce-gradle-plugin:1.2.0'
     }
 }
 
 
-
-allprojects{
+allprojects {
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         google()
-
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter()
     }
 
@@ -65,7 +44,6 @@ allprojects{
 }
 
 
-
 String SDK_DIR = System.getenv("ANDROID_SDK_HOME")
 if (SDK_DIR == null) {
     Properties props = new Properties()
@@ -74,17 +52,14 @@ if (SDK_DIR == null) {
 }
 
 
-
 /**
- *获取apk
+ * 获取apk
  */
-task archiveOutApks(type: Copy){
+task archiveOutApks(type: Copy) {
     from('app/build/outputs/apk')
     exclude '*unaligned*'
     into('./outapk/archives')
 }
-
-
 
 
 task clean(type: Delete) {

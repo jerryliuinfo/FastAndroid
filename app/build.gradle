@@ -6,6 +6,9 @@ ext.mainApp = true  //设置为true，表示此module为主app module，一直�
 def config = rootProject.ext
 apply plugin: 'android-aspectjx'
 
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
 buildscript {
     repositories {
         jcenter()
@@ -23,15 +26,7 @@ repositories {
 }
 
 
-//commit次数作为版本号,因为commit只增不减
-def getCommitVersionCode() {
-    if (project.hasProperty("RELEASE")) {
-        def cmd = "git rev-list HEAD --count"
-        return cmd.execute().text.trim().toInteger()
-    } else {
-        return 13149
-    }
-}
+
 
 
 
@@ -92,64 +87,40 @@ android {
     }
     //为了解决部分第三方库重复打包了META-INF的问题
     packagingOptions {
-        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
         exclude 'META-INF/LICENSE'
-        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/proguard/okhttp3.pro'
+        exclude 'META-INF/proguard/coroutines.pro'
+
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
    
 
     useLibrary 'org.apache.http.legacy'
-
-//    splits {
-//        density {
-//            enable true
-//            reset()
-//        }
-//    }
 
     lintOptions {
         abortOnError false
     }
 
 
-   /* signingConfigs {
-        dev {
-            try {
-                storeFile file(KEYSTORE_FILE)
-                storePassword KEYSTORE_PASSWORD
-                keyAlias KEY_ALIAS
-                keyPassword KEY_PASSWORD
-            }
-            catch (ex) {
-                //throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
-            }
-        }
 
-        prod {
-            try {
-                storeFile file(KEYSTORE_FILE)
-                storePassword KEYSTORE_PASSWORD
-                keyAlias KEY_ALIAS
-                keyPassword KEY_PASSWORD
-            }
-            catch (ex) {
-                //throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
-            }
-        }
-    }*/
 
 
 
     buildTypes {
         release {
 
-//            multiDexKeepFile file('dex.keep')
-//            def myFile = file('dex.keep')
-//            println("isFileExists:"+myFile.exists())
 
-
-            //minifyEnabled true
-            //shrinkResources true
             //zipAlignEnabled能提供系统和应用的运行效率
             zipAlignEnabled true
             //获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk
@@ -161,10 +132,7 @@ android {
             buildConfigField('String',"BUGLY_APP_ID","\"a397701fd5\"")
         }
         debug {
-//            minifyEnabled true
-//            shrinkResources true
             manifestPlaceholders = [appName: "FastAnd测试版"]
-
             buildConfigField('boolean','LOG_DEBUG',"true")
             buildConfigField('String',"BUGLY_APP_ID","\"a397701fd5\"")
         }
@@ -205,7 +173,11 @@ android {
 
 }
 
-
+kotlin{
+    experimental {
+        coroutines 'enable'
+    }
+}
 
 
 
@@ -240,6 +212,16 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:1.1.1"
     implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
+
+//    //协程
+//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5'
+//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.5'
+//
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"//主要是这两个依赖
+
+
 
 
 
