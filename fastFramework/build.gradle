@@ -1,4 +1,4 @@
-def config = rootProject.ext
+//def config = rootProject.ext
 apply plugin: 'com.android.library'
 //apply plugin: 'android-apt'
 //apply plugin: 'com.novoda.bintray-release'
@@ -14,12 +14,12 @@ repositories {
 }
 
 android {
-    compileSdkVersion config.android.compileSdkVersion
-    buildToolsVersion config.android.buildToolsVersion
+    compileSdkVersion rootProject.androidConfigs.compileSdkVersion
+    buildToolsVersion rootProject.androidConfigs.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion config.android.minSdkVersion
-        targetSdkVersion config.android.targetSdkVersion
+        minSdkVersion rootProject.androidConfigs.minSdkVersion
+        targetSdkVersion rootProject.androidConfigs.targetSdkVersion
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         javaCompileOptions {
@@ -47,19 +47,19 @@ dependencies {
     //    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     //        exclude group: 'com.android.support', module: 'support-annotations'
     //    })
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation rootProject.androidLib.support_constraint
 
-    api config.supportDependencies.design
-    api config.supportDependencies.appcompatV7
-    api config.supportDependencies.cardview
-    api config.thirddependencies.fastjson
-    api config.thirddependencies.gson
-    api config.thirddependencies.okhttp3
-    api config.thirddependencies.material_dialogs
+    api rootProject.supportDependencies.design
+    api rootProject.supportDependencies.appcompatV7
+    api rootProject.supportDependencies.cardview
+    api rootProject.thirdLib.fastjson
+    api rootProject.thirdLib.gson
+    api rootProject.thirdLib.okhttp3
+    api rootProject.thirdLib.material_dialogs
 
-    implementation config.thirddependencies.glide
-    implementation config.thirddependencies.picasso
-    implementation config.thirddependencies.imageLoader
+    implementation rootProject.thirdLib.glide
+    implementation rootProject.thirdLib.picasso
+    implementation rootProject.thirdLib.imageLoader
 
 
     api project(':artemis_annotation')

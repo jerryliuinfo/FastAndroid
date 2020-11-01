@@ -1,11 +1,11 @@
 package com.tesla.framework.ui.fragment;
 
+import java.text.SimpleDateFormat;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +28,8 @@ import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.ToastUtils;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
-import java.text.SimpleDateFormat;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 /**
  * 基于ABaseFragment，维护与Activity之间的生命周期绑定，管理WorkTask线程，支持四种个基本视图之间的自动切换<br/>
@@ -96,8 +97,9 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
         taskManager = new TaskManager();
 
-        if (savedInstanceState != null)
+        if (savedInstanceState != null) {
             taskManager.restore(savedInstanceState);
+        }
 
     }
 

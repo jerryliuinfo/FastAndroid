@@ -32,12 +32,12 @@ repositories {
 
 android {
 
-    compileSdkVersion rootProject.android.compileSdkVersion
-    buildToolsVersion rootProject.android.buildToolsVersion
+    compileSdkVersion rootProject.androidConfigs.compileSdkVersion
+    buildToolsVersion rootProject.androidConfigs.buildToolsVersion
     defaultConfig {
         applicationId "com.apache.fastandroid"
-        minSdkVersion rootProject.android.minSdkVersion
-        targetSdkVersion rootProject.android.targetSdkVersion
+        minSdkVersion rootProject.androidConfigs.minSdkVersion
+        targetSdkVersion rootProject.androidConfigs.targetSdkVersion
         versionCode 100
         versionName "V1.0.0"
 
@@ -190,22 +190,23 @@ dependencies {
     if (!isTopicRunAlone.toBoolean()) {
           implementation project(':topic')
         }
-    debugImplementation config.thirddependencies.leakcanary_support_fragment
+
+    implementation rootProject.supportDependencies.constraintLayout
+
+    debugImplementation config.thirdLib.leakcanary_support_fragment
     implementation project(':baselib')
     implementation config.supportDependencies.appcompatV7
     implementation config.supportDependencies.multidex
-    implementation config.thirddependencies.butterknife
-    annotationProcessor config.thirddependencies.butterknife_compiler
     //ARouter
-    implementation config.thirddependencies.arouter_api
-    annotationProcessor config.thirddependencies.arouter_compiler
+    implementation config.thirdLib.arouter_api
+    annotationProcessor config.thirdLib.arouter_compiler
     //必须加行这行，否则proxyToolProcessor无法自动生成类
     implementation project(':artemis_annotation')
     annotationProcessor project(':artemis_compiler')
 
 
-    implementation config.thirddependencies.bugly
-    implementation config.thirddependencies.buglyNative
+    implementation config.thirdLib.bugly
+    implementation config.thirdLib.buglyNative
 
     implementation 'org.aspectj:aspectjrt:1.8.14'
 

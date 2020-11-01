@@ -8,8 +8,8 @@ def config = rootProject.ext
 
 apply plugin: 'com.android.library'
 android {
-    compileSdkVersion config.android.compileSdkVersion
-    buildToolsVersion config.android.buildToolsVersion
+    compileSdkVersion rootProject.androidConfigs.compileSdkVersion
+    buildToolsVersion rootProject.androidConfigs.buildToolsVersion
     defaultConfig {
         javaCompileOptions {
             annotationProcessorOptions {
@@ -22,8 +22,8 @@ android {
             //dex突破65535的限制
             multiDexEnabled true
         }
-        minSdkVersion config.android.minSdkVersion
-        targetSdkVersion config.android.targetSdkVersion
+        minSdkVersion rootProject.androidConfigs.minSdkVersion
+        targetSdkVersion rootProject.androidConfigs.targetSdkVersion
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
     }

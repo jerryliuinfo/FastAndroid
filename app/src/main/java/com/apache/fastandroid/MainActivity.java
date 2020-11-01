@@ -1,25 +1,11 @@
 package com.apache.fastandroid;
 
 import android.app.Activity;
-import androidx.arch.core.util.Function;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.Transformations;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import androidx.annotation.IdRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.navigation.NavigationView;
-import androidx.fragment.app.Fragment;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -37,8 +23,6 @@ import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.jetpack.GpsCallback;
 import com.apache.fastandroid.jetpack.GpsEngine;
-import com.apache.fastandroid.jetpack.lifecycle.LifecycleHandler;
-import com.apache.fastandroid.jetpack.lifecycle.MyLifeCycleObserver;
 import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.tink.FixManager;
@@ -48,6 +32,7 @@ import com.apache.fastandroid.topic.support.permission.SdcardPermissionAction;
 import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
+import com.google.android.material.navigation.NavigationView;
 import com.tesla.framework.common.util.FrameworkLogUtil;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.file.FileUtils;
@@ -69,6 +54,18 @@ import com.tesla.framework.ui.widget.ToastUtils;
 
 import java.io.File;
 
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.arch.core.util.Function;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.Transformations;
+
 @AptTest(path = "main")
 @BindPath("login/login")
 public class MainActivity extends BaseActivity implements NetworkListener, View.OnClickListener {
@@ -79,25 +76,10 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
     @BindViewById((R.id.navigation_view))
     NavigationView mNavigationView;
 
-    private Handler mHandler = new LifecycleHandler(Looper.getMainLooper(),this) {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            MainLogUtil.d( "接收到信息 ->" + msg.what);
-        }
-    };
-
 
 
     void doJob() {
-        Thread thread = new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                mHandler.sendEmptyMessageDelayed(1, 60000L);
-            }
-        };
-        thread.start();
+
     }
 
 
@@ -128,18 +110,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
     protected void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
 
-        getLifecycle().addObserver(new MyLifeCycleObserver());
-        final MutableLiveData<String> mutableLiveData  = new MutableLiveData<>();
-
-        //1
-        mutableLiveData.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable final String s) {
-                MainLogUtil.d(String.format("onChanged: %s, thread:%s",s,Thread.currentThread().getName()));
-            }
-        });
-        //2
-        mutableLiveData.postValue("主线程Android进阶三部曲");
 
 
 

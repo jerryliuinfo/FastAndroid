@@ -1,11 +1,10 @@
-def config = rootProject.ext
 apply plugin: 'com.android.library'
 apply plugin: 'android-aspectjx'
 
 android {
 
-    compileSdkVersion config.android.compileSdkVersion
-    buildToolsVersion config.android.buildToolsVersion
+    compileSdkVersion rootProject.androidConfigs.compileSdkVersion
+    buildToolsVersion rootProject.androidConfigs.buildToolsVersion
 
     defaultConfig {
         javaCompileOptions {
@@ -14,8 +13,8 @@ android {
             }
         }
 
-        minSdkVersion config.android.minSdkVersion
-        targetSdkVersion config.android.targetSdkVersion
+        minSdkVersion rootProject.androidConfigs.minSdkVersion
+        targetSdkVersion rootProject.androidConfigs.targetSdkVersion
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
@@ -35,37 +34,34 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(':fastFramework')
-    api config.supportDependencies.design
-    api config.supportDependencies.appcompatV7
-    api config.supportDependencies.cardview
-    api config.thirddependencies.glide
-    api config.thirddependencies.picasso
-    api config.thirddependencies.imageLoader
+    api rootProject.supportDependencies.design
+    api rootProject.supportDependencies.appcompatV7
+    api rootProject.supportDependencies.cardview
+    api rootProject.thirdLib.glide
+    api rootProject.thirdLib.picasso
+    api rootProject.thirdLib.imageLoader
     api 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
-    api config.thirddependencies.volly
-    api config.thirddependencies.okhttp3_log_interceptor
+    api rootProject.thirdLib.volly
+    api rootProject.thirdLib.okhttp3_log_interceptor
     //rxjava&rxandroid
-    api config.thirddependencies.rxjava
-    api config.thirddependencies.rxandroid
+    api rootProject.thirdLib.rxjava
+    api rootProject.thirdLib.rxandroid
     //retrofit
-    api(config.thirddependencies.retrofit) {
+    api(rootProject.thirdLib.retrofit) {
         exclude group: "com.squareup.okhttp3"
     }
-    api config.thirddependencies.retrofit_converter_gson
-    api config.thirddependencies.retrofit_adapter_rxjava
-    api config.thirddependencies.retrofit_converter_scalars
+    api rootProject.thirdLib.retrofit_converter_gson
+    api rootProject.thirdLib.retrofit_adapter_rxjava
+    api rootProject.thirdLib.retrofit_converter_scalars
 
-    api config.supportDependencies.support_customtabs
+    api rootProject.supportDependencies.support_customtabs
 
 
     //ARouter 不要放到baselib，需要每个业务module自己依赖，否则不起作用
-    api config.thirddependencies.arouter_api
-    annotationProcessor config.thirddependencies.arouter_compiler
+    api rootProject.thirdLib.arouter_api
+    annotationProcessor rootProject.thirdLib.arouter_compiler
 
 
-    //ARouter
-   // api config.thirddependencies.arouter_api
-   // annotationProcessor config.thirddependencies.arouter_compiler
 
     testImplementation 'junit:junit:4.12'
     api supportDependencies.junit
