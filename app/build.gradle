@@ -26,10 +26,6 @@ repositories {
 }
 
 
-
-
-
-
 android {
 
     compileSdkVersion rootProject.androidConfigs.compileSdkVersion
@@ -46,12 +42,12 @@ android {
         multiDexEnabled true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         //5.0以下将svg图片生成指定维度的图片
-        vectorDrawables.generatedDensities('xhdpi','xxhdpi')
+        vectorDrawables.generatedDensities('xhdpi', 'xxhdpi')
 
         //5.0以上
         //vectorDrawables.useSupoortLibrary = true
 
-        flavorDimensions "debug","release"
+        flavorDimensions "debug", "release"
 
         //只保留指定和默认资源
         resConfigs('zh-rCN')
@@ -104,17 +100,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-   
+
 
     useLibrary 'org.apache.http.legacy'
 
     lintOptions {
         abortOnError false
     }
-
-
-
-
 
 
     buildTypes {
@@ -128,20 +120,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [appName: "FastAnd"]
 
-            buildConfigField('boolean','LOG_DEBUG',"false")
-            buildConfigField('String',"BUGLY_APP_ID","\"a397701fd5\"")
+            buildConfigField('boolean', 'LOG_DEBUG', "false")
+            buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
         }
         debug {
             manifestPlaceholders = [appName: "FastAnd测试版"]
-            buildConfigField('boolean','LOG_DEBUG',"true")
-            buildConfigField('String',"BUGLY_APP_ID","\"a397701fd5\"")
+            buildConfigField('boolean', 'LOG_DEBUG', "true")
+            buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
         }
 
     }
 
     //将SO库打包到apk内
-    sourceSets{
-        main{
+    sourceSets {
+        main {
             jniLibs.srcDirs = ['libs']
         }
     }
@@ -153,7 +145,7 @@ android {
     variantFilter { variant ->
         if (variant.buildType.name.equals('release')) {
             variant.getFlavors().each() { flavor ->
-                if (flavor.name.equals('dev')){
+                if (flavor.name.equals('dev')) {
                     variant.setIgnore(true);
                 }
             }
@@ -173,23 +165,21 @@ android {
 
 }
 
-kotlin{
+kotlin {
     experimental {
         coroutines 'enable'
     }
 }
-
-
-
-
-
+androidExtensions {
+    experimental = true
+}
 
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     if (!isTopicRunAlone.toBoolean()) {
-          implementation project(':topic')
-        }
+        implementation project(':topic')
+    }
 
     implementation rootProject.supportDependencies.constraintLayout
 
@@ -221,9 +211,6 @@ dependencies {
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"//主要是这两个依赖
-
-
-
 
 
 }

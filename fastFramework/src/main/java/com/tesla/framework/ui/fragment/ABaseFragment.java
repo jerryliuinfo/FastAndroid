@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tesla.framework.R;
+import com.tesla.framework.common.util.FrameworkLogUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.component.imageloader.BitmapOwner;
@@ -28,6 +29,7 @@ import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.ToastUtils;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -91,10 +93,15 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
     }
 
+    long startTime1 = 0;
+    long startTime2 = 0;
+    long startTime3 = 0;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        FrameworkLogUtil.d("onCreate  --- >");
+        startTime1 = System.currentTimeMillis();
         taskManager = new TaskManager();
 
         if (savedInstanceState != null) {
@@ -106,6 +113,8 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        startTime2 = System.currentTimeMillis();
+        FrameworkLogUtil.d("onCreateView  --- >time diff: %s ms", (startTime2 - startTime1));
         if (inflateContentView() > 0) {
             ViewGroup contentView = (ViewGroup) inflater.inflate(inflateContentView(), null);
             contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -119,6 +128,23 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        startTime3 = System.currentTimeMillis();
+        FrameworkLogUtil.d("onViewCreated  --- >time diff: %s ms", (startTime3 - startTime2));
+        /**
+         * 为了解决使用Kotlin-Android-Extensions 的试图绑定功能(不用findViewById), 在onCreateView中不能直接访问视图，
+         * 因为视图没有加载完成，容易引起空指针，需要在onViewCreated中访问视图，所以把 _layoutInit  和 layoutInit 从
+         * onCreateView 中移动到了 onViewCreated方法中
+         *
+         */
+        //绑定视图
+        _layoutInit(null, savedInstanceState);
+
+        layoutInit(null, savedInstanceState);
+    }
+
     /**
      * 根据ContentView初始化视图
      *
@@ -128,10 +154,10 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
      */
     protected void setupContentView(LayoutInflater inflater, ViewGroup contentView, Bundle savedInstanceState) {
         setContentView(contentView);
-        //绑定视图
-        _layoutInit(inflater, savedInstanceState);
-
-        layoutInit(inflater, savedInstanceState);
+//        //绑定视图
+//        _layoutInit(inflater, savedInstanceState);
+//
+//        layoutInit(inflater, savedInstanceState);
     }
 
     public void setContentView(ViewGroup view) {
@@ -151,8 +177,9 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        if (savedInstanceState == null)
+        if (savedInstanceState == null) {
             requestData();
+        }
     }
 
     /**
@@ -192,14 +219,16 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
         if (emptyLayout != null) {
             View reloadView = emptyLayout.findViewById(R.id.layoutReload);
-            if (reloadView != null)
+            if (reloadView != null) {
                 setViewOnClick(reloadView);
+            }
         }
 
         if (loadFailureLayout != null) {
             View reloadView = loadFailureLayout.findViewById(R.id.layoutReload);
-            if (reloadView != null)
+            if (reloadView != null) {
                 setViewOnClick(reloadView);
+            }
         }
 
         setViewVisiable(loadingLayout, View.GONE);
@@ -223,8 +252,9 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     }
 
     public View findViewById(int viewId) {
-        if (getContentView() == null)
+        if (getContentView() == null) {
             return null;
+        }
 
         return getContentView().findViewById(viewId);
     }
@@ -252,8 +282,9 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     }
 
     protected void setViewVisiable(View v, int visibility) {
-        if (v != null && v.getVisibility() != visibility)
+        if (v != null && v.getVisibility() != visibility) {
             v.setVisibility(visibility);
+        }
     }
 
 
@@ -310,8 +341,9 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
                     if (exception != null) {
                         TextView txtLoadFailed = (TextView) loadFailureLayout.findViewById(R.id.txtLoadFailed);
-                        if (txtLoadFailed != null)
+                        if (txtLoadFailed != null) {
                             txtLoadFailed.setText(exception.getMessage());
+                        }
                     }
 
                     setViewVisiable(emptyLayout, View.GONE);
