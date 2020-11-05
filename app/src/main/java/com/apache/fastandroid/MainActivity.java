@@ -1,10 +1,8 @@
 package com.apache.fastandroid;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
@@ -12,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.navigation.NavigationView;
 
 import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
@@ -25,17 +25,13 @@ import com.apache.fastandroid.jetpack.GpsCallback;
 import com.apache.fastandroid.jetpack.GpsEngine;
 import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.setting.SettingFragment;
-import com.apache.fastandroid.tink.FixManager;
 import com.apache.fastandroid.tink.TinkTest;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
-import com.apache.fastandroid.topic.support.permission.SdcardPermissionAction;
 import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
-import com.google.android.material.navigation.NavigationView;
 import com.tesla.framework.common.util.FrameworkLogUtil;
 import com.tesla.framework.common.util.ResUtil;
-import com.tesla.framework.common.util.file.FileUtils;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkListener;
 import com.tesla.framework.common.util.network.NetworkType;
@@ -44,15 +40,11 @@ import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.component.eventbus.Subscribe;
 import com.tesla.framework.component.eventbus.ThreadMode;
 import com.tesla.framework.route.Route;
-import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
-import com.tesla.framework.ui.widget.ToastUtils;
-
-import java.io.File;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -440,69 +432,13 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
 
     public void onFix(View view) {
 
-        new IAction(this,new SdcardPermissionAction(this,null)){
-            @Override
-            public void doAction() {
-                super.doAction();
-                new Thread(){
-                    @Override
-                    public void run() {
-                        super.run();
-                        fix(MainActivity.this);
-                    }
-                }.start();
-
-            }
-        }.run();
-    }
-
-
-    /**
-     * 把补丁的dex文件写入到当前应用的私有化路径下面
-     * @param context
-     */
-    public void fix(Context context){
-
-        try {
-            copyPatchFile(context);
-            FixManager.loadDex(context);
-        } catch (Exception e) {
-            e.printStackTrace();
-            MainLogUtil.e("拷贝文件失败: msg:"+e.getMessage());
-        }
 
     }
 
-    private void copyPatchFile(Context context){
-        //data/data/com.apache.fastandroid/app_odex/opt_dex
-        File filesDir = context.getDir("odex", Context.MODE_PRIVATE);
-        //获取到没有bug的dex文件
-        String name = "out.dex";
-        // data/user/0/com.apache.fastandroid/app_odex/out.dex
-        String filePath = new File(filesDir,name).getAbsolutePath();
-        //系统datra/data/com.apache.fastandroid
-        File targetFile = new File(filePath);
-        File sourceFile = new File(Environment.getExternalStorageDirectory(),name);
-        MainLogUtil.d("fix sourceFile path " +sourceFile.getAbsolutePath() +", targetFile path: " +filePath);
-        if (targetFile.exists()){
-            targetFile.delete();
-        }
-        try {
-            String sourceContent = FileUtils.readFileToString(sourceFile);
-            MainLogUtil.d(String.format("sourceFile: %s", sourceContent));
-            int copyResult = FileUtils.copySdcardFile(sourceFile.getAbsolutePath(), targetFile.getAbsolutePath());
-            MainLogUtil.d("copyResult: " + copyResult);
-            if (copyResult == 0){
-                ToastUtils.showToast(this,"拷贝成功");
-            }else{
-                ToastUtils.showToast(this,"拷贝失败");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            ToastUtils.showSingleToast("拷贝文件失败");
-            MainLogUtil.e("拷贝文件失败: msg:"+e.getMessage());
-        }
-    }
+
+
+
+
 
     private GpsCallback callback;
     /**

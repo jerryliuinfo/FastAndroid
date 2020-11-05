@@ -22,16 +22,13 @@
 
 package com.tesla.framework.support.cache;
 
-import androidx.annotation.NonNull;
-import android.util.LruCache;
-
-import com.tesla.framework.applike.FrameworkApplication;
-import com.tesla.framework.common.util.file.FileUtils;
-
-import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import android.util.LruCache;
+
+import androidx.annotation.NonNull;
 
 /**
  * 数据缓存工具
@@ -42,7 +39,7 @@ public class DataCache {
     LruCache<String, Object> mLruCache;
 
     public DataCache(String fileName) {
-        mDiskCache = ACache.get(new File(FileUtils.getExternalCacheDir(FrameworkApplication.getContext(), "diy-data")));
+//        mDiskCache = ACache.get(new File(FileUtils.getExternalCacheDir(FrameworkApplication.getContext(), "diy-data")));
         mLruCache = new LruCache<>(5 * M);
     }
 

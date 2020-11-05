@@ -1,14 +1,6 @@
 package com.tesla.framework.common.util.file;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Environment;
-
-import com.tesla.framework.common.util.log.NLog;
-
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,8 +9,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
+
+import com.tesla.framework.common.util.log.NLog;
 
 public class FileUtils {
 	private FileUtils() {
@@ -125,59 +118,8 @@ public class FileUtils {
 
 
 
-	
-	public static boolean writeFile(File file, byte[] bytes) {
-		if (!file.getParentFile().exists())
-			file.getParentFile().mkdirs();
 
-		FileOutputStream out = null;
-		ByteArrayInputStream in = new ByteArrayInputStream(bytes);
-		try {
-			out = new FileOutputStream(file);
 
-			byte[] buffer = new byte[1024 * 8];
-			int length;
-			
-			while ((length = in.read(buffer)) != -1) {
-				out.write(buffer, 0, length);
-			}
-			out.flush();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} finally {
-			if (out != null)
-				try {
-					out.close();
-				} catch (Exception e2) {
-				}
-		}
-
-		return true;
-	}
-
-	public static int copySdcardFile(String fromFile, String toFile)
-	{
-
-		try
-		{
-			InputStream fosfrom = new FileInputStream(fromFile);
-			OutputStream fosto = new FileOutputStream(toFile);
-			byte bt[] = new byte[1024];
-			int c;
-			while ((c = fosfrom.read(bt)) > 0)
-			{
-				fosto.write(bt, 0, c);
-			}
-			fosfrom.close();
-			fosto.close();
-			return 0;
-
-		} catch (Exception ex)
-		{
-			return -1;
-		}
-	}
 
 
 	@SuppressWarnings("unchecked")
@@ -214,161 +156,10 @@ public class FileUtils {
 	}
 
 
-    /**
-     * Get the value of the data column for this Uri. This is useful for
-     * MediaStore Uris, and other file-based ContentProviders.
-     *
-     * @param context
-     *            The context.
-     * @param uri
-     *            The Uri to query.
-     * @param selection
-     *            (Optional) Filter used in the query.
-     * @param selectionArgs
-     *            (Optional) Selection arguments used in the query.
-     * @return The value of the _data column, which is typically a file path.
-     */
-    public static String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) {
-
-        Cursor cursor = null;
-        final String column = "_data";
-        final String[] projection = { column };
-
-        try {
-            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, null);
-            if (cursor != null && cursor.moveToFirst()) {
-                final int index = cursor.getColumnIndexOrThrow(column);
-                return cursor.getString(index);
-            }
-        } finally {
-            if (cursor != null)
-                cursor.close();
-        }
-        return null;
-    }
 
 
 
 
-
-
-
-	//****系统文件目录**********************************************************************************************
-
-	/**
-	 * @return 程序系统文件目录
-	 * data/data/pkgName/files
-	 */
-	public static String getFileDir(Context context) {
-		return String.valueOf(context.getFilesDir());
-	}
-
-	/**
-	 * @param context    上下文
-	 * @param customPath 自定义路径
-	 * @return 程序系统文件目录绝对路径
-	 */
-	public static String getFileDir(Context context, String customPath) {
-		String path = context.getFilesDir() + formatPath(customPath);
-		mkdir(path);
-		return path;
-	}
-
-//****系统缓存目录**********************************************************************************************
-
-	/**
-	 * @return 程序系统缓存目录
-	 */
-	public static String getCacheDir(Context context) {
-		return String.valueOf(context.getCacheDir());
-	}
-
-	/**
-	 * @param context    上下文
-	 * @param customPath 自定义路径
-	 * @return 程序系统缓存目录
-	 */
-	public static String getCacheDir(Context context, String customPath) {
-		String path = context.getCacheDir() + formatPath(customPath);
-		mkdir(path);
-		return path;
-	}
-
-//****Sdcard文件目录**********************************************************************************************
-
-	/**
-	 * @return 内存卡文件目录
-	 */
-	public static String getExternalFileDir(Context context) {
-		return String.valueOf(context.getExternalFilesDir(""));
-	}
-
-	/**
-	 * @param context    上下文
-	 * @param customPath 自定义路径
-	 * @return 内存卡文件目录
-	 */
-	public static String getExternalFileDir(Context context, String customPath) {
-		String path = context.getExternalFilesDir("") + formatPath(customPath);
-		mkdir(path);
-		return path;
-	}
-
-//****Sdcard缓存目录**********************************************************************************************
-
-	/**
-	 * @return 内存卡缓存目录
-	 */
-	public static String getExternalCacheDir(Context context) {
-		return String.valueOf(context.getExternalCacheDir());
-	}
-
-	/**
-	 * @param context    上下文
-	 * @param customPath 自定义路径
-	 * @return 内存卡缓存目录
-	 */
-	public static String getExternalCacheDir(Context context, String customPath) {
-		String path = context.getExternalCacheDir() + formatPath(customPath);
-		mkdir(path);
-		return path;
-	}
-
-//****公共文件夹**********************************************************************************************
-
-	/**
-	 * @return 公共下载文件夹
-	 */
-	public static String getPublicDownloadDir() {
-		return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
-	}
-
-//****相关工具**********************************************************************************************
-
-	/**
-	 * 创建文件夹
-	 *
-	 * @param DirPath 文件夹路径
-	 */
-	public static void mkdir(String DirPath) {
-		File file = new File(DirPath);
-		if (!(file.exists() && file.isDirectory())) {
-			file.mkdirs();
-		}
-	}
-
-	/**
-	 * 格式化文件路径
-	 * 示例：  传入 "sloop" "/sloop" "sloop/" "/sloop/"
-	 * 返回 "/sloop"
-	 */
-	private static String formatPath(String path) {
-		if (!path.startsWith("/"))
-			path = "/" + path;
-		while (path.endsWith("/"))
-			path = new String(path.toCharArray(), 0, path.length() - 1);
-		return path;
-	}
 
 
 

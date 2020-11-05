@@ -1,12 +1,21 @@
 package com.tesla.framework.common.util.file;
 
-import android.content.Context;
-
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.Closeable;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+
+import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.text.TextUtils;
+
+import com.tesla.framework.common.util.FrameworkLogUtil;
 
 /**
  * Created by jerryliu on 2017/8/3.
@@ -32,34 +41,198 @@ public class AssetUtil {
     }
 
 
-    /**
-     * 从assets目录中复制某文件内容
-     *  @param  assetFileName assets目录下的Apk源文件路径
-     *  @param  newFileName 复制到/data/data/package_name/files/目录下文件名
-     */
-    private void copyAssetsFileToAppCacheDirecotry(Context context,String assetFileName, String newFileName) {
-        InputStream is = null;
-        FileOutputStream fos = null;
-        int buffsize = 1024;
 
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Comparator of files.
+     */
+    public interface FileComparator {
+        boolean equals(File lhs, File rhs);
+    }
+
+    /**
+     * Simple file comparator which only depends on file length and modification time.
+     */
+    public final static FileComparator SIMPLE_COMPARATOR = new FileComparator() {
+        @Override
+        public boolean equals(File lhs, File rhs) {
+            return (lhs.length() == rhs.length()) && (lhs.lastModified() == rhs.lastModified());
+        }
+    };
+
+
+
+    /**
+     * Comparator of asset and target file.
+     */
+    public interface AssetFileComparator {
+         boolean equals(Context context, String assetPath, File dstFile);
+    }
+
+    /**
+     * Simple asset file comparator which only depends on asset file length.
+     */
+    public final static AssetFileComparator SIMPLE_ASSET_COMPARATOR = new AssetFileComparator() {
+        @Override
+        public boolean equals(Context context, String assetPath, File dstFile) {
+            long assetFileLength = getAssetLength(context, assetPath);
+            return assetFileLength != -1 && assetFileLength == dstFile.length();
+        }
+    };
+
+
+    private final static int ASSET_SPLIT_BASE = 0;
+
+    private final static int BUFFER_SIZE = 8192;
+
+
+
+
+    /**
+     * Copy asset files. If assetName is a file, the it will be copied to file dst. Notice, a {@link #SIMPLE_ASSET_COMPARATOR} is used.
+     *
+     * @param context   application context.
+     * @param assetName asset name to copy. 注意这里的 assetName 不能有子目录
+     * @param dst       destination file. 文件全路径，不能是文件夹
+     */
+    public static boolean copyAssets(Context context, String assetName, String dst) {
+        return copyAssets(context, assetName, dst, SIMPLE_ASSET_COMPARATOR);
+    }
+
+    /**
+     * Copy asset files. If assetName is a file, the it will be copied to file dst.
+     *
+     * @param context    application context.
+     * @param assetName  asset name to copy.
+     * @param dst        destination file.
+     * @param comparator a asset file comparator to determine whether asset & dst are equal files. Null to overwrite all dst files.
+     */
+    public static boolean copyAssets(Context context, String assetName, String dst, AssetFileComparator comparator) {
+        return performCopyAssetsFile(context, assetName, dst, comparator);
+    }
+
+    private static boolean performCopyAssetsFile(Context context, String assetPath, String dstPath, AssetFileComparator comparator) {
+        if (isEmpty(assetPath) || isEmpty(dstPath)) {
+            return false;
+        }
+
+        AssetManager assetManager = context.getAssets();
+        File dstFile = new File(dstPath);
+
+        boolean succeed = false;
+        InputStream in = null;
+        OutputStream out = null;
         try {
-            is = context.getAssets().open(assetFileName);
-            fos = context.openFileOutput(newFileName, Context.MODE_PRIVATE);
-            int byteCount = 0;
-            byte[] buffer = new byte[buffsize];
-            while((byteCount = is.read(buffer)) != -1) {
-                fos.write(buffer, 0, byteCount);
+            if (dstFile.exists()) {
+                if (comparator != null && comparator.equals(context, assetPath, dstFile)) {
+                    return true;
+                } else {
+                    // file will be overwrite later.
+                    if (dstFile.isDirectory()) {
+                        delete(dstFile);
+                    }
+                }
             }
-            fos.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            File parent = dstFile.getParentFile();
+            if (parent.isFile()) {
+                delete(parent);
+            }
+            if (!parent.exists() && !parent.mkdirs()) {
+                return false;
+            }
+
+            in = assetManager.open(assetPath);
+            out = new BufferedOutputStream(new FileOutputStream(dstFile), BUFFER_SIZE);
+            byte[] buf = new byte[BUFFER_SIZE];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            succeed = true;
+
+        } catch (Throwable e) {
+            FrameworkLogUtil.d("fail to copy assets file", e);
+            // delete broken file.
+            delete(dstFile);
         } finally {
+            closeSilently(in);
+            closeSilently(out);
+        }
+        return succeed;
+    }
+
+    public static long getAssetLength(Context context, String assetPath) {
+        AssetManager assetManager = context.getAssets();
+        // try to determine whether or not copy this asset file, using their size.
+        try {
+            AssetFileDescriptor fd = assetManager.openFd(assetPath);
+            return fd.getLength();
+
+        } catch (IOException e) {
+            // this file is compressed. cannot determine it's size.
+        }
+
+        // try stream.
+        InputStream tmpIn = null;
+        try {
+            tmpIn = assetManager.open(assetPath);
+            return tmpIn.available();
+
+        } catch (IOException e) {
+            // do nothing.
+        } finally {
+            closeSilently(tmpIn);
+        }
+        return -1;
+    }
+
+    public static void delete(String path) {
+        delete(path, false);
+    }
+
+    public static void delete(String path, boolean ignoreDir) {
+        if (TextUtils.isEmpty(path))
+            return;
+        File f = new File(path);
+        FileDirUtil.delete(f, ignoreDir);
+    }
+
+    /**
+     * Delete corresponding path, file or directory.
+     *
+     * @param file path to delete.
+     */
+    public static void delete(File file) {
+        FileDirUtil.delete(file, false);
+    }
+
+
+
+    private static void closeSilently(Closeable closeable) {
+        if (closeable != null) {
             try {
-                is.close();
-                fos.close();
-            } catch (Exception e) {
-                e.printStackTrace();
+                closeable.close();
+            } catch (Throwable e) {
+                // empty.
             }
         }
     }
+
+    private static boolean isEmpty(String str) {
+        return str == null || str.length() == 0;
+    }
+
+
+
 }
