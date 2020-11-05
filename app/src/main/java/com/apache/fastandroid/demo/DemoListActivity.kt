@@ -11,10 +11,11 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.jetpack.lifecycle.LifeCycleFragment
 import com.apache.fastandroid.jetpack.lifecycle.TraditionalLifeCycleFragment
+import com.apache.fastandroid.jetpack.livedata.LiveDataFragment
+import com.apache.fastandroid.jetpack.livedataviewmodel.LiveDataViewModelFragment
 import com.apache.fastandroid.jetpack.viewmodel.ViewModelFragment
 import com.tesla.framework.ui.activity.BaseActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
-import com.tesla.framework.ui.widget.ToastUtils
 import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
@@ -29,7 +30,8 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("Normal", "传统生命周期监听", TraditionalLifeCycleFragment::class.java),
                 ViewItemBean("JetPack", "LifeCycle", LifeCycleFragment::class.java),
                 ViewItemBean("JetPack", "ViewModel", ViewModelFragment::class.java),
-                ViewItemBean("JetPack", "LiveData", LifeCycleFragment::class.java)
+                ViewItemBean("JetPack", "LiveData", LiveDataFragment::class.java),
+                ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java)
 
         )
     }
@@ -42,9 +44,7 @@ class DemoListActivity : BaseActivity() {
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
 
-//        mRecyclerView = findViewById<RecyclerView>(R.id.recycleview).apply {
-//            layoutManager = GridLayoutManager(this@DemoListActivity, 2)
-//        }
+//
         recycleview.apply {
             layoutManager = GridLayoutManager(this@DemoListActivity, 2)
             adapter = ItemViewAdapter()
@@ -73,7 +73,6 @@ class DemoListActivity : BaseActivity() {
                 if (viewItemBean.clazz == null){
                     return@setOnClickListener
                 }
-                //ToastUtils.showSingleToast(MODELS[index].title)
                 FragmentContainerActivity.launch(this@DemoListActivity,viewItemBean.clazz,null)
             }
         }
