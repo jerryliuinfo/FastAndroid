@@ -15,7 +15,10 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.text.TextUtils;
 
+import com.tesla.framework.Global;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.FrameworkLogUtil;
+import com.tesla.framework.common.util.ZipUtils;
 
 /**
  * Created by jerryliu on 2017/8/3.
@@ -202,8 +205,9 @@ public class AssetUtil {
     }
 
     public static void delete(String path, boolean ignoreDir) {
-        if (TextUtils.isEmpty(path))
+        if (TextUtils.isEmpty(path)) {
             return;
+        }
         File f = new File(path);
         FileDirUtil.delete(f, ignoreDir);
     }
@@ -234,5 +238,84 @@ public class AssetUtil {
     }
 
 
+
+    /**
+     * 将 asset目录下某个zip文件拷贝到sd卡并解压
+     * @param relativeZipFilePath
+     * @return
+     */
+    //更新本地内置版本的情况下需要新增该版本号
+    private final static String INNER_VERSION = "_1";
+
+    /**
+     *
+     * @param relativeZipFilePath "effectaudio/anim/anim3.zip"
+     * @return
+     */
+    public static String prepareZipResources(String relativeZipFilePath) {
+        //获取sd卡中的目录 /storage/emulated/0/Android/data/com.apache.fastandroid/files/anueffectaudio/anim/anim1.zip
+        String localZipPath = getResourcePath(relativeZipFilePath);
+        //获得zip解压目录，/storage/emulated/0/Android/data/com.apache.fastandroid/files/anueffectaudio/anim/anim1_1/
+        String localUnzipPath = localZipPath.substring(0, localZipPath.lastIndexOf(".")) + INNER_VERSION + File.separator;
+        //storage/emulated/0/Android/data/com.apache.fastandroid/files/anueffectaudio/anim/anim1_1
+        File unzipDest = new File(localUnzipPath);
+        if (unzipDest.exists()) {
+            return unzipDest.getAbsolutePath();
+        }
+        boolean isSuccess = AssetUtil.copyAssets(FrameworkApplication.getContext(), relativeZipFilePath, localZipPath);
+        if (!isSuccess) {
+            //throw new IllegalStateException("can not copy asset from " + relativeZipFilePath + " to " + localZipPath);
+            FrameworkLogUtil.d( "can not copy asset from " + relativeZipFilePath + " to " + localZipPath);
+            return "";
+        }
+
+        isSuccess = unzipDest.mkdirs();
+        if (!isSuccess) {
+            //throw new IllegalStateException("can not create unzip dir " + localUnzipPath);
+            FrameworkLogUtil.d( "can not create unzip dir " + localUnzipPath);
+            return "";
+        }
+
+        isSuccess = ZipUtils.unZipFile(new File(localZipPath), unzipDest);
+        if (!isSuccess) {
+            //throw new IllegalStateException("can not unzip from " + localZipPath + " to " + localUnzipPath);
+            FrameworkLogUtil.d( "can not unzip from " + localZipPath + " to " + localUnzipPath);
+            return "";
+        }
+
+        return unzipDest.getAbsolutePath();
+    }
+
+    /**
+     *
+     * @param relativeFilePath "effectaudio/anim/anim3.zip"
+     * @return
+     */
+    public static String getResourcePath(String relativeFilePath) {
+        return getResourceFile(relativeFilePath).getAbsolutePath();
+    }
+
+    private static File getResourceFile(String relativeFilePath) {
+        return new File(getAnuEffectAudioDir() + File.separator + relativeFilePath.replace("effectaudio/", ""));
+    }
+
+    /**
+     */
+    public static String getAnuEffectAudioDir() {
+        String d = Global.getExternalFilesDir("") + File.separator + "anueffectaudio";
+        File f = new File(d);
+        if (!f.exists()) {
+            boolean ret = false;
+            try {
+                ret = f.mkdirs();
+            } catch (SecurityException exception) {
+                FrameworkLogUtil.d( "exception happen when mkdirs");
+            }
+            if (!ret) {
+                FrameworkLogUtil.d(  "mkdirs failed:" + d);
+            }
+        }
+        return d;
+    }
 
 }

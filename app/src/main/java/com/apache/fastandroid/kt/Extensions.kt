@@ -1,0 +1,37 @@
+package com.hencoder.animation
+
+import android.content.res.Resources
+import android.util.TypedValue
+import android.view.View
+import kotlin.math.pow
+
+val Float.dp
+ get() = TypedValue.applyDimension(
+   TypedValue.COMPLEX_UNIT_DIP,
+   this,
+   Resources.getSystem().displayMetrics
+ )
+
+val Int.dp
+ get() = this.toFloat().dp
+
+
+fun Float.powWrapp(n:Int):Float = this.pow(n)
+
+fun Int.getName():String{
+ return when (this) {
+  1 -> "AAA"
+  2 -> "BBB"
+  3 -> "CCC"
+  else -> "AAA"
+ }
+}
+
+fun Int.getValue():String = kotlin.run{
+ when (this) {
+  1 -> "AAA"
+  2 -> "BBB"
+  3 -> "CCC"
+  else -> "AAA"
+ }
+}

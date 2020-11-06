@@ -1,5 +1,9 @@
 package com.tesla.framework.common.util.network;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,10 +15,6 @@ import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
 import com.tesla.framework.common.util.log.NLog;
-
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -34,6 +34,8 @@ public class NetworkHelper {
 		NetworkReachableViaWWAN,
 		NetworkReachableViaWiFi,
 	}
+
+	private Context mContext;
 
 	public interface NetworkListener
 	{
@@ -63,7 +65,7 @@ public class NetworkHelper {
 		NLog.v(TAG, "registerNetworkSensor");
 		if (mRegistered)
 			return;
-		
+		mContext = context;
 		mRegistered = true;
 		ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo info = manager.getActiveNetworkInfo();
@@ -109,7 +111,7 @@ public class NetworkHelper {
 		return !mStatus.equals(NetworkStatus.NetworkNotReachable);
 	}
 	
-	public void addNetworkInductor(NetworkListener inductor)
+	public void addNetworkListener(NetworkListener inductor)
 	{
 		final List<WeakReference<NetworkListener>> list = new ArrayList<>(mInductors);
 		for (int i = 0; i < list.size(); i++) {
@@ -125,7 +127,7 @@ public class NetworkHelper {
 		mInductors.add(new WeakReference<>(inductor));
 	}
 	
-	public void removeNetworkInductor(NetworkListener inductor)
+	public void removeNetworkListener(NetworkListener inductor)
 	{
 		final List<WeakReference<NetworkListener>> list = new ArrayList<WeakReference<NetworkListener>>(mInductors);
 		for (int i = 0; i < list.size(); i++) {
@@ -198,12 +200,9 @@ public class NetworkHelper {
 
 
 
-	public static NetworkStatus getNetworkType(Context context) {
-
+	public static NetworkStatus getNetworkStatus(Context context) {
 		ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
 		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-
 		if (networkInfo != null) {
 			switch (networkInfo.getType()) {
 				case ConnectivityManager.TYPE_MOBILE:
@@ -216,9 +215,26 @@ public class NetworkHelper {
 		return NetworkStatus.NetworkNotReachable;
 	}
 
+	public static NetworkType getNetworkType(Context context) {
+
+		ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+		if (networkInfo != null) {
+			switch (networkInfo.getType()) {
+				case ConnectivityManager.TYPE_MOBILE:
+					return NetworkType.MOBILE_4G;
+				case ConnectivityManager.TYPE_WIFI:
+					return NetworkType.WIFI;
+			}
+		}
+
+		return NetworkType.NONE;
+	}
+
 
 	public static boolean isNetworkAvailable(Context context){
-		return getNetworkType(context) != NetworkStatus.NetworkNotReachable;
+		return getNetworkStatus(context) != NetworkStatus.NetworkNotReachable;
 	}
 
 

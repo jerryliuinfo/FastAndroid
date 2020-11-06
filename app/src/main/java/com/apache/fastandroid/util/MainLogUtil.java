@@ -28,6 +28,9 @@ public class MainLogUtil {
     public static void d(String format, Object... args) {
         Log.d(TAG, buildWholeMessage(format,args));
     }
+    public static void i(String format, Object... args) {
+        Log.i(TAG, buildWholeMessage(format,args));
+    }
 
     private static String buildWholeMessage(String format, Object...args)
     {

@@ -1,10 +1,6 @@
 package com.apache.fastandroid.sample.singleton;
 
-/**
- * Created by linusli on 2014/5/13.
- * <p>
- * 单例模板，所有单例实现都继承此类
- */
+
 public abstract class Singleton<T, P> {
     /**
      * 唯一实例

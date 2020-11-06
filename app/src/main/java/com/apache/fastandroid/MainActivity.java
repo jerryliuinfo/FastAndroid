@@ -43,7 +43,6 @@ import com.tesla.framework.route.Route;
 import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
 
 import androidx.annotation.IdRes;
@@ -415,8 +414,7 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
             e.printStackTrace();
         }*/
         MainLogUtil.d("onClick view id = %s",ResUtil.getResourceName(v.getId()));
-        //LoginActivity.launch(this);
-        FragmentContainerActivity.launch(this,ANRTestFragment.class,null);
+
     }
 
     @Override
