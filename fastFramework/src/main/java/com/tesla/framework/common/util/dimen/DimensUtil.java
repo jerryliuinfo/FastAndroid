@@ -22,6 +22,17 @@ public class DimensUtil {
         return px;
     }
 
+    public static int dp2px(float dp){
+        int px = (int) (dp + 0.5f);
+        try {
+            px = (int) (Resources.getSystem().getDisplayMetrics().density * dp + 0.5f);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return px;
+    }
+
+
     public static int sp2px(int sp){
         Context context = FrameworkApplication.getContext();
         int px = (int)(sp + 0.5f);

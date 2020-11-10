@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
+import com.apache.fastandroid.edu.DownloadDemoFragment
 import com.apache.fastandroid.jetpack.lifecycle.LifeCycleFragment
 import com.apache.fastandroid.jetpack.lifecycle.TraditionalLifeCycleFragment
 import com.apache.fastandroid.jetpack.livedata.LiveDataFragment
@@ -16,7 +17,6 @@ import com.apache.fastandroid.jetpack.livedataviewmodel.LiveDataViewModelFragmen
 import com.apache.fastandroid.jetpack.viewmodel.ViewModelFragment
 import com.tesla.framework.ui.activity.BaseActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
-import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
  * Created by Jerry on 2020/10/31.
@@ -31,7 +31,16 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("JetPack", "LifeCycle", LifeCycleFragment::class.java),
                 ViewItemBean("JetPack", "ViewModel", ViewModelFragment::class.java),
                 ViewItemBean("JetPack", "LiveData", LiveDataFragment::class.java),
-                ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java)
+                ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java),
+
+
+
+                ViewItemBean("Hencoder", "", null),
+                //空出一行来
+                ViewItemBean(),
+                ViewItemBean("Hencoder", "绘制", TraditionalLifeCycleFragment::class.java),
+                ViewItemBean("Hencoder", "布局", LifeCycleFragment::class.java),
+                ViewItemBean("Hencoder", "下载", DownloadDemoFragment::class.java)
 
         )
     }
@@ -43,14 +52,11 @@ class DemoListActivity : BaseActivity() {
 
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
-
-//
+        val recycleview = findViewById<RecyclerView>(R.id.recycleview)
         recycleview.apply {
             layoutManager = GridLayoutManager(this@DemoListActivity, 2)
             adapter = ItemViewAdapter()
-
         }
-
     }
 
 

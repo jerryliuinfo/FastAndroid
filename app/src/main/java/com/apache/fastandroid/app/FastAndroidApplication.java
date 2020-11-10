@@ -8,8 +8,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
-import androidx.multidex.MultiDex;
-import androidx.core.os.TraceCompat;
 import android.text.TextUtils;
 
 import com.apache.fastandroid.BuildConfig;
@@ -45,6 +43,9 @@ import com.tesla.framework.support.db.FastAndroidDB;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
+import androidx.core.os.TraceCompat;
+import androidx.multidex.MultiDex;
+
 /**
  * Created by jerryliu on 2017/3/26.
  */
@@ -67,7 +68,7 @@ public class FastAndroidApplication extends Application {
         TraceCompat.beginSection("trace");
 
         //监测内存泄漏
-        initLeakCanry();
+//        initLeakCanry();
 
       /*  if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
             ARouter.openLog();     // 打印日志
