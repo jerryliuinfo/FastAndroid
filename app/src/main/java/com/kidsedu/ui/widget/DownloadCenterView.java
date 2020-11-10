@@ -1,4 +1,4 @@
-package com.apache.fastandroid.edu;
+package com.kidsedu.ui.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -6,6 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
@@ -19,7 +20,10 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.tesla.framework.common.util.dimen.DimensUtil;
+import com.apache.fastandroid.R;
+import com.base.utils.DimenUtils;
+import com.tesla.framework.common.util.ResUtil;
+import com.tesla.framework.common.util.log.NLog;
 
 import androidx.annotation.Nullable;
 
@@ -28,19 +32,18 @@ import androidx.annotation.Nullable;
  * Icon 中间 显示下载过程中进度和下载完成的View
  */
 public class DownloadCenterView extends View {
+    public static final String TAG = DownloadCenterView.class.getSimpleName();
 
     private int mWidth, mHeight;
 
     private int mCurrentArcProgress;
 
-
-    private static final int STROKE_WIDTH = DimensUtil.dp2px(8);
-
-    private int RADIS = DimensUtil.dp2px(30);
-
+    /**
+     * 线条宽度
+     */
+    private int strokeWidth;
 
     private RectF mArcRect = new RectF();
-
 
     /**
      * 圆弧动画 Animator
@@ -58,17 +61,17 @@ public class DownloadCenterView extends View {
     private boolean startDrawOk = false;
 
 
-    private AnimatorSet animatorSet = new AnimatorSet();
+    private AnimatorSet mAnimatorSet = new AnimatorSet();
 
     /**
      * 下载完成状态展示
      */
-    private CompleteStatus mCompleteStatus = new CompleteStatus();
+    private CompleteStatus mCompleteStatus ;
 
     /**
      * 下载过程中展示
      */
-    private DownloadingStatus mDownloadingtatus = new DownloadingStatus();
+    private DownloadingStatus mDownloadingtatus;
 
 
     /**
@@ -95,6 +98,25 @@ public class DownloadCenterView extends View {
 
     private void init(Context context, @Nullable AttributeSet attrs) {
 
+        TypedArray ta = context.obtainStyledAttributes(attrs,R.styleable.DownloadStatusAttrs);
+        for (int i = 0; i < attrs.getAttributeCount(); i++) {
+            NLog.d(TAG, "name:" + attrs.getAttributeName(i) + "  value:" + attrs.getAttributeValue(i));
+        }
+
+        mDownloadingtatus = new DownloadingStatus();
+        mCompleteStatus = new CompleteStatus();
+
+        strokeWidth = ta.getInteger(R.styleable.DownloadStatusAttrs_download_stroke_width,DimenUtils.dp2px(8));
+
+        mDownloadingtatus.mDownloadFinishedColor = ta.getColor(R.styleable.DownloadStatusAttrs_download_color_download_handed, ResUtil.getColor(R.color.color_download_handed));
+        mDownloadingtatus.mDownloadRestColor = ta.getColor(R.styleable.DownloadStatusAttrs_download_color_download_rest, ResUtil.getColor(R.color.color_download_rest));
+        mDownloadingtatus.mGapDegress = ta.getInteger(R.styleable.DownloadStatusAttrs_download_gap_degress, 45);
+        mDownloadingtatus.mDownloadedProgressStartAngel = ta.getInteger(R.styleable.DownloadStatusAttrs_download_downloaded_progress_start_angel,-90);
+
+        mDownloadingtatus.init();
+        mCompleteStatus.init();
+
+        ta.recycle();
         initAnimatorSet();
     }
 
@@ -103,8 +125,8 @@ public class DownloadCenterView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         mWidth = w;
         mHeight = h;
-        mArcRect.set(getWidth() / 2 - RADIS, getHeight() / 2 - RADIS, getWidth() / 2 + RADIS, getHeight() / 2 + RADIS);
-
+        NLog.d(TAG, "onSizeChanged w: %s, h: %s, padding left: %s, padding top: %s", getWidth(),getHeight(),getPaddingLeft(),getPaddingTop());
+        mArcRect.set(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight() , getHeight() - getPaddingBottom());
         mCompleteStatus.initOk();
     }
 
@@ -122,7 +144,6 @@ public class DownloadCenterView extends View {
             mCompleteStatus.onDraw(canvas);
         }
     }
-
 
 
 
@@ -149,22 +170,21 @@ public class DownloadCenterView extends View {
         startOkAnimation();
     }
 
-
-
-
     public void startOkAnimation() {
         show();
         startDrawOk = false;
-        animatorSet.cancel();
-        animatorSet.start();
+        if (mAnimatorSet.isRunning()){
+            mAnimatorSet.cancel();
+        }
+        mAnimatorSet.start();
     }
 
     private void initAnimatorSet() {
         mDownloadingtatus.initArcAnimation();
         mCompleteStatus.initOk();
         mCompleteStatus.initOkAnimation();
-        animatorSet.playSequentially(mArcAnimator, mAnimatorDrawOk);
-        animatorSet.addListener(new AnimatorListenerAdapter() {
+        mAnimatorSet.playSequentially(mArcAnimator, mAnimatorDrawOk);
+        mAnimatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
@@ -186,6 +206,13 @@ public class DownloadCenterView extends View {
 
     public void hide() {
         setVisibility(GONE);
+        cancelAnimation();
+    }
+
+    private void cancelAnimation(){
+        if (mAnimatorSet.isRunning()){
+            mAnimatorSet.cancel();
+        }
     }
 
 
@@ -199,10 +226,7 @@ public class DownloadCenterView extends View {
      */
     private class DownloadingStatus implements IStatusView {
 
-        /**
-         * 已下载进度的开始角度
-         */
-        private int mDownloadedProgressStartAngel = -90;
+
 
         /**
          * 下载进度 已下载部分 圆弧画笔
@@ -214,29 +238,41 @@ public class DownloadCenterView extends View {
          */
         private Paint mDownloadingArcRestPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        private int mDownloadedArcColor = Color.WHITE;
+        /**
+         * 已下载部分颜色
+         */
+        public int mDownloadFinishedColor;
 
-        private int mRestArcColor = Color.GRAY;
+        /**
+         * 剩余下载部分颜色
+         */
+        public int mDownloadRestColor;
+        /**
+         * 缺口角度
+         */
+        public int mGapDegress; //完成下载状态的缺口
 
-        private int GAP_DEGRESS = 20; //完成下载状态的缺口
+        /**
+         * 已下载进度的开始角度
+         */
+        private int mDownloadedProgressStartAngel;
 
 
-        public DownloadingStatus() {
-
+        public void init(){
             mDownloaingArcDownloadedPaint.setStyle(Style.STROKE);
-            mDownloaingArcDownloadedPaint.setStrokeWidth(STROKE_WIDTH);
+            mDownloaingArcDownloadedPaint.setStrokeWidth(strokeWidth);
             mDownloaingArcDownloadedPaint.setStrokeCap(Cap.ROUND);
-            mDownloaingArcDownloadedPaint.setColor(mDownloadedArcColor);
+            mDownloaingArcDownloadedPaint.setColor(mDownloadFinishedColor);
 
 
-            mDownloadingArcRestPaint.setStyle(Style.STROKE);
-            mDownloadingArcRestPaint.setStrokeWidth(STROKE_WIDTH);
-            mDownloadingArcRestPaint.setColor(mRestArcColor);
+            mDownloadingArcRestPaint.set(mDownloaingArcDownloadedPaint);
+//            mDownloadingArcRestPaint.setStyle(Style.STROKE);
+//            mDownloadingArcRestPaint.setStrokeWidth(strokeWidth);
+            mDownloadingArcRestPaint.setColor(mDownloadRestColor);
         }
 
         public void initArcAnimation() {
-
-            mArcAnimator = ValueAnimator.ofInt(0, (360 - GAP_DEGRESS));
+            mArcAnimator = ValueAnimator.ofInt(0, (360 - mGapDegress));
             mArcAnimator.addUpdateListener(new AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
@@ -303,10 +339,10 @@ public class DownloadCenterView extends View {
         private PathMeasure pathMeasure;
 
 
-        public CompleteStatus() {
 
+        public void init(){
             mCompleteCirclePaint.setStyle(Style.STROKE);
-            mCompleteCirclePaint.setStrokeWidth(STROKE_WIDTH);
+            mCompleteCirclePaint.setStrokeWidth(strokeWidth);
             mCompleteCirclePaint.setStrokeCap(Cap.ROUND);
             mCompleteCirclePaint.setColor(color);
 
@@ -330,7 +366,7 @@ public class DownloadCenterView extends View {
         public void initOkAnimation() {
             mAnimatorDrawOk = ValueAnimator.ofFloat(1, 0);
             mAnimatorDrawOk.setDuration(duration);
-            mAnimatorDrawOk.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            mAnimatorDrawOk.addUpdateListener(new AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
                     startDrawOk = true;
@@ -355,7 +391,7 @@ public class DownloadCenterView extends View {
     private IAnimationListener mAnimationListener;
 
     public void setDownloadStatusListener(IAnimationListener animationListener) {
-        this.mAnimationListener = mAnimationListener;
+        this.mAnimationListener = animationListener;
     }
 
     public interface IAnimationListener{
@@ -364,5 +400,11 @@ public class DownloadCenterView extends View {
          */
         void animationFinish();
 
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        cancelAnimation();
     }
 }

@@ -1,4 +1,4 @@
-package com.apache.fastandroid.edu;
+package com.kidsedu.ui.widget;
 
 /**
  * Created by Jerry on 2020/11/9.

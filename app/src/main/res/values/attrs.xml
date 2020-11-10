@@ -48,4 +48,33 @@
         <attr name="stroke_width" />
         <attr name="clip_background" />
     </declare-styleable>
+
+    <declare-styleable name="RoundImageView2">
+        <attr name="roundRadius" format="dimension" />
+    </declare-styleable>
+
+
+
+
+    <declare-styleable name="DownloadStatusAttrs">
+
+
+        <attr name="download_color_download_handed" format="color|reference" />
+
+        <attr name="download_color_download_rest" format="color|reference" />
+
+        <!-- 缺口角度 -->
+        <attr name="download_gap_degress" format="integer" />
+
+        <!--  画笔宽度-->
+        <attr name="download_stroke_width" format="integer" />
+
+
+        <attr name="download_ok_color" format="color" />
+
+        <!--   已下载开始角度-->
+        <attr name="download_downloaded_progress_start_angel" format="color" />
+
+
+    </declare-styleable>
 </resources>

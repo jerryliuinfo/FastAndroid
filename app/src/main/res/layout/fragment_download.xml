@@ -7,7 +7,7 @@
     android:background="@color/comm_gray"
     >
 
-   <com.apache.fastandroid.edu.DownloadStatusView
+   <com.kidsedu.ui.widget.DownloadStatusView
        android:id="@+id/status_layout"
        android:layout_width="200dp"
        android:layout_height="200dp"

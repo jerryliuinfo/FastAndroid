@@ -35,4 +35,9 @@
 
 
     <color name="wave">#2b79f7</color>
+
+    <color name="color_download_handed">#FFFFFF</color>
+    <color name="color_download_rest">#7FFFFFFF</color>
+    <color name="edu_color_blue">#FF4D6EFF</color>
+
 </resources>

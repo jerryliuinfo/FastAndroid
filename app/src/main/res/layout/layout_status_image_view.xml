@@ -7,9 +7,9 @@
     >
 
     <!--布局剪裁，高性能圆角处理-->
-    <com.kidsedu.ui.view.RCFrameLayout
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+    <FrameLayout
+        android:layout_width="108dp"
+        android:layout_height="108dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,32 +17,37 @@
 
         >
 
-        <!--        背景图片-->
-        <ImageView
-            android:id="@+id/iv_status"
+        <!--   背景图片-->
+        <com.kidsedu.ui.widget.RoundImageView
+            android:id="@+id/riv_apps_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/icon_category"
-            />
+            android:background="@drawable/bg_apps_shadow"
+            android:scaleType="centerCrop"
+            android:src="@color/edu_color_blue"
+            app:roundRadius="25dp" />
 
-
+        <!--  等待下载图片-->
         <ImageView
             android:id="@+id/iv_waiting"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:padding="4dp"
             android:layout_gravity="center"
             android:background="@drawable/ic_waiting_for_download"
             android:visibility="gone"
             />
 
-        <com.apache.fastandroid.edu.DownloadCenterView
+        <!--  下载过程中 和 下载完成 试图-->
+        <com.kidsedu.ui.widget.DownloadCenterView
             android:id="@+id/iv_download_complete"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:padding="4dp"
             android:layout_gravity="center"
+            app:download_color_download_handed="@color/color_download_handed"
+            app:download_color_download_rest="@color/color_download_rest"
             />
-
-
 
         <!--    右上角的删除按钮-->
         <ImageView
@@ -51,9 +56,10 @@
             android:layout_height="40dp"
             android:layout_gravity="top|right"
             android:background="@drawable/ic_delete_square"
+            android:visibility="gone"
             />
 
-    </com.kidsedu.ui.view.RCFrameLayout>
+    </FrameLayout>
 
 
 

@@ -6,6 +6,7 @@ import android.os.Message
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.apache.fastandroid.artemis.base.BaseFragment
+import com.kidsedu.ui.widget.DownloadStatusView
 import com.tesla.framework.ui.widget.ToastUtils
 import kotlinx.android.synthetic.main.fragment_download.*
 
@@ -33,7 +34,7 @@ class DownloadDemoFragment:BaseFragment() {
                 statusLayout.setDownloadFinishedStatus()
             }else{
                 statusLayout.setDownloadingStatus(downloadProgress)
-                sendEmptyMessageDelayed(1,100)
+                sendEmptyMessageDelayed(1,50)
             }
         }
     }

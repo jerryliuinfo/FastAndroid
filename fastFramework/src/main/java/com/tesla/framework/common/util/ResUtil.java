@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import androidx.core.content.ContextCompat;
 
 import com.tesla.framework.applike.FrameworkApplication;
+
+import androidx.annotation.ColorInt;
+import androidx.core.content.ContextCompat;
 
 
 
