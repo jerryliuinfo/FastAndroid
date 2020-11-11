@@ -78,6 +78,7 @@ public class RoundImageView extends ImageView {
         drawRightUp(canvas2);
         drawRightDown(canvas2);
         canvas.drawBitmap(bitmap, 0, 0, paint2);
+
         bitmap.recycle();
     }
 

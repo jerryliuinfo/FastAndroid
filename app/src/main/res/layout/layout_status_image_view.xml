@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,22 +10,31 @@
     <FrameLayout
         android:layout_width="108dp"
         android:layout_height="108dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
 
         >
+
+
+
 
         <!--   背景图片-->
         <com.kidsedu.ui.widget.RoundImageView
             android:id="@+id/riv_apps_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_apps_shadow"
             android:scaleType="centerCrop"
             android:src="@color/edu_color_blue"
-            app:roundRadius="25dp" />
+            app:roundRadius="12dp" />
+
+        <!--        遮罩 需要放到进度条ViewDownloadCenterView的下面，这样进度条的颜色才不会被覆盖-->
+        <FrameLayout
+            android:id="@+id/maskView"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:background="#7F000000"
+            android:visibility="gone"
+            >
+
+        </FrameLayout>
 
         <!--  等待下载图片-->
         <ImageView
@@ -49,6 +58,7 @@
             app:download_color_download_rest="@color/color_download_rest"
             />
 
+
         <!--    右上角的删除按钮-->
         <ImageView
             android:id="@+id/icon_delete"
@@ -59,9 +69,10 @@
             android:visibility="gone"
             />
 
+
+
     </FrameLayout>
 
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

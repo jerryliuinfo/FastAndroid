@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.edu.DownloadDemoFragment
+import com.apache.fastandroid.hencoder.Practice1DemoFragment
 import com.apache.fastandroid.jetpack.lifecycle.LifeCycleFragment
 import com.apache.fastandroid.jetpack.lifecycle.TraditionalLifeCycleFragment
 import com.apache.fastandroid.jetpack.livedata.LiveDataFragment
@@ -32,13 +33,14 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("JetPack", "ViewModel", ViewModelFragment::class.java),
                 ViewItemBean("JetPack", "LiveData", LiveDataFragment::class.java),
                 ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java),
+                ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java),
 
 
 
-                ViewItemBean("Hencoder", "", null),
+                ViewItemBean("Hencoder自定义View", "", null),
                 //空出一行来
                 ViewItemBean(),
-                ViewItemBean("Hencoder", "绘制", TraditionalLifeCycleFragment::class.java),
+                ViewItemBean("Hencoder", "绘制", Practice1DemoFragment::class.java),
                 ViewItemBean("Hencoder", "布局", LifeCycleFragment::class.java),
                 ViewItemBean("Hencoder", "下载", DownloadDemoFragment::class.java)
 

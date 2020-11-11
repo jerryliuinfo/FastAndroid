@@ -27,6 +27,7 @@ import com.github.anrwatchdog.ANRWatchDog;
 import com.github.anrwatchdog.ANRWatchDog.ANRListener;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.tesla.framework.Global;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.DebugUtils;
@@ -63,6 +64,7 @@ public class FastAndroidApplication extends Application {
         MainLogUtil.d("Application onCreate ");
         //traceview 开始检测
        // Debug.startMethodTracing("APP");
+        Global.setContext(getApplicationContext());
 
         //systrace 开始检测
         TraceCompat.beginSection("trace");

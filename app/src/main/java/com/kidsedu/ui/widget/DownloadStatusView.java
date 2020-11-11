@@ -1,6 +1,8 @@
 package com.kidsedu.ui.widget;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Cap;
@@ -14,6 +16,7 @@ import android.widget.ImageView;
 import com.apache.fastandroid.R;
 import com.base.utils.DimenUtils;
 import com.kidsedu.ui.widget.DownloadCenterView.IAnimationListener;
+import com.tesla.framework.common.util.handler.HandlerUtil;
 import com.tesla.framework.common.util.log.NLog;
 
 import androidx.annotation.Nullable;
@@ -37,23 +40,91 @@ public class DownloadStatusView extends FrameLayout {
     //下载完成
     private DownloadCenterView mCompleteView;
 
+    private View mMaskView;
+
 
     private IDownloadStatusListener mListener;
+
+    /**
+     * 橡皮擦Bitmap
+     */
+    private Bitmap mEraserBitmap;
+    /**
+     * 橡皮擦Cavas
+     */
+    private Canvas mEraserCanvas;
+    /**
+     * 蒙层背景画笔
+     */
+    private  Paint mFullingPaint;
 
     public DownloadStatusView(Context context) {
         this(context, null);
     }
 
+    private int maskColor = Color.parseColor("#7F000000");
+
     public DownloadStatusView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
+
+        mFullingPaint = new Paint();
+        mFullingPaint.setColor(maskColor);
+//        mFullingPaint.setAlpha(150);
+    }
+
+    /*@Override
+    protected void dispatchDraw(Canvas canvas) {
+        final long drawingTime = getDrawingTime();
+        try {
+            View child;
+            for (int i = 0; i < getChildCount(); i++) {
+                child = getChildAt(i);
+                drawChild(canvas, child, drawingTime);
+            }
+        } catch (NullPointerException e) {
+
+        }
+    }*/
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+        NLog.d(TAG, "dispatchDraw status: %s", mCurrentStatus);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        NLog.d(TAG, "onDraw DownloadStatusView");
+//        canvas.drawColor(Color.parseColor("#7F000000"));
+
+//        canvas.save();
+//        canvas.clipRect(100,100,400,700);
+//        canvas.drawColor(Color.parseColor("#FF0000"));
+//        canvas.restore();
+
+
+
+
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+
+        mEraserBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        mEraserCanvas = new Canvas(mEraserBitmap);
     }
 
     public DownloadStatusView(final Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        setWillNotDraw(false);
         init(attrs);
         View rootView = LayoutInflater.from(context).inflate(R.layout.layout_status_image_view, this);
         mWaintingIcon = rootView.findViewById(R.id.iv_waiting);
         mDeleteView = rootView.findViewById(R.id.icon_delete);
+
+        mMaskView  = rootView.findViewById(R.id.maskView);
 
         mDeleteView.setOnClickListener(new OnClickListener() {
             @Override
@@ -63,12 +134,10 @@ public class DownloadStatusView extends FrameLayout {
                     mListener.onPauseDownload();
 //                    ToastUtils.showToast(context, "点击暂停下载");
                 }
+
                 //隐藏中间进度
                 hideDeleteAndWaiting();
                //Wink.get().stop(((KidsResource) iKidsResource).getKey());
-
-
-
             }
         });
         mCompleteView = rootView.findViewById(R.id.iv_download_complete);
@@ -80,11 +149,12 @@ public class DownloadStatusView extends FrameLayout {
                 }
             }
         });
-       /* setOnClickListener(new OnClickListener() {
+        setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isDownloadingStatus() || isWaitingStatus()){
                     mDeleteView.setVisibility(VISIBLE);
+
                     HandlerUtil.getUIHandler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -94,7 +164,7 @@ public class DownloadStatusView extends FrameLayout {
 
                 }
             }
-        });*/
+        });
 
     }
 
@@ -156,6 +226,7 @@ public class DownloadStatusView extends FrameLayout {
         //隐藏
         mCompleteView.hide();
         mWaintingIcon.setVisibility(VISIBLE);
+        mMaskView.setVisibility(VISIBLE);
     }
 
 
@@ -171,6 +242,7 @@ public class DownloadStatusView extends FrameLayout {
         }
         mWaintingIcon.setVisibility(GONE);
         mCompleteView.setDownloadingStatus(progress);
+        mMaskView.setVisibility(VISIBLE);
     }
 
     /**
@@ -180,6 +252,7 @@ public class DownloadStatusView extends FrameLayout {
         updateDownloadStatus(Status.FINISHED);
         hideDeleteAndWaiting();
         mCompleteView.setDownloadFinishedStatus();
+        mMaskView.setVisibility(GONE);
     }
 
     /**
@@ -205,6 +278,7 @@ public class DownloadStatusView extends FrameLayout {
         if (mDeleteView.getVisibility() == VISIBLE) {
             mDeleteView.setVisibility(GONE);
         }
+//        mMaskView.setVisibility(GONE);
     }
 
     private void hideWaitingIcon() {
