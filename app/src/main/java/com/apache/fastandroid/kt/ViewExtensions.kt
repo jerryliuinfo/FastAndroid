@@ -13,8 +13,6 @@ import android.view.ViewGroup
  */
 
 
-
-
 /**
  * 递归地把控件的enable 状态设置为指定值
  */
@@ -26,10 +24,9 @@ fun View?.setEnableStateRecursively(enable: Boolean) {
 //            it.setEnableStateRecursively(enable)
 //        }
 
-        for (index in 1..childCount){
+        for (index in 1..childCount) {
 
         }
-
 
 
     }
@@ -43,20 +40,21 @@ private val sUiThreadHandler = Handler(Looper.getMainLooper())
 /**
  * 在主线程中运行代码
  */
-fun runOnUiThread(action: () -> Unit ) {
+fun runOnUiThread(action: () -> Unit) {
     if (Looper.myLooper() == Looper.getMainLooper()) {
         action.invoke()
     } else {
         sUiThreadHandler.post(action)
     }
 }
+
 /**
  * 在子线程中运行代码
  */
 fun runOnBackground(action: () -> Unit) {
 }
 
-fun removeAllMessageOnUIThreadQueue(){
+fun removeAllMessageOnUIThreadQueue() {
     sUiThreadHandler.removeCallbacksAndMessages(null)
 }
 
