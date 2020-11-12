@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.edu.DownloadDemoFragment
-import com.apache.fastandroid.hencoder.Practice1DemoFragment
+import com.apache.fastandroid.hencoder.basic.Practice1DemoFragment
 import com.apache.fastandroid.jetpack.lifecycle.LifeCycleFragment
 import com.apache.fastandroid.jetpack.lifecycle.TraditionalLifeCycleFragment
 import com.apache.fastandroid.jetpack.livedata.LiveDataFragment
