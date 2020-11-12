@@ -5,7 +5,7 @@
     android:background="#506E7A">
 
 
-    <com.apache.fastandroid.hencoder.practice1.Practice10HistogramView
+    <com.apache.fastandroid.hencoder.basic.Practice10HistogramView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="40dp"

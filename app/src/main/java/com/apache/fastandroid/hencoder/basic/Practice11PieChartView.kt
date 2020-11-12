@@ -1,4 +1,4 @@
-package com.apache.fastandroid.hencoder.practice1
+package com.apache.fastandroid.hencoder.basic
 
 import android.content.Context
 import android.graphics.Canvas
@@ -44,8 +44,6 @@ class Practice11PieChartView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
-        var startAngel = 0f
         var lastStartProgressAngel = START_ANGEL
         for ((index, item) in mDatas.withIndex()){
             mPaint.apply {
@@ -58,7 +56,6 @@ class Practice11PieChartView @JvmOverloads constructor(
                 canvas.drawArc(mRect, lastStartProgressAngel,percentDegress,true, mPaint)
             }
             lastStartProgressAngel += percentDegress + GAP_DEGRESS
-
         }
     }
 

@@ -1,4 +1,4 @@
-package com.apache.fastandroid.hencoder.practice1
+package com.apache.fastandroid.hencoder.basic
 
 import android.content.Context
 import android.graphics.Canvas

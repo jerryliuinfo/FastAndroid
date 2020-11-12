@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.apache.fastandroid.hencoder.practice1.Practice7DrawRoundRectView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.apache.fastandroid.hencoder.basic.Practice7DrawRoundRectView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>

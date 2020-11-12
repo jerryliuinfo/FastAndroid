@@ -1,11 +1,9 @@
-package com.apache.fastandroid.hencoder.practice1
+package com.apache.fastandroid.hencoder.basic
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.apache.fastandroid.R
-import com.tesla.framework.Global
 
 /**
  * Created by Jerry on 2020/11/11.
