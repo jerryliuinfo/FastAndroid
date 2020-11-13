@@ -1,2 +1,3 @@
+include ':hencoder_paint'
 include ':hencode_basic'
 include ':app', ':topic', ':artemis_annotation', ':artemis_compiler',  'baselib', ':fastFramework'

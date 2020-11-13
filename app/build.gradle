@@ -186,6 +186,7 @@ dependencies {
     debugImplementation config.thirdLib.leakcanary_support_fragment
     implementation project(':baselib')
     implementation project(':hencode_basic')
+    implementation project(':hencoder_paint')
     implementation config.supportDependencies.appcompatV7
     implementation config.supportDependencies.multidex
     //ARouter

@@ -73,7 +73,10 @@ dependencies {
     api supportDependencies.junit
     api 'androidx.annotation:annotation:1.0.0'
 
-
+    implementation rootProject.thirdLib.fastjson
+    implementation rootProject.thirdLib.gson
+    implementation rootProject.thirdLib.okhttp3
+    implementation rootProject.thirdLib.material_dialogs
    // api 'org.aspectj:aspectjrt:1.8.9'
 
 

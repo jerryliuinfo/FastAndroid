@@ -3,7 +3,8 @@ apply plugin: 'com.android.library'
 //apply plugin: 'android-apt'
 //apply plugin: 'com.novoda.bintray-release'
 
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 repositories {
     mavenCentral()
@@ -49,6 +50,11 @@ dependencies {
     //    })
     implementation rootProject.androidLib.support_constraint
 
+    implementation 'androidx.core:core-ktx:1.0.0'
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"//主要是这两个依赖
+
     api rootProject.supportDependencies.design
     api rootProject.supportDependencies.appcompatV7
     api rootProject.supportDependencies.cardview
@@ -57,9 +63,9 @@ dependencies {
     api rootProject.thirdLib.okhttp3
     api rootProject.thirdLib.material_dialogs
 
-    implementation rootProject.thirdLib.glide
-    implementation rootProject.thirdLib.picasso
-    implementation rootProject.thirdLib.imageLoader
+    api rootProject.thirdLib.glide
+    api rootProject.thirdLib.picasso
+    api rootProject.thirdLib.imageLoader
 
 
     api project(':artemis_annotation')

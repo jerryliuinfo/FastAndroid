@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_practice_demo.*
 /**
  * Created by Jerry on 2020/11/11.
  */
-class Practice1DemoFragment:ABaseFragment() {
+class DrawBasicDemoFragment:ABaseFragment() {
 
     private val pageModels = arrayListOf(
             PageModel(R.layout.sample_pie_chart, R.string.title_draw_pie_chart, R.layout.practice_pie_chart),

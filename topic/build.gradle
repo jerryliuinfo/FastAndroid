@@ -80,8 +80,11 @@ tasks.withType(Javadoc) {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api config.supportDependencies.multidex
-    api project(':baselib')
+    implementation config.supportDependencies.multidex
+    implementation project(':baselib')
+    implementation rootProject.thirdLib.material_dialogs
+    implementation rootProject.thirdLib.fastjson
+    implementation rootProject.thirdLib.gson
 
     implementation project(':artemis_annotation')
     annotationProcessor project(':artemis_compiler')

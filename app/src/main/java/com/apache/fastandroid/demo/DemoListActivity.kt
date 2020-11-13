@@ -1,5 +1,6 @@
 package com.apache.fastandroid.demo
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.edu.DownloadDemoFragment
-import com.apache.fastandroid.hencoder.basic.Practice1DemoFragment
+import com.apache.fastandroid.hencoder.basic.DrawBasicDemoFragment
+import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.apache.fastandroid.jetpack.lifecycle.LifeCycleFragment
 import com.apache.fastandroid.jetpack.lifecycle.TraditionalLifeCycleFragment
 import com.apache.fastandroid.jetpack.livedata.LiveDataFragment
@@ -18,6 +20,7 @@ import com.apache.fastandroid.jetpack.livedataviewmodel.LiveDataViewModelFragmen
 import com.apache.fastandroid.jetpack.viewmodel.ViewModelFragment
 import com.tesla.framework.ui.activity.BaseActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
+import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
  * Created by Jerry on 2020/10/31.
@@ -40,8 +43,8 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("Hencoder自定义View", "", null),
                 //空出一行来
                 ViewItemBean(),
-                ViewItemBean("Hencoder", "绘制", Practice1DemoFragment::class.java),
-                ViewItemBean("Hencoder", "布局", LifeCycleFragment::class.java),
+                ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
+                ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
                 ViewItemBean("Hencoder", "下载", DownloadDemoFragment::class.java)
 
         )
@@ -59,6 +62,9 @@ class DemoListActivity : BaseActivity() {
             layoutManager = GridLayoutManager(this@DemoListActivity, 2)
             adapter = ItemViewAdapter()
         }
+
+//        circle_image.setImageDrawable(PracticeCircleImageDrawable(BitmapFactory.decodeResource(resources,R.drawable.batman)))
+        round_image.setImageDrawable(PracticeRoundImageDrawable(BitmapFactory.decodeResource(resources,R.drawable.batman)))
     }
 
 
