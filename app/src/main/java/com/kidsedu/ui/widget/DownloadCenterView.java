@@ -110,8 +110,9 @@ public class DownloadCenterView extends View {
 
         mDownloadingtatus.mDownloadFinishedColor = ta.getColor(R.styleable.DownloadStatusAttrs_download_color_download_handed, ResUtil.getColor(R.color.color_download_handed));
         mDownloadingtatus.mDownloadRestColor = ta.getColor(R.styleable.DownloadStatusAttrs_download_color_download_rest, ResUtil.getColor(R.color.color_download_rest));
-        mDownloadingtatus.mGapDegress = ta.getInteger(R.styleable.DownloadStatusAttrs_download_gap_degress, 45);
         mDownloadingtatus.mDownloadedProgressStartAngel = ta.getInteger(R.styleable.DownloadStatusAttrs_download_downloaded_progress_start_angel,-90);
+
+//        mCompleteStatus.mGapDegress = ta.getInteger(R.styleable.DownloadStatusAttrs_download_gap_degress, 45);
 
         mDownloadingtatus.init();
         mCompleteStatus.init();
@@ -127,7 +128,7 @@ public class DownloadCenterView extends View {
         mHeight = h;
         NLog.d(TAG, "onSizeChanged w: %s, h: %s, padding left: %s, padding top: %s", getWidth(),getHeight(),getPaddingLeft(),getPaddingTop());
         mArcRect.set(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight() , getHeight() - getPaddingBottom());
-        mCompleteStatus.initOk();
+        mCompleteStatus.initOkPath();
     }
 
 
@@ -180,8 +181,8 @@ public class DownloadCenterView extends View {
     }
 
     private void initAnimatorSet() {
-        mDownloadingtatus.initArcAnimation();
-        mCompleteStatus.initOk();
+        mCompleteStatus.initArcAnimation();
+        mCompleteStatus.initOkPath();
         mCompleteStatus.initOkAnimation();
         mAnimatorSet.playSequentially(mArcAnimator, mAnimatorDrawOk);
         mAnimatorSet.addListener(new AnimatorListenerAdapter() {
@@ -247,10 +248,7 @@ public class DownloadCenterView extends View {
          * 剩余下载部分颜色
          */
         public int mDownloadRestColor;
-        /**
-         * 缺口角度
-         */
-        public int mGapDegress; //完成下载状态的缺口
+
 
         /**
          * 已下载进度的开始角度
@@ -266,22 +264,9 @@ public class DownloadCenterView extends View {
 
 
             mDownloadingArcRestPaint.set(mDownloaingArcDownloadedPaint);
-//            mDownloadingArcRestPaint.setStyle(Style.STROKE);
-//            mDownloadingArcRestPaint.setStrokeWidth(strokeWidth);
             mDownloadingArcRestPaint.setColor(mDownloadRestColor);
         }
 
-        public void initArcAnimation() {
-            mArcAnimator = ValueAnimator.ofInt(0, (360 - mGapDegress));
-            mArcAnimator.addUpdateListener(new AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator animation) {
-                    mCurrentArcProgress = (int) animation.getAnimatedValue();
-                    invalidate();
-                }
-            });
-            mArcAnimator.setDuration(1000);
-        }
 
         /**
          * 下载进度转换成圆弧角度
@@ -338,7 +323,10 @@ public class DownloadCenterView extends View {
          */
         private PathMeasure pathMeasure;
 
-
+        /**
+         * 缺口角度
+         */
+        public int mGapDegress = 45; //完成下载状态的缺口
 
         public void init(){
             mCompleteCirclePaint.setStyle(Style.STROKE);
@@ -353,7 +341,7 @@ public class DownloadCenterView extends View {
         /**
          * 绘制对勾
          */
-        private void initOk() {
+        private void initOkPath() {
             path.reset();
             //对勾的路径
             path.moveTo(mWidth / 8 * 3, mHeight / 2);
@@ -362,6 +350,19 @@ public class DownloadCenterView extends View {
 
             pathMeasure = new PathMeasure(path, true);
         }
+
+        public void initArcAnimation() {
+            mArcAnimator = ValueAnimator.ofInt(0, (360 - mGapDegress));
+            mArcAnimator.addUpdateListener(new AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    mCurrentArcProgress = (int) animation.getAnimatedValue();
+                    invalidate();
+                }
+            });
+            mArcAnimator.setDuration(1000);
+        }
+
 
         public void initOkAnimation() {
             mAnimatorDrawOk = ValueAnimator.ofFloat(1, 0);

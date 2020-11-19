@@ -35,18 +35,9 @@ class DrawPaintDemoFragment:ABaseFragment() {
             PageModel(R.layout.sample_radial_gradient, R.string.title_radial_gradient, R.layout.practice_radial_gradient),
             PageModel(R.layout.sample_sweep_gradient, R.string.title_sweep_gradient, R.layout.practice_sweep_gradient),
             PageModel(R.layout.sample_bitmap_shader, R.string.title_bitmap_shader, R.layout.practice_bitmap_shader),
-            PageModel(R.layout.sample_bitmap_shader, R.string.title_circle_image_drawable, R.layout.practice_bitmap_circle_image_drawable)
-//            PageModel(R.layout.sample_lighting_color_filter, R.string.title_lighting_color_filter, R.layout.practice_lighting_color_filter),
-//            PageModel(R.layout.sample_color_mask_color_filter, R.string.title_draw_oval, R.layout.practice_oval),
-//            PageModel(R.layout.sample_xfermode, R.string.title_draw_line, R.layout.practice_line),
-//            PageModel(R.layout.sample_stroke_cap, R.string.title_draw_round_rect, R.layout.practice_round_rect),
-//            PageModel(R.layout.sample_stroke_join, R.string.title_draw_arc, R.layout.practice_arc),
-//            PageModel(R.layout.sample_stroke_miter, R.string.title_draw_path, R.layout.practice_path),
-//            PageModel(R.layout.sample_path_effect, R.string.title_draw_path, R.layout.practice_path),
-//            PageModel(R.layout.sample_shadow_layer, R.string.title_draw_path, R.layout.practice_path),
-//            PageModel(R.layout.sample_mask_filter, R.string.title_draw_path, R.layout.practice_path),
-//            PageModel(R.layout.sample_fill_path, R.string.title_draw_path, R.layout.practice_path),
-//            PageModel(R.layout.sample_text_path, R.string.title_draw_path, R.layout.practice_path),
+            PageModel(R.layout.sample_compose_shader, R.string.title_compose_shader, R.layout.practice_compose_shader),
+            PageModel(R.layout.sample_lighting_color_filter, R.string.title_lighting_color_filter, R.layout.practice_lighting_color_filter)
+
     )
 
     override fun inflateContentView(): Int {

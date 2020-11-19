@@ -7,13 +7,6 @@
         <attr name="border_color" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="RoundImageView">
-        <attr name="borderRadius" format="dimension" />
-        <attr name="type">
-            <enum name="round" value="1" />
-            <enum name="circle" value="0" />
-        </attr>
-    </declare-styleable>
 
     <declare-styleable name="ScrimInsetsView">
         <attr name="appInsetForeground" format="reference|color" />

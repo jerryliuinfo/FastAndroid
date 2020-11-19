@@ -169,53 +169,6 @@ public class DownloadStatusView extends FrameLayout {
     }
 
 
-    /**
-     * 下载过程中 或者 等待下载 过程中 右上角显示删除按钮
-     */
-    /*@Override
-    public void onStopClick() {
-        mDeleteView.setVisibility(VISIBLE);
-        HandlerUtil.getUIHandler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                hideDeleteIcon();
-            }
-        }, 3000);
-    }*/
-
-/*    @Override
-    public void onStatusChange(DownloadInfo downloadInfo, byte status) {
-        byte buttonStatus = dataModel.getStatus(iKidsResource, downloadInfo);
-        switch (buttonStatus) {
-            case ButtonStatus.VIDEO:
-            case ButtonStatus.WEB:
-            case ButtonStatus.DOWNLOAD:
-            case ButtonStatus.DOWNLOAD_PAUSE:
-            case ButtonStatus.OPEN:
-                // todo 正常显示， gone掉加载view
-                break;
-            case ButtonStatus.WAIT:
-                // todo 显示WAIT状态
-                setWaitingStatus();
-                break;
-            case ButtonStatus.DOWNLOAD_FAILED:
-
-            case ButtonStatus.DOWNLOADING:
-                // TODO: 显示下载状态
-                setProgress(downloadInfo.getDownloadProgress());
-                setDownloadingStatus(downloadInfo.getDownloadProgress());
-                break;
-            case ButtonStatus.INSTALL:
-
-                if (0 < lastTimeProgress && lastTimeProgress < 100) {
-                    setDownloadFinishedStatus();
-                } else {
-                    hideDeleteAndWaiting();
-                }
-                break;
-        }
-        lastTimeProgress = downloadInfo.getDownloadProgress();
-    }*/
 
 
     /**

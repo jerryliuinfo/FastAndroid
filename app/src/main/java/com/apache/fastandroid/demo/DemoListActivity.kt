@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.activity_demo_list.*
  */
 class DemoListActivity : BaseActivity() {
     companion object {
-        val MODELS = arrayListOf(
+       private val MODELS = arrayListOf(
                 ViewItemBean("JetPack", "", null),
                 //空出一行来
                 ViewItemBean(),
@@ -45,7 +45,9 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean(),
                 ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
-                ViewItemBean("Hencoder", "下载", DownloadDemoFragment::class.java)
+                ViewItemBean("Hencoder", "下载", DownloadDemoFragment::class.java),
+                ViewItemBean("第三方控件", "第三方控件", CustomViewFragment::class.java)
+
 
         )
     }
@@ -57,18 +59,14 @@ class DemoListActivity : BaseActivity() {
 
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
-        val recycleview = findViewById<RecyclerView>(R.id.recycleview)
         recycleview.apply {
             layoutManager = GridLayoutManager(this@DemoListActivity, 2)
             adapter = ItemViewAdapter()
         }
-
-//        circle_image.setImageDrawable(PracticeCircleImageDrawable(BitmapFactory.decodeResource(resources,R.drawable.batman)))
-        round_image.setImageDrawable(PracticeRoundImageDrawable(BitmapFactory.decodeResource(resources,R.drawable.batman)))
     }
 
 
-    inner class ItemViewAdapter : RecyclerView.Adapter<ItemViewHolder>() {
+    private inner class ItemViewAdapter : RecyclerView.Adapter<ItemViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val itemView = layoutInflater.inflate(viewType, parent, false)
