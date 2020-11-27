@@ -136,7 +136,7 @@ public class RoundImageView extends AppCompatImageView {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        // 圆角图片的范围
+        // 圆角图片的范围 需要减去 bord宽度和高度的一般
         if (type == TYPE_ROUND || type == TYPE_OVAL) {
             mRoundRect = new RectF(mBorderWidth/2, mBorderWidth/2, w - mBorderWidth/2, h - mBorderWidth/2);
         }
@@ -152,7 +152,7 @@ public class RoundImageView extends AppCompatImageView {
             return;
         }
         setUpShader();
-
+        //round
         if (type == TYPE_ROUND) {
             setRoundPath();
 
@@ -160,14 +160,16 @@ public class RoundImageView extends AppCompatImageView {
 
             //绘制描边
             canvas.drawPath(mRoundPath, mBorderPaint);
-        } else if (type == TYPE_CIRCLE) {
-
+        }
+        //circle
+        else if (type == TYPE_CIRCLE) {
             canvas.drawCircle(mRadius + mBorderWidth/2, mRadius + mBorderWidth/2, mRadius, mBitmapPaint);
 
             //绘制描边
             canvas.drawCircle(mRadius + mBorderWidth/2, mRadius + mBorderWidth/2, mRadius, mBorderPaint);
-
-        } else {
+        }
+        //oval
+        else {
             canvas.drawOval(mRoundRect, mBitmapPaint);
 
             canvas.drawOval(mRoundRect, mBorderPaint);
@@ -241,7 +243,7 @@ public class RoundImageView extends AppCompatImageView {
                 mMatrix.setTranslate(-dx,-dy);
             }
         }
-        // shader的变换矩阵，我们这里主要用于放大或者缩小
+        // shader的变换矩阵，我们这里主要用于放大或者缩小,否则会出现图片不能显示完整的情况
         mMatrix.preScale(scale, scale);
 
         mBitmapShader.setLocalMatrix(mMatrix);

@@ -36,7 +36,11 @@ class DrawPaintDemoFragment:ABaseFragment() {
             PageModel(R.layout.sample_sweep_gradient, R.string.title_sweep_gradient, R.layout.practice_sweep_gradient),
             PageModel(R.layout.sample_bitmap_shader, R.string.title_bitmap_shader, R.layout.practice_bitmap_shader),
             PageModel(R.layout.sample_compose_shader, R.string.title_compose_shader, R.layout.practice_compose_shader),
-            PageModel(R.layout.sample_lighting_color_filter, R.string.title_lighting_color_filter, R.layout.practice_lighting_color_filter)
+            PageModel(R.layout.sample_lighting_color_filter, R.string.title_lighting_color_filter, R.layout.practice_lighting_color_filter),
+            PageModel(R.layout.sample_color_mask_color_filter, R.string.title_color_matrix_color_filter, R.layout.practice_color_matrix_color_filter),
+            PageModel(R.layout.sample_xfermode, R.string.title_xfermode, R.layout.practice_xfermode),
+            PageModel(R.layout.sample_stroke_cap, R.string.title_stroke_cap, R.layout.practice_stroke_cap)
+
 
     )
 

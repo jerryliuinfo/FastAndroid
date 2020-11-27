@@ -18,7 +18,7 @@
             android:layout_height="150dp"
             android:src="@drawable/b"
             app:border_color="@android:color/holo_red_light"
-            app:border_width="5dp"
+            app:border_width="40dp"
             app:type="circle" />
 
         <com.tesla.framework.ui.widget.RoundImageView

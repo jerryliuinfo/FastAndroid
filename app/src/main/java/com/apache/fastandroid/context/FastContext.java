@@ -14,7 +14,7 @@ import com.tesla.framework.common.util.task.TimerTaskManager;
  * created on: 2020/10/22 11:56 AM
  * description:
  */
-public class FastContext {
+public final class FastContext {
     /**
      * 时间任务管理器单例
      */

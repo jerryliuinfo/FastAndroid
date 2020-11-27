@@ -663,5 +663,15 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     }
 
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        NLog.d(TAG, "setUserVisibleHint isVisibleToUser: %s",isVisibleToUser);
+    }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        NLog.d(TAG, "onHiddenChanged hidden: %s",hidden);
+    }
 }

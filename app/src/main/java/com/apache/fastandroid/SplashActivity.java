@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.apache.artemis_annotation.ByView;
 import com.apache.artemis_annotation.DIActivity;
 import com.apache.fastandroid.bean.UserBean;
-import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.topic.support.config.ADConfigManager;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.widget.SplashCountDownView;
@@ -81,8 +80,8 @@ public class SplashActivity extends BaseActivity {
     private void toMain(){
         //AppContext.login(new UserInfoBean());
         UserBean userBean = new UserBean();
-//        MainActivity.launch(SplashActivity.this,userBean);
-        startActivity(new Intent(this, DemoListActivity.class));
+        MainActivity.launch(SplashActivity.this,userBean);
+//        startActivity(new Intent(this, DemoListActivity.class));
         SplashActivity.this.finish();
     }
 

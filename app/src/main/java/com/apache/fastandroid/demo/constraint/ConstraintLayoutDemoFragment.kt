@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo
+package com.apache.fastandroid.demo.constraint
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.round.RoudImageViewFragment
-import com.apache.fastandroid.demo.round.RoundButtonFragment
-import com.apache.fastandroid.demo.round.RoundFrameLayoutFragment
-import com.apache.fastandroid.demo.round.RoundTextViewFragment
 
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.ABaseFragment
@@ -21,14 +18,11 @@ import kotlinx.android.synthetic.main.activity_demo_list.*
 /**
  * Created by Jerry on 2020/11/11.
  */
-class CustomViewFragment:ABaseFragment() {
+class ConstraintLayoutDemoFragment:ABaseFragment() {
 
     companion object {
         private val MODELS = arrayListOf(
-                ViewItemBean("圆角ImageView", "RoudImageView", RoudImageViewFragment::class.java),
-                ViewItemBean("圆角TextView", "RoundTextView", RoundTextViewFragment::class.java),
-                ViewItemBean("圆角Button", "RoundButton", RoundButtonFragment::class.java),
-                ViewItemBean("圆角FrameLayout", "RoundFrameLayout", RoundFrameLayoutFragment::class.java)
+                ViewItemBean("约束布局", "约束布局", RoudImageViewFragment::class.java)
         )
     }
 
@@ -66,7 +60,7 @@ class CustomViewFragment:ABaseFragment() {
                 if (viewItemBean.clazz == null){
                     return@setOnClickListener
                 }
-                FragmentContainerActivity.launch(this@CustomViewFragment.activity,viewItemBean.clazz,null)
+                FragmentContainerActivity.launch(this@ConstraintLayoutDemoFragment.activity,viewItemBean.clazz,null)
             }
         }
 
