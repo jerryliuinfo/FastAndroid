@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
-import com.apache.fastandroid.demo.round.RoudImageViewFragment
+import com.apache.fastandroid.demo.other.ClipChildFragment
+import com.apache.fastandroid.demo.other.ClipToPaddingFragment
+import com.apache.fastandroid.demo.round.ConstraintBasicFragment
 import com.apache.fastandroid.demo.round.RoundButtonFragment
 import com.apache.fastandroid.demo.round.RoundFrameLayoutFragment
 import com.apache.fastandroid.demo.round.RoundTextViewFragment
@@ -25,10 +27,12 @@ class CustomViewFragment:ABaseFragment() {
 
     companion object {
         private val MODELS = arrayListOf(
-                ViewItemBean("圆角ImageView", "RoudImageView", RoudImageViewFragment::class.java),
+                ViewItemBean("圆角ImageView", "RoudImageView", ConstraintBasicFragment::class.java),
                 ViewItemBean("圆角TextView", "RoundTextView", RoundTextViewFragment::class.java),
                 ViewItemBean("圆角Button", "RoundButton", RoundButtonFragment::class.java),
-                ViewItemBean("圆角FrameLayout", "RoundFrameLayout", RoundFrameLayoutFragment::class.java)
+                ViewItemBean("圆角FrameLayout", "RoundFrameLayout", RoundFrameLayoutFragment::class.java),
+                ViewItemBean("ClipChild", "ClipChildFragment", ClipChildFragment::class.java),
+                ViewItemBean("ClipToPadding", "ClipToPaddingFragment", ClipToPaddingFragment::class.java)
         )
     }
 

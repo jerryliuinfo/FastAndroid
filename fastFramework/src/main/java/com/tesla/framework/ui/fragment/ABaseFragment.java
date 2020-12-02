@@ -585,7 +585,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
      * @param savedInstanceSate
      */
     protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
-
+        FrameworkLogUtil.d("layoutInit  -- >");
     }
 
 

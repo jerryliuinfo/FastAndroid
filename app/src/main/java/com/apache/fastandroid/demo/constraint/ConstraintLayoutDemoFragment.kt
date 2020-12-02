@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
-import com.apache.fastandroid.demo.round.RoudImageViewFragment
+import com.apache.fastandroid.demo.round.ConstraintBasicFragment
 
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.ABaseFragment
@@ -22,7 +22,7 @@ class ConstraintLayoutDemoFragment:ABaseFragment() {
 
     companion object {
         private val MODELS = arrayListOf(
-                ViewItemBean("约束布局", "约束布局", RoudImageViewFragment::class.java)
+                ViewItemBean("约束布局", "约束布局", ConstraintBasicFragment::class.java)
         )
     }
 

@@ -1,9 +1,10 @@
 package com.tesla.framework.ui.activity;
 
+import java.lang.reflect.Method;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
 
 import com.tesla.framework.R;
@@ -11,7 +12,7 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
-import java.lang.reflect.Method;
+import androidx.fragment.app.Fragment;
 
 
 public class FragmentContainerActivity extends BaseActivity implements SwipeActivityHelper.EnableSwipeback{

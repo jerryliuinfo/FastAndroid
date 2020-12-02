@@ -6,8 +6,8 @@ import com.tesla.framework.ui.fragment.ABaseFragment
 /**
  * Created by Jerry on 2020/11/19.
  */
-class RoudImageViewFragment:ABaseFragment() {
+class ConstraintBasicFragment:ABaseFragment() {
     override fun inflateContentView(): Int {
-        return R.layout.custom_view_round_imageview
+        return R.layout.constraint_basic
     }
 }

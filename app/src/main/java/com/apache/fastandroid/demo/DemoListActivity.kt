@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
+import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
 import com.apache.fastandroid.hencoder.basic.DrawBasicDemoFragment
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.apache.fastandroid.jetpack.lifecycle.LifeCycleFragment
@@ -43,8 +44,8 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean(),
                 ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
-                ViewItemBean("第三方控件", "第三方控件", CustomViewFragment::class.java)
-//                ViewItemBean("ConstraintLayout", "ConstraintLayout", ConstraintLayoutDemoFragment::class.java)
+                ViewItemBean("CustomViewWidget", "第三方控件", CustomViewFragment::class.java),
+                ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java)
 
 
         )
@@ -55,12 +56,17 @@ class DemoListActivity : BaseActivity() {
     }
 
 
+
+
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
         recycleview.apply {
             layoutManager = GridLayoutManager(this@DemoListActivity, 2)
             adapter = ItemViewAdapter()
         }
+
+//        FragmentContainerActivity.launch(this,CustomViewFragment::class.java,null)
+
     }
 
 
