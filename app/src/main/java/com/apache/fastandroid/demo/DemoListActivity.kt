@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
+import com.apache.fastandroid.demo.doraemonkit.DoraemonkitDemoFragment
 import com.apache.fastandroid.hencoder.basic.DrawBasicDemoFragment
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.apache.fastandroid.jetpack.lifecycle.LifeCycleFragment
@@ -26,7 +27,7 @@ import kotlinx.android.synthetic.main.activity_demo_list.*
  */
 class DemoListActivity : BaseActivity() {
     companion object {
-       private val MODELS = arrayListOf(
+        private val MODELS = arrayListOf(
                 ViewItemBean("JetPack", "", null),
                 //空出一行来
                 ViewItemBean(),
@@ -38,24 +39,25 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java),
 
 
-
                 ViewItemBean("Hencoder自定义View", "", null),
                 //空出一行来
                 ViewItemBean(),
                 ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
                 ViewItemBean("CustomViewWidget", "第三方控件", CustomViewFragment::class.java),
-                ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java)
+                ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
+                ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java)
 
 
         )
+
+
     }
+
 
     override fun inflateContentView(): Int {
         return R.layout.activity_demo_list
     }
-
-
 
 
     override fun layoutInit(savedInstanceState: Bundle?) {
@@ -86,10 +88,10 @@ class DemoListActivity : BaseActivity() {
             holder.txtTitle.text = viewItemBean.title
             holder.txt_description.text = viewItemBean.description
             holder.itemView.setOnClickListener {
-                if (viewItemBean.clazz == null){
+                if (viewItemBean.clazz == null) {
                     return@setOnClickListener
                 }
-                FragmentContainerActivity.launch(this@DemoListActivity,viewItemBean.clazz,null)
+                FragmentContainerActivity.launch(this@DemoListActivity, viewItemBean.clazz, null)
             }
         }
 
@@ -105,7 +107,7 @@ class DemoListActivity : BaseActivity() {
     }
 
 
-    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ItemViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val txtTitle: TextView = itemView.findViewById(R.id.txt_title)
         val txt_description: TextView = itemView.findViewById(R.id.txt_description)

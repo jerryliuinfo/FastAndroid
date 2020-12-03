@@ -22,6 +22,7 @@ import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
 import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.util.MainLogUtil;
+import com.didichuxing.doraemonkit.DoraemonKit;
 import com.github.anrwatchdog.ANRError;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.github.anrwatchdog.ANRWatchDog.ANRListener;
@@ -68,6 +69,7 @@ public class FastAndroidApplication extends Application {
 
         //systrace 开始检测
         TraceCompat.beginSection("trace");
+        initDoraemonkit();
 
         //监测内存泄漏
 //        initLeakCanry();
@@ -144,6 +146,10 @@ public class FastAndroidApplication extends Application {
         });
         anrWatchDog.start();
 
+    }
+
+    private void initDoraemonkit(){
+        DoraemonKit.APPLICATION = this;
     }
 
     @Override

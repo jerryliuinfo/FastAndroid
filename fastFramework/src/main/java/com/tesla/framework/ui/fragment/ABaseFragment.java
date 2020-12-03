@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.FrameworkLogUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.component.imageloader.BitmapOwner;
@@ -100,7 +99,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FrameworkLogUtil.d("onCreate  --- >");
+//        FrameworkLogUtil.d("onCreate  --- >fragment: %s",this);
         startTime1 = System.currentTimeMillis();
         taskManager = new TaskManager();
 
@@ -114,7 +113,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         startTime2 = System.currentTimeMillis();
-        FrameworkLogUtil.d("onCreateView  --- >time diff: %s ms", (startTime2 - startTime1));
+//        FrameworkLogUtil.d("onCreateView  --- >time diff: %s ms,fragment: %s", (startTime2 - startTime1),this);
         if (inflateContentView() > 0) {
             ViewGroup contentView = (ViewGroup) inflater.inflate(inflateContentView(), null);
             contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -132,7 +131,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         startTime3 = System.currentTimeMillis();
-        FrameworkLogUtil.d("onViewCreated  --- >time diff: %s ms", (startTime3 - startTime2));
+//        FrameworkLogUtil.d("onViewCreated  --- >time diff: %s ms,fragment: %s", (startTime3 - startTime2),this);
         /**
          * 为了解决使用Kotlin-Android-Extensions 的试图绑定功能(不用findViewById), 在onCreateView中不能直接访问视图，
          * 因为视图没有加载完成，容易引起空指针，需要在onViewCreated中访问视图，所以把 _layoutInit  和 layoutInit 从
@@ -585,7 +584,6 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
      * @param savedInstanceSate
      */
     protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
-        FrameworkLogUtil.d("layoutInit  -- >");
     }
 
 

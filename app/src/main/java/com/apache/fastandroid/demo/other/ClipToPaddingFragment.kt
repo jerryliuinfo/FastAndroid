@@ -50,16 +50,16 @@ class ClipToPaddingFragment: ABaseFragment() {
         }
 
         override fun getItemCount(): Int {
-            return list.size
+            return data.size
         }
 
         override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-            holder.view.tv_name.text = list[position]
+            holder.view.tv_name.text = data[position]
         }
 
     }
 
-    private class ItemViewHolder(val view: View): RecyclerView.ViewHolder(view) {
-        private var  tv_name:TextView = view.findViewById(R.id.tv_name)
-    }
+    private class ItemViewHolder(val view: View): RecyclerView.ViewHolder(view)
+
+
 }

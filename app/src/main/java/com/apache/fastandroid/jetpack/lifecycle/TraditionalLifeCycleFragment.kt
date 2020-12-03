@@ -28,7 +28,7 @@ class TraditionalLifeCycleFragment: BaseFragment() {
     override fun onDestroy() {
         super.onDestroy()
         // 必须要手动调用lifeCycleListener.onDestroy()，LifeCycleListener才会知道Fragment已经被销毁了
-
+        lifeCycleListener.onDestroy()
     }
 
 }

@@ -1,19 +1,22 @@
 package com.apache.fastandroid.topic.news;
 
+import java.util.List;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
+
 import com.apache.fastandroid.topic.news.view.MainNewsItemViewCreator;
 import com.apache.fastandroid.topic.support.bean.NewsChannelTable;
 import com.apache.fastandroid.topic.support.bean.NewsSummary;
 import com.apache.fastandroid.topic.support.bean.NewsSummaryBeans;
 import com.apache.fastandroid.topic.support.sdk.Sdk;
 import com.tesla.framework.common.util.N;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
-import java.util.List;
 
 /**
  * Created by 01370340 on 2017/11/23.
@@ -40,6 +43,7 @@ public class MainNewsFragment extends ARecycleViewSwipeRefreshFragment<NewsSumma
     @Override
     protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
+        NLog.d(TAG, "MainNewsFragment layoutInit: %s",this);
         if (savedInstanceSate == null){
             mChannel = (NewsChannelTable) getArguments().getSerializable("channel");
         }else {

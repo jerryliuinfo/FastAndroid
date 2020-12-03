@@ -1,7 +1,5 @@
 package com.apache.fastandroid.aop;
 
-import android.util.Log;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
@@ -23,6 +21,6 @@ public class SetContentViewAspect {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-        Log.d("MainLogUtil", name + " cost " + (System.currentTimeMillis() - time));
+//        Log.d("MainLogUtil", name + " cost " + (System.currentTimeMillis() - time));
     }
 }

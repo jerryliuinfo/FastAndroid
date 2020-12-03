@@ -22,6 +22,7 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
+import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.jetpack.GpsCallback;
 import com.apache.fastandroid.jetpack.GpsEngine;
 import com.apache.fastandroid.performance.LaunchTimer;
@@ -110,10 +111,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
     protected void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
 
-
-
-
-
         mutableLiveData1 = new MutableLiveData<>();
         mutableLiveData2 = new MutableLiveData<>();
         //1
@@ -171,6 +168,8 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
                 getResources().getResourceTypeName(resId);
         String resourceEntryName = getResources().getResourceEntryName(resId);
         FrameworkLogUtil.d("resourceTypeName: %s, resourceEntryName:%s", resourceTypeName,resourceEntryName);
+
+        startActivity(new Intent(this, DemoListActivity.class));
 
     }
 

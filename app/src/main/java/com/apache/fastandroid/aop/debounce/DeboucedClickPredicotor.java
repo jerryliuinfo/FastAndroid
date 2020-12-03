@@ -1,11 +1,13 @@
 package com.apache.fastandroid.aop.debounce;
 
-import android.os.SystemClock;
-import android.view.View;
-import com.apache.fastandroid.util.MainLogUtil;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
+
+import android.os.SystemClock;
+import android.view.View;
+
+import com.apache.fastandroid.util.MainLogUtil;
 
 /**
  * author: 01370340
@@ -22,7 +24,6 @@ public class DeboucedClickPredicotor {
         if (frozenView == null){
             frozenView = new FrozenView(targetView);
             sFrozenViewHashMap.put(targetView,frozenView);
-            MainLogUtil.d("第一次点击,不拦截");
             return true;
         }
         long now = SystemClock.uptimeMillis();
