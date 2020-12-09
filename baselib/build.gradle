@@ -35,32 +35,71 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"//主要是这两个依赖
+    implementation rootProject.androidLib.kotlin_stdlib
+    implementation rootProject.androidLib.kotlin_reflect
 
-    
-    api project(':fastFramework')
-    api rootProject.supportDependencies.design
-    api rootProject.supportDependencies.appcompatV7
-    api rootProject.supportDependencies.cardview
+
+    implementation project(':fastFramework')
+
+//    implementation rootProject.androidLib.core_ktx
+
+
+    implementation rootProject.androidLib.constraintLayout
+
+    implementation rootProject.androidLib.design
+    implementation rootProject.androidLib.appcompatV7
+    implementation rootProject.androidLib.cardview
+    implementation rootProject.thirdLib.fastjson
+    implementation rootProject.thirdLib.gson
+    implementation rootProject.thirdLib.okhttp3
+    implementation rootProject.thirdLib.material_dialogs
+
+    implementation rootProject.thirdLib.glide
+    implementation rootProject.thirdLib.picasso
+    implementation rootProject.thirdLib.imageLoader
+
+    implementation rootProject.thirdLib.okhttp3_log_interceptor
+    implementation rootProject.androidLib.support_customtabs
+
+    //retrofit
+    implementation rootProject.thirdLib.retrofit
+    implementation rootProject.thirdLib.retrofit_converter_gson
+    implementation rootProject.thirdLib.retrofit_adapter_rxjava
+    implementation rootProject.thirdLib.retrofit_converter_scalars
+
+    //rxjava&rxandroid
+    implementation rootProject.thirdLib.rxjava
+    implementation rootProject.thirdLib.rxandroid
+
+
+
+/*    api rootProject.androidLib.design
+    api rootProject.androidLib.appcompatV7
+    api rootProject.androidLib.cardview
     api rootProject.thirdLib.glide
     api rootProject.thirdLib.picasso
     api rootProject.thirdLib.imageLoader
-    api 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
     api rootProject.thirdLib.volly
     api rootProject.thirdLib.okhttp3_log_interceptor
+
+
     //rxjava&rxandroid
     api rootProject.thirdLib.rxjava
-    api rootProject.thirdLib.rxandroid
-    //retrofit
-    api(rootProject.thirdLib.retrofit) {
-        exclude group: "com.squareup.okhttp3"
-    }
-    api rootProject.thirdLib.retrofit_converter_gson
-    api rootProject.thirdLib.retrofit_adapter_rxjava
-    api rootProject.thirdLib.retrofit_converter_scalars
+    api rootProject.thirdLib.rxandroid*/
 
-    api rootProject.supportDependencies.support_customtabs
+
+    //retrofit
+  /*  implementation(rootProject.thirdLib.retrofit) {
+        exclude group: "com.squareup.okhttp3"
+    }*/
+//    api rootProject.thirdLib.retrofit_converter_gson
+//    api rootProject.thirdLib.retrofit_adapter_rxjava
+//    api rootProject.thirdLib.retrofit_converter_scalars
+
+    api 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
+
+
+//    api rootProject.androidLib.support_customtabs
 
 
     //ARouter 不要放到baselib，需要每个业务module自己依赖，否则不起作用
@@ -70,8 +109,8 @@ dependencies {
 
 
     testImplementation 'junit:junit:4.12'
-    api supportDependencies.junit
-    api 'androidx.annotation:annotation:1.0.0'
+    implementation androidLib.junit
+    implementation 'androidx.annotation:annotation:1.0.0'
 
     implementation rootProject.thirdLib.fastjson
     implementation rootProject.thirdLib.gson

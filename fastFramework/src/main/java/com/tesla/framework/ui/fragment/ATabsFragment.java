@@ -1,10 +1,12 @@
 package com.tesla.framework.ui.fragment;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 
@@ -16,11 +18,10 @@ import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.fragment.adpater.FragmentPagerAdapter;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Created by jerryliu on 2017/4/9.
@@ -40,6 +41,8 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
 
     private int mCurrentPosition;
 
+    private FragmentManager mFragmentManager;
+
 
     private boolean isRetainFragments = false;// 如果系统先调用onSaveInstanceState方法，说明添加的Fragments是需要保留的
 
@@ -58,6 +61,7 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
             mCurrentPosition = 0;
             mTabs = generateTabs();
         }
+        mFragmentManager = getActivity().getSupportFragmentManager();
         initTabs(savedInstanceSate);
     }
 
@@ -89,11 +93,11 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
         fragments = new HashMap<>();
         if (savedInstanceSate == null){
             for (int i = 0; i < mTabs.size(); i++){
-                Fragment fragment = getActivity().getSupportFragmentManager().findFragmentByTag(makeFragmentName(i));
+                Fragment fragment = mFragmentManager.findFragmentByTag(makeFragmentName(i));
                 if (fragment != null){
 
                     try {
-                        getActivity().getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+                        mFragmentManager.beginTransaction().remove(fragment).commit();
                     } catch (Exception e) {
                         NLog.printStackTrace(e);
                     }
@@ -184,7 +188,7 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
 
 
             try {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = mFragmentManager.beginTransaction();
                 for (Map.Entry<String,WeakReference<Fragment>> entry: fragments.entrySet()){
                     if (entry.getValue() != null && entry.getValue().get() != null){
                         Fragment fragment = entry.getValue().get();

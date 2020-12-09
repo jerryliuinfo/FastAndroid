@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.apache.artemis_annotation.ByView;
 import com.apache.artemis_annotation.DIActivity;
 import com.apache.fastandroid.bean.UserBean;
+import com.apache.fastandroid.performance.LeakSingle;
 import com.apache.fastandroid.topic.support.config.ADConfigManager;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.widget.SplashCountDownView;
@@ -61,6 +62,7 @@ public class SplashActivity extends BaseActivity {
     protected void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
         MainLogUtil.d("SplashActivity layoutInit");
+        LeakSingle.getInstance(this);
 
         //coutDownView.setVisibility(View.VISIBLE);
         ADConfigManager.getInstance(getApplicationContext()).setLastShowADTime(System.currentTimeMillis());

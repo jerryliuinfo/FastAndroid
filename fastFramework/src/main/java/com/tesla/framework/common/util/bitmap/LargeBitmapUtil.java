@@ -1,12 +1,12 @@
 package com.tesla.framework.common.util.bitmap;
 
+import java.io.InputStream;
+
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Rect;
-
-import java.io.InputStream;
 
 /**
  * Created by 01370340 on 2018/3/21.
@@ -37,17 +37,22 @@ public class LargeBitmapUtil {
 
     public static Bitmap decodeSampledBitmap(Resources res, int resId, int reqWidth, int reqHeight) {
 
+        final BitmapFactory.Options options = getBitmapOptions(res,resId);
+
+
+        // 调用上面定义的方法计算inSampleSize值
+        options.inSampleSize = calculateInSampleSize(getBitmapOptions(res,resId), reqWidth, reqHeight);
+        // 使用获取到的inSampleSize值再次解析图片
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    public static BitmapFactory.Options getBitmapOptions(Resources res, int resId){
         final BitmapFactory.Options options = new BitmapFactory.Options();
         //第一次解析将inJustDecodeBounds设置为true，来获取图片大小
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, options);
-
-
-        // 调用上面定义的方法计算inSampleSize值
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        // 使用获取到的inSampleSize值再次解析图片
-        options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
+        return options;
     }
 
 

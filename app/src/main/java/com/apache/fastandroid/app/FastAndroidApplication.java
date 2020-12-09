@@ -146,6 +146,8 @@ public class FastAndroidApplication extends Application {
         });
         anrWatchDog.start();
 
+        initLeakCanry();
+
     }
 
     private void initDoraemonkit(){

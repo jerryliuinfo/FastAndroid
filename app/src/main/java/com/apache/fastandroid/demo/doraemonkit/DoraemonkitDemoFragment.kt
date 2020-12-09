@@ -21,7 +21,8 @@ class DoraemonkitDemoFragment:BaseListFragment() {
 
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-                ViewItemBean("BlockMonitor", "卡顿监控", BlockMonitorFragment::class.java)
+                ViewItemBean("BlockMonitor", "卡顿监控", BlockMonitorFragment::class.java),
+                ViewItemBean("TimeCount", "启动耗时", BlockMonitorFragment::class.java)
 
         )
     }

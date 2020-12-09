@@ -10,11 +10,12 @@ import android.widget.TextView;
 import com.apache.fastandroid.topic.R;
 import com.apache.fastandroid.topic.video.action.WifiAction;
 import com.apache.fastandroid.topic.video.bean.VideoBean;
+import com.tesla.framework.Global;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.action.IAction;
-import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
+import com.tesla.framework.ui.widget.ToastUtils;
 
 /**
  * Created by 01370340 on 2017/9/3.
@@ -46,7 +47,7 @@ public class ImageItemView  extends ARecycleViewItemViewHolder<VideoBean> {
                     @Override
                     public void doAction() {
                         super.doAction();
-                        ((BaseActivity)getContext()).showMessage("开始播放");
+                        ToastUtils.showToast(Global.getContext(),"开始播放");
                         NLog.d(TAG, "开始播放");
                     }
                 }.run();

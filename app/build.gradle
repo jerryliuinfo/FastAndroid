@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 //下的properties文件名称
 
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
-def config = rootProject.ext
 apply plugin: 'android-aspectjx'
 
 apply plugin: 'kotlin-android'
@@ -94,6 +93,14 @@ android {
         exclude 'META-INF/ASL2.0'
         exclude 'META-INF/proguard/okhttp3.pro'
         exclude 'META-INF/proguard/coroutines.pro'
+        /*exclude 'META-INF/androidx.legacy_legacy-support-core-utils.version'
+        exclude 'META-INF/androidx.documentfile:documentfile.version'
+        exclude 'META-INF/androidx.swiperefreshlayout:swiperefreshlayout.version'
+        exclude 'META-INF/androidx.print:print.version'
+        exclude 'META-INF/androidx.slidingpanelayout:slidingpanelayout.version'
+        exclude 'META-INF/androidx.swiperefreshlayout:swiperefreshlayout.version'
+        exclude 'META-INF/androidx.asynclayoutinflater:asynclayoutinflater.version'
+        exclude 'META-INF/androidx.legacy:legacy-support-core-ui.version'*/
 
     }
     // For Kotlin projects
@@ -181,35 +188,78 @@ dependencies {
         implementation project(':topic')
     }
 
-    implementation rootProject.supportDependencies.constraintLayout
 
-    debugImplementation rootProject.ext.thirdLib.leakcanary_support_fragment
     implementation project(':baselib')
+    implementation project(':fastFramework')
+
     implementation project(':hencode_basic')
     implementation project(':hencoder_paint')
-
     implementation project(':doraemonkit')
 
+//    implementation rootProject.androidLib.core_ktx
+
+    debugImplementation rootProject.thirdLib.leakcanary_support_fragment
 
 
-    implementation rootProject.ext.supportDependencies.appcompatV7
-    implementation rootProject.ext.supportDependencies.multidex
+//    implementation rootProject.androidLib.core_ktx
+
+    implementation rootProject.androidLib.constraintLayout
+
+    implementation rootProject.androidLib.design
+    implementation rootProject.androidLib.appcompatV7
+    implementation rootProject.androidLib.cardview
+    implementation rootProject.thirdLib.fastjson
+    implementation rootProject.thirdLib.gson
+    implementation rootProject.thirdLib.okhttp3
+    implementation rootProject.thirdLib.material_dialogs
+
+
+    implementation rootProject.thirdLib.glide
+    implementation rootProject.thirdLib.picasso
+    implementation rootProject.thirdLib.imageLoader
+    implementation rootProject.thirdLib.volly
+
+
+    implementation rootProject.thirdLib.okhttp3_log_interceptor
+
+
+    //retrofit
+    implementation rootProject.thirdLib.retrofit
+    implementation rootProject.thirdLib.retrofit_converter_gson
+    implementation rootProject.thirdLib.retrofit_adapter_rxjava
+    implementation rootProject.thirdLib.retrofit_converter_scalars
+
+    //rxjava&rxandroid
+    implementation rootProject.thirdLib.rxjava
+    implementation rootProject.thirdLib.rxandroid
+
+
+
+    implementation rootProject.androidLib.multidex
+
+
     //ARouter
     implementation rootProject.ext.thirdLib.arouter_api
     annotationProcessor rootProject.ext.thirdLib.arouter_compiler
+
     //必须加行这行，否则proxyToolProcessor无法自动生成类
     implementation project(':artemis_annotation')
     annotationProcessor project(':artemis_compiler')
 
 
-    implementation rootProject.ext.thirdLib.bugly
-    implementation rootProject.ext.thirdLib.buglyNative
+    implementation rootProject.thirdLib.bugly
+    implementation rootProject.thirdLib.buglyNative
 
     implementation 'org.aspectj:aspectjrt:1.8.14'
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
+
+
+
+
+//
+//     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+//     implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
+//     implementation 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
 
 
 

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tesla.framework.R;
+import com.tesla.framework.common.util.FrameworkLogUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.component.imageloader.BitmapOwner;
@@ -82,15 +83,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
 
-        if (getActivity() != null && getActivity() instanceof BaseActivity){
-           // ((BaseActivity) getActivity()).addFractivitylgment(toString(), this);
-        }
-
-    }
 
     long startTime1 = 0;
     long startTime2 = 0;
@@ -99,7 +92,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        FrameworkLogUtil.d("onCreate  --- >fragment: %s",this);
+        FrameworkLogUtil.d("onCreate  --- >fragment: %s",this);
         startTime1 = System.currentTimeMillis();
         taskManager = new TaskManager();
 
@@ -113,7 +106,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         startTime2 = System.currentTimeMillis();
-//        FrameworkLogUtil.d("onCreateView  --- >time diff: %s ms,fragment: %s", (startTime2 - startTime1),this);
+        FrameworkLogUtil.d("onCreateView  --- >time diff: %s ms,fragment: %s", (startTime2 - startTime1),this);
         if (inflateContentView() > 0) {
             ViewGroup contentView = (ViewGroup) inflater.inflate(inflateContentView(), null);
             contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -511,6 +504,17 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
         return getActivity() != null;
     }
 
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (getActivity() != null && getActivity() instanceof BaseActivity){
+             ((BaseActivity) getActivity()).addFragment(toString(), this);
+        }
+
+    }
+
     @Override
     public void onDetach() {
         super.onDetach();
@@ -553,9 +557,6 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
         return ABizLogic.CacheMode.disable;
     }
 
-    public void cleatTaskCount(String taskId) {
-        taskManager.cleatTaskCount(taskId);
-    }
 
     protected void setViewOnClick(View v) {
         if (v == null)

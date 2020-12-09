@@ -80,11 +80,41 @@ tasks.withType(Javadoc) {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    implementation config.supportDependencies.multidex
+    implementation config.androidLib.multidex
     implementation project(':baselib')
-    implementation rootProject.thirdLib.material_dialogs
+    implementation project(':fastFramework')
+
+//    implementation rootProject.androidLib.core_ktx
+
+    implementation rootProject.androidLib.constraintLayout
+
+    implementation rootProject.androidLib.design
+    implementation rootProject.androidLib.appcompatV7
+    implementation rootProject.androidLib.cardview
     implementation rootProject.thirdLib.fastjson
     implementation rootProject.thirdLib.gson
+    implementation rootProject.thirdLib.okhttp3
+    implementation rootProject.thirdLib.material_dialogs
+    implementation rootProject.thirdLib.glide
+    implementation rootProject.thirdLib.picasso
+    implementation rootProject.thirdLib.imageLoader
+    implementation rootProject.thirdLib.okhttp3_log_interceptor
+
+
+    //retrofit
+    implementation rootProject.thirdLib.retrofit
+    implementation rootProject.thirdLib.retrofit_converter_gson
+    implementation rootProject.thirdLib.retrofit_adapter_rxjava
+    implementation rootProject.thirdLib.retrofit_converter_scalars
+
+    //rxjava&rxandroid
+    implementation rootProject.thirdLib.rxjava
+    implementation rootProject.thirdLib.rxandroid
+
+
+
+
+
 
     implementation project(':artemis_annotation')
     annotationProcessor project(':artemis_compiler')

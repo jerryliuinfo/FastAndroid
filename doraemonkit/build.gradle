@@ -26,7 +26,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    implementation rootProject.ext.supportDependencies.appcompatV7
+    implementation rootProject.ext.androidLib.appcompatV7
 
 
     testImplementation 'junit:junit:4.12'
@@ -35,7 +35,7 @@ dependencies {
 
     implementation project(':fastFramework')
 
-    implementation 'androidx.core:core-ktx:1.0.0'
+//    implementation rootProject.androidLib.core_ktx
 
 
     //kotlin

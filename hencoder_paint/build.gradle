@@ -27,16 +27,18 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
 
-    implementation 'androidx.core:core-ktx:1.0.0'
+//    implementation rootProject.androidLib.core_ktx
+
     //kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"//主要是这两个依赖
+    implementation rootProject.androidLib.kotlin_stdlib
+    implementation rootProject.androidLib.kotlin_reflect
 
-    implementation rootProject.supportDependencies.appcompatV7
-    implementation rootProject.supportDependencies.constraintLayout
+    implementation rootProject.androidLib.appcompatV7
+    implementation rootProject.androidLib.constraintLayout
 
-    api rootProject.supportDependencies.design
+    implementation rootProject.androidLib.design
     implementation project(':baselib')
+    implementation project(':fastFramework')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

@@ -22,7 +22,6 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
-import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.jetpack.GpsCallback;
 import com.apache.fastandroid.jetpack.GpsEngine;
 import com.apache.fastandroid.performance.LaunchTimer;
@@ -46,6 +45,7 @@ import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
+import com.tesla.framework.ui.widget.ToastUtils;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -93,6 +93,8 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         Intent intent = new Intent(from, MainActivity.class);
         intent.putExtra("userBean",userBean);
         from.startActivity(intent);
+
+
     }
 
     @Override
@@ -110,6 +112,8 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
     @Override
     protected void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
+
+
 
         mutableLiveData1 = new MutableLiveData<>();
         mutableLiveData2 = new MutableLiveData<>();
@@ -169,7 +173,7 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         String resourceEntryName = getResources().getResourceEntryName(resId);
         FrameworkLogUtil.d("resourceTypeName: %s, resourceEntryName:%s", resourceTypeName,resourceEntryName);
 
-        startActivity(new Intent(this, DemoListActivity.class));
+//        startActivity(new Intent(this, DemoListActivity.class));
 
     }
 
@@ -375,7 +379,7 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
     public boolean onBackClick() {
         if (!canFinish) {
             canFinish = true;
-            showMessage("再按一次退出");
+            ToastUtils.showToast(this,"再按一次退出");
             new Handler().postDelayed(new Runnable() {
 
                 @Override

@@ -1,15 +1,16 @@
 package com.tesla.framework.common.util.memory;
 
-import android.app.ActivityManager;
-import android.content.Context;
-import android.os.Build;
-
-import com.alibaba.fastjson.util.IOUtils;
-
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import android.app.ActivityManager;
+import android.content.Context;
+import android.os.Build;
+import android.util.Log;
+
+import com.alibaba.fastjson.util.IOUtils;
 
 /**
  * Created by 01370340 on 2018/3/17.
@@ -76,4 +77,13 @@ public class MemoryUtil {
         activityManager.getMemoryInfo(memoryInfo);
         return getTotalRAM(context) - memoryInfo.availMem / _1M;
     }
+
+    public static long maxMemory(){
+        long maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+        Log.d("TAG", "Max memory is " + maxMemory + "KB");
+        return maxMemory;
+    }
+
+
+
 }

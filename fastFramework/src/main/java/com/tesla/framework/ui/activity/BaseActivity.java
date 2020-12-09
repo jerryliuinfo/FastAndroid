@@ -1,17 +1,19 @@
 package com.tesla.framework.ui.activity;
 
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 
 import com.tesla.framework.R;
@@ -19,29 +21,23 @@ import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.StatusBarUtil;
-import com.tesla.framework.network.task.ITaskManager;
-import com.tesla.framework.network.task.TaskManager;
-import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.support.skin.SkinFactory;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.CustomToolbar;
-import com.tesla.framework.ui.widget.ToastUtils;
 
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 
 /**
  * Created by JerryLiu on 17/04/08.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements ITaskManager,CustomToolbar.OnToolbarDoubleClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements CustomToolbar.OnToolbarDoubleClickListener {
 
     static final String TAG = "Activity-Base";
 
@@ -53,8 +49,6 @@ public abstract class BaseActivity extends AppCompatActivity implements ITaskMan
 
     private Locale language = null;// 当前界面的语言
 
-    private TaskManager taskManager;
-
     private boolean isDestory;
 
     // 当有Fragment Attach到这个Activity的时候，就会保存
@@ -65,7 +59,6 @@ public abstract class BaseActivity extends AppCompatActivity implements ITaskMan
     private View rootView;
 
     @ViewInject(idStr = "toolbar")
-
     Toolbar mToolbar;
 
     public static BaseActivity getRunningActivity() {
@@ -115,26 +108,11 @@ public abstract class BaseActivity extends AppCompatActivity implements ITaskMan
         // 设置语言
         setLanguage(language);
 
-        taskManager = new TaskManager();
-
-        try {
-            // 如果设备有实体MENU按键，overflow菜单不会再显示
-            ViewConfiguration viewConfiguration = ViewConfiguration.get(this);
-            if (viewConfiguration.hasPermanentMenuKey()) {
-                Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
-                menuKeyField.setAccessible(true);
-                menuKeyField.setBoolean(viewConfiguration, false);
-            }
-        } catch (Exception e) {
-            NLog.printStackTrace(e);
-        }
 
         super.onCreate(savedInstanceState);
 
 
         skinFactory = new SkinFactory();
-//        LayoutInflaterCompat.setFactory2(getLayoutInflater(),skinFactory );
-
 
         if (inflateContentView() > 0){
             setContentView(inflateContentView());
@@ -143,14 +121,34 @@ public abstract class BaseActivity extends AppCompatActivity implements ITaskMan
         layoutInit(savedInstanceState);
     }
 
-    /**
-     * 执行换肤
-     */
-    public void apply(){
-        if (skinFactory != null){
-            skinFactory.apply();
+
+
+    public void showContent(Class<? extends ABaseFragment> target) {
+        showContent(target, null);
+    }
+
+    public void showContent(Class<? extends ABaseFragment> target, Bundle bundle) {
+        try {
+            ABaseFragment fragment = target.newInstance();
+            if (bundle != null) {
+                fragment.setArguments(bundle);
+            }
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.add(android.R.id.content, fragment);
+//            mFragments.push(fragment);
+            fragmentTransaction.addToBackStack("");
+            fragmentTransaction.commit();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
     }
+
+
+
+
 
     /**
      * 指定Fragment的LayoutID
@@ -225,7 +223,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ITaskMan
         rootView = view;
         InjectUtility.initInjectedView(this, this, rootView);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar =  findViewById(R.id.toolbar);
         if (mToolbar != null)
             setSupportActionBar(mToolbar);
     }
@@ -282,20 +280,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ITaskMan
             return;
         }
 
-        //onResume 中执行，这样已经打开过的activity也可以换肤了
-        apply();
 
-        /*String languageStr = SettingUtility.getPermanentSettingAsStr("language", Locale.getDefault().getLanguage());
-        String country = SettingUtility.getPermanentSettingAsStr("language-country", Locale.getDefault().getCountry());
-        if (language != null && language.getLanguage().equals(languageStr) && country.equals(language.getCountry())) {
-
-        }
-        else {
-            Logger.i("language changed, reload()");
-            reload();
-
-            return;
-        }*/
     }
 
     @Override
@@ -335,11 +320,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ITaskMan
 
     @Override
     public void onDestroy() {
-
         isDestory = true;
-
-        removeAllTask(true);
-
 
         super.onDestroy();
 
@@ -420,43 +401,8 @@ public abstract class BaseActivity extends AppCompatActivity implements ITaskMan
 
 
 
-    @Override
-    public final void addTask(@SuppressWarnings("rawtypes") WorkTask task) {
-        taskManager.addTask(task);
-    }
 
-    @Override
-     public final void removeTask(String taskId, boolean cancelIfRunning) {
-        taskManager.removeTask(taskId, cancelIfRunning);
-    }
 
-    @Override
-    public final void removeAllTask(boolean cancelIfRunning) {
-        taskManager.removeAllTask(cancelIfRunning);
-    }
-
-    @Override
-    public final int getTaskCount(String taskId) {
-        return taskManager.getTaskCount(taskId);
-    }
-
-    /**
-     * 以Toast形式显示一个消息
-     *
-     * @param msg
-     */
-    public void showMessage(CharSequence msg) {
-        if (!TextUtils.isEmpty(msg) && msg.length() != 0){
-            ToastUtils.showToast(this,msg.toString());
-        }
-    }
-
-    /**
-     * @param msgId
-     */
-    public void showMessage(int msgId) {
-        showMessage(getText(msgId));
-    }
 
     @Override
     public void finish() {

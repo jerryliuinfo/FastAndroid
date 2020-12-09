@@ -82,9 +82,7 @@ public class BaseActivityHelper implements IPermissionsSubject,IActivityLifeCycl
         ActivityTaskMgr.getInstance().popFromActivityStack(mActivity);
     }
 
-    public void finish() {
 
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -101,19 +99,11 @@ public class BaseActivityHelper implements IPermissionsSubject,IActivityLifeCycl
 
     }
 
+    public void finish() {
 
-    // 这三个方法暂不支持
-//    public void setContentView(int layoutResID) {
-//
-//    }
-//
-//    public void setContentView(View view) {
-//
-//    }
-//
-//    public void setContentView(View view, ViewGroup.LayoutParams params) {
-//
-//    }
+    }
+
+
 
     protected boolean onHomeClick() {
         return false;

@@ -5,6 +5,8 @@ import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.Transformation;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 public class ScoreScaleUpAnimation extends Animation {
 
     private int centerX;
@@ -18,6 +20,7 @@ public class ScoreScaleUpAnimation extends Animation {
         centerY = height / 2;
         setDuration(300);
         setInterpolator(new CycleInterpolator(0.5f));
+        SwipeRefreshLayout swipeRefreshLayout;
     }
 
     @Override
