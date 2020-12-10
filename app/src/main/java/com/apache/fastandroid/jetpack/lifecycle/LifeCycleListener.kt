@@ -1,43 +1,33 @@
 package com.apache.fastandroid.jetpack.lifecycle
 
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
 import com.apache.fastandroid.LogUtils
-import com.tesla.framework.applike.FrameworkApplication.onDestroy
+import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.lifecycle.FullLifecycleObserver
+import com.tesla.framework.component.lifecycle.FullLifecycleObserverAdapter
+import com.tesla.framework.component.lifecycle.SimpleLifeCycleObserver
 
 /**
  * Created by Jerry on 2020/11/1.
  */
-class LifeCycleListener:ILifeCycle,LifecycleObserver {
+class LifeCycleListener(lifecycleOwner: LifecycleOwner): SimpleLifeCycleObserver() {
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    override fun onCreate() {
-        LogUtils.d("onCreate   ---->")
+    companion object{
+        const val TAG = "LifeCycleListener"
+    }
+    init {
+        lifecycleOwner.lifecycle.addObserver(FullLifecycleObserverAdapter(lifecycleOwner,this))
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    override fun onStart() {
-        LogUtils.d("onStart   ---->")
+    override fun onCreate(owner: LifecycleOwner) {
+        NLog.d(TAG, "LifeCycleListener onCreate")
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    override fun onResume() {
-        LogUtils.d("onResume   ---->")
+
+    override fun onDestroy(owner: LifecycleOwner) {
+        NLog.d(TAG, "LifeCycleListener onDestroy")
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    override fun onPause() {
-        LogUtils.d("onPause   ---->")
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    override fun onStop() {
-        LogUtils.d("onStop   ---->")
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    override fun onDestroy() {
-        LogUtils.d("onDestroy   ---->")
-    }
 }

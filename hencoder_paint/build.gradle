@@ -26,12 +26,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-
-//    implementation rootProject.androidLib.core_ktx
-
-    //kotlin
-    implementation rootProject.androidLib.kotlin_stdlib
-    implementation rootProject.androidLib.kotlin_reflect
+    implementation rootProject.androidLib.core_ktx
 
     implementation rootProject.androidLib.appcompatV7
     implementation rootProject.androidLib.constraintLayout

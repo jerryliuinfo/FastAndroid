@@ -1,15 +1,15 @@
 package com.tesla.framework.ui.activity;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.tesla.framework.common.util.activitytask.ActivityTaskMgr;
-import com.tesla.framework.component.permission.IPermissionsObserver;
-import com.tesla.framework.component.permission.IPermissionsSubject;
-import com.tesla.framework.component.permission.PermissionActivityHelper;
+import com.tesla.framework.component.lifecycle.FullLifecycleObserver;
+import com.tesla.framework.component.lifecycle.FullLifecycleObserverAdapter;
+
+import org.jetbrains.annotations.NotNull;
+
+import androidx.lifecycle.LifecycleOwner;
 
 /**
  * 用户注册回调BaseActivity的生命周期及相关的方法，自行添加
@@ -20,89 +20,25 @@ import com.tesla.framework.component.permission.PermissionActivityHelper;
  *
  * Created by JerryLiu on 17/04/08.
  */
-public class BaseActivityHelper implements IPermissionsSubject,IActivityLifeCycle {
+public class BaseActivityHelper implements FullLifecycleObserver {
     //当前Activity
     private BaseActivity mActivity;
 
-    private PermissionActivityHelper mPermissionActivityHelper = new PermissionActivityHelper();
+    private LifecycleOwner mLifecycleOwner;
 
-    protected void bindActivity(BaseActivity activity) {
-        this.mActivity = activity;
+    public BaseActivityHelper(BaseActivity mActivity, LifecycleOwner mLifecycleOwner) {
+        this.mActivity = mActivity;
+        this.mLifecycleOwner = mLifecycleOwner;
+        mLifecycleOwner.getLifecycle().addObserver(new FullLifecycleObserverAdapter(mLifecycleOwner,this));
     }
 
-    protected BaseActivity getActivity() {
+    public BaseActivity getActivity() {
         return mActivity;
     }
 
     public View findViewById(int id) {
         return mActivity.findViewById(id);
     }
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        ActivityTaskMgr.getInstance().pushToActivityStack(mActivity);
-        if (mPermissionActivityHelper != null){
-            mPermissionActivityHelper.onCreate(savedInstanceState);
-        }
-    }
-
-    @Override
-    public void onPostCreate(Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    public void onStart() {
-
-    }
-
-    @Override
-    public void onRestart() {
-
-    }
-
-    @Override
-    public void onResume() {
-
-    }
-
-    @Override
-    public void onPause() {
-
-    }
-
-    @Override
-    public void onStop() {
-
-    }
-
-    @Override
-    public void onDestroy() {
-        ActivityTaskMgr.getInstance().popFromActivityStack(mActivity);
-    }
-
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-
-    }
-
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-
-    }
-
-    public void finish() {
-
-    }
-
 
 
     protected boolean onHomeClick() {
@@ -126,24 +62,31 @@ public class BaseActivityHelper implements IPermissionsSubject,IActivityLifeCycl
     }
 
 
-
     @Override
-    public void attach(IPermissionsObserver observer) {
-        mPermissionActivityHelper.attach(observer);
+    public void onCreate(@NotNull LifecycleOwner owner) {
     }
 
     @Override
-    public void detach(IPermissionsObserver observer) {
-        mPermissionActivityHelper.detach(observer);
+    public void onStart(@NotNull LifecycleOwner owner) {
+
     }
 
     @Override
-    public void notifyActivityResult(int requestCode, String[] permissions, int[] grantResults) {
-        mPermissionActivityHelper.notifyActivityResult(requestCode,permissions,grantResults);
+    public void onResume(@NotNull LifecycleOwner owner) {
+
     }
 
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
-        notifyActivityResult(requestCode,permissions,grantResults);
+    @Override
+    public void onPause(@NotNull LifecycleOwner owner) {
+
     }
 
+    @Override
+    public void onStop(@NotNull LifecycleOwner owner) {
+
+    }
+
+    @Override
+    public void onDestroy(@NotNull LifecycleOwner owner) {
+    }
 }

@@ -42,8 +42,6 @@ import com.tesla.framework.component.performance.BlockDetector;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.crash.TUncaughtExceptionHandler;
 import com.tesla.framework.support.db.FastAndroidDB;
-import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
 import androidx.core.os.TraceCompat;
 import androidx.multidex.MultiDex;
@@ -97,7 +95,6 @@ public class FastAndroidApplication extends Application {
         //初始化db
         FastAndroidDB.setDB();
 
-        BaseActivity.setHelper(SwipeActivityHelper.class);
 
         //初始化图片加载
         IImageLoaderstrategy loaderstrategy = configImageLoader();

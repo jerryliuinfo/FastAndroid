@@ -13,7 +13,7 @@ import com.tesla.framework.ui.fragment.ABaseFragment
 /**
  * Created by Jerry on 2020/10/31.
  */
-class LifeCycleFragment: ABaseFragment() {
+class JetPackLifeCycleFragment: ABaseFragment() {
 
     override fun inflateContentView(): Int {
        return R.layout.fragment_jetpack_lifecycle
@@ -21,9 +21,7 @@ class LifeCycleFragment: ABaseFragment() {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-
-        lifecycle.addObserver(LifeCycleListener())
-
+        lifecycle.addObserver(LifeCycleListener(this))
     }
 
 

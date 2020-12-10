@@ -1,5 +1,7 @@
 package com.apache.fastandroid.wallpaper;
 
+import java.io.File;
+
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,21 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.topic.support.permission.SdcardPermissionAction;
 import com.apache.fastandroid.widget.WallpaperViewer;
 import com.apache.fastandroid.widget.WaveView;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
-import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.support.inject.ViewInject;
-import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentArgs;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.photoview.AttacherInterface;
 import com.tesla.framework.ui.widget.photoview.PhotoView;
-
-import java.io.File;
 
 /**
  * Created by 01370340 on 2017/11/21.
@@ -89,43 +86,37 @@ public class WallpaperSettingFragment extends ABaseFragment implements Wallpaper
 
 
     private void setWallpaper(){
-        new IAction(getActivity(),new SdcardPermissionAction((BaseActivity) getActivity(),null)){
+
+
+
+        new AsyncTask<Void,Void,Boolean>(){
             @Override
-            public void doAction() {
-                super.doAction();
-
-
-                new AsyncTask<Void,Void,Boolean>(){
-                    @Override
-                    protected Boolean doInBackground(Void... params) {
-                        String cachePath = ImageLoaderManager.getInstance().getImagePahtFromCache(url);
-                        if (!TextUtils.isEmpty(cachePath) && new File(cachePath).exists()){
-                            File file = new File(cachePath);
-                            try {
-                                WallpaperDownloadTask.setWallpaper(getContext(),file,null);
-                            } catch (Throwable e) {
-                                e.printStackTrace();
-                                return false;
-                            }
-                            return true;
-                        }
+            protected Boolean doInBackground(Void... params) {
+                String cachePath = ImageLoaderManager.getInstance().getImagePahtFromCache(url);
+                if (!TextUtils.isEmpty(cachePath) && new File(cachePath).exists()){
+                    File file = new File(cachePath);
+                    try {
+                        WallpaperDownloadTask.setWallpaper(getContext(),file,null);
+                    } catch (Throwable e) {
+                        e.printStackTrace();
                         return false;
                     }
-
-                    @Override
-                    protected void onPostExecute(Boolean aBoolean) {
-                        super.onPostExecute(aBoolean);
-                        if (!aBoolean){
-                            showMessage("设置壁纸失败");
-                        }else {
-                            showMessage("设置壁纸成功");
-
-                        }
-                    }
-                }.execute();
-
+                    return true;
+                }
+                return false;
             }
-        }.run();
+
+            @Override
+            protected void onPostExecute(Boolean aBoolean) {
+                super.onPostExecute(aBoolean);
+                if (!aBoolean){
+                    showMessage("设置壁纸失败");
+                }else {
+                    showMessage("设置壁纸成功");
+
+                }
+            }
+        }.execute();
     }
 
 

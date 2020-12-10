@@ -1,20 +1,19 @@
-package com.apache.fastandroid.jetpack;
+package com.tesla.framework.component.lifecycle;
 
 import android.os.Handler;
 import android.os.Looper;
 
 import com.tesla.framework.common.util.Preconditions;
+import com.tesla.framework.common.util.log.NLog;
 
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleObserver;
+import org.jetbrains.annotations.NotNull;
+
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.OnLifecycleEvent;
 
 
-/**
- * Created by 程序亦非猿 on 2019/3/11.
- */
-public class LifecycleHandler extends Handler implements LifecycleObserver {
+public class LifecycleHandler extends Handler  {
+
+    public static final String TAG = LifecycleHandler.class.getSimpleName();
 
     private LifecycleOwner lifecycleOwner;
 
@@ -43,12 +42,26 @@ public class LifecycleHandler extends Handler implements LifecycleObserver {
 
     private void addObserver() {
         Preconditions.checkNotNull(lifecycleOwner);
-        lifecycleOwner.getLifecycle().addObserver(this);
+        if (lifecycleOwner != null){
+            lifecycleOwner.getLifecycle().addObserver(new FullLifecycleObserverAdapter(lifecycleOwner,observer));
+        }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    private void onDestroy() {
-        removeCallbacksAndMessages(null);
-        lifecycleOwner.getLifecycle().removeObserver(this);
-    }
+    private FullLifecycleObserver observer = new SimpleLifeCycleObserver(){
+        @Override
+        public void onCreate(@NotNull LifecycleOwner owner) {
+            super.onCreate(owner);
+            NLog.d(TAG, "LifecycleHandler onCreate");
+        }
+
+        @Override
+        public void onDestroy(@NotNull LifecycleOwner owner) {
+            super.onDestroy(owner);
+
+            NLog.d(TAG, "LifecycleHandler onDestroy");
+            removeCallbacksAndMessages(null);
+        }
+    };
+
+
 }

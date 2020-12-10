@@ -12,8 +12,6 @@ public interface IActivityLifeCycle {
     void onCreate(Bundle savedInstanceState);
 
 
-    void onPostCreate(Bundle savedInstanceState);
-
 
      void onStart();
 
@@ -36,5 +34,4 @@ public interface IActivityLifeCycle {
     void onSaveInstanceState(Bundle outState);
 
 
-    void onRestoreInstanceState(Bundle savedInstanceState);
 }

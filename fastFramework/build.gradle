@@ -46,11 +46,12 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    //kotlin
-    implementation rootProject.androidLib.kotlin_stdlib
-    implementation rootProject.androidLib.kotlin_reflect//主要是这两个依赖
+    implementation rootProject.androidLib.core_ktx
 
-//    implementation rootProject.androidLib.core_ktx
+//    //kotlin
+//    implementation rootProject.androidLib.kotlin_stdlib
+//    implementation rootProject.androidLib.kotlin_reflect//主要是这两个依赖
+
     implementation rootProject.androidLib.constraintLayout
 
     implementation rootProject.androidLib.design

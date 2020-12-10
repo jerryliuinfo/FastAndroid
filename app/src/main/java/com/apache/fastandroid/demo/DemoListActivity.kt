@@ -13,7 +13,7 @@ import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
 import com.apache.fastandroid.demo.doraemonkit.DoraemonkitDemoFragment
 import com.apache.fastandroid.hencoder.basic.DrawBasicDemoFragment
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
-import com.apache.fastandroid.jetpack.lifecycle.LifeCycleFragment
+import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleFragment
 import com.apache.fastandroid.jetpack.lifecycle.TraditionalLifeCycleFragment
 import com.apache.fastandroid.jetpack.livedata.LiveDataFragment
 import com.apache.fastandroid.jetpack.livedataviewmodel.LiveDataViewModelFragment
@@ -32,7 +32,7 @@ class DemoListActivity : BaseActivity() {
                 //空出一行来
                 ViewItemBean(),
                 ViewItemBean("Normal", "传统生命周期监听", TraditionalLifeCycleFragment::class.java),
-                ViewItemBean("JetPack", "LifeCycle", LifeCycleFragment::class.java),
+                ViewItemBean("JetPack", "LifeCycle", JetPackLifeCycleFragment::class.java),
                 ViewItemBean("JetPack", "ViewModel", ViewModelFragment::class.java),
                 ViewItemBean("JetPack", "LiveData", LiveDataFragment::class.java),
                 ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java),

@@ -20,15 +20,14 @@ class TraditionalLifeCycleFragment: BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        lifeCycleListener = LifeCycleListener()
-        lifeCycleListener.onCreate()
+        lifeCycleListener = LifeCycleListener(this)
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
         // 必须要手动调用lifeCycleListener.onDestroy()，LifeCycleListener才会知道Fragment已经被销毁了
-        lifeCycleListener.onDestroy()
+        lifeCycleListener.onDestroy(this)
     }
 
 }

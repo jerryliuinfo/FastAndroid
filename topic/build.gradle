@@ -84,7 +84,7 @@ dependencies {
     implementation project(':baselib')
     implementation project(':fastFramework')
 
-//    implementation rootProject.androidLib.core_ktx
+    implementation rootProject.androidLib.core_ktx
 
     implementation rootProject.androidLib.constraintLayout
 

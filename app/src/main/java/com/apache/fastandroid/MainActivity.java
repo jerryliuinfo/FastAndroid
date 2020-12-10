@@ -22,6 +22,7 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
+import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.jetpack.GpsCallback;
 import com.apache.fastandroid.jetpack.GpsEngine;
 import com.apache.fastandroid.performance.LaunchTimer;
@@ -40,6 +41,7 @@ import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.component.eventbus.Subscribe;
 import com.tesla.framework.component.eventbus.ThreadMode;
+import com.tesla.framework.component.lifecycle.LifecycleHandler;
 import com.tesla.framework.route.Route;
 import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
@@ -173,9 +175,23 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         String resourceEntryName = getResources().getResourceEntryName(resId);
         FrameworkLogUtil.d("resourceTypeName: %s, resourceEntryName:%s", resourceTypeName,resourceEntryName);
 
-//        startActivity(new Intent(this, DemoListActivity.class));
+        startActivity(new Intent(this, DemoListActivity.class));
 
+
+
+        mHandler.sendEmptyMessageDelayed(MSG_1, 10 * 1000);
     }
+
+    public static final int MSG_1 = 100;
+
+    private Handler mHandler = new LifecycleHandler(this){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            NLog.d(TAG, "handleMessage what: %s", msg.what);
+
+        }
+    };
 
     @Subscribe(ThreadMode.MAIN)
     public void getUser(UserEvent event){
@@ -293,8 +309,11 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
                 break;
             case R.id.nav_item_video:
                 break;
-            case R.id.nav_item_topic_home:
+            case R.id.nav_item_demo:
 
+                startActivity(new Intent(this,DemoListActivity.class));
+                return;
+            case R.id.nav_item_topic_home:
                 //ARouter.getInstance().build(RouterMap.TOPIC.HOMEACTIVITY).withInt("name",1).navigation();
                 Route.getInstance().getService(ITopicService.class.getSimpleName());
                 closeDrawer();

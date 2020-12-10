@@ -1,10 +1,14 @@
 package com.tesla.framework.ui.widget.swipeback;
 
-import android.os.Bundle;
 import android.view.View;
 
+import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.BaseActivityHelper;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
+
+import org.jetbrains.annotations.NotNull;
+
+import androidx.lifecycle.LifecycleOwner;
 
 
 /**
@@ -17,10 +21,13 @@ public class SwipeActivityHelper extends BaseActivityHelper implements SwipeBack
     private SwipeBackActivityHelper mHelper;
     private SwipeBackLayout mSwipeBackLayout;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public SwipeActivityHelper(BaseActivity mActivity, LifecycleOwner mLifecycleOwner) {
+        super(mActivity, mLifecycleOwner);
+    }
 
+    @Override
+    public void onCreate(@NotNull LifecycleOwner owner) {
+        super.onCreate(owner);
         if (getActivity() instanceof EnableSwipeback) {
             if (getActivity() instanceof FragmentContainerActivity){
                 FragmentContainerActivity activity = (FragmentContainerActivity) getActivity();
@@ -55,8 +62,8 @@ public class SwipeActivityHelper extends BaseActivityHelper implements SwipeBack
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onResume(@NotNull LifecycleOwner owner) {
+        super.onResume(owner);
 
         if (swipeback)
             setSwipebackEdgeMode();
@@ -64,13 +71,15 @@ public class SwipeActivityHelper extends BaseActivityHelper implements SwipeBack
         setScreenOrientation();
     }
 
-    @Override
+
+
+  /*  @Override
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
         if (swipeback)
             mHelper.onPostCreate();
-    }
+    }*/
 
     @Override
     public View findViewById(int id) {
@@ -122,10 +131,7 @@ public class SwipeActivityHelper extends BaseActivityHelper implements SwipeBack
         }
     }
 
-    /*@Override
-    protected int configTheme() {
-        return ThemeUtils.themeArr[AppSettings.getThemeColor()][0];
-    }*/
+
 
     private void setScreenOrientation() {
         // 开启屏幕旋转

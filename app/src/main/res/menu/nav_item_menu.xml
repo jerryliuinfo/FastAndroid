@@ -26,6 +26,10 @@
             android:id="@+id/nav_item_music"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Slideshow"/>
+        <item
+            android:id="@+id/nav_item_demo"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Demo"/>
     </group>
 
     <item android:title="Communicate">
