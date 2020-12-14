@@ -1,9 +1,9 @@
 package com.tesla.framework.common.util;
 
+import com.blankj.utilcode.util.ThreadUtils;
+
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
-
-import com.tesla.framework.support.thread.ThreadUtils;
 
 /**
  * Created by 01370340 on 2018/1/30.

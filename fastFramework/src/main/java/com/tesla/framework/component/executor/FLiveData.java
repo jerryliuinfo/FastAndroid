@@ -1,14 +1,14 @@
 package com.tesla.framework.component.executor;
 
-import androidx.lifecycle.LifecycleOwner;
-import androidx.annotation.Nullable;
-
-import com.alibaba.fastjson.JSON;
-import com.tesla.framework.common.util.FrameworkLogUtil;
-import com.tesla.framework.support.thread.ThreadUtils;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import com.alibaba.fastjson.JSON;
+import com.blankj.utilcode.util.ThreadUtils;
+import com.tesla.framework.common.util.FrameworkLogUtil;
+
+import androidx.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
 
 /**
  * Created by Jerry on 2020-05-16.

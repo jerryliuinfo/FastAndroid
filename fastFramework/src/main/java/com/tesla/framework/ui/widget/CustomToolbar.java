@@ -1,12 +1,15 @@
 package com.tesla.framework.ui.widget;
 
+import android.app.Activity;
 import android.content.Context;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import com.blankj.utilcode.util.UtilsBridge;
 import com.tesla.framework.ui.activity.BaseActivity;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 
 /**
  * Created by jerryliu on 2017/3/28.
@@ -31,9 +34,12 @@ public class CustomToolbar extends Toolbar {
         boolean handler = super.onTouchEvent(ev);
         if(ev.getAction() == MotionEvent.ACTION_UP) {
             if(this.lastClickTime != 0L && System.currentTimeMillis() - this.lastClickTime <= 500L) {
-                BaseActivity activity = BaseActivity.getRunningActivity();
-                if(activity != null && activity instanceof CustomToolbar.OnToolbarDoubleClickListener) {
-                    activity.OnToolbarDoubleClick();
+                Activity activity = UtilsBridge.getTopActivity();
+                if (activity != null && activity instanceof BaseActivity){
+                    BaseActivity baseActivity = (BaseActivity) activity;
+                    if(baseActivity != null && baseActivity instanceof CustomToolbar.OnToolbarDoubleClickListener) {
+                        baseActivity.OnToolbarDoubleClick();
+                    }
                 }
             }
 

@@ -1,5 +1,7 @@
 package com.tesla.framework.common.util
 import android.content.res.Resources
+import android.graphics.Paint
+import android.graphics.Rect
 import android.util.TypedValue
 
 
@@ -18,7 +20,17 @@ val Int.dp
 
 val Float.sp
  get() = TypedValue.applyDimension(
-         TypedValue.COMPLEX_UNIT_DIP,
+         TypedValue.COMPLEX_UNIT_SP,
          this,
          Resources.getSystem().displayMetrics
  )
+
+
+val Int.sp
+ get() = this.toFloat().sp
+
+fun Paint.textCenterX(text:String, orginalCenterX:Float):Float{
+  val rect = Rect()
+  getTextBounds(text,0,text.length,rect)
+  return orginalCenterX - rect.width() / 2
+}

@@ -1,3 +1,4 @@
+include ':hencoder_plus'
 include ':doraemonkit'
 include ':hencoder_paint'
 include ':hencode_basic'

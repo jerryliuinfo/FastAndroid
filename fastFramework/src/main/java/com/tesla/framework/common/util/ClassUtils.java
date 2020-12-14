@@ -2,15 +2,6 @@ package com.tesla.framework.common.util;
 
 // Copy from galaxy sdk ${com.alibaba.android.galaxy.utils.ClassUtils}
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.util.Log;
-
-import com.tesla.framework.support.thread.DefaultPoolExecutor;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -23,6 +14,16 @@ import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.util.Log;
+
+import com.blankj.utilcode.util.ThreadUtils;
+import com.blankj.utilcode.util.ThreadUtils.SimpleTask;
 
 import dalvik.system.DexFile;
 
@@ -60,9 +61,10 @@ public class ClassUtils {
         final CountDownLatch parserCtl = new CountDownLatch(paths.size());
 
         for (final String path : paths) {
-            DefaultPoolExecutor.getInstance().execute(new Runnable() {
+
+            ThreadUtils.executeByIo(new SimpleTask<Void>() {
                 @Override
-                public void run() {
+                public Void doInBackground() throws Throwable {
                     DexFile dexfile = null;
 
                     try {
@@ -92,8 +94,16 @@ public class ClassUtils {
 
                         parserCtl.countDown();
                     }
+                    return null;
+                }
+
+                @Override
+                public void onSuccess(Void result) {
+
                 }
             });
+
+
         }
 
         parserCtl.await();

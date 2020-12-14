@@ -152,6 +152,7 @@ final class UtilsActivityLifecycleImpl implements Application.ActivityLifecycleC
     }
 
     private void consumeActivityLifecycleCallbacks(Activity activity, Lifecycle.Event event) {
+        //根据activity找到对应的监听者
         List<Utils.ActivityLifecycleCallbacks> listeners = mActivityLifecycleCallbacksMap.get(activity);
         if (listeners != null) {
             for (Utils.ActivityLifecycleCallbacks listener : listeners) {

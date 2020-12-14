@@ -1,6 +1,6 @@
 package com.apache.fastandroid.sample;
 
-import com.tesla.framework.support.thread.ThreadUtils;
+import com.blankj.utilcode.util.ThreadUtils;
 
 /**
  * Created by Jerry on 2020-05-16.

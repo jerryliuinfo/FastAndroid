@@ -36,36 +36,58 @@ import static android.Manifest.permission.CALL_PHONE;
  *     time  : 2020/03/19
  *     desc  :
  * </pre>
+ *  外部尽量不要直接调用这个类，而是通过 {@link AppUtils} 或者 {@link ActivityUtils} 来调用
  */
-class UtilsBridge {
+public class UtilsBridge {
 
-    static void init(Application app) {
+    /**
+     * 初始化 Activity 生命周期 监听
+     * @param app
+     */
+    public static void init(Application app) {
         UtilsActivityLifecycleImpl.INSTANCE.init(app);
     }
 
-    static void unInit(Application app) {
+    /**
+     *
+     * @param app
+     */
+    public static void unInit(Application app) {
         UtilsActivityLifecycleImpl.INSTANCE.unInit(app);
     }
 
-    static void preLoad() {
+    public static void preLoad() {
         preLoad(AdaptScreenUtils.getPreLoadRunnable());
     }
 
     ///////////////////////////////////////////////////////////////////////////
     // UtilsActivityLifecycleImpl
     ///////////////////////////////////////////////////////////////////////////
-    static Activity getTopActivity() {
+    public static Activity getTopActivity() {
         return UtilsActivityLifecycleImpl.INSTANCE.getTopActivity();
     }
 
+    /**
+     * 注册监听app进入前台或者后台的Listener
+     * @param listener
+     */
     static void addOnAppStatusChangedListener(final Utils.OnAppStatusChangedListener listener) {
         UtilsActivityLifecycleImpl.INSTANCE.addOnAppStatusChangedListener(listener);
     }
 
+    /**
+     * 移除注册监听app进入前台或者后台的Listener
+     * @param listener
+     */
     static void removeOnAppStatusChangedListener(final Utils.OnAppStatusChangedListener listener) {
         UtilsActivityLifecycleImpl.INSTANCE.removeOnAppStatusChangedListener(listener);
     }
 
+    /**
+     * 监听Activity生命周期
+     * @param activity
+     * @param callbacks
+     */
     static void addActivityLifecycleCallbacks(final Activity activity,
                                               final Utils.ActivityLifecycleCallbacks callbacks) {
         UtilsActivityLifecycleImpl.INSTANCE.addActivityLifecycleCallbacks(activity, callbacks);

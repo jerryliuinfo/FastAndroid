@@ -22,6 +22,7 @@ import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
 import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.util.MainLogUtil;
+import com.blankj.utilcode.util.Utils;
 import com.didichuxing.doraemonkit.DoraemonKit;
 import com.github.anrwatchdog.ANRError;
 import com.github.anrwatchdog.ANRWatchDog;
@@ -64,6 +65,7 @@ public class FastAndroidApplication extends Application {
         //traceview 开始检测
        // Debug.startMethodTracing("APP");
         Global.setContext(getApplicationContext());
+
 
         //systrace 开始检测
         TraceCompat.beginSection("trace");
@@ -149,6 +151,7 @@ public class FastAndroidApplication extends Application {
 
     private void initDoraemonkit(){
         DoraemonKit.APPLICATION = this;
+        Utils.init(this);
     }
 
     @Override

@@ -59,15 +59,6 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     @ViewInject(idStr = "toolbar")
     Toolbar mToolbar;
 
-    public static BaseActivity getRunningActivity() {
-        return runningActivity;
-    }
-
-    public static void setRunningActivity(BaseActivity activity) {
-        runningActivity = activity;
-    }
-
-
     protected int configTheme() {
         if (mHelper != null) {
             int appTheheme = mHelper.configTheme();
@@ -80,10 +71,8 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         fragmentRefs = new HashMap<>();
-
         if (savedInstanceState == null) {
             theme = configTheme();
-
             language = new Locale(SettingUtility.getPermanentSettingAsStr("language", Locale.getDefault().getLanguage()),
                     SettingUtility.getPermanentSettingAsStr("language-country", Locale.getDefault().getCountry()));
         } else {
@@ -123,6 +112,10 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 //            mFragments.push(fragment);
             fragmentTransaction.addToBackStack("");
             fragmentTransaction.commit();
+
+
+
+
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -208,8 +201,6 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     protected void onResume() {
         super.onResume();
 
-        setRunningActivity(this);
-
         if (theme == configTheme()) {
 
         } else {
@@ -251,8 +242,9 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mHelper != null) {
             boolean handle = mHelper.onOptionsItemSelected(item);
-            if (handle)
+            if (handle){
                 return true;
+            }
         }
 
         if (item.getItemId() == android.R.id.home) {

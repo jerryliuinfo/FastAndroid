@@ -1,17 +1,17 @@
 package com.tesla.framework.component.intercept;
 
-import android.content.Context;
-import android.os.SystemClock;
-
-import com.tesla.framework.support.bean.InterceptorBean;
-import com.tesla.framework.support.execption.HandlerException;
-import com.tesla.framework.support.thread.CancelableCountDownLatch;
-import com.tesla.framework.support.thread.DefaultPoolExecutor;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import android.content.Context;
+import android.os.SystemClock;
+
+import com.blankj.utilcode.util.ThreadUtils;
+import com.blankj.utilcode.util.ThreadUtils.SimpleTask;
+import com.tesla.framework.support.bean.InterceptorBean;
+import com.tesla.framework.support.execption.HandlerException;
+import com.tesla.framework.support.thread.CancelableCountDownLatch;
 import static com.tesla.framework.common.util.Consts.TAG;
 
 /**
@@ -24,14 +24,20 @@ public class InterceptorServiceImpl implements InterceptorService {
 
 
     public void init(final Context context) {
-        DefaultPoolExecutor.getInstance().execute(new Runnable() {
+        ThreadUtils.executeByIo(new SimpleTask<Void>() {
             @Override
-            public void run() {
-                    SystemClock.sleep(200);
-                    interceptorHasInit = true;
-                    synchronized (interceptorInitLock) {
-                        interceptorInitLock.notifyAll();
-                    }
+            public Void doInBackground() throws Throwable {
+                SystemClock.sleep(200);
+                interceptorHasInit = true;
+                synchronized (interceptorInitLock) {
+                    interceptorInitLock.notifyAll();
+                }
+                return null;
+            }
+
+            @Override
+            public void onSuccess(Void result) {
+
             }
         });
     }
@@ -44,9 +50,10 @@ public class InterceptorServiceImpl implements InterceptorService {
             callback.onInterrupt(new HandlerException("Interceptors initialization takes too much time."));
             return;
         }
-        DefaultPoolExecutor.getInstance().execute(new Runnable() {
+
+        ThreadUtils.executeByIo(new SimpleTask<Void>() {
             @Override
-            public void run() {
+            public Void doInBackground() throws Throwable {
                 CancelableCountDownLatch interceptorCounter = new CancelableCountDownLatch(interceptors.size());
                 try {
                     _execute(0, interceptorCounter, interceptorBean);
@@ -61,9 +68,15 @@ public class InterceptorServiceImpl implements InterceptorService {
                 } catch (Exception e) {
                     callback.onInterrupt(e);
                 }
+                return null;
+            }
+
+            @Override
+            public void onSuccess(Void result) {
 
             }
         });
+
     }
 
     private void _execute(final int index, final CancelableCountDownLatch countDownLatch,final InterceptorBean interceptorBean){

@@ -1,5 +1,9 @@
 package com.apache.fastandroid;
 
+import java.io.File;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,8 +36,10 @@ import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
+import com.tesla.framework.Global;
 import com.tesla.framework.common.util.FrameworkLogUtil;
 import com.tesla.framework.common.util.ResUtil;
+import com.tesla.framework.common.util.file.FileUtils;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkListener;
 import com.tesla.framework.common.util.network.NetworkType;
@@ -176,6 +182,12 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         FrameworkLogUtil.d("resourceTypeName: %s, resourceEntryName:%s", resourceTypeName,resourceEntryName);
 
         startActivity(new Intent(this, DemoListActivity.class));
+
+
+
+        File downloadFile = new File(Global.getExternalFilesDir(""), "download.apk");
+        File originalFile = new File(Global.getExternalFilesDir(""), "original.apk");
+        NLog.d(TAG, "downloadFile md5: %s, originalFile md5: %s", getMD5One(downloadFile.getPath()), getMD5One(originalFile.getPath()));
 
 
 
@@ -335,6 +347,9 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         closeDrawer();
 
         selecteId = itemId;
+
+
+
     }
 
     /**
@@ -495,5 +510,31 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
             callback.onPauseAction();
         }
 
+    }
+
+
+    private final static String[] strHex = { "0", "1", "2", "3", "4", "5",
+            "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
+
+    public static String getMD5One(String path) {
+        StringBuffer sb = new StringBuffer();
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] b = md.digest(FileUtils.readFileToBytes(new File(path)));
+            for (int i = 0; i < b.length; i++) {
+                int d = b[i];
+                if (d < 0) {
+                    d += 256;
+                }
+                int d1 = d / 16;
+                int d2 = d % 16;
+                sb.append(strHex[d1] + strHex[d2]);
+            }
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
     }
 }
