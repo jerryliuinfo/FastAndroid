@@ -23,14 +23,10 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     implementation rootProject.androidLib.core_ktx
-
-
-
     implementation rootProject.androidLib.appcompatV7
-
     implementation rootProject.androidLib.constraintLayout
-
     implementation rootProject.androidLib.design
+
     implementation project(':baselib')
     implementation project(':fastFramework')
 

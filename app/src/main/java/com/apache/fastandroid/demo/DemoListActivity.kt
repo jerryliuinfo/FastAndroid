@@ -11,13 +11,14 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
 import com.apache.fastandroid.demo.doraemonkit.DoraemonkitDemoFragment
-import com.apache.fastandroid.hencoder.basic.DrawBasicDemoFragment
+import com.apache.fastandroid.DrawBasicDemoFragment
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleFragment
 import com.apache.fastandroid.jetpack.lifecycle.TraditionalLifeCycleFragment
 import com.apache.fastandroid.jetpack.livedata.LiveDataFragment
 import com.apache.fastandroid.jetpack.livedataviewmodel.LiveDataViewModelFragment
 import com.apache.fastandroid.jetpack.viewmodel.ViewModelFragment
+import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
 import com.tesla.framework.ui.activity.BaseActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import kotlinx.android.synthetic.main.activity_demo_list.*
@@ -44,6 +45,7 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean(),
                 ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
+                ViewItemBean("Hencoder", "绘制文字", DrawTextDemoFragment::class.java),
                 ViewItemBean("CustomViewWidget", "第三方控件", CustomViewFragment::class.java),
                 ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
                 ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java)

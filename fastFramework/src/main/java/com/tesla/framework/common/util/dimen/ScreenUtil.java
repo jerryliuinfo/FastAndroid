@@ -1,5 +1,7 @@
 package com.tesla.framework.common.util.dimen;
 
+import java.lang.reflect.Method;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -15,10 +17,7 @@ import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.sp.SPUtil;
-
-import java.lang.reflect.Method;
 
 /**
  * Created by jerryliu on 2017/6/3.
@@ -58,9 +57,7 @@ public class ScreenUtil {
         }
     }
 
-    public enum NetWorkType {
-        none, mobile, wifi
-    }
+
 
     private static void setScreenInfo(Context context) {
         DisplayMetrics dm = new DisplayMetrics();
@@ -83,10 +80,7 @@ public class ScreenUtil {
             setScreenInfo(context);
         return screenHeight;
     }
-    public static int getScreenHeight() {
 
-        return getScreenHeight(FrameworkApplication.getContext());
-    }
 
     public static int getTitleBarHeight(Activity activity) {
         int contentTop = activity.getWindow().findViewById(Window.ID_ANDROID_CONTENT).getTop();
@@ -96,10 +90,23 @@ public class ScreenUtil {
         return titleBarHeight;
     }
 
-    public static float getDensity(Context context) {
-        if (density == 0.0f)
-            setScreenInfo(context);
-        return density;
+
+    /**
+     * Return the density of screen.
+     *
+     * @return the density of screen
+     */
+    public static float getScreenDensity() {
+        return Resources.getSystem().getDisplayMetrics().density;
+    }
+
+    /**
+     * Return the screen density expressed as dots-per-inch.
+     *
+     * @return the screen density expressed as dots-per-inch
+     */
+    public static int getScreenDensityDpi() {
+        return Resources.getSystem().getDisplayMetrics().densityDpi;
     }
 
 
@@ -197,6 +204,8 @@ public class ScreenUtil {
         return (res.getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT);
     }
 
+
+
     @TargetApi(14)
     public static int getNavigationBarHeight(Context context) {
         Resources res = context.getResources();
@@ -215,17 +224,7 @@ public class ScreenUtil {
         return result;
     }
 
-    @TargetApi(14)
-    public static int getNavigationBarWidth(Context context) {
-        Resources res = context.getResources();
-        int result = 0;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            if (hasNavigationBar(context)) {
-                return getInternalDimensionSize(res, NAV_BAR_WIDTH_RES_NAME);
-            }
-        }
-        return result;
-    }
+
 
     @TargetApi(14)
     public static boolean hasNavigationBar(Context context) {

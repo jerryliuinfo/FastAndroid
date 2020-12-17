@@ -20,6 +20,8 @@ import android.view.View;
 
 import com.google.gson.Gson;
 
+import com.tesla.framework.common.util.dimen.DimensUtil;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -497,15 +499,15 @@ public class UtilsBridge {
     // SizeUtils
     ///////////////////////////////////////////////////////////////////////////
     static int dp2px(final float dpValue) {
-        return SizeUtils.dp2px(dpValue);
+        return DimensUtil.dp2px(dpValue);
     }
 
     static int px2dp(final float pxValue) {
-        return SizeUtils.px2dp(pxValue);
+        return DimensUtil.px2dp(pxValue);
     }
 
     static int sp2px(final float spValue) {
-        return SizeUtils.sp2px(spValue);
+        return DimensUtil.sp2px(spValue);
     }
 
     static int px2sp(final float pxValue) {

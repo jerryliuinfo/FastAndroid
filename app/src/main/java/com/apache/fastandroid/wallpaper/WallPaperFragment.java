@@ -1,12 +1,13 @@
 package com.apache.fastandroid.wallpaper;
 
+import java.util.List;
+
 import android.os.Bundle;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.apache.fastandroid.pic.view.WallpaperItemView;
 import com.apache.fastandroid.topic.support.bean.WallpaperBean;
 import com.apache.fastandroid.topic.support.bean.WallpaperBeans;
@@ -19,7 +20,9 @@ import com.tesla.framework.support.paging.index.IndexPaging;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragment;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.IItemViewCreator;
-import java.util.List;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by 01370340 on 2017/11/19.
@@ -44,7 +47,7 @@ public class WallPaperFragment extends ARecycleViewSwipeRefreshFragment<Wallpape
     @Override
     protected void setUpRefreshConfig(RefreshConfig refreshConfig) {
         super.setUpRefreshConfig(refreshConfig);
-        int padding = DimensUtil.dp2px(getActivity(), 4);
+        int padding = DimensUtil.dp2px( 4);
         //xml中item之间左右间隔是4dp 这里给RefreshView左右再加4dp 这样就8dp了
         getRefreshView().setPadding(padding, 0, padding, 0);
     }

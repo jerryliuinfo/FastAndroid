@@ -10,7 +10,7 @@ import com.tesla.framework.common.util.ResUtil
 /**
  * Created by Jerry on 2020/11/11.
  */
-class PageAdapter(val pageModels: List<PageModel>, fm: FragmentManager): FragmentPagerAdapter(fm) {
+class PageAdapter(private val pageModels: List<PageModel>, fm: FragmentManager): FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         return PageFragment.newInstance(pageModels[position].sampleLayoutRes,pageModels[position].practiceLayoutRes)

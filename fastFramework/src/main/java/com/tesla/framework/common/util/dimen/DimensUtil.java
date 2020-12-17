@@ -5,43 +5,39 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
-import com.tesla.framework.applike.FrameworkApplication;
-
 /**
  * Created by jerryliu on 2017/4/11.
  */
 
 public class DimensUtil {
-    public static int dp2px(Context context,float dp){
-        int px = (int) (dp + 0.5f);
-        try {
-            px = (int) (Resources.getSystem().getDisplayMetrics().density * dp + 0.5f);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return px;
+
+    /**
+     * Value of dp to value of px.
+     *
+     * @param dpValue The value of dp.
+     * @return value of px
+     */
+    public static int dp2px(float dpValue){
+        final float scale = Resources.getSystem().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 
-    public static int dp2px(float dp){
-        int px = (int) (dp + 0.5f);
-        try {
-            px = (int) (Resources.getSystem().getDisplayMetrics().density * dp + 0.5f);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return px;
+    /**
+     * Value of px to value of dp.
+     *
+     * @param pxValue The value of px.
+     * @return value of dp
+     */
+    public static int px2dp(final float pxValue) {
+        final float scale = Resources.getSystem().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
     }
 
 
-    public static int sp2px(int sp){
-        Context context = FrameworkApplication.getContext();
-        int px = (int)(sp + 0.5f);
-        try {
-            px = (int)(context.getResources().getDisplayMetrics().scaledDensity * sp + 0.5f);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return px;
+
+    public static int sp2px(float spValue){
+        final float fontScale = Resources.getSystem().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
     }
 
     public static int px2sp(Context context, float value) {

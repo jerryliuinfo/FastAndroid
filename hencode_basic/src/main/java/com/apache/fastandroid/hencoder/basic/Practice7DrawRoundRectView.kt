@@ -7,7 +7,7 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
-import com.apache.fastandroid.kt.dp
+import com.tesla.framework.common.util.dp
 
 /**
  * Created by Jerry on 2020/11/12.

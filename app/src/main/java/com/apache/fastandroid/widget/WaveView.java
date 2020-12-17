@@ -99,7 +99,7 @@ public class WaveView extends View {
 
         aboveWaveColor = ResUtil.getColor(R.color.wave);
         blowWaveColor = ResUtil.getColor(R.color.wave);
-        text_default_size = DimensUtil.dp2px(context, 14);
+        text_default_size = DimensUtil.dp2px(14);
         setProgress(default_progress);
 
         initializePainters();
@@ -150,7 +150,7 @@ public class WaveView extends View {
             paintR.setAntiAlias(true);
             // 设置画笔的颜色
             paintR.setColor(Color.parseColor("#ffffff"));
-            paintR.setStrokeWidth(DimensUtil.dp2px(getContext(), 1.5f));
+            paintR.setStrokeWidth(DimensUtil.dp2px(1.5f));
             paintR.setStyle(Paint.Style.STROKE);
             paintR.setTextSize(text_default_size);
         }
@@ -176,7 +176,7 @@ public class WaveView extends View {
                 paintT = new Paint();
                 paintT.setAntiAlias(true);
                 paintT.setColor(Color.parseColor("#ffffff"));
-                paintT.setStrokeWidth(DimensUtil.dp2px(getContext(), 1.5f));
+                paintT.setStrokeWidth(DimensUtil.dp2px( 1.5f));
                 paintT.setTextSize(text_default_size);
 
                 Paint.FontMetricsInt fontMetrics = paintT.getFontMetricsInt();

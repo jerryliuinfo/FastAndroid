@@ -1,5 +1,7 @@
 package com.apache.fastandroid.topic.news.view;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +11,11 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.topic.support.bean.NewsSummary;
-import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
-
-import java.util.List;
 
 /**
  * Created by 01370340 on 2017/11/23.
@@ -67,9 +66,9 @@ public class MainNewsItemPhotoView extends ARecycleViewItemViewHolder<NewsSummar
 
 
     private void setImageView( NewsSummary newsSummary) {
-        int PhotoThreeHeight = (int) DimensUtil.dp2px(FrameworkApplication.getContext(),90);
-        int PhotoTwoHeight = (int) DimensUtil.dp2px(FrameworkApplication.getContext(),120);
-        int PhotoOneHeight = (int)DimensUtil.dp2px(FrameworkApplication.getContext(),150);
+        int PhotoThreeHeight = (int) DimensUtil.dp2px(90);
+        int PhotoTwoHeight = (int) DimensUtil.dp2px(120);
+        int PhotoOneHeight = (int)DimensUtil.dp2px(150);
 
         String imgSrcLeft = null;
         String imgSrcMiddle = null;

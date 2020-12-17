@@ -1,9 +1,10 @@
-package com.apache.fastandroid.hencoder.basic
+package com.apache.fastandroid
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
+import com.apache.fastandroid.hencoder.basic.R
 import com.tesla.framework.ui.fragment.ABaseFragment
 import kotlinx.android.synthetic.main.fragment_practice_demo.*
 

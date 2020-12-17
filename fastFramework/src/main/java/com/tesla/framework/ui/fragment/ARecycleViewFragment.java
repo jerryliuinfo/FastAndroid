@@ -1,9 +1,10 @@
 package com.tesla.framework.ui.fragment;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +21,9 @@ import com.tesla.framework.ui.fragment.adpater.drag.OnItemMoveListener;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.header.AHeaderItemViewCreator;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 维护RecycleView
@@ -194,7 +195,7 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
 
     protected void setViewPadding(View viewGroup) {
         viewGroup.setPadding(viewGroup.getPaddingLeft(), viewGroup.getPaddingTop(),
-                viewGroup.getPaddingRight(), DimensUtil.dp2px(getActivity(), 56));
+                viewGroup.getPaddingRight(), DimensUtil.dp2px( 56));
     }
 
 

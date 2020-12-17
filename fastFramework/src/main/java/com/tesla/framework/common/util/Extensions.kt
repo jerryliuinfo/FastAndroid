@@ -29,8 +29,20 @@ val Float.sp
 val Int.sp
  get() = this.toFloat().sp
 
-fun Paint.textCenterX(text:String, orginalCenterX:Float):Float{
+fun Paint.textCenterX(text:String, orginalCenterX: Float):Float{
   val rect = Rect()
   getTextBounds(text,0,text.length,rect)
-  return orginalCenterX - rect.width() / 2
+  return (orginalCenterX - rect.width() / 2).toFloat()
+}
+
+fun Paint.textCenterY(text:String, baseY:Float):Float{
+    val rect = Rect()
+    getTextBounds(text,0,text.length,rect)
+    return baseY + rect.height() / 2
+}
+
+fun Paint.textRect(text:String):Rect{
+    val rect = Rect()
+    getTextBounds(text,0,text.length,rect)
+    return rect
 }
