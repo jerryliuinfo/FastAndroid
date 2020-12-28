@@ -1,3 +1,4 @@
+include ':hencoder_clipmatrix'
 include ':hencoder_drawtext'
 include ':hencoder_plus'
 include ':doraemonkit'

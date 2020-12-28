@@ -87,8 +87,10 @@ public class MainNewsFragment extends ARecycleViewSwipeRefreshFragment<NewsSumma
             if (!N.isEmpty(nextPage)){
                 page = Integer.parseInt(nextPage);
             }
-
-            return Sdk.newInstance(getTaskCacheMode(this)).getNewsListData(mChannel.getNewsChannelType(),mChannel.getNewsChannelId(),String.valueOf(page));
+            if (mChannel != null){
+                return Sdk.newInstance(getTaskCacheMode(this)).getNewsListData(mChannel.getNewsChannelType(),mChannel.getNewsChannelId(),String.valueOf(page));
+            }
+            return null;
         }
     }
 

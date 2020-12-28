@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
-import com.apache.fastandroid.demo.round.ConstraintBasicFragment
+import com.apache.fastandroid.demo.BaseListFragment
+import com.apache.fastandroid.demo.constraint.practice.*
+import com.tesla.framework.ui.activity.FragmentArgs
 
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.ABaseFragment
@@ -18,68 +20,26 @@ import kotlinx.android.synthetic.main.activity_demo_list.*
 /**
  * Created by Jerry on 2020/11/11.
  */
-class ConstraintLayoutDemoFragment:ABaseFragment() {
-
-    companion object {
-        private val MODELS = arrayListOf(
-                ViewItemBean("约束布局", "约束布局", ConstraintBasicFragment::class.java)
+class ConstraintLayoutDemoFragment: BaseListFragment() {
+    override fun initDatas(): ArrayList<ViewItemBean> {
+        return arrayListOf(
+                ViewItemBean("约束布局", "约束布局基本使用1", ConstraintBasicFragment::class.java),
+                ViewItemBean("约束布局", "约束布局基本使用2", ConstraintBasicFragment2::class.java),
+                ViewItemBean("约束布局居中", "居中2", ConstraintCenterFragment::class.java),
+                ViewItemBean("约束布局居中", "居中2", ConstraintCenter2Fragment::class.java),
+                ViewItemBean("Weight权重", "Weight权重", ConstraintWeightFragment::class.java),
+                ViewItemBean("Baseline", "Baseline", ConstraintBaselineFragment::class.java),
+                ViewItemBean("角度定位", "角度定位", ConstrainCircularFragment::class.java),
+                ViewItemBean("宽度约束", "ConstrainedWidth", ConstraintWidthFragment::class.java),
+                ViewItemBean("Bias", "Bias", ConstraintBiasFragment::class.java),
+                ViewItemBean("GoneMargin", "GoneMargin", ConstraintGoneMarginFragment::class.java),
+                ViewItemBean("ChainStyle", "ChainStyle", ConstraintChainStyleFragment::class.java),
+                ViewItemBean("DimensionRatio", "DimensionRatio", ConstraintDimensionRatioFragment::class.java),
+                ViewItemBean("Percent", "Percent", ConstraintPercentFragment::class.java),
+                ViewItemBean("Guideline", "Guideline", ConstraintGuidelineFragment::class.java),
+                ViewItemBean("Group", "Group", ConstraintGroupFragment::class.java),
+                ViewItemBean("Margin", "Margin", ConstraintMarginFragment::class.java),
+                ViewItemBean("传统布局居中", "RelativeLayout居中", ConstraintCenterRelativeLayoutFragment::class.java)
         )
     }
-
-
-    override fun inflateContentView(): Int {
-        return R.layout.fragment_custom_view
-    }
-
-
-    override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
-        super.layoutInit(inflater, savedInstanceSate)
-        recycleview.apply {
-            layoutManager = GridLayoutManager(activity, 2)
-            adapter = ItemViewAdapter()
-        }
-
-    }
-
-    private inner class ItemViewAdapter : RecyclerView.Adapter<ItemViewHolder>() {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-            val layoutInflater = LayoutInflater.from(parent.context)
-            val itemView = layoutInflater.inflate(viewType, parent, false)
-            return ItemViewHolder(itemView)
-        }
-
-        override fun getItemCount(): Int {
-            return MODELS.size
-        }
-
-        override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-            val viewItemBean = MODELS[position]
-            holder.txtTitle.text = viewItemBean.title
-            holder.txt_description.text = viewItemBean.description
-            holder.itemView.setOnClickListener {
-                if (viewItemBean.clazz == null){
-                    return@setOnClickListener
-                }
-                FragmentContainerActivity.launch(this@ConstraintLayoutDemoFragment.activity,viewItemBean.clazz,null)
-            }
-        }
-
-        override fun getItemViewType(position: Int): Int {
-            val viewItemBean = MODELS[position]
-            return if (viewItemBean.clazz == null) {
-                R.layout.layout_cell_bord_item_title
-            } else {
-                R.layout.layout_cell_bord_item
-            }
-        }
-
-    }
-
-
-    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        val txtTitle: TextView = itemView.findViewById(R.id.txt_title)
-        val txt_description: TextView = itemView.findViewById(R.id.txt_description)
-    }
-
 }

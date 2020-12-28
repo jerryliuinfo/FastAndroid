@@ -3,11 +3,14 @@ package com.tesla.framework.common.util;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 
+import com.tesla.framework.Global;
 import com.tesla.framework.applike.FrameworkApplication;
 
-import androidx.annotation.ColorInt;
+import androidx.annotation.DimenRes;
 import androidx.core.content.ContextCompat;
 
 
@@ -135,6 +138,13 @@ public class ResUtil {
         return drawable;
     }
 
+    public static final Bitmap getBitmap(int resId) {
+        Context context = FrameworkApplication.getContext();
+        Drawable drawable = null;
+
+        return BitmapFactory.decodeResource(Global.getResources(), resId);
+    }
+
 
     public static int getResourceId(Context context,String name,String defType){
         return context.getResources().getIdentifier(name,defType,context.getPackageName());
@@ -144,8 +154,13 @@ public class ResUtil {
         return getResourceId(context,name, "string");
     }
 
+
     public static int getArrayResourceId(Context context,String name){
         return getResourceId(context,name, "array");
+    }
+
+    public static float getDimensResourceId(Context context, @DimenRes int id){
+        return context.getResources().getDimension(id);
     }
 
 

@@ -11,7 +11,7 @@ import android.util.Log;
  * description:
  */
 public class ANRWatchDog extends Thread {
-    private static final int DEFAULT_ANR_TIMEOUT = 5000;
+    private static final int DEFAULT_ANR_TIMEOUT = 2000;
     private static final ANRWatchDog.ANRListener DEFAULT_ANR_LISTENER = new ANRWatchDog.ANRListener() {
         public void onAppNotResponding(ANRError error) {
             throw error;
@@ -40,7 +40,7 @@ public class ANRWatchDog extends Thread {
     private final Runnable _ticker;
 
     public ANRWatchDog() {
-        this(5000);
+        this(DEFAULT_ANR_TIMEOUT);
     }
 
     public ANRWatchDog(int timeoutInterval) {

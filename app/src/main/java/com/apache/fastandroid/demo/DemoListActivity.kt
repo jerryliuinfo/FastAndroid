@@ -12,13 +12,12 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
 import com.apache.fastandroid.demo.doraemonkit.DoraemonkitDemoFragment
 import com.apache.fastandroid.DrawBasicDemoFragment
+import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
+import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
-import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleFragment
-import com.apache.fastandroid.jetpack.lifecycle.TraditionalLifeCycleFragment
-import com.apache.fastandroid.jetpack.livedata.LiveDataFragment
-import com.apache.fastandroid.jetpack.livedataviewmodel.LiveDataViewModelFragment
-import com.apache.fastandroid.jetpack.viewmodel.ViewModelFragment
 import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
+import com.hencoder.hencoderpracticedraw4.ClipMatrixDemoFragment
+import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.activity.BaseActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import kotlinx.android.synthetic.main.activity_demo_list.*
@@ -28,32 +27,27 @@ import kotlinx.android.synthetic.main.activity_demo_list.*
  */
 class DemoListActivity : BaseActivity() {
     companion object {
+        private val TAG = "DemoListActivity"
         private val MODELS = arrayListOf(
                 ViewItemBean("JetPack", "", null),
                 //空出一行来
                 ViewItemBean(),
-                ViewItemBean("Normal", "传统生命周期监听", TraditionalLifeCycleFragment::class.java),
-                ViewItemBean("JetPack", "LifeCycle", JetPackLifeCycleFragment::class.java),
-                ViewItemBean("JetPack", "ViewModel", ViewModelFragment::class.java),
-                ViewItemBean("JetPack", "LiveData", LiveDataFragment::class.java),
-                ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java),
-                ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java),
 
-
+                ViewItemBean("JetPack", "JetPack", JetPackDemoFragment::class.java),
                 ViewItemBean("Hencoder自定义View", "", null),
                 //空出一行来
                 ViewItemBean(),
                 ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制文字", DrawTextDemoFragment::class.java),
+                ViewItemBean("Hencoder", "绘制辅助", ClipMatrixDemoFragment::class.java),
+
+
                 ViewItemBean("CustomViewWidget", "第三方控件", CustomViewFragment::class.java),
                 ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
+                ViewItemBean("性能监控", "性能监控", PerformanceDemoFragment::class.java),
                 ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java)
-
-
         )
-
-
     }
 
 
@@ -78,6 +72,7 @@ class DemoListActivity : BaseActivity() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val itemView = layoutInflater.inflate(viewType, parent, false)
+            NLog.d(TAG, "onCreateViewHolder itemView: %s",itemView)
             return ItemViewHolder(itemView)
         }
 
@@ -88,7 +83,7 @@ class DemoListActivity : BaseActivity() {
         override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
             val viewItemBean = MODELS[position]
             holder.txtTitle.text = viewItemBean.title
-            holder.txt_description.text = viewItemBean.description
+            holder.txtDescription.text = viewItemBean.description
             holder.itemView.setOnClickListener {
                 if (viewItemBean.clazz == null) {
                     return@setOnClickListener
@@ -110,8 +105,8 @@ class DemoListActivity : BaseActivity() {
 
 
     class ItemViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         val txtTitle: TextView = itemView.findViewById(R.id.txt_title)
-        val txt_description: TextView = itemView.findViewById(R.id.txt_description)
+        val txtDescription: TextView = itemView.findViewById(R.id.txt_description)
+
     }
 }

@@ -34,7 +34,7 @@ class DrawBasicDemoFragment:ABaseFragment() {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        setToolbarTitle("绘制基础")
+//        setToolbarTitle("绘制基础")
 
 
         pager.adapter = PageAdapter(pageModels,activity!!.supportFragmentManager)

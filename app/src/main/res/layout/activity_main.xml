@@ -23,27 +23,8 @@
             android:gravity="center">
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="测试"
-            android:onClick="onTest"
-            />
-        <Button
-            android:id="@+id/btn_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="修复"
-            android:onClick="onFix"
-            />
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:tint="@color/comm_red"
-            />
+
+
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

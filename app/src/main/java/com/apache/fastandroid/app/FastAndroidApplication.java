@@ -11,7 +11,6 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import com.apache.fastandroid.BuildConfig;
-import com.apache.fastandroid.SplashActivity;
 import com.apache.fastandroid.artemis.BaseApp;
 import com.apache.fastandroid.artemis.constant.AppConfig;
 import com.apache.fastandroid.artemis.http.GlobalHttp;
@@ -19,16 +18,14 @@ import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.track.TrackPoint;
 import com.apache.fastandroid.artemis.track.TrackPointCallBack;
 import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
-import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.Utils;
 import com.didichuxing.doraemonkit.DoraemonKit;
-import com.github.anrwatchdog.ANRError;
 import com.github.anrwatchdog.ANRWatchDog;
-import com.github.anrwatchdog.ANRWatchDog.ANRListener;
+import com.github.moduth.blockcanary.BlockCanary;
+import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.squareup.leakcanary.LeakCanary;
-import com.tencent.bugly.crashreport.CrashReport;
 import com.tesla.framework.Global;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
@@ -41,7 +38,6 @@ import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.component.imageloader.impl.GlideImageLoader;
 import com.tesla.framework.component.performance.BlockDetector;
 import com.tesla.framework.network.task.TaskException;
-import com.tesla.framework.support.crash.TUncaughtExceptionHandler;
 import com.tesla.framework.support.db.FastAndroidDB;
 
 import androidx.core.os.TraceCompat;
@@ -61,7 +57,9 @@ public class FastAndroidApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        NLog.setDebug(BuildConfig.DEBUG, Logger.DEBUG);
         MainLogUtil.d("Application onCreate ");
+
         //traceview 开始检测
        // Debug.startMethodTracing("APP");
         Global.setContext(getApplicationContext());
@@ -136,16 +134,17 @@ public class FastAndroidApplication extends Application {
         //systrace 结束检测
         TraceCompat.endSection();
         ANRWatchDog anrWatchDog = new ANRWatchDog();
-        anrWatchDog.setANRListener(new ANRListener() {
+      /*  anrWatchDog.setANRListener(new ANRListener() {
             @Override
             public void onAppNotResponding(ANRError error) {
                 error.printStackTrace();
                 MainLogUtil.d("发生anr了: trace:"+ error.getMessage());
             }
         });
-        anrWatchDog.start();
+        anrWatchDog.start();*/
 
         initLeakCanry();
+        BlockCanary.install(this, new BlockCanaryContext()).start();
 
     }
 
@@ -160,7 +159,6 @@ public class FastAndroidApplication extends Application {
         MultiDex.install(base);
         //HotFixManager.loadDex(base);
         super.attachBaseContext(base);
-        LaunchTimer.startRecord();
     }
 
     private void initLeakCanry(){
@@ -202,9 +200,9 @@ public class FastAndroidApplication extends Application {
 
 
     private void initLog(){
-        if (BuildConfig.LOG_DEBUG){
-            NLog.setDebug(true, Logger.DEBUG);
-        }
+//        if (BuildConfig.LOG_DEBUG){
+//            NLog.setDebug(true, Logger.DEBUG);
+//        }
 
        /* CC.enableVerboseLog(true);
         CC.enableDebug(true);
@@ -215,9 +213,9 @@ public class FastAndroidApplication extends Application {
 
     private void initCrashAndAnalysis(){
         //bugly统计
-        CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
-        //本地crash日志收集  使用bulgy时不能在本地手机日志
-        TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, false, 0, SplashActivity.class);
+//        CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
+//        //本地crash日志收集  使用bulgy时不能在本地手机日志
+//        TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, false, 0, SplashActivity.class);
 
     }
 

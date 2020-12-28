@@ -29,7 +29,6 @@ import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.jetpack.GpsCallback;
 import com.apache.fastandroid.jetpack.GpsEngine;
-import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.tink.TinkTest;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
@@ -76,23 +75,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
 
     @BindViewById((R.id.navigation_view))
     NavigationView mNavigationView;
-
-
-
-    void doJob() {
-
-    }
-
-
-    private Handler handler = new Handler(){
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            super.handleMessage(msg);
-        }
-
-    };
-
-
 
     private ActionBarDrawerToggle drawerToggle;
 
@@ -173,7 +155,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         }
         MainLogUtil.d("Activity.class 由：" + Activity.class.getClassLoader() +" 加载");
         FastBus.getInstance().registe(this);
-        doJob();
 
         int resId = R.color.cardview_dark_background;
         String resourceTypeName =
@@ -392,11 +373,7 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         }
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        LaunchTimer.endRecord("onWindowFocusChanged");
-    }
+
 
     @Override
     protected void setStatusBar() {

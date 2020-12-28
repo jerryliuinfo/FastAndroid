@@ -124,6 +124,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         startTime3 = System.currentTimeMillis();
+        initTitle(savedInstanceState);
 //        FrameworkLogUtil.d("onViewCreated  --- >time diff: %s ms,fragment: %s", (startTime3 - startTime2),this);
         /**
          * 为了解决使用Kotlin-Android-Extensions 的试图绑定功能(不用findViewById), 在onCreateView中不能直接访问视图，
@@ -585,6 +586,21 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
      * @param savedInstanceSate
      */
     protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
+
+    }
+
+    private void initTitle(Bundle savedInstanceSate){
+        String title = null ;
+        if (getArguments() != null && savedInstanceSate == null){
+            title = getArguments().getString("title");
+        }else {
+            if (savedInstanceSate != null){
+                title = savedInstanceSate.getString("title");
+            }
+        }
+        if (!TextUtils.isEmpty(title)){
+            setToolbarTitle(title);
+        }
     }
 
 

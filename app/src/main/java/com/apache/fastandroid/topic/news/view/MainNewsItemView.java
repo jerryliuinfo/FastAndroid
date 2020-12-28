@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.performance.LaunchTimer;
 import com.apache.fastandroid.topic.support.bean.NewsSummary;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
@@ -52,7 +51,6 @@ public class MainNewsItemView extends ARecycleViewItemViewHolder<NewsSummary> {
                 @Override
                 public boolean onPreDraw() {
                     rootView.getViewTreeObserver().removeOnPreDrawListener(this);
-                    LaunchTimer.endRecord("FeedShow");
                     return true;
                 }
             });
