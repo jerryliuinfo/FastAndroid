@@ -31,6 +31,7 @@ import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -654,8 +655,13 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
     protected void setToolbarTitle(String msg){
         BaseActivity baseActivity = (BaseActivity) getActivity();
-        baseActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        baseActivity.getSupportActionBar().setTitle(msg);
+        ActionBar supportActionBar = baseActivity.getSupportActionBar();
+        NLog.d(TAG, "supportActionBar: %s",supportActionBar);
+        if (supportActionBar != null){
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+            supportActionBar.setTitle(msg);
+        }
+
 
     }
 

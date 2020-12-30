@@ -9,8 +9,8 @@ import com.tesla.framework.ui.fragment.ABaseFragment
  * app:layout_constraintGuide_end=""
  *
  */
-class ConstraintGuidelineFragment:ABaseFragment() {
+class ConstraintGuidelinePercentFragment:ABaseFragment() {
     override fun inflateContentView(): Int {
-        return R.layout.constraint_guideline
+        return R.layout.constraint_guideline_percent
     }
 }

@@ -22,7 +22,7 @@
        android:text="_bias0.1 文字文字"
        android:layout_marginEnd="32dp"
        app:layout_constrainedWidth="true"
-       app:layout_constraintHorizontal_bias="0.1"
+       app:layout_constraintHorizontal_bias="0.2"
        app:layout_constraintStart_toEndOf="@id/imageview1"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintTop_toTopOf="@id/imageview1"

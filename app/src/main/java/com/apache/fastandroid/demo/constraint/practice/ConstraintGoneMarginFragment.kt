@@ -9,5 +9,6 @@ import com.tesla.framework.ui.fragment.ABaseFragment
 class ConstraintGoneMarginFragment:ABaseFragment() {
     override fun inflateContentView(): Int {
         return R.layout.constraint_gone_margin
+
     }
 }

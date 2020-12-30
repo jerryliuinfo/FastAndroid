@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/constraint_layout"
+   >
+
+  <TextView
+      android:id="@+id/title"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      android:layout_marginLeft="50dp"
+      android:layout_marginTop="50dp"
+      android:background="@color/colorPrimary"
+      android:text="Layer"
+      android:gravity="center"
+      />
+
+  <androidx.constraintlayout.helper.widget.Layer
+      android:id="@+id/layer"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:constraint_referenced_ids="view1,view2,view3,view4"
+      tools:ignore="MissingConstraints" />
+
+  <View
+      android:id="@+id/view1"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      app:layout_constraintStart_toStartOf="@+id/title"
+      app:layout_constraintTop_toBottomOf="@+id/title"
+      android:background="@color/colorPrimary"
+      android:layout_marginTop="10dp"
+      />
+  <View
+      android:id="@+id/view2"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      app:layout_constraintStart_toEndOf="@+id/view1"
+      app:layout_constraintTop_toTopOf="@+id/view1"
+      android:background="@color/colorPrimary"
+      android:layout_marginLeft="10dp"
+      />
+  <View
+      android:id="@+id/view3"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      app:layout_constraintStart_toStartOf="@+id/view1"
+      app:layout_constraintTop_toBottomOf="@+id/view1"
+      android:background="@color/colorPrimary"
+      android:layout_marginTop="10dp"
+      />
+  <View
+      android:id="@+id/view4"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      app:layout_constraintStart_toStartOf="@+id/view2"
+      app:layout_constraintTop_toBottomOf="@+id/view2"
+      android:background="@color/colorPrimary"
+      android:layout_marginTop="10dp"
+      />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

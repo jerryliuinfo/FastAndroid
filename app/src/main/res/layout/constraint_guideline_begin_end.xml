@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="20dp"
+    android:layout_marginHorizontal="40dp"
+    android:layout_gravity="top"
     >
 
    <androidx.constraintlayout.widget.Guideline
@@ -11,7 +12,7 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:orientation="vertical"
-       app:layout_constraintGuide_percent="0.2"
+       app:layout_constraintGuide_begin="30dp"
        />
    <TextView
        android:id="@+id/tv_username"
@@ -19,7 +20,6 @@
        android:layout_height="wrap_content"
        app:layout_constraintEnd_toStartOf="@+id/guideline"
        app:layout_constraintTop_toTopOf="parent"
-       android:layout_marginTop="72dp"
        android:text="用户名"
        />
    <TextView
@@ -34,7 +34,7 @@
 
    <EditText
        android:id="@+id/et_username"
-       android:layout_width="100dp"
+       android:layout_width="80dp"
        android:layout_height="wrap_content"
        app:layout_constraintStart_toEndOf="@id/guideline"
        app:layout_constraintBaseline_toBaselineOf="@id/tv_username"
@@ -46,7 +46,32 @@
        android:layout_height="wrap_content"
        app:layout_constraintStart_toStartOf="@id/et_username"
        app:layout_constraintBaseline_toBaselineOf="@id/tv_password"
-
        />
 
+
+
+   <androidx.constraintlayout.widget.Guideline
+       android:id="@+id/guideline2"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       app:layout_constraintGuide_end="120dp"
+       />
+
+   <TextView
+       android:id="@+id/tv_username2"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:layout_constraintEnd_toStartOf="@+id/guideline2"
+       app:layout_constraintTop_toTopOf="parent"
+       android:text="用户名"
+       />
+   <EditText
+       android:id="@+id/et_username2"
+       android:layout_width="80dp"
+       android:layout_height="wrap_content"
+       app:layout_constraintStart_toEndOf="@id/guideline2"
+       app:layout_constraintBaseline_toBaselineOf="@id/tv_username2"
+
+       />
 </androidx.constraintlayout.widget.ConstraintLayout>

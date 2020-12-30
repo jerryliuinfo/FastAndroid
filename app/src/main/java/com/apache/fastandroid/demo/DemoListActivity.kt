@@ -34,7 +34,6 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean(),
 
                 ViewItemBean("JetPack", "JetPack", JetPackDemoFragment::class.java),
-                ViewItemBean("Hencoder自定义View", "", null),
                 //空出一行来
                 ViewItemBean(),
                 ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
@@ -45,7 +44,7 @@ class DemoListActivity : BaseActivity() {
 
                 ViewItemBean("CustomViewWidget", "第三方控件", CustomViewFragment::class.java),
                 ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
-                ViewItemBean("性能监控", "性能监控", PerformanceDemoFragment::class.java),
+                ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),
                 ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java)
         )
     }
