@@ -11,19 +11,19 @@ import com.tesla.framework.component.lifecycle.SimpleLifeCycleObserver
 class JetPackLifeCycleListener(lifecycleOwner: LifecycleOwner): SimpleLifeCycleObserver() {
 
     companion object{
-        const val TAG = "TraditionalLifeCycleListener"
+        const val TAG = "JetPackLifeCycleListener"
     }
     init {
         lifecycleOwner.lifecycle.addObserver(FullLifecycleObserverAdapter(lifecycleOwner,this))
     }
 
     override fun onCreate(owner: LifecycleOwner) {
-        NLog.d(TAG, "TraditionalLifeCycleListener onCreate")
+        NLog.d(TAG, "JetPackLifeCycleListener onCreate")
     }
 
 
     override fun onDestroy(owner: LifecycleOwner) {
-        NLog.d(TAG, "TraditionalLifeCycleListener onDestroy")
+        NLog.d(TAG, "JetPackLifeCycleListener onDestroy")
     }
 
 }

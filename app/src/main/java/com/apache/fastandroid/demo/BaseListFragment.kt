@@ -90,7 +90,6 @@ abstract class BaseListFragment:ABaseFragment() {
 
     class ItemViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
-            NLog.d(TAG, "BaseListFragment ItemViewHolder itemView: %s",itemView)
         }
 
         val txtTitle: TextView = itemView.findViewById(R.id.txt_title)

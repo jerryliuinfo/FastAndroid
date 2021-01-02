@@ -35,7 +35,6 @@ import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
-import com.tesla.framework.Global;
 import com.tesla.framework.common.util.FrameworkLogUtil;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.file.FileUtils;
@@ -164,11 +163,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
 
         startActivity(new Intent(this, DemoListActivity.class));
 
-
-
-        File downloadFile = new File(Global.getExternalFilesDir(""), "download.apk");
-        File originalFile = new File(Global.getExternalFilesDir(""), "original.apk");
-        NLog.d(TAG, "downloadFile md5: %s, originalFile md5: %s", getMD5One(downloadFile.getPath()), getMD5One(originalFile.getPath()));
 
 
 

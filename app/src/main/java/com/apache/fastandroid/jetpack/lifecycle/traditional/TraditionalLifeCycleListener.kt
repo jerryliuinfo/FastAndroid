@@ -14,12 +14,12 @@ class TraditionalLifeCycleListener {
         const val TAG = "TraditionalLifeCycleListener"
     }
 
-    fun onCreate(owner: LifecycleOwner) {
-        NLog.d(TAG, "TraditionalLifeCycleListener onCreate")
+    fun onCreate2(owner: LifecycleOwner) {
+        NLog.d(TAG, "TraditionalLifeCycleListener onCreate---->")
     }
 
     fun onDestroy(owner: LifecycleOwner) {
-        NLog.d(TAG, "TraditionalLifeCycleListener onDestroy")
+        NLog.d(TAG, "TraditionalLifeCycleListener onDestroy---->")
     }
 
 }

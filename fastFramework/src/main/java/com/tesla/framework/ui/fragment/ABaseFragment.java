@@ -96,11 +96,9 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
         FrameworkLogUtil.d("onCreate  --- >fragment: %s",this);
         startTime1 = System.currentTimeMillis();
         taskManager = new TaskManager();
-
         if (savedInstanceState != null) {
             taskManager.restore(savedInstanceState);
         }
-
     }
 
 

@@ -24,9 +24,5 @@ public abstract class BaseFragment extends ABaseFragment {
             Activity activity = getActivity();
             //监听activity内存泄漏
         }
-
     }
-
-
-
 }

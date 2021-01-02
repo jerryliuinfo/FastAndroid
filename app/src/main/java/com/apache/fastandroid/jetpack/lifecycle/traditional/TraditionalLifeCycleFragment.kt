@@ -3,7 +3,6 @@ package com.apache.fastandroid.jetpack.lifecycle.traditional
 import android.os.Bundle
 import com.apache.fastandroid.R
 import com.apache.fastandroid.artemis.base.BaseFragment
-import com.apache.fastandroid.jetpack.lifecycle.traditional.TraditionalLifeCycleListener
 
 /**
  * Created by Jerry on 2020/11/1.
@@ -20,6 +19,7 @@ class TraditionalLifeCycleFragment: BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifeCycleListener = TraditionalLifeCycleListener()
+        lifeCycleListener.onCreate2(this)
     }
 
 
