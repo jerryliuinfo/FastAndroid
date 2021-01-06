@@ -138,6 +138,8 @@ ext {
 
             maven_local_url       :  "/Users/jerry/project/github/FastAndroid/repos",
 
+            permissionx           : 'com.permissionx.guolindev:permissionx:1.4.0'
+
     ]
 
 

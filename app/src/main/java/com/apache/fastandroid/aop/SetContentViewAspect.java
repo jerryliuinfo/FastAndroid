@@ -21,6 +21,5 @@ public class SetContentViewAspect {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-//        Log.d("MainLogUtil", name + " cost " + (System.currentTimeMillis() - time));
     }
 }

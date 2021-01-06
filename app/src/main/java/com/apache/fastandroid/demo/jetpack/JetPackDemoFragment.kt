@@ -16,8 +16,8 @@ import com.apache.fastandroid.jetpack.viewmodel.ViewModelFragment
 class JetPackDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-                ViewItemBean("Normal", "传统生命周期监听", TraditionalLifeCycleFragment::class.java),
-                ViewItemBean("JetPack", "LifeCycle", JetPackLifeCycleFragment::class.java),
+                ViewItemBean("传统生命周期监听", "传统生命周期监听", TraditionalLifeCycleFragment::class.java),
+                ViewItemBean("LifeCycle", "LifeCycle", JetPackLifeCycleFragment::class.java),
 
                 ViewItemBean("LiveData基本用法", "LiveData", LiveDataFragment::class.java),
                 ViewItemBean("LiveData多页面共享数据", "LiveData", SingleTonLiveDataFragment::class.java),

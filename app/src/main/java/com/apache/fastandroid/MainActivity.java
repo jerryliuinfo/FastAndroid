@@ -1,15 +1,12 @@
 package com.apache.fastandroid;
 
-import java.io.File;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
+import android.Manifest.permission;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,25 +24,17 @@ import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.jetpack.GpsCallback;
-import com.apache.fastandroid.jetpack.GpsEngine;
 import com.apache.fastandroid.setting.SettingFragment;
-import com.apache.fastandroid.tink.TinkTest;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
-import com.tesla.framework.common.util.FrameworkLogUtil;
+import com.permissionx.guolindev.PermissionX;
+import com.permissionx.guolindev.callback.RequestCallback;
 import com.tesla.framework.common.util.ResUtil;
-import com.tesla.framework.common.util.file.FileUtils;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.common.util.network.NetworkListener;
-import com.tesla.framework.common.util.network.NetworkType;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.eventbus.FastBus;
-import com.tesla.framework.component.eventbus.Subscribe;
-import com.tesla.framework.component.eventbus.ThreadMode;
-import com.tesla.framework.component.lifecycle.LifecycleHandler;
 import com.tesla.framework.route.Route;
 import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
@@ -53,21 +42,17 @@ import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
 import com.tesla.framework.ui.widget.ToastUtils;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.arch.core.util.Function;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.Transformations;
 
 @AptTest(path = "main")
 @BindPath("login/login")
-public class MainActivity extends BaseActivity implements NetworkListener, View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
+
+    public static final String TAG = MainActivity.class.getSimpleName();
+
 
     @BindViewById((R.id.drawer))
     DrawerLayout mDrawerLayout;
@@ -82,8 +67,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         Intent intent = new Intent(from, MainActivity.class);
         intent.putExtra("userBean",userBean);
         from.startActivity(intent);
-
-
     }
 
     @Override
@@ -91,49 +74,12 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         return R.layout.activity_main;
     }
 
-    MutableLiveData<String> mutableLiveData1;
-    MutableLiveData<String> mutableLiveData2;
-    MutableLiveData<Boolean> liveDataSwitch;
-
 
 
     @CostTime
     @Override
     protected void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
-
-
-
-        mutableLiveData1 = new MutableLiveData<>();
-        mutableLiveData2 = new MutableLiveData<>();
-        //1
-        liveDataSwitch = new MutableLiveData<>();
-
-        LiveData transformedLiveData= Transformations.switchMap(liveDataSwitch, new Function<Boolean, LiveData<String>>() {
-            @Override
-            public LiveData<String> apply(Boolean input) {
-                if (input) {
-                    return mutableLiveData1;
-                } else {
-                    return mutableLiveData2;
-                }
-            }
-        });
-
-        transformedLiveData.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable final String s) {
-                Log.d(TAG, "onChanged:" + s);
-            }
-        });
-        liveDataSwitch.postValue(false);
-        mutableLiveData1.postValue("Android进阶之光11111");
-        mutableLiveData2.postValue("Android进阶解密22222");
-
-
-
-
-
 
         ProxyTool.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -145,45 +91,19 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         menuItem.setChecked(true);
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
-
-        MainLogUtil.d("current classLoader = %s",getClassLoader().toString());
-        ClassLoader parentClassLoader = getClassLoader().getParent();
-        while (parentClassLoader != null){
-            MainLogUtil.d("parent classLoader = %s",parentClassLoader.toString());
-            parentClassLoader = parentClassLoader.getParent();
-        }
-        MainLogUtil.d("Activity.class 由：" + Activity.class.getClassLoader() +" 加载");
-        FastBus.getInstance().registe(this);
-
-        int resId = R.color.cardview_dark_background;
-        String resourceTypeName =
-                getResources().getResourceTypeName(resId);
-        String resourceEntryName = getResources().getResourceEntryName(resId);
-        FrameworkLogUtil.d("resourceTypeName: %s, resourceEntryName:%s", resourceTypeName,resourceEntryName);
-
-        startActivity(new Intent(this, DemoListActivity.class));
-
-
-
-
-        mHandler.sendEmptyMessageDelayed(MSG_1, 10 * 1000);
+        PermissionX.init(this).permissions(permission.WRITE_EXTERNAL_STORAGE).request(new RequestCallback() {
+            @Override
+            public void onResult(boolean allGranted, List<String> grantedList, List<String> deniedList) {
+                if (allGranted) {
+                    ToastUtils.showToast(MainActivity.this, "All permissions are granted");
+                    startActivity(new Intent(MainActivity.this, DemoListActivity.class));
+                } else {
+                    ToastUtils.showToast(MainActivity.this,  String.format("These permissions are denied: %s", deniedList));
+                }
+            }
+        });
     }
 
-    public static final int MSG_1 = 100;
-
-    private Handler mHandler = new LifecycleHandler(this){
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            super.handleMessage(msg);
-            NLog.d(TAG, "handleMessage what: %s", msg.what);
-
-        }
-    };
-
-    @Subscribe(ThreadMode.MAIN)
-    public void getUser(UserEvent event){
-        MainLogUtil.d("getUser = %s",event);
-    }
 
 
     @Override
@@ -216,7 +136,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         }else {
             tv_username.setText("未登录");
         }
-
     }
 
 
@@ -282,12 +201,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
             case R.id.nav_item_wallpaer:
                 //fragment = WallPaperFragment.newFragment();
 
-                /*CC.obtainBuilder(ModularizationConstans.MODULE_TOPIC_NAME).setContext(this).setActionName("showActivity").build().callAsyncCallbackOnMainThread(new IComponentCallback() {
-                    @Override
-                    public void onResult(CC cc, CCResult result) {
-                        ToastUtils.showToast(MainActivity.this, "go topic activity");
-                    }
-                });*/
                 goToTopicActivity(itemId,title);
                 return;
             case R.id.nav_item_pic:
@@ -322,9 +235,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         closeDrawer();
 
         selecteId = itemId;
-
-
-
     }
 
     /**
@@ -344,8 +254,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         selecteId = itemId;
     }
 
-
-
     public boolean isDrawerOpened() {
         return mDrawerLayout.isDrawerOpen(Gravity.LEFT) || mDrawerLayout.isDrawerOpen(Gravity.RIGHT);
     }
@@ -354,7 +262,6 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         if (isDrawerOpened()){
             mDrawerLayout.closeDrawers();
         }
-
     }
 
 
@@ -367,16 +274,12 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         }
     }
 
-
-
     @Override
     protected void setStatusBar() {
         int mStatusBarColor = ResUtil.getColor(R.color.colorPrimary);
         StatusBarUtil.setColorForDrawerLayout(this, (DrawerLayout) findViewById(R.id.drawer), mStatusBarColor, 112);
 
     }
-
-    //test cherry-pick
 
 
     private boolean canFinish = false;
@@ -400,37 +303,8 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
     }
 
 
-
-   public static final String TAG = MainActivity.class.getSimpleName();
-
-    @Override
-    public void onConnected(NetworkType networkType) {
-
-    }
-
-    @Override
-    public void onDisconnected() {
-
-    }
-
-
-
-    private void addOnClickListeners(@IdRes int... ids) {
-        if (ids != null) {
-            for (@IdRes int id : ids) {
-                findViewById(id).setOnClickListener(this);
-            }
-        }
-    }
-
     @Override
     public void onClick(View v) {
-       /* try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-        MainLogUtil.d("onClick view id = %s",ResUtil.getResourceName(v.getId()));
 
     }
 
@@ -440,72 +314,4 @@ public class MainActivity extends BaseActivity implements NetworkListener, View.
         FastBus.getInstance().unregiste(this);
     }
 
-    public void onTest(View view) {
-        TinkTest test = new TinkTest();
-        test.test(this);
-    }
-
-    public void onFix(View view) {
-
-
-    }
-
-
-
-
-
-
-    private GpsCallback callback;
-    /**
-     * 第1种方式 统一问题，如果某个activity的onpause方法忘记调用GpsEngine.getInstance().onPauseAction();
-     * 就会出问题
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-        GpsEngine.getInstance().onResumeAction();
-
-        //代码入侵
-        if (callback != null){
-            callback.onResumeAction();
-        }
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        GpsEngine.getInstance().onPauseAction();
-        //代码入侵
-        if (callback != null){
-            callback.onPauseAction();
-        }
-
-    }
-
-
-    private final static String[] strHex = { "0", "1", "2", "3", "4", "5",
-            "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
-
-    public static String getMD5One(String path) {
-        StringBuffer sb = new StringBuffer();
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] b = md.digest(FileUtils.readFileToBytes(new File(path)));
-            for (int i = 0; i < b.length; i++) {
-                int d = b[i];
-                if (d < 0) {
-                    d += 256;
-                }
-                int d1 = d / 16;
-                int d2 = d % 16;
-                sb.append(strHex[d1] + strHex[d2]);
-            }
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return sb.toString();
-    }
 }

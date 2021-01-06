@@ -11,12 +11,12 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import com.apache.fastandroid.BuildConfig;
+import com.apache.fastandroid.aop.track.TrackPoint;
+import com.apache.fastandroid.aop.track.TrackPointCallBack;
 import com.apache.fastandroid.artemis.BaseApp;
 import com.apache.fastandroid.artemis.constant.AppConfig;
 import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
-import com.apache.fastandroid.artemis.track.TrackPoint;
-import com.apache.fastandroid.artemis.track.TrackPointCallBack;
 import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.util.MainLogUtil;

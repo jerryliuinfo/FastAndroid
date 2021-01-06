@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 //下的properties文件名称
 
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
-apply plugin: 'android-aspectjx'
+//apply plugin: 'android-aspectjx'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -36,25 +36,17 @@ android {
         versionCode 100
         versionName "V1.0.0"
 
-        //archivesBaseName = "FastAndroid-$versionName"
         //dex突破65535的限制
         multiDexEnabled true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         //5.0以下将svg图片生成指定维度的图片
         vectorDrawables.generatedDensities('xhdpi', 'xxhdpi')
 
-        //5.0以上
-        //vectorDrawables.useSupoortLibrary = true
-
         flavorDimensions "debug", "release"
 
         //只保留指定和默认资源
         resConfigs('zh-rCN')
 
-        //配置so库架构(arm真机,x86模拟器)
-//        ndk{
-//            abiFilter('armeabi')
-//        }
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -69,13 +61,18 @@ android {
             }
         }
 
-//        manifestPlaceholders = [
-//                JPUSH_PKGNAME : applicationId,
-//                JPUSH_APPKEY : "你的 Appkey ", //JPush 上注册的包名对应的 Appkey.
-//                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-//        ]
+
+        defaultConfig {
+            ndk {
+                // 设置支持的SO库架构
+                abiFilters 'armeabi-v7a', 'x86'
+            }
+        }
+
 
     }
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
@@ -116,10 +113,18 @@ android {
     }
 
 
-    buildTypes {
+    signingConfigs {
+
         release {
 
-
+            storePassword '123456'
+            keyAlias 'fastandroid'
+            keyPassword '123456'
+            storeFile file('../keystore/source.keystore')
+        }
+    }
+    buildTypes {
+        release {
             //zipAlignEnabled能提供系统和应用的运行效率
             zipAlignEnabled true
             //获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk
@@ -135,7 +140,6 @@ android {
             buildConfigField('boolean', 'LOG_DEBUG', "true")
             buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
         }
-
     }
 
     //将SO库打包到apk内
@@ -233,6 +237,7 @@ dependencies {
     //rxjava&rxandroid
     implementation rootProject.thirdLib.rxjava
     implementation rootProject.thirdLib.rxandroid
+    implementation 'com.permissionx.guolindev:permissionx:1.4.0'
 
 
 
@@ -261,9 +266,6 @@ dependencies {
 
 
     debugImplementation 'com.github.markzhai:blockcanary-android:1.5.0'
-
-
-
 
 
 }

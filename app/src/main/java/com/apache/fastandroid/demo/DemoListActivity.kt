@@ -30,13 +30,8 @@ class DemoListActivity : BaseActivity() {
     companion object {
         private val TAG = "DemoListActivity"
         private val MODELS = arrayListOf(
-                ViewItemBean("JetPack", "", null),
-                //空出一行来
-                ViewItemBean(),
-
                 ViewItemBean("JetPack", "JetPack", JetPackDemoFragment::class.java),
-                //空出一行来
-                ViewItemBean(),
+
                 ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制文字", DrawTextDemoFragment::class.java),

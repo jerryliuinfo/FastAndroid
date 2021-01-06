@@ -6,6 +6,7 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.artemis.base.BaseFragment
 import com.tesla.framework.component.livedata.SingleTonViewModel
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata_singleton2.*
+import java.util.*
 
 /**
  * Created by Jerry on 2020/12/31.
@@ -22,7 +23,7 @@ class SingleTonLiveDataFragment2:BaseFragment() {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
         btn_send_data.setOnClickListener {
-            viewModel.singleTonLiveData.value = "hello"
+            viewModel.singleTonLiveData.value = "我是页面2修改的数据:${Random().nextInt(10)}"
         }
     }
 }

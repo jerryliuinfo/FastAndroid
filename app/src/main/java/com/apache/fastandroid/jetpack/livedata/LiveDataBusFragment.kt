@@ -27,12 +27,13 @@ class LiveDataBusFragment :BaseFragment(){
         LiveDataBus.get().with("banner").observe(this, object : Observer<String> {
             override fun onChanged(t: String?) {
                 NLog.d(TAG, "onChanged t: %s", t)
+                tv_result.text = "接收: $t"
             }
         })
 
 
         btn_send.setOnClickListener {
-            LiveDataBus.get().with("banner").postValue("Hello LiveDataBus: ${Random.nextInt(100)}" )
+            LiveDataBus.get().with("banner").postValue("Hello : ${Random.nextInt(100)}" )
         }
     }
 

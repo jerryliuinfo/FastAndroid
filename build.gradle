@@ -15,23 +15,16 @@ buildscript {
 
     }
     dependencies {
-//        classpath 'com.android.tools.build:gradle:3.2.0'
-//        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
         classpath "com.android.tools.build:gradle:4.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
 
-
         //aspect插件， 替代上面两行
-        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
-
+//        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
 
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' // 添加这行
         //定义在这里，这样每个module都可以使用
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
         // 配置自动上传符号表插件，注：为了能快速并准确地定位用户APP发生Crash的代码位置，Bugly使用符号表对APP发生Crash的程序堆栈进行解析和还原
-
-
     }
 
     subprojects {
