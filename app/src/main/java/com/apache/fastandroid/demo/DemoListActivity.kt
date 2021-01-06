@@ -19,6 +19,7 @@ import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
 import com.hencoder.hencoderpracticedraw4.ClipMatrixDemoFragment
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.activity.BaseActivity
+import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import kotlinx.android.synthetic.main.activity_demo_list.*
 
@@ -87,7 +88,9 @@ class DemoListActivity : BaseActivity() {
                 if (viewItemBean.clazz == null) {
                     return@setOnClickListener
                 }
-                FragmentContainerActivity.launch(this@DemoListActivity, viewItemBean.clazz, null)
+                val args = FragmentArgs()
+                args.add("title", viewItemBean.title)
+                FragmentContainerActivity.launch(this@DemoListActivity, viewItemBean.clazz, args)
             }
         }
 

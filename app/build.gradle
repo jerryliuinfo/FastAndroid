@@ -198,12 +198,11 @@ dependencies {
     implementation project(':hencoder_clipmatrix')
     implementation project(':doraemonkit')
 
-//    implementation rootProject.androidLib.core_ktx
+    implementation rootProject.androidLib.core_ktx
 
     debugImplementation rootProject.thirdLib.leakcanary_support_fragment
 
 
-//    implementation rootProject.androidLib.core_ktx
 
     implementation rootProject.androidLib.constraintLayout
 

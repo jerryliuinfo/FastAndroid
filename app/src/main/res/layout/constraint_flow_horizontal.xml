@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:constraint_referenced_ids="view1,view2,view3,view4,view5,view6,view7"
+        android:orientation="horizontal"
+        app:flow_horizontalGap="20dp"
+        app:flow_verticalGap="20dp"
+        app:flow_wrapMode="aligned"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        />
+
+
+   <View
+       android:id="@+id/view2"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:background="@color/colorPrimary"
+       />
+
+
+    <TextView
+        android:id="@+id/view3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorAccent"
+        android:text="切换wrapp_mode"
+        android:textColor="@color/white"
+        android:gravity="center"
+        />
+
+   <View
+       android:id="@+id/view4"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:background="@color/colorPrimary"
+       />
+    <View
+        android:id="@+id/view5"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorAccent"
+        />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        />
+    <View
+        android:id="@+id/view7"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

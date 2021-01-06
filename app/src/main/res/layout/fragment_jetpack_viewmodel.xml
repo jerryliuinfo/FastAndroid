@@ -22,7 +22,7 @@
         app:layout_constraintStart_toEndOf="@id/tv_msg"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="修改数据"
+        android:text="发送数据"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

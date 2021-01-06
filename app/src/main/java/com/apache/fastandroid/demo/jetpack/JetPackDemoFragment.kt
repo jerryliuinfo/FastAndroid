@@ -18,14 +18,13 @@ class JetPackDemoFragment: BaseListFragment() {
         return arrayListOf(
                 ViewItemBean("Normal", "传统生命周期监听", TraditionalLifeCycleFragment::class.java),
                 ViewItemBean("JetPack", "LifeCycle", JetPackLifeCycleFragment::class.java),
-                ViewItemBean("JetPack", "ViewModel", ViewModelFragment::class.java),
 
                 ViewItemBean("LiveData基本用法", "LiveData", LiveDataFragment::class.java),
                 ViewItemBean("LiveData多页面共享数据", "LiveData", SingleTonLiveDataFragment::class.java),
                 ViewItemBean("LiveData粘性", "LiveData", LiveDataFragment::class.java),
                 ViewItemBean("LiveDataBus", "LiveData", LiveDataBusFragment::class.java),
 
-
+                ViewItemBean("ViewModel", "ViewModel", ViewModelFragment::class.java),
                 ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java),
                 ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java)
         )

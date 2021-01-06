@@ -17,7 +17,7 @@ class ConstraintLayoutDemoFragment: BaseListFragment() {
                 ViewItemBean("约束布局居中", "居中2", ConstraintCenter2Fragment::class.java),
                 ViewItemBean("Weight权重", "百分比控件", ConstraintWeightFragment::class.java),
                 ViewItemBean("Baseline", "基线", ConstraintBaselineFragment::class.java),
-                ViewItemBean("Circular", "角度定位", ConstrainCircleFragment::class.java),
+                ViewItemBean("Circle", "角度定位", ConstrainCircleFragment::class.java),
                 ViewItemBean("ConstrainedWidth", " 宽度约束", ConstraintWidthFragment::class.java),
                 ViewItemBean("Bias", "偏移", ConstraintBiasFragment::class.java),
                 ViewItemBean("Bias2", "偏移2", ConstraintBias2Fragment::class.java),
@@ -31,7 +31,15 @@ class ConstraintLayoutDemoFragment: BaseListFragment() {
                 ViewItemBean("Space", "Space", ConstraintSpaceFragment::class.java),
                 ViewItemBean("Margin", "Margin", ConstraintMarginFragment::class.java),
                 ViewItemBean("Layer", "Layer", ConstraintLayerFragment::class.java),
-                ViewItemBean("Barrier", "Barrier", ConstraintBarrierFragment::class.java)
-        )
+                ViewItemBean("Barrier", "Barrier", ConstraintBarrierFragment::class.java),
+                ViewItemBean("CircularReaveal", "Circular", ConstrainCircularRevealFragment::class.java),
+                ViewItemBean("PlaceHolder", "PlaceHolder", ConstrainPlaceHolderFragment::class.java),
+                ViewItemBean("ConstraintSet", "ConstraintSet", ConstraintSetFragment::class.java),
+                ViewItemBean("ConstraintSet切换布局", "ConstraintSet过渡动画", ConstraintSetSwitchLayoutFragment::class.java),
+                ViewItemBean("LinerVirtualLayout", "LinerVirtualLayout", ConstraintLinerVirtualLayoutFragment::class.java),
+                ViewItemBean("Flow", "Flow_Vertical", ConstraintFlowVerticalFragment::class.java),
+                ViewItemBean("Flow", "Flow_Horizontal", ConstraintFlowHorizontalFragment::class.java)
+
+                )
     }
 }

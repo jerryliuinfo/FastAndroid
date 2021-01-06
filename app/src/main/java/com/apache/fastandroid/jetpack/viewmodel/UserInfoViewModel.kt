@@ -1,5 +1,7 @@
 package com.apache.fastandroid.jetpack.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 /**
@@ -7,7 +9,14 @@ import androidx.lifecycle.ViewModel
  */
 class UserInfoViewModel:ViewModel() {
 
-    var name:String = "扔物线"
 
+    private val user = MutableLiveData<String>()
+
+    fun loadUser():MutableLiveData<String>{
+        if (user.value == null){
+            user.postValue("Zhangsan")
+        }
+        return user
+    }
 
 }
