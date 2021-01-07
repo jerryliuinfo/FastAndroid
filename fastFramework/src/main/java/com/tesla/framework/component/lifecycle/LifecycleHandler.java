@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.tesla.framework.common.util.Preconditions;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -51,14 +51,14 @@ public class LifecycleHandler extends Handler  {
         @Override
         public void onCreate(@NotNull LifecycleOwner owner) {
             super.onCreate(owner);
-            NLog.d(TAG, "LifecycleHandler onCreate");
+            FastLog.d(TAG, "LifecycleHandler onCreate");
         }
 
         @Override
         public void onDestroy(@NotNull LifecycleOwner owner) {
             super.onDestroy(owner);
 
-            NLog.d(TAG, "LifecycleHandler onDestroy");
+            FastLog.d(TAG, "LifecycleHandler onDestroy");
             removeCallbacksAndMessages(null);
         }
     };

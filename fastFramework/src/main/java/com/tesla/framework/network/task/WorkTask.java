@@ -5,7 +5,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import java.util.ArrayDeque;
 import java.util.concurrent.BlockingQueue;
@@ -231,7 +231,7 @@ public abstract class WorkTask<Params, Progress, Result> {
 	 * 线程结束，不管线程结束是什么状态，都会执行这个方法
 	 */
 	protected void onFinished() {
-		NLog.d(TAG, String.format("%s --->onFinished()", TextUtils.isEmpty(taskId) ? "run " : (taskId + " run ")));
+		FastLog.d(TAG, String.format("%s --->onFinished()", TextUtils.isEmpty(taskId) ? "run " : (taskId + " run ")));
 	}
 
 	/**
@@ -244,7 +244,7 @@ public abstract class WorkTask<Params, Progress, Result> {
 	abstract public Result workInBackground(Params... params) throws TaskException;
 
 	private Result doInBackground(Params... params) {
-		NLog.d(TAG, String.format("%s --->doInBackground()", TextUtils.isEmpty(taskId) ? "run " : (taskId + " run ")));
+		FastLog.d(TAG, String.format("%s --->doInBackground()", TextUtils.isEmpty(taskId) ? "run " : (taskId + " run ")));
 
 		try {
 			return workInBackground(params);
@@ -257,17 +257,17 @@ public abstract class WorkTask<Params, Progress, Result> {
 	}
 
 	final protected void onPreExecute() {
-		NLog.d(TAG, String.format("%s --->onTaskStarted()", TextUtils.isEmpty(taskId) ? "run " : (taskId + " run ")));
+		FastLog.d(TAG, String.format("%s --->onTaskStarted()", TextUtils.isEmpty(taskId) ? "run " : (taskId + " run ")));
 		onPrepare();
 	}
 
 	final protected void onPostExecute(Result result) {
 		if (exception == null) {
-			NLog.d(TAG, String.format("%s --->onTaskSuccess()", TextUtils.isEmpty(taskId) ? "run " : (taskId + " run ")));
+			FastLog.d(TAG, String.format("%s --->onTaskSuccess()", TextUtils.isEmpty(taskId) ? "run " : (taskId + " run ")));
 			onSuccess(result);
 		}
 		else if (exception != null) {
-			NLog.d(
+			FastLog.d(
 					TAG,
 					String.format("%s --->onFailure(), \nError msg --->", TextUtils.isEmpty(taskId) ? "run " : (taskId + " run "),
 							exception.getMessage()));
@@ -291,7 +291,7 @@ public abstract class WorkTask<Params, Progress, Result> {
 	}
 
 	protected void onCancelled() {
-		NLog.d(TAG, String.format("%s --->onCancelled()", TextUtils.isEmpty(taskId) ? "run " : (taskId + " run ")));
+		FastLog.d(TAG, String.format("%s --->onCancelled()", TextUtils.isEmpty(taskId) ? "run " : (taskId + " run ")));
 	}
 
 	public final boolean isCancelled() {

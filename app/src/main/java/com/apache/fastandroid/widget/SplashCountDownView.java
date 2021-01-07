@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.apache.fastandroid.R;
 import com.tesla.framework.common.util.ResUtil;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 /**
  * Created by jerryliu on 2017/6/29.
@@ -82,7 +82,7 @@ public class SplashCountDownView extends androidx.appcompat.widget.AppCompatText
 
         @Override
         public void onFinish() {
-            NLog.d(TAG, "onFinish");
+            FastLog.d(TAG, "onFinish");
             setText(mCountDownEndText);
             if (callback != null){
                 callback.onFinish(mDealyMilles);

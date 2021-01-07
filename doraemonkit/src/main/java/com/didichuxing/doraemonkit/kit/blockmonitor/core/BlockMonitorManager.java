@@ -12,7 +12,7 @@ import com.didichuxing.doraemonkit.DoraemonKit;
 import com.didichuxing.doraemonkit.R;
 import com.didichuxing.doraemonkit.kit.blockmonitor.bean.BlockInfo;
 import com.didichuxing.doraemonkit.util.NotificationUtils;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import androidx.annotation.NonNull;
 
@@ -45,12 +45,12 @@ public class BlockMonitorManager {
 
     public void start() {
         if (mIsRunning) {
-            NLog.i(TAG, "start when manager is running");
+            FastLog.i(TAG, "start when manager is running");
             return;
         }
 
         if (DoraemonKit.APPLICATION == null) {
-            NLog.e(TAG, "start fail, context is null");
+            FastLog.e(TAG, "start fail, context is null");
             return;
         }
         // 卡顿检测和跳转耗时统计都使用了Printer的方式，无法同时工作
@@ -69,7 +69,7 @@ public class BlockMonitorManager {
 
     public void stop() {
         if (!mIsRunning) {
-            NLog.i(TAG, "stop when manager is not running");
+            FastLog.i(TAG, "stop when manager is not running");
             return;
         }
         Looper.getMainLooper().setMessageLogging(null);
@@ -134,7 +134,7 @@ public class BlockMonitorManager {
     private void showNotification(BlockInfo info) {
         String contentTitle = mContext.getString(R.string.dk_block_class_has_blocked, info.timeStart);
         String contentText = mContext.getString(R.string.dk_block_notification_message);
-        NLog.d(TAG, "showNotification contentTitle: %s, contentText: %s",contentTitle,contentText);
+        FastLog.d(TAG, "showNotification contentTitle: %s, contentText: %s",contentTitle,contentText);
        /* Intent intent = new Intent(mContext, UniversalActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(BundleKey.FRAGMENT_INDEX, FragmentIndex.FRAGMENT_BLOCK_MONITOR);

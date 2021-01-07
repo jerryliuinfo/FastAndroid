@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.setting.SettingUtility;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.task.TaskException;
@@ -53,14 +53,14 @@ public class OkHttpUtility implements IHttpUtility {
 		if (bodyParams != null) {
 			String requestBodyStr = ParamsUtil.encodeToURLParams(bodyParams);
 
-			NLog.d(getTag(action, "Post"), requestBodyStr);
+			FastLog.d(getTag(action, "Post"), requestBodyStr);
 
 			builder.post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), requestBodyStr));
 		}
 		else if (requestObj != null) {
 			String requestBodyStr = JSON.toJSONString(requestObj);
 
-			NLog.d(getTag(action, "Post"), requestBodyStr);
+			FastLog.d(getTag(action, "Post"), requestBodyStr);
 
 			builder.post(RequestBody.create(MediaType.parse("application/json; charset=UTF-8"), requestBodyStr));
 		}
@@ -76,13 +76,13 @@ public class OkHttpUtility implements IHttpUtility {
 	private Request.Builder createRequestBuilder(HttpConfig config, Setting action, Params urlParams, String method) throws TaskException {
 		// 是否有网络连接
 		if (!NetworkHelper.isNetworkAvailable(FrameworkApplication.getContext())) {
-			NLog.w(getTag(action, method), "没有网络连接");
+			FastLog.w(getTag(action, method), "没有网络连接");
 
 			throw new TaskException(TaskException.TaskError.noneNetwork.toString());
 		}
 
 		String url = getUrl(config,action,urlParams);
-		NLog.d(getTag(action, method), url);
+		FastLog.d(getTag(action, method), url);
 
 		Request.Builder builder = new Request.Builder();
 		builder.url(url);
@@ -91,7 +91,7 @@ public class OkHttpUtility implements IHttpUtility {
 		if (!TextUtils.isEmpty(config.cookie)) {
 			builder.header("Cookie", config.cookie);
 
-			NLog.d(getTag(action, method), "Cookie = " + config.cookie);
+			FastLog.d(getTag(action, method), "Cookie = " + config.cookie);
 		}
 		// add header
 		if (config.headerMap.size() > 0) {
@@ -99,7 +99,7 @@ public class OkHttpUtility implements IHttpUtility {
 			for (String key : keySet) {
 				builder.addHeader(key, config.headerMap.get(key));
 
-				NLog.d(getTag(action, method), "Header[%s, %s]", key, config.headerMap.get(key));
+				FastLog.d(getTag(action, method), "Header[%s, %s]", key, config.headerMap.get(key));
 			}
 		}
 
@@ -118,17 +118,17 @@ public class OkHttpUtility implements IHttpUtility {
 				Thread.sleep(SettingUtility.getPermanentSettingAsInt("http_delay"));
 			}
 		} catch (Exception e) {
-			NLog.printStackTrace(e);
+			FastLog.printStackTrace(e);
 		}
 
 		try {
 			Response response = getOkHttpClient().newCall(request).execute();
-			NLog.w(getTag(action, method), "Http-code = %d", response.code());
+			FastLog.w(getTag(action, method), "Http-code = %d", response.code());
 			if (! (response.code() == HttpURLConnection.HTTP_OK || response.code() == HttpURLConnection.HTTP_PARTIAL)) {
 				String responseStr = response.body().string();
 
-				if (NLog.isDebug()) {
-					NLog.w(getTag(action, method), responseStr);
+				if (FastLog.isDebug()) {
+					FastLog.w(getTag(action, method), responseStr);
 				}
 
 				TaskException.checkResponse(responseStr);
@@ -136,24 +136,24 @@ public class OkHttpUtility implements IHttpUtility {
 				throw new TaskException(TaskException.TaskError.timeout.toString());
 			} else {
 				String responseStr = response.body().string();
-                NLog.v(getTag(action, method), "Response = %s", responseStr);
+                FastLog.v(getTag(action, method), "Response = %s", responseStr);
 
 				return parseResponse(responseStr, responseCls);
 			}
 		} catch (SocketTimeoutException e) {
-			NLog.w(getTag(action, method), e + "");
+			FastLog.w(getTag(action, method), e + "");
 
 			throw new TaskException(TaskException.TaskError.timeout.toString());
 		} catch (IOException e) {
-			NLog.w(getTag(action, method), e + "");
+			FastLog.w(getTag(action, method), e + "");
 
 			throw new TaskException(TaskException.TaskError.timeout.toString());
 		} catch (TaskException e) {
-			NLog.w(getTag(action, method), e + "");
+			FastLog.w(getTag(action, method), e + "");
 
 			throw e;
 		} catch (Exception e) {
-			NLog.w(getTag(action, method), e + "");
+			FastLog.w(getTag(action, method), e + "");
 
 			throw new TaskException(TaskException.TaskError.resultIllegal.toString());
 		}
@@ -256,7 +256,7 @@ public class OkHttpUtility implements IHttpUtility {
 							}
 						}
 					} catch (IOException e) {
-						NLog.printStackTrace(e);
+						FastLog.printStackTrace(e);
 						throw e;
 					} finally {
 						Util.closeQuietly(source);

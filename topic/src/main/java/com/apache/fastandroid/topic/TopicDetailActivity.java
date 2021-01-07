@@ -20,7 +20,7 @@ import com.apache.fastandroid.topic.webview.GcsMarkdownViewClient;
 import com.apache.fastandroid.topic.webview.MarkdownView;
 import com.apache.fastandroid.topic.webview.WebImageListener;
 import com.tesla.framework.common.util.date.FormatTimeUtil;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
@@ -108,7 +108,7 @@ public class TopicDetailActivity extends BaseActivity {
 
     private void showUserInfo(){
         View mHeaderView = findViewById(R.id.layout_content_header);
-        NLog.d(ABaseFragment.TAG, "showUserInfo mHeaderView = %s", mHeaderView);
+        FastLog.d(ABaseFragment.TAG, "showUserInfo mHeaderView = %s", mHeaderView);
         User user = mTopicBean.user;
         ((TextView)mHeaderView.findViewById(R.id.username)).setText(user.getName());
         ((TextView)mHeaderView.findViewById(R.id.time)).setText(FormatTimeUtil.computePastTime(mTopicBean.updated_at));

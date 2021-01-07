@@ -3,7 +3,7 @@ package com.tesla.framework.component.orm.utils;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.orm.SqliteUtility;
 import com.tesla.framework.component.orm.annotation.TableName;
 import com.tesla.framework.component.orm.extra.TableColumn;
@@ -55,7 +55,7 @@ public class TableInfoUtils {
 				int count = cursor.getInt(0);
 				if (count > 0) {
 					cursor.close();
-					NLog.d(TAG, "表 %s 已存在", tableInfo.getTableName());
+					FastLog.d(TAG, "表 %s 已存在", tableInfo.getTableName());
 
 					cursor = db.rawQuery("PRAGMA table_info" + "(" + tableInfo.getTableName() + ")", null);
 					// table的所有字段名称
@@ -94,7 +94,7 @@ public class TableInfoUtils {
 					
 					for (String newField : newFieldList) {
 						db.execSQL(String.format("ALTER TABLE %s ADD %s TEXT", tableInfo.getTableName(), newField));
-						NLog.d(TAG, "表 %s 新增字段 %s", tableInfo.getTableName(), newField);
+						FastLog.d(TAG, "表 %s 新增字段 %s", tableInfo.getTableName(), newField);
 					}
 					
 					return tableInfo;
@@ -104,11 +104,11 @@ public class TableInfoUtils {
 			// 创建一张新的表
 			String createSql = SqlUtils.getTableSql(tableInfo);
 			db.execSQL(createSql);
-			NLog.d(TAG, "创建一张新表 %s", tableInfo.getTableName());
+			FastLog.d(TAG, "创建一张新表 %s", tableInfo.getTableName());
 		} catch (Exception e) {
 			e.printStackTrace();
 
-            NLog.d(TAG, e.getMessage() + "");
+            FastLog.d(TAG, e.getMessage() + "");
 		} finally {
 			if (cursor != null)
 				cursor.close();

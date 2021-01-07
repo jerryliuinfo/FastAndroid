@@ -8,7 +8,6 @@ import android.util.AttributeSet
 import android.view.View
 import com.apache.fastandroid.hencoder.paint.R
 import com.tesla.framework.common.util.ResUtil
-import com.tesla.framework.common.util.log.NLog
 
 
 /**

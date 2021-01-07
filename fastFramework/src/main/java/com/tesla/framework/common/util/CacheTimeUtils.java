@@ -3,7 +3,7 @@ package com.tesla.framework.common.util;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.sp.SPUtil;
 
 /**
@@ -16,7 +16,7 @@ public class CacheTimeUtils {
 
         SPUtil.putString(key, time);
 
-        NLog.d("CacheTimeUtils", String.format("保存缓存 %s, saveTime = %s", key, time));
+        FastLog.d("CacheTimeUtils", String.format("保存缓存 %s, saveTime = %s", key, time));
     }
 
     public static long getSaveTime(Context context, String key) {
@@ -31,7 +31,7 @@ public class CacheTimeUtils {
 
             boolean expired = Math.abs((System.currentTimeMillis() / 1000 - saveTime) * 1000) >= refreshInterval;
 
-            NLog.d("CacheTimeUtils", String.format("缓存有效性 %s, expired = %s", key, String.valueOf(expired)));
+            FastLog.d("CacheTimeUtils", String.format("缓存有效性 %s, expired = %s", key, String.valueOf(expired)));
 
             return expired;
         } catch (Throwable e) {

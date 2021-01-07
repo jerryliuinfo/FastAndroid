@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 /**
  * Created by jerryliu on 2017/6/3.
@@ -27,8 +27,8 @@ public class ManifestUtil {
             }
 
         } catch (Exception e) {
-            NLog.printStackTrace(e);
-            NLog.w("ContextUtils", "Could not read the name(%s) in the manifest file.", name);
+            FastLog.printStackTrace(e);
+            FastLog.w("ContextUtils", "Could not read the name(%s) in the manifest file.", name);
             return null;
         }
 

@@ -3,7 +3,7 @@ package com.apache.fastandroid.artemis.retrofit.download;
 import android.annotation.SuppressLint;
 import com.apache.fastandroid.artemis.BaselibLogUtil;
 import com.apache.fastandroid.artemis.rx.observer.CommonObserver;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -48,7 +48,7 @@ public abstract class DownloadObserver extends CommonObserver<ResponseBody> {
                                 }
                             });
                         }catch (Exception e){
-                            NLog.printStackTrace(e);
+                            FastLog.printStackTrace(e);
                             doOnError(e.getMessage());
                         }
 

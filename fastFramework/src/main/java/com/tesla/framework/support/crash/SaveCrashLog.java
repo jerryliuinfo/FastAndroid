@@ -1,6 +1,6 @@
 package com.tesla.framework.support.crash;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,14 +45,14 @@ public class SaveCrashLog implements ISaveCrashFile {
             fos.write(writer.toString().getBytes("utf-8"));
             return true;
         } catch (Exception e) {
-            NLog.printStackTrace(e);
+            FastLog.printStackTrace(e);
             return false;
         } finally {
             if (fos != null) {
                 try {
                     fos.close();
                 } catch (Exception e) {
-                    NLog.printStackTrace(e);
+                    FastLog.printStackTrace(e);
                 }
             }
         }

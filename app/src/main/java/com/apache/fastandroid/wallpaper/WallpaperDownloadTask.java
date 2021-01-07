@@ -11,7 +11,7 @@ import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import com.tesla.framework.common.util.dimen.ScreenUtil;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.network.task.TaskException;
 
 import java.io.ByteArrayInputStream;
@@ -54,7 +54,7 @@ public class WallpaperDownloadTask  {
                     decode = true;
                 }
 
-                NLog.d(TAG, "image height = %d, screen height = %d", opts.outHeight, height + navigationBarHeight);
+                FastLog.d(TAG, "image height = %d, screen height = %d", opts.outHeight, height + navigationBarHeight);
 
                 if (decode) {
                     // docode的时间会稍微长一点，idol3测试在1S内，所以先显示一个99%的进度
@@ -89,7 +89,7 @@ public class WallpaperDownloadTask  {
                         });
                     }
 
-                    NLog.d(TAG, "设置处理后的壁纸耗时 : " + (System.currentTimeMillis() - time));
+                    FastLog.d(TAG, "设置处理后的壁纸耗时 : " + (System.currentTimeMillis() - time));
 
                     return;
                 }
@@ -100,7 +100,7 @@ public class WallpaperDownloadTask  {
 
             wallpaperManager.setStream(new FileInputStream(file));
 
-            NLog.d(TAG, "设置原壁纸耗时 : " + (System.currentTimeMillis() - time));
+            FastLog.d(TAG, "设置原壁纸耗时 : " + (System.currentTimeMillis() - time));
 
             if (callback != null) {
                 new Handler(Looper.getMainLooper()).post(new Runnable() {

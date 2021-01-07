@@ -6,7 +6,7 @@ import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -115,7 +115,7 @@ public class InjectUtility {
 			}
 		}
 
-		if (NLog.isDebug()){
+		if (FastLog.isDebug()){
 			//NLog.v(TAG, "耗时 %s ms : " + injectedSource, String.valueOf(System.currentTimeMillis() - start));
 		}
 	}

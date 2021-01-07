@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.ViewAnimationUtils
 import androidx.constraintlayout.widget.ConstraintHelper
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.common.util.log.FastLog
 import kotlin.math.hypot
 
 /**
@@ -23,7 +23,7 @@ class CircularRevealHepler(context: Context?, attrs: AttributeSet) : ConstraintH
 
         referencedIds.forEach {
             val view = container.getViewById(it)
-            NLog.d(TAG, "updatePostLayout view id: %s , width: %s, height: %s",it,view.width,view.height )
+            FastLog.d(TAG, "updatePostLayout view id: %s , width: %s, height: %s",it,view.width,view.height )
             //hypot 计算三角形斜边
             val radius = hypot(view.width.toFloat(),view.height.toFloat())
             ViewAnimationUtils.createCircularReveal(view,0,0,0f,radius)

@@ -32,7 +32,7 @@ import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.permissionx.guolindev.PermissionX;
 import com.permissionx.guolindev.callback.RequestCallback;
 import com.tesla.framework.common.util.ResUtil;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.route.Route;
@@ -173,7 +173,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                NLog.d(TAG, "onNavigationItemSelected item title = %s", item.getTitle());
+                FastLog.d(TAG, "onNavigationItemSelected item title = %s", item.getTitle());
                 item.setChecked(true);
                 onMenuItemClicked(item.getItemId(), item.getTitle().toString());
                 return true;

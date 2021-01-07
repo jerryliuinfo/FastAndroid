@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.tesla.framework.R;
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.N;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 
 /**
@@ -98,7 +98,7 @@ public class TaskException extends Exception {
 					return message + "";
 			}
 		} catch (Exception e) {
-			NLog.printStackTrace(e);
+			FastLog.printStackTrace(e);
 		}
 
 		return super.getMessage() + "";

@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
@@ -76,7 +76,7 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
                         Method method = clazz.getMethod("setArguments", new Class[] { Bundle.class });
                         method.invoke(fragment, FragmentArgs.transToBundle(values));
                     } catch (Exception e) {
-                        NLog.printStackTrace(e);
+                        FastLog.printStackTrace(e);
                     }
                 }
                 // 重写Activity的主题
@@ -95,7 +95,7 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
                 //    NLog.printStackTrace(e);
                 //}
             } catch (Exception e) {
-                NLog.printStackTrace(e);
+                FastLog.printStackTrace(e);
                 finish();
                 return;
             }

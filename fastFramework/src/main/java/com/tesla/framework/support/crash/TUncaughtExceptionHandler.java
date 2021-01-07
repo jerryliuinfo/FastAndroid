@@ -14,7 +14,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.tesla.framework.common.util.activitytask.ActivityTaskMgr;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import java.io.File;
 import java.io.StringWriter;
@@ -123,7 +123,7 @@ public class TUncaughtExceptionHandler implements UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
-        NLog.d(TAG, "-------->uncaughtException thread = %s, ex = %s",thread, ex);
+        FastLog.d(TAG, "-------->uncaughtException thread = %s, ex = %s",thread, ex);
         if (mIsDebug) {
             new DumpOOM().dumpOOMFile(mContext,ex);
         }

@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import com.tesla.framework.R;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.ResUtil;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
@@ -204,7 +204,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
         if (theme == configTheme()) {
 
         } else {
-            NLog.i(TAG, "theme changed, reload()");
+            FastLog.i(TAG, "theme changed, reload()");
             reload();
 
             return;

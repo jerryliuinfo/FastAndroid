@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.FrameworkLogUtil;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.component.imageloader.BitmapOwner;
 import com.tesla.framework.network.biz.ABizLogic;
@@ -412,8 +412,8 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
             onTaskStateChanged(ABaseTaskState.success, null);
 
-            if (NLog.isDebug())
-                NLog.d(TAG, "Result获取时间：%s", new SimpleDateFormat("HH:mm:ss").format(lastResultGetTime));
+            if (FastLog.isDebug())
+                FastLog.d(TAG, "Result获取时间：%s", new SimpleDateFormat("HH:mm:ss").format(lastResultGetTime));
 
             if (result instanceof IResult) {
                 IResult iResult = (IResult) result;
@@ -426,7 +426,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
                             @Override
                             public void run() {
-                                NLog.d(TAG, "数据过期，开始刷新, " + toString());
+                                FastLog.d(TAG, "数据过期，开始刷新, " + toString());
 
                                 requestDataOutofdate();
                             }
@@ -654,7 +654,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     protected void setToolbarTitle(String msg){
         BaseActivity baseActivity = (BaseActivity) getActivity();
         ActionBar supportActionBar = baseActivity.getSupportActionBar();
-        NLog.d(TAG, "supportActionBar: %s",supportActionBar);
+        FastLog.d(TAG, "supportActionBar: %s",supportActionBar);
         if (supportActionBar != null){
             supportActionBar.setDisplayHomeAsUpEnabled(true);
             supportActionBar.setTitle(msg);
@@ -685,12 +685,12 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        NLog.d(TAG, "setUserVisibleHint isVisibleToUser: %s",isVisibleToUser);
+        FastLog.d(TAG, "setUserVisibleHint isVisibleToUser: %s",isVisibleToUser);
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        NLog.d(TAG, "onHiddenChanged hidden: %s",hidden);
+        FastLog.d(TAG, "onHiddenChanged hidden: %s",hidden);
     }
 }

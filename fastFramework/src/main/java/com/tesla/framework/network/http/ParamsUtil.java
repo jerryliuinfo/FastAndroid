@@ -1,6 +1,6 @@
 package com.tesla.framework.network.http;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,7 +59,7 @@ public class ParamsUtil {
 			try {
 				paramsBuffer.append("\"" + encode(params.getParameter(key)) + "\"");
 			} catch (Exception e) {
-				NLog.printStackTrace(e);
+				FastLog.printStackTrace(e);
 			}
 		}
 		return paramsBuffer.toString();
@@ -133,7 +133,7 @@ public class ParamsUtil {
 		try {
 			encoded = URLEncoder.encode(value, "UTF-8");
 		} catch (UnsupportedEncodingException ignore) {
-			NLog.printStackTrace(ignore);
+			FastLog.printStackTrace(ignore);
 		}
 		if (encoded == null){
 			throw new NullPointerException("encoded must not be null");
@@ -173,7 +173,7 @@ public class ParamsUtil {
 				params.addParameter(keyValue[0], keyValue[1]);
 			}
 		} catch (Exception e) {
-			NLog.printStackTrace(e);
+			FastLog.printStackTrace(e);
 		}
 
 		return params;

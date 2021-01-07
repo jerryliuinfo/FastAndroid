@@ -2,7 +2,7 @@ package com.apache.fastandroid.artemis.util;
 
 import com.apache.fastandroid.artemis.BaseApp;
 import com.tesla.framework.common.util.VersionUtil;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 /**
  * author: 01370340
@@ -18,7 +18,7 @@ public class BaseLibLogUtil {
      * @param args   格式化日志参数
      */
     public static void v(String format, Object... args) {
-        NLog.v(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
+        FastLog.v(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
     }
 
     /**
@@ -28,7 +28,7 @@ public class BaseLibLogUtil {
      * @param args   格式化日志参数
      */
     public static void d(String format, Object... args) {
-        NLog.d(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
+        FastLog.d(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
     }
 
     /**
@@ -38,7 +38,7 @@ public class BaseLibLogUtil {
      * @param args   格式化日志参数
      */
     public static void w(String format, Object... args) {
-        NLog.w(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
+        FastLog.w(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
     }
 
     /**
@@ -48,7 +48,7 @@ public class BaseLibLogUtil {
      * @param args   格式化日志参数
      */
     public static void e(String format, Object... args) {
-        NLog.e(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
+        FastLog.e(TAG,VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format), args);
     }
 
 

@@ -1,7 +1,7 @@
 package com.tesla.framework.component.orm.extra;
 
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.orm.SqliteUtility;
 import com.tesla.framework.component.orm.annotation.AutoIncrementPrimaryKey;
 import com.tesla.framework.component.orm.annotation.PrimaryKey;
@@ -53,10 +53,10 @@ public class TableInfo {
 		if (primaryKey == null)
 			throw new RuntimeException("类 " + clazz.getSimpleName() + " 没有设置主键，请使用标注主键");
 		
-		if (NLog.isDebug()) {
-			NLog.v(SqliteUtility.TAG, String.format("类 %s 的主键是 %s", clazz.getSimpleName(), primaryKey.getColumn()));
+		if (FastLog.isDebug()) {
+			FastLog.v(SqliteUtility.TAG, String.format("类 %s 的主键是 %s", clazz.getSimpleName(), primaryKey.getColumn()));
 			for (TableColumn column : columns) {
-				NLog.v(SqliteUtility.TAG, String.format("[column = %s, datatype = %s]", column.getColumn(), column.getDataType()));
+				FastLog.v(SqliteUtility.TAG, String.format("[column = %s, datatype = %s]", column.getColumn(), column.getDataType()));
 			}
 		}
 	}

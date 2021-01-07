@@ -1,5 +1,11 @@
 package com.tesla.framework.component.orm;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Hashtable;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,7 +13,7 @@ import android.database.sqlite.SQLiteStatement;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.orm.extra.AutoIncrementTableColumn;
 import com.tesla.framework.component.orm.extra.Extra;
 import com.tesla.framework.component.orm.extra.TableColumn;
@@ -15,12 +21,6 @@ import com.tesla.framework.component.orm.extra.TableInfo;
 import com.tesla.framework.component.orm.utils.FieldUtils;
 import com.tesla.framework.component.orm.utils.SqlUtils;
 import com.tesla.framework.component.orm.utils.TableInfoUtils;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Hashtable;
-import java.util.List;
 
 
 /**
@@ -48,7 +48,7 @@ public class SqliteUtility {
 		
 		dbCache.put(dbName, this);
 
-        NLog.d(TAG, "将库 %s 放到缓存中", dbName);
+        FastLog.d(TAG, "将库 %s 放到缓存中", dbName);
 	}
 	
 	public static SqliteUtility getInstance() {
@@ -106,8 +106,8 @@ public class SqliteUtility {
 
         ArrayList<T> list = new ArrayList<T>();
 
-        if (NLog.isDebug()) {
-            NLog.d(TAG, " method[select], table[%s], selection[%s], selectionArgs%s, groupBy[%s], having[%s], orderBy[%s], limit[%s] ",
+        if (FastLog.isDebug()) {
+            FastLog.d(TAG, " method[select], table[%s], selection[%s], selectionArgs%s, groupBy[%s], having[%s], orderBy[%s], limit[%s] ",
                     tableInfo.getTableName(), selection, JSON.toJSON(selectionArgs), String.valueOf(groupBy), String.valueOf(having), String.valueOf(orderBy), String.valueOf(limit));
         }
 
@@ -119,7 +119,7 @@ public class SqliteUtility {
         long start = System.currentTimeMillis();
         Cursor cursor = getReadableDB().query(tableInfo.getTableName(), columnList.toArray(new String[0]),
                                     selection, selectionArgs, groupBy, having, orderBy, limit);
-        NLog.d(TAG, "table[%s] 查询数据结束，耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
+        FastLog.d(TAG, "table[%s] 查询数据结束，耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
 
         start = System.currentTimeMillis();
         try {
@@ -144,9 +144,9 @@ public class SqliteUtility {
         } finally {
             cursor.close();
         }
-        NLog.d(TAG, "table[%s], 设置数据结束，耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
+        FastLog.d(TAG, "table[%s], 设置数据结束，耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
 
-        NLog.d(TAG, "查询到数据 %d 条", list.size());
+        FastLog.d(TAG, "查询到数据 %d 条", list.size());
 
         return list;
     }
@@ -164,7 +164,7 @@ public class SqliteUtility {
             if (entities != null && entities.length > 0)
                 insert(extra, Arrays.asList(entities));
             else
-                NLog.d(TAG, "method[insert(Extra extra, T... entities)], entities is empty");
+                FastLog.d(TAG, "method[insert(Extra extra, T... entities)], entities is empty");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -181,7 +181,7 @@ public class SqliteUtility {
             if (entities != null && entities.length > 0)
                 insert(extra, Arrays.asList(entities), "INSERT OR REPLACE INTO ");
             else
-                NLog.d(TAG, "method[insertOrReplace(Extra extra, T... entities)], entities is empty");
+                FastLog.d(TAG, "method[insertOrReplace(Extra extra, T... entities)], entities is empty");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -205,7 +205,7 @@ public class SqliteUtility {
 
     private <T> void insert(Extra extra, List<T> entityList, String insertInto) {
         if (entityList == null || entityList.size() == 0) {
-            NLog.d(TAG, "method[insert(Extra extra, List<T> entityList)], entityList is empty");
+            FastLog.d(TAG, "method[insert(Extra extra, List<T> entityList)], entityList is empty");
             return;
         }
 
@@ -217,7 +217,7 @@ public class SqliteUtility {
             try {
                 String sql = SqlUtils.createSqlInsert(insertInto, tableInfo);
 
-                NLog.v(TAG, insertInto + " sql = %s", sql);
+                FastLog.v(TAG, insertInto + " sql = %s", sql);
 
                 SQLiteStatement insertStatement = getWritableDB().compileStatement(sql);
                 long bindTime = 0;
@@ -228,13 +228,13 @@ public class SqliteUtility {
                     startTime = System.currentTimeMillis();
                     insertStatement.execute();
                 }
-                NLog.d(TAG, "bindvalues 耗时 %s ms", bindTime + "");
+                FastLog.d(TAG, "bindvalues 耗时 %s ms", bindTime + "");
 
                 getWritableDB().setTransactionSuccessful();
             } finally {
                 getWritableDB().endTransaction();
             }
-            NLog.d(TAG, "表 %s %s 数据 %d 条， 执行时间 %s ms",
+            FastLog.d(TAG, "表 %s %s 数据 %d 条， 执行时间 %s ms",
                     tableInfo.getTableName(),
                     insertInto,
                     entityList.size(),
@@ -248,7 +248,7 @@ public class SqliteUtility {
                     if(cursor.moveToFirst()) {
                         int newId = cursor.getInt(0);
 
-                        NLog.d(TAG, "表%s自增主键[%d]", tableInfo.getTableName(), newId);
+                        FastLog.d(TAG, "表%s自增主键[%d]", tableInfo.getTableName(), newId);
 
                         T bean = entityList.get(0);
                         try {
@@ -309,14 +309,14 @@ public class SqliteUtility {
                     }
 
                     int rowId = getWritableDB().update(tableInfo.getTableName(), values, whereClause, whereArgs);
-                    if (NLog.isDebug()) {
-                        NLog.d(TAG, " method[update], table[%s], whereClause[%s], whereArgs[%s], rowId[%d]",
+                    if (FastLog.isDebug()) {
+                        FastLog.d(TAG, " method[update], table[%s], whereClause[%s], whereArgs[%s], rowId[%d]",
                                 tableInfo.getTableName(), whereClause, JSON.toJSON(whereArgs), rowId);
                     }
                 }
             }
             else {
-                NLog.d(TAG, "method[update(Extra extra, T... entities)], entities is empty");
+                FastLog.d(TAG, "method[update(Extra extra, T... entities)], entities is empty");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -346,11 +346,11 @@ public class SqliteUtility {
                 where = " where " + where;
             String sql = "DELETE FROM '" + tableInfo.getTableName() + "' " + where;
 
-            NLog.d(TAG, "method[delete] table[%s], sql[%s]", tableInfo.getTableName(), sql);
+            FastLog.d(TAG, "method[delete] table[%s], sql[%s]", tableInfo.getTableName(), sql);
 
             long start = System.currentTimeMillis();
             getWritableDB().execSQL(sql);
-            NLog.d(TAG, "表 %s 清空数据, 耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
+            FastLog.d(TAG, "表 %s 清空数据, 耗时 %s ms", tableInfo.getTableName(), String.valueOf(System.currentTimeMillis() - start));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -372,15 +372,15 @@ public class SqliteUtility {
                 whereArgList.addAll(Arrays.asList(extraWhereArgs));
             String[] whereArgs = whereArgList.toArray(new String[0]);
 
-            if (NLog.isDebug()) {
-                NLog.d(TAG, " method[deleteById], table[%s], id[%s], whereClause[%s], whereArgs%s ",
+            if (FastLog.isDebug()) {
+                FastLog.d(TAG, " method[deleteById], table[%s], id[%s], whereClause[%s], whereArgs%s ",
                                 tableInfo.getTableName(), String.valueOf(id), whereClause, JSON.toJSON(whereArgs));
             }
 
             long start = System.currentTimeMillis();
             int rowCount = getWritableDB().delete(tableInfo.getTableName(), whereClause, whereArgs);
 
-            NLog.d(TAG, "表 %s 删除数据 %d 条, 耗时 %s ms", tableInfo.getTableName(), rowCount, String.valueOf(System.currentTimeMillis() - start));
+            FastLog.d(TAG, "表 %s 删除数据 %d 条, 耗时 %s ms", tableInfo.getTableName(), rowCount, String.valueOf(System.currentTimeMillis() - start));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -393,11 +393,11 @@ public class SqliteUtility {
             long start = System.currentTimeMillis();
             int rowCount = getWritableDB().delete(tableInfo.getTableName(), whereClause, whereArgs);
 
-            if (NLog.isDebug()) {
-                NLog.d(TAG, "method[delete], table[%s], whereClause[%s], whereArgs%s ",
+            if (FastLog.isDebug()) {
+                FastLog.d(TAG, "method[delete], table[%s], whereClause[%s], whereArgs%s ",
                         tableInfo.getTableName(), whereClause, JSON.toJSON(whereArgs));
             }
-            NLog.d(TAG, "表 %s 删除数据 %d 条，耗时 %s ms", tableInfo.getTableName(), rowCount, String.valueOf(System.currentTimeMillis() - start));
+            FastLog.d(TAG, "表 %s 删除数据 %d 条，耗时 %s ms", tableInfo.getTableName(), rowCount, String.valueOf(System.currentTimeMillis() - start));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -420,19 +420,19 @@ public class SqliteUtility {
         	sql = String.format(" select sum(%s) as _sum_ from %s where %s ", column, tableInfo.getTableName(), whereClause);
         }
 
-        NLog.d(TAG, "sum() --- > " + sql);
+        FastLog.d(TAG, "sum() --- > " + sql);
 
         try {
             long time = System.currentTimeMillis();
             Cursor cursor = getReadableDB().rawQuery(sql, whereArgs);
             if (cursor.moveToFirst()) {
                 long sum = cursor.getLong(cursor.getColumnIndex("_sum_"));
-                NLog.d(TAG, "sum = %s 耗时%sms", String.valueOf(sum) , String.valueOf(System.currentTimeMillis() - time));
+                FastLog.d(TAG, "sum = %s 耗时%sms", String.valueOf(sum) , String.valueOf(System.currentTimeMillis() - time));
                 cursor.close();
                 return sum;
             }
         } catch (Exception e) {
-            NLog.printStackTrace(e);
+            FastLog.printStackTrace(e);
         }
         return 0;
     }
@@ -449,14 +449,14 @@ public class SqliteUtility {
         	sql = String.format(" select count(*) as _count_ from %s where %s ", tableInfo.getTableName(), whereClause);
         }
 
-        NLog.d(TAG, "count --- > " + sql);
+        FastLog.d(TAG, "count --- > " + sql);
 
         try {
             long time = System.currentTimeMillis();
             Cursor cursor = getReadableDB().rawQuery(sql, whereArgs);
             if (cursor.moveToFirst()) {
                 long count = cursor.getLong(cursor.getColumnIndex("_count_"));
-                NLog.d(TAG, "count = %s 耗时%sms", String.valueOf(count) , String.valueOf(System.currentTimeMillis() - time));
+                FastLog.d(TAG, "count = %s 耗时%sms", String.valueOf(count) , String.valueOf(System.currentTimeMillis() - time));
                 cursor.close();
                 return count;
             }
@@ -513,8 +513,8 @@ public class SqliteUtility {
                 return;
             }
 
-            if (NLog.isDebug()) {
-                NLog.v(TAG, " method[bindValue_ContentValues], key[%s], value[%s]", column.getColumn(), value + "");
+            if (FastLog.isDebug()) {
+                FastLog.v(TAG, " method[bindValue_ContentValues], key[%s], value[%s]", column.getColumn(), value + "");
             }
 
             if ("object".equalsIgnoreCase(column.getDataType())) {
@@ -535,7 +535,7 @@ public class SqliteUtility {
         } catch (Exception e) {
             e.printStackTrace();
 
-            NLog.w(TAG, "属性 %s bindvalue 异常", column.getField().getName());
+            FastLog.w(TAG, "属性 %s bindvalue 异常", column.getField().getName());
         }
     }
 
@@ -549,8 +549,8 @@ public class SqliteUtility {
                 return;
             }
 
-            if (NLog.isDebug()) {
-                NLog.v(TAG, " method[bindValue_SQLiteStatement], key[%s], value[%s]", column.getColumn(), value + "");
+            if (FastLog.isDebug()) {
+                FastLog.v(TAG, " method[bindValue_SQLiteStatement], key[%s], value[%s]", column.getColumn(), value + "");
             }
 
             if ("object".equalsIgnoreCase(column.getDataType())) {
@@ -571,7 +571,7 @@ public class SqliteUtility {
         } catch (Exception e) {
             e.printStackTrace();
 
-            NLog.w(TAG, "属性 %s bindvalue 异常", column.getField().getName());
+            FastLog.w(TAG, "属性 %s bindvalue 异常", column.getField().getName());
         }
     }
 

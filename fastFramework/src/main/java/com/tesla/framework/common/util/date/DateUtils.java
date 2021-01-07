@@ -1,7 +1,7 @@
 package com.tesla.framework.common.util.date;
 
 import com.tesla.framework.common.util.DebugUtils;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -186,7 +186,7 @@ public class DateUtils {
 			vl = SIMPLE_FORMAT_24.parse(value).getTime();
 		} catch (Exception e) {
 			if (DebugUtils.isDebugVersion()) {
-				NLog.printStackTrace(e);
+				FastLog.printStackTrace(e);
 			}
 		}
 		return vl;

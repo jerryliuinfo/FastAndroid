@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import com.apache.fastandroid.topic.video.bean.VideoBean;
 import com.apache.fastandroid.topic.video.bean.VideoResultBean;
 import com.apache.fastandroid.topic.video.view.VideoItemViewCreator;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
@@ -57,7 +57,7 @@ public class VideoFragment extends ARecycleViewFragment<VideoBean,VideoResultBea
     @Override
     public void requestData(RefreshMode mode) {
         super.requestData(mode);
-        NLog.d(TAG, "requestData mCategory = %s", mCategory);
+        FastLog.d(TAG, "requestData mCategory = %s", mCategory);
         if (mode == RefreshMode.refresh){
             mode = RefreshMode.reset;
         }
@@ -86,7 +86,7 @@ public class VideoFragment extends ARecycleViewFragment<VideoBean,VideoResultBea
                 params) throws TaskException {
             int page = Integer.parseInt(nextPage);
             VideoResultBean result = VideoSDK.newInstance(getTaskCacheMode(this)).loadViedoData(mCategory,page);
-            NLog.d(TAG, "result = %s", result);
+            FastLog.d(TAG, "result = %s", result);
             return result;
         }
 

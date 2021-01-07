@@ -7,7 +7,7 @@ import android.graphics.Paint
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.common.util.log.FastLog
 
 /**
  * Created by Jerry on 2020/12/16.
@@ -37,7 +37,7 @@ class Practice14GetFontMetricsView(context: Context?, attrs: AttributeSet?) : Vi
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawRect(50f, mTop, (width - 50).toFloat(),mBottom,mRectPaint)
-        NLog.d(TAG, "offset: ${yOffset}, top:${fontMetrics.top}, ascent: ${fontMetrics.ascent}, descent:${fontMetrics.descent}, botton: ${fontMetrics.bottom},leading:${fontMetrics.leading}")
+        FastLog.d(TAG, "offset: ${yOffset}, top:${fontMetrics.top}, ascent: ${fontMetrics.ascent}, descent:${fontMetrics.descent}, botton: ${fontMetrics.bottom},leading:${fontMetrics.leading}")
         canvas.drawText(mTexts[0],100f, mMiddle + yOffset, mTextPaint)
         canvas.drawText(mTexts[1],200f, mMiddle  + yOffset, mTextPaint)
         canvas.drawText(mTexts[2],300f, mMiddle  + yOffset, mTextPaint)

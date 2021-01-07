@@ -7,7 +7,7 @@ import android.os.Build;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.support.action.IAction;
 
 import java.util.ArrayList;
@@ -51,13 +51,13 @@ public abstract class AGroupPermissionAction extends IAction implements IPermiss
         for (int i = 0; i < permissions.length; i++) {
             // 授予了权限
             if (PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(getContext(), permissions[i])) {
-                NLog.d(TAG, "已经授予了权限, permission = %s", permissions[i]);
+                FastLog.d(TAG, "已经授予了权限, permission = %s", permissions[i]);
             }
             // 没有或者拒绝了权限
             else if (PackageManager.PERMISSION_DENIED == ContextCompat.checkSelfPermission(getContext(), permissions[i])) {
                 deniedList.add(permissions[i]);
 
-                NLog.d(TAG, "%s permission = %s", "PERMISSION_DENIED", permissions[i]);
+                FastLog.d(TAG, "%s permission = %s", "PERMISSION_DENIED", permissions[i]);
             }
         }
         if (deniedList.isEmpty()) {
@@ -80,12 +80,12 @@ public abstract class AGroupPermissionAction extends IAction implements IPermiss
     public void doInterrupt() {
         // 对没有权限做出处理，默认申请权限
         if (!handlePermissionNone()) {
-            NLog.d(TAG, "handlePermissionNone(false)");
+            FastLog.d(TAG, "handlePermissionNone(false)");
 
             requestPermission();
         }
         else {
-            NLog.d(TAG, "handlePermissionNone(true)");
+            FastLog.d(TAG, "handlePermissionNone(true)");
         }
     }
 
@@ -124,7 +124,7 @@ public abstract class AGroupPermissionAction extends IAction implements IPermiss
         try {
             getContext().requestPermissions(permissions, requestCode);
         } catch (IllegalArgumentException e) {
-            NLog.printStackTrace(e);
+            FastLog.printStackTrace(e);
         }
     }
 
@@ -137,11 +137,11 @@ public abstract class AGroupPermissionAction extends IAction implements IPermiss
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        NLog.d(TAG, "onRequestPermissionsResult , requestCode = " + requestCode);
+        FastLog.d(TAG, "onRequestPermissionsResult , requestCode = " + requestCode);
 
         if (grantResults != null && grantResults.length > 0) {
             for (int i = 0; i < permissions.length; i++) {
-                NLog.d(TAG, "requestCode = %d, permission = %s, grantResult = %d", requestCode, permissions[i], grantResults[i]);
+                FastLog.d(TAG, "requestCode = %d, permission = %s, grantResult = %d", requestCode, permissions[i], grantResults[i]);
             }
         }
 

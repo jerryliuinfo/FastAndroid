@@ -1,7 +1,7 @@
 package com.tesla.framework.common.util;
 
 import com.tesla.framework.applike.FrameworkApplication;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 /**
  * author: 01370340
@@ -17,7 +17,7 @@ public class FrameworkLogUtil {
      * @param args   格式化日志参数
      */
     public static void v(String format, Object... args) {
-        NLog.v(TAG,VersionUtil.getVersionNameAndFormat(FrameworkApplication.getContext(),format), args);
+        FastLog.v(TAG,VersionUtil.getVersionNameAndFormat(FrameworkApplication.getContext(),format), args);
     }
 
     /**
@@ -27,7 +27,7 @@ public class FrameworkLogUtil {
      * @param args   格式化日志参数
      */
     public static void d(String format, Object... args) {
-        NLog.d(TAG,VersionUtil.getVersionNameAndFormat(FrameworkApplication.getContext(),format), args);
+        FastLog.d(TAG,VersionUtil.getVersionNameAndFormat(FrameworkApplication.getContext(),format), args);
     }
 
     /**
@@ -37,7 +37,7 @@ public class FrameworkLogUtil {
      * @param args   格式化日志参数
      */
     public static void w(String format, Object... args) {
-        NLog.w(TAG,VersionUtil.getVersionNameAndFormat(FrameworkApplication.getContext(),format), args);
+        FastLog.w(TAG,VersionUtil.getVersionNameAndFormat(FrameworkApplication.getContext(),format), args);
     }
 
     /**
@@ -47,7 +47,7 @@ public class FrameworkLogUtil {
      * @param args   格式化日志参数
      */
     public static void e(String format, Object... args) {
-        NLog.e(TAG,VersionUtil.getVersionNameAndFormat(FrameworkApplication.getContext(),format), args);
+        FastLog.e(TAG,VersionUtil.getVersionNameAndFormat(FrameworkApplication.getContext(),format), args);
     }
 
 

@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.dimen.DimensUtil;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.adpater.BasicRecycleViewAdapter;
 import com.tesla.framework.ui.fragment.adpater.IPagingAdapter;
@@ -127,7 +127,7 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        NLog.d(TAG, "onItemClick postion = %s", position);
+        FastLog.d(TAG, "onItemClick postion = %s", position);
     }
 
     @Override

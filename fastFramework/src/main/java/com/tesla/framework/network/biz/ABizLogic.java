@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.common.setting.SettingExtra;
 import com.tesla.framework.common.setting.SettingUtility;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.network.cache.CacheExecutor;
 import com.tesla.framework.network.cache.ICacheUtility;
 import com.tesla.framework.network.http.OkHttpUtility;
@@ -77,21 +77,21 @@ public abstract class ABizLogic implements IHttpUtility{
                 try {
                     cacheUtility = (ICacheUtility) Class.forName(action.getExtras().get(CACHE_UTILITY).getValue()).newInstance();
                 } catch (Exception e) {
-                    NLog.printStackTrace(e);
-                    NLog.e(TAG, "CacheUtility配置错误 ");
+                    FastLog.printStackTrace(e);
+                    FastLog.e(TAG, "CacheUtility配置错误 ");
                 }
             }
         }else {
-            NLog.e(TAG, "没有配置CacheUtility");
+            FastLog.e(TAG, "没有配置CacheUtility");
         }
-        NLog.e(TAG, "mCacheMode = %s", mCacheMode);
+        FastLog.e(TAG, "mCacheMode = %s", mCacheMode);
         //没有禁止缓存 则先读取缓存
         if (mCacheMode != CacheMode.disable){
             if (cacheUtility != null){
                 long startTime = System.currentTimeMillis();
                 cache = (T) cacheUtility.findCacheData(action,params);
                 if (cache != null){
-                    NLog.d(TAG, "读取缓存耗时 %s ms", System.currentTimeMillis() - startTime);
+                    FastLog.d(TAG, "读取缓存耗时 %s ms", System.currentTimeMillis() - startTime);
                 }
             }
         }
@@ -103,25 +103,25 @@ public abstract class ABizLogic implements IHttpUtility{
                 //发送http请求
                 T result = doHttpRequest(resetHttpConfig(config, action), action, params, responseCls);
 
-                NLog.d(getTag(action, "Get-Http"), "耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
+                FastLog.d(getTag(action, "Get-Http"), "耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
 
                 if (result != null && result instanceof IResult) {
                     putToCache(action, params, (IResult) result, cacheUtility);
                 }
 
-                NLog.d(getTag(action, "Get-Http"), "返回服务器数据");
+                FastLog.d(getTag(action, "Get-Http"), "返回服务器数据");
                 return result;
             } catch (TaskException e) {
-                NLog.w(getTag(action, "Exception"), e + "");
+                FastLog.w(getTag(action, "Exception"), e + "");
                 throw e;
             } catch (Exception e) {
-                NLog.w(getTag(action, "Exception"), e + "");
+                FastLog.w(getTag(action, "Exception"), e + "");
                 throw new TaskException(TextUtils.isEmpty(e.getMessage()) ? "服务器错误" : e.getMessage());
             }
 
         }else {
             if (cache != null) {
-                NLog.d(getTag(action, "Cache"), "返回缓存数据");
+                FastLog.d(getTag(action, "Cache"), "返回缓存数据");
                 // 缓存存在，且有效
                 return cache;
             }
@@ -137,7 +137,7 @@ public abstract class ABizLogic implements IHttpUtility{
                         Class<T> responseCls) throws TaskException {
         long time = System.currentTimeMillis();
         T result = getHttpUtility(action).doPost(resetHttpConfig(config, action), action, urlParams, bodyParams, requestObj, responseCls);
-        NLog.d(getTag(action, "Post"), "耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
+        FastLog.d(getTag(action, "Post"), "耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
 
         return result;
     }
@@ -154,7 +154,7 @@ public abstract class ABizLogic implements IHttpUtility{
             try {
                 return (IHttpUtility) Class.forName(action.getExtras().get(HTTP_UTILITY).getValue()).newInstance();
             } catch (Exception e) {
-                NLog.printStackTrace(e);
+                FastLog.printStackTrace(e);
 
             }
         }
@@ -176,7 +176,7 @@ public abstract class ABizLogic implements IHttpUtility{
             if(!TextUtils.isEmpty(SettingUtility.getStringSetting("http")))
                 return (IHttpUtility) Class.forName(SettingUtility.getStringSetting("http")).newInstance();
         } catch (Exception e) {
-            NLog.printStackTrace(e);
+            FastLog.printStackTrace(e);
         }
 
         return new OkHttpUtility();
@@ -189,7 +189,7 @@ public abstract class ABizLogic implements IHttpUtility{
             if (actionSetting != null && actionSetting.getExtras().containsKey(BASE_URL))
                 config.baseUrl = actionSetting.getExtras().get(BASE_URL).getValue().toString();
         } catch (Exception e) {
-            NLog.printStackTrace(e);
+            FastLog.printStackTrace(e);
         }
 
         return config;
@@ -232,11 +232,11 @@ public abstract class ABizLogic implements IHttpUtility{
         public Void workInBackground(Void... p) throws TaskException {
             long time = System.currentTimeMillis();
 
-            NLog.d(getTag(setting, "Cache"), "开始保存缓存");
+            FastLog.d(getTag(setting, "Cache"), "开始保存缓存");
 
             cacheUtility.addCache(setting, params, o);
 
-            NLog.d(getTag(setting, "Cache"), "保存缓存耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
+            FastLog.d(getTag(setting, "Cache"), "保存缓存耗时 %s ms", String.valueOf(System.currentTimeMillis() - time));
 
             return null;
         }

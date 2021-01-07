@@ -8,7 +8,7 @@ import java.util.Set;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 
 public class TaskManager implements ITaskManager {
@@ -32,7 +32,7 @@ public class TaskManager implements ITaskManager {
 
 			taskCache.put(task.getTaskId(), new WeakReference<>(task));
 
-			NLog.d(TAG, String.format("addTask() --->%s", task.getTaskId()));
+			FastLog.d(TAG, String.format("addTask() --->%s", task.getTaskId()));
 		}
 	}
 
@@ -56,7 +56,7 @@ public class TaskManager implements ITaskManager {
 		WorkTask existTask = getTaskById(taskId);
 
 		if (existTask != null)
-			NLog.d(TAG, String.format("interrupt exist task --->%s", taskId));
+			FastLog.d(TAG, String.format("interrupt exist task --->%s", taskId));
 
 		if (existTask != null)
 			existTask.cancel(mayInterruptIfRunning);

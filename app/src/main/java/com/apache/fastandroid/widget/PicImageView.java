@@ -4,7 +4,7 @@ import android.content.Context;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 /**
  * Created by jerryliu on 2017/4/11.
@@ -57,7 +57,7 @@ public class PicImageView extends androidx.appcompat.widget.AppCompatImageView {
         int iw = imageWidth;
         int ih = imageHeight;
         int heightC = width * ih / iw;
-        NLog.d(TAG, "width = %s, height = %s, iw = %s, ih = %s, heightC = %s",width,height,iw,ih,heightC);
+        FastLog.d(TAG, "width = %s, height = %s, iw = %s, ih = %s, heightC = %s",width,height,iw,ih,heightC);
         if (height > 0){
             if (heightC > height){
                 heightC = height;

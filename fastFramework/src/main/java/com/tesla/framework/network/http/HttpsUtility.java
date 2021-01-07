@@ -1,6 +1,6 @@
 package com.tesla.framework.network.http;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -58,7 +58,7 @@ public class HttpsUtility extends OkHttpUtility {
 				mOKHttpClient = okBuilder.build();
 
 			} catch (Exception e) {
-				NLog.printStackTrace(e);
+				FastLog.printStackTrace(e);
 			}
 		}
 

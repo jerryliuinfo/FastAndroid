@@ -9,7 +9,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.util.Log;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class ActivityUtil {
             context.startActivity(intent);
         } catch (Exception e) {
             // e.printStackTrace();
-            NLog.printStackTrace(e);
+            FastLog.printStackTrace(e);
         }
 
     }

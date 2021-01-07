@@ -11,7 +11,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.support.bean.TabItem;
 import com.tesla.framework.support.inject.ViewInject;
@@ -99,7 +99,7 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
                     try {
                         mFragmentManager.beginTransaction().remove(fragment).commit();
                     } catch (Exception e) {
-                        NLog.printStackTrace(e);
+                        FastLog.printStackTrace(e);
                     }
                 }
 
@@ -200,7 +200,7 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
                 }
                 transaction.commit();
             } catch (Exception e) {
-                NLog.printStackTrace(e);
+                FastLog.printStackTrace(e);
             }
         }
     }

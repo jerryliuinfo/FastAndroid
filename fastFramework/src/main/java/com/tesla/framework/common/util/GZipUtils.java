@@ -1,7 +1,7 @@
 package com.tesla.framework.common.util;
 
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -143,7 +143,7 @@ public abstract class GZipUtils {
             gos.finish();
             gos.flush();
         } catch (Exception e) {
-            NLog.printStackTrace(e);
+            FastLog.printStackTrace(e);
         } finally {
             try {
                 if (gos != null) {

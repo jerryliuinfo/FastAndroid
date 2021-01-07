@@ -2,7 +2,7 @@ package com.tesla.framework.component.orm.utils;
 
 import android.text.TextUtils;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.orm.SqliteUtility;
 import com.tesla.framework.component.orm.extra.AutoIncrementTableColumn;
 import com.tesla.framework.component.orm.extra.Extra;
@@ -68,7 +68,7 @@ public class SqlUtils {
         strSQL.append(" )");
 
         String tableStr = strSQL.toString();
-        NLog.d(SqliteUtility.TAG, "create table = " + tableStr);
+        FastLog.d(SqliteUtility.TAG, "create table = " + tableStr);
         return tableStr;
     }
 

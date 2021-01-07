@@ -1,11 +1,9 @@
 package com.apache.fastandroid.demo.constraint.practice
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.apache.fastandroid.R
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.common.util.log.FastLog
 import com.tesla.framework.ui.fragment.ABaseFragment
 import kotlinx.android.synthetic.main.constraint_space.*
 
@@ -25,7 +23,7 @@ class ConstraintSpaceFragment:ABaseFragment() {
 
         var parent = constraint_layout.parent
         while (parent != null) {
-            NLog.d(TAG, "parent: $parent")
+            FastLog.d(TAG, "parent: $parent")
             parent = parent.parent
         }
     }

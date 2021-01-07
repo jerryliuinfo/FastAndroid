@@ -18,7 +18,7 @@ import com.apache.fastandroid.topic.support.bean.ImageResultBeans;
 import com.apache.fastandroid.topic.support.utils.FastAndroidUtils;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.inject.ViewInject;
@@ -102,7 +102,7 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
         if (getTaskCount(PAGING_TASK_ID) == 0){
             load = FastAndroidUtils.checkTabsFragmentCanRequestData(this);
         }
-        NLog.d(TAG, "requestData mCategory = %s, task count = %s,load = %s", mCategory,getTaskCount(PAGING_TASK_ID),load);
+        FastLog.d(TAG, "requestData mCategory = %s, task count = %s,load = %s", mCategory,getTaskCount(PAGING_TASK_ID),load);
         if (load){
             if (mode == RefreshMode.refresh){
                 mode = RefreshMode.reset;
@@ -129,7 +129,7 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
 
     @Override
     public void onTabRequestData() {
-        NLog.d(TAG, "onTabRequestData task count = %s", getTaskCount(PAGING_TASK_ID));
+        FastLog.d(TAG, "onTabRequestData task count = %s", getTaskCount(PAGING_TASK_ID));
         // 如果还没有加载过数据，就开始加载,否则不加载, 这里必须要做taskCount为0的判断，否则每次切换tab的时候都会
         //重新拉取数据
         if (getTaskCount(PAGING_TASK_ID) == 0) {

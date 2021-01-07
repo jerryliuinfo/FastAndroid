@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import android.os.SystemClock;
 import android.view.View;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 /**
  * author: 01370340
@@ -26,7 +26,7 @@ public class DeboucedClickPredicotor {
     public static boolean shouldDoClick(View targetView){
         int targetHashCode = targetView.hashCode();
         FrozenView frozenView = sFrozenViewHashMap.get(targetHashCode);
-        NLog.d(TAG, "DeboucedClickPredicotor shouldDoClick targetView hashCode: %s, frozenView: %s, sFrozenViewHashMap size: %s",targetView.hashCode(),frozenView,sFrozenViewHashMap.size());
+        FastLog.d(TAG, "DeboucedClickPredicotor shouldDoClick targetView hashCode: %s, frozenView: %s, sFrozenViewHashMap size: %s",targetView.hashCode(),frozenView,sFrozenViewHashMap.size());
         if (frozenView == null){
             frozenView = new FrozenView(targetView);
             sFrozenViewHashMap.put(targetHashCode,frozenView);
@@ -36,12 +36,12 @@ public class DeboucedClickPredicotor {
         long now = SystemClock.uptimeMillis();
         if (now >= frozenView.getFrozenWindowTime()){
             frozenView.setFrozenWindowTime(now + FROZEN_WINDOW_MILLIS);
-            NLog.d(TAG, "非第一次点击，间隔大于 %s ms,不拦截",FROZEN_WINDOW_MILLIS);
+            FastLog.d(TAG, "非第一次点击，间隔大于 %s ms,不拦截",FROZEN_WINDOW_MILLIS);
             //移除非当前点击的View
             removeView(targetHashCode);
             return true;
         }
-        NLog.d(TAG, "非第一次点击，但是间隔小于 %s ms,拦截",FROZEN_WINDOW_MILLIS);
+        FastLog.d(TAG, "非第一次点击，但是间隔小于 %s ms,拦截",FROZEN_WINDOW_MILLIS);
 
         return false;
     }
@@ -56,7 +56,7 @@ public class DeboucedClickPredicotor {
             Integer key = iterator.next().getKey();
             if (key != hashCode){
                 iterator.remove();
-                NLog.d(TAG, " remove hashCode: %s", hashCode);
+                FastLog.d(TAG, " remove hashCode: %s", hashCode);
             }
         }
     }

@@ -9,7 +9,7 @@ import com.apache.fastandroid.artemis.api.TokenService;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.support.bean.Token;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -143,7 +143,7 @@ public class BaseHttpUtilsV2 {
         public Response intercept(Chain chain) throws IOException {
             Request originalRequest = chain.request();
             Token tokenBean = CacheUtil.getToken();
-            NLog.d(TAG, "------>mTokenInterceptor intercept token = %s", tokenBean);
+            FastLog.d(TAG, "------>mTokenInterceptor intercept token = %s", tokenBean);
 
             //如果缓存中没有token 或者已经添加token 则不用添加token了
             if (alreadyHasAuthorizationHeader(originalRequest)) {
@@ -167,7 +167,7 @@ public class BaseHttpUtilsV2 {
         @Override
         public Request authenticate(Route route, Response response) {
             //Log.i("自动刷新 token 开始");
-            NLog.d(TAG, "------>mAuthenticator 自动刷新 token 开始");
+            FastLog.d(TAG, "------>mAuthenticator 自动刷新 token 开始");
             TokenService tokenService = getRetrofit().create(TokenService.class);
             String accessToken = "";
             try {

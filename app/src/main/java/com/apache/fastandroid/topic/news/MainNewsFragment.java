@@ -11,7 +11,7 @@ import com.apache.fastandroid.topic.support.bean.NewsSummary;
 import com.apache.fastandroid.topic.support.bean.NewsSummaryBeans;
 import com.apache.fastandroid.topic.support.sdk.Sdk;
 import com.tesla.framework.common.util.N;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.paging.IPaging;
 import com.tesla.framework.support.paging.index.IndexPaging;
@@ -46,7 +46,7 @@ public class MainNewsFragment extends ARecycleViewSwipeRefreshFragment<NewsSumma
     @Override
     protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
-        NLog.d(TAG, "MainNewsFragment layoutInit: %s",this);
+        FastLog.d(TAG, "MainNewsFragment layoutInit: %s",this);
         if (savedInstanceSate == null){
             mChannel = (NewsChannelTable) getArguments().getSerializable("channel");
         }else {

@@ -1,7 +1,7 @@
 package com.apache.fastandroid.jetpack.lifecycle
 
 import androidx.lifecycle.LifecycleOwner
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.common.util.log.FastLog
 import com.tesla.framework.component.lifecycle.FullLifecycleObserverAdapter
 import com.tesla.framework.component.lifecycle.SimpleLifeCycleObserver
 
@@ -18,12 +18,12 @@ class JetPackLifeCycleListener(lifecycleOwner: LifecycleOwner): SimpleLifeCycleO
     }
 
     override fun onCreate(owner: LifecycleOwner) {
-        NLog.d(TAG, "JetPackLifeCycleListener onCreate")
+        FastLog.d(TAG, "JetPackLifeCycleListener onCreate")
     }
 
 
     override fun onDestroy(owner: LifecycleOwner) {
-        NLog.d(TAG, "JetPackLifeCycleListener onDestroy")
+        FastLog.d(TAG, "JetPackLifeCycleListener onDestroy")
     }
 
 }

@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Logger2File {
 
-    public static boolean DEBUG = NLog.isDebug();
+    public static boolean DEBUG = FastLog.isDebug();
 
     private static Calendar mCal;
 

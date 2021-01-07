@@ -17,7 +17,7 @@ import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
 import com.hencoder.hencoderpracticedraw4.ClipMatrixDemoFragment
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.common.util.log.FastLog
 import com.tesla.framework.ui.activity.BaseActivity
 import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
@@ -67,7 +67,7 @@ class DemoListActivity : BaseActivity() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val itemView = layoutInflater.inflate(viewType, parent, false)
-            NLog.d(TAG, "onCreateViewHolder itemView: %s",itemView)
+            FastLog.d(TAG, "onCreateViewHolder itemView: %s",itemView)
             return ItemViewHolder(itemView)
         }
 

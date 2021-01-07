@@ -1,6 +1,6 @@
 package com.apache.fastandroid.topic.support;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 /**
  * Created by 01370340 on 2017/9/27.
@@ -25,7 +25,7 @@ public class TopicLogUtil {
      * @param args   格式化日志参数
      */
     public static void v(String format, Object... args) {
-        NLog.v(getLogTag(),format, args);
+        FastLog.v(getLogTag(),format, args);
     }
 
     /**
@@ -35,11 +35,11 @@ public class TopicLogUtil {
      * @param args   格式化日志参数
      */
     public static void d(String format, Object... args) {
-        NLog.d(getLogTag(),format, args);
+        FastLog.d(getLogTag(),format, args);
 
     }
     public static void i(String format, Object... args) {
-        NLog.i(getLogTag(),format, args);
+        FastLog.i(getLogTag(),format, args);
 
     }
 
@@ -52,7 +52,7 @@ public class TopicLogUtil {
      * @param args   格式化日志参数
      */
     public static void e(String format, Object... args) {
-        NLog.e(getLogTag(),format, args);
+        FastLog.e(getLogTag(),format, args);
     }
 
     /**
@@ -63,7 +63,7 @@ public class TopicLogUtil {
      * @param args   格式化日志参数
      */
     public static void e(Throwable tr, String format, Object... args) {
-        NLog.printStackTrace(tr);
+        FastLog.printStackTrace(tr);
 
     }
 }

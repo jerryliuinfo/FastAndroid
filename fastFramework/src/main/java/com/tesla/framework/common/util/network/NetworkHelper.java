@@ -14,7 +14,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 /**
  *
@@ -62,7 +62,7 @@ public class NetworkHelper {
 	
 	public void registerNetworkSensor(Context context)
 	{
-		NLog.v(TAG, "registerNetworkSensor");
+		FastLog.v(TAG, "registerNetworkSensor");
 		if (mRegistered)
 			return;
 		mContext = context;
@@ -71,7 +71,7 @@ public class NetworkHelper {
 		NetworkInfo info = manager.getActiveNetworkInfo();
 		if (info == null || !info.isAvailable())
 		{
-			NLog.i(TAG, "network not reachable");
+			FastLog.i(TAG, "network not reachable");
 			mStatus = NetworkStatus.NetworkNotReachable;
 		}
 		else if (info.getType() == ConnectivityManager.TYPE_MOBILE)
@@ -163,7 +163,7 @@ public class NetworkHelper {
 		public void onReceive (Context context, Intent intent)
 		{
 			
-			NLog.v("NetworkBroadcastReceiver", "onReceive");
+			FastLog.v("NetworkBroadcastReceiver", "onReceive");
 			if (intent == null)
 				return;
 
@@ -175,18 +175,18 @@ public class NetworkHelper {
 				NetworkStatus ns = NetworkStatus.NetworkNotReachable;
 				if (info == null || !info.isAvailable())
 				{
-					NLog.i("NetworkBroadcastReceiver", "network not reachable");
+					FastLog.i("NetworkBroadcastReceiver", "network not reachable");
 					ns = NetworkStatus.NetworkNotReachable;
 				}
 				else if (info.getType() == ConnectivityManager.TYPE_MOBILE)
 				{
-					NLog.i("NetworkBroadcastReceiver", "network reachable via wwan");
+					FastLog.i("NetworkBroadcastReceiver", "network reachable via wwan");
 					ns = NetworkStatus.NetworkReachableViaWWAN;			
 					
 				}
 				else if (info.getType() == ConnectivityManager.TYPE_WIFI)
 				{
-					NLog.i("NetworkBroadcastReceiver", "network reachable via wifi");
+					FastLog.i("NetworkBroadcastReceiver", "network reachable via wifi");
 					ns = NetworkStatus.NetworkReachableViaWiFi;
 				}
 				

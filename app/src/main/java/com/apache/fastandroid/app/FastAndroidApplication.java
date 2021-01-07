@@ -19,6 +19,7 @@ import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
+import com.apache.fastandroid.util.FastLogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.Utils;
 import com.didichuxing.doraemonkit.DoraemonKit;
@@ -30,8 +31,8 @@ import com.tesla.framework.Global;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.DebugUtils;
-import com.tesla.framework.common.util.log.Logger;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
+import com.tesla.framework.common.util.log.FastLog.LogConfig;
 import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
@@ -57,7 +58,7 @@ public class FastAndroidApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        NLog.setDebug(BuildConfig.DEBUG, Logger.DEBUG);
+        initLog();
         MainLogUtil.d("Application onCreate ");
 
         //traceview 开始检测
@@ -84,8 +85,7 @@ public class FastAndroidApplication extends Application {
         initAppLike();
 
         SPUtil.init(getApplicationContext(),getPackageName() +"_share");
-        //初始化日志
-        initLog();
+
         //初始化crash统计
         initCrashAndAnalysis();
 
@@ -148,6 +148,8 @@ public class FastAndroidApplication extends Application {
 
     }
 
+
+
     private void initDoraemonkit(){
         DoraemonKit.APPLICATION = this;
         Utils.init(this);
@@ -200,13 +202,11 @@ public class FastAndroidApplication extends Application {
 
 
     private void initLog(){
-//        if (BuildConfig.LOG_DEBUG){
-//            NLog.setDebug(true, Logger.DEBUG);
-//        }
-
-       /* CC.enableVerboseLog(true);
-        CC.enableDebug(true);
-        CC.enableRemoteCC(true);*/
+        FastLogDelegate logDelegate = new FastLogDelegate();
+        LogConfig config = new LogConfig();
+        config.openLog = BuildConfig.DEBUG;
+        logDelegate.setLogConfig(config);
+        FastLog.setLogDelegate(logDelegate);
     }
 
 

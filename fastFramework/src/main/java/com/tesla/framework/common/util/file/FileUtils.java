@@ -11,7 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 
 public class FileUtils {
 	private FileUtils() {
@@ -35,7 +35,7 @@ public class FileUtils {
 		}
 
 		String content = sb.toString();
-		NLog.d(TAG, String.format("read file's content = %s", content.length() >= 150 ? content.substring(0, 150) : content));
+		FastLog.d(TAG, String.format("read file's content = %s", content.length() >= 150 ? content.substring(0, 150) : content));
 		return sb.toString();
 	}
 	public static byte[] readFileToBytes(File file) {
@@ -73,7 +73,7 @@ public class FileUtils {
 			out.write(content.getBytes());
 			out.flush();
 
-			NLog.d(TAG, String.format("write file's content = %s", content.length() >= 150 ? content.substring(0, 150) : content));
+			FastLog.d(TAG, String.format("write file's content = %s", content.length() >= 150 ? content.substring(0, 150) : content));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;

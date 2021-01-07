@@ -2,7 +2,6 @@ package com.tesla.framework.support.paging.index;
 
 import android.text.TextUtils;
 
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.support.paging.IPaging;
 

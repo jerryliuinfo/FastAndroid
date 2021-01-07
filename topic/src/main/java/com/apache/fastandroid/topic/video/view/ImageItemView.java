@@ -11,7 +11,7 @@ import com.apache.fastandroid.topic.R;
 import com.apache.fastandroid.topic.video.action.WifiAction;
 import com.apache.fastandroid.topic.video.bean.VideoBean;
 import com.tesla.framework.Global;
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
@@ -48,7 +48,7 @@ public class ImageItemView  extends ARecycleViewItemViewHolder<VideoBean> {
                     public void doAction() {
                         super.doAction();
                         ToastUtils.showToast(Global.getContext(),"开始播放");
-                        NLog.d(TAG, "开始播放");
+                        FastLog.d(TAG, "开始播放");
                     }
                 }.run();
             }

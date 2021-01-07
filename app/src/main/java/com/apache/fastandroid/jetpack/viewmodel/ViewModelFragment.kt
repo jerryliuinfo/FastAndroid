@@ -2,14 +2,9 @@ package com.apache.fastandroid.jetpack.viewmodel
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Button
-import android.widget.TextView
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.apache.fastandroid.LogUtils
 import com.apache.fastandroid.R
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.common.util.log.FastLog
 import com.tesla.framework.ui.fragment.ABaseFragment
 import kotlinx.android.synthetic.main.fragment_jetpack_viewmodel.*
 import kotlin.random.Random
@@ -29,9 +24,9 @@ class ViewModelFragment:ABaseFragment() {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
         tv_msg.text = userInfoViewModel.loadUser().value
-        NLog.d(TAG,"userInfoViewModel.name:${userInfoViewModel.loadUser().value}")
+        FastLog.d(TAG,"userInfoViewModel.name:${userInfoViewModel.loadUser().value}")
         userInfoViewModel.loadUser().observe(this, Observer<String> {
-            NLog.d(TAG, "UserInfoViewModel onChange: $it")
+            FastLog.d(TAG, "UserInfoViewModel onChange: $it")
             tv_msg.text = it
         })
         btn_change.setOnClickListener {
