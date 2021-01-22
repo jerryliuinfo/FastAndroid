@@ -92,7 +92,12 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
             setContentView(inflateContentView());
         }
 
+        bindView();
         layoutInit(savedInstanceState);
+    }
+
+    protected void bindView(){
+
     }
 
 

@@ -17,11 +17,11 @@ import com.google.android.material.navigation.NavigationView;
 
 import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
-import com.apache.artemis_annotation.BindViewById;
 import com.apache.fastandroid.annotations.CheckLogin;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
+import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.setting.SettingFragment;
@@ -33,10 +33,10 @@ import com.permissionx.guolindev.PermissionX;
 import com.permissionx.guolindev.callback.RequestCallback;
 import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.FastLog;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.route.Route;
-import com.tesla.framework.support.annotation.ProxyTool;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
@@ -54,10 +54,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
 
 
-    @BindViewById((R.id.drawer))
     DrawerLayout mDrawerLayout;
 
-    @BindViewById((R.id.navigation_view))
     NavigationView mNavigationView;
 
     private ActionBarDrawerToggle drawerToggle;
@@ -74,14 +72,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         return R.layout.activity_main;
     }
 
+    @Override
+    protected void bindView() {
+        super.bindView();
 
+        mDrawerLayout = findViewById(R.id.drawer);
+        mNavigationView = findViewById(R.id.navigation_view);
+    }
 
     @CostTime
     @Override
     protected void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
 
-        ProxyTool.bind(this);
+//        ProxyTool.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
@@ -95,13 +99,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onResult(boolean allGranted, List<String> grantedList, List<String> deniedList) {
                 if (allGranted) {
-                    ToastUtils.showToast(MainActivity.this, "All permissions are granted");
                     startActivity(new Intent(MainActivity.this, DemoListActivity.class));
                 } else {
                     ToastUtils.showToast(MainActivity.this,  String.format("These permissions are denied: %s", deniedList));
                 }
             }
         });
+
+        BindUserInfo info = new BindUserInfo("title", "www.baidu.com", "Jerry");
+        NLog.d(TAG, "info: %s", info);
     }
 
 

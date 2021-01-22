@@ -46,11 +46,17 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation rootProject.androidLib.core_ktx
+//    implementation rootProject.androidLib.core_ktx
 
-//    //kotlin
-//    implementation rootProject.androidLib.kotlin_stdlib
-//    implementation rootProject.androidLib.kotlin_reflect//主要是这两个依赖
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0-alpha03"
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
+
 
     implementation rootProject.androidLib.constraintLayout
 

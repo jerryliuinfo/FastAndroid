@@ -7,6 +7,8 @@ ext.mainApp = true  //设置为true，表示此module为主app module，一直�
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 
 buildscript {
     repositories {
@@ -68,10 +70,11 @@ android {
                 abiFilters 'armeabi-v7a', 'x86'
             }
         }
-
-
     }
 
+    dataBinding{
+        enabled=true
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -142,6 +145,8 @@ android {
         }
     }
 
+
+
     //将SO库打包到apk内
     sourceSets {
         main {
@@ -203,6 +208,14 @@ dependencies {
     implementation project(':doraemonkit')
 
     implementation rootProject.androidLib.core_ktx
+
+    // ViewModel and LiveData
+    implementation rootProject.androidLib.lifecycle_extensions
+    implementation rootProject.androidLib.lifecycle_viewmodel_ktx
+
+    implementation rootProject.androidLib.coroutines_core
+    implementation rootProject.androidLib.coroutines_android
+
 
     debugImplementation rootProject.thirdLib.leakcanary_support_fragment
 

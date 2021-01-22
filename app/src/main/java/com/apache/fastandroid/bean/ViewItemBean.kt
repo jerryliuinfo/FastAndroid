@@ -7,4 +7,4 @@ import java.io.Serializable
 /**
  * Created by Jerry on 2020/10/31.
  */
-data class ViewItemBean (val title:String? = "", val description:String? = "", val clazz: Class<out ABaseFragment>? = null):Serializable
+data class ViewItemBean (val title:String? = "", val description:String? = "", val clazz: Class<out Fragment>? = null):Serializable

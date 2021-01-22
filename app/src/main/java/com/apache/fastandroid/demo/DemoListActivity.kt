@@ -12,6 +12,7 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
 import com.apache.fastandroid.demo.doraemonkit.DoraemonkitDemoFragment
 import com.apache.fastandroid.DrawBasicDemoFragment
+import com.apache.fastandroid.demo.databinding.DatabindingFragmentDemo
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
@@ -42,6 +43,8 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
                 ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),
                 ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java)
+                ,ViewItemBean("DataBindg", "DataBindg", DatabindingFragmentDemo::class.java)
+
         )
     }
 

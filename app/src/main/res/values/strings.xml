@@ -36,6 +36,11 @@
     <string name="custom_view_round_imageview">RoundImageView</string>
 
 
+    <string name="login_privacy_content2">成长空间采用严格的数据安全措施保护您的隐私安全。请充分阅读%1$s后，点击【同意并使用】。您也可以选择【不同意并退出】，成长空间将无法为您提供产品和服务。</string>
+    <string name="experience_info2">若您是16周岁以下的未成年人，请确保您的父母或监护人已经仔细阅读%1$s，并进行确认。</string>
+    <string name="experience_info3">《儿童隐私政策》</string>
+
+
 
 
 </resources>

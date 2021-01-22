@@ -31,6 +31,7 @@ import com.tesla.framework.Global;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.DebugUtils;
+import com.tesla.framework.common.util.activitytask.ActivityLifecycleAdapter;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.FastLog.LogConfig;
 import com.tesla.framework.common.util.sp.SPUtil;
@@ -145,6 +146,7 @@ public class FastAndroidApplication extends Application {
 
         initLeakCanry();
         BlockCanary.install(this, new BlockCanaryContext()).start();
+        registerActivityLifecycleCallbacks(new ActivityLifecycleAdapter() );
 
     }
 

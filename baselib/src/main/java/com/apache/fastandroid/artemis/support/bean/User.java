@@ -23,6 +23,9 @@
 package com.apache.fastandroid.artemis.support.bean;
 
 import java.io.Serializable;
+import java.util.Random;
+
+import androidx.databinding.ObservableField;
 
 /**
  * 用户信息
@@ -32,6 +35,11 @@ public class User implements Serializable{
     private String login;       // 登录用户名
     private String name;        // 昵称
     private String avatar_url;  // 头像链接
+    public ObservableField age = new ObservableField(); //年龄
+
+    public User(String name) {
+        this.name = name;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -65,4 +73,9 @@ public class User implements Serializable{
         return this.avatar_url;
     }
 
+
+
+    public void modifyAge(){
+        age.set(String.valueOf(new Random().nextInt(100)));
+    }
 }

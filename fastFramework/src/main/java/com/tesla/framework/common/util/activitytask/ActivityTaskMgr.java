@@ -2,13 +2,16 @@
 
 package com.tesla.framework.common.util.activitytask;
 
-import android.app.Activity;
-
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
+
+import com.tesla.framework.common.util.log.NLog;
+
 public class ActivityTaskMgr {
+    public static final String TAG = ActivityTaskMgr.class.getSimpleName();
 
     private List<WeakReference<Activity>> activityList = new ArrayList<>();
 
@@ -44,6 +47,8 @@ public class ActivityTaskMgr {
     }
 
     public void pushToActivityStack(Activity activity) {
+        NLog.d(TAG, "pushToActivityStack activity: %s",activity);
+
         if (activityList == null){
             activityList = new ArrayList<>();
         }
@@ -51,6 +56,7 @@ public class ActivityTaskMgr {
     }
 
     public void popFromActivityStack(Activity activity) {
+        NLog.d(TAG, "popFromActivityStack activity: %s",activity);
         if (activityList == null){
             return;
         }
