@@ -12,6 +12,7 @@ import com.apache.fastandroid.BR
 class UserObservableFieldBean:BaseObservable(){
     var name = ObservableField<String>()
     var age = ObservableField<Int>()
+    var avator = ObservableField<String>()
 
 
 

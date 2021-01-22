@@ -2,8 +2,11 @@ package com.tesla.framework.component.imageloader;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import androidx.annotation.NonNull;
 import android.view.View;
+
+import com.tesla.framework.Global;
+
+import androidx.annotation.NonNull;
 
 
 /**
@@ -61,6 +64,9 @@ public class ImageLoaderManager implements IImageLoaderstrategy,IImagePahtFromCa
         showImage(options);
     }
 
+    public void showImage(View container, String url) {
+        showImage(container,url, Global.getContext());
+    }
 
     @Override
     public void cleanMemory(Context context) {

@@ -18,6 +18,7 @@ class DatabindingFragmentDemo:BaseListFragment() {
                 ,ViewItemBean("单项绑定","ObservableField",DatabinDingObservableFieldDemoFragment::class.java)
                 ,ViewItemBean("双项绑定","双项绑定",DatabinDingTwoWayDemoFragment::class.java)
                 ,ViewItemBean("事件绑定","事件绑定",DatabinDingEventFragment::class.java)
+                ,ViewItemBean("BindingAdapter","BindingAdapter",DatabinDingBindingAdapterFragment::class.java)
         )
     }
 
