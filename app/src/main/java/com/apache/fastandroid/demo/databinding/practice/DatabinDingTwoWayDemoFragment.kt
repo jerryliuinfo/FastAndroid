@@ -42,6 +42,7 @@ class DatabinDingTwoWayDemoFragment: Fragment() {
 
         btn_modify_name.setOnClickListener {
             user.name = "zhangsan"
+            user.degree.set("Hello")
         }
 
     }

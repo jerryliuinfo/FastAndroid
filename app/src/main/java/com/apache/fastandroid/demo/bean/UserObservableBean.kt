@@ -12,6 +12,8 @@ import java.util.*
  */
 class UserObservableBean:BaseObservable(){
 
+    var degree = ObservableField<String>()
+
     //需要加上Bindable注解，并且notify，ui才会更新
     @Bindable
     var name:String = ""
@@ -31,7 +33,7 @@ class UserObservableBean:BaseObservable(){
         }
 
     fun plus(){
-        age = ++age
+        degree.set(degree.get()+1)
     }
 }
 

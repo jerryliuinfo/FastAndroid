@@ -15,14 +15,7 @@ import com.tesla.framework.common.util.log.NLog
 import java.util.Random
 
 
-/**
- * Created by Jerry on 2021/1/11.
- * activity 中: 使用 xxBing.inflate
- * val binding: ActivityMainBinding = ActivityMainBinding.inflate(getLayoutInflater())
- * Fragment中:
- *     val listItemBinding = ListItemBinding.inflate(layoutInflater, viewGroup, false)
-       val listItemBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item, viewGroup, false)
- */
+
 class DatabinDingBasicDemoFragment: Fragment() {
     companion object{
         private const val TAG = "DatabinDingBasicDemo"
