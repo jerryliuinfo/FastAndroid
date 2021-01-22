@@ -50,11 +50,7 @@ android {
         resConfigs('zh-rCN')
 
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
+
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -213,8 +209,8 @@ dependencies {
     implementation rootProject.androidLib.lifecycle_extensions
     implementation rootProject.androidLib.lifecycle_viewmodel_ktx
 
-    implementation rootProject.androidLib.coroutines_core
-    implementation rootProject.androidLib.coroutines_android
+//    implementation rootProject.androidLib.coroutines_core
+//    implementation rootProject.androidLib.coroutines_android
 
 
     debugImplementation rootProject.thirdLib.leakcanary_support_fragment
@@ -258,8 +254,8 @@ dependencies {
 
 
     //ARouter
-    implementation rootProject.ext.thirdLib.arouter_api
-    annotationProcessor rootProject.ext.thirdLib.arouter_compiler
+//    implementation rootProject.ext.thirdLib.arouter_api
+//    annotationProcessor rootProject.ext.thirdLib.arouter_compiler
 
     //必须加行这行，否则proxyToolProcessor无法自动生成类
     implementation project(':artemis_annotation')

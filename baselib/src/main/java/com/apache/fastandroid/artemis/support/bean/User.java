@@ -78,4 +78,21 @@ public class User implements Serializable{
     public void modifyAge(){
         age.set(String.valueOf(new Random().nextInt(100)));
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"id\":")
+                .append(id);
+        sb.append(",\"login\":\"")
+                .append(login).append('\"');
+        sb.append(",\"name\":\"")
+                .append(name).append('\"');
+        sb.append(",\"avatar_url\":\"")
+                .append(avatar_url).append('\"');
+        sb.append(",\"age\":")
+                .append(age);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="java.util.Random"/>
+
         <variable
             name="viewModel"
             type="com.apache.fastandroid.demo.databinding.UserViewModel" />
@@ -17,15 +17,15 @@
 
         <TextView
             android:id="@+id/tv_username"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.users.name}"
+            android:text="@{viewModel.users.name+viewModel.users.age}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Hello"
+            tools:text="zhangsan: 14"
             />
 
 
@@ -34,14 +34,14 @@
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:text="修改user数据"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_username"
             app:layout_constraintVertical_bias="0.376"
-            android:onClick="@{() -> viewModel.modifyName()}"
+            android:onClick="@{() -> viewModel.refresh()}"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

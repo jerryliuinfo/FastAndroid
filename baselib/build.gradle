@@ -107,8 +107,8 @@ dependencies {
 
 
     //ARouter 不要放到baselib，需要每个业务module自己依赖，否则不起作用
-    api rootProject.thirdLib.arouter_api
-    annotationProcessor rootProject.thirdLib.arouter_compiler
+//    api rootProject.thirdLib.arouter_api
+//    annotationProcessor rootProject.thirdLib.arouter_compiler
 
 
 

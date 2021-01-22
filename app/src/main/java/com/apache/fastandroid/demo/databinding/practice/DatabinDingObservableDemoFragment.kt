@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.apache.fastandroid.R
-import com.apache.fastandroid.artemis.support.bean.User
-import com.apache.fastandroid.databinding.FragmentDatabindingBasisUserBinding
-import com.tesla.framework.common.util.log.NLog
-import java.util.Random
+import com.apache.fastandroid.databinding.FragmentDatabindingOnewayBindObservableBinding
+import com.apache.fastandroid.demo.bean.UserObservableBean
 
 
 /**
@@ -21,24 +19,40 @@ import java.util.Random
  *     val listItemBinding = ListItemBinding.inflate(layoutInflater, viewGroup, false)
        val listItemBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item, viewGroup, false)
  */
-class DatabinDingBasicDemo: Fragment() {
+class DatabinDingObservableDemoFragment: Fragment() {
     companion object{
         private const val TAG = "DatabinDingBasicDemo"
     }
-//    val viewModel by lazy {
-//        ViewModelProvider(this, ViewModelInject.getUserModelFactory() ).get(UserViewModel::class.java)
-//    }
 
-    lateinit var  binding:FragmentDatabindingBasisUserBinding
-
+    lateinit var  binding:FragmentDatabindingOnewayBindObservableBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        val view = inflater.inflate(R.layout.fragment_databinding_basis_user, container, false)
+        val view = inflater.inflate(R.layout.fragment_databinding_oneway_bind_observable, container, false)
         // 1、对布局需要绑定的内容进行加载
         binding = DataBindingUtil.bind(view)!!
-        binding!!.user = User("zhangsan")
+
+        val user = UserObservableBean().apply {
+            name = "zhangsan"
+            age = 10
+        }
+
+        binding!!.user = user
+        init()
         return binding.root
     }
+
+    private fun init(){
+        binding.tvModifyName.setOnClickListener {
+            binding.user!!.apply {
+                name = "lisi"
+                age =  20
+            }
+        }
+
+        binding.tvModifyAge.setOnClickListener {
+            binding.user!!.plus()
+        }
+    }
+
 
 
 }

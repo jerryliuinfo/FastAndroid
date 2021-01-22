@@ -4,10 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.apache.fastandroid.demo.bean.UserBean" alias="user1"/>
         <variable
             name="user"
-            type="user1" />
+            type="com.apache.fastandroid.demo.bean.UserObservableBean" />
 
 
     </data>
@@ -44,26 +43,25 @@
             android:text="@{String.valueOf(user.age)}"
             />
 
-        <Button
-            android:id="@+id/tv_modify_name"
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.8"
-            android:textSize="20sp"
-            android:text="修改名字"
+            android:text="@={user.name}"
             />
 
         <Button
-            android:id="@+id/tv_modify_age"
+            android:id="@+id/btn_modify_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/tv_age"
-            app:layout_constraintTop_toTopOf="@id/tv_modify_name"
-            android:textSize="20sp"
-            android:text="修改年龄"
-            />
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            android:text="修改姓名"
+          />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
