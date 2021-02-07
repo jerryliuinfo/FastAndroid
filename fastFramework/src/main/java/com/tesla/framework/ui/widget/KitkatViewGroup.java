@@ -6,12 +6,13 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import com.blankj.utilcode.util.ScreenUtils;
 import com.tesla.framework.R;
-import com.tesla.framework.common.util.dimen.ScreenUtil;
+
+import androidx.core.view.ViewCompat;
 
 
 
@@ -53,13 +54,13 @@ public class KitkatViewGroup extends LinearLayout {
 
                 setWillNotDraw(false);
 
-                mInsets = new Rect(0, ScreenUtil.getStatusBarHeight(getContext()), 0, 0);
+                mInsets = new Rect(0, ScreenUtils.getStatusBarHeight(), 0, 0);
 
                 ViewCompat.postInvalidateOnAnimation(this);
             }
 
             setPadding(getPaddingLeft(),
-                        getPaddingTop() + ScreenUtil.getStatusBarHeight(getContext()),
+                        getPaddingTop() + ScreenUtils.getStatusBarHeight(),
                         getPaddingRight(),
                         0);
         }
@@ -84,5 +85,6 @@ public class KitkatViewGroup extends LinearLayout {
             canvas.restoreToCount(sc);
         }
     }
+
 
 }

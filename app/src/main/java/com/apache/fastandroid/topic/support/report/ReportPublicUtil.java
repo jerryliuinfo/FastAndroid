@@ -1,12 +1,12 @@
 package com.apache.fastandroid.topic.support.report;
 
+import java.util.HashMap;
+
 import android.content.Context;
 
 import com.apache.fastandroid.topic.support.config.PublishVersionManager;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.tesla.framework.common.util.DeviceUtil;
-import com.tesla.framework.common.util.dimen.ScreenUtil;
-
-import java.util.HashMap;
 
 /**
  * Created by jerryliu on 2017/6/9.
@@ -94,15 +94,15 @@ public class ReportPublicUtil {
     }
 
     private static void initScreenWidth(Context context){
-        mBasicPublicParamMap.put(SCREEN_WIDTH, String.valueOf(ScreenUtil.getScreenWidth(context)));
+        mBasicPublicParamMap.put(SCREEN_WIDTH, String.valueOf(ScreenUtils.getScreenWidth()));
     }
 
     private static void initScreenHeight(Context context){
-        mBasicPublicParamMap.put(SCREEN_HEIGHT, String.valueOf(ScreenUtil.getScreenHeight(context)));
+        mBasicPublicParamMap.put(SCREEN_HEIGHT, String.valueOf(ScreenUtils.getScreenHeight()));
     }
 
     private static void initScreenDpi(Context context){
-        mBasicPublicParamMap.put(SCREEN_DPI, ScreenUtil.getScreenWidth(context) +"-" + ScreenUtil.getScreenHeight(context));
+        mBasicPublicParamMap.put(SCREEN_DPI, ScreenUtils.getScreenWidth() +"-" + ScreenUtils.getScreenHeight());
     }
 
     private static void initRam(){

@@ -1,6 +1,9 @@
 package com.blankj.utilcode.util;
 
+import java.lang.reflect.Method;
+
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
@@ -12,15 +15,20 @@ import android.graphics.Point;
 import android.os.Build;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.Surface;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.tesla.framework.applike.FrameworkApplication;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
 
 import static android.Manifest.permission.WRITE_SETTINGS;
+import static com.tesla.framework.common.util.dimen.ScreenUtil.inPortarit;
 
 /**
  * <pre>
@@ -105,6 +113,10 @@ public final class ScreenUtils {
         return Resources.getSystem().getDisplayMetrics().density;
     }
 
+
+    public static DisplayMetrics getDisplayMetrics(){
+        return Resources.getSystem().getDisplayMetrics();
+    }
     /**
      * Return the screen density expressed as dots-per-inch.
      *
@@ -317,4 +329,94 @@ public final class ScreenUtils {
             return -123;
         }
     }
+
+    @TargetApi(14)
+    public static int getActionBarHeight(Context context) {
+        int result = 0;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            TypedValue tv = new TypedValue();
+            context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true);
+            result = TypedValue.complexToDimensionPixelSize(tv.data, context.getResources().getDisplayMetrics());
+        }
+        return result;
+    }
+
+    private static final String STATUS_BAR_HEIGHT_RES_NAME = "status_bar_height";
+
+    private static final String NAV_BAR_HEIGHT_RES_NAME = "navigation_bar_height";
+    private static final String NAV_BAR_HEIGHT_LANDSCAPE_RES_NAME = "navigation_bar_height_landscape";
+    @TargetApi(14)
+    public static int getNavigationBarHeight(Context context) {
+        Resources res = context.getResources();
+        int result = 0;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            if (hasNavigationBar(context)) {
+                String key;
+                if (inPortarit(res)) {
+                    key = NAV_BAR_HEIGHT_RES_NAME;
+                } else {
+                    key = NAV_BAR_HEIGHT_LANDSCAPE_RES_NAME;
+                }
+                return getInternalDimensionSize(res, key);
+            }
+        }
+        return result;
+    }
+
+
+
+    private static final String SHOW_NAV_BAR_RES_NAME = "config_showNavigationBar";
+
+    @TargetApi(14)
+    public static boolean hasNavigationBar(Context context) {
+        Resources res = context.getResources();
+        int resourceId = res.getIdentifier(SHOW_NAV_BAR_RES_NAME, "bool", "android");
+        if (resourceId != 0) {
+            boolean hasNav = res.getBoolean(resourceId);
+            // check override flag (see static block)
+            if ("1".equals(sNavBarOverride)) {
+                hasNav = false;
+            } else if ("0".equals(sNavBarOverride)) {
+                hasNav = true;
+            }
+            return hasNav;
+        } else { // fallback
+            return !ViewConfiguration.get(context).hasPermanentMenuKey();
+        }
+    }
+
+    private static int getInternalDimensionSize(Resources res, String key) {
+        int result = 0;
+        int resourceId = res.getIdentifier(key, "dimen", "android");
+        if (resourceId > 0) {
+            result = res.getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
+    private static String sNavBarOverride;
+
+    static {
+        // Android allows a system property to override the presence of the
+        // navigation bar.
+        // Used by the emulator.
+        // See
+        // https://github.com/android/platform_frameworks_base/blob/master/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java#L1076
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            try {
+                @SuppressWarnings("rawtypes")
+                Class c = Class.forName("android.os.SystemProperties");
+                @SuppressWarnings("unchecked") Method m = c.getDeclaredMethod("getString", String.class);
+                m.setAccessible(true);
+                sNavBarOverride = (String) m.invoke(null, "qemu.hw.mainkeys");
+            } catch (Throwable e) {
+                sNavBarOverride = null;
+            }
+        }
+    }
+
+    public static int getStatusBarHeight() {
+        return getInternalDimensionSize(FrameworkApplication.getContext().getResources(), STATUS_BAR_HEIGHT_RES_NAME);
+    }
+
 }

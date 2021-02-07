@@ -10,6 +10,7 @@ import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import com.blankj.utilcode.util.ScreenUtils;
 import com.tesla.framework.common.util.dimen.ScreenUtil;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.network.task.TaskException;
@@ -38,7 +39,7 @@ public class WallpaperDownloadTask  {
                 int width = dm.widthPixels;
                 int height = dm.heightPixels;
 
-                int navigationBarHeight = ScreenUtil.getNavigationBarHeight(context);
+                int navigationBarHeight = ScreenUtils.getNavigationBarHeight(context);
 
                 int wallpaperHeight = height;
 

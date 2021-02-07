@@ -4,10 +4,12 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tesla.framework.common.util.dimen.ScreenUtil;
+
+import com.blankj.utilcode.util.ScreenUtils;
+
+import androidx.annotation.Nullable;
 
 /**
  * author: 01370340
@@ -44,7 +46,7 @@ public class AnrView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         for (int i = 0; i < 100000; i++) {
-            canvas.drawText("jerry", ScreenUtil.getScreenWidth(mContext)/2,ScreenUtil.getActionBarHeight(mContext) /2,mPaint);
+            canvas.drawText("jerry", ScreenUtils.getScreenWidth()/2,ScreenUtils.getActionBarHeight(mContext) /2,mPaint);
         }
     }
 }

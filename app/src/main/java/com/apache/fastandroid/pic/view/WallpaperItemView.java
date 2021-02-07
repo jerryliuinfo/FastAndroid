@@ -1,7 +1,6 @@
 package com.apache.fastandroid.pic.view;
 
 import android.app.Activity;
-import androidx.cardview.widget.CardView;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -10,12 +9,13 @@ import com.apache.fastandroid.R;
 import com.apache.fastandroid.topic.support.bean.WallpaperBean;
 import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.wallpaper.WallpaperSettingFragment;
-import com.tesla.framework.applike.FrameworkApplication;
-import com.tesla.framework.common.util.dimen.ScreenUtil;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
+
+import androidx.cardview.widget.CardView;
 
 /**
  * Created by 01370340 on 2017/11/19.
@@ -41,7 +41,7 @@ public class WallpaperItemView extends ARecycleViewItemViewHolder<WallpaperBean>
                 public boolean onPreDraw() {
                     img.getViewTreeObserver().removeOnPreDrawListener(this);
                     width = img.getWidth();
-                    MainLog.d("screen width = %s, img width = %s", ScreenUtil.getScreenWidth(FrameworkApplication.getContext()),width);
+                    MainLog.d("screen width = %s, img width = %s", ScreenUtils.getScreenWidth(),width);
                     SPUtil.putInt("WallPaperWidth",width);
                     onBindData(convertView,data,position);
 

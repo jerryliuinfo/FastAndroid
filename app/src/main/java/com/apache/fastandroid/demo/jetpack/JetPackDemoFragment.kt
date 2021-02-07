@@ -6,6 +6,7 @@ import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleFragment
 import com.apache.fastandroid.jetpack.lifecycle.traditional.TraditionalLifeCycleFragment
 import com.apache.fastandroid.jetpack.livedata.LiveDataBusFragment
 import com.apache.fastandroid.jetpack.livedata.LiveDataFragment
+import com.apache.fastandroid.jetpack.livedata.SingleTonLiveData3Fragment
 import com.apache.fastandroid.jetpack.livedata.SingleTonLiveDataFragment
 import com.apache.fastandroid.jetpack.livedataviewmodel.LiveDataViewModelFragment
 import com.apache.fastandroid.jetpack.viewmodel.ViewModelFragment
@@ -21,6 +22,9 @@ class JetPackDemoFragment: BaseListFragment() {
 
                 ViewItemBean("LiveData基本用法", "LiveData", LiveDataFragment::class.java),
                 ViewItemBean("LiveData多页面共享数据", "LiveData", SingleTonLiveDataFragment::class.java),
+                ViewItemBean("LiveData单例", "LiveData单例", SingleTonLiveData3Fragment::class.java),
+
+
                 ViewItemBean("LiveData粘性", "LiveData", LiveDataFragment::class.java),
                 ViewItemBean("LiveDataBus", "LiveData", LiveDataBusFragment::class.java),
 

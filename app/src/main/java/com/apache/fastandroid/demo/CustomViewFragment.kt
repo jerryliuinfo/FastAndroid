@@ -4,6 +4,7 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.other.ClipChildFragment
 import com.apache.fastandroid.demo.other.ClipToPaddingFragment
 import com.apache.fastandroid.demo.constraint.practice.ConstraintBasicFragment
+import com.apache.fastandroid.demo.customview.EditTextFragment
 import com.apache.fastandroid.demo.round.RoundButtonFragment
 import com.apache.fastandroid.demo.round.RoundFrameLayoutFragment
 import com.apache.fastandroid.demo.round.RoundTextViewFragment
@@ -20,8 +21,9 @@ class CustomViewFragment:BaseListFragment() {
                 ViewItemBean("圆角Button", "RoundButton", RoundButtonFragment::class.java),
                 ViewItemBean("圆角FrameLayout", "RoundFrameLayout", RoundFrameLayoutFragment::class.java),
                 ViewItemBean("ClipChild", "ClipChildFragment", ClipChildFragment::class.java),
-                ViewItemBean("ClipToPadding", "ClipToPaddingFragment", ClipToPaddingFragment::class.java),
-                ViewItemBean("SpanableString", "SpanableString", SpanableStringFragment::class.java)
+                ViewItemBean("ClipToPadding", "ClipToPaddingFragment", ClipToPaddingFragment::class.java)
+                ,ViewItemBean("SpanableString", "SpanableString", SpanableStringFragment::class.java)
+                ,ViewItemBean("EditText", "EditText", EditTextFragment::class.java)
 
         )
 

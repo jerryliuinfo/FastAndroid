@@ -16,8 +16,8 @@ import com.apache.fastandroid.R;
 import com.apache.fastandroid.topic.support.bean.ImageBean;
 import com.apache.fastandroid.topic.support.bean.ImageResultBeans;
 import com.apache.fastandroid.topic.support.utils.FastAndroidUtils;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.tesla.framework.common.util.dimen.DimensUtil;
-import com.tesla.framework.common.util.dimen.ScreenUtil;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.network.task.TaskException;
@@ -200,7 +200,7 @@ public class PicFragment extends ARecycleViewSwipeRefreshFragment<ImageBean,Imag
 
         public ImageItemView(Activity context, View itemView) {
             super(context, itemView);
-            width = (ScreenUtil.getScreenWidth(context) - DimensUtil.dp2px(8))  / SPAN_COUNT ;
+            width = (ScreenUtils.getScreenWidth() - DimensUtil.dp2px(8))  / SPAN_COUNT ;
         }
 
         @Override
