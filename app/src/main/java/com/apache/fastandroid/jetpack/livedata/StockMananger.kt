@@ -1,13 +1,10 @@
 package com.apache.fastandroid.jetpack.livedata
 
-import android.os.Looper
-import androidx.core.os.postDelayed
 import com.tesla.framework.common.util.handler.HandlerUtil
 import com.tesla.framework.common.util.log.NLog
 import java.math.BigDecimal
+import java.math.RoundingMode
 import java.util.concurrent.atomic.AtomicBoolean
-import java.util.logging.Handler
-import kotlin.random.Random
 
 /**
  * Created by Jerry on 2021/2/7.
@@ -50,7 +47,7 @@ class StockMananger(symbol:String) : Runnable {
     private fun notifyPriceChanged(){
         NLog.d(TAG, "notifyPriceChanged mListeners size: %s", mListeners.size)
         mListeners.forEach {
-            it.onPriceUpdate(java.util.Random().nextDouble().toBigDecimal())
+            it.onPriceUpdate(java.util.Random().nextDouble().toBigDecimal().setScale(2, RoundingMode.HALF_UP))
         }
     }
 
