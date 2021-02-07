@@ -3,12 +3,11 @@ package com.apache.fastandroid.demo.jetpack
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleFragment
+import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleListFragment
 import com.apache.fastandroid.jetpack.lifecycle.traditional.TraditionalLifeCycleFragment
-import com.apache.fastandroid.jetpack.livedata.LiveDataBusFragment
-import com.apache.fastandroid.jetpack.livedata.LiveDataFragment
-import com.apache.fastandroid.jetpack.livedata.SingleTonLiveData3Fragment
-import com.apache.fastandroid.jetpack.livedata.SingleTonLiveDataFragment
+import com.apache.fastandroid.jetpack.livedata.*
 import com.apache.fastandroid.jetpack.livedataviewmodel.LiveDataViewModelFragment
+import com.apache.fastandroid.jetpack.viewmodel.JetPackViewModelListFragment
 import com.apache.fastandroid.jetpack.viewmodel.ViewModelFragment
 
 /**
@@ -17,20 +16,9 @@ import com.apache.fastandroid.jetpack.viewmodel.ViewModelFragment
 class JetPackDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-                ViewItemBean("传统生命周期监听", "传统生命周期监听", TraditionalLifeCycleFragment::class.java),
-                ViewItemBean("LifeCycle", "LifeCycle", JetPackLifeCycleFragment::class.java),
-
-                ViewItemBean("LiveData基本用法", "LiveData", LiveDataFragment::class.java),
-                ViewItemBean("LiveData多页面共享数据", "LiveData", SingleTonLiveDataFragment::class.java),
-                ViewItemBean("LiveData单例", "LiveData单例", SingleTonLiveData3Fragment::class.java),
-
-
-                ViewItemBean("LiveData粘性", "LiveData", LiveDataFragment::class.java),
-                ViewItemBean("LiveDataBus", "LiveData", LiveDataBusFragment::class.java),
-
-                ViewItemBean("ViewModel", "ViewModel", ViewModelFragment::class.java),
-                ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java),
-                ViewItemBean("JetPack", "LiveDataViewModel", LiveDataViewModelFragment::class.java)
+                ViewItemBean("LifeCycle", "LifeCycle", JetPackLifeCycleListFragment::class.java)
+                ,ViewItemBean("LiveData", "LiveData", JetPackLiveDataListFragment::class.java)
+                ,ViewItemBean("ViewModel", "ViewModel", JetPackViewModelListFragment::class.java)
         )
     }
 }

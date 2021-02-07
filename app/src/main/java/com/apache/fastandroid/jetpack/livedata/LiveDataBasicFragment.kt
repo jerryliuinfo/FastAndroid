@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_jetpack_livedata.*
 /**
  * Created by Jerry on 2020/11/5.
  */
-class LiveDataFragment :BaseFragment(){
+class LiveDataBasicFragment :BaseFragment(){
     override fun inflateContentView(): Int {
         return R.layout.fragment_jetpack_livedata
     }
