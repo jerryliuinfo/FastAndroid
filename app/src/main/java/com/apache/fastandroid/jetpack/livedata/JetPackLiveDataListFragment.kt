@@ -16,6 +16,7 @@ class JetPackLiveDataListFragment: BaseListFragment() {
 
                 ViewItemBean("LiveData粘性", "LiveData", LiveDataBasicFragment::class.java),
                 ViewItemBean("LiveData TransformMap", "LiveData TransformMap", LiveDataTransformMapFragment::class.java),
+                ViewItemBean("LiveData TransformSwitchMap", "LiveData TransformSwitchMap", LiveDataTransformSwitchMapFragment::class.java),
                 ViewItemBean("LiveDataBus", "LiveData", LiveDataBusFragment::class.java)
         )
     }
