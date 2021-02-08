@@ -9,7 +9,7 @@ import kotlin.random.Random
 /**
  * Created by Jerry on 2021/2/7.
  */
-class PostCardReporsity {
+class UserReporsity {
 
     fun getPostCard(address:String):LiveData<String>{
         NLog.d(UserInfoViewModel.TAG, "getPostCard address: ${address}")
@@ -20,10 +20,10 @@ class PostCardReporsity {
 
 
     companion object{
-        private lateinit var sInstance: PostCardReporsity
+        private lateinit var sInstance: UserReporsity
 
-        fun get(): PostCardReporsity {
-            sInstance = if (Companion::sInstance.isInitialized) sInstance else PostCardReporsity()
+        fun get(): UserReporsity {
+            sInstance = if (Companion::sInstance.isInitialized) sInstance else UserReporsity()
             return sInstance
         }
     }

@@ -6,7 +6,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.R
-import com.apache.fastandroid.jetpack.reporsity.PostCardReporsity
+import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.ABaseFragment
@@ -22,7 +22,7 @@ class MediatorLiveDataFragment:ABaseFragment() {
     }
 
     private val userViewModel by lazy {
-        UserInfoViewModel(PostCardReporsity.get())
+        UserInfoViewModel(UserReporsity.get())
     }
     override fun inflateContentView(): Int {
         return R.layout.fragment_jetpack_livedata_media_livedata
@@ -48,12 +48,18 @@ class MediatorLiveDataFragment:ABaseFragment() {
             NLog.d(TAG, "mediaLiveData onChange: %s", it)
             text_name.text = it
         })
+//        mediaLiveData.observe(this,observer)
 
         btn_livedata1.setOnClickListener {
             livedata1.value = "livedata1"
         }
         btn_livedata2.setOnClickListener {
-            livedata1.value = "livedata2"
+            livedata2.value = "livedata2"
         }
+    }
+
+    private val observer = Observer<String> {
+        NLog.d(TAG, "observer onchange: %s", it)
+        mediaLiveData.value = it
     }
 }

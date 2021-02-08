@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.R
-import com.apache.fastandroid.jetpack.reporsity.PostCardReporsity
+import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
 import com.tesla.framework.ui.fragment.ABaseFragment
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_switch_map2.*
@@ -18,7 +18,7 @@ class LiveDataTransformSwitchMapFragment2:ABaseFragment() {
     }
 
     private val userViewModel by lazy {
-        UserInfoViewModel(PostCardReporsity.get())
+        UserInfoViewModel(UserReporsity.get())
     }
     override fun inflateContentView(): Int {
         return R.layout.fragment_jetpack_livedata_transform_switch_map2

@@ -3,8 +3,9 @@ package com.apache.fastandroid.jetpack.viewmodel
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.apache.fastandroid.R
-import com.apache.fastandroid.jetpack.reporsity.PostCardReporsity
+import com.apache.fastandroid.jetpack.InjectUtil
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.ABaseFragment
 import kotlinx.android.synthetic.main.fragment_jetpack_viewmodel_restore_data.*
@@ -13,9 +14,13 @@ import kotlinx.android.synthetic.main.fragment_jetpack_viewmodel_restore_data.*
  * Created by Jerry on 2020/11/1.
  */
 class ViewModelRestoreDataFragment:ABaseFragment() {
-    private val userInfoViewModel :UserInfoViewModel by lazy {
-        UserInfoViewModel(PostCardReporsity.get())
-    }
+
+    //不能使用这种方式，这种方式生成的ViewModel 在横竖屏切换后数据不会保存
+//    private val userInfoViewModel :UserInfoViewModel by lazy {
+//        UserInfoViewModel(PostCardReporsity.get())
+//    }
+
+    private lateinit var userInfoViewModel:UserInfoViewModel
 
     override fun inflateContentView(): Int {
        return R.layout.fragment_jetpack_viewmodel_restore_data
@@ -24,12 +29,9 @@ class ViewModelRestoreDataFragment:ABaseFragment() {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
 
-        tv_msg.text = userInfoViewModel.count.toString()
-
+        userInfoViewModel = ViewModelProvider(this,InjectUtil.getUserModelFactory()).get(UserInfoViewModel::class.java)
         btn_change.setOnClickListener {
-            userInfoViewModel.plus()
             userInfoViewModel.plusNew()
-            tv_msg.text = userInfoViewModel.count.toString()
         }
 
 

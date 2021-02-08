@@ -3,7 +3,7 @@ package com.apache.fastandroid.jetpack.livedata
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.apache.fastandroid.jetpack.reporsity.PostCardReporsity
+import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
 import com.tesla.framework.common.util.SimpleTextWatcher
 import com.tesla.framework.common.util.log.NLog
@@ -20,7 +20,7 @@ class LiveDataTransformSwitchMapFragment:ABaseFragment() {
     }
 
     private val userViewModel by lazy {
-        UserInfoViewModel(PostCardReporsity.get())
+        UserInfoViewModel(UserReporsity.get())
     }
     override fun inflateContentView(): Int {
         return R.layout.fragment_jetpack_livedata_transform_switch_map

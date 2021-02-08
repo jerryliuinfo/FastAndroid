@@ -2,32 +2,23 @@ package com.apache.fastandroid.jetpack.viewmodel
 
 import androidx.lifecycle.*
 import com.apache.fastandroid.demo.bean.user.UserBean
-import com.apache.fastandroid.jetpack.reporsity.PostCardReporsity
+import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.tesla.framework.common.util.log.NLog
 import kotlin.random.Random
 
 /**
  * Created by Jerry on 2020/11/1.
  */
-class UserInfoViewModel(private val reporsity: PostCardReporsity):ViewModel() {
+class UserInfoViewModel(private val reporsity: UserReporsity):ViewModel() {
 
 
-    var count:Int = 0
-        get() = field
-        set(value) {
-            if (value > 100 || value < 0) field = -1
-            else field = value
-        }
 
 
-    fun plus(){
-        this.count++
-    }
-
-    val countLiveData:MutableLiveData<Int> = MutableLiveData(0)
+    val countLiveData:MutableLiveData<Int> = MutableLiveData()
 
     fun plusNew(){
-        countLiveData.value = (countLiveData.value?.plus(1))
+//        countLiveData.value = (countLiveData.value?.plus(1))
+        countLiveData.value = 5
     }
 
 
