@@ -14,11 +14,12 @@ import com.tesla.framework.ui.fragment.ABaseFragment
 /**
  * Created by Jerry on 2020/10/31.
  */
-class JetPackLifeCycleListFragment: BaseListFragment() {
+class JetPackLifeCycleDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
                 ViewItemBean("传统生命周期监听", "传统生命周期监听", TraditionalLifeCycleFragment::class.java),
                 ViewItemBean("LifeCycle", "LifeCycle", JetPackLifeCycleFragment::class.java)
+                ,ViewItemBean("ProcessLifecycleOwner", "App进入前后台判断", JetPackLifeCycleFragment::class.java)
         )
     }
 

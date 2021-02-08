@@ -2,18 +2,17 @@ package com.apache.fastandroid.jetpack.livedata
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.lifecycle.Observer
 import com.apache.fastandroid.R
 import com.apache.fastandroid.jetpack.reporsity.PostCardReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.ABaseFragment
-import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_map.*
+import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_switch_map2.*
 
 /**
  * Created by Jerry on 2021/2/7.
- * 如果希望在将 LiveData 对象分派给观察者之前对存储在其中的值进行更改，或者需要根据另一个实例的值返回不同的 LiveData 实例，可以使用LiveData中提供的Transformations类。
  */
-class LiveDataTransformMapFragment:ABaseFragment() {
+class LiveDataTransformSwitchMapFragment2:ABaseFragment() {
     companion object{
         private const val TAG = "LiveDataTransformMapFragment"
     }
@@ -22,18 +21,25 @@ class LiveDataTransformMapFragment:ABaseFragment() {
         UserInfoViewModel(PostCardReporsity.get())
     }
     override fun inflateContentView(): Int {
-        return R.layout.fragment_jetpack_livedata_transform_map
+        return R.layout.fragment_jetpack_livedata_transform_switch_map2
     }
+
+    private var mSwitch:Boolean = true
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        userViewModel.userName.observe(this, androidx.lifecycle.Observer {
-            NLog.d(TAG, "userName onChange: %s", it)
+
+
+        userViewModel.livedata1.value = "livedata1"
+        userViewModel.livedata2.value = "livedata2"
+        btn_switch.setOnClickListener {
+            mSwitch = !mSwitch
+            userViewModel.livedataSwitch.value = mSwitch
+        }
+        userViewModel.livedataSwitchMap.observe(this, Observer {
             text_name.text = it
         })
 
-        btn_change.setOnClickListener {
-            userViewModel.changeValue()
-        }
+
     }
 }

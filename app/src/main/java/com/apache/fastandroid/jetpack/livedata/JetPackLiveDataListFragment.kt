@@ -14,9 +14,12 @@ class JetPackLiveDataListFragment: BaseListFragment() {
                 ViewItemBean("LiveData单例", "LiveData单例", SingleTonLiveData3Fragment::class.java),
 
 
-                ViewItemBean("LiveData粘性", "LiveData", LiveDataBasicFragment::class.java),
-                ViewItemBean("LiveData TransformMap", "LiveData TransformMap", LiveDataTransformMapFragment::class.java),
-                ViewItemBean("LiveData TransformSwitchMap", "LiveData TransformSwitchMap", LiveDataTransformSwitchMapFragment::class.java),
+                ViewItemBean("LiveData粘性", "粘性事件", LiveDataBasicFragment::class.java),
+                ViewItemBean("TransformMap", "LiveData TransformMap", LiveDataTransformMapFragment::class.java),
+                ViewItemBean("TransformSwitchMap", "LiveData TransformSwitchMap", LiveDataTransformSwitchMapFragment::class.java),
+                ViewItemBean("TransformSwitchMap2", "LiveData TransformSwitchMap2", LiveDataTransformSwitchMapFragment2::class.java),
+                ViewItemBean("MediaLiveData", "MediaLiveData", MediatorLiveDataFragment::class.java),
+                ViewItemBean("MediatorLiveData", "LiveData TransformSwitchMap2", LiveDataTransformSwitchMapFragment2::class.java),
                 ViewItemBean("LiveDataBus", "LiveData", LiveDataBusFragment::class.java)
         )
     }

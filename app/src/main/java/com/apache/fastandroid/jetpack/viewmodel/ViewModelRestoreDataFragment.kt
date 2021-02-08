@@ -2,12 +2,9 @@ package com.apache.fastandroid.jetpack.viewmodel
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.R
-import com.apache.fastandroid.demo.bean.user.UserBean
-import com.apache.fastandroid.jetpack.livedata.PostCardReporsity
-import com.tesla.framework.common.util.log.FastLog
+import com.apache.fastandroid.jetpack.reporsity.PostCardReporsity
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.ABaseFragment
 import kotlinx.android.synthetic.main.fragment_jetpack_viewmodel_restore_data.*

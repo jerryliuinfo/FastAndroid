@@ -18,6 +18,7 @@ import com.apache.fastandroid.artemis.constant.AppConfig;
 import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
+import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserver;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.util.FastLogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
@@ -43,6 +44,7 @@ import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.db.FastAndroidDB;
 
 import androidx.core.os.TraceCompat;
+import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.multidex.MultiDex;
 
 /**
@@ -65,6 +67,7 @@ public class FastAndroidApplication extends Application {
         //traceview 开始检测
        // Debug.startMethodTracing("APP");
         Global.setContext(getApplicationContext());
+        ProcessLifecycleOwner.get().getLifecycle().addObserver(new ApplicationLifecycleObserver());
 
 
         //systrace 开始检测

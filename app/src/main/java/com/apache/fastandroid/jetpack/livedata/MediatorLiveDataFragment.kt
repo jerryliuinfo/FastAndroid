@@ -1,0 +1,59 @@
+package com.apache.fastandroid.jetpack.livedata
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import com.apache.fastandroid.R
+import com.apache.fastandroid.jetpack.reporsity.PostCardReporsity
+import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
+import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.ui.fragment.ABaseFragment
+import kotlinx.android.synthetic.main.fragment_jetpack_livedata_media_livedata.*
+
+/**
+ * Created by Jerry on 2021/2/7.
+ * 许合并多个 LiveData 源。只要任何原始的 LiveData 源对象发生更改，就会触发 MediatorLiveData 对象的观察者
+ */
+class MediatorLiveDataFragment:ABaseFragment() {
+    companion object{
+        private const val TAG = "MediatorLiveDataFragment"
+    }
+
+    private val userViewModel by lazy {
+        UserInfoViewModel(PostCardReporsity.get())
+    }
+    override fun inflateContentView(): Int {
+        return R.layout.fragment_jetpack_livedata_media_livedata
+    }
+    val livedata1 = MutableLiveData<String>()
+    val livedata2 = MutableLiveData<String>()
+    val mediaLiveData = MediatorLiveData<String>()
+
+
+    override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
+        super.layoutInit(inflater, savedInstanceSate)
+
+
+        mediaLiveData.addSource(livedata1) {
+            NLog.d(TAG, "livedata1 onchange: %s", it)
+            mediaLiveData.value = it
+        }
+        mediaLiveData.addSource(livedata2){
+            NLog.d(TAG, "livedata2 onchange: %s", it)
+            mediaLiveData.value = it
+        }
+        mediaLiveData.observe(this, Observer {
+            NLog.d(TAG, "mediaLiveData onChange: %s", it)
+            text_name.text = it
+        })
+
+        btn_livedata1.setOnClickListener {
+            livedata1.value = "livedata1"
+        }
+        btn_livedata2.setOnClickListener {
+            livedata1.value = "livedata2"
+        }
+    }
+}

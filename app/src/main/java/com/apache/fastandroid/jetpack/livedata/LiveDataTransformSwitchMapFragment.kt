@@ -3,13 +3,11 @@ package com.apache.fastandroid.jetpack.livedata
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.apache.fastandroid.demo.databinding.UserViewModel
+import com.apache.fastandroid.jetpack.reporsity.PostCardReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
 import com.tesla.framework.common.util.SimpleTextWatcher
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.component.executor.Observer
 import com.tesla.framework.ui.fragment.ABaseFragment
-import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_map.*
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_map.text_name
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_switch_map.*
 

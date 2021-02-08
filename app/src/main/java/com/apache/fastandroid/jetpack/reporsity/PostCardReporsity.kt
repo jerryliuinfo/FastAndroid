@@ -1,4 +1,4 @@
-package com.apache.fastandroid.jetpack.livedata
+package com.apache.fastandroid.jetpack.reporsity
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,10 +20,10 @@ class PostCardReporsity {
 
 
     companion object{
-        private lateinit var sInstance:PostCardReporsity
+        private lateinit var sInstance: PostCardReporsity
 
-        fun get():PostCardReporsity{
-            sInstance = if (::sInstance.isInitialized) sInstance else PostCardReporsity()
+        fun get(): PostCardReporsity {
+            sInstance = if (Companion::sInstance.isInitialized) sInstance else PostCardReporsity()
             return sInstance
         }
     }
