@@ -10,7 +10,7 @@ import com.tesla.framework.common.util.log.NLog
  * Created by Jerry on 2021/1/22.
  */
 class UserViewModel:ViewModel() {
-     private val users: MutableLiveData<UserBean> = MutableLiveData()
+    private val users: MutableLiveData<UserBean> = MutableLiveData()
     companion object{
         private const val TAG = "UserViewModel"
     }
@@ -36,7 +36,11 @@ class UserViewModel:ViewModel() {
     fun refresh(){
         var age  = java.util.Random().nextInt(100)
         NLog.d(TAG, "refresh age: %s", age)
-        users.value!!.age = age
+        users.value!!.apply {
+            name = "zhangsan:$age"
+            NLog.d(TAG, "refresh user: ${users.value}")
+        }
+//        users.value = UserBean("zhangsan:$age")
     }
 
 

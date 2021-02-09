@@ -7,7 +7,7 @@
 
 
         <variable
-            name="viewModel"
+            name="vm"
             type="com.apache.fastandroid.demo.databinding.UserViewModel" />
     </data>
 
@@ -19,7 +19,7 @@
             android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.users.name+viewModel.users.age}"
+            android:text="@{vm.users.name}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_username"
             app:layout_constraintVertical_bias="0.376"
-            android:onClick="@{() -> viewModel.refresh()}"
+            android:onClick="@{() -> vm.refresh()}"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

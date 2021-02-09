@@ -1,7 +1,5 @@
 package com.apache.fastandroid.app;
 
-import java.io.File;
-
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -18,7 +16,7 @@ import com.apache.fastandroid.artemis.constant.AppConfig;
 import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
-import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserver;
+import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.util.FastLogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
@@ -43,7 +41,10 @@ import com.tesla.framework.component.performance.BlockDetector;
 import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.support.db.FastAndroidDB;
 
+import java.io.File;
+
 import androidx.core.os.TraceCompat;
+import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.multidex.MultiDex;
 
@@ -67,7 +68,9 @@ public class FastAndroidApplication extends Application {
         //traceview 开始检测
        // Debug.startMethodTracing("APP");
         Global.setContext(getApplicationContext());
-        ProcessLifecycleOwner.get().getLifecycle().addObserver(new ApplicationLifecycleObserver());
+
+        Lifecycle lifecycle = ProcessLifecycleOwner.get().getLifecycle();
+        lifecycle.addObserver(new ApplicationLifecycleObserverNew(ProcessLifecycleOwner.get()));
 
 
         //systrace 开始检测
