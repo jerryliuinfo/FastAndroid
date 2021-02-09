@@ -16,46 +16,37 @@ import com.apache.fastandroid.databinding.FragmentDatabindingTwoewayEventBinding
 import com.apache.fastandroid.demo.bean.UserObservableBean
 import com.apache.fastandroid.demo.bean.UserObservableFieldBean
 import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.ui.fragment.ABaseDatabindingFragment
+import kotlinx.android.synthetic.main.fragment_databinding_twoeway_event.*
+import kotlin.random.Random
+import kotlin.random.nextInt
 
 
-class DatabinDingEventFragment: Fragment() {
+class DatabinDingEventFragment: ABaseDatabindingFragment<FragmentDatabindingTwoewayEventBinding>() {
+
+    private lateinit var user:UserObservableFieldBean
     companion object{
         private const val TAG = "DatabinDingEventFragment"
     }
 
-    lateinit var  binding:FragmentDatabindingTwoewayEventBinding
-    private lateinit var user:UserObservableFieldBean
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_databinding_twoeway_event, container, false)
-        // 1、对布局需要绑定的内容进行加载
-        binding = DataBindingUtil.bind(view)!!
-
-        user = UserObservableFieldBean().apply {
-            name.set("zhangsan")
-            age.set(19)
-        }
-
-        binding!!.user = user
-        binding.listener = Listener(user)
-        init()
-        return binding.root
+    override fun inflateContentView(): Int {
+        return R.layout.fragment_databinding_twoeway_event
     }
 
-    private fun init(){
+    override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
+        super.layoutInit(inflater, savedInstanceSate)
+        user = UserObservableFieldBean()
+        binding.user = user
+        binding.fragment = this
+
 
     }
 
-
-    class Listener(val user:UserObservableFieldBean){
-        fun changeAge(){
-            user.plus()
-        }
-
-        fun afterTextChanged(s: Editable){
-            NLog.d(TAG, "afterTextChanged s: %s", s.toString())
-            user.name.set(s.toString())
-        }
+    fun onClickEvent(){
+        user.name.set("zhangsan${Random.nextInt(100)}")
     }
+
+
 
 
 

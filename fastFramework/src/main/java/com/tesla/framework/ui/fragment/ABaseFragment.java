@@ -1,7 +1,5 @@
 package com.tesla.framework.ui.fragment;
 
-import java.text.SimpleDateFormat;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +27,8 @@ import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.ToastUtils;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
+import java.text.SimpleDateFormat;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -46,7 +46,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     public static final String TAG = "AFragment-Base";
 
 
-    ViewGroup rootView;// 根视图
+    View rootView;// 根视图
 
     @Nullable
     @ViewInject(idStr = "layoutLoading")
@@ -113,9 +113,8 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
             setupContentView(inflater, contentView, savedInstanceState);
 
-            return getContentView();
+            return getRootView();
         }
-
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -161,7 +160,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
      *
      * @return
      */
-    public ViewGroup getContentView() {
+    public View getRootView() {
         return rootView;
     }
 
@@ -207,7 +206,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
      * @param savedInstanceSate
      */
     void _layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
-        InjectUtility.initInjectedView(getActivity(), this, getContentView());
+        InjectUtility.initInjectedView(getActivity(), this, getRootView());
 
         if (emptyLayout != null) {
             View reloadView = emptyLayout.findViewById(R.id.layoutReload);
@@ -244,11 +243,11 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     }
 
     public View findViewById(int viewId) {
-        if (getContentView() == null) {
+        if (getRootView() == null) {
             return null;
         }
 
-        return getContentView().findViewById(viewId);
+        return getRootView().findViewById(viewId);
     }
 
     public void setContentEmpty(boolean empty) {

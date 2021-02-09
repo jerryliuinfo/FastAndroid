@@ -14,11 +14,10 @@ class UserInfoViewModel(private val reporsity: UserReporsity):ViewModel() {
 
 
 
-    val countLiveData:MutableLiveData<Int> = MutableLiveData()
+    val countLiveData:MutableLiveData<Int> = MutableLiveData(0)
 
     fun plusNew(){
-//        countLiveData.value = (countLiveData.value?.plus(1))
-        countLiveData.value = 5
+        countLiveData.value = (countLiveData.value?.plus(1))
     }
 
 
@@ -34,7 +33,7 @@ class UserInfoViewModel(private val reporsity: UserReporsity):ViewModel() {
 
 
 
-    private val user: MutableLiveData<UserBean> by lazy {
+    private val mUserInfo: MutableLiveData<UserBean> by lazy {
         MutableLiveData<UserBean>().also {
 //            loadUser()
         }
@@ -42,23 +41,21 @@ class UserInfoViewModel(private val reporsity: UserReporsity):ViewModel() {
 
 
 
-    val userName:LiveData<String> = Transformations.map(user){ userBean ->
+    val mUserName:LiveData<String> = Transformations.map(mUserInfo){ userBean ->
         userBean.name
     }
 
-    fun getUserLiveData():MutableLiveData<UserBean>{
-        return user
-    }
+
 
     private fun loadUser(){
         NLog.d(TAG, "loadUser ---->")
-        user.postValue(UserBean("Zhangsan",18))
+        mUserInfo.postValue(UserBean("Zhangsan",18))
     }
 
 
     fun changeValue(){
         val userBean = UserBean("Python:${Random.nextInt(20)}" ,Random.nextInt(10))
-        getUserLiveData().postValue(userBean)
+        mUserInfo.postValue(userBean)
     }
 
 

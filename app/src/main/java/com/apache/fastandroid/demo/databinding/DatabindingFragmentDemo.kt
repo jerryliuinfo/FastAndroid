@@ -14,7 +14,7 @@ class DatabindingFragmentDemo:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
                 ViewItemBean("单项绑定","数据绑定",DatabinDingBasicDemoFragment::class.java)
-                ,ViewItemBean("单项绑定","Observable",DatabinDingObservableDemoFragment::class.java)
+                ,ViewItemBean("单项绑定","Observable",     DatabinDingObservableDemoFragment::class.java)
                 ,ViewItemBean("单项绑定","ObservableField",DatabinDingObservableFieldDemoFragment::class.java)
                 ,ViewItemBean("双项绑定","双项绑定",DatabinDingTwoWayDemoFragment::class.java)
                 ,ViewItemBean("事件绑定","事件绑定",DatabinDingEventFragment::class.java)

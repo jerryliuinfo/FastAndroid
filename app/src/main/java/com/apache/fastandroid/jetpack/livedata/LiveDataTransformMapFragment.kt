@@ -27,7 +27,7 @@ class LiveDataTransformMapFragment:ABaseFragment() {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        userViewModel.userName.observe(this, androidx.lifecycle.Observer {
+        userViewModel.mUserName.observe(this, androidx.lifecycle.Observer {
             NLog.d(TAG, "userName onChange: %s", it)
             text_name.text = it
         })

@@ -33,7 +33,7 @@ class UserObservableBean:BaseObservable(){
         }
 
     fun plus(){
-        degree.set(degree.get()+1)
+        age += 1
     }
 }
 

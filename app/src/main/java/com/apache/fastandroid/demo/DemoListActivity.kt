@@ -43,7 +43,7 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
                 ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),
                 ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java)
-                ,ViewItemBean("DataBindg", "DataBindg", DatabindingFragmentDemo::class.java)
+
 
         )
     }

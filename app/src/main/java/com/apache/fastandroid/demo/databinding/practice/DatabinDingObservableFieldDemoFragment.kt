@@ -11,31 +11,30 @@ import com.apache.fastandroid.databinding.FragmentDatabindingOnewayBindObservabl
 import com.apache.fastandroid.databinding.FragmentDatabindingOnewayBindObservableFieldBinding
 import com.apache.fastandroid.demo.bean.UserObservableBean
 import com.apache.fastandroid.demo.bean.UserObservableFieldBean
+import com.tesla.framework.ui.fragment.ABaseDatabindingFragment
 
 
-class DatabinDingObservableFieldDemoFragment: Fragment() {
+class DatabinDingObservableFieldDemoFragment: ABaseDatabindingFragment<FragmentDatabindingOnewayBindObservableFieldBinding>() {
     companion object{
         private const val TAG = "DatabinDingBasicDemo"
     }
 
-    lateinit var  binding:FragmentDatabindingOnewayBindObservableFieldBinding
+    override fun inflateContentView(): Int {
+        return R.layout.fragment_databinding_oneway_bind_observable_field
+    }
     private lateinit var user:UserObservableFieldBean
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_databinding_oneway_bind_observable_field, container, false)
-        // 1、对布局需要绑定的内容进行加载
-        binding = DataBindingUtil.bind(view)!!
+
+    override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
+        super.layoutInit(inflater, savedInstanceSate)
 
         user = UserObservableFieldBean().apply {
             name.set("zhangsan")
             age.set(19)
         }
 
-        binding!!.user = user
-        init()
-        return binding.root
-    }
+        binding.user = user
 
-    private fun init(){
+
         binding.tvModifyName.setOnClickListener {
             user!!.apply {
                 name.set("lisi")
@@ -47,6 +46,8 @@ class DatabinDingObservableFieldDemoFragment: Fragment() {
             user!!.plus()
         }
     }
+
+
 
 
 

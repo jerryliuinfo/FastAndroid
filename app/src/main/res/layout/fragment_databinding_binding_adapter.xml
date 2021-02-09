@@ -11,9 +11,7 @@
             name="user"
             type="com.apache.fastandroid.demo.bean.UserObservableFieldBean" />
 
-        <variable
-            name="listener"
-            type="com.apache.fastandroid.demo.databinding.practice.DatabinDingEventFragment.Listener" />
+
 
 
     </data>

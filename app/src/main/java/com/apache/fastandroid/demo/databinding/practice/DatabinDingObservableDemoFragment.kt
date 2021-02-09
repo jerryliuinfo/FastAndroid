@@ -9,43 +9,43 @@ import androidx.fragment.app.Fragment
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentDatabindingOnewayBindObservableBinding
 import com.apache.fastandroid.demo.bean.UserObservableBean
+import com.tesla.framework.ui.fragment.ABaseDatabindingFragment
 
 
-
-class DatabinDingObservableDemoFragment: Fragment() {
+class DatabinDingObservableDemoFragment: ABaseDatabindingFragment<FragmentDatabindingOnewayBindObservableBinding>() {
     companion object{
         private const val TAG = "DatabinDingBasicDemo"
     }
 
-    lateinit var  binding:FragmentDatabindingOnewayBindObservableBinding
+    override fun inflateContentView(): Int {
+       return R.layout.fragment_databinding_oneway_bind_observable
+    }
+
     private lateinit var user:UserObservableBean
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_databinding_oneway_bind_observable, container, false)
-        // 1、对布局需要绑定的内容进行加载
-        binding = DataBindingUtil.bind(view)!!
+
+    override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
+        super.layoutInit(inflater, savedInstanceSate)
 
         user = UserObservableBean().apply {
             name = "zhangsan"
             age = 10
         }
 
-        binding!!.user = user
-        init()
-        return binding.root
-    }
+        binding.user = user
 
-    private fun init(){
         binding.tvModifyName.setOnClickListener {
-            user!!.apply {
+            user.apply {
                 name = "lisi"
                 age =  20
             }
         }
 
         binding.tvModifyAge.setOnClickListener {
-            user!!.plus()
+            user.plus()
         }
     }
+
+
 
 
 

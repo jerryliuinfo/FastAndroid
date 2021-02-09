@@ -8,10 +8,10 @@
             name="user"
             type="com.apache.fastandroid.demo.bean.UserObservableFieldBean" />
 
-        <variable
-            name="listener"
-            type="com.apache.fastandroid.demo.databinding.practice.DatabinDingEventFragment.Listener" />
 
+        <variable
+            name="fragment"
+            type="com.apache.fastandroid.demo.databinding.practice.DatabinDingEventFragment" />
 
     </data>
 
@@ -28,26 +28,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.2"
             android:textSize="20sp"
-            tools:text="Jerry"
             android:text="@{user.name}"
             />
-        <TextView
-            android:id="@+id/tv_age"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_change"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.8"
-            android:textSize="20sp"
-            tools:text="20"
-            android:text="@{String.valueOf(user.age)}"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            android:onClick="@{() -> fragment.onClickEvent()}"
+            android:text="事件绑定"
             />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
