@@ -30,6 +30,7 @@ class ViewModelRestoreDataFragment:ABaseFragment() {
         super.layoutInit(inflater, savedInstanceSate)
 
         userInfoViewModel = ViewModelProvider(this,InjectUtil.getUserModelFactory()).get(UserInfoViewModel::class.java)
+        NLog.d(TAG, "userInfoViewModel: %s,savedInstanceSate:%s",userInfoViewModel,savedInstanceSate)
         btn_change.setOnClickListener {
             userInfoViewModel.plusNew()
         }
@@ -40,4 +41,6 @@ class ViewModelRestoreDataFragment:ABaseFragment() {
             tv_msg2.text = it.toString()
         })
     }
+
+
 }

@@ -1,11 +1,5 @@
 package com.tesla.framework.ui.activity;
 
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -26,6 +20,12 @@ import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.widget.CustomToolbar;
 
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
@@ -40,7 +40,6 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
     static final String TAG = "Activity-Base";
 
-
     private BaseActivityHelper mHelper;
 
     private int theme = 0;// 当前界面设置的主题
@@ -49,10 +48,10 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
     private boolean isDestory;
 
+
+
     // 当有Fragment Attach到这个Activity的时候，就会保存
     private Map<String, WeakReference<ABaseFragment>> fragmentRefs;
-
-    private static BaseActivity runningActivity;
 
     private View rootView;
 
@@ -71,6 +70,8 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         fragmentRefs = new HashMap<>();
+
+        mHelper = new BaseActivityHelper(this,this);
         if (savedInstanceState == null) {
             theme = configTheme();
             language = new Locale(SettingUtility.getPermanentSettingAsStr("language", Locale.getDefault().getLanguage()),
@@ -114,13 +115,8 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
             fragmentTransaction.add(android.R.id.content, fragment);
-//            mFragments.push(fragment);
             fragmentTransaction.addToBackStack("");
             fragmentTransaction.commit();
-
-
-
-
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -178,7 +174,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
         rootView = view;
         InjectUtility.initInjectedView(this, this, this.rootView);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.toolbar);
         if (mToolbar != null)
             setSupportActionBar(mToolbar);
     }
@@ -206,16 +202,21 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     protected void onResume() {
         super.onResume();
 
+
         if (theme == configTheme()) {
 
         } else {
             FastLog.i(TAG, "theme changed, reload()");
             reload();
-
             return;
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
 
     public void setLanguage(Locale locale) {
         Resources resources = getResources();//获得res资源对象

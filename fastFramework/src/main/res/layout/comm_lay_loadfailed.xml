@@ -5,6 +5,7 @@
               android:gravity="center"
               android:orientation="vertical">
 
+<!--    错误提示-->
     <TextView
         android:id="@id/txtLoadFailed"
         android:layout_width="wrap_content"

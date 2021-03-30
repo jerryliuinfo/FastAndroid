@@ -31,4 +31,14 @@ class ApplicationLifecycleObserverNew(lifecycleOwner: LifecycleOwner): SimpleLif
         ToastUtils.showShort("App已进入后台....")
     }
 
+
+    /**
+     * 永远不会被调用，系统不会纷发 ON_DESTROY 事件
+     */
+    override fun onDestroy(owner: LifecycleOwner) {
+        super.onDestroy(owner)
+        NLog.d(TAG, "onDestroy --->")
+
+    }
+
 }

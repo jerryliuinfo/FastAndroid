@@ -8,26 +8,18 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.tesla.framework.R;
 import com.tesla.framework.common.util.FrameworkLogUtil;
 import com.tesla.framework.common.util.log.FastLog;
-import com.tesla.framework.common.util.view.ViewUtils;
 import com.tesla.framework.component.imageloader.BitmapOwner;
 import com.tesla.framework.network.biz.ABizLogic;
-import com.tesla.framework.network.biz.IResult;
 import com.tesla.framework.network.task.ITaskManager;
-import com.tesla.framework.network.task.TaskException;
 import com.tesla.framework.network.task.TaskManager;
 import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.InjectUtility;
-import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.ToastUtils;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
-
-import java.text.SimpleDateFormat;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,43 +40,16 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
     View rootView;// 根视图
 
-    @Nullable
-    @ViewInject(idStr = "layoutLoading")
-    public View loadingLayout;// 加载中视图
-    @Nullable
-    @ViewInject(idStr = "layoutLoadFailed")
-    public View loadFailureLayout;// 加载失败视图
-    @Nullable
-    @ViewInject(idStr = "layoutContent")
-    public View contentLayout;// 内容视图
-    @Nullable
-    @ViewInject(idStr = "layoutEmpty")
-    public View emptyLayout;// 空视图
-
-
-    // 标志是否ContentView是否为空, 默认是没有数据的
-    private boolean contentEmpty = true;
-
-    protected long lastResultGetTime = 0;// 最后一次非缓存数据获取时间
-
-    private boolean destory = false;
     private TaskManager taskManager;// 管理线程
 
     public enum ABaseTaskState {
         prepare, falid, success, finished, canceled
     }
 
-
-
-
     // UI线程的Handler
     protected static Handler mHandler = new Handler(Looper.getMainLooper()) {
 
     };
-
-
-
-
 
     long startTime1 = 0;
     long startTime2 = 0;
@@ -123,13 +88,6 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
         super.onViewCreated(view, savedInstanceState);
         startTime3 = System.currentTimeMillis();
         initTitle(savedInstanceState);
-//        FrameworkLogUtil.d("onViewCreated  --- >time diff: %s ms,fragment: %s", (startTime3 - startTime2),this);
-        /**
-         * 为了解决使用Kotlin-Android-Extensions 的试图绑定功能(不用findViewById), 在onCreateView中不能直接访问视图，
-         * 因为视图没有加载完成，容易引起空指针，需要在onViewCreated中访问视图，所以把 _layoutInit  和 layoutInit 从
-         * onCreateView 中移动到了 onViewCreated方法中
-         *
-         */
         //绑定视图
         _layoutInit(null, savedInstanceState);
 
@@ -145,10 +103,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
      */
     protected void setupContentView(LayoutInflater inflater, ViewGroup contentView, Bundle savedInstanceState) {
         setContentView(contentView);
-//        //绑定视图
-//        _layoutInit(inflater, savedInstanceState);
-//
-//        layoutInit(inflater, savedInstanceState);
+
     }
 
     public void setContentView(ViewGroup view) {
@@ -208,41 +163,9 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     void _layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         InjectUtility.initInjectedView(getActivity(), this, getRootView());
 
-        if (emptyLayout != null) {
-            View reloadView = emptyLayout.findViewById(R.id.layoutReload);
-            if (reloadView != null) {
-                setViewOnClick(reloadView);
-            }
-        }
-
-        if (loadFailureLayout != null) {
-            View reloadView = loadFailureLayout.findViewById(R.id.layoutReload);
-            if (reloadView != null) {
-                setViewOnClick(reloadView);
-            }
-        }
-
-        setViewVisiable(loadingLayout, View.GONE);
-        setViewVisiable(loadFailureLayout, View.GONE);
-        setViewVisiable(emptyLayout, View.GONE);
-
-        if (isContentEmpty()) {
-            // 如果视图为空，就开始加载数据
-            if (savedInstanceSate != null) {
-                requestData();
-            }
-            else {
-                //显示空视图
-                setViewVisiable(emptyLayout, View.VISIBLE);
-                setViewVisiable(contentLayout, View.GONE);
-            }
-        }
-        else {
-            setViewVisiable(contentLayout, View.VISIBLE);
-        }
     }
 
-    public View findViewById(int viewId) {
+    public  <T extends View>T findViewById(int viewId) {
         if (getRootView() == null) {
             return null;
         }
@@ -250,27 +173,6 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
         return getRootView().findViewById(viewId);
     }
 
-    public void setContentEmpty(boolean empty) {
-        this.contentEmpty = empty;
-    }
-
-    public boolean isContentEmpty() {
-        return contentEmpty;
-    }
-
-    /**
-     * 视图点击回调，子类重写
-     *
-     * @param view
-     */
-    public void onViewClicked(View view) {
-        if (view.getId() == R.id.layoutReload){
-            requestData();
-        }
-        else if (view.getId() == R.id.layoutRefresh){
-            requestData();
-        }
-    }
 
     protected void setViewVisiable(View v, int visibility) {
         if (v != null && v.getVisibility() != visibility) {
@@ -278,199 +180,10 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
         }
     }
 
-
-    /**
-     *
-     */
-    protected void onTaskStateChanged(ABaseTaskState state, TaskException exception) {
-
-        // 开始Task
-        if (state == ABaseTaskState.prepare) {
-            if (isContentEmpty()) {
-                setViewVisiable(loadingLayout, View.VISIBLE);
-
-                setViewVisiable(contentLayout, View.GONE);
-            }
-            else {
-                setViewVisiable(loadingLayout, View.GONE);
-
-                setViewVisiable(contentLayout, View.VISIBLE);
-            }
-
-            setViewVisiable(emptyLayout, View.GONE);
-            if (isContentEmpty() && loadingLayout == null) {
-                setViewVisiable(contentLayout, View.VISIBLE);
-            }
-
-            setViewVisiable(loadFailureLayout, View.GONE);
-        }
-        // Task成功
-        else if (state == ABaseTaskState.success) {
-            setViewVisiable(loadingLayout, View.GONE);
-
-            if (isContentEmpty()) {
-                setViewVisiable(emptyLayout, View.VISIBLE);
-                setViewVisiable(contentLayout, View.GONE);
-            }
-            else {
-                setViewVisiable(contentLayout, View.VISIBLE);
-                setViewVisiable(emptyLayout, View.GONE);
-            }
-        }
-        // 取消Task
-        else if (state == ABaseTaskState.canceled) {
-            if (isContentEmpty()) {
-                setViewVisiable(loadingLayout, View.GONE);
-                setViewVisiable(emptyLayout, View.VISIBLE);
-            }
-        }
-        // Task失败
-        else if (state == ABaseTaskState.falid) {
-            if (isContentEmpty()) {
-                if (loadFailureLayout != null) {
-                    setViewVisiable(loadFailureLayout, View.VISIBLE);
-
-                    if (exception != null) {
-                        TextView txtLoadFailed = (TextView) loadFailureLayout.findViewById(R.id.txtLoadFailed);
-                        if (txtLoadFailed != null) {
-                            txtLoadFailed.setText(exception.getMessage());
-                        }
-                    }
-
-                    setViewVisiable(emptyLayout, View.GONE);
-                } else {
-                    setViewVisiable(emptyLayout, View.VISIBLE);
-                }
-                setViewVisiable(loadingLayout, View.GONE);
-            }
-        }
-        // Task结束
-        else if (state == ABaseTaskState.finished) {
-            //doNothing
-
-        }
-    }
-
-
-
-
-
-
     public void showMessage(CharSequence msg) {
         if (!TextUtils.isEmpty(msg) && getActivity() != null){
             ToastUtils.showToast(getActivity(),msg.toString());
         }
-
-    }
-
-    public void showMessage(int msgId) {
-        if (getActivity() != null){
-            showMessage(getString(msgId));
-        }
-    }
-
-    public void showLoadingDialog(String msg){
-        ViewUtils.createProgressDialog(getActivity(), msg).show();
-    }
-
-    public void showLoadingDialog(){
-        showLoadingDialog(getString(R.string.loading_msg));
-    }
-
-    public void hideLoadingDialog(){
-        ViewUtils.dismissProgressDialog();
-    }
-
-
-    /**
-     * Fragment主要的刷新任务线程，定义任务加载流程，耦合Fragment各个状态下的视图刷新方法
-     *
-     * @param <Params>
-     * @param <Progress>
-     * @param <Result>
-     */
-    protected abstract class ABaseTask<Params, Progress, Result> extends WorkTask<Params, Progress, Result> {
-
-        public ABaseTask(String taskId) {
-            super(taskId, ABaseFragment.this);
-        }
-
-        @Override
-        protected void onPrepare() {
-            super.onPrepare();
-
-            onTaskStateChanged(ABaseTaskState.prepare, null);
-        }
-
-        @Override
-        protected void onSuccess(Result result) {
-            super.onSuccess(result);
-
-            // 默认加载数据成功，且ContentView有数据展示
-            ABaseFragment.this.setContentEmpty(resultIsEmpty(result));
-
-            onTaskStateChanged(ABaseTaskState.success, null);
-
-            if (FastLog.isDebug())
-                FastLog.d(TAG, "Result获取时间：%s", new SimpleDateFormat("HH:mm:ss").format(lastResultGetTime));
-
-            if (result instanceof IResult) {
-                IResult iResult = (IResult) result;
-
-                // 数据是缓存数据
-                if (iResult.isFromCache()) {
-                    // 缓存过期刷新数据
-                    if (iResult.isOutOfData()) {
-                        runUIRunnable(new Runnable() {
-
-                            @Override
-                            public void run() {
-                                FastLog.d(TAG, "数据过期，开始刷新, " + toString());
-
-                                requestDataOutofdate();
-                            }
-
-                        }, configRequestDelay());
-                    }
-                } else {
-                    lastResultGetTime = System.currentTimeMillis();
-                }
-            } else {
-                lastResultGetTime = System.currentTimeMillis();
-            }
-        }
-
-        @Override
-        protected void onFailure(TaskException exception) {
-            super.onFailure(exception);
-
-            onTaskStateChanged(ABaseTaskState.falid, exception);
-        }
-
-        @Override
-        protected void onCancelled() {
-            super.onCancelled();
-
-            onTaskStateChanged(ABaseTaskState.canceled, null);
-        }
-
-        @Override
-        protected void onFinished() {
-            super.onFinished();
-
-            onTaskStateChanged(ABaseTaskState.finished, null);
-        }
-
-        /**
-         * 返回数据是否空
-         *
-         * @param result
-         * @return
-         */
-        public boolean resultIsEmpty(Result result) {
-            return result == null ? true : false;
-        }
-
     }
 
 
@@ -490,17 +203,6 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
 
     public void requestDataOutofdate() {
         requestData();
-    }
-
-
-
-
-    public boolean isDestory() {
-        return destory;
-    }
-
-    public boolean isActivityRunning() {
-        return getActivity() != null;
     }
 
 
@@ -557,23 +259,6 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     }
 
 
-    protected void setViewOnClick(View v) {
-        if (v == null)
-            return;
-
-        v.setOnClickListener(innerOnClickListener);
-    }
-
-    View.OnClickListener innerOnClickListener = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-            onViewClicked(v);
-        }
-
-    };
-
-
 
 
 
@@ -610,43 +295,12 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
      */
      public abstract int inflateContentView();
 
-    /**
-     * 指定Activity的ContentViewID
-     *
-     * @return
-     */
-    public int inflateActivityContentView() {
-        return -1;
-    }
 
-    /**
-     * 设置Activity的Theme
-     *
-     * @return
-     */
-    public int setActivityTheme() {
-        return -1;
-    }
 
     public int configRequestDelay() {
         return 500;
     }
 
-    public View getLoadingLayout() {
-        return loadingLayout;
-    }
-
-    public View getLoadFailureLayout() {
-        return loadFailureLayout;
-    }
-
-    public View getContentLayout() {
-        return contentLayout;
-    }
-
-    public View getEmptyLayout() {
-        return emptyLayout;
-    }
 
 
 
@@ -658,8 +312,6 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
             supportActionBar.setDisplayHomeAsUpEnabled(true);
             supportActionBar.setTitle(msg);
         }
-
-
     }
 
     protected void setToolbarTitle(int resId){
@@ -681,15 +333,5 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     }
 
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        FastLog.d(TAG, "setUserVisibleHint isVisibleToUser: %s",isVisibleToUser);
-    }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        FastLog.d(TAG, "onHiddenChanged hidden: %s",hidden);
-    }
 }

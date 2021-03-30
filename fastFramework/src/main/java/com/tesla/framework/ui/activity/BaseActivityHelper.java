@@ -1,5 +1,6 @@
 package com.tesla.framework.ui.activity;
 
+import android.app.Activity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,16 @@ import androidx.lifecycle.LifecycleOwner;
 public class BaseActivityHelper implements FullLifecycleObserver {
     //当前Activity
     private BaseActivity mActivity;
+
+    /**
+     * 判断当前Activity是否在前台。
+     */
+    protected boolean isActive;
+
+    /**
+     * 当前Activity的实例。
+     */
+    protected Activity activity;
 
     private LifecycleOwner mLifecycleOwner;
 
@@ -64,6 +75,7 @@ public class BaseActivityHelper implements FullLifecycleObserver {
 
     @Override
     public void onCreate(@NotNull LifecycleOwner owner) {
+
     }
 
     @Override
@@ -73,12 +85,12 @@ public class BaseActivityHelper implements FullLifecycleObserver {
 
     @Override
     public void onResume(@NotNull LifecycleOwner owner) {
-
+        isActive = true;
     }
 
     @Override
     public void onPause(@NotNull LifecycleOwner owner) {
-
+        isActive = false;
     }
 
     @Override
@@ -88,5 +100,6 @@ public class BaseActivityHelper implements FullLifecycleObserver {
 
     @Override
     public void onDestroy(@NotNull LifecycleOwner owner) {
+        mActivity = null;
     }
 }

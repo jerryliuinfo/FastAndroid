@@ -41,4 +41,8 @@
     <color name="edu_color_blue">#FF4D6EFF</color>
     <color name="edu_color_blue2">#ffffff</color>
 
+
+    <color name="web_item_divider">#FFD8D8D8</color>
+    <color name="login_send_verify_code_enable">#2395FF</color>
+    <color name="login_send_verify_code_disable">#992395FF</color>
 </resources>

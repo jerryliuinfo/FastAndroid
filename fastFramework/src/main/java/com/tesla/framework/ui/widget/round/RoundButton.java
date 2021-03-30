@@ -33,12 +33,13 @@ import com.tesla.framework.ui.widget.round.helper.RoundHelper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 
 
 /**
  * 作用：圆角TextView
  */
-public class RoundButton extends Button implements RoundAttrs {
+public class RoundButton extends AppCompatButton implements RoundAttrs {
 
     RoundHelper mRCHelper;
 

@@ -13,7 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.tesla.framework.common.util.activitytask.ActivityTaskMgr;
+import com.tesla.framework.common.util.activitytask.ActivityStackHelper;
 import com.tesla.framework.common.util.log.FastLog;
 
 import java.io.File;
@@ -143,7 +143,7 @@ public class TUncaughtExceptionHandler implements UncaughtExceptionHandler {
 
     private void restartApp(){
         //关闭所有activiyt
-        ActivityTaskMgr.getInstance().clearActivityStack();
+        ActivityStackHelper.finishActivityStack();
         if (mIsRestartApp) { // 如果需要重启
             Intent intent = new Intent(mContext.getApplicationContext(), mRestartActivity);
             AlarmManager mAlarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);

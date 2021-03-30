@@ -12,9 +12,11 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
 import com.apache.fastandroid.demo.doraemonkit.DoraemonkitDemoFragment
 import com.apache.fastandroid.DrawBasicDemoFragment
+import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
 import com.apache.fastandroid.demo.databinding.DatabindingFragmentDemo
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
+import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
 import com.hencoder.hencoderpracticedraw4.ClipMatrixDemoFragment
@@ -42,9 +44,9 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("CustomViewWidget", "第三方控件", CustomViewFragment::class.java),
                 ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
                 ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),
-                ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java)
-
-
+                ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java),
+                ViewItemBean("临时验证", "临时验证", TempDemoFragment::class.java),
+                ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java)
         )
     }
 

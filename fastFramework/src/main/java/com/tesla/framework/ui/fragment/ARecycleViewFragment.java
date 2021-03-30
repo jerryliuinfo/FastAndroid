@@ -1,9 +1,5 @@
 package com.tesla.framework.ui.fragment;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -20,6 +16,10 @@ import com.tesla.framework.ui.fragment.adpater.drag.ItemDragHelperCallback;
 import com.tesla.framework.ui.fragment.adpater.drag.OnItemMoveListener;
 import com.tesla.framework.ui.fragment.itemview.IITemView;
 import com.tesla.framework.ui.fragment.itemview.header.AHeaderItemViewCreator;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -168,15 +168,15 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
         if (items == null)
             return;
 
-        setViewVisiable(loadingLayout, View.GONE);
-        setViewVisiable(loadFailureLayout, View.GONE);
-        if (items.isEmpty() && emptyLayout != null) {
-            setViewVisiable(emptyLayout, View.VISIBLE);
-            setViewVisiable(contentLayout, View.GONE);
+        setViewVisiable(getLoadingLayout(), View.GONE);
+        setViewVisiable(getLoadErrorView(), View.GONE);
+        if (items.isEmpty() && getNoContentView() != null) {
+            setViewVisiable(getNoContentView(), View.VISIBLE);
+            setViewVisiable(getContentLayout(), View.GONE);
         }
         else {
-            setViewVisiable(emptyLayout, View.GONE);
-            setViewVisiable(contentLayout, View.VISIBLE);
+            setViewVisiable(getNoContentView(), View.GONE);
+            setViewVisiable(getContentLayout(), View.VISIBLE);
         }
         setAdapterItems(items);
         if (getRefreshView().getAdapter() == null) {

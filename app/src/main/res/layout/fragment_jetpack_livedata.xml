@@ -24,5 +24,14 @@
         app:layout_constraintTop_toBottomOf="@+id/text_name"
         android:text="修改数据"
         />
+    <Button
+        android:id="@+id/btn_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_change"
+        android:text="读取数据"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

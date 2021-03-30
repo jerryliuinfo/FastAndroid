@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 public class ActivityLifecycleAdapter implements ActivityLifecycleCallbacks {
     @Override
     public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
-        ActivityTaskMgr.getInstance().pushToActivityStack(activity);
+        ActivityStackHelper.push(activity);
     }
 
     @Override
@@ -43,6 +43,6 @@ public class ActivityLifecycleAdapter implements ActivityLifecycleCallbacks {
 
     @Override
     public void onActivityDestroyed(@NonNull Activity activity) {
-        ActivityTaskMgr.getInstance().popFromActivityStack(activity);
+        ActivityStackHelper.remove(activity);
     }
 }

@@ -24,7 +24,8 @@ class DrawBasicDemoFragment:ABaseFragment() {
             PageModel(R.layout.sample_line, R.string.title_draw_line, R.layout.practice_line),
             PageModel(R.layout.sample_round_rect, R.string.title_draw_round_rect, R.layout.practice_round_rect),
             PageModel(R.layout.sample_arc, R.string.title_draw_arc, R.layout.practice_arc),
-            PageModel(R.layout.sample_path, R.string.title_draw_path, R.layout.practice_path)
+            PageModel(R.layout.sample_path, R.string.title_draw_path, R.layout.practice_path),
+            PageModel(R.layout.sample_path, "圆角文字", R.layout.practice_path)
     )
 
     override fun inflateContentView(): Int {

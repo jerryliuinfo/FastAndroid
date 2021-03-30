@@ -30,7 +30,7 @@ public class SpanableStringFragment extends BaseFragment {
     protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
 
-        mChildrenPrivacyText = (TextView) findViewById(R.id.tv_content);
+        mChildrenPrivacyText = findViewById(R.id.tv_content);
 
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();

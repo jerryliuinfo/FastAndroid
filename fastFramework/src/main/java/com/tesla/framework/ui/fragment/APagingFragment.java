@@ -33,7 +33,7 @@ import java.util.List;
  * Created by jerryliu on 2017/3/28.
  */
 
-public abstract class APagingFragment<T extends Serializable,Ts extends Serializable, Header extends Serializable,V extends ViewGroup> extends ABaseFragment
+public abstract class APagingFragment<T extends Serializable,Ts extends Serializable, Header extends Serializable,V extends ViewGroup> extends ABaseTaskFragmentKt
         implements CustomToolbar.OnToolbarDoubleClickListener,AFooterItemViewHolder.OnFooterViewCallback,OnFootViewListener {
 
     public static final String TAG = "AFragment-Paging";
@@ -102,13 +102,14 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
         setUpRefreshViewWithConfig(getRefreshConfig());
         bindAdapter(getAdapter());
         //setupDragMove();
+
     }
 
     @Override
     public void requestData() {
         RefreshMode mode = RefreshMode.reset;
         // 如果没有Loading视图，且数据为空，就显示FootView加载状态
-        if (getAdapter().getDatas().size() == 0 && loadingLayout == null)
+        if (getAdapter().getDatas().size() == 0 && getLoadingLayout() == null)
             mode = RefreshMode.update;
         requestData(mode);
     }
@@ -574,14 +575,14 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
 
         if (state == ABaseTaskState.success) {
             if (isContentEmpty()) {
-                if (emptyLayout != null && !TextUtils.isEmpty(refreshConfig.emptyHint))
-                    ViewUtils.setTextViewValue(emptyLayout, R.id.txtLoadEmpty, refreshConfig.emptyHint);
+                if (getNoContentView() != null && !TextUtils.isEmpty(refreshConfig.emptyHint))
+                    ViewUtils.setTextViewValue(getNoContentView() , R.id.txtLoadEmpty, refreshConfig.emptyHint);
             }
         }
         else if (state == ABaseTaskState.falid) {
             if (isContentEmpty()) {
-                if (loadFailureLayout != null && !TextUtils.isEmpty(exception.getMessage()))
-                    ViewUtils.setTextViewValue(loadFailureLayout, R.id.txtLoadFailed, exception.getMessage());
+                if (getLoadErrorView() != null && !TextUtils.isEmpty(exception.getMessage()))
+                    ViewUtils.setTextViewValue(getLoadErrorView(), R.id.txtLoadFailed, exception.getMessage());
             }
         }
         else if (state == ABaseTaskState.finished) {

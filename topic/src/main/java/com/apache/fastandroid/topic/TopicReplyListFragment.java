@@ -75,13 +75,13 @@ public class TopicReplyListFragment extends ARecycleViewFragment<TopicReplyBean,
     }
 
     private void updateReplyCountText(){
-        TextView tv_reply_count = (TextView) findViewById(R.id.reply_count);
+        TextView tv_reply_count = findViewById(R.id.reply_count);
         tv_reply_count.setText("共收到 " + mTopicBean.replies_count + "条回复");
         tv_reply_count.setVisibility(View.VISIBLE);
     }
 
     private void hideReplyCountText(){
-        TextView tv_reply_count = (TextView) findViewById(R.id.reply_count);
+        TextView tv_reply_count = findViewById(R.id.reply_count);
         tv_reply_count.setVisibility(View.INVISIBLE);
     }
 

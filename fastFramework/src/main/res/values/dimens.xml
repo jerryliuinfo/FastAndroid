@@ -12,4 +12,8 @@
     <dimen name="sp_18">18sp</dimen>
     <dimen name="sp_19">19sp</dimen>
     <dimen name="sp_20">20sp</dimen>
+
+
+    <dimen name="icon_round_radius">22dp</dimen>
+
 </resources>

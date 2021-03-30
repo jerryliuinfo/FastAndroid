@@ -43,9 +43,6 @@ public class RoundTextView extends androidx.appcompat.widget.AppCompatTextView i
 
     public RoundTextView(@NonNull Context context) {
         this(context, null);
-
-
-
     }
 
     public RoundTextView(@NonNull Context context, @Nullable AttributeSet attrs)

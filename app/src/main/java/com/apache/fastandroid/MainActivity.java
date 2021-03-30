@@ -1,7 +1,5 @@
 package com.apache.fastandroid;
 
-import java.util.List;
-
 import android.Manifest.permission;
 import android.app.Activity;
 import android.content.Intent;
@@ -12,8 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.android.material.navigation.NavigationView;
 
 import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
@@ -29,6 +25,7 @@ import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
+import com.google.android.material.navigation.NavigationView;
 import com.permissionx.guolindev.PermissionX;
 import com.permissionx.guolindev.callback.RequestCallback;
 import com.tesla.framework.common.util.ResUtil;
@@ -41,6 +38,8 @@ import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
 import com.tesla.framework.ui.widget.ToastUtils;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -99,7 +98,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onResult(boolean allGranted, List<String> grantedList, List<String> deniedList) {
                 if (allGranted) {
-                    startActivity(new Intent(MainActivity.this, DemoListActivity.class));
+//                    startActivity(new Intent(MainActivity.this, DemoListActivity.class));
                 } else {
                     ToastUtils.showToast(MainActivity.this,  String.format("These permissions are denied: %s", deniedList));
                 }
@@ -193,16 +192,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (itemId){
             case R.id.nav_item_topic:
                 fragment = MainNewsTabsFragment.newFragment();
-                /*ProtocalA protocalA = Protocols.getTopicProtocal();
-                if (protocalA != null){
-                    String msg = protocalA.getUserA("jerry");
-                    ToastUtils.showToast(this, msg);
-                }else {
-                    ToastUtils.showToast(this, "protocalA is null");
-                }*/
-
-
-
                 break;
             case R.id.nav_item_wallpaer:
                 //fragment = WallPaperFragment.newFragment();

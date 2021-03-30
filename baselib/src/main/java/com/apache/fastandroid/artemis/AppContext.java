@@ -1,9 +1,6 @@
 package com.apache.fastandroid.artemis;
 
-import android.content.Context;
-
 import com.apache.fastandroid.artemis.support.bean.UserInfoBean;
-import com.tesla.framework.common.util.activitytask.ActivityTaskMgr;
 
 /**
  * Created by 01370340 on 2017/9/2.
@@ -12,16 +9,7 @@ import com.tesla.framework.common.util.activitytask.ActivityTaskMgr;
 public class AppContext {
     private static UserInfoBean mUserBean;
 
-    public static void logout(Context context){
-        mUserBean = null;
-        ActivityTaskMgr.getInstance().clearActivityStack();
-        CacheUtil.clearToken();
-    }
 
-
-    public static String getUserName(){
-        return mUserBean != null ? mUserBean.getUserName() : "";
-    }
 
 
 
