@@ -1,5 +1,7 @@
 package com.apache.fastandroid.demo
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +32,7 @@ import kotlinx.android.synthetic.main.activity_demo_list.*
  * Created by Jerry on 2020/10/31.
  */
 class DemoListActivity : BaseActivity() {
+
     companion object {
         private val TAG = "DemoListActivity"
         private val MODELS = arrayListOf(
@@ -48,6 +51,10 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("临时验证", "临时验证", TempDemoFragment::class.java),
                 ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java)
         )
+        @JvmStatic
+        fun launch(from:Activity){
+            from.startActivity(Intent(from,DemoListActivity::class.java))
+        }
     }
 
 

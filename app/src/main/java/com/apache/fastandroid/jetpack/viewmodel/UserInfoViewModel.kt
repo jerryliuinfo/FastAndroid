@@ -35,11 +35,9 @@ class UserInfoViewModel(private val reporsity: UserReporsity):ViewModel() {
 
     private val mUserInfo: MutableLiveData<UserBean> by lazy {
         MutableLiveData<UserBean>().also {
-//            loadUser()
+            loadUser()
         }
     }
-
-
 
     val mUserName:LiveData<String> = Transformations.map(mUserInfo){ userBean ->
         userBean.name

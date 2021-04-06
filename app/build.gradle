@@ -254,6 +254,9 @@ dependencies {
 
 
     implementation rootProject.androidLib.multidex
+    implementation rootProject.androidLib.workmanager
+
+
 
 
     //ARouter

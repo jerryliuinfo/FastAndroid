@@ -38,7 +38,7 @@ class MediatorLiveDataFragment:ABaseFragment() {
 
         mediaLiveData.addSource(livedata1) {
             NLog.d(TAG, "livedata1 onchange: %s", it)
-            mediaLiveData.value = it
+//            mediaLiveData.value = it
         }
         mediaLiveData.addSource(livedata2){
             NLog.d(TAG, "livedata2 onchange: %s", it)

@@ -7,6 +7,7 @@ import com.apache.fastandroid.demo.room.RoomDemoFragment
 import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleDemoFragment
 import com.apache.fastandroid.jetpack.livedata.*
 import com.apache.fastandroid.jetpack.viewmodel.JetPackViewModelListFragment
+import com.apache.fastandroid.jetpack.workmanager.WorkManagerListDemo
 
 /**
  * Created by Jerry on 2020/11/11.
@@ -19,6 +20,7 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("ViewModel", "ViewModel", JetPackViewModelListFragment::class.java)
                 ,ViewItemBean("DataBindg", "DataBindg", DatabindingFragmentDemo::class.java)
                 ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
+                ,ViewItemBean("WorkManager", "WorkManager", WorkManagerListDemo::class.java)
         )
     }
 }
