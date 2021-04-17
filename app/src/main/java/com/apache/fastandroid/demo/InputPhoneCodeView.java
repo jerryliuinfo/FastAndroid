@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
-import com.tesla.framework.common.util.ResUtil;
+import com.blankj.utilcode.util.ColorUtils;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
@@ -78,7 +78,7 @@ public class InputPhoneCodeView extends LinearLayout {
 
     public void updateBtnGetCodeColor(boolean enable){
         holder.btnGetCode.setEnabled(enable);
-        holder.btnGetCode.setTextColor(!enable? ResUtil.getColor(R.color.login_send_verify_code_disable):
+        holder.btnGetCode.setTextColor(!enable? ColorUtils.getColor(R.color.login_send_verify_code_disable):
                 ContextCompat.getColor(context,R.color.login_send_verify_code_enable));
     }
 

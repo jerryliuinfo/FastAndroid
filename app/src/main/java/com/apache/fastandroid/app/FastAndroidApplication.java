@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.text.TextUtils;
 
 import com.apache.fastandroid.BuildConfig;
@@ -17,29 +18,29 @@ import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
 import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
+import com.apache.fastandroid.task.DBInitTask;
+import com.apache.fastandroid.task.DoraemonkitTask;
+import com.apache.fastandroid.task.ImageLoaderTask;
+import com.apache.fastandroid.task.PerformanceTask;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.util.FastLogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.Utils;
 import com.didichuxing.doraemonkit.DoraemonKit;
-import com.github.anrwatchdog.ANRWatchDog;
-import com.github.moduth.blockcanary.BlockCanary;
-import com.github.moduth.blockcanary.BlockCanaryContext;
+import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
-import com.tesla.framework.Global;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
-import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.common.util.activitytask.ActivityLifecycleAdapter;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.FastLog.LogConfig;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
-import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.component.imageloader.impl.GlideImageLoader;
 import com.tesla.framework.component.performance.BlockDetector;
 import com.tesla.framework.network.task.TaskException;
-import com.tesla.framework.support.db.FastAndroidDB;
 
 import java.io.File;
 
@@ -54,7 +55,6 @@ import androidx.multidex.MultiDex;
 
 public class FastAndroidApplication extends Application {
     public static final String TAG = FastAndroidApplication.class.getSimpleName();
-    private static Context mContext;
 
     private static final String client_id = "7024a413";
     private static final String client_secret = "8404fa33ae48d3014cfa89deaa674e4cbe6ec894a57dbef4e40d083dbbaa5cf4";
@@ -62,12 +62,19 @@ public class FastAndroidApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        BaseApp.onCreate(this);
+        initAppLike();
         initLog();
         MainLogUtil.d("Application onCreate ");
+        long startTime = SystemClock.uptimeMillis();
 
         //traceview 开始检测
        // Debug.startMethodTracing("APP");
-        Global.setContext(getApplicationContext());
 
         Lifecycle lifecycle = ProcessLifecycleOwner.get().getLifecycle();
         lifecycle.addObserver(new ApplicationLifecycleObserverNew(ProcessLifecycleOwner.get()));
@@ -75,46 +82,29 @@ public class FastAndroidApplication extends Application {
 
         //systrace 开始检测
         TraceCompat.beginSection("trace");
-        initDoraemonkit();
 
-        //监测内存泄漏
-//        initLeakCanry();
+        TaskDispatcher.init(this);
+        TaskDispatcher taskDispatcher = TaskDispatcher.createInstance();
+        taskDispatcher.addTask(new DoraemonkitTask());
+        //DB初始化
+        taskDispatcher.addTask(new DBInitTask());
+        taskDispatcher.addTask(new ImageLoaderTask());
+        taskDispatcher.addTask(new PerformanceTask(this));
+        taskDispatcher.start();
 
-      /*  if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
-            ARouter.openLog();     // 打印日志
-            ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
-        }
-        ARouter.init(this); // 尽可能早，推荐在Application中初始化*/
-
-
-        mContext = this;
-        BaseApp.onCreate(this);
-        initAppLike();
 
         SPUtil.init(getApplicationContext(),getPackageName() +"_share");
 
         //初始化crash统计
         initCrashAndAnalysis();
 
-
         //初始化异常处理
         TaskException.config(new FastAndroidExceptionDelegateV2());
-        //初始化db
-        FastAndroidDB.setDB();
-
-
-        //初始化图片加载
-        IImageLoaderstrategy loaderstrategy = configImageLoader();
-        if (loaderstrategy != null){
-            ImageLoaderManager.getInstance().setImageLoaderStrategy(loaderstrategy);
-            ImageLoaderManager.getInstance().init(getApplicationContext());
-        }
 
         initAuth();
         initHttp();
-        if (DebugUtils.isDebugVersion()){
+        if (AppUtils.isAppDebug()){
             BlockDetector.init();
-
         }
         TrackPoint.init(new TrackPointCallBack() {
             @Override
@@ -140,19 +130,10 @@ public class FastAndroidApplication extends Application {
 
         //systrace 结束检测
         TraceCompat.endSection();
-        ANRWatchDog anrWatchDog = new ANRWatchDog();
-      /*  anrWatchDog.setANRListener(new ANRListener() {
-            @Override
-            public void onAppNotResponding(ANRError error) {
-                error.printStackTrace();
-                MainLogUtil.d("发生anr了: trace:"+ error.getMessage());
-            }
-        });
-        anrWatchDog.start();*/
 
-        initLeakCanry();
-        BlockCanary.install(this, new BlockCanaryContext()).start();
+
         registerActivityLifecycleCallbacks(new ActivityLifecycleAdapter() );
+        NLog.d(TAG, "FastAndroidApplication onCreate cost time: %s ms", (SystemClock.uptimeMillis() - startTime));
 
     }
 
@@ -245,9 +226,6 @@ public class FastAndroidApplication extends Application {
 
 
 
-    public static Context getContext(){
-        return mContext;
-    }
 
     @Override
     public void onTerminate() {

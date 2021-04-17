@@ -1,10 +1,11 @@
 package com.apache.fastandroid.artemis.ui.bean
 
-import com.tesla.framework.common.util.ResUtil
+import com.blankj.utilcode.util.ResourceUtils
 
 /**
  * Created by Jerry on 2020/11/11.
  */
-data class PageModel(val sampleLayoutRes:Int, val titleRes:String, val practiceLayoutRes:Int){
-    constructor( sampleLayoutRes:Int,  titleRes:Int,  practiceLayoutRes:Int):this(sampleLayoutRes,ResUtil.getString(titleRes),practiceLayoutRes)
+data class PageModel(val sampleLayoutRes:Int, val titleStr:String, val practiceLayoutRes:Int){
+
+    constructor( sampleLayoutRes:Int,  titleResId:Int,  practiceLayoutRes:Int):this(sampleLayoutRes,ResourceUtils.getString(titleResId),practiceLayoutRes)
 }

@@ -25,10 +25,11 @@ import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
+import com.blankj.utilcode.util.ColorUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.permissionx.guolindev.PermissionX;
 import com.permissionx.guolindev.callback.RequestCallback;
-import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.view.StatusBarUtil;
@@ -37,7 +38,6 @@ import com.tesla.framework.route.Route;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.widget.CircleImageView;
-import com.tesla.framework.ui.widget.ToastUtils;
 
 import java.util.List;
 
@@ -100,7 +100,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 if (allGranted) {
 //                    startActivity(new Intent(MainActivity.this, DemoListActivity.class));
                 } else {
-                    ToastUtils.showToast(MainActivity.this,  String.format("These permissions are denied: %s", deniedList));
+//                    ToastUtils.showToast(MainActivity.this,  String.format("These permissions are denied: %s", deniedList));
+                    ToastUtils.showShort("These permissions are denied: %s", deniedList);
+
                 }
             }
         });
@@ -272,7 +274,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void setStatusBar() {
-        int mStatusBarColor = ResUtil.getColor(R.color.colorPrimary);
+        int mStatusBarColor = ColorUtils.getColor(R.color.colorPrimary);
         StatusBarUtil.setColorForDrawerLayout(this, (DrawerLayout) findViewById(R.id.drawer), mStatusBarColor, 112);
 
     }
@@ -283,7 +285,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public boolean onBackClick() {
         if (!canFinish) {
             canFinish = true;
-            ToastUtils.showToast(this,"再按一次退出");
+            ToastUtils.showShort("再按一次退出");
+
             new Handler().postDelayed(new Runnable() {
 
                 @Override

@@ -7,7 +7,7 @@ import android.os.Message
 import android.util.AttributeSet
 import android.view.View
 import com.apache.fastandroid.hencoder.paint.R
-import com.tesla.framework.common.util.ResUtil
+import com.blankj.utilcode.util.ColorUtils
 
 
 /**
@@ -30,8 +30,8 @@ class Practice03SweepGradientView @JvmOverloads constructor(
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
 
-        mShader = SweepGradient(width / 2.toFloat(), height / 2 .toFloat(), ResUtil.getColor(R.color.sweep_start_color),
-                ResUtil.getColor(R.color.sweep_end_color))
+        mShader = SweepGradient(width / 2.toFloat(), height / 2 .toFloat(), ColorUtils.getColor(R.color.sweep_start_color),
+                ColorUtils.getColor(R.color.sweep_end_color))
         mPaint.shader = mShader
     }
 

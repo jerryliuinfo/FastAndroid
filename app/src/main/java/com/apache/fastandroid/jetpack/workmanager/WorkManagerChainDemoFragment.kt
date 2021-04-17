@@ -10,6 +10,7 @@ import com.apache.fastandroid.jetpack.workmanager.request.UpdateLocalWork
 import com.apache.fastandroid.jetpack.workmanager.request.UploadLogWorker
 import com.apache.fastandroid.jetpack.workmanager.request.PublishWorker
 import com.tesla.framework.Global
+import com.tesla.framework.applike.FrameworkApplication
 import kotlinx.android.synthetic.main.fragment_workmananger_basic.*
 import kotlinx.android.synthetic.main.fragment_workmananger_basic.btn_begin_then
 import kotlinx.android.synthetic.main.fragment_workmananger_chain.*
@@ -34,7 +35,7 @@ class WorkManagerChainDemoFragment: BaseFragment() {
     private lateinit var instance:WorkManager
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        instance = WorkManager.getInstance(Global.getApplicationContext())
+        instance = WorkManager.getInstance(FrameworkApplication.getContext())
         btn_begin_then.setOnClickListener {
             beginThen()
         }
@@ -50,12 +51,12 @@ class WorkManagerChainDemoFragment: BaseFragment() {
 
 
     private fun beginThen(){
-        var operation = WorkManager.getInstance(Global.getApplicationContext()).beginWith(compressWork).then(updateLocalDataWorker).enqueue()
+        var operation = WorkManager.getInstance(FrameworkApplication.getContext()).beginWith(compressWork).then(updateLocalDataWorker).enqueue()
     }
 
     private fun comine(){
-        var workContinuation1 = WorkManager.getInstance(Global.getApplicationContext()).beginWith(compressWork).then(updateLocalDataWorker)
-        var workContinuation2 = WorkManager.getInstance(Global.getApplicationContext()).beginWith(uploadWorker)
+        var workContinuation1 = WorkManager.getInstance(FrameworkApplication.getContext()).beginWith(compressWork).then(updateLocalDataWorker)
+        var workContinuation2 = WorkManager.getInstance(FrameworkApplication.getContext()).beginWith(uploadWorker)
         val taskList = ArrayList<WorkContinuation>().apply {
             add(workContinuation1)
             add(workContinuation2)

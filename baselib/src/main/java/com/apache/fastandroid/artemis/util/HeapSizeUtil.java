@@ -3,7 +3,7 @@ package com.apache.fastandroid.artemis.util;
 import android.app.ActivityManager;
 import android.content.Context;
 
-import com.tesla.framework.Global;
+import com.tesla.framework.applike.FrameworkApplication;
 
 
 public class HeapSizeUtil {
@@ -35,7 +35,7 @@ public class HeapSizeUtil {
         if (mHeapSize > 0) {
             return mHeapSize;
         }
-        ActivityManager am = (ActivityManager) Global.getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager am = (ActivityManager) FrameworkApplication.getApplication().getSystemService(Context.ACTIVITY_SERVICE);
         mHeapSize = am.getMemoryClass();
         return mHeapSize;
     }

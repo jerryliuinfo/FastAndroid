@@ -5,7 +5,6 @@ import android.content.Intent;
 import androidx.fragment.app.FragmentActivity;
 
 import com.apache.fastandroid.artemis.AppContext;
-import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;
@@ -29,13 +28,7 @@ public class BizFragment extends ABaseFragment {
         return (BizFragment) activity.getSupportFragmentManager().findFragmentByTag(BIZ_FRAGMENT_TAG);
     }
 
-    private String getRealString(int resId) {
-        if (getActivity() != null && getResources() != null) {
-            return ResUtil.getString(resId);
-        }
 
-        return mActivity.getString(resId);
-    }
 
     @Override
     public int inflateContentView() {

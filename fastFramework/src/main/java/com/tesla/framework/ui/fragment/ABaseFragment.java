@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.tesla.framework.common.util.FrameworkLogUtil;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.imageloader.BitmapOwner;
@@ -18,7 +19,6 @@ import com.tesla.framework.network.task.TaskManager;
 import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.widget.ToastUtils;
 import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
 import androidx.annotation.NonNull;
@@ -181,9 +181,8 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     }
 
     public void showMessage(CharSequence msg) {
-        if (!TextUtils.isEmpty(msg) && getActivity() != null){
-            ToastUtils.showToast(getActivity(),msg.toString());
-        }
+
+        ToastUtils.showShort(msg.toString());
     }
 
 

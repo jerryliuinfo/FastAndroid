@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import caom.apache.fastandroid.artemis.R;
 import com.apache.fastandroid.artemis.support.bean.UserInfoBean;
-import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
-import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.ui.activity.BaseActivity;
 
 /**

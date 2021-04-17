@@ -1,5 +1,15 @@
 package com.tesla.framework.common.util.file;
 
+import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.text.TextUtils;
+
+import com.blankj.utilcode.util.PathUtils;
+import com.tesla.framework.applike.FrameworkApplication;
+import com.tesla.framework.common.util.FrameworkLogUtil;
+import com.tesla.framework.common.util.ZipUtils;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -9,16 +19,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-
-import android.content.Context;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
-import android.text.TextUtils;
-
-import com.tesla.framework.Global;
-import com.tesla.framework.applike.FrameworkApplication;
-import com.tesla.framework.common.util.FrameworkLogUtil;
-import com.tesla.framework.common.util.ZipUtils;
 
 /**
  * Created by jerryliu on 2017/8/3.
@@ -302,7 +302,7 @@ public class AssetUtil {
     /**
      */
     public static String getAnuEffectAudioDir() {
-        String d = Global.getExternalFilesDir("") + File.separator + "anueffectaudio";
+        String d = PathUtils.getExternalAppFilesPath() + File.separator + "anueffectaudio";
         File f = new File(d);
         if (!f.exists()) {
             boolean ret = false;

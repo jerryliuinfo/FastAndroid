@@ -9,8 +9,8 @@ import com.apache.fastandroid.topic.support.bean.NewsSummaryBeans;
 import com.apache.fastandroid.topic.support.bean.WallpaperBeans;
 import com.apache.fastandroid.topic.support.http.MyHttpUtility;
 import com.apache.fastandroid.topic.support.sdk.bean.UpdateBean;
+import com.blankj.utilcode.util.ResourceUtils;
 import com.tesla.framework.common.setting.Setting;
-import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.http.HttpConfig;
 import com.tesla.framework.network.http.Params;
@@ -93,8 +93,8 @@ public class Sdk extends ABizLogic {
 
 
     public List<NewsChannelTable> loadNewsChannelsStatic(){
-        List<String> channelNameList = Arrays.asList(ResUtil.getStringArray(R.array.news_channel_name_static));
-        List<String> channelIdList = Arrays.asList(ResUtil.getStringArray(R.array.news_channel_id_static));
+        List<String> channelNameList = Arrays.asList(ResourceUtils.getStringArray(R.array.news_channel_name_static));
+        List<String> channelIdList = Arrays.asList(ResourceUtils.getStringArray(R.array.news_channel_id_static));
         ArrayList<NewsChannelTable> newsChannelTables=new ArrayList<>();
         for (int i = 0; i < channelNameList.size(); i++) {
             NewsChannelTable entity = new NewsChannelTable(channelNameList.get(i), channelIdList.get(i)

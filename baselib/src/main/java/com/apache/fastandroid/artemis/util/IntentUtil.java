@@ -26,11 +26,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import androidx.browser.customtabs.CustomTabsIntent;
 import android.text.TextUtils;
 
-import com.tesla.framework.common.util.ResUtil;
+import com.blankj.utilcode.util.ColorUtils;
 
+import androidx.browser.customtabs.CustomTabsIntent;
 import caom.apache.fastandroid.artemis.R;
 
 public class IntentUtil {
@@ -66,7 +66,7 @@ public class IntentUtil {
 
         CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
         // 修改 ActionBar 的颜色
-        intentBuilder.setToolbarColor(ResUtil.getColor(R.color.comm_white));
+        intentBuilder.setToolbarColor(ColorUtils.getColor(R.color.comm_white));
         //是否显示网页标题
         intentBuilder.setShowTitle(true);
         //自定义关闭 Custom tabs 的图标

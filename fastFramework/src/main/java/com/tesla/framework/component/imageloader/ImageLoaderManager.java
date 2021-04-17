@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.View;
 
-import com.tesla.framework.Global;
+import com.tesla.framework.applike.FrameworkApplication;
 
 import androidx.annotation.NonNull;
 
@@ -65,7 +65,7 @@ public class ImageLoaderManager implements IImageLoaderstrategy,IImagePahtFromCa
     }
 
     public void showImage(View container, String url) {
-        showImage(container,url, Global.getContext());
+        showImage(container,url, FrameworkApplication.getContext());
     }
 
     @Override

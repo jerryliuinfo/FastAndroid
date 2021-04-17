@@ -1,5 +1,7 @@
 package com.blankj.utilcode.util;
 
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
 import java.io.IOException;
@@ -8,8 +10,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.List;
 
+import androidx.annotation.ArrayRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.RawRes;
+import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 
 /**
@@ -26,6 +30,39 @@ public final class ResourceUtils {
 
     private ResourceUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
+
+
+
+
+    /**
+     * Return the string value associated with a particular resource ID.
+     *
+     * @param id         The desired resource identifier.
+     * @param formatArgs The format arguments that will be used for substitution.
+     * @return the string value associated with a particular resource ID.
+     */
+    public static String getString(@StringRes int id, Object... formatArgs) {
+        try {
+            return Utils.getApp().getString(id, formatArgs);
+        } catch (Resources.NotFoundException ignore) {
+            return "";
+        }
+    }
+
+    /**
+     * Return the string array associated with a particular resource ID.
+     *
+     * @param id The desired resource identifier.
+     * @return The string array associated with the resource.
+     */
+    public static String[] getStringArray(@ArrayRes int id) {
+        try {
+            return Utils.getApp().getResources().getStringArray(id);
+        } catch (Resources.NotFoundException ignore) {
+            return new String[0];
+        }
     }
 
     /**
@@ -299,5 +336,17 @@ public final class ResourceUtils {
     public static List<String> readRaw2List(@RawRes final int resId,
                                             final String charsetName) {
         return UtilsBridge.inputStream2Lines(Utils.getApp().getResources().openRawResource(resId), charsetName);
+    }
+
+
+
+    public static final ColorStateList getColorStateList(int resId) {
+        ColorStateList result = null;
+        try {
+            result = ContextCompat.getColorStateList(Utils.getApp(),resId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }

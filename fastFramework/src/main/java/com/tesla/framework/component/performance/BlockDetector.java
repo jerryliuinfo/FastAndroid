@@ -3,7 +3,7 @@ package com.tesla.framework.component.performance;
 import android.os.Looper;
 import android.util.Printer;
 
-import com.tesla.framework.common.util.DebugUtils;
+import com.blankj.utilcode.util.AppUtils;
 
 /**
  *
@@ -14,7 +14,7 @@ public class BlockDetector {
 
     public static final String TAG = BlockDetector.class.getSimpleName();
     public static void init() {
-        if(DebugUtils.isDebugVersion()) {
+        if(AppUtils.isAppDebug()) {
             Looper.getMainLooper().setMessageLogging(new Printer() {
                 //分发和处理消息开始前的log
                 private static final String START = ">>>>> Dispatching";

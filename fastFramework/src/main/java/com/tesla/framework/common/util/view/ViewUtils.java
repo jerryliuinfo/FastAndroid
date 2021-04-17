@@ -18,59 +18,13 @@ import java.lang.reflect.Field;
 
 public class ViewUtils {
 
-	public static int getResId(Context context, String resName, String defType) {
-		try {
-			String packageName = context.getPackageName();
-			Resources resources = context.getPackageManager().getResourcesForApplication(packageName);
 
-			int resId = resources.getIdentifier(resName, defType, packageName);
-
-			return resId;
-		} catch (Exception e) {
-		}
-		return 0;
-	}
-
-	public static int getStringResId(Context context, String resName) {
-		return getResId(context, resName, "string");
-	}
-
-	public static int getDrawableResId(Context context, String resName) {
-		return getResId(context, resName, "drawable");
-	}
-
-	public static void setTextViewValue(Activity context, int txtId, String content) {
-		if (context != null && context.findViewById(txtId) != null)
-			((TextView) context.findViewById(txtId)).setText(content);
-	}
 
 	public static void setTextViewValue(View container, int txtId, String content) {
 		if (container != null && container.findViewById(txtId) != null)
 			((TextView) container.findViewById(txtId)).setText(content);
 	}
 
-	public static void setTextViewValue(Activity context, View container, int txtId, int contentId) {
-		if (context != null)
-			((TextView) container.findViewById(txtId)).setText(context.getString(contentId));
-	}
-
-	public static void setImgResource(Activity context, int imgId, int sourceId) {
-		if (context != null)
-			((ImageView) context.findViewById(imgId)).setImageResource(sourceId);
-	}
-
-	public static void setImgResource(Activity context, int imgId, Bitmap source) {
-		if (context != null)
-			((ImageView) context.findViewById(imgId)).setImageBitmap(source);
-	}
-
-	public static void setImgResource(View container, int imgId, int sourceId) {
-		((ImageView) container.findViewById(imgId)).setImageResource(sourceId);
-	}
-
-	public static void setImgResource(View container, int imgId, Bitmap source) {
-		((ImageView) container.findViewById(imgId)).setImageBitmap(source);
-	}
 
 
 

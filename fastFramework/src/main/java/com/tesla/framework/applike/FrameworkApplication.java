@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.ContextUtil;
-import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.support.skin.SkinManager;
@@ -15,7 +14,7 @@ import com.tesla.framework.support.skin.SkinManager;
  */
 
 public class FrameworkApplication  {
-    private static Context mContext;
+    private static Context sContext;
 
     private static Application sApplication;
     private FrameworkApplication() {
@@ -25,13 +24,12 @@ public class FrameworkApplication  {
         if (context == null){
             throw new NullPointerException("context can't be null");
         }
-        mContext = context.getApplicationContext();
-        SkinManager.getInstance().setContext(mContext);
+        sContext = context.getApplicationContext();
+        SkinManager.getInstance().setContext(sContext);
         SPUtil.init(context,"");
         sApplication = (Application) context.getApplicationContext();
         ContextUtil.injectContext(context);
         NetworkHelper.getInstance().registerNetworkSensor(context);
-        DebugUtils.syncDebugStatus(context);
 
         // 添加一些配置项
         SettingUtility.addSettings(context, "actions");
@@ -45,8 +43,11 @@ public class FrameworkApplication  {
     }
 
     public static Context getContext(){
-        return mContext;
+        return sContext;
     }
 
+    public static Application getApplication(){
+        return sApplication;
+    }
 
 }

@@ -1,7 +1,5 @@
 package com.apache.fastandroid.topic.news.view;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +9,13 @@ import android.widget.TextView;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.topic.support.bean.NewsSummary;
-import com.tesla.framework.common.util.ResUtil;
+import com.blankj.utilcode.util.ResourceUtils;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.itemview.ARecycleViewItemViewHolder;
+
+import java.util.List;
 
 /**
  * Created by 01370340 on 2017/11/23.
@@ -86,7 +86,7 @@ public class MainNewsItemPhotoView extends ARecycleViewItemViewHolder<NewsSummar
 //                holder.setText(R.id.news_summary_title_tv, AppApplication.getAppContext()
 //                        .getString(R.string.photo_collections, adsBeanList.getString(0).getTitle()));
 
-                news_summary_title_tv.setText(String.format(ResUtil.getString(R.string.photo_collections),adsBeanList.get(0).getTitle() ));
+                news_summary_title_tv.setText(String.format(ResourceUtils.getString(R.string.photo_collections),adsBeanList.get(0).getTitle() ));
             } else if (size >= 2) {
                 imgSrcLeft = adsBeanList.get(0).getImgsrc();
                 imgSrcMiddle = adsBeanList.get(1).getImgsrc();

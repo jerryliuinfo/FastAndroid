@@ -2,13 +2,14 @@ package com.apache.fastandroid.widget;
 
 import android.content.Context;
 import android.os.CountDownTimer;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.apache.fastandroid.R;
-import com.tesla.framework.common.util.ResUtil;
+import com.blankj.utilcode.util.ResourceUtils;
 import com.tesla.framework.common.util.log.FastLog;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by jerryliu on 2017/6/29.
@@ -43,10 +44,10 @@ public class SplashCountDownView extends androidx.appcompat.widget.AppCompatText
     }
 
     private void init(){
-        setBackgroundDrawable(ResUtil.getDrawable(R.drawable.splash_countdown_bg));
+        setBackgroundDrawable(ResourceUtils.getDrawable(R.drawable.splash_countdown_bg));
 
-        mCountDownEndText = ResUtil.getString(R.string.splash_redirecting);
-        mCountDowningText = ResUtil.getString(R.string.splash_countdown_count);
+        mCountDownEndText = ResourceUtils.getString(R.string.splash_redirecting);
+        mCountDowningText = ResourceUtils.getString(R.string.splash_countdown_count);
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

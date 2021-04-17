@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.apache.fastandroid.artemis.ui.PageFragment
 import com.apache.fastandroid.artemis.ui.bean.PageModel
-import com.tesla.framework.common.util.ResUtil
 
 /**
  * Created by Jerry on 2020/11/11.
@@ -21,6 +20,6 @@ class PageAdapter(private val pageModels: List<PageModel>, fm: FragmentManager):
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return ResUtil.getString(pageModels[position].titleRes)
+        return pageModels[position].titleStr
     }
 }

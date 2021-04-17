@@ -1,4 +1,4 @@
-package com.apache.fastandroid.animation;
+package com.tesla.framework.common.util.anim;
 
 import android.graphics.Matrix;
 import android.view.animation.Animation;

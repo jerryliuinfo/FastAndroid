@@ -2,6 +2,17 @@ package com.tesla.framework.common.util;
 
 // Copy from galaxy sdk ${com.alibaba.android.galaxy.utils.ClassUtils}
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.util.Log;
+
+import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.ThreadUtils;
+import com.blankj.utilcode.util.ThreadUtils.SimpleTask;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -14,16 +25,6 @@ import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.util.Log;
-
-import com.blankj.utilcode.util.ThreadUtils;
-import com.blankj.utilcode.util.ThreadUtils.SimpleTask;
 
 import dalvik.system.DexFile;
 
@@ -150,7 +151,7 @@ public class ClassUtils {
             }
         }
 
-        if (DebugUtils.isDebugVersion()) { // Search instant run support only debuggable
+        if (AppUtils.isAppDebug()) { // Search instant run support only debuggable
             sourcePaths.addAll(tryLoadInstantRunDexFile(applicationInfo));
         }
         return sourcePaths;

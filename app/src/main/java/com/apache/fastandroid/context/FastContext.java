@@ -2,10 +2,9 @@ package com.apache.fastandroid.context;
 
 import android.content.Context;
 
-import com.google.gson.Gson;
-
 import com.apache.fastandroid.sample.singleton.Singleton;
-import com.tesla.framework.Global;
+import com.google.gson.Gson;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.task.PriorityThreadPool;
 import com.tesla.framework.common.util.task.TimerTaskManager;
 
@@ -31,7 +30,7 @@ public final class FastContext {
      * 客户代码要通过此方法来获得时间任务管理器，而不是自己创建一个。
      */
     public static TimerTaskManager getTimerTaskManager() {
-        return sTimerTaskManager.get(Global.getApplicationContext());
+        return sTimerTaskManager.get(FrameworkApplication.getContext());
     }
 
     private final static int DEFAULT_POOL_SIZE = 2;
