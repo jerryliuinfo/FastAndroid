@@ -19,6 +19,7 @@ import com.apache.fastandroid.demo.databinding.DatabindingFragmentDemo
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
+import com.apache.fastandroid.demo.widget.WidgetDemoFragment
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
 import com.hencoder.hencoderpracticedraw4.ClipMatrixDemoFragment
@@ -49,7 +50,8 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),
                 ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java),
                 ViewItemBean("临时验证", "临时验证", TempDemoFragment::class.java),
-                ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java)
+                ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java),
+                ViewItemBean("开源UI控件", "开源UI控件", WidgetDemoFragment::class.java)
         )
         @JvmStatic
         fun launch(from:Activity){

@@ -1,7 +1,6 @@
 package com.tesla.framework.common.setting;
 
 import com.alibaba.fastjson.JSON;
-import com.tesla.framework.network.http.ICallback;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -29,14 +28,5 @@ public class Setting extends SettingBean implements Serializable {
 		return JSON.parseObject(JSON.toJSONString(this), Setting.class);
 	}
 
-	private ICallback callback;
 
-
-	public ICallback getCallback() {
-		return callback;
-	}
-
-	public void setCallback(ICallback callback) {
-		this.callback = callback;
-	}
 }

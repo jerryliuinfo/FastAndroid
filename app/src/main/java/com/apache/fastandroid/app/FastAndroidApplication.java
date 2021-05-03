@@ -26,8 +26,6 @@ import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelega
 import com.apache.fastandroid.util.FastLogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.AppUtils;
-import com.blankj.utilcode.util.Utils;
-import com.didichuxing.doraemonkit.DoraemonKit;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
 import com.tesla.framework.applike.IApplicationLike;
@@ -139,11 +137,6 @@ public class FastAndroidApplication extends Application {
 
 
 
-    private void initDoraemonkit(){
-        DoraemonKit.APPLICATION = this;
-        Utils.init(this);
-    }
-
     @Override
     protected void attachBaseContext(Context base) {
         MainLogUtil.d("Application attachBaseContext ");
@@ -152,14 +145,7 @@ public class FastAndroidApplication extends Application {
         super.attachBaseContext(base);
     }
 
-    private void initLeakCanry(){
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-            return;
-        }
-        LeakCanary.install(this);
-    }
+
 
     private void initAppLike(){
         for (String componentAppName: AppConfig.COMPONENT_APPLICATION_CONFIG) {

@@ -11,7 +11,7 @@ import androidx.lifecycle.OnLifecycleEvent
 /**
  * Created by Jerry on 2020/12/10.
  */
-class FullLifecycleObserverAdapter(private val mLifecycleOwner: LifecycleOwner, private val mObserver: FullLifecycleObserver):LifecycleObserver {
+class LifecycleObserverAdapter(private val mLifecycleOwner: LifecycleOwner, private val mObserver: FullLifecycleObserver):LifecycleObserver {
 
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)

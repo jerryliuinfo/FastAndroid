@@ -12,8 +12,6 @@ import kotlin.random.Random
 class UserInfoViewModel(private val reporsity: UserReporsity):ViewModel() {
 
 
-
-
     val countLiveData:MutableLiveData<Int> = MutableLiveData(0)
 
     fun plusNew(){
@@ -69,10 +67,6 @@ class UserInfoViewModel(private val reporsity: UserReporsity):ViewModel() {
         }
         return@switchMap livedata2
     }
-
-
-
-
 
 
     companion object{

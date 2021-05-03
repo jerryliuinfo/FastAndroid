@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_jetpack_livedata_media_livedata.*
 
 /**
  * Created by Jerry on 2021/2/7.
- * 许合并多个 LiveData 源。只要任何原始的 LiveData 源对象发生更改，就会触发 MediatorLiveData 对象的观察者
+ * 合并多个 LiveData 源。只要任何原始的 LiveData 源对象发生更改，就会触发 MediatorLiveData 对象的观察者
  */
 class MediatorLiveDataFragment:ABaseFragment() {
     companion object{

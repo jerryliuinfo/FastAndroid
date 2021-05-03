@@ -6,7 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.tesla.framework.component.lifecycle.FullLifecycleObserver;
-import com.tesla.framework.component.lifecycle.FullLifecycleObserverAdapter;
+import com.tesla.framework.component.lifecycle.LifecycleObserverAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -40,7 +40,7 @@ public class BaseActivityHelper implements FullLifecycleObserver {
     public BaseActivityHelper(BaseActivity mActivity, LifecycleOwner mLifecycleOwner) {
         this.mActivity = mActivity;
         this.mLifecycleOwner = mLifecycleOwner;
-        mLifecycleOwner.getLifecycle().addObserver(new FullLifecycleObserverAdapter(mLifecycleOwner,this));
+        mLifecycleOwner.getLifecycle().addObserver(new LifecycleObserverAdapter(mLifecycleOwner,this));
     }
 
     public BaseActivity getActivity() {

@@ -43,7 +43,7 @@ public class LifecycleHandler extends Handler  {
     private void addObserver() {
         Preconditions.checkNotNull(lifecycleOwner);
         if (lifecycleOwner != null){
-            lifecycleOwner.getLifecycle().addObserver(new FullLifecycleObserverAdapter(lifecycleOwner,observer));
+            lifecycleOwner.getLifecycle().addObserver(new LifecycleObserverAdapter(lifecycleOwner,observer));
         }
     }
 

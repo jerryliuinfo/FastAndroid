@@ -2,7 +2,7 @@ package com.apache.fastandroid.jetpack.lifecycle
 
 import androidx.lifecycle.LifecycleOwner
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.component.lifecycle.FullLifecycleObserverAdapter
+import com.tesla.framework.component.lifecycle.LifecycleObserverAdapter
 import com.tesla.framework.component.lifecycle.SimpleLifeCycleObserver
 
 /**
@@ -15,7 +15,7 @@ class LocationListener(lifecycleOwner: LifecycleOwner, private val onLocationCha
     }
     init {
         //添加另外一个观察者
-        lifecycleOwner.lifecycle.addObserver(FullLifecycleObserverAdapter(lifecycleOwner,this))
+        lifecycleOwner.lifecycle.addObserver(LifecycleObserverAdapter(lifecycleOwner,this))
     }
 
     override fun onCreate(owner: LifecycleOwner) {

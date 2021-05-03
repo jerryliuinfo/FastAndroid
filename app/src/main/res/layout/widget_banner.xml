@@ -1,0 +1,156 @@
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f5f5f5"
+        android:scrollbars="none">
+
+        <TextView
+            android:id="@+id/tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/indicator"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="下拉刷新重新设置数据数据，点击按钮改变使用场景" />
+
+        <com.youth.banner.Banner
+            xmlns:banner="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            banner:banner_radius="5dp"
+            banner:banner_indicator_normal_color="@android:color/white"
+            banner:banner_indicator_selected_color="@color/colorPrimary" />
+
+        <com.youth.banner.indicator.RoundLinesIndicator
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/banner"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tip">
+
+            <RelativeLayout
+                android:id="@+id/rl_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f5f5f5"
+                android:scrollbars="none">
+
+                <Button
+                    android:id="@+id/style_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="图片" />
+
+                <Button
+                    android:id="@+id/style_image_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/style_image"
+                    android:text="图片+标题+指示器" />
+
+                <Button
+                    android:id="@+id/style_image_title_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/style_image_title"
+                    android:text="图片+标题+数字" />
+
+                <Button
+                    android:id="@+id/style_multiple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/style_image"
+                    android:text="多类型UI" />
+
+                <Button
+                    android:id="@+id/style_net_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/style_image"
+                    android:layout_toRightOf="@+id/style_multiple"
+                    android:text="网络图片" />
+
+                <Button
+                    android:id="@+id/change_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/style_image"
+                    android:layout_toRightOf="@+id/style_net_image"
+                    android:text="外部指示器" />
+
+
+                <Button
+                    android:id="@+id/gallery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/style_image"
+                    android:layout_toRightOf="@+id/change_indicator"
+                    android:text="画廊,魅族效果" />
+
+                <Button
+                    android:id="@+id/topLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gallery"
+                    android:text="用banner实现类似淘宝头条的效果"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/rv_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/topLine"
+                    android:text="RecyclerView嵌套banner"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/cl_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rv_banner"
+                    android:text="ConstraintLayout嵌套banner"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/vp_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cl_banner"
+                    android:text="viewpaer2+fragment+RecyclerView嵌套banner"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/banner_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/vp_banner"
+                    android:text="仿淘宝商品详情banner，第一个放视频"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/banner_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/banner_video"
+                    android:text="测试在tv中，遥控切换banner"
+                    android:textAllCaps="false" />
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

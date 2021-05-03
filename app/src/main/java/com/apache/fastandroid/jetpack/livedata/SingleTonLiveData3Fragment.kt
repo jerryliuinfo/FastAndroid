@@ -27,7 +27,7 @@ class SingleTonLiveData3Fragment:BaseFragment() {
         super.layoutInit(inflater, savedInstanceSate)
 
 
-        val priceLiveData = StockLiveData("01800")
+        var priceLiveData = StockLiveData.get("01800")
         priceLiveData.observe(this, Observer<BigDecimal> {
             t -> tv_result.text = t.toString() })
         }

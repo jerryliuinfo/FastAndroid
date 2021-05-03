@@ -21,6 +21,7 @@ class JetPackLifeCycleDemoFragment: BaseListFragment() {
                 ,ViewItemBean("LifeCycle", "LifeCycle", JetPackLifeCycleFragment::class.java)
                 ,ViewItemBean("LifeCycleService", "LifeCycleService", JetPackLifeCycleServiceFragment::class.java)
                 ,ViewItemBean("ProcessLifecycleOwner", "App进入前后台判断", JetPackLifeCycleFragment::class.java)
+                ,ViewItemBean("任意一个类监听生命周期", "任意一个类监听生命周期", JetPackListenLifecycleFragment::class.java)
         )
     }
 

@@ -2,12 +2,8 @@ package com.apache.fastandroid.jetpack.lifecycle.lifecycleservice
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
-import com.apache.fastandroid.jetpack.lifecycle.LocationListener
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.component.lifecycle.FullLifecycleObserverAdapter
-import com.tesla.framework.component.lifecycle.SimpleLifeCycleObserver
 
 /**
  * Created by Jerry on 2021/2/9.

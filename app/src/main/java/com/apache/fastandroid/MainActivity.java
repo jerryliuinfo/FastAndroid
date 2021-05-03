@@ -21,6 +21,8 @@ import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.setting.SettingFragment;
+import com.apache.fastandroid.task.DelayInitTask1;
+import com.apache.fastandroid.task.DelayInitTask2;
 import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
 import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.util.MainLogUtil;
@@ -28,6 +30,7 @@ import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
+import com.optimize.performance.launchstarter.DelayInitDispatcher;
 import com.permissionx.guolindev.PermissionX;
 import com.permissionx.guolindev.callback.RequestCallback;
 import com.tesla.framework.common.util.log.FastLog;
@@ -60,6 +63,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ActionBarDrawerToggle drawerToggle;
 
     private int selecteId = -1;
+
+
     public static void launch(Activity from, UserBean userBean){
         Intent intent = new Intent(from, MainActivity.class);
         intent.putExtra("userBean",userBean);
@@ -110,6 +115,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         BindUserInfo info = new BindUserInfo("title", "www.baidu.com", "Jerry");
         NLog.d(TAG, "info: %s", info);
         DemoListActivity.launch(this);
+
+
+        DelayInitDispatcher dispatcher = new DelayInitDispatcher();
+        dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
+
     }
 
 
