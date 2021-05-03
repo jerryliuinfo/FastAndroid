@@ -1,4 +1,4 @@
-package com.tesla.framework.component.imageloader.impl;
+package com.apache.fastandroid.imageloader;
 
 import android.content.Context;
 import android.content.res.Resources;

@@ -48,30 +48,18 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-//    implementation rootProject.androidLib.core_ktx
 
     // ViewModel and LiveData
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+//    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
+    implementation rootProject.ext.dependencies.publicImplementation
 
 
-    implementation rootProject.androidLib.lifecycle_viewmodel_ktx
 
     implementation rootProject.androidLib.coroutines_core
     implementation rootProject.androidLib.coroutines_android
 
 
-    implementation rootProject.androidLib.constraintLayout
-
-    implementation rootProject.androidLib.design
-    implementation rootProject.androidLib.appcompatV7
-    implementation rootProject.androidLib.cardview
-    implementation rootProject.thirdLib.fastjson
-    implementation rootProject.thirdLib.gson
-    implementation rootProject.thirdLib.okhttp3
-    implementation rootProject.thirdLib.material_dialogs
-    implementation rootProject.thirdLib.glide
-    implementation rootProject.thirdLib.picasso
-    implementation rootProject.thirdLib.imageLoader
 
 
     implementation 'com.qmuiteam:qmui:2.0.0-alpha10'

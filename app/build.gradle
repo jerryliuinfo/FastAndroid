@@ -89,14 +89,6 @@ android {
         exclude 'META-INF/ASL2.0'
         exclude 'META-INF/proguard/okhttp3.pro'
         exclude 'META-INF/proguard/coroutines.pro'
-        /*exclude 'META-INF/androidx.legacy_legacy-support-core-utils.version'
-        exclude 'META-INF/androidx.documentfile:documentfile.version'
-        exclude 'META-INF/androidx.swiperefreshlayout:swiperefreshlayout.version'
-        exclude 'META-INF/androidx.print:print.version'
-        exclude 'META-INF/androidx.slidingpanelayout:slidingpanelayout.version'
-        exclude 'META-INF/androidx.swiperefreshlayout:swiperefreshlayout.version'
-        exclude 'META-INF/androidx.asynclayoutinflater:asynclayoutinflater.version'
-        exclude 'META-INF/androidx.legacy:legacy-support-core-ui.version'*/
 
     }
     // For Kotlin projects
@@ -193,9 +185,11 @@ dependencies {
         implementation project(':topic')
     }
 
+    implementation rootProject.ext.dependencies.publicImplementation
+    rootProject.ext.dependencies.basic.each{
+        implementation project(it)
+    }
 
-    implementation project(':baselib')
-    implementation project(':fastFramework')
 
     implementation project(':hencode_basic')
     implementation project(':hencoder_paint')
@@ -203,65 +197,23 @@ dependencies {
     implementation project(':hencoder_clipmatrix')
     implementation project(':doraemonkit')
 
-    implementation rootProject.androidLib.core_ktx
 
     // ViewModel and LiveData
     implementation rootProject.androidLib.lifecycle_extensions
-    implementation rootProject.androidLib.lifecycle_viewmodel_ktx
-
-
 
     //协程
     implementation rootProject.androidLib.coroutines_core
     implementation rootProject.androidLib.coroutines_android
 
+    implementation rootProject.androidLib.workmanager
+
 
     debugImplementation rootProject.thirdLib.leakcanary_support_fragment
 
 
-
-    implementation rootProject.androidLib.constraintLayout
-
-    implementation rootProject.androidLib.design
-    implementation rootProject.androidLib.appcompatV7
-    implementation rootProject.androidLib.cardview
-    implementation rootProject.thirdLib.fastjson
-    implementation rootProject.thirdLib.gson
-    implementation rootProject.thirdLib.okhttp3
-    implementation rootProject.thirdLib.material_dialogs
-
-
-    implementation rootProject.thirdLib.glide
-    implementation rootProject.thirdLib.picasso
-    implementation rootProject.thirdLib.imageLoader
-    implementation rootProject.thirdLib.volly
-
-
-    implementation rootProject.thirdLib.okhttp3_log_interceptor
-
-
-    //retrofit
-    implementation rootProject.thirdLib.retrofit
-    implementation rootProject.thirdLib.retrofit_converter_gson
-    implementation rootProject.thirdLib.retrofit_adapter_rxjava
-    implementation rootProject.thirdLib.retrofit_converter_scalars
-
-    //rxjava&rxandroid
-    implementation rootProject.thirdLib.rxjava
-    implementation rootProject.thirdLib.rxandroid
-    implementation 'com.permissionx.guolindev:permissionx:1.4.0'
-
-
-
     implementation rootProject.androidLib.multidex
-    implementation rootProject.androidLib.workmanager
 
 
-
-
-    //ARouter
-//    implementation rootProject.ext.thirdLib.arouter_api
-//    annotationProcessor rootProject.ext.thirdLib.arouter_compiler
 
     //必须加行这行，否则proxyToolProcessor无法自动生成类
     implementation project(':artemis_annotation')
@@ -275,7 +227,7 @@ dependencies {
 
 
     //Room
-    def room_version = "2.2.6"
+    def room_version = rootProject.androidLib.room_version
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"

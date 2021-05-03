@@ -7,7 +7,7 @@ import com.tesla.framework.common.setting.SettingUtility
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy
 import com.tesla.framework.component.imageloader.ImageLoaderManager
-import com.tesla.framework.component.imageloader.impl.GlideImageLoader
+import com.apache.fastandroid.imageloader.GlideImageLoader
 
 /**
  * Created by Jerry on 2021/4/17.

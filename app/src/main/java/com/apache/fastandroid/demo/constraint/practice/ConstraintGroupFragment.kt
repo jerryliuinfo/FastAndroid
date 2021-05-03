@@ -6,7 +6,6 @@ import android.view.View
 import com.apache.fastandroid.R
 import com.tesla.framework.ui.fragment.ABaseFragment
 import kotlinx.android.synthetic.main.constraint_group.*
-import scala.reflect.internal.util.Statistics
 
 /**
  * 对一组控件同时进行显示或隐藏

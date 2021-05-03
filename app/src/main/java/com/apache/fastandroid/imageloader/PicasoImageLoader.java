@@ -1,7 +1,6 @@
-package com.tesla.framework.component.imageloader.impl;
+package com.apache.fastandroid.imageloader;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.widget.ImageView;
 
 import com.squareup.picasso.MemoryPolicy;
@@ -9,6 +8,8 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderOptions;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by 01370340 on 2017/11/17.

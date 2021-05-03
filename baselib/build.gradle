@@ -38,17 +38,20 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    //kotlin
-    implementation rootProject.androidLib.kotlin_stdlib
-    implementation rootProject.androidLib.kotlin_reflect
+//    //kotlin
+//    implementation rootProject.androidLib.kotlin_stdlib
+//    implementation rootProject.androidLib.kotlin_reflect
 
+    implementation rootProject.ext.dependencies.publicImplementation
 
     implementation project(':fastFramework')
 
-//    implementation rootProject.androidLib.core_ktx
 
 
-    implementation rootProject.androidLib.constraintLayout
+//    implementation project(':fastFramework')
+
+
+  /*  implementation rootProject.androidLib.constraintLayout
 
     implementation rootProject.androidLib.design
     implementation rootProject.androidLib.appcompatV7
@@ -59,8 +62,6 @@ dependencies {
     implementation rootProject.thirdLib.material_dialogs
 
     implementation rootProject.thirdLib.glide
-    implementation rootProject.thirdLib.picasso
-    implementation rootProject.thirdLib.imageLoader
 
     implementation rootProject.thirdLib.okhttp3_log_interceptor
     implementation rootProject.androidLib.support_customtabs
@@ -75,40 +76,11 @@ dependencies {
     implementation rootProject.thirdLib.rxjava
     implementation rootProject.thirdLib.rxandroid
 
+    implementation rootProject.thirdLib.fastjson
+    implementation rootProject.thirdLib.gson
+    implementation rootProject.thirdLib.okhttp3
+    implementation rootProject.thirdLib.material_dialogs*/
 
-
-/*    api rootProject.androidLib.design
-    api rootProject.androidLib.appcompatV7
-    api rootProject.androidLib.cardview
-    api rootProject.thirdLib.glide
-    api rootProject.thirdLib.picasso
-    api rootProject.thirdLib.imageLoader
-    api rootProject.thirdLib.volly
-    api rootProject.thirdLib.okhttp3_log_interceptor
-
-
-    //rxjava&rxandroid
-    api rootProject.thirdLib.rxjava
-    api rootProject.thirdLib.rxandroid*/
-
-
-    //retrofit
-  /*  implementation(rootProject.thirdLib.retrofit) {
-        exclude group: "com.squareup.okhttp3"
-    }*/
-//    api rootProject.thirdLib.retrofit_converter_gson
-//    api rootProject.thirdLib.retrofit_adapter_rxjava
-//    api rootProject.thirdLib.retrofit_converter_scalars
-
-    api 'io.taig.android:parcelable_2.11:3.0.0-BETA1'
-
-
-//    api rootProject.androidLib.support_customtabs
-
-
-    //ARouter 不要放到baselib，需要每个业务module自己依赖，否则不起作用
-//    api rootProject.thirdLib.arouter_api
-//    annotationProcessor rootProject.thirdLib.arouter_compiler
 
 
 
@@ -116,10 +88,7 @@ dependencies {
     implementation androidLib.junit
     implementation 'androidx.annotation:annotation:1.0.0'
 
-    implementation rootProject.thirdLib.fastjson
-    implementation rootProject.thirdLib.gson
-    implementation rootProject.thirdLib.okhttp3
-    implementation rootProject.thirdLib.material_dialogs
+
    // api 'org.aspectj:aspectjrt:1.8.9'
 
 

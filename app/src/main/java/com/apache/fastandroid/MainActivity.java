@@ -114,7 +114,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         BindUserInfo info = new BindUserInfo("title", "www.baidu.com", "Jerry");
         NLog.d(TAG, "info: %s", info);
-        DemoListActivity.launch(this);
+//        DemoListActivity.launch(this);
 
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
