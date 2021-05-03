@@ -9,9 +9,8 @@ import kotlinx.android.synthetic.main.constraint_group.*
 import scala.reflect.internal.util.Statistics
 
 /**
- *layout_constraintGuide_percent
- * app:layout_constraintGuide_begin=""
- * app:layout_constraintGuide_end=""
+ * 对一组控件同时进行显示或隐藏
+ *
  *
  */
 class ConstraintGroupFragment:ABaseFragment() {

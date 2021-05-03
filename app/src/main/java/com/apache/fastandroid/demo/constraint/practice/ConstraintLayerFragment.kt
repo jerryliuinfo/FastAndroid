@@ -6,6 +6,11 @@ import com.apache.fastandroid.R
 import com.tesla.framework.ui.fragment.ABaseFragment
 import kotlinx.android.synthetic.main.constraint_layer.*
 
+/**
+ * Layer 相当于把引用的视图圈一起，可以进行设置背景色，padding等
+ * 给Layer添加动画，就是给里面的每一个视图添加动画，对于一些复杂的动画的场景还是比较有用的
+ * 这里我们讲A，B，C添加到一个Layer, 同时设置背景色和padding
+ */
 class ConstraintLayerFragment:ABaseFragment() {
 
     override fun inflateContentView(): Int {

@@ -10,6 +10,7 @@
        android:id="@+id/guideline"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
+
        android:orientation="vertical"
        app:layout_constraintGuide_percent="0.2"
        />
@@ -19,6 +20,7 @@
        android:layout_height="wrap_content"
        app:layout_constraintEnd_toStartOf="@+id/guideline"
        app:layout_constraintTop_toTopOf="parent"
+       android:layout_marginTop="30dp"
        android:text="用户名"
        />
    <TextView
@@ -37,6 +39,7 @@
        android:layout_height="wrap_content"
        app:layout_constraintStart_toEndOf="@id/guideline"
        app:layout_constraintBaseline_toBaselineOf="@id/tv_username"
+       android:layout_marginLeft="10dp"
 
        />
    <EditText

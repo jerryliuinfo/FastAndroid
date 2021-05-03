@@ -8,7 +8,7 @@ import com.tesla.framework.common.util.log.NLog;
 /**
  * Created by Jerry on 2021/1/7.
  */
-public class FastLogDelegate implements FastLog.IFastLogDelegate {
+public class LogDelegate implements FastLog.IFastLogDelegate {
     private LogConfig config;
 
 

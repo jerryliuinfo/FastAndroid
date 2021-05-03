@@ -14,32 +14,55 @@ class ConstraintLayoutDemoFragment: BaseListFragment() {
                 ViewItemBean("约束布局", "约束布局基本使用2", ConstraintBasicFragment2::class.java),
                 ViewItemBean("传统布局居中", "RelativeLayout居中", ConstraintCenterRelativeLayoutFragment::class.java),
                 ViewItemBean("约束布局居中", "居中2", ConstraintCenterFragment::class.java),
-                ViewItemBean("约束布局居中", "居中2", ConstraintCenter2Fragment::class.java),
-                ViewItemBean("Weight权重", "百分比控件", ConstraintWeightFragment::class.java),
-                ViewItemBean("Baseline", "基线", ConstraintBaselineFragment::class.java),
-                ViewItemBean("Circle", "角度定位", ConstrainCircleFragment::class.java),
-                ViewItemBean("ConstrainedWidth", " 宽度约束", ConstraintWidthFragment::class.java),
-                ViewItemBean("Bias", "偏移", ConstraintBiasFragment::class.java),
-                ViewItemBean("Bias2", "偏移2", ConstraintBias2Fragment::class.java),
+                ViewItemBean("Baseline", "基线对齐", ConstraintBaselineFragment::class.java),
+                ViewItemBean("Circle", "角度约束定位", ConstrainCircleFragment::class.java),
+
+                ViewItemBean("Bias", "百分比偏移", ConstraintBiasFragment::class.java),
                 ViewItemBean("GoneMargin", "GoneMargin", ConstraintGoneMarginFragment::class.java),
-                ViewItemBean("ChainStyle", "约束链风格", ConstraintChainStyleFragment::class.java),
+                ViewItemBean("尺寸限制", "min/max Width/Height", ConstrainMinMaxSizeFragment::class.java),
+                ViewItemBean("MatchConstraint", "0dp", ConstrainMatchConstraintFragment::class.java),
+
+
                 ViewItemBean("DimensionRatio", "DimensionRatio", ConstraintDimensionRatioFragment::class.java),
+
+
+                ViewItemBean("ChainStyle", "约束链风格", ConstraintChainStyleFragment::class.java),
+
+                ViewItemBean("Weight权重", "百分比控件", ConstraintWeightFragment::class.java),
+
                 ViewItemBean("Percent", "百分比", ConstraintPercentFragment::class.java),
-                ViewItemBean("Percent", "百分比", ConstraintPercent2Fragment::class.java),
+
+                ViewItemBean("ConstrainedWidth", " 宽度约束", ConstraintWidthFragment::class.java),
+
                 ViewItemBean("GuidelinePercent", "GuidelinePercent", ConstraintGuidelinePercentFragment::class.java),
+
                 ViewItemBean("Guideline", "GuidelineBeginEnd", ConstraintGuidelineBeginEndFragment::class.java),
-                ViewItemBean("Group", "Group", ConstraintGroupFragment::class.java),
-                ViewItemBean("Space", "Space", ConstraintSpaceFragment::class.java),
-                ViewItemBean("Margin", "Margin", ConstraintMarginFragment::class.java),
-                ViewItemBean("Layer", "Layer", ConstraintLayerFragment::class.java),
+
+
                 ViewItemBean("Barrier", "Barrier", ConstraintBarrierFragment::class.java),
-                ViewItemBean("CircularReaveal", "Circular", ConstrainCircularRevealFragment::class.java),
+
+
+                ViewItemBean("Group", "Group", ConstraintGroupFragment::class.java),
+
                 ViewItemBean("PlaceHolder", "PlaceHolder", ConstrainPlaceHolderFragment::class.java),
+
+                ViewItemBean("Space", "Space", ConstraintSpaceFragment::class.java),
+
+                ViewItemBean("Margin", "Margin", ConstraintMarginFragment::class.java),
+
+                ViewItemBean("Layer", "统一设置背景、padding等", ConstraintLayerFragment::class.java),
+
+                ViewItemBean("CircularReaveal", "Circular", ConstrainCircularRevealFragment::class.java),
+
                 ViewItemBean("ConstraintSet", "ConstraintSet", ConstraintSetFragment::class.java),
                 ViewItemBean("ConstraintSet切换布局", "ConstraintSet过渡动画", ConstraintSetSwitchLayoutFragment::class.java),
                 ViewItemBean("LinerVirtualLayout", "LinerVirtualLayout", ConstraintLinerVirtualLayoutFragment::class.java),
+
                 ViewItemBean("Flow", "Flow_Vertical", ConstraintFlowVerticalFragment::class.java),
-                ViewItemBean("Flow", "Flow_Horizontal", ConstraintFlowHorizontalFragment::class.java)
+
+                ViewItemBean("FlowWrapMode", "FlowWrapMode", ConstraintFlowWrapModeFragment::class.java)
+
+
 
                 )
     }

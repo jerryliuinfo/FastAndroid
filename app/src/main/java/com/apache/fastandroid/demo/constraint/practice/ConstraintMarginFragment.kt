@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.constraint_margin.*
 class ConstraintMarginFragment:ABaseFragment() {
 
     override fun inflateContentView(): Int {
-        return R.layout.constraint_margin
+        return R.layout.liner_margin
     }
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {

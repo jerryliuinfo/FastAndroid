@@ -7,14 +7,15 @@
 
    <ImageView
        android:id="@+id/imageview1"
-       android:layout_width="100dp"
-       android:layout_height="100dp"
+       android:layout_width="200dp"
+       android:layout_height="200dp"
        android:layout_marginLeft="44dp"
        android:src="@mipmap/ic_launcher"
+       android:scaleType="centerCrop"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintBottom_toBottomOf="parent"
-       android:layout_marginTop="20dp"
+
        />
 
    <Button
@@ -26,6 +27,53 @@
        app:layout_constraintEnd_toEndOf="parent"
        android:text="关注"
        />
+   <Button
+       android:id="@+id/btn3"
+       android:layout_width="wrap_content"
+       android:layout_height="80dp"
+       android:text="关注2"
+       app:layout_constraintStart_toStartOf="@id/imageview1"
+       app:layout_constraintEnd_toEndOf="@id/imageview1"
+      app:layout_constraintTop_toBottomOf="@+id/imageview1"
+       app:layout_constraintBottom_toBottomOf="@id/imageview1"
+       />
 
+
+  <!-- <Button
+       android:id="@+id/btn_cancel"
+       android:layout_width="0dp"
+       android:layout_height="80dp"
+       android:text="取消"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toStartOf="@+id/btn_confirm"
+       app:layout_constraintTop_toBottomOf="@+id/btn3"
+       android:layout_marginStart="10dp"
+       app:layout_constraintHorizontal_weight="1"
+       />
+
+   <Button
+       android:id="@+id/btn_confirm"
+       android:layout_width="0dp"
+       android:layout_height="80dp"
+       android:text="确认"
+       app:layout_constraintStart_toEndOf="@+id/btn_cancel"
+       app:layout_constraintEnd_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="@+id/btn_cancel"
+       app:layout_constraintHorizontal_weight="1"
+       android:layout_marginHorizontal="10dp"
+       />
+-->
+  <!-- <Button
+       android:id="@+id/btn_5"
+       android:layout_width="0dp"
+       android:layout_height="80dp"
+       android:text="确认"
+       app:layout_constraintStart_toEndOf="@+id/btn_confirm"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="@+id/btn_cancel"
+       android:layout_marginLeft="10dp"
+       android:layout_marginEnd="10dp"
+       app:layout_constraintHorizontal_weight="1"
+       />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

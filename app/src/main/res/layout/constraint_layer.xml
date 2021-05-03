@@ -25,6 +25,8 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       app:constraint_referenced_ids="view1,view2,view3,view4"
+      android:background="#80ff0000"
+      android:padding="20dp"
       tools:ignore="MissingConstraints" />
 
   <View

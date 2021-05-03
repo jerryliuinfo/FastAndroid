@@ -23,7 +23,7 @@ import com.apache.fastandroid.task.DoraemonkitTask;
 import com.apache.fastandroid.task.ImageLoaderTask;
 import com.apache.fastandroid.task.PerformanceTask;
 import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
-import com.apache.fastandroid.util.FastLogDelegate;
+import com.apache.fastandroid.util.LogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.AppUtils;
 import com.optimize.performance.launchstarter.TaskDispatcher;
@@ -177,7 +177,7 @@ public class FastAndroidApplication extends Application {
 
 
     private void initLog(){
-        FastLogDelegate logDelegate = new FastLogDelegate();
+        LogDelegate logDelegate = new LogDelegate();
         LogConfig config = new LogConfig();
         config.openLog = BuildConfig.DEBUG;
         logDelegate.setLogConfig(config);

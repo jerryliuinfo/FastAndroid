@@ -19,27 +19,74 @@
        android:id="@+id/textview1"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:text="_bias0.1 文字文字"
-       android:layout_marginEnd="32dp"
-       app:layout_constrainedWidth="true"
-       app:layout_constraintHorizontal_bias="0.2"
        app:layout_constraintStart_toEndOf="@id/imageview1"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintTop_toTopOf="@id/imageview1"
+       android:text="_bias0.1 文字文字"
+       android:layout_marginEnd="32dp"
+       app:layout_constrainedWidth="true"
+       app:layout_constraintHorizontal_bias="0.1"
 
        />
 
    <TextView
+       android:id="@+id/textview2"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:text="bias 0.5 文字文字文字"
-       android:layout_marginEnd="32dp"
-       app:layout_constrainedWidth="true"
-       app:layout_constraintHorizontal_bias="0.5"
        app:layout_constraintStart_toStartOf="@id/textview1"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintTop_toBottomOf="@id/textview1"
+       app:layout_constrainedWidth="true"
+       app:layout_constraintHorizontal_bias="0.1"
        />
 
+   <ImageView
+       android:id="@+id/imageview2"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:src="@mipmap/ic_launcher"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintVertical_bias="0.8"
+       />
+
+
+   <ImageView
+       android:id="@+id/iv_sun"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/sun"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintHorizontal_bias="0.5"
+       app:layout_constraintVertical_bias="0.6"
+       />
+
+   <ImageView
+       android:id="@+id/iv_wechat"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/wechat"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="@+id/iv_sun"
+       app:layout_constraintHorizontal_bias="0.25"
+       />
+
+   <ImageView
+       android:id="@+id/iv_center"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/wechat"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="@+id/iv_sun"
+       app:layout_constraintHorizontal_bias="0.75"
+       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

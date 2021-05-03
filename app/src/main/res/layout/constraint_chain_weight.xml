@@ -7,44 +7,45 @@
 
     <TextView
         android:id="@+id/textview1"
-        android:layout_width="80dp"
+        android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/colorPrimary"
-        android:text="packed"
+        app:layout_constraintHorizontal_weight="2"
+        android:text="spread"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageview1"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        android:layout_marginStart="20dp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         />
 
    <ImageView
        android:id="@+id/imageview1"
-       android:layout_width="80dp"
+       android:layout_width="0dp"
        android:layout_height="80dp"
        android:src="@mipmap/ic_launcher"
+       app:layout_constraintHorizontal_weight="2"
        android:scaleType="centerCrop"
        app:layout_constraintStart_toEndOf="@+id/textview1"
-       app:layout_constraintEnd_toStartOf="@+id/textview2"
+       app:layout_constraintEnd_toStartOf="@+id/imageview2"
        app:layout_constraintTop_toTopOf="@+id/textview1"
        app:layout_constraintBottom_toBottomOf="@id/textview1"
        android:layout_marginHorizontal="20dp"
        />
-
-
-    <TextView
-        android:id="@+id/textview2"
-        android:layout_width="80dp"
+    <ImageView
+        android:id="@+id/imageview2"
+        android:layout_width="0dp"
         android:layout_height="80dp"
-        android:background="@color/colorPrimary"
-        android:text="spread"
-        android:gravity="center"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/imageview1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="@+id/textview1"
+        app:layout_constraintBottom_toBottomOf="@id/textview1"
+        android:layout_marginEnd="20dp"
+
         />
 
 

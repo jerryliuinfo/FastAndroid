@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/constraint_layout"
-    android:layout_gravity="top"
     android:layout_marginStart="80dp"
      android:layout_marginTop="80dp"
    >
