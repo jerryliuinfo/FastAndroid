@@ -313,9 +313,6 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
         }
     }
 
-    protected void setToolbarTitle(int resId){
-        setToolbarTitle(getString(resId));
-    }
 
     @Override
     public boolean canSwipe() {

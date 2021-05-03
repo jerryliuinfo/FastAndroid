@@ -189,7 +189,7 @@ dependencies {
     rootProject.ext.dependencies.basic.each{
         implementation project(it)
     }
-
+    implementation project(":libnetwork")
 
     implementation project(':hencode_basic')
     implementation project(':hencoder_paint')

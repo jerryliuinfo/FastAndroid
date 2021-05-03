@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apache.artemis_annotation.AptTest;
@@ -40,7 +39,6 @@ import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.route.Route;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.widget.CircleImageView;
 
 import java.util.List;
 
@@ -103,11 +101,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onResult(boolean allGranted, List<String> grantedList, List<String> deniedList) {
                 if (allGranted) {
-//                    startActivity(new Intent(MainActivity.this, DemoListActivity.class));
                 } else {
-//                    ToastUtils.showToast(MainActivity.this,  String.format("These permissions are denied: %s", deniedList));
                     ToastUtils.showShort("These permissions are denied: %s", deniedList);
-
                 }
             }
         });
@@ -143,11 +138,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @OnClick
     private void loadMenuData(){
         View headView = mNavigationView.getHeaderView(0);
-        CircleImageView circleImageView =  headView.findViewById(R.id.iv_user_avator);
         TextView tv_username = headView.findViewById(R.id.tv_username);
-        ImageView iv_arrow =  headView.findViewById(R.id.iv_arrow);
-        View layout_user= headView.findViewById(R.id.layout_user);
-
 
         if (AppContext.getUserInfoBean() != null){
             tv_username.setText(AppContext.getUserInfoBean().getName());
@@ -207,8 +198,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 fragment = MainNewsTabsFragment.newFragment();
                 break;
             case R.id.nav_item_wallpaer:
-                //fragment = WallPaperFragment.newFragment();
-
                 goToTopicActivity(itemId,title);
                 return;
             case R.id.nav_item_pic:
