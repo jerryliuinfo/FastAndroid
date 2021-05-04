@@ -20,6 +20,8 @@ class BaseRecycleViewAdapterDemoListFragment:BaseListFragment() {
         return arrayListOf(
                 ViewItemBean("基本用法","基本用法",RecycleViewBasicFragment::class.java)
                 ,ViewItemBean("Header","Header",RecycleViewHeaderFootFragment::class.java)
+                ,ViewItemBean("EmptyErrorView","EmptyErrorView",RecycleViewEmptyErrorFragment::class.java)
+                ,ViewItemBean("下拉刷新上拉加载更多","EmptyErrorView",RecycleViewPullToRefreshFragment::class.java)
         )
     }
 

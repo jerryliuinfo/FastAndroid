@@ -21,7 +21,7 @@ class RecycleViewBasicFragment:BaseFragment() {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        val adapter = CommentAdapterNew(R.layout.item_comment, listOf("aaa","bbb", "ccc","eee"))
+        val adapter = CommentAdapterNew(listOf("aaa","bbb", "ccc","eee"))
         recycleview.adapter = adapter
         recycleview.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL,false)
         adapter.setOnItemClickListener() { adapter, view, position ->

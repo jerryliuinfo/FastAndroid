@@ -13,6 +13,8 @@ import com.apache.fastandroid.demo.adapter.CommentAdapterNew
 import com.apache.fastandroid.demo.recycleview.footer.FootView
 import com.apache.fastandroid.demo.recycleview.header.HeaderView
 import com.blankj.utilcode.util.ToastUtils
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.BaseViewHolder
 import kotlinx.android.synthetic.main.base_recycleview_adapter_demo.*
 
 /**
@@ -23,12 +25,12 @@ class RecycleViewHeaderFootFragment:BaseFragment() {
         return R.layout.base_recycleview_adapter_demo
     }
 
-    private lateinit var headerAndFooterAdapter:CommentAdapterNew
+    private lateinit var headerAndFooterAdapter:BaseQuickAdapter<String,BaseViewHolder>
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
 
-        headerAndFooterAdapter = CommentAdapterNew(R.layout.item_comment, listOf("aaa","bbb", "ccc","eee"))
+        headerAndFooterAdapter = CommentAdapterNew(listOf("aaa","bbb", "ccc","eee"))
 
 
         val headerView = HeaderView(context!!,0)
