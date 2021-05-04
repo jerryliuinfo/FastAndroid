@@ -210,6 +210,7 @@ ext {
                     'com.permissionx.guolindev:permissionx:1.4.0',
                     "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
                     "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+                    "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30",
             ],
 
             basic: [

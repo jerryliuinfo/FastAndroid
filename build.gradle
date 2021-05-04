@@ -58,6 +58,7 @@ allprojects {
         google()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter()
+        maven { url "https://jitpack.io" }
     }
     configurations.all {
         resolutionStrategy.force "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"

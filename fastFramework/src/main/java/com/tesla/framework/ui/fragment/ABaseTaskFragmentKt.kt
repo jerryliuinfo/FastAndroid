@@ -14,9 +14,7 @@ import com.tesla.framework.network.task.WorkTask
  * Created by Jerry on 2021/3/26.
  */
 open abstract class ABaseTaskFragmentKt:ABaseStatusFragment() {
-    override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
-        super.layoutInit(inflater, savedInstanceSate)
-    }
+
 
     /**
      * Fragment主要的刷新任务线程，定义任务加载流程，耦合Fragment各个状态下的视图刷新方法
