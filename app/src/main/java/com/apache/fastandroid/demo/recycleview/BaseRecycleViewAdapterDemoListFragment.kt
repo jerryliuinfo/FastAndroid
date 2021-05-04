@@ -22,6 +22,7 @@ class BaseRecycleViewAdapterDemoListFragment:BaseListFragment() {
                 ,ViewItemBean("Header","Header",RecycleViewHeaderFootFragment::class.java)
                 ,ViewItemBean("EmptyErrorView","EmptyErrorView",RecycleViewEmptyErrorFragment::class.java)
                 ,ViewItemBean("下拉刷新上拉加载更多","EmptyErrorView",RecycleViewPullToRefreshFragment::class.java)
+                ,ViewItemBean("Animation","Animation",RecycleViewAnimationFragment::class.java)
         )
     }
 

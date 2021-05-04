@@ -180,7 +180,7 @@ androidExtensions {
 
 
 dependencies {
-    api fileTree(include: ['*.jar'], dir: 'libs')
+    api fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
     if (!isTopicRunAlone.toBoolean()) {
         implementation project(':topic')
     }

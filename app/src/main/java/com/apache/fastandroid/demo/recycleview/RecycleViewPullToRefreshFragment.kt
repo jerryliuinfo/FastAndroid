@@ -38,10 +38,9 @@ class RecycleViewPullToRefreshFragment:BaseFragment() {
     private fun initAdapter(){
         recycleview.layoutManager = LinearLayoutManager(activity!!,RecyclerView.VERTICAL,false)
         mAdapter = PulltoRefreshAdapter(Collections.emptyList())
-        mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT)
         mAdapter.setOnLoadMoreListener({
             loadMore()
-        })
+        },recycleview)
         recycleview.adapter = mAdapter
     }
 
