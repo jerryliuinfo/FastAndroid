@@ -76,6 +76,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
+
+
     //为了解决部分第三方库重复打包了META-INF的问题
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
@@ -89,6 +91,7 @@ android {
         exclude 'META-INF/ASL2.0'
         exclude 'META-INF/proguard/okhttp3.pro'
         exclude 'META-INF/proguard/coroutines.pro'
+        exclude 'META-INF/*.kotlin_module'
 
     }
     // For Kotlin projects
@@ -214,6 +217,7 @@ dependencies {
     implementation rootProject.androidLib.multidex
 
 
+    implementation 'com.qmuiteam:qmui:2.0.0-alpha10'
 
     //必须加行这行，否则proxyToolProcessor无法自动生成类
     implementation project(':artemis_annotation')

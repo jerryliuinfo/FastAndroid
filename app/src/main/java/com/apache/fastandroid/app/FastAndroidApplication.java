@@ -26,6 +26,7 @@ import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelega
 import com.apache.fastandroid.util.LogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.CrashUtils;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
 import com.tesla.framework.applike.IApplicationLike;
@@ -68,6 +69,7 @@ public class FastAndroidApplication extends Application {
         BaseApp.onCreate(this);
         initAppLike();
         initLog();
+        initCrash();
         MainLogUtil.d("Application onCreate ");
         long startTime = SystemClock.uptimeMillis();
 
@@ -135,6 +137,15 @@ public class FastAndroidApplication extends Application {
 
     }
 
+    private void initCrash() {
+        //Crash 日志
+        CrashUtils.init(getCacheDir(), new CrashUtils.OnCrashListener() {
+            @Override
+            public void onCrash(String crashInfo, Throwable e) {
+                NLog.d(TAG, "crash info: %s, e: %s", crashInfo,e.getMessage());
+            }
+        });
+    }
 
 
     @Override

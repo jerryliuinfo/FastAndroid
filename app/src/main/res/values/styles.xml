@@ -7,6 +7,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+
+        <item name="qmui_alpha_pressed">0.5</item>
+        <item name="qmui_alpha_disabled">0.5</item>
+
     </style>
 
 

@@ -19,9 +19,9 @@
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:src="@mipmap/ic_launcher"
-        app:border_color="@color/comm_white"
+        app:civ_border_color="@color/comm_white"
 
-        app:border_width="1dp"/>
+        app:civ_border_width="1dp"/>
 
 
         <RelativeLayout

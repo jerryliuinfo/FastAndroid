@@ -211,6 +211,7 @@ ext {
                     "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
                     "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
                     "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30",
+                    "com.github.lygttpod:SuperTextView:2.4.6",
             ],
 
             basic: [

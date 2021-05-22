@@ -15,9 +15,9 @@ import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
 import com.apache.fastandroid.demo.doraemonkit.DoraemonkitDemoFragment
 import com.apache.fastandroid.DrawBasicDemoFragment
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
-import com.apache.fastandroid.demo.databinding.DatabindingFragmentDemo
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
+import com.apache.fastandroid.demo.widget.qmui.QMUIDemoFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment

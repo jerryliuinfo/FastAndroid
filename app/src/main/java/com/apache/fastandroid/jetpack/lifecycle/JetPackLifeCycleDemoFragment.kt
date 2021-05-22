@@ -6,7 +6,6 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.constraint.practice.ConstraintBasicFragment
-import com.apache.fastandroid.demo.round.RoundTextViewFragment
 import com.apache.fastandroid.jetpack.lifecycle.traditional.TraditionalLifeCycleFragment
 import com.apache.fastandroid.jetpack.lifecycle.traditional.TraditionalLifeCycleListener
 import com.tesla.framework.ui.fragment.ABaseFragment

@@ -1,7 +1,5 @@
 package com.blankj.utilcode.util;
 
-import java.lang.reflect.Field;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -21,6 +19,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.lang.reflect.Field;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
@@ -382,6 +382,7 @@ public final class ToastUtils {
 
         SystemToast(Toast toast) {
             super(toast);
+            //修复Toast 在 api 25上badTokenException
             if (Build.VERSION.SDK_INT == Build.VERSION_CODES.N_MR1) {
                 try {
                     //noinspection JavaReflectionMemberAccess

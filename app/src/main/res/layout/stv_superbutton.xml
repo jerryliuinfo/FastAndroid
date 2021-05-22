@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.allen.library.SuperButton
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="5dp"
+                android:text="圆角边框"
+                stv:sCornersRadius="5dp"
+                stv:sStrokeColor="@color/colorAccent"
+                stv:sStrokeWidth="0.2dp" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="圆角边框"
+                stv:sCornersRadius="5dp"
+                stv:sStrokeColor="@color/colorAccent"
+                stv:sStrokeWidth="0.2dp" />
+
+
+            <com.allen.library.SuperButton
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="5dp"
+                android:text="圆角边框"
+                android:textColor="@color/white"
+                stv:sCornersRadius="5dp"
+                stv:sSolidColor="@color/colorAccent"
+                stv:sStrokeColor="@color/colorAccent"
+                stv:sStrokeWidth="0.2dp" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="圆角边框"
+                android:textColor="@color/white"
+                stv:sCornersRadius="5dp"
+                stv:sSolidColor="@color/colorAccent"
+                stv:sStrokeColor="@color/colorPrimary"
+                stv:sStrokeWidth="1dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.allen.library.SuperButton
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="上圆角"
+                stv:sCornersTopLeftRadius="20dp"
+                stv:sCornersTopRightRadius="20dp"
+                stv:sStrokeColor="@color/colorPrimary"
+                stv:sStrokeWidth="0.1dp" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="下圆角"
+                stv:sCornersBottomLeftRadius="20dp"
+                stv:sCornersBottomRightRadius="20dp"
+                stv:sStrokeColor="@color/colorPrimary"
+                stv:sStrokeWidth="0.1dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <com.allen.library.SuperButton
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="斜对角圆角"
+                stv:sCornersBottomRightRadius="20dp"
+                stv:sCornersTopLeftRadius="20dp"
+                stv:sStrokeColor="@color/colorPrimary"
+                stv:sStrokeWidth="0.1dp" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="斜对角圆角"
+                stv:sCornersBottomLeftRadius="20dp"
+                stv:sCornersTopRightRadius="20dp"
+                stv:sStrokeColor="@color/colorPrimary"
+                stv:sStrokeWidth="0.1dp" />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <com.allen.library.SuperButton
+                android:id="@+id/super_btn1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="左上圆角"
+                stv:sCornersTopLeftRadius="20dp"
+                stv:sStrokeColor="@color/colorPrimary"
+                stv:sStrokeWidth="0.1dp" />
+
+            <com.allen.library.SuperButton
+                android:id="@+id/super_btn2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@+id/super_btn1"
+                android:text="右上圆角"
+                stv:sCornersTopRightRadius="20dp"
+                stv:sStrokeColor="@color/colorPrimary"
+                stv:sStrokeWidth="0.1dp" />
+
+            <com.allen.library.SuperButton
+                android:id="@+id/super_btn3"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/super_btn1"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="左下圆角"
+                stv:sCornersBottomLeftRadius="20dp"
+                stv:sStrokeColor="@color/colorPrimary"
+                stv:sStrokeWidth="0.1dp" />
+
+            <com.allen.library.SuperButton
+                android:id="@+id/super_btn4"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/super_btn2"
+                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@+id/super_btn3"
+                android:text="右下圆角"
+                stv:sCornersBottomRightRadius="20dp"
+                stv:sStrokeColor="@color/colorPrimary"
+                stv:sStrokeWidth="0.1dp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.allen.library.SuperButton
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="圆角"
+                stv:sCornersRadius="50dp"
+                stv:sStrokeColor="@color/colorPrimary"
+                stv:sStrokeDashGap="5dp"
+                stv:sStrokeDashWidth="10dp"
+                stv:sStrokeWidth="0.5dp" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="圆角"
+                android:textColor="@color/white"
+                stv:sCornersRadius="50dp"
+                stv:sSolidColor="@color/colorAccent"
+                stv:sStrokeColor="@color/colorPrimary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.allen.library.SuperButton
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:text="椭圆"
+                stv:sShapeType="oval"
+                stv:sStrokeColor="@color/colorPrimary"
+                stv:sStrokeDashGap="5dp"
+                stv:sStrokeDashWidth="10dp"
+                stv:sStrokeWidth="0.5dp" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:text="椭圆"
+                android:textColor="@color/white"
+                stv:sShapeType="oval"
+                stv:sSolidColor="@color/colorAccent"
+                stv:sStrokeColor="@color/colorPrimary" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.allen.library.SuperButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="圆形"
+                stv:sShapeType="oval"
+                stv:sSolidColor="@color/colorAccent" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="圆形"
+                stv:sShapeType="oval"
+                stv:sStrokeColor="@color/colorAccent"
+                stv:sStrokeDashGap="5dp"
+                stv:sStrokeDashWidth="10dp"
+                stv:sStrokeWidth="0.5dp" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="圆形"
+                stv:sShapeType="oval"
+                stv:sStrokeColor="@color/colorAccent"
+                stv:sStrokeWidth="0.5dp" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="圆形"
+                stv:sShapeType="oval"
+                stv:sStrokeColor="@color/colorAccent"
+                stv:sStrokeWidth="3dp" />
+        </LinearLayout>
+
+
+        <com.allen.library.SuperButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            stv:sShapeType="line"
+            stv:sStrokeColor="@color/colorPrimary"
+            stv:sStrokeWidth="0.5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.allen.library.SuperButton
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                stv:sGradientAngle="0"
+                stv:sGradientEndColor="@color/colorPrimary"
+                stv:sGradientStartColor="@color/colorAccent" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                stv:sGradientAngle="45"
+                stv:sGradientEndColor="@color/colorPrimary"
+                stv:sGradientStartColor="@color/colorAccent" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                stv:sGradientAngle="90"
+                stv:sGradientEndColor="@color/colorPrimary"
+                stv:sGradientStartColor="@color/colorAccent" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                stv:sGradientAngle="135"
+                stv:sGradientEndColor="@color/colorPrimary"
+                stv:sGradientStartColor="@color/colorAccent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.allen.library.SuperButton
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="触摸反馈"
+                android:textColor="@color/white"
+                stv:sCornersRadius="5dp"
+                stv:sSelectorNormalColor="@color/colorAccent"
+                stv:sSelectorPressedColor="@color/gray_btn"
+                stv:sUseSelector="true" />
+
+            <com.allen.library.SuperButton
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:text="不可点击颜色"
+                android:textColor="@color/white"
+                stv:sCornersRadius="5dp"
+                stv:sSelectorDisableColor="@color/gray_btn"
+                stv:sSelectorNormalColor="@color/colorAccent"
+                stv:sSelectorPressedColor="@color/colorPrimary"
+                stv:sUseSelector="true" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

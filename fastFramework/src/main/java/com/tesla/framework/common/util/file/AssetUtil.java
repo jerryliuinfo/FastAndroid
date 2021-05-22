@@ -5,6 +5,7 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.PathUtils;
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.util.FrameworkLogUtil;
@@ -209,7 +210,7 @@ public class AssetUtil {
             return;
         }
         File f = new File(path);
-        FileDirUtil.delete(f, ignoreDir);
+        FileUtils.deleteFilesInDir(path);
     }
 
     /**
@@ -218,7 +219,7 @@ public class AssetUtil {
      * @param file path to delete.
      */
     public static void delete(File file) {
-        FileDirUtil.delete(file, false);
+        FileUtils.delete(file);
     }
 
 

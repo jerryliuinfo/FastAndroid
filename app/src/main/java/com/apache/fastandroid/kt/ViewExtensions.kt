@@ -94,3 +94,17 @@ inline fun View.removeSelf(): Boolean {
     }
     return false
 }
+
+
+fun View.gone() {
+    if (visibility == View.VISIBLE) {
+        visibility = View.GONE
+    }
+}
+
+//扩展函数，view显示
+fun View.visible() {
+    if (visibility != View.VISIBLE) {
+        visibility = View.VISIBLE
+    }
+}

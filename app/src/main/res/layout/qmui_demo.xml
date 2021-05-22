@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <com.apache.fastandroid.demo.widget.qmui.KKRoundButton
+        android:id="@+id/btn_login"
+        android:layout_width="100dp"
+        android:layout_height="42dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp"
+        android:text="指定"
+        app:qmui_backgroundColor="#ffff8610"
+        app:qmui_borderColor="#00ff00"
+        app:qmui_borderWidth="1dp"
+        android:paddingVertical="12dp"
+        android:gravity="center"
+        app:qmui_radius="21dp"
+
+        />
+
+    <Button
+        android:id="@+id/btn_click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        android:text="点击"
+        />
+
+    <Button
+        android:id="@+id/btn_diable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_click"
+        android:text="禁用"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

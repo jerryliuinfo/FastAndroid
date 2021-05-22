@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
+        android:id="@+id/edittext"
         android:layout_width="300dp"
         android:layout_height="48dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,4 +17,37 @@
         android:textCursorDrawable="@null"
 
         />
+
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:text="My Apps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_my_apps_white"
+        android:drawablePadding="5dp"
+        android:paddingHorizontal="10dp"
+        android:gravity="center"
+        />
+
+    <com.tesla.framework.ui.widget.DrawableCenterTextView
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:text="My Apps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv1"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_my_apps_white"
+        android:drawablePadding="5dp"
+        android:paddingHorizontal="20dp"
+        android:gravity="center"
+        />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
