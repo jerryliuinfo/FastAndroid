@@ -8,6 +8,7 @@ import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.constraint.practice.ConstraintBasicFragment
 import com.apache.fastandroid.jetpack.lifecycle.traditional.TraditionalLifeCycleFragment
 import com.apache.fastandroid.jetpack.lifecycle.traditional.TraditionalLifeCycleListener
+import com.tesla.framework.component.lifecycle.LifecycleHandler
 import com.tesla.framework.ui.fragment.ABaseFragment
 
 /**
@@ -21,6 +22,7 @@ class JetPackLifeCycleDemoFragment: BaseListFragment() {
                 ,ViewItemBean("LifeCycleService", "LifeCycleService", JetPackLifeCycleServiceFragment::class.java)
                 ,ViewItemBean("ProcessLifecycleOwner", "App进入前后台判断", JetPackLifeCycleFragment::class.java)
                 ,ViewItemBean("任意一个类监听生命周期", "任意一个类监听生命周期", JetPackListenLifecycleFragment::class.java)
+                ,ViewItemBean("LifeCycleHandler", "不会泄露的Handler", LifecycleHandlerFragment::class.java)
         )
     }
 

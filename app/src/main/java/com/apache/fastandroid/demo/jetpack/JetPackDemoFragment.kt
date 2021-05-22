@@ -15,7 +15,7 @@ import com.apache.fastandroid.jetpack.workmanager.WorkManagerListDemo
 class JetPackDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-                ViewItemBean("LifeCycle", "LifeCycle", JetPackLifeCycleDemoFragment::class.java)
+                ViewItemBean("LifeCycle应用", "LifeCycle应用", JetPackLifeCycleDemoFragment::class.java)
                 ,ViewItemBean("LiveData", "LiveData", JetPackLiveDataListFragment::class.java)
                 ,ViewItemBean("ViewModel", "ViewModel", JetPackViewModelListFragment::class.java)
                 ,ViewItemBean("DataBindg", "DataBindg", DatabindingFragmentDemo::class.java)

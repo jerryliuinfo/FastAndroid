@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleOwner
 /**
  * Created by Jerry on 2020/12/10.
  */
-interface FullLifecycleObserver:LifecycleObserver {
+interface FullLifecycleObserverNew:LifecycleObserver {
 
     fun onCreate(owner: LifecycleOwner)
 

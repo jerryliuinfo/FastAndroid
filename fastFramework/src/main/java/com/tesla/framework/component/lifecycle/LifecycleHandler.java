@@ -6,12 +6,12 @@ import android.os.Looper;
 import com.tesla.framework.common.util.Preconditions;
 import com.tesla.framework.common.util.log.FastLog;
 
-import org.jetbrains.annotations.NotNull;
-
+import androidx.annotation.NonNull;
+import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
 
-public class LifecycleHandler extends Handler  {
+public class LifecycleHandler extends Handler implements DefaultLifecycleObserver {
 
     public static final String TAG = LifecycleHandler.class.getSimpleName();
 
@@ -43,11 +43,24 @@ public class LifecycleHandler extends Handler  {
     private void addObserver() {
         Preconditions.checkNotNull(lifecycleOwner);
         if (lifecycleOwner != null){
-            lifecycleOwner.getLifecycle().addObserver(new LifecycleObserverAdapter(lifecycleOwner,observer));
+//            lifecycleOwner.getLifecycle().addObserver(new LifecycleObserverAdapter(lifecycleOwner,observer));
+            lifecycleOwner.getLifecycle().addObserver(this);
         }
     }
 
-    private FullLifecycleObserver observer = new SimpleLifeCycleObserver(){
+    @Override
+    public void onCreate(@NonNull LifecycleOwner owner) {
+        FastLog.d(TAG, "LifecycleHandler onCreate");
+    }
+
+
+    @Override
+    public void onDestroy(@NonNull LifecycleOwner owner) {
+        FastLog.d(TAG, "LifecycleHandler onDestroy removeCallbacksAndMessages");
+        removeCallbacksAndMessages(null);
+    }
+
+    /*private FullLifecycleObserverNew observer = new SimpleLifeCycleObserver(){
         @Override
         public void onCreate(@NotNull LifecycleOwner owner) {
             super.onCreate(owner);
@@ -61,7 +74,7 @@ public class LifecycleHandler extends Handler  {
             FastLog.d(TAG, "LifecycleHandler onDestroy");
             removeCallbacksAndMessages(null);
         }
-    };
+    };*/
 
 
 }

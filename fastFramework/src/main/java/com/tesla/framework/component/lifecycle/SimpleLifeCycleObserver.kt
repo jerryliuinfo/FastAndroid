@@ -5,7 +5,7 @@ import androidx.lifecycle.LifecycleOwner
 /**
  * Created by Jerry on 2020/12/10.
  */
-open class SimpleLifeCycleObserver:FullLifecycleObserver {
+open class SimpleLifeCycleObserver:FullLifecycleObserverNew {
     override fun onCreate(owner: LifecycleOwner) {
     }
 

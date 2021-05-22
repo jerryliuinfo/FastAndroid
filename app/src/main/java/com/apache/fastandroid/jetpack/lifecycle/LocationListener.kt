@@ -1,21 +1,22 @@
 package com.apache.fastandroid.jetpack.lifecycle
 
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.lifecycle.LifecycleObserverAdapter
-import com.tesla.framework.component.lifecycle.SimpleLifeCycleObserver
 
 /**
  * Created by Jerry on 2020/11/1.
  */
-class LocationListener(lifecycleOwner: LifecycleOwner, private val onLocationChangeListener: OnLocationChangeListener): SimpleLifeCycleObserver() {
+class LocationListener(lifecycleOwner: LifecycleOwner, private val onLocationChangeListener: OnLocationChangeListener): DefaultLifecycleObserver {
 
     companion object{
         const val TAG = "JetPackLifeCycleListener"
     }
     init {
         //添加另外一个观察者
-        lifecycleOwner.lifecycle.addObserver(LifecycleObserverAdapter(lifecycleOwner,this))
+//        lifecycleOwner.lifecycle.addObserver(LifecycleObserverAdapter(lifecycleOwner,this))
+        lifecycleOwner.lifecycle.addObserver(this)
     }
 
     override fun onCreate(owner: LifecycleOwner) {

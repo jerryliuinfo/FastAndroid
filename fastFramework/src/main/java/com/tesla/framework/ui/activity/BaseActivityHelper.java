@@ -5,7 +5,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.tesla.framework.component.lifecycle.FullLifecycleObserver;
+import com.tesla.framework.component.lifecycle.FullLifecycleObserverNew;
 import com.tesla.framework.component.lifecycle.LifecycleObserverAdapter;
 
 import org.jetbrains.annotations.NotNull;
@@ -21,7 +21,7 @@ import androidx.lifecycle.LifecycleOwner;
  *
  * Created by JerryLiu on 17/04/08.
  */
-public class BaseActivityHelper implements FullLifecycleObserver {
+public class BaseActivityHelper implements FullLifecycleObserverNew {
     //当前Activity
     private BaseActivity mActivity;
 

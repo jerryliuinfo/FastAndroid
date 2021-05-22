@@ -1,21 +1,21 @@
 package com.apache.fastandroid.jetpack.lifecycle
 
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.lifecycle.LifecycleObserverAdapter
-import com.tesla.framework.component.lifecycle.SimpleLifeCycleObserver
 
 /**
  * Created by Jerry on 2021/2/8.
  */
-class ApplicationLifecycleObserverNew(lifecycleOwner: LifecycleOwner): SimpleLifeCycleObserver() {
+class ApplicationLifecycleObserverNew(lifecycleOwner: LifecycleOwner): DefaultLifecycleObserver {
     companion object{
         private const val TAG = "ApplicationLifecycleObserver"
     }
 
     init {
-        lifecycleOwner.lifecycle.addObserver(LifecycleObserverAdapter(lifecycleOwner,this))
+        lifecycleOwner.lifecycle.addObserver(this)
     }
 
     override fun onCreate(owner: LifecycleOwner) {

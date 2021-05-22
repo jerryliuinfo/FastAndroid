@@ -68,13 +68,24 @@ android {
         }
     }
 
-    dataBinding{
-        enabled=true
+//    android.buildFeatures.dataBinding{
+//        enabled=true
+//    }
+
+
+    buildFeatures{
+        dataBinding = true
+        // for view binding :
+        // viewBinding = true
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 
 
@@ -93,10 +104,6 @@ android {
         exclude 'META-INF/proguard/coroutines.pro'
         exclude 'META-INF/*.kotlin_module'
 
-    }
-    // For Kotlin projects
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 
 

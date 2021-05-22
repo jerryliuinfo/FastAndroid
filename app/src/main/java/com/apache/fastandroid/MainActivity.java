@@ -20,6 +20,7 @@ import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleDemoFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -42,6 +43,7 @@ import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.route.Route;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import java.util.List;
 
@@ -115,6 +117,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        DemoListActivity.launch(this);
 //        FragmentContainerActivity.launch(this, BaseRecycleViewAdapterDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, SuperTextViewDemoListFragment.class,null);
+        FragmentContainerActivity.launch(this, JetPackLifeCycleDemoFragment.class,null);
 
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
@@ -211,7 +214,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 ToastCompat.makeText(this, "Hello Toast", Toast.LENGTH_LONG).setBadTokenListener(new BadTokenListener() {
                     @Override
                     public void onBadTokenCaught(@NonNull Toast toast) {
-                        
+
                     }
                 }).show();
                 return;
