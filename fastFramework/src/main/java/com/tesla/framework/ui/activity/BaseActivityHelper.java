@@ -25,6 +25,7 @@ public class BaseActivityHelper implements FullLifecycleObserverNew {
     //当前Activity
     private BaseActivity mActivity;
 
+
     /**
      * 判断当前Activity是否在前台。
      */
