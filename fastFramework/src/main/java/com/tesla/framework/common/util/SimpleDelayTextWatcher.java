@@ -3,7 +3,6 @@ package com.tesla.framework.common.util;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
-import android.text.TextWatcher;
 
 /**
  * Created by 01370340 on 2018/8/2.
@@ -11,7 +10,7 @@ import android.text.TextWatcher;
  * 放置多次重复执行
  */
 
-public abstract class SimpleDelayTextWatcher implements TextWatcher {
+public abstract class SimpleDelayTextWatcher extends SimpleTextWatcher {
     private static final int RC_SEARCH = 6768;
     private int INTERVAL = 500; //输入时间间隔为300毫秒
 
@@ -30,15 +29,6 @@ public abstract class SimpleDelayTextWatcher implements TextWatcher {
         }
     };
 
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        //sonar
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-        //sonar
-    }
 
     @Override
     public void afterTextChanged(Editable s) {

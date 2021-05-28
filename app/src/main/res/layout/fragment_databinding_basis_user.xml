@@ -4,10 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.apache.fastandroid.demo.bean.UserBean" alias="user1"/>
+
+
         <variable
-            name="user"
-            type="user1" />
+            name="vm"
+            type="com.apache.fastandroid.demo.databinding.UserViewModel" />
+
+
 
 
     </data>
@@ -28,7 +31,7 @@
             app:layout_constraintHorizontal_bias="0.2"
             android:textSize="20sp"
             tools:text="Jerry"
-            android:text="@{user.name}"
+            android:text="@{vm.users.name}"
             />
         <TextView
             android:id="@+id/tv_age"
@@ -41,7 +44,7 @@
             app:layout_constraintHorizontal_bias="0.8"
             android:textSize="20sp"
             tools:text="20"
-            android:text="@{String.valueOf(user.age)}"
+            android:text="@{String.valueOf(vm.users.age)}"
             />
 
         <Button
@@ -51,7 +54,7 @@
             app:layout_constraintStart_toStartOf="@id/tv_name"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.8"
+            app:layout_constraintVertical_bias="0.2"
             android:textSize="20sp"
             android:text="修改名字"
             />
@@ -65,5 +68,24 @@
             android:textSize="20sp"
             android:text="修改年龄"
             />
+
+        <EditText
+            android:id="@+id/et_name"
+            drawable_radius="@{12}"
+            drawable_strokeColor="@{0xffeeeeee}"
+            drawable_strokeWidth="@{1}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="24dp"
+            android:hint="请输入用户名"
+            android:inputType="text"
+            android:paddingStart="12dp"
+            android:singleLine="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_modify_age" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

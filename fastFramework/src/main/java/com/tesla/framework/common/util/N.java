@@ -7,7 +7,7 @@ import java.util.Map;
  * @author 01379852
  * 主要用于非空判断，因为使用频率太高，为了缩减代码，同时代表泛型的意思，取了NULL首字母N作为类名
  **/
-public class N extends StrUtil {
+public class N {
 
     /**  注意：支持传可变参数的方法只适用于(a ==null || b == null)，如果是(a==null && b==null)则不适用，需要分开判断 **/
     /**  注意：支持传可变参数的方法只适用于(a ==null || b == null)，如果是(a==null && b==null)则不适用，需要分开判断 **/

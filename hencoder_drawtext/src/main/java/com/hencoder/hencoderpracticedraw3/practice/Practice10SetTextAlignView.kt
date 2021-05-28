@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
-import com.tesla.framework.common.util.textCenterX
+import com.tesla.framework.common.util.kt.textCenterX
 
 /**
  * Created by Jerry on 2020/12/14.

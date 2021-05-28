@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.tesla.framework.common.util.sp
 
 /**
  * Created by Jerry on 2020/12/14.

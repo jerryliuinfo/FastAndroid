@@ -12,18 +12,17 @@ import android.view.ViewGroup;
 import com.blankj.utilcode.util.ToastUtils;
 import com.tesla.framework.common.util.FrameworkLogUtil;
 import com.tesla.framework.common.util.log.FastLog;
-import com.tesla.framework.component.imageloader.BitmapOwner;
 import com.tesla.framework.network.biz.ABizLogic;
 import com.tesla.framework.network.task.ITaskManager;
 import com.tesla.framework.network.task.TaskManager;
 import com.tesla.framework.network.task.WorkTask;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -33,9 +32,10 @@ import androidx.fragment.app.Fragment;
  * 2、处理页面离开设定时间后，自动刷新页面<br/>
  *
  */
-public abstract class ABaseFragment extends Fragment implements ITaskManager,SwipeActivityHelper.EnableSwipeback,BitmapOwner{
+public abstract class ABaseFragment extends Fragment implements ITaskManager{
 
     public static final String TAG = "AFragment-Base";
+    protected AppCompatActivity mActivity;
 
 
     View rootView;// 根视图
@@ -54,6 +54,9 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     long startTime1 = 0;
     long startTime2 = 0;
     long startTime3 = 0;
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -208,6 +211,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        mActivity = (AppCompatActivity) context;
 
         if (getActivity() != null && getActivity() instanceof BaseActivity){
              ((BaseActivity) getActivity()).addFragment(toString(), this);
@@ -311,21 +315,6 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager,Swi
             supportActionBar.setDisplayHomeAsUpEnabled(true);
             supportActionBar.setTitle(msg);
         }
-    }
-
-
-    @Override
-    public boolean canSwipe() {
-        return false;
-    }
-
-
-    /**
-     * 是否显示图片接口实现
-     */
-    @Override
-    public boolean canDisplay() {
-        return true;
     }
 
 

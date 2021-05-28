@@ -6,8 +6,8 @@ import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
 import com.apache.fastandroid.hencoder.paint.R
-import com.tesla.framework.common.util.dp
-import com.tesla.framework.common.util.textCenterX
+import com.tesla.framework.common.util.kt.dp
+import com.tesla.framework.common.util.kt.textCenterX
 
 /**
  * Created by Jerry on 2020/12/14.

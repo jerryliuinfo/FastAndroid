@@ -80,8 +80,9 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility rootProject.sourceCompatibilityVersion
+        targetCompatibility rootProject.targetCompatibilityVersion
     }
 
     kotlinOptions {
@@ -247,6 +248,9 @@ dependencies {
 
 
     debugImplementation 'com.github.markzhai:blockcanary-android:1.5.0'
+
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
+
 
 
 }

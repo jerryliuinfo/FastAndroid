@@ -4,10 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.tesla.framework.common.setting.SettingUtility;
-import com.tesla.framework.common.util.ContextUtil;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.common.util.sp.SPUtil;
-import com.tesla.framework.support.skin.SkinManager;
 
 /**
  * Created by jerryliu on 2017/3/26.
@@ -25,10 +23,8 @@ public class FrameworkApplication  {
             throw new NullPointerException("context can't be null");
         }
         sContext = context.getApplicationContext();
-        SkinManager.getInstance().setContext(sContext);
         SPUtil.init(context,"");
         sApplication = (Application) context.getApplicationContext();
-        ContextUtil.injectContext(context);
         NetworkHelper.getInstance().registerNetworkSensor(context);
 
         // 添加一些配置项

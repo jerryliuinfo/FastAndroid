@@ -20,7 +20,7 @@ import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleDemoFragment;
+import com.apache.fastandroid.demo.nodrawable.NoDrawableFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -38,7 +38,6 @@ import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.toast.BadTokenListener;
 import com.tesla.framework.common.util.toast.ToastCompat;
-import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.route.Route;
 import com.tesla.framework.support.inject.OnClick;
@@ -117,7 +116,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        DemoListActivity.launch(this);
 //        FragmentContainerActivity.launch(this, BaseRecycleViewAdapterDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, SuperTextViewDemoListFragment.class,null);
-        FragmentContainerActivity.launch(this, JetPackLifeCycleDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, JetPackLifeCycleDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, DatebinDingBasicDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, NoDrawableFragment.class,null);
 
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
@@ -292,7 +293,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void setStatusBar() {
         int mStatusBarColor = ColorUtils.getColor(R.color.colorPrimary);
-        StatusBarUtil.setColorForDrawerLayout(this, (DrawerLayout) findViewById(R.id.drawer), mStatusBarColor, 112);
 
     }
 

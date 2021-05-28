@@ -43,5 +43,11 @@ class UserViewModel:ViewModel() {
 //        users.value = UserBean("zhangsan:$age")
     }
 
+    fun updateUser(userBean: UserBean){
+        users.value = userBean
+    }
+
+
+
 
 }

@@ -10,11 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blankj.utilcode.util.ColorUtils;
 import com.tesla.framework.R;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.FastLog;
-import com.tesla.framework.common.util.view.StatusBarUtil;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.ABaseFragment;
@@ -354,7 +352,6 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     }
 
     protected void setStatusBar() {
-        StatusBarUtil.setColor(this, ColorUtils.getColor(R.color.colorPrimary));
     }
 
 

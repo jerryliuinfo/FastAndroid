@@ -6,6 +6,7 @@ import com.apache.fastandroid.demo.other.ClipToPaddingFragment
 import com.apache.fastandroid.demo.constraint.practice.ConstraintBasicFragment
 import com.apache.fastandroid.demo.customview.EditTextFragment
 import com.apache.fastandroid.demo.customview.NestedScrollViewFragment
+import com.apache.fastandroid.demo.nodrawable.NoDrawableFragment
 import com.apache.fastandroid.demo.temp.SpanableStringFragment
 import java.util.*
 
@@ -20,6 +21,7 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("SpanableString", "SpanableString", SpanableStringFragment::class.java)
                 ,ViewItemBean("EditText", "EditText", EditTextFragment::class.java)
                 ,ViewItemBean("NestedScrollView", "NestedScrollView", NestedScrollViewFragment::class.java)
+                ,ViewItemBean("NoDrawable", "NoDrawable", NoDrawableFragment::class.java)
 
         )
 

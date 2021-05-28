@@ -38,10 +38,6 @@ public class MainNewsFragment extends ARecycleViewSwipeRefreshFragment<NewsSumma
         return new MainNewsItemViewCreator(getActivity());
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-    }
 
     @Override
     protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {

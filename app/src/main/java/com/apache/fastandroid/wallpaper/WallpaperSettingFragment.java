@@ -137,8 +137,5 @@ public class WallpaperSettingFragment extends ABaseFragment implements Wallpaper
         mPhotoView.getAttacher().onMove(percent);
     }
 
-    @Override
-    public boolean canSwipe() {
-        return true;
-    }
+
 }

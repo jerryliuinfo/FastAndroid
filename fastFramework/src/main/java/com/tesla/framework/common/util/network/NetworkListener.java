@@ -10,4 +10,6 @@ public interface NetworkListener {
     void onConnected(NetworkType networkType);
 
     void onDisconnected();
+
+
 }

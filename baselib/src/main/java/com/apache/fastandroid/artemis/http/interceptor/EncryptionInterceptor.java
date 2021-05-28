@@ -1,6 +1,6 @@
 package com.apache.fastandroid.artemis.http.interceptor;
 
-import com.tesla.framework.common.util.crypt.Base64;
+import com.blankj.utilcode.util.EncodeUtils;
 
 import java.io.IOException;
 
@@ -26,7 +26,7 @@ public class EncryptionInterceptor implements Interceptor{
 
         String oldBodyStr = buffer.readUtf8();
 
-        String newBodyStr = Base64.encodeToString(oldBodyStr, "utf-8");
+        String newBodyStr = EncodeUtils.base64Encode2String(oldBodyStr.getBytes());
 
         MediaType mediaType = MediaType.parse("text/plain; charset=utf-8");
         RequestBody newRequestBody = RequestBody.create(mediaType,newBodyStr);

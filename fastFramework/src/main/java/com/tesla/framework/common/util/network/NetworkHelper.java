@@ -1,9 +1,5 @@
 package com.tesla.framework.common.util.network;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +11,10 @@ import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
 import com.tesla.framework.common.util.log.FastLog;
+
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *

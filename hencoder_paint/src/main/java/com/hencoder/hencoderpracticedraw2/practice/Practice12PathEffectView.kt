@@ -5,7 +5,7 @@ import android.graphics.*
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
-import com.tesla.framework.common.util.sp
+import com.tesla.framework.common.util.kt.sp
 
 /**
  * Created by Jerry on 2020/12/14.

@@ -1,7 +1,5 @@
 package com.tesla.framework.ui.activity;
 
-import java.lang.reflect.Method;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,13 +7,13 @@ import android.text.TextUtils;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.log.FastLog;
-import com.tesla.framework.ui.fragment.ABaseFragment;
-import com.tesla.framework.ui.widget.swipeback.SwipeActivityHelper;
+
+import java.lang.reflect.Method;
 
 import androidx.fragment.app.Fragment;
 
 
-public class FragmentContainerActivity extends BaseActivity implements SwipeActivityHelper.EnableSwipeback{
+public class FragmentContainerActivity extends BaseActivity {
 
     private int overrideTheme = -1;
 
@@ -126,13 +124,5 @@ public class FragmentContainerActivity extends BaseActivity implements SwipeActi
         return super.configTheme();
     }
 
-    @Override
-    public boolean canSwipe() {
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
-        if (fragment instanceof ABaseFragment){
-            ABaseFragment baseFragment = (ABaseFragment) fragment;
-            return baseFragment.canSwipe();
-        }
-        return false;
-    }
+
 }

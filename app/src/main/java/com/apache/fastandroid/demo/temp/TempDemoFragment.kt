@@ -10,7 +10,6 @@ class TempDemoFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
                 ViewItemBean("SpannableString", "SpannableString", SpanableStringFragment::class.java)
-                ,ViewItemBean("EditText背景", "EditText背景", EditTextBgFragment::class.java)
                 ,ViewItemBean("Retention用法", "限定参数为指定类型", RetentionPolicyFragment::class.java)
 
         )

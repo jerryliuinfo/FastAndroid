@@ -1,6 +1,5 @@
 package com.apache.fastandroid.app;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -17,6 +16,7 @@ import com.apache.fastandroid.artemis.constant.AppConfig;
 import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
+import com.apache.fastandroid.imageloader.GlideImageLoader;
 import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
 import com.apache.fastandroid.task.DBInitTask;
 import com.apache.fastandroid.task.DoraemonkitTask;
@@ -29,6 +29,7 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.CrashUtils;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
+import com.tesla.framework.applike.BaseApplication;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.activitytask.ActivityLifecycleAdapter;
@@ -37,7 +38,6 @@ import com.tesla.framework.common.util.log.FastLog.LogConfig;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
-import com.apache.fastandroid.imageloader.GlideImageLoader;
 import com.tesla.framework.component.performance.BlockDetector;
 import com.tesla.framework.network.task.TaskException;
 
@@ -52,7 +52,7 @@ import androidx.multidex.MultiDex;
  * Created by jerryliu on 2017/3/26.
  */
 
-public class FastAndroidApplication extends Application {
+public class FastAndroidApplication extends BaseApplication {
     public static final String TAG = FastAndroidApplication.class.getSimpleName();
 
     private static final String client_id = "7024a413";
@@ -132,7 +132,6 @@ public class FastAndroidApplication extends Application {
         TraceCompat.endSection();
 
 
-        registerActivityLifecycleCallbacks(new ActivityLifecycleAdapter() );
         NLog.d(TAG, "FastAndroidApplication onCreate cost time: %s ms", (SystemClock.uptimeMillis() - startTime));
 
     }

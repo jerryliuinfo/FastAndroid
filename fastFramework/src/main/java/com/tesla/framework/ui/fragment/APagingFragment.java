@@ -619,16 +619,6 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
 
 
     /**
-     * 是否显示图片接口实现
-     */
-    @Override
-    public boolean canDisplay() {
-        if (getRefreshConfig().displayWhenScrolling){
-            return true;
-        }
-        return isViewScrolling;
-    }
-    /**
      * 滑动到最后阅读的位置
      */
     protected void toLastReadPosition() {
