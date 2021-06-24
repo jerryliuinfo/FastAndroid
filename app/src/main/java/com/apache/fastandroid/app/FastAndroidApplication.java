@@ -32,7 +32,6 @@ import com.squareup.leakcanary.LeakCanary;
 import com.tesla.framework.applike.BaseApplication;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
-import com.tesla.framework.common.util.activitytask.ActivityLifecycleAdapter;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.FastLog.LogConfig;
 import com.tesla.framework.common.util.log.NLog;

@@ -51,7 +51,8 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java),
                 ViewItemBean("临时验证", "临时验证", TempDemoFragment::class.java),
                 ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java),
-                ViewItemBean("开源UI控件", "开源UI控件", WidgetDemoFragment::class.java)
+                ViewItemBean("开源UI控件", "开源UI控件", WidgetDemoFragment::class.java),
+                ViewItemBean("开源框架", "开源框架", OpenSourceDemoFragment::class.java)
         )
         @JvmStatic
         fun launch(from:Activity){

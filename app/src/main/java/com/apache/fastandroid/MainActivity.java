@@ -19,8 +19,10 @@ import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
+import com.apache.fastandroid.bean.VersionResponseBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.nodrawable.NoDrawableFragment;
+import com.apache.fastandroid.demo.glide.GlideBasicUsageFragment;
+import com.apache.fastandroid.demo.temp.TempDemoFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -31,6 +33,7 @@ import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
 import com.optimize.performance.launchstarter.DelayInitDispatcher;
 import com.permissionx.guolindev.PermissionX;
 import com.permissionx.guolindev.callback.RequestCallback;
@@ -118,14 +121,33 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, SuperTextViewDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, JetPackLifeCycleDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DatebinDingBasicDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, NoDrawableFragment.class,null);
+//        FragmentContainerActivity.launch(this, NoDrawableFragment.class,null);
+//        FragmentContainerActivity.launch(this, TempDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, GlideBasicUsageFragment.class,null);
 
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
 
 
+        try {
+            String jso1 = " {\"code\":0,\"msg\":\"Success\",\"data\":\"\"}";
+            VersionResponseBean result1 = new Gson().fromJson(jso1,
+                    VersionResponseBean.class);
+            NLog.d(TAG, "result1: %s",result1);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
+
+        try {
+            String json2 = "  {\"code\":0,\"msg\":\"Success\",\"data\":{}}";
+            VersionResponseBean result2 = new Gson().fromJson(json2,
+                    VersionResponseBean.class);
+            NLog.d(TAG, "result2: %s",result2);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 

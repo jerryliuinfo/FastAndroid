@@ -9,6 +9,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+Properties properties = new Properties()
+InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+properties.load(inputStream)
 
 buildscript {
     repositories {
@@ -118,11 +121,18 @@ android {
     signingConfigs {
 
         release {
+            storePassword properties.getProperty('KEYSTORE_PASSWORD')
+            storeFile file(properties.getProperty('KEYSTORE_FILE'))
+            keyAlias properties.getProperty('KEYSTORE_ALIAS')
+            keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
+        }
 
-            storePassword '123456'
-            keyAlias 'fastandroid'
-            keyPassword '123456'
-            storeFile file('../keystore/source.keystore')
+
+        debug {
+            storePassword properties.getProperty('KEYSTORE_PASSWORD')
+            storeFile file(properties.getProperty('KEYSTORE_FILE'))
+            keyAlias properties.getProperty('KEYSTORE_ALIAS')
+            keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
         }
     }
     buildTypes {
@@ -157,13 +167,25 @@ android {
     /**
      * release构建忽略dev这一个渠道
      */
-    variantFilter { variant ->
+   /* variantFilter { variant ->
         if (variant.buildType.name.equals('release')) {
             variant.getFlavors().each() { flavor ->
                 if (flavor.name.equals('dev')) {
                     variant.setIgnore(true);
                 }
             }
+        }
+    }*/
+
+    resourcePrefix ""
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def versionName = variant.versionName
+            def versionCode = variant.versionCode
+            def buildType = variant.buildType.name
+            output.outputFileName = "${applicationId}-${versionName}-${versionCode}-${buildType}.apk"
+
+            println("storePassword:${properties.getProperty('KEYSTORE_PASSWORD')}, keyAlias:${properties.getProperty('KEYSTORE_ALIAS') }" )
         }
     }
 

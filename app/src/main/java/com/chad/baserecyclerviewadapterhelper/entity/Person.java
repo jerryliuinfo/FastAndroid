@@ -12,6 +12,10 @@ public class Person implements MultiItemEntity {
         this.name = name;
     }
 
+    public Person(int age) {
+        this.age = age;
+    }
+
     public String name;
     public int age;
 

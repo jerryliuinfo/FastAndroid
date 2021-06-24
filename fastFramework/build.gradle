@@ -74,6 +74,7 @@ dependencies {
 
 
     implementation 'com.qmuiteam:qmui:2.0.0-alpha10'
+    implementation 'androidx.palette:palette-ktx:1.0.0'
 
 //    api project(':artemis_annotation')
 

@@ -11,6 +11,8 @@ class TempDemoFragment:BaseListFragment() {
         return arrayListOf(
                 ViewItemBean("SpannableString", "SpannableString", SpanableStringFragment::class.java)
                 ,ViewItemBean("Retention用法", "限定参数为指定类型", RetentionPolicyFragment::class.java)
+                ,ViewItemBean("扩大button点击范围", "扩大button点击范围", ExpandBtnClickAreaFragment::class.java)
+                ,ViewItemBean("Gson", "Gson", GsonFragment::class.java)
 
         )
     }
