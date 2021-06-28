@@ -21,8 +21,6 @@ import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.bean.VersionResponseBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.glide.GlideBasicUsageFragment;
-import com.apache.fastandroid.demo.temp.TempDemoFragment;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -45,7 +43,6 @@ import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.route.Route;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import java.util.List;
 
@@ -116,14 +113,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         BindUserInfo info = new BindUserInfo("title", "www.baidu.com", "Jerry");
         NLog.d(TAG, "info: %s", info);
-//        DemoListActivity.launch(this);
+        DemoListActivity.launch(this);
 //        FragmentContainerActivity.launch(this, BaseRecycleViewAdapterDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, SuperTextViewDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, JetPackLifeCycleDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DatebinDingBasicDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, NoDrawableFragment.class,null);
 //        FragmentContainerActivity.launch(this, TempDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, GlideBasicUsageFragment.class,null);
+//        FragmentContainerActivity.launch(this, GlideBasicUsageFragment.class,null);
 
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
@@ -149,6 +146,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             e.printStackTrace();
         }
 
+    }
+
+
+    private String findTokenParam(String url){
+        String tokenParam = "";
+        int tokenKeyIndex = url.indexOf("?token=") >= 0? url.indexOf("?token="):url.indexOf("&token=");
+        if (tokenKeyIndex != -1){
+            int nextAndIndex = url.indexOf("&",tokenKeyIndex+1);
+            if (nextAndIndex != -1){
+                tokenParam = url.substring(tokenKeyIndex+1,nextAndIndex+1);
+            }else {
+                tokenParam = url.substring(tokenKeyIndex);
+            }
+        }
+        return tokenParam;
     }
 
 

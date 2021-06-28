@@ -214,9 +214,7 @@ androidExtensions {
 
 dependencies {
     api fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
-    if (!isTopicRunAlone.toBoolean()) {
-        implementation project(':topic')
-    }
+
 
     implementation rootProject.ext.dependencies.publicImplementation
     rootProject.ext.dependencies.basic.each{

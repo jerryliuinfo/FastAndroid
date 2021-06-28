@@ -10,7 +10,10 @@ import com.tesla.framework.ui.fragment.ABaseFragment
  */
 class GlideDemoFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
-        return arrayListOf(ViewItemBean("基本用法", "基本用法",GlideBasicUsageFragment::class.java))
+        return arrayListOf(
+                ViewItemBean("基本用法", "基本用法",GlideBasicUsageFragment::class.java),
+                ViewItemBean("缓存", "缓存",GlideCacheUsageFragment::class.java)
+        )
     }
 
 }
