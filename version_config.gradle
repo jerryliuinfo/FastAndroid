@@ -1,7 +1,7 @@
 ext {
 
     //Android编译版本管理
-    androidConfigs = [
+    android = [
                compileSdkVersion: 29,
                buildToolsVersion: "29.0.3",
                minSdkVersion    : 24,
@@ -42,7 +42,7 @@ ext {
     licences = ['Apache-2.0']
 
 
-
+    appCompat = "1.2.0"
 
 
 
@@ -51,7 +51,7 @@ ext {
     retrofitVersion = "2.2.0"
     lifecycle_version = "2.2.0"
 
-
+    room_version = "2.2.6"
 
 
     androidLib = [
@@ -139,15 +139,8 @@ ext {
             //Optional, if you use support library fragments:
             leakcanary_support_fragment:  "com.squareup.leakcanary:leakcanary-support-fragment:$leakcanary",
 
-            //freeline
-            freeline              :  "com.antfortune.freeline:runtime:0.8.7",
 
-            //ARouter
-            arouter_api           :  "com.alibaba:arouter-api:1.4.1",
-            arouter_compiler      : "com.alibaba:arouter-compiler:1.2.2",
 
-            //Android DebugDatabase
-            android_debug_database:  "com.amitshekhar.android:debug-db:1.0.1",
             material_dialogs      :  "com.afollestad.material-dialogs:core:0.9.4.5",
 
 
@@ -157,19 +150,25 @@ ext {
 
             picasso          :  "com.squareup.picasso:picasso:2.5.2",
             imageLoader      :  "com.nostra13.universalimageloader:universal-image-loader:1.9.3",
+            anrwatchdog      :  "'com.github.anrwatchdog:anrwatchdog:1.4.0'",
 
     ]
 
 
     dependencies = [
             publicImplementation: [
-                    'androidx.appcompat:appcompat:1.2.0',
+                    "androidx.appcompat:appcompat:$appCompat",
                     'com.google.android.material:material:1.1.0',
                     'androidx.cardview:cardview:1.0.0',
                     'androidx.recyclerview:recyclerview:1.1.0',
                     'androidx.constraintlayout:constraintlayout:2.0.4',
                     'androidx.browser:browser:1.0.0',
                     'com.google.android.material:material:1.1.0',
+
+
+                    "androidx.multidex:multidex:2.0.0",
+                    'com.qmuiteam:qmui:2.0.0-alpha10',
+
 
                     'com.google.code.gson:gson:2.8.2',
                     'com.alibaba:fastjson:1.2.29',
@@ -188,6 +187,10 @@ ext {
                     "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
 
                     "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+
+                    "androidx.room:room-compiler:$room_version",
+                    "androidx.work:work-runtime:2.2.0",
+
 
 
                     'com.squareup.okhttp3:okhttp:4.8.0',
@@ -216,6 +219,23 @@ ext {
 
                     "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30",
                     "com.github.lygttpod:SuperTextView:2.4.6",
+
+
+                    "com.squareup.leakcanary:leakcanary-support-fragment:$leakcanary",
+
+
+                    "com.tencent.bugly:crashreport:$buglyVersion",
+                    "com.tencent.bugly:nativecrashreport:$buglyNativeVersion",
+
+                    'com.youth.banner:banner:2.1.0',
+
+                    "com.github.anrwatchdog:anrwatchdog:1.4.0",
+
+
+                    //fix uplicate class com.google.common.util.concurrent.ListenableFuture found in modules guava-23.5-jre.jar
+                    'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+//                    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+
             ],
 
             basic: [

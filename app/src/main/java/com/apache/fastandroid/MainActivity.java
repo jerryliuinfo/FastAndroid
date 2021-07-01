@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,21 +16,24 @@ import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CheckLogin;
 import com.apache.fastandroid.annotations.CostTime;
+import com.apache.fastandroid.app.FastApplication;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.bean.VersionResponseBean;
 import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.performance.AppBlockCanaryContext;
 import com.apache.fastandroid.setting.SettingFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
-import com.apache.fastandroid.topic.news.MainNewsTabsFragment;
+import com.apache.fastandroid.topic.MainNewsTabsFragmentNew;
 import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.github.moduth.blockcanary.BlockCanary;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 import com.optimize.performance.launchstarter.DelayInitDispatcher;
@@ -113,7 +117,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         BindUserInfo info = new BindUserInfo("title", "www.baidu.com", "Jerry");
         NLog.d(TAG, "info: %s", info);
-        DemoListActivity.launch(this);
+//        DemoListActivity.launch(this);
 //        FragmentContainerActivity.launch(this, BaseRecycleViewAdapterDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, SuperTextViewDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, JetPackLifeCycleDemoFragment.class,null);
@@ -127,14 +131,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
 
 
-        try {
+      /*  try {
             String jso1 = " {\"code\":0,\"msg\":\"Success\",\"data\":\"\"}";
             VersionResponseBean result1 = new Gson().fromJson(jso1,
                     VersionResponseBean.class);
             NLog.d(TAG, "result1: %s",result1);
         }catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
 
 
         try {
@@ -145,7 +149,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
 
@@ -239,12 +242,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     public void onMenuItemClicked(int itemId, String title){
+
         Fragment fragment = null;
         switch (itemId){
             case R.id.nav_item_topic:
-                fragment = MainNewsTabsFragment.newFragment();
+//                fragment = MainNewsTabsFragment.newFragment();
+                fragment = MainNewsTabsFragmentNew.newInstance();
+                BlockCanary.install(FastApplication.getContext(), new AppBlockCanaryContext()).start();
                 break;
             case R.id.nav_item_wallpaer:
+//                SystemClock.sleep(3000);
+                try {
+                    SystemClock.sleep(2000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
                 goToTopicActivity(itemId,title);
                 ToastCompat.makeText(this, "Hello Toast", Toast.LENGTH_LONG).setBadTokenListener(new BadTokenListener() {
                     @Override
@@ -254,8 +267,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 }).show();
                 return;
             case R.id.nav_item_pic:
-                //fragment = PicTabsFragment.newFragment();
-                fragment = MainNewsTabsFragment.newFragment();
+                fragment = MainNewsTabsFragmentNew.newInstance();
                 break;
             case R.id.nav_item_video:
                 break;

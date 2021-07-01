@@ -1,20 +1,23 @@
 package com.github.anrwatchdog;
 
+import android.os.Looper;
+
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
-import android.os.Looper;
-
 /**
- * author: jerry
- * created on: 2020/7/24 3:12 PM
- * description:
+ * Error thrown by {@link ANRWatchDog} when an ANR is detected.
+ * Contains the stack trace of the frozen UI thread.
+ * <p>
+ * It is important to notice that, in an ANRError, all the "Caused by" are not really the cause
+ * of the exception. Each "Caused by" is the stack trace of a running thread. Note that the main
+ * thread always comes first.
  */
 public class ANRError extends Error {
 
-    private static class ErrorStackTraceInfo implements Serializable {
+    private static class $ implements Serializable {
         private final String _name;
         private final StackTraceElement[] _stackTrace;
 
@@ -30,7 +33,7 @@ public class ANRError extends Error {
             }
         }
 
-        private ErrorStackTraceInfo(String name, StackTraceElement[] stackTrace) {
+        private $(String name, StackTraceElement[] stackTrace) {
             _name = name;
             _stackTrace = stackTrace;
         }
@@ -44,7 +47,7 @@ public class ANRError extends Error {
     @SuppressWarnings("WeakerAccess")
     public final long duration;
 
-    private ANRError(ErrorStackTraceInfo._Thread st, long duration) {
+    private ANRError($._Thread st, long duration) {
         super("Application Not Responding for at least " + duration + " ms.", st);
         this.duration = duration;
     }
@@ -74,15 +77,15 @@ public class ANRError extends Error {
         for (Map.Entry<Thread, StackTraceElement[]> entry : Thread.getAllStackTraces().entrySet())
             if (
                     entry.getKey() == mainThread
-                            ||  (
-                            entry.getKey().getName().startsWith(prefix)
-                                    &&  (
-                                    logThreadsWithoutStackTrace
-                                            ||
-                                            entry.getValue().length > 0
-                            )
+                ||  (
+                        entry.getKey().getName().startsWith(prefix)
+                    &&  (
+                            logThreadsWithoutStackTrace
+                        ||
+                            entry.getValue().length > 0
+                        )
                     )
-            )
+                )
                 stackTraces.put(entry.getKey(), entry.getValue());
 
         // Sometimes main is not returned in getAllStackTraces() - ensure that we list it
@@ -90,9 +93,9 @@ public class ANRError extends Error {
             stackTraces.put(mainThread, mainThread.getStackTrace());
         }
 
-        ErrorStackTraceInfo._Thread tst = null;
+        $._Thread tst = null;
         for (Map.Entry<Thread, StackTraceElement[]> entry : stackTraces.entrySet())
-            tst = new ErrorStackTraceInfo(getThreadTitle(entry.getKey()), entry.getValue()).new _Thread(tst);
+            tst = new $(getThreadTitle(entry.getKey()), entry.getValue()).new _Thread(tst);
 
         return new ANRError(tst, duration);
     }
@@ -101,7 +104,7 @@ public class ANRError extends Error {
         final Thread mainThread = Looper.getMainLooper().getThread();
         final StackTraceElement[] mainStackTrace = mainThread.getStackTrace();
 
-        return new ANRError(new ErrorStackTraceInfo(getThreadTitle(mainThread), mainStackTrace).new _Thread(null), duration);
+        return new ANRError(new $(getThreadTitle(mainThread), mainStackTrace).new _Thread(null), duration);
     }
 
     private static String getThreadTitle(Thread thread) {

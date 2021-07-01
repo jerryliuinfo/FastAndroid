@@ -1,5 +1,6 @@
 package com.apache.fastandroid.app;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -7,6 +8,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.aop.track.TrackPoint;
@@ -27,6 +29,8 @@ import com.apache.fastandroid.util.LogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.CrashUtils;
+import com.github.anrwatchdog.ANRError;
+import com.github.anrwatchdog.ANRWatchDog;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
 import com.tesla.framework.applike.BaseApplication;
@@ -51,8 +55,8 @@ import androidx.multidex.MultiDex;
  * Created by jerryliu on 2017/3/26.
  */
 
-public class FastAndroidApplication extends BaseApplication {
-    public static final String TAG = FastAndroidApplication.class.getSimpleName();
+public class FastApplication extends BaseApplication {
+    public static final String TAG = FastApplication.class.getSimpleName();
 
     private static final String client_id = "7024a413";
     private static final String client_secret = "8404fa33ae48d3014cfa89deaa674e4cbe6ec894a57dbef4e40d083dbbaa5cf4";
@@ -65,9 +69,13 @@ public class FastAndroidApplication extends BaseApplication {
             // You should not init your app in this process.
             return;
         }
+        sContext = this;
+        sApplication = this;
+        initLog();
         BaseApp.onCreate(this);
         initAppLike();
-        initLog();
+        initAnrWatchDog();
+        initBlockCancary();
         initCrash();
         MainLogUtil.d("Application onCreate ");
         long startTime = SystemClock.uptimeMillis();
@@ -133,6 +141,41 @@ public class FastAndroidApplication extends BaseApplication {
 
         NLog.d(TAG, "FastAndroidApplication onCreate cost time: %s ms", (SystemClock.uptimeMillis() - startTime));
 
+    }
+
+    public ANRWatchDog anrWatchDog = new ANRWatchDog(500);
+
+    int duration = 4;
+
+     public ANRWatchDog.ANRListener silentListener = new ANRWatchDog.ANRListener() {
+        @Override
+        public void onAppNotResponding(ANRError error) {
+            Log.e("ANR-Watchdog-Demo", "", error);
+
+        }
+    };
+
+    public void initAnrWatchDog() {
+        NLog.d(TAG, "initAnrWatchDog --->");
+        anrWatchDog
+                .setANRListener(silentListener)
+                .setANRInterceptor(new ANRWatchDog.ANRInterceptor() {
+                    @Override
+                    public long intercept(long duration) {
+                        long ret = FastApplication.this.duration * 1000 - duration;
+                        if (ret > 0)
+                            Log.w("ANR-Watchdog-Demo", "Intercepted ANR that is too short (" + duration + " ms), postponing for " + ret + " ms.");
+                        return ret;
+                    }
+                })
+        ;
+
+        anrWatchDog.start();
+    }
+
+    private void initBlockCancary() {
+        NLog.d(TAG, "initBlockCancary --->");
+//        BlockCanary.install(this, new AppBlockCanaryContext()).start();
     }
 
     private void initCrash() {
@@ -271,6 +314,20 @@ public class FastAndroidApplication extends BaseApplication {
         //如果没有配置，默认使用glide加载
         return new GlideImageLoader();
     }
+
+
+    private static Context sContext;
+
+    private static Application sApplication;
+
+    public static Context getContext(){
+        return sContext;
+    }
+
+    public static FastApplication getApplication(){
+        return (FastApplication) sApplication;
+    }
+
 
 }
 

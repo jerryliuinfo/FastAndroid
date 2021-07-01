@@ -33,4 +33,8 @@ public abstract class Singleton<T, P> {
         }
         return mInstance;
     }
+
+    public final T get() {
+        return get(null);
+    }
 }

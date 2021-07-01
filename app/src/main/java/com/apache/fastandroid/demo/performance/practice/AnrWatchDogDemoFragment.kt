@@ -3,7 +3,7 @@ package com.apache.fastandroid.demo.performance.practice
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.tesla.framework.common.util.log.FastLog
+import com.apache.fastandroid.app.FastApplication
 import com.tesla.framework.ui.fragment.ABaseFragment
 import kotlinx.android.synthetic.main.performance_anr_watchdog.*
 
@@ -15,13 +15,28 @@ class AnrWatchDogDemoFragment : ABaseFragment() {
         return R.layout.performance_anr_watchdog
     }
 
+    private lateinit var application: FastApplication
+
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        btn_anr_watchdog.setOnClickListener {
-            FastLog.d(TAG, "sleep begin")
-            Thread.sleep(5000);
-            FastLog.d(TAG, "sleep done")
-//            NotifyManager.getInstance(Global.getContext()).showQiFuLampBlessNotify(Global.getContext());
+
+        application = FastApplication.getApplication()
+//        application.initAnrWatchDog();
+//        application.anrWatchDog.setANRListener(application.silentListener)
+
+        btn_thread_sleep.setOnClickListener {
+            Thread.sleep(6 * 1000)
+        }
+
+        btn_InfiniteLopper.setOnClickListener {
+           infiniteLoop()
+        }
+    }
+
+    private fun infiniteLoop() {
+        var i = 0
+        while (true) {
+            i++
         }
     }
 

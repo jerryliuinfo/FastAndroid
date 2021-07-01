@@ -21,14 +21,14 @@ class ApplicationLifecycleObserverNew(lifecycleOwner: LifecycleOwner): DefaultLi
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
         NLog.d(TAG, "onAppForground --->")
-        ToastUtils.showShort("App已进入前台...")
+//        ToastUtils.showShort("App已进入前台...")
     }
 
     override fun onStop(owner: LifecycleOwner) {
         super.onStop(owner)
 
         NLog.d(TAG, "onAppBackground --->")
-        ToastUtils.showShort("App已进入后台....")
+//        ToastUtils.showShort("App已进入后台....")
     }
 
 

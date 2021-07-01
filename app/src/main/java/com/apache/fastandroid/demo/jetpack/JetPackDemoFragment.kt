@@ -19,7 +19,7 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("LiveData", "LiveData", JetPackLiveDataListFragment::class.java)
                 ,ViewItemBean("ViewModel", "ViewModel", JetPackViewModelListFragment::class.java)
                 ,ViewItemBean("DataBindg", "DataBindg", DatabindingFragmentDemo::class.java)
-                ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
+//                ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
                 ,ViewItemBean("WorkManager", "WorkManager", WorkManagerListDemo::class.java)
         )
     }

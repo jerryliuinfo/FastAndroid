@@ -6,7 +6,7 @@ import java.io.Serializable;
  * ViewPager的Tab页标签
  *
  */
-public class TabItem implements Serializable {
+public class TabItem implements Serializable,ITabItem{
 
     private static final long serialVersionUID = -1162756298239591517L;
 
@@ -56,4 +56,18 @@ public class TabItem implements Serializable {
         this.tag = tag;
     }
 
+    @Override
+    public String type() {
+        return type;
+    }
+
+    @Override
+    public String title() {
+        return title;
+    }
+
+    @Override
+    public Serializable tag() {
+        return tag;
+    }
 }

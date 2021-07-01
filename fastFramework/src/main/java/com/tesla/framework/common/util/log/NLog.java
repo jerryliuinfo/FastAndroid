@@ -10,9 +10,9 @@
  */
 package com.tesla.framework.common.util.log;
 
-import java.io.File;
-
 import android.text.TextUtils;
+
+import java.io.File;
 
 /**
  * 日志输出类，可控制调试与文件日志的控制
@@ -35,7 +35,10 @@ public final class NLog
 
 		return false;
 	}
-
+	public static boolean isDebug()
+	{
+		return debug;
+	}
 
 
 

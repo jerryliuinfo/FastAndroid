@@ -10,7 +10,6 @@ import com.apache.fastandroid.demo.performance.practice.AnrWatchDogDemoFragment
 class PerformanceDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-                ViewItemBean("卡顿监控", "AnrWatchDog", AnrWatchDogDemoFragment::class.java),
                 ViewItemBean("卡顿监控", "AnrWatchDog", AnrWatchDogDemoFragment::class.java)
         )
     }

@@ -1,7 +1,5 @@
 //def config = rootProject.ext
 apply plugin: 'com.android.library'
-//apply plugin: 'android-apt'
-//apply plugin: 'com.novoda.bintray-release'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -15,12 +13,12 @@ repositories {
 }
 
 android {
-    compileSdkVersion rootProject.androidConfigs.compileSdkVersion
-    buildToolsVersion rootProject.androidConfigs.buildToolsVersion
+    compileSdkVersion rootProject.android.compileSdkVersion
+    buildToolsVersion rootProject.android.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.androidConfigs.minSdkVersion
-        targetSdkVersion rootProject.androidConfigs.targetSdkVersion
+        minSdkVersion rootProject.android.minSdkVersion
+        targetSdkVersion rootProject.android.targetSdkVersion
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         javaCompileOptions {

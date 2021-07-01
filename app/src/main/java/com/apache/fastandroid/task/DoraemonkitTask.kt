@@ -1,6 +1,5 @@
 package com.apache.fastandroid.task
 
-import com.apache.fastandroid.app.FastAndroidApplication
 import com.blankj.utilcode.util.Utils
 import com.didichuxing.doraemonkit.DoraemonKit
 import com.optimize.performance.launchstarter.task.Task
