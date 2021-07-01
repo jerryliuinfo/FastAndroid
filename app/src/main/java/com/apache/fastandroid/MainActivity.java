@@ -5,35 +5,25 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
-import com.apache.fastandroid.annotations.CheckLogin;
 import com.apache.fastandroid.annotations.CostTime;
-import com.apache.fastandroid.app.FastApplication;
 import com.apache.fastandroid.artemis.AppContext;
-import com.apache.fastandroid.artemis.componentService.topic.ITopicService;
 import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.bean.VersionResponseBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.performance.AppBlockCanaryContext;
-import com.apache.fastandroid.setting.SettingFragment;
+import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
-import com.apache.fastandroid.topic.MainNewsTabsFragmentNew;
 import com.apache.fastandroid.topic.support.utils.MainLog;
-import com.apache.fastandroid.util.MainLogUtil;
-import com.apache.fastandroid.wallpaper.WallPaperFragment;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ToastUtils;
-import com.github.moduth.blockcanary.BlockCanary;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 import com.optimize.performance.launchstarter.DelayInitDispatcher;
@@ -41,10 +31,7 @@ import com.permissionx.guolindev.PermissionX;
 import com.permissionx.guolindev.callback.RequestCallback;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.common.util.toast.BadTokenListener;
-import com.tesla.framework.common.util.toast.ToastCompat;
 import com.tesla.framework.component.eventbus.FastBus;
-import com.tesla.framework.route.Route;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
 
@@ -117,14 +104,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         BindUserInfo info = new BindUserInfo("title", "www.baidu.com", "Jerry");
         NLog.d(TAG, "info: %s", info);
-//        DemoListActivity.launch(this);
-//        FragmentContainerActivity.launch(this, BaseRecycleViewAdapterDemoListFragment.class,null);
-//        FragmentContainerActivity.launch(this, SuperTextViewDemoListFragment.class,null);
-//        FragmentContainerActivity.launch(this, JetPackLifeCycleDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, DatebinDingBasicDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, NoDrawableFragment.class,null);
-//        FragmentContainerActivity.launch(this, TempDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, GlideBasicUsageFragment.class,null);
+
 
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
@@ -245,47 +225,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         Fragment fragment = null;
         switch (itemId){
-            case R.id.nav_item_topic:
-//                fragment = MainNewsTabsFragment.newFragment();
-                fragment = MainNewsTabsFragmentNew.newInstance();
-                BlockCanary.install(FastApplication.getContext(), new AppBlockCanaryContext()).start();
+            case R.id.nav_item_home:
+                fragment = HomeFragment.newInstance();
                 break;
-            case R.id.nav_item_wallpaer:
-//                SystemClock.sleep(3000);
-                try {
-                    SystemClock.sleep(2000);
-                } catch (Exception e) {
-                    e.printStackTrace();
 
-                }
-                goToTopicActivity(itemId,title);
-                ToastCompat.makeText(this, "Hello Toast", Toast.LENGTH_LONG).setBadTokenListener(new BadTokenListener() {
-                    @Override
-                    public void onBadTokenCaught(@NonNull Toast toast) {
-
-                    }
-                }).show();
-                return;
-            case R.id.nav_item_pic:
-                fragment = MainNewsTabsFragmentNew.newInstance();
-                break;
-            case R.id.nav_item_video:
-                break;
             case R.id.nav_item_demo:
 
                 startActivity(new Intent(this,DemoListActivity.class));
                 return;
-            case R.id.nav_item_topic_home:
-                //ARouter.getInstance().build(RouterMap.TOPIC.HOMEACTIVITY).withInt("name",1).navigation();
-                Route.getInstance().getService(ITopicService.class.getSimpleName());
-                closeDrawer();
-                return;
-            case R.id.nav_item_setting:
-                SettingFragment.launch(this);
-                closeDrawer();
-
-                selecteId = itemId;
-                return;
         }
 
 
@@ -299,22 +246,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         selecteId = itemId;
     }
 
-    /**
-     * 加上这个注解就会自动判断是否已登录，如果未登录则会先跳转到登录页面,已登录，则直接执行业务逻辑
-     * @param itemId
-     * @param title
-     */
-    @CheckLogin("")
-    public void goToTopicActivity(int itemId, String title){
-        MainLogUtil.d("goToTopicActivity");
-        Fragment  fragment = WallPaperFragment.newFragment();
-        if (fragment != null && selecteId != itemId){
-            getSupportActionBar().setTitle(title);
-            getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();
-        }
-        closeDrawer();
-        selecteId = itemId;
-    }
 
     public boolean isDrawerOpened() {
         return mDrawerLayout.isDrawerOpen(Gravity.LEFT) || mDrawerLayout.isDrawerOpen(Gravity.RIGHT);

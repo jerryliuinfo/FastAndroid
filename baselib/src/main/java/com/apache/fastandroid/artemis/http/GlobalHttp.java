@@ -4,7 +4,6 @@ import android.text.TextUtils;
 
 import com.apache.fastandroid.artemis.http.interceptor.AddCookiesInterceptor;
 import com.apache.fastandroid.artemis.http.interceptor.CacheDataInterceptor;
-import com.apache.fastandroid.artemis.http.interceptor.ReceivedCookiesInterceptor;
 import com.apache.fastandroid.artemis.retrofit.RetrofitClient;
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.network.http.HttpClient;
@@ -114,8 +113,7 @@ public class GlobalHttp {
      */
     public GlobalHttp setCookie(boolean setCookie){
         if (setCookie){
-            getGlobalOkHttpBuilder().addInterceptor(new AddCookiesInterceptor())
-                    .addInterceptor(new ReceivedCookiesInterceptor());
+            getGlobalOkHttpBuilder().addInterceptor(new AddCookiesInterceptor());
         }
         return this;
     }

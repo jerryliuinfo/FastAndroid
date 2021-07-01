@@ -33,7 +33,7 @@ import com.github.anrwatchdog.ANRError;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
-import com.tesla.framework.applike.BaseApplication;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.FastLog;
@@ -55,7 +55,7 @@ import androidx.multidex.MultiDex;
  * Created by jerryliu on 2017/3/26.
  */
 
-public class FastApplication extends BaseApplication {
+public class FastApplication extends FrameworkApplication {
     public static final String TAG = FastApplication.class.getSimpleName();
 
     private static final String client_id = "7024a413";

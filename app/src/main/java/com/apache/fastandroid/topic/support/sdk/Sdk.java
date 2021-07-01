@@ -8,7 +8,6 @@ import com.apache.fastandroid.topic.support.bean.NewsSummary;
 import com.apache.fastandroid.topic.support.bean.NewsSummaryBeans;
 import com.apache.fastandroid.topic.support.bean.WallpaperBeans;
 import com.apache.fastandroid.topic.support.http.MyHttpUtility;
-import com.apache.fastandroid.topic.support.sdk.bean.UpdateBean;
 import com.blankj.utilcode.util.ResourceUtils;
 import com.tesla.framework.common.setting.Setting;
 import com.tesla.framework.network.biz.ABizLogic;
@@ -46,29 +45,6 @@ public class Sdk extends ABizLogic {
     public static Sdk newInstance(){
         return new Sdk();
     }
-
-    /**
-     * 检测版本更新
-     * @return
-     * @throws Exception
-     */
-    public UpdateBean checkAppVersion() throws TaskException{
-        /*BaseHttpUtils httpUtils = BaseHttpUtils.getInstance(FastAndroidApplication.getContext(),ApiConstans.Urls.BAIDU_IMAGES_URLS);
-        APIService apiService = httpUtils.getRetrofit().create(APIService.class);
-        Call<BaseResponseBean<UpdateBean>> call =  apiService.checkAppVersion(PublishVersionManager.getVersionCode());
-
-
-        if (call != null){
-            Response<BaseResponseBean<UpdateBean>> response = call.execute();
-            if (response != null && response.body() != null){
-                BaseResponseBean<UpdateBean> responseBean = response.body();
-                checkRepsonse(responseBean);
-                return responseBean.getData();
-            }
-        }*/
-        throw new TaskException("server error");
-    }
-
 
 
     public WallpaperBeans getWallpaperList(int page) throws TaskException{

@@ -5,6 +5,7 @@
 
 
     <!--导航栏-->
+    <string name="nav_home">首页</string>
     <string name="nav_posts">主题帖子</string>
     <string name="nav_novel">小说</string>
     <string name="nav_wallpaer">精美壁纸</string>

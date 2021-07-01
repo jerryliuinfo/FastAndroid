@@ -47,7 +47,7 @@ public final class ApiEngine {
             return builder
                     .addConverterFactory(CustomGsonConverterFactory.create())
                     .client(client)
-                    .baseUrl(API_HOST)
+                    .baseUrl(ApiConstant.BASE_URL)
                     .build();
         }
     };
@@ -74,11 +74,14 @@ public final class ApiEngine {
         return SINGLE_CLIENT.get();
     }
 
-    public static <T> T createMainService(Class<T> cls) {
+    public static <T> T createApiService(Class<T> cls) {
         final Retrofit retrofit = sRetrofitMain.get();
         return retrofit.create(cls);
     }
-
+    public static ApiService createApiService() {
+        final Retrofit retrofit = sRetrofitMain.get();
+        return retrofit.create(ApiService.class);
+    }
 
 
 }

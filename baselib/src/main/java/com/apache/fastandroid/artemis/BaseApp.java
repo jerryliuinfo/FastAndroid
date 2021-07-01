@@ -1,12 +1,12 @@
 package com.apache.fastandroid.artemis;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
 import android.app.Application;
 import android.content.Context;
 
-import com.tesla.framework.applike.FrameworkApplication;
+import com.blankj.utilcode.util.ktx.SPreference;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * Created by 01370340 on 2018/4/13.
@@ -54,10 +54,8 @@ public class BaseApp {
 
 
     public static void onCreate(Context context){
-        //FrameworkApplication.onCreate(context);
-        FrameworkApplication.onCreate(sApplication);
+        SPreference.setContext(context);
 
-        //sContext = context.getApplicationContext();
     }
 
     private static void checkContext(){
