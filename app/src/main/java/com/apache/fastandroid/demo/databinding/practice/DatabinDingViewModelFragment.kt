@@ -20,12 +20,13 @@ import com.apache.fastandroid.demo.bean.UserObservableFieldBean
 import com.apache.fastandroid.demo.databinding.UserViewModel
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.ABaseDatabindingFragment
+import com.tesla.framework.ui.fragment.BaseTraceFragment
 import kotlinx.android.synthetic.main.fragment_databinding_twoeway_event.*
 import kotlin.random.Random
 import kotlin.random.nextInt
 
 
-class DatabinDingViewModelFragment: ABaseDatabindingFragment<FragmentDatabindingViewmodelBinding>() {
+class DatabinDingViewModelFragment: BaseTraceFragment<FragmentDatabindingViewmodelBinding>() {
 
     companion object{
         private const val TAG = "DatabinDingViewModelFragment"
@@ -42,10 +43,10 @@ class DatabinDingViewModelFragment: ABaseDatabindingFragment<FragmentDatabinding
         super.layoutInit(inflater, savedInstanceSate)
 
         //要使用LiveData对象作为数据绑定来源，需要设置LifecycleOwner, 这样当livedata数据变化后，xml就能察觉到
-        binding.lifecycleOwner = this
+        viewDataBinding.lifecycleOwner = this
 
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        binding.vm = viewModel
+        viewDataBinding.vm = viewModel
 
     }
 }

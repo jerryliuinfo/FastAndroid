@@ -52,7 +52,7 @@ public abstract class ARecycleViewFragment<T extends Serializable, Ts extends Se
 
 
     @Override
-    protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
+    public void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
         setupDragMove();
 

@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.work.*
 import com.apache.fastandroid.R
-import com.apache.fastandroid.artemis.base.BaseFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import com.apache.fastandroid.jetpack.workmanager.request.UploadLogWorker
-import com.tesla.framework.Global
 import com.tesla.framework.applike.FrameworkApplication
 import kotlinx.android.synthetic.main.fragment_workmananger_basic.*
 import java.util.concurrent.TimeUnit

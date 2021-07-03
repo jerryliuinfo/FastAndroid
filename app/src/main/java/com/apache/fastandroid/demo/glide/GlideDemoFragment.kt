@@ -3,7 +3,6 @@ package com.apache.fastandroid.demo.glide
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
-import com.tesla.framework.ui.fragment.ABaseFragment
 
 /**
  * Created by Jerry on 2021/6/24.

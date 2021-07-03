@@ -1,7 +1,7 @@
 package com.apache.fastandroid.demo.constraint.practice
 
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.ABaseFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 
 /**
  *layout_constraintGuide_percent
@@ -9,7 +9,7 @@ import com.tesla.framework.ui.fragment.ABaseFragment
  * app:layout_constraintGuide_end=""
  *
  */
-class ConstraintGuidelinePercentFragment:ABaseFragment() {
+class ConstraintGuidelinePercentFragment: BaseFragment() {
     override fun inflateContentView(): Int {
         return R.layout.constraint_guideline_percent
     }

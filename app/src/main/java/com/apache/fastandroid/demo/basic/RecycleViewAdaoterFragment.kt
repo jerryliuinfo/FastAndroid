@@ -2,16 +2,15 @@ package com.apache.fastandroid.demo.basic
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.apache.fastandroid.artemis.base.BaseFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import com.apache.fastandroid.demo.adapter.CommentAdapter
 import kotlinx.android.synthetic.main.android_basic_recycleview_adapter.*
 
 
-class RecycleViewAdaoterFragment:BaseFragment() {
+class RecycleViewAdaoterFragment: BaseFragment() {
     override fun inflateContentView(): Int {
         return R.layout.android_basic_recycleview_adapter
     }

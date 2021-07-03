@@ -556,7 +556,7 @@ public abstract class APagingFragment<T extends Serializable,Ts extends Serializ
                 FastLog.d(TAG, "firstVisiblePostion = %s, top = %s", firstVisiblePostion, top);
                 putLastReadPosition(firstVisiblePostion);
 
-                putLastReadTop(getRefreshView().getChildAt(0).getTop());
+                putLastReadTop(top);
             }
         }
     }

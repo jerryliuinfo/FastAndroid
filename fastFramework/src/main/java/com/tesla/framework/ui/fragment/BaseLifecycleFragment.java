@@ -73,12 +73,12 @@ public abstract class BaseLifecycleFragment<Q extends ViewDataBinding> extends B
         return application;
     }
 
-    protected abstract void initModel();
+    protected abstract void initViewModel();
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initModel();
+        initViewModel();
     }
 }

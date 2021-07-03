@@ -9,7 +9,6 @@ import com.apache.fastandroid.demo.constraint.practice.ConstraintBasicFragment
 import com.apache.fastandroid.jetpack.lifecycle.traditional.TraditionalLifeCycleFragment
 import com.apache.fastandroid.jetpack.lifecycle.traditional.TraditionalLifeCycleListener
 import com.tesla.framework.component.lifecycle.LifecycleHandler
-import com.tesla.framework.ui.fragment.ABaseFragment
 
 /**
  * Created by Jerry on 2020/10/31.

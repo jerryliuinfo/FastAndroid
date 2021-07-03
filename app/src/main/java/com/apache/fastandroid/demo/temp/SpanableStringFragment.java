@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.artemis.base.BaseFragment;
+import com.tesla.framework.ui.fragment.BaseFragment;
 
 import androidx.annotation.NonNull;
 
@@ -27,7 +27,7 @@ public class SpanableStringFragment extends BaseFragment {
     }
 
     @Override
-    protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
+    public void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
 
         mChildrenPrivacyText = findViewById(R.id.tv_content);

@@ -2,19 +2,21 @@ package com.apache.fastandroid.artemis.base;
 
 import android.app.Activity;
 import android.content.Intent;
-import androidx.fragment.app.FragmentActivity;
 
 import com.apache.fastandroid.artemis.AppContext;
 import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.fragment.ABaseFragment;
+import com.tesla.framework.ui.fragment.BaseFragment;
+
+import androidx.fragment.app.FragmentActivity;
 
 /**
  * Created by jerryliu on 2017/6/6.
  * Fragment是一个神器，是跨Activity和Fragment之前通讯的重要的桥梁
  */
 
-public class BizFragment extends ABaseFragment {
+public class BizFragment extends BaseFragment {
     private FragmentActivity mActivity;
     private static final String BIZ_FRAGMENT_TAG = "com.apache.fastandroid.base.BizFragment";
     private Activity getRealActivity() {

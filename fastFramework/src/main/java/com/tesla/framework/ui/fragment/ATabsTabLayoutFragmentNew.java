@@ -32,7 +32,7 @@ public abstract class ATabsTabLayoutFragmentNew<T extends ITabItem> extends ABas
 
 
     @Override
-    protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
+    public void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
         viewPager = findViewById(R.id.viewpager);
         tabLayout = findViewById(R.id.tabLayout);

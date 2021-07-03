@@ -6,17 +6,17 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.R
+import com.tesla.framework.ui.fragment.BaseFragment
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.ABaseFragment
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata_media_livedata.*
 
 /**
  * Created by Jerry on 2021/2/7.
  * 合并多个 LiveData 源。只要任何原始的 LiveData 源对象发生更改，就会触发 MediatorLiveData 对象的观察者
  */
-class MediatorLiveDataFragment:ABaseFragment() {
+class MediatorLiveDataFragment: BaseFragment() {
     companion object{
         private const val TAG = "MediatorLiveDataFragment"
     }

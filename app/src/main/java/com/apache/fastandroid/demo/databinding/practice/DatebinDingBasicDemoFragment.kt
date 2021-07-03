@@ -40,16 +40,5 @@ class DatebinDingBasicDemoFragment: BaseDatebindingFragment<FragmentDatabindingB
     }
 
 
-    /*override fun inflateContentView(): Int {
-       return R.layout.fragment_databinding_basis_user
-    }
-
-    override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
-        super.layoutInit(inflater, savedInstanceSate)
-        val user = UserBean("zhangsan1",18)
-        binding.user = user
-    }
-*/
-
 
 }

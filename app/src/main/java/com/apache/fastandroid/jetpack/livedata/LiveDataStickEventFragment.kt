@@ -6,14 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.LogUtils
 import com.apache.fastandroid.R
-import com.apache.fastandroid.artemis.base.BaseFragment
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata.*
 
 /**
  * Created by Jerry on 2020/11/5.
  */
-class LiveDataStickEventFragment :BaseFragment(){
+class LiveDataStickEventFragment : BaseFragment(){
     companion object{
         val TAG = "LiveDataBasicFragment"
     }

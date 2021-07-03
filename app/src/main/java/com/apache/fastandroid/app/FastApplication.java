@@ -24,7 +24,6 @@ import com.apache.fastandroid.task.DBInitTask;
 import com.apache.fastandroid.task.DoraemonkitTask;
 import com.apache.fastandroid.task.ImageLoaderTask;
 import com.apache.fastandroid.task.PerformanceTask;
-import com.apache.fastandroid.topic.support.exception.FastAndroidExceptionDelegateV2;
 import com.apache.fastandroid.util.LogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.AppUtils;
@@ -42,7 +41,6 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.performance.BlockDetector;
-import com.tesla.framework.network.task.TaskException;
 
 import java.io.File;
 
@@ -74,7 +72,7 @@ public class FastApplication extends FrameworkApplication {
         initLog();
         BaseApp.onCreate(this);
         initAppLike();
-        initAnrWatchDog();
+//        initAnrWatchDog();
         initBlockCancary();
         initCrash();
         MainLogUtil.d("Application onCreate ");
@@ -105,8 +103,7 @@ public class FastApplication extends FrameworkApplication {
         //初始化crash统计
         initCrashAndAnalysis();
 
-        //初始化异常处理
-        TaskException.config(new FastAndroidExceptionDelegateV2());
+
 
         initAuth();
         initHttp();
@@ -143,7 +140,7 @@ public class FastApplication extends FrameworkApplication {
 
     }
 
-    public ANRWatchDog anrWatchDog = new ANRWatchDog(500);
+    public ANRWatchDog anrWatchDog = new ANRWatchDog(5000);
 
     int duration = 4;
 

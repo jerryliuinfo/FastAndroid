@@ -271,7 +271,7 @@ public abstract class ABaseFragment extends Fragment implements ITaskManager{
      * @param inflater
      * @param savedInstanceSate
      */
-    protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
+    public void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
 
     }
 

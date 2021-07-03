@@ -2,11 +2,10 @@ package com.apache.fastandroid.demo.recycleview
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.apache.fastandroid.artemis.base.BaseFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import com.apache.fastandroid.demo.adapter.CommentAdapterNew
 import com.blankj.utilcode.util.ToastUtils
 import kotlinx.android.synthetic.main.base_recycleview_adapter_demo.*
@@ -14,7 +13,7 @@ import kotlinx.android.synthetic.main.base_recycleview_adapter_demo.*
 /**
  * Created by Jerry on 2021/5/3.
  */
-class RecycleViewBasicFragment:BaseFragment() {
+class RecycleViewBasicFragment: BaseFragment() {
     override fun inflateContentView(): Int {
         return R.layout.base_recycleview_adapter_demo
     }

@@ -1,11 +1,5 @@
 package com.tesla.framework.ui.fragment;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -17,6 +11,12 @@ import com.tesla.framework.support.bean.TabItem;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.fragment.adpater.FragmentPagerAdapter;
+
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -52,7 +52,7 @@ public abstract class ATabsFragment<T extends TabItem> extends ABaseFragment imp
     }
 
     @Override
-    protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
+    public void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
         if (savedInstanceSate != null){
             mCurrentPosition = savedInstanceSate.getInt("currentPosition", 0);

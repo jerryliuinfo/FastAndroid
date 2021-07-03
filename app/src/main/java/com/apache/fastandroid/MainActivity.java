@@ -21,7 +21,6 @@ import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
-import com.apache.fastandroid.topic.support.utils.MainLog;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -79,7 +78,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @CostTime
     @Override
-    protected void layoutInit(Bundle savedInstanceState) {
+    public void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
 
 //        ProxyTool.bind(this);
@@ -132,26 +131,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-    private String findTokenParam(String url){
-        String tokenParam = "";
-        int tokenKeyIndex = url.indexOf("?token=") >= 0? url.indexOf("?token="):url.indexOf("&token=");
-        if (tokenKeyIndex != -1){
-            int nextAndIndex = url.indexOf("&",tokenKeyIndex+1);
-            if (nextAndIndex != -1){
-                tokenParam = url.substring(tokenKeyIndex+1,nextAndIndex+1);
-            }else {
-                tokenParam = url.substring(tokenKeyIndex);
-            }
-        }
-        return tokenParam;
-    }
-
 
 
     @Override
     public void setContentView(View view) {
         super.setContentView(view);
-        MainLog.d("called setContentView");
     }
 
 

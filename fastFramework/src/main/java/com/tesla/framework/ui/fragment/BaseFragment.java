@@ -13,16 +13,19 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
-public abstract class BaseTraceFragment<Q extends ViewDataBinding> extends Fragment implements IView {
-    public static final String TAG = "BaseTraceFragment";
+
+/**
+ * Created by 01370340 on 2017/9/1.
+ */
+
+public abstract class BaseFragment extends Fragment implements IView {
+
+    public static final String TAG = "BaseFragment";
     private View rootView;
     protected LayoutInflater layoutInflater;
-    //不要用这个mViewModel， 这是个空对象
-    protected Q viewDataBinding;
+
 
     protected AppCompatActivity mActivity;
 
@@ -39,19 +42,18 @@ public abstract class BaseTraceFragment<Q extends ViewDataBinding> extends Fragm
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         layoutInflater = inflater;
-        if (rootView == null && inflateContentView() > 0) {
-            viewDataBinding = DataBindingUtil.inflate(
-                    inflater, inflateContentView(), container, false);
-            setContentView((ViewGroup) viewDataBinding.getRoot());
-            bindUI(rootView);
-        } else {
-            ViewGroup viewGroup = (ViewGroup) rootView.getParent();
-            if (viewGroup != null) {
-                viewGroup.removeView(rootView);
-            }
+        if (inflateContentView() > 0) {
+            ViewGroup contentView = (ViewGroup) inflater.inflate(inflateContentView(), null);
+            contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT));
+            this.rootView = contentView;
+            return rootView;
         }
-        return rootView;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
+
+
+
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {

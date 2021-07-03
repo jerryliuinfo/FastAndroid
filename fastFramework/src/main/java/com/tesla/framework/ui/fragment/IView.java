@@ -1,6 +1,7 @@
 package com.tesla.framework.ui.fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
 /**
@@ -8,7 +9,7 @@ import android.view.View;
  */
 
 public interface IView {
-    int getLayoutId();
+    int inflateContentView();
     void bindUI(View rootView);
-    void initData(Bundle savedInstanceState);
+    void layoutInit(LayoutInflater inflater, Bundle savedInstanceState);
 }

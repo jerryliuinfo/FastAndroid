@@ -4,18 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.ABaseFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.clip_to_padding_layout_item.view.*
 import kotlinx.android.synthetic.main.custom_view_clip_to_padding.*
 
 /**
  * Created by Jerry on 2020/12/2.
  */
-class ClipToPaddingFragment: ABaseFragment() {
+class ClipToPaddingFragment: BaseFragment() {
     override fun inflateContentView(): Int {
         return R.layout.custom_view_clip_to_padding
     }

@@ -1,7 +1,6 @@
 package com.apache.fastandroid.bean
 
 import androidx.fragment.app.Fragment
-import com.tesla.framework.ui.fragment.ABaseFragment
 import java.io.Serializable
 
 /**

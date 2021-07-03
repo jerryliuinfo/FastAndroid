@@ -3,21 +3,19 @@ package com.apache.fastandroid.demo.temp
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
-import com.apache.fastandroid.artemis.base.BaseFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import com.apache.fastandroid.bean.VersionResponseBean
 import com.chad.baserecyclerviewadapterhelper.entity.Person
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.tesla.framework.common.util.log.NLog
 import kotlinx.android.synthetic.main.gson_demo.*
-import org.jetbrains.annotations.Nls
 
 /**
  * Created by Jerry on 2021/3/1.
  */
-class GsonFragment:BaseFragment() {
+class GsonFragment: BaseFragment() {
     companion object{
         val TAG = "GsonFragment"
     }

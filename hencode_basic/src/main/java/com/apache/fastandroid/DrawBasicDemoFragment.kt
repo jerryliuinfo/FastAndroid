@@ -2,16 +2,16 @@ package com.apache.fastandroid
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import com.tesla.framework.ui.fragment.BaseFragment
 import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
 import com.apache.fastandroid.hencoder.basic.R
-import com.tesla.framework.ui.fragment.ABaseFragment
 import kotlinx.android.synthetic.main.fragment_practice_demo.*
 
 /**
  * Created by Jerry on 2020/11/11.
  */
-class DrawBasicDemoFragment:ABaseFragment() {
+class DrawBasicDemoFragment: BaseFragment() {
 
     private val pageModels = arrayListOf(
             PageModel(R.layout.sample_pie_chart, R.string.title_draw_pie_chart, R.layout.practice_pie_chart),

@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import androidx.lifecycle.Observer
 import androidx.work.*
 import com.apache.fastandroid.R
-import com.apache.fastandroid.artemis.base.BaseFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import com.apache.fastandroid.jetpack.workmanager.request.UploadLogWorker
-import com.tesla.framework.Global
 import com.tesla.framework.applike.FrameworkApplication
 import com.tesla.framework.common.util.log.NLog
 import kotlinx.android.synthetic.main.fragment_workmananger_basic.*

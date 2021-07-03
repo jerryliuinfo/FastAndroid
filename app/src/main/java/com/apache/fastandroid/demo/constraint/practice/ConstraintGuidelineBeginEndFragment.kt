@@ -3,7 +3,7 @@ package com.apache.fastandroid.demo.constraint.practice
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.ABaseFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 
 /**
  *layout_constraintGuide_percent
@@ -11,7 +11,7 @@ import com.tesla.framework.ui.fragment.ABaseFragment
  * app:layout_constraintGuide_end=""
  *
  */
-class ConstraintGuidelineBeginEndFragment:ABaseFragment() {
+class ConstraintGuidelineBeginEndFragment: BaseFragment() {
     override fun inflateContentView(): Int {
         return R.layout.constraint_guideline_begin_end
     }

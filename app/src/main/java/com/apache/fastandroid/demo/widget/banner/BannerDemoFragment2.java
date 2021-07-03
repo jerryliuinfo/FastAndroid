@@ -5,7 +5,8 @@ import android.view.LayoutInflater;
 
 import com.apache.fastandroid.R;
 import com.apache.fastandroid.bean.DataBean;
-import com.tesla.framework.ui.fragment.ABaseFragment;
+import com.apache.fastandroid.databinding.WidgetBannerBinding;
+import com.tesla.framework.ui.fragment.BaseTraceFragment;
 import com.youth.banner.Banner;
 import com.youth.banner.config.IndicatorConfig;
 import com.youth.banner.indicator.CircleIndicator;
@@ -13,14 +14,16 @@ import com.youth.banner.indicator.CircleIndicator;
 /**
  * Created by Jerry on 2021/4/28.
  */
-public class BannerDemoFragment2 extends ABaseFragment {
+public class BannerDemoFragment2 extends BaseTraceFragment<WidgetBannerBinding> {
     @Override
     public int inflateContentView() {
         return R.layout.widget_banner;
     }
 
+
+
     @Override
-    protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
+    public void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
         ImageAdapter imageAdapter = new ImageAdapter(DataBean.getTestData());
         Banner banner = findViewById(R.id.banner);

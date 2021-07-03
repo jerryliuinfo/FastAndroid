@@ -10,15 +10,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
+import com.apache.fastandroid.databinding.FragmentCustomViewBinding
 import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
-import com.tesla.framework.ui.fragment.ABaseFragment
+import com.tesla.framework.ui.fragment.BaseTraceFragment
 import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
  * Created by Jerry on 2020/12/3.
  */
-abstract class BaseListFragment:ABaseFragment() {
+abstract class BaseListFragment: BaseTraceFragment<FragmentCustomViewBinding>() {
 
 
     private lateinit var MODELS:ArrayList<ViewItemBean>

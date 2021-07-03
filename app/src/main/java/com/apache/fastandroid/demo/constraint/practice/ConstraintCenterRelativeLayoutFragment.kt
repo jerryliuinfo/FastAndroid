@@ -1,12 +1,12 @@
 package com.apache.fastandroid.demo.constraint.practice
 
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.ABaseFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 
 /**
  * Created by Jerry on 2020/11/19.
  */
-class ConstraintCenterRelativeLayoutFragment:ABaseFragment() {
+class ConstraintCenterRelativeLayoutFragment: BaseFragment() {
     override fun inflateContentView(): Int {
         return R.layout.constraint_center_relative_layout
     }

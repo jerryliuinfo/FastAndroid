@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.artemis.base.BaseFragment;
+import com.tesla.framework.ui.fragment.BaseFragment;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
@@ -30,7 +30,7 @@ public class SettingFragment extends BaseFragment {
     private TextView tv_logout;
 
     @Override
-    protected void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
+    public void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
         super.layoutInit(inflater, savedInstanceSate);
         BaseActivity activity = (BaseActivity) getActivity();
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);

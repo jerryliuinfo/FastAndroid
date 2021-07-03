@@ -3,16 +3,15 @@ package com.apache.fastandroid.jetpack.lifecycle
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.apache.fastandroid.jetpack.lifecycle.LocationListener.OnLocationChangeListener
+import com.tesla.framework.ui.fragment.BaseFragment
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.lifecycle.LifecycleHandler
-import com.tesla.framework.ui.fragment.ABaseFragment
 
 /**
  * Created by Jerry on 2020/10/31.
  * 不会内存泄漏的Handler
  */
-class LifecycleHandlerFragment: ABaseFragment() {
+class LifecycleHandlerFragment: BaseFragment() {
 
     private lateinit var lifecycleHandler:LifecycleHandler
 

@@ -1,4 +1,4 @@
-package com.apache.fastandroid.artemis.enu;
+package com.apache.fastandroid.demo.temp;
 
 /**
  * Created by 01370340 on 2018/5/4.
@@ -24,8 +24,6 @@ public enum SilentMode {
         switch (value){
             case 1:
                 return RESTART;
-            case 2:
-                return RECOVER_ACTIVITY_STACK;
             case 3:
                 return RECOVER_TOP_ACTIVITY;
             case 4:

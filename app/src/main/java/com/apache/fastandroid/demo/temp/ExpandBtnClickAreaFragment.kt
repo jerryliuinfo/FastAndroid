@@ -5,16 +5,15 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.TouchDelegate
-import androidx.coordinatorlayout.widget.ViewGroupUtils
 import com.apache.fastandroid.R
-import com.apache.fastandroid.artemis.base.BaseFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import com.blankj.utilcode.util.ToastUtils
 import kotlinx.android.synthetic.main.expand_btn_click_area.*
 
 /**
  * Created by Jerry on 2021/3/1.
  */
-class ExpandBtnClickAreaFragment:BaseFragment() {
+class ExpandBtnClickAreaFragment: BaseFragment() {
     override fun inflateContentView(): Int {
         return R.layout.expand_btn_click_area
     }

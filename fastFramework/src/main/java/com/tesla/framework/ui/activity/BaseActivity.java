@@ -134,7 +134,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     /**
      * 子类重写这个方法，初始化视图
      */
-    protected void layoutInit(Bundle savedInstanceState) {
+    public void layoutInit(Bundle savedInstanceState) {
 
     }
 

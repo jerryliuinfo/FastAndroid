@@ -25,7 +25,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     @Override
-    protected void layoutInit(Bundle savedInstanceState) {
+    public void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
 
 
