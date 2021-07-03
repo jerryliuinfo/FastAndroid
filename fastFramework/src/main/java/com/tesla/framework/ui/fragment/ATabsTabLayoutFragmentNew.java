@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 
 import com.google.android.material.tabs.TabLayout;
 import com.tesla.framework.R;
+import com.tesla.framework.databinding.FragmentTablayoutBinding;
 import com.tesla.framework.support.bean.ITabItem;
 import com.tesla.framework.ui.fragment.adpater.PageTabAdapter;
 
@@ -18,9 +19,7 @@ import static androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CU
 /**
  * 对TabLayout的封装
  */
-public abstract class ATabsTabLayoutFragmentNew<T extends ITabItem> extends ABaseFragment {
-
-
+public abstract class ATabsTabLayoutFragmentNew extends BaseLifecycleFragment<FragmentTablayoutBinding> {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private ArrayList<ITabItem> tabItems;
@@ -64,12 +63,12 @@ public abstract class ATabsTabLayoutFragmentNew<T extends ITabItem> extends ABas
 
             @Override
             public void onPageSelected(int position) {
-                onTabPageSelected(position);
+                ATabsTabLayoutFragmentNew.this.onPageSelected(position);
             }
         });
     }
 
-    public void onTabPageSelected(int position){
+    protected void onPageSelected(int position){
         selectedTabIndex = position;
     }
 

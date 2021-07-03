@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 /**
  * Created by Jerry on 2021/7/1.
  */
-public abstract class BaseLifecycleFragment<Q extends ViewDataBinding> extends BaseTraceFragment<Q> {
+public abstract class BaseLifecycleFragment<Q extends ViewDataBinding> extends BaseFragment {
     private ViewModelProvider mFragmentProvider;
     private ViewModelProvider mActivityProvider;
     private ViewModelProvider mApplicationProvider;

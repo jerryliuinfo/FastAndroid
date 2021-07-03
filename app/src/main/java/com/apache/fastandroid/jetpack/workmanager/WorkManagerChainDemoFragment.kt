@@ -10,14 +10,14 @@ import com.apache.fastandroid.jetpack.workmanager.request.UpdateLocalWork
 import com.apache.fastandroid.jetpack.workmanager.request.UploadLogWorker
 import com.apache.fastandroid.jetpack.workmanager.request.PublishWorker
 import com.tesla.framework.applike.FrameworkApplication
-import com.tesla.framework.ui.fragment.BaseTraceFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_workmananger_basic.btn_begin_then
 import kotlinx.android.synthetic.main.fragment_workmananger_chain.*
 
 /**
  * Created by Jerry on 2021/4/6.
  */
-class WorkManagerChainDemoFragment: BaseTraceFragment<FragmentWorkmanangerChainBinding>() {
+class WorkManagerChainDemoFragment: BaseFragment() {
     companion object{
         private val TAG = "PeriodicWorkRequest"
 

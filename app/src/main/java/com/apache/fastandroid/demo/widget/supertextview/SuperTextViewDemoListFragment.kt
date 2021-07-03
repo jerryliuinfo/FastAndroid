@@ -6,13 +6,13 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
 import com.apache.fastandroid.databinding.FragmentPracticeDemoBinding
-import com.tesla.framework.ui.fragment.BaseTraceFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_practice_demo.*
 
 /**
  * Created by Jerry on 2021/5/18.
  */
-class SuperTextViewDemoListFragment: BaseTraceFragment<FragmentPracticeDemoBinding>() {
+class SuperTextViewDemoListFragment: BaseFragment() {
 
     private val pageModels = arrayListOf(
             PageModel(R.layout.stv_superbutton, "SuperButton")

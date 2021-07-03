@@ -8,13 +8,13 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentJetpackViewmodelRestoreDataBinding
 import com.apache.fastandroid.jetpack.InjectUtil
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseTraceFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_jetpack_viewmodel_restore_data.*
 
 /**
  * Created by Jerry on 2020/11/1.
  */
-class ViewModelRestoreDataFragment:BaseTraceFragment<FragmentJetpackViewmodelRestoreDataBinding>() {
+class ViewModelRestoreDataFragment:BaseFragment() {
 
     //不能使用这种方式，这种方式生成的ViewModel 在横竖屏切换后数据不会保存
 //    private val userInfoViewModel :UserInfoViewModel by lazy {

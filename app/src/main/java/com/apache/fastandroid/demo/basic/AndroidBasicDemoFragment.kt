@@ -12,7 +12,6 @@ class AndroidBasicDemoFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
                 ViewItemBean("启动模式", "启动模式", LaunchModeFragment::class.java)
-                ,ViewItemBean("RecycleViewAdapter", "RecycleViewAdapter", RecycleViewAdaoterFragment::class.java)
                 ,ViewItemBean("RecycleView ItemDecoration", "ItemDecoration", RecycleViewItemDecorationFragment::class.java)
 
         )

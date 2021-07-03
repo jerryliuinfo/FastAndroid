@@ -15,7 +15,7 @@ import androidx.databinding.ViewDataBinding;
  * Created by Jerry on 2021/5/24.
  */
 public abstract class BaseDatebindingFragment<VB extends ViewDataBinding> extends BaseLifecycleFragment<VB> {
-    private VB mBinding;
+    protected VB mBinding;
 
 
 

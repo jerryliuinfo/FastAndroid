@@ -15,7 +15,7 @@ import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
-import com.tesla.framework.ui.fragment.ABaseFragment;
+import com.tesla.framework.ui.fragment.BaseFragment;
 import com.tesla.framework.ui.widget.CustomToolbar;
 
 import java.lang.ref.WeakReference;
@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
 
     // 当有Fragment Attach到这个Activity的时候，就会保存
-    private Map<String, WeakReference<ABaseFragment>> fragmentRefs;
+    private Map<String, WeakReference<BaseFragment>> fragmentRefs;
 
     private View rootView;
 
@@ -100,13 +100,13 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     }
 
 
-    public void showContent(Class<? extends ABaseFragment> target) {
+    public void showContent(Class<? extends BaseFragment> target) {
         showContent(target, null);
     }
 
-    public void showContent(Class<? extends ABaseFragment> target, Bundle bundle) {
+    public void showContent(Class<? extends BaseFragment> target, Bundle bundle) {
         try {
-            ABaseFragment fragment = target.newInstance();
+            BaseFragment fragment = target.newInstance();
             if (bundle != null) {
                 fragment.setArguments(bundle);
             }
@@ -188,7 +188,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
         outState.putString("language-country", language.getCountry());
     }
 
-    public void addFragment(String tag, ABaseFragment fragment) {
+    public void addFragment(String tag, BaseFragment fragment) {
         fragmentRefs.put(tag, new WeakReference<>(fragment));
     }
 
@@ -268,8 +268,8 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
         Set<String> keys = fragmentRefs.keySet();
         for (String key : keys) {
-            WeakReference<ABaseFragment> fragmentRef = fragmentRefs.get(key);
-            ABaseFragment fragment = fragmentRef.get();
+            WeakReference<BaseFragment> fragmentRef = fragmentRefs.get(key);
+            BaseFragment fragment = fragmentRef.get();
             if (fragment != null && fragment.onHomeClick())
                 return true;
         }
@@ -301,8 +301,8 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
         Set<String> keys = fragmentRefs.keySet();
         for (String key : keys) {
-            WeakReference<ABaseFragment> fragmentRef = fragmentRefs.get(key);
-            ABaseFragment fragment = fragmentRef.get();
+            WeakReference<BaseFragment> fragmentRef = fragmentRefs.get(key);
+            BaseFragment fragment = fragmentRef.get();
             if (fragment != null && fragment.onBackClick())
                 return true;
         }
@@ -335,8 +335,8 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     public boolean OnToolbarDoubleClick() {
         Set<String> keys = fragmentRefs.keySet();
         for (String key : keys) {
-            WeakReference<ABaseFragment> fragmentRef = fragmentRefs.get(key);
-            ABaseFragment fragment = fragmentRef.get();
+            WeakReference<BaseFragment> fragmentRef = fragmentRefs.get(key);
+            BaseFragment fragment = fragmentRef.get();
             if (fragment != null && fragment instanceof CustomToolbar.OnToolbarDoubleClickListener) {
                 if (((CustomToolbar.OnToolbarDoubleClickListener) fragment).OnToolbarDoubleClick())
                     return true;

@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.apache.fastandroid.app.FastApplication
-import com.apache.fastandroid.databinding.PerformanceAnrWatchdogBinding
-import com.tesla.framework.ui.fragment.ABaseFragment
-import com.tesla.framework.ui.fragment.BaseTraceFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.performance_anr_watchdog.*
 
 /**
  * Created by Jerry on 2020/12/28.
  */
-class AnrWatchDogDemoFragment : BaseTraceFragment<PerformanceAnrWatchdogBinding>() {
+class AnrWatchDogDemoFragment : BaseFragment() {
     override fun inflateContentView(): Int {
         return R.layout.performance_anr_watchdog
     }

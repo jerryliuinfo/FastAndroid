@@ -4,12 +4,12 @@ import android.os.Bundle
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentTraditionalLifecycleBinding
 import com.apache.fastandroid.jetpack.GpsEngine
-import com.tesla.framework.ui.fragment.BaseTraceFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 
 /**
  * Created by Jerry on 2020/11/1.
  */
-class TraditionalLifeCycleFragment: BaseTraceFragment<FragmentTraditionalLifecycleBinding>() {
+class TraditionalLifeCycleFragment: BaseFragment() {
 
     override fun inflateContentView(): Int {
         return R.layout.fragment_traditional_lifecycle

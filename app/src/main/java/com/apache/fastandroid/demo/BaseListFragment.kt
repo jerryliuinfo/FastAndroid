@@ -13,13 +13,13 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.databinding.FragmentCustomViewBinding
 import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
-import com.tesla.framework.ui.fragment.BaseTraceFragment
+import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
  * Created by Jerry on 2020/12/3.
  */
-abstract class BaseListFragment: BaseTraceFragment<FragmentCustomViewBinding>() {
+abstract class BaseListFragment: BaseFragment() {
 
 
     private lateinit var MODELS:ArrayList<ViewItemBean>

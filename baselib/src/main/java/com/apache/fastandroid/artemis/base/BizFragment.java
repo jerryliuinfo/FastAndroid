@@ -6,8 +6,8 @@ import android.content.Intent;
 import com.apache.fastandroid.artemis.AppContext;
 import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.fragment.ABaseFragment;
 import com.tesla.framework.ui.fragment.BaseFragment;
+import com.tesla.framework.ui.fragment.BaseLifecycleFragment;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -37,7 +37,7 @@ public class BizFragment extends BaseFragment {
         return -1;
     }
 
-    public static BizFragment createBizFragment(ABaseFragment fragment){
+    public static BizFragment createBizFragment(BaseLifecycleFragment fragment){
         if (fragment != null && fragment.getActivity() != null){
             BizFragment bizFragment = (BizFragment) fragment.getActivity().getSupportFragmentManager().findFragmentByTag(BIZ_FRAGMENT_TAG);
             if (bizFragment == null){

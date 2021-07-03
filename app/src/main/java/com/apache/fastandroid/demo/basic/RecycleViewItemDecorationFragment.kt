@@ -25,8 +25,7 @@ class RecycleViewItemDecorationFragment: BaseFragment() {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
 
-        val adapter = CommentAdapter()
-        adapter.setDatas(listOf("aaa","bbb", "ccc","ddd"))
+        val adapter = CommentAdapter(listOf("aaa","bbb", "ccc","ddd"))
         recycleview.adapter = adapter
         recycleview.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL,false)
 

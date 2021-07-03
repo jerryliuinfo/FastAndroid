@@ -47,6 +47,8 @@ public abstract class BaseFragment extends Fragment implements IView {
             contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT));
             this.rootView = contentView;
+            bindUI(rootView);
+
             return rootView;
         }
         return super.onCreateView(inflater, container, savedInstanceState);
@@ -111,5 +113,23 @@ public abstract class BaseFragment extends Fragment implements IView {
 
     public void setContentView(ViewGroup view) {
         this.rootView = view;
+    }
+
+    /**
+     * Action的home被点击了
+     *
+     * @return
+     */
+    public boolean onHomeClick() {
+        return onBackClick();
+    }
+
+    /**
+     * 返回按键被点击了
+     *
+     * @return
+     */
+    public boolean onBackClick() {
+        return false;
     }
 }
