@@ -23,16 +23,16 @@ class ExpandBtnClickAreaFragment: BaseFragment() {
         super.layoutInit(inflater, savedInstanceSate)
 
 
-        btn1.setOnClickListener {
+        btnOr.setOnClickListener {
             ToastUtils.showShort("onClick 1111")
         }
 
-        btn1.post {
+        btnOr.post {
             val deleateArea = Rect()
-            btn1.getHitRect(deleateArea)
+            btnOr.getHitRect(deleateArea)
             //给btn的点击区域四周都扩大100
             deleateArea.inset(-100,-100)
-            ll_parent.touchDelegate = TouchDelegate(deleateArea, btn1)
+            ll_parent.touchDelegate = TouchDelegate(deleateArea, btnOr)
         }
 
 

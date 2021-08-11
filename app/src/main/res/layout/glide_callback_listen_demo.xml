@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+   >
+
+
+    <Button
+        android:id="@+id/btn_custom_target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定义Target"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        />
+
+    <Button
+        android:id="@+id/btn_bitmap_target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Target泛型为Bitmap"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_custom_target"
+        />
+    <Button
+        android:id="@+id/btn_view_target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定义ViewTarget作用在任何View上"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bitmap_target"
+        />
+
+    <Button
+        android:id="@+id/btn_pre_load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="预加载图片"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_view_target"
+        />
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_pre_load"
+        />
+
+
+
+    <com.apache.fastandroid.demo.glide.MyLayout
+        android:id="@+id/mylayout"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageview"
+        />
+
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

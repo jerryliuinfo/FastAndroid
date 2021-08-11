@@ -14,6 +14,10 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("扩大button点击范围", "扩大button点击范围", ExpandBtnClickAreaFragment::class.java)
                 ,ViewItemBean("Gson", "Gson", GsonFragment::class.java)
                 ,ViewItemBean("枚举", "枚举", EnumFragment::class.java)
+                ,ViewItemBean("位或与", "位或与", BitOrAndFragment::class.java)
+                ,ViewItemBean("ViewGroup", "shouldDelayChildPressedState", ViewGroupShouldDelayPressStateFragment::class.java)
+                ,ViewItemBean("滑动冲突", "滑动冲突外部拦截法", ScrollConflictOuterInterceptDemoFragment::class.java)
+                ,ViewItemBean("滑动冲突", "滑动冲突内部拦截法", ScrollConflictInnernterceptDemoFragment::class.java)
 
         )
     }

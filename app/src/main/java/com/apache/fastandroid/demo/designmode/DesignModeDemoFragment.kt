@@ -10,7 +10,7 @@ import com.apache.fastandroid.demo.constraint.practice.ConstraintBasicFragment
 class DesignModeDemoFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-
+            ViewItemBean("观察者模式","观察者模式",ObserverModeFragment::class.java)
         )
     }
 }

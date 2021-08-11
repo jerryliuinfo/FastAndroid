@@ -3,7 +3,7 @@ package com.tesla.framework.ui.fragment;
 import android.view.View;
 
 import com.tesla.framework.R;
-import com.tesla.framework.databinding.ComUiFragmentRecycleviewSwiperefreshlayoutBinding;
+import com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBinding;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -12,7 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
  * 带下啦刷新效果的
  */
 
-public abstract class ARecycleViewSwipeRefreshFragmentNew extends ARecycleViewFragmentNew<ComUiFragmentRecycleviewSwiperefreshlayoutBinding> implements SwipeRefreshLayout.OnRefreshListener {
+public abstract class ARecycleViewSwipeRefreshFragmentNew extends ARecycleViewFragmentNew<CommUiRecycleviewSwiperefreshNewBinding> implements SwipeRefreshLayout.OnRefreshListener {
 
     SwipeRefreshLayout swipeRefreshLayout;
     @Override

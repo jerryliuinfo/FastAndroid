@@ -19,10 +19,12 @@ import retrofit2.http.Path;
  */
 public interface ApiService {
 
+//     置顶数据
     @GET("/article/top/json")
     Call<Protocol<List<Article>>> loadTopArticleCo();
 
 
+    //     置顶下面数据
     @GET("/article/list/{pageNum}/json")
     Call<Protocol<HomeArticleResponse>> loadHomeArticleCo(@Path("pageNum") int pageNum);
 

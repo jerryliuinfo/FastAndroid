@@ -16,7 +16,6 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
-import com.apache.fastandroid.bean.VersionResponseBean;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
@@ -24,7 +23,6 @@ import com.apache.fastandroid.task.DelayInitTask2;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
-import com.google.gson.Gson;
 import com.optimize.performance.launchstarter.DelayInitDispatcher;
 import com.permissionx.guolindev.PermissionX;
 import com.permissionx.guolindev.callback.RequestCallback;
@@ -63,6 +61,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         from.startActivity(intent);
     }
 
+    private int flag;
+
     @Override
     public int inflateContentView() {
         return R.layout.activity_main;
@@ -74,6 +74,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         mDrawerLayout = findViewById(R.id.drawer);
         mNavigationView = findViewById(R.id.navigation_view);
+
+
     }
 
     @CostTime
@@ -110,6 +112,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
 
 
+//        FragmentContainerActivity.launch(this, CustomDrawingFragment.class,null);
+//        FragmentContainerActivity.launch(this, ViewGroupShouldDelayPressStateFragment.class,null);
+//        FragmentContainerActivity.launch(this, ScrollConflictDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, ScrollConflictOuterInterceptDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, ScrollConflictInnernterceptDemoFragment.class,null);
+//        startActivity(new Intent(this, ScrollConflictActivity.class));
+//          FragmentContainerActivity.launch(this, DesignModeDemoFragment.class,null);
+
+
+
       /*  try {
             String jso1 = " {\"code\":0,\"msg\":\"Success\",\"data\":\"\"}";
             VersionResponseBean result1 = new Gson().fromJson(jso1,
@@ -120,14 +132,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }*/
 
 
-        try {
+        /*try {
             String json2 = "  {\"code\":0,\"msg\":\"Success\",\"data\":{}}";
             VersionResponseBean result2 = new Gson().fromJson(json2,
                     VersionResponseBean.class);
             NLog.d(TAG, "result2: %s",result2);
         }catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
     }
 
 

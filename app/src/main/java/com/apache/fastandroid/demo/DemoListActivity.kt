@@ -15,6 +15,8 @@ import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
 import com.apache.fastandroid.demo.doraemonkit.DoraemonkitDemoFragment
 import com.apache.fastandroid.DrawBasicDemoFragment
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
+import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
+import com.apache.fastandroid.demo.hencodeplus.HencodePlusFragment
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.widget.qmui.QMUIDemoFragment
@@ -41,7 +43,7 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制文字", DrawTextDemoFragment::class.java),
-//                ViewItemBean("Hencoder", "绘制辅助", ClipMatrixDemoFragment::class.java),
+                ViewItemBean("HencoderPlus", "绘制文字", HencodePlusFragment::class.java),
 
 
                 ViewItemBean("CustomViewWidget", "第三方控件", CustomViewFragment::class.java),
@@ -51,7 +53,8 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("临时验证", "临时验证", TempDemoFragment::class.java),
                 ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java),
                 ViewItemBean("开源UI控件", "开源UI控件", WidgetDemoFragment::class.java),
-                ViewItemBean("开源框架", "开源框架", OpenSourceDemoFragment::class.java)
+                ViewItemBean("开源框架", "开源框架", OpenSourceDemoFragment::class.java),
+                ViewItemBean("设计模式", "设计模式实战", DesignModeDemoFragment::class.java)
         )
         @JvmStatic
         fun launch(from:Activity){

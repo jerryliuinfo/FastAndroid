@@ -17,6 +17,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+import androidx.annotation.NonNull;
+
 /**
  * <pre>
  *     author: blankj
@@ -945,5 +947,21 @@ public final class CollectionUtils {
 
     public interface Predicate<E> {
         boolean evaluate(E item);
+    }
+
+
+
+    /**
+     * 获取集合的快照
+     */
+    @NonNull
+    public static <T> List<T> getSnapshot(@NonNull Collection<T> other) {
+        List<T> result = new ArrayList<>(other.size());
+        for (T item : other) {
+            if (item != null) {
+                result.add(item);
+            }
+        }
+        return result;
     }
 }
