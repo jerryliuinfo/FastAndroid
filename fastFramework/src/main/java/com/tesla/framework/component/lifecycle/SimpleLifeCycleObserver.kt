@@ -1,26 +1,11 @@
 package com.tesla.framework.component.lifecycle
 
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 
 /**
  * Created by Jerry on 2020/12/10.
  */
-open class SimpleLifeCycleObserver:FullLifecycleObserverNew {
-    override fun onCreate(owner: LifecycleOwner) {
-    }
+open class SimpleLifeCycleObserver:DefaultLifecycleObserver {
 
-    override fun onStart(owner: LifecycleOwner) {
-    }
-
-    override fun onResume(owner: LifecycleOwner) {
-    }
-
-    override fun onPause(owner: LifecycleOwner) {
-    }
-
-    override fun onStop(owner: LifecycleOwner) {
-    }
-
-    override fun onDestroy(owner: LifecycleOwner) {
-    }
 }

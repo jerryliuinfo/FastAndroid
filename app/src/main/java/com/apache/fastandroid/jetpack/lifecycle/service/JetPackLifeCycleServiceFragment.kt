@@ -1,11 +1,10 @@
-package com.apache.fastandroid.jetpack.lifecycle
+package com.apache.fastandroid.jetpack.lifecycle.service
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.tesla.framework.ui.fragment.BaseFragment
-import com.apache.fastandroid.jetpack.lifecycle.lifecycleservice.MyService
 import kotlinx.android.synthetic.main.fragment_jetpack_lifecycle_service.*
 
 /**

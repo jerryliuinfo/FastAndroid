@@ -1,4 +1,4 @@
-package com.apache.fastandroid.jetpack.lifecycle
+package com.apache.fastandroid.jetpack.lifecycle.handler
 
 import android.os.Bundle
 import android.view.LayoutInflater

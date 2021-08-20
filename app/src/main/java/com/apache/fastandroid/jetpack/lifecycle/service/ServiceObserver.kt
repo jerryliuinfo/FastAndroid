@@ -1,4 +1,4 @@
-package com.apache.fastandroid.jetpack.lifecycle.lifecycleservice
+package com.apache.fastandroid.jetpack.lifecycle.service
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver

@@ -2,8 +2,6 @@ package com.apache.fastandroid.jetpack.lifecycle.traditional
 
 import android.os.Bundle
 import com.apache.fastandroid.R
-import com.apache.fastandroid.databinding.FragmentTraditionalLifecycleBinding
-import com.apache.fastandroid.jetpack.GpsEngine
 import com.tesla.framework.ui.fragment.BaseFragment
 
 /**

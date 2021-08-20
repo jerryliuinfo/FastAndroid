@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 
 import com.apache.fastandroid.R;
 import com.blankj.utilcode.util.ColorUtils;
+import com.blankj.utilcode.util.ConvertUtils;
 import com.tesla.framework.common.util.dimen.DimensUtil;
 
 /**
@@ -99,7 +100,7 @@ public class WaveView extends View {
 
         aboveWaveColor = ColorUtils.getColor(R.color.wave);
         blowWaveColor = ColorUtils.getColor(R.color.wave);
-        text_default_size = DimensUtil.dp2px(14);
+        text_default_size = ConvertUtils.dp2px(14);
         setProgress(default_progress);
 
         initializePainters();

@@ -1,6 +1,5 @@
 package com.apache.fastandroid.artemis;
 
-import com.tesla.framework.common.util.VersionUtil;
 import com.tesla.framework.common.util.log.FastLog;
 
 /**
@@ -15,22 +14,22 @@ public class BaselibLogUtil {
 
     public static void d(String format, Object...args)
     {
-        FastLog.d(getLogTag(), VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format),args);
+        FastLog.d(getLogTag(), format,args);
     }
 
     public static void i(String format, Object...args)
     {
-        FastLog.i(getLogTag(),VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format),args);
+        FastLog.i(getLogTag(),format,args);
     }
 
     public static void v(String format, Object...args)
     {
-        FastLog.v(getLogTag(),VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format),args);
+        FastLog.v(getLogTag(),format,args);
     }
 
     public static void e(String format, Object...args)
     {
-        FastLog.e(getLogTag(),VersionUtil.getVersionNameAndFormat(BaseApp.getContext(),format),args);
+        FastLog.e(getLogTag(),format,args);
     }
 
 

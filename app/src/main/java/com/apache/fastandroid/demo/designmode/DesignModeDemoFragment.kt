@@ -11,6 +11,8 @@ class DesignModeDemoFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
             ViewItemBean("观察者模式","观察者模式",ObserverModeFragment::class.java)
+            ,ViewItemBean("LifeCycleOwner","防系统ComponentActivity监听声明周期",ObserverModeFragment::class.java)
+
         )
     }
 }

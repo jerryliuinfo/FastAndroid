@@ -1,9 +1,5 @@
 package com.tesla.framework.component.intercept;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import android.content.Context;
 import android.os.SystemClock;
 
@@ -12,12 +8,16 @@ import com.blankj.utilcode.util.ThreadUtils.SimpleTask;
 import com.tesla.framework.support.bean.InterceptorBean;
 import com.tesla.framework.support.execption.HandlerException;
 import com.tesla.framework.support.thread.CancelableCountDownLatch;
-import static com.tesla.framework.common.util.Consts.TAG;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Jerry on 2019/2/9.
  */
 public class InterceptorServiceImpl implements InterceptorService {
+    public static final String TAG = InterceptorServiceImpl.class.getSimpleName();
     private static boolean interceptorHasInit;
     private static final Object interceptorInitLock = new Object();
     static List<IInterceptor> interceptors = new ArrayList<>();

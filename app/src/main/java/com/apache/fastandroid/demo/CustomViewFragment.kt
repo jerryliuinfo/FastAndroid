@@ -8,6 +8,8 @@ import com.apache.fastandroid.demo.customview.EditTextFragment
 import com.apache.fastandroid.demo.customview.NestedScrollViewFragment
 import com.apache.fastandroid.demo.nodrawable.LoadingDrawableFragment
 import com.apache.fastandroid.demo.nodrawable.NoDrawableFragment
+import com.apache.fastandroid.demo.snaphelper.SnapHelperDemoFragment
+import com.apache.fastandroid.demo.temp.GenericClassDemoFragment
 import com.apache.fastandroid.demo.temp.SpanableStringFragment
 import java.util.*
 
@@ -24,6 +26,8 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("NestedScrollView", "NestedScrollView", NestedScrollViewFragment::class.java)
                 ,ViewItemBean("NoDrawable", "NoDrawable", NoDrawableFragment::class.java)
                 ,ViewItemBean("LoadingDrawable", "LoadingDrawable", LoadingDrawableFragment::class.java)
+                ,ViewItemBean("SnapHelper", "SnapHelper", SnapHelperDemoFragment::class.java)
+
 
         )
 

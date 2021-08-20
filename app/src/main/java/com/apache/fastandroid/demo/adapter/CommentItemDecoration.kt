@@ -3,13 +3,14 @@ package com.apache.fastandroid.demo.adapter
 import android.graphics.*
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.ConvertUtils
 import com.tesla.framework.common.util.dimen.DimensUtil
 
 /**
  * Created by Jerry on 2021/5/3.
  */
 class CommentItemDecoration: RecyclerView.ItemDecoration() {
-    private val marginHorizontal = DimensUtil.dp2px(2f)
+    private val marginHorizontal = ConvertUtils.dp2px(2f)
 
     private val mCirclePaint = Paint().apply {
         style = Paint.Style.STROKE
@@ -42,7 +43,7 @@ class CommentItemDecoration: RecyclerView.ItemDecoration() {
             var bottomDecorationHeight = layoutManager.getBottomDecorationHeight(childView);
 
 
-            val left = DimensUtil.dp2px(leftDecorationWidth / 2f) - mCirclePaint.strokeWidth - marginHorizontal
+            val left = ConvertUtils.dp2px(leftDecorationWidth / 2f) - mCirclePaint.strokeWidth - marginHorizontal
             c.drawCircle(left, ((childView.top + childView.bottom) / 2).toFloat(), 20f,mCirclePaint)
 
             val rouncRect = RectF(leftDecorationWidth.toFloat(), childView.bottom.toFloat(), (childView.getWidth() + leftDecorationWidth).toFloat(), (childView.bottom+ bottomDecorationHeight).toFloat())
@@ -69,7 +70,7 @@ class CommentItemDecoration: RecyclerView.ItemDecoration() {
 
         var positon = parent.getChildLayoutPosition(view)
         if (positon == 0){
-            outRect.top = DimensUtil.dp2px(40f)
+            outRect.top = ConvertUtils.dp2px(40f)
         }else{
             outRect.top = DimensUtil.dp2px(10f)
         }

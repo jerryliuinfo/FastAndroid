@@ -38,7 +38,6 @@ import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.FastLog.LogConfig;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.common.util.sp.SPUtil;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.performance.BlockDetector;
 
@@ -98,7 +97,6 @@ public class FastApplication extends FrameworkApplication {
         taskDispatcher.start();
 
 
-        SPUtil.init(getApplicationContext(),getPackageName() +"_share");
 
         //初始化crash统计
         initCrashAndAnalysis();

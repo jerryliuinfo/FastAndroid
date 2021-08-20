@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.network.NetworkHelper;
-import com.tesla.framework.common.util.sp.SPUtil;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelStore;
@@ -28,7 +27,6 @@ public class FrameworkApplication extends Application implements ViewModelStoreO
         super.onCreate();
         mAppViewModelStore = new ViewModelStore();
         sContext = getApplicationContext();
-        SPUtil.init(sContext,"");
         sApplication = (Application) sContext.getApplicationContext();
         NetworkHelper.getInstance().registerNetworkSensor(sContext);
 

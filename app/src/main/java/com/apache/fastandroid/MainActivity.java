@@ -17,6 +17,7 @@ import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.demo.snaphelper.SnapHelperDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -31,6 +32,7 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import java.util.List;
 
@@ -106,40 +108,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         BindUserInfo info = new BindUserInfo("title", "www.baidu.com", "Jerry");
         NLog.d(TAG, "info: %s", info);
 
+        FragmentContainerActivity.launch(this, SnapHelperDemoFragment.class,null);
+
 
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
 
 
-//        FragmentContainerActivity.launch(this, CustomDrawingFragment.class,null);
-//        FragmentContainerActivity.launch(this, ViewGroupShouldDelayPressStateFragment.class,null);
-//        FragmentContainerActivity.launch(this, ScrollConflictDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, ScrollConflictOuterInterceptDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, ScrollConflictInnernterceptDemoFragment.class,null);
-//        startActivity(new Intent(this, ScrollConflictActivity.class));
-//          FragmentContainerActivity.launch(this, DesignModeDemoFragment.class,null);
-
-
-
-      /*  try {
-            String jso1 = " {\"code\":0,\"msg\":\"Success\",\"data\":\"\"}";
-            VersionResponseBean result1 = new Gson().fromJson(jso1,
-                    VersionResponseBean.class);
-            NLog.d(TAG, "result1: %s",result1);
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
-
-
-        /*try {
-            String json2 = "  {\"code\":0,\"msg\":\"Success\",\"data\":{}}";
-            VersionResponseBean result2 = new Gson().fromJson(json2,
-                    VersionResponseBean.class);
-            NLog.d(TAG, "result2: %s",result2);
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
     }
 
 

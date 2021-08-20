@@ -1,4 +1,4 @@
-package com.apache.fastandroid.jetpack.lifecycle.lifecycleservice
+package com.apache.fastandroid.jetpack.lifecycle.service
 
 import android.content.Intent
 import androidx.lifecycle.LifecycleService

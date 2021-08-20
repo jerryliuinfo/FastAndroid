@@ -1,7 +1,5 @@
 package com.tesla.framework.common.util.dimen;
 
-import java.lang.reflect.Method;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -17,7 +15,10 @@ import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.tesla.framework.common.util.sp.SPUtil;
+import com.blankj.utilcode.util.SPUtils;
+
+import java.lang.reflect.Method;
+
 
 /**
  * Created by jerryliu on 2017/6/3.
@@ -173,10 +174,10 @@ public class ScreenUtil {
         int height = getScreenHeight(paramActivity) - getStatusBarHeight(paramActivity)
                 - getAppHeight(paramActivity);
         if (height == 0) {
-            height = SPUtil.getInt("KeyboardHeight", 400);
+            height = SPUtils.getInstance().getInt("KeyboardHeight", 400);
         }
         else {
-            SPUtil.putInt("KeyboardHeight", height);
+            SPUtils.getInstance().put("KeyboardHeight", height);
         }
 
 

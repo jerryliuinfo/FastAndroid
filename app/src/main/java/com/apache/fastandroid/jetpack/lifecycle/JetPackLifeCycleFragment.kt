@@ -23,6 +23,7 @@ class JetPackLifeCycleFragment: BaseFragment() {
                 NLog.d(TAG, "onLocationChanged latitude: %s,longtitude:%s",latitude,longtitude)
             }
         }))
+        lifecycle.addObserver(LifeGpsManager.getInstance())
     }
 
 

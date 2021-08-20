@@ -56,7 +56,7 @@ public class BizFragment extends BaseFragment {
             bizFragment = new BizFragment();
             bizFragment.mActivity = activity;
 
-            if (activity instanceof BaseActivity && ((BaseActivity) activity).isDestory()) {
+            if (activity instanceof BaseActivity && ((BaseActivity) activity).isDestroyed()) {
                 return bizFragment;
             }
 

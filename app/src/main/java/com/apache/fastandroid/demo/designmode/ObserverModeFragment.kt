@@ -2,6 +2,7 @@ package com.apache.fastandroid.demo.designmode
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.ComponentActivity
 import com.apache.fastandroid.R
 import com.apache.fastandroid.demo.designmode.observer.StandardController
 import com.tesla.framework.ui.fragment.BaseFragment

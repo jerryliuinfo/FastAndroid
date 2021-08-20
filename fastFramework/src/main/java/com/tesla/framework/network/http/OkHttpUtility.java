@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import com.alibaba.fastjson.JSON;
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.common.setting.Setting;
-import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 import com.tesla.framework.network.biz.ABizLogic;
@@ -113,13 +112,13 @@ public class OkHttpUtility implements IHttpUtility {
 	}
 
 	private <T> T executeRequest(Request request, Class<T> responseCls, Setting action, String method) throws TaskException {
-		try {
-			if (SettingUtility.getPermanentSettingAsInt("http_delay") > 0) {
-				Thread.sleep(SettingUtility.getPermanentSettingAsInt("http_delay"));
-			}
-		} catch (Exception e) {
-			FastLog.printStackTrace(e);
-		}
+//		try {
+//			if (SettingUtility.getPermanentSettingAsInt("http_delay") > 0) {
+//				Thread.sleep(SettingUtility.getPermanentSettingAsInt("http_delay"));
+//			}
+//		} catch (Exception e) {
+//			FastLog.printStackTrace(e);
+//		}
 
 		try {
 			Response response = getOkHttpClient().newCall(request).execute();

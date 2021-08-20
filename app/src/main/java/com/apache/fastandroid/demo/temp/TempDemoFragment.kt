@@ -18,6 +18,8 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("ViewGroup", "shouldDelayChildPressedState", ViewGroupShouldDelayPressStateFragment::class.java)
                 ,ViewItemBean("滑动冲突", "滑动冲突外部拦截法", ScrollConflictOuterInterceptDemoFragment::class.java)
                 ,ViewItemBean("滑动冲突", "滑动冲突内部拦截法", ScrollConflictInnernterceptDemoFragment::class.java)
+                ,ViewItemBean("泛型", "泛型", GenericClassDemoFragment::class.java)
+                ,ViewItemBean("RX", "RX操作符", GenericClassDemoFragment::class.java)
 
         )
     }

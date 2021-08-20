@@ -2,8 +2,6 @@ package com.tesla.framework.common.setting;
 
 import android.content.Context;
 
-import com.tesla.framework.common.util.sp.SPUtil;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -33,19 +31,7 @@ public class SettingUtility {
 			settingMap.put(key, newSettingMap.get(key));
 	}
 
-	public static boolean getBooleanSetting(String type) {
-		if (settingMap.containsKey(type))
-			return Boolean.parseBoolean(settingMap.get(type).getValue());
 
-		return false;
-	}
-
-	public static int getIntSetting(String type) {
-		if (settingMap.containsKey(type))
-			return Integer.parseInt(settingMap.get(type).getValue());
-
-		return -1;
-	}
 
 	public static String getStringSetting(String type) {
 		if (settingMap.containsKey(type))
@@ -61,32 +47,5 @@ public class SettingUtility {
 		return null;
 	}
 
-	public static void setPermanentSetting(String type, boolean value) {
-		//ActivityHelper.putBooleanShareData(FrameworkApplication.getContext(), type, value);
-		SPUtil.putBoolean(type, value);
-	}
-
-	public static boolean getPermanentSettingAsBool(String type, boolean def) {
-		return SPUtil.getBoolean(type,
-				settingMap.containsKey(type) ? Boolean.parseBoolean(settingMap.get(type).getValue()) : def);
-
-	}
-
-	public static void setPermanentSetting(String type, int value) {
-		SPUtil.putInt(type, value);
-	}
-
-	public static int getPermanentSettingAsInt(String type) {
-		return SPUtil.getInt(type,
-				settingMap.containsKey(type) ? Integer.parseInt(settingMap.get(type).getValue()) : -1);
-	}
-
-	public static void setPermanentSetting(String type, String value) {
-		SPUtil.putString(type, value);
-	}
-
-	public static String getPermanentSettingAsStr(String type, String def) {
-		return SPUtil.getString(type, settingMap.containsKey(type) ? settingMap.get(type).getValue() : def);
-	}
 
 }

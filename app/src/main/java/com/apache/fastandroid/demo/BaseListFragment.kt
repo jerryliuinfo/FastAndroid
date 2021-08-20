@@ -42,14 +42,15 @@ abstract class BaseListFragment: BaseFragment() {
         super.layoutInit(inflater, savedInstanceSate)
 
         MODELS = initDatas()
-
-
-        recycleview.apply {
-            layoutManager = GridLayoutManager(activity, 2)
-            adapter = ItemViewAdapter()
-        }
-
+        setupLayoutManager()
+        recycleview.adapter = ItemViewAdapter()
     }
+
+    open fun setupLayoutManager(){
+        recycleview.layoutManager = GridLayoutManager(activity, 2)
+    }
+
+
 
     private inner class ItemViewAdapter : RecyclerView.Adapter<ItemViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {

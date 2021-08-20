@@ -62,7 +62,7 @@
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"/>
         <activity android:name=".demo.temp.ScrollConflictActivity"/>
 
-        <service android:name=".jetpack.lifecycle.lifecycleservice.MyService"/>
+        <service android:name=".jetpack.lifecycle.service.MyService"/>
     </application>
 
 
