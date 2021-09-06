@@ -1,11 +1,13 @@
 package com.tesla.framework.ui.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.BarUtils;
 import com.tesla.framework.R;
 import com.tesla.framework.component.network.NetworkStateManager;
 import com.tesla.framework.support.inject.InjectUtility;
@@ -61,6 +63,8 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
         }
 
         getLifecycle().addObserver(NetworkStateManager.getInstance());
+        BarUtils.setStatusBarColor(this, Color.TRANSPARENT);
+        BarUtils.setStatusBarLightMode(this, true);
         bindView();
         layoutInit(savedInstanceState);
     }

@@ -32,6 +32,7 @@ import com.github.anrwatchdog.ANRError;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
+import com.tencent.mmkv.MMKV;
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.applike.IApplicationLike;
 import com.tesla.framework.common.setting.SettingUtility;
@@ -69,6 +70,10 @@ public class FastApplication extends FrameworkApplication {
         sContext = this;
         sApplication = this;
         initLog();
+        // data/data/com.apache.fastandroid/files/mmkv
+        String rootDir = MMKV.initialize(this);
+        NLog.d(TAG, "rootDir: %s",rootDir);
+
         BaseApp.onCreate(this);
         initAppLike();
 //        initAnrWatchDog();

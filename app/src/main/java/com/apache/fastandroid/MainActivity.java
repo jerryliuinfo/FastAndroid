@@ -17,7 +17,7 @@ import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.snaphelper.SnapHelperDemoFragment;
+import com.apache.fastandroid.demo.shapeimageview.ShapeImageviewDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -40,6 +40,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+
+import static com.apache.fastandroid.util.SignatureUtil.getSignedMediaUrl;
 
 @AptTest(path = "main")
 @BindPath("login/login")
@@ -108,7 +110,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         BindUserInfo info = new BindUserInfo("title", "www.baidu.com", "Jerry");
         NLog.d(TAG, "info: %s", info);
 
-        FragmentContainerActivity.launch(this, SnapHelperDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, ShapeImageviewDemoFragment.class,null);
 
 
 
@@ -116,6 +118,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
 
 
+        String target = "https://api.toongoggles.com/loggingmediaurlpassthrough/a.m3u8?avod=0&deliveryProfileId=&connection=wifi&language=en&device_id=&device_height=720&device_manufacturer=&device_type=tablet&device_width=1280&event_type=video_star";
+        String ourKey = "ETKbqkcBFt7dehJmuQ3mjkUccAUw4";
+        String signedMediaUrl = getSignedMediaUrl(target, ourKey);
+        NLog.d(TAG, "signedMediaUrl: %s",signedMediaUrl);
     }
 
 

@@ -1,4 +1,4 @@
-package com.tesla.framework.ui.widget;
+package com.tesla.framework.ui.widget.snaphelper;
 
 import android.graphics.PointF;
 import android.util.DisplayMetrics;

@@ -1,10 +1,7 @@
 package com.hencoder.hencoderpracticedraw4.practice
 
 import android.content.Context
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.hencoder.hencoderpracticedraw4.R
@@ -20,7 +17,6 @@ class Practice01ClipRectView@JvmOverloads constructor(
     private val mRectPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         color = Color.RED
-
     }
 
     private val mBitmap = BitmapFactory.decodeResource(resources, R.drawable.maps)
@@ -28,17 +24,15 @@ class Practice01ClipRectView@JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val left = (width - mBitmap.width)   / 2
-        val top =  (height - mBitmap.height) / 2
+        val left: Int = (width - mBitmap.getWidth()) / 2
+        val top: Int = (height - mBitmap.getHeight()) / 2
 
-        val offset = 0
-        canvas.drawRect(left.toFloat() - offset, top.toFloat() - offset, (left+mBitmap.width).toFloat() + offset, (top + mBitmap.height).toFloat() + offset,mRectPaint)
+        canvas.drawRect(left.toFloat(), top.toFloat(), (left + mBitmap.width).toFloat(), (top+mBitmap.height).toFloat(), mRectPaint)
 
         canvas.save()
-
+        //绘制内容将限制在这个区域
         canvas.clipRect(left + 50, top + 50, left + 300, top + 200)
-        canvas.drawBitmap(mBitmap,left.toFloat(),top.toFloat(),mPaint)
-
+        canvas.drawBitmap(mBitmap, left.toFloat(), top.toFloat(), mPaint)
         canvas.restore()
 
 

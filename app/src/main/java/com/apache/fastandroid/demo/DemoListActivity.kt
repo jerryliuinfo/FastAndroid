@@ -24,6 +24,7 @@ import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
+import com.hencoder.hencoderpracticedraw4.MatrixDemoFragment
 import com.tesla.framework.common.util.log.FastLog
 import com.tesla.framework.ui.activity.BaseActivity
 import com.tesla.framework.ui.activity.FragmentArgs
@@ -43,10 +44,10 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
                 ViewItemBean("Hencoder", "绘制文字", DrawTextDemoFragment::class.java),
-                ViewItemBean("HencoderPlus", "绘制文字", HencodePlusFragment::class.java),
+                ViewItemBean("Hencoder", "范围裁切", MatrixDemoFragment::class.java),
 
 
-                ViewItemBean("CustomViewWidget", "第三方控件", CustomViewFragment::class.java),
+                ViewItemBean("CustomViewWidget", "自定义控件", CustomViewFragment::class.java),
                 ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
                 ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),
                 ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java),

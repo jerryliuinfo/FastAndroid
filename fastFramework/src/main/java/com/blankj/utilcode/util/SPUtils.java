@@ -1,13 +1,15 @@
 package com.blankj.utilcode.util;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.tencent.mmkv.MMKV;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 
@@ -78,11 +80,14 @@ public final class SPUtils {
     }
 
     private SPUtils(final String spName) {
-        sp = Utils.getApp().getSharedPreferences(spName, Context.MODE_PRIVATE);
+//        sp = Utils.getApp().getSharedPreferences(spName, Context.MODE_PRIVATE);
+        sp = MMKV.mmkvWithID(spName);
     }
 
     private SPUtils(final String spName, final int mode) {
-        sp = Utils.getApp().getSharedPreferences(spName, mode);
+//        sp = Utils.getApp().getSharedPreferences(spName, mode);
+        sp = MMKV.mmkvWithID(spName);
+
     }
 
     /**

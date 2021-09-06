@@ -257,5 +257,9 @@ dependencies {
     implementation 'io.reactivex:rxandroid:1.2.0'
 //    implementation 'com.github.anrwatchdog:anrwatchdog:1.4.0'
 
+
+//    implementation group: 'net.sourceforge.streamsupport', name: 'streamsupport', version: '1.7.3'
+    implementation 'net.sourceforge.streamsupport:streamsupport:1.7.3'
+
 }
 
