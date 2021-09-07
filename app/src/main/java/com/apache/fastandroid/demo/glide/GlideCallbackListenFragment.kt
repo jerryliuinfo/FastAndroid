@@ -4,21 +4,18 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.animation.GlideAnimation
 import com.bumptech.glide.request.target.SimpleTarget
-import kotlinx.android.synthetic.main.glide_basic_usage_demo.image
-import kotlinx.android.synthetic.main.glide_cache_usage_demo.*
 import kotlinx.android.synthetic.main.glide_callback_listen_demo.*
 
 /**
  * Created by Jerry on 2021/6/24.
  */
-class GlideCallbackListenFragment: BaseFragment() {
+class GlideCallbackListenFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.glide_callback_listen_demo
     }

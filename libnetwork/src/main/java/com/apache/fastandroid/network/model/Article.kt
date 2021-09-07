@@ -1,4 +1,4 @@
-package com.apache.fastandroid.bean
+package com.apache.fastandroid.network.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

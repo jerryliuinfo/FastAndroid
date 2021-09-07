@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.constraint_group.*
 
 /**
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.constraint_group.*
  *
  *
  */
-class ConstraintGroupFragment: BaseFragment() {
+class ConstraintGroupFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.constraint_group
     }

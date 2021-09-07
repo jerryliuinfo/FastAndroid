@@ -17,11 +17,10 @@ import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.shapeimageview.ShapeImageviewDemoFragment;
+import com.apache.fastandroid.demo.temp.KnowledgeFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
-import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.optimize.performance.launchstarter.DelayInitDispatcher;
@@ -48,24 +47,16 @@ import static com.apache.fastandroid.util.SignatureUtil.getSignedMediaUrl;
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
-
-
     DrawerLayout mDrawerLayout;
-
     NavigationView mNavigationView;
-
     private ActionBarDrawerToggle drawerToggle;
-
     private int selecteId = -1;
-
 
     public static void launch(Activity from, UserBean userBean){
         Intent intent = new Intent(from, MainActivity.class);
         intent.putExtra("userBean",userBean);
         from.startActivity(intent);
     }
-
-    private int flag;
 
     @Override
     public int inflateContentView() {
@@ -75,11 +66,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void bindView() {
         super.bindView();
-
         mDrawerLayout = findViewById(R.id.drawer);
         mNavigationView = findViewById(R.id.navigation_view);
-
-
     }
 
     @CostTime
@@ -87,7 +75,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
 
-//        ProxyTool.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
@@ -110,13 +97,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         BindUserInfo info = new BindUserInfo("title", "www.baidu.com", "Jerry");
         NLog.d(TAG, "info: %s", info);
 
-        FragmentContainerActivity.launch(this, ShapeImageviewDemoFragment.class,null);
-
-
+        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
-
 
         String target = "https://api.toongoggles.com/loggingmediaurlpassthrough/a.m3u8?avod=0&deliveryProfileId=&connection=wifi&language=en&device_id=&device_height=720&device_manufacturer=&device_type=tablet&device_width=1280&event_type=video_star";
         String ourKey = "ETKbqkcBFt7dehJmuQ3mjkUccAUw4";
@@ -124,23 +108,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         NLog.d(TAG, "signedMediaUrl: %s",signedMediaUrl);
     }
 
-
-
-
     @Override
     public void setContentView(View view) {
         super.setContentView(view);
     }
-
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        if ("".equals(intent.getAction())){
-
-        }
-    }
-
 
     @OnClick
     private void loadMenuData(){
@@ -153,10 +124,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             tv_username.setText("未登录");
         }
     }
-
-
-
-
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -243,12 +210,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         if (drawerToggle != null){
             drawerToggle.syncState();
         }
-    }
-
-    @Override
-    protected void setStatusBar() {
-        int mStatusBarColor = ColorUtils.getColor(R.color.colorPrimary);
-
     }
 
 

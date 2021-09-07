@@ -12,14 +12,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.apache.fastandroid.R;
-import com.tesla.framework.ui.fragment.BaseFragment;
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
 
 import androidx.annotation.NonNull;
 
 /**
  * Created by Jerry on 2021/1/20.
  */
-public class SpanableStringFragment extends BaseFragment {
+public class SpanableStringFragment extends BaseStatusFragmentNew {
     private TextView mChildrenPrivacyText;
     @Override
     public int inflateContentView() {

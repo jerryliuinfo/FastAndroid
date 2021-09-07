@@ -2,20 +2,15 @@ package com.apache.fastandroid.demo.temp
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Adapter
 import android.widget.ArrayAdapter
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
-import kotlinx.android.synthetic.main.temp_scroll_conflict.*
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.temp_scroll_conflict.listView
-import kotlinx.android.synthetic.main.temp_scroll_conflict_outer_intercept.*
 
 /**
  * Created by Jerry on 2021/8/6.
  */
-class ScrollConflictInnernterceptDemoFragment:BaseFragment() {
+class ScrollConflictInnernterceptDemoFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.temp_scroll_conflict_inner_intercept
     }

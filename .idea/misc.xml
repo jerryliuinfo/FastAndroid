@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.22760416666666666" />
+        <entry key="app/src/main/res/layout/fragment_shapeimageview.xml" value="0.2125" />
+        <entry key="app/src/main/res/layout/fragment_temp_knowledge.xml" value="0.240625" />
+        <entry key="fastFramework/src/main/res/layout/comm_lay_emptyview.xml" value="0.1" />
+        <entry key="fastFramework/src/main/res/layout/comm_lay_loadfailed.xml" value="0.1" />
+        <entry key="fastFramework/src/main/res/layout/comm_lay_loading.xml" value="0.2671875" />
+      </map>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
@@ -45,7 +57,7 @@
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

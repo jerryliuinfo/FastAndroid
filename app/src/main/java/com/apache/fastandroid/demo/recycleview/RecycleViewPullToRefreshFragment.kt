@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.demo.adapter.PulltoRefreshAdapter
 import com.blankj.utilcode.util.ToastUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -17,7 +17,7 @@ import java.util.*
 /**
  * Created by Jerry on 2021/5/3.
  */
-class RecycleViewPullToRefreshFragment: BaseFragment() {
+class RecycleViewPullToRefreshFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.activity_recycleview_pulltorefresh
     }

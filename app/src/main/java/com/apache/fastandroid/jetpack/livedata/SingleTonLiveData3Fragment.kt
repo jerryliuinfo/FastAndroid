@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata_singleton.tv_result
 import java.math.BigDecimal
 
 /**
  * Created by Jerry on 2020/12/31.
  */
-class SingleTonLiveData3Fragment: BaseFragment() {
+class SingleTonLiveData3Fragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.fragment_jetpack_livedata_singleton3
     }

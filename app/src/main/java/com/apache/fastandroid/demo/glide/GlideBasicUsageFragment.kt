@@ -1,27 +1,21 @@
 package com.apache.fastandroid.demo.glide
 
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.annotation.Nullable
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import com.apache.fastandroid.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.tesla.framework.applike.FrameworkApplication
-import com.tesla.framework.common.util.ColorUtil
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.glide_basic_usage_demo.*
 
 /**
  * Created by Jerry on 2021/6/24.
  */
-class GlideBasicUsageFragment: BaseFragment() {
+class GlideBasicUsageFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.glide_basic_usage_demo
     }

@@ -1,11 +1,10 @@
-package com.apache.fastandroid.retrofit;
+package com.apache.fastandroid.network.retrofit;
 
-import android.content.Context;
-
-import com.apache.fastandroid.app.FastApplication;
-import com.apache.fastandroid.retrofit.convertor.CustomGsonConverterFactory;
-import com.apache.fastandroid.sample.singleton.Singleton;
-import com.tesla.framework.common.util.log.NLog;
+import com.apache.fastandroid.retrofit.ApiConstant;
+import com.apache.fastandroid.retrofit.HeaderInterceptor;
+import com.apache.fastandroid.retrofit.HttpLogInterceptor;
+import com.mooc.libnetwork.BuildConfig;
+import com.apache.fastandroid.network.retrofit.convertor.CustomGsonConverterFactory;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -26,9 +25,7 @@ public final class ApiEngine {
 
     private final static int CONN_TIMEOUT = 30000;
     private final static int READ_TIMEOUT = 30000;
-    private static String userAgent;
 
-    public static String API_HOST = "";
 
     private static Singleton<OkHttpClient, Void> SINGLE_CLIENT = new Singleton<OkHttpClient, Void>() {
         @Override
@@ -55,11 +52,10 @@ public final class ApiEngine {
     private static void onOkHttpClientCreated(OkHttpClient.Builder client) {
         client.connectTimeout(CONN_TIMEOUT, TimeUnit.MILLISECONDS);
         client.readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS);
-        final Context context = FastApplication.getContext();
         List<Interceptor> interceptors = client.interceptors();
         interceptors.add(new HeaderInterceptor());
 
-        if (NLog.isDebug()) {
+        if (BuildConfig.DEBUG) {
             HttpLogInterceptor logInterceptor = new HttpLogInterceptor();
             interceptors.add(logInterceptor);
         }
@@ -81,6 +77,45 @@ public final class ApiEngine {
     public static ApiService createApiService() {
         final Retrofit retrofit = sRetrofitMain.get();
         return retrofit.create(ApiService.class);
+    }
+
+
+    private static abstract class Singleton<T, P> {
+        /**
+         * 唯一实例
+         */
+        private volatile T mInstance;
+
+        /**
+         * 创建实例
+         *
+         * @param p 创建实例所需指定的参数
+         *          exp: Context context
+         * @return 实例
+         */
+        protected abstract T create(P p);
+
+        /**
+         * 获取实例
+         *
+         * @param p 创建实例时指定的参数
+         *          exp: Context context
+         * @return 实例
+         */
+        public final T get(P p) {
+            if (mInstance == null) {
+                synchronized (this) {
+                    if (mInstance == null) {
+                        mInstance = create(p);
+                    }
+                }
+            }
+            return mInstance;
+        }
+
+        public final T get() {
+            return get(null);
+        }
     }
 
 

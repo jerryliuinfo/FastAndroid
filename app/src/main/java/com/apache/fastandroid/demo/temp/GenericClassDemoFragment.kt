@@ -3,15 +3,12 @@ package com.apache.fastandroid.demo.temp
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.apache.fastandroid.demo.bean.BaseAlbumItem
-import com.apache.fastandroid.demo.bean.BaseArtistItem
-import com.apache.fastandroid.demo.bean.BaseMusicItem
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 
 /**
  * Created by Jerry on 2021/8/13.
  */
-class GenericClassDemoFragment:BaseFragment() {
+class GenericClassDemoFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.temp_generic
     }

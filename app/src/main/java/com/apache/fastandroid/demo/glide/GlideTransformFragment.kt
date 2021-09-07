@@ -3,7 +3,7 @@ package com.apache.fastandroid.demo.glide
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.glide_transform_demo.*
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.glide_transform_demo.*
 /**
  * Created by Jerry on 2021/6/24.
  */
-class GlideTransformFragment: BaseFragment() {
+class GlideTransformFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.glide_transform_demo
     }

@@ -3,13 +3,13 @@ package com.apache.fastandroid.demo.widget.qmui
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.qmui_demo.*
 
 /**
  * Created by Jerry on 2021/5/4.
  */
-class QMUIDemoFragment: BaseFragment() {
+class QMUIDemoFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.qmui_demo
     }

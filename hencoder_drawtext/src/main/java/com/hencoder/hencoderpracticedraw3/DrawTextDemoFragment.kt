@@ -2,7 +2,7 @@ package com.hencoder.hencoderpracticedraw3
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
 import kotlinx.android.synthetic.main.fragment_practice_demo.*
@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_practice_demo.*
 /**
  * Created by Jerry on 2020/11/11.
  */
-class DrawTextDemoFragment: BaseFragment() {
+class DrawTextDemoFragment: BaseStatusFragmentNew() {
 
 
     private val pageModels = arrayListOf(

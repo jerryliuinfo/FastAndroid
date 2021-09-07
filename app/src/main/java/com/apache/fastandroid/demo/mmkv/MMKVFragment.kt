@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.tencent.mmkv.MMKV
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.fragment_mmkv.*
 import java.util.*
 
@@ -13,7 +13,7 @@ import java.util.*
 /**
  * Created by Jerry on 2021/8/31.
  */
-class MMKVFragment:BaseFragment() {
+class MMKVFragment: BaseStatusFragmentNew() {
     companion object{
         private const val TAG = "MMKVFragment"
     }

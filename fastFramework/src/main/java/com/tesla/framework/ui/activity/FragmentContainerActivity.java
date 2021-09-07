@@ -116,13 +116,6 @@ public class FragmentContainerActivity extends BaseActivity {
         return R.layout.comm_ui_fragment_container;
     }
 
-    @Override
-    protected int configTheme() {
-        if (overrideTheme > 0)
-            return overrideTheme;
-
-        return super.configTheme();
-    }
 
 
 }

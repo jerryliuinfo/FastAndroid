@@ -3,7 +3,7 @@ package com.apache.fastandroid.jetpack.livedata
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
 import com.tesla.framework.common.util.log.NLog
@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_map.*
  * Created by Jerry on 2021/2/7.
  * 如果希望在将 LiveData 对象分派给观察者之前对存储在其中的值进行更改，或者需要根据另一个实例的值返回不同的 LiveData 实例，可以使用LiveData中提供的Transformations类。
  */
-class LiveDataTransformMapFragment: BaseFragment() {
+class LiveDataTransformMapFragment: BaseStatusFragmentNew() {
     companion object{
         private const val TAG = "LiveDataTransformMapFragment"
     }

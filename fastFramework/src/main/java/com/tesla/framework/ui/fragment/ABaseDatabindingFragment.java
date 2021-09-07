@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
-public abstract class ABaseDatabindingFragment<B extends ViewDataBinding> extends  BaseFragment{
+public abstract class ABaseDatabindingFragment<B extends ViewDataBinding> extends BaseStatusFragmentNew {
 
     protected B binding;
     @Override

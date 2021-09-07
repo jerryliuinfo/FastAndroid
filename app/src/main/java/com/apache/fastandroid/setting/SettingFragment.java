@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.apache.fastandroid.R;
-import com.tesla.framework.ui.fragment.BaseFragment;
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
 import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
@@ -15,7 +15,7 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
  * Created by jerryliu on 2017/6/24.
  */
 
-public class SettingFragment extends BaseFragment {
+public class SettingFragment extends BaseStatusFragmentNew {
     public static void launch(Activity from){
         FragmentContainerActivity.launch(from,SettingFragment.class,null );
     }

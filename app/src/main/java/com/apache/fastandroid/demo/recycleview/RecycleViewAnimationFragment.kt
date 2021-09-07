@@ -8,7 +8,7 @@ import android.widget.CompoundButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.demo.adapter.AnimatorAdapter
 import com.apache.fastandroid.demo.recycleview.data.DataServer
 import com.chad.baserecyclerviewadapterhelper.entity.Status
@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.recycleview_animation.*
 /**
  * Created by Jerry on 2021/5/3.
  */
-class RecycleViewAnimationFragment: BaseFragment() {
+class RecycleViewAnimationFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.recycleview_animation
     }

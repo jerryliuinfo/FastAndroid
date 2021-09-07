@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import androidx.lifecycle.Observer
 import androidx.work.*
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.jetpack.workmanager.request.UploadLogWorker
 import com.tesla.framework.applike.FrameworkApplication
 import com.tesla.framework.common.util.log.NLog
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by Jerry on 2021/4/6.
  */
-class OneTimeWorkRequestDemoFragment: BaseFragment() {
+class OneTimeWorkRequestDemoFragment: BaseStatusFragmentNew() {
     companion object{
         private val TAG = "UploadTag"
 

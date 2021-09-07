@@ -1,5 +1,6 @@
 package com.tesla.framework.ui.activity;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -12,7 +13,7 @@ import com.tesla.framework.R;
 import com.tesla.framework.component.network.NetworkStateManager;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
-import com.tesla.framework.ui.fragment.BaseFragment;
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
 import com.tesla.framework.ui.widget.CustomToolbar;
 
 import java.lang.ref.WeakReference;
@@ -37,26 +38,34 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     private BaseActivityHelper mHelper;
 
     // 当有Fragment Attach到这个Activity的时候，就会保存
-    private Map<String, WeakReference<BaseFragment>> fragmentRefs;
+    private Map<String, WeakReference<BaseStatusFragmentNew>> fragmentRefs;
+
+
+    /**
+     * 判断当前Activity是否在前台。
+     */
+    protected boolean isActive = false;
+
+    /**
+     * 当前Activity的实例。
+     */
+    protected Activity activity = null;
+
+    private WeakReference<Activity> weakRefActivity = null;
+
 
     private View rootView;
 
     @ViewInject(idStr = "toolbar")
     Toolbar mToolbar;
 
-    protected int configTheme() {
-        if (mHelper != null) {
-            int appTheheme = mHelper.configTheme();
-            if (appTheheme > 0)
-                return appTheheme;
-        }
-        return -1;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         fragmentRefs = new HashMap<>();
         super.onCreate(savedInstanceState);
+        activity = this;
+        weakRefActivity = new WeakReference(this);
 
         if (inflateContentView() > 0) {
             setContentView(inflateContentView());
@@ -69,18 +78,30 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
         layoutInit(savedInstanceState);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isActive = true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isActive = false;
+    }
+
     protected void bindView(){
 
     }
 
 
-    public void showContent(Class<? extends BaseFragment> target) {
+    public void showContent(Class<? extends BaseStatusFragmentNew> target) {
         showContent(target, null);
     }
 
-    public void showContent(Class<? extends BaseFragment> target, Bundle bundle) {
+    public void showContent(Class<? extends BaseStatusFragmentNew> target, Bundle bundle) {
         try {
-            BaseFragment fragment = target.newInstance();
+            BaseStatusFragmentNew fragment = target.newInstance();
             if (bundle != null) {
                 fragment.setArguments(bundle);
             }
@@ -142,7 +163,6 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     public void setContentView(View view) {
         super.setContentView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-        setStatusBar();
         rootView = view;
         InjectUtility.initInjectedView(this, this, this.rootView);
 
@@ -160,7 +180,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
     }
 
-    public void addFragment(String tag, BaseFragment fragment) {
+    public void addFragment(String tag, BaseStatusFragmentNew fragment) {
         fragmentRefs.put(tag, new WeakReference<>(fragment));
     }
 
@@ -195,8 +215,8 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
         Set<String> keys = fragmentRefs.keySet();
         for (String key : keys) {
-            WeakReference<BaseFragment> fragmentRef = fragmentRefs.get(key);
-            BaseFragment fragment = fragmentRef.get();
+            WeakReference<BaseStatusFragmentNew> fragmentRef = fragmentRefs.get(key);
+            BaseStatusFragmentNew fragment = fragmentRef.get();
             if (fragment != null && fragment.onHomeClick())
                 return true;
         }
@@ -228,8 +248,8 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
         Set<String> keys = fragmentRefs.keySet();
         for (String key : keys) {
-            WeakReference<BaseFragment> fragmentRef = fragmentRefs.get(key);
-            BaseFragment fragment = fragmentRef.get();
+            WeakReference<BaseStatusFragmentNew> fragmentRef = fragmentRefs.get(key);
+            BaseStatusFragmentNew fragment = fragmentRef.get();
             if (fragment != null && fragment.onBackClick())
                 return true;
         }
@@ -244,8 +264,8 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     public boolean OnToolbarDoubleClick() {
         Set<String> keys = fragmentRefs.keySet();
         for (String key : keys) {
-            WeakReference<BaseFragment> fragmentRef = fragmentRefs.get(key);
-            BaseFragment fragment = fragmentRef.get();
+            WeakReference<BaseStatusFragmentNew> fragmentRef = fragmentRefs.get(key);
+            BaseStatusFragmentNew fragment = fragmentRef.get();
             if (fragment != null && fragment instanceof CustomToolbar.OnToolbarDoubleClickListener) {
                 if (((CustomToolbar.OnToolbarDoubleClickListener) fragment).OnToolbarDoubleClick())
                     return true;
@@ -260,9 +280,6 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
         return mHelper;
     }
 
-    protected void setStatusBar() {
-    }
-
 
     protected void setToolbarTitle(String msg) {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -270,5 +287,9 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        activity = null;
+    }
 }

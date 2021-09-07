@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.demo.adapter.CommentAdapter
 import com.apache.fastandroid.demo.adapter.CommentItemDecoration
 import com.blankj.utilcode.util.ResourceUtils
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.android_basic_recycleview_adapter.recyclev
 import kotlinx.android.synthetic.main.recycleview_item_decoration.*
 
 
-class RecycleViewItemDecorationFragment: BaseFragment() {
+class RecycleViewItemDecorationFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.recycleview_item_decoration
     }

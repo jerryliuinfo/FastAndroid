@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.apache.fastandroid.artemis.AppContext;
 import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.fragment.BaseFragment;
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
 import com.tesla.framework.ui.fragment.BaseLifecycleFragment;
 
 import androidx.fragment.app.FragmentActivity;
@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentActivity;
  * Fragment是一个神器，是跨Activity和Fragment之前通讯的重要的桥梁
  */
 
-public class BizFragment extends BaseFragment {
+public class BizFragment extends BaseStatusFragmentNew {
     private FragmentActivity mActivity;
     private static final String BIZ_FRAGMENT_TAG = "com.apache.fastandroid.base.BizFragment";
     private Activity getRealActivity() {

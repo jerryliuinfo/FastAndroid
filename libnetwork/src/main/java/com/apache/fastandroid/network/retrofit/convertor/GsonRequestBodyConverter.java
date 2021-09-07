@@ -1,4 +1,4 @@
-package com.apache.fastandroid.retrofit.convertor;
+package com.apache.fastandroid.network.retrofit.convertor;
 
 /**
  * Created by Jerry on 2021/3/24.

@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.clip_to_padding_layout_item.view.*
 import kotlinx.android.synthetic.main.custom_view_clip_to_padding.*
 
 /**
  * Created by Jerry on 2020/12/2.
  */
-class ClipToPaddingFragment: BaseFragment() {
+class ClipToPaddingFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.custom_view_clip_to_padding
     }

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.tesla.framework.common.util.log.FastLog
 import com.tesla.framework.component.livedata.LiveDataBus
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata_bus.*
@@ -13,7 +13,7 @@ import kotlin.random.Random
 /**
  * Created by Jerry on 2020/11/5.
  */
-class LiveDataBusFragment : BaseFragment(){
+class LiveDataBusFragment : BaseStatusFragmentNew(){
     override fun inflateContentView(): Int {
         return R.layout.fragment_jetpack_livedata_bus
     }

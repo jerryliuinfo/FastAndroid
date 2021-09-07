@@ -7,11 +7,11 @@ import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.constraint_set.*
 
 
-class ConstraintSetSwitchLayoutFragment: BaseFragment() {
+class ConstraintSetSwitchLayoutFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.activity_constraint_start
     }

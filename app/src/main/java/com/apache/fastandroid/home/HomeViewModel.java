@@ -1,7 +1,7 @@
 package com.apache.fastandroid.home;
 
-import com.apache.fastandroid.bean.Article;
-import com.apache.fastandroid.bean.HomeArticleResponse;
+import com.apache.fastandroid.network.model.Article;
+import com.apache.fastandroid.network.model.HomeArticleResponse;
 import com.apache.fastandroid.jetpack.BaseViewModel;
 import com.apache.fastandroid.jetpack.StateLiveData;
 

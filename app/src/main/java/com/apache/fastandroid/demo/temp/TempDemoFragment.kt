@@ -20,6 +20,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("滑动冲突", "滑动冲突内部拦截法", ScrollConflictInnernterceptDemoFragment::class.java)
                 ,ViewItemBean("泛型", "泛型", GenericClassDemoFragment::class.java)
                 ,ViewItemBean("RX", "RX操作符", GenericClassDemoFragment::class.java)
+                ,ViewItemBean("知识点", "知识点", KnowledgeFragment::class.java)
 
         )
     }

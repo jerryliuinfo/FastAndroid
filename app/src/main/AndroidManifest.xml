@@ -31,17 +31,24 @@
     <uses-sdk tools:overrideLibrary="com.android.support:multidex:1.0.2"/>
 
 
+<!--    App/Activity就可以进入分屏模式了 -->
+
     <application
         android:name=".app.FastApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="${appName}"
+        android:resizeableActivity="false"
+
         tools:replace="android:theme,android:icon,android:label"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppCommonTheme"
         >
-      <activity android:name=".SplashActivity" >
+
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+        <activity android:name=".SplashActivity" >
 
         </activity>
         <activity android:name=".demo.DemoListActivity" >

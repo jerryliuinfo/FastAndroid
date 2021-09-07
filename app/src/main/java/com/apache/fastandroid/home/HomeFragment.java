@@ -3,8 +3,8 @@ package com.apache.fastandroid.home;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
-import com.apache.fastandroid.bean.Article;
-import com.apache.fastandroid.bean.HomeArticleResponse;
+import com.apache.fastandroid.network.model.Article;
+import com.apache.fastandroid.network.model.HomeArticleResponse;
 import com.apache.fastandroid.jetpack.StateData;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragmentNew;

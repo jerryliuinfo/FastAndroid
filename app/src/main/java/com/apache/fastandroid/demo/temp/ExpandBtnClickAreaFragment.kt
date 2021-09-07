@@ -6,14 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.TouchDelegate
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.blankj.utilcode.util.ToastUtils
 import kotlinx.android.synthetic.main.expand_btn_click_area.*
 
 /**
  * Created by Jerry on 2021/3/1.
  */
-class ExpandBtnClickAreaFragment: BaseFragment() {
+class ExpandBtnClickAreaFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.expand_btn_click_area
     }

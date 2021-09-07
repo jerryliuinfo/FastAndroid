@@ -1,11 +1,11 @@
 package com.apache.fastandroid.home;
 
-import com.apache.fastandroid.bean.Article;
-import com.apache.fastandroid.bean.HomeArticleResponse;
 import com.apache.fastandroid.jetpack.StateLiveData;
-import com.apache.fastandroid.retrofit.ApiEngine;
 import com.apache.fastandroid.retrofit.Protocol;
 import com.apache.fastandroid.retrofit.ProtocolCallback;
+import com.apache.fastandroid.network.model.Article;
+import com.apache.fastandroid.network.model.HomeArticleResponse;
+import com.apache.fastandroid.network.retrofit.ApiEngine;
 import com.tesla.framework.support.KidsException;
 
 import java.util.List;

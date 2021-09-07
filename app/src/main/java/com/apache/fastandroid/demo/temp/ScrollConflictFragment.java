@@ -15,7 +15,7 @@ import com.apache.fastandroid.demo.widget.ListViewEx;
 import com.apache.fastandroid.demo.widget.refresh.RefreshLayoutBase;
 import com.apache.fastandroid.demo.widget.refresh.RefreshLayoutBase2;
 import com.apache.fastandroid.demo.widget.refresh.RefreshListView;
-import com.tesla.framework.ui.fragment.BaseFragment;
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by blueberry on 2016/6/20.
  */
-public class ScrollConflictFragment extends BaseFragment {
+public class ScrollConflictFragment extends BaseStatusFragmentNew {
 
     private static final String TAG = "ScrollConflictFragment";
 

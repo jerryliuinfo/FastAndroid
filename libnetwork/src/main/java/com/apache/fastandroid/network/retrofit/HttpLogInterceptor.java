@@ -1,4 +1,4 @@
-package com.apache.fastandroid.retrofit;
+package com.apache.fastandroid.network.retrofit;
 
 
 import com.tesla.framework.common.util.log.NLog;

@@ -2,16 +2,15 @@ package com.apache.fastandroid.demo.designmode
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.activity.ComponentActivity
 import com.apache.fastandroid.R
 import com.apache.fastandroid.demo.designmode.observer.StandardController
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.design_mode_observer.*
 
 /**
  * Created by Jerry on 2021/8/11.
  */
-class ObserverModeFragment:BaseFragment() {
+class ObserverModeFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.design_mode_observer
     }

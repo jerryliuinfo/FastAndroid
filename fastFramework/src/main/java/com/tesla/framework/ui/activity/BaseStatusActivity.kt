@@ -1,16 +1,18 @@
 package com.tesla.framework.ui.activity
 
 import android.app.ProgressDialog
+import android.os.Bundle
 import android.view.View
 import android.view.ViewStub
 import android.widget.TextView
 import com.tesla.framework.R
+import com.tesla.framework.common.callback.RequestLifecycle
 
 /**
  * Created by Jerry on 2021/3/26.
  * 封装
  */
-abstract class BaseStatusActivity:BaseActivity() {
+abstract class BaseStatusActivity:BaseActivity(),RequestLifecycle{
     /**
      * Activity中由于服务器异常导致加载失败显示的布局。
      */
@@ -26,7 +28,10 @@ abstract class BaseStatusActivity:BaseActivity() {
      */
     private var noContentView: View? = null
 
-    private var progressDialog: ProgressDialog? = null
+    /**
+     * Activity中显示加载等待的控件。
+     */
+    private var loadingView: View? = null
 
 
     /**
@@ -106,24 +111,24 @@ abstract class BaseStatusActivity:BaseActivity() {
         badNetworkView?.visibility = View.GONE
     }
 
-    fun showProgressDialog(title: String?, message: String) {
-        if (progressDialog == null) {
-            progressDialog = ProgressDialog(this).apply {
-                if (title != null) {
-                    setTitle(title)
-                }
-                setMessage(message)
-                setCancelable(false)
-            }
-        }
-        progressDialog?.show()
+    override fun layoutInit(savedInstanceState: Bundle?) {
+        super.layoutInit(savedInstanceState)
+
+        loadingView = findViewById(R.id.layoutLoading)
+
     }
 
-    fun closeProgressDialog() {
-        progressDialog?.let {
-            if (it.isShowing) {
-                it.dismiss()
-            }
-        }
+
+
+    override fun startLoading() {
+        loadingView?.visibility = View.VISIBLE
+    }
+
+    override fun loadFinished() {
+        loadingView?.visibility = View.GONE
+    }
+
+    override fun loadFailed(msg: String?) {
+        loadingView?.visibility = View.GONE
     }
 }

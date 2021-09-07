@@ -2,7 +2,7 @@ package com.hencoder.hencoderpracticedraw2
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
 import com.apache.fastandroid.hencoder.paint.R
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_draw_paint_demo.*
 /**
  * Created by Jerry on 2020/11/11.
  */
-class DrawPaintDemoFragment: BaseFragment() {
+class DrawPaintDemoFragment: BaseStatusFragmentNew() {
 
     private val pageModels = arrayListOf(
             PageModel(R.layout.sample_linear_gradient, R.string.title_linear_gradient, R.layout.practice_linear_gradient),

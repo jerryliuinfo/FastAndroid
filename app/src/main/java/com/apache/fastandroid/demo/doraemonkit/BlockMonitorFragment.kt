@@ -3,15 +3,14 @@ package com.apache.fastandroid.demo.doraemonkit
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.apache.fastandroid.databinding.FragmentDoraemonkitBlockMonitorBinding
 import com.didichuxing.doraemonkit.kit.blockmonitor.core.BlockMonitorManager
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.fragment_doraemonkit_block_monitor.*
 
 /**
  * Created by Jerry on 2020/12/3.
  */
-class BlockMonitorFragment:BaseFragment() {
+class BlockMonitorFragment: BaseStatusFragmentNew() {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         BlockMonitorManager.getInstance().start()
         btn_block.setOnClickListener {

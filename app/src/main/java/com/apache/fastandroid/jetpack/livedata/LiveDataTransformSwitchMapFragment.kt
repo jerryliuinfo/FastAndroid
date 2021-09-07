@@ -3,7 +3,7 @@ package com.apache.fastandroid.jetpack.livedata
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
 import com.tesla.framework.common.util.SimpleTextWatcher
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_switch
 /**
  * Created by Jerry on 2021/2/7.
  */
-class LiveDataTransformSwitchMapFragment: BaseFragment() {
+class LiveDataTransformSwitchMapFragment: BaseStatusFragmentNew() {
     companion object{
         private const val TAG = "LiveDataTransformMapFragment"
     }

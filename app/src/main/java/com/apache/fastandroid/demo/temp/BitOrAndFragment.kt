@@ -5,14 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.temp_bit_or_and_demo.*
 
 
 /**
  * Created by Jerry on 2021/3/1.
  */
-class BitOrAndFragment: BaseFragment() {
+class BitOrAndFragment: BaseStatusFragmentNew() {
     companion object{
         val TAG = "EnumFragment"
     }

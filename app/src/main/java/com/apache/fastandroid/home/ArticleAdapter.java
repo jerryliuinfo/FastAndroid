@@ -3,7 +3,7 @@ package com.apache.fastandroid.home;
 import android.text.Html;
 
 import com.apache.fastandroid.R;
-import com.apache.fastandroid.bean.Article;
+import com.apache.fastandroid.network.model.Article;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tesla.framework.common.util.N;

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 
 import com.apache.fastandroid.R;
-import com.tesla.framework.ui.fragment.BaseFragment;
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
 
 /**
  * Created by Jerry on 2020/12/2.
@@ -12,7 +12,7 @@ import com.tesla.framework.ui.fragment.BaseFragment;
  * android:clipChildren的意思：是否限制子View在其范围内(默认为true)，设置为false则代表子View可以超出父View的控件
  * 这个属性只有设置在子View的 「父View的父View」上面才有效
  */
-public class ClipChildFragment extends BaseFragment {
+public class ClipChildFragment extends BaseStatusFragmentNew {
 
     @Override
     public int inflateContentView() {

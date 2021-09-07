@@ -5,15 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.apache.fastandroid.R
-import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
-import kotlinx.android.synthetic.main.temp_bit_or_and_demo.*
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 
 
 /**
  * Created by Jerry on 2021/3/1.
  */
-class ViewGroupShouldDelayPressStateFragment: BaseFragment() {
+class ViewGroupShouldDelayPressStateFragment: BaseStatusFragmentNew() {
     companion object{
         val TAG = "ViewGroupShouldDelayPressStateFragment"
     }

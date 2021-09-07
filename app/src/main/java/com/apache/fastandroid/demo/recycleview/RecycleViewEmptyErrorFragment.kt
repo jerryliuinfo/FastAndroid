@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.demo.adapter.EmptyAdapter
 import com.apache.fastandroid.demo.recycleview.empty.EmptyView
 import com.apache.fastandroid.demo.recycleview.fail.ErrorView
@@ -20,7 +20,7 @@ import java.util.*
 /**
  * Created by Jerry on 2021/5/3.
  */
-class RecycleViewEmptyErrorFragment: BaseFragment() {
+class RecycleViewEmptyErrorFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.base_recycleview_adapter_demo
     }

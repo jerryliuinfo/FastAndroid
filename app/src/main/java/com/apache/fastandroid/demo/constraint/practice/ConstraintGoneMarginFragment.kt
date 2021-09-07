@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.constraint_gone_margin.*
 
 /**
  *
  */
-class ConstraintGoneMarginFragment: BaseFragment() {
+class ConstraintGoneMarginFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.constraint_gone_margin
     }

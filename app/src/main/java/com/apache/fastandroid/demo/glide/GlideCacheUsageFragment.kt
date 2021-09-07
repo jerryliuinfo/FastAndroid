@@ -3,7 +3,7 @@ package com.apache.fastandroid.demo.glide
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.model.GlideUrl
@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.glide_cache_usage_demo.*
 /**
  * Created by Jerry on 2021/6/24.
  */
-class GlideCacheUsageFragment: BaseFragment() {
+class GlideCacheUsageFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.glide_cache_usage_demo
     }

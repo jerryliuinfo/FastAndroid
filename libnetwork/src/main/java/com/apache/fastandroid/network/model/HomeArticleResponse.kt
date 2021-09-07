@@ -1,4 +1,4 @@
-package com.apache.fastandroid.bean
+package com.apache.fastandroid.network.model
 
 
 /**

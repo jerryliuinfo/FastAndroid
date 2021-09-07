@@ -1,5 +1,6 @@
 package com.tesla.framework.ui.fragment;
 
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,13 +16,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-
 /**
  * Created by 01370340 on 2017/9/1.
  */
 
-public abstract class BaseFragment extends Fragment implements IView {
-
+public abstract class BaseFragment extends Fragment implements IView{
     public static final String TAG = "BaseFragment";
     private View rootView;
     protected LayoutInflater layoutInflater;
@@ -132,4 +131,10 @@ public abstract class BaseFragment extends Fragment implements IView {
     public boolean onBackClick() {
         return false;
     }
+
+
+
+
+
+
 }
