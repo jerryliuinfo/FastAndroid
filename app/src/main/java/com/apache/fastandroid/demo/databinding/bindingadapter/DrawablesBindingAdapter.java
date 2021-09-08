@@ -1,5 +1,5 @@
 
-package com.tesla.framework.component.bindingadapter;
+package com.apache.fastandroid.demo.databinding.bindingadapter;
 
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;

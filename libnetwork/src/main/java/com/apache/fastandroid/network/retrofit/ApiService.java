@@ -1,7 +1,6 @@
 package com.apache.fastandroid.network.retrofit;
 
 
-import com.apache.fastandroid.retrofit.Protocol;
 import com.apache.fastandroid.network.model.Article;
 import com.apache.fastandroid.network.model.HomeArticleResponse;
 

@@ -33,16 +33,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//    implementation 'com.squareup.okhttp3:okhttp:4.2.0'
-//    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
-//    implementation project(":libcommon")
 
     implementation rootProject.ext.dependencies.publicImplementation
 
-
-//    implementation rootProject.thirdLib.okhttp3
-//    implementation rootProject.thirdLib.okhttp3_log_interceptor
-//    implementation rootProject.thirdLib.fastjson
 
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     implementation "android.arch.lifecycle:extensions:1.1.1"

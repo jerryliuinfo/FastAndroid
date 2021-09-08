@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -131,6 +132,7 @@ public abstract class BaseFragment extends Fragment implements IView{
     public boolean onBackClick() {
         return false;
     }
+
 
 
 

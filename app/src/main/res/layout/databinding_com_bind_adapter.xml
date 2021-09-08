@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="click"
+            type="com.apache.fastandroid.jetpack.relearnandroid.CommonBindingAdapterDemoFragment.ClickProxy" />
+        <variable
+            name="vm"
+            type="com.apache.fastandroid.jetpack.relearnandroid.vm.CommonBindAdapterViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            imageUrl="@{vm.cover}"
+            placeHolder="@drawable/user_cover"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.1"
+            />
+
+        <Button
+            android:id="@+id/btnTestVisible"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon"
+            android:text="控制loading的显示与隐藏"
+            />
+
+        <Button
+            android:id="@+id/btnTestSelect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/btnTestVisible"
+            app:layout_constraintTop_toTopOf="@+id/btnTestVisible"
+            android:layout_marginStart="10dp"
+            android:text="控制View的选中状态"
+            />
+
+        <Button
+            android:id="@+id/btnDebounce"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnTestSelect"
+            android:text="按钮防抖点击"
+            onClickWithDebouncing="@{()->click.toMain()}"
+            />
+
+        <Button
+            android:id="@+id/btnLiveData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/btnTestSelect"
+            app:layout_constraintTop_toBottomOf="@+id/btnTestSelect"
+            android:text="Databidng和LiveData结合使用"
+            />
+
+        <Button
+            android:id="@+id/btnReuseDrawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/btnTestSelect"
+            app:layout_constraintTop_toBottomOf="@+id/btnTestSelect"
+            android:text="Drawable复用"
+            />
+
+
+
+        <EditText
+            android:id="@+id/et_name"
+            drawable_radius="@{12}"
+            drawable_strokeColor="@color/comm_blue"
+            drawable_strokeWidth="@{1}"
+            drawable_focused="@{@drawable/edittext_focused}"
+            drawable="@{@drawable/edittext_normal}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/iv_livedata"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="56dp"
+            android:hint="请输入用户名"
+            android:inputType="text"
+            android:paddingStart="12dp"
+            android:singleLine="true"
+            />
+
+        <ImageView
+            android:id="@+id/iv_livedata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/iv_select"
+            android:background="@drawable/collect_selector"
+            selected="@{vm.selected2}"
+            />
+
+
+        <ImageView
+            android:id="@+id/iv_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar"
+            android:background="@drawable/collect_selector"
+            selected="@{vm.selected}"
+            />
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            visible2="@{vm.loading}"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

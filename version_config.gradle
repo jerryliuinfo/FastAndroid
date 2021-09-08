@@ -236,8 +236,11 @@ ext {
                     'com.google.android.material:material:1.2.0',
 
                     //fix uplicate class com.google.common.util.concurrent.ListenableFuture found in modules guava-23.5-jre.jar
-                    'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+                    'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava',
 //                    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+
+
+                    'com.github.xuexiangjys:XUI:1.1.8'
 
             ],
 

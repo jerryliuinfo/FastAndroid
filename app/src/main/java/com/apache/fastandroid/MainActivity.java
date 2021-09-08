@@ -17,7 +17,6 @@ import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.temp.KnowledgeFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -39,6 +38,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 
 import static com.apache.fastandroid.util.SignatureUtil.getSignedMediaUrl;
 
@@ -97,7 +97,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         BindUserInfo info = new BindUserInfo("title", "www.baidu.com", "Jerry");
         NLog.d(TAG, "info: %s", info);
 
-        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
+//        FragmentContainerActivity.launch(this, RelearnAndroidDemoFragment.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
@@ -234,16 +234,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         return super.onBackClick();
     }
 
+    private MutableLiveData<Boolean> result = new MutableLiveData<>();
 
     @Override
     public void onClick(View v) {
-
+        result.setValue(!result.getValue());
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         FastBus.getInstance().unregiste(this);
+    }
+
+    class Proxy{
+        void toMain(){
+            FragmentContainerActivity.launch(MainActivity.this,null,null);
+
+        }
     }
 
 }

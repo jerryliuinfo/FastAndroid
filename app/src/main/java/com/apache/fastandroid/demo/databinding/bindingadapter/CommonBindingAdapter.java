@@ -19,10 +19,10 @@ package com.apache.fastandroid.demo.databinding.bindingadapter;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.blankj.utilcode.util.ClickUtils;
 import com.bumptech.glide.Glide;
+import com.tesla.framework.common.util.log.NLog;
 
 import androidx.databinding.BindingAdapter;
 
@@ -30,10 +30,12 @@ import androidx.databinding.BindingAdapter;
  * Create by KunMinX at 19/9/18
  */
 public class CommonBindingAdapter {
+    public static final String TAG = CommonBindingAdapter.class.getSimpleName();
 
     @BindingAdapter(value = {"imageUrl", "placeHolder"}, requireAll = false)
     public static void imageUrl(ImageView view, String url, Drawable placeHolder) {
-        Glide.with(view.getContext()).load(url).placeholder(placeHolder).into(view);
+        NLog.d(TAG, "imageUrl: %s",url);
+        Glide.with(view.getContext()).load(url).into(view);
     }
 
     @BindingAdapter(value = {"visible"}, requireAll = false)
@@ -41,10 +43,12 @@ public class CommonBindingAdapter {
         view.setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 
-    @BindingAdapter(value = {"textColor"}, requireAll = false)
-    public static void setTextColor(TextView textView, int textColorRes) {
-        textView.setTextColor(textView.getContext().getColor(textColorRes));
+    @BindingAdapter(value = {"visible2"}, requireAll = false)
+    public static void visible2(View view, boolean visible) {
+        view.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
     }
+
+
 
     @BindingAdapter(value = {"selected"}, requireAll = false)
     public static void selected(View view, boolean select) {

@@ -4,6 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.22760416666666666" />
+        <entry key="app/src/main/res/drawable/collect_selector.xml" value="0.152" />
+        <entry key="app/src/main/res/drawable/edittext_focused.xml" value="0.152" />
+        <entry key="app/src/main/res/drawable/edittext_normal.xml" value="0.152" />
+        <entry key="app/src/main/res/layout/article_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/constraint_weight.xml" value="0.175" />
+        <entry key="app/src/main/res/layout/databinding_com_bind_adapter.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_nodrawable.xml" value="0.22135416666666666" />
         <entry key="app/src/main/res/layout/fragment_shapeimageview.xml" value="0.2125" />
         <entry key="app/src/main/res/layout/fragment_temp_knowledge.xml" value="0.240625" />
         <entry key="fastFramework/src/main/res/layout/comm_lay_emptyview.xml" value="0.1" />

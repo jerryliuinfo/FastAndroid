@@ -1,10 +1,8 @@
 package com.apache.fastandroid.network.retrofit;
 
-import com.apache.fastandroid.retrofit.ApiConstant;
-import com.apache.fastandroid.retrofit.HeaderInterceptor;
-import com.apache.fastandroid.retrofit.HttpLogInterceptor;
-import com.mooc.libnetwork.BuildConfig;
 import com.apache.fastandroid.network.retrofit.convertor.CustomGsonConverterFactory;
+import com.apache.fastandroid.retrofit.ApiConstant;
+import com.mooc.libnetwork.BuildConfig;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

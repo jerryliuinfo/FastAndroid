@@ -22,6 +22,8 @@ import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.widget.qmui.QMUIDemoFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
+import com.apache.fastandroid.jetpack.relearnandroid.RelearnAndroidDemoFragment
+import com.apache.fastandroid.jetpack.workmanager.WorkManagerListDemo
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
 import com.hencoder.hencoderpracticedraw4.MatrixDemoFragment
@@ -55,7 +57,9 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java),
                 ViewItemBean("开源UI控件", "开源UI控件", WidgetDemoFragment::class.java),
                 ViewItemBean("开源框架", "开源框架", OpenSourceDemoFragment::class.java),
-                ViewItemBean("设计模式", "设计模式实战", DesignModeDemoFragment::class.java)
+                ViewItemBean("设计模式", "设计模式实战", DesignModeDemoFragment::class.java),
+                ViewItemBean("重学Android", "重学Android", RelearnAndroidDemoFragment::class.java)
+
         )
         @JvmStatic
         fun launch(from:Activity){

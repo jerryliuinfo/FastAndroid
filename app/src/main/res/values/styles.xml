@@ -6,11 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
         <item name="android:windowAnimationStyle">@style/anim_fade</item>
-
-        <item name="qmui_alpha_pressed">0.5</item>
-        <item name="qmui_alpha_disabled">0.5</item>
 
     </style>
 
