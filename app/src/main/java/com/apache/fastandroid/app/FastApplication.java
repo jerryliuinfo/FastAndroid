@@ -44,21 +44,17 @@ import com.tesla.framework.component.performance.BlockDetector;
 
 import java.io.File;
 
-import androidx.annotation.NonNull;
 import androidx.core.os.TraceCompat;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ProcessLifecycleOwner;
-import androidx.lifecycle.ViewModelStore;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.multidex.MultiDex;
 
 /**
  * Created by jerryliu on 2017/3/26.
  */
 
-public class FastApplication extends FrameworkApplication implements ViewModelStoreOwner {
+public class FastApplication extends FrameworkApplication  {
     public static final String TAG = FastApplication.class.getSimpleName();
-    private ViewModelStore mAppViewModelStore;
 
 
     private static final String client_id = "7024a413";
@@ -74,7 +70,6 @@ public class FastApplication extends FrameworkApplication implements ViewModelSt
         }
         sContext = this;
         sApplication = this;
-        mAppViewModelStore = new ViewModelStore();
         initLog();
         // data/data/com.apache.fastandroid/files/mmkv
         String rootDir = MMKV.initialize(this);
@@ -334,11 +329,6 @@ public class FastApplication extends FrameworkApplication implements ViewModelSt
         return (FastApplication) sApplication;
     }
 
-    @NonNull
-    @Override
-    public ViewModelStore getViewModelStore() {
-        return mAppViewModelStore;
-    }
 
 
 }

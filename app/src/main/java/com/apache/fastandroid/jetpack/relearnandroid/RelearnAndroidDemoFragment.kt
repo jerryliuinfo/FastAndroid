@@ -10,7 +10,8 @@ import com.apache.fastandroid.demo.databinding.bindingadapter.CommonBindingAdapt
 class RelearnAndroidDemoFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-            ViewItemBean("CommonBindingAdapter","DatabindingAdapter通用用法使用", CommonBindingAdapterDemoFragment::class.java)
+            ViewItemBean("CommonBindingAdapter","DatabindingAdapter通用用法使用", CommonBindingAdapterDemoFragment::class.java),
+            ViewItemBean("ViewModel作用域","ViewModel作用域", ViewModelScopeDemoFragment::class.java)
         )
     }
 }

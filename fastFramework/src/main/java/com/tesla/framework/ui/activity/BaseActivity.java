@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.blankj.utilcode.util.BarUtils;
 import com.tesla.framework.R;
+import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.component.network.NetworkStateManager;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
@@ -21,10 +22,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 
 /**
@@ -39,6 +43,10 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
     // 当有Fragment Attach到这个Activity的时候，就会保存
     private Map<String, WeakReference<BaseStatusFragmentNew>> fragmentRefs;
+
+
+    private ViewModelProvider mActivityProvider;
+    private ViewModelProvider mApplicationProvider;
 
 
     /**
@@ -291,5 +299,20 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     protected void onDestroy() {
         super.onDestroy();
         activity = null;
+    }
+
+
+    protected <T extends ViewModel> T getActivityViewModel(@NonNull Class<T> modelClass) {
+        if (mActivityProvider == null) {
+            mActivityProvider = new ViewModelProvider(this);
+        }
+        return mActivityProvider.get(modelClass);
+    }
+
+    protected <T extends ViewModel> T getApplicationScopeViewModel(@NonNull Class<T> modelClass) {
+        if (mApplicationProvider == null) {
+            mApplicationProvider = new ViewModelProvider((FrameworkApplication) this.getApplicationContext());
+        }
+        return mApplicationProvider.get(modelClass);
     }
 }

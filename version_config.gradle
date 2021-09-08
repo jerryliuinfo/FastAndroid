@@ -163,7 +163,6 @@ ext {
                     'androidx.recyclerview:recyclerview:1.1.0',
                     'androidx.constraintlayout:constraintlayout:2.0.4',
                     'androidx.browser:browser:1.0.0',
-                    'com.google.android.material:material:1.1.0',
 
 
                     "androidx.multidex:multidex:2.0.0",
@@ -232,16 +231,15 @@ ext {
                     "com.github.anrwatchdog:anrwatchdog:1.4.0",
                     //  高性能存储组件
                     'com.tencent:mmkv-static:1.2.10',
-                    //圆角、圆形图片处理
-                    'com.google.android.material:material:1.2.0',
+
 
                     //fix uplicate class com.google.common.util.concurrent.ListenableFuture found in modules guava-23.5-jre.jar
                     'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava',
 //                    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
 
 
-                    'com.github.xuexiangjys:XUI:1.1.8'
-
+                    'com.github.xuexiangjys:XUI:1.1.8',
+//                    'com.kunminx.arch:unpeek-livedata:7.2.0-beta1'
             ],
 
             basic: [

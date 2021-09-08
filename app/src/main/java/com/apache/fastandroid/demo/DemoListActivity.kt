@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
@@ -16,18 +17,18 @@ import com.apache.fastandroid.demo.doraemonkit.DoraemonkitDemoFragment
 import com.apache.fastandroid.DrawBasicDemoFragment
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
 import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
-import com.apache.fastandroid.demo.hencodeplus.HencodePlusFragment
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
-import com.apache.fastandroid.demo.widget.qmui.QMUIDemoFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.RelearnAndroidDemoFragment
-import com.apache.fastandroid.jetpack.workmanager.WorkManagerListDemo
+import com.apache.fastandroid.jetpack.relearnandroid.vm.ShareViewModel
+import com.blankj.utilcode.util.ToastUtils
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
 import com.hencoder.hencoderpracticedraw4.MatrixDemoFragment
 import com.tesla.framework.common.util.log.FastLog
+import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.activity.BaseActivity
 import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
@@ -79,6 +80,21 @@ class DemoListActivity : BaseActivity() {
             layoutManager = GridLayoutManager(this@DemoListActivity, 2)
             adapter = ItemViewAdapter()
         }
+        getApplicationScopeViewModel(ShareViewModel::class.java).name1.observe(this,object : Observer<String>{
+            override fun onChanged(t: String?) {
+                NLog.d(TAG, "name1 onChanged: %s",t)
+
+            }
+
+        })
+        getApplicationScopeViewModel(ShareViewModel::class.java).name2.observe(this,object : Observer<String>{
+            override fun onChanged(t: String?) {
+               NLog.d(TAG, "name2 onChanged: %s",t)
+
+            }
+
+        })
+
 
 //        FragmentContainerActivity.launch(this,CustomViewFragment::class.java,null)
 
