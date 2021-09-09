@@ -34,6 +34,9 @@ public interface ApiService {
     @GET("/article/list/{pageNum}/json")
     Call<Protocol<HomeArticleResponse>> loadHomeArticleCo(@Path("pageNum") int pageNum);
 
+    @GET("/article/list/{pageNum}/json")
+    Observable<Protocol<HomeArticleResponse>> loadHomeArticleCo2(@Path("pageNum") int pageNum);
+
 
 
 }

@@ -19,7 +19,7 @@ class OpenSourceDemoFragment: BaseListFragment() {
         return arrayListOf(
                 ViewItemBean("Glide", "Glide", GlideDemoFragment::class.java),
                 ViewItemBean("MMKV", "MMKV", MMKVFragment::class.java),
-                ViewItemBean("Rxjava", "Rxjava", RxJavaDemoFragment::class.java)
+                ViewItemBean("Rxjava", "Rxjava操作符", RxJavaDemoFragment::class.java)
 
         )
     }

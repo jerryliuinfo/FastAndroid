@@ -6,11 +6,71 @@
 
     <Button
         android:id="@+id/btn_basic_usage"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="基本用法"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_map_usage"
         app:layout_constraintTop_toTopOf="parent"
+        />
+    <Button
+        android:id="@+id/btn_map_usage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Map用法"
+        app:layout_constraintStart_toEndOf="@+id/btn_basic_usage"
+        app:layout_constraintTop_toTopOf="@+id/btn_basic_usage"
+        android:layout_marginStart="10dp"
+        />
+    <Button
+        android:id="@+id/btn_zip_usage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="合并zip用法"
+        app:layout_constraintStart_toEndOf="@+id/btn_map_usage"
+        app:layout_constraintTop_toTopOf="@+id/btn_basic_usage"
+        android:layout_marginStart="10dp"
+        />
+    <Button
+        android:id="@+id/btn_flatmap_usage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="FlatMap用法"
+        app:layout_constraintStart_toEndOf="@+id/btn_zip_usage"
+        app:layout_constraintTop_toTopOf="@+id/btn_basic_usage"
+        android:layout_marginStart="10dp"
+        />
+
+    <Button
+        android:id="@+id/btn_retrywhen_usage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="retryWhen用法"
+        app:layout_constraintStart_toEndOf="@+id/btn_flatmap_usage"
+        app:layout_constraintTop_toTopOf="@+id/btn_basic_usage"
+        android:layout_marginStart="10dp"
+        />
+
+    <Button
+        android:id="@+id/btn_destroy_token"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="销毁token用法"
+        app:layout_constraintStart_toEndOf="@+id/btn_retrywhen_usage"
+        app:layout_constraintTop_toTopOf="@+id/btn_basic_usage"
+        android:layout_marginStart="10dp"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

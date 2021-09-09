@@ -56,7 +56,7 @@ class GsonFragment: BaseStatusFragmentNew() {
             /*使打印的json字符串更美观，如果不设置，打印出来的字符串不分行*/
             builder.setPrettyPrinting();
             val gson = builder.create()
-            var person = Person(10)
+            var person = Person("Jerry",10)
 
             val json = gson!!.toJson(person);
             NLog.d(TAG, "btn3 json: %s",json);
@@ -74,7 +74,7 @@ class GsonFragment: BaseStatusFragmentNew() {
             /*使打印的json字符串更美观，如果不设置，打印出来的字符串不分行*/
             builder.setPrettyPrinting();
             val gson = builder.create()
-            var person = Person(10)
+            var person = Person("Jerry",11)
 
             val json = gson!!.toJson(person);
             NLog.d(TAG, "btn4 json: %s",json);

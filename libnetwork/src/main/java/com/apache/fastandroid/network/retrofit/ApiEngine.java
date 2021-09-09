@@ -76,6 +76,15 @@ public final class ApiEngine {
     }
 
 
+    private static FakeApi sFakeApi;
+    public static FakeApi getFakeApi(){
+        if (sFakeApi == null){
+            sFakeApi = new FakeApi();
+        }
+        return sFakeApi;
+    }
+
+
 
 
 }

@@ -17,6 +17,7 @@ import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.bean.BindUserInfo;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.demo.rxjava.RxJavaDemoFragment2;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -39,6 +40,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 import static com.apache.fastandroid.util.SignatureUtil.getSignedMediaUrl;
 
@@ -93,12 +100,46 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 }
             }
         });
+        StringBuilder builder = new StringBuilder();
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@io.reactivex.annotations.NonNull ObservableEmitter<Integer> it) throws Exception {
+                it.onNext(1);
+                it.onNext(2);
+                it.onNext(3);
+            }
+        }).map(new Function<Integer, String>() {
+            @Override
+            public String apply(@io.reactivex.annotations.NonNull Integer integer) throws Exception {
+                return "map to:"+integer;
+            }
+        }).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                builder.append(s);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+
+            }
+        }, new Action() {
+            @Override
+            public void run() throws Exception {
+                builder.append("onComplete");
+                ToastUtils.showShort(builder.toString());
+                NLog.d(TAG, builder.toString());
+            }
+        });
+        String str = "aaa";
+        int b = 10;
+        String result = str + b;
 
         BindUserInfo info = new BindUserInfo("title", "www.baidu.com", "Jerry");
         NLog.d(TAG, "info: %s", info);
 
 //        FragmentContainerActivity.launch(this, RelearnAndroidDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, RxJavaDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, RxJavaDemoFragment2.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
