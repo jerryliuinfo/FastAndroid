@@ -252,9 +252,6 @@ dependencies {
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
 
 
-
-    implementation 'io.reactivex:rxjava:1.1.4'
-    implementation 'io.reactivex:rxandroid:1.2.0'
 //    implementation 'com.github.anrwatchdog:anrwatchdog:1.4.0'
 
 

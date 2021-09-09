@@ -6,6 +6,7 @@ import com.apache.fastandroid.network.model.HomeArticleResponse;
 
 import java.util.List;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -23,6 +24,10 @@ public interface ApiService {
 //     置顶数据
     @GET("/article/top/json")
     Call<Protocol<List<Article>>> loadTopArticleCo();
+
+    //     置顶数据
+    @GET("/article/top/json")
+    Observable<Protocol<List<Article>>> loadTopArticleCo2();
 
 
     //     置顶下面数据

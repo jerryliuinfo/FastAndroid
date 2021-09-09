@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 
 /**
@@ -24,97 +25,57 @@ public final class ApiEngine {
     private final static int CONN_TIMEOUT = 30000;
     private final static int READ_TIMEOUT = 30000;
 
+    private static OkHttpClient sOkHttpClient;
 
-    private static Singleton<OkHttpClient, Void> SINGLE_CLIENT = new Singleton<OkHttpClient, Void>() {
-        @Override
-        protected OkHttpClient create(Void v) {
+    private static OkHttpClient getOkHttpClient(){
+        if (sOkHttpClient == null){
             OkHttpClient.Builder mBuilder = new OkHttpClient().newBuilder();
             onOkHttpClientCreated(mBuilder);
-            return mBuilder.build();
+            sOkHttpClient = mBuilder.build();
         }
-    };
+        return sOkHttpClient;
+    }
 
-    private static final Singleton<Retrofit, Void> sRetrofitMain = new Singleton<Retrofit, Void>() {
-        @Override
-        protected Retrofit create(Void v) {
-            OkHttpClient client = getOkHttpClient();
+    private static Retrofit sRetrofit;
+    private static Retrofit getRetrofit(){
+        if (sRetrofit == null){
             Retrofit.Builder builder = new Retrofit.Builder();
-            return builder
+            sRetrofit =  builder
                     .addConverterFactory(CustomGsonConverterFactory.create())
-                    .client(client)
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .client(getOkHttpClient())
                     .baseUrl(ApiConstant.BASE_URL)
                     .build();
         }
-    };
+        return sRetrofit;
+    }
 
     private static void onOkHttpClientCreated(OkHttpClient.Builder client) {
         client.connectTimeout(CONN_TIMEOUT, TimeUnit.MILLISECONDS);
         client.readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS);
         List<Interceptor> interceptors = client.interceptors();
         interceptors.add(new HeaderInterceptor());
-
         if (BuildConfig.DEBUG) {
             HttpLogInterceptor logInterceptor = new HttpLogInterceptor();
             interceptors.add(logInterceptor);
         }
     }
 
-    /**
-     * 外部调用需要通过来创建和获取单例
-     *
-     * @return
-     */
-    public static OkHttpClient getOkHttpClient() {
-        return SINGLE_CLIENT.get();
-    }
 
-    public static <T> T createApiService(Class<T> cls) {
-        final Retrofit retrofit = sRetrofitMain.get();
+    public static <T> T getService(Class<T> cls) {
+        final Retrofit retrofit = getRetrofit();
         return retrofit.create(cls);
     }
+
+    private static ApiService sApiService;
     public static ApiService createApiService() {
-        final Retrofit retrofit = sRetrofitMain.get();
-        return retrofit.create(ApiService.class);
+        if (sApiService == null){
+            sApiService = getRetrofit().create(ApiService.class);
+        }
+        return getRetrofit().create(ApiService.class);
     }
 
 
-    private static abstract class Singleton<T, P> {
-        /**
-         * 唯一实例
-         */
-        private volatile T mInstance;
-
-        /**
-         * 创建实例
-         *
-         * @param p 创建实例所需指定的参数
-         *          exp: Context context
-         * @return 实例
-         */
-        protected abstract T create(P p);
-
-        /**
-         * 获取实例
-         *
-         * @param p 创建实例时指定的参数
-         *          exp: Context context
-         * @return 实例
-         */
-        public final T get(P p) {
-            if (mInstance == null) {
-                synchronized (this) {
-                    if (mInstance == null) {
-                        mInstance = create(p);
-                    }
-                }
-            }
-            return mInstance;
-        }
-
-        public final T get() {
-            return get(null);
-        }
-    }
 
 
 }

@@ -98,6 +98,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         NLog.d(TAG, "info: %s", info);
 
 //        FragmentContainerActivity.launch(this, RelearnAndroidDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, RxJavaDemoFragment.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();

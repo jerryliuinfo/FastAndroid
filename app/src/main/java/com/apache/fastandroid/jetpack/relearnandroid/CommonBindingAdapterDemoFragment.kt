@@ -49,7 +49,7 @@ class CommonBindingAdapterDemoFragment:BaseDatebindingFragment<DatabindingComBin
             viewModel.toggleLivedata()
         }
 
-        //drawabe复用
+        //drawable复用
     }
 
 

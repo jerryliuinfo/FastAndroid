@@ -200,8 +200,11 @@ ext {
                     "com.squareup.retrofit2:retrofit:2.3.0",
                     'com.squareup.retrofit2:converter-gson:2.3.0',
 
+                    //rxjava 对retrofit的支持
                     "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0-RC3",
                     'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
+
+                    //rxjava
                     'io.reactivex.rxjava2:rxjava:2.2.9',
                     'io.reactivex.rxjava2:rxandroid:2.1.1',
 
@@ -239,6 +242,9 @@ ext {
 
 
                     'com.github.xuexiangjys:XUI:1.1.8',
+                    /**
+                     * 添加这个就会报 aused by: android.view.InflateException: Binary XML file line #30 in com.apache.fastandroid:layout/activity_main: Error inflating class com.google.android.material.navigation.NavigationView
+                     */
 //                    'com.kunminx.arch:unpeek-livedata:7.2.0-beta1'
             ],
 

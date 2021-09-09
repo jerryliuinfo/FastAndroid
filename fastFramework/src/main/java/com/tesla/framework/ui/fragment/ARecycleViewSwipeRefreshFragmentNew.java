@@ -39,6 +39,18 @@ public abstract class ARecycleViewSwipeRefreshFragmentNew extends ARecycleViewFr
         return swipeRefreshLayout;
     }
 
+    public void showRefreshing(){
+        if (!swipeRefreshLayout.isRefreshing()){
+            swipeRefreshLayout.setRefreshing(true);
+        }
+    }
+
+    public void dismissRefreshing(){
+        if (swipeRefreshLayout.isRefreshing()){
+            swipeRefreshLayout.setRefreshing(false);
+        }
+    }
+
 
 
 }
