@@ -10,9 +10,14 @@
         <entry key="app/src/main/res/drawable/nav_menu_header_bg.xml" value="0.1575" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/article_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/constraint_chain_style.xml" value="0.24114583333333334" />
+        <entry key="app/src/main/res/layout/constraint_percent.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/constraint_weight.xml" value="0.175" />
         <entry key="app/src/main/res/layout/databinding_com_bind_adapter.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_design_mode_proxy.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/fragment_design_param_type.xml" value="0.2259963768115942" />
         <entry key="app/src/main/res/layout/fragment_nodrawable.xml" value="0.22135416666666666" />
+        <entry key="app/src/main/res/layout/fragment_round_view.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/fragment_rxjava.xml" value="0.1703125" />
         <entry key="app/src/main/res/layout/fragment_rxjava2.xml" value="0.2838541666666667" />
         <entry key="app/src/main/res/layout/fragment_shapeimageview.xml" value="0.2125" />

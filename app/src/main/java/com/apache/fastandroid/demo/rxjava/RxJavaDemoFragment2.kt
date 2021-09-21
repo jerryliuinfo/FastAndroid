@@ -47,44 +47,49 @@ class RxJavaDemoFragment2:BaseFragment() {
         }
 
         btn_zip_operator_usage.setOnClickListener {
-            stringBuilder.clear()
-            val observable1 = Observable.create<Int>{
-                stringBuilder.append("Observable1 emit 1" + "\n");
-                it.onNext(1)
-                stringBuilder.append("Observable1 emit 2" + "\n");
-                it.onNext(2)
-                it.onComplete()
-            }
-            val observable2 = Observable.create<String>{
-                stringBuilder.append("Observable2 emit A" + "\n");
-                it.onNext("A")
-                stringBuilder.append("Observable2 emit B" + "\n");
-                it.onNext("B")
-                it.onComplete()
-            }
-            //这里导包务必记得导io.reactivex.functions.BiFunction,不要导成java.util.function.BiFunction
-            Observable.zip(observable1,observable2,object: BiFunction<Int, String, UserBean> {
-                override fun apply(t1: Int, t2: String): UserBean {
-
-                    return UserBean(t2,t1)
-                }
-            })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    stringBuilder.append("onNext: ${it} \n")
-                },{
-
-                },{
-                    stringBuilder.append("onComplete \n")
-                    tv_rx_result.text = stringBuilder.toString()
-                })
+            zipOperator()
         }
-
-
 
     }
 
+    @SuppressLint("CheckResult")
+    private fun zipOperator(){
+        stringBuilder.clear()
+        val observable1 = Observable.create<Int>{
+            stringBuilder.append("Observable1 emit 1" + "\n");
+            it.onNext(1)
+            stringBuilder.append("Observable1 emit 2" + "\n");
+            it.onNext(2)
+
+            it.onNext(3)
+            it.onComplete()
+        }
+        val observable2 = Observable.create<String>{
+            stringBuilder.append("Observable2 emit A" + "\n");
+            it.onNext("A")
+            stringBuilder.append("Observable2 emit B" + "\n");
+            it.onNext("B")
+            it.onComplete()
+        }
+        //这里导包务必记得导io.reactivex.functions.BiFunction,不要导成java.util.function.BiFunction
+        Observable.zip(observable1,observable2,object: BiFunction<Int, String, UserBean> {
+            override fun apply(t1: Int, t2: String): UserBean {
+                return UserBean(t2,t1)
+            }
+        })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                stringBuilder.append("onNext: ${it} \n")
+            },{
+
+            },{
+                stringBuilder.append("onComplete \n")
+                tv_rx_result.text = stringBuilder.toString()
+            })
+    }
+
+    @SuppressLint("CheckResult")
     private fun createOperator(){
         stringBuilder.clear()
         Observable.create(object :ObservableOnSubscribe<Int>{
@@ -114,6 +119,7 @@ class RxJavaDemoFragment2:BaseFragment() {
         })
     }
 
+    @SuppressLint("CheckResult")
     private fun mapOperator(){
         stringBuilder.clear()
         Observable.create<Int> {

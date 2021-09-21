@@ -59,6 +59,16 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("开源UI控件", "开源UI控件", WidgetDemoFragment::class.java),
                 ViewItemBean("开源框架", "开源框架", OpenSourceDemoFragment::class.java),
                 ViewItemBean("设计模式", "设计模式实战", DesignModeDemoFragment::class.java),
+                ViewItemBean("重学Android", "重学Android", RelearnAndroidDemoFragment::class.java)  ,
+                        ViewItemBean("CustomViewWidget", "自定义控件", CustomViewFragment::class.java),
+                ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
+                ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),
+                ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java),
+                ViewItemBean("临时验证", "临时验证", TempDemoFragment::class.java),
+                ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java),
+                ViewItemBean("开源UI控件", "开源UI控件", WidgetDemoFragment::class.java),
+                ViewItemBean("开源框架", "开源框架", OpenSourceDemoFragment::class.java),
+                ViewItemBean("设计模式", "设计模式实战", DesignModeDemoFragment::class.java),
                 ViewItemBean("重学Android", "重学Android", RelearnAndroidDemoFragment::class.java)
 
         )
@@ -125,6 +135,17 @@ class DemoListActivity : BaseActivity() {
                 args.add("title", viewItemBean.title)
                 FragmentContainerActivity.launch(this@DemoListActivity, viewItemBean.clazz, args)
             }
+        }
+
+        override fun onViewAttachedToWindow(holder: ItemViewHolder) {
+            super.onViewAttachedToWindow(holder)
+            NLog.d(TAG, "onViewAttachedToWindow holder: %s, tvTitle: %s, text: %s",holder,holder.txtTitle, holder.txtTitle.text)
+            var tvTitle = holder.txtTitle
+        }
+
+        override fun onViewDetachedFromWindow(holder: ItemViewHolder) {
+            super.onViewDetachedFromWindow(holder)
+            NLog.d(TAG, "onViewDetachedFromWindow holder: %s, tvTitle: %s, text: %s",holder,holder.txtTitle, holder.txtTitle.text)
         }
 
         override fun getItemViewType(position: Int): Int {
