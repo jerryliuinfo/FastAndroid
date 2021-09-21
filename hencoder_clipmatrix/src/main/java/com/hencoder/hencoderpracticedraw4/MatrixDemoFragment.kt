@@ -14,10 +14,11 @@ class MatrixDemoFragment: BaseStatusFragmentNew() {
 
 
     private val pageModels = arrayListOf(
-            PageModel(R.layout.sample_clip_rect, R.string.title_clip_rect, R.layout.practice_clip_rect),
-            PageModel(R.layout.sample_clip_path, R.string.title_clip_path, R.layout.practice_clip_path),
-            PageModel(R.layout.sample_translate, R.string.title_translate, R.layout.practice_translate),
-            PageModel(R.layout.sample_scale, R.string.title_scale, R.layout.practice_scale)
+            PageModel(R.layout.sample_clip_rect, R.string.title_clip_rect, R.layout.practice_clip_rect)
+            ,PageModel(R.layout.sample_clip_path, R.string.title_clip_path, R.layout.practice_clip_path)
+            ,PageModel(R.layout.sample_translate, R.string.title_translate, R.layout.practice_translate)
+            ,PageModel(R.layout.sample_scale, R.string.title_scale, R.layout.practice_scale)
+            ,PageModel(R.layout.sample_rotate, R.string.title_rotate, R.layout.practice_rotate)
 
 
     )

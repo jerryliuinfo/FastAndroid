@@ -16,14 +16,12 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.designmode.ProxyDemoFragment;
-import com.apache.fastandroid.demo.designmode.proxy.ServiceApiV2;
-import com.apache.fastandroid.demo.designmode.proxy.ServiceMgr;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
+import com.hencoder.hencoderpracticedraw4.MatrixDemoFragment;
 import com.optimize.performance.launchstarter.DelayInitDispatcher;
 import com.permissionx.guolindev.PermissionX;
 import com.permissionx.guolindev.callback.RequestCallback;
@@ -96,7 +94,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 //        FragmentContainerActivity.launch(this, RelearnAndroidDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, RxJavaDemoFragment2.class,null);
-        FragmentContainerActivity.launch(this, ProxyDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, MatrixDemoFragment.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();

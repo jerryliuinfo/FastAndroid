@@ -28,6 +28,10 @@
         <entry key="fastFramework/src/main/res/layout/comm_lay_emptyview.xml" value="0.1" />
         <entry key="fastFramework/src/main/res/layout/comm_lay_loadfailed.xml" value="0.1" />
         <entry key="fastFramework/src/main/res/layout/comm_lay_loading.xml" value="0.2671875" />
+        <entry key="hencoder_clipmatrix/src/main/res/layout/practice_rotate.xml" value="0.2259963768115942" />
+        <entry key="hencoder_clipmatrix/src/main/res/layout/practice_scale.xml" value="0.2259963768115942" />
+        <entry key="hencoder_clipmatrix/src/main/res/layout/sample_rotate.xml" value="0.2259963768115942" />
+        <entry key="hencoder_clipmatrix/src/main/res/layout/sample_scale.xml" value="0.2259963768115942" />
       </map>
     </option>
   </component>
