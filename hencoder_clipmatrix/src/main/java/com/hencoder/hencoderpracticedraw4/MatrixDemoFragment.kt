@@ -19,6 +19,13 @@ class MatrixDemoFragment: BaseStatusFragmentNew() {
             ,PageModel(R.layout.sample_translate, R.string.title_translate, R.layout.practice_translate)
             ,PageModel(R.layout.sample_scale, R.string.title_scale, R.layout.practice_scale)
             ,PageModel(R.layout.sample_rotate, R.string.title_rotate, R.layout.practice_rotate)
+            ,PageModel(R.layout.sample_skew, R.string.title_skew, R.layout.practice_skew)
+            ,PageModel(R.layout.sample_matrix_translate, R.string.title_matrix_translate, R.layout.practice_matrix_translate)
+            ,PageModel(R.layout.sample_matrix_scale, R.string.title_matrix_scale, R.layout.practice_matrix_scale)
+            ,PageModel(R.layout.sample_matrix_rotate, R.string.title_matrix_rotate, R.layout.practice_matrix_rotate)
+            ,PageModel(R.layout.sample_matrix_skew, R.string.title_matrix_skew, R.layout.practice_matrix_skew)
+            ,PageModel(R.layout.sample_camera_rotate, R.string.title_camera_rotate, R.layout.practice_camera_rotate)
+            ,PageModel(R.layout.sample_camera_rotate_fixed, R.string.title_camera_rotate_fixed, R.layout.practice_camera_rotate_fixed)
 
 
     )
@@ -30,7 +37,7 @@ class MatrixDemoFragment: BaseStatusFragmentNew() {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        setToolbarTitle("DrawText")
+        setToolbarTitle("范围裁切")
 
         pager.adapter = PageAdapter(pageModels,activity!!.supportFragmentManager)
         tabLayout.setupWithViewPager(pager)

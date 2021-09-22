@@ -13,9 +13,9 @@ class Practice05RotateView(context: Context?, attrs: AttributeSet?) : View(conte
 
     var paint = Paint(Paint.ANTI_ALIAS_FLAG)
     var bitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.maps)
-    var point1 = Point(200, 200)
-    var point2 = Point(600, 200)
-    var point3 = Point(1000, 200)
+    var point1 = Point(200, 100)
+    var point2 = Point(600, 100)
+    var point3 = Point(1000, 100)
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)

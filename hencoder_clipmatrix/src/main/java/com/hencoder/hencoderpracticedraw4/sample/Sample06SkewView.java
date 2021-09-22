@@ -6,17 +6,18 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.hencoder.hencoderpracticedraw4.R;
 
+import androidx.annotation.Nullable;
+
 public class Sample06SkewView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap bitmap;
-    Point point1 = new Point(200, 200);
-    Point point2 = new Point(600, 200);
+    Point point1 = new Point(200, 100);
+    Point point2 = new Point(600, 100);
 
     public Sample06SkewView(Context context) {
         super(context);

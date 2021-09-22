@@ -1,9 +1,10 @@
-package com.hencoder.hencoderpracticedraw4.sample;
+package com.hencoder.hencoderpracticedraw4.practice;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
@@ -13,21 +14,23 @@ import com.hencoder.hencoderpracticedraw4.R;
 
 import androidx.annotation.Nullable;
 
-public class Sample05RotateView extends View {
+public class Practice07MatrixTranslateView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap bitmap;
     Point point1 = new Point(200, 100);
     Point point2 = new Point(600, 100);
+    Point point3 = new Point(1000, 100);
+    Matrix matrix = new Matrix();
 
-    public Sample05RotateView(Context context) {
+    public Practice07MatrixTranslateView(Context context) {
         super(context);
     }
 
-    public Sample05RotateView(Context context, @Nullable AttributeSet attrs) {
+    public Practice07MatrixTranslateView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public Sample05RotateView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public Practice07MatrixTranslateView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -39,18 +42,23 @@ public class Sample05RotateView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        int bitmapWidth = bitmap.getWidth();
-        int bitmapHeight = bitmap.getHeight();
+        canvas.drawBitmap(bitmap,point1.x,point1.y,paint);
 
         canvas.save();
-        canvas.rotate(180, point1.x + bitmapWidth / 2, point1.y + bitmapHeight / 2);
-        canvas.drawBitmap(bitmap, point1.x, point1.y, paint);
+        matrix.reset();
+        matrix.postTranslate(-100,0);
+        canvas.concat(matrix);
+        canvas.drawBitmap(bitmap,point2.x,point2.y,paint);
+
         canvas.restore();
+
 
         canvas.save();
-        canvas.rotate(45, point2.x + bitmapWidth / 2, point2.y + bitmapHeight / 2);
-        canvas.drawBitmap(bitmap, point2.x, point2.y, paint);
-        canvas.restore();
+        matrix.reset();
+        matrix.postTranslate(200,0);
+        canvas.concat(matrix);
+        canvas.drawBitmap(bitmap,point3.x,point3.y,paint);
 
+        canvas.restore();
     }
 }

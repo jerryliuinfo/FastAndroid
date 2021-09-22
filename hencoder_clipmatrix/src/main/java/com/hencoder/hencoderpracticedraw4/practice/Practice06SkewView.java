@@ -1,9 +1,8 @@
-package com.hencoder.hencoderpracticedraw4.sample;
+package com.hencoder.hencoderpracticedraw4.practice;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
@@ -14,22 +13,22 @@ import com.hencoder.hencoderpracticedraw4.R;
 
 import androidx.annotation.Nullable;
 
-public class Sample11CameraRotateView extends View {
+public class Practice06SkewView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap bitmap;
     Point point1 = new Point(200, 100);
-    Point point2 = new Point(600, 200);
-    Camera camera = new Camera();
+    Point point2 = new Point(600, 100);
+    Point point3 = new Point(1000, 100);
 
-    public Sample11CameraRotateView(Context context) {
+    public Practice06SkewView(Context context) {
         super(context);
     }
 
-    public Sample11CameraRotateView(Context context, @Nullable AttributeSet attrs) {
+    public Practice06SkewView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public Sample11CameraRotateView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public Practice06SkewView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -41,22 +40,19 @@ public class Sample11CameraRotateView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.save();
-        camera.save();
-        camera.rotateX(30);
-        camera.applyToCanvas(canvas);
-        camera.restore();
+        canvas.drawBitmap(bitmap,point1.x,point1.y,paint);
 
-        canvas.drawBitmap(bitmap, point1.x, point1.y, paint);
+        canvas.save();
+        canvas.skew(0,0.1f);
+        canvas.drawBitmap(bitmap,point2.x,point2.y,paint);
 
         canvas.restore();
 
         canvas.save();
-        camera.save();
-        camera.rotateY(30);
-        camera.applyToCanvas(canvas);
-        camera.restore();
-        canvas.drawBitmap(bitmap, point2.x, point2.y, paint);
+        canvas.skew(-0.1f,0f);
+        canvas.drawBitmap(bitmap,point3.x,point3.y,paint);
+
         canvas.restore();
+
     }
 }

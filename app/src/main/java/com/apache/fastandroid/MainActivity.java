@@ -100,6 +100,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
 
 
+
+
     }
 
     @Override

@@ -10,13 +10,14 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 import com.hencoder.hencoderpracticedraw4.R;
+
+import androidx.annotation.Nullable;
 
 public class Sample13CameraRotateHittingFaceView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -82,10 +83,13 @@ public class Sample13CameraRotateHittingFaceView extends View {
         int centerY = point.y + bitmapHeight / 2;
 
         camera.save();
+
         matrix.reset();
         camera.rotateX(degree);
         camera.getMatrix(matrix);
         camera.restore();
+
+
         matrix.preTranslate(-centerX, -centerY);
         matrix.postTranslate(centerX, centerY);
         canvas.save();
