@@ -67,7 +67,10 @@
 
          </activity>
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"/>
+
         <activity android:name=".demo.temp.ScrollConflictActivity"/>
+        <activity android:name=".home.ArticleDetailActivity"/>
+
 
         <service android:name=".jetpack.lifecycle.service.MyService"/>
     </application>

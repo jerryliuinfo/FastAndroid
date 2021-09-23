@@ -21,7 +21,6 @@ import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
-import com.hencoder.hencoderpracticedraw4.MatrixDemoFragment;
 import com.optimize.performance.launchstarter.DelayInitDispatcher;
 import com.permissionx.guolindev.PermissionX;
 import com.permissionx.guolindev.callback.RequestCallback;
@@ -94,7 +93,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 //        FragmentContainerActivity.launch(this, RelearnAndroidDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, RxJavaDemoFragment2.class,null);
-        FragmentContainerActivity.launch(this, MatrixDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, MatrixDemoFragment.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();

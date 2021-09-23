@@ -246,6 +246,9 @@ ext {
                      * 添加这个就会报 aused by: android.view.InflateException: Binary XML file line #30 in com.apache.fastandroid:layout/activity_main: Error inflating class com.google.android.material.navigation.NavigationView
                      */
 //                    'com.kunminx.arch:unpeek-livedata:7.2.0-beta1'
+
+
+                    'com.github.Justson.AgentWeb:agentweb-core:v4.1.9'
             ],
 
             basic: [

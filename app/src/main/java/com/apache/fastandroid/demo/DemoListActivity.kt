@@ -59,17 +59,8 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("开源UI控件", "开源UI控件", WidgetDemoFragment::class.java),
                 ViewItemBean("开源框架", "开源框架", OpenSourceDemoFragment::class.java),
                 ViewItemBean("设计模式", "设计模式实战", DesignModeDemoFragment::class.java),
-                ViewItemBean("重学Android", "重学Android", RelearnAndroidDemoFragment::class.java)  ,
-                        ViewItemBean("CustomViewWidget", "自定义控件", CustomViewFragment::class.java),
-                ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
-                ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),
-                ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java),
-                ViewItemBean("临时验证", "临时验证", TempDemoFragment::class.java),
-                ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java),
-                ViewItemBean("开源UI控件", "开源UI控件", WidgetDemoFragment::class.java),
-                ViewItemBean("开源框架", "开源框架", OpenSourceDemoFragment::class.java),
-                ViewItemBean("设计模式", "设计模式实战", DesignModeDemoFragment::class.java),
                 ViewItemBean("重学Android", "重学Android", RelearnAndroidDemoFragment::class.java)
+
 
         )
         @JvmStatic

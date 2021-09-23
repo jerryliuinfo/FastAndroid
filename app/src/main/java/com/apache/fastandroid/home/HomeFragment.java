@@ -89,6 +89,13 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew {
         });
 
         onRefresh();
+        getAdapter().setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Article item = (Article) getAdapter().getItem(position);
+                ArticleDetailActivity.launch(getActivity(),item.getTitle(),item.getLink());
+            }
+        });
     }
 
 

@@ -1,12 +1,18 @@
 package com.tesla.framework.ui.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.SparseArray;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.tesla.framework.R;
+import com.tesla.framework.common.util.DebugUtils;
 import com.tesla.framework.support.bean.DataBindingConfig;
+import com.xuexiang.xui.utils.ResUtils;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
@@ -16,12 +22,12 @@ import androidx.databinding.ViewDataBinding;
  */
 public abstract class BaseDatebindingFragment<VB extends ViewDataBinding> extends BaseLifecycleFragment<VB> {
     protected VB mBinding;
+    private TextView mTvStrictModeTip;
 
 
 
     protected abstract DataBindingConfig getDataBindingConfig();
 
-    protected abstract void initViewModel();
 
 
     /**
@@ -33,14 +39,30 @@ public abstract class BaseDatebindingFragment<VB extends ViewDataBinding> extend
      * @return binding
      */
     protected VB getBinding() {
-
+        if (DebugUtils.isDebug() && mBinding != null) {
+            if (mTvStrictModeTip == null) {
+                mTvStrictModeTip = new TextView(getContext());
+                mTvStrictModeTip.setAlpha(0.5f);
+                mTvStrictModeTip.setPadding(
+                        mTvStrictModeTip.getPaddingLeft() + 24,
+                        mTvStrictModeTip.getPaddingTop() + 64,
+                        mTvStrictModeTip.getPaddingRight() + 24,
+                        mTvStrictModeTip.getPaddingBottom() + 24);
+                mTvStrictModeTip.setGravity(Gravity.CENTER_HORIZONTAL);
+                mTvStrictModeTip.setTextSize(10);
+                mTvStrictModeTip.setBackgroundColor(Color.WHITE);
+                String tip = String.format("%s 未遵循 DataBinding 严格模式，存在 Null 安全风险", getClass().getSimpleName());
+                mTvStrictModeTip.setText(tip);
+                mTvStrictModeTip.setTextColor(ResUtils.getColor(R.color.comm_red));
+                ((ViewGroup) mBinding.getRoot()).addView(mTvStrictModeTip);
+            }
+        }
         return mBinding;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initViewModel();
     }
 
     @Override
@@ -51,6 +73,7 @@ public abstract class BaseDatebindingFragment<VB extends ViewDataBinding> extend
         View contentView = inflater.inflate(dataBindingConfig.getLayout(), container, false);
 
         mBinding = DataBindingUtil.bind(contentView);
+        //要使用LiveData对象作为数据绑定来源，需要设置LifecycleOwner, 这样当livedata数据变化后，xml就能察觉到
         mBinding.setLifecycleOwner(this);
         if (dataBindingConfig.getVmVariableId() != 0){
             mBinding.setVariable(dataBindingConfig.getVmVariableId(), dataBindingConfig.getStateViewModel());
@@ -78,4 +101,5 @@ public abstract class BaseDatebindingFragment<VB extends ViewDataBinding> extend
     public int inflateContentView() {
         throw new IllegalArgumentException("don't call this method in BaseDatebindingFragment");
     }
+
 }

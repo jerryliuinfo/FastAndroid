@@ -22,15 +22,13 @@ class DatabinDingViewModelFragment: BaseDatebindingFragment<FragmentDatabindingV
         super.layoutInit(inflater, savedInstanceSate)
 
         //要使用LiveData对象作为数据绑定来源，需要设置LifecycleOwner, 这样当livedata数据变化后，xml就能察觉到
-        mBinding.lifecycleOwner = this
+        binding.lifecycleOwner = this
 
-
-        mBinding.vm = viewModel
 
     }
 
     override fun getDataBindingConfig(): DataBindingConfig {
-        return DataBindingConfig(R.layout.fragment_databinding_viewmodel,BR.vm,viewModel);
+        return DataBindingConfig(R.layout.fragment_databinding_viewmodel,BR.vm,viewModel)
     }
 
     override fun initViewModel() {

@@ -42,12 +42,12 @@ class CommonBindingAdapterDemoFragment:BaseDatebindingFragment<DatabindingComBin
                 viewModel.loading.set(false)
             },1000)
         }
-        binding.btnTestSelect.setOnClickListener {
+       /* binding.btnTestSelect.setOnClickListener {
             viewModel.toggle()
         }
         binding.btnLiveData.setOnClickListener {
             viewModel.toggleLivedata()
-        }
+        }*/
 
         //drawable复用
     }
@@ -60,6 +60,21 @@ class CommonBindingAdapterDemoFragment:BaseDatebindingFragment<DatabindingComBin
             //默认持有外部类的引用，直接访问外部类的方法属性
             var activity = this@CommonBindingAdapterDemoFragment.activity
             FragmentContainerActivity.launch(activity, DesignModeDemoFragment::class.java, null)
+        }
+
+        fun clickTestVisible(){
+            viewModel.loading.set(true)
+            Handler().postDelayed({
+                viewModel.loading.set(false)
+            },1000)
+        }
+
+        fun clickTestSelect(){
+            viewModel.toggle()
+        }
+
+        fun clickTestLiveData(){
+            viewModel.toggleLivedata()
         }
     }
 
