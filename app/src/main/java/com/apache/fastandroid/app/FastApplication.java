@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.aop.track.TrackPoint;
@@ -18,6 +17,8 @@ import com.apache.fastandroid.artemis.constant.AppConfig;
 import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
+import com.apache.fastandroid.component.anr.AnrConfig;
+import com.apache.fastandroid.component.anr.AnrManager;
 import com.apache.fastandroid.imageloader.GlideImageLoader;
 import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
 import com.apache.fastandroid.task.DBInitTask;
@@ -144,35 +145,9 @@ public class FastApplication extends FrameworkApplication  {
 
     }
 
-    public ANRWatchDog anrWatchDog = new ANRWatchDog(5000);
 
-    int duration = 4;
 
-     public ANRWatchDog.ANRListener silentListener = new ANRWatchDog.ANRListener() {
-        @Override
-        public void onAppNotResponding(ANRError error) {
-            Log.e("ANR-Watchdog-Demo", "", error);
 
-        }
-    };
-
-    public void initAnrWatchDog() {
-        NLog.d(TAG, "initAnrWatchDog --->");
-        anrWatchDog
-                .setANRListener(silentListener)
-                .setANRInterceptor(new ANRWatchDog.ANRInterceptor() {
-                    @Override
-                    public long intercept(long duration) {
-                        long ret = FastApplication.this.duration * 1000 - duration;
-                        if (ret > 0)
-                            Log.w("ANR-Watchdog-Demo", "Intercepted ANR that is too short (" + duration + " ms), postponing for " + ret + " ms.");
-                        return ret;
-                    }
-                })
-        ;
-
-        anrWatchDog.start();
-    }
 
     private void initBlockCancary() {
         NLog.d(TAG, "initBlockCancary --->");
@@ -184,6 +159,8 @@ public class FastApplication extends FrameworkApplication  {
         CrashUtils.init(getCacheDir(), new CrashUtils.OnCrashListener() {
             @Override
             public void onCrash(String crashInfo, Throwable e) {
+                //report crash
+
                 NLog.d(TAG, "crash info: %s, e: %s", crashInfo,e.getMessage());
             }
         });

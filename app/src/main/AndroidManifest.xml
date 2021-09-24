@@ -40,7 +40,7 @@
         android:label="${appName}"
         android:resizeableActivity="false"
 
-        tools:replace="android:theme,android:icon,android:label"
+        tools:replace="android:theme,android:icon,android:label,android:allowBackup"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppCommonTheme"

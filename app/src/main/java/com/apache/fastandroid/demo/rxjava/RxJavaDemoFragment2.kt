@@ -5,20 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.network.model.HomeArticleResponse
-import com.apache.fastandroid.network.retrofit.Protocol
-import com.blankj.utilcode.util.ToastUtils
-import com.chad.baserecyclerviewadapterhelper.entity.Person
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseFragment
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe
+import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_rxjava2.*
-
 
 
 /**
@@ -50,6 +47,102 @@ class RxJavaDemoFragment2:BaseFragment() {
             zipOperator()
         }
 
+        btn_concact_usage.setOnClickListener {
+            //的把两个发射器连接成一个发射器
+            concactUsage()
+        }
+
+        btn_flatmap_usage.setOnClickListener {
+            flatMapUsage()
+        }
+
+
+
+        btn_concactMap_usage.setOnClickListener {
+            concactMapUsage()
+        }
+
+        btn_distinct_usage.setOnClickListener {
+            distinctUsage()
+        }
+
+        btn_filter_usage.setOnClickListener {
+            filterUsage()
+        }
+    }
+
+    /**
+     * 过滤
+     */
+    @SuppressLint("CheckResult")
+    private fun filterUsage(){
+        stringBuilder.clear()
+        Observable.just(1,4,1,2,3,2,4,5).distinct().filter {
+            it % 2 == 0
+        } .subscribe {
+                NLog.d(TAG, "it: %s", it)
+                stringBuilder.append("$it \n")
+                tv_rx_result.text = stringBuilder.toString()
+
+            }
+    }
+
+    /**
+     * 去重
+     */
+    private fun distinctUsage(){
+        stringBuilder.clear()
+        Observable.just(1,4,1,2,3,2,4,5).distinct()
+            .subscribe({
+                NLog.d(TAG, "it: %s",it)
+                stringBuilder.append("$it \n")
+                tv_rx_result.text = stringBuilder.toString()
+
+            })
+    }
+
+    private fun flatMapUsage(){
+        stringBuilder.clear()
+        Observable.create<Int> {
+            it.onNext(1)
+            it.onNext(2)
+            it.onComplete()
+        }.flatMap<String> {
+            return@flatMap Observable.just("abc: $it")
+        }.subscribe({
+            stringBuilder.append("$it \n")
+        },{},{
+            tv_rx_result.text = stringBuilder.toString()
+        })
+    }
+
+    private fun concactMapUsage(){
+        stringBuilder.clear()
+        Observable.create<Int> {
+            it.onNext(1)
+            it.onNext(2)
+            it.onComplete()
+        }.concatMap {
+            Observable.just("abc: $it")
+        }.subscribe({
+            stringBuilder.append("$it \n")
+        },{},{
+            tv_rx_result.text = stringBuilder.toString()
+        })
+    }
+
+
+    /**
+     * 把两个发射器连接成一个发射器
+     */
+    private fun concactUsage() {
+        stringBuilder.clear()
+        Observable.concat(Observable.just(1, 2, 3), Observable.just(4, 5, 6))
+            .subscribe({
+                stringBuilder.append("concact:${it}" + "\n")
+            }, {}, {
+                tv_rx_result.text = stringBuilder.toString()
+            })
     }
 
     @SuppressLint("CheckResult")

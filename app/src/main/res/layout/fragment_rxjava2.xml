@@ -10,7 +10,10 @@
         android:layout_height="wrap_content"
         android:text="Create 操作符"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_map_operator_usage"
+        android:layout_marginStart="10dp"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/edu_color_blue"
         />
 
     <Button
@@ -19,6 +22,8 @@
         android:layout_height="wrap_content"
         android:text="Map 操作符"
         app:layout_constraintStart_toEndOf="@+id/btn_create_usage"
+        app:layout_constraintEnd_toStartOf="@+id/btn_zip_operator_usage"
+        android:layout_marginStart="10dp"
         app:layout_constraintTop_toTopOf="parent"
         />
     <Button
@@ -27,8 +32,63 @@
         android:layout_height="wrap_content"
         android:text="ZIP 操作符"
         app:layout_constraintStart_toEndOf="@+id/btn_map_operator_usage"
+        app:layout_constraintEnd_toStartOf="@+id/btn_concact_usage"
+        android:layout_marginStart="10dp"
         app:layout_constraintTop_toTopOf="parent"
         />
+
+    <Button
+        android:id="@+id/btn_concact_usage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Concact 操作符"
+        app:layout_constraintStart_toEndOf="@+id/btn_zip_operator_usage"
+        app:layout_constraintEnd_toStartOf="@+id/btn_flatmap_usage"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/btn_flatmap_usage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="FlatMap 操作符"
+        app:layout_constraintStart_toEndOf="@+id/btn_concact_usage"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/btn_concactMap_usage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="ConcactMap 操作符"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_distinct_usage"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_create_usage"
+        />
+
+    <Button
+        android:id="@+id/btn_distinct_usage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Distinct 操作符"
+        app:layout_constraintStart_toEndOf="@+id/btn_concactMap_usage"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@+id/btn_concactMap_usage"
+        />
+    <Button
+        android:id="@+id/btn_filter_usage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Filter 操作符"
+        app:layout_constraintStart_toEndOf="@+id/btn_distinct_usage"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@+id/btn_concactMap_usage"
+        />
+
 
 
     <TextView

@@ -28,11 +28,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import com.tesla.framework.common.util.log.NLog;
+
 /**
  * A watchdog timer thread that detects when the UI thread has frozen.
  */
 @SuppressWarnings("UnusedReturnValue")
 public class ANRWatchDog extends Thread {
+    public static final String TAG = "ANRWatchDog";
 
     public interface ANRListener {
         /**
@@ -238,7 +241,6 @@ public class ANRWatchDog extends Thread {
     @Override
     public void run() {
         setName("|ANR-WatchDog|");
-
         long interval = _timeoutInterval;
         while (!isInterrupted()) {
             boolean needPost = _tick == 0;
@@ -247,9 +249,11 @@ public class ANRWatchDog extends Thread {
                 _uiHandler.post(_ticker);
             }
 
+            //休眠 _timeoutInterval 时间后看 _ticker 这个runnable 有没有执行(如果执行了 _tick 会被置为0)
             try {
                 Thread.sleep(interval);
             } catch (InterruptedException e) {
+                e.printStackTrace();
                 _interruptionListener.onInterrupted(e);
                 return ;
             }
@@ -258,12 +262,13 @@ public class ANRWatchDog extends Thread {
             if (_tick != 0 && !_reported) {
                 //noinspection ConstantConditions
                 if (!_ignoreDebugger && (Debug.isDebuggerConnected() || Debug.waitingForDebugger())) {
-                    Log.w("ANRWatchdog", "An ANR was detected but ignored because the debugger is connected (you can prevent this with setIgnoreDebugger(true))");
+                    NLog.w(TAG, "An ANR was detected but ignored because the debugger is connected (you can prevent this with setIgnoreDebugger(true))");
                     _reported = true;
                     continue ;
                 }
 
                 interval = _anrInterceptor.intercept(_tick);
+                //
                 if (interval > 0) {
                     continue;
                 }

@@ -41,8 +41,4 @@ fun Paint.textCenterY(text:String, baseY:Float):Float{
     return baseY + rect.height() / 2
 }
 
-fun Paint.textRect(text:String):Rect{
-    val rect = Rect()
-    getTextBounds(text,0,text.length,rect)
-    return rect
-}
+

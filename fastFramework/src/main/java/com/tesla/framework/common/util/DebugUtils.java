@@ -2,6 +2,7 @@ package com.tesla.framework.common.util;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.os.Debug;
 
 import com.tesla.framework.applike.FrameworkApplication;
 
@@ -46,6 +47,15 @@ public class DebugUtils {
                 isDebug = (appInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
             }
         }
+    }
+
+
+    /**
+     * 当前是否正在debug
+     * @return
+     */
+    public static boolean isDebugConnected(){
+        return Debug.isDebuggerConnected() || Debug.waitingForDebugger();
     }
 
 }
