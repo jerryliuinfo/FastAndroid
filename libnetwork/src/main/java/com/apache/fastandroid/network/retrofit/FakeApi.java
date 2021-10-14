@@ -5,7 +5,6 @@ import com.apache.fastandroid.network.model.FakeToken;
 
 import java.util.Random;
 
-import afu.org.checkerframework.checker.nullness.qual.NonNull;
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;
 
@@ -16,7 +15,7 @@ public class FakeApi {
 
    Random random = new Random();
 
-   public io.reactivex.Observable<FakeToken> getFakeToken(@NonNull String fakeAuth) {
+  /* public io.reactivex.Observable<FakeToken> getFakeToken(@NonNull String fakeAuth) {
       return io.reactivex.Observable.just(fakeAuth)
               .map(new Function<String, FakeToken>() {
                  @Override
@@ -34,7 +33,7 @@ public class FakeApi {
                     return fakeToken;
                  }
               });
-   }
+   }*/
 
    private static String createToken() {
       return "fake_token_" + System.currentTimeMillis() % 10000;

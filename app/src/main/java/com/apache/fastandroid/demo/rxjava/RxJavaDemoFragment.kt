@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.rxjava.map.ArticleToVideoMapper
-import com.apache.fastandroid.network.model.FakeThing
 import com.apache.fastandroid.network.model.FakeToken
 import com.apache.fastandroid.network.model.HomeArticleResponse
 import com.apache.fastandroid.network.retrofit.ApiEngine
@@ -17,11 +16,8 @@ import com.chad.baserecyclerviewadapterhelper.entity.Person
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseFragment
 import io.reactivex.Observable
-import io.reactivex.ObservableSource
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
-import io.reactivex.functions.Consumer
-import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_rxjava.*
 
@@ -93,7 +89,7 @@ class RxJavaDemoFragment:BaseFragment() {
                 })
         }
 
-        btn_flatmap_usage.setOnClickListener {
+       /* btn_flatmap_usage.setOnClickListener {
             ApiEngine.getFakeApi().getFakeToken("faFakeThingke_auth_code")
                 .flatMap { t -> return@flatMap ApiEngine.getFakeApi().getFakeData(t) }
                 .subscribeOn(Schedulers.io())
@@ -104,7 +100,7 @@ class RxJavaDemoFragment:BaseFragment() {
                     ToastUtils.showShort(it.message)
                 })
         }
-
+*/
         btn_retrywhen_usage.setOnClickListener {
            doRetrhWhen()
         }
@@ -118,7 +114,7 @@ class RxJavaDemoFragment:BaseFragment() {
 
     @SuppressLint("CheckResult")
     private fun doRetrhWhen(){
-        tokenUpdated = false
+       /* tokenUpdated = false
         Observable.just(1).flatMap(
         object :Function<Int,Observable<FakeThing>>{
             @SuppressLint("CheckResult")
@@ -159,7 +155,7 @@ class RxJavaDemoFragment:BaseFragment() {
                 )
             },{
                 ToastUtils.showShort(it.message)
-            })
+            })*/
 
     }
 }

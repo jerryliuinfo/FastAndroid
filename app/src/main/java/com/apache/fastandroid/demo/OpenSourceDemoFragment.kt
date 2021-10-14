@@ -19,7 +19,6 @@ class OpenSourceDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
                 ViewItemBean("Glide", "Glide", GlideDemoFragment::class.java),
-                ViewItemBean("MMKV", "MMKV", MMKVFragment::class.java),
                 ViewItemBean("Rxjava", "Rxjava操作符", RxJavaDemoFragment::class.java),
                 ViewItemBean("AgentWeb", "AgentWeb", AgentWebDemoListFragment::class.java)
 

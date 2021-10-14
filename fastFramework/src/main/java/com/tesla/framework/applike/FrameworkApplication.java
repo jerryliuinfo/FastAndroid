@@ -3,7 +3,6 @@ package com.tesla.framework.applike;
 import android.app.Application;
 import android.content.Context;
 
-import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.network.NetworkHelper;
 
 import androidx.annotation.NonNull;
@@ -30,8 +29,7 @@ public class FrameworkApplication extends Application implements ViewModelStoreO
         sApplication = (Application) sContext.getApplicationContext();
         NetworkHelper.getInstance().registerNetworkSensor(sContext);
 
-        // 添加一些配置项
-        SettingUtility.addSettings(sContext, "actions");
+
     }
 
 

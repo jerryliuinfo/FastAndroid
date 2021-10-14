@@ -19,7 +19,9 @@ class GlideBasicUsageFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.glide_basic_usage_demo
     }
-    val url = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fblog%2F201406%2F12%2F20140612042459_nN5mZ.jpeg&refer=http%3A%2F%2Fcdn.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627090612&t=376413dceca7371b4b2086cdbb955ff2"
+//    val url = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fblog%2F201406%2F12%2F20140612042459_nN5mZ.jpeg&refer=http%3A%2F%2Fcdn.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627090612&t=376413dceca7371b4b2086cdbb955ff2"
+//    val url = "https://kids-res-cn.test.edu.tcljd.com/a6f54232-cef7-45a4-8917-89c3649c719f1632644478236.png"
+    val url = "http://kids-res-cn.test.edu.tcljd.com/f4b4e29d-532b-4646-a380-5f92ef42fd031632656173008.png"
 //    val url = "https://img.static-ottera.com/prod/tg/show/thumbnails/widescreen/omnom_s17_banner_8.jpg"
 //    val url = "http://kids-res.test.edu.tcljd.com/01951b67-0b85-4118-a3b3-bd9be6797d911595236620697.png"
 
@@ -38,6 +40,7 @@ class GlideBasicUsageFragment: BaseStatusFragmentNew() {
                     .diskCacheStrategy(DiskCacheStrategy.RESULT)
                     .placeholder(R.drawable.sample_footer_loading)
                     .into(image)
+
         }
         btn_dimension.setOnClickListener {
             Glide.with(activity).load(url)

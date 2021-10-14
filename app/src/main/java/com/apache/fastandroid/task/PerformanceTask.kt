@@ -15,7 +15,7 @@ class PerformanceTask(val application:Application):Task(){
         NLog.d("task", "PerformanceTask run --->")
         LeakCanary.install(application)
 
-        BlockCanary.install(application.applicationContext, BlockCanaryContext()).start()
+//        BlockCanary.install(application.applicationContext, BlockCanaryContext()).start()
     }
 
 }

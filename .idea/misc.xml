@@ -18,10 +18,12 @@
         <entry key="app/src/main/res/layout/databinding_com_bind_adapter.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_agent_web_in_activity.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/layout/fragment_agent_web_js.xml" value="0.22239583333333332" />
+        <entry key="app/src/main/res/layout/fragment_black_tech_aspect.xml" value="0.17034700315457413" />
         <entry key="app/src/main/res/layout/fragment_common.xml" value="0.16979166666666667" />
         <entry key="app/src/main/res/layout/fragment_design_mode_delegate.xml" value="0.15625" />
         <entry key="app/src/main/res/layout/fragment_design_mode_proxy.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/fragment_design_param_type.xml" value="0.2259963768115942" />
+        <entry key="app/src/main/res/layout/fragment_hook_context.xml" value="0.2084942084942085" />
         <entry key="app/src/main/res/layout/fragment_nodrawable.xml" value="0.22135416666666666" />
         <entry key="app/src/main/res/layout/fragment_round_view.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/fragment_rxjava.xml" value="0.1703125" />
@@ -31,7 +33,9 @@
         <entry key="app/src/main/res/layout/fragment_viewmodel_scope.xml" value="0.28396739130434784" />
         <entry key="app/src/main/res/layout/nav_layout_header.xml" value="0.14166666666666666" />
         <entry key="app/src/main/res/layout/performance_anr_watchdog.xml" value="0.16979166666666667" />
+        <entry key="app/src/main/res/layout/performance_block_cancary.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/menu/nav_item_menu.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/xml/fragment_setting.xml" value="0.19479166666666667" />
         <entry key="fastFramework/src/main/res/layout/comm_lay_emptyview.xml" value="0.1" />
         <entry key="fastFramework/src/main/res/layout/comm_lay_loadfailed.xml" value="0.1" />
         <entry key="fastFramework/src/main/res/layout/comm_lay_loading.xml" value="0.2671875" />

@@ -2,8 +2,11 @@ apply plugin: 'com.android.application'
 //com.hc.gradle为resources/META-INF/gradle-plugins
 //下的properties文件名称
 
+//apply plugin: 'largeimage-monitor'
+
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 //apply plugin: 'android-aspectjx'
+//apply plugin: 'com.hujiang.android-aspectjx'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -120,6 +123,11 @@ android {
         abortOnError false
     }
 
+    //AspectJ 报错 参考:https://blog.csdn.net/zhangshuny/article/details/106056790,
+    // https://blog.csdn.net/tian2342/article/details/102698564
+//    aspectjx{
+//        exclude 'androidx','com.google','com.google.firebase','com.google.android','com.android'
+//    }
 
     signingConfigs {
 
@@ -231,7 +239,6 @@ dependencies {
     implementation project(':hencoder_drawtext')
     implementation project(':hencoder_plus')
     implementation project(':hencoder_clipmatrix')
-    implementation project(':doraemonkit')
 
 //    support.each { k, v -> implementation v }
 
@@ -243,7 +250,7 @@ dependencies {
 
 
 
-    implementation 'org.aspectj:aspectjrt:1.8.14'
+    implementation 'org.aspectj:aspectjrt:1.9.5'
 
 
 
@@ -252,10 +259,6 @@ dependencies {
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
 
 
-//    implementation 'com.github.anrwatchdog:anrwatchdog:1.4.0'
-
-
-//    implementation group: 'net.sourceforge.streamsupport', name: 'streamsupport', version: '1.7.3'
     implementation 'net.sourceforge.streamsupport:streamsupport:1.7.3'
 
 }

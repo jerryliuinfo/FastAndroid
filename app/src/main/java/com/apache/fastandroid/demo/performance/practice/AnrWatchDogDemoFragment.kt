@@ -48,7 +48,7 @@ class AnrWatchDogDemoFragment : BaseStatusFragmentNew() {
             .setAnrListener {
                 it.printStackTrace()
                 NLog.printStackTrace(TAG, it)
-            }
+            }.build()
         AnrManager.getInstance().start(anrConfig)
 
 

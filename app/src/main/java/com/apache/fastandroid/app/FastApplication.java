@@ -7,45 +7,32 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
 import android.os.SystemClock;
-import android.text.TextUtils;
 
 import com.apache.fastandroid.BuildConfig;
-import com.apache.fastandroid.aop.track.TrackPoint;
-import com.apache.fastandroid.aop.track.TrackPointCallBack;
 import com.apache.fastandroid.artemis.BaseApp;
 import com.apache.fastandroid.artemis.constant.AppConfig;
-import com.apache.fastandroid.artemis.http.GlobalHttp;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
-import com.apache.fastandroid.artemis.util.BaseLibLogUtil;
-import com.apache.fastandroid.component.anr.AnrConfig;
-import com.apache.fastandroid.component.anr.AnrManager;
-import com.apache.fastandroid.imageloader.GlideImageLoader;
 import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
+import com.apache.fastandroid.performance.AppBlockCanaryContext;
 import com.apache.fastandroid.task.DBInitTask;
 import com.apache.fastandroid.task.DoraemonkitTask;
 import com.apache.fastandroid.task.ImageLoaderTask;
 import com.apache.fastandroid.task.PerformanceTask;
 import com.apache.fastandroid.util.LogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
-import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.CrashUtils;
-import com.github.anrwatchdog.ANRError;
-import com.github.anrwatchdog.ANRWatchDog;
+import com.github.moduth.blockcanary.BlockCanary;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.mmkv.MMKV;
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.applike.IApplicationLike;
-import com.tesla.framework.common.setting.SettingUtility;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.FastLog.LogConfig;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
-import com.tesla.framework.component.performance.BlockDetector;
 
 import java.io.File;
 
-import androidx.core.os.TraceCompat;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.multidex.MultiDex;
@@ -80,6 +67,9 @@ public class FastApplication extends FrameworkApplication  {
         initAppLike();
 //        initAnrWatchDog();
         initBlockCancary();
+        //        if (AppUtils.isAppDebug()){
+//            BlockDetector.init();
+//        }
         initCrash();
         MainLogUtil.d("Application onCreate ");
         long startTime = SystemClock.uptimeMillis();
@@ -92,7 +82,7 @@ public class FastApplication extends FrameworkApplication  {
 
 
         //systrace 开始检测
-        TraceCompat.beginSection("trace");
+//        TraceCompat.beginSection("trace");
 
         TaskDispatcher.init(this);
         TaskDispatcher taskDispatcher = TaskDispatcher.createInstance();
@@ -103,19 +93,12 @@ public class FastApplication extends FrameworkApplication  {
         taskDispatcher.addTask(new PerformanceTask(this));
         taskDispatcher.start();
 
-
-
         //初始化crash统计
         initCrashAndAnalysis();
-
-
-
         initAuth();
         initHttp();
-        if (AppUtils.isAppDebug()){
-            BlockDetector.init();
-        }
-        TrackPoint.init(new TrackPointCallBack() {
+
+      /*  TrackPoint.init(new TrackPointCallBack() {
             @Override
             public void onClick(String pageClassName, String viewIdName) {
                 MainLogUtil.d("onClick: " + pageClassName + "-" + viewIdName);
@@ -138,9 +121,7 @@ public class FastApplication extends FrameworkApplication  {
        // Debug.stopMethodTracing();
 
         //systrace 结束检测
-        TraceCompat.endSection();
-
-
+        TraceCompat.endSection();*/
         NLog.d(TAG, "FastAndroidApplication onCreate cost time: %s ms", (SystemClock.uptimeMillis() - startTime));
 
     }
@@ -151,7 +132,9 @@ public class FastApplication extends FrameworkApplication  {
 
     private void initBlockCancary() {
         NLog.d(TAG, "initBlockCancary --->");
-//        BlockCanary.install(this, new AppBlockCanaryContext()).start();
+        BlockCanary.install(this, new AppBlockCanaryContext()).start();
+
+
     }
 
     private void initCrash() {
@@ -194,15 +177,7 @@ public class FastApplication extends FrameworkApplication  {
      * 全局请求的统一配置
      */
     private void initHttp(){
-        GlobalHttp.setBaseUrl("https://api.douban.com/")
-                //开启缓存策略
-                .setCache().setCookie(false).setSslSocketFactory()
-                //使用bks证书和密码管理客户端证书（双向认证），使用预埋证书，校验服务端证书（自签名证书）
-                //.setSslSocketFactory(getAssets().open("your.bks"), "123456", getAssets().open("your.cer"))
-                .setReadTimeout(10)
-                .setWriteTimeout(10)
-                .setConnectTimeout(10)
-                .setLog(true);
+
     }
 
 
@@ -280,18 +255,6 @@ public class FastApplication extends FrameworkApplication  {
         OAuth.client_secret = client_secret;
     }
 
-    private IImageLoaderstrategy configImageLoader(){
-        String imageLoaderClassName = SettingUtility.getStringSetting("imageLoader");
-        if (!TextUtils.isEmpty(imageLoaderClassName)){
-            try {
-                return (IImageLoaderstrategy) Class.forName(imageLoaderClassName).newInstance();
-            }catch (Exception e){
-                return new GlideImageLoader();
-            }
-        }
-        //如果没有配置，默认使用glide加载
-        return new GlideImageLoader();
-    }
 
 
     private static Context sContext;
@@ -307,6 +270,9 @@ public class FastApplication extends FrameworkApplication  {
     }
 
 
+    private void initLargeMonitor(){
+
+    }
 
 }
 

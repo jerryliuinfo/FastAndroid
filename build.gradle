@@ -19,8 +19,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:4.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
 
-        //aspect插件， 替代上面两行
-//        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
+
 
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' // 添加这行
         //定义在这里，这样每个module都可以使用

@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
-import com.apache.fastandroid.demo.doraemonkit.DoraemonkitDemoFragment
 import com.apache.fastandroid.DrawBasicDemoFragment
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
+import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
 import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
@@ -53,13 +53,13 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("CustomViewWidget", "自定义控件", CustomViewFragment::class.java),
                 ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
                 ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),
-                ViewItemBean("Doraemonkit", "Doraemonkit", DoraemonkitDemoFragment::class.java),
                 ViewItemBean("临时验证", "临时验证", TempDemoFragment::class.java),
                 ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java),
                 ViewItemBean("开源UI控件", "开源UI控件", WidgetDemoFragment::class.java),
                 ViewItemBean("开源框架", "开源框架", OpenSourceDemoFragment::class.java),
                 ViewItemBean("设计模式", "设计模式实战", DesignModeDemoFragment::class.java),
-                ViewItemBean("重学Android", "重学Android", RelearnAndroidDemoFragment::class.java)
+                ViewItemBean("重学Android", "重学Android", RelearnAndroidDemoFragment::class.java),
+                ViewItemBean("黑科技", "黑科技", BlackTechDemoFragment::class.java)
 
 
         )

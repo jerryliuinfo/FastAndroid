@@ -18,6 +18,7 @@ public class SetContentViewAspect {
         long time = System.currentTimeMillis();
         try {
             joinPoint.proceed();
+            System.out.println(System.currentTimeMillis() - time);
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }

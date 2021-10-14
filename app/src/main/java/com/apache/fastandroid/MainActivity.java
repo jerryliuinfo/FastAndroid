@@ -16,6 +16,7 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.demo.blacktech.AspectJDemoFragment;
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
@@ -96,6 +97,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, RxJavaDemoFragment2.class,null);
 //        FragmentContainerActivity.launch(this, MatrixDemoFragment.class,null);
         FragmentContainerActivity.launch(this, PerformanceDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, GlideBasicUsageFragment.class,null);
+//        FragmentContainerActivity.launch(this, HookContextFragment.class,null);
+        FragmentContainerActivity.launch(this, AspectJDemoFragment.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();

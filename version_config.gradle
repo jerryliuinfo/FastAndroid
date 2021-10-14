@@ -48,7 +48,7 @@ ext {
 
 
     leakcanary = "1.6.3"
-    retrofitVersion = "2.2.0"
+    retrofitVersion = "2.8.1"
     lifecycle_version = "2.2.0"
 
     room_version = "2.2.6"
@@ -108,7 +108,7 @@ ext {
 
 
     //第三方依赖库
-    thirdLib = [
+    /*thirdLib = [
 
             //图片加载相关
             glide            :  "com.github.bumptech.glide:glide:3.7.0",
@@ -125,9 +125,10 @@ ext {
 
             retrofit         : "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofit_converter_gson   :"com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            retrofit_converter_scalars:"com.squareup.retrofit2:converter-scalars:$retrofitVersion",
 
             retrofit_adapter_rxjava   :"com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0-RC3",
-            retrofit_converter_scalars:"com.squareup.retrofit2:converter-scalars:2.2.0",
+
 
             eventbus                  :"org.greenrobot:eventbus:3.1.0-RC",
             //crash统计 //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
@@ -152,7 +153,7 @@ ext {
             imageLoader      :  "com.nostra13.universalimageloader:universal-image-loader:1.9.3",
             anrwatchdog      :  "'com.github.anrwatchdog:anrwatchdog:1.4.0'",
 
-    ]
+    ]*/
 
 
     dependencies = [
@@ -196,17 +197,21 @@ ext {
                     'com.squareup.okhttp3:logging-interceptor:3.12.2',
                     'com.squareup.okhttp3:okhttp-bom:4.8.0',
 
+                    //rxjava相关
+                    'io.reactivex.rxjava2:rxjava:2.2.9',
+                    'io.reactivex.rxjava2:rxandroid:2.1.1',
 
-                    "com.squareup.retrofit2:retrofit:2.3.0",
-                    'com.squareup.retrofit2:converter-gson:2.3.0',
+
+                    //retrofit 相关
+                    "com.squareup.retrofit2:retrofit:$retrofitVersion",
+                    "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+                    "com.squareup.retrofit2:converter-scalars:$retrofitVersion",
 
                     //rxjava 对retrofit的支持
                     "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0-RC3",
                     'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
 
-                    //rxjava
-                    'io.reactivex.rxjava2:rxjava:2.2.9',
-                    'io.reactivex.rxjava2:rxandroid:2.1.1',
+
 
 
 
@@ -215,7 +220,7 @@ ext {
                     "com.squareup.picasso:picasso:2.5.2",
                     "com.nostra13.universalimageloader:universal-image-loader:1.9.3",
 
-                    "com.squareup.retrofit2:converter-scalars:2.2.0",
+
                     "com.afollestad.material-dialogs:core:0.9.4.5",
                     'com.permissionx.guolindev:permissionx:1.4.0',
 
@@ -249,7 +254,13 @@ ext {
 
 
                     'com.github.Justson.AgentWeb:agentweb-core:v4.1.9',
-                    'com.github.lzyzsd:jsbridge:1.0.4'
+                    'com.github.lzyzsd:jsbridge:1.0.4',
+
+                    'com.github.markzhai:blockcanary-android:1.5.0',
+
+
+                    //不要升级jjwt库(0.9.1)，高版本要求publicKey大于2048位，xx的publicKey目前是1024位, -- 升级会抛异常
+                    'io.jsonwebtoken:jjwt:0.9.1',
             ],
 
             basic: [

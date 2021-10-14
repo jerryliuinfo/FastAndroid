@@ -2,6 +2,8 @@ package com.apache.fastandroid.demo.performance
 
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
+import com.apache.fastandroid.demo.mmkv.MMKVFragment
+import com.apache.fastandroid.demo.performance.largeimage.LargeImageDemoFragment
 import com.apache.fastandroid.demo.performance.practice.AnrWatchDogDemoFragment
 
 /**
@@ -10,7 +12,10 @@ import com.apache.fastandroid.demo.performance.practice.AnrWatchDogDemoFragment
 class PerformanceDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-                ViewItemBean("卡顿监控", "AnrWatchDog", AnrWatchDogDemoFragment::class.java)
+                ViewItemBean("AnrWatchDog", "AnrWatchDog", AnrWatchDogDemoFragment::class.java)
+                ,ViewItemBean("BlockCancary", "BlockCancary", BlockCancaryDemoFragment::class.java)
+                ,ViewItemBean("LargetImageMonitor", "大图监控", LargeImageDemoFragment::class.java)
+                 ,ViewItemBean("MMKV", "MMKV", MMKVFragment::class.java)
         )
     }
 }

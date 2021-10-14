@@ -3,7 +3,6 @@ package com.apache.fastandroid.task
 import android.text.TextUtils
 import com.optimize.performance.launchstarter.task.Task
 import com.tesla.framework.applike.FrameworkApplication
-import com.tesla.framework.common.setting.SettingUtility
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy
 import com.tesla.framework.component.imageloader.ImageLoaderManager
@@ -25,7 +24,7 @@ class ImageLoaderTask:Task() {
 
 
     private fun configImageLoader(): IImageLoaderstrategy {
-        val imageLoaderClassName = SettingUtility.getStringSetting("imageLoader")
+        val imageLoaderClassName = "";
         return if (!TextUtils.isEmpty(imageLoaderClassName)) {
             try {
                 Class.forName(imageLoaderClassName).newInstance() as IImageLoaderstrategy

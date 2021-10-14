@@ -1,5 +1,0 @@
-<resources>
-
-    <string name="dk_block_class_has_blocked">blocked %s ms</string>
-    <string name="dk_block_notification_message">Click for more details</string>
-</resources>
