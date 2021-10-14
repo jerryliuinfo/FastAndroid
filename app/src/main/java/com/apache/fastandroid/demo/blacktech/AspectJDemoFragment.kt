@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.apache.fastandroid.R
+import com.coco.aspectjlib.TimeSpend
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_black_tech_aspect.*
@@ -27,9 +28,14 @@ class AspectJDemoFragment:BaseFragment() {
         }*/
         btn_debounce.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
-                NLog.d(TAG, "onClick --->")
+               attemptLogin()
             }
 
         })
+    }
+
+    @TimeSpend("登录")
+    private fun attemptLogin() {
+        NLog.d(TAG, "onClick --->")
     }
 }

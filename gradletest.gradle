@@ -1,0 +1,13 @@
+task taskC {
+    doLast{
+        println '我是taskC'
+    }
+}
+
+task taskD {
+    doLast{
+        println '我是taskD'
+    }
+}
+
+taskC.finalizedBy taskD

@@ -13,7 +13,6 @@ import com.apache.fastandroid.artemis.BaseApp;
 import com.apache.fastandroid.artemis.constant.AppConfig;
 import com.apache.fastandroid.artemis.support.bean.OAuth;
 import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
-import com.apache.fastandroid.performance.AppBlockCanaryContext;
 import com.apache.fastandroid.task.DBInitTask;
 import com.apache.fastandroid.task.DoraemonkitTask;
 import com.apache.fastandroid.task.ImageLoaderTask;
@@ -21,7 +20,6 @@ import com.apache.fastandroid.task.PerformanceTask;
 import com.apache.fastandroid.util.LogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.CrashUtils;
-import com.github.moduth.blockcanary.BlockCanary;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.mmkv.MMKV;
@@ -132,7 +130,7 @@ public class FastApplication extends FrameworkApplication  {
 
     private void initBlockCancary() {
         NLog.d(TAG, "initBlockCancary --->");
-        BlockCanary.install(this, new AppBlockCanaryContext()).start();
+//        BlockCanary.install(this, new AppBlockCanaryContext()).start();
 
 
     }
