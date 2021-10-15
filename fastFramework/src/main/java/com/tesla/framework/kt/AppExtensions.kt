@@ -1,9 +1,7 @@
-package com.apache.fastandroid.kt
+package com.tesla.framework.kt
 
 import android.content.res.Resources
 import android.util.TypedValue
-import android.view.View
-import com.apache.fastandroid.sample.IntDefDemo
 import kotlin.math.pow
 
 val Float.dp

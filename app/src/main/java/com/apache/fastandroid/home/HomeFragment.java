@@ -4,11 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.apache.fastandroid.article.ArticleDetailActivity;
+import com.apache.fastandroid.article.ArticleViewModel;
+import com.apache.fastandroid.bean.CollectBean;
 import com.apache.fastandroid.jetpack.StateData;
 import com.apache.fastandroid.network.model.Article;
 import com.apache.fastandroid.network.model.HomeArticleResponse;
+import com.apache.fastandroid.state.UserInfo;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragmentNew;
+import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +25,7 @@ import androidx.lifecycle.Observer;
 /**
  * Created by Jerry on 2021/7/1.
  */
-public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew {
+public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements CollectListener {
 
 
     public static HomeFragment newInstance(){
@@ -27,9 +34,13 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew {
 
 
     private HomeViewModel homeViewModel;
+
+    private ArticleViewModel mArticleViewModel;
+
     @Override
     protected void initViewModel() {
         homeViewModel = getFragmentScopeViewModel(HomeViewModel.class);
+        mArticleViewModel = getFragmentScopeViewModel(ArticleViewModel.class);
     }
 
     @Override
@@ -87,6 +98,17 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew {
 
             }
         });
+        mArticleViewModel.stateLiveData.observe(this, new Observer<StateData<CollectBean>>() {
+            @Override
+            public void onChanged(StateData<CollectBean> stateData) {
+                if (stateData.isSuccess()){
+                    CollectBean item = stateData.getData();
+                    getItemById(item.getId()).setCollect(item.getStatus());
+                    getAdapter().notifyDataSetChanged();
+                }
+            }
+
+        });
 
         onRefresh();
         getAdapter().setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -96,6 +118,24 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew {
                 ArticleDetailActivity.launch(getActivity(),item.getTitle(),item.getLink());
             }
         });
+        getAdapter().setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                Article item = (Article) getAdapter().getItem(position);
+                UserInfo.getInstance().collect(getActivity(), item.getId(),HomeFragment.this);
+            }
+        });
+    }
+
+
+    private Article getItemById(int id){
+        List<Article> datas= getAdapter().getData();
+        for (Article article : datas) {
+            if (id == article.getId()){
+                return article;
+            }
+        }
+        return null;
     }
 
 
@@ -137,4 +177,13 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew {
         homeViewModel.loadHomeData(++mCurrentPage);
     }
 
+    @Override
+    public void collect(@NotNull int id) {
+        if (getItemById(id).getCollect()){
+            mArticleViewModel.unCollect(id);
+        }else {
+            mArticleViewModel.collect(id);
+        }
+
+    }
 }

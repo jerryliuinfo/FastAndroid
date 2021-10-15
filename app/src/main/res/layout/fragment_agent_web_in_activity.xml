@@ -4,13 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="vm"
-            type="com.apache.fastandroid.home.detail.ArticleDetailViewModel" />
 
-        <variable
-            name="clickProxy"
-            type="com.apache.fastandroid.home.ArticleDetailActivity.ClickProxy" />
+
+
     </data>
 
     <LinearLayout
@@ -21,8 +17,7 @@
         tools:context=".module.activity.ArticleDetailActivity">
 
         <include layout="@layout/custom_bar"
-            app:vm="@{vm}"
-            app:clickProxy="@{clickProxy}"
+
             />
     </LinearLayout>
 </layout>

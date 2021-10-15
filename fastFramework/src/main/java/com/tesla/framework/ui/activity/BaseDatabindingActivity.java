@@ -55,6 +55,8 @@ public abstract class BaseDatabindingActivity<VB extends ViewDataBinding> extend
       return mBinding;
    }
 
+
+
    @Override
    public void layoutInit(Bundle savedInstanceState) {
       super.layoutInit(savedInstanceState);

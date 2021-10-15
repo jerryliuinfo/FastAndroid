@@ -4,12 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="vm"
-            type="com.apache.fastandroid.home.detail.ArticleDetailViewModel" />
-        <variable
-            name="clickProxy"
-            type="com.apache.fastandroid.home.ArticleDetailActivity.ClickProxy" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +25,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            onClickWithDebouncing="@{() -> clickProxy.onBack()}"
+
 
             />
 
@@ -43,7 +38,7 @@
             android:ellipsize="end"
             android:maxWidth="270dp"
             android:maxLines="1"
-             android:text="@{vm.title}"
+
             android:textColor="@color/always_white_text"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"

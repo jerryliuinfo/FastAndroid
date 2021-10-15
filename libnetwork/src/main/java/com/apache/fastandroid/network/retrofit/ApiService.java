@@ -3,12 +3,14 @@ package com.apache.fastandroid.network.retrofit;
 
 import com.apache.fastandroid.network.model.Article;
 import com.apache.fastandroid.network.model.HomeArticleResponse;
+import com.apache.fastandroid.network.response.EmptyResponse;
 
 import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 
@@ -23,19 +25,32 @@ public interface ApiService {
 
 //     置顶数据
     @GET("/article/top/json")
-    Call<Protocol<List<Article>>> loadTopArticleCo();
+    Call<BaseResponse<List<Article>>> loadTopArticleCo();
 
     //     置顶数据
     @GET("/article/top/json")
-    Observable<Protocol<List<Article>>> loadTopArticleCo2();
+    Observable<BaseResponse<List<Article>>> loadTopArticleCo2();
 
 
     //     置顶下面数据
     @GET("/article/list/{pageNum}/json")
-    Call<Protocol<HomeArticleResponse>> loadHomeArticleCo(@Path("pageNum") int pageNum);
+    Call<BaseResponse<HomeArticleResponse>> loadHomeArticleCo(@Path("pageNum") int pageNum);
 
     @GET("/article/list/{pageNum}/json")
-    Observable<Protocol<HomeArticleResponse>> loadHomeArticleCo2(@Path("pageNum") int pageNum);
+    Observable<BaseResponse<HomeArticleResponse>> loadHomeArticleCo2(@Path("pageNum") int pageNum);
+
+
+//    @POST("/lg/collect/{id}/json")
+//    suspend fun collectCo(@Path("id") id: Int): BaseResponse<EmptyResponse>
+//
+//    @POST("/lg/uncollect_originId/{id}/json")
+//    suspend fun unCollectCo(@Path("id") id: Int): BaseResponse<EmptyResponse>
+
+    @POST("/lg/collect/{id}/json")
+    Call<BaseResponse<EmptyResponse>> collect(@Path("id") int id);
+
+    @POST("/lg/uncollect_originId/{id}/json")
+    Call<BaseResponse<EmptyResponse>> unCollect(@Path("id") int id);
 
 
 

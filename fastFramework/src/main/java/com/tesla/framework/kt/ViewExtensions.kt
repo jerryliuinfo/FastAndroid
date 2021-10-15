@@ -1,4 +1,4 @@
-package com.apache.fastandroid.kt
+package com.tesla.framework.kt
 
 import android.graphics.Rect
 import android.os.Handler

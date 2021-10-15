@@ -8,7 +8,7 @@ package com.apache.fastandroid.network.retrofit;
  */
 public interface ProtocolHandler<T> {
 
-    void onSuccess(Protocol<T> protocol);
+    void onSuccess(BaseResponse<T> protocol);
 
     void onFailure(int fail_code, String msg);
 }

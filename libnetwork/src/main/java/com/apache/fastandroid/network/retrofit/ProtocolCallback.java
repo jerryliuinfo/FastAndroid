@@ -13,7 +13,7 @@ import retrofit2.Response;
  * copyright TCL-MIG
  */
 
-public abstract class ProtocolCallback<T> implements retrofit2.Callback<Protocol<T>>, ProtocolHandler<T> {
+public abstract class ProtocolCallback<T> implements retrofit2.Callback<BaseResponse<T>>, ProtocolHandler<T> {
     private static final String TAG = "ProtocolCallback";
 
     private String url;
@@ -26,13 +26,13 @@ public abstract class ProtocolCallback<T> implements retrofit2.Callback<Protocol
     }
 
     @Override
-    public  void onResponse(Call<Protocol<T>> call, Response<Protocol<T>> response) {
+    public  void onResponse(Call<BaseResponse<T>> call, Response<BaseResponse<T>> response) {
         if (!response.isSuccessful()) {
             onCallFailed(response.code(),null);
             return;
         }
 
-        Protocol<T> body = response.body();
+        BaseResponse<T> body = response.body();
         //后台如果按照 {"code":0,"msg":"Success","data":{}} 而不是" {code":0,"msg":"Success","data":""} 来返回，理论上body是可能为空的
 //        if (body == null || body.data == null) {
         //有些接口的data确实是返回为空的,例如编辑角色接口
@@ -41,8 +41,8 @@ public abstract class ProtocolCallback<T> implements retrofit2.Callback<Protocol
             return;
         }
 
-        if (!isSuccessful(body.code)) {
-            onCallFailed(body.code, body.msg);
+        if (!isSuccessful(body.getErrorCode())) {
+            onCallFailed(body.getErrorCode(), body.getErrorMsg());
 
             return;
         }
@@ -63,7 +63,7 @@ public abstract class ProtocolCallback<T> implements retrofit2.Callback<Protocol
 
 
     @Override
-    public  void onFailure(Call<Protocol<T>> call, Throwable t) {
+    public  void onFailure(Call<BaseResponse<T>> call, Throwable t) {
 
 
         NLog.i(TAG, "onResponse failure msg = %s", t.getMessage());

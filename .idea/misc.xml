@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/drawable/edittext_focused.xml" value="0.152" />
         <entry key="app/src/main/res/drawable/edittext_normal.xml" value="0.152" />
         <entry key="app/src/main/res/drawable/nav_menu_header_bg.xml" value="0.1575" />
-        <entry key="app/src/main/res/layout/activity_article_detail.xml" value="0.2869791666666667" />
+        <entry key="app/src/main/res/layout/activity_article_detail.xml" value="0.18387096774193548" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/article_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/constraint_chain_style.xml" value="0.24114583333333334" />
@@ -36,6 +36,7 @@
         <entry key="app/src/main/res/layout/performance_block_cancary.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/menu/nav_item_menu.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/xml/fragment_setting.xml" value="0.19479166666666667" />
+        <entry key="baselib/src/main/res/layout/user_fragment_login.xml" value="0.1" />
         <entry key="fastFramework/src/main/res/layout/comm_lay_emptyview.xml" value="0.1" />
         <entry key="fastFramework/src/main/res/layout/comm_lay_loadfailed.xml" value="0.1" />
         <entry key="fastFramework/src/main/res/layout/comm_lay_loading.xml" value="0.2671875" />

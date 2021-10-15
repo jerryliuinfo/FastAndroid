@@ -1,6 +1,8 @@
 package com.apache.fastandroid.network.retrofit;
 
 
+import com.tesla.framework.common.util.log.NLog;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.io.EOFException;
@@ -36,17 +38,15 @@ public class HttpLogInterceptor implements Interceptor {
             if (contentType != null) {
                 charset = contentType.charset(UTF8);
             }
-
-//            NLog.d(TAG, "发送请求 %s on %s %n%s%s",request.url(), request.method(), request.headers(), this.isPlaintext(buffer) ? buffer.readString(charset) : "" );
+            NLog.d(TAG, "发送请求 %s on %s %n%s%s",request.url(), request.method(), request.headers(), this.isPlaintext(buffer) ? buffer.readString(charset) : "" );
         } else {
-//            NLog.d(TAG, String.format("发送请求 %s on %s %n%s", request.url(), request.method(), request.headers()));
-//            NLog.d(TAG, "发送请求 %s on %s %n%s\"", request.url(), request.method(), request.headers());
+            NLog.d(TAG, "发送请求 %s on %s %n%s\"", request.url(), request.method(), request.headers());
         }
 
         Response response = chain.proceed(request);
         long t2 = System.nanoTime();
         ResponseBody responseBody = response.peekBody(1048576L);
-//        NLog.d(TAG, "接收响应(%.1fms): [%s] %n%s%s",  (double)(t2 - t1) / 1000000.0D, response.request().url(), response.headers(), responseBody.string());
+        NLog.d(TAG, "接收响应(%.1fms): [%s] %n%s%s",  (double)(t2 - t1) / 1000000.0D, response.request().url(), response.headers(), responseBody.string());
 
         return response;
     }

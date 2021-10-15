@@ -70,7 +70,10 @@
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"/>
 
         <activity android:name=".demo.temp.ScrollConflictActivity"/>
-        <activity android:name=".home.ArticleDetailActivity"/>
+        <activity android:name=".article.ArticleDetailActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|locale"
+            android:launchMode="singleTask"
+            />
 
 
         <service android:name=".jetpack.lifecycle.service.MyService"/>

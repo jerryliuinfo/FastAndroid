@@ -10,7 +10,7 @@ import com.apache.fastandroid.network.model.FakeToken
 import com.apache.fastandroid.network.model.HomeArticleResponse
 import com.apache.fastandroid.network.retrofit.ApiEngine
 import com.apache.fastandroid.network.retrofit.ApiService
-import com.apache.fastandroid.network.retrofit.Protocol
+import com.apache.fastandroid.network.retrofit.BaseResponse
 import com.blankj.utilcode.util.ToastUtils
 import com.chad.baserecyclerviewadapterhelper.entity.Person
 import com.tesla.framework.common.util.log.NLog
@@ -72,10 +72,10 @@ class RxJavaDemoFragment:BaseFragment() {
             var observable1 = apiService.loadTopArticleCo2().map(ArticleToVideoMapper.getInstance())
             var observable2 = apiService.loadHomeArticleCo2(1)
 
-            Observable.zip(observable1,observable2,object:BiFunction<List<UserBean>,Protocol<HomeArticleResponse>, List<Person>>{
+            Observable.zip(observable1,observable2,object:BiFunction<List<UserBean>, BaseResponse<HomeArticleResponse>, List<Person>>{
                 override fun apply(
                     t1: List<UserBean>,
-                    t2: Protocol<HomeArticleResponse>
+                    t2: BaseResponse<HomeArticleResponse>
                 ): List<Person> {
                     return arrayListOf(Person("zhangsan", 18),Person("lisi", 20))
                 }

@@ -2,12 +2,12 @@ package com.apache.fastandroid.demo.rxjava.map
 
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.network.model.Article
-import com.apache.fastandroid.network.retrofit.Protocol
+import com.apache.fastandroid.network.retrofit.BaseResponse
 
 /**
  * Created by Jerry on 2021/9/9.
  */
-class ArticleToVideoMapper:io.reactivex.functions.Function<Protocol<List<Article>>, List<UserBean>> {
+class ArticleToVideoMapper:io.reactivex.functions.Function<BaseResponse<List<Article>>, List<UserBean>> {
 
 
     companion object{
@@ -19,7 +19,7 @@ class ArticleToVideoMapper:io.reactivex.functions.Function<Protocol<List<Article
         }
     }
 
-    override fun apply(t: Protocol<List<Article>>): List<UserBean> {
+    override fun apply(t: BaseResponse<List<Article>>): List<UserBean> {
         val userList = ArrayList<UserBean>()
         var list = t.data
          for ((index, value) in list.withIndex()){

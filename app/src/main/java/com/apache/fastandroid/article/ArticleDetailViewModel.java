@@ -1,4 +1,4 @@
-package com.apache.fastandroid.home.detail;
+package com.apache.fastandroid.article;
 
 import com.apache.fastandroid.jetpack.BaseViewModel;
 

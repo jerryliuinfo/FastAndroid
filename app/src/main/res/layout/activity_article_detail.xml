@@ -6,11 +6,9 @@
     <data>
         <variable
             name="vm"
-            type="com.apache.fastandroid.home.detail.ArticleDetailViewModel" />
+            type="com.apache.fastandroid.article.ArticleDetailViewModel" />
 
-        <variable
-            name="clickProxy"
-            type="com.apache.fastandroid.home.ArticleDetailActivity.ClickProxy" />
+
     </data>
 
     <LinearLayout
@@ -18,11 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".module.activity.ArticleDetailActivity">
-
-        <include layout="@layout/custom_bar"
-            app:vm="@{vm}"
-            app:clickProxy="@{clickProxy}"
+       >
+        <include
+            android:id="@+id/custom_bar"
+            layout="@layout/custom_bar"
             />
     </LinearLayout>
 </layout>
