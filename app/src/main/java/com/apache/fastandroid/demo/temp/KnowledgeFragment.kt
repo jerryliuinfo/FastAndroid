@@ -1,6 +1,7 @@
 package com.apache.fastandroid.demo.temp
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewTreeObserver
 import com.apache.fastandroid.R
@@ -13,6 +14,7 @@ import java.lang.StringBuilder
  * Created by Jerry on 2021/9/6.
  */
 class KnowledgeFragment: BaseStatusFragmentNew() {
+    private val items:MutableList<String> = ArrayList()
     companion object{
         private const val TAG = "KnowledgeFragment"
     }
@@ -25,6 +27,17 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
 
         forAddSeperator()
         addOnPredrawListener()
+        btn_textview_horizontal_scroll.setOnClickListener {
+            textviewHorizontalScroll()
+        }
+        btn_collections_suffle.setOnClickListener {
+            (0..20).forEach {
+                items.add("value:${it}")
+            }
+            items.subList(0,5).shuffle()
+            NLog.d(TAG, "suffle: ${items}")
+        }
+
     }
 
     /**
@@ -50,11 +63,19 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
                 tv_name.viewTreeObserver.removeOnPreDrawListener(this)
                 return false
             }
-
         })
-
     }
-
+    val result = StringBuilder()
+    private fun textviewHorizontalScroll(){
+        result.let {
+            (0..20).forEach{
+                result.append("add text:${it}")
+            }
+        }
+        tv_message.setHorizontallyScrolling(true)
+        tv_message.movementMethod= ScrollingMovementMethod.getInstance()
+        tv_message.text= result.toString()
+    }
 
 
 }

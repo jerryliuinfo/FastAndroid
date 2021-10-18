@@ -16,6 +16,7 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -98,6 +99,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, GlideBasicUsageFragment.class,null);
 //        FragmentContainerActivity.launch(this, HookContextFragment.class,null);
 //        FragmentContainerActivity.launch(this, AspectJDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, DrakeetDemoListFragment.class,null);
+//        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();

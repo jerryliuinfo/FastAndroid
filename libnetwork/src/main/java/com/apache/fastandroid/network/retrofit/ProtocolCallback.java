@@ -1,5 +1,6 @@
 package com.apache.fastandroid.network.retrofit;
 
+import com.apache.fastandroid.network.response.BaseResponse;
 import com.tesla.framework.common.util.log.NLog;
 
 import retrofit2.Call;
@@ -43,7 +44,6 @@ public abstract class ProtocolCallback<T> implements retrofit2.Callback<BaseResp
 
         if (!isSuccessful(body.getErrorCode())) {
             onCallFailed(body.getErrorCode(), body.getErrorMsg());
-
             return;
         }
 //        NLog.i(TAG, "onResponse success code = %d, msg = %s,data: %s", body.code, body.msg,body.data);

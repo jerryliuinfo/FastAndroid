@@ -1,5 +1,7 @@
 package com.apache.fastandroid.network.retrofit;
 
+import com.apache.fastandroid.network.response.BaseResponse;
+
 /**
  * description:
  * author hui.zhu

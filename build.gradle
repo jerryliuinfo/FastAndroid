@@ -22,8 +22,8 @@ buildscript {
 //        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
 
 
-        classpath 'org.aspectj:aspectjtools:1.8.9'
-        classpath 'org.aspectj:aspectjweaver:1.8.9'
+//        classpath 'org.aspectj:aspectjtools:1.8.9'
+//        classpath 'org.aspectj:aspectjweaver:1.8.9'
 
 
 

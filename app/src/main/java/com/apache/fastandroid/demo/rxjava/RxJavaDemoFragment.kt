@@ -10,7 +10,7 @@ import com.apache.fastandroid.network.model.FakeToken
 import com.apache.fastandroid.network.model.HomeArticleResponse
 import com.apache.fastandroid.network.retrofit.ApiEngine
 import com.apache.fastandroid.network.retrofit.ApiService
-import com.apache.fastandroid.network.retrofit.BaseResponse
+import com.apache.fastandroid.network.response.BaseResponse
 import com.blankj.utilcode.util.ToastUtils
 import com.chad.baserecyclerviewadapterhelper.entity.Person
 import com.tesla.framework.common.util.log.NLog

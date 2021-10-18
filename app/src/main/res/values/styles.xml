@@ -11,6 +11,12 @@
 
     </style>
 
+
+    <style name="Splashscreen" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
+
+
     <style name="anim_fade" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/alpha_in</item>
         <item name="android:activityOpenExitAnimation">@anim/alpha_out</item>
@@ -28,13 +34,18 @@
         <item name="cornerSize">5dp</item>
     </style>
 
-    <style name="textStyle">
+    <style name="textStyle" >
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:drawablePadding">10dp</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">10dp</item>
         <item name="android:textColor">#5d5d5d</item>
+    </style>
+
+    <style name="textStyleRed" parent="textStyle" >
+
+        <item name="android:textColor">@color/comm_red</item>
     </style>
 
     <style name="LAUNCHER">
@@ -57,6 +68,12 @@
         <item name="android:textCursorDrawable">@null</item>
     </style>
 
+    <style name="Theme.BottomBar" parent="textStyle">
+        <item name="bottomAppBarStyle">@style/centeredBottomStype</item>
+    </style>
 
+    <style name="centeredBottomStype" parent="Widget.MaterialComponents.BottomAppBar.Colored">
+        <item name="backgroundTint">#ff0000</item>
+    </style>
 
 </resources>

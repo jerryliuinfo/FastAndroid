@@ -17,13 +17,13 @@ import com.apache.fastandroid.DrawBasicDemoFragment
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
 import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
 import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
+import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.RelearnAndroidDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.vm.ShareViewModel
-import com.blankj.utilcode.util.ToastUtils
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
 import com.hencoder.hencoderpracticedraw4.MatrixDemoFragment
@@ -59,7 +59,8 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("开源框架", "开源框架", OpenSourceDemoFragment::class.java),
                 ViewItemBean("设计模式", "设计模式实战", DesignModeDemoFragment::class.java),
                 ViewItemBean("重学Android", "重学Android", RelearnAndroidDemoFragment::class.java),
-                ViewItemBean("黑科技", "黑科技", BlackTechDemoFragment::class.java)
+                ViewItemBean("黑科技", "黑科技", BlackTechDemoFragment::class.java),
+                ViewItemBean("Drakeet", "Drakeet", DrakeetDemoListFragment::class.java)
 
 
         )

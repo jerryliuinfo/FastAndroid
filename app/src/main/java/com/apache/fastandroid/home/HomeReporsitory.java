@@ -6,7 +6,7 @@ import com.apache.fastandroid.network.model.Article;
 import com.apache.fastandroid.network.model.HomeArticleResponse;
 import com.apache.fastandroid.network.response.EmptyResponse;
 import com.apache.fastandroid.network.retrofit.ApiEngine;
-import com.apache.fastandroid.network.retrofit.BaseResponse;
+import com.apache.fastandroid.network.response.BaseResponse;
 import com.apache.fastandroid.network.retrofit.ProtocolCallback;
 import com.blankj.utilcode.util.ToastUtils;
 import com.tesla.framework.support.KidsException;

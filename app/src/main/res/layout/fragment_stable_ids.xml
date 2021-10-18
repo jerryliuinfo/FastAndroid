@@ -11,12 +11,21 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btn_basic_usage"
+            android:id="@+id/btn_hash_conflict"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="基本用法"
+            android:text="String Hash冲突"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_recycleview_hasStableIds"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="RecycleView 设置 hasStableIds"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

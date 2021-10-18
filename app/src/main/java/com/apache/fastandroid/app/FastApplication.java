@@ -6,7 +6,10 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Looper;
 import android.os.SystemClock;
+import android.util.Log;
+import android.view.WindowManager;
 
 import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.artemis.BaseApp;
@@ -25,6 +28,7 @@ import com.squareup.leakcanary.LeakCanary;
 import com.tencent.mmkv.MMKV;
 import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.applike.IApplicationLike;
+import com.tesla.framework.common.util.handler.HandlerUtil;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.FastLog.LogConfig;
 import com.tesla.framework.common.util.log.NLog;
@@ -57,6 +61,7 @@ public class FastApplication extends FrameworkApplication  {
         sContext = this;
         sApplication = this;
         initLog();
+        loop();
         // data/data/com.apache.fastandroid/files/mmkv
         String rootDir = MMKV.initialize(this);
         NLog.d(TAG, "rootDir: %s",rootDir);
@@ -270,6 +275,39 @@ public class FastApplication extends FrameworkApplication  {
 
     private void initLargeMonitor(){
 
+    }
+
+
+    private void loop(){
+        HandlerUtil.getUIHandler().post(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    try{
+                        Looper.loop();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        String stack = Log.getStackTraceString(e);
+                        if (e instanceof SecurityException){
+
+                        }
+                        else if (e instanceof WindowManager.BadTokenException){
+
+                        }  else if (e instanceof IndexOutOfBoundsException){
+
+                        }
+                        else if (
+                                stack.contains("Toast"))
+                        {
+                            e.printStackTrace();
+                        }else {
+                            throw e;
+                        }
+                    }
+
+                }
+            }
+        });
     }
 
 }

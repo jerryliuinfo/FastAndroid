@@ -2,7 +2,7 @@ package com.apache.fastandroid.demo.rxjava.map
 
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.network.model.Article
-import com.apache.fastandroid.network.retrofit.BaseResponse
+import com.apache.fastandroid.network.response.BaseResponse
 
 /**
  * Created by Jerry on 2021/9/9.

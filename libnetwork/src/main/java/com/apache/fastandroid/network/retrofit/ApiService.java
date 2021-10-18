@@ -3,6 +3,7 @@ package com.apache.fastandroid.network.retrofit;
 
 import com.apache.fastandroid.network.model.Article;
 import com.apache.fastandroid.network.model.HomeArticleResponse;
+import com.apache.fastandroid.network.response.BaseResponse;
 import com.apache.fastandroid.network.response.EmptyResponse;
 
 import java.util.List;

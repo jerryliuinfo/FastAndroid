@@ -20,7 +20,8 @@ class OpenSourceDemoFragment: BaseListFragment() {
         return arrayListOf(
                 ViewItemBean("Glide", "Glide", GlideDemoFragment::class.java),
                 ViewItemBean("Rxjava", "Rxjava操作符", RxJavaDemoFragment::class.java),
-                ViewItemBean("AgentWeb", "AgentWeb", AgentWebDemoListFragment::class.java)
+                ViewItemBean("AgentWeb", "AgentWeb", AgentWebDemoListFragment::class.java),
+                ViewItemBean("AppMananger", "https://github.com/MuntashirAkon/AppManager", AgentWebDemoListFragment::class.java)
 
         )
     }

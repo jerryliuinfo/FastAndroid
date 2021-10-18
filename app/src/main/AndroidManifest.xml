@@ -49,23 +49,23 @@
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
-        <activity android:name=".SplashActivity" >
-
-        </activity>
-        <activity android:name=".demo.DemoListActivity" >
-
-        </activity>
-<!--        <activity android:name=".demo.DemoListActivity"/>-->
-        <activity
-            android:name=".MainActivity"
-            android:launchMode="singleTask"
-            android:exported="true">
+        <activity android:name=".SplashActivity"
+            android:theme="@style/Splashscreen"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".demo.DemoListActivity" >
 
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask"
+            android:exported="true">
          </activity>
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"/>
 
