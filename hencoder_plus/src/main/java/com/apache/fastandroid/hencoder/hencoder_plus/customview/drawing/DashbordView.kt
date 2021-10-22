@@ -4,15 +4,14 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.blankj.utilcode.util.ktx.px
 import com.tesla.framework.common.util.kt.dp
 import com.tesla.framework.common.util.log.NLog
 
 
-private val RADIS = 150f.px
+private val RADIS = 150.dp
 private val OPEN_ANGEL = 120
-private val DASH_WIDTH = 2f.px
-private val DASH_LENGTH = 10f.px
+private val DASH_WIDTH = 2.dp
+private val DASH_LENGTH = 10.dp
 
 
 

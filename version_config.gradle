@@ -89,6 +89,7 @@ ext {
             blockcanary                      :  'com.github.markzhai:blockcanary-android:1.5.0',
             leakcanary                       :  'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3',
             permissionx                      :  'com.permissionx.guolindev:permissionx:1.4.0',
+            viewpump                         :  'dev.b3nedikt.viewpump:viewpump:4.0.7', //https://github.com/B3nedikt/ViewPump
 
 
 

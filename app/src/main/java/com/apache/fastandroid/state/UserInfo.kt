@@ -1,8 +1,7 @@
 package com.apache.fastandroid.state
 
-import android.app.Activity
 import android.content.Context
-import com.blankj.utilcode.util.ktx.SPreference
+import com.tesla.framework.kt.SPreference
 import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener
 
 /**

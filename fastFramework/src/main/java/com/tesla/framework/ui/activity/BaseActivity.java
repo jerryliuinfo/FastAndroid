@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 
 import com.tesla.framework.R;
 import com.tesla.framework.component.network.NetworkStateManager;
-import com.tesla.framework.support.inject.InjectUtility;
-import com.tesla.framework.support.inject.ViewInject;
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
 import com.tesla.framework.ui.widget.CustomToolbar;
 
@@ -62,7 +60,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
     private View rootView;
 
-    @ViewInject(idStr = "toolbar")
+
     Toolbar mToolbar;
 
 
@@ -97,7 +95,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     }
 
     protected void bindView(){
-
+        mToolbar = findViewById(R.id.toolbar);
     }
 
 
@@ -156,11 +154,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     @Override
     public void setContentView(View view, ViewGroup.LayoutParams params) {
         super.setContentView(view, params);
-
         rootView = view;
-        InjectUtility.initInjectedView(this, this, rootView);
-
-        mToolbar = findViewById(R.id.toolbar);
         if (mToolbar != null)
             setSupportActionBar(mToolbar);
     }
@@ -168,10 +162,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
     @Override
     public void setContentView(View view) {
         super.setContentView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
         rootView = view;
-        InjectUtility.initInjectedView(this, this, this.rootView);
-
         mToolbar = findViewById(R.id.toolbar);
         if (mToolbar != null)
             setSupportActionBar(mToolbar);

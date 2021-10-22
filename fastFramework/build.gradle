@@ -117,7 +117,6 @@ dependencies {
 
 
 
-    implementation 'org.aspectj:aspectjrt:1.9.5'
 }
 
 

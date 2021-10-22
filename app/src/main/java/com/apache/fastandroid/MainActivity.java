@@ -1,6 +1,5 @@
 package com.apache.fastandroid;
 
-import android.Manifest.permission;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,15 +21,10 @@ import com.apache.fastandroid.task.DelayInitTask2;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.optimize.performance.launchstarter.DelayInitDispatcher;
-import com.permissionx.guolindev.PermissionX;
-import com.permissionx.guolindev.callback.RequestCallback;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.eventbus.FastBus;
-import com.tesla.framework.support.inject.OnClick;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
-
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -110,7 +104,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.setContentView(view);
     }
 
-    @OnClick
     private void loadMenuData(){
         View headView = mNavigationView.getHeaderView(0);
         TextView tv_username = headView.findViewById(R.id.tv_username);

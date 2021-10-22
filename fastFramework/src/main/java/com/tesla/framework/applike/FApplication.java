@@ -3,7 +3,7 @@ package com.tesla.framework.applike;
 import android.app.Application;
 import android.content.Context;
 
-import com.blankj.utilcode.util.ktx.SPreference;
+import com.tesla.framework.kt.SPreference;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.common.util.network.NetworkHelper;
 
@@ -66,6 +66,7 @@ public class FApplication  {
 
 
     public static Context getContext(){
+        checkContext();
         return sContext;
     }
 

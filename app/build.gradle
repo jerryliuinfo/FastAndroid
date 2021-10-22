@@ -253,7 +253,9 @@ dependencies {
     implementation rootProject.ext.thirdLib.retrofitAdapterRx
 
     implementation rootProject.ext.thirdLib.permissionx
+    implementation rootProject.ext.thirdLib.viewpump
 
+    debugImplementation rootProject.ext.thirdLib.blockcanary
 
 
 
@@ -276,19 +278,12 @@ dependencies {
 
 
 
-    implementation 'org.aspectj:aspectjrt:1.8.9'
 
 
 
-    debugImplementation 'com.github.markzhai:blockcanary-android:1.5.0'
 
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
 
-
-    implementation 'net.sourceforge.streamsupport:streamsupport:1.7.3'
-
-    //https://github.com/B3nedikt/ViewPump
-    implementation 'dev.b3nedikt.viewpump:viewpump:4.0.7'
 
 }
 

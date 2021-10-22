@@ -1,4 +1,4 @@
-package com.tesla.framework.component.performance;
+package com.apache.fastandroid.demo.performance.block;
 
 import android.annotation.SuppressLint;
 import android.os.Handler;
