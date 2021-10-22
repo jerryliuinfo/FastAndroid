@@ -84,6 +84,11 @@
 
 
         <service android:name=".jetpack.lifecycle.service.MyService"/>
+
+
+        <meta-data
+            android:name="HOST"
+            android:value="${HOST_VALUE}" />
     </application>
 
 

@@ -5,6 +5,8 @@ import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewTreeObserver
 import com.apache.fastandroid.R
+import com.blankj.utilcode.util.MetaDataUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.tesla.framework.common.util.log.NLog
@@ -39,6 +41,9 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
             }
             items.subList(0,5).shuffle()
             NLog.d(TAG, "suffle: ${items}")
+        }
+        btn_multi_channel.setOnClickListener {
+            ToastUtils.showShort(MetaDataUtils.getMetaDataInApp("HOST"))
         }
 
     }

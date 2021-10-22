@@ -51,13 +51,10 @@ android {
         //5.0以下将svg图片生成指定维度的图片
         vectorDrawables.generatedDensities('xhdpi', 'xxhdpi')
 
-        flavorDimensions "debug", "release"
+        flavorDimensions "env"
 
         //只保留指定和默认资源
         resConfigs('zh-rCN')
-
-
-
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -65,8 +62,6 @@ android {
                 //                arguments = [moduleName: project.getName()]
             }
         }
-
-
         defaultConfig {
             ndk {
                 // 设置支持的SO库架构
@@ -75,14 +70,96 @@ android {
         }
     }
 
-//    android.buildFeatures.dataBinding{
-//        enabled=true
-//    }
+
+
+    buildTypes {
+
+        release {
+            //zipAlignEnabled能提供系统和应用的运行效率
+            zipAlignEnabled true
+            //获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk
+            //安装目录下的tools/prlguard
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [appName: "FastAnd"]
+
+            buildConfigField('boolean', 'LOG_DEBUG', "false")
+            buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
+        }
+        debug {
+            manifestPlaceholders = [appName: "FastAnd测试版"]
+            buildConfigField('boolean', 'LOG_DEBUG', "true")
+            buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
+        }
+    }
+
+    productFlavors {
+        dev {
+            dimension "env"
+            manifestPlaceholders = [HOST_VALUE: "www.baidu1.com"]
+        }
+
+        etest {
+            //海外账号环境
+            dimension "env"
+            manifestPlaceholders = [HOST_VALUE: "www.baidu2.com"]
+        }
+
+        uat {
+            dimension "env"
+            manifestPlaceholders = [HOST_VALUE: "www.baidu3.com"]
+
+        }
+        prod {
+            dimension "env"
+            manifestPlaceholders = [HOST_VALUE: "www.baidu4.com"]
+
+        }
+
+
+
+    }
+
+
+
+    signingConfigs {
+
+        release {
+            storePassword properties.getProperty('KEYSTORE_PASSWORD')
+            storeFile file(properties.getProperty('KEYSTORE_FILE'))
+            keyAlias properties.getProperty('KEYSTORE_ALIAS')
+            keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
+        }
+
+
+        debug {
+            storePassword properties.getProperty('KEYSTORE_PASSWORD')
+            storeFile file(properties.getProperty('KEYSTORE_FILE'))
+            keyAlias properties.getProperty('KEYSTORE_ALIAS')
+            keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
+        }
+    }
+
+
+
+
+    resourcePrefix ""
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def versionName = variant.versionName
+            def versionCode = variant.versionCode
+            def buildType = variant.buildType.name
+            output.outputFileName = "${applicationId}-${versionName}-${versionCode}-${buildType}.apk"
+
+            println("storePassword:${properties.getProperty('KEYSTORE_PASSWORD')}, keyAlias:${properties.getProperty('KEYSTORE_ALIAS') }" )
+        }
+    }
+
+
+
 
 
     buildFeatures{
         dataBinding = true
-        // for view binding :
         // viewBinding = true
     }
 
@@ -121,49 +198,6 @@ android {
         abortOnError false
     }
 
-    //AspectJ 报错 参考:https://blog.csdn.net/zhangshuny/article/details/106056790,
-    // https://blog.csdn.net/tian2342/article/details/102698564
-//    aspectjx{
-//        exclude 'androidx','com.google','com.google.firebase','com.google.android','com.android'
-//    }
-
-    signingConfigs {
-
-        release {
-            storePassword properties.getProperty('KEYSTORE_PASSWORD')
-            storeFile file(properties.getProperty('KEYSTORE_FILE'))
-            keyAlias properties.getProperty('KEYSTORE_ALIAS')
-            keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
-        }
-
-
-        debug {
-            storePassword properties.getProperty('KEYSTORE_PASSWORD')
-            storeFile file(properties.getProperty('KEYSTORE_FILE'))
-            keyAlias properties.getProperty('KEYSTORE_ALIAS')
-            keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
-        }
-    }
-    buildTypes {
-        release {
-            //zipAlignEnabled能提供系统和应用的运行效率
-            zipAlignEnabled true
-            //获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk
-            //安装目录下的tools/prlguard
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            manifestPlaceholders = [appName: "FastAnd"]
-
-            buildConfigField('boolean', 'LOG_DEBUG', "false")
-            buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
-        }
-        debug {
-            manifestPlaceholders = [appName: "FastAnd测试版"]
-            buildConfigField('boolean', 'LOG_DEBUG', "true")
-            buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
-        }
-    }
-
-
 
     //将SO库打包到apk内
     sourceSets {
@@ -173,30 +207,16 @@ android {
     }
 
 
-    /**
-     * release构建忽略dev这一个渠道
-     */
-   /* variantFilter { variant ->
-        if (variant.buildType.name.equals('release')) {
-            variant.getFlavors().each() { flavor ->
-                if (flavor.name.equals('dev')) {
-                    variant.setIgnore(true);
-                }
-            }
-        }
-    }*/
 
-    resourcePrefix ""
-    applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            def versionName = variant.versionName
-            def versionCode = variant.versionCode
-            def buildType = variant.buildType.name
-            output.outputFileName = "${applicationId}-${versionName}-${versionCode}-${buildType}.apk"
 
-            println("storePassword:${properties.getProperty('KEYSTORE_PASSWORD')}, keyAlias:${properties.getProperty('KEYSTORE_ALIAS') }" )
-        }
-    }
+
+
+
+    //AspectJ 报错 参考:https://blog.csdn.net/zhangshuny/article/details/106056790,
+    // https://blog.csdn.net/tian2342/article/details/102698564
+//    aspectjx{
+//        exclude 'androidx','com.google','com.google.firebase','com.google.android','com.android'
+//    }
 
 
     //gradle 打包 add end

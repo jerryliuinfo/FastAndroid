@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_message"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:text="测试知识点"
         />
 
@@ -31,6 +30,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv_name"
         app:layout_constraintStart_toEndOf="@+id/tv_name"
         android:layout_marginStart="20dp"
+
         />
     <Button
         android:id="@+id/btn_collections_suffle"
@@ -39,6 +39,7 @@
         android:text="Collections.suffle"
         app:layout_constraintTop_toTopOf="@+id/tv_name"
         app:layout_constraintStart_toEndOf="@+id/btn_textview_horizontal_scroll"
+        android:layout_marginStart="20dp"
         />
 
     <Button
@@ -48,5 +49,14 @@
         android:text="LinerlayoutCompat"
         app:layout_constraintTop_toTopOf="@+id/tv_name"
         app:layout_constraintStart_toEndOf="@+id/btn_collections_suffle"
+        />
+    <Button
+        android:id="@+id/btn_multi_channel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="定义多渠道"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        android:layout_marginTop="20dp"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
