@@ -7,7 +7,7 @@ import androidx.work.*
 import com.apache.fastandroid.R
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.jetpack.workmanager.request.UploadLogWorker
-import com.tesla.framework.applike.FrameworkApplication
+import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.util.log.NLog
 import kotlinx.android.synthetic.main.fragment_workmananger_basic.*
 import java.util.concurrent.TimeUnit
@@ -40,7 +40,7 @@ class OneTimeWorkRequestDemoFragment: BaseStatusFragmentNew() {
     private lateinit var instance:WorkManager
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        instance = WorkManager.getInstance(FrameworkApplication.getContext())
+        instance = WorkManager.getInstance(FApplication.getContext())
         btn_begin_then.setOnClickListener {
             doUpload()
         }

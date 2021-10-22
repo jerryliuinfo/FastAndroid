@@ -8,7 +8,7 @@ import android.net.NetworkRequest
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import com.tesla.framework.applike.FrameworkApplication
+import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.util.log.NLog
 
 /**
@@ -27,7 +27,7 @@ class NetworkLiveData:LiveData<Int>() {
     init {
         networkCallback = NetworkCallbackImpl()
         request = NetworkRequest.Builder().build()
-        manager = FrameworkApplication.getApplication().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        manager = FApplication.getApplication().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     }
 
     override fun onActive() {

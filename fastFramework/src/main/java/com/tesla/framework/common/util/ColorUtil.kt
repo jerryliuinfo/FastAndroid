@@ -17,6 +17,7 @@
 package com.tesla.framework.common.util
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import androidx.annotation.CheckResult
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
@@ -24,12 +25,11 @@ import androidx.annotation.IntRange
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.palette.graphics.Palette
-import com.blankj.utilcode.util.ColorUtils
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.tesla.framework.R
-import com.tesla.framework.applike.FrameworkApplication
+import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.util.log.NLog
 
 /**
@@ -168,9 +168,9 @@ object ColorUtil {
                         val isDark = ColorUtil.isBitmapDark(palette, bitmap)
                         val color: Int
                         color = if (isDark) {
-                            ContextCompat.getColor(FrameworkApplication.getContext(), R.color.white)
+                            ContextCompat.getColor(FApplication.getContext(), Color.WHITE.toInt())
                         } else {
-                            ContextCompat.getColor(FrameworkApplication.getContext(), R.color.colorPrimary)
+                            ContextCompat.getColor(FApplication.getContext(), R.color.colorPrimary)
                         }
 //                        nicknameMe.setTextColor(color)
 //                        descriptionMe.setTextColor(color)

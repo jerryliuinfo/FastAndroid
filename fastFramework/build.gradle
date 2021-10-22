@@ -113,20 +113,9 @@ dependencies {
 
 
 
-    implementation rootProject.ext.dependencies.publicImplementation
+    implementation rootProject.ext.dependencies2.publicImplementation
 
 
-
-    implementation rootProject.androidLib.coroutines_core
-    implementation rootProject.androidLib.coroutines_android
-
-
-
-
-    implementation 'com.qmuiteam:qmui:2.0.0-alpha10'
-    implementation 'androidx.palette:palette-ktx:1.0.0'
-
-//    api project(':artemis_annotation')
 
     implementation 'org.aspectj:aspectjrt:1.9.5'
 }

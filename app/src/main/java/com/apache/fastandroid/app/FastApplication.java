@@ -5,45 +5,38 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
-import android.os.Environment;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.WindowManager;
 
-import com.apache.fastandroid.BuildConfig;
-import com.apache.fastandroid.artemis.BaseApp;
-import com.apache.fastandroid.artemis.constant.AppConfig;
-import com.apache.fastandroid.artemis.support.bean.OAuth;
+import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor;
+import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor;
 import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
 import com.apache.fastandroid.task.DBInitTask;
 import com.apache.fastandroid.task.DoraemonkitTask;
 import com.apache.fastandroid.task.ImageLoaderTask;
 import com.apache.fastandroid.task.PerformanceTask;
-import com.apache.fastandroid.util.LogDelegate;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.CrashUtils;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.mmkv.MMKV;
-import com.tesla.framework.applike.FrameworkApplication;
-import com.tesla.framework.applike.IApplicationLike;
+import com.tesla.framework.applike.FApplication;
 import com.tesla.framework.common.util.handler.HandlerUtil;
-import com.tesla.framework.common.util.log.FastLog;
-import com.tesla.framework.common.util.log.FastLog.LogConfig;
+import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
-
-import java.io.File;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.multidex.MultiDex;
+import dev.b3nedikt.viewpump.ViewPump;
 
 /**
  * Created by jerryliu on 2017/3/26.
  */
 
-public class FastApplication extends FrameworkApplication  {
+public class FastApplication extends Application {
     public static final String TAG = FastApplication.class.getSimpleName();
 
 
@@ -59,20 +52,18 @@ public class FastApplication extends FrameworkApplication  {
             return;
         }
         sContext = this;
-        sApplication = this;
+
         initLog();
         loop();
+        FApplication.class.getSimpleName();
         // data/data/com.apache.fastandroid/files/mmkv
         String rootDir = MMKV.initialize(this);
         NLog.d(TAG, "rootDir: %s",rootDir);
 
-        BaseApp.onCreate(this);
+
         initAppLike();
-//        initAnrWatchDog();
         initBlockCancary();
-        //        if (AppUtils.isAppDebug()){
-//            BlockDetector.init();
-//        }
+
         initCrash();
         MainLogUtil.d("Application onCreate ");
         long startTime = SystemClock.uptimeMillis();
@@ -98,34 +89,11 @@ public class FastApplication extends FrameworkApplication  {
 
         //初始化crash统计
         initCrashAndAnalysis();
-        initAuth();
         initHttp();
 
-      /*  TrackPoint.init(new TrackPointCallBack() {
-            @Override
-            public void onClick(String pageClassName, String viewIdName) {
-                MainLogUtil.d("onClick: " + pageClassName + "-" + viewIdName);
-                //添加你的操作
-            }
 
-            @Override
-            public void onPageOpen(String pageClassName) {
-                BaseLibLogUtil.d("onPageOpen: " + pageClassName);
-                //添加你的操作
-            }
-
-            @Override
-            public void onPageClose(String pageClassName) {
-                MainLogUtil.d("onPageClose: " + pageClassName);
-                //添加你的操作
-            }
-        });
-        //traceview 结束检测
-       // Debug.stopMethodTracing();
-
-        //systrace 结束检测
-        TraceCompat.endSection();*/
         NLog.d(TAG, "FastAndroidApplication onCreate cost time: %s ms", (SystemClock.uptimeMillis() - startTime));
+        initViewPump();
 
     }
 
@@ -164,15 +132,7 @@ public class FastApplication extends FrameworkApplication  {
 
 
     private void initAppLike(){
-        for (String componentAppName: AppConfig.COMPONENT_APPLICATION_CONFIG) {
-            try {
-                Class<?> clz = Class.forName(componentAppName);
-                IApplicationLike applicationLike  = (IApplicationLike) clz.newInstance();
-                applicationLike.onCreate(this);
-            } catch (Exception e) {
-                //e.printStackTrace();
-            }
-        }
+
     }
 
 
@@ -185,11 +145,7 @@ public class FastApplication extends FrameworkApplication  {
 
 
     private void initLog(){
-        LogDelegate logDelegate = new LogDelegate();
-        LogConfig config = new LogConfig();
-        config.openLog = BuildConfig.DEBUG;
-        logDelegate.setLogConfig(config);
-        FastLog.setLogDelegate(logDelegate);
+        NLog.setDebug(true, Logger.VERBOSE);
     }
 
 
@@ -201,23 +157,6 @@ public class FastApplication extends FrameworkApplication  {
 //        TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, false, 0, SplashActivity.class);
 
     }
-
-    private String configCrashFilePath(){
-        String path = "";
-        try {
-            String storageStr = Environment.getExternalStorageState();
-            if (storageStr != null && storageStr.equals(Environment.MEDIA_MOUNTED)) {
-                File file = this.getExternalFilesDir(null);
-                if (file != null) {
-                    path = file + File.separator + "crash"; // Android/data/pkgName/files/crash
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return path;
-    }
-
 
 
 
@@ -253,29 +192,14 @@ public class FastApplication extends FrameworkApplication  {
     }
 
 
-    private void initAuth(){
-        OAuth.client_id = client_id;
-        OAuth.client_secret = client_secret;
-    }
-
-
-
     private static Context sContext;
-
-    private static Application sApplication;
 
     public static Context getContext(){
         return sContext;
     }
 
-    public static FastApplication getApplication(){
-        return (FastApplication) sApplication;
-    }
 
 
-    private void initLargeMonitor(){
-
-    }
 
 
     private void loop(){
@@ -308,6 +232,12 @@ public class FastApplication extends FrameworkApplication  {
                 }
             }
         });
+    }
+
+
+    private void initViewPump(){
+        ViewPump.init(new TextUpdatingInterceptor(), new CustomTextViewInterceptor());
+
     }
 
 }

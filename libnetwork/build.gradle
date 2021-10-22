@@ -34,13 +34,17 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation rootProject.ext.dependencies.publicImplementation
+    implementation rootProject.ext.dependencies2.publicImplementation
 
+    implementation rootProject.ext.thirdLib.okhttp3
+    implementation rootProject.ext.thirdLib.okhttp3_boom
+    implementation rootProject.ext.thirdLib.okhttp3_log
 
-    implementation 'android.arch.persistence.room:runtime:1.1.1'
-    implementation "android.arch.lifecycle:extensions:1.1.1"
-    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
-    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+    implementation rootProject.ext.thirdLib.retrofit
+    implementation rootProject.ext.thirdLib.retrofitConverterGson
+    implementation rootProject.ext.thirdLib.retrofitConverterScalars
+    implementation rootProject.ext.thirdLib.retrofitAdapterRx
+
 
     rootProject.ext.dependencies.basic.each{
         implementation project(it)

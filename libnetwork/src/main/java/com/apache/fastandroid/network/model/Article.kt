@@ -1,7 +1,5 @@
 package com.apache.fastandroid.network.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 
 /**
  * Created with Android Studio.
@@ -10,9 +8,7 @@ import androidx.room.PrimaryKey
  * @date: 2020/02/25
  * Time: 21:10
  */
-@Entity
 data class Article(
-    @PrimaryKey(autoGenerate = true)
     var primaryKeyId: Int = 0,
     var id: Int = 0,
     var author: String = "",

@@ -1,9 +1,7 @@
 package com.apache.fastandroid.state
 
 import android.content.Context
-import com.apache.fastandroid.artemis.LoginActivity
 import com.blankj.utilcode.util.ToastUtils
-import com.tesla.framework.kt.startActivity
 import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener
 
 /**
@@ -18,7 +16,7 @@ class LogoutState:UserState {
     private fun startLoginActivity(context: Context){
         context?.let {
             ToastUtils.showShort("请先登录")
-           startActivity<LoginActivity>(context)
+//           startActivity<LoginActivity>(context)
         }
     }
 }

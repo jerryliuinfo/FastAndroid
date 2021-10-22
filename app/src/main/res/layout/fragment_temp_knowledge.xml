@@ -40,4 +40,13 @@
         app:layout_constraintTop_toTopOf="@+id/tv_name"
         app:layout_constraintStart_toEndOf="@+id/btn_textview_horizontal_scroll"
         />
+
+    <Button
+        android:id="@+id/btn_linerlayoutCompat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LinerlayoutCompat"
+        app:layout_constraintTop_toTopOf="@+id/tv_name"
+        app:layout_constraintStart_toEndOf="@+id/btn_collections_suffle"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

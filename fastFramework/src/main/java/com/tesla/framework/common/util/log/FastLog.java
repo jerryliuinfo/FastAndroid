@@ -10,6 +10,8 @@
  */
 package com.tesla.framework.common.util.log;
 
+import android.util.Log;
+
 /**
  * 日志输出类，可控制调试与文件日志的控制
  * @author devilxie
@@ -17,21 +19,11 @@ package com.tesla.framework.common.util.log;
  */
 public final class FastLog
 {
-	public static final String TAG = "NLog";
-	private final static String	LOG_FILENAME	= "tcl_logcat.log";
-	private static boolean		debug			= false;			// 是否记录日志
-	private static Logger		logger			= null;
+	public static final String TAG = "FastLog";
 
 
-	public static class LogConfig{
-		public boolean openLog;
-	}
+	public interface ILogDelegate {
 
-	public interface IFastLogDelegate {
-		void setLogConfig(LogConfig config);
-		boolean isDebug();
-
-		void e(final String tag, final String msg, final Object ... obj);
 		void w(final String tag, final String msg, final Object ... obj);
 		void i(final String tag, final String msg, final Object ... obj);
 		void d(final String tag, final String msg, final Object ... obj);
@@ -39,59 +31,109 @@ public final class FastLog
 		void printStackTrace(String tag, Throwable e);
 	}
 
-
-	private static IFastLogDelegate sDelegete;
-
-	public static void setLogDelegate(IFastLogDelegate iLogDelegate) {
-		FastLog.sDelegete = iLogDelegate;
+	public interface ILogConfig{
+		boolean openLog();
 	}
 
+	public static class DefLogConfig implements ILogConfig{
 
-	public static void e(final String tag, final String msg, final Object ... obj) {
-		if (sDelegete != null) {
-			sDelegete.e(tag, msg, obj);
+		@Override
+		public boolean openLog() {
+			return true;
 		}
 	}
 
+	public static class DefLog implements ILogDelegate{
+
+		@Override
+		public void w(String tag, String msg, Object... obj) {
+			Log.w(TAG, String.format(msg,obj));
+		}
+
+		@Override
+		public void i(String tag, String msg, Object... obj) {
+			Log.i(TAG, String.format(msg,obj));
+		}
+
+		@Override
+		public void d(String tag, String msg, Object... obj) {
+			Log.d(TAG, String.format(msg,obj));
+		}
+
+		@Override
+		public void v(String tag, String msg, Object... obj) {
+			Log.v(TAG, String.format(msg,obj));
+		}
+
+		@Override
+		public void printStackTrace(String tag, Throwable e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	private static ILogDelegate sDelegate = new DefLog();
+	private static ILogConfig sLogConfig = new DefLogConfig();
+
+	/**
+	 *  注入 log 实现类
+	 * @param iLogDelegate
+	 */
+	public static void setLogDelegate(ILogDelegate iLogDelegate) {
+		if (iLogDelegate != null){
+			sDelegate = iLogDelegate;
+		}
+	}
+
+	public static void setLogConfig(ILogConfig logConfig) {
+		if (logConfig != null){
+			sLogConfig = logConfig;
+		}
+	}
+
+
+
 	public static void w(final String tag, final String msg, final Object ... obj) {
-		if (sDelegete != null) {
-			sDelegete.w(tag, msg, obj);
+		if (sDelegate != null) {
+			sDelegate.w(tag, msg, obj);
 		}
 	}
 
 	public static void i(final String tag, final String msg, final Object ... obj) {
-		if (sDelegete != null) {
-			sDelegete.i(tag, msg, obj);
+		if (sDelegate != null) {
+			sDelegate.i(tag, msg, obj);
 		}
 	}
 	public static void v(final String tag, final String msg, final Object ... obj) {
-		if (sDelegete != null) {
-			sDelegete.v(tag, msg, obj);
+		if (sDelegate != null) {
+			sDelegate.v(tag, msg, obj);
 		}
 	}
 
 	public static void d(final String tag, final String msg, final Object ... obj) {
-		if (sDelegete != null) {
-			sDelegete.d(tag, msg, obj);
+		if (sDelegate != null) {
+			sDelegate.d(tag, msg, obj);
 		}
 	}
 
 	public static void printStackTrace(final String tag, Throwable throwable) {
-		if (sDelegete != null) {
-			sDelegete.printStackTrace(tag, throwable);
+		if (sDelegate != null) {
+			sDelegate.printStackTrace(tag, throwable);
 		}
 	}
 
 	public static void printStackTrace(Throwable throwable) {
-		if (sDelegete != null) {
-			sDelegete.printStackTrace("Log", throwable);
+		if (sDelegate != null) {
+			sDelegate.printStackTrace("Log", throwable);
 		}
 	}
 
 	public static boolean isDebug(){
-		if (sDelegete != null){
-			return sDelegete.isDebug();
+		if (sLogConfig != null){
+			return sLogConfig.openLog();
 		}
 		return false;
 	}
+
+
 }

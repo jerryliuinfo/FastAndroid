@@ -69,7 +69,14 @@
          </activity>
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"/>
 
+
+
         <activity android:name=".demo.temp.ScrollConflictActivity"/>
+
+        <activity android:name=".demo.blacktech.ViewPumpDemoActivity"/>
+
+
+
         <activity android:name=".article.ArticleDetailActivity"
             android:configChanges="orientation|keyboardHidden|navigation|locale"
             android:launchMode="singleTask"

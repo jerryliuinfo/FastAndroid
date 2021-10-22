@@ -43,11 +43,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-//    //kotlin
-//    implementation rootProject.androidLib.kotlin_stdlib
-//    implementation rootProject.androidLib.kotlin_reflect
 
-    implementation rootProject.ext.dependencies.publicImplementation
+    implementation rootProject.ext.dependencies2.publicImplementation
 
     implementation project(':fastFramework')
 
@@ -58,7 +55,6 @@ dependencies {
 
 
     testImplementation 'junit:junit:4.12'
-    implementation androidLib.junit
     implementation 'androidx.annotation:annotation:1.0.0'
 
 

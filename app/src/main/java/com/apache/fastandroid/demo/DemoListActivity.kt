@@ -60,7 +60,8 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("设计模式", "设计模式实战", DesignModeDemoFragment::class.java),
                 ViewItemBean("重学Android", "重学Android", RelearnAndroidDemoFragment::class.java),
                 ViewItemBean("黑科技", "黑科技", BlackTechDemoFragment::class.java),
-                ViewItemBean("Drakeet", "Drakeet", DrakeetDemoListFragment::class.java)
+                ViewItemBean("Drakeet", "Drakeet", DrakeetDemoListFragment::class.java),
+                ViewItemBean("Kotlin语法", "Kotlin语法", KotlinDemoListFragment::class.java)
 
 
         )

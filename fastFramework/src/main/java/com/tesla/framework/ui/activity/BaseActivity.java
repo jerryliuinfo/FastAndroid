@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tesla.framework.R;
-import com.tesla.framework.applike.FrameworkApplication;
 import com.tesla.framework.component.network.NetworkStateManager;
 import com.tesla.framework.support.inject.InjectUtility;
 import com.tesla.framework.support.inject.ViewInject;
@@ -27,6 +26,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 
 
 /**
@@ -309,7 +309,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
 
     protected <T extends ViewModel> T getApplicationScopeViewModel(@NonNull Class<T> modelClass) {
         if (mApplicationProvider == null) {
-            mApplicationProvider = new ViewModelProvider((FrameworkApplication) this.getApplicationContext());
+            mApplicationProvider = new ViewModelProvider((ViewModelStoreOwner) this.getApplicationContext());
         }
         return mApplicationProvider.get(modelClass);
     }

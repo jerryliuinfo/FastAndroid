@@ -2,7 +2,7 @@ package com.tesla.framework.support.db;
 
 import android.os.SystemClock;
 
-import com.tesla.framework.applike.FrameworkApplication;
+import com.tesla.framework.applike.FApplication;
 import com.tesla.framework.component.orm.SqliteUtility;
 import com.tesla.framework.component.orm.SqliteUtilityBuilder;
 
@@ -15,7 +15,7 @@ public class FastAndroidDB {
     private static final String DB_NAME = "fastAndroid_db";
     public static void setDB(){
         SystemClock.sleep(300);
-        new SqliteUtilityBuilder().configVersion(DB_VERSION).configDBName(DB_NAME).build(FrameworkApplication.getContext());
+        new SqliteUtilityBuilder().configVersion(DB_VERSION).configDBName(DB_NAME).build(FApplication.getContext());
     }
 
     public static SqliteUtility getDB(){

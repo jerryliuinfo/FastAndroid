@@ -10,6 +10,15 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:text="静态代理模式"
+        />
+
+    <Button
+        android:id="@+id/btn_dynamic_proxy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/btn_proxy_mode"
+        app:layout_constraintTop_toTopOf="parent"
         android:text="代理模式"
         />
 

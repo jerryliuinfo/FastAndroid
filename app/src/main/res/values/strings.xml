@@ -45,6 +45,7 @@
 
     <string name="got_token_and_data">token:%1$s\n\n获取到的数据：\nID：%2$d\n用户名：%3$s</string>
 
+    <string name="custom_textview_prefixed_text">\n[CustomTextView] %s</string>
 
 
 </resources>

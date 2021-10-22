@@ -1,27 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--&lt;!&ndash; 属性公用导致一个蛋疼的事,布局中没有自动提示&ndash;&gt;-->
-    <!--<declare-styleable name="RoundView">-->
-    <!--&lt;!&ndash; 圆角矩形背景色 &ndash;&gt;-->
-    <!--<attr name="rv_backgroundColor" format="color"/>-->
-    <!--&lt;!&ndash; 圆角矩形背景色press &ndash;&gt;-->
-    <!--<attr name="rv_backgroundPressColor" format="color"/>-->
-    <!--&lt;!&ndash; 圆角弧度,单位dp&ndash;&gt;-->
-    <!--<attr name="rv_cornerRadius" format="dimension"/>-->
-    <!--&lt;!&ndash; 圆角弧度,单位dp&ndash;&gt;-->
-    <!--<attr name="rv_strokeWidth" format="dimension"/>-->
-    <!--&lt;!&ndash; 圆角边框颜色&ndash;&gt;-->
-    <!--<attr name="rv_strokeColor" format="color"/>-->
-    <!--&lt;!&ndash; 圆角边框颜色press &ndash;&gt;-->
-    <!--<attr name="rv_strokePressColor" format="color"/>-->
-    <!--&lt;!&ndash; 文字颜色press&ndash;&gt;-->
-    <!--<attr name="rv_textPressColor" format="color"/>-->
-    <!--&lt;!&ndash; 圆角弧度是高度一半&ndash;&gt;-->
-    <!--<attr name="rv_isRadiusHalfHeight" format="boolean"/>-->
-    <!--&lt;!&ndash; 圆角矩形宽高相等,取较宽高中大值&ndash;&gt;-->
-    <!--<attr name="rv_isWidthHeightEqual" format="boolean"/>-->
-    <!--</declare-styleable>-->
-
 
     <!-- 以下是重用attr的正确姿势,一切为了在布局中可以自动提示-->
     <!-- 圆角矩形背景色 -->

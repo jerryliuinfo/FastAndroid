@@ -39,18 +39,6 @@ public class FrameworkLogUtil {
         FastLog.w(TAG,format, args);
     }
 
-    /**
-     * 将日志写入到文件中 e
-     *
-     * @param format 格式化日志
-     * @param args   格式化日志参数
-     */
-    public static void e(String format, Object... args) {
-        FastLog.e(TAG,format, args);
-    }
-
-
-
 
 
 

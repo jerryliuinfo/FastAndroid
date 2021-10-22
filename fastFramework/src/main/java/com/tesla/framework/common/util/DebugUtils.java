@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Debug;
 
-import com.tesla.framework.applike.FrameworkApplication;
+import com.tesla.framework.applike.FApplication;
 
 /**
  * @author shunyou.huang
@@ -31,7 +31,7 @@ public class DebugUtils {
 
     public static synchronized Boolean isDebug(){
         if (isDebug == null){
-            syncDebugStatus(FrameworkApplication.getContext());
+            syncDebugStatus(FApplication.getContext());
         }
         return isDebug != null && isDebug.booleanValue();
     }

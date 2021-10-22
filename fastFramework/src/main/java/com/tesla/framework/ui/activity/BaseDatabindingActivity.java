@@ -55,13 +55,11 @@ public abstract class BaseDatabindingActivity<VB extends ViewDataBinding> extend
       return mBinding;
    }
 
-
-
    @Override
-   public void layoutInit(Bundle savedInstanceState) {
-      super.layoutInit(savedInstanceState);
-
+   protected void bindView() {
+      super.bindView();
       initViewModel();
+
       DataBindingConfig dataBindingConfig = getDataBindingConfig();
 
       //TODO tip: DataBinding 严格模式：
@@ -78,6 +76,14 @@ public abstract class BaseDatabindingActivity<VB extends ViewDataBinding> extend
       for (int i = 0, length = bindingParams.size(); i < length; i++) {
          mBinding.setVariable(bindingParams.keyAt(i), bindingParams.valueAt(i));
       }
+   }
+
+   @Override
+   public void layoutInit(Bundle savedInstanceState) {
+      super.layoutInit(savedInstanceState);
+
+
+
    }
 
    @Override

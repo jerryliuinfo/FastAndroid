@@ -2,7 +2,7 @@ package com.apache.fastandroid.task
 
 import android.text.TextUtils
 import com.optimize.performance.launchstarter.task.Task
-import com.tesla.framework.applike.FrameworkApplication
+import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy
 import com.tesla.framework.component.imageloader.ImageLoaderManager
@@ -18,7 +18,7 @@ class ImageLoaderTask:Task() {
         val loaderstrategy: IImageLoaderstrategy = configImageLoader()
         if (loaderstrategy != null) {
             ImageLoaderManager.getInstance().setImageLoaderStrategy(loaderstrategy)
-            ImageLoaderManager.getInstance().init(FrameworkApplication.getContext())
+            ImageLoaderManager.getInstance().init(FApplication.getContext())
         }
     }
 

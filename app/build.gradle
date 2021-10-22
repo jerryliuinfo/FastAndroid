@@ -11,7 +11,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-def support = rootProject.ext.dependencies.publicImplementation
 
 
 Properties properties = new Properties()
@@ -225,8 +224,37 @@ androidExtensions {
 dependencies {
     api fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
 
+    println("isTopicRunAlone:${isTopicRunAlone}")
 
-    implementation rootProject.ext.dependencies.publicImplementation
+
+    implementation rootProject.ext.dependencies2.publicImplementation
+    implementation rootProject.ext.androidLib.multidex
+
+
+    implementation rootProject.ext.thirdLib.superTextView
+    implementation rootProject.ext.thirdLib.banner
+    implementation rootProject.ext.thirdLib.agentweb
+    implementation rootProject.ext.thirdLib.picasso
+    implementation rootProject.ext.thirdLib.imageLoader
+    implementation rootProject.ext.thirdLib.jsbridge
+
+    implementation rootProject.ext.thirdLib.reactivexRxjava2
+    implementation rootProject.ext.thirdLib.reactivexRxandroid
+
+
+    implementation rootProject.ext.androidLib.androidx_workmanager
+    implementation rootProject.ext.thirdLib.blockcanary
+    implementation rootProject.ext.thirdLib.leakcanary
+
+
+    implementation rootProject.ext.thirdLib.retrofit
+    implementation rootProject.ext.thirdLib.retrofitConverterGson
+    implementation rootProject.ext.thirdLib.retrofitConverterScalars
+    implementation rootProject.ext.thirdLib.retrofitAdapterRx
+
+    implementation rootProject.ext.thirdLib.permissionx
+
+
 
 
     rootProject.ext.dependencies.basic.each{
@@ -239,7 +267,6 @@ dependencies {
     implementation project(':hencoder_plus')
     implementation project(':hencoder_clipmatrix')
 
-//    support.each { k, v -> implementation v }
 
 
 
@@ -247,11 +274,7 @@ dependencies {
     implementation project(':artemis_annotation')
     annotationProcessor project(':artemis_compiler')
 
-//    api 'org.aspectj:aspectjrt:1.9.5'
 
-
-
-//    implementation 'org.aspectj:aspectjrt:1.9.5'
 
     implementation 'org.aspectj:aspectjrt:1.8.9'
 
@@ -263,6 +286,9 @@ dependencies {
 
 
     implementation 'net.sourceforge.streamsupport:streamsupport:1.7.3'
+
+    //https://github.com/B3nedikt/ViewPump
+    implementation 'dev.b3nedikt.viewpump:viewpump:4.0.7'
 
 }
 

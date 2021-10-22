@@ -24,7 +24,7 @@ public final class NLog
 	public static final String TAG = "NLog";
 	private final static String	LOG_FILENAME	= "tcl_logcat.log";
 	private static boolean		debug			= false;			// 是否记录日志
-	private static Logger		logger			= null;
+	private static Logger		logger			= Logger.getLogger(null);
 
 	public static Logger getLogger()
 	{

@@ -8,7 +8,7 @@ import com.apache.fastandroid.jetpack.workmanager.request.CompressWork
 import com.apache.fastandroid.jetpack.workmanager.request.UpdateLocalWork
 import com.apache.fastandroid.jetpack.workmanager.request.UploadLogWorker
 import com.apache.fastandroid.jetpack.workmanager.request.PublishWorker
-import com.tesla.framework.applike.FrameworkApplication
+import com.tesla.framework.applike.FApplication
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.fragment_workmananger_basic.btn_begin_then
 import kotlinx.android.synthetic.main.fragment_workmananger_chain.*
@@ -33,7 +33,7 @@ class WorkManagerChainDemoFragment: BaseStatusFragmentNew() {
     private lateinit var instance:WorkManager
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        instance = WorkManager.getInstance(FrameworkApplication.getContext())
+        instance = WorkManager.getInstance(FApplication.getContext())
         btn_begin_then.setOnClickListener {
             beginThen()
         }
@@ -49,12 +49,12 @@ class WorkManagerChainDemoFragment: BaseStatusFragmentNew() {
 
 
     private fun beginThen(){
-        var operation = WorkManager.getInstance(FrameworkApplication.getContext()).beginWith(compressWork).then(updateLocalDataWorker).enqueue()
+        var operation = WorkManager.getInstance(FApplication.getContext()).beginWith(compressWork).then(updateLocalDataWorker).enqueue()
     }
 
     private fun comine(){
-        var workContinuation1 = WorkManager.getInstance(FrameworkApplication.getContext()).beginWith(compressWork).then(updateLocalDataWorker)
-        var workContinuation2 = WorkManager.getInstance(FrameworkApplication.getContext()).beginWith(uploadWorker)
+        var workContinuation1 = WorkManager.getInstance(FApplication.getContext()).beginWith(compressWork).then(updateLocalDataWorker)
+        var workContinuation2 = WorkManager.getInstance(FApplication.getContext()).beginWith(uploadWorker)
         val taskList = ArrayList<WorkContinuation>().apply {
             add(workContinuation1)
             add(workContinuation2)

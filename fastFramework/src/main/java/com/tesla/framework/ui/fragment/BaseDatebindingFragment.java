@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.DebugUtils;
+import com.tesla.framework.common.util.ResUtil;
 import com.tesla.framework.support.bean.DataBindingConfig;
-import com.xuexiang.xui.utils.ResUtils;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
@@ -53,7 +53,7 @@ public abstract class BaseDatebindingFragment<VB extends ViewDataBinding> extend
                 mTvStrictModeTip.setBackgroundColor(Color.WHITE);
                 String tip = String.format("%s 未遵循 DataBinding 严格模式，存在 Null 安全风险", getClass().getSimpleName());
                 mTvStrictModeTip.setText(tip);
-                mTvStrictModeTip.setTextColor(ResUtils.getColor(R.color.comm_red));
+                mTvStrictModeTip.setTextColor(ResUtil.getColor(R.color.comm_red));
                 ((ViewGroup) mBinding.getRoot()).addView(mTvStrictModeTip);
             }
         }

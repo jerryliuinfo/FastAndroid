@@ -17,7 +17,7 @@ import com.blankj.utilcode.util.Utils;
 import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.github.moduth.blockcanary.internal.BlockInfo;
 import com.github.moduth.blockcanary.ui.DisplayActivity;
-import com.tesla.framework.applike.FrameworkApplication;
+import com.tesla.framework.applike.FApplication;
 import com.tesla.framework.common.util.log.NLog;
 
 import java.util.List;
@@ -102,7 +102,7 @@ public class AppBlockCanaryContext  extends BlockCanaryContext {
         super.onBlock(context, blockInfo);
         NLog.e(TAG, "onBlock : %s",blockInfo);
 
-        String path = FrameworkApplication.getApplication().getExternalFilesDir("block").getAbsolutePath();
+        String path = FApplication.getApplication().getExternalFilesDir("block").getAbsolutePath();
         NLog.e(TAG, "onBlock path: %s, blockInfo: %s",path,blockInfo);
         NotificationUtils.notify(100, new Utils.Consumer<NotificationCompat.Builder>() {
             @Override

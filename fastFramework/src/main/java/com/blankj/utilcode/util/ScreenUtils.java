@@ -22,7 +22,7 @@ import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.tesla.framework.applike.FrameworkApplication;
+import com.tesla.framework.applike.FApplication;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
@@ -416,7 +416,7 @@ public final class ScreenUtils {
     }
 
     public static int getStatusBarHeight() {
-        return getInternalDimensionSize(FrameworkApplication.getContext().getResources(), STATUS_BAR_HEIGHT_RES_NAME);
+        return getInternalDimensionSize(FApplication.getContext().getResources(), STATUS_BAR_HEIGHT_RES_NAME);
     }
 
 }

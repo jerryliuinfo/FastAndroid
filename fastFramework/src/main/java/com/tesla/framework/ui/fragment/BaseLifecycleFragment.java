@@ -4,14 +4,13 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
-import com.tesla.framework.applike.FrameworkApplication;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 
 /**
  * Created by Jerry on 2021/7/1.
@@ -45,7 +44,7 @@ public abstract class BaseLifecycleFragment<Q extends ViewDataBinding> extends B
     public <T extends ViewModel> T getApplicationScopeViewModel(@NonNull Class<T> modelClass) {
         if (mApplicationProvider == null) {
             mApplicationProvider = new ViewModelProvider(
-                    (FrameworkApplication) mActivity.getApplicationContext(), getApplicationFactory(mActivity));
+                    (ViewModelStoreOwner) mActivity.getApplicationContext(), getApplicationFactory(mActivity));
         }
         return mApplicationProvider.get(modelClass);
     }

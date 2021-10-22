@@ -38,7 +38,7 @@ class RecyleviewStabledIdsFragment:BaseFragment() {
         adapter = StableIdAdapter(items)
 
         //如果没有这一行代码，在 item change、remove、udpate以及item position改变的情况下，调用 adapter 的notifyDatasetChanged 是不会有动画效果的
-//        adapter.setHasStableIds(true) // 💡💡💡
+        adapter.setHasStableIds(true) // 💡💡💡
         recyclerView.adapter = adapter
 
         initRightActions()

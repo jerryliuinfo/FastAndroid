@@ -8,7 +8,6 @@
                  android:supportsRtl="true"
     >
 
-        <activity android:name="com.apache.fastandroid.artemis.LoginActivity"/>
     </application>
 
 </manifest>

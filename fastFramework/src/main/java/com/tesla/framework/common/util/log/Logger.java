@@ -35,9 +35,9 @@ public class Logger
 	 * TRACE_OFFLINE 表示离线跟踪，将只保存在特定日志文件中
 	 * TRACE_ALL 表示都跟踪
 	 */
-	public static final int TRACE_REALTIME 	= 1;
-	public static final int TRACE_OFFLINE 	= 2;
-	public static final int TRACE_ALL		= 3;
+	public static final int TRACE_REALTIME 	= 0x00000001;
+	public static final int TRACE_OFFLINE 	= 0x00000010;
+	public static final int TRACE_ALL		= 0x00000011;
 	/**
 	 * 日志优先级， 用于println，等同于Log.v，属于细节化的内容，一般用于详细跟踪函数执行情况以及调度情况时采用该级别日志
 	 */

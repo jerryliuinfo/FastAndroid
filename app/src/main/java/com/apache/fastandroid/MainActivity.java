@@ -13,10 +13,9 @@ import android.widget.TextView;
 import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
-import com.apache.fastandroid.artemis.AppContext;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment;
+import com.apache.fastandroid.demo.designmode.ProxyModeDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -81,15 +80,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         menuItem.setChecked(true);
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
-        PermissionX.init(this).permissions(permission.WRITE_EXTERNAL_STORAGE).request(new RequestCallback() {
-            @Override
-            public void onResult(boolean allGranted, List<String> grantedList, List<String> deniedList) {
-                if (allGranted) {
-                } else {
-                    ToastUtils.showShort("These permissions are denied: %s", deniedList);
-                }
-            }
-        });
+
 
 
 //        FragmentContainerActivity.launch(this, RelearnAndroidDemoFragment.class,null);
@@ -101,6 +92,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, AspectJDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrakeetDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
+//        FragmentContainerActivity.launch(this, BlackTechDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, ChainModeDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, ProxyModeDemoFragment.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
@@ -121,11 +115,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         View headView = mNavigationView.getHeaderView(0);
         TextView tv_username = headView.findViewById(R.id.tv_username);
 
-        if (AppContext.getUserInfoBean() != null){
-            tv_username.setText(AppContext.getUserInfoBean().getName());
-        }else {
-            tv_username.setText("未登录");
-        }
+
     }
 
     @Override

@@ -51,217 +51,118 @@ ext {
     retrofitVersion = "2.8.1"
     lifecycle_version = "2.2.0"
 
-    room_version = "2.2.6"
+    roomVersion = "2.2.6"
+    okHttpVersion = "4.8.0"
+
+    thirdLib = [
+            okhttp3                       : "com.squareup.okhttp3:okhttp:$okHttpVersion",
+            okhttp3_boom                     : "com.squareup.okhttp3:okhttp-bom:${okHttpVersion}",
+            okhttp3_log                      : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
+
+
+            reactivexRxjava2                : "io.reactivex.rxjava2:rxjava:2.2.9",
+            reactivexRxandroid               : "io.reactivex.rxjava2:rxandroid:2.1.1",
+
+            retrofit                         : 'com.squareup.retrofit2:retrofit:2.8.1',
+            retrofitConverterGson            : 'com.squareup.retrofit2:converter-gson:2.8.1',
+            retrofitConverterScalars         : 'com.squareup.retrofit2:converter-scalars:2.8.1',
+            retrofitAdapterRx                : 'com.squareup.retrofit2:adapter-rxjava2:2.8.1',
+
+
+            glide                            :  'com.github.bumptech.glide:glide:3.7.0',
+            glideOkhttp                      :  'com.github.bumptech.glide:okhttp3-integration:4.9.0',
+
+
+            utilcodex                        :  'com.blankj:utilcodex:1.30.6',
+            qmui                             :  'com.qmuiteam:qmui:2.0.0-alpha10',
+            gson                             :  'com.google.code.gson:gson:2.8.2',
+            fastjson                         :  'com.alibaba:fastjson:1.2.29',
+            brvh                             :  'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30',
+            mmkv                             :  'com.tencent:mmkv-static:1.2.10',
+            superTextView                    :  'com.github.lygttpod:SuperTextView:2.4.6',
+            banner                           :  'com.youth.banner:banner:2.1.0',
+            agentweb                         :  'com.github.Justson.AgentWeb:agentweb-core:v4.1.9',
+            picasso                          :  'com.squareup.picasso:picasso:2.5.2',
+            imageLoader                      :  'com.nostra13.universalimageloader:universal-image-loader:1.9.3',
+            jsbridge                         :  'com.github.lzyzsd:jsbridge:1.0.4',
+            aspectjrt                        :  'org.aspectj:aspectjrt:1.8.9',
+            blockcanary                      :  'com.github.markzhai:blockcanary-android:1.5.0',
+            leakcanary                       :  'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3',
+            permissionx                      :  'com.permissionx.guolindev:permissionx:1.4.0',
+
+
+
+
+    ]
 
 
     androidLib = [
+            appcompatV7                      : 'androidx.appcompat:appcompat:1.1.0',
+            constraintLayout                 : 'androidx.constraintlayout:constraintlayout:2.0.4',
+            cardview                         : 'androidx.cardview:cardview:1.0.0',
+            recyclerview                     : 'androidx.recyclerview:recyclerview:1.1.0',
+            // Android KTX 是包含在 Android Jetpack 及其他 Android 库中的一组 Kotlin 扩展程序。KTX 扩展程序可以为 Jetpack、Android 平台及其他 API 提供简洁的惯用 Kotlin 代码。
+            core_ktx                         : "androidx.core:core-ktx:1.3.0",
+            palette                          : "androidx.palette:palette-ktx:1.0.0",
+
+            androidx_annotaion               : "androidx.annotaion:annotation:1.0.0",
+
+
+            //Kotlin
+            kotlin_stdlib                    : "org.jetbrains.kotlin:kotlin-stdlib:1.3.72",
+            kotlin_reflect                   : "org.jetbrains.kotlin:kotlin-reflect:1.3.72",
+
+
+            googleMaterial                   : 'com.google.android.material:material:1.1.0',
+
+            androidx_lifecycle_common        : "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
+            androidx_lifecycle_extensions    : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
+            androidx_lifecycle_runtime       : "androidx.lifecycle:lifecycle-runtime:$lifecycle_version",
+            androidx_lifecycle_livedata      : "androidx.lifecycle:lifecycle-livedata:$lifecycle_version",
+            // ViewModel的KTX扩展库，可以让我们在ViewModel中方便的使用Coroutine
+            androidx_lifecycle_viewmodel_ktx : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+            // optional - helpers for implementing LifecycleOwner in a Service
+            androidx_lifecycle_service       :"androidx.lifecycle:lifecycle-service:$lifecycle_version",
+
+            androidx_workmanager             : "androidx.work:work-runtime:2.2.0",
+
             //分包
             multidex          :  "androidx.multidex:multidex:2.0.0",
 
-            appcompatV7        : 'androidx.appcompat:appcompat:1.1.0',
-            design             : 'com.google.android.material:material:1.1.0',
-            cardview           : 'androidx.cardview:cardview:1.0.0',
-            recyclerview       : 'androidx.recyclerview:recyclerview:1.1.0',
-            constraintLayout   : 'androidx.constraintlayout:constraintlayout:2.0.4',
-            support_customtabs : 'androidx.browser:browser:1.0.0',
-
-
-            lib_annotaion      : "androidx.annotaion:annotation:1.0.0",
-            //Android KTX 是包含在 Android Jetpack 及其他 Android 库中的一组 Kotlin 扩展程序。KTX 扩展程序可以为 Jetpack、Android 平台及其他 API 提供简洁的惯用 Kotlin 代码。
-           
-            core_ktx           : "androidx.core:core-ktx:1.3.0",
-
-            // ViewModel and LiveData
-            lifecycle_extensions  : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
-
-            //ViewModel的KTX扩展库，可以让我们在ViewModel中方便的使用Coroutine
-            lifecycle_viewmodel_ktx  : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
-
-
-            // optional - helpers for implementing LifecycleOwner in a Service
-            lifecycle_service        :"androidx.lifecycle:lifecycle-service:$lifecycle_version",
-
-            coroutines_core    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1",
-            coroutines_android : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1",
-
-            //Kotlin
-            kotlin_stdlib      : "org.jetbrains.kotlin:kotlin-stdlib:1.3.72",
-            kotlin_reflect     : "org.jetbrains.kotlin:kotlin-reflect:1.3.72",
-
-
-            workmanager        : "androidx.work:work-runtime:2.2.0",
-
-
-            //单元测试
-            lib_test_runner    : 'androidx.test:runner:1.0.0',
-            junit          :  "junit:junit:4.12",
-
-
-            kotlin_version            : "1.3.72",
-            room_version            : "2.2.6"
-
-    ]
-
-    fastLib = [
-            fastAndroid        :  "com.xiangxiangliu:fastFramework:$fastandroidVersion",
     ]
 
 
-    //第三方依赖库
-    /*thirdLib = [
-
-            //图片加载相关
-            glide            :  "com.github.bumptech.glide:glide:3.7.0",
-            okhttp3          :  "com.squareup.okhttp3:okhttp:3.7.0",
-            okhttp3_log_interceptor      :  "com.squareup.okhttp3:logging-interceptor:3.7.0",
-
-            //gson
-            gson             :  "com.google.code.gson:gson:2.8.2",
-            //fastJson
-            fastjson         :  "com.alibaba:fastjson:1.2.29",
-
-            rxjava           : "io.reactivex.rxjava2:rxjava:2.0.8",
-            rxandroid        : "io.reactivex.rxjava2:rxandroid:2.0.1",
-
-            retrofit         : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            retrofit_converter_gson   :"com.squareup.retrofit2:converter-gson:$retrofitVersion",
-            retrofit_converter_scalars:"com.squareup.retrofit2:converter-scalars:$retrofitVersion",
-
-            retrofit_adapter_rxjava   :"com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0-RC3",
 
 
-            eventbus                  :"org.greenrobot:eventbus:3.1.0-RC",
-            //crash统计 //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
-            bugly            :  "com.tencent.bugly:crashreport:3.2.1",
-            buglyNative            :  "com.tencent.bugly:nativecrashreport:3.7.1",
-            //内存泄漏检测
-            leakcanary_android         :  "com.squareup.leakcanary:leakcanary-android:$leakcanary",
-            leakcanary_android_no_op   :  "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary",
-            //Optional, if you use support library fragments:
-            leakcanary_support_fragment:  "com.squareup.leakcanary:leakcanary-support-fragment:$leakcanary",
+    //所有模块的公共库，务必不要随意在这里面添加依赖
+    dependencies2 = [
+            publicImplementation: [
+                    rootProject.androidLib.appcompatV7,
+                    rootProject.androidLib.googleMaterial,
+                    rootProject.androidLib.core_ktx,
+                    rootProject.androidLib.cardview,
+                    rootProject.androidLib.palette,
 
+                    rootProject.androidLib.androidx_lifecycle_common,
+                    rootProject.androidLib.androidx_lifecycle_extensions,
+                    rootProject.androidLib.androidx_lifecycle_runtime,
+                    rootProject.androidLib.androidx_lifecycle_livedata,
 
+                    rootProject.thirdLib.gson,
+                    rootProject.thirdLib.fastjson,
+                    rootProject.thirdLib.qmui,
+                    rootProject.thirdLib.glide,
+                    rootProject.thirdLib.brvh,
+                    rootProject.thirdLib.mmkv,
 
-            material_dialogs      :  "com.afollestad.material-dialogs:core:0.9.4.5",
+            ]
 
+    ]
 
-            maven_local_url       :  "/Users/jerry/project/github/FastAndroid/repos",
-
-            permissionx           : 'com.permissionx.guolindev:permissionx:1.4.0',
-
-            picasso          :  "com.squareup.picasso:picasso:2.5.2",
-            imageLoader      :  "com.nostra13.universalimageloader:universal-image-loader:1.9.3",
-            anrwatchdog      :  "'com.github.anrwatchdog:anrwatchdog:1.4.0'",
-
-    ]*/
 
 
     dependencies = [
-            publicImplementation: [
-                    "androidx.appcompat:appcompat:$appCompat",
-                    'com.google.android.material:material:1.1.0',
-                    'androidx.cardview:cardview:1.0.0',
-                    'androidx.recyclerview:recyclerview:1.1.0',
-                    'androidx.constraintlayout:constraintlayout:2.0.4',
-                    'androidx.browser:browser:1.0.0',
 
-
-                    "androidx.multidex:multidex:2.0.0",
-                    'com.qmuiteam:qmui:2.0.0-alpha10',
-
-
-                    'com.google.code.gson:gson:2.8.2',
-                    'com.alibaba:fastjson:1.2.29',
-
-
-                    "androidx.core:core-ktx:1.3.0",
-                    //Kotlin
-                    "org.jetbrains.kotlin:kotlin-stdlib:1.3.72",
-                    "org.jetbrains.kotlin:kotlin-stdlib:1.3.72",
-
-
-                    "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
-                    "androidx.lifecycle:lifecycle-runtime:$lifecycle_version",
-                    "androidx.lifecycle:lifecycle-livedata:$lifecycle_version",
-
-                    "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
-
-                    "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
-
-                    "androidx.room:room-compiler:$room_version",
-                    "androidx.work:work-runtime:2.2.0",
-
-
-
-                    'com.squareup.okhttp3:okhttp:4.8.0',
-                    'com.squareup.okhttp3:logging-interceptor:3.12.2',
-                    'com.squareup.okhttp3:okhttp-bom:4.8.0',
-
-                    //rxjava相关
-                    'io.reactivex.rxjava2:rxjava:2.2.9',
-                    'io.reactivex.rxjava2:rxandroid:2.1.1',
-
-
-                    //retrofit 相关
-                    "com.squareup.retrofit2:retrofit:$retrofitVersion",
-                    "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-                    "com.squareup.retrofit2:converter-scalars:$retrofitVersion",
-
-                    //rxjava 对retrofit的支持
-                    "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0-RC3",
-                    'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
-
-
-
-
-
-
-                    "com.github.bumptech.glide:glide:3.7.0",
-                    "com.squareup.picasso:picasso:2.5.2",
-                    "com.nostra13.universalimageloader:universal-image-loader:1.9.3",
-
-
-                    "com.afollestad.material-dialogs:core:0.9.4.5",
-                    'com.permissionx.guolindev:permissionx:1.4.0',
-
-                    "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30",
-                    "com.github.lygttpod:SuperTextView:2.4.6",
-
-
-                    "com.squareup.leakcanary:leakcanary-support-fragment:$leakcanary",
-
-
-                    "com.tencent.bugly:crashreport:$buglyVersion",
-                    "com.tencent.bugly:nativecrashreport:$buglyNativeVersion",
-
-                    'com.youth.banner:banner:2.1.0',
-
-                    "com.github.anrwatchdog:anrwatchdog:1.4.0",
-                    //  高性能存储组件
-                    'com.tencent:mmkv-static:1.2.10',
-
-
-                    //fix uplicate class com.google.common.util.concurrent.ListenableFuture found in modules guava-23.5-jre.jar
-                    'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava',
-//                    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
-
-
-                    'com.github.xuexiangjys:XUI:1.1.8',
-                    /**
-                     * 添加这个就会报 aused by: android.view.InflateException: Binary XML file line #30 in com.apache.fastandroid:layout/activity_main: Error inflating class com.google.android.material.navigation.NavigationView
-                     */
-//                    'com.kunminx.arch:unpeek-livedata:7.2.0-beta1'
-
-
-                    'com.github.Justson.AgentWeb:agentweb-core:v4.1.9',
-                    'com.github.lzyzsd:jsbridge:1.0.4',
-
-                    'com.github.markzhai:blockcanary-android:1.5.0',
-
-
-                    //不要升级jjwt库(0.9.1)，高版本要求publicKey大于2048位，xx的publicKey目前是1024位, -- 升级会抛异常
-                    'io.jsonwebtoken:jjwt:0.9.1',
-            ],
 
             basic: [
                     ':fastFramework',
@@ -269,6 +170,9 @@ ext {
             ]
 
     ]
+
+
+
 
 
 }

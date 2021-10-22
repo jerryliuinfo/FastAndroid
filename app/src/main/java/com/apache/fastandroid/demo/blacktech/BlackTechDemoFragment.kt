@@ -2,7 +2,7 @@ package com.apache.fastandroid.demo.blacktech
 
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
-import com.apache.fastandroid.demo.databinding.bindingadapter.CommonBindingAdapter
+import com.apache.fastandroid.demo.blacktech.viewpump.ViewPumpDemoFragment
 
 /**
  * Created by Jerry on 2021/9/8.
@@ -13,7 +13,7 @@ class BlackTechDemoFragment:BaseListFragment() {
             ViewItemBean("AspectJ","AspectJ", AspectJDemoFragment::class.java)
             ,ViewItemBean("BlackDex","https://github.com/CodingGay/BlackDex", AspectJDemoFragment::class.java)
             ,ViewItemBean("ViewPump","https://github.com/B3nedikt/ViewPump", AspectJDemoFragment::class.java)
-            ,ViewItemBean("ViewPump","https://github.com/B3nedikt/ViewPump", AspectJDemoFragment::class.java)
+            ,ViewItemBean("ViewPump","https://github.com/B3nedikt/ViewPump", ViewPumpDemoFragment::class.java)
         )
     }
 
