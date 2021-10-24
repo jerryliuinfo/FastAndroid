@@ -10,7 +10,7 @@ ext.mainApp = true  //设置为true，表示此module为主app module，一直�
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-
+apply plugin: 'HenCoder'
 
 
 Properties properties = new Properties()
@@ -34,6 +34,12 @@ repositories {
 }
 
 
+
+
+
+
+
+
 android {
 
     compileSdkVersion rootProject.android.compileSdkVersion
@@ -51,7 +57,7 @@ android {
         //5.0以下将svg图片生成指定维度的图片
         vectorDrawables.generatedDensities('xhdpi', 'xxhdpi')
 
-        flavorDimensions "env"
+        flavorDimensions "env", "paying"
 
         //只保留指定和默认资源
         resConfigs('zh-rCN')
@@ -98,24 +104,23 @@ android {
             manifestPlaceholders = [HOST_VALUE: "www.baidu1.com"]
         }
 
-        etest {
-            //海外账号环境
+        uat {
             dimension "env"
             manifestPlaceholders = [HOST_VALUE: "www.baidu2.com"]
         }
 
-        uat {
-            dimension "env"
-            manifestPlaceholders = [HOST_VALUE: "www.baidu3.com"]
-
-        }
         prod {
             dimension "env"
-            manifestPlaceholders = [HOST_VALUE: "www.baidu4.com"]
-
+            manifestPlaceholders = [HOST_VALUE: "www.baidu3.com"]
         }
 
+        pay {
+            dimension "paying"
+        }
 
+        free {
+            dimension "paying"
+        }
 
     }
 
@@ -150,7 +155,6 @@ android {
             def buildType = variant.buildType.name
             output.outputFileName = "${applicationId}-${versionName}-${versionCode}-${buildType}.apk"
 
-            println("storePassword:${properties.getProperty('KEYSTORE_PASSWORD')}, keyAlias:${properties.getProperty('KEYSTORE_ALIAS') }" )
         }
     }
 

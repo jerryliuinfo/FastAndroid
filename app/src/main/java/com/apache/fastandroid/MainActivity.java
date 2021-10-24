@@ -75,6 +75,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
 
+        ToastUtils.showShort(R.string.property_name);
 
 
 //        FragmentContainerActivity.launch(this, RelearnAndroidDemoFragment.class,null);

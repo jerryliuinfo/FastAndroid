@@ -47,5 +47,7 @@
 
     <string name="custom_textview_prefixed_text">\n[CustomTextView] %s</string>
 
+    <string name="property_name">MainValue</string>
+
 
 </resources>

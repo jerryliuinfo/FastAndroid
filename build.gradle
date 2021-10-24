@@ -16,7 +16,7 @@ buildscript {
 
     }
     dependencies {
-        classpath ("com.android.tools.build:gradle:4.0.2")
+        classpath "com.android.tools.build:gradle:4.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
 
 
@@ -91,9 +91,60 @@ task archiveOutApks(type: Copy) {
     into('./outapk/archives')
 }
 
-
+println ("buildDir:${rootProject.buildDir}, name:${rootProject.name}")
 task clean(type: Delete) {
+    println "aaa"
     delete rootProject.buildDir
     delete 'outapk/archives'
+    println "bbb"
+
+    doFirst {
+        println "删除前2"
+    }
+
+    doFirst {
+        println "删除前"
+    }
+    doLast {
+        println "删除成功"
+    }
+
+    doLast {
+        println "删除成功2"
+    }
 }
 
+
+
+task bumpVersion(){
+    doFirst {
+        def versionPropsFile = file("version.properties")
+        def versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        def codeBumped = versionProps["VERSION_CODE"].toInteger()+1
+        versionProps["VERSION_CODE"] = codeBumped.toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+    }
+}
+
+task bumpVersionAndNotify(dependsOn: bumpVersion){
+    doLast {
+       println "升级完成"
+    }
+}
+
+task task1(){
+    doLast {
+        println "task1 doLast"
+    }
+}
+
+task task2(dependsOn: task1){
+    doLast {
+        println "task2 doLast"
+    }
+}
+
+afterEvaluate {
+    println "正式执行task 之前(第2阶段和第三阶段之间)  ->"
+}

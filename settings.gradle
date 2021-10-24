@@ -5,5 +5,10 @@ include ':hencoder_paint'
 include ':hencode_basic'
 include ':libnetwork'
 include ':app', ':artemis_annotation', ':artemis_compiler',  'baselib', ':fastFramework'
+rootProject.name = "FastAnd"
 
 
+println "第一阶段和第二阶段之间执行"
+//include ':buildSrc'
+
+println "Hello settings.gradle"
