@@ -15,5 +15,7 @@
 
 
     <dimen name="icon_round_radius">22dp</dimen>
+    <dimen name="webview_title_icon_width">28dp</dimen>
+
 
 </resources>

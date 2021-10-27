@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--  左边抽屉-->
+    <FrameLayout
+        android:id="@+id/startDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:layout_marginEnd="28dp"
+        android:background="#C5CAE9"
+        android:fitsSystemWindows="false">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="drawer(start)"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/btn_reflect_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="反射获取系统类的成员变量"
+            />
+
+        <Button
+            android:id="@+id/btn_reflect_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="反射调用系统类的成员方法"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

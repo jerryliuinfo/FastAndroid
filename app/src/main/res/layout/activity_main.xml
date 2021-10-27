@@ -27,14 +27,18 @@
 
     </LinearLayout>
 
+    <!--   设置了layout_gravity的布局就是抽屉布局 -->
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_layout_header"
         app:menu="@menu/nav_item_menu"/>
+
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

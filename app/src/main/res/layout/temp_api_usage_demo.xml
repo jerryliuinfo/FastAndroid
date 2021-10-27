@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+    <LinearLayout
+        android:id="@+id/liner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        >
+        <Button
+            android:id="@+id/tv_get_scaled_touch_slop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取触发移动事件的最小距离"
+            />
+
+
+        <Button
+            android:id="@+id/tv_get_LayoutDirection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="android多语言适配，获取布局方向"
+            />
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

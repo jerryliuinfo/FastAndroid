@@ -2,8 +2,8 @@ ext {
 
     //Android编译版本管理
     android = [
-               compileSdkVersion: 29,
-               buildToolsVersion: "29.0.3",
+               compileSdkVersion:  29,
+               buildToolsVersion: '29.0.3',
                minSdkVersion    : 24,
                targetSdkVersion : 29,
                versionCode :"100",
@@ -155,6 +155,7 @@ ext {
                     rootProject.thirdLib.glide,
                     rootProject.thirdLib.brvh,
                     rootProject.thirdLib.mmkv,
+
 
             ]
 

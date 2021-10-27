@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawer"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/title_bar"
+        />
+
+    <com.apache.fastandroid.demo.temp.specifyparent.DraggableContainer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="64dp"
+                android:text="TextView:\n com.drakeet.drawer.FullDraggableContainer"
+                android:textColor="@color/black"
+                android:typeface="monospace" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#12000000">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="64dp"
+                    android:text="HorizontalScrollView HorizontalScrollView HorizontalScrollView HorizontalScrollView"
+                    android:textColor="@color/black"
+                    android:typeface="monospace" />
+
+            </HorizontalScrollView>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingVertical="64dp"
+                    android:text="ViewPage1"
+                    android:textColor="@color/black"
+                    android:typeface="monospace" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingVertical="64dp"
+                    android:text="ViewPage2"
+                    android:textColor="@color/black"
+                    android:typeface="monospace" />
+
+            </androidx.viewpager.widget.ViewPager>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#12000000"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </LinearLayout>
+
+    </com.apache.fastandroid.demo.temp.specifyparent.DraggableContainer>
+
+
+    <!--  左边抽屉-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:layout_marginEnd="28dp"
+        android:background="#C5CAE9"
+        android:fitsSystemWindows="false">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="drawer(start)"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+    <!--  右边抽屉-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:layout_marginStart="28dp"
+        android:background="#FFCCBC"
+        android:fitsSystemWindows="false">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="drawer(end)"
+            android:textColor="@color/black" />
+
+    </FrameLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

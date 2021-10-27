@@ -10,7 +10,12 @@ ext.mainApp = true  //设置为true，表示此module为主app module，一直�
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'HenCoder'
+apply plugin: 'com.hencoder'
+
+hencoder{
+    name "HenCoder name"
+    value "Hencoder value"
+}
 
 
 Properties properties = new Properties()

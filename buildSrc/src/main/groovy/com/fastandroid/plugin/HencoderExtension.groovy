@@ -5,5 +5,6 @@ package com.fastandroid.plugin;
  */
 class HencoderExtension {
     def name = "This is Jerry's frist plugin"
+    def value = "111"
 
 }

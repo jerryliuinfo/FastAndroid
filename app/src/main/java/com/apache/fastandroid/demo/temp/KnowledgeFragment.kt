@@ -7,12 +7,9 @@ import android.view.ViewTreeObserver
 import com.apache.fastandroid.R
 import com.blankj.utilcode.util.MetaDataUtils
 import com.blankj.utilcode.util.ToastUtils
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
-import java.lang.StringBuilder
 
 /**
  * Created by Jerry on 2021/9/6.
@@ -84,6 +81,15 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
         tv_message.movementMethod= ScrollingMovementMethod.getInstance()
         tv_message.text= result.toString()
     }
+
+    private val set1 = mutableListOf<String>("111")
+    private val set2 = mutableListOf<String>("222")
+    private val set3 = set1.addAll(set2)
+
+
+
+
+
 
 
 }
