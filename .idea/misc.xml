@@ -35,6 +35,7 @@
         <entry key="app/src/main/res/layout/fragment_drakeet.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/fragment_drakeet_knowledge.xml" value="0.17408906882591094" />
         <entry key="app/src/main/res/layout/fragment_hook_context.xml" value="0.2084942084942085" />
+        <entry key="app/src/main/res/layout/fragment_kotlin_couritine.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/layout/fragment_nodrawable.xml" value="0.22135416666666666" />
         <entry key="app/src/main/res/layout/fragment_permission.xml" value="0.2513586956521739" />
         <entry key="app/src/main/res/layout/fragment_programily_set_style.xml" value="0.22864583333333333" />
@@ -48,6 +49,7 @@
         <entry key="app/src/main/res/layout/fragment_temp_knowledge2.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/layout/fragment_viewmodel_scope.xml" value="0.28396739130434784" />
         <entry key="app/src/main/res/layout/knowledge_linerlayoutcompat.xml" value="0.22760416666666666" />
+        <entry key="app/src/main/res/layout/kotlin_couritine.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/kt_grammer.xml" value="0.23125" />
         <entry key="app/src/main/res/layout/layout_cell_bord_item.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/layout/layout_cell_bord_item_title.xml" value="0.22760416666666666" />

@@ -27,8 +27,11 @@ import com.tesla.framework.common.util.handler.HandlerUtil;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ProcessLifecycleOwner;
+import androidx.lifecycle.ViewModelStore;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.multidex.MultiDex;
 import dev.b3nedikt.viewpump.ViewPump;
 
@@ -36,12 +39,10 @@ import dev.b3nedikt.viewpump.ViewPump;
  * Created by jerryliu on 2017/3/26.
  */
 
-public class FastApplication extends Application {
+public class FastApplication extends Application implements ViewModelStoreOwner {
     public static final String TAG = FastApplication.class.getSimpleName();
 
-
-    private static final String client_id = "7024a413";
-    private static final String client_secret = "8404fa33ae48d3014cfa89deaa674e4cbe6ec894a57dbef4e40d083dbbaa5cf4";
+    private ViewModelStore mAppViewModelStore;
 
     @Override
     public void onCreate() {
@@ -52,6 +53,7 @@ public class FastApplication extends Application {
             return;
         }
         sContext = this;
+        mAppViewModelStore = new ViewModelStore();
 
         initLog();
         loop();
@@ -240,6 +242,11 @@ public class FastApplication extends Application {
 
     }
 
+    @NonNull
+    @Override
+    public ViewModelStore getViewModelStore() {
+        return mAppViewModelStore;
+    }
 }
 
 

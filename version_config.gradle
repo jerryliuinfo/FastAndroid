@@ -113,6 +113,11 @@ ext {
             kotlin_stdlib                    : "org.jetbrains.kotlin:kotlin-stdlib:1.3.72",
             kotlin_reflect                   : "org.jetbrains.kotlin:kotlin-reflect:1.3.72",
 
+            //coroutines
+            kotlinx_coroutines_core          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2",
+            kotlinx_coroutines_android       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2",
+
+
 
             googleMaterial                   : 'com.google.android.material:material:1.1.0',
 
@@ -141,13 +146,23 @@ ext {
                     rootProject.androidLib.appcompatV7,
                     rootProject.androidLib.googleMaterial,
                     rootProject.androidLib.core_ktx,
-                    rootProject.androidLib.cardview,
-                    rootProject.androidLib.palette,
 
                     rootProject.androidLib.androidx_lifecycle_common,
                     rootProject.androidLib.androidx_lifecycle_extensions,
                     rootProject.androidLib.androidx_lifecycle_runtime,
                     rootProject.androidLib.androidx_lifecycle_livedata,
+                    rootProject.androidLib.androidx_lifecycle_viewmodel_ktx,
+
+
+
+                    rootProject.androidLib.kotlinx_coroutines_core,
+                    rootProject.androidLib.kotlinx_coroutines_android,
+
+
+                    rootProject.androidLib.cardview,
+                    rootProject.androidLib.palette,
+
+
 
                     rootProject.thirdLib.gson,
                     rootProject.thirdLib.fastjson,

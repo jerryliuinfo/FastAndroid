@@ -1,0 +1,86 @@
+//创建任务
+task customTask1{
+    doFirst {
+        println "customTask1 doFirst"
+    }
+    doLast {
+        println "customTask1 doLast"
+
+    }
+}
+
+tasks.create("CustomTask2"){
+    doFirst {
+        println "CustomTask2 doFirst"
+    }
+    doLast {
+        println "CustomTask2 doLast"
+
+    }
+}
+
+
+//3.5 任务依赖
+
+
+task ex35World {
+    doFirst {
+        println 'world'
+    }
+}
+
+task ex35Hello {
+    doFirst {
+        println 'hello'
+    }
+}
+
+
+//依赖单个任务
+task ex35Main(dependsOn:ex35Hello){
+    doLast {
+        println "Main"
+    }
+}
+
+//依赖多个任务
+task ex35MultiTask{
+    dependsOn ex35World,ex35Hello
+    doLast {
+        println "multiTask"
+    }
+}
+
+
+//3.6 任务间通过 API 控制、交互 我们可以通过人物名，使用task的 api 访问它的方法、属性或者对这个任务重新配置等
+
+task ex36Hello{
+    println "ex36Hello doFirst"
+
+}
+
+ex36Hello.doFirst{
+    println "ex36Hello doFirst222"
+}
+
+ex36Hello.doLast{
+    println project.hasProperty("ex36Hello") //输出为true，说明每一个任务都是project的一个属性
+    println "dowLast2"
+}
+
+
+
+//3.7 自定义属性
+
+ext.age = 18
+ext{
+    phone = "136666666"
+    name = "Jerry"
+}
+
+//task ex37CustomProperty{
+//    println "------------>age:${age}, phone:${phone}, name:${name}"
+//}
+
+
+

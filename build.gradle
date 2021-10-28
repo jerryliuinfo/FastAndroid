@@ -2,6 +2,8 @@
 apply from: "version_config.gradle"
 apply from: "gradletest.gradle"
 apply from: "chapter02.gradle"
+apply from: "chapter03.gradle"
+apply from: "chapter04.gradle"
 
 
 buildscript {
@@ -29,12 +31,14 @@ buildscript {
         // 配置自动上传符号表插件，注：为了能快速并准确地定位用户APP发生Crash的代码位置，Bugly使用符号表对APP发生Crash的程序堆栈进行解析和还原
     }
 
+//    给所有的子工程统一配置
     subprojects {
         project.configurations.all {
             resolutionStrategy.eachDependency { details ->
-
-                if (details.requested.group == 'androidx.core'
-                        && !details.requested.name.contains('androidx') ) {
+                def requested = details.requested
+                println "group: ${requested.group}, name:${requested.name}, version:${details.useVersion}"
+                if (requested.group == 'androidx.core'
+                        && !requested.name.contains('androidx') ) {
                     details.useVersion "1.3.0"
                 }
                 /*if (details.requested.group == 'androidx.lifecycle') {
@@ -147,8 +151,17 @@ task task2(dependsOn: task1){
     }
 }
 
+
+
+//Finaby
+
 afterEvaluate {
     println "正式执行task 之前(第2阶段和第三阶段之间)  ->"
+
+//    android.applicationVariants.all{variant ->
+//        def capitalized = variant.name.capitalize()
+//        println "capitalized: ${capitalized}"
+//    }
 }
 
 task hello{
@@ -162,3 +175,10 @@ task helloWorld{
         println "helloWorld2222"
     }
 }
+
+task loadProject{
+    getChildProjects().each {
+        println "${it.key}:${it.value}"
+    }
+}
+

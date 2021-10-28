@@ -7,6 +7,12 @@ include ':libnetwork'
 include ':app', ':artemis_annotation', ':artemis_compiler',  'baselib', ':fastFramework'
 rootProject.name = "FastAnd"
 
+include ':libnetwork'
+
+//include ':easypay'
+//project(":easypay").projectDir = new File(rootDir, '../MyApplication/hunter')
+
+
 
 println "第一阶段和第二阶段之间执行"
 //include ':buildSrc'

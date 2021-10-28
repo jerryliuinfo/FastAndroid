@@ -11,9 +11,11 @@ import com.apache.fastandroid.network.retrofit.ProtocolCallback;
 import com.blankj.utilcode.util.ToastUtils;
 import com.tesla.framework.support.KidsException;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Created by Jerry on 2021/7/1.
@@ -58,6 +60,16 @@ public class HomeReporsitory {
                 stateLiveData.postError(KidsException.newException(fail_code,msg));
             }
         });
+    }
+
+    public HomeArticleResponse loadHomeArticleCoSync(int pageNum) throws IOException {
+        Call<BaseResponse<HomeArticleResponse>> call = ApiEngine.createApiService().loadHomeArticleCo(pageNum);
+        Response<BaseResponse<HomeArticleResponse>> response = call.execute();
+        if (response.isSuccessful()){
+            BaseResponse<HomeArticleResponse> body = response.body();
+            return body.getData();
+        }
+        throw KidsException.newException("loadHomeArticleCoSync failed");
     }
 
     /**

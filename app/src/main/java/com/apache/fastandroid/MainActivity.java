@@ -14,7 +14,7 @@ import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.temp.reflect.ReflectionDemoFragment;
+import com.apache.fastandroid.demo.kt.CouroutineDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -91,8 +91,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, ChainModeDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, ProxyModeDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, SpecifyParentViewDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, ReflectionDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, ReflectionDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();

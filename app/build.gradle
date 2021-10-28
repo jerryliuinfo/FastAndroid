@@ -149,6 +149,16 @@ android {
         }
     }
 
+    sourceSets {
+        pay {
+            res.srcDirs = ['src/pay/res']
+        }
+        free {
+            res.srcDirs = ['src/free/res']
+        }
+
+    }
+
 
 
 
@@ -297,6 +307,7 @@ dependencies {
     implementation project(':hencoder_drawtext')
     implementation project(':hencoder_plus')
     implementation project(':hencoder_clipmatrix')
+//    implementation project(':easypay')
 
 
 
@@ -305,15 +316,33 @@ dependencies {
     implementation project(':artemis_annotation')
     annotationProcessor project(':artemis_compiler')
 
-
-
-
-
-
-
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
 
 
+}
+
+
+
+sourceSets.all{
+    ext.resourceDir = null
+}
+
+sourceSets{
+    main{
+        resourceDir = "main/res"
+    }
+    test{
+        resourceDir = "test/res"
+    }
+}
+
+
+task ex37CustomProperty{
+    println "年龄是: ${age}, 电话是:${phone}, 名字是:${name}"
+
+    sourceSets.each {
+        println "${it.name} 的 resourceDir 是: ${it.resourceDir}"
+    }
 }
 
 

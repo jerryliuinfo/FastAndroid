@@ -1,0 +1,16 @@
+//4.1 多种方式创建任务
+
+//以一个任务名字创建任务的方式
+Task ex41CreateTask = task("ex41CreateTask1")
+ex41CreateTask.doLast {
+    println "创建方法原型为:Task task(String name) throws InvalidUserDataException"
+}
+
+//以一个任务名字 +一个对该任务配置的 Map 对象来创建任务
+Task ex41CreateTask2 = task("ex41CreateTask2", group: BasePlugin.BUILD_GROUP )
+ex41CreateTask2.doLast {
+    println "创建方法原型为task(Map<String, ?> args, String name) throws InvalidUserDataException"
+    println "任务分组:${ex41CreateTask2.group}"
+}
+
+
