@@ -189,3 +189,4 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
 
     }
 }
+
