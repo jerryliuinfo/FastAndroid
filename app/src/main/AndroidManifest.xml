@@ -45,6 +45,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppCommonTheme"
+        android:process=""
         >
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
@@ -83,7 +84,7 @@
             />
 
 
-        <service android:name=".jetpack.lifecycle.service.MyService"/>
+        <service android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService"/>
 
 
         <meta-data

@@ -82,12 +82,34 @@ android {
     }
 
 
+    signingConfigs {
+
+
+        release {
+            storePassword properties.getProperty('KEYSTORE_PASSWORD')
+            storeFile file(properties.getProperty('KEYSTORE_FILE'))
+            keyAlias properties.getProperty('KEYSTORE_ALIAS')
+            keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
+        }
+
+
+        debug {
+            storePassword properties.getProperty('KEYSTORE_PASSWORD')
+            storeFile file(properties.getProperty('KEYSTORE_FILE'))
+            keyAlias properties.getProperty('KEYSTORE_ALIAS')
+            keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
+        }
+    }
 
     buildTypes {
 
         release {
+            debuggable true    //默认false，可不写
+            minifyEnabled = true
+            //去除无用的resource文件
+            shrinkResources true
             //zipAlignEnabled能提供系统和应用的运行效率
-            zipAlignEnabled true
+//            zipAlignEnabled true
             //获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk
             //安装目录下的tools/prlguard
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -95,11 +117,19 @@ android {
 
             buildConfigField('boolean', 'LOG_DEBUG', "false")
             buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
+
+            signingConfig signingConfigs.release
+
         }
         debug {
+            debuggable true    //默认false，可不写
+            minifyEnabled = false
             manifestPlaceholders = [appName: "FastAnd测试版"]
             buildConfigField('boolean', 'LOG_DEBUG', "true")
             buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
+
+            signingConfig signingConfigs.release
+
         }
     }
 
@@ -107,11 +137,6 @@ android {
         dev {
             dimension "env"
             manifestPlaceholders = [HOST_VALUE: "www.baidu1.com"]
-        }
-
-        uat {
-            dimension "env"
-            manifestPlaceholders = [HOST_VALUE: "www.baidu2.com"]
         }
 
         prod {
@@ -130,24 +155,6 @@ android {
     }
 
 
-
-    signingConfigs {
-
-        release {
-            storePassword properties.getProperty('KEYSTORE_PASSWORD')
-            storeFile file(properties.getProperty('KEYSTORE_FILE'))
-            keyAlias properties.getProperty('KEYSTORE_ALIAS')
-            keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
-        }
-
-
-        debug {
-            storePassword properties.getProperty('KEYSTORE_PASSWORD')
-            storeFile file(properties.getProperty('KEYSTORE_FILE'))
-            keyAlias properties.getProperty('KEYSTORE_ALIAS')
-            keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
-        }
-    }
 
     sourceSets {
         pay {
@@ -168,7 +175,7 @@ android {
             def versionName = variant.versionName
             def versionCode = variant.versionCode
             def buildType = variant.buildType.name
-            output.outputFileName = "${applicationId}-${versionName}-${versionCode}-${buildType}.apk"
+            output.outputFileName = "${"FastAndroid"}-${versionName}-${versionCode}-${buildType}.apk"
 
         }
     }
@@ -214,6 +221,11 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     lintOptions {
+        /**
+         * https://blog.csdn.net/u010230055/article/details/80742626  去掉 app:lintVitalRelease 这个任务，这个任务很耗时，
+         * 设置 checkReleaseBuilds false 就不会执行这个任务了
+         */
+        checkReleaseBuilds false
         abortOnError false
     }
 
@@ -224,12 +236,6 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
-
-
-
-
-
-
 
     //AspectJ 报错 参考:https://blog.csdn.net/zhangshuny/article/details/106056790,
     // https://blog.csdn.net/tian2342/article/details/102698564
@@ -259,6 +265,46 @@ androidExtensions {
     experimental = true
 }
 
+tasks.whenTaskAdded { task ->
+    if (task.name == 'assembleDebug') {
+        task.doFirst {
+            println("=====================assembleDebug doFirst=========================")
+        }
+    }
+}
+
+afterEvaluate {
+    println "afterEvaluate  -->"
+    android.applicationVariants.all { variant ->
+        def capitalized = variant.name.capitalize()
+        //ProdPayDebug、ProdFreeDebug、DevPayDebug、DevFreeDebug
+        if (capitalized == "ProdPayDebug"){
+            def build = new StringBuilder()
+            build.append("name:${variant.name}\n")
+            build.append("description:${variant.description}\n")
+            build.append("dirName:${variant.dirName}\n")
+            build.append("base:${variant.baseName}\\n")
+            build.append("flavorName:${variant.flavorName}\\n")
+            build.append("mergedFlavor:${variant.mergedFlavor}\\n")
+            build.append("ProductFlavors:${variant.productFlavors}\\n")
+//            build.append("SourceSets:${variant.sourceSets},")
+//            build.append("SourceFolders:${variant.getSourceFolders(SourceKind.JAVA)},")
+            build.append("getMappingFile:${variant.mappingFile}\\n")
+            build.append("buildType:${variant.buildType}\\n")
+
+            println build.toString()
+            //让 customTask 在 assembleXX 之后执行
+            tasks.named("assemble$capitalized").get().finalizedBy "customTask"
+        }
+
+    }
+}
+
+task customTask{
+    doLast{
+        println "customTask doLast  -->"
+    }
+}
 
 dependencies {
     api fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
@@ -346,47 +392,13 @@ task ex37CustomProperty{
 }
 
 
-//
-//final def log = project.logger
-//final def variants = project.android.applicationVariants
-//variants.all { variant ->
-//    if (!variant.buildType.isDebuggable()) {
-//        log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
-//        return;
-//    }
-//
-//    JavaCompile javaCompile = variant.javaCompile
-//    javaCompile.doLast {
-//        String[] args = ["-showWeaveInfo",
-//                         "-1.8",
-//                         "-inpath", javaCompile.destinationDir.toString(),
-//                         "-aspectpath", javaCompile.classpath.asPath,
-//                         "-d", javaCompile.destinationDir.toString(),
-//                         "-classpath", javaCompile.classpath.asPath,
-//                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
-//        log.debug "ajc args: " + Arrays.toString(args)
-//
-//        MessageHandler handler = new MessageHandler(true);
-//        new Main().run(args, handler);
-//        for (IMessage message : handler.getMessages(null, true)) {
-//            switch (message.getKind()) {
-//                case IMessage.ABORT:
-//                case IMessage.ERROR:
-//                case IMessage.FAIL:
-//                    log.error message.message, message.thrown
-//                    break;
-//                case IMessage.WARNING:
-//                    log.warn message.message, message.thrown
-//                    break;
-//                case IMessage.INFO:
-//                    log.info message.message, message.thrown
-//                    break;
-//                case IMessage.DEBUG:
-//                    log.debug message.message, message.thrown
-//                    break;
-//            }
-//        }
-//    }
-//}
 
+
+//4.3 任务分组和描述
+def org.gradle.api.Task myTask = task 'ex43GroupTask'
+myTask.group = BasePlugin.BUILD_GROUP
+myTask.description = "这是一个构建的引导任务"
+myTask.doLast {
+    println "group:${group}, desc:${description}"
+}
 

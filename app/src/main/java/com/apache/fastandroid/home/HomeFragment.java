@@ -26,6 +26,7 @@ import androidx.lifecycle.Observer;
  * Created by Jerry on 2021/7/1.
  */
 public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements CollectListener {
+    public static final String TAG ="HomeFragment";
 
 
     public static HomeFragment newInstance(){
@@ -67,10 +68,11 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
                             mTopArticlesLoadTimes++;
                             if (topData.isSuccess() && listData.isSuccess()){
                                 List<Article> topList = topData.getData();
-                                List<Article> middleList = listData.getData().getDatas();
+//                                ToastUtils.showShort("list data:"+ listData);
+//                                List<Article> middleList = listData.getData().getDatas();
                                 List<Article> totalList = new ArrayList<>();
                                 totalList.addAll(topList);
-                                totalList.addAll(middleList);
+//                                totalList.addAll(middleList);
                                 handleData(totalList,true);
                             }else if (listData.isSuccess()){
                                 handleData(listData.getData().getDatas(),true);

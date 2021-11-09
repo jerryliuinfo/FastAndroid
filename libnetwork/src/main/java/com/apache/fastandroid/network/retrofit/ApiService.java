@@ -5,6 +5,7 @@ import com.apache.fastandroid.network.model.Article;
 import com.apache.fastandroid.network.model.HomeArticleResponse;
 import com.apache.fastandroid.network.response.BaseResponse;
 import com.apache.fastandroid.network.response.EmptyResponse;
+import com.apache.fastandroid.network.response.TokenInfo;
 
 import java.util.List;
 
@@ -41,17 +42,14 @@ public interface ApiService {
     Observable<BaseResponse<HomeArticleResponse>> loadHomeArticleCo2(@Path("pageNum") int pageNum);
 
 
-//    @POST("/lg/collect/{id}/json")
-//    suspend fun collectCo(@Path("id") id: Int): BaseResponse<EmptyResponse>
-//
-//    @POST("/lg/uncollect_originId/{id}/json")
-//    suspend fun unCollectCo(@Path("id") id: Int): BaseResponse<EmptyResponse>
-
     @POST("/lg/collect/{id}/json")
     Call<BaseResponse<EmptyResponse>> collect(@Path("id") int id);
 
     @POST("/lg/uncollect_originId/{id}/json")
     Call<BaseResponse<EmptyResponse>> unCollect(@Path("id") int id);
+
+
+    Call<BaseResponse<TokenInfo>> refreshToken(@Path("id") long id);
 
 
 

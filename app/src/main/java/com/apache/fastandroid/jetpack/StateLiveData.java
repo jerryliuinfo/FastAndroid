@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 /**
  * Created by Jerry on 2021/5/26.
  */
-public class StateLiveData<T> extends MutableLiveData<StateData<T>> {
+public class StateLiveData<T > extends MutableLiveData<StateData<T>> {
 
     /**
      * Use this to put the Data on a LOADING Status

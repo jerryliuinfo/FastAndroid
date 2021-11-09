@@ -12,6 +12,7 @@ buildscript {
     repositories {
         google()
         repositories {
+            mavenCentral()
             google()
             maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
             maven { url 'https://jitpack.io' }
@@ -36,7 +37,7 @@ buildscript {
         project.configurations.all {
             resolutionStrategy.eachDependency { details ->
                 def requested = details.requested
-                println "group: ${requested.group}, name:${requested.name}, version:${details.useVersion}"
+//                println "group: ${requested.group}, name:${requested.name}, version:${details.useVersion}"
                 if (requested.group == 'androidx.core'
                         && !requested.name.contains('androidx') ) {
                     details.useVersion "1.3.0"
@@ -61,6 +62,7 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenCentral()
         google()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter()

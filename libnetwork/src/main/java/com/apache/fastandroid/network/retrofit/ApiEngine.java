@@ -20,10 +20,17 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
  * copyright TCL-MIBC
  */
 public final class ApiEngine {
+    private static final Object car = new Object();
+    private static final Object sword = new Object();
+
     public static final String TAG = "ApiEngine";
 
     private final static int CONN_TIMEOUT = 30000;
     private final static int READ_TIMEOUT = 30000;
+
+    public static void main(String[] args) {
+
+    }
 
     private static OkHttpClient sOkHttpClient;
 
@@ -51,10 +58,15 @@ public final class ApiEngine {
     }
 
     private static void onOkHttpClientCreated(OkHttpClient.Builder client) {
-        client.connectTimeout(CONN_TIMEOUT, TimeUnit.MILLISECONDS);
-        client.readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS);
+        client.connectTimeout(CONN_TIMEOUT, TimeUnit.MILLISECONDS)
+                .connectTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
+                .retryOnConnectionFailure(true);
+
         List<Interceptor> interceptors = client.interceptors();
         interceptors.add(new HeaderInterceptor());
+        interceptors.add(new ErrorInterceptor());
+//        interceptors.add(new TokenInterceptor(SPUtils.getInstance("userInfo").getString("token")));
         if (BuildConfig.DEBUG) {
             HttpLogInterceptor logInterceptor = new HttpLogInterceptor();
             interceptors.add(logInterceptor);

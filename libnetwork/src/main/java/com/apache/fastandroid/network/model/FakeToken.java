@@ -2,7 +2,9 @@
 
 package com.apache.fastandroid.network.model;
 
-public class FakeToken {
+import java.io.Serializable;
+
+public class FakeToken implements Serializable {
     public String token;
     public boolean expired;
 

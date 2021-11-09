@@ -42,7 +42,9 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
         btn_multi_channel.setOnClickListener {
             ToastUtils.showShort(MetaDataUtils.getMetaDataInApp("HOST"))
         }
+        btn_sisuo.setOnClickListener {
 
+        }
     }
 
     /**
@@ -85,6 +87,7 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
     private val set1 = mutableListOf<String>("111")
     private val set2 = mutableListOf<String>("222")
     private val set3 = set1.addAll(set2)
+
 
 
 

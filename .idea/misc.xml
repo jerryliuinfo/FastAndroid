@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/layout/fragment_agent_web_js.xml" value="0.22239583333333332" />
         <entry key="app/src/main/res/layout/fragment_black_tech_aspect.xml" value="0.17034700315457413" />
         <entry key="app/src/main/res/layout/fragment_common.xml" value="0.16979166666666667" />
+        <entry key="app/src/main/res/layout/fragment_concurry_demo.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/layout/fragment_databinding_basis_user.xml" value="0.17760416666666667" />
         <entry key="app/src/main/res/layout/fragment_design_mode_delegate.xml" value="0.15625" />
         <entry key="app/src/main/res/layout/fragment_design_mode_proxy.xml" value="0.24895833333333334" />
@@ -39,6 +40,7 @@
         <entry key="app/src/main/res/layout/fragment_nodrawable.xml" value="0.22135416666666666" />
         <entry key="app/src/main/res/layout/fragment_permission.xml" value="0.2513586956521739" />
         <entry key="app/src/main/res/layout/fragment_programily_set_style.xml" value="0.22864583333333333" />
+        <entry key="app/src/main/res/layout/fragment_region_decoder.xml" value="0.16875" />
         <entry key="app/src/main/res/layout/fragment_round_view.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/fragment_rxjava.xml" value="0.1703125" />
         <entry key="app/src/main/res/layout/fragment_rxjava2.xml" value="0.125" />
@@ -57,7 +59,8 @@
         <entry key="app/src/main/res/layout/performance_anr_watchdog.xml" value="0.16979166666666667" />
         <entry key="app/src/main/res/layout/performance_block_cancary.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/layout/stv_superbutton.xml" value="0.22760416666666666" />
-        <entry key="app/src/main/res/layout/temp_api_usage_demo.xml" value="0.2682291666666667" />
+        <entry key="app/src/main/res/layout/temp_api_usage_demo.xml" value="0.15570934256055363" />
+        <entry key="app/src/main/res/layout/temp_asynctosync_usage_demo.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/temp_reflection.xml" value="0.31476449275362317" />
         <entry key="app/src/main/res/layout/temp_specify_parent_view.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/layout/title_bar.xml" value="0.31476449275362317" />

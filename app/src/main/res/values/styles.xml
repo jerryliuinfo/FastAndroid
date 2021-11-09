@@ -8,6 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowAnimationStyle">@style/anim_fade</item>
         <item name="textAllCaps">false</item>
+<!--        设置字体颜色-->
+        <item name="android:textColor">@color/primary_text</item>
+
 
     </style>
 

@@ -28,6 +28,26 @@
             android:layout_height="wrap_content"
             android:text="android多语言适配，获取布局方向"
             />
+
+        <Button
+            android:id="@+id/btn_countdown_usage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CountDown让多个线程等待"
+            />
+        <Button
+            android:id="@+id/btn_countdown_usage2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CountDown让单个线程等待"
+            />
+
+        <Button
+            android:id="@+id/btn_content_provider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ContentProvider"
+            />
     </LinearLayout>
 
 

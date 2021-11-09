@@ -6,7 +6,6 @@ import com.apache.fastandroid.demo.agentweb.AgentWebDemoListFragment
 import com.apache.fastandroid.demo.glide.GlideDemoFragment
 import com.apache.fastandroid.demo.mmkv.MMKVFragment
 import com.apache.fastandroid.demo.widget.banner.BannerDemoFragment2
-import com.apache.fastandroid.demo.recycleview.BaseRecycleViewAdapterDemoListFragment
 import com.apache.fastandroid.demo.rxjava.RxJavaDemoFragment
 import com.apache.fastandroid.demo.widget.qmui.QMUIDemoFragment
 import com.apache.fastandroid.demo.widget.supertextview.SuperTextViewDemoListFragment

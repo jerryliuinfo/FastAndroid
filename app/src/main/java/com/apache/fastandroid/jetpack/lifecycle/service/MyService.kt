@@ -1,5 +1,6 @@
 package com.apache.fastandroid.jetpack.lifecycle.service
 
+import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.LifecycleService
 import com.tesla.framework.common.util.log.NLog
@@ -13,6 +14,14 @@ class MyService: LifecycleService() {
 
     companion object{
          const val TAG = "MyService"
+
+        fun start(context: Context){
+            context.startService(Intent(context,MyService::class.java))
+        }
+
+        fun stop(context: Context){
+            context.stopService(Intent(context,MyService::class.java))
+        }
     }
 
     init {

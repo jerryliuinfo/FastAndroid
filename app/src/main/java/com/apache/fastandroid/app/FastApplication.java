@@ -19,13 +19,17 @@ import com.apache.fastandroid.task.ImageLoaderTask;
 import com.apache.fastandroid.task.PerformanceTask;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.CrashUtils;
+import com.blankj.utilcode.util.FileUtils;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.mmkv.MMKV;
 import com.tesla.framework.applike.FApplication;
+import com.tesla.framework.common.util.LaunchTimer;
 import com.tesla.framework.common.util.handler.HandlerUtil;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
+
+import java.io.File;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
@@ -80,14 +84,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         //systrace 开始检测
 //        TraceCompat.beginSection("trace");
 
-        TaskDispatcher.init(this);
-        TaskDispatcher taskDispatcher = TaskDispatcher.createInstance();
-        taskDispatcher.addTask(new DoraemonkitTask());
-        //DB初始化
-        taskDispatcher.addTask(new DBInitTask());
-        taskDispatcher.addTask(new ImageLoaderTask());
-        taskDispatcher.addTask(new PerformanceTask(this));
-        taskDispatcher.start();
+        initTask2();
 
         //初始化crash统计
         initCrashAndAnalysis();
@@ -96,8 +93,27 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
         NLog.d(TAG, "FastAndroidApplication onCreate cost time: %s ms", (SystemClock.uptimeMillis() - startTime));
         initViewPump();
+        LaunchTimer.endRecord("Application end ");
+    }
+
+
+
+    private void initTask2(){
+        LaunchTimer.startRecord();
+        TaskDispatcher.init(this);
+        TaskDispatcher taskDispatcher = TaskDispatcher.createInstance();
+        //DB初始化
+        taskDispatcher.addTask(new DBInitTask());
+        taskDispatcher.addTask(new DoraemonkitTask());
+
+        taskDispatcher.addTask(new ImageLoaderTask());
+        taskDispatcher.addTask(new PerformanceTask(this));
+        taskDispatcher.start();
+        LaunchTimer.endRecord("initTask2 end ");
 
     }
+
+
 
 
 
@@ -126,6 +142,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
     @Override
     protected void attachBaseContext(Context base) {
         MainLogUtil.d("Application attachBaseContext ");
+        LaunchTimer.startRecord();
         MultiDex.install(base);
         //HotFixManager.loadDex(base);
         super.attachBaseContext(base);
@@ -148,6 +165,13 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
     private void initLog(){
         NLog.setDebug(true, Logger.VERBOSE);
+        NLog.trace(Logger.TRACE_ALL, getLogPath() );
+    }
+
+    private String getLogPath(){
+        String dir =  getContext().getExternalFilesDir("fastAndroid").getAbsolutePath() + File.separator + "log";
+        FileUtils.mkdir(dir);
+        return dir;
     }
 
 

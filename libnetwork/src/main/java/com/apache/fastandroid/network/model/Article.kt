@@ -1,5 +1,7 @@
 package com.apache.fastandroid.network.model
 
+import java.io.Serializable
+
 
 /**
  * Created with Android Studio.
@@ -24,4 +26,4 @@ data class Article(
     var fresh: Boolean = false,
     var top: Boolean = false,
     var envelopePic: String = ""
-)
+):Serializable

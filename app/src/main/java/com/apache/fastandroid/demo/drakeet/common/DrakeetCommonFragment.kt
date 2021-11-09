@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.drakeet.common
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
+import com.apache.fastandroid.jetpack.lifecycle.service.MyService
 import com.tesla.framework.common.util.AndroidVersion
 import com.tesla.framework.common.util.toast.ToastCompat
 import com.tesla.framework.ui.fragment.BaseFragment
@@ -26,6 +27,10 @@ class DrakeetCommonFragment:BaseFragment() {
         }
         btn_judge_sdk_version.setOnClickListener {
             AndroidVersion.isAndroid12()
+        }
+
+        btn_service_ontask_removed.setOnClickListener {
+            context?.let { it1 -> MyService.start(it1) }
         }
 
     }

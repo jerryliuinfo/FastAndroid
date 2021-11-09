@@ -20,13 +20,11 @@ class JetPackLifeCycleServiceFragment: BaseStatusFragmentNew() {
         super.layoutInit(inflater, savedInstanceSate)
 
         btn_start_service.setOnClickListener {
-            val intent = Intent(this@JetPackLifeCycleServiceFragment.activity, MyService::class.java)
-            this@JetPackLifeCycleServiceFragment.activity!!.startService(intent)
+            context?.let { it1 -> MyService.start(it1) }
         }
 
         btn_stop_service.setOnClickListener {
-            val intent = Intent(this@JetPackLifeCycleServiceFragment.activity, MyService::class.java)
-            this@JetPackLifeCycleServiceFragment.activity!!.stopService(intent)
+            context?.let { it1 -> MyService.stop(it1) }
         }
     }
 

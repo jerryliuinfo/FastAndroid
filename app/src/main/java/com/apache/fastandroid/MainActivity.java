@@ -2,6 +2,9 @@ package com.apache.fastandroid;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
@@ -14,7 +17,6 @@ import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.kt.CouroutineDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -22,11 +24,14 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.optimize.performance.launchstarter.DelayInitDispatcher;
 import com.tesla.framework.common.util.log.FastLog;
+import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
+import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -75,7 +80,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
 
-        ToastUtils.showShort(R.string.property_name);
 
 
 //        FragmentContainerActivity.launch(this, RelearnAndroidDemoFragment.class,null);
@@ -92,16 +96,44 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, ProxyModeDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, SpecifyParentViewDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, ReflectionDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, ApiDemoFragment2.class,null);
+//        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, ConcurrencyDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
 
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            queryUserInfo();
+        }
+        IAction parentAction = new IAction(this,null){
+            @Override
+            public void doAction() {
+                super.doAction();
 
+            }
+        };
 
+        new IAction(this,parentAction).run();
 
+    }
+
+    private  static final String authorities = "com.tcl.account.userInfo";
+    private static final String[] COLUM_NAME = {"accountId", "phone"};
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void queryUserInfo(){
+        Cursor cursor = getContentResolver().query(Uri.parse(authorities),COLUM_NAME,
+                null,null);
+        if(cursor != null){
+            while (cursor.moveToNext()){
+                int accountId = cursor.getInt(cursor.getColumnIndex(COLUM_NAME[0]));
+                String phone = cursor.getString(cursor.getColumnIndex(COLUM_NAME[1]));
+                NLog.d(TAG, "accountId: %s, phone:%s", accountId,phone);
+            }
+        }
     }
 
     @Override

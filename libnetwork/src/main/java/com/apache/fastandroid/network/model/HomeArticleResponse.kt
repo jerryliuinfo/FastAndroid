@@ -1,5 +1,7 @@
 package com.apache.fastandroid.network.model
 
+import java.io.Serializable
+
 
 /**
  * Created with Android Studio.
@@ -14,4 +16,4 @@ data class HomeArticleResponse(var curPage: Int,
                                var over: Boolean,
                                var pageCount: Int,
                                var size: Int,
-                               var total: Int)
+                               var total: Int):Serializable

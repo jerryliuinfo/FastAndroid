@@ -22,6 +22,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="判断是否是Android 12版本" />
+    <Button
+        android:id="@+id/btn_service_ontask_removed"
+        app:layout_constraintStart_toEndOf="@+id/btn_judge_sdk_version"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="onTaskRemoved" />
 
 
 

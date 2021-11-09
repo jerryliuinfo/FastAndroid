@@ -1,16 +1,161 @@
 //4.1 多种方式创建任务
 
-//以一个任务名字创建任务的方式
+//第一种方式: 以一个任务名字创建任务的方式
 Task ex41CreateTask = task("ex41CreateTask1")
 ex41CreateTask.doLast {
-    println "创建方法原型为:Task task(String name) throws InvalidUserDataException"
+    println "ex41CreateTask 创建方法原型为:Task task(String name) throws InvalidUserDataException"
 }
 
-//以一个任务名字 +一个对该任务配置的 Map 对象来创建任务
-Task ex41CreateTask2 = task("ex41CreateTask2", group: BasePlugin.BUILD_GROUP )
+//第二种方式: 以一个任务名字 +一个对该任务配置的 Map 对象来创建任务
+Task ex41CreateTask2 = task("ex41CreateTask2", group: BasePlugin.BUILD_GROUP,  dependsOn:ex41CreateTask, action:{
+    println "ex41CreateTask2 action"
+},description: "这是一个用Map创建的task的描述")
+
 ex41CreateTask2.doLast {
-    println "创建方法原型为task(Map<String, ?> args, String name) throws InvalidUserDataException"
-    println "任务分组:${ex41CreateTask2.group}"
+    println "ex41CreateTask2 创建方法原型为task(Map<String, ?> args, String name) throws InvalidUserDataException"
+    println "ex41CreateTask2 任务分组:${ex41CreateTask2.group}"
 }
+
+//Map 中可用参数配置为
+// 1.type(基于一个存在的 Task 来创建，和我们类继承差不多)、
+// 2.overrite(是否替换存在的Task, 和Type配合起来使用)
+// 3.dependsOn 用于配置任务的依赖
+// 4.action:添加到任务中的一个 Action 或者一个闭包
+// 5.description: 用于配置任务的描述
+// 6.用于配置任务的分组
+
+//第三种方式:  任务名字+闭包
+
+task ex41CreateTask3{
+    description "演示任务创建"
+    group "build"
+    doLast {
+        println "ex41CreateTask3 --->"
+    }
+}
+
+
+
+
+
+
+//4.2 多种任务访问方式
+
+task ex42AccessTask1
+
+//1.通过任务名称
+
+ex42AccessTask1.doLast{
+    println "通过任务名字访问 ex42AccessTask1"
+}
+
+//2.通过访问TaskContainer集合的方式
+
+// tasks["ex42AccessTask1"] 其实调用的是 tasks.getAt('ex42AccessTask1'), Groovy 的操作符都有对应的方法让我们重载，例如 a[b] 对应的 a.getAt(b)这个方法
+tasks["ex42AccessTask1"].doLast {
+    println "通过集合访问 ex42AccessTask1"
+}
+
+
+//3.通过路径访问，
+/**
+ * 通过路径访问有两种方式，一种是 get，另一种是 find, 他们的区别在于 get的时候如果找不到任务就会抛出 UnknowTaskException异常，
+ * 而 find 在找不到该任务的时候会返回null
+ */
+
+task ex42AccessTask3
+
+tasks['ex42AccessTask3'].doLast {
+    println tasks.findByPath(':example42:ex42AccessTask3') //Find 不到返回null，不会抛异常
+    println tasks.findByPath(':example42:abcdefsdf') //Find 不到返回null，不会抛异常
+    println tasks.getByPath (':example42:ex42AccessTask3') //Get 不到会抛异常
+
+}
+
+
+//4.通过名字访问，
+/**
+ * 通过名字的访问也有 get 和 find 两种，它们的区别和路径访问方式一样
+ */
+
+
+task ex42AccessTask4
+
+tasks['ex42AccessTask4'].doLast {
+    println tasks.findByName('ex42AccessTask4') //参数值可以通过任务名字来访问
+    println tasks.findByName('ex42AccessTask4')
+    println tasks.getByName('abcdefsdf')
+
+}
+
+
+//4.3 任务分组和描述
+def Task myTask = task 'ex43GroupTask'
+myTask.group = BasePlugin.BUILD_GROUP
+myTask.description = "这是一个构建的引导任务"
+myTask.doLast {
+    println "group:${group}, desc:${description}"
+}
+
+
+//4.4 操作符
+/**
+ *  << 是 doLast 方法的短标记形式，也就是说 << 可以代码 doLast
+ */
+
+task (ex44DoLast) {
+    println "ex44DoLast --->"
+    doLast{
+
+    }
+    doFirst{
+
+    }
+}
+
+
+
+//4.5 任务的执行分析
+
+/**
+ * doLast 和 doFirst 执行的操作，其实都是将其添加到 org.gradle.api.internal.AbstractTask#actions 这个
+ * List 中， 由于doFirst 是添加到list的第0个位置， doLast 是添加到 list 的最后一个位置, 因此 doFirst
+ * 会比 doLast 先执行
+ * @TaskAction 标识是 Task 本身需要执行的方法
+ */
+
+
+def Task ex45Task = task ex45CustomTask(type: CustomTask)
+ex45Task.doFirst {
+    println "Task 执行之前执行 in doFirst "
+}
+ex45Task.doLast {
+    println "Task 执行之后执行 in doLast "
+}
+
+
+class CustomTask extends DefaultTask{
+
+    @TaskAction
+    def doSelf(){
+        println 'Task 自己本身在执行 in doSelf'
+    }
+}
+
+//4.6 任务顺序
+/**
+ * 控制一个任务应该或者一定在某个任务之后执行，通过这种方式可以在某些情况下控制任务的执行顺序，而不是通过强依赖的方式
+ * 例如可以控制先执行单元测试，才能进行打包来保证App的质量
+ */
+
+task ex46OrderTask1{
+    println "ex46OrderTask1 --->"
+}
+
+task ex46OrderTask2{
+    println "ex46OrderTask2 --->"
+}
+
+
 
 

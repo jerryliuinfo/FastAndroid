@@ -3,13 +3,15 @@ package com.apache.fastandroid.jetpack;
 
 import com.tesla.framework.support.KidsException;
 
+import java.io.Serializable;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
  * Created by Jerry on 2021/5/26.
  */
-public class StateData<T> {
+public class StateData<T> implements Serializable {
 
     @NonNull
     private DataStatus status;
@@ -101,5 +103,18 @@ public class StateData<T> {
         ERROR,
         EMPTY,
         COMPLETE
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"status\":")
+                .append(status);
+        sb.append(",\"data\":")
+                .append(data);
+        sb.append(",\"error\":")
+                .append(error);
+        sb.append('}');
+        return sb.toString();
     }
 }

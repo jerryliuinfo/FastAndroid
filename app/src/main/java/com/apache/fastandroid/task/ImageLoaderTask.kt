@@ -15,23 +15,33 @@ class ImageLoaderTask:Task() {
     override fun run() {
         NLog.d("task", "ImageLoaderTask run --->")
         //初始化图片加载
-        val loaderstrategy: IImageLoaderstrategy = configImageLoader()
-        if (loaderstrategy != null) {
-            ImageLoaderManager.getInstance().setImageLoaderStrategy(loaderstrategy)
+      start()
+
+    }
+
+    companion object{
+        @JvmStatic
+        fun start(){
+            NLog.d("task", "ImageLoaderTask run --->")
+            ImageLoaderManager.getInstance().setImageLoaderStrategy(configImageLoader())
             ImageLoaderManager.getInstance().init(FApplication.getContext())
+            Thread.sleep(120 )
+        }
+
+        private fun configImageLoader(): IImageLoaderstrategy {
+            val imageLoaderClassName = "";
+            return if (!TextUtils.isEmpty(imageLoaderClassName)) {
+                try {
+                    Class.forName(imageLoaderClassName).newInstance() as IImageLoaderstrategy
+                } catch (e: Exception) {
+                    GlideImageLoader()
+                }
+            } else GlideImageLoader()
+            //如果没有配置，默认使用glide加载
         }
     }
 
 
-    private fun configImageLoader(): IImageLoaderstrategy {
-        val imageLoaderClassName = "";
-        return if (!TextUtils.isEmpty(imageLoaderClassName)) {
-            try {
-                Class.forName(imageLoaderClassName).newInstance() as IImageLoaderstrategy
-            } catch (e: Exception) {
-                GlideImageLoader()
-            }
-        } else GlideImageLoader()
-        //如果没有配置，默认使用glide加载
-    }
+
+
 }

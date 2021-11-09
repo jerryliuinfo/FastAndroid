@@ -35,11 +35,29 @@
 #---------------------------------2.第三方包-------------------------------
 
 
+
+#---------------------------------Glide 开始-------------------------------
+
 -keep public class * implements com.bumptech.glide.module.GlideModule
-    -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
-      **[] $VALUES;
-      public *;
-    }
+-keep class * extends com.bumptech.glide.module.AppGlideModule {
+ <init>(...);
+}
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+-keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
+  *** rewind();
+}
+
+# for DexGuard only
+#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+#---------------------------------Glide 结束-------------------------------
+
+
+
+
+
 
 -dontwarn com.tencent.bugly.**
 -keep public class com.tencent.bugly.**{*;}
@@ -110,17 +128,13 @@
     public <init>(android.content.Context, android.util.AttributeSet);
     public <init>(android.content.Context, android.util.AttributeSet, int);
 }
--keep class * implements android.os.Parcelable {
-  public static final android.os.Parcelable$Creator *;
-}
--keepclassmembers class * implements java.io.Serializable {
-    static final long serialVersionUID;
-    private static final java.io.ObjectStreamField[] serialPersistentFields;
-    private void writeObject(java.io.ObjectOutputStream);
-    private void readObject(java.io.ObjectInputStream);
-    java.lang.Object writeReplace();
-    java.lang.Object readResolve();
-}
+
+
+-keep class * implements java.io.Serializable { *; }
+-keep class * implements android.os.Parcelable { *; }
+
+
+
 -keep class **.R$* {
  *;
 }

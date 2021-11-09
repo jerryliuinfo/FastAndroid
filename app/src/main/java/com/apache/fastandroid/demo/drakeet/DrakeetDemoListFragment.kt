@@ -19,6 +19,8 @@ class DrakeetDemoListFragment:BaseListFragment() {
             ,ViewItemBean("ForeGroundService", "ForeGroundService", ForegroundServiceFragment::class.java)
             ,ViewItemBean("StableId", "StableId", StabledIdsFragment::class.java)
             ,ViewItemBean("RecycleView#setHasStableIds", "setHasStableIds", RecyleviewStabledIdsFragment::class.java)
+            ,ViewItemBean("加载大图", "ImageRegionDecoder", RegionDeocderFragment::class.java)
+            ,ViewItemBean("ServiceOnTaskRemoved", "ServiceOnTaskRemoved", RegionDeocderFragment::class.java)
 
         )
     }
