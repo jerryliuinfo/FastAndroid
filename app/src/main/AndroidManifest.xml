@@ -32,12 +32,14 @@
 
 
 <!--    App/Activity就可以进入分屏模式了 -->
+<!--    android:label="${appName}"-->
+
 
     <application
         android:name=".app.FastApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="${appName}"
+        android:label="@string/appDisplayName"
         android:resizeableActivity="false"
         android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config"
@@ -90,7 +92,10 @@
         <meta-data
             android:name="HOST"
             android:value="${HOST_VALUE}" />
+
+
     </application>
+
 
 
 

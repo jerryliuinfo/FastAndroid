@@ -7,11 +7,7 @@ android {
     buildToolsVersion rootProject.android.buildToolsVersion
 
     defaultConfig {
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
+
 
         minSdkVersion rootProject.android.minSdkVersion
         targetSdkVersion rootProject.android.targetSdkVersion

@@ -1,0 +1,5 @@
+/**
+ * Android Gradle 工程的配置，都是在 android{} 中，这是唯一的一个入口，通过它可以对 Android Gradle
+ * 工程进行自定义的配置，其具体实现是 com.android.build.gradle.AppExtension, 是 project的一个扩展
+ *
+ */

@@ -3,18 +3,3 @@ task ex52PrintTask{
         println "App 版本是: ${android.versionName}:版本号:${android.versionCode}"
     }
 }
-
-/**
- * 自定义插件
- */
-
-class Ex53CustomPlugin implements Plugin<Project>{
-
-    @Override
-    void apply(Project target) {
-        println 'Ex53CustomPlugin apply --->'
-        project.task('ex53CustomTask'){
-            println '这是一个通过自定义插件方式创建的任务'
-        }
-    }
-}

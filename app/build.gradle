@@ -1,20 +1,10 @@
 apply plugin: 'com.android.application'
-
-//等价于上面的写法
-//apply(new Action<ObjectConfigurationAction>() {
-//    @Override
-//    void execute(ObjectConfigurationAction objectConfigurationAction) {
-//        println 'apply com.android.application--->'
-//        objectConfigurationAction.plugin('com.android.application')
-//    }
-//})
-
-
 //com.hc.gradle为resources/META-INF/gradle-plugins
 //下的properties文件名称
 
-//apply plugin: 'largeimage-monitor'
 
+
+//apply plugin: 'largeimage-monitor'
 
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 
@@ -55,10 +45,10 @@ android {
     buildToolsVersion rootProject.android.buildToolsVersion
     defaultConfig {
         applicationId "com.apache.fastandroid"
-        minSdkVersion    rootProject.android.minSdkVersion
+        minSdkVersion rootProject.android.minSdkVersion
         targetSdkVersion rootProject.android.targetSdkVersion
-        versionCode      rootProject.android.versionCode
-        versionName      rootProject.android.versionName
+        versionCode rootProject.android.versionCode
+        versionName rootProject.android.versionName
 
         //dex突破65535的限制
         multiDexEnabled true
@@ -70,6 +60,9 @@ android {
 
         //只保留指定和默认资源
         resConfigs('zh-rCN')
+
+        resValue "string", "appDisplayName", ""
+
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -131,9 +124,9 @@ android {
             buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
 
             signingConfig signingConfigs.release
-
         }
         debug {
+            applicationIdSuffix ".debug"
             debuggable true    //默认false，可不写
             minifyEnabled = false
             manifestPlaceholders = [appName: "FastAnd测试版"]
@@ -142,6 +135,7 @@ android {
 
             signingConfig signingConfigs.release
 
+
         }
     }
 
@@ -149,19 +143,24 @@ android {
         dev {
             dimension "env"
             manifestPlaceholders = [HOST_VALUE: "www.baidu1.com"]
+            resValue "string", "appDisplayName", "FastDev"
         }
 
         prod {
             dimension "env"
             manifestPlaceholders = [HOST_VALUE: "www.baidu3.com"]
+            resValue "string", "appDisplayName", "FastProd"
+
         }
 
         pay {
             dimension "paying"
+
         }
 
         free {
-            dimension "paying"
+            dimension "free"
+
         }
 
     }
@@ -182,13 +181,19 @@ android {
 
 
     resourcePrefix ""
+    //修改apk 名称
     applicationVariants.all { variant ->
+        //outputs 属性是一个list集合，遍历找到以 .apk 结尾，说明是 apk文件
         variant.outputs.each { output ->
-            def versionName = variant.versionName
-            def versionCode = variant.versionCode
-            def buildType = variant.buildType.name
-            output.outputFileName = "${"FastAndroid"}-${versionName}-${versionCode}-${buildType}.apk"
+            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')){
+                 //flavorName:prodPay   fileName:app-prod-pay-debug.apk
+                println "flavorName: ${flavorName}, fileName:${output.outputFile.name}"
 
+                def versionName = variant.versionName
+                def buildType = variant.buildType.name
+                def flavorName = variant.flavorName
+                output.outputFileName = "${"FastAndroid"}_${flavorName}_${versionName}_${buildType}.apk"
+            }
         }
     }
 
@@ -366,7 +371,6 @@ dependencies {
     implementation project(':hencoder_plus')
     implementation project(':hencoder_clipmatrix')
 //    implementation project(':easypay')
-    implementation "com.android.tools.build:gradle:4.0.2"
 
 
     //必须加行这行，否则proxyToolProcessor无法自动生成类
