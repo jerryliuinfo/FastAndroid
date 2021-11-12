@@ -1,8 +1,20 @@
 apply plugin: 'com.android.application'
+
+//等价于上面的写法
+//apply(new Action<ObjectConfigurationAction>() {
+//    @Override
+//    void execute(ObjectConfigurationAction objectConfigurationAction) {
+//        println 'apply com.android.application--->'
+//        objectConfigurationAction.plugin('com.android.application')
+//    }
+//})
+
+
 //com.hc.gradle为resources/META-INF/gradle-plugins
 //下的properties文件名称
 
 //apply plugin: 'largeimage-monitor'
+
 
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 
@@ -43,10 +55,10 @@ android {
     buildToolsVersion rootProject.android.buildToolsVersion
     defaultConfig {
         applicationId "com.apache.fastandroid"
-        minSdkVersion rootProject.android.minSdkVersion
+        minSdkVersion    rootProject.android.minSdkVersion
         targetSdkVersion rootProject.android.targetSdkVersion
-        versionCode 100
-        versionName "V1.0.0"
+        versionCode      rootProject.android.versionCode
+        versionName      rootProject.android.versionName
 
         //dex突破65535的限制
         multiDexEnabled true
