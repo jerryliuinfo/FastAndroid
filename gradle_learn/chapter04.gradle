@@ -179,3 +179,16 @@ ex47DiasbledTask.enabled =false
 
 
 //4.9 任务规则
+/**
+ * 当我们执行一个不存在的任务时，Gradle 会执行失败，失败信息是任务不存在。我们使用规则对其进行改造，当执行、依赖不存在的任务
+ * 时，不会执行失败，而是打印提示信息，指示该任务不存在
+ */
+tasks.addRule('对该规则的一个描述，便于调试、查看等'){ String taskName ->
+    task(taskName){
+        println "该 ${taskName} 任务不存在，请查证后再执行"
+    }
+}
+
+task ex49RuleTask{
+    dependsOn missTask
+}

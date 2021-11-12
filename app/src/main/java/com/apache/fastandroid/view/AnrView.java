@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 
 import androidx.annotation.Nullable;
@@ -46,7 +47,7 @@ public class AnrView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         for (int i = 0; i < 100000; i++) {
-            canvas.drawText("jerry", ScreenUtils.getScreenWidth()/2,ScreenUtils.getActionBarHeight(mContext) /2,mPaint);
+            canvas.drawText("jerry", ScreenUtils.getScreenWidth()/2, BarUtils.getActionBarHeight() /2,mPaint);
         }
     }
 }

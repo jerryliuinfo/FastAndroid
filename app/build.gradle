@@ -354,8 +354,7 @@ dependencies {
     implementation project(':hencoder_plus')
     implementation project(':hencoder_clipmatrix')
 //    implementation project(':easypay')
-
-
+    implementation "com.android.tools.build:gradle:4.0.2"
 
 
     //必须加行这行，否则proxyToolProcessor无法自动生成类

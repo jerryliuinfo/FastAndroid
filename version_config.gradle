@@ -168,6 +168,7 @@ ext {
                     rootProject.thirdLib.glide,
                     rootProject.thirdLib.brvh,
                     rootProject.thirdLib.mmkv,
+                    rootProject.thirdLib.utilcodex,
 
 
             ]

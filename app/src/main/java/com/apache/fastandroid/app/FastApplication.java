@@ -137,10 +137,8 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         //Crash 日志
         CrashUtils.init(getCacheDir(), new CrashUtils.OnCrashListener() {
             @Override
-            public void onCrash(String crashInfo, Throwable e) {
-                //report crash
-
-                NLog.d(TAG, "crash info: %s, e: %s", crashInfo,e.getMessage());
+            public void onCrash(CrashUtils.CrashInfo crashInfo) {
+                NLog.d(TAG, "crash info: %s, e: %s");
             }
         });
     }
@@ -177,7 +175,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
     private String getLogPath(){
         String dir =  getContext().getExternalFilesDir("fastAndroid").getAbsolutePath() + File.separator + "log";
-        FileUtils.mkdir(dir);
+        FileUtils.createOrExistsDir(dir);
         return dir;
     }
 

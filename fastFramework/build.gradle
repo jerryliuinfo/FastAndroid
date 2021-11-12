@@ -61,7 +61,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             /**
              * buildType下proguardFiles配置的*.pro文件作用与library
              module打包成aar的编译过程，仅作用于本module的编译混淆过程。

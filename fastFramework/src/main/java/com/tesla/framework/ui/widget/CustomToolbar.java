@@ -5,7 +5,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.blankj.utilcode.util.UtilsBridge;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.tesla.framework.ui.activity.BaseActivity;
 
 import androidx.annotation.Nullable;
@@ -34,7 +34,7 @@ public class CustomToolbar extends Toolbar {
         boolean handler = super.onTouchEvent(ev);
         if(ev.getAction() == MotionEvent.ACTION_UP) {
             if(this.lastClickTime != 0L && System.currentTimeMillis() - this.lastClickTime <= 500L) {
-                Activity activity = UtilsBridge.getTopActivity();
+                Activity activity = ActivityUtils.getTopActivity();
                 if (activity != null && activity instanceof BaseActivity){
                     BaseActivity baseActivity = (BaseActivity) activity;
                     if(baseActivity != null && baseActivity instanceof CustomToolbar.OnToolbarDoubleClickListener) {

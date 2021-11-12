@@ -18,7 +18,6 @@
         android:orientation="vertical"
        >
         <include
-            android:id="@+id/custom_bar"
             layout="@layout/custom_bar"
             />
     </LinearLayout>

@@ -72,7 +72,9 @@ public class ArticleDetailActivity extends BaseDatabindingActivity<ActivityArtic
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        return new DataBindingConfig(R.layout.activity_article_detail, BR.vm, articleDetailViewModel);
+        return new DataBindingConfig(R.layout.activity_article_detail, BR.vm, articleDetailViewModel)
+
+                ;
 
     }
 

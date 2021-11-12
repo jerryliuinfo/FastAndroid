@@ -9,7 +9,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import com.blankj.utilcode.util.ScreenUtils;
+import com.blankj.utilcode.util.BarUtils;
 import com.tesla.framework.R;
 
 import androidx.core.view.ViewCompat;
@@ -54,13 +54,13 @@ public class KitkatViewGroup extends LinearLayout {
 
                 setWillNotDraw(false);
 
-                mInsets = new Rect(0, ScreenUtils.getStatusBarHeight(), 0, 0);
+                mInsets = new Rect(0, BarUtils.getStatusBarHeight(), 0, 0);
 
                 ViewCompat.postInvalidateOnAnimation(this);
             }
 
             setPadding(getPaddingLeft(),
-                        getPaddingTop() + ScreenUtils.getStatusBarHeight(),
+                        getPaddingTop() + BarUtils.getStatusBarHeight(),
                         getPaddingRight(),
                         0);
         }
