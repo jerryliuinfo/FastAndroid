@@ -117,7 +117,7 @@ ext {
 
 
 
-            googleMaterial                   : 'com.google.android.material:material:1.1.0',
+            googleMaterial                   : 'com.google.android.material:material:1.4.0-alpha01',
 
             androidx_lifecycle_common        : "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
             androidx_lifecycle_extensions    : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",

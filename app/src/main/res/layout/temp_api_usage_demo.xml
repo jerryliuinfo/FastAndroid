@@ -48,6 +48,32 @@
             android:layout_height="wrap_content"
             android:text="ContentProvider"
             />
+
+        <Button
+            android:id="@+id/btn_breakPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BreakPoint"
+            />
+
+        <Button
+            android:id="@+id/btn_sync_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="同步账号信息(正确)"
+
+            />
+
+        <Button
+            android:id="@+id/btn_sync_account_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="同步账号信息(错误)"
+
+            />
+
+
+
     </LinearLayout>
 
 

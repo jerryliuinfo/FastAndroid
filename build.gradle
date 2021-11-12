@@ -4,6 +4,7 @@ apply from: "gradletest.gradle"
 apply from: "chapter02.gradle"
 apply from: "chapter03.gradle"
 apply from: "chapter04.gradle"
+apply from: "chapter04_8.gradle"
 
 
 buildscript {
@@ -60,6 +61,7 @@ buildscript {
 }
 
 
+//所有module全局生效
 allprojects {
     repositories {
         mavenCentral()
@@ -67,6 +69,13 @@ allprojects {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter()
         maven { url "https://jitpack.io" }
+
+
+        flatDir {
+            dirs 'libs'
+            dirs project(':app').file('libs')
+            dirs project(':fastFramework').file('libs')
+        }
     }
     configurations.all {
         resolutionStrategy.force "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"

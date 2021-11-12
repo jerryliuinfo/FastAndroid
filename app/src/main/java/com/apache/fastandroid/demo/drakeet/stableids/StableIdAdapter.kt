@@ -8,6 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 
+/**
+ * https://t.zsxq.com/Fi2JYzN
+ */
 class StableIdAdapter(val items: MutableList<Item>) : RecyclerView.Adapter<StableIdAdapter.ViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,7 +28,10 @@ class StableIdAdapter(val items: MutableList<Item>) : RecyclerView.Adapter<Stabl
 
   // If the data don't have an id field, it's OK to just use hashcode:
   // items[position].hashCode().toLong()
-  override fun getItemId(position: Int): Long = items[position].id
+  override fun getItemId(position: Int): Long  {
+    return  items[position].id
+//    return  items[position].hashCode().toLong()
+  }
 
   class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val subjectView: TextView = itemView.findViewById(R.id.subject)

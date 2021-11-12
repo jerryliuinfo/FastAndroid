@@ -31,6 +31,24 @@
         android:layout_marginStart="20dp"
         android:text="onTaskRemoved" />
 
+    <Button
+        android:id="@+id/btn_samsung_notification_bug"
+        app:layout_constraintStart_toEndOf="@+id/btn_service_ontask_removed"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="三星Android10系统通知bug" />
+
+    <Button
+        android:id="@+id/btn_chekcsdkIntAtLeast"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_samsung_notification_bug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="checkSdkIntAtLeast" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

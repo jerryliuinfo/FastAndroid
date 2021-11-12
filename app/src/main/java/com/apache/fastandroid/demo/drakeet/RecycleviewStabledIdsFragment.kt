@@ -20,9 +20,11 @@ import kotlinx.android.synthetic.main.fragment_stable_ids.*
 
 /**
  * Created by Jerry on 2021/10/18.
- *
+ * https://t.zsxq.com/Fi2JYzN
+ * 加上这一行代码，在 item change、remove、udpate以及item position改变的情况下，
+ * 调用 adapter 的notifyDatasetChanged 自动会有动画效果的
  */
-class RecyleviewStabledIdsFragment:BaseFragment() {
+class RecycleviewStabledIdsFragment:BaseFragment() {
     private var items: MutableList<Item> = ArrayList()
     private lateinit var adapter: StableIdAdapter
     override fun inflateContentView(): Int {
@@ -37,7 +39,7 @@ class RecyleviewStabledIdsFragment:BaseFragment() {
 
         adapter = StableIdAdapter(items)
 
-        //如果没有这一行代码，在 item change、remove、udpate以及item position改变的情况下，调用 adapter 的notifyDatasetChanged 是不会有动画效果的
+        //加上这一行代码，在 item change、remove、udpate以及item position改变的情况下，调用 adapter 的notifyDatasetChanged 自动会有动画效果的
         adapter.setHasStableIds(true) // 💡💡💡
         recyclerView.adapter = adapter
 

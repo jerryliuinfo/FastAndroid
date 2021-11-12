@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import com.tesla.framework.common.util.kt.dp
 
@@ -64,4 +65,25 @@ class Practice11PieChartView @JvmOverloads constructor(
     }
 
     private class PieBean(val name:String, val percent:Float, val color:String)
+
+    private var xValue:Float = 0f
+    private var yValue:Float = 0f
+
+
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when(event.action){
+            MotionEvent.ACTION_DOWN -> {
+                println("actionDown")
+            }
+            MotionEvent.ACTION_MOVE -> {
+                println("ACTION_MOVE")
+            }
+            MotionEvent.ACTION_UP -> {
+                println("ACTION_Move")
+
+            }
+        }
+        return super.onTouchEvent(event)
+    }
 }

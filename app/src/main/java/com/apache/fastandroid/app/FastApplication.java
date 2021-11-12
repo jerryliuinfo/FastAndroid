@@ -22,6 +22,8 @@ import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
+import com.tcl.account.accountsync.bean.TclAccountBuilder;
+import com.tcl.account.accountsync.bean.TclConfig;
 import com.tencent.mmkv.MMKV;
 import com.tesla.framework.applike.FApplication;
 import com.tesla.framework.common.util.LaunchTimer;
@@ -94,6 +96,11 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         NLog.d(TAG, "FastAndroidApplication onCreate cost time: %s ms", (SystemClock.uptimeMillis() - startTime));
         initViewPump();
         LaunchTimer.endRecord("Application end ");
+
+        TclConfig config = new TclConfig();
+        //设置 appId, appIde 的值需向儿童教育 app 申请
+        config.setAppId("46121610438946717");
+        TclAccountBuilder.getInstance().init(config,this);
     }
 
 

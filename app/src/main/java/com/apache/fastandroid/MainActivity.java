@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.demo.temp.ApiDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
@@ -79,9 +81,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         menuItem.setChecked(true);
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
-
-
-
 //        FragmentContainerActivity.launch(this, RelearnAndroidDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, RxJavaDemoFragment2.class,null);
 //        FragmentContainerActivity.launch(this, MatrixDemoFragment.class,null);
@@ -100,9 +99,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, ConcurrencyDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
+//        FragmentContainerActivity.launch(this, TransitionDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
 
         DelayInitDispatcher dispatcher = new DelayInitDispatcher();
         dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
+
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -117,6 +119,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         };
 
         new IAction(this,parentAction).run();
+
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        String key = intent.getStringExtra("key");
+        Parcelable user = intent.getParcelableExtra("user");
+
+        if (user != null){
+            UserBean userBean = (UserBean) user;
+            NLog.d(TAG, "onNewIntent key: %s",key);
+
+            NLog.d(TAG, "userBean: %s",userBean);
+        }
+
 
     }
 

@@ -11,7 +11,6 @@ import android.os.Parcelable;
 public class UserBean implements Parcelable {
     private String name;
 
-    private TempBean tempBean;
 
     public String getName() {
         return name;
@@ -24,13 +23,20 @@ public class UserBean implements Parcelable {
     public UserBean() {
     }
 
-    public TempBean getTempBean() {
-        return tempBean;
+    public UserBean(String name) {
+        this.name = name;
     }
 
-    public void setTempBean(TempBean tempBean) {
-        this.tempBean = tempBean;
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"name\":\"")
+                .append(name).append('\"');
+        sb.append('}');
+        return sb.toString();
     }
+
 
     @Override
     public int describeContents() {
@@ -38,26 +44,19 @@ public class UserBean implements Parcelable {
     }
 
     @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("UserBean{");
-        sb.append("name='").append(name).append('\'');
-        sb.append(", tempBean=").append(tempBean);
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.name);
-        dest.writeParcelable(this.tempBean, flags);
+    }
+
+    public void readFromParcel(Parcel source) {
+        this.name = source.readString();
     }
 
     protected UserBean(Parcel in) {
         this.name = in.readString();
-        this.tempBean = in.readParcelable(TempBean.class.getClassLoader());
     }
 
-    public static final Creator<UserBean> CREATOR = new Creator<UserBean>() {
+    public static final Parcelable.Creator<UserBean> CREATOR = new Parcelable.Creator<UserBean>() {
         @Override
         public UserBean createFromParcel(Parcel source) {
             return new UserBean(source);

@@ -146,6 +146,13 @@ class CustomTask extends DefaultTask{
 /**
  * 控制一个任务应该或者一定在某个任务之后执行，通过这种方式可以在某些情况下控制任务的执行顺序，而不是通过强依赖的方式
  * 例如可以控制先执行单元测试，才能进行打包来保证App的质量
+ *
+ * taskB shouldRunAfter taskA:表示 taskB 应该在 taskA执行之后执行，这里的应该而不是必须，所以有可能任务不会按预设
+ * 的进行
+ * taskB mustRunAfter taskA: 表示 taskB 必须在 taskA执行之后执行
+ * 例如 执行
+ * ./gradlew ex46OrderTask2 ex46OrderTask1  会先输出 ex46OrderTask1 --->， 再输出 ex46OrderTask2
+ * ./gradlew ex46OrderTask1.mustRunAfter ex46OrderTask2  会先输出 ex46OrderTask2 --->， 再输出 ex46OrderTask1
  */
 
 task ex46OrderTask1{
@@ -155,7 +162,20 @@ task ex46OrderTask1{
 task ex46OrderTask2{
     println "ex46OrderTask2 --->"
 }
+ex46OrderTask1.mustRunAfter(ex46OrderTask2)
+
+
+//4.7 任务的启用和禁用
+/**
+ * Task 中有个 enable 的属性，用于启用和禁用任务，默认是true，表示启用；设置为false，则禁用该人讹误执行，输出会提示该任务被跳过
+ */
+
+task ex47DiasbledTask{
+    println 'ex47DiasbledTask --->'
+}
+ex47DiasbledTask.enabled =false
 
 
 
 
+//4.9 任务规则

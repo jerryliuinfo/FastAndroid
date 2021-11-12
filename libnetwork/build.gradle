@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
+    buildToolsVersion rootProject.android.buildToolsVersion
 
 
     defaultConfig {

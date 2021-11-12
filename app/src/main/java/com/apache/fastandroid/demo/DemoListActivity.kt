@@ -21,6 +21,7 @@ import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
+import com.apache.fastandroid.demo.transition.TransitionDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.RelearnAndroidDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.vm.ShareViewModel
@@ -62,6 +63,7 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("黑科技", "黑科技", BlackTechDemoFragment::class.java),
                 ViewItemBean("Drakeet", "Drakeet", DrakeetDemoListFragment::class.java),
                 ViewItemBean("Kotlin语法", "Kotlin语法", KotlinDemoListFragment::class.java)
+                ,ViewItemBean("TransitionMannager", "TransitionMannager", TransitionDemoFragment::class.java)
 
 
         )

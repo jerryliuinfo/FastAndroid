@@ -10,12 +10,12 @@ ext.mainApp = true  //设置为true，表示此module为主app module，一直�
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.hencoder'
+//apply plugin: 'com.hencoder'
 
-hencoder{
-    name "HenCoder name"
-    value "Hencoder value"
-}
+//hencoder{
+//    name "HenCoder name"
+//    value "Hencoder value"
+//}
 
 
 Properties properties = new Properties()
@@ -38,15 +38,7 @@ repositories {
     }
 }
 
-
-
-
-
-
-
-
 android {
-
     compileSdkVersion rootProject.android.compileSdkVersion
     buildToolsVersion rootProject.android.buildToolsVersion
     defaultConfig {
@@ -79,6 +71,14 @@ android {
                 abiFilters 'armeabi-v7a', 'x86'
             }
         }
+
+        /**
+         * defaultConfig 下的consumerProguardFiles 配置的*.pro文件将会在library
+         module打包成aar时，以proguard.txt的形式存在，将参与到集成这个arr的App编译中，但不参与这个library
+         module打包成aar的编译过程；
+         ————————————————
+         */
+        consumerProguardFiles "consumer-rules.pro"
     }
 
 
@@ -105,9 +105,9 @@ android {
 
         release {
             debuggable true    //默认false，可不写
-            minifyEnabled = true
+//            minifyEnabled = true
             //去除无用的resource文件
-            shrinkResources true
+//            shrinkResources true
             //zipAlignEnabled能提供系统和应用的运行效率
 //            zipAlignEnabled true
             //获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk

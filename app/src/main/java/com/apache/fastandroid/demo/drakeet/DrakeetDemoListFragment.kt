@@ -4,7 +4,6 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.drakket.hookcontext.HookContextFragment
 import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment
-import com.bumptech.glide.load.resource.bitmap.RecyclableBufferedInputStream
 
 /**
  * Created by Jerry on 2021/9/8.
@@ -18,7 +17,7 @@ class DrakeetDemoListFragment:BaseListFragment() {
             ,ViewItemBean("接管Lopper", "接管Lopper", LooperFragment::class.java)
             ,ViewItemBean("ForeGroundService", "ForeGroundService", ForegroundServiceFragment::class.java)
             ,ViewItemBean("StableId", "StableId", StabledIdsFragment::class.java)
-            ,ViewItemBean("RecycleView#setHasStableIds", "setHasStableIds", RecyleviewStabledIdsFragment::class.java)
+            ,ViewItemBean("RecycleView#setHasStableIds", "setHasStableIds", RecycleviewStabledIdsFragment::class.java)
             ,ViewItemBean("加载大图", "ImageRegionDecoder", RegionDeocderFragment::class.java)
             ,ViewItemBean("ServiceOnTaskRemoved", "ServiceOnTaskRemoved", RegionDeocderFragment::class.java)
 

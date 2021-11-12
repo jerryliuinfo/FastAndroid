@@ -1,0 +1,92 @@
+final String BUILD_APPS_ALL = "all"
+final String BUILD_APPS_SHOUFA = "shoufa"
+final String BUILD_APPS_EXCLUDE_SHOUFA = "exclude_shoufa"
+
+task ex48QQRelease{
+    doFirst {
+        println '打应用宝的包'
+    }
+
+}
+
+task ex48BaiduRelease{
+    doFirst {
+        println '打百度的包'
+    }
+}
+
+task ex48HuaweiRelease{
+    doFirst {
+        println '打华为的包'
+    }
+
+}
+
+
+task ex48MiuiRelease{
+    doFirst {
+        println '打miui的包'
+    }
+
+}
+
+task buildChannel {
+    group BasePlugin.BUILD_GROUP
+    description '打渠道包'
+}
+
+buildChannel.dependsOn ex48QQRelease,ex48BaiduRelease,ex48HuaweiRelease,ex48MiuiRelease
+
+def propertyName = 'build_apps'
+
+ex48QQRelease.onlyIf{
+    def execute = false
+    if (project.hasProperty(propertyName)){
+        Object buildApps = project.property(propertyName)
+        if (BUILD_APPS_ALL == buildApps || BUILD_APPS_SHOUFA == buildApps){
+            execute = true
+        }
+    }
+    execute
+}
+
+ex48BaiduRelease.onlyIf{
+    def execute = false
+    if (project.hasProperty(propertyName)){
+        Object buildApps = project.property(propertyName)
+        if (BUILD_APPS_ALL == buildApps || BUILD_APPS_SHOUFA == buildApps){
+            execute = true
+        }
+    }
+    execute
+}
+
+ex48HuaweiRelease.onlyIf{
+    def execute = false
+    if (project.hasProperty(propertyName)){
+        Object buildApps = project.property(propertyName)
+        println "ex48HuaweiRelease: ${buildApps}"
+        if (BUILD_APPS_ALL == buildApps || BUILD_APPS_EXCLUDE_SHOUFA == buildApps){
+            execute = true
+        }
+    }
+    execute
+}
+
+ex48MiuiRelease.onlyIf{
+    def execute = false
+    if (project.hasProperty(propertyName)){
+        Object buildApps = project.property(propertyName)
+        println "ex48MiuiRelease: ${buildApps}"
+
+        if (BUILD_APPS_ALL == buildApps || BUILD_APPS_EXCLUDE_SHOUFA == buildApps){
+            execute = true
+        }
+    }
+    execute
+}
+
+//  ./gradlew buildChannel                   打全部的包
+//  ./gradlew -Pbuild_apps=all :buildChannel 打全部的包
+//  ./gradlew -Pbuild_apps=shoufa :buildChannel 打首发的包
+//  ./gradlew -Pbuild_apps=exclude_shoufa :buildChannel 打首发的包

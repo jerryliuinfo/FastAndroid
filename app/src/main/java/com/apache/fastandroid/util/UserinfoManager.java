@@ -3,7 +3,6 @@ package com.apache.fastandroid.util;
 import android.text.TextUtils;
 
 import com.blankj.utilcode.util.SPUtils;
-import com.tcl.libaccount.bean.TclAccessInfo;
 import com.tesla.framework.common.util.log.NLog;
 
 /**

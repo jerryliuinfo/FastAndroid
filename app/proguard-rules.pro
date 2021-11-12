@@ -107,6 +107,7 @@
 -keep public class com.android.vending.licensing.ILicensingService
 -keep class android.support.** {*;}
 
+# natvie方法不被混淆
 -keepclasseswithmembernames class * {
     native <methods>;
 }
@@ -134,7 +135,7 @@
 -keep class * implements android.os.Parcelable { *; }
 
 
-
+# R 资源不被混淆
 -keep class **.R$* {
  *;
 }
@@ -156,12 +157,6 @@
 }
 
 
-
-
--keep class com.tesla.framework.support.butterknife
--keepclassmembers class * {
-    @class com.tesla.framework.support.butterknife *;
-}
 
 
 #----------------------------------------------------------------------------

@@ -3,18 +3,20 @@ package com.apache.fastandroid.demo.temp
 import android.content.ContentResolver
 import android.database.Cursor
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewConfiguration
-import androidx.annotation.RequiresApi
 import androidx.core.view.ViewCompat
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
 import com.blankj.utilcode.util.SPUtils
+import com.tcl.account.accountsync.IAccountCallback
+import com.tcl.account.accountsync.UserInfoAsyncManager
+import com.tcl.account.accountsync.bean.AccountBean
+import com.tcl.account.accountsync.bean.TclAccountBuilder
+import com.tcl.account.accountsync.bean.TclConfig
+import com.tcl.account.accountsync.util.TclAccoutException
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.support.action.IAction
 import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.temp_api_usage_demo.*
 import kotlinx.coroutines.Dispatchers
@@ -54,18 +56,33 @@ class ApiDemoFragment:BaseFragment() {
             testCountDownLatch2()
         }
 
-        btn_content_provider.setOnClickListener {
-            if (!SPUtils.getInstance().getBoolean("authorized",false)
-                || !TextUtils.isEmpty(SPUtils.getInstance().getString("phone"))){
-
-
-
-            }else{
-
+        btn_breakPoint.setOnClickListener {
+            for ( i in 1 until 10){
+                if (i % 2 == 0){
+                    if (i > 4){
+                        println("$i")
+                    }
+                }
             }
-
-
         }
+        btn_sync_account.setOnClickListener {
+            val config = TclConfig()
+            //设置正确的appId
+            //设置正确的appId
+            config.setAppId("46121610438946717")
+            TclAccountBuilder.getInstance().init(config, activity)
+            doQuery()
+        }
+        btn_sync_account_error.setOnClickListener {
+            val config = TclConfig()
+            //设置正确的appId
+            //设置正确的appId
+            config.setAppId("aaaaaa")
+            TclAccountBuilder.getInstance().init(config, activity)
+            doQuery()
+        }
+
+
 
     }
 
@@ -136,6 +153,25 @@ class ApiDemoFragment:BaseFragment() {
             NLog.d(TAG, "主线程在所有任务完成后进行汇总")
         }
 
+
+
+    }
+
+
+    private fun doQuery(){
+        UserInfoAsyncManager.getInstance()
+            .queryTclAccountInfo(object : IAccountCallback<AccountBean> {
+                override fun onSuccess(userBean: AccountBean) {
+                    val msg =
+                        "查询成功:accountId:" + userBean.getAccountId() + ", phone:" + userBean.getPhone()
+                    NLog.d(MainActivity.TAG, "onSuccess msg: %s", msg)
+                }
+
+                override fun onFailure(exception: TclAccoutException) {
+                    val msg = "查询失败:code:" + exception.code + ", msg:" + exception.msg
+                    NLog.d(MainActivity.TAG, "onFailure: %s", msg)
+                }
+            }, activity)
     }
 
 }
