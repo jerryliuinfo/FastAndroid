@@ -39,6 +39,25 @@ repositories {
         dirs 'libs'
     }
 }
+def getAppVersionName(){
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'describe', '--abbrev=0', '--tags'
+        standardOutput = stdout
+    }
+    println "getAppVersionName:${stdout.toString()}"
+    return stdout.toString()
+}
+
+def getAppVersionCode(){
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'tag', '--list'
+        standardOutput = stdout
+    }
+    println "getAppVersionName:${stdout.toString()}"
+    return stdout.toString().split('\n').size()
+}
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
@@ -49,7 +68,9 @@ android {
         targetSdkVersion rootProject.android.targetSdkVersion
 
         versionCode rootProject.appVersionCode
-        versionName rootProject.appVersionName
+        versionCode getAppVersionCode()
+//        versionName rootProject.appVersionName
+        versionName getAppVersionName()
 
         //dex突破65535的限制
         multiDexEnabled true
