@@ -9,3 +9,11 @@
  * 我们的 java 源代码、res资源等，只要把它放到对应的位置即可，在构建的时候，Android Gradle 会优先使用它们代替 main 下的文件
  *
  */
+
+/**
+ * ./gradlew clean :FastAnd:assembleRelease --info grep "unused resource"
+ * 通过日志输出看到哪些资源被清理了
+ *
+ */
+
+//通过 keep 方法来让我们配置哪些资源不被清理

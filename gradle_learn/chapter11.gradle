@@ -1,0 +1,7 @@
+// 11.1  多渠道构建的基本原理
+/**
+ * 在 Android.gradle 中，定义了一个叫 Build Varaint的概念，直译是构建变体（构建的产物:APK）,
+ * 一个 Build Variant = Build Type + Product Flavor。BuildType 是构建类型，比如 release
+ * 和 debug, Product Flavor 为构建渠道
+ */
+

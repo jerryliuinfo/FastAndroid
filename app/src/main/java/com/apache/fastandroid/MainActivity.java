@@ -22,6 +22,8 @@ import com.apache.fastandroid.demo.temp.ApiDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.task.DelayInitTask1;
 import com.apache.fastandroid.task.DelayInitTask2;
+import com.blankj.utilcode.util.ResourceUtils;
+import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.optimize.performance.launchstarter.DelayInitDispatcher;
@@ -120,6 +122,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         };
 
         new IAction(this,parentAction).run();
+        ToastUtils.showShort(BuildConfig.WEB_URL);
+        String channel_tips = StringUtils.getString(R.string.channel_tips);
 
     }
 

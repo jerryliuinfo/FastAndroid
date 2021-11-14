@@ -69,8 +69,8 @@ android {
 
         versionCode rootProject.appVersionCode
         versionCode getAppVersionCode()
-//        versionName rootProject.appVersionName
-        versionName getAppVersionName()
+        versionName rootProject.appVersionName
+//        versionName getAppVersionName()
 
         //dex突破65535的限制
         multiDexEnabled true
@@ -80,8 +80,12 @@ android {
 
         flavorDimensions "env", "paying"
 
-        //只保留指定和默认资源
-        resConfigs('zh-rCN')
+        /**
+         * 配置哪些类型的资源才被打包到apk 中，例如配置为 'zh-rCN'，则只有 中文的资源才会被打包到apk中，
+         * 这样我们引用的第三方库，特别是 support library 和 google play services 这两个主要的大库，
+         * 因为国际化的问题，他们都支持了几十种语言，但是对于我们的app 来说只需要中文的语言就可以了
+         */
+        resConfigs('zh-rCN','hdpi')
 
         resValue "string", "appDisplayName", ""
 
@@ -133,7 +137,10 @@ android {
         release {
             debuggable true    //默认false，可不写
             minifyEnabled = true
-            //去除无用的resource文件
+            /**
+             * 去除无用的资源
+             * 开启了这个开关之后，在构建日志中会看到执行 transformClassesWithShrinkResForRelease
+             */
             shrinkResources true
             //zipAlignEnabled能提供系统和应用的运行效率
             zipAlignEnabled true
@@ -167,15 +174,22 @@ android {
     productFlavors {
         dev {
             dimension "env"
-            manifestPlaceholders = [HOST_VALUE: "www.baidu1.com"]
+            manifestPlaceholders = [UMENG_CHANNEL: "dev"]
             resValue "string", "appDisplayName", "FastDev"
+            buildConfigField 'String', 'WEB_URL', '"http://www.dev.com"'
+            resValue 'string', 'channel_tips', 'dev渠道欢迎你'
         }
 
         prod {
             dimension "env"
-            manifestPlaceholders = [HOST_VALUE: "www.baidu3.com"]
+            manifestPlaceholders = [UMENG_CHANNEL: "prod"]
             resValue "string", "appDisplayName", "FastProd"
-
+            buildConfigField 'String', 'WEB_URL', '"http://www.prod.com"'
+            /**
+             * 将会在 app/build/generated/res/resValues/prodPay/debug/values/gradleResValues.xml
+             * 中生成 channel_tips 字符串
+             */
+            resValue 'string', 'channel_tips', 'prod渠道欢迎你'
         }
 
         pay {
@@ -199,7 +213,19 @@ android {
         free {
             res.srcDirs = ['src/free/res']
         }
+    }
 
+    adbOptions{
+        timeOutInMs = 5000
+        //用来设置 adb install 安装这个操作的设置项的
+        /**
+         * -r: replace existing application
+         * -t: allow test packages
+         * -s: install application on sdcard
+         * -d: allow version code downgrade
+         * -g: grant all runtime permissions
+         */
+        installOptions '-r','-s'
     }
 
 
@@ -268,6 +294,8 @@ android {
          */
         checkReleaseBuilds false
         abortOnError false
+        //检查是否使用了最新api
+        check 'NewApi'
     }
 
 
@@ -291,6 +319,7 @@ android {
     }
     dexOptions {
         preDexLibraries = true
+        //配置执行 dx 命令时为其分配的最大堆内存，主要用来解决 dx 时内存不够用的情况
         javaMaxHeapSize "4g"
 
     }
