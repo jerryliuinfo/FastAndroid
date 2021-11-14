@@ -47,8 +47,9 @@ android {
         applicationId "com.apache.fastandroid"
         minSdkVersion rootProject.android.minSdkVersion
         targetSdkVersion rootProject.android.targetSdkVersion
-        versionCode rootProject.android.versionCode
-        versionName rootProject.android.versionName
+
+        versionCode rootProject.appVersionCode
+        versionName rootProject.appVersionName
 
         //dex突破65535的限制
         multiDexEnabled true
@@ -110,22 +111,25 @@ android {
 
         release {
             debuggable true    //默认false，可不写
-//            minifyEnabled = true
+            minifyEnabled = true
             //去除无用的resource文件
-//            shrinkResources true
+            shrinkResources true
             //zipAlignEnabled能提供系统和应用的运行效率
-//            zipAlignEnabled true
-            //获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk
-            //安装目录下的tools/prlguard
+            zipAlignEnabled true
+            /**
+             * 获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk
+             * 安装目录下的tools/prlguard
+             */
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [appName: "FastAnd"]
 
             buildConfigField('boolean', 'LOG_DEBUG', "false")
             buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
-
+            //必须要现在上面配置 signingConfigs 信息，否则会报错
             signingConfig signingConfigs.release
         }
         debug {
+            debuggable = true
             applicationIdSuffix ".debug"
             debuggable true    //默认false，可不写
             minifyEnabled = false
@@ -186,12 +190,11 @@ android {
         //outputs 属性是一个list集合，遍历找到以 .apk 结尾，说明是 apk文件
         variant.outputs.each { output ->
             if (output.outputFile != null && output.outputFile.name.endsWith('.apk')){
-                 //flavorName:prodPay   fileName:app-prod-pay-debug.apk
-                println "flavorName: ${flavorName}, fileName:${output.outputFile.name}"
-
                 def versionName = variant.versionName
                 def buildType = variant.buildType.name
                 def flavorName = variant.flavorName
+                //flavorName:prodPay   fileName:app-prod-pay-debug.apk
+                println "flavorName: ${flavorName}, fileName:${output.outputFile.name}"
                 output.outputFileName = "${"FastAndroid"}_${flavorName}_${versionName}_${buildType}.apk"
             }
         }

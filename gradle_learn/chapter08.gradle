@@ -1,0 +1,11 @@
+/**
+ * Android Gradle 工程的配置，都是在 android{} 中，这是唯一的一个入口，通过它可以对 Android Gradle
+ * 工程进行自定义的配置，其具体实现是 com.android.build.gradle.AppExtension, 是 project的一个扩展
+ *
+ */
+
+/**
+ * 每一个 buildType 都会生成一个 SourceSet, 默认位置为src//, 一个 Sourceset包含源代码、资源文件等信息，在Android 中就包含了
+ * 我们的 java 源代码、res资源等，只要把它放到对应的位置即可，在构建的时候，Android Gradle 会优先使用它们代替 main 下的文件
+ *
+ */

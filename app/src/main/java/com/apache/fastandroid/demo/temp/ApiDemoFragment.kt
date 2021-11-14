@@ -81,6 +81,11 @@ class ApiDemoFragment:BaseFragment() {
             TclAccountBuilder.getInstance().init(config, activity)
             doQuery()
         }
+        btn_stream.setOnClickListener {
+            var function: (Int) -> Boolean = { it % 2 == 0 }
+            var filterList = arrayListOf(1, 3, 4, 6, 7, 8).stream().filter(function)
+            NLog.d(TAG, "filterList: %s",filterList)
+        }
 
 
 

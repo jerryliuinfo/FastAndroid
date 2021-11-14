@@ -69,9 +69,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="同步账号信息(错误)"
-
             />
 
+
+        <Button
+            android:id="@+id/btn_stream"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="集合流操作"
+            />
 
 
     </LinearLayout>

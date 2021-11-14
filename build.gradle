@@ -1,5 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from: "version_config.gradle"
+apply from: "version.gradle"
 apply from: "gradletest.gradle"
 apply from: "gradle_learn/chapter02.gradle"
 apply from: "gradle_learn/chapter03.gradle"
@@ -8,6 +9,7 @@ apply from: "gradle_learn/chapter04_8.gradle"
 apply from: "gradle_learn/chapter05.gradle"
 apply from: "gradle_learn/chapter06.gradle"
 apply from: "gradle_learn/chapter07.gradle"
+apply from: "gradle_learn/chapter08.gradle"
 
 
 buildscript {
