@@ -19,6 +19,7 @@ class ImageLoaderTask:Task() {
 
     }
 
+
     companion object{
         @JvmStatic
         fun start(){

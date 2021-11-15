@@ -10,6 +10,7 @@
  */
 package com.tesla.framework.common.util.log;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.File;
@@ -196,6 +197,9 @@ public class Logger
 
 	public int d(String tag, String msg)
 	{
+		if (TextUtils.isEmpty(msg)){
+			return 0;
+		}
 		if (DEBUG < level)
 			return 0;
 		

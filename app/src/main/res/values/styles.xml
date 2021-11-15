@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppCommonTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="FastAnd" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -11,11 +11,10 @@
 <!--        设置字体颜色-->
         <item name="android:textColor">@color/primary_text</item>
 
-
     </style>
 
 
-    <style name="Splashscreen" parent="Theme.AppCompat.NoActionBar">
+    <style name="FastAnd.Splashscreen" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
 

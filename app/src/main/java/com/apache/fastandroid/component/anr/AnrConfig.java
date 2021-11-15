@@ -116,7 +116,7 @@ public class AnrConfig {
             return this;
         }
 
-        public Builder set_ignoreDebugger(boolean _ignoreDebugger) {
+        public Builder setIgnoreDebugger(boolean _ignoreDebugger) {
             this._ignoreDebugger = _ignoreDebugger;
             return this;
         }

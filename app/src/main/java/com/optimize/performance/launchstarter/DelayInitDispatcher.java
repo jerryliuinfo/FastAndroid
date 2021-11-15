@@ -20,6 +20,7 @@ public class DelayInitDispatcher {
                 Task task = mDelayTasks.poll();
                 new DispatchRunnable(task).run();
             }
+            //如果返回 false 则执行完毕之后移除这条消息（一次性完事），如果为true则保留，等到下次空闲时会再次执行（重复执行）。
             return !mDelayTasks.isEmpty();
         }
     };

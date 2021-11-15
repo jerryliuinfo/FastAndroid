@@ -6,10 +6,17 @@
         <entry key="app/src/main/res/layout/activity_article_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/custom_bar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_agent_web_js.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_common.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_drakeet_knowledge.xml" value="0.10891590678824721" />
+        <entry key="app/src/main/res/layout/performance_anr_watchdog.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/performance_block_cancary.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/performance_startup_dispatcher.xml" value="0.19635416666666666" />
+        <entry key="app/src/main/res/layout/performance_task_dispatcher.xml" value="0.14270833333333333" />
+        <entry key="app/src/main/res/layout/qmui_demo.xml" value="0.14270833333333333" />
         <entry key="app/src/main/res/layout/temp_api_usage_demo.xml" value="0.1334853090172239" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

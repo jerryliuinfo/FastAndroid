@@ -1,7 +1,6 @@
 package com.apache.fastandroid.demo.performance.practice
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.apache.fastandroid.component.anr.AnrConfig
@@ -36,7 +35,7 @@ class AnrWatchDogDemoFragment : BaseStatusFragmentNew() {
     private fun startAnr(){
         val anrConfig = AnrConfig.with()
             .set_timeoutInterval(2000)
-            .set_ignoreDebugger(false)
+            .setIgnoreDebugger(false)
 
             //                .setReportThreadNamePrefix("App")
             .setReportMainThreadOnly()
@@ -50,8 +49,6 @@ class AnrWatchDogDemoFragment : BaseStatusFragmentNew() {
                 NLog.printStackTrace(TAG, it)
             }.build()
         AnrManager.getInstance().start(anrConfig)
-
-
     }
 
     private fun infiniteLoop() {

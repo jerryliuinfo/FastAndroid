@@ -7,19 +7,26 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Looper;
 import android.os.SystemClock;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.WindowManager;
 
+import com.apache.fastandroid.component.anr.AnrConfig;
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor;
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor;
+import com.apache.fastandroid.imageloader.GlideImageLoader;
 import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
-import com.apache.fastandroid.task.DBInitTask;
-import com.apache.fastandroid.task.DoraemonkitTask;
-import com.apache.fastandroid.task.ImageLoaderTask;
-import com.apache.fastandroid.task.PerformanceTask;
+import com.apache.fastandroid.performance.startup.dispatcher.Task1;
+import com.apache.fastandroid.performance.startup.dispatcher.Task2;
+import com.apache.fastandroid.performance.startup.dispatcher.Task3;
+import com.apache.fastandroid.performance.startup.dispatcher.Task4;
+import com.apache.fastandroid.performance.startup.dispatcher.Task5;
+import com.apache.fastandroid.performance.startup.dispatcher.Task6;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.Utils;
+import com.github.anrwatchdog.ANRWatchDog;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
 import com.tcl.account.accountsync.bean.TclAccountBuilder;
@@ -30,6 +37,8 @@ import com.tesla.framework.common.util.LaunchTimer;
 import com.tesla.framework.common.util.handler.HandlerUtil;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
+import com.tesla.framework.component.imageloader.ImageLoaderManager;
 
 import java.io.File;
 
@@ -58,23 +67,24 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
             // You should not init your app in this process.
             return;
         }
+        long startTime = SystemClock.uptimeMillis();
         sContext = this;
         mAppViewModelStore = new ViewModelStore();
-
         initLog();
-        loop();
+        MainLogUtil.d("Application onCreate ");
+        Utils.init(FApplication.getApplication());
+
+        initTaskByTaskDispatcher();
+        initLoop();
         FApplication.class.getSimpleName();
         // data/data/com.apache.fastandroid/files/mmkv
         String rootDir = MMKV.initialize(this);
         NLog.d(TAG, "rootDir: %s",rootDir);
-
-
         initAppLike();
         initBlockCancary();
-
+        initAnr();
         initCrash();
-        MainLogUtil.d("Application onCreate ");
-        long startTime = SystemClock.uptimeMillis();
+        initImageLoader();
 
         //traceview 开始检测
        // Debug.startMethodTracing("APP");
@@ -82,11 +92,8 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         Lifecycle lifecycle = ProcessLifecycleOwner.get().getLifecycle();
         lifecycle.addObserver(new ApplicationLifecycleObserverNew(ProcessLifecycleOwner.get()));
 
-
         //systrace 开始检测
 //        TraceCompat.beginSection("trace");
-
-        initTask2();
 
         //初始化crash统计
         initCrashAndAnalysis();
@@ -95,31 +102,51 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
         NLog.d(TAG, "FastAndroidApplication onCreate cost time: %s ms", (SystemClock.uptimeMillis() - startTime));
         initViewPump();
-        LaunchTimer.endRecord("Application end ");
+        LeakCanary.install(this);
 
         TclConfig config = new TclConfig();
         //设置 appId, appIde 的值需向儿童教育 app 申请
         config.setAppId("46121610438946717");
         TclAccountBuilder.getInstance().init(config,this);
+        LaunchTimer.endRecord("Application end ");
     }
 
 
 
-    private void initTask2(){
+    private void initTaskByTaskDispatcher(){
         LaunchTimer.startRecord();
         TaskDispatcher.init(this);
         TaskDispatcher taskDispatcher = TaskDispatcher.createInstance();
         //DB初始化
-        taskDispatcher.addTask(new DBInitTask());
-        taskDispatcher.addTask(new DoraemonkitTask());
-
-        taskDispatcher.addTask(new ImageLoaderTask());
-        taskDispatcher.addTask(new PerformanceTask(this));
-        taskDispatcher.start();
-        LaunchTimer.endRecord("initTask2 end ");
+        taskDispatcher
+                .addTask(new Task1())
+                .addTask(new Task2())
+                .addTask(new Task3())
+                .addTask(new Task4())
+                .addTask(new Task5())
+                .addTask(new Task6())
+        ;
+//        taskDispatcher.start();
+        LaunchTimer.endRecord("initTaskByTaskDispatcher end ");
 
     }
 
+
+    private void initImageLoader(){
+        String imageLoaderClassName = "";
+        IImageLoaderstrategy loaderstrategy;
+         if (!TextUtils.isEmpty(imageLoaderClassName)) {
+            try {
+                loaderstrategy = (IImageLoaderstrategy) Class.forName(imageLoaderClassName).newInstance();
+            } catch (Exception e) {
+                loaderstrategy = new GlideImageLoader();
+            }
+        } else {
+             loaderstrategy = new GlideImageLoader();
+         }
+        ImageLoaderManager.getInstance().setImageLoaderStrategy(loaderstrategy);
+        ImageLoaderManager.getInstance().init(FApplication.getContext());
+    }
 
 
 
@@ -233,7 +260,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
 
 
-    private void loop(){
+    private void initLoop(){
         HandlerUtil.getUIHandler().post(new Runnable() {
             @Override
             public void run() {
@@ -265,10 +292,29 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         });
     }
 
+    private void initAnr(){
+        AnrConfig config = AnrConfig.with().set_timeoutInterval(2000)
+                .setIgnoreDebugger(true)
+                .setReportMainThreadOnly()
+                .setAnrInterceptor(new ANRWatchDog.ANRInterceptor() {
+
+                    @Override
+                    public long intercept(long duration) {
+                        return 3000 - duration;
+                    }
+                }).build();
+//        AnrManager.getInstance().start(config);
+    }
+
 
     private void initViewPump(){
         ViewPump.init(new TextUpdatingInterceptor(), new CustomTextViewInterceptor());
+    }
 
+    @Override
+    public Context getApplicationContext() {
+//        return super.getApplicationContext();
+        return this;
     }
 
     @NonNull

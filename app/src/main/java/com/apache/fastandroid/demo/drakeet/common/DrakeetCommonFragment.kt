@@ -16,6 +16,9 @@ import com.apache.fastandroid.bean.UserBean
 import com.apache.fastandroid.jetpack.lifecycle.service.MyService
 import com.tesla.framework.common.util.AndroidVersion
 import com.tesla.framework.common.util.CommonUtil
+import com.tesla.framework.common.util.DrakeetUtils
+import com.tesla.framework.common.util.DrakeetUtils.doOnMainThreadIdle
+import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.common.util.toast.ToastCompat
 import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_drakeet_knowledge.*
@@ -24,6 +27,10 @@ import kotlinx.android.synthetic.main.fragment_drakeet_knowledge.*
  * Created by Jerry on 2021/10/15.
  */
 class DrakeetCommonFragment:BaseFragment() {
+
+    companion object{
+        private const val TAG = "DrakeetCommonFragment";
+    }
     override fun inflateContentView(): Int {
         return R.layout.fragment_drakeet_knowledge
     }
@@ -52,6 +59,21 @@ class DrakeetCommonFragment:BaseFragment() {
                 println("api above 26, do something")
             }
         }
+        btn_doOnMainThreadIdle.setOnClickListener {
+            btn_doOnMainThreadIdle.doOnMainThreadIdle({
+                  NLog.d(TAG," do something on main Thread idle")
+            },4000)
+        }
+        var i = 0;
+        btn_print_call_chain.setOnClickListener {
+            i++
+            if (i > 3){
+                i = 0;
+                var stackTrace = DrakeetUtils.stackTrace(null, 10)
+                NLog.d(TAG, "stackTrace: %s",stackTrace)
+            }
+        }
+
     }
 
     /**

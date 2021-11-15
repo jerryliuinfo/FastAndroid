@@ -23,6 +23,7 @@ class DesignModeDemoFragment:BaseListFragment() {
             ,ViewItemBean("拦截器模式","拦截器模式",InterceptorDesignMode::class.java)
             ,ViewItemBean("Chain模式","Chain模式",ChainModeDemoFragment::class.java)
             ,ViewItemBean("Wrapper模式","Wrapper模式", WrapperDesignMode::class.java)
+            ,ViewItemBean("IdleHandlerDemo","IdleHandlerDemo", WrapperDesignMode::class.java)
 
         )
     }

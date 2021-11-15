@@ -18,21 +18,18 @@ import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.temp.ApiDemoFragment;
+import com.apache.fastandroid.demo.designmode.idlehandler.MyMessageQueue;
+import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment;
 import com.apache.fastandroid.home.HomeFragment;
-import com.apache.fastandroid.task.DelayInitTask1;
-import com.apache.fastandroid.task.DelayInitTask2;
-import com.blankj.utilcode.util.ResourceUtils;
-import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
-import com.optimize.performance.launchstarter.DelayInitDispatcher;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
-import com.tesla.framework.support.action.IAction;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
+
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -100,30 +97,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, ApiDemoFragment2.class,null);
 //        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, ConcurrencyDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
+        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
 //        FragmentContainerActivity.launch(this, TransitionDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
-
-        DelayInitDispatcher dispatcher = new DelayInitDispatcher();
-        dispatcher.addTask(new DelayInitTask1()).addTask(new DelayInitTask2()).start();
+//        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, TaskDispatcherDemoFragment.class,null);
 
 
-
+        CopyOnWriteArrayList<MyMessageQueue.OnIdleHandler> list = new CopyOnWriteArrayList();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             queryUserInfo();
         }
-        IAction parentAction = new IAction(this,null){
-            @Override
-            public void doAction() {
-                super.doAction();
 
-            }
-        };
-
-        new IAction(this,parentAction).run();
-        ToastUtils.showShort(BuildConfig.WEB_URL);
-        String channel_tips = StringUtils.getString(R.string.channel_tips);
+//        ToastUtils.showShort(BuildConfig.WEB_URL);
+//        String channel_tips = StringUtils.getString(R.string.channel_tips);
 
     }
 

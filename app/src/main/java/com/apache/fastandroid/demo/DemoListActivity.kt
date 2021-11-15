@@ -33,6 +33,7 @@ import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.activity.BaseActivity
 import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
+import com.tesla.framework.ui.widget.edgeeffect.StretchEdgeEffectFactoryNew
 import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
@@ -99,6 +100,8 @@ class DemoListActivity : BaseActivity() {
             }
 
         })
+
+        recycleview.edgeEffectFactory = StretchEdgeEffectFactoryNew()
 
 
 //        FragmentContainerActivity.launch(this,CustomViewFragment::class.java,null)

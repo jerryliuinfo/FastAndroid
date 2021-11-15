@@ -15,7 +15,8 @@ public class LaunchTimer {
 
     public static void endRecord(String msg) {
         long cost = System.currentTimeMillis() - sTime;
-        System.out.println(msg + "cost " + cost);
+        System.out.println(String.format(msg+" cost : %s ms", cost));
+
     }
 
 }

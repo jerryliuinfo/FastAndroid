@@ -27,7 +27,7 @@ public class DispatchRunnable implements Runnable {
     public void run() {
 //        TraceCompat.beginSection(mTask.getClass().getSimpleName());
         DispatcherLog.i(mTask.getClass().getSimpleName()
-                + " begin run" + "  Situation  " + TaskStat.getCurrentSituation());
+                + "begin run" + "  Situation  " + TaskStat.getCurrentSituation());
 
         Process.setThreadPriority(mTask.priority());
 

@@ -17,6 +17,7 @@ class PerformanceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("LargetImageMonitor", "大图监控", LargeImageDemoFragment::class.java)
                  ,ViewItemBean("MMKV", "MMKV", MMKVFragment::class.java)
                  ,ViewItemBean("AppFaster", "AppFaster", MMKVFragment::class.java)
+                 ,ViewItemBean("TaskDispatcher", "TaskDispatcher", TaskDispatcherDemoFragment::class.java)
         )
     }
 }
