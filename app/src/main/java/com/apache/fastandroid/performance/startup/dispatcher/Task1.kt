@@ -15,10 +15,7 @@ class Task1:Task(),Runnable {
     }
 
     override fun runOnMainThread(): Boolean {
-        return false
+        return true
     }
 
-    override fun dependsOn(): MutableList<Class<out Task>> {
-        return mutableListOf(Task2::class.java)
-    }
 }

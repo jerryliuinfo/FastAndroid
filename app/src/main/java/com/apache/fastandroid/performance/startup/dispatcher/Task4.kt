@@ -12,5 +12,9 @@ class Task4: Task() {
         TaskUtil.runTask4()
     }
 
+    override fun dependsOn(): MutableList<Class<out Task>> {
+        return mutableListOf(Task2::class.java,Task3::class.java)
+    }
+
 
 }

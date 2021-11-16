@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 //com.hc.gradle为resources/META-INF/gradle-plugins
 //下的properties文件名称
+apply plugin: 'com.rocketx'
 
 
 
@@ -79,6 +80,7 @@ android {
         vectorDrawables.generatedDensities('xhdpi', 'xxhdpi')
 
         flavorDimensions "env", "paying"
+//        flavorDimensions "env"
 
         /**
          * 配置哪些类型的资源才被打包到apk 中，例如配置为 'zh-rCN'，则只有 中文的资源才会被打包到apk中，
@@ -111,6 +113,41 @@ android {
          */
         consumerProguardFiles "consumer-rules.pro"
     }
+
+    productFlavors {
+        dev {
+            dimension "env"
+            manifestPlaceholders = [UMENG_CHANNEL: "dev"]
+            resValue "string", "appDisplayName", "FastDev"
+            buildConfigField 'String', 'WEB_URL', '"http://www.dev.com"'
+            resValue 'string', 'channel_tips', 'dev渠道欢迎你'
+        }
+
+        prod {
+            dimension "env"
+            manifestPlaceholders = [UMENG_CHANNEL: "prod"]
+            resValue "string", "appDisplayName", "FastProd"
+            buildConfigField 'String', 'WEB_URL', '"http://www.prod.com"'
+            /**
+             * 将会在 app/build/generated/res/resValues/prodPay/debug/values/gradleResValues.xml
+             * 中生成 channel_tips 字符串
+             */
+            resValue 'string', 'channel_tips', 'prod渠道欢迎你'
+        }
+
+         pay {
+             dimension "paying"
+
+         }
+
+         free {
+             dimension "paying"
+
+         }
+
+    }
+
+
 
 
     signingConfigs {
@@ -171,48 +208,15 @@ android {
         }
     }
 
-    productFlavors {
-        dev {
-            dimension "env"
-            manifestPlaceholders = [UMENG_CHANNEL: "dev"]
-            resValue "string", "appDisplayName", "FastDev"
-            buildConfigField 'String', 'WEB_URL', '"http://www.dev.com"'
-            resValue 'string', 'channel_tips', 'dev渠道欢迎你'
-        }
-
-        prod {
-            dimension "env"
-            manifestPlaceholders = [UMENG_CHANNEL: "prod"]
-            resValue "string", "appDisplayName", "FastProd"
-            buildConfigField 'String', 'WEB_URL', '"http://www.prod.com"'
-            /**
-             * 将会在 app/build/generated/res/resValues/prodPay/debug/values/gradleResValues.xml
-             * 中生成 channel_tips 字符串
-             */
-            resValue 'string', 'channel_tips', 'prod渠道欢迎你'
-        }
-
-        pay {
-            dimension "paying"
-
-        }
-
-        free {
-            dimension "free"
-
-        }
-
-    }
-
 
 
     sourceSets {
-        pay {
-            res.srcDirs = ['src/pay/res']
-        }
-        free {
-            res.srcDirs = ['src/free/res']
-        }
+//        pay {
+//            res.srcDirs = ['src/pay/res']
+//        }
+//        free {
+//            res.srcDirs = ['src/free/res']
+//        }
     }
 
     adbOptions{
@@ -234,9 +238,15 @@ android {
     resourcePrefix ""
     //修改apk 名称
     applicationVariants.all { variant ->
+        //这里的flavor 是单一维度的，例如 devPay， 返回的是两个 ， 一个是 dev 一个是pay
+
+        variant.productFlavors.each{ flavor ->
+            println "applicationVariants flavor:${flavor.name}"
+        }
         //outputs 属性是一个list集合，遍历找到以 .apk 结尾，说明是 apk文件
         variant.outputs.each { output ->
             if (output.outputFile != null && output.outputFile.name.endsWith('.apk')){
+
                 def versionName = variant.versionName
                 def buildType = variant.buildType.name
                 def flavorName = variant.flavorName

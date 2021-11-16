@@ -72,13 +72,21 @@ public class DispatchRunnable implements Runnable {
     private void printTaskLog(long startTime, long waitTime) {
         long runTime = System.currentTimeMillis() - startTime;
         if (DispatcherLog.isDebug()) {
-            DispatcherLog.i(mTask.getClass().getSimpleName() + "  wait " + waitTime + "    run "
+
+            String info = String.format("%s wait %s ms, run %s ms, isMainThread:%s, ThreadId: %s, ThreadName:%s, Situation:%s",
+                    mTask.getClass().getSimpleName(),
+                    waitTime, runTime, (Looper.getMainLooper() == Looper.myLooper()), Thread.currentThread().getId(),
+                    Thread.currentThread().getName(), TaskStat.getCurrentSituation()
+            );
+            DispatcherLog.i(info);
+
+          /*  DispatcherLog.i(mTask.getClass().getSimpleName() + "  wait " + waitTime + "ms, run "
                     + runTime + "   isMain " + (Looper.getMainLooper() == Looper.myLooper())
                     + "  needWait " + (mTask.needWait() || (Looper.getMainLooper() == Looper.myLooper()))
                     + "  ThreadId " + Thread.currentThread().getId()
                     + "  ThreadName " + Thread.currentThread().getName()
                     + "  Situation  " + TaskStat.getCurrentSituation()
-            );
+            );*/
         }
     }
 

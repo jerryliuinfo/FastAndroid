@@ -13,7 +13,7 @@ class Task5: Task() {
     }
 
     override fun dependsOn(): MutableList<Class<out Task>> {
-        return mutableListOf(Task6::class.java)
+        return mutableListOf(Task3::class.java,Task2::class.java)
     }
 
 

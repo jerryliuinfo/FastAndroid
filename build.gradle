@@ -22,6 +22,8 @@ buildscript {
             google()
             maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
             maven { url 'https://jitpack.io' }
+            maven { url "https://plugins.gradle.org/m2/" }
+
             jcenter()
         }
 
@@ -36,6 +38,11 @@ buildscript {
         //定义在这里，这样每个module都可以使用
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
         // 配置自动上传符号表插件，注：为了能快速并准确地定位用户APP发生Crash的代码位置，Bugly使用符号表对APP发生Crash的程序堆栈进行解析和还原
+
+//        classpath 'io.github.trycatchx:rocketx:1.0.1'
+
+        classpath fileTree(dir: './Plugin', include: ['*.jar'])
+
     }
 
 //    给所有的子工程统一配置
@@ -74,6 +81,8 @@ allprojects {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter()
         maven { url "https://jitpack.io" }
+        maven { url "https://plugins.gradle.org/m2/" }
+
 
 
         flatDir {

@@ -93,7 +93,7 @@ ext {
             permissionx                      :  'com.permissionx.guolindev:permissionx:1.4.0',
             //https://github.com/B3nedikt/ViewPump
             viewpump                         :  'dev.b3nedikt.viewpump:viewpump:4.0.7',
-            //AppStartFaster
+            //https://github.com/NoEndToLF/AppStartFaster
             AppStartFaster                   :  'com.github.NoEndToLF:AppStartFaster:1.0.3',
 
 

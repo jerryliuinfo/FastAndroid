@@ -11,13 +11,13 @@ object TaskUtil {
     
     fun runTask1(){
         NLog.d(TAG, "Task1 begin run")
-        SystemClock.sleep(5000);
+        SystemClock.sleep(300);
         NLog.d(TAG, "Task1 run finished")
     }
 
     fun runTask2(){
         NLog.d(TAG, "Task2 begin run")
-        SystemClock.sleep(400);
+        SystemClock.sleep(300);
         NLog.d(TAG, "Task2 run finished")
     }
 
@@ -35,7 +35,7 @@ object TaskUtil {
 
     fun runTask5(){
         NLog.d(TAG, "Task5 begin run")
-        SystemClock.sleep(200);
+        SystemClock.sleep(300);
         NLog.d(TAG, "Task5 run finished")
     }
     fun runTask6(){

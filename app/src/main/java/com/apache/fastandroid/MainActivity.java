@@ -98,6 +98,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, ConcurrencyDemoFragment.class,null);
         FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
+        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
+        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
 //        FragmentContainerActivity.launch(this, TransitionDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, TaskDispatcherDemoFragment.class,null);

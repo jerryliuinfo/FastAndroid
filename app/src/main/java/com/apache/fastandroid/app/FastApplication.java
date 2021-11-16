@@ -21,7 +21,6 @@ import com.apache.fastandroid.performance.startup.dispatcher.Task2;
 import com.apache.fastandroid.performance.startup.dispatcher.Task3;
 import com.apache.fastandroid.performance.startup.dispatcher.Task4;
 import com.apache.fastandroid.performance.startup.dispatcher.Task5;
-import com.apache.fastandroid.performance.startup.dispatcher.Task6;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.FileUtils;
@@ -119,14 +118,13 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         TaskDispatcher taskDispatcher = TaskDispatcher.createInstance();
         //DB初始化
         taskDispatcher
-                .addTask(new Task1())
                 .addTask(new Task2())
-                .addTask(new Task3())
                 .addTask(new Task4())
                 .addTask(new Task5())
-                .addTask(new Task6())
+                .addTask(new Task3())
+                .addTask(new Task1())
         ;
-//        taskDispatcher.start();
+        taskDispatcher.start();
         LaunchTimer.endRecord("initTaskByTaskDispatcher end ");
 
     }
