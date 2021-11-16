@@ -192,3 +192,15 @@ tasks.addRule('对该规则的一个描述，便于调试、查看等'){ String 
 task ex49RuleTask{
     dependsOn missTask
 }
+
+task task1(){
+    doLast {
+        println "task1 doLast"
+    }
+}
+
+task task2(dependsOn: task1){
+    doLast {
+        println "task2 doLast"
+    }
+}

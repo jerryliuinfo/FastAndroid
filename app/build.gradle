@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 //com.hc.gradle为resources/META-INF/gradle-plugins
 //下的properties文件名称
-apply plugin: 'com.rocketx'
+//apply plugin: 'com.rocketx'
 
 
 
@@ -13,11 +13,18 @@ ext.mainApp = true  //设置为true，表示此module为主app module，一直�
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-//apply plugin: 'com.hencoder'
 
-//hencoder{
-//    name "HenCoder name"
-//    value "Hencoder value"
+//apply plugin 的名称为 /buildSrc/src/main/resources/META-INF/gradle-plugins目录下的 xx.properties 的名称
+apply plugin: 'com.myplugin'
+
+/**
+ * 这里 myPlugin 为 com.fastandroid.plugin.MyPlugin.java 这个类中 通过 target.extensions.create("myPlugin",ExtensionBean)
+ * 中创建的名称
+ * name 和 value 属性为 ExtensionBean中定义的属性
+ */
+//myPlugin{
+//    name "This is myPlugin name"
+//    value "This is myPlugin value "
 //}
 
 
@@ -239,10 +246,9 @@ android {
     //修改apk 名称
     applicationVariants.all { variant ->
         //这里的flavor 是单一维度的，例如 devPay， 返回的是两个 ， 一个是 dev 一个是pay
-
-        variant.productFlavors.each{ flavor ->
-            println "applicationVariants flavor:${flavor.name}"
-        }
+//        variant.productFlavors.each{ flavor ->
+//            println "applicationVariants flavor:${flavor.name}"
+//        }
         //outputs 属性是一个list集合，遍历找到以 .apk 结尾，说明是 apk文件
         variant.outputs.each { output ->
             if (output.outputFile != null && output.outputFile.name.endsWith('.apk')){
@@ -251,7 +257,7 @@ android {
                 def buildType = variant.buildType.name
                 def flavorName = variant.flavorName
                 //flavorName:prodPay   fileName:app-prod-pay-debug.apk
-                println "flavorName: ${flavorName}, fileName:${output.outputFile.name}"
+//                println "flavorName: ${flavorName}, fileName:${output.outputFile.name}"
                 output.outputFileName = "${"FastAndroid"}_${flavorName}_${versionName}_${buildType}.apk"
             }
         }
@@ -263,7 +269,7 @@ android {
 
     buildFeatures{
         dataBinding = true
-        // viewBinding = true
+        viewBinding = true
     }
 
     compileOptions {

@@ -2,14 +2,17 @@
 apply from: "version_config.gradle"
 apply from: "version.gradle"
 apply from: "gradletest.gradle"
-apply from: "gradle_learn/chapter02.gradle"
-apply from: "gradle_learn/chapter03.gradle"
-apply from: "gradle_learn/chapter04.gradle"
-apply from: "gradle_learn/chapter04_8.gradle"
-apply from: "gradle_learn/chapter05.gradle"
-apply from: "gradle_learn/chapter06.gradle"
-apply from: "gradle_learn/chapter07.gradle"
-apply from: "gradle_learn/chapter08.gradle"
+apply from: "gradle_learn/definitive_guide/chapter02.gradle"
+apply from: "gradle_learn/definitive_guide/chapter03.gradle"
+apply from: "gradle_learn/definitive_guide/chapter04.gradle"
+apply from: "gradle_learn/definitive_guide/chapter04_8.gradle"
+apply from: "gradle_learn/definitive_guide/chapter05.gradle"
+apply from: "gradle_learn/definitive_guide/chapter06.gradle"
+apply from: "gradle_learn/definitive_guide/chapter07.gradle"
+apply from: "gradle_learn/definitive_guide/chapter08.gradle"
+
+
+apply from: "gradle_learn/gradle_user_guide/user_guide_chapter06.gradle"
 
 
 buildscript {
@@ -18,9 +21,12 @@ buildscript {
     repositories {
         google()
         repositories {
+
+            maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+            maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
             mavenCentral()
             google()
-            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+
             maven { url 'https://jitpack.io' }
             maven { url "https://plugins.gradle.org/m2/" }
 
@@ -76,9 +82,10 @@ buildscript {
 //所有module全局生效
 allprojects {
     repositories {
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
         mavenCentral()
         google()
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter()
         maven { url "https://jitpack.io" }
         maven { url "https://plugins.gradle.org/m2/" }
@@ -164,17 +171,6 @@ task bumpVersionAndNotify(dependsOn: bumpVersion){
     }
 }
 
-task task1(){
-    doLast {
-        println "task1 doLast"
-    }
-}
-
-task task2(dependsOn: task1){
-    doLast {
-        println "task2 doLast"
-    }
-}
 
 
 
@@ -189,21 +185,13 @@ afterEvaluate {
 //    }
 }
 
-task hello{
-    doLast {
-        println "hello world"
-    }
-}
 
-task helloWorld{
-    doLast {
-        println "helloWorld2222"
-    }
-}
 
 task loadProject{
     getChildProjects().each {
         println "${it.key}:${it.value}"
     }
 }
+
+
 

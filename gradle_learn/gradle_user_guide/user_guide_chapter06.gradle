@@ -1,0 +1,180 @@
+/**
+ * gradle -q guide_ex61 将输出  "hello guide_ex61",
+ * -q:代表 quiet 模式. 它不会生成 Gradle 的日志信息 (log messages),
+ * 所以用户只能看到 tasks 的输出. 它使得的输出更加清晰. 你并不一定需要加入这个选项. 参考第 18 章,
+ * 日志的 Gradle 影响输出的详细信息.
+ */
+task guide_ex61_createTask{
+    doLast {
+        println 'hello guide_ex61'
+    }
+}
+
+task hello  {
+    println 'Hello world!'
+}
+
+
+/**
+ * 构建脚本代码
+ */
+
+task upper{
+    doLast {
+        String something = "hello_world"
+        println "origin:${something}, upper:${something.toUpperCase()}, capitilize:${something.capitalize()}"
+    }
+}
+
+task count{
+    doLast {
+       4.times{
+           println "times: ${it}"
+       }
+    }
+}
+
+task findAll{
+    doLast {
+        def list = [1,2,3,4]
+        println "${list.findAll { it % 2 == 0}}"
+    }
+}
+
+
+/**
+ * 一个任务依赖于另外一个任务之后执行
+ */
+
+task guide66_dependensOn(dependsOn:count){
+    doLast{
+        println "guide66 execute after count task"
+    }
+}
+
+
+/**
+ * 在加入一个依赖之前, 这个依赖的任务不需要提前定义, 来看下面的例子
+ * taskX 依赖于 taskY， 但是此时 taskY还没定义（放在TaskX的后面执行）
+ */
+
+task taskX(dependsOn: 'taskY')  {
+    doLast{
+        println 'taskX'
+    }
+}
+task taskY {
+    doLast{
+        println 'taskY'
+    }
+}
+
+
+/**
+ * 执行任务在某个任务执行「之前」执行
+ */
+task guide66_finalize{
+    doLast{
+        println "guide66 execute before count task"
+    }
+}
+
+guide66_finalize.finalizedBy count
+
+/**
+ *  6.8. 动态的创建一个任务
+ * Groovy 不仅仅被用来定义一个任务可以做什么. 举个例子, 你可以使用它来动态的创建任务.
+ */
+
+4.times {
+    println "4.time:${it}"
+    def index = it
+    task "DTask${it}"{
+        doLast{
+            println "I am task number:${index} by ${it}"
+        }
+    }
+}
+
+
+//6.9 通过API访问一个任务 - 加入一个依赖
+
+DTask0.dependsOn DTask2,DTask3
+
+/**
+ * 6.10. 通过API访问一个任务 - 加入行为
+ * doFirst 和 doLast 可以被执行许多次. 他们分别可以在任务动作列表的开始和结束
+ * 加入动作. 当任务执行的时候, 在动作列表里的动作将被按顺序执行
+ */
+task ex6_10{
+    doLast{
+        println 'Hello Earth'
+    }
+}
+
+ex6_10.doFirst{
+    println 'Hello Venus'
+}
+
+ex6_10.doLast{
+    println 'Hello Mars'
+}
+
+ex6_10.doLast{
+    println 'ex6_10 Hello Jupiter'
+}
+
+
+/**
+ * 例子 6.11. 当成构建脚本的属性来访问一个任务
+ * 短标记 $ 可以访问一个存在的任务. 也就是说每个任务都可以作为构建脚本的属性:
+ */
+
+task ex6_11{
+    doLast{
+        println "ex6_11 execute"
+    }
+}
+ex6_11.doLast{
+    println "Greetings from the ${hello.name} task"
+}
+
+
+/**
+ * 例子 6.12. 自定义任务属性
+ * 你可以给任务加入自定义的属性. 列如加入一个叫做 myProperty 属性,
+ * 设置一个初始值给 ext.myProperty. 然后, 该属性就可以像一个预定义的任务属性那样被读取和设置了.
+ *
+ */
+
+task ex6_12{
+    ext.myProperty = "myValue"
+}
+
+task printTaskProperties{
+    doLast{
+        println myTask.myProperty
+//        println "printTaskProperties:${ex6_12.myProperty}"
+//        println "printTaskProperties:${ex6_12.myName}"
+    }
+}
+
+
+/**
+ * 6.15. 定义默认任务
+ * Gradle 允许在脚本中定义一个或多个默认任务.
+ */
+
+task defaultRun  {
+    doLast{
+        println 'Default Running!'
+    }
+}
+task defaultClean  {
+    doLast{
+        println 'Default Clean!'
+    }
+}
+
+
+defaultTasks 'defaultClean','defaultRun'

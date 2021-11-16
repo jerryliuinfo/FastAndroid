@@ -85,7 +85,7 @@ task helloClosure{
 
 def customEach(closure){
     for (int i in 1..10){
-        closure(i)
+//        closure(i)
     }
 }
 
