@@ -177,17 +177,10 @@ ext {
                     rootProject.thirdLib.brvh,
                     rootProject.thirdLib.mmkv,
                     rootProject.thirdLib.utilcodex,
-
-
             ]
-
     ]
 
-
-
     dependencies = [
-
-
             basic: [
                     ':fastFramework',
                     ':baselib',

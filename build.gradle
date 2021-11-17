@@ -16,6 +16,7 @@ apply from: "gradle_learn/gradle_user_guide/user_guide_chapter06.gradle"
 apply from: "gradle_learn/gradle_user_guide/user_guide_chapter11.gradle"
 apply from: "gradle_learn/gradle_user_guide/user_guide_chapter13.gradle"
 apply from: "gradle_learn/gradle_user_guide/user_guide_chapter15.gradle"
+apply from: "gradle_learn/gradle_user_guide/user_guide_chapter16.gradle"
 
 
 buildscript {
@@ -64,18 +65,7 @@ buildscript {
                         && !requested.name.contains('androidx') ) {
                     details.useVersion "1.3.0"
                 }
-                /*if (details.requested.group == 'androidx.lifecycle') {
-                    details.useVersion "2.0.0"
-                }
-                if (details.requested.group == 'androidx.versionedparcelable') {
-                    details.useVersion "1.0.0"
-                }
-                if (details.requested.group == 'androidx.fragment') {
-                    details.useVersion "1.0.0"
-                }
-                if (details.requested.group == 'androidx.appcompat') {
-                    details.useVersion "1.0.1"
-                }*/
+
             }
         }
     }

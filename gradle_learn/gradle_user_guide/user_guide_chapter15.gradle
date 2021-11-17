@@ -157,8 +157,37 @@ task ex15_20{
 
 ex15_20.onlyIf{
     println "1111 ->${project.hasProperty('skipHello')}"
-    !project.hasProperty('skipHello')
+    project.hasProperty('skipHello')
 }
 
+//15.22激活和注销 tasks
+/**
+ * 每一个任务都有一个已经激活的标记(enabled flag), 这个标记一般默认为真. 将它设置为假, 那它的任何动作都不会被执行.
+ */
+
+
+task ex15_22{
+    doLast {
+        println 'ex15_22 run'
+    }
+}
+
+ex15_22.enabled = false
+
+task pingServer1{
+    doLast {
+        println "pingServer1 run"
+    }
+}
+
+tasks.addRule("Pattern: ping<ID>") { String taskName ->
+    if (taskName.startsWith("ping")) {
+        task(taskName)  {
+            doLast {
+                println "Pinging: " + (taskName - 'ping')
+            }
+        }
+    }
+}
 
 

@@ -1,0 +1,36 @@
+//16.1 定位文件
+
+task ex16_1{
+    doLast {
+        File configFile = new File('/Users/jerry/work/FastAndroid/gradle_learn/config.xml')
+        println "config file path: ${configFile.getAbsolutePath()}, exist:${configFile.exists()}"
+    }
+}
+
+
+task ex16_3{
+    doLast {
+        File[] files = new File('/Users/jerry/work/FastAndroid/gradle_learn').listFiles()
+        files.each {
+            println "file name: ${it.name}"
+        }
+    }
+}
+
+//16.10 使用复制任务复制文件
+task ex16_10_copy_task(type: Copy){
+    from '/Users/jerry/work/FastAndroid/gradle_learn'
+    into 'dest'
+}
+
+//16.11 指定复制任务的源文件和目标目录
+
+task anotherCopyTask(type: Copy) {
+    File file = new File('../../app/src/main/assets/province.json')
+    println "path:${file.getAbsolutePath()}"
+    // 复制 src/main/webapp 目录下的所有文件
+    from '../../app/src/main/assets/province.json'
+
+    // 最后指定目标目录
+    into 'dest'
+}

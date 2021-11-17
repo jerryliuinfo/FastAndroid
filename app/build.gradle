@@ -369,7 +369,7 @@ afterEvaluate {
             build.append("name:${variant.name}\n")
             build.append("description:${variant.description}\n")
             build.append("dirName:${variant.dirName}\n")
-            build.append("base:${variant.baseName}\\n")
+//            build.append("base:${variant.baseName}\\n")
             build.append("flavorName:${variant.flavorName}\\n")
             build.append("mergedFlavor:${variant.mergedFlavor}\\n")
             build.append("ProductFlavors:${variant.productFlavors}\\n")
@@ -474,7 +474,10 @@ sourceSets{
 
 
 task ex37CustomProperty{
-    println "年龄是: ${age}, 电话是:${phone}, 名字是:${name}"
+    doLast {
+        println "年龄是: ${age}, 电话是:${phone}, 名字是:${name}"
+    }
+
 
     sourceSets.each {
         println "${it.name} 的 resourceDir 是: ${it.resourceDir}"
@@ -492,3 +495,12 @@ myTask.doLast {
     println "group:${group}, desc:${description}"
 }
 
+task anotherCopyTask2(type: Copy) {
+    File file = new File('/src/main/assets/province.json')
+    println "path:${file.getAbsolutePath()}"
+    // 复制 src/main/webapp 目录下的所有文件
+    from '../../app/src/main/assets/province.json'
+
+    // 最后指定目标目录
+    into 'dest'
+}
