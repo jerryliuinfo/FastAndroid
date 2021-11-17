@@ -10,7 +10,7 @@ import com.tesla.framework.common.util.log.NLog
 class Task1:Task(),Runnable {
 
     override fun run() {
-        NLog.d("task", "Task1 run on %s thread",Thread.currentThread())
+        NLog.d("AppStartTask", "Task1 run on %s thread",Thread.currentThread())
         TaskUtil.runTask1()
     }
 

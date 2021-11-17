@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService
  */
 class Task2:Task(),Runnable {
     override fun run() {
-        NLog.d("task", "Task2 run on %s thread",Thread.currentThread())
+        NLog.d("AppStartTask", "Task2 run on %s thread",Thread.currentThread())
         TaskUtil.runTask2()
     }
 

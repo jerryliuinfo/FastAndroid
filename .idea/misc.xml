@@ -14,6 +14,7 @@
         <entry key="app/src/main/res/layout/fragment_download.xml" value="0.10572916666666667" />
         <entry key="app/src/main/res/layout/fragment_drakeet_knowledge.xml" value="0.10891590678824721" />
         <entry key="app/src/main/res/layout/fragment_edittext_bg.xml" value="0.10572916666666667" />
+        <entry key="app/src/main/res/layout/fragment_round_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/performance_anr_watchdog.xml" value="0.1" />
         <entry key="app/src/main/res/layout/performance_block_cancary.xml" value="0.1" />
         <entry key="app/src/main/res/layout/performance_startup_dispatcher.xml" value="0.19635416666666666" />

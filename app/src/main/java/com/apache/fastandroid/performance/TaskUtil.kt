@@ -7,7 +7,7 @@ import com.tesla.framework.common.util.log.NLog
  * Created by Jerry on 2021/11/15.
  */
 object TaskUtil {
-    const val TAG = "task"
+    const val TAG = "AppStartTask"
     
     fun runTask1(){
         NLog.d(TAG, "Task1 begin run")

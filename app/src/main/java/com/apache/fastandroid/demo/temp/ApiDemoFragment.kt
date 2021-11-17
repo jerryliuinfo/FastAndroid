@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewConfiguration
 import androidx.arch.core.executor.ArchTaskExecutor
 import androidx.core.view.ViewCompat
@@ -14,6 +15,7 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.adapter.FlowTagAdapter
 import com.apache.fastandroid.demo.temp.bean.TagInfo
 import com.blankj.utilcode.util.SPUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.tcl.account.accountsync.IAccountCallback
 import com.tcl.account.accountsync.UserInfoAsyncManager
 import com.tcl.account.accountsync.bean.AccountBean
@@ -57,6 +59,8 @@ class ApiDemoFragment:BaseFragment() {
         "ArchTaskExecutor"
     )
 
+
+
     @SuppressLint("RestrictedApi")
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
@@ -65,76 +69,38 @@ class ApiDemoFragment:BaseFragment() {
         val adapter = FlowTagAdapter(context)
         flowlayout_normal_select.adapter = adapter
         adapter.addTags(tags)
-        flowlayout_normal_select.setOnTagSelectListener { parent, position, selectedList ->
+
+        flowlayout_normal_select.setOnTagClickListener { parent, view, position ->
             when (position) {
                 0 -> scaleTouchSlop()
                 1 -> getLayoutDirection()
                 2 -> testCountDownLatch1()
                 3 -> testCountDownLatch2()
                 4 -> testBreakPoint()
-                5 -> testBreakPoint()
-                6 -> syncAccountSuccess()
+                5 -> syncAccountSuccess()
+                6 -> syncAccountFailed()
+                7 -> testStream()
+                8 -> testArchTaskExecutor()
             }
         }
 
-        /*tv_get_scaled_touch_slop.setOnClickListener {
-            scaleTouchSlop()
-        }
+    }
 
-        tv_get_LayoutDirection.setOnClickListener {
-            getLayoutDirection()
-        }
-        btn_countdown_usage1.setOnClickListener {
-            testCountDownLatch1()
-        }
-        btn_countdown_usage2.setOnClickListener {
-            testCountDownLatch2()
-        }
+    @SuppressLint("RestrictedApi")
+    private fun testArchTaskExecutor(){
+        ArchTaskExecutor.getInstance().executeOnDiskIO {
 
-        btn_breakPoint.setOnClickListener {
-            for ( i in 1 until 10){
-                if (i % 2 == 0){
-                    if (i > 4){
-                        println("$i")
-                    }
-                }
-            }
+            NLog.d(TAG, "executeOnDiskIO thread:%s--->",Thread.currentThread().name)
         }
-        btn_sync_account.setOnClickListener {
-            val config = TclConfig()
-            //设置正确的appId
-            //设置正确的appId
-            config.setAppId("46121610438946717")
-            TclAccountBuilder.getInstance().init(config, activity)
-            doQuery()
+        ArchTaskExecutor.getInstance().executeOnMainThread() {
+            NLog.d(TAG, "executeOnMainThread thread:%s--->",Thread.currentThread().name)
         }
-        btn_sync_account_error.setOnClickListener {
-            val config = TclConfig()
-            //设置正确的appId
-            //设置正确的appId
-            config.setAppId("aaaaaa")
-            TclAccountBuilder.getInstance().init(config, activity)
-            doQuery()
-        }
-        btn_stream.setOnClickListener {
-            var function: (Int) -> Boolean = { it % 2 == 0 }
-            var filterList = arrayListOf(1, 3, 4, 6, 7, 8).stream().filter(function)
-            NLog.d(TAG, "filterList: %s",filterList)
-        }
+    }
 
-        btn_archTaskExecutor.setOnClickListener {
-           ArchTaskExecutor.getInstance().executeOnDiskIO {
-
-               NLog.d(TAG, "executeOnDiskIO thread:%s--->",Thread.currentThread().name)
-           }
-           ArchTaskExecutor.getInstance().executeOnMainThread() {
-               NLog.d(TAG, "executeOnMainThread thread:%s--->",Thread.currentThread().name)
-           }
-
-        }*/
-
-
-
+    private fun testStream(){
+        var function: (Int) -> Boolean = { it % 2 == 0 }
+        var filterList = arrayListOf(1, 3, 4, 6, 7, 8).stream().filter(function)
+        NLog.d(TAG, "filterList: %s",filterList)
     }
 
     private fun testBreakPoint(){
@@ -152,6 +118,15 @@ class ApiDemoFragment:BaseFragment() {
         //设置正确的appId
         //设置正确的appId
         config.setAppId("46121610438946717")
+        TclAccountBuilder.getInstance().init(config, activity)
+        doQuery()
+    }
+
+    private fun syncAccountFailed(){
+        val config = TclConfig()
+        //设置正确的appId
+        //设置正确的appId
+        config.setAppId("aaaaaa")
         TclAccountBuilder.getInstance().init(config, activity)
         doQuery()
     }
@@ -234,12 +209,12 @@ class ApiDemoFragment:BaseFragment() {
                 override fun onSuccess(userBean: AccountBean) {
                     val msg =
                         "查询成功:accountId:" + userBean.getAccountId() + ", phone:" + userBean.getPhone()
-                    NLog.d(MainActivity.TAG, "onSuccess msg: %s", msg)
+                    NLog.d(TAG, "onSuccess msg: %s", msg)
                 }
 
                 override fun onFailure(exception: TclAccoutException) {
                     val msg = "查询失败:code:" + exception.code + ", msg:" + exception.msg
-                    NLog.d(MainActivity.TAG, "onFailure: %s", msg)
+                    NLog.d(TAG, "onFailure: %s", msg)
                 }
             }, activity)
     }
