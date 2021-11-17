@@ -1,14 +1,18 @@
 package com.apache.fastandroid.demo.temp
 
+import android.annotation.SuppressLint
 import android.content.ContentResolver
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewConfiguration
+import androidx.arch.core.executor.ArchTaskExecutor
 import androidx.core.view.ViewCompat
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
+import com.apache.fastandroid.adapter.FlowTagAdapter
+import com.apache.fastandroid.demo.temp.bean.TagInfo
 import com.blankj.utilcode.util.SPUtils
 import com.tcl.account.accountsync.IAccountCallback
 import com.tcl.account.accountsync.UserInfoAsyncManager
@@ -18,6 +22,7 @@ import com.tcl.account.accountsync.bean.TclConfig
 import com.tcl.account.accountsync.util.TclAccoutException
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseFragment
+import com.xuexiang.xui.widget.flowlayout.FlowTagLayout
 import kotlinx.android.synthetic.main.temp_api_usage_demo.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -39,10 +44,40 @@ class ApiDemoFragment:BaseFragment() {
         return R.layout.temp_api_usage_demo
     }
 
+    private val tags = mutableListOf<String>(
+        "获取触发移动事件的最小距离",
+        "android多语言适配，获取布局方向",
+        "CountDown让多个线程等待",
+        "CountDown让单个线程等待",
+        "BreakPoint调试",
+
+        "同步账号信息(正确)",
+        "同步账号信息(错误)",
+        "集合流操作",
+        "ArchTaskExecutor"
+    )
+
+    @SuppressLint("RestrictedApi")
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        tv_get_scaled_touch_slop.setOnClickListener {
+
+        val adapter = FlowTagAdapter(context)
+        flowlayout_normal_select.adapter = adapter
+        adapter.addTags(tags)
+        flowlayout_normal_select.setOnTagSelectListener { parent, position, selectedList ->
+            when (position) {
+                0 -> scaleTouchSlop()
+                1 -> getLayoutDirection()
+                2 -> testCountDownLatch1()
+                3 -> testCountDownLatch2()
+                4 -> testBreakPoint()
+                5 -> testBreakPoint()
+                6 -> syncAccountSuccess()
+            }
+        }
+
+        /*tv_get_scaled_touch_slop.setOnClickListener {
             scaleTouchSlop()
         }
 
@@ -87,8 +122,38 @@ class ApiDemoFragment:BaseFragment() {
             NLog.d(TAG, "filterList: %s",filterList)
         }
 
+        btn_archTaskExecutor.setOnClickListener {
+           ArchTaskExecutor.getInstance().executeOnDiskIO {
+
+               NLog.d(TAG, "executeOnDiskIO thread:%s--->",Thread.currentThread().name)
+           }
+           ArchTaskExecutor.getInstance().executeOnMainThread() {
+               NLog.d(TAG, "executeOnMainThread thread:%s--->",Thread.currentThread().name)
+           }
+
+        }*/
 
 
+
+    }
+
+    private fun testBreakPoint(){
+        for ( i in 1 until 10){
+            if (i % 2 == 0){
+                if (i > 4){
+                    println("$i")
+                }
+            }
+        }
+    }
+
+    private fun syncAccountSuccess(){
+        val config = TclConfig()
+        //设置正确的appId
+        //设置正确的appId
+        config.setAppId("46121610438946717")
+        TclAccountBuilder.getInstance().init(config, activity)
+        doQuery()
     }
 
     private val COLUM_NAME = arrayOf("accountId", "phone","email")
@@ -116,8 +181,8 @@ class ApiDemoFragment:BaseFragment() {
     }
 
     fun getLayoutDirection(){
-        var layoutDirection = ViewCompat.getLayoutDirection(liner1)
-        NLog.d(TAG, "layoutDirection value:${layoutDirection}")
+//        var layoutDirection = ViewCompat.getLayoutDirection(liner1)
+//        NLog.d(TAG, "layoutDirection value:${layoutDirection}")
     }
 
 

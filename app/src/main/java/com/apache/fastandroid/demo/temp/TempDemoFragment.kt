@@ -27,7 +27,6 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("反射", "反射", ReflectionDemoFragment::class.java)
                 ,ViewItemBean("Api用法", "Api用法", ApiDemoFragment::class.java)
                 ,ViewItemBean("异步转同步", "异步转同步", AsyncToSyncDemoFragment::class.java)
-                ,ViewItemBean("Api用法", "Api用法2", ApiDemoFragment2::class.java)
                 ,ViewItemBean("死锁", "死锁", ConcurrencyDemoFragment::class.java)
 
         )

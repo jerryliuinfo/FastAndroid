@@ -19,7 +19,7 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.designmode.idlehandler.MyMessageQueue;
-import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment;
+import com.apache.fastandroid.demo.temp.ApiDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -97,11 +97,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, ApiDemoFragment2.class,null);
 //        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, ConcurrencyDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
-        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
-        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
+//        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
 //        FragmentContainerActivity.launch(this, TransitionDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, TaskDispatcherDemoFragment.class,null);
 
 

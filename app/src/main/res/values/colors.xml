@@ -50,4 +50,8 @@
     <color name="spinner_bg">#333244</color>
     <color name="color_33FF8610">#33FF8610</color>
 
+    <color name="green_btn_color_normal">#2BCFB8</color>
+    <color name="green_btn_color_disable">#CCCCCC</color>
+    <color name="green_btn_color_pressed">#05bca2</color>
+
 </resources>

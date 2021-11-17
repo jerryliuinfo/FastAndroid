@@ -413,7 +413,10 @@ dependencies {
     implementation rootProject.ext.thirdLib.reactivexRxandroid
 
 
-    implementation rootProject.ext.androidLib.androidx_workmanager
+//    implementation rootProject.ext.androidLib.androidx_workmanager
+    implementation ('androidx.work:work-runtime:2.2.0'){
+        exclude group: 'androidx.arch.core'
+    }
     implementation rootProject.ext.thirdLib.blockcanary
     implementation rootProject.ext.thirdLib.leakcanary
 
@@ -428,6 +431,8 @@ dependencies {
 
     debugImplementation rootProject.ext.thirdLib.blockcanary
     debugImplementation rootProject.ext.thirdLib.AppStartFaster
+
+    debugImplementation rootProject.ext.thirdLib.XUI
 
 
 

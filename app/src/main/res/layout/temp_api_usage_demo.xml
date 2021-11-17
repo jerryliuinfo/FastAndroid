@@ -7,7 +7,7 @@
     >
 
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:id="@+id/liner1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,9 +78,19 @@
             android:layout_height="wrap_content"
             android:text="集合流操作"
             />
+        <Button
+            android:id="@+id/btn_archTaskExecutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ArchTaskExecutor"
+            />
 
+    </LinearLayout>-->
 
-    </LinearLayout>
+    <com.xuexiang.xui.widget.flowlayout.FlowTagLayout
+        android:id="@+id/flowlayout_normal_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
 
