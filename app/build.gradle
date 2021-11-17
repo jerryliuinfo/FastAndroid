@@ -15,7 +15,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 //apply plugin 的名称为 /buildSrc/src/main/resources/META-INF/gradle-plugins目录下的 xx.properties 的名称
-apply plugin: 'com.myplugin'
+//apply plugin: 'com.myplugin'
 
 /**
  * 这里 myPlugin 为 com.fastandroid.plugin.MyPlugin.java 这个类中 通过 target.extensions.create("myPlugin",ExtensionBean)
@@ -311,7 +311,7 @@ android {
         checkReleaseBuilds false
         abortOnError false
         //检查是否使用了最新api
-        check 'NewApi'
+//        check 'NewApi'
     }
 
 
@@ -427,6 +427,7 @@ dependencies {
     implementation rootProject.ext.thirdLib.viewpump
 
     debugImplementation rootProject.ext.thirdLib.blockcanary
+    debugImplementation rootProject.ext.thirdLib.AppStartFaster
 
 
 

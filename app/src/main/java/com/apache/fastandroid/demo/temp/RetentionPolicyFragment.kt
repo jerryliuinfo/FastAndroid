@@ -11,7 +11,7 @@ import com.apache.fastandroid.demo.temp.retention.Config
  */
 class RetentionPolicyFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
-        return R.layout.fragment_edittext_bg
+        return R.layout.fragment_common
     }
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {

@@ -11,36 +11,41 @@ object TaskUtil {
     
     fun runTask1(){
         NLog.d(TAG, "Task1 begin run")
+        val startTime = System.currentTimeMillis()
         SystemClock.sleep(300);
-        NLog.d(TAG, "Task1 run finished")
+        NLog.d(TAG, "Task1 run cost time:%s ms",(System.currentTimeMillis() - startTime))
     }
 
     fun runTask2(){
         NLog.d(TAG, "Task2 begin run")
+        val startTime = System.currentTimeMillis()
         SystemClock.sleep(300);
-        NLog.d(TAG, "Task2 run finished")
+        NLog.d(TAG, "Task2 run cost time:%s ms",(System.currentTimeMillis() - startTime))
+
     }
 
     fun runTask3(){
         NLog.d(TAG, "Task3 begin run")
+        val startTime = System.currentTimeMillis()
         SystemClock.sleep(350);
-        NLog.d(TAG, "Task3 run finished")
+        NLog.d(TAG, "Task3 run cost time:%s ms",(System.currentTimeMillis() - startTime))
+
     }
 
     fun runTask4(){
         NLog.d(TAG, "Task4 begin run")
+        val startTime = System.currentTimeMillis()
         SystemClock.sleep(200);
-        NLog.d(TAG, "Task4 run finished")
+        NLog.d(TAG, "Task4 run cost time:%s ms",(System.currentTimeMillis() - startTime))
+
     }
 
     fun runTask5(){
         NLog.d(TAG, "Task5 begin run")
+        val startTime = System.currentTimeMillis()
         SystemClock.sleep(300);
-        NLog.d(TAG, "Task5 run finished")
+        NLog.d(TAG, "Task5 run cost time:%s ms",(System.currentTimeMillis() - startTime))
+
     }
-    fun runTask6(){
-        NLog.d(TAG, "Task6 begin run")
-        SystemClock.sleep(150);
-        NLog.d(TAG, "Task6 run finished")
-    }
+
 }

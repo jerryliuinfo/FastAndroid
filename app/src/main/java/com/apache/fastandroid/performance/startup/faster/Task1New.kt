@@ -2,18 +2,18 @@ package com.apache.fastandroid.performance.startup.faster
 
 import com.apache.fastandroid.performance.TaskUtil
 import com.optimize.performance.launchstarter.task.Task
+import com.wxy.appstartfaster.task.AppStartTask
 
 /**
  * Created by Jerry on 2021/4/17.
  */
-class Task111:Task() {
+class Task1New: AppStartTask() {
     override fun run() {
         TaskUtil.runTask1()
     }
 
-    override fun runOnMainThread(): Boolean {
+    override fun isRunOnMainThread(): Boolean {
         return true
     }
-
 
 }

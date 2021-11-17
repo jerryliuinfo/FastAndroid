@@ -21,6 +21,11 @@ import com.apache.fastandroid.performance.startup.dispatcher.Task2;
 import com.apache.fastandroid.performance.startup.dispatcher.Task3;
 import com.apache.fastandroid.performance.startup.dispatcher.Task4;
 import com.apache.fastandroid.performance.startup.dispatcher.Task5;
+import com.apache.fastandroid.performance.startup.faster.Task1New;
+import com.apache.fastandroid.performance.startup.faster.Task2New;
+import com.apache.fastandroid.performance.startup.faster.Task3New;
+import com.apache.fastandroid.performance.startup.faster.Task4New;
+import com.apache.fastandroid.performance.startup.faster.Task5New;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.FileUtils;
@@ -38,6 +43,7 @@ import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
+import com.wxy.appstartfaster.dispatcher.AppStartTaskDispatcher;
 
 import java.io.File;
 
@@ -73,7 +79,8 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         MainLogUtil.d("Application onCreate ");
         Utils.init(FApplication.getApplication());
 
-        initTaskByTaskDispatcher();
+//        initTaskByTaskDispatcher();
+        initTaskByAppFaster();
         initLoop();
         FApplication.class.getSimpleName();
         // data/data/com.apache.fastandroid/files/mmkv
@@ -126,6 +133,21 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         ;
         taskDispatcher.start();
         LaunchTimer.endRecord("initTaskByTaskDispatcher end ");
+
+    }
+
+    private void initTaskByAppFaster(){
+        AppStartTaskDispatcher.getInstance()
+                .setContext(this)
+                .setShowLog(true)
+                .setAllTaskWaitTimeOut(5000)
+                .addAppStartTask(new Task2New())
+                .addAppStartTask(new Task4New())
+                .addAppStartTask(new Task5New())
+                .addAppStartTask(new Task3New())
+                .addAppStartTask(new Task1New())
+                .start()
+                .await();
 
     }
 

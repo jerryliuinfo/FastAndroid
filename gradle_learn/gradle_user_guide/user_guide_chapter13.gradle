@@ -1,0 +1,19 @@
+task readProjectProperties{
+    doLast {
+        StringBuilder builder = new StringBuilder()
+        builder.append("name:${project.getName()} \n")
+        builder.append("path:${project.getPath()} \n")
+        builder.append("desc:${project.getDescription()} \n")
+        builder.append("projectDir:${project.getProjectDir().getAbsolutePath()} \n")
+        builder.append("build:${project.getBuildDir().getAbsolutePath()} \n")
+        println "properties:\n${builder.toString()}"
+    }
+}
+
+task copy(type:Copy){
+    from "source"
+    into "dest"
+}
+
+
+

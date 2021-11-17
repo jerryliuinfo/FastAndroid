@@ -1,0 +1,164 @@
+/**
+ * 定义 task
+ * 方式1： task taskName{
+ *
+ * }
+ */
+task ex15_1{
+    doLast {
+        println 'ex15_1'
+    }
+}
+
+tasks.create("ex15_2"){
+    doLast {
+        pringln "create hello task"
+    }
+}
+
+
+//定位tasks
+task locateTask{
+    doLast {
+        println "way1:${ex15_2.name},way2:${project.ex15_2.name}, way3:${tasks.ex15_2.name}, way4:${tasks['ex15_2'].name}"
+    }
+}
+
+//15.7 配置 tasks
+task ex15_7(type:Copy){
+    description 'copies the rsource from source directory to the target directory'
+    from('source')
+    into 'dest'
+    //只拷贝符合条件的
+    include('**/*.txt', '**/*.xml')
+    //排除给定条件的
+    exclude ('**/*.txt')
+}
+
+
+/**
+ * 任务名称可以指向同一个项目里的任务, 或者其他项目里的任务.
+ * 为了指向其他项目, 你必须在任务的名称前加入项目的路径. 下面的例子给
+ * projectA:taskX 加入依赖 projectB中的taskY :
+ */
+
+
+
+project('hencode_basic'){
+    task taskX(dependsOn: ':hencoder_clipmatrix:taskY'){
+        doLast {
+            println 'taskX'
+        }
+    }
+}
+
+/**
+ *  15.12. 通过任务对象加入依赖
+ */
+
+task ex15_12_A {
+    doLast {
+        println 'task ex15_12_A'
+    }
+}
+
+task ex15_12_B{
+    doLast {
+        println 'task ex15_12_B'
+    }
+}
+
+ex15_12_A.dependsOn ex15_12_B
+
+
+
+/**
+ *  15.14. 通过闭包加入依赖
+ */
+
+ex15_12_B.dependsOn{
+    tasks.findAll {
+        it.name.contains('lib')
+    }
+}
+
+
+
+task ex15_12_lib1{
+    doLast {
+        println 'ex15_12_lib1 run'
+    }
+
+}
+
+task ex15_12_lib2{
+    doLast {
+        println 'ex15_12_lib2 run'
+    }
+}
+
+//15.14 给任务排序   must run after
+
+task ex15_14_A{
+    doLast {
+        println 'ex15_14_A -->'
+    }
+}
+
+task ex15_14_B{
+    doLast {
+        println 'ex15_14_B -->'
+    }
+}
+
+ex15_14_A.mustRunAfter ex15_14_B
+
+
+//15.15 给任务排序   should run after
+
+task ex15_15_A{
+    doLast {
+        println 'ex15_15_A -->'
+    }
+}
+
+task ex15_15_B{
+    doLast {
+        println 'ex15_15_B -->'
+    }
+}
+
+ex15_15_A.shouldRunAfter ex15_15_B
+
+
+//15.18 给 task 加上描述
+
+task('ex15_18'){
+    doLast {
+        println 'ex15_18 doLast'
+    }
+}
+ex15_18.description = "this is task ex15_18' s description"
+
+
+
+//15.20 使用判断条件(predicate)
+/**
+ * 使用 onlyIf() 方法为一个任务加入判断条件,就和 Java李的 if 语句一样，任务只有在条件
+ * 判断为真时才会执行
+ *
+ */
+
+task ex15_20{
+    doLast {
+        println 'ex15_20 run'
+    }
+}
+
+ex15_20.onlyIf{
+    println "1111 ->${project.hasProperty('skipHello')}"
+    !project.hasProperty('skipHello')
+}
+
+
+

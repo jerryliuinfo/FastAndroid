@@ -48,12 +48,12 @@ android {
     buildFeatures{
         dataBinding = true
         // for view binding :
-        // viewBinding = true
+         viewBinding = true
     }
 
-    dataBinding {
-        enabled = true
-    }
+//    dataBinding {
+//        enabled = true
+//    }
 
     lintOptions {
         abortOnError false

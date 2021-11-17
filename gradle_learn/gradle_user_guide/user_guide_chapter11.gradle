@@ -1,0 +1,91 @@
+//多任务调用
+/**
+ * 你可以以列表的形式在命令行中一次调用多个任务. 例如 gradle compile test
+ * 命令会依次调用 compile 和 test 任务, 它们所依赖的任务也会被调用. 这些任务只会被调用一次,
+ */
+
+task compile_source{
+    doLast {
+        println "compile source"
+    }
+
+}
+
+task compile_test(dependsOn:compile_source){
+    doLast {
+        println "compile Test"
+    }
+}
+
+task tests(dependsOn: [compile_source,compile_test]){
+    doLast {
+        println "running unit tests"
+    }
+}
+
+task dist(dependsOn: [compile_source,tests]){
+    doLast {
+        println 'building the distribution'
+    }
+}
+
+/**
+ * 11.2排除任务
+ * 可以用命令行选项-x来排除某些任务,让我们用上面的例子来示范一下.
+ *
+ * 输出
+ * compile source
+   building the distribution
+    tests 以及其所依赖的任务不会被执行
+ */
+
+
+
+//11.3 失败后继续执行构建
+/**
+ * 默认情况下, 只要有任务调用失败, Gradle就会中断执行. 这可能会使调用过程更快, 但那些后面隐藏的错误就没有办法发现了. 所以你可以使用 --continue 选项在一次调用中尽可能多的发现所有问题.
+
+ 采用 --continue 选项, Gradle 会调用每一个任务以及它们依赖的任务. 而不是一旦出现错误就会中断执行.所有错误信息都会在最后被列出来.
+
+ 一旦某个任务执行失败,那么所有依赖于该任务的子任务都不会被调用.例如由于 test 任务依赖于 complie 任务,所以如果 compile 调用出错, test 便不会被直接或间接调用.
+ */
+
+//task ex11_3_continue{
+//    doLast {
+//        pringln "ex11_3_continue --->"
+//    }
+//}
+
+//11.5
+/**
+ * 调用 gradle 命令时, 默认情况下总是会构建当前目录下的文件,
+ * 可以使用 -b 参数选择其他目录的构建文件, 并且当你使用此参数时 settings.gradle 将不会生效,
+ */
+
+
+//11.7 收集项目信息
+/**
+ * ./gradlew -q project 列出所有projects
+ * Root project 'FastAnd'
+ +--- Project ':app'
+ +--- Project ':artemis_annotation'
+ +--- Project ':artemis_compiler'
+ +--- Project ':baselib'
+ +--- Project ':fastFramework'
+ +--- Project ':hencode_basic'
+ +--- Project ':hencoder_clipmatrix'
+ +--- Project ':hencoder_drawtext'
+ +--- Project ':hencoder_paint'
+ +--- Project ':hencoder_plus'
+ \--- Project ':libnetwork'
+
+
+ *
+ */
+description 'this is gradle_user_guide'
+
+
+//11.9  获取任务信息
+/**
+ * ./gradlew -q tasks
+ */
