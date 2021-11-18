@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/layout/custom_bar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_agent_web_js.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_common.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_databinding_binding_adapter.xml" value="0.11141304347826086" />
         <entry key="app/src/main/res/layout/fragment_download.xml" value="0.10572916666666667" />
         <entry key="app/src/main/res/layout/fragment_drakeet_knowledge.xml" value="0.10891590678824721" />
         <entry key="app/src/main/res/layout/fragment_edittext_bg.xml" value="0.10572916666666667" />
@@ -23,6 +24,7 @@
         <entry key="app/src/main/res/layout/temp_api_usage_demo.xml" value="0.1334853090172239" />
         <entry key="app/src/main/res/layout/ui_wallpaper_setting.xml" value="0.1390625" />
         <entry key="fastFramework/src/main/res/layout/swipeback_layout.xml" value="0.11145833333333334" />
+        <entry key="hencode_basic/src/main/res/layout/fragment_practice_demo.xml" value="0.21979166666666666" />
       </map>
     </option>
   </component>

@@ -1,20 +1,19 @@
-
 apply plugin: 'maven'
-apply plugin: 'org.jetbrains.kotlin.jvm'
+//apply plugin: 'org.jetbrains.kotlin.jvm'
 apply plugin: 'signing'
 
 
-def artifact = 'rocketx'
-def libraryName = 'videoprogressview-sdk'
-def libraryDescription = 'speed build plugin'
-def libraryVersion = '1.0.2'
+def artifact = 'FastFramework-library'
+def libraryName = 'FastFramework-lib'
+def libraryDescription = 'A Fast develop framework for Android'
+def libraryVersion = '1.0.0'
 
-def publishedGroupId='io.github.trycatchx'
-def siteUrl='https://github.com/trycatchx/RocketXPlugin'
-def gitUrl='https://github.com/trycatchx/RocketXPlugin.git'
-def developerId='trycatchx'
-def developerName='trycatch'
-def developerEmail='237929682@qq.com'
+def publishedGroupId='io.github.jerryliuinfo'
+def siteUrl='https://github.com/jerryliuinfo/FastAndroid'
+def gitUrl='https://github.com/jerryliuinfo/FastAndroid.git'
+def developerId='JerryLiu@3502'
+def developerName='JerryLiu'
+def developerEmail='liuxiangxiang1234@163.com'
 
 def licenseName='The Apache Software License, Version 2.0'
 def licenseUrl='http://www.apache.org/licenses/LICENSE-2.0.txt'
@@ -23,15 +22,15 @@ def licenseUrl='http://www.apache.org/licenses/LICENSE-2.0.txt'
 
 
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allJava
-    classifier = 'sources'
-}
-
-task javadocJar(type: Jar) {
-    from javadoc
-    classifier = 'javadoc'
-}
+//task sourcesJar(type: Jar) {
+//    from sourceSets.main.allJava
+//    classifier = 'sources'
+//}
+//
+//task javadocJar(type: Jar) {
+//    from javadoc
+//    classifier = 'javadoc'
+//}
 
 
 tasks.withType(Javadoc).all {
@@ -49,20 +48,20 @@ tasks.withType(Javadoc) {
 
 
 // add javadoc/source jar tasks as artifacts
-artifacts {
-    archives jar
-    archives javadocJar
-    archives sourcesJar
-}
+//artifacts {
+//    archives jar
+//    archives javadocJar
+//    archives sourcesJar
+//}
 
 
 
 
-//Properties properties = new Properties()
-//properties.load(project.rootProject.file('local.properties').newDataInputStream())
-//
-//def ossrhUsername = properties.getProperty("ossrhUsername")
-//def ossrhPassword = properties.getProperty("ossrhPassword")
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+def ossrhUsername = properties.getProperty("ossrhUsername")
+def ossrhPassword = properties.getProperty("ossrhPassword")
 
 def PUBLISH_GROUP_ID = publishedGroupId //这里可以不是直接申请时候的groupId只要开头是就可以
 
@@ -95,7 +94,7 @@ uploadArchives {
             pom.version = PUBLISH_VERSION
 
             pom.project {
-                packaging 'jar' //我这里发布的是安卓的包，所有写的aar
+                packaging 'aar' //我这里发布的是安卓的包，所有写的aar
 
                 name libraryName // '发布库的简单名称'
                 // optionally artifactId can be defined here

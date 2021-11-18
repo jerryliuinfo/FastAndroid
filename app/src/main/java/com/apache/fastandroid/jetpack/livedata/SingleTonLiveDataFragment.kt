@@ -24,10 +24,8 @@ class SingleTonLiveDataFragment: BaseStatusFragmentNew() {
     }
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        viewModel.singleTonLiveData.observe(this, Observer<String> {
-            FastLog.d(TAG, "onChange: %s", it)
-            tv_result.text = it
-        })
+        viewModel.singleTonLiveData.observe(this
+        ) { t -> tv_result.text = t }
 
         btn_jump.setOnClickListener {
             FragmentContainerActivity.launch(activity,SingleTonLiveDataFragment2::class.java,null)

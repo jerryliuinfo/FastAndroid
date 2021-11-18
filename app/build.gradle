@@ -370,9 +370,9 @@ kotlin {
         coroutines 'enable'
     }
 }
-androidExtensions {
-    experimental = true
-}
+//androidExtensions {
+//    experimental = true
+//}
 
 tasks.whenTaskAdded { task ->
     if (task.name == 'assembleDebug') {
