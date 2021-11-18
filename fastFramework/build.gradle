@@ -9,7 +9,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
-//apply from: "../maven-publish.gradle"
+apply from: "../maven-publish2.gradle"
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion

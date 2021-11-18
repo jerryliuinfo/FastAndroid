@@ -1,127 +1,60 @@
-apply plugin: 'maven'
-//apply plugin: 'org.jetbrains.kotlin.jvm'
-apply plugin: 'signing'
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'io.github.jerryliuinfo' //开通maven central时候定义的
+            artifactId 'FastFramework-library' //资源名称
+            version '1.0.0' //版本名称
+            pom {
+                name = 'FastFramework-library'
+                description = 'FastFramework-library'
+                url = 'https://github.com/jerryliuinfo/FastAndroid'
+                inceptionYear = '2021'
+            }
+            scm {
+                url = 'https://github.com/jerryliuinfo/FastAndroid'
+                connection = 'https://github.com/jerryliuinfo/FastAndroid.git'
+                developerConnection = 'https://github.com/jerryliuinfo/FastAndroid.git'
+            }
 
+            licenses {
+                license {
+                    name = 'The Apache Software License, Version 2.0'
+                    url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution = 'repo'
+                    comments = 'A business-friendly OSS license'
+                }
+            }
 
-def artifact = 'FastFramework-library'
-def libraryName = 'FastFramework-lib'
-def libraryDescription = 'A Fast develop framework for Android'
-def libraryVersion = '1.0.0'
+            developers {
+                developer {
+                    id = 'JerryLiu@3502'
+                    name = 'JerryLiu'
+                    email = 'liuxiangxiang1234@163.com'
+                    url = 'https://github.com/jerryliuinfo/FastAndroid'
+                }
+            }
 
-def publishedGroupId='io.github.jerryliuinfo'
-def siteUrl='https://github.com/jerryliuinfo/FastAndroid'
-def gitUrl='https://github.com/jerryliuinfo/FastAndroid.git'
-def developerId='JerryLiu@3502'
-def developerName='JerryLiu'
-def developerEmail='liuxiangxiang1234@163.com'
-
-def licenseName='The Apache Software License, Version 2.0'
-def licenseUrl='http://www.apache.org/licenses/LICENSE-2.0.txt'
-
-
-
-
-
-//task sourcesJar(type: Jar) {
-//    from sourceSets.main.allJava
-//    classifier = 'sources'
-//}
-//
-//task javadocJar(type: Jar) {
-//    from javadoc
-//    classifier = 'javadoc'
-//}
-
-
-tasks.withType(Javadoc).all {
-    enabled = false
-}
-
-// 强制 Java/JavaDoc 等的编码为 UTF-8
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
-tasks.withType(Javadoc) {
-    options.encoding = "UTF-8"
-}
-
-
-// add javadoc/source jar tasks as artifacts
-//artifacts {
-//    archives jar
-//    archives javadocJar
-//    archives sourcesJar
-//}
-
-
-
-
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-def ossrhUsername = properties.getProperty("ossrhUsername")
-def ossrhPassword = properties.getProperty("ossrhPassword")
-
-def PUBLISH_GROUP_ID = publishedGroupId //这里可以不是直接申请时候的groupId只要开头是就可以
-
-def PUBLISH_ARTIFACT_ID = artifact
-
-def PUBLISH_VERSION = libraryVersion // android.defaultConfig.versionName //这个是直接获取的库gradle里配置好的版本号，不用到处修改版本号，只需要维护一份就可以。
-
-//签名
-signing {
-    required { gradle.taskGraph.hasTask("uploadArchives") }
-    sign configurations.archives
-}
-
-uploadArchives {
+            issueManagement {
+                system = 'Github'
+                url = 'https://github.com/jerryliuinfo/FastAndroid'
+            }
+            artifact generateSourcesJar //需要上传的source jar
+            artifact generateJavadoc //需要上传的java doc
+            artifact makeJar //需要上传的资源jar路径或者是aar路径，这边可以填写一个生成jar的task，如makeJar方法就是一个生成jar的task
+        }
+    }
     repositories {
-        mavenDeployer {
-
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-            repository(url: "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
-
-            snapshotRepository(url: "https://s01.oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
-
-            pom.groupId = PUBLISH_GROUP_ID
-            pom.artifactId = PUBLISH_ARTIFACT_ID
-            pom.version = PUBLISH_VERSION
-
-            pom.project {
-                packaging 'aar' //我这里发布的是安卓的包，所有写的aar
-
-                name libraryName // '发布库的简单名称'
-                // optionally artifactId can be defined here
-                description libraryDescription // '发布包的描述'
-                url siteUrl // '可以写公司官网地址或github个人页面地址'
-
-                scm {
-                    connection gitUrl // 'scm:替换成项目git地址'
-                    developerConnection gitUrl // 'scm:替换为git开头的项目地址'
-                    url siteUrl // '项目首页，可以是github项目的主页'
-                }
-
-                licenses {
-                    license {
-                        name licenseName // 'The Apache License, Version 2.0'
-                        url licenseUrl // 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id developerId // '这里填写申请账号时候的全名就可以'
-                        name developerName // '这里随意填写就可以'
-                        email developerEmail// '最好是申请账号时用的邮箱'
-                    }
-                }
+        maven {
+            // 指定要上传的maven仓库
+            url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+            //Maven仓库用户名和密码
+            credentials {
+                username 'JerryLiu@3502'
+                password 'Gree@35023502'
             }
         }
     }
+}
+signing {
+    sign publishing.publications.maven //签名配置
 }
