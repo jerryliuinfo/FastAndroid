@@ -7,7 +7,7 @@ task ex16_1{
     }
 }
 
-
+//16.3 使用文件集合
 task ex16_3{
     doLast {
         File[] files = new File('/Users/jerry/work/FastAndroid/gradle_learn').listFiles()
@@ -26,11 +26,45 @@ task ex16_10_copy_task(type: Copy){
 //16.11 指定复制任务的源文件和目标目录
 
 task anotherCopyTask(type: Copy) {
-    File file = new File('../../app/src/main/assets/province.json')
+    File file = new File('/Users/jerry/work/FastAndroid/app/src/main/assets')
     println "path:${file.getAbsolutePath()}"
     // 复制 src/main/webapp 目录下的所有文件
-    from '../../app/src/main/assets/province.json'
+    from file.getAbsolutePath()
 
     // 最后指定目标目录
     into 'dest'
 }
+
+// 16.12 选择要复制文件
+
+task copyTaskWithPatterns(type: Copy) {
+    File file = new File('/Users/jerry/work/FastAndroid/app/src/main/assets')
+
+    from file.getAbsolutePath()
+    into 'dest'
+    include '**/*.apk'
+    include '**/*.json'
+    include '**/*.html'
+    exclude { details -> details.file.name.endsWith('.html') &&
+            details.file.text.contains('你好，Android') }
+}
+
+//16.15 在复制时重命名文件
+task ex16_15_rename(type: Copy) {
+    File file = new File('/Users/jerry/work/FastAndroid/app/src/main/assets')
+    from file.getAbsolutePath()
+    into 'dest'
+    // 使用一个闭合映射文件名
+    rename { String fileName ->
+
+    }
+    // 使用正则表达式映射文件名
+    rename(/(.+)original(.+)/, '$1$2')
+}
+
+
+//16.16 在复制时过滤文件
+
+
+
+

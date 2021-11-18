@@ -1,0 +1,28 @@
+task ex_17_1_log{
+    doLast {
+//        logger.quiet("an info by logger quiet ")
+        logger.info("an info by logger info")
+        logger.debug("an info by logger debug")
+        logger.lifecycle("an info by logger lifecycle")
+    }
+}
+
+//17.5.为任务配置标准输出捕获
+task ex17_5_logInfo {
+    logging.captureStandardOutput LogLevel.INFO
+    doFirst {
+        println 'A task message which is logged at INFO level'
+    }
+    doLast {
+        println "ex17_5_logInfo run"
+    }
+}
+
+//什么是 Gradle 的守护进程
+/**
+ * Gradle 守护进程是一个后台进程, 它运行着繁重的构建, 然后在构建等待下一次构建的之间保持自身存在.
+ * 这使得数据和代码在下一次构建前已经准备好,并存入内存中. 这显著的提高了后续构建的性能.
+ * 启用Gradle守护进程是一种节约构建时间的廉价方式.
+
+ 强烈建议在所有开发机器上启用Gradle的守护进程.但是不推荐在持续集成和构建服务器环境下启用守护进程(
+ */

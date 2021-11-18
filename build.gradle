@@ -17,6 +17,7 @@ apply from: "gradle_learn/gradle_user_guide/user_guide_chapter11.gradle"
 apply from: "gradle_learn/gradle_user_guide/user_guide_chapter13.gradle"
 apply from: "gradle_learn/gradle_user_guide/user_guide_chapter15.gradle"
 apply from: "gradle_learn/gradle_user_guide/user_guide_chapter16.gradle"
+apply from: "gradle_learn/gradle_user_guide/user_guide_chapter17.gradle"
 
 
 buildscript {

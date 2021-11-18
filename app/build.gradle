@@ -27,6 +27,29 @@ apply plugin: 'kotlin-kapt'
 //    value "This is myPlugin value "
 //}
 
+apply plugin: MyFirstPlugin
+artemis{
+    name = "jerry"
+    age = 18
+}
+
+class MyFirstPlugin implements Plugin<Project>{
+
+    @Override
+    void apply(Project project) {
+        println 'My First Plugin -->'
+        MyFirstPluginBean pluginBean = project.extensions.create("artemis",MyFirstPluginBean.class)
+        project.afterEvaluate {
+            println "name:${pluginBean.name}, age:${pluginBean.age}"
+        }
+    }
+}
+
+class MyFirstPluginBean{
+    public String name = 'defaultName'
+    public int age = 0
+}
+
 
 Properties properties = new Properties()
 InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
@@ -495,12 +518,3 @@ myTask.doLast {
     println "group:${group}, desc:${description}"
 }
 
-task anotherCopyTask2(type: Copy) {
-    File file = new File('/src/main/assets/province.json')
-    println "path:${file.getAbsolutePath()}"
-    // 复制 src/main/webapp 目录下的所有文件
-    from '../../app/src/main/assets/province.json'
-
-    // 最后指定目标目录
-    into 'dest'
-}
