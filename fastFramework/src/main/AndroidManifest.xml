@@ -18,9 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         >
-        <provider
-            android:authorities="com.tesla.framework.component.AccountProvider"
-            android:name="com.tesla.framework.component.AccountProvider"/>
+
 
         <receiver android:name=".common.util.network.NetworkReceiver">
             <intent-filter>

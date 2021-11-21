@@ -1,37 +1,46 @@
 project.plugins.apply('maven-publish')
 project.plugins.apply('signing')
 
-def localProps=new Properties()
-localProps.load(project.rootProject.file('local.properties').newDataInputStream())
-
-//Properties properties = new Properties()
-//properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 
-Enumeration enumeration = localProps.keys();
-while (enumeration.hasMoreElements()) {
-    def key = enumeration.nextElement();
-    def value = localProps.get(key);
-    project.properties[key]=value
-}
+
+def publishedGroupId='io.github.jerryliuinfo'
+def publishedArtifactId='FastFramework-library'
+def publishedVersion='1.0.2'
+
+
+def libraryName = 'FastFramework-library'
+def libraryDescription = 'Simply defining adapters of RecyclerView in Android'
+
+def gitUrl='https://github.com/jerryliuinfo/FastAndroid.git'
+def siteUrl='https://github.com/jerryliuinfo/FastAndroid'
+
+
+def developerId='JerryLiu@3502'
+def developerName='JerryLiu'
+def developerEmail='liuxiangxiang1234@163.com'
+
+
+def RELEASE_REPOSITORY_URL = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+def SNAPSHOT_REPOSITORY_URL = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+
 
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                groupId = 'io.github.jerryliuinfo'
-                artifactId = 'FastFramework-library'
-                version = '1.0.0'
+                groupId = publishedGroupId
+                artifactId = publishedArtifactId
+                version = publishedVersion
 
                 from components.release
                 // generate pom.xml
                 pom {
-                    name = 'FastFramework-library'
-                    description = 'Simply defining adapters of RecyclerView in Android'
-                    url = 'https://github.com/jerryliuinfo/FastAndroid.git'
+                    name = libraryName
+                    description = libraryDescription
+                    url = siteUrl
 
                     licenses {
                         license {
@@ -41,32 +50,31 @@ afterEvaluate {
                     }
                     developers {
                         developer {
-                            id = 'JerryLiu@3502'
-                            name = 'JerryLiu'
-                            email = 'liuxiangxiang1234@163.com'
+                            id = developerId
+                            name = developerName
+                            email = developerEmail
                         }
                     }
                     scm {
-                        url = 'https://github.com/jerryliuinfo/FastAndroid'
+                        url = siteUrl
                     }
                 }
             }
+
         }
 
         repositories {
             maven {
                 // change to point to your repo
-                def releaseRepo = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
-                def snapshotRepo = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
-
-                url = publishing.publications.release.version.endsWith('SNAPSHOT') ? snapshotRepo : releaseRepo
+                //url = publishing.publications.release.version.endsWith('SNAPSHOT') ? snapshotRepo : releaseRepo
+                url = publishedVersion.endsWith('SNAPSHOT') ? SNAPSHOT_REPOSITORY_URL : RELEASE_REPOSITORY_URL
+                println "url: ${url}"
                 credentials {
                     username = properties.getProperty('credencial.username')
-//                    username = 'JerryLiu@3502'
                     password = properties.getProperty('credencial.password')
-//                    password = 'Gree@35023502'
                 }
             }
+            //本地仓库
             maven {
                 name 'Build'
                 url = layout.buildDirectory.dir('repo')

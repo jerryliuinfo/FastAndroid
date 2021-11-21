@@ -91,3 +91,9 @@ tasks.withType(Javadoc) {
     options.addStringOption('charSet', 'UTF-8')
 }
 
+
+task frameworkHello{
+    doLast {
+        println 'frameworkHello doLast'
+    }
+}

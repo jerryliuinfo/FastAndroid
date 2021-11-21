@@ -19,6 +19,7 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.designmode.idlehandler.MyMessageQueue;
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment;
 import com.apache.fastandroid.demo.temp.ApiDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
@@ -26,7 +27,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
-import com.tesla.framework.component.livedata.SingleTonViewModel;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
@@ -38,7 +38,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
 @AptTest(path = "main")
 @BindPath("login/login")
@@ -101,7 +100,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, ConcurrencyDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
 //        FragmentContainerActivity.launch(this, TransitionDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
 //        FragmentContainerActivity.launch(this, TaskDispatcherDemoFragment.class,null);
 
 
