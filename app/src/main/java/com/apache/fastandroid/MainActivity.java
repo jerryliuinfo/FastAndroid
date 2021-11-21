@@ -20,7 +20,6 @@ import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.designmode.idlehandler.MyMessageQueue;
 import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment;
-import com.apache.fastandroid.demo.temp.ApiDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -290,3 +289,4 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
 }
+//test
