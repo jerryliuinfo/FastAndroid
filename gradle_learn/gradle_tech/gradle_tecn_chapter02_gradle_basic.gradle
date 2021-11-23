@@ -1,0 +1,9 @@
+task threeMetaExpression{
+    def greeting = null
+    println "expression:${greeting?: "unknow"}"
+
+    int value = 1
+    println "${""}"
+
+
+}
