@@ -5,6 +5,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        app:flow_wrapMode="aligned"
+        app:flow_horizontalGap="10dp"
+        app:flow_verticalGap="10dp"
+        app:constraint_referenced_ids="btn_on_each"
+        />
     <Button
         android:id="@+id/btn_on_each"
         android:layout_width="wrap_content"
@@ -13,5 +27,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:text="onEach"
         />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

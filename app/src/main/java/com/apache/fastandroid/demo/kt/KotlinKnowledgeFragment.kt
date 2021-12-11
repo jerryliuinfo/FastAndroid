@@ -28,7 +28,7 @@ class KotlinKnowledgeFragment:BaseFragment() {
 
 
     private fun onEach(vararg numbs: Int):String{
-       mutableSetOf<String>("aa","bb","cc").onEach {
+       mutableSetOf("aa","bb","cc").onEach {
            if (it == "bb"){
                return@onEach
            }

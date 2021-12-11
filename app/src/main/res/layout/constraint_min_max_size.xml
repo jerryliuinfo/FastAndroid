@@ -18,5 +18,6 @@
       app:layout_constraintHorizontal_bias="0.3"
       android:minWidth="100dp"
       android:minHeight="100dp"
+      android:background="@color/comm_red"
       />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,9 +34,7 @@ class ConstraintLayoutDemoFragment: BaseListFragment() {
 
                 ViewItemBean("ConstrainedWidth", " 宽度约束", ConstraintWidthFragment::class.java),
 
-                ViewItemBean("GuidelinePercent", "GuidelinePercent", ConstraintGuidelinePercentFragment::class.java),
-
-                ViewItemBean("Guideline", "GuidelineBeginEnd", ConstraintGuidelineBeginEndFragment::class.java),
+                ViewItemBean("Guideline", "Guideline", ConstraintGuidelinePercentFragment::class.java),
 
 
                 ViewItemBean("Barrier", "Barrier", ConstraintBarrierFragment::class.java),
@@ -58,12 +56,7 @@ class ConstraintLayoutDemoFragment: BaseListFragment() {
                 ViewItemBean("ConstraintSet切换布局", "ConstraintSet过渡动画", ConstraintSetSwitchLayoutFragment::class.java),
                 ViewItemBean("LinerVirtualLayout", "LinerVirtualLayout", ConstraintLinerVirtualLayoutFragment::class.java),
 
-                ViewItemBean("Flow", "Flow_Vertical", ConstraintFlowVerticalFragment::class.java),
-
                 ViewItemBean("FlowWrapMode", "FlowWrapMode", ConstraintFlowWrapModeFragment::class.java)
-
-
-
-                )
+        )
     }
 }

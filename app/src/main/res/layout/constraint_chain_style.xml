@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toStartOf="@+id/imageview1"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
-        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_chainStyle="packed"
         />
 
    <ImageView
@@ -26,28 +26,103 @@
        android:src="@mipmap/ic_launcher"
        android:scaleType="centerCrop"
        app:layout_constraintStart_toEndOf="@+id/textview1"
-       app:layout_constraintEnd_toStartOf="@+id/textview2"
+       app:layout_constraintEnd_toStartOf="@+id/textview1_1"
        app:layout_constraintTop_toTopOf="@+id/textview1"
        app:layout_constraintBottom_toBottomOf="@id/textview1"
-       android:layout_marginHorizontal="20dp"
+       android:layout_marginHorizontal="10dp"
        />
 
 
     <TextView
+        android:id="@+id/textview1_1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        android:text="packed"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/imageview1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        />
+
+
+   <TextView
         android:id="@+id/textview2"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@color/colorPrimary"
         android:text="spread"
         android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/imageview1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageview2"
+        app:layout_constraintTop_toBottomOf="@+id/textview1"
         android:layout_marginTop="20dp"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_chainStyle="spread"
         />
 
+   <ImageView
+       android:id="@+id/imageview2"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:src="@mipmap/ic_launcher"
+       android:scaleType="centerCrop"
+       app:layout_constraintStart_toEndOf="@+id/textview2"
+       app:layout_constraintEnd_toStartOf="@+id/textview2_2"
+       app:layout_constraintTop_toTopOf="@+id/textview2"
+       android:layout_marginHorizontal="10dp"
+       />
 
+      <TextView
+          android:id="@+id/textview2_2"
+          android:layout_width="80dp"
+          android:layout_height="80dp"
+          android:background="@color/colorPrimary"
+          android:text="spread"
+          android:gravity="center"
+          app:layout_constraintStart_toEndOf="@+id/imageview2"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="@+id/textview2"
+          />
+
+
+    <TextView
+        android:id="@+id/textview3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        android:text="spread_inside"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageview3"
+        app:layout_constraintTop_toBottomOf="@+id/textview2"
+        android:layout_marginTop="20dp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        />
+
+    <ImageView
+        android:id="@+id/imageview3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toEndOf="@+id/textview3"
+        app:layout_constraintEnd_toStartOf="@+id/textview3_3"
+        app:layout_constraintTop_toTopOf="@+id/textview3"
+        android:layout_marginHorizontal="10dp"
+        />
+
+    <TextView
+        android:id="@+id/textview3_3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        android:text="spread_inside"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/imageview3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textview3"
+        />
 
 
 

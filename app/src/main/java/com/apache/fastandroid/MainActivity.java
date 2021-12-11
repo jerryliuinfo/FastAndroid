@@ -11,7 +11,6 @@ import android.os.Parcelable;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
@@ -101,6 +100,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, TransitionDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
         FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
+//        FragmentContainerActivity.launch(this, ConstraintLayoutDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, TaskDispatcherDemoFragment.class,null);
 
 
@@ -154,9 +154,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void loadMenuData(){
         View headView = mNavigationView.getHeaderView(0);
-        TextView tv_username = headView.findViewById(R.id.tv_username);
-
-
     }
 
     @Override
@@ -287,6 +284,4 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         }
     }
-
 }
-//test
