@@ -8,8 +8,7 @@ import android.os.Build;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.WindowManager;
+import android.util.Printer;
 
 import com.apache.fastandroid.component.anr.AnrConfig;
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor;
@@ -38,7 +37,6 @@ import com.tcl.account.accountsync.bean.TclConfig;
 import com.tencent.mmkv.MMKV;
 import com.tesla.framework.applike.FApplication;
 import com.tesla.framework.common.util.LaunchTimer;
-import com.tesla.framework.common.util.handler.HandlerUtil;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
@@ -281,7 +279,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
 
     private void initLoop(){
-        HandlerUtil.getUIHandler().post(new Runnable() {
+       /* HandlerUtil.getUIHandler().post(new Runnable() {
             @Override
             public void run() {
                 while (true){
@@ -308,6 +306,12 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
                     }
 
                 }
+            }
+        });*/
+        Looper.getMainLooper().setMessageLogging(new Printer() {
+            @Override
+            public void println(String x) {
+                NLog.d(TAG, "message: "+ x);
             }
         });
     }
@@ -341,6 +345,10 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
     @Override
     public ViewModelStore getViewModelStore() {
         return mAppViewModelStore;
+    }
+
+    private void initLoadSir(){
+
     }
 }
 

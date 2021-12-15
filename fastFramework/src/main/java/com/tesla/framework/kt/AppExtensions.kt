@@ -15,6 +15,8 @@ val Float.dp
 val Int.dp
     get() = this.toFloat().dp
 
+val Int.dpInt
+    get() = this.dp.toInt()
 
 val Float.sp
     get() = TypedValue.applyDimension(

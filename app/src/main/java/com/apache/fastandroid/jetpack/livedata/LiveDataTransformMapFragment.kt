@@ -3,6 +3,8 @@ package com.apache.fastandroid.jetpack.livedata
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
+import com.apache.fastandroid.jetpack.reporsity.UserDao
+import com.apache.fastandroid.jetpack.reporsity.UserNetwork
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
@@ -19,7 +21,9 @@ class LiveDataTransformMapFragment: BaseStatusFragmentNew() {
     }
 
     private val userViewModel by lazy {
-        UserInfoViewModel(UserReporsity.get())
+        UserInfoViewModel(UserReporsity.getInstance(
+            UserDao.getInstance(),
+            UserNetwork().getInstance()))
     }
     override fun inflateContentView(): Int {
         return R.layout.fragment_jetpack_livedata_transform_map
@@ -35,5 +39,10 @@ class LiveDataTransformMapFragment: BaseStatusFragmentNew() {
         btn_change.setOnClickListener {
             userViewModel.changeValue()
         }
+        userViewModel.loading.observe(this,{
+            if (it){
+
+            }
+        })
     }
 }

@@ -16,8 +16,10 @@ import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
 import com.apache.fastandroid.DrawBasicDemoFragment
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
 import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
+import com.apache.fastandroid.demo.coorinator.CoordinatorLayoutDemoFragment
 import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
 import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
+import com.apache.fastandroid.demo.hitpit.HitPitDemoListFragment
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
@@ -54,6 +56,7 @@ class DemoListActivity : BaseActivity() {
 
                 ViewItemBean("CustomViewWidget", "自定义控件", CustomViewFragment::class.java),
                 ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
+                ViewItemBean("CoordinatorLayout", "CoordinatorLayout", CoordinatorLayoutDemoFragment::class.java),
                 ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),
                 ViewItemBean("临时验证", "临时验证", TempDemoFragment::class.java),
                 ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java),
@@ -65,6 +68,7 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("Drakeet", "Drakeet", DrakeetDemoListFragment::class.java),
                 ViewItemBean("Kotlin语法", "Kotlin语法", KotlinDemoListFragment::class.java)
                 ,ViewItemBean("TransitionMannager", "TransitionMannager", TransitionDemoFragment::class.java)
+                ,ViewItemBean("采坑", "采坑", HitPitDemoListFragment::class.java)
 
 
         )

@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.R
+import com.apache.fastandroid.jetpack.InjectUtil
+import com.apache.fastandroid.jetpack.reporsity.UserDao
+import com.apache.fastandroid.jetpack.reporsity.UserNetwork
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
@@ -18,7 +21,9 @@ class LiveDataTransformSwitchMapFragment2: BaseStatusFragmentNew() {
     }
 
     private val userViewModel by lazy {
-        UserInfoViewModel(UserReporsity.get())
+        UserInfoViewModel(UserReporsity.getInstance(
+            UserDao.getInstance(),
+            UserNetwork().getInstance()))
     }
     override fun inflateContentView(): Int {
         return R.layout.fragment_jetpack_livedata_transform_switch_map2

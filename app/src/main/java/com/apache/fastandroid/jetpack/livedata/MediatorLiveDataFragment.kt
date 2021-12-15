@@ -6,6 +6,8 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.R
+import com.apache.fastandroid.jetpack.reporsity.UserDao
+import com.apache.fastandroid.jetpack.reporsity.UserNetwork
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
@@ -22,7 +24,9 @@ class MediatorLiveDataFragment: BaseStatusFragmentNew() {
     }
 
     private val userViewModel by lazy {
-        UserInfoViewModel(UserReporsity.get())
+        UserInfoViewModel(UserReporsity.getInstance(
+            UserDao.getInstance(),
+            UserNetwork().getInstance()))
     }
     override fun inflateContentView(): Int {
         return R.layout.fragment_jetpack_livedata_media_livedata

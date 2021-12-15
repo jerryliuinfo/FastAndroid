@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.agentweb.AgentWebDemoListFragment
+import com.apache.fastandroid.demo.component.LoadSirDemoFragment
 import com.apache.fastandroid.demo.glide.GlideDemoFragment
 import com.apache.fastandroid.demo.mmkv.MMKVFragment
 import com.apache.fastandroid.demo.widget.banner.BannerDemoFragment2
@@ -22,6 +23,7 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("AgentWeb", "AgentWeb", AgentWebDemoListFragment::class.java)
                 ,ViewItemBean("AppMananger", "https://github.com/MuntashirAkon/AppManager", AgentWebDemoListFragment::class.java)
                 ,ViewItemBean("PermissionX", "PermissionX", PermissionXFragment::class.java)
+                ,ViewItemBean("LoadSir", "LoadSir", LoadSirDemoFragment::class.java)
 
         )
     }

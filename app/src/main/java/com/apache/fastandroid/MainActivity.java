@@ -2,9 +2,6 @@ package com.apache.fastandroid;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -17,9 +14,8 @@ import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.designmode.idlehandler.MyMessageQueue;
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment;
 import com.apache.fastandroid.home.HomeFragment;
+import com.apache.fastandroid.jetpack.livedata.LiveDataTransformSwitchMapFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.tesla.framework.common.util.log.FastLog;
@@ -28,10 +24,7 @@ import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
-import java.util.concurrent.CopyOnWriteArrayList;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -97,21 +90,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, ConcurrencyDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
+//        FragmentContainerActivity.launch(this, CoordinatorLayoutDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, TransitionDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
+//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
 //        FragmentContainerActivity.launch(this, ConstraintLayoutDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, TaskDispatcherDemoFragment.class,null);
-
-
-        CopyOnWriteArrayList<MyMessageQueue.OnIdleHandler> list = new CopyOnWriteArrayList();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            queryUserInfo();
-        }
-
-//        ToastUtils.showShort(BuildConfig.WEB_URL);
-//        String channel_tips = StringUtils.getString(R.string.channel_tips);
+//        FragmentContainerActivity.launch(this, HitPitDemoListFragment.class,null);
+        FragmentContainerActivity.launch(this, LiveDataTransformSwitchMapFragment.class,null);
+//        FragmentContainerActivity.launch(this, DrawableDemoFragment.class,null);
 
     }
 
@@ -131,21 +118,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    private  static final String authorities = "com.tcl.account.userInfo";
-    private static final String[] COLUM_NAME = {"accountId", "phone"};
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void queryUserInfo(){
-        Cursor cursor = getContentResolver().query(Uri.parse(authorities),COLUM_NAME,
-                null,null);
-        if(cursor != null){
-            while (cursor.moveToNext()){
-                int accountId = cursor.getInt(cursor.getColumnIndex(COLUM_NAME[0]));
-                String phone = cursor.getString(cursor.getColumnIndex(COLUM_NAME[1]));
-                NLog.d(TAG, "accountId: %s, phone:%s", accountId,phone);
-            }
-        }
-    }
 
     @Override
     public void setContentView(View view) {

@@ -6,35 +6,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:ignore="MissingDefaultResource">
 
-    <Button
-        android:id="@+id/btn_toast"
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:flow_wrapMode="aligned"
+        android:orientation="horizontal"
+        app:flow_horizontalGap="10dp"
+        app:flow_verticalGap="10dp"
+        app:constraint_referenced_ids="
+            btn_toast,btn_judge_sdk_version,btn_service_ontask_removed,
+            btn_samsung_notification_bug,btn_chekcsdkIntAtLeast,
+            btn_print_call_chain,btn_doOnMainThreadIdle
+"
+        />
+
+    <Button
+        android:id="@+id/btn_toast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ToastCompact" />
 
     <Button
         android:id="@+id/btn_judge_sdk_version"
-        app:layout_constraintStart_toEndOf="@+id/btn_toast"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:text="判断是否是Android 12版本" />
     <Button
         android:id="@+id/btn_service_ontask_removed"
-        app:layout_constraintStart_toEndOf="@+id/btn_judge_sdk_version"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:text="onTaskRemoved" />
 
     <Button
         android:id="@+id/btn_samsung_notification_bug"
-        app:layout_constraintStart_toEndOf="@+id/btn_service_ontask_removed"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -42,26 +49,18 @@
 
     <Button
         android:id="@+id/btn_chekcsdkIntAtLeast"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_samsung_notification_bug"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:text="checkSdkIntAtLeast" />
 
     <Button
         android:id="@+id/btn_print_call_chain"
-        app:layout_constraintStart_toEndOf="@+id/btn_chekcsdkIntAtLeast"
-        app:layout_constraintTop_toBottomOf="@+id/btn_samsung_notification_bug"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:text="打印代码调用链" />
 
     <Button
         android:id="@+id/btn_doOnMainThreadIdle"
-        app:layout_constraintStart_toEndOf="@+id/btn_print_call_chain"
-        app:layout_constraintTop_toBottomOf="@+id/btn_samsung_notification_bug"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"

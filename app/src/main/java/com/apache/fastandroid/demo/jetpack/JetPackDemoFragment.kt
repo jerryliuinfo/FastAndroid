@@ -21,6 +21,7 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("DataBindg", "DataBindg", DatabindingFragmentDemo::class.java)
 //                ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
                 ,ViewItemBean("WorkManager", "WorkManager", WorkManagerListDemo::class.java)
+                ,ViewItemBean("ViewModelFactory", "ViewModelFactory", WorkManagerListDemo::class.java)
         )
     }
 }

@@ -1,5 +1,7 @@
 package com.apache.fastandroid.jetpack
 
+import com.apache.fastandroid.jetpack.reporsity.UserDao
+import com.apache.fastandroid.jetpack.reporsity.UserNetwork
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserModelFactory
 
@@ -8,6 +10,9 @@ import com.apache.fastandroid.jetpack.viewmodel.UserModelFactory
  */
 object InjectUtil {
 
-    private fun getUserInfoReporsity() = UserReporsity.get()
+
+    private fun getUserInfoReporsity() = UserReporsity.getInstance(UserDao.getInstance(),
+        UserNetwork().getInstance()
+    )
     fun getUserModelFactory() = UserModelFactory(getUserInfoReporsity())
 }
