@@ -8,11 +8,18 @@ import android.os.Build;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Printer;
+import android.view.WindowManager;
 
 import com.apache.fastandroid.component.anr.AnrConfig;
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor;
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor;
+import com.apache.fastandroid.demo.component.loadsir.TimeoutCallback;
+import com.apache.fastandroid.demo.component.loadsir.callback.CustomCallback;
+import com.apache.fastandroid.demo.component.loadsir.callback.EmptyCallback;
+import com.apache.fastandroid.demo.component.loadsir.callback.ErrorCallback;
+import com.apache.fastandroid.demo.component.loadsir.callback.LoadingCallback;
 import com.apache.fastandroid.imageloader.GlideImageLoader;
 import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
 import com.apache.fastandroid.performance.startup.dispatcher.Task1;
@@ -26,10 +33,12 @@ import com.apache.fastandroid.performance.startup.faster.Task3New;
 import com.apache.fastandroid.performance.startup.faster.Task4New;
 import com.apache.fastandroid.performance.startup.faster.Task5New;
 import com.apache.fastandroid.util.MainLogUtil;
+import com.apache.fastandroid.util.extensitons.AppExtensionsKt;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.Utils;
 import com.github.anrwatchdog.ANRWatchDog;
+import com.kingja.loadsir.core.LoadSir;
 import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.squareup.leakcanary.LeakCanary;
 import com.tcl.account.accountsync.bean.TclAccountBuilder;
@@ -113,6 +122,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         config.setAppId("46121610438946717");
         TclAccountBuilder.getInstance().init(config,this);
         LaunchTimer.endRecord("Application end ");
+        initLoadSir();
     }
 
 
@@ -279,35 +289,33 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
 
     private void initLoop(){
-       /* HandlerUtil.getUIHandler().post(new Runnable() {
-            @Override
-            public void run() {
-                while (true){
-                    try{
-                        Looper.loop();
-                    }catch (Exception e){
-                        e.printStackTrace();
-                        String stack = Log.getStackTraceString(e);
-                        if (e instanceof SecurityException){
+        AppExtensionsKt.runOnUI(() -> {
+            while (true){
+                try{
+                    Looper.loop();
+                }catch (Exception e){
+                    e.printStackTrace();
+                    String stack = Log.getStackTraceString(e);
+                    if (e instanceof SecurityException){
 
-                        }
-                        else if (e instanceof WindowManager.BadTokenException){
-
-                        }  else if (e instanceof IndexOutOfBoundsException){
-
-                        }
-                        else if (
-                                stack.contains("Toast"))
-                        {
-                            e.printStackTrace();
-                        }else {
-                            throw e;
-                        }
                     }
+                    else if (e instanceof WindowManager.BadTokenException){
 
+                    }  else if (e instanceof IndexOutOfBoundsException){
+
+                    }
+                    else if (
+                            stack.contains("Toast"))
+                    {
+                        e.printStackTrace();
+                    }else {
+                        throw e;
+                    }
                 }
+
             }
-        });*/
+        });
+
         Looper.getMainLooper().setMessageLogging(new Printer() {
             @Override
             public void println(String x) {
@@ -348,7 +356,15 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
     }
 
     private void initLoadSir(){
-
+        LoadSir.beginBuilder()
+                .addCallback(new ErrorCallback())//添加各种状态页
+                .addCallback(new EmptyCallback())
+                .addCallback(new LoadingCallback())
+                .addCallback(new TimeoutCallback())
+                .addCallback(new CustomCallback())
+                //当注册LoadSir 时如果设置了默认状态页，则会展示默认状态页，否则不展示
+                .setDefaultCallback(LoadingCallback.class)//设置默认状态页
+                .commit();
     }
 }
 

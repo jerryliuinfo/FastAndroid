@@ -3,8 +3,10 @@ package com.tesla.framework.common.util
 import android.app.PendingIntent
 import android.os.Build
 import androidx.annotation.ChecksSdkIntAtLeast
-
-
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
 
 
 /**
@@ -53,6 +55,7 @@ object CommonUtil {
     @get:ChecksSdkIntAtLeast(api = Build.VERSION_CODES.GINGERBREAD)
     val isGingerbread: Boolean
         get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD
+
 
 
 }

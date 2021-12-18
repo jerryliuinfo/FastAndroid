@@ -59,13 +59,6 @@ fun removeAllMessageOnUIThreadQueue() {
 }
 
 /**
- * 在主线程中延后执行
- */
-fun runOnUIThreadPostDelay(delayTime: Long, action: () -> Unit) {
-    sUiThreadHandler.postDelayed(action, delayTime)
-}
-
-/**
  * View是否展示在界面上
  */
 fun View.isDisplayed(): Boolean {

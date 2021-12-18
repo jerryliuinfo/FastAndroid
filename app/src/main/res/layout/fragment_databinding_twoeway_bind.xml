@@ -7,6 +7,9 @@
         <variable
             name="user"
             type="com.apache.fastandroid.demo.bean.UserObservableBean" />
+        <variable
+            name="vm"
+            type="com.apache.fastandroid.demo.databinding.UserViewModel" />
 
 
     </data>

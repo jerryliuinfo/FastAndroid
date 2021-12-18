@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        tools:context="sample.kingja.loadsir.MainActivity">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="inActivity"
+            android:text="@string/activity_empty"
+            android:textAllCaps="false"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="inConstraintLayoutActivity"
+            android:text="@string/activity_constraintLayout"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showPlaceholder"
+            android:text="@string/activity_placeholder"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="inActivityWithConvertor"
+            android:text="@string/activity_with_convertor"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="inFragment"
+            android:text="@string/single_fragment_custom"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="inFragmentMutil"
+            android:text="@string/multiple_fragment"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="inFragmentViewSirPager"
+            android:text="@string/multiple_fragment_viewpager"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="inView"
+            android:text="@string/view_timeout"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="defaultCallback"
+            android:text="@string/default_loadsir_callback"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="animatCallback"
+            android:text="@string/animat_callback"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="keepTitleInActivity"
+            android:text="@string/keep_title_bar_in_activity"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="keepTitleInFragment"
+            android:text="@string/keep_title_bar_in_fragment"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:background="#d77213"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="bestPractices"
+            android:text="@string/best_practices"
+            android:textAllCaps="false"/>
+
+
+    </LinearLayout>
+</ScrollView>

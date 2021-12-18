@@ -432,6 +432,8 @@ dependencies {
     implementation rootProject.ext.thirdLib.imageLoader
     implementation rootProject.ext.thirdLib.jsbridge
 
+    implementation rootProject.ext.thirdLib.loadSir
+
     implementation rootProject.ext.thirdLib.reactivexRxjava2
     implementation rootProject.ext.thirdLib.reactivexRxandroid
 

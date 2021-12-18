@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.tesla.framework.kt.SPreference;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.common.util.network.NetworkHelper;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -26,7 +25,6 @@ public class FApplication  {
         sApplication = application;
         sContext = application.getApplicationContext();
         SPreference.setContext(sContext);
-        NetworkHelper.getInstance().registerNetworkSensor(sContext);
 
     }
 

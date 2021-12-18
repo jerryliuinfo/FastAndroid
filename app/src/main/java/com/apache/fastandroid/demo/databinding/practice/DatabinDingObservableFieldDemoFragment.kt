@@ -2,19 +2,16 @@ package com.apache.fastandroid.demo.databinding.practice
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
+import com.apache.fastandroid.BR
 import com.apache.fastandroid.R
-import com.apache.fastandroid.databinding.FragmentDatabindingOnewayBindObservableBinding
 import com.apache.fastandroid.databinding.FragmentDatabindingOnewayBindObservableFieldBinding
-import com.apache.fastandroid.demo.bean.UserObservableBean
 import com.apache.fastandroid.demo.bean.UserObservableFieldBean
-import com.tesla.framework.ui.fragment.ABaseDatabindingFragment
+import com.apache.fastandroid.demo.databinding.UserViewModel
+import com.tesla.framework.support.bean.DataBindingConfig
+import com.tesla.framework.ui.fragment.BaseDatebindingFragment
 
 
-class DatabinDingObservableFieldDemoFragment: ABaseDatabindingFragment<FragmentDatabindingOnewayBindObservableFieldBinding>() {
+class DatabinDingObservableFieldDemoFragment: BaseDatebindingFragment<FragmentDatabindingOnewayBindObservableFieldBinding>() {
     companion object{
         private const val TAG = "DatabinDingBasicDemo"
     }
@@ -48,7 +45,16 @@ class DatabinDingObservableFieldDemoFragment: ABaseDatabindingFragment<FragmentD
     }
 
 
+    private lateinit var viewModel: UserViewModel
 
+
+    override fun getDataBindingConfig(): DataBindingConfig {
+        return DataBindingConfig(R.layout.fragment_databinding_twoeway_bind, BR.vm,viewModel)
+    }
+
+    override fun initViewModel() {
+        viewModel = getFragmentScopeViewModel(UserViewModel::class.java)
+    }
 
 
 }

@@ -1,6 +1,6 @@
 package com.apache.fastandroid.jetpack.livedata
 
-import com.tesla.framework.common.util.handler.HandlerUtil
+import com.apache.fastandroid.util.extensitons.runOnUI
 import com.tesla.framework.common.util.log.NLog
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -34,7 +34,8 @@ class StockMananger(symbol:String) : Runnable {
 
     private fun loadStockData(){
         if (mLoadData.compareAndSet(false,true)){
-            HandlerUtil.getUIHandler().post(this)
+            runOnUI { this }
+
         }
     }
 
@@ -58,7 +59,10 @@ class StockMananger(symbol:String) : Runnable {
     override fun run() {
         notifyPriceChanged()
         if (mLoadData.get()){
-            HandlerUtil.getUIHandler().postDelayed(this, 2000)
+
+//            runOnUIDelay(this,2000)
+
+
         }
     }
 }

@@ -14,8 +14,8 @@ import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.demo.component.loadsir.LoadSirDemoListFragment;
 import com.apache.fastandroid.home.HomeFragment;
-import com.apache.fastandroid.jetpack.livedata.LiveDataTransformSwitchMapFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.tesla.framework.common.util.log.FastLog;
@@ -97,7 +97,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, ConstraintLayoutDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, TaskDispatcherDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, HitPitDemoListFragment.class,null);
-        FragmentContainerActivity.launch(this, LiveDataTransformSwitchMapFragment.class,null);
+//        FragmentContainerActivity.launch(this, LiveDataTransformSwitchMapFragment.class,null);
+        FragmentContainerActivity.launch(this, LoadSirDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrawableDemoFragment.class,null);
 
     }

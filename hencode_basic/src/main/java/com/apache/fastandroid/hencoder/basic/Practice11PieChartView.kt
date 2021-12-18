@@ -8,7 +8,7 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import com.tesla.framework.common.util.kt.dp
+import com.tesla.framework.kt.dp
 
 /**
  * Created by Jerry on 2020/11/12.

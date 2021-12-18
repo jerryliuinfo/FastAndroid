@@ -4,7 +4,6 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.tesla.framework.common.util.dimen.DimensUtil
 import com.tesla.framework.kt.dp
 import com.tesla.framework.kt.dpInt
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew

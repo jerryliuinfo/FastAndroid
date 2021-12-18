@@ -4,7 +4,7 @@ import android.graphics.*
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
-import com.tesla.framework.common.util.dimen.DimensUtil
+import com.tesla.framework.kt.dpInt
 
 /**
  * Created by Jerry on 2021/5/3.
@@ -70,13 +70,13 @@ class CommentItemDecoration: RecyclerView.ItemDecoration() {
 
         var positon = parent.getChildLayoutPosition(view)
         if (positon == 0){
-            outRect.top = ConvertUtils.dp2px(40f)
+            outRect.top = 40.dpInt
         }else{
-            outRect.top = DimensUtil.dp2px(10f)
+            outRect.top = 10.dpInt
         }
 
 
-        outRect.left = DimensUtil.dp2px(50f)
-        outRect.right = DimensUtil.dp2px(30f)
+        outRect.left = 50.dpInt
+        outRect.right = 30.dpInt
     }
 }

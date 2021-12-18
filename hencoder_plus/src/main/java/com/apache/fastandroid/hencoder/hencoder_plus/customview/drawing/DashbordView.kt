@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.tesla.framework.common.util.kt.dp
+import com.tesla.framework.kt.dp
 import com.tesla.framework.common.util.log.NLog
 
 
