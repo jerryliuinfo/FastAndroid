@@ -78,4 +78,9 @@
         <item name="backgroundTint">#ff0000</item>
     </style>
 
+    <style name="loadsir_Hint_Title">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

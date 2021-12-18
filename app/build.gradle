@@ -458,6 +458,10 @@ dependencies {
     debugImplementation rootProject.ext.thirdLib.AppStartFaster
 
     debugImplementation rootProject.ext.thirdLib.XUI
+    debugImplementation rootProject.ext.thirdLib.XUI
+
+    implementation rootProject.ext.thirdLib.lottie
+
 
 
 

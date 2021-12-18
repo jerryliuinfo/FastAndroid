@@ -99,6 +99,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, HitPitDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, LiveDataTransformSwitchMapFragment.class,null);
         FragmentContainerActivity.launch(this, LoadSirDemoListFragment.class,null);
+//        FragmentContainerActivity.launch(this, SampleCode1DemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrawableDemoFragment.class,null);
 
     }

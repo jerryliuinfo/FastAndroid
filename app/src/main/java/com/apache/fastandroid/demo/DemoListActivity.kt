@@ -22,6 +22,7 @@ import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
 import com.apache.fastandroid.demo.hitpit.HitPitDemoListFragment
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
+import com.apache.fastandroid.demo.sample.SampleCodeDemoListFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.transition.TransitionDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
@@ -69,6 +70,7 @@ class DemoListActivity : BaseActivity() {
                 ViewItemBean("Kotlin语法", "Kotlin语法", KotlinDemoListFragment::class.java)
                 ,ViewItemBean("TransitionMannager", "TransitionMannager", TransitionDemoFragment::class.java)
                 ,ViewItemBean("采坑", "采坑", HitPitDemoListFragment::class.java)
+                ,ViewItemBean("Sample", "Sample", SampleCodeDemoListFragment::class.java)
 
 
         )
