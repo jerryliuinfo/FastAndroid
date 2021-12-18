@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.component.loadsir;
+package com.apache.fastandroid.demo.component.loadsir.callback;
 
 import android.content.Context;
 import android.view.View;

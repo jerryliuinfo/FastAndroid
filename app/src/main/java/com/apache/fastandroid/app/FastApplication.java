@@ -15,7 +15,7 @@ import android.view.WindowManager;
 import com.apache.fastandroid.component.anr.AnrConfig;
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor;
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor;
-import com.apache.fastandroid.demo.component.loadsir.TimeoutCallback;
+import com.apache.fastandroid.demo.component.loadsir.callback.TimeoutCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.CustomCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.EmptyCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.ErrorCallback;

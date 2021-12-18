@@ -461,6 +461,8 @@ dependencies {
     debugImplementation rootProject.ext.thirdLib.XUI
 
     implementation rootProject.ext.thirdLib.lottie
+    //日志
+    implementation rootProject.ext.thirdLib.logger
 
 
 

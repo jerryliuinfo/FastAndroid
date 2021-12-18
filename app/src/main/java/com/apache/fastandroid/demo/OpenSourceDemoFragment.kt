@@ -4,6 +4,7 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.agentweb.AgentWebDemoListFragment
 import com.apache.fastandroid.demo.component.loadsir.LoadSirDemoListFragment
 import com.apache.fastandroid.demo.glide.GlideDemoFragment
+import com.apache.fastandroid.demo.logger.LoggerDemoFragment
 import com.apache.fastandroid.demo.rxjava.RxJavaDemoFragment
 
 /**
@@ -18,6 +19,7 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("AppMananger", "https://github.com/MuntashirAkon/AppManager", AgentWebDemoListFragment::class.java)
                 ,ViewItemBean("PermissionX", "PermissionX", PermissionXFragment::class.java)
                 ,ViewItemBean("LoadSir", "LoadSir", LoadSirDemoListFragment::class.java)
+                ,ViewItemBean("logger", "LoadSir", LoggerDemoFragment::class.java)
 
         )
     }
