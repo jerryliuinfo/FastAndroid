@@ -103,6 +103,8 @@ ext {
             loadSir                          :  'com.kingja.loadsir:loadsir:1.3.8',
             lottie                           :  'com.airbnb.android:lottie:2.8.0',
 //            logger                           :  "com.orhanobut:logger:2.2.0",
+            //https://github.com/jaredrummler/AndroidDeviceNames
+            device_name                           :  "com.jaredrummler:android-device-names:2.1.0",
 
 
     ]

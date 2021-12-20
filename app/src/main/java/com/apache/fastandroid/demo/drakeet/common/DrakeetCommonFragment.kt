@@ -8,6 +8,8 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.EdgeEffect
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.apache.fastandroid.MainActivity
@@ -73,6 +75,11 @@ class DrakeetCommonFragment:BaseFragment() {
                 NLog.d(TAG, "stackTrace: %s",stackTrace)
             }
         }
+        btn_getDeviceName.setOnClickListener {
+            //https://t.zsxq.com/bE2znqV
+//            DeviceName.getDeviceName("clark", "Unknown device");
+        }
+        val edgeEffect:EdgeEffect
 
     }
 

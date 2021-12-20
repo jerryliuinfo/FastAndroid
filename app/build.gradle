@@ -402,7 +402,11 @@ afterEvaluate {
             build.append("buildType:${variant.buildType}\\n")
 
             println build.toString()
-            //让 customTask 在 assembleXX 之后执行
+
+            /**
+             * https://t.zsxq.com/MfqNzbE
+             * 让 customTask 在 assembleXX 之后执行
+             */
             tasks.named("assemble$capitalized").get().finalizedBy "customTask"
         }
 
@@ -461,6 +465,7 @@ dependencies {
     debugImplementation rootProject.ext.thirdLib.XUI
 
     implementation rootProject.ext.thirdLib.lottie
+//    implementation rootProject.ext.thirdLib.device_name
     //日志
 //    implementation rootProject.ext.thirdLib.logger
 

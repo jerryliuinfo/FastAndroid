@@ -19,7 +19,7 @@
         app:constraint_referenced_ids="
             btn_toast,btn_judge_sdk_version,btn_service_ontask_removed,
             btn_samsung_notification_bug,btn_chekcsdkIntAtLeast,
-            btn_print_call_chain,btn_doOnMainThreadIdle
+            btn_print_call_chain,btn_doOnMainThreadIdle,btn_getDeviceName
 "
         />
 
@@ -65,6 +65,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="主线程空闲时执行" />
+
+    <Button
+        android:id="@+id/btn_getDeviceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="获取设备名称" />
 
 
 

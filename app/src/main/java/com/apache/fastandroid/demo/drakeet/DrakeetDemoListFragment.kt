@@ -13,6 +13,7 @@ class DrakeetDemoListFragment:BaseListFragment() {
         return arrayListOf(
              ViewItemBean("HookContext", "HookContext", HookContextFragment::class.java)
             ,ViewItemBean("ToastCompat", "ToastCompat", DrakeetCommonFragment::class.java)
+            ,ViewItemBean("EdgeEffect", "EdgeEffect", DrakeetEdgeEffectDemoFragment::class.java)
             ,ViewItemBean("动态newView时设置style", "动态newView时设置style", ProgrammaticalySetStyleFragment::class.java)
             ,ViewItemBean("接管Lopper", "接管Lopper", LooperFragment::class.java)
             ,ViewItemBean("ForeGroundService", "ForeGroundService", ForegroundServiceFragment::class.java)
@@ -20,6 +21,7 @@ class DrakeetDemoListFragment:BaseListFragment() {
             ,ViewItemBean("RecycleView#setHasStableIds", "setHasStableIds", RecycleviewStabledIdsFragment::class.java)
             ,ViewItemBean("加载大图", "ImageRegionDecoder", RegionDeocderFragment::class.java)
             ,ViewItemBean("ServiceOnTaskRemoved", "ServiceOnTaskRemoved", RegionDeocderFragment::class.java)
+            ,ViewItemBean("代码保护、隐藏", "ServiceOnTaskRemoved", RegionDeocderFragment::class.java)
 
         )
     }

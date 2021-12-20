@@ -10,4 +10,13 @@ task taskD {
     }
 }
 
+//要在一个task之后执行另一个task, 例如 执行 taskC 之后执行 taskD
 taskC.finalizedBy taskD
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'taskD'){
+        task.doFirst{
+            println 'taskD doFirst'
+        }
+    }
+}

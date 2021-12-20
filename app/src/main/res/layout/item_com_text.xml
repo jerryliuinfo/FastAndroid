@@ -7,11 +7,11 @@
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/black"
         android:textColor="@color/black"
+        android:paddingVertical="10dp"
         android:text="Hello"
         android:gravity="center"
         />

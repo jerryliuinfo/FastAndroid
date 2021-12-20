@@ -121,6 +121,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
         LaunchTimer.endRecord("Application end ");
         initLoadSir();
+//        DeviceName.init(this);
     }
 
 

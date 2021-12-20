@@ -14,7 +14,7 @@ import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment;
+import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -101,7 +101,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, LoadSirDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, LoggerDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
+        FragmentContainerActivity.launch(this, DrakeetDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, SampleCode1DemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrawableDemoFragment.class,null);
 
