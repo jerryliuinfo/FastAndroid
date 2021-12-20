@@ -10,22 +10,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn_suspend"
+        <androidx.constraintlayout.helper.widget.Flow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Suspend关键字使用" />
-
+            app:flow_horizontalGap="10dp"
+            app:constraint_referenced_ids="btn_traditional_switch_thread,btn_coroutine_switch_thread,btn_suspend,btn_view_model"
+            app:flow_wrapMode="aligned"
+            />
         <Button
-            android:id="@+id/btn_view_model"
+            android:id="@+id/btn_traditional_switch_thread"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/btn_suspend"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="20dp"
-            android:text="ViewModel中使用协程" />
+            android:text="传统线程切换" />
+        <Button
+            android:id="@+id/btn_coroutine_switch_thread"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="协程线程切换" />
+        <Button
+            android:id="@+id/btn_suspend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Suspend关键字使用" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

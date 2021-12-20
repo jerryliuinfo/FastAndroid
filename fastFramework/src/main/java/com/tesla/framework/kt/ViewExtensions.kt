@@ -48,6 +48,14 @@ fun runOnUiThread(action: () -> Unit) {
     }
 }
 
+fun runOnUiThreadDelay(action: () -> Unit,dealy:Long) {
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+        action.invoke()
+    } else {
+        sUiThreadHandler.postDelayed(action,dealy)
+    }
+}
+
 /**
  * 在子线程中运行代码
  */

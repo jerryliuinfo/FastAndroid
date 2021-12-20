@@ -14,6 +14,7 @@ import com.kingja.loadsir.core.Convertor
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import kotlinx.android.synthetic.main.loadsir_activity_activity_convertor.*
 import java.util.*
 import kotlin.concurrent.thread
 
@@ -59,7 +60,6 @@ class LoadSirConvertorActivity:BaseStatusFragmentNew() {
         runOnUIDelay({
                   loadService.showWithConvertor(mHttpResult)
         }, 1000)
-
 
     }
 

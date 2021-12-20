@@ -12,14 +12,15 @@ import android.util.Log;
 import android.util.Printer;
 import android.view.WindowManager;
 
+import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.component.anr.AnrConfig;
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor;
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor;
-import com.apache.fastandroid.demo.component.loadsir.callback.TimeoutCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.CustomCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.EmptyCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.ErrorCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.LoadingCallback;
+import com.apache.fastandroid.demo.component.loadsir.callback.TimeoutCallback;
 import com.apache.fastandroid.imageloader.GlideImageLoader;
 import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
 import com.apache.fastandroid.performance.startup.dispatcher.Task1;
@@ -40,9 +41,9 @@ import com.blankj.utilcode.util.Utils;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.kingja.loadsir.core.LoadSir;
 import com.optimize.performance.launchstarter.TaskDispatcher;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.DiskLogAdapter;
 import com.squareup.leakcanary.LeakCanary;
-import com.tcl.account.accountsync.bean.TclAccountBuilder;
-import com.tcl.account.accountsync.bean.TclConfig;
 import com.tencent.mmkv.MMKV;
 import com.tesla.framework.applike.FApplication;
 import com.tesla.framework.common.util.LaunchTimer;
@@ -117,10 +118,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         initViewPump();
         LeakCanary.install(this);
 
-        TclConfig config = new TclConfig();
-        //设置 appId, appIde 的值需向儿童教育 app 申请
-        config.setAppId("46121610438946717");
-        TclAccountBuilder.getInstance().init(config,this);
+
         LaunchTimer.endRecord("Application end ");
         initLoadSir();
     }
@@ -226,6 +224,14 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
     private void initLog(){
         NLog.setDebug(true, Logger.VERBOSE);
         NLog.trace(Logger.TRACE_ALL, getLogPath() );
+
+        com.orhanobut.logger.Logger.addLogAdapter(new AndroidLogAdapter() {
+            @Override public boolean isLoggable(int priority, String tag) {
+                return BuildConfig.DEBUG;
+            }
+        });
+
+        com.orhanobut.logger.Logger.addLogAdapter(new DiskLogAdapter());
     }
 
     private String getLogPath(){
@@ -289,7 +295,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
 
     private void initLoop(){
-        AppExtensionsKt.runOnUI(() -> {
+        AppExtensionsKt.runOnUi(() -> {
             while (true){
                 try{
                     Looper.loop();
@@ -319,7 +325,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         Looper.getMainLooper().setMessageLogging(new Printer() {
             @Override
             public void println(String x) {
-                NLog.d(TAG, "message: "+ x);
+//                NLog.d(TAG, "message: "+ x);
             }
         });
     }

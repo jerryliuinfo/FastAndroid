@@ -462,7 +462,7 @@ dependencies {
 
     implementation rootProject.ext.thirdLib.lottie
     //日志
-    implementation rootProject.ext.thirdLib.logger
+//    implementation rootProject.ext.thirdLib.logger
 
 
 

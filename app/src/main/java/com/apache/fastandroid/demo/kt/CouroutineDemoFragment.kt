@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentKotlinCouritineBinding
-import com.apache.fastandroid.home.HomeReporsitory
-import com.apache.fastandroid.network.model.HomeArticleResponse
-import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.apache.fastandroid.util.extensitons.runOnUi
 import com.tesla.framework.ui.fragment.BaseLifecycleFragment
 import kotlinx.android.synthetic.main.fragment_kotlin_couritine.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.concurrent.thread
 
 /**
  * Created by Jerry on 2021/10/28.
@@ -22,7 +20,6 @@ class CouroutineDemoFragment:BaseLifecycleFragment<FragmentKotlinCouritineBindin
     companion object{
         private const val TAG = "CouroutineDemoFragment"
     }
-    private lateinit var coroutineVewModel: CoroutineVewModel
     override fun inflateContentView(): Int {
         return R.layout.fragment_kotlin_couritine
     }
@@ -30,31 +27,91 @@ class CouroutineDemoFragment:BaseLifecycleFragment<FragmentKotlinCouritineBindin
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        btn_suspend.setOnClickListener {
-            loadData()
+        btn_traditional_switch_thread.setOnClickListener {
+            traditionalSwitchThread()
         }
-        btn_view_model.setOnClickListener {
-            coroutineVewModel.loadByViewModel()
+        btn_coroutine_switch_thread.setOnClickListener {
+            coroutineSwitchThread()
         }
     }
 
+    private fun traditionalSwitchThread() {
+        classicIoCode1 {
+            uiCode1()
+        }
+        classicIoCode2 {
+            uiCode2()
+        }
+        classicIoCode3 {
+            uiCode3()
+        }
+    }
 
-    private   fun loadData(){
+    private fun coroutineSwitchThread(){
+        //GlobalScope.launc 创建的协程是在后台执行的
         GlobalScope.launch(Dispatchers.Main) {
-            val result = loadHomeArticle()
-            NLog.d(TAG, "loadHomeArticle222 result: %s,  thread: %s",result,Thread.currentThread().name)
-
+            ioCode1()
+            uiCode1()
+            ioCode2()
+            uiCode2()
+            ioCode3()
+            uiCode3()
         }
     }
 
-    private suspend fun loadHomeArticle() {
+    suspend fun ioCode1(){
+        //切到子线程
         withContext(Dispatchers.IO){
-            NLog.d(TAG, "loadHomeArticle111 thread: %s",Thread.currentThread().name)
-            var loadHomeArticleCoSync = HomeReporsitory.newInstance().loadHomeArticleCoSync(1)
+            println("Coroutines Camp io1:${Thread.currentThread().name}")
+        }
+
+    }
+    fun uiCode1(){
+        println("Coroutines Camp ui1:${Thread.currentThread().name}")
+    }
+
+    suspend fun ioCode2(){
+        //切到子线程
+        withContext(Dispatchers.IO){
+            println("Coroutines Camp io2:${Thread.currentThread().name}")
+        }
+    }
+
+    fun uiCode2(){
+        println("Coroutines Camp ui2:${Thread.currentThread().name}")
+    }
+
+    suspend fun ioCode3(){
+        withContext(Dispatchers.IO){
+            println("Coroutines Camp io3:${Thread.currentThread().name}")
+        }
+    }
+    fun uiCode3(){
+        println("Coroutines Camp ui3:${Thread.currentThread().name}")
+    }
+
+
+    private fun classicIoCode1(block: () -> Unit){
+        thread {
+            println("classic io1: ${Thread.currentThread().name}")
+            runOnUi(block)
+        }
+    }
+    private fun classicIoCode2(block: () -> Unit){
+        thread {
+            println("classic io2: ${Thread.currentThread().name}")
+            runOnUi(block)
+        }
+    }
+    private fun classicIoCode3(block: () -> Unit){
+        thread {
+            println("classic io3: ${Thread.currentThread().name}")
+            runOnUi(block)
         }
     }
 
     override fun initViewModel() {
-        coroutineVewModel = getFragmentScopeViewModel(CoroutineVewModel::class.java)
     }
+
+
 }

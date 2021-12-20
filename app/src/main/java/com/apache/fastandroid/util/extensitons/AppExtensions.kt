@@ -17,9 +17,11 @@ fun LoadService<Any>.showEmpty(){
 }
 
 fun runOnUIDelay(block: () -> Unit, delay:Long){
-    ThreadUtils.runOnUiThreadDelayed(block,delay)
+    ThreadUtils.runOnUiThreadDelayed({
+        block.invoke()
+    },delay)
 }
 
-fun runOnUI(block: () -> Unit){
-    ThreadUtils.runOnUiThread { block }
+fun runOnUi(block: () -> Unit){
+    ThreadUtils.runOnUiThread { block.invoke() }
 }

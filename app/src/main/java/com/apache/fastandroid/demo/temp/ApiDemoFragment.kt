@@ -13,18 +13,9 @@ import androidx.core.view.ViewCompat
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
 import com.apache.fastandroid.adapter.FlowTagAdapter
-import com.apache.fastandroid.demo.temp.bean.TagInfo
 import com.blankj.utilcode.util.SPUtils
-import com.blankj.utilcode.util.ToastUtils
-import com.tcl.account.accountsync.IAccountCallback
-import com.tcl.account.accountsync.UserInfoAsyncManager
-import com.tcl.account.accountsync.bean.AccountBean
-import com.tcl.account.accountsync.bean.TclAccountBuilder
-import com.tcl.account.accountsync.bean.TclConfig
-import com.tcl.account.accountsync.util.TclAccoutException
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseFragment
-import com.xuexiang.xui.widget.flowlayout.FlowTagLayout
 import kotlinx.android.synthetic.main.temp_api_usage_demo.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -77,8 +68,6 @@ class ApiDemoFragment:BaseFragment() {
                 2 -> testCountDownLatch1()
                 3 -> testCountDownLatch2()
                 4 -> testBreakPoint()
-                5 -> syncAccountSuccess()
-                6 -> syncAccountFailed()
                 7 -> testStream()
                 8 -> testArchTaskExecutor()
             }
@@ -113,41 +102,6 @@ class ApiDemoFragment:BaseFragment() {
         }
     }
 
-    private fun syncAccountSuccess(){
-        val config = TclConfig()
-        //设置正确的appId
-        //设置正确的appId
-        config.setAppId("46121610438946717")
-        TclAccountBuilder.getInstance().init(config, activity)
-        doQuery()
-    }
-
-    private fun syncAccountFailed(){
-        val config = TclConfig()
-        //设置正确的appId
-        //设置正确的appId
-        config.setAppId("aaaaaa")
-        TclAccountBuilder.getInstance().init(config, activity)
-        doQuery()
-    }
-
-    private val COLUM_NAME = arrayOf("accountId", "phone","email")
-
-    fun queryUserInfo() {
-        val resolver: ContentResolver = context!!.contentResolver
-        val uri_user = Uri.parse("content://com.tcl.account/userInfo")
-        val cursor: Cursor? = resolver.query(uri_user, COLUM_NAME, null, null, null)
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                val accountId = cursor.getInt(cursor.getColumnIndex(COLUM_NAME[0]))
-                val phone = cursor.getString(cursor.getColumnIndex(COLUM_NAME[1]))
-                val email = cursor.getString(cursor.getColumnIndex(COLUM_NAME[2]))
-                NLog.d(MainActivity.TAG, "accountId: %s, phone:%s,email:%s", accountId, phone,email)
-                SPUtils.getInstance()
-
-            }
-        }
-    }
 
 
     fun scaleTouchSlop(){
@@ -198,25 +152,8 @@ class ApiDemoFragment:BaseFragment() {
             NLog.d(TAG, "主线程在所有任务完成后进行汇总")
         }
 
-
-
     }
 
 
-    private fun doQuery(){
-        UserInfoAsyncManager.getInstance()
-            .queryTclAccountInfo(object : IAccountCallback<AccountBean> {
-                override fun onSuccess(userBean: AccountBean) {
-                    val msg =
-                        "查询成功:accountId:" + userBean.getAccountId() + ", phone:" + userBean.getPhone()
-                    NLog.d(TAG, "onSuccess msg: %s", msg)
-                }
-
-                override fun onFailure(exception: TclAccoutException) {
-                    val msg = "查询失败:code:" + exception.code + ", msg:" + exception.msg
-                    NLog.d(TAG, "onFailure: %s", msg)
-                }
-            }, activity)
-    }
 
 }

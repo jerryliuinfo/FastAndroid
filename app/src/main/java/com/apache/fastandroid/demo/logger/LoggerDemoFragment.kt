@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.logger
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.R
 import com.orhanobut.logger.*
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
@@ -32,6 +33,7 @@ class LoggerDemoFragment:BaseStatusFragmentNew() {
   Logger.d("message")
 
   Logger.clearLogAdapters()
+
 
 
   var formatStrategy: FormatStrategy = PrettyFormatStrategy.newBuilder()
