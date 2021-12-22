@@ -23,6 +23,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("泛型", "泛型", GenericClassDemoFragment::class.java)
                 ,ViewItemBean("RX", "RX操作符", GenericClassDemoFragment::class.java)
                 ,ViewItemBean("知识点", "知识点", KnowledgeFragment::class.java)
+                ,ViewItemBean("Android 10 作用域存储适配", "Android 10 作用域存储适配", KnowledgeFragment::class.java)
                 ,ViewItemBean("指定某个View的父View类型", "指定某个View的父View类型", SpecifyParentViewDemoFragment::class.java)
                 ,ViewItemBean("反射", "反射", ReflectionDemoFragment::class.java)
                 ,ViewItemBean("Api用法", "Api用法", ApiDemoFragment::class.java)

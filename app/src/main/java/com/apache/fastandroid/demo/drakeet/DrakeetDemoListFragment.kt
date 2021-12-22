@@ -12,12 +12,11 @@ class DrakeetDemoListFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
              ViewItemBean("HookContext", "HookContext", HookContextFragment::class.java)
-            ,ViewItemBean("ToastCompat", "ToastCompat", DrakeetCommonFragment::class.java)
+            ,ViewItemBean("DrakeetCommon", "DrakeetCommon", DrakeetCommonFragment::class.java)
             ,ViewItemBean("EdgeEffect", "EdgeEffect", DrakeetEdgeEffectDemoFragment::class.java)
             ,ViewItemBean("动态newView时设置style", "动态newView时设置style", ProgrammaticalySetStyleFragment::class.java)
             ,ViewItemBean("接管Lopper", "接管Lopper", LooperFragment::class.java)
             ,ViewItemBean("ForeGroundService", "ForeGroundService", ForegroundServiceFragment::class.java)
-            ,ViewItemBean("StableId", "StableId", StabledIdsFragment::class.java)
             ,ViewItemBean("RecycleView#setHasStableIds", "setHasStableIds", RecycleviewStabledIdsFragment::class.java)
             ,ViewItemBean("加载大图", "ImageRegionDecoder", RegionDeocderFragment::class.java)
             ,ViewItemBean("ServiceOnTaskRemoved", "ServiceOnTaskRemoved", RegionDeocderFragment::class.java)

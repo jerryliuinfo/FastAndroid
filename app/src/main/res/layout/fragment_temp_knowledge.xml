@@ -4,12 +4,22 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        app:flow_horizontalGap="10dp"
+        app:flow_verticalGap="10dp"
+        app:constraint_referenced_ids="tv_message,tv_name,btn_textview_horizontal_scroll,
+        btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs"
+        />
+
     <TextView
         android:id="@+id/tv_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:text="我是文本 "
         />
 
@@ -17,8 +27,7 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_message"
+
         android:text="测试知识点"
         />
 
@@ -27,9 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="testTextViewHorizontalScroll"
-        app:layout_constraintTop_toTopOf="@+id/tv_name"
-        app:layout_constraintStart_toEndOf="@+id/tv_name"
-        android:layout_marginStart="20dp"
+
 
         />
     <Button
@@ -37,8 +44,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Collections.suffle"
-        app:layout_constraintTop_toTopOf="@+id/tv_name"
-        app:layout_constraintStart_toEndOf="@+id/btn_textview_horizontal_scroll"
         android:layout_marginStart="20dp"
         />
 
@@ -47,26 +52,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LinerlayoutCompat"
-        app:layout_constraintTop_toTopOf="@+id/tv_name"
-        app:layout_constraintStart_toEndOf="@+id/btn_collections_suffle"
+
         />
     <Button
         android:id="@+id/btn_multi_channel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="定义多渠道"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name"
-        android:layout_marginTop="20dp"
+
         />
     <Button
         android:id="@+id/btn_sisuo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="死锁"
-        app:layout_constraintStart_toEndOf="@+id/btn_multi_channel"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+
+        />
+    <Button
+        android:id="@+id/btn_varargs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kotlin可变参数"
+
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 
 
 /**
@@ -34,7 +34,7 @@ public final class ApiEngine {
 
     private static OkHttpClient sOkHttpClient;
 
-    private static OkHttpClient getOkHttpClient(){
+    public static OkHttpClient getOkHttpClient(){
         if (sOkHttpClient == null){
             OkHttpClient.Builder mBuilder = new OkHttpClient().newBuilder();
             onOkHttpClientCreated(mBuilder);
@@ -49,7 +49,7 @@ public final class ApiEngine {
             Retrofit.Builder builder = new Retrofit.Builder();
             sRetrofit =  builder
                     .addConverterFactory(CustomGsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                     .client(getOkHttpClient())
                     .baseUrl(ApiConstant.BASE_URL)
                     .build();

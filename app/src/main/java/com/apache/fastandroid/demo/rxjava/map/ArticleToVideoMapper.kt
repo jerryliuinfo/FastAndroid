@@ -7,7 +7,7 @@ import com.apache.fastandroid.network.response.BaseResponse
 /**
  * Created by Jerry on 2021/9/9.
  */
-class ArticleToVideoMapper:io.reactivex.functions.Function<BaseResponse<List<Article>>, List<UserBean>> {
+class ArticleToVideoMapper:io.reactivex.rxjava3.functions.Function<BaseResponse<List<Article>>, List<UserBean>> {
 
 
     companion object{

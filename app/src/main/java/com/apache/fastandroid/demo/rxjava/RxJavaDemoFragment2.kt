@@ -7,14 +7,12 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.demo.bean.UserBean
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseFragment
-import io.reactivex.Observable
-import io.reactivex.ObservableEmitter
-import io.reactivex.ObservableOnSubscribe
-import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.functions.BiFunction
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.ObservableEmitter
+import io.reactivex.rxjava3.core.ObservableOnSubscribe
+import io.reactivex.rxjava3.functions.BiFunction
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_rxjava2.*
 
 
@@ -182,10 +180,23 @@ class RxJavaDemoFragment2:BaseFragment() {
             })
     }
 
+  /*  subscribe({
+        stringBuilder.append("onNext: ${it} \n")
+    },{
+        NLog.d(TAG, "on Error dismiisLoading")
+        stringBuilder.append("onError: ${it.message}  \n")
+    },{
+        stringBuilder.append("onComplete \n")
+        tv_rx_result.text = stringBuilder.toString()
+    },{
+        NLog.d(TAG, "onSubscribe")
+        stringBuilder.append("onSubscribe isDiposed: ${it.isDisposed}\n")
+    })*/
+
     @SuppressLint("CheckResult")
     private fun createOperator(){
         stringBuilder.clear()
-        Observable.create(object :ObservableOnSubscribe<Int>{
+        Observable.create(object : ObservableOnSubscribe<Int> {
             override fun subscribe(e: ObservableEmitter<Int>) {
                 stringBuilder.append("Observable emit 1" + "\n");
                 e.onNext(1);
@@ -198,18 +209,9 @@ class RxJavaDemoFragment2:BaseFragment() {
                 e.onNext(4);
             }
 
-        }).subscribe({
+        }).subscribe{
             stringBuilder.append("onNext: ${it} \n")
-        },{
-            NLog.d(TAG, "on Error dismiisLoading")
-            stringBuilder.append("onError: ${it.message}  \n")
-        },{
-            stringBuilder.append("onComplete \n")
-            tv_rx_result.text = stringBuilder.toString()
-        },{
-            NLog.d(TAG, "onSubscribe")
-            stringBuilder.append("onSubscribe isDiposed: ${it.isDisposed}\n")
-        })
+        }
     }
 
     @SuppressLint("CheckResult")
@@ -226,17 +228,8 @@ class RxJavaDemoFragment2:BaseFragment() {
         }.map {
             return@map "map to $it"
         }
-            .subscribe({
+            .subscribe{
                 stringBuilder.append("onNext: ${it} \n")
-            }, {
-                NLog.d(TAG, "on Error dismiisLoading")
-                stringBuilder.append("onError: ${it.message}  \n")
-            }, {
-                stringBuilder.append("onComplete \n")
-                tv_rx_result.text = stringBuilder.toString()
-            }, {
-                NLog.d(TAG, "onSubscribe")
-                stringBuilder.append("onSubscribe isDiposed: ${it.isDisposed}\n")
-            })
+            }
     }
 }

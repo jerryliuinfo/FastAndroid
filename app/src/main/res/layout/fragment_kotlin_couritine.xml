@@ -11,12 +11,15 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.helper.widget.Flow
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal"
             app:flow_horizontalGap="10dp"
-            app:constraint_referenced_ids="btn_traditional_switch_thread,btn_coroutine_switch_thread,btn_suspend,btn_view_model"
+            app:constraint_referenced_ids="btn_traditional_switch_thread,
+            btn_coroutine_switch_thread,btn_corotine_retrofit,btn_rxjava,btn_rxjava_zip,
+            btn_couroutine_zip,btn_couroutine_cance_job,btn_mainscope"
             app:flow_wrapMode="aligned"
             />
         <Button
@@ -30,11 +33,40 @@
             android:layout_height="wrap_content"
             android:text="协程线程切换" />
         <Button
-            android:id="@+id/btn_suspend"
+            android:id="@+id/btn_corotine_retrofit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="协程和Retrofit结合" />
 
-            android:text="Suspend关键字使用" />
+        <Button
+            android:id="@+id/btn_rxjava"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="协程和Rxjava结合" />
+
+        <Button
+            android:id="@+id/btn_rxjava_zip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rxjava合并两个请求" />
+
+        <Button
+            android:id="@+id/btn_couroutine_zip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="协程合并两个请求" />
+        <Button
+            android:id="@+id/btn_couroutine_cance_job"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="使用Job取消协程" />
+
+        <Button
+            android:id="@+id/btn_mainscope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MainScope 使用" />
+
 
 
 

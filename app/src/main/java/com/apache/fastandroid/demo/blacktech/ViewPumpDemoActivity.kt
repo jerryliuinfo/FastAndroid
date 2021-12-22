@@ -8,6 +8,7 @@ import com.tesla.framework.ui.activity.BaseActivity
 
 /**
  * Created by Jerry on 2021/10/19.
+ * https://github.com/B3nedikt/ViewPump
  */
 class ViewPumpDemoActivity:BaseActivity() {
     override fun inflateContentView(): Int {

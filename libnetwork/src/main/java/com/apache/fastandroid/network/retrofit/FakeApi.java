@@ -5,8 +5,8 @@ import com.apache.fastandroid.network.model.FakeToken;
 
 import java.util.Random;
 
-import io.reactivex.Observable;
-import io.reactivex.functions.Function;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.functions.Function;
 
 /**
  * Created by Jerry on 2021/9/9.
@@ -39,7 +39,7 @@ public class FakeApi {
       return "fake_token_" + System.currentTimeMillis() % 10000;
    }
 
-   public io.reactivex.Observable<FakeThing> getFakeData(FakeToken fakeToken) {
+   public Observable<FakeThing> getFakeData(FakeToken fakeToken) {
       return Observable.just(fakeToken)
               .map(new Function<FakeToken, FakeThing>() {
                  @Override

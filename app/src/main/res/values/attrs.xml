@@ -17,6 +17,13 @@
 
 
 
+    <declare-styleable name="CircleTextStyle">
+        <attr name="CircleTextStyle_bgColor" format="reference" />
+        <attr name="CircleTextStyle_textColor" format="reference" />
+        <attr name="CircleTextStyle_textSize" format="reference|dimension" />
+        <attr name="CircleTextStyle_text_value" format="reference|string" />
+    </declare-styleable>
+
 
 
 

@@ -45,6 +45,14 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
         btn_sisuo.setOnClickListener {
 
         }
+
+        btn_varargs.setOnClickListener {
+            initvarArgs("aaa","bbb")
+        }
+    }
+
+    private fun initvarArgs(vararg params:String){
+
     }
 
     /**

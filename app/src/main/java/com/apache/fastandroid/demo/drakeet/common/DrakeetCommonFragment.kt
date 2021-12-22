@@ -7,11 +7,13 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EdgeEffect
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.os.HandlerCompat
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.UserBean
@@ -24,6 +26,7 @@ import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.common.util.toast.ToastCompat
 import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_drakeet_knowledge.*
+import java.nio.channels.AsynchronousChannel
 
 /**
  * Created by Jerry on 2021/10/15.
@@ -66,6 +69,9 @@ class DrakeetCommonFragment:BaseFragment() {
                   NLog.d(TAG," do something on main Thread idle")
             },4000)
         }
+        btn_string_hash_conflict.setOnClickListener {
+            NLog.d(BaseFragment.TAG, "Aa's hashCode is:${"Aa".hashCode()}, BB' s hashCode is: ${"BB".hashCode()}")
+        }
         var i = 0;
         btn_print_call_chain.setOnClickListener {
             i++
@@ -79,8 +85,27 @@ class DrakeetCommonFragment:BaseFragment() {
             //https://t.zsxq.com/bE2znqV
 //            DeviceName.getDeviceName("clark", "Unknown device");
         }
-        val edgeEffect:EdgeEffect
+        //btn_launchMode
 
+        /**
+         *  https://t.zsxq.com/BaiIUv3
+         */
+        btn_launchMode.setOnClickListener {
+
+        }
+        /**
+         * https://t.zsxq.com/6mI2jU3
+         * 从API28开始，Handler类增加了静态方法createAsyn。主要作用是使所有通过这个Handler发送的Message，
+         * 都会被设置为FLAG_ASYNCHRONOUS异步消息(默认是同步消息)，在搭配消息屏障使用的情况下，会被优先调用
+         */
+        btn_async_handler.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= 28){
+                HandlerCompat.createAsync(Looper.myLooper()!!).postDelayed({
+                    println("post delay with async handler")
+                },500)
+            }
+
+        }
     }
 
     /**

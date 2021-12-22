@@ -15,10 +15,10 @@ import com.blankj.utilcode.util.ToastUtils
 import com.chad.baserecyclerviewadapterhelper.entity.Person
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseFragment
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.BiFunction
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.functions.BiFunction
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_rxjava.*
 
 
@@ -72,7 +72,8 @@ class RxJavaDemoFragment:BaseFragment() {
             var observable1 = apiService.loadTopArticleCo2().map(ArticleToVideoMapper.getInstance())
             var observable2 = apiService.loadHomeArticleCo2(1)
 
-            Observable.zip(observable1,observable2,object:BiFunction<List<UserBean>, BaseResponse<HomeArticleResponse>, List<Person>>{
+            Observable.zip(observable1,observable2,object:
+                BiFunction<List<UserBean>, BaseResponse<HomeArticleResponse>, List<Person>> {
                 override fun apply(
                     t1: List<UserBean>,
                     t2: BaseResponse<HomeArticleResponse>

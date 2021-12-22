@@ -19,8 +19,8 @@
         app:constraint_referenced_ids="
             btn_toast,btn_judge_sdk_version,btn_service_ontask_removed,
             btn_samsung_notification_bug,btn_chekcsdkIntAtLeast,
-            btn_print_call_chain,btn_doOnMainThreadIdle,btn_getDeviceName
-"
+            btn_print_call_chain,btn_doOnMainThreadIdle,btn_getDeviceName,btn_string_hash_conflict
+            ,btn_launchMode"
         />
 
     <Button
@@ -73,6 +73,26 @@
         android:layout_marginStart="20dp"
         android:text="获取设备名称" />
 
+    <Button
+        android:id="@+id/btn_string_hash_conflict"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="String Hash冲突" />
+
+    <Button
+        android:id="@+id/btn_launchMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="LaunchMode" />
+
+    <Button
+        android:id="@+id/btn_async_handler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="async_handler" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

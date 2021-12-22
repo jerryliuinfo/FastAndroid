@@ -7,6 +7,7 @@ import com.apache.fastandroid.demo.constraint.practice.ConstraintBasicFragment
 import com.apache.fastandroid.demo.customview.EditTextFragment
 import com.apache.fastandroid.demo.customview.NestedScrollViewFragment
 import com.apache.fastandroid.demo.drawable.DrawableDemoFragment
+import com.apache.fastandroid.demo.drawable.DrawableListFragment
 import com.apache.fastandroid.demo.nodrawable.LoadingDrawableFragment
 import com.apache.fastandroid.demo.nodrawable.NoDrawableFragment
 import com.apache.fastandroid.demo.roudview.RoundViewDemoFragment
@@ -32,7 +33,7 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("SnapHelper", "SnapHelper", SnapHelperDemoFragment::class.java)
                 ,ViewItemBean("ShapeableImageView", "ShapeableImageView", ShapeImageviewDemoFragment::class.java)
                 ,ViewItemBean("CustomRoundTextview", "CustomRoundTextview", RoundViewDemoFragment::class.java)
-                ,ViewItemBean("自定义Drawable", "自定义Drawable", DrawableDemoFragment::class.java)
+                ,ViewItemBean("Drawable", "Drawable", DrawableListFragment::class.java)
 
 
         )
