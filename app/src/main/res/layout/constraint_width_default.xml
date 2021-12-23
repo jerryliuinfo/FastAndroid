@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+   <ImageView
+       android:id="@+id/imageview1"
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:src="@drawable/ic_launcher_background"
+       android:layout_marginTop="80dp"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       android:layout_marginStart="20dp"
+       />
+
+
+   <TextView
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:text="描述这是"
+       app:layout_constraintStart_toEndOf="@+id/imageview1"
+       app:layout_constraintEnd_toStartOf="@+id/imageview2"
+       app:layout_constraintTop_toTopOf="@id/imageview1"
+       android:paddingHorizontal="10dp"
+       app:layout_constrainedWidth="true"
+       android:gravity="center"
+       android:background="@color/comm_blue"
+       app:layout_constraintWidth_default="wrap"
+       />
+
+   <ImageView
+       android:id="@+id/imageview2"
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:src="@drawable/ic_launcher_background"
+       android:layout_marginTop="80dp"
+       app:layout_constraintEnd_toEndOf="parent"
+       android:layout_marginEnd="20dp"
+
+       app:layout_constraintTop_toTopOf="parent"
+       />
+</androidx.constraintlayout.widget.ConstraintLayout>

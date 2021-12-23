@@ -10,8 +10,9 @@ import com.apache.fastandroid.demo.BaseListFragment
 class RxJavaDemoListFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-            ViewItemBean("扔物线", "扔物线",RxJavaDemoFragment::class.java),
-            ViewItemBean("扔物线", "南尘",RxJavaDemoFragment2::class.java)
+            ViewItemBean("扔物线", "扔物线",RxJavaDemoFragment::class.java)
+            ,ViewItemBean("扔物线", "南尘",RxJavaDemoFragment2::class.java)
+            ,ViewItemBean("RxJava3", "RxJava3",RxJava3DemoFragment::class.java)
         )
     }
 

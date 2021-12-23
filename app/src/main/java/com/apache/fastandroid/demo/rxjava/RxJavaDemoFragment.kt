@@ -61,7 +61,17 @@ class RxJavaDemoFragment:BaseFragment() {
             apiService.loadTopArticleCo2()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(ArticleToVideoMapper.getInstance())
+//                .map(ArticleToVideoMapper.getInstance())
+                .map {
+                    val userList = ArrayList<UserBean>()
+                    var list = it.data
+                    for ((index, value) in list.withIndex()){
+                        if (index == 0){
+                            userList.add(UserBean(value.chapterName,value.primaryKeyId))
+                        }
+                    }
+                    return@map userList
+                }
                 .subscribe({
                     NLog.d(TAG, "data size: %s",it)
                 }, {

@@ -33,6 +33,7 @@ class ConstraintLayoutDemoFragment: BaseListFragment() {
                 ViewItemBean("Percent", "百分比", ConstraintPercentFragment::class.java),
 
                 ViewItemBean("ConstrainedWidth", " 宽度约束", ConstraintWidthFragment::class.java),
+                ViewItemBean("ConstrainedWidthDefault", " 宽度约束", ConstraintWidthDefaultFragment::class.java),
 
                 ViewItemBean("Guideline", "Guideline", ConstraintGuidelinePercentFragment::class.java),
 

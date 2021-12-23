@@ -7,7 +7,14 @@ import com.apache.fastandroid.R
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.constraint_flow_wrap_mode.*
 
+/**
+ * wrap none : 简单地把constraint_referenced_ids里面的元素组成chain,即使空间不够
+ * rap chain : 根据空间的大小和元素的大小组成一条或者多条 chain
+ * wrap aligned : wrap chain类似，但是会对齐
+ *
+ *         app:flow_maxElementsWrap="4"：每行最多显示几个元素
 
+ */
 class ConstraintFlowWrapModeFragment: BaseStatusFragmentNew() {
     override fun inflateContentView(): Int {
         return R.layout.constraint_flow_wrap_mode

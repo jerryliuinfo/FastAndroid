@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/flow"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,6 +19,7 @@
         app:flow_verticalGap="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        app:flow_wrapMode="aligned"
         />
 
   <View

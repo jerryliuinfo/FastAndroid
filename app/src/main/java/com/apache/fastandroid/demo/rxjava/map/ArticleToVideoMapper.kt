@@ -3,11 +3,12 @@ package com.apache.fastandroid.demo.rxjava.map
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.network.model.Article
 import com.apache.fastandroid.network.response.BaseResponse
+import io.reactivex.rxjava3.functions.Function
 
 /**
  * Created by Jerry on 2021/9/9.
  */
-class ArticleToVideoMapper:io.reactivex.rxjava3.functions.Function<BaseResponse<List<Article>>, List<UserBean>> {
+class ArticleToVideoMapper:Function<BaseResponse<List<Article>>, List<UserBean>> {
 
 
     companion object{
