@@ -1,21 +1,24 @@
-package com.apache.fastandroid.demo.adapter
+package com.apache.fastandroid.demo.decoration
 
 import android.graphics.*
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
+import com.orhanobut.logger.Logger
+import com.tesla.framework.kt.dp
 import com.tesla.framework.kt.dpInt
 
 /**
  * Created by Jerry on 2021/5/3.
  */
 class CommentItemDecoration: RecyclerView.ItemDecoration() {
-    private val marginHorizontal = ConvertUtils.dp2px(2f)
+    private val marginHorizontal = 2.dp
+    private var RADIS = 10.dp
 
     private val mCirclePaint = Paint().apply {
         style = Paint.Style.STROKE
         strokeWidth = 5f
-        color = Color.BLUE
+        color = Color.RED
         isAntiAlias = true
     }
 
@@ -36,19 +39,19 @@ class CommentItemDecoration: RecyclerView.ItemDecoration() {
 
         for (index in 0 until parent.childCount){
           var childView = parent.getChildAt(index)
+            //getOffset 中的 outRect 左边的间距
             var leftDecorationWidth = layoutManager.getLeftDecorationWidth(childView)
+            var rightDecorationWidth = layoutManager.getRightDecorationWidth(childView)
+            var topDecorationHeight = layoutManager.getTopDecorationHeight(childView)
+            var bottomDecorationHeight = layoutManager.getBottomDecorationHeight(childView)
+            Logger.d("onDraw leftDecorationWidth:${leftDecorationWidth}, rightDecorationWidth:${rightDecorationWidth}")
 
-            var topDecorationHeight = layoutManager.getTopDecorationHeight(childView);
-            var rightDecorationWidth = layoutManager.getRightDecorationWidth(childView);
-            var bottomDecorationHeight = layoutManager.getBottomDecorationHeight(childView);
+            val centerX = leftDecorationWidth + RADIS * 2 + mCirclePaint.strokeWidth / 2
+            c.drawCircle(centerX, ((childView.top + childView.bottom) / 2).toFloat(), RADIS,mCirclePaint)
 
 
-            val left = ConvertUtils.dp2px(leftDecorationWidth / 2f) - mCirclePaint.strokeWidth - marginHorizontal
-            c.drawCircle(left, ((childView.top + childView.bottom) / 2).toFloat(), 20f,mCirclePaint)
-
-            val rouncRect = RectF(leftDecorationWidth.toFloat(), childView.bottom.toFloat(), (childView.getWidth() + leftDecorationWidth).toFloat(), (childView.bottom+ bottomDecorationHeight).toFloat())
-
-            c.drawRoundRect(rouncRect,5f,5f,mRoundPaint)
+            c.drawLine(leftDecorationWidth.toFloat(),((childView.bottom + childView.top)/2).toFloat(),
+                childView.right.toFloat(), ((childView.bottom + childView.top)/2).toFloat(),mRoundPaint)
       }
 
     }
@@ -70,13 +73,11 @@ class CommentItemDecoration: RecyclerView.ItemDecoration() {
 
         var positon = parent.getChildLayoutPosition(view)
         if (positon == 0){
-            outRect.top = 40.dpInt
+            outRect.top = 0.dpInt
         }else{
             outRect.top = 10.dpInt
         }
-
-
-        outRect.left = 50.dpInt
+        outRect.left = 30.dpInt
         outRect.right = 30.dpInt
     }
 }

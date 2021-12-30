@@ -16,7 +16,9 @@
         app:flow_horizontalGap="10dp"
         app:flow_verticalGap="10dp"
         app:flow_maxElementsWrap="4"
-        app:constraint_referenced_ids="btn_simple,btn_map,btn_zip,btn_concact,btn_delay,btn_merge,btn_distinct,btn_filter"
+        app:constraint_referenced_ids="btn_simple,btn_map,btn_switch_map,btn_flat_map,btn_concact_map,
+        btn_zip,btn_concact,btn_merge,btn_delay,btn_timer,btn_filter,btn_take,btn_take_until,
+            btn_take_while,btn_throttle_first,btn_throttle_last,btn_buffer,btn_debounce"
         />
 
 
@@ -35,8 +37,27 @@
         android:layout_height="wrap_content"
         android:text="Map"
         android:background="@color/edu_color_blue"
-
-
+        />
+    <Button
+        android:id="@+id/btn_switch_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SwitchMap"
+        android:background="@color/edu_color_blue"
+        />
+    <Button
+        android:id="@+id/btn_flat_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FlatMap"
+        android:background="@color/edu_color_blue"
+        />
+    <Button
+        android:id="@+id/btn_concact_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ConcactMap"
+        android:background="@color/edu_color_blue"
         />
     <Button
         android:id="@+id/btn_zip"
@@ -54,14 +75,6 @@
 
         />
 
-    <Button
-        android:id="@+id/btn_delay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delay"
-        />
-
-
 
     <Button
         android:id="@+id/btn_merge"
@@ -70,22 +83,68 @@
         android:text="Merge"
 
         />
-
     <Button
-        android:id="@+id/btn_distinct"
+        android:id="@+id/btn_delay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Distinct"
+        android:text="Delay"
+        />
+    <Button
+        android:id="@+id/btn_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timer"
 
         />
+
     <Button
         android:id="@+id/btn_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Filter"
         />
-
-
+    <Button
+        android:id="@+id/btn_take"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take"
+        />
+    <Button
+        android:id="@+id/btn_take_until"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TakeUntil"
+        />
+    <Button
+        android:id="@+id/btn_take_while"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TakeWhile"
+        />
+    <Button
+        android:id="@+id/btn_throttle_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="throttleFirst"
+        />
+    <Button
+        android:id="@+id/btn_throttle_last"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="throttleLast"
+        />
+    <Button
+        android:id="@+id/btn_buffer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="buffer"
+        />
+    <Button
+        android:id="@+id/btn_debounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="debounce"
+        />
 
     <TextView
         android:id="@+id/tv_rx_result"
@@ -95,6 +154,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.8"
         android:text=""
 
         />

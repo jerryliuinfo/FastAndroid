@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.demo.adapter.CommentAdapter
-import com.apache.fastandroid.demo.adapter.CommentItemDecoration
+import com.apache.fastandroid.demo.decoration.CommentItemDecoration
 import com.blankj.utilcode.util.ResourceUtils
+import com.tesla.framework.kt.removeDecorations
 import kotlinx.android.synthetic.main.android_basic_recycleview_adapter.recycleview
 import kotlinx.android.synthetic.main.recycleview_item_decoration.*
 
@@ -19,43 +20,47 @@ class RecycleViewItemDecorationFragment: BaseStatusFragmentNew() {
         return R.layout.recycleview_item_decoration
     }
 
-    private lateinit var defaultDividerItemDecoration: DividerItemDecoration
-    private lateinit var commentItemDecoration: CommentItemDecoration
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
 
-        val adapter = CommentAdapter(listOf("aaa","bbb", "ccc","ddd"))
-        recycleview.adapter = adapter
-        recycleview.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL,false)
+        val myAdapter = CommentAdapter(listOf("aaa","bbb", "ccc","ddd"))
 
-
-
-        defaultDividerItemDecoration = DividerItemDecoration(activity,DividerItemDecoration.VERTICAL)
-        recycleview.addItemDecoration(defaultDividerItemDecoration)
-
-
-        commentItemDecoration = CommentItemDecoration()
-
+        recycleview.apply {
+            adapter = myAdapter
+            layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL,false)
+            addItemDecoration(DividerItemDecoration(activity,DividerItemDecoration.VERTICAL))
+        }
+        tv_default_divider.setOnClickListener {
+            recycleview.let {
+                it.removeDecorations()
+                it.addItemDecoration(DividerItemDecoration(activity,DividerItemDecoration.VERTICAL))
+            }
+        }
 
         tv_modify_divider.setOnClickListener {
-            recycleview.removeItemDecoration(defaultDividerItemDecoration)
-            defaultDividerItemDecoration.setDrawable(ResourceUtils.getDrawable(R.drawable.drawable_divider))
-            recycleview.addItemDecoration(defaultDividerItemDecoration)
+            recycleview.let {
+                it.removeDecorations()
+                it.addItemDecoration(DividerItemDecoration(context,RecyclerView.VERTICAL).apply {
+                    setDrawable(ResourceUtils.getDrawable(R.drawable.drawable_divider))
+                })
+            }
+
         }
 
         tv_custom_divider.setOnClickListener {
-            recycleview.removeItemDecoration(defaultDividerItemDecoration)
+            recycleview.let {
+                it.removeDecorations()
+                it.addItemDecoration(CommentItemDecoration())
+            }
 
-            commentItemDecoration.let {
-               recycleview.removeItemDecoration(commentItemDecoration)
-           }
-            recycleview.addItemDecoration(commentItemDecoration)
         }
 
 
 
     }
+
+
 
 
 

@@ -5,6 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * author: jerry
@@ -50,7 +51,11 @@ fun runOnUiThread(action: () -> Unit) {
 
 fun runOnUiThreadDelay(action: () -> Unit,dealy:Long) {
     if (Looper.myLooper() == Looper.getMainLooper()) {
-        action.invoke()
+        sUiThreadHandler.postDelayed({
+               action.invoke()
+        },dealy)
+
+
     } else {
         sUiThreadHandler.postDelayed(action,dealy)
     }
@@ -107,5 +112,11 @@ fun View.gone() {
 fun View.visible() {
     if (visibility != View.VISIBLE) {
         visibility = View.VISIBLE
+    }
+}
+
+fun RecyclerView.removeDecorations(){
+    for (i in 0 until itemDecorationCount){
+        removeItemDecorationAt(i)
     }
 }

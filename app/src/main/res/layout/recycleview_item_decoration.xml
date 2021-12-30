@@ -18,41 +18,40 @@
             app:layout_constraintTop_toTopOf="parent"
             />
 
-        <TextView
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycleview"
+            android:layout_marginTop="200dp"
+            android:orientation="horizontal"
+            app:flow_wrapMode="aligned"
+            app:flow_horizontalGap="10dp"
+            app:constraint_referenced_ids="tv_default_divider,tv_modify_divider,tv_custom_divider"
+            />
+        <Button
+            android:id="@+id/tv_default_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="系统默认分割线"
+            />
+
+        <Button
             android:id="@+id/tv_modify_divider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycleview"
-            android:paddingVertical="10dp"
-            android:text="修改Divider样式"
+            android:text="修改系统分割线样式"
 
             />
 
-        <TextView
+        <Button
             android:id="@+id/tv_custom_divider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_modify_divider"
-            android:paddingVertical="10dp"
-            android:text="自定义分割线样式"
+            android:text="自定义ItemDecoration"
 
             />
-        <TextView
-            android:id="@+id/tv_custom_divider2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_custom_divider"
-            android:paddingVertical="10dp"
-            android:text="圆角背景"
-            android:background="@drawable/bg_category_label_selected"
 
-            />
 
 
 
