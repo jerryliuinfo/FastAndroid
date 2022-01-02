@@ -34,9 +34,9 @@ import com.apache.fastandroid.performance.startup.faster.Task3New;
 import com.apache.fastandroid.performance.startup.faster.Task4New;
 import com.apache.fastandroid.performance.startup.faster.Task5New;
 import com.apache.fastandroid.util.MainLogUtil;
-import com.apache.fastandroid.util.extensitons.AppExtensionsKt;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.Utils;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.kingja.loadsir.core.LoadSir;
@@ -89,7 +89,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
 //        initTaskByTaskDispatcher();
         initTaskByAppFaster();
-        initLoop();
+//        initLoop();
         FApplication.class.getSimpleName();
         // data/data/com.apache.fastandroid/files/mmkv
         String rootDir = MMKV.initialize(this);
@@ -296,30 +296,33 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
 
     private void initLoop(){
-        AppExtensionsKt.runOnUi(() -> {
-            while (true){
-                try{
-                    Looper.loop();
-                }catch (Exception e){
-                    e.printStackTrace();
-                    String stack = Log.getStackTraceString(e);
-                    if (e instanceof SecurityException){
-
-                    }
-                    else if (e instanceof WindowManager.BadTokenException){
-
-                    }  else if (e instanceof IndexOutOfBoundsException){
-
-                    }
-                    else if (
-                            stack.contains("Toast"))
-                    {
+        ThreadUtils.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    try{
+                        Looper.loop();
+                    }catch (Exception e){
                         e.printStackTrace();
-                    }else {
-                        throw e;
-                    }
-                }
+                        String stack = Log.getStackTraceString(e);
+                        if (e instanceof SecurityException){
 
+                        }
+                        else if (e instanceof WindowManager.BadTokenException){
+
+                        }  else if (e instanceof IndexOutOfBoundsException){
+
+                        }
+                        else if (
+                                stack.contains("Toast"))
+                        {
+                            e.printStackTrace();
+                        }else {
+                            throw e;
+                        }
+                    }
+
+                }
             }
         });
 

@@ -51,7 +51,7 @@ class RecycleViewItemDecorationFragment: BaseStatusFragmentNew() {
         tv_custom_divider.setOnClickListener {
             recycleview.let {
                 it.removeDecorations()
-                it.addItemDecoration(CommentItemDecoration())
+                it.addItemDecoration(CommentItemDecoration(it.context))
             }
 
         }

@@ -14,21 +14,35 @@ import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.kt.CouroutineDemoFragment;
+import com.apache.fastandroid.demo.rxjava.RxJavaDemoListFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
+import com.orhanobut.logger.Logger;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.ui.activity.BaseActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
+import java.util.concurrent.TimeUnit;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableSource;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.BiFunction;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.functions.Function;
+import io.reactivex.rxjava3.functions.Predicate;
+import io.reactivex.rxjava3.functions.Supplier;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 @AptTest(path = "main")
 @BindPath("login/login")
@@ -58,6 +72,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mNavigationView = findViewById(R.id.navigation_view);
     }
 
+    private UserBean userBean;
     @CostTime
     @Override
     public void layoutInit(Bundle savedInstanceState) {
@@ -100,18 +115,183 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, LiveDataTransformSwitchMapFragment.class,null);
 //        FragmentContainerActivity.launch(this, LoadSirDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, LoggerDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, RxJavaDemoListFragment.class,null);
+//        FragmentContainerActivity.launch(this, RecycleViewItemDecorationFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrakeetDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, CustomViewFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrawableListFragment.class,null);
 //        FragmentContainerActivity.launch(this, SampleCode1DemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrawableDemoFragment.class,null);
 
+      /*  Observable.defer(new Supplier<ObservableSource<?>>() {
+            @Override
+            public ObservableSource<String> get() throws Throwable {
+                return Observable.just(getData());
+            }
+        }).doOnSubscribe(new Consumer<Disposable>() {
+            @Override
+            public void accept(Disposable disposable) throws Throwable {
 
+            }
+        }).subscribe(new Observer<String>() {
+            @Override
+            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(@io.reactivex.rxjava3.annotations.NonNull String s) {
+
+            }
+
+
+            @Override
+            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });*/
+
+        Observable.defer(new Supplier<ObservableSource<?>>() {
+            @Override
+            public ObservableSource<String> get() throws Throwable {
+                return Observable.just(getData());
+            }
+        }).doOnSubscribe(new Consumer<Disposable>() {
+            @Override
+            public void accept(Disposable disposable) throws Throwable {
+                Logger.d("doOnSubscribe");
+
+            }
+        }).subscribe(s->{
+            Logger.d("Consume Data :" + s);
+        });
+
+
+
+        Observable<Long> timerObservable = Observable.timer(5, TimeUnit.SECONDS);
+        timerObservable.subscribe(new Observer<Long>() {
+            @Override
+            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(@io.reactivex.rxjava3.annotations.NonNull Long aLong) {
+
+            }
+
+            @Override
+            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+        Observable.interval(2,TimeUnit.SECONDS).flatMap(new Function<Long, ObservableSource<Boolean>>() {
+
+            @Override
+            public ObservableSource<Boolean> apply(Long aLong) throws Throwable {
+                return Observable.just(userBean != null);
+            }
+        }).takeUntil(new Predicate<Boolean>() {
+            @Override
+            public boolean test(Boolean aBoolean) throws Throwable {
+                return aBoolean;
+            }
+        }).subscribe(new Observer<Boolean>() {
+            @Override
+            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(@io.reactivex.rxjava3.annotations.NonNull Boolean aBoolean) {
+
+            }
+
+            @Override
+            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+        Observable.just(1,2,3,4)
+                .switchMap(new Function<Integer, ObservableSource<String>>() {
+                    @Override
+                    public ObservableSource<String> apply(Integer integer) throws Throwable {
+                        return null;
+                    }
+                }).subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@io.reactivex.rxjava3.annotations.NonNull String s) {
+
+                    }
+
+                    @Override
+                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
+        timerObservable.zipWith(Observable.interval(0, 1, TimeUnit.SECONDS), new BiFunction<Long, Long, String>() {
+
+            @Override
+            public String apply(Long aLong, Long aLong2) throws Throwable {
+                return null;
+            }
+        });
+        Observable.just("aa").zipWith(Observable.interval(0, 1, TimeUnit.SECONDS), new BiFunction<String, Long, Integer>() {
+            @Override
+            public Integer apply(String s, Long aLong) throws Throwable {
+                return null;
+            }
+        });
+        Observable.just("Hello").retryWhen(new Function<Observable<Throwable>, ObservableSource<?>>() {
+            @Override
+            public ObservableSource<?> apply(Observable<Throwable> throwableObservable) throws Throwable {
+                if (retryCount <= 3){
+                    return Observable.timer(2,TimeUnit.SECONDS);
+                }
+                return Observable.error(new IllegalArgumentException("load date error"));
+            }
+        });
 
 
     }
 
+    private int retryCount = 0;
+
+    private String getData(){
+        Logger.d("getData");
+        return "Hello";
+
+    }
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);

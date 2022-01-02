@@ -7,20 +7,21 @@ import android.widget.TextView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.demo.bean.UserBean
 import com.orhanobut.logger.Logger
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.kt.runOnUiThreadDelay
 import com.tesla.framework.ui.fragment.BaseFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.annotations.NonNull
 import io.reactivex.rxjava3.core.*
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.functions.BiFunction
 import io.reactivex.rxjava3.functions.Predicate
 import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.rxjava3.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_rxjava2.*
 import kotlinx.android.synthetic.main.fragment_rxjava3.*
+import java.lang.IllegalArgumentException
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
@@ -29,7 +30,7 @@ import kotlin.random.Random
 /**
  * Created by Jerry on 2021/9/9.
  */
-open class RxJava3DemoFragment:BaseFragment() {
+open class RxJava3OperatorDemoFragment:BaseFragment() {
     companion object{
         private const val TAG = "RxJava3DemoFragment"
         private const val LINE_SEPERATOR = "\n"
@@ -83,6 +84,12 @@ open class RxJava3DemoFragment:BaseFragment() {
         btn_filter.setOnClickListener {
             filter()
         }
+        btn_distinct.setOnClickListener {
+            distinct()
+        }
+        btn_distinct_until_change.setOnClickListener {
+            distinctUntilChange()
+        }
         btn_take.setOnClickListener {
             take()
         }
@@ -105,20 +112,184 @@ open class RxJava3DemoFragment:BaseFragment() {
         btn_debounce.setOnClickListener {
             debounce()
         }
+        btn_interval.setOnClickListener {
+            interval()
+        }
+        btn_skip.setOnClickListener {
+            skip();
+        }
+        btn_defer.setOnClickListener {
+            defer()
+        }
+        btn_last.setOnClickListener {
+            last()
+        }
+        btn_publish_subject.setOnClickListener {
+            publishSubject()
+        }
+        btn_single.setOnClickListener {
+            single()
+        }
+        btn_from_iterable.setOnClickListener {
+            flatMap2()
+        }
+
     }
 
+    /**
+     * 只发射单个数据或错误事件
+     * Single的SingleObserver中只有onSuccess、onError，并没有onComplete。这是 Single 跟其他四种被观察者最大的区别。其他的它的使用和Observable差不多
+     */
+    private fun single() {
+        Single.create<String> {
+            it.onSuccess("Hello")
+        }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getSingerObserver())
+    }
+
+    /**
+     * 去重 过滤掉重复的元素
+     * 输出 AA,BB,CC,DD,EE
+     * 
+     */
+    private fun distinct() {
+       getStringObservable()
+           .distinct()
+           .subscribeOn(Schedulers.io())
+           .observeOn(AndroidSchedulers.mainThread())
+           .subscribe(getStringObserver())
+    }
+
+    /**
+     * 过滤掉连续重复的元素,不连续重复的是不过滤
+     * 输出 AA,BB,AA,CC,DD,EE
+     */
+    private fun distinctUntilChange() {
+        getStringObservable()
+            .distinctUntilChanged()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getStringObserver())
+    }
+
+    private fun publishSubject() {
+        var source = PublishSubject.create<String>()
+        source.subscribe(getStringObserver())
+        source.onNext("A")
+        source.onNext("B")
+        source.onNext("C")
+//        source.subscribe(getStringObserver2())
+        source.onNext("D")
+        source.onComplete()
+
+    }
+
+    /**
+     * 发射最后一个元素，如果最后一个元素为空，则发送默认数据 "A1"
+     */
+    private fun last() {
+        getStringObservable().last("A1")
+//        Observable.empty<String>().last("A1")
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getSingerObserver())
+
+    }
+
+    private fun getSingerObserver():SingleObserver<String>{
+        return object :SingleObserver<String>{
+            override fun onSubscribe(d: Disposable) {
+                textview.text = ""
+                Logger.d("onSubscribe  ${d.isDisposed}")
+            }
+
+
+            override fun onError(e: Throwable) {
+                textview.append(" onError: ${e.message}")
+                textview.append(LINE_SEPERATOR)
+                Logger.d(" onError: ${e.message}")
+            }
+
+            override fun onSuccess(t: String?) {
+                textview.append(" onNext: value:${t}")
+                textview.append(LINE_SEPERATOR)
+                Logger.d(" onNext: $t")
+            }
+
+        }
+    }
+
+    /**
+     * Defer是延迟的意思。Observable.defer是通过延迟创建数据生产者(Observable)的方式推迟数据生产的时间。
+     * 直到注册的时候才开始生产数据.
+     *
+     */
+    private fun defer() {
+     Observable.defer<String> {
+            Observable.just<String>(
+                getData()
+            )
+        }
+         .doOnSubscribe {
+             Logger.d("Subscribe") }
+         .subscribe { s: Any ->
+            Logger.d(
+                "Consume Data :$s"
+            )
+        }
+
+    }
+
+    private fun getData():String{
+        Logger.d("produce data Hello")
+        return "Hello"
+    }
+
+    /**
+     * 跳过前面 count 个数据反射
+     */
+    private fun skip() {
+        getObservable().skip(2)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getStringObserver())
+    }
+
+    private val disposables = CompositeDisposable()
+
+    private fun interval() {
+        Observable.interval(2,TimeUnit.SECONDS)
+            .flatMap <Long>{
+                if (it > 5){
+                    return@flatMap Observable.error(IllegalArgumentException("invalid num"))
+                }else{
+                    return@flatMap Observable.just(it)
+                }
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getIntObserver())
+    }
+
+    /**
+     *
+     * debounce操作符是对源Observable间隔期产生的结果进行过滤，
+     * 如果在这个规定的间隔期内没有别的结果产生，则将这个结果提交给订阅者，否则忽略该结果，原理有点像光学防抖.
+     */
     private fun debounce() {
         getObservable().debounce(300,TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(getObserver())
+            .subscribe(getStringObserver())
     }
 
     /**
      * buffer(count)将原来的observable按照参数count组成长度为count的集合，以集合的形式发射出去
      */
     private fun buffer() {
-        Observable.fromArray("A","B","C","D","E","F","G","H").buffer(3)
+//        Observable.fromArray("A","B","C","D","E","F","G","H").buffer(3)
+        Observable.fromArray("A","B","C","D","E","F","G","H").buffer(3,2)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object :Observer<List<String>>{
@@ -163,7 +334,7 @@ open class RxJava3DemoFragment:BaseFragment() {
             return@concatMap Observable.just(it.toString() +"x").delay(Random.nextLong(2),TimeUnit.SECONDS,Schedulers.io())
         }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(getObserver())
+            .subscribe(getStringObserver())
     }
 
     /**
@@ -177,7 +348,18 @@ open class RxJava3DemoFragment:BaseFragment() {
 
             }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(getObserver())
+            .subscribe(getStringObserver())
+    }
+    private fun flatMap2() {
+        Observable.just(arrayListOf(UserBean("zhangsan",1),UserBean("lisi",2)))
+            .flatMap <UserBean>{
+                return@flatMap Observable.fromIterable(it)
+            }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                Logger.d("userBean:${it}")
+            }
+
     }
 
 
@@ -195,7 +377,7 @@ open class RxJava3DemoFragment:BaseFragment() {
 
             }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(getObserver())
+            .subscribe(getStringObserver())
     }
 
     /**
@@ -205,7 +387,7 @@ open class RxJava3DemoFragment:BaseFragment() {
         getObservable().throttleLast(500,TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(getObserver())
+            .subscribe(getStringObserver())
     }
 
     /**
@@ -215,7 +397,7 @@ open class RxJava3DemoFragment:BaseFragment() {
         getObservable().throttleFirst(300, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(getObserver())
+            .subscribe(getStringObserver())
 
 
     }
@@ -254,7 +436,7 @@ open class RxJava3DemoFragment:BaseFragment() {
         }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(getObserver())
+            .subscribe(getStringObserver())
 
     }
 
@@ -284,27 +466,27 @@ open class RxJava3DemoFragment:BaseFragment() {
         })
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(getObserver())
+            .subscribe(getStringObserver())
 
     }
 
     /**
-     * take(long count): 最大反射个数
+     * take(long count): 最大反射个数, 输入 "AA","BB","CC"
      */
     private fun take() {
         Observable.just("AA","BB","CC","DD","EE")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .take(3)
-            .subscribe(getObserver())
+            .subscribe(getStringObserver())
 
     }
 
     private fun getStringObservable():Observable<String>{
-        return  Observable.just("Aloha","Beta","Cupcake","Dougnut","Eclair", "Honeycomb", "Ice cream sandwitch")
+        return  Observable.just("AA","AA","BB","AA","CC","DD","EE")
 
     }
-     fun getObserver(): Observer<in String> {
+     fun getStringObserver(): Observer<in String> {
         return object : Observer<String> {
             override fun onSubscribe(d: Disposable) {
                 textview.text = ""
@@ -330,10 +512,64 @@ open class RxJava3DemoFragment:BaseFragment() {
             }
         }
     }
+    fun getStringObserver2(): Observer<in String> {
+        return object : Observer<String> {
+            override fun onSubscribe(d: Disposable) {
+                Logger.d("second onSubscribe  ${d.isDisposed}")
+            }
 
+            override fun onNext(t: String) {
+                textview.append("second onNext: value:${t}")
+                textview.append(LINE_SEPERATOR)
+                Logger.d(" second onNext: $t")
+            }
+
+            override fun onError(e: Throwable) {
+                textview.append("second onError: ${e.message}")
+                textview.append(LINE_SEPERATOR)
+                Logger.d("second onError: ${e.message}")
+            }
+
+            override fun onComplete() {
+                textview.append("second onComplete")
+                textview.append(LINE_SEPERATOR)
+                Logger.d("second onComplete")
+            }
+        }
+    }
+
+    fun getIntObserver(): Observer<in Long> {
+        return object : Observer<Long> {
+            override fun onSubscribe(d: Disposable) {
+                textview.text = ""
+                Logger.d("onSubscribe  ${d.isDisposed}")
+            }
+
+            override fun onNext(t: Long) {
+                textview.append(" onNext: value:${t}")
+                textview.append(LINE_SEPERATOR)
+                Logger.d(" onNext: $t")
+            }
+
+            override fun onError(e: Throwable) {
+                textview.append(" onError: ${e.message}")
+                textview.append(LINE_SEPERATOR)
+                Logger.d(" onError: ${e.message}")
+            }
+
+            override fun onComplete() {
+                textview.append(" onComplete")
+                textview.append(LINE_SEPERATOR)
+                Logger.d("onComplete")
+            }
+        }
+    }
 
     private fun filter() {
         Observable.just(1,2,3,4,5,6)
+            .filter {
+                return@filter it % 2 == 0
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object :Observer<Int>{
@@ -575,7 +811,9 @@ open class RxJava3DemoFragment:BaseFragment() {
                 }
 
                 override fun onNext(value: String) {
+//                    textview.append(" onNext: value:$value")
                     textview.append(" onNext: value:$value")
+
                     textview.append(LINE_SEPERATOR)
                     Logger.d(" onNext: $value")
 
@@ -635,6 +873,11 @@ open class RxJava3DemoFragment:BaseFragment() {
     }
 
 
+    override fun onDestroy() {
+        super.onDestroy()
+        //don't emit after destroy
+        disposables.clear()
+    }
 
 
 }

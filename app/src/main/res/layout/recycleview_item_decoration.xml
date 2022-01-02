@@ -16,6 +16,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:paddingLeft="20dp"
+
             />
 
         <androidx.constraintlayout.helper.widget.Flow

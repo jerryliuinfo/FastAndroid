@@ -12,7 +12,8 @@ class RxJavaDemoListFragment:BaseListFragment() {
         return arrayListOf(
             ViewItemBean("扔物线", "扔物线",RxJavaDemoFragment::class.java)
             ,ViewItemBean("扔物线", "南尘",RxJavaDemoFragment2::class.java)
-            ,ViewItemBean("RxJava3", "RxJava3",RxJava3DemoFragment::class.java)
+            ,ViewItemBean("RxJava3", "RxJava3",RxJava3OperatorDemoFragment::class.java)
+            ,ViewItemBean("RxJava应用实战", "RxJava应用实战",RxJava3PracticeFragment::class.java)
         )
     }
 

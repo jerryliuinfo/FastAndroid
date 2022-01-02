@@ -1,8 +1,11 @@
 package com.apache.fastandroid.demo.decoration
 
+import android.content.Context
+import android.content.res.Resources
 import android.graphics.*
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.apache.fastandroid.R
 import com.blankj.utilcode.util.ConvertUtils
 import com.orhanobut.logger.Logger
 import com.tesla.framework.kt.dp
@@ -11,7 +14,7 @@ import com.tesla.framework.kt.dpInt
 /**
  * Created by Jerry on 2021/5/3.
  */
-class CommentItemDecoration: RecyclerView.ItemDecoration() {
+class CommentItemDecoration(val context:Context): RecyclerView.ItemDecoration() {
     private val marginHorizontal = 2.dp
     private var RADIS = 10.dp
 
@@ -27,6 +30,12 @@ class CommentItemDecoration: RecyclerView.ItemDecoration() {
         strokeWidth = 2f
         color = Color.RED
     }
+
+    private var  bitmap:Bitmap
+    init {
+        bitmap = BitmapFactory.decodeResource(context.resources,R.drawable.batman_logo)
+    }
+
 
     /**
      * onDraw() 函数中的 parent , state 参数和 getItemOffsets() 方法中的参数含义是一样的，canvas 参数是 getItemOffsets() 函数所留下的左右上下的空白区域对应的 Canvas 画布对象。
@@ -46,7 +55,8 @@ class CommentItemDecoration: RecyclerView.ItemDecoration() {
             var bottomDecorationHeight = layoutManager.getBottomDecorationHeight(childView)
             Logger.d("onDraw leftDecorationWidth:${leftDecorationWidth}, rightDecorationWidth:${rightDecorationWidth}")
 
-            val centerX = leftDecorationWidth + RADIS * 2 + mCirclePaint.strokeWidth / 2
+             leftDecorationWidth = childView.left
+            val centerX = leftDecorationWidth + RADIS * 2 + mCirclePaint.strokeWidth / 2 + parent.paddingLeft
             c.drawCircle(centerX, ((childView.top + childView.bottom) / 2).toFloat(), RADIS,mCirclePaint)
 
 
@@ -56,8 +66,17 @@ class CommentItemDecoration: RecyclerView.ItemDecoration() {
 
     }
 
+    /**
+     * 绘制在图的最上层
+     */
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDrawOver(c, parent, state)
+        for (index in 0 until parent.childCount){
+            val child = parent.getChildAt(index)
+
+            val rect = Rect((child.right - bitmap.width),child.top,child.right,child.bottom)
+            c.drawBitmap(bitmap,(child.right - bitmap.width).toFloat(),child.top.toFloat(),mCirclePaint)
+        }
     }
 
 
@@ -79,5 +98,6 @@ class CommentItemDecoration: RecyclerView.ItemDecoration() {
         }
         outRect.left = 30.dpInt
         outRect.right = 30.dpInt
+
     }
 }

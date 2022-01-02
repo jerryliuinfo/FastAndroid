@@ -45,60 +45,10 @@ class RxJavaDemoFragment:BaseFragment() {
 
         apiService = ApiEngine.createApiService()
 
-        btn_basic_usage.setOnClickListener {
-            apiService.loadTopArticleCo2()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                                var data = it.data
-                    NLog.d(TAG, "data size: %s",data.size)
-                }, {
-                    ToastUtils.showShort(it.message)
-                })
-        }
 
-        btn_map_usage.setOnClickListener {
-            apiService.loadTopArticleCo2()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-//                .map(ArticleToVideoMapper.getInstance())
-                .map {
-                    val userList = ArrayList<UserBean>()
-                    var list = it.data
-                    for ((index, value) in list.withIndex()){
-                        if (index == 0){
-                            userList.add(UserBean(value.chapterName,value.primaryKeyId))
-                        }
-                    }
-                    return@map userList
-                }
-                .subscribe({
-                    NLog.d(TAG, "data size: %s",it)
-                }, {
-                    ToastUtils.showShort(it.message)
-                })
-        }
-        btn_zip_usage.setOnClickListener {
-            var observable1 = apiService.loadTopArticleCo2().map(ArticleToVideoMapper.getInstance())
-            var observable2 = apiService.loadHomeArticleCo2(1)
 
-            Observable.zip(observable1,observable2,object:
-                BiFunction<List<UserBean>, BaseResponse<HomeArticleResponse>, List<Person>> {
-                override fun apply(
-                    t1: List<UserBean>,
-                    t2: BaseResponse<HomeArticleResponse>
-                ): List<Person> {
-                    return arrayListOf(Person("zhangsan", 18),Person("lisi", 20))
-                }
-            })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    NLog.d(TAG, "person list: %s",it)
-                },{
-                    ToastUtils.showShort(it.message)
-                })
-        }
+
+
 
        /* btn_flatmap_usage.setOnClickListener {
             ApiEngine.getFakeApi().getFakeToken("faFakeThingke_auth_code")
