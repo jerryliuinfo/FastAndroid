@@ -17,16 +17,25 @@
         app:flow_wrapMode="aligned"
         app:flow_horizontalGap="10dp"
         app:flow_verticalGap="10dp"
-        app:constraint_referenced_ids="btn_on_each"
+        app:constraint_referenced_ids="btn_on_each,btn_method_cost"
         />
     <Button
         android:id="@+id/btn_on_each"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:text="onEach"
         />
-
+    <Button
+        android:id="@+id/btn_method_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="方法耗时计算"
+        />
+    <Button
+        android:id="@+id/btn_coerceAtLeast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取最小不小于某个值"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

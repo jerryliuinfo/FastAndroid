@@ -25,7 +25,5 @@ class Task2New: AppStartTask() {
         return TaskExceutorManager.getInstance().cpuThreadPoolExecutor
     }
 
-    override fun getDependsTaskList(): MutableList<Class<out AppStartTask>> {
-        return mutableListOf(Task1New::class.java)
-    }
+
 }

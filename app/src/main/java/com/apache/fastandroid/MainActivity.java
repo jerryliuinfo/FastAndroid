@@ -15,7 +15,6 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.AuthToken;
-import com.apache.fastandroid.demo.rxjava.RxJavaDemoListFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.util.AccessDenyException;
 import com.blankj.utilcode.util.ToastUtils;
@@ -25,9 +24,6 @@ import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.ui.activity.BaseActivity;
-import com.tesla.framework.ui.activity.FragmentContainerActivity;
-
-import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -38,14 +34,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.ObservableEmitter;
 import io.reactivex.rxjava3.core.ObservableOnSubscribe;
-import io.reactivex.rxjava3.core.ObservableSource;
-import io.reactivex.rxjava3.core.Observer;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.functions.BiFunction;
-import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
-import io.reactivex.rxjava3.functions.Predicate;
-import io.reactivex.rxjava3.functions.Supplier;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 @AptTest(path = "main")
@@ -121,7 +110,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, LoadSirDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, LoggerDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, RxJavaDemoListFragment.class,null);
+//        FragmentContainerActivity.launch(this, RxJavaDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, RecycleViewItemDecorationFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrakeetDemoListFragment.class,null);
 //        FragmentContainerActivity.launch(this, CustomViewFragment.class,null);
@@ -131,176 +120,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
 
-        Observable.defer(new Supplier<ObservableSource<?>>() {
-            @Override
-            public ObservableSource<String> get() throws Throwable {
-                return Observable.just(getData());
-            }
-        }).doOnSubscribe(new Consumer<Disposable>() {
-            @Override
-            public void accept(Disposable disposable) throws Throwable {
-                Logger.d("doOnSubscribe");
-
-            }
-        }).subscribe(s->{
-            Logger.d("Consume Data :" + s);
-        });
-
-
-
-        Observable<Long> timerObservable = Observable.timer(5, TimeUnit.SECONDS);
-        timerObservable.subscribe(new Observer<Long>() {
-            @Override
-            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(@io.reactivex.rxjava3.annotations.NonNull Long aLong) {
-
-            }
-
-            @Override
-            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-        Observable.interval(2,TimeUnit.SECONDS).flatMap(new Function<Long, ObservableSource<Boolean>>() {
-
-            @Override
-            public ObservableSource<Boolean> apply(Long aLong) throws Throwable {
-                return Observable.just(userBean != null);
-            }
-        }).takeUntil(new Predicate<Boolean>() {
-            @Override
-            public boolean test(Boolean aBoolean) throws Throwable {
-                return aBoolean;
-            }
-        }).subscribe(new Observer<Boolean>() {
-            @Override
-            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(@io.reactivex.rxjava3.annotations.NonNull Boolean aBoolean) {
-
-            }
-
-            @Override
-            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-        Observable.just(1,2,3,4)
-                .switchMap(new Function<Integer, ObservableSource<String>>() {
-                    @Override
-                    public ObservableSource<String> apply(Integer integer) throws Throwable {
-                        return null;
-                    }
-                }).subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<String>() {
-                    @Override
-                    public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@io.reactivex.rxjava3.annotations.NonNull String s) {
-
-                    }
-
-                    @Override
-                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
-
-        timerObservable.zipWith(Observable.interval(0, 1, TimeUnit.SECONDS), new BiFunction<Long, Long, String>() {
-
-            @Override
-            public String apply(Long aLong, Long aLong2) throws Throwable {
-                return null;
-            }
-        });
-        Observable.just("aa").zipWith(Observable.interval(0, 1, TimeUnit.SECONDS), new BiFunction<String, Long, Integer>() {
-            @Override
-            public Integer apply(String s, Long aLong) throws Throwable {
-                return null;
-            }
-        });
-        Observable.just("Hello").retryWhen(new Function<Observable<Throwable>, ObservableSource<?>>() {
-            @Override
-            public ObservableSource<?> apply(Observable<Throwable> throwableObservable) throws Throwable {
-                if (retryCount <= 3){
-                    return Observable.timer(2,TimeUnit.SECONDS);
-                }
-                return Observable.error(new IllegalArgumentException("load date error"));
-            }
-        });
-
-
-       /* Observable<Response> observable = userApi.getUserInfo();
-        observable.onErrorResumeNext(refreshTokenAndRetry(observable))//also use retryWhen to implement it
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Response>() {
-                    @Override
-                    public void onCompleted() {
-
-                        //hideLoadingDialog();
-                    }
-
-                    @Override
-                    public void onError(Throwable t) {
-                        //hideLoadingDialog();
-                        t.printStackTrace();
-
-                    }
-
-                    public void onNext(Response response) {
-
-                    }
-                });
-*/
-        Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(@io.reactivex.rxjava3.annotations.NonNull ObservableEmitter<Integer> emitter) throws Throwable {
-
-            }
-        }).onErrorResumeNext(new Function<Throwable, ObservableSource<? extends Integer>>() {
-            @Override
-            public ObservableSource<? extends Integer> apply(Throwable throwable) throws Throwable {
-                return null;
-            }
-        });
-
-        Observable.just(1,2,3).retry((integer, throwable) -> false);
-        Observable.just(1,2,3).retry(throwable -> false);
-        Observable.just(1,2,3).retryWhen(new Function<Observable<Throwable>, ObservableSource<?>>() {
-            @Override
-            public ObservableSource<?> apply(Observable<Throwable> throwableObservable) throws Throwable {
-
-                return null;
-            }
-        });
 
 
     }

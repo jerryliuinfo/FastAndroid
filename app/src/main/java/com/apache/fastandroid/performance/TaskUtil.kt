@@ -19,7 +19,7 @@ object TaskUtil {
     fun runTask2(){
         NLog.d(TAG, "Task2 begin run")
         val startTime = System.currentTimeMillis()
-        SystemClock.sleep(300);
+        SystemClock.sleep(500);
         NLog.d(TAG, "Task2 run cost time:%s ms",(System.currentTimeMillis() - startTime))
 
     }

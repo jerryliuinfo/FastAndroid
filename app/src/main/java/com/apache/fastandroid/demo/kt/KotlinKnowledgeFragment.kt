@@ -3,9 +3,11 @@ package com.apache.fastandroid.demo.kt
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
+import com.tesla.framework.common.util.log.Logger
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.kt_grammer.*
+import kotlin.system.measureTimeMillis
 
 /**
  * Created by Jerry on 2021/10/18.
@@ -23,6 +25,16 @@ class KotlinKnowledgeFragment:BaseFragment() {
 
         btn_on_each.setOnClickListener {
             onEach()
+        }
+        btn_method_cost.setOnClickListener {
+            val costTime = measureTimeMillis {
+                Thread.sleep(100)
+            }
+            com.orhanobut.logger.Logger.d("costTime:${costTime}")
+        }
+        btn_coerceAtLeast.setOnClickListener {
+            com.orhanobut.logger.Logger.d("${3.coerceAtLeast(5)}")
+
         }
     }
 

@@ -19,7 +19,7 @@ class Task4New: AppStartTask() {
 
 
     override fun getDependsTaskList(): MutableList<Class<out AppStartTask>> {
-        return mutableListOf(Task2New::class.java,Task3New::class.java)
+        return mutableListOf(Task2New::class.java)
     }
 
 

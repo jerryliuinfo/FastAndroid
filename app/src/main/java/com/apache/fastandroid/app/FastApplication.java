@@ -23,16 +23,14 @@ import com.apache.fastandroid.demo.component.loadsir.callback.LoadingCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.TimeoutCallback;
 import com.apache.fastandroid.imageloader.GlideImageLoader;
 import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
-import com.apache.fastandroid.performance.startup.dispatcher.Task1;
-import com.apache.fastandroid.performance.startup.dispatcher.Task2;
-import com.apache.fastandroid.performance.startup.dispatcher.Task3;
-import com.apache.fastandroid.performance.startup.dispatcher.Task4;
-import com.apache.fastandroid.performance.startup.dispatcher.Task5;
 import com.apache.fastandroid.performance.startup.faster.Task1New;
 import com.apache.fastandroid.performance.startup.faster.Task2New;
 import com.apache.fastandroid.performance.startup.faster.Task3New;
 import com.apache.fastandroid.performance.startup.faster.Task4New;
-import com.apache.fastandroid.performance.startup.faster.Task5New;
+import com.apache.fastandroid.performance.startup.startup.SDK1;
+import com.apache.fastandroid.performance.startup.startup.SDK2;
+import com.apache.fastandroid.performance.startup.startup.SDK3;
+import com.apache.fastandroid.performance.startup.startup.SDK4;
 import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.FileUtils;
@@ -40,7 +38,6 @@ import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.Utils;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.kingja.loadsir.core.LoadSir;
-import com.optimize.performance.launchstarter.TaskDispatcher;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.DiskLogAdapter;
 import com.squareup.leakcanary.LeakCanary;
@@ -52,6 +49,9 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.wxy.appstartfaster.dispatcher.AppStartTaskDispatcher;
+import com.tesla.framework.component.startup.Group;
+import com.tesla.framework.component.startup.StartupManager;
+import com.tesla.framework.component.startup.TimeListener;
 
 import java.io.File;
 
@@ -62,6 +62,8 @@ import androidx.lifecycle.ViewModelStore;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.multidex.MultiDex;
 import dev.b3nedikt.viewpump.ViewPump;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 /**
  * Created by jerryliu on 2017/3/26.
@@ -88,7 +90,8 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         Utils.init(FApplication.getApplication());
 
 //        initTaskByTaskDispatcher();
-        initTaskByAppFaster();
+//        initTaskByAppFaster();
+        initTaskByStartup();
 //        initLoop();
         FApplication.class.getSimpleName();
         // data/data/com.apache.fastandroid/files/mmkv
@@ -126,22 +129,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
 
 
-    private void initTaskByTaskDispatcher(){
-        LaunchTimer.startRecord();
-        TaskDispatcher.init(this);
-        TaskDispatcher taskDispatcher = TaskDispatcher.createInstance();
-        //DB初始化
-        taskDispatcher
-                .addTask(new Task2())
-                .addTask(new Task4())
-                .addTask(new Task5())
-                .addTask(new Task3())
-                .addTask(new Task1())
-        ;
-        taskDispatcher.start();
-        LaunchTimer.endRecord("initTaskByTaskDispatcher end ");
 
-    }
 
     private void initTaskByAppFaster(){
         AppStartTaskDispatcher.getInstance()
@@ -150,11 +138,47 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
                 .setAllTaskWaitTimeOut(5000)
                 .addAppStartTask(new Task2New())
                 .addAppStartTask(new Task4New())
-                .addAppStartTask(new Task5New())
                 .addAppStartTask(new Task3New())
                 .addAppStartTask(new Task1New())
                 .start()
                 .await();
+    }
+
+    private void initTaskByStartup(){
+        StartupManager.INSTANCE
+                .addGroup(new Function1<Group, Unit>() {
+                    @Override
+                    public Unit invoke(Group group) {
+                        group.add(new SDK1());
+                        group.add(new SDK2());
+                        return null;
+                    }
+
+                })
+                .addGroup(new Function1<Group, Unit>() {
+                    @Override
+                    public Unit invoke(Group group) {
+                        group.add(new SDK3());
+                        group.add(new SDK4());
+                        return null;
+                    }
+                })
+                .cost(new TimeListener() {
+                    @Override
+                    public void itemCost(@NonNull String name, long time, @NonNull String threadName) {
+                        com.orhanobut.logger.Logger.d(String.format("startup-itemCost:%s time: %s threadName:%s",name,time,threadName));
+
+                    }
+
+                    @Override
+                    public void allCost(long time) {
+                        com.orhanobut.logger.Logger.d(String.format("startup-allCost:%s ",time));
+
+                    }
+                })
+                .start(this);
+
+        ;
 
     }
 
