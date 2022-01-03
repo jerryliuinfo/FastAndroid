@@ -319,3 +319,4 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 }
+
