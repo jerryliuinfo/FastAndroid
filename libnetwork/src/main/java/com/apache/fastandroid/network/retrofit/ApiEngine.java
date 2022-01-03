@@ -80,7 +80,7 @@ public final class ApiEngine {
     }
 
     private static ApiService sApiService;
-    public static ApiService createApiService() {
+    public static ApiService getApiService() {
         if (sApiService == null){
             sApiService = getRetrofit().create(ApiService.class);
         }

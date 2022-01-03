@@ -4,21 +4,11 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.rxjava.map.ArticleToVideoMapper
 import com.apache.fastandroid.network.model.FakeToken
-import com.apache.fastandroid.network.model.HomeArticleResponse
 import com.apache.fastandroid.network.retrofit.ApiEngine
 import com.apache.fastandroid.network.retrofit.ApiService
-import com.apache.fastandroid.network.response.BaseResponse
 import com.blankj.utilcode.util.ToastUtils
-import com.chad.baserecyclerviewadapterhelper.entity.Person
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseFragment
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.functions.BiFunction
-import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_rxjava.*
 
 
@@ -43,25 +33,13 @@ class RxJavaDemoFragment:BaseFragment() {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        apiService = ApiEngine.createApiService()
+        apiService = ApiEngine.getApiService()
 
 
 
 
 
 
-       /* btn_flatmap_usage.setOnClickListener {
-            ApiEngine.getFakeApi().getFakeToken("faFakeThingke_auth_code")
-                .flatMap { t -> return@flatMap ApiEngine.getFakeApi().getFakeData(t) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    NLog.d(TAG, "flat map result: %s",it)
-                },{
-                    ToastUtils.showShort(it.message)
-                })
-        }
-*/
         btn_retrywhen_usage.setOnClickListener {
            doRetrhWhen()
         }
@@ -75,9 +53,9 @@ class RxJavaDemoFragment:BaseFragment() {
 
     @SuppressLint("CheckResult")
     private fun doRetrhWhen(){
-       /* tokenUpdated = false
-        Observable.just(1).flatMap(
-        object :Function<Int,Observable<FakeThing>>{
+        tokenUpdated = false
+       /* Observable.just(1).flatMap(
+        object :Function<Int, ObservableSource<FakeThing>>{
             @SuppressLint("CheckResult")
             override fun apply(t: Int): Observable<FakeThing> {
                 if (cachedFakeToken.token == null){

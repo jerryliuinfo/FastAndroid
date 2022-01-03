@@ -14,4 +14,9 @@ public class FakeToken implements Serializable {
     public FakeToken(boolean expired) {
         this.expired = expired;
     }
+
+    public FakeToken(String token, boolean expired) {
+        this.token = token;
+        this.expired = expired;
+    }
 }

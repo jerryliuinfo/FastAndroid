@@ -24,10 +24,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:constraint_referenced_ids="btn_simple,btn_map,btn_switch_map,btn_flat_map,btn_concact_map,
-        btn_zip,btn_concact,btn_merge,btn_delay,btn_timer,btn_filter,btn_distinct,btn_distinct_until_change,btn_take,btn_take_until,
-            btn_take_while,btn_throttle_first,btn_throttle_last,btn_buffer,btn_debounce,btn_interval,
-            btn_reduce,btn_skip,btn_defer,btn_last,btn_publish_subject,btn_single,btn_from_iterable
-"
+            btn_zip,btn_concact,btn_merge,btn_delay,btn_timer,btn_filter,btn_distinct,btn_distinct_until_change,
+            btn_take,btn_take_until,btn_take_while,btn_throttle_first,btn_throttle_last,btn_buffer,btn_debounce,
+            btn_interval,btn_interval_range,btn_reduce,btn_skip,btn_defer,btn_last,btn_publish_subject,btn_single,
+            btn_from_iterable,btn_ranger,btn_fromArray,btn_fromIterable,btn_repeat,btn_repeat_when,btn_do,btn_onErrorReturn,
+            btn_onErrorResumeNext,btn_retry,btn_retry_times,btn_retry_predicate,btn_retry_predicate2,btn_retry_until,
+            btn_retry_when"
                 app:flow_horizontalGap="10dp"
                 app:flow_maxElementsWrap="4"
                 app:flow_verticalGap="10dp"
@@ -176,6 +178,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="interval" />
+            <Button
+                android:id="@+id/btn_interval_range"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="intervalRange" />
 
             <Button
                 android:id="@+id/btn_reduce"
@@ -216,9 +223,78 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="FromIterable" />
+            <Button
+                android:id="@+id/btn_ranger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ranger" />
+            <Button
+                android:id="@+id/btn_fromArray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fromArray" />
+            <Button
+                android:id="@+id/btn_fromIterable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fromIterable" />
+            <Button
+                android:id="@+id/btn_repeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="repeat" />
+            <Button
+                android:id="@+id/btn_repeat_when"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="repeatWhen" />
 
+            <Button
+                android:id="@+id/btn_do"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="do" />
+            <Button
+                android:id="@+id/btn_onErrorReturn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="onErrorReturn" />
+            <Button
+                android:id="@+id/btn_onErrorResumeNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="onErrorResumeNext" />
 
-
+            <Button
+                android:id="@+id/btn_retry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="retry" />
+            <Button
+                android:id="@+id/btn_retry_times"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="retryWithTimes" />
+            <Button
+                android:id="@+id/btn_retry_predicate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="retryPredicate" />
+            <Button
+                android:id="@+id/btn_retry_predicate2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="retryPredicateTimes" />
+            <Button
+                android:id="@+id/btn_retry_until"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="retryUntil" />
+            <Button
+                android:id="@+id/btn_retry_when"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="retryWhen" />
 
 
 

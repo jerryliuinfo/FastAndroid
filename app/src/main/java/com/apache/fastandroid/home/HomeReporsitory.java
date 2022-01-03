@@ -31,7 +31,7 @@ public class HomeReporsitory {
     }
 
     public void loadTopArticleCo(StateLiveData<List<Article>> stateLiveData){
-        Call<BaseResponse<List<Article>>> call = ApiEngine.createApiService().loadTopArticleCo();
+        Call<BaseResponse<List<Article>>> call = ApiEngine.getApiService().loadTopArticleCo();
         call.enqueue(new ProtocolCallback<List<Article>>(){
 
             @Override
@@ -47,7 +47,7 @@ public class HomeReporsitory {
     }
 
     public void loadHomeArticleCo(StateLiveData<HomeArticleResponse> stateLiveData,int pageNum){
-        Call<BaseResponse<HomeArticleResponse>> call = ApiEngine.createApiService().loadHomeArticleCo(pageNum);
+        Call<BaseResponse<HomeArticleResponse>> call = ApiEngine.getApiService().loadHomeArticleCo(pageNum);
         call.enqueue(new ProtocolCallback<HomeArticleResponse>(){
 
             @Override
@@ -63,7 +63,7 @@ public class HomeReporsitory {
     }
 
     public HomeArticleResponse loadHomeArticleCoSync(int pageNum) throws IOException {
-        Call<BaseResponse<HomeArticleResponse>> call = ApiEngine.createApiService().loadHomeArticleCo(pageNum);
+        Call<BaseResponse<HomeArticleResponse>> call = ApiEngine.getApiService().loadHomeArticleCo(pageNum);
         Response<BaseResponse<HomeArticleResponse>> response = call.execute();
         if (response.isSuccessful()){
             BaseResponse<HomeArticleResponse> body = response.body();
@@ -78,7 +78,7 @@ public class HomeReporsitory {
      * @param id
      */
     public void collect(StateLiveData<CollectBean> stateLiveData, int id){
-        Call<BaseResponse<EmptyResponse>> call = ApiEngine.createApiService().collect(id);
+        Call<BaseResponse<EmptyResponse>> call = ApiEngine.getApiService().collect(id);
         call.enqueue(new ProtocolCallback<EmptyResponse>() {
             @Override
             public void onSuccess(BaseResponse<EmptyResponse> protocol) {
@@ -99,7 +99,7 @@ public class HomeReporsitory {
      * @param id
      */
     public void uncollect(StateLiveData<CollectBean> stateLiveData,int id){
-        Call<BaseResponse<EmptyResponse>> call = ApiEngine.createApiService().unCollect(id);
+        Call<BaseResponse<EmptyResponse>> call = ApiEngine.getApiService().unCollect(id);
         call.enqueue(new ProtocolCallback<EmptyResponse>() {
             @Override
             public void onSuccess(BaseResponse<EmptyResponse> protocol) {

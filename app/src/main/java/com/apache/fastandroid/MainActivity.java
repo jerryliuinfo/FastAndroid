@@ -14,8 +14,10 @@ import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.demo.bean.AuthToken;
 import com.apache.fastandroid.demo.rxjava.RxJavaDemoListFragment;
 import com.apache.fastandroid.home.HomeFragment;
+import com.apache.fastandroid.util.AccessDenyException;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.orhanobut.logger.Logger;
@@ -34,6 +36,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableEmitter;
+import io.reactivex.rxjava3.core.ObservableOnSubscribe;
 import io.reactivex.rxjava3.core.ObservableSource;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
@@ -70,6 +74,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.bindView();
         mDrawerLayout = findViewById(R.id.drawer);
         mNavigationView = findViewById(R.id.navigation_view);
+
     }
 
     private UserBean userBean;
@@ -124,38 +129,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, SampleCode1DemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrawableDemoFragment.class,null);
 
-      /*  Observable.defer(new Supplier<ObservableSource<?>>() {
-            @Override
-            public ObservableSource<String> get() throws Throwable {
-                return Observable.just(getData());
-            }
-        }).doOnSubscribe(new Consumer<Disposable>() {
-            @Override
-            public void accept(Disposable disposable) throws Throwable {
 
-            }
-        }).subscribe(new Observer<String>() {
-            @Override
-            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(@io.reactivex.rxjava3.annotations.NonNull String s) {
-
-            }
-
-
-            @Override
-            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });*/
 
         Observable.defer(new Supplier<ObservableSource<?>>() {
             @Override
@@ -279,6 +253,52 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     return Observable.timer(2,TimeUnit.SECONDS);
                 }
                 return Observable.error(new IllegalArgumentException("load date error"));
+            }
+        });
+
+
+       /* Observable<Response> observable = userApi.getUserInfo();
+        observable.onErrorResumeNext(refreshTokenAndRetry(observable))//also use retryWhen to implement it
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Response>() {
+                    @Override
+                    public void onCompleted() {
+
+                        //hideLoadingDialog();
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        //hideLoadingDialog();
+                        t.printStackTrace();
+
+                    }
+
+                    public void onNext(Response response) {
+
+                    }
+                });
+*/
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@io.reactivex.rxjava3.annotations.NonNull ObservableEmitter<Integer> emitter) throws Throwable {
+
+            }
+        }).onErrorResumeNext(new Function<Throwable, ObservableSource<? extends Integer>>() {
+            @Override
+            public ObservableSource<? extends Integer> apply(Throwable throwable) throws Throwable {
+                return null;
+            }
+        });
+
+        Observable.just(1,2,3).retry((integer, throwable) -> false);
+        Observable.just(1,2,3).retry(throwable -> false);
+        Observable.just(1,2,3).retryWhen(new Function<Observable<Throwable>, ObservableSource<?>>() {
+            @Override
+            public ObservableSource<?> apply(Observable<Throwable> throwableObservable) throws Throwable {
+
+                return null;
             }
         });
 
@@ -441,10 +461,44 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         FastBus.getInstance().unregiste(this);
     }
 
-    class Proxy{
-        void toMain(){
-            FragmentContainerActivity.launch(MainActivity.this,null,null);
 
-        }
+
+
+
+    private <T> Function<Throwable, ? extends Observable<? extends T>> refreshTokenAndRetry(final Observable<T> toBeResumed) {
+        return new Function<Throwable, Observable<? extends T>>() {
+            @Override
+            public Observable<? extends T> apply(Throwable throwable) throws Throwable {
+                if (isHttp401Error(throwable)) {
+                    return createTokenObvervable().flatMap(new Function<AuthToken, Observable<? extends T>>() {
+                        @Override
+                        public Observable<? extends T> apply(AuthToken authToken) throws Throwable {
+//                            appendText(tvLogs, "refresh token success,token's validity is 10s\nResume last request");
+
+                            return toBeResumed;
+                        }
+                    });
+                }
+                // re-throw this error because it's not recoverable from here
+                return Observable.error(throwable);
+            }
+
+            public boolean isHttp401Error(Throwable throwable) {
+                return throwable instanceof AccessDenyException;
+            }
+
+        };
     }
+
+    public Observable<AuthToken> createTokenObvervable() {
+        return Observable.create(new ObservableOnSubscribe<AuthToken>() {
+            @Override
+            public void subscribe(ObservableEmitter<AuthToken> emitter) throws Throwable {
+                emitter.onNext(new AuthToken("adafsddfsd"));
+                emitter.onComplete();
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+
 }

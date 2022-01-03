@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.rxjava.operator.RetryWithDelay
 import com.orhanobut.logger.Logger
 import com.tesla.framework.kt.runOnUiThreadDelay
 import com.tesla.framework.ui.fragment.BaseFragment
@@ -19,9 +20,12 @@ import io.reactivex.rxjava3.functions.BiFunction
 import io.reactivex.rxjava3.functions.Predicate
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.PublishSubject
+import kotlinx.android.synthetic.main.fragment_rxjava.*
 import kotlinx.android.synthetic.main.fragment_rxjava2.*
 import kotlinx.android.synthetic.main.fragment_rxjava3.*
+import java.lang.Exception
 import java.lang.IllegalArgumentException
+import java.lang.RuntimeException
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
@@ -39,7 +43,7 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
         return R.layout.fragment_rxjava3
     }
 
-    private lateinit var textview:TextView
+    private lateinit var result:TextView
 
 
 
@@ -47,7 +51,7 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        textview = findViewById(R.id.tv_rx_result)
+        result = findViewById(R.id.tv_rx_result)
         btn_simple.setOnClickListener {
             normal()
         }
@@ -115,6 +119,9 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
         btn_interval.setOnClickListener {
             interval()
         }
+        btn_interval_range.setOnClickListener {
+            intervaRagne()
+        }
         btn_skip.setOnClickListener {
             skip();
         }
@@ -133,6 +140,326 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
         btn_from_iterable.setOnClickListener {
             flatMap2()
         }
+
+        btn_ranger.setOnClickListener {
+            ranger()
+        }
+        btn_fromArray.setOnClickListener {
+            fromArray()
+        }
+        btn_fromIterable.setOnClickListener {
+            fromIterable()
+        }
+        btn_repeat.setOnClickListener {
+            repeatSeperator()
+        }
+        btn_repeat_when.setOnClickListener {
+            repeatWhen()
+        }
+        btn_do.setOnClickListener {
+            doSeperator()
+        }
+        btn_onErrorReturn.setOnClickListener {
+            onErrorReturn()
+        }
+        btn_onErrorResumeNext.setOnClickListener {
+            onErrorResumeNext()
+        }
+        btn_retry.setOnClickListener {
+            retry()
+        }
+        btn_retry_times.setOnClickListener {
+            retryWithTime()
+        }
+        btn_retry_predicate.setOnClickListener {
+            retryWithPredicate()
+        }
+        btn_retry_predicate2.setOnClickListener {
+            retryWithTimesAndPredicate()
+        }
+        btn_retry_until.setOnClickListener {
+            retryUntil()
+        }
+        btn_retry_until.setOnClickListener {
+            retryUntil()
+        }
+        btn_retry_when.setOnClickListener {
+            retryWhen()
+        }
+    }
+
+
+
+    /**
+     *  作用：出现错误后，判断是否需要重新发送数据（若需要重新发送& 持续遇到错误，则持续重试）
+     *  返回false = 不重新重新发送数据 & 调用观察者的onError结束
+     *  返回true = 重新发送请求（若持续遇到错误，就持续重新发送）
+     *
+     */
+    private fun retryWithPredicate() {
+        getErrorObservable()
+            //拦截错误后，判断是否需要重新发送请求
+            .retry { retryCount: Int, throwable: Throwable? ->
+                Logger.d("retryWithPredicate retryCount:${retryCount}")
+            return@retry retryCount <= 1
+        }.subscribe(getIntObserver())
+
+    }
+
+    /**
+     * 出现错误后，判断是否需要重新发送数据（具备重试次数限制
+     * 参数 = 设置重试次数 & 判断逻辑
+     * 如果返回true，则代表需要重试，但是会有重试次数限制
+     */
+    private fun retryWithTimesAndPredicate() {
+        getErrorObservable()
+            .retry(2){
+                // 返回false = 不重新重新发送数据 & 调用观察者的onError（）结束(不会重试 )
+                // 返回true = 重新发送请求（最多重新发送3次）
+                return@retry true
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getIntObserver())
+
+    }
+
+    /**
+     * 出现错误后，判断是否需要重新发送数据
+     * 1.若需要重新发送 & 持续遇到错误，则持续重试
+     * 2.作用类似于retry（Predicate predicate）
+     * 具体使用类似于retry（Predicate predicate），
+     * 唯一区别：
+     * 对于 retryUntil: 返回 true 代表 不需要 重新发送数据事件
+     * 对于 retry:      返回 true 代表 重新 发送数据事件
+     */
+    private fun retryUntil() {
+        var retryUntilCount = 0
+        getErrorObservable()
+            .retryUntil {
+                //返回 true 则不重新发送数据事件, 返回false，则重新发送
+                val retry = ++retryUntilCount >1
+                return@retryUntil retry
+            }.observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getIntObserver())
+    }
+
+    /**
+     * 遇到错误时，将发生的错误传递给一个新的被观察者（Observable），
+     * 并决定是否需要重新订阅原始被观察者（Observable）& 发送事件
+     */
+    private fun retryWhen(){
+        getErrorObservable()
+            .retryWhen(RetryWithDelay(1,1000))
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getIntObserver())
+    }
+
+    /**
+     * 遇到错误时，发送1个特殊事件 & 正常终止
+     * 可捕获在它之前发生的异常
+     * 发射:1、2、666、onComplete
+     */
+    private fun onErrorReturn() {
+        Observable.create<Int> {
+            it.onNext(1)
+            it.onNext(2)
+            it.onError(Throwable("发生错误了"))
+
+        }.onErrorReturn {
+            //发生错误事件后，发送一个"666"事件，最终正常结束
+            return@onErrorReturn 666
+        }.subscribe(getIntObserver())
+    }
+
+    /**
+     * 遇到错误时，发送1个新的Observable
+     *
+     * onErrorResumeNext（）拦截的错误 = Throwable；若需拦截Exception请用onExceptionResumeNext（）
+      若onErrorResumeNext（）拦截的错误 = Exception，则会将错误传递给观察者的onError方法
+
+
+     */
+    private fun onErrorResumeNext(){
+        Observable.create<Int> {
+            it.onNext(1)
+            it.onNext(2)
+            it.onError(Throwable("发生错误了"))
+        }.onErrorResumeNext {
+            Logger.d( "在onErrorReturn处理了错误: "+it.toString() );
+
+            // 2. 发生错误事件后，发送一个新的被观察者 & 发送事件序列
+             Observable.just(11,22);
+        }.subscribe(getIntObserver())
+    }
+
+
+    /**
+     * 重试，即当出现错误时，让被观察者（Observable）重新发射数据
+     * 接收到 onError（）时，重新订阅 & 发送事件
+     * Throwable 和 Exception都可拦截
+     * 共有5种重载方法
+     * <-- 1. retry（） -->
+        // 作用：出现错误时，让被观察者重新发送数据
+        // 注：若一直错误，则一直重新发送
+
+        <-- 2. retry（long time） -->
+        // 作用：出现错误时，让被观察者重新发送数据（具备重试次数限制
+        // 参数 = 重试次数
+
+        <-- 3. retry（Predicate predicate） -->
+        // 作用：出现错误后，判断是否需要重新发送数据（若需要重新发送& 持续遇到错误，则持续重试）
+        // 参数 = 判断逻辑
+
+        <--  4. retry（new BiPredicate<Integer, Throwable>） -->
+        // 作用：出现错误后，判断是否需要重新发送数据（若需要重新发送 & 持续遇到错误，则持续重试
+        // 参数 =  判断逻辑（传入当前重试次数 & 异常错误信息）
+
+        <-- 5. retry（long time,Predicate predicate） -->
+        // 作用：出现错误后，判断是否需要重新发送数据（具备重试次数限制
+        // 参数 = 设置重试次数 & 判断逻辑
+
+     */
+    private fun retry() {
+        getErrorObservable()
+            .retry()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getIntObserver())
+    }
+
+    private fun retryWithTime() {
+        getErrorObservable()
+            .retry(1)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getIntObserver())
+    }
+
+    private fun getErrorObservable():Observable<Int>{
+        return Observable.create<Int> {
+            it.onNext(1)
+            Thread.sleep(2000)
+            it.onNext(2)
+            Thread.sleep(2000)
+
+            it.onError(Throwable("发生错误了"))
+            it.onNext(3)
+        }.subscribeOn(Schedulers.io())
+    }
+
+    private fun doSeperator() {
+        Observable.create<Int> {
+            it.onNext(1)
+            it.onNext(2)
+            it.onError(RuntimeException("发生错误了"))
+        }.doOnEach {
+            result.append("doonEach: ${it.value}")
+            result.append(LINE_SEPERATOR)
+        }
+            // 执行Next事件前调用
+            .doOnNext {
+            result.append("doOnNext: ${it}")
+            result.append(LINE_SEPERATOR)
+        }
+                //执行Next事件后调用
+            .doAfterNext {
+                result.append("doAfterNext: ${it}")
+                result.append(LINE_SEPERATOR)
+            }
+            .doOnComplete {
+                result.append("doOnComplete")
+                result.append(LINE_SEPERATOR)
+            }
+            .doOnError {
+                result.append("doOnError:${it.message}")
+                result.append(LINE_SEPERATOR)
+            }
+            .doOnSubscribe {
+                result.append("doOnSubscribe:${it.isDisposed}")
+                result.append(LINE_SEPERATOR)
+            }.doAfterTerminate {
+                result.append("doAfterTerminate")
+                result.append(LINE_SEPERATOR)
+            }.doOnTerminate {
+                result.append("doOnTerminate")
+                result.append(LINE_SEPERATOR)
+            }.subscribe(getIntObserver())
+    }
+
+    /**
+     * 无条件地、重复发送 被观察者事件
+     * 具备重载方法，可设置重复创建次数
+     * 将原始 Observable 停止发送事件的标识（Complete（） /  Error（））转换成1个 Object 类型数据传递给1个新被观察者（Observable），
+     * 以此决定是否重新订阅 & 发送原来的 Observable
+     * 若新被观察者（Observable）返回1个Complete / Error事件，则不重新订阅 & 发送原来的 Observable
+       若新被观察者（Observable）返回其余事件时，则重新订阅 & 发送原来的 Observable
+     */
+    private fun repeatSeperator() {
+        Observable.just("A","B")
+            .repeat(2)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getStringObserver())
+    }
+
+
+    private var repeatWhenCount = 0
+    /**
+     * 有条件地、重复发送 被观察者事件
+     * 将原始 Observable 停止发送事件的标识（Complete（） /  Error（））转换成1个 Object 类型数据传递给1个新被观察者（Observable），以此决定是否重新订阅 & 发送原来的 Observable
+        若新被观察者（Observable）返回1个Complete / Error事件，则不重新订阅 & 发送原来的 Observable
+        若新被观察者（Observable）返回其余事件时，则重新订阅 & 发送原来的 Observable
+
+     *
+     */
+    private fun repeatWhen() {
+        Observable.just("A","B")
+            .repeatWhen {
+                it.flatMap<Boolean> {
+                    if (++repeatWhenCount >= 2){
+                        return@flatMap Observable.empty<Boolean>()
+                    }
+                    return@flatMap Observable.just(true)
+
+                }
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getStringObserver())
+    }
+
+    /**
+     * 发送数组的数据
+     * 分三次分别发送  1、2、3数据
+     */
+    private fun fromArray() {
+        Observable.fromIterable(arrayListOf(1,2,3))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getIntObserver())
+    }
+
+    /**
+     * 直接发送传入的集合list数据
+     */
+    private fun fromIterable() {
+        Observable.fromArray(1,2,3)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getIntObserver())
+    }
+
+    /**
+     * 连续发送一个事件序列，可指定范围
+     */
+    private fun ranger() {
+        Observable.range(3,10)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                result.append(" onNext: value:${it}")
+                result.append(LINE_SEPERATOR)
+                Logger.d(" onNext: $it")
+            }
 
     }
 
@@ -200,20 +527,20 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
     private fun getSingerObserver():SingleObserver<String>{
         return object :SingleObserver<String>{
             override fun onSubscribe(d: Disposable) {
-                textview.text = ""
+                result.text = ""
                 Logger.d("onSubscribe  ${d.isDisposed}")
             }
 
 
             override fun onError(e: Throwable) {
-                textview.append(" onError: ${e.message}")
-                textview.append(LINE_SEPERATOR)
+                result.append(" onError: ${e.message}")
+                result.append(LINE_SEPERATOR)
                 Logger.d(" onError: ${e.message}")
             }
 
             override fun onSuccess(t: String?) {
-                textview.append(" onNext: value:${t}")
-                textview.append(LINE_SEPERATOR)
+                result.append(" onNext: value:${t}")
+                result.append(LINE_SEPERATOR)
                 Logger.d(" onNext: $t")
             }
 
@@ -258,6 +585,9 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
 
     private val disposables = CompositeDisposable()
 
+    /**
+     * 无限次轮询:每隔指定的时间就发送事件，发送的事件序列 = 从 0 开始，无线递增 1 的整数序列
+     */
     private fun interval() {
         Observable.interval(2,TimeUnit.SECONDS)
             .flatMap <Long>{
@@ -269,8 +599,20 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
             }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(getIntObserver())
+            .subscribe(getLongObserver())
     }
+
+    /**
+     * 有限次轮询:每隔指定的时间就发送事件，可指定发送的数据的数量
+     *
+     */
+    private fun intervaRagne() {
+        Observable.intervalRange(1,3,0,1,TimeUnit.SECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getLongObserver())
+    }
+
 
     /**
      *
@@ -294,29 +636,29 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object :Observer<List<String>>{
                 override fun onSubscribe(d: Disposable) {
-                    textview.text = ""
+                    result.text = ""
                     Logger.d("onSubscribe  ${d.isDisposed}")
                 }
 
 
                 override fun onError(e: Throwable) {
-                    textview.append(" onError: ${e.message}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onError: ${e.message}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onError: ${e.message}")
                 }
 
                 override fun onComplete() {
-                    textview.append(" onComplete")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onComplete")
+                    result.append(LINE_SEPERATOR)
                     Logger.d("onComplete")
                 }
 
                 override fun onNext(t: List<String>) {
-                    textview.append("onNext: size:${t.size}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append("onNext: size:${t.size}")
+                    result.append(LINE_SEPERATOR)
                     t.forEach {
-                        textview.append("value: ${it} ")
-                        textview.append(LINE_SEPERATOR)
+                        result.append("value: ${it} ")
+                        result.append(LINE_SEPERATOR)
                         Logger.d("onNext value: ${it}")
                     }
                     Logger.d("onNext: size:${t.size}")
@@ -489,25 +831,25 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
      fun getStringObserver(): Observer<in String> {
         return object : Observer<String> {
             override fun onSubscribe(d: Disposable) {
-                textview.text = ""
+                result.text = ""
                 Logger.d("onSubscribe  ${d.isDisposed}")
             }
 
             override fun onNext(t: String) {
-                textview.append(" onNext: value:${t}")
-                textview.append(LINE_SEPERATOR)
+                result.append(" onNext: value:${t}")
+                result.append(LINE_SEPERATOR)
                 Logger.d(" onNext: $t")
             }
 
             override fun onError(e: Throwable) {
-                textview.append(" onError: ${e.message}")
-                textview.append(LINE_SEPERATOR)
+                result.append(" onError: ${e.message}")
+                result.append(LINE_SEPERATOR)
                 Logger.d(" onError: ${e.message}")
             }
 
             override fun onComplete() {
-                textview.append(" onComplete")
-                textview.append(LINE_SEPERATOR)
+                result.append(" onComplete")
+                result.append(LINE_SEPERATOR)
                 Logger.d("onComplete")
             }
         }
@@ -519,47 +861,74 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
             }
 
             override fun onNext(t: String) {
-                textview.append("second onNext: value:${t}")
-                textview.append(LINE_SEPERATOR)
+                result.append("second onNext: value:${t}")
+                result.append(LINE_SEPERATOR)
                 Logger.d(" second onNext: $t")
             }
 
             override fun onError(e: Throwable) {
-                textview.append("second onError: ${e.message}")
-                textview.append(LINE_SEPERATOR)
+                result.append("second onError: ${e.message}")
+                result.append(LINE_SEPERATOR)
                 Logger.d("second onError: ${e.message}")
             }
 
             override fun onComplete() {
-                textview.append("second onComplete")
-                textview.append(LINE_SEPERATOR)
+                result.append("second onComplete")
+                result.append(LINE_SEPERATOR)
                 Logger.d("second onComplete")
             }
         }
     }
 
-    fun getIntObserver(): Observer<in Long> {
+    fun getLongObserver(): Observer<in Long> {
         return object : Observer<Long> {
             override fun onSubscribe(d: Disposable) {
-                textview.text = ""
+                result.text = ""
                 Logger.d("onSubscribe  ${d.isDisposed}")
             }
 
             override fun onNext(t: Long) {
-                textview.append(" onNext: value:${t}")
-                textview.append(LINE_SEPERATOR)
+                result.append(" onNext: value:${t}")
+                result.append(LINE_SEPERATOR)
                 Logger.d(" onNext: $t")
             }
 
             override fun onError(e: Throwable) {
-                textview.append(" onError: ${e.message}")
-                textview.append(LINE_SEPERATOR)
+                result.append(" onError: ${e.message}")
+                result.append(LINE_SEPERATOR)
                 Logger.d(" onError: ${e.message}")
             }
 
             override fun onComplete() {
-                textview.append(" onComplete")
-                textview.append(LINE_SEPERATOR)
+                result.append(" onComplete")
+                result.append(LINE_SEPERATOR)
+                Logger.d("onComplete")
+            }
+        }
+    }
+
+    fun getIntObserver(): Observer<in Int> {
+        return object : Observer<Int> {
+            override fun onSubscribe(d: Disposable) {
+                result.text = ""
+                Logger.d("onSubscribe  ${d.isDisposed}")
+            }
+
+            override fun onNext(t: Int) {
+                result.append(" onNext: value:${t}")
+                result.append(LINE_SEPERATOR)
+                Logger.d(" onNext: $t")
+            }
+
+            override fun onError(e: Throwable) {
+                result.append(" onError: ${e.message}")
+                result.append(LINE_SEPERATOR)
+                Logger.d(" onError: ${e.message}")
+            }
+
+            override fun onComplete() {
+                result.append(" onComplete")
+                result.append(LINE_SEPERATOR)
                 Logger.d("onComplete")
             }
         }
@@ -574,25 +943,25 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object :Observer<Int>{
                 override fun onSubscribe(d: Disposable) {
-                    textview.text = ""
+                    result.text = ""
                     Logger.d("onSubscribe  ${d.isDisposed}")
                 }
 
                 override fun onNext(t: Int) {
-                    textview.append(" onNext: value:${t}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onNext: value:${t}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onNext: $t")
                 }
 
                 override fun onError(e: Throwable) {
-                    textview.append(" onError: ${e.message}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onError: ${e.message}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onError: ${e.message}")
                 }
 
                 override fun onComplete() {
-                    textview.append(" onComplete")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onComplete")
+                    result.append(LINE_SEPERATOR)
                     Logger.d("onComplete")
                 }
 
@@ -601,33 +970,33 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
     }
 
     /**
-     * 创建一个Observable，它在一个给定的延迟后发射一个特殊的值
+     * 创建一个Observable，它在一个给定的延迟后发射一个0（调用一次 onNext(0)）
      */
     private fun timer() {
-        Observable.timer(5,TimeUnit.SECONDS)
+        Observable.timer(3,TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object :Observer<Long>{
                 override fun onSubscribe(d: Disposable) {
-                    textview.text = ""
+                    result.text = ""
                     Logger.d("onSubscribe  ${d.isDisposed}")
                 }
 
                 override fun onNext(t: Long) {
-                    textview.append(" onNext: value:${t}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onNext: value:${t}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onNext: $t")
                 }
 
                 override fun onError(e: Throwable) {
-                    textview.append(" onError: ${e.message}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onError: ${e.message}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onError: ${e.message}")
                 }
 
                 override fun onComplete() {
-                    textview.append(" onComplete")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onComplete")
+                    result.append(LINE_SEPERATOR)
                     Logger.d("onComplete")
                 }
 
@@ -638,29 +1007,32 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
      * 不保证顺序发送
      */
     private fun merge(){
-        var observableA = Observable.fromArray( "A2", "A1","A3", "A4")
-        var observableB = Observable.fromArray("B1", "B2", "B3")
-        Observable.merge(observableA,observableB).subscribe(object :Observer<String>{
+        var observableA = Observable.fromArray( "网络")
+        var observableB = Observable.fromArray("本地")
+        Observable.merge(observableA,observableB)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object :Observer<String>{
             override fun onSubscribe(d: Disposable) {
-                textview.text = ""
+                result.text = ""
                 Logger.d("onSubscribe  ${d.isDisposed}")
             }
 
             override fun onNext(t: String) {
-                textview.append(" onNext: value:${t}")
-                textview.append(LINE_SEPERATOR)
+                result.append(" onNext: value:${t}")
+                result.append(LINE_SEPERATOR)
                 Logger.d(" onNext: $t")
             }
 
             override fun onError(e: Throwable) {
-                textview.append(" onError: ${e.message}")
-                textview.append(LINE_SEPERATOR)
+                result.append(" onError: ${e.message}")
+                result.append(LINE_SEPERATOR)
                 Logger.d(" onError: ${e.message}")
             }
 
             override fun onComplete() {
-                textview.append(" onComplete")
-                textview.append(LINE_SEPERATOR)
+                result.append(" onComplete")
+                result.append(LINE_SEPERATOR)
                 Logger.d("onComplete")
             }
 
@@ -681,27 +1053,27 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object :Observer<String>{
                 override fun onSubscribe(d: Disposable) {
-                    textview.text = ""
+                    result.text = ""
                     Logger.d("onSubscribe  ${d.isDisposed}")
                 }
 
                 override fun onNext(t: String) {
                     Logger.d(" onNext cost time: ${System.currentTimeMillis() - startTime} ms")
 
-                    textview.append(" onNext: value:${t}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onNext: value:${t}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onNext: $t")
                 }
 
                 override fun onError(e: Throwable) {
-                    textview.append(" onError: ${e.message}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onError: ${e.message}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onError: ${e.message}")
                 }
 
                 override fun onComplete() {
-                    textview.append(" onComplete")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onComplete")
+                    result.append(LINE_SEPERATOR)
                     Logger.d("onComplete")
                 }
 
@@ -719,25 +1091,25 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object :Observer<String>{
                 override fun onSubscribe(d: Disposable) {
-                    textview.text = ""
+                    result.text = ""
                     Logger.d("onSubscribe  ${d.isDisposed}")
                 }
 
                 override fun onNext(t: String) {
-                    textview.append(" onNext: value:${t}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onNext: value:${t}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onNext: $t")
                 }
 
                 override fun onError(e: Throwable) {
-                    textview.append(" onError: ${e.message}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onError: ${e.message}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onError: ${e.message}")
                 }
 
                 override fun onComplete() {
-                    textview.append(" onComplete")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onComplete")
+                    result.append(LINE_SEPERATOR)
                     Logger.d("onComplete")
                 }
 
@@ -755,25 +1127,25 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object :Observer<List<UserBean>>{
                 override fun onSubscribe(d: Disposable) {
-                    textview.text = ""
+                    result.text = ""
                     Logger.d("onSubscribe  ${d?.isDisposed}")
                 }
 
                 override fun onNext(t: List<UserBean>) {
-                    textview.append(" onNext: value:${t[0].name}, ${t[1].name}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onNext: value:${t[0].name}, ${t[1].name}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onNext: $t")
                 }
 
                 override fun onError(e: Throwable) {
-                    textview.append(" onError: ${e.message}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onError: ${e.message}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onError: ${e.message}")
                 }
 
                 override fun onComplete() {
-                    textview.append(" onComplete")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onComplete")
+                    result.append(LINE_SEPERATOR)
                     Logger.d("onComplete")
                 }
 
@@ -805,30 +1177,30 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object :Observer<String>{
                 override fun onSubscribe(d: Disposable?) {
-                    textview.text = ""
+                    result.text = ""
 
                     Logger.d("onSubscribe  ${d?.isDisposed}")
                 }
 
                 override fun onNext(value: String) {
 //                    textview.append(" onNext: value:$value")
-                    textview.append(" onNext: value:$value")
+                    result.append(" onNext: value:$value")
 
-                    textview.append(LINE_SEPERATOR)
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onNext: $value")
 
 
                 }
 
                 override fun onError(e: Throwable) {
-                    textview.append(" onError: ${e.message}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onError: ${e.message}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onError: ${e.message}")
                 }
 
                 override fun onComplete() {
-                    textview.append(" onComplete")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onComplete")
+                    result.append(LINE_SEPERATOR)
                     Logger.d("onComplete")
                 }
 
@@ -849,24 +1221,24 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
             }
             .subscribe(object :Observer<UserBean>{
                 override fun onSubscribe(d: Disposable?) {
-                    textview.text = ""
+                    result.text = ""
                     Logger.d("onSubscribe: ${d?.isDisposed}")
                 }
 
                 override fun onNext(t: UserBean) {
-                    textview.append(" onNext: value:${t.name}, ${t.age}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onNext: value:${t.name}, ${t.age}")
+                    result.append(LINE_SEPERATOR)
                 }
 
                 override fun onError(e: Throwable) {
-                    textview.append(" onError: ${e.message}")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onError: ${e.message}")
+                    result.append(LINE_SEPERATOR)
                     Logger.d(" onError: ${e.message}")
                 }
 
                 override fun onComplete() {
-                    textview.append(" onComplete")
-                    textview.append(LINE_SEPERATOR)
+                    result.append(" onComplete")
+                    result.append(LINE_SEPERATOR)
                     Logger.d("onComplete")
                 }
             })
