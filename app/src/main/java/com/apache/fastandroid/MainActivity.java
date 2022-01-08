@@ -1,13 +1,18 @@
 package com.apache.fastandroid;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
@@ -15,6 +20,7 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.AuthToken;
+import com.apache.fastandroid.demo.drakeet.DrakeetTextviewFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.util.AccessDenyException;
 import com.blankj.utilcode.util.ToastUtils;
@@ -24,6 +30,7 @@ import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -116,11 +123,52 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, CustomViewFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrawableListFragment.class,null);
 //        FragmentContainerActivity.launch(this, SampleCode1DemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, DrawableDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
+//        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
+        FragmentContainerActivity.launch(this, DrakeetTextviewFragment.class,null);
+
+        Context context = getApplicationContext();
+        Logger.d(String.format("context file dir:%s, cache:%s",context.getFilesDir(),context.getCacheDir()));
+        Logger.d(String.format("external file dir:%s, cache:%s",context.getExternalFilesDir(null),context.getExternalCacheDir()));
 
 
+        TextView textView = new TextView(this);
+        String str = "Longfu2012";
+        textView.setFilters(new InputFilter[]{new MyFilter("")});
 
+    }
 
+    public class MyFilter implements InputFilter {
+        String ch = null;
+        String str = null;
+
+        public MyFilter(String str) {
+            this.str = str;
+        }
+
+        public CharSequence filter(CharSequence source, int start, int end,
+                                   Spanned dest, int dstart, int dend) {
+            //最后输入的一个字符
+            if (dest.length() < str.length()) {
+                //截取未过滤的最后一个字符
+                ch = str.substring(dstart + start, dstart + end);
+            } else {
+                return dest.subSequence(dstart, dend);
+            }
+
+            if (ch.equals(source)) {
+                Toast.makeText(MainActivity.this, "符合要求",
+                        Toast.LENGTH_SHORT).show();
+                //符合规定要求的字符以原输入显示
+                return dest.subSequence(dstart, dend) + source.toString();
+            } else {
+                Toast.makeText(MainActivity.this, "不符合要求喔~",
+                        Toast.LENGTH_SHORT).show();
+                //如果没有按要求输入字符，则该字符被“*”代替，并显示
+                return dest.subSequence(dstart, dend) + "*";
+            }
+
+        }
 
     }
 

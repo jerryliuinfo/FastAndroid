@@ -6,4 +6,11 @@ import java.io.Serializable
 /**
  * Created by Jerry on 2020/10/31.
  */
-data class ViewItemBean (val title:String? = "", val description:String? = "", val clazz: Class<out Fragment>? = null):Serializable
+data class ViewItemBean (var title:String? = "", val description:String? = "", val clazz: Class<out Fragment>? = null):Serializable{
+
+    constructor(title: String?,clazz: Class<out Fragment>?): this(title,title,clazz)
+
+    fun title(title: String?) =  apply {
+        this.title = title
+    }
+}

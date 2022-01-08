@@ -18,6 +18,7 @@ class PerformanceDemoFragment: BaseListFragment() {
                  ,ViewItemBean("MMKV", "MMKV", MMKVFragment::class.java)
                  ,ViewItemBean("AppFaster", "AppFaster", MMKVFragment::class.java)
                  ,ViewItemBean("TaskDispatcher", "TaskDispatcher", TaskDispatcherDemoFragment::class.java)
+                 ,ViewItemBean("OMagnifier", "OMagnifier", OMagnifierDemoFragment::class.java)
         )
     }
 }

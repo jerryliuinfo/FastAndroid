@@ -12,8 +12,9 @@
         android:orientation="horizontal"
         app:flow_horizontalGap="10dp"
         app:flow_verticalGap="10dp"
-        app:constraint_referenced_ids="tv_message,tv_name,btn_textview_horizontal_scroll,
-        btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs"
+        app:flow_wrapMode="aligned"
+        app:constraint_referenced_ids="tv_message,tv_name,btn_textview_horizontal_scroll,btn_collections_suffle,
+        btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs,btn_textview_inputFilter"
         />
 
     <TextView
@@ -74,5 +75,23 @@
         android:layout_height="wrap_content"
         android:text="Kotlin可变参数"
 
+        />
+
+    <Button
+        android:id="@+id/btn_textview_inputFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="InputFilter"
+
+        />
+
+    <EditText
+        android:id="@+id/et_userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/gray_btn"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

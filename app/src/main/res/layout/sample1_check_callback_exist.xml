@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:constraint_referenced_ids="btn_check_callback"
+        app:constraint_referenced_ids="btn_check_callback,btn_handler_poll"
         app:flow_wrapMode="aligned"
         />
 
@@ -18,6 +18,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="检查callback"
+
+        />
+    <Button
+        android:id="@+id/btn_handler_poll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用handler实现无线循环"
 
         />
 

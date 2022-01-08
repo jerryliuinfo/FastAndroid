@@ -11,13 +11,18 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EdgeEffect
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.os.HandlerCompat
+import com.apache.fastandroid.LogUtils
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.UserBean
 import com.apache.fastandroid.jetpack.lifecycle.service.MyService
+import com.blankj.utilcode.util.RomUtils
+import com.orhanobut.logger.Logger
+import com.tesla.framework.common.device.DeviceName
 import com.tesla.framework.common.util.AndroidVersion
 import com.tesla.framework.common.util.CommonUtil
 import com.tesla.framework.common.util.DrakeetUtils
@@ -26,6 +31,7 @@ import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.common.util.toast.ToastCompat
 import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_drakeet_knowledge.*
+import java.lang.Exception
 import java.nio.channels.AsynchronousChannel
 
 /**
@@ -57,7 +63,9 @@ class DrakeetCommonFragment:BaseFragment() {
         }
 
         btn_samsung_notification_bug.setOnClickListener {
-            showNotification()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                showNotification()
+            }
         }
         btn_chekcsdkIntAtLeast.setOnClickListener {
             CommonUtil.fromApi(26) {
@@ -83,7 +91,19 @@ class DrakeetCommonFragment:BaseFragment() {
         }
         btn_getDeviceName.setOnClickListener {
             //https://t.zsxq.com/bE2znqV
-//            DeviceName.getDeviceName("clark", "Unknown device");
+            kotlin.runCatching {
+                var deviceName = DeviceName.getDeviceName("clark", "Unknown device")
+                LogUtils.d("deviceName:${deviceName}")
+                DeviceName.with(context).request { deviceInfo:DeviceName.DeviceInfo?, exception:Exception? ->
+                    LogUtils.d("deviceName2:${deviceInfo}")
+
+                }
+            }
+
+        }
+        var offset = 0
+        btn_bringPointIntoView.setOnClickListener {
+            tv_result.bringPointIntoView(++offset)
         }
         //btn_launchMode
 
@@ -106,11 +126,18 @@ class DrakeetCommonFragment:BaseFragment() {
             }
 
         }
+
+
+        Logger.d("context file dir:${requireContext().filesDir}, cache:${requireContext().cacheDir}, " +
+                "externalFileDir:${requireContext().getExternalFilesDir(null)}, externalCacheDir:${requireContext().externalCacheDir}",
+        )
+
     }
 
     /**
      * https://t.zsxq.com/Nvzjyn2
      */
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun showNotification(){
         val context = activity
         val intent = Intent(context,MainActivity::class.java).apply {
@@ -122,14 +149,14 @@ class DrakeetCommonFragment:BaseFragment() {
 
         val channelId = "test_channel2"
         val replyIntent = PendingIntent.getActivity(context,201,intent,PendingIntent.FLAG_UPDATE_CURRENT)
-        val manager = NotificationManagerCompat.from(context!!)
+        val manager = NotificationManagerCompat.from(requireContext())
         val channel = manager.getNotificationChannel(channelId)
         if (channel == null){
             createNotificationChannel(channelId)?.let {
                 manager.createNotificationChannel(it)
             }
         }
-        val notification = NotificationCompat.Builder(context,channelId)
+        val notification = NotificationCompat.Builder(requireContext(),channelId)
             .setOnlyAlertOnce(true)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setCategory(NotificationCompat.CATEGORY_EMAIL)

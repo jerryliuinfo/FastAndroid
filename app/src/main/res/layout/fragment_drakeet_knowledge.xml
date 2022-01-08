@@ -1,98 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:ignore="MissingDefaultResource">
 
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:flow_wrapMode="aligned"
-        android:orientation="horizontal"
-        app:flow_horizontalGap="10dp"
-        app:flow_verticalGap="10dp"
-        app:constraint_referenced_ids="
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="30dp"
+        >
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:flow_wrapMode="aligned"
+            android:orientation="horizontal"
+            app:flow_horizontalGap="10dp"
+            app:flow_verticalGap="10dp"
+            app:constraint_referenced_ids="
             btn_toast,btn_judge_sdk_version,btn_service_ontask_removed,
             btn_samsung_notification_bug,btn_chekcsdkIntAtLeast,
             btn_print_call_chain,btn_doOnMainThreadIdle,btn_getDeviceName,btn_string_hash_conflict
-            ,btn_launchMode"
-        />
+            ,btn_launchMode,btn_declare_permission,btn_bringPointIntoView"
+            />
 
-    <Button
-        android:id="@+id/btn_toast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ToastCompact" />
+        <Button
+            android:id="@+id/btn_toast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ToastCompact" />
 
-    <Button
-        android:id="@+id/btn_judge_sdk_version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="判断是否是Android 12版本" />
-    <Button
-        android:id="@+id/btn_service_ontask_removed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="onTaskRemoved" />
+        <Button
+            android:id="@+id/btn_judge_sdk_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="判断是否是Android 12版本" />
+        <Button
+            android:id="@+id/btn_service_ontask_removed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="onTaskRemoved" />
 
-    <Button
-        android:id="@+id/btn_samsung_notification_bug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="三星Android10系统通知bug" />
+        <Button
+            android:id="@+id/btn_samsung_notification_bug"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="三星Android10系统通知bug" />
 
-    <Button
-        android:id="@+id/btn_chekcsdkIntAtLeast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="checkSdkIntAtLeast" />
+        <Button
+            android:id="@+id/btn_chekcsdkIntAtLeast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="checkSdkIntAtLeast" />
 
-    <Button
-        android:id="@+id/btn_print_call_chain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="打印代码调用链" />
+        <Button
+            android:id="@+id/btn_print_call_chain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打印代码调用链" />
 
-    <Button
-        android:id="@+id/btn_doOnMainThreadIdle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="主线程空闲时执行" />
+        <Button
+            android:id="@+id/btn_doOnMainThreadIdle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="主线程空闲时执行" />
 
-    <Button
-        android:id="@+id/btn_getDeviceName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="获取设备名称" />
+        <Button
+            android:id="@+id/btn_getDeviceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="获取设备名称" />
 
-    <Button
-        android:id="@+id/btn_string_hash_conflict"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="String Hash冲突" />
+        <Button
+            android:id="@+id/btn_string_hash_conflict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="String Hash冲突" />
 
-    <Button
-        android:id="@+id/btn_launchMode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="LaunchMode" />
+        <Button
+            android:id="@+id/btn_launchMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="LaunchMode" />
 
-    <Button
-        android:id="@+id/btn_async_handler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="async_handler" />
+        <Button
+            android:id="@+id/btn_async_handler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="async_handler" />
+
+        <Button
+            android:id="@+id/btn_declare_permission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Android权限过滤" />
+
+        <Button
+            android:id="@+id/btn_bringPointIntoView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Textview-BringPointINtoView" />
+
+        <EditText
+            android:id="@+id/tv_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/comm_blue"
+            android:text="@string/long_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_bringPointIntoView"
+            />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.core.widget.NestedScrollView>

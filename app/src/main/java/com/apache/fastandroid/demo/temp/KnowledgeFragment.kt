@@ -1,15 +1,25 @@
 package com.apache.fastandroid.demo.temp
 
+import android.content.Context
+import android.content.IntentFilter
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewTreeObserver
 import com.apache.fastandroid.R
 import com.blankj.utilcode.util.MetaDataUtils
+import com.blankj.utilcode.util.ThreadUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
+import android.widget.Toast
+
+import android.text.Spanned
+
+import android.text.InputFilter
+import com.apache.fastandroid.MainActivity
+
 
 /**
  * Created by Jerry on 2021/9/6.
@@ -19,6 +29,8 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
     companion object{
         private const val TAG = "KnowledgeFragment"
     }
+
+    private lateinit var mContext: Context
     override fun inflateContentView(): Int {
         return R.layout.fragment_temp_knowledge
     }
@@ -49,7 +61,50 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
         btn_varargs.setOnClickListener {
             initvarArgs("aaa","bbb")
         }
+
+        val str = "Longfu2012"
+        et_userName.filters = arrayOf<InputFilter>(MyFilter(str,context))
+
     }
+
+    class MyFilter(str: String?, val context: Context?) : InputFilter {
+        var ch: String? = null
+        var str: String? = null
+        override fun filter(
+            source: CharSequence, start: Int, end: Int,
+            dest: Spanned, dstart: Int, dend: Int
+        ): CharSequence {
+            //最后输入的一个字符
+            ch = if (dest.length < str!!.length) {
+                //截取未过滤的最后一个字符
+                str!!.substring(dstart + start, dstart + end)
+            } else {
+                return dest.subSequence(dstart, dend)
+            }
+            return if (ch == source) {
+
+
+                Toast.makeText(
+                    context, "符合要求",
+                    Toast.LENGTH_SHORT
+                ).show()
+                //符合规定要求的字符以原输入显示
+                dest.subSequence(dstart, dend).toString() + source.toString()
+            } else {
+                Toast.makeText(
+                    context, "不符合要求喔~",
+                    Toast.LENGTH_SHORT
+                ).show()
+                //如果没有按要求输入字符，则该字符被“*”代替，并显示
+                dest.subSequence(dstart, dend).toString() + "*"
+            }
+        }
+
+        init {
+            this.str = str
+        }
+    }
+
 
     private fun initvarArgs(vararg params:String){
 

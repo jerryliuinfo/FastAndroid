@@ -21,6 +21,7 @@ class DrakeetDemoListFragment:BaseListFragment() {
             ,ViewItemBean("加载大图", "ImageRegionDecoder", RegionDeocderFragment::class.java)
             ,ViewItemBean("ServiceOnTaskRemoved", "ServiceOnTaskRemoved", RegionDeocderFragment::class.java)
             ,ViewItemBean("代码保护、隐藏", "ServiceOnTaskRemoved", RegionDeocderFragment::class.java)
+            ,ViewItemBean("Textview偏僻方法", "Textview偏僻方法", DrakeetTextviewFragment::class.java)
 
         )
     }

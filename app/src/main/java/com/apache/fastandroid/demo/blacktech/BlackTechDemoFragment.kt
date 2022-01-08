@@ -11,6 +11,7 @@ class BlackTechDemoFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
             ViewItemBean("ViewPump","https://github.com/B3nedikt/ViewPump", ViewPumpDemoFragment::class.java)
+            ,ViewItemBean("ViewPump","https://github.com/B3nedikt/ViewPump", ViewPumpDemoFragment::class.java)
         )
     }
 

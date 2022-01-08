@@ -109,6 +109,7 @@ ext {
 //            logger                           :  "com.orhanobut:logger:2.2.0",
             //https://github.com/jaredrummler/AndroidDeviceNames
             device_name                           :  "com.jaredrummler:android-device-names:2.1.0",
+            AnyLayer                           :  "com.github.goweii:AnyLayer:4.1.4-androidx",
 
 
     ]
@@ -163,6 +164,7 @@ ext {
                     rootProject.androidLib.appcompatV7,
                     rootProject.androidLib.googleMaterial,
                     rootProject.androidLib.core_ktx,
+                    rootProject.androidLib.kotlin_stdlib,
 
                     rootProject.androidLib.androidx_lifecycle_common,
                     rootProject.androidLib.androidx_lifecycle_extensions,
@@ -188,6 +190,8 @@ ext {
                     rootProject.thirdLib.brvh,
                     rootProject.thirdLib.mmkv,
                     rootProject.thirdLib.utilcodex,
+                    rootProject.thirdLib.AnyLayer,
+//                    rootProject.thirdLib.device_name,
             ]
     ]
 

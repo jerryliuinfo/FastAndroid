@@ -43,15 +43,16 @@ import com.orhanobut.logger.DiskLogAdapter;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.mmkv.MMKV;
 import com.tesla.framework.applike.FApplication;
+import com.tesla.framework.common.device.DeviceName;
 import com.tesla.framework.common.util.LaunchTimer;
 import com.tesla.framework.common.util.log.Logger;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
-import com.wxy.appstartfaster.dispatcher.AppStartTaskDispatcher;
 import com.tesla.framework.component.startup.Group;
 import com.tesla.framework.component.startup.StartupManager;
 import com.tesla.framework.component.startup.TimeListener;
+import com.wxy.appstartfaster.dispatcher.AppStartTaskDispatcher;
 
 import java.io.File;
 
@@ -124,7 +125,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
         LaunchTimer.endRecord("Application end ");
         initLoadSir();
-//        DeviceName.init(this);
+        DeviceName.init(this);
     }
 
 

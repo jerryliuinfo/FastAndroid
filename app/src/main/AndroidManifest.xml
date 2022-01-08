@@ -28,6 +28,16 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+<!--    <uses-permission android:name="android.permission.CAMERA"  />-->
+
+<!--    如果您请求硬件相关的权限（例如 CAMERA），则 Google Play 会假设您的应用需要底层硬件功能，并从设备过滤掉不提供该功能的应用。
+        要控制过滤，务必在 <uses-feature> 元素中显式声明硬件功能，而不是依赖 Google Play“发现” <uses-permission> 元素中的要求。
+        然后，如果要对特定功能停用过滤，可将 android:required="false" 属性添加到 <uses-feature> 声明中。
+        https://developer.android.com/guide/topics/manifest/uses-permission-element
+        -->
+
+    <uses-feature android:required="false" android:name="android.hardware.camera" />
+
     <uses-sdk tools:overrideLibrary="com.android.support:multidex:1.0.2"/>
 
 
