@@ -101,10 +101,7 @@ class DrakeetCommonFragment:BaseFragment() {
             }
 
         }
-        var offset = 0
-        btn_bringPointIntoView.setOnClickListener {
-            tv_result.bringPointIntoView(++offset)
-        }
+
         //btn_launchMode
 
         /**
@@ -112,6 +109,9 @@ class DrakeetCommonFragment:BaseFragment() {
          */
         btn_launchMode.setOnClickListener {
 
+        }
+        btn_restart.setOnClickListener {
+            DrakeetUtils.triggerRestart(requireContext(),null)
         }
         /**
          * https://t.zsxq.com/6mI2jU3

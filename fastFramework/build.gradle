@@ -9,7 +9,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
-apply from: "../maven-publish2.gradle"
+//apply from: "../maven-publish2.gradle"
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
@@ -20,12 +20,12 @@ android {
         targetSdkVersion rootProject.android.targetSdkVersion
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-        javaCompileOptions {
+       /* javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath = true
                 //                arguments = [moduleName: project.getName()]
             }
-        }
+        }*/
 
         /**
          * defaultConfig 下的consumerProguardFiles 配置的*.pro文件将会在library

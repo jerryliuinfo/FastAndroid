@@ -1,5 +1,7 @@
 package com.tesla.framework.common.util
 
+import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
@@ -9,6 +11,7 @@ import android.view.View
 import androidx.annotation.IntRange
 import com.tesla.framework.BuildConfig
 import com.tesla.framework.common.util.log.NLog
+import java.lang.IllegalStateException
 import java.lang.StringBuilder
 
 /**
@@ -81,6 +84,16 @@ object DrakeetUtils {
                 }
             }
         }
+    }
 
+    /**
+     * https://t.zsxq.com/Bu3zvFe
+     */
+    fun triggerRestart(context: Context,intent: Intent? = null){
+        val targetIntent =  intent?:context.packageManager.getLaunchIntentForPackage(context.packageName)
+            ?:throw IllegalStateException("NoLaunchIntent for ${context.packageName}")
+        targetIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        context.startActivity(targetIntent)
+        Runtime.getRuntime().exit(0)
     }
 }

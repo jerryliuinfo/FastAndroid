@@ -26,7 +26,7 @@
             btn_toast,btn_judge_sdk_version,btn_service_ontask_removed,
             btn_samsung_notification_bug,btn_chekcsdkIntAtLeast,
             btn_print_call_chain,btn_doOnMainThreadIdle,btn_getDeviceName,btn_string_hash_conflict
-            ,btn_launchMode,btn_declare_permission,btn_bringPointIntoView"
+            ,btn_launchMode,btn_declare_permission,btn_restart"
             />
 
         <Button
@@ -107,22 +107,15 @@
             android:layout_marginStart="20dp"
             android:text="Android权限过滤" />
 
+
         <Button
-            android:id="@+id/btn_bringPointIntoView"
+            android:id="@+id/btn_restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Textview-BringPointINtoView" />
+            android:text="重启进程" />
 
-        <EditText
-            android:id="@+id/tv_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/comm_blue"
-            android:text="@string/long_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_bringPointIntoView"
-            />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

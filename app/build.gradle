@@ -35,8 +35,9 @@ artemis{
 
 class MyFirstPlugin implements Plugin<Project>{
 
+
     @Override
-    void apply(Project project) {
+    void apply(org.gradle.api.Project project) {
         println 'My First Plugin -->'
         MyFirstPluginBean pluginBean = project.extensions.create("artemis",MyFirstPluginBean.class)
         project.afterEvaluate {
@@ -122,12 +123,12 @@ android {
         resValue "string", "appDisplayName", ""
 
 
-        javaCompileOptions {
+      /*  javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath = true
                 //                arguments = [moduleName: project.getName()]
             }
-        }
+        }*/
         defaultConfig {
             ndk {
                 // 设置支持的SO库架构
@@ -523,13 +524,6 @@ task ex37CustomProperty{
 
 
 
-//4.3 任务分组和描述
-def org.gradle.api.Task myTask = task 'ex43GroupTask'
-myTask.group = BasePlugin.BUILD_GROUP
-myTask.description = "这是一个构建的引导任务"
-myTask.doLast {
-    println "group:${group}, desc:${description}"
-}
 
 
 
