@@ -62,6 +62,7 @@
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
         <activity android:name=".SplashActivity"
+            android:exported="true"
             android:theme="@style/Splashscreen"
             >
             <intent-filter>
@@ -76,6 +77,7 @@
 
         <activity
             android:name=".MainActivity"
+
             android:launchMode="singleTask"
             android:exported="true">
          </activity>
@@ -83,19 +85,32 @@
 
 
 
-        <activity android:name=".demo.temp.ScrollConflictActivity"/>
+        <activity android:name=".demo.temp.ScrollConflictActivity"
+            android:exported="true"
+            />
 
-        <activity android:name=".demo.blacktech.ViewPumpDemoActivity"/>
+        <activity android:name=".demo.blacktech.ViewPumpDemoActivity"
+            android:exported="true"
+
+            />
 
 
 
         <activity android:name=".article.ArticleDetailActivity"
             android:configChanges="orientation|keyboardHidden|navigation|locale"
             android:launchMode="singleTask"
+            android:exported="true"
+
+            />
+
+        <activity android:name=".demo.drakeet.foregroundservice.ForegroundServiceActivity"
+            android:exported="true"
+
             />
 
 
         <service android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService"/>
+        <service android:name=".demo.drakeet.foregroundservice.InhibitorService"/>
 
 
         <meta-data

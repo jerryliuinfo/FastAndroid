@@ -2,20 +2,19 @@ ext {
 
     //Android编译版本管理
     android = [
-               compileSdkVersion:  29,
-               buildToolsVersion: '29.0.3',
-               minSdkVersion    : 24,
-               targetSdkVersion : 29,
+            compileSdkVersion:  29,
+            buildToolsVersion: '29.0.3',
+            minSdkVersion    : 29,
+            targetSdkVersion : 31,
 
-               versionCode : 10003,
+            versionCode : 10003,
             //major:minor.patch
-               versionName :"1.0.3"
+            versionName :"1.0.3"
     ]
 
     sourceCompatibilityVersion = JavaVersion.VERSION_1_8
     targetCompatibilityVersion = JavaVersion.VERSION_1_8
 
-    supportLibrariesVersion = '27.0.1'
     designVersion = "27.0.1"
 
     buglyVersion = '3.2.1'
@@ -70,7 +69,7 @@ ext {
             retrofit                         : 'com.squareup.retrofit2:retrofit:2.8.1',
             retrofitConverterGson            : 'com.squareup.retrofit2:converter-gson:2.8.1',
             retrofitConverterScalars         : 'com.squareup.retrofit2:converter-scalars:2.8.1',
-            
+
 //            retrofitAdapterRx                : 'com.squareup.retrofit2:adapter-rxjava2:2.8.1',
             retrofitAdapterRx                : 'com.squareup.retrofit2:adapter-rxjava3:2.9.0',
 
@@ -117,11 +116,13 @@ ext {
 
     androidLib = [
             appcompatV7                      : 'androidx.appcompat:appcompat:1.1.0',
+            googleMaterial                   : 'com.google.android.material:material:1.4.0-alpha01',
+
             constraintLayout                 : 'androidx.constraintlayout:constraintlayout:2.0.4',
             cardview                         : 'androidx.cardview:cardview:1.0.0',
             recyclerview                     : 'androidx.recyclerview:recyclerview:1.1.0',
             // Android KTX 是包含在 Android Jetpack 及其他 Android 库中的一组 Kotlin 扩展程序。KTX 扩展程序可以为 Jetpack、Android 平台及其他 API 提供简洁的惯用 Kotlin 代码。
-            core_ktx                         : "androidx.core:core-ktx:1.7.0",
+            core_ktx                         : "androidx.core:core-ktx:1.3.0",
             palette                          : "androidx.palette:palette-ktx:1.0.0",
 
             androidx_annotaion               : "androidx.annotaion:annotation:1.0.0",
@@ -137,7 +138,6 @@ ext {
 
 
 
-            googleMaterial                   : 'com.google.android.material:material:1.4.0-alpha01',
 
             androidx_lifecycle_common        : "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
             androidx_lifecycle_extensions    : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",

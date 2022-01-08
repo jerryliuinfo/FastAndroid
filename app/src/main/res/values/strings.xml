@@ -45,7 +45,6 @@
 
     <string name="got_token_and_data">token:%1$s\n\n获取到的数据：\nID：%2$d\n用户名：%3$s</string>
 
-    <string name="custom_textview_prefixed_text">\n[CustomTextView] %s</string>
 
     <string name="property_name">MainValue</string>
     <string name="long_text">This is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long text
@@ -54,5 +53,7 @@
     This is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long text
     This is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long text</string>
 
-
+    <string name="custom_textview_prefixed_text">\n[CustomTextView] %s</string>
+    <string name="regular_button">Klicke hier um die Sprache zu ändern</string>
+    <string name="regular_textview">This is a regular TextView</string>
 </resources>

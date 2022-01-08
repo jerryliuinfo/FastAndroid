@@ -1,12 +1,14 @@
 package com.tesla.framework.ui.activity;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.orhanobut.logger.Logger;
 import com.tesla.framework.R;
 import com.tesla.framework.component.network.NetworkStateManager;
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
@@ -303,5 +305,22 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
             mApplicationProvider = new ViewModelProvider((ViewModelStoreOwner) this.getApplicationContext());
         }
         return mApplicationProvider.get(modelClass);
+    }
+
+
+    /**
+     * https://t.zsxq.com/uRBEaEE
+     * @param overrideConfiguration
+     */
+    @Override
+    public void applyOverrideConfiguration(Configuration overrideConfiguration) {
+        Logger.d("applyOverrideConfiguration: %s ");
+        if (overrideConfiguration != null){
+            //
+           /* if (LocalMananger.locale != null){
+                overrideConfiguration.setLocale(Loca);
+            }*/
+        }
+        super.applyOverrideConfiguration(overrideConfiguration);
     }
 }

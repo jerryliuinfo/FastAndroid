@@ -3,16 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-
-
     compileSdkVersion rootProject.android.compileSdkVersion
-//    buildToolsVersion rootProject.android.buildToolsVersion
+    buildToolsVersion rootProject.android.buildToolsVersion
     defaultConfig {
         minSdkVersion rootProject.android.minSdkVersion
         targetSdkVersion rootProject.android.targetSdkVersion
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
-
 
     buildTypes {
         release {
@@ -20,22 +17,74 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     implementation rootProject.androidLib.core_ktx
-
     implementation rootProject.androidLib.appcompatV7
     implementation rootProject.androidLib.constraintLayout
-
     implementation rootProject.androidLib.googleMaterial
+
     implementation project(':baselib')
     implementation project(':fastFramework')
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 }
+
+
+
+
+
+
+
+/*
+
+plugins {
+    id("com.android.library")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
+}
+android {
+    compileSdk = AppConfig.compileSdk
+
+    defaultConfig {
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    buildFeatures {
+        buildConfig = false
+    }
+
+
+}
+
+dependencies {
+
+    implementation(Dependencies.appCompat)
+    implementation(Dependencies.core_ktx)
+    implementation(Dependencies.constraintlayout)
+    implementation(Dependencies.googleMaterial)
+
+
+    implementation(project(":baselib"))
+    implementation(project(":fastFramework"))
+
+}
+*/

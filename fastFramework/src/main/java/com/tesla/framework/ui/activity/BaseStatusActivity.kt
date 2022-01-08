@@ -1,6 +1,5 @@
 package com.tesla.framework.ui.activity
 
-import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.View
 import android.view.ViewStub

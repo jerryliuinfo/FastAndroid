@@ -20,7 +20,7 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.AuthToken;
-import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment;
+import com.apache.fastandroid.demo.blacktech.viewpump.ViewPumpDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.util.AccessDenyException;
 import com.blankj.utilcode.util.ToastUtils;
@@ -124,7 +124,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, DrawableListFragment.class,null);
 //        FragmentContainerActivity.launch(this, SampleCode1DemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
-        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
+//        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
+        FragmentContainerActivity.launch(this, ViewPumpDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrakeetTextviewFragment.class,null);
 
         Context context = getApplicationContext();

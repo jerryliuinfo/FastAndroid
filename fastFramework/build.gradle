@@ -13,19 +13,13 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
-    buildToolsVersion rootProject.android.buildToolsVersion
+//    buildToolsVersion rootProject.android.buildToolsVersion
 
     defaultConfig {
         minSdkVersion rootProject.android.minSdkVersion
         targetSdkVersion rootProject.android.targetSdkVersion
 
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-       /* javaCompileOptions {
-            annotationProcessorOptions {
-                includeCompileClasspath = true
-                //                arguments = [moduleName: project.getName()]
-            }
-        }*/
+
 
         /**
          * defaultConfig 下的consumerProguardFiles 配置的*.pro文件将会在library
@@ -53,9 +47,6 @@ android {
          viewBinding = true
     }
 
-//    dataBinding {
-//        enabled = true
-//    }
 
     lintOptions {
         abortOnError false

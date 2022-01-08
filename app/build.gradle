@@ -27,7 +27,7 @@ apply plugin: 'kotlin-kapt'
 //    value "This is myPlugin value "
 //}
 
-apply plugin: MyFirstPlugin
+/*apply plugin: MyFirstPlugin
 artemis{
     name = "jerry"
     age = 18
@@ -37,8 +37,7 @@ class MyFirstPlugin implements Plugin<Project>{
 
 
     @Override
-    void apply(org.gradle.api.Project project) {
-        println 'My First Plugin -->'
+    void apply(org.gradle.api.Project target) {
         MyFirstPluginBean pluginBean = project.extensions.create("artemis",MyFirstPluginBean.class)
         project.afterEvaluate {
             println "name:${pluginBean.name}, age:${pluginBean.age}"
@@ -49,7 +48,7 @@ class MyFirstPlugin implements Plugin<Project>{
 class MyFirstPluginBean{
     public String name = 'defaultName'
     public int age = 0
-}
+}*/
 
 
 Properties properties = new Properties()
@@ -93,7 +92,7 @@ def getAppVersionCode(){
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
-    buildToolsVersion rootProject.android.buildToolsVersion
+//    buildToolsVersion rootProject.android.buildToolsVersion
     defaultConfig {
         applicationId "com.apache.fastandroid"
         minSdkVersion rootProject.android.minSdkVersion
