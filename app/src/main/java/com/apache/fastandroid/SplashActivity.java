@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.apache.artemis_annotation.ByView;
 import com.apache.artemis_annotation.DIActivity;
 import com.apache.fastandroid.bean.UserBean;
-import com.apache.fastandroid.util.MainLogUtil;
+import com.orhanobut.logger.Logger;
 import com.tesla.framework.ui.activity.BaseActivity;
 
 /**
@@ -57,7 +57,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
-        MainLogUtil.d("SplashActivity layoutInit");
+        Logger.d("SplashActivity layoutInit");
         //coutDownView.setVisibility(View.VISIBLE);
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -84,7 +84,7 @@ public class SplashActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null){
             UserBean userBean = data.getParcelableExtra("userBean");
-            MainLogUtil.d("userBean = %s",userBean);
+            Logger.d("userBean = %s",userBean);
         }
     }
 }

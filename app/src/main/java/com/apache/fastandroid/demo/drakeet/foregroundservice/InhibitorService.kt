@@ -35,6 +35,7 @@ class InhibitorService:IntentService("InhibitorService") {
    private fun startForeground(){
        Logger.d("InhibitorService startForground")
        val notification = NotificationUtils.getNotification(NotificationUtils.ChannelConfig.DEFAULT_CHANNEL_CONFIG){
+           //accept 模式
            it.setSmallIcon(R.drawable.icon_category)
            it.setContentText("Notifcation title")
            it.setProgress(0,0,true)

@@ -2,7 +2,7 @@ package com.apache.fastandroid.tink;
 
 import android.content.Context;
 
-import com.apache.fastandroid.util.MainLogUtil;
+import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.lang.reflect.Array;
@@ -41,23 +41,23 @@ public class FixManager {
         }
         //获取当前应用的上下文的私有路径，也就是dex目录 /data/data/com.apache.fastandroid/app_odex/
         File filesDir = context.getDir("odex", Context.MODE_PRIVATE);
-        MainLogUtil.d("loadDex filesDir path : "+filesDir.getAbsolutePath());
+        Logger.d("loadDex filesDir path : "+filesDir.getAbsolutePath());
         File[] files = filesDir.listFiles();
         for (File file : files) {
-            MainLogUtil.d("loadDex file path : "+file.getAbsolutePath() +", name:"+file.getName());
+            Logger.d("loadDex file path : "+file.getAbsolutePath() +", name:"+file.getName());
             if (file.getName().contains("classes") || file.getName().endsWith(".dex")){
                 loadedDex.add(file);
             }
         }
         //创建一个目录，用来存放解压的文件 /data/data/com.apache.fastandroid/app_odex/opt_dex
         String optmizeDir = filesDir.getAbsolutePath() + File.separator + "opt_dex";
-        MainLogUtil.d("loadDex optmizeDir +"+optmizeDir);
+        Logger.d("loadDex optmizeDir +"+optmizeDir);
         File optimizeDir = new File(optmizeDir);
         if (!optimizeDir.exists()){
             optimizeDir.mkdirs();
         }
 
-        MainLogUtil.d("loadDex loadedDex : "+loadedDex);
+        Logger.d("loadDex loadedDex : "+loadedDex);
 
         for (File dex : loadedDex) {
             DexClassLoader myDexClassLoader = new DexClassLoader(dex.getAbsolutePath(),optimizeDir.getAbsolutePath()

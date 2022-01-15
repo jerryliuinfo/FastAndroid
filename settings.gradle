@@ -15,3 +15,4 @@ println "第一阶段和第二阶段之间执行"
 //include ':buildSrc'
 
 println "Hello settings.gradle"
+include ':basic_res'

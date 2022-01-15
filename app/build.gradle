@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 //下的properties文件名称
 //apply plugin: 'com.rocketx'
 
-
+//apply plugin: 'sdk-editor'
 
 //apply plugin: 'largeimage-monitor'
 

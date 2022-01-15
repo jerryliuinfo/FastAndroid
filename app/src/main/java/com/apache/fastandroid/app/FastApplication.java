@@ -12,7 +12,6 @@ import android.util.Log;
 import android.util.Printer;
 import android.view.WindowManager;
 
-import com.apache.fastandroid.BuildConfig;
 import com.apache.fastandroid.component.anr.AnrConfig;
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor;
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor;
@@ -31,22 +30,19 @@ import com.apache.fastandroid.performance.startup.startup.SDK1;
 import com.apache.fastandroid.performance.startup.startup.SDK2;
 import com.apache.fastandroid.performance.startup.startup.SDK3;
 import com.apache.fastandroid.performance.startup.startup.SDK4;
-import com.apache.fastandroid.util.MainLogUtil;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.Utils;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.kingja.loadsir.core.LoadSir;
-import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.DiskLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.mmkv.MMKV;
 import com.tesla.framework.applike.FApplication;
 import com.tesla.framework.common.device.DeviceName;
 import com.tesla.framework.common.util.LaunchTimer;
-import com.tesla.framework.common.util.log.Logger;
-import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
 import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.component.startup.Group;
@@ -87,7 +83,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         sContext = this;
         mAppViewModelStore = new ViewModelStore();
         initLog();
-        MainLogUtil.d("Application onCreate ");
+        Logger.d("Application onCreate ");
         Utils.init(FApplication.getApplication());
 
 //        initTaskByTaskDispatcher();
@@ -97,7 +93,6 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         FApplication.class.getSimpleName();
         // data/data/com.apache.fastandroid/files/mmkv
         String rootDir = MMKV.initialize(this);
-        NLog.d(TAG, "rootDir: %s",rootDir);
         initAppLike();
         initBlockCancary();
         initAnr();
@@ -118,7 +113,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         initHttp();
 
 
-        NLog.d(TAG, "FastAndroidApplication onCreate cost time: %s ms", (SystemClock.uptimeMillis() - startTime));
+        Logger.d(String.format("FastAndroidApplication onCreate cost time: %s ms", (SystemClock.uptimeMillis() - startTime)));
         initViewPump();
         LeakCanary.install(this);
 
@@ -126,10 +121,25 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         LaunchTimer.endRecord("Application end ");
         initLoadSir();
         DeviceName.init(this);
+
+        initPermissionMonitor();
+
+        initAppDress();
     }
 
+    private void initAppDress() {
 
+    }
 
+    private void initPermissionMonitor() {
+        try {
+//            Class.forName("com.hua.permissionmonitor.PermissionMonitor");
+//            PermissionMonitor.start(false);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
 
     private void initTaskByAppFaster(){
@@ -206,7 +216,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
 
     private void initBlockCancary() {
-        NLog.d(TAG, "initBlockCancary --->");
+        Logger.d(TAG, "initBlockCancary --->");
 //        BlockCanary.install(this, new AppBlockCanaryContext()).start();
 
 
@@ -217,7 +227,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         CrashUtils.init(getCacheDir(), new CrashUtils.OnCrashListener() {
             @Override
             public void onCrash(CrashUtils.CrashInfo crashInfo) {
-                NLog.d(TAG, "crash info: %s, e: %s");
+                Logger.d(TAG, "crash info: %s, e: %s");
             }
         });
     }
@@ -225,7 +235,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
     @Override
     protected void attachBaseContext(Context base) {
-        MainLogUtil.d("Application attachBaseContext ");
+        Logger.d("Application attachBaseContext ");
         LaunchTimer.startRecord();
         MultiDex.install(base);
         //HotFixManager.loadDex(base);
@@ -248,14 +258,6 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
 
     private void initLog(){
-        NLog.setDebug(true, Logger.VERBOSE);
-        NLog.trace(Logger.TRACE_ALL, getLogPath() );
-
-        com.orhanobut.logger.Logger.addLogAdapter(new AndroidLogAdapter() {
-            @Override public boolean isLoggable(int priority, String tag) {
-                return BuildConfig.DEBUG;
-            }
-        });
 
         com.orhanobut.logger.Logger.addLogAdapter(new DiskLogAdapter());
     }
@@ -354,7 +356,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         Looper.getMainLooper().setMessageLogging(new Printer() {
             @Override
             public void println(String x) {
-//                NLog.d(TAG, "message: "+ x);
+//                Logger.d(TAG, "message: "+ x);
             }
         });
     }

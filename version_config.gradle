@@ -109,6 +109,11 @@ ext {
             //https://github.com/jaredrummler/AndroidDeviceNames
             device_name                           :  "com.jaredrummler:android-device-names:2.1.0",
             AnyLayer                           :  "com.github.goweii:AnyLayer:4.1.4-androidx",
+            EasyTrack                          :  "com.github.pengxurui:EasyTrack:v1.0.1",
+            PermissionMonitor                  :  "com.github.huage2580:PermissionMonitor:1.0.1",
+            weishu                             :  "me.weishu:epic:1.0.0",
+            AppDress                           :  "com.github.lenebf:AppDress:Tag",
+            sdk_edit                           :  "com.github.iwhys:sdk-editor-plugin:1.1.7",
 
 
     ]
@@ -191,7 +196,11 @@ ext {
                     rootProject.thirdLib.mmkv,
                     rootProject.thirdLib.utilcodex,
                     rootProject.thirdLib.AnyLayer,
-//                    rootProject.thirdLib.device_name,
+                    rootProject.thirdLib.EasyTrack,
+                    rootProject.thirdLib.PermissionMonitor,
+                    rootProject.thirdLib.weishu,
+//                    rootProject.thirdLib.AppDress,
+//                    rootProject.thirdLib.sdk_edit,
             ]
     ]
 

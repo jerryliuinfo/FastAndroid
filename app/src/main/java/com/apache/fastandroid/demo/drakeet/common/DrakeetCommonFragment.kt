@@ -93,7 +93,7 @@ class DrakeetCommonFragment:BaseFragment() {
             //https://t.zsxq.com/bE2znqV
             kotlin.runCatching {
                 var deviceName = DeviceName.getDeviceName("clark", "Unknown device")
-                LogUtils.d("deviceName:${deviceName}")
+                Logger.d("deviceName:${deviceName}")
                 DeviceName.with(context).request { deviceInfo:DeviceName.DeviceInfo?, exception:Exception? ->
                     LogUtils.d("deviceName2:${deviceInfo}")
 

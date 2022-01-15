@@ -3,8 +3,8 @@ package com.tesla.framework.applike;
 import android.app.Application;
 import android.content.Context;
 
+import com.orhanobut.logger.Logger;
 import com.tesla.framework.kt.SPreference;
-import com.tesla.framework.common.util.log.NLog;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -21,7 +21,7 @@ public class FApplication  {
 
 
     public static void onCreate(Application application) {
-        NLog.d(TAG, "FApplication onCreate");
+        Logger.d(TAG, "FApplication onCreate");
         sApplication = application;
         sContext = application.getApplicationContext();
         SPreference.setContext(sContext);
@@ -42,7 +42,7 @@ public class FApplication  {
 
     static {
         try {
-            NLog.e(TAG, "FApplication static block execute");
+            Logger.e(TAG, "FApplication static block execute");
 
             Class<?> activityThread = Class.forName("android.app.ActivityThread");
             Method m_currentActivityThread = activityThread.getDeclaredMethod("currentActivityThread");
@@ -56,7 +56,7 @@ public class FApplication  {
 
             onCreate(sApplication);
         } catch (Exception e) {
-            NLog.e(TAG, "FApplication static block reflect error: %s",e.getMessage());
+            Logger.e(TAG, "FApplication static block reflect error: %s",e.getMessage());
             e.printStackTrace();
         }
     }
