@@ -30,12 +30,12 @@ class GlideBasicUsageFragment: BaseStatusFragmentNew() {
         super.layoutInit(inflater, savedInstanceSate)
 
         btn.setOnClickListener {
-            Glide.with(activity).load(url)
+            Glide.with(requireActivity()).load(url)
                     .listener(navHeaderBgLoadListener)
                     .into(image)
         }
         btn_disable_cache.setOnClickListener {
-            Glide.with(activity).load(url)
+            Glide.with(requireActivity()).load(url)
                     //不缓存图片
                     .diskCacheStrategy(DiskCacheStrategy.RESULT)
                     .placeholder(R.drawable.sample_footer_loading)
@@ -43,7 +43,7 @@ class GlideBasicUsageFragment: BaseStatusFragmentNew() {
 
         }
         btn_dimension.setOnClickListener {
-            Glide.with(activity).load(url)
+            Glide.with(requireActivity()).load(url)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .placeholder(R.drawable.sample_footer_loading)
                     //glide只会将图片加载成100*100读到内存中(和显示的大小不是一个东西),而不管ImageView的大小是多少
@@ -51,7 +51,7 @@ class GlideBasicUsageFragment: BaseStatusFragmentNew() {
                     .into(image)
         }
         btn_origin_size.setOnClickListener {
-            Glide.with(activity).load(url)
+            Glide.with(requireActivity()).load(url)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .placeholder(R.drawable.sample_footer_loading)
                     //glide只会将图片加载成100*100,而不管ImageView的大小是多少

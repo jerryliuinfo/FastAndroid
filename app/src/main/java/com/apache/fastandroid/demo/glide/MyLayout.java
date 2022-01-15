@@ -1,19 +1,9 @@
 package com.apache.fastandroid.demo.glide;
 
-import android.content.Context;
-import android.util.AttributeSet;
-import android.widget.LinearLayout;
-
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.ViewTarget;
-
-import androidx.annotation.Nullable;
-
 /**
  * Created by Jerry on 2021/7/3.
  */
-public class MyLayout extends LinearLayout {
+/*public class MyLayout extends LinearLayout {
     private ViewTarget<MyLayout, GlideDrawable> viewTarget;
     public MyLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -35,4 +25,4 @@ public class MyLayout extends LinearLayout {
     public void setImageAsBackground(GlideDrawable drawable){
         setBackground(drawable);
     }
-}
+}*/

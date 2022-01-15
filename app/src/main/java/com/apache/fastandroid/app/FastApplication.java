@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.text.TextUtils;
 import android.util.Log;
 import android.util.Printer;
 import android.view.WindowManager;
@@ -20,7 +19,6 @@ import com.apache.fastandroid.demo.component.loadsir.callback.EmptyCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.ErrorCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.LoadingCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.TimeoutCallback;
-import com.apache.fastandroid.imageloader.GlideImageLoader;
 import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
 import com.apache.fastandroid.performance.startup.faster.Task1New;
 import com.apache.fastandroid.performance.startup.faster.Task2New;
@@ -39,12 +37,11 @@ import com.kingja.loadsir.core.LoadSir;
 import com.orhanobut.logger.DiskLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mmkv.MMKV;
 import com.tesla.framework.applike.FApplication;
 import com.tesla.framework.common.device.DeviceName;
 import com.tesla.framework.common.util.LaunchTimer;
-import com.tesla.framework.component.imageloader.IImageLoaderstrategy;
-import com.tesla.framework.component.imageloader.ImageLoaderManager;
 import com.tesla.framework.component.startup.Group;
 import com.tesla.framework.component.startup.StartupManager;
 import com.tesla.framework.component.startup.TimeListener;
@@ -82,18 +79,19 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         long startTime = SystemClock.uptimeMillis();
         sContext = this;
         mAppViewModelStore = new ViewModelStore();
+
         initLog();
+        initBugly();
+        initLoop();
         Logger.d("Application onCreate ");
-        Utils.init(FApplication.getApplication());
+        initAndroidUtil();
 
 //        initTaskByTaskDispatcher();
 //        initTaskByAppFaster();
         initTaskByStartup();
 //        initLoop();
-        FApplication.class.getSimpleName();
         // data/data/com.apache.fastandroid/files/mmkv
         String rootDir = MMKV.initialize(this);
-        initAppLike();
         initBlockCancary();
         initAnr();
         initCrash();
@@ -125,6 +123,10 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         initPermissionMonitor();
 
         initAppDress();
+    }
+
+    private void initAndroidUtil(){
+        Utils.init(FApplication.getApplication());
     }
 
     private void initAppDress() {
@@ -193,9 +195,15 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
     }
 
+    private void initBugly(){
+//        CrashReport.initCrashReport(getApplicationContext(), "397713a129", false);
+        CrashReport.initCrashReport(getApplicationContext(), "a397701fd5", false);
+
+    }
+
 
     private void initImageLoader(){
-        String imageLoaderClassName = "";
+       /* String imageLoaderClassName = "";
         IImageLoaderstrategy loaderstrategy;
          if (!TextUtils.isEmpty(imageLoaderClassName)) {
             try {
@@ -207,7 +215,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
              loaderstrategy = new GlideImageLoader();
          }
         ImageLoaderManager.getInstance().setImageLoaderStrategy(loaderstrategy);
-        ImageLoaderManager.getInstance().init(FApplication.getContext());
+        ImageLoaderManager.getInstance().init(FApplication.getContext());*/
     }
 
 
@@ -218,7 +226,6 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
     private void initBlockCancary() {
         Logger.d(TAG, "initBlockCancary --->");
 //        BlockCanary.install(this, new AppBlockCanaryContext()).start();
-
 
     }
 
@@ -242,11 +249,6 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         super.attachBaseContext(base);
     }
 
-
-
-    private void initAppLike(){
-
-    }
 
 
     /**
@@ -403,6 +405,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
                 .setDefaultCallback(LoadingCallback.class)//设置默认状态页
                 .commit();
     }
+
 }
 
 

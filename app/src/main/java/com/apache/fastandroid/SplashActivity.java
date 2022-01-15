@@ -3,12 +3,7 @@ package com.apache.fastandroid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Log;
-import android.widget.TextView;
 
-import com.apache.artemis_annotation.ByView;
 import com.apache.artemis_annotation.DIActivity;
 import com.apache.fastandroid.bean.UserBean;
 import com.orhanobut.logger.Logger;
@@ -21,34 +16,6 @@ import com.tesla.framework.ui.activity.BaseActivity;
 public class SplashActivity extends BaseActivity {
     public static final String TAG = SplashActivity.class.getSimpleName();
 
-
-
-
-    private Handler mHandler = new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            Log.d(MainActivity.class.getName(), "接收到信息 ->" + msg.what);
-        }
-    };
-
-
-    void doJob() {
-        Thread thread = new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                mHandler.sendEmptyMessageDelayed(1, 60000L);
-            }
-        };
-        thread.start();
-    }
-
-
-
-    @ByView(R.id.splash_app_name)
-    TextView splash_app_name;
-
     @Override
     public int inflateContentView() {
         return R.layout.activity_splash;
@@ -58,7 +25,6 @@ public class SplashActivity extends BaseActivity {
     public void layoutInit(Bundle savedInstanceState) {
         super.layoutInit(savedInstanceState);
         Logger.d("SplashActivity layoutInit");
-        //coutDownView.setVisibility(View.VISIBLE);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -66,7 +32,7 @@ public class SplashActivity extends BaseActivity {
 
             }
         },2000);
-        doJob();
+
     }
 
 
@@ -75,7 +41,6 @@ public class SplashActivity extends BaseActivity {
     private void toMain(){
         UserBean userBean = new UserBean();
         MainActivity.launch(SplashActivity.this,userBean);
-//        startActivity(new Intent(this, DemoListActivity.class));
         SplashActivity.this.finish();
     }
 

@@ -56,6 +56,8 @@ ext {
     okHttpVersion = "4.8.0"
 
     thirdLib = [
+            bugly                          : "com.tencent.bugly:crashreport:4.0.0",
+
             okhttp3                          : "com.squareup.okhttp3:okhttp:$okHttpVersion",
             okhttp3_boom                     : "com.squareup.okhttp3:okhttp-bom:${okHttpVersion}",
             okhttp3_log                      : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
@@ -75,7 +77,7 @@ ext {
 
 
             glide                            :  'com.github.bumptech.glide:glide:3.7.0',
-            glideOkhttp                      :  'com.github.bumptech.glide:okhttp3-integration:4.9.0',
+            glideOkhttp                      :  'com.github.bumptech.glide:okhttp3-integration:3.7.0',
 
 
             utilcodex                        :  'com.blankj:utilcodex:1.31.0',
@@ -188,10 +190,16 @@ ext {
 
 
 
+                    rootProject.thirdLib.bugly,
+
                     rootProject.thirdLib.gson,
                     rootProject.thirdLib.fastjson,
                     rootProject.thirdLib.qmui,
+
                     rootProject.thirdLib.glide,
+                    rootProject.thirdLib.glideOkhttp,
+
+
                     rootProject.thirdLib.brvh,
                     rootProject.thirdLib.mmkv,
                     rootProject.thirdLib.utilcodex,

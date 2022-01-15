@@ -25,7 +25,6 @@ import androidx.annotation.IntRange
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.palette.graphics.Palette
-import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.tesla.framework.R
@@ -137,47 +136,5 @@ object ColorUtil {
     }
 
 
-
-    private var navHeaderBgLoadListener: RequestListener<Any, GlideDrawable> = object : RequestListener<Any, GlideDrawable> {
-
-        override fun onException(e: Exception?, model: Any, target: Target<GlideDrawable>, isFirstResource: Boolean): Boolean {
-            return false
-        }
-
-        override fun onResourceReady(glideDrawable: GlideDrawable?, model: Any, target: Target<GlideDrawable>,
-                                     isFromMemoryCache: Boolean, isFirstResource: Boolean): Boolean {
-            if (glideDrawable == null) {
-                return false
-            }
-            val bitmap = glideDrawable.toBitmap()
-            val bitmapWidth = bitmap.width
-            val bitmapHeight = bitmap.height
-            if (bitmapWidth <= 0 || bitmapHeight <= 0) {
-                return false
-            }
-            val left = (bitmapWidth * 0.2).toInt()
-            val right = bitmapWidth - left
-            val top = bitmapHeight / 2
-            val bottom = bitmapHeight - 1
-            NLog.d(TAG, "text area top $top , bottom $bottom , left $left , right $right")
-            Palette.from(bitmap)
-                    .maximumColorCount(3)
-                    .clearFilters()
-                    .setRegion(left, top, right, bottom) // 测量图片下半部分的颜色，以确定用户信息的颜色
-                    .generate { palette ->
-                        val isDark = ColorUtil.isBitmapDark(palette, bitmap)
-                        val color: Int
-                        color = if (isDark) {
-                            ContextCompat.getColor(FApplication.getContext(), Color.WHITE.toInt())
-                        } else {
-                            ContextCompat.getColor(FApplication.getContext(), R.color.colorPrimary)
-                        }
-//                        nicknameMe.setTextColor(color)
-//                        descriptionMe.setTextColor(color)
-//                        editImage.setColorFilter(color, android.graphics.PorterDuff.Mode.MULTIPLY)
-                    }
-            return false
-        }
-    }
 
 }
