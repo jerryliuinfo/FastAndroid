@@ -17,7 +17,7 @@ public class SplashActivity extends BaseActivity {
     public static final String TAG = SplashActivity.class.getSimpleName();
 
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.activity_splash;
     }
 

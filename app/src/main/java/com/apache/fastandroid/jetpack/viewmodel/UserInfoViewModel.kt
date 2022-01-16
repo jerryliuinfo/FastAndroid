@@ -13,7 +13,7 @@ import kotlin.random.Random
 /**
  * Created by Jerry on 2020/11/1.
  */
-class UserInfoViewModel(private val reporsity: UserReporsity):BaseViewModel() {
+class UserInfoViewModel(private val reporsity: UserReporsity):BaseStatusViewModel() {
 
 
     val countLiveData:MutableLiveData<Int> = MutableLiveData(0)

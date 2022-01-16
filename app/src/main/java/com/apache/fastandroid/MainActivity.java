@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.activity_main;
     }
 
@@ -88,49 +88,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         menuItem.setChecked(true);
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
-//        FragmentContainerActivity.launch(this, RelearnAndroidDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, RxJavaDemoFragment2.class,null);
-//        FragmentContainerActivity.launch(this, MatrixDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, PerformanceDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, GlideBasicUsageFragment.class,null);
-//        FragmentContainerActivity.launch(this, HookContextFragment.class,null);
-//        FragmentContainerActivity.launch(this, AspectJDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, DrakeetDemoListFragment.class,null);
-//        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
-//        FragmentContainerActivity.launch(this, BlackTechDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, ChainModeDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, ProxyModeDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, SpecifyParentViewDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, ReflectionDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, ApiDemoFragment2.class,null);
-//        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, ConcurrencyDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
-//        FragmentContainerActivity.launch(this, CoordinatorLayoutDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, TransitionDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, ApiDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
-//        FragmentContainerActivity.launch(this, ConstraintLayoutDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, TaskDispatcherDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, HitPitDemoListFragment.class,null);
-//        FragmentContainerActivity.launch(this, LiveDataTransformSwitchMapFragment.class,null);
-//        FragmentContainerActivity.launch(this, LoadSirDemoListFragment.class,null);
-//        FragmentContainerActivity.launch(this, LoggerDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, CouroutineDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, RxJavaDemoListFragment.class,null);
-//        FragmentContainerActivity.launch(this, RecycleViewItemDecorationFragment.class,null);
-//        FragmentContainerActivity.launch(this, DrakeetDemoListFragment.class,null);
-//        FragmentContainerActivity.launch(this, CustomViewFragment.class,null);
-//        FragmentContainerActivity.launch(this, DrawableListFragment.class,null);
-//        FragmentContainerActivity.launch(this, SampleCode1DemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
-//        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
-//        FragmentContainerActivity.launch(this, ViewPumpDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, DrakeetTextviewFragment.class,null);
-//        FragmentContainerActivity.launch(this, PermissionMonitorFragment.class,null);
-//        FragmentContainerActivity.launch(this, GlideBasicUsageFragment.class,null);
-//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
-        FragmentContainerActivity.launch(this, RecycleViewItemDecorationFragment2.class,null);
 
         Context context = getApplicationContext();
         Logger.d(String.format("context file dir:%s, cache:%s",context.getFilesDir(),context.getCacheDir()));
@@ -338,40 +295,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
 
-
-    private <T> Function<Throwable, ? extends Observable<? extends T>> refreshTokenAndRetry(final Observable<T> toBeResumed) {
-        return new Function<Throwable, Observable<? extends T>>() {
-            @Override
-            public Observable<? extends T> apply(Throwable throwable) throws Throwable {
-                if (isHttp401Error(throwable)) {
-                    return createTokenObvervable().flatMap(new Function<AuthToken, Observable<? extends T>>() {
-                        @Override
-                        public Observable<? extends T> apply(AuthToken authToken) throws Throwable {
-//                            appendText(tvLogs, "refresh token success,token's validity is 10s\nResume last request");
-
-                            return toBeResumed;
-                        }
-                    });
-                }
-                // re-throw this error because it's not recoverable from here
-                return Observable.error(throwable);
-            }
-
-            public boolean isHttp401Error(Throwable throwable) {
-                return throwable instanceof AccessDenyException;
-            }
-
-        };
-    }
-
-    public Observable<AuthToken> createTokenObvervable() {
-        return Observable.create(new ObservableOnSubscribe<AuthToken>() {
-            @Override
-            public void subscribe(ObservableEmitter<AuthToken> emitter) throws Throwable {
-                emitter.onNext(new AuthToken("adafsddfsd"));
-                emitter.onComplete();
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
-    }
 }
 

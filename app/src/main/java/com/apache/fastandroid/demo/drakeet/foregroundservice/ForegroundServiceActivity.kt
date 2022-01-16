@@ -19,7 +19,7 @@ class ForegroundServiceActivity:BaseActivity() {
     private lateinit var msg:String
 
     private val handler = Handler()
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_common
     }
 

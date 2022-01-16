@@ -1,16 +1,16 @@
 package com.apache.fastandroid.home;
 
+import com.apache.fastandroid.jetpack.StateLiveData;
+import com.apache.fastandroid.jetpack.viewmodel.BaseStatusViewModel;
 import com.apache.fastandroid.network.model.Article;
 import com.apache.fastandroid.network.model.HomeArticleResponse;
-import com.apache.fastandroid.jetpack.BaseViewModel;
-import com.apache.fastandroid.jetpack.StateLiveData;
 
 import java.util.List;
 
 /**
  * Created by Jerry on 2021/7/1.
  */
-public class HomeViewModel extends BaseViewModel {
+public class HomeViewModel extends BaseStatusViewModel {
     private StateLiveData<HomeArticleResponse> homeArticleLiveData = new StateLiveData<>();
 
     private StateLiveData<List<Article>> topArticleLiveData = new StateLiveData<>();

@@ -16,7 +16,7 @@ public class ScrollConflictActivity extends BaseActivity implements View.OnClick
 
 
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.temp_srcoll_confict_activity_view;
     }
 

@@ -99,7 +99,7 @@ public abstract class BaseDatabindingActivity<VB extends ViewDataBinding> extend
     * @return
     */
    @Override
-   public int inflateContentView() {
+   public int getLayoutId() {
       return -1;
    }
 }

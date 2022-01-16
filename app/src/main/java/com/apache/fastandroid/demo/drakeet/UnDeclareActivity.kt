@@ -8,7 +8,7 @@ import com.tesla.framework.ui.activity.BaseActivity
  * Created by Jerry on 2021/10/18.
  */
 class UnDeclareActivity: BaseActivity() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.drakeet_looper_activity
     }
 

@@ -81,7 +81,7 @@ class DemoListActivity : BaseActivity() {
     }
 
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.activity_demo_list
     }
 
@@ -92,27 +92,17 @@ class DemoListActivity : BaseActivity() {
             layoutManager = GridLayoutManager(this@DemoListActivity, 2)
             adapter = ItemViewAdapter()
         }
-        getApplicationScopeViewModel(ShareViewModel::class.java).name1.observe(this,object : Observer<String>{
-            override fun onChanged(t: String?) {
-                NLog.d(TAG, "name1 onChanged: %s",t)
 
-            }
-
-        })
-        getApplicationScopeViewModel(ShareViewModel::class.java).name2.observe(this,object : Observer<String>{
-            override fun onChanged(t: String?) {
-               NLog.d(TAG, "name2 onChanged: %s",t)
-
-            }
-
-        })
 
         recycleview.edgeEffectFactory = StretchEdgeEffectFactoryNew()
 
 
-//        FragmentContainerActivity.launch(this,CustomViewFragment::class.java,null)
 
     }
+
+//    private inner class ItemAdapter:Baseq
+
+
 
 
     private inner class ItemViewAdapter : RecyclerView.Adapter<ItemViewHolder>() {
@@ -141,16 +131,7 @@ class DemoListActivity : BaseActivity() {
             }
         }
 
-        override fun onViewAttachedToWindow(holder: ItemViewHolder) {
-            super.onViewAttachedToWindow(holder)
-            NLog.d(TAG, "onViewAttachedToWindow holder: %s, tvTitle: %s, text: %s",holder,holder.txtTitle, holder.txtTitle.text)
-            var tvTitle = holder.txtTitle
-        }
 
-        override fun onViewDetachedFromWindow(holder: ItemViewHolder) {
-            super.onViewDetachedFromWindow(holder)
-            NLog.d(TAG, "onViewDetachedFromWindow holder: %s, tvTitle: %s, text: %s",holder,holder.txtTitle, holder.txtTitle.text)
-        }
 
         override fun getItemViewType(position: Int): Int {
             val viewItemBean = MODELS[position]

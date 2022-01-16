@@ -56,7 +56,8 @@ ext {
     okHttpVersion = "4.8.0"
 
     thirdLib = [
-            bugly                          : "com.tencent.bugly:crashreport:4.0.0",
+            bugly                            : "com.tencent.bugly:crashreport:4.0.0",
+            buglyNativeCrash                 : "com.tencent.bugly:nativecrashreport:4.0.0",
 
             okhttp3                          : "com.squareup.okhttp3:okhttp:$okHttpVersion",
             okhttp3_boom                     : "com.squareup.okhttp3:okhttp-bom:${okHttpVersion}",
@@ -192,6 +193,7 @@ ext {
 
 
                     rootProject.thirdLib.bugly,
+//                    rootProject.thirdLib.buglyNativeCrash,
 
                     rootProject.thirdLib.gson,
                     rootProject.thirdLib.fastjson,
@@ -227,3 +229,35 @@ ext {
 
 
 }
+
+
+/**
+ * 读取本机配置，主要用于本地差异化构建(local.properties不会提交到仓库)
+ */
+def readLocalProperty(String key) {
+//    boolean value = false
+    String value = ""
+    def file = rootProject.file('local.properties')
+    if (file.exists() && file.isFile()) {
+        Properties properties = new Properties()
+        properties.load(file.newDataInputStream())
+//        value = Boolean.parseBoolean(properties.getProperty(key, 'false'))
+        value = properties.getProperty(key, '')
+    }
+    println(String.format("property key=%s value=%S", key, value))
+    return value
+}
+
+def readLocalBooleanProperty(String key) {
+    boolean value = false
+    def file = rootProject.file('local.properties')
+    if (file.exists() && file.isFile()) {
+        Properties properties = new Properties()
+        properties.load(file.newDataInputStream())
+        value = Boolean.parseBoolean(properties.getProperty(key, 'false'))
+    }
+    println(String.format("property key=%s value=%S", key, value))
+    return value
+}
+ext.readLocalProperty = this.&readLocalProperty
+ext.readLocalBooleanProperty = this.&readLocalBooleanProperty

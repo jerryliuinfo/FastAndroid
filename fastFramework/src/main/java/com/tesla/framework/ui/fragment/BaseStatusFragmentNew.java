@@ -118,4 +118,6 @@ public abstract class BaseStatusFragmentNew extends BaseFragment {
             loadingView.setVisibility(View.GONE);
         }
     }
+
+
 }

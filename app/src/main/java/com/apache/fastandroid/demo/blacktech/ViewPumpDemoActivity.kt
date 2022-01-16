@@ -13,7 +13,8 @@ import java.util.*
  * https://github.com/B3nedikt/ViewPump
  */
 class ViewPumpDemoActivity:BaseActivity() {
-    override fun inflateContentView(): Int {
+
+    override fun getLayoutId(): Int {
         return R.layout.blacktech_view_pump
     }
 

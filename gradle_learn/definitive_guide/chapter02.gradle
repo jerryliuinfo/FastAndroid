@@ -21,6 +21,9 @@ task printMap{
         println "width222:${it.key}, height222:${it.value}"
 
     }
+
+    def username = readLocalProperty('credencial.username')
+    println "username:${username}"
 }
 
 //2.3.1  方法 参数是 可以省略 ()

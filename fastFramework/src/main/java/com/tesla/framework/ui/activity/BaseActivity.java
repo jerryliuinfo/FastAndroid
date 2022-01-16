@@ -73,8 +73,8 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
         activity = this;
         weakRefActivity = new WeakReference(this);
 
-        if (inflateContentView() > 0) {
-            setContentView(inflateContentView());
+        if (getLayoutId() > 0) {
+            setContentView(getLayoutId());
         }
 
         getLifecycle().addObserver(NetworkStateManager.getInstance());
@@ -129,7 +129,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
      *
      * @return
      */
-    public abstract int inflateContentView();
+    public abstract int getLayoutId();
 
 
     /**

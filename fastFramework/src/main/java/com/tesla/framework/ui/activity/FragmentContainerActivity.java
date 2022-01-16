@@ -112,7 +112,7 @@ public class FragmentContainerActivity extends BaseActivity {
     }
 
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.comm_ui_fragment_container;
     }
 
