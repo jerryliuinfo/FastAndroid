@@ -12,7 +12,7 @@ import com.tesla.framework.ui.fragment.BaseFragment
  */
 class LooperFragment:BaseFragment() {
     private lateinit var msg:String
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_common
     }
 

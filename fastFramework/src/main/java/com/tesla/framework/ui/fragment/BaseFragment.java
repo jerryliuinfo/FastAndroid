@@ -29,13 +29,8 @@ import androidx.lifecycle.ViewModelStoreOwner;
 public abstract class BaseFragment extends Fragment implements IView{
     public static final String TAG = "BaseFragment";
     private View rootView;
-    protected LayoutInflater layoutInflater;
-
-
     protected AppCompatActivity mActivity;
-
     private boolean isFirstLoad = true;
-
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -46,10 +41,8 @@ public abstract class BaseFragment extends Fragment implements IView{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        layoutInflater = inflater;
-        if (inflateContentView() > 0) {
-            ViewGroup contentView = (ViewGroup) inflater.inflate(inflateContentView(), null);
+        if (getLayoutId() > 0) {
+            ViewGroup contentView = (ViewGroup) inflater.inflate(getLayoutId(), null);
             contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT));
             this.rootView = contentView;
@@ -82,7 +75,6 @@ public abstract class BaseFragment extends Fragment implements IView{
     @Override
     public void onResume() {
         super.onResume();
-
         if (isFirstLoad){
             isFirstLoad = false;
             onLazyLoad();
@@ -97,10 +89,7 @@ public abstract class BaseFragment extends Fragment implements IView{
     }
 
 
-    @Override
-    public void bindUI(View rootView) {
 
-    }
 
     protected void setToolbarTitle(String msg){
         BaseActivity baseActivity = (BaseActivity) getActivity();
@@ -110,6 +99,11 @@ public abstract class BaseFragment extends Fragment implements IView{
             supportActionBar.setDisplayHomeAsUpEnabled(true);
             supportActionBar.setTitle(msg);
         }
+    }
+
+    @Override
+    public void bindUI(View rootView) {
+
     }
 
     @Override

@@ -27,7 +27,7 @@ class LiveDataTransformSwitchMapFragment: BaseStatusFragmentNew() {
             UserDao.getInstance(),
             UserNetwork().getInstance()))
     }
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_jetpack_livedata_transform_switch_map
     }
 

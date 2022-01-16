@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.constraint_space.*
  */
 class ConstraintSpaceFragment: BaseStatusFragmentNew() {
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_space
     }
 

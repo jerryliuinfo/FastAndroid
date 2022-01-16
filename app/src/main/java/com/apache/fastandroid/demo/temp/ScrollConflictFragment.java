@@ -60,7 +60,7 @@ public class ScrollConflictFragment extends BaseStatusFragmentNew {
     }
 
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return -1;
     }
 

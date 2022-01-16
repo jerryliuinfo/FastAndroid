@@ -31,7 +31,7 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
     }
 
     private lateinit var mContext: Context
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_temp_knowledge
     }
 

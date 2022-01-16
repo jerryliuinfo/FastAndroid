@@ -14,7 +14,7 @@ import kotlin.random.Random
  * Created by Jerry on 2020/11/5.
  */
 class LiveDataBusFragment : BaseStatusFragmentNew(){
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_jetpack_livedata_bus
     }
 

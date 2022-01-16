@@ -3,7 +3,6 @@ package com.tesla.framework.ui.activity;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -71,11 +70,13 @@ public abstract class BaseDatabindingActivity<VB extends ViewDataBinding> extend
 
       mBinding = DataBindingUtil.setContentView(this, dataBindingConfig.getLayout());
       mBinding.setLifecycleOwner(this);
-      mBinding.setVariable(dataBindingConfig.getVmVariableId(), dataBindingConfig.getStateViewModel());
+      /*if (dataBindingConfig.getVmVariableId() > 0 && dataBindingConfig.getStateViewModel() != null){
+         mBinding.setVariable(dataBindingConfig.getVmVariableId(), dataBindingConfig.getStateViewModel());
+      }
       SparseArray<Object> bindingParams = dataBindingConfig.getBindingParams();
       for (int i = 0, length = bindingParams.size(); i < length; i++) {
          mBinding.setVariable(bindingParams.keyAt(i), bindingParams.valueAt(i));
-      }
+      }*/
    }
 
    @Override

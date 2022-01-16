@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.performance_task_dispatcher.*
  * Created by Jerry on 2021/11/15.
  */
 class TaskDispatcherDemoFragment:BaseFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.performance_task_dispatcher
     }
 

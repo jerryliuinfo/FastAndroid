@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.expand_btn_click_area.*
  * Created by Jerry on 2021/3/1.
  */
 class ExpandBtnClickAreaFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.expand_btn_click_area
     }
 

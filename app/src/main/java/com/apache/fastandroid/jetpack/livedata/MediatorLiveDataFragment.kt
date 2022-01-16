@@ -28,7 +28,7 @@ class MediatorLiveDataFragment: BaseStatusFragmentNew() {
             UserDao.getInstance(),
             UserNetwork().getInstance()))
     }
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_jetpack_livedata_media_livedata
     }
     val livedata1 = MutableLiveData<String>()

@@ -17,7 +17,7 @@ class ViewGroupShouldDelayPressStateFragment: BaseStatusFragmentNew() {
     }
 
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.temp_should_delay_press_state
     }
 

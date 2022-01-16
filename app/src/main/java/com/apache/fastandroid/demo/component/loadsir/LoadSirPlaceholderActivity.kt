@@ -12,7 +12,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  * Created by  on 2021/12/18.
  */
 class LoadSirPlaceholderActivity:BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.loadsir_activity_placeholder
     }
 

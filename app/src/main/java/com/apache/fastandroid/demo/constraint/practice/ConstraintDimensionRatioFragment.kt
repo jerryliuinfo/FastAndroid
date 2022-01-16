@@ -9,7 +9,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  * 2.宽度：高度，表示宽度和高度之间形式的比例
  */
 class ConstraintDimensionRatioFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_dimension_ratio
     }
 }

@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.custom_view_clip_to_padding.*
  * Created by Jerry on 2020/12/2.
  */
 class ClipToPaddingFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.custom_view_clip_to_padding
     }
 

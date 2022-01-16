@@ -29,7 +29,7 @@ class BitOrAndFragment: BaseStatusFragmentNew() {
 
     val PFLAG_4 = 0x00000008
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.temp_bit_or_and_demo
     }
 

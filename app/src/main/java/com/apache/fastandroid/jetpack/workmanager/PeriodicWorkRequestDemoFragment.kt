@@ -23,7 +23,7 @@ class PeriodicWorkRequestDemoFragment: BaseStatusFragmentNew() {
             .setRequiresBatteryNotLow(true)
             .build()
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_workmananger_period_request
     }
     private lateinit var instance:WorkManager

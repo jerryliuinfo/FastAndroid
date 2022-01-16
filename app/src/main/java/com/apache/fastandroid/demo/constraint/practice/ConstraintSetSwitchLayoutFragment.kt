@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.constraint_set.*
 
 
 class ConstraintSetSwitchLayoutFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.activity_constraint_start
     }
 

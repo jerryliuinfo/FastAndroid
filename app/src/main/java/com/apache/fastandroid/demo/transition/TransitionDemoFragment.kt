@@ -20,7 +20,7 @@ import com.tesla.framework.ui.fragment.BaseFragment
  */
 class TransitionDemoFragment:BaseFragment() {
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_transition
     }
 

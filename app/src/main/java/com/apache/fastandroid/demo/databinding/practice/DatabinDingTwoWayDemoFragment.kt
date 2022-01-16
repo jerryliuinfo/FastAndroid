@@ -21,7 +21,7 @@ class DatabinDingTwoWayDemoFragment: BaseDatebindingFragment<FragmentDatabinding
     }
 
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_databinding_twoeway_bind
     }
 

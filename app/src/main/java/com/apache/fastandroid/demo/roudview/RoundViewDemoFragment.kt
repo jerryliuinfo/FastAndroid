@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_round_view.*
  * Created by Jerry on 2021/9/10.
  */
 class RoundViewDemoFragment:BaseFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_round_view
     }
 

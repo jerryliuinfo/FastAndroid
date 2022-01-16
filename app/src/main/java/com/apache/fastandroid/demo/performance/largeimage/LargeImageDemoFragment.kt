@@ -7,7 +7,7 @@ import com.tesla.framework.ui.fragment.BaseFragment
  * Created by Jerry on 2021/9/26.
  */
 class LargeImageDemoFragment :BaseFragment(){
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_common
     }
 }

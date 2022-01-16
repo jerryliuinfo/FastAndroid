@@ -18,7 +18,7 @@ class KotlinKnowledgeFragment:BaseFragment() {
     companion object{
         private const val TAG = "KotlinKnowledgeFragment"
     }
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.kt_grammer
     }
 

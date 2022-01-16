@@ -14,7 +14,7 @@ class EnumFragment: BaseStatusFragmentNew() {
     companion object{
         val TAG = "EnumFragment"
     }
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.gson_demo
     }
 

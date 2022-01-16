@@ -14,7 +14,7 @@ import com.tesla.framework.ui.fragment.BaseFragment;
  */
 public class ConcurrencyDemoFragment extends BaseFragment {
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.fragment_concurry_demo;
     }
 

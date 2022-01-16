@@ -24,7 +24,7 @@ public abstract class ATabsTabLayoutFragmentNew extends BaseLifecycleFragment<Fr
     private TabLayout tabLayout;
     private ArrayList<ITabItem> tabItems;
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.fragment_tablayout;
     }
 

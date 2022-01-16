@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.qmui_demo.*
  * Created by Jerry on 2021/5/4.
  */
 class QMUIDemoFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.qmui_demo
     }
 

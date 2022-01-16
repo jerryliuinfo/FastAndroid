@@ -9,7 +9,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  */
 class TraditionalLifeCycleFragment: BaseStatusFragmentNew() {
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_traditional_lifecycle
     }
 

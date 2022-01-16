@@ -9,7 +9,7 @@ import com.tesla.framework.ui.fragment.BaseFragment
  * Created by Jerry on 2021/11/7.
  */
 class RegionDeocderFragment:BaseFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_region_decoder
     }
 

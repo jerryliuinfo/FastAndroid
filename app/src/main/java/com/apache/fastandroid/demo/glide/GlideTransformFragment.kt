@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.glide_transform_demo.*
  * Created by Jerry on 2021/6/24.
  */
 class GlideTransformFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.glide_transform_demo
     }
 

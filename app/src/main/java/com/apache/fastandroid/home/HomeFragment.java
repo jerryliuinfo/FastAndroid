@@ -12,6 +12,7 @@ import com.apache.fastandroid.network.model.Article;
 import com.apache.fastandroid.network.model.HomeArticleResponse;
 import com.apache.fastandroid.state.UserInfo;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBinding;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragmentNew;
 import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener;
 
@@ -77,12 +78,12 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
                             }else if (listData.isSuccess()){
                                 handleData(listData.getData().getDatas(),true);
                             }else {
-                                showLoadErrorView("", new View.OnClickListener() {
+                                /*showLoadErrorView("", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         onRefresh();
                                     }
-                                });
+                                });*/
                             }
                             dismissRefreshing();
                         }
@@ -172,6 +173,11 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
         mCurrentPage = 0;
         mTopArticlesLoadTimes = 0;
         homeViewModel.loadHomeData(mCurrentPage);
+    }
+
+    @Override
+    protected CommUiRecycleviewSwiperefreshNewBinding bindView() {
+        return null;
     }
 
     @Override

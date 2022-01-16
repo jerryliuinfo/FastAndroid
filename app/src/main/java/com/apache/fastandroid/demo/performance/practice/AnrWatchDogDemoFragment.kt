@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.performance_anr_watchdog.*
  * Created by Jerry on 2020/12/28.
  */
 class AnrWatchDogDemoFragment : BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.performance_anr_watchdog
     }
 

@@ -13,9 +13,11 @@ import androidx.core.view.ViewCompat
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
 import com.apache.fastandroid.adapter.FlowTagAdapter
+import com.apache.fastandroid.databinding.TempApiUsageDemoBinding
 import com.blankj.utilcode.util.SPUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.temp_api_usage_demo.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -28,14 +30,14 @@ import kotlin.concurrent.thread
 /**
  * Created by Jerry on 2021/10/27.
  */
-class ApiDemoFragment:BaseFragment() {
+class ApiDemoFragment:BaseVBFragment<TempApiUsageDemoBinding>() {
     companion object{
         private  const val TAG = "ApiDemoFragment"
     }
-
-    override fun inflateContentView(): Int {
-        return R.layout.temp_api_usage_demo
-    }
+//
+//    override fun getLayoutId(): Int {
+//        return R.layout.temp_api_usage_demo
+//    }
 
     private val tags = mutableListOf<String>(
         "获取触发移动事件的最小距离",
@@ -154,6 +156,9 @@ class ApiDemoFragment:BaseFragment() {
 
     }
 
+    override fun bindView(): TempApiUsageDemoBinding {
+        return TempApiUsageDemoBinding.inflate(layoutInflater)
+    }
 
 
 }

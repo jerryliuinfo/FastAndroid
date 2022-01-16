@@ -133,7 +133,7 @@ public class ViewAnimatorDemo1Fragment extends BaseStatusFragmentNew {
     }
 
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.view_animator_activity_main;
     }
 }

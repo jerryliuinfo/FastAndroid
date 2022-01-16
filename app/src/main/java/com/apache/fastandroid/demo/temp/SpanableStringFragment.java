@@ -22,7 +22,7 @@ import androidx.annotation.NonNull;
 public class SpanableStringFragment extends BaseStatusFragmentNew {
     private TextView mChildrenPrivacyText;
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.fragment_spannable_string;
     }
 

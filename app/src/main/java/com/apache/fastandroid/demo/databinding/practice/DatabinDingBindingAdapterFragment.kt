@@ -18,7 +18,7 @@ class DatabinDingBindingAdapterFragment: BaseDatebindingFragment<FragmentDatabin
     private lateinit var viewModel: UserViewModel
 
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_databinding_binding_adapter
     }
     private lateinit var user:UserObservableFieldBean

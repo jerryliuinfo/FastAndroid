@@ -39,7 +39,7 @@ open class RxJava3OperatorDemoFragment:BaseFragment() {
         private const val TAG = "RxJava3DemoFragment"
         private const val LINE_SEPERATOR = "\n"
     }
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_rxjava3
     }
 

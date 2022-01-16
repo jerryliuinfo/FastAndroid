@@ -29,7 +29,7 @@ class DrawBasicDemoFragment2222: BaseStatusFragmentNew() {
             PageModel(R.layout.sample_path, "圆角文字", R.layout.practice_path)
     )
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_practice_demo
     }
 

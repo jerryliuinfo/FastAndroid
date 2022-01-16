@@ -16,7 +16,7 @@ public abstract class ARecycleViewSwipeRefreshFragmentNew extends ARecycleViewFr
 
     SwipeRefreshLayout swipeRefreshLayout;
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.comm_ui_recycleview_swiperefresh_new;
     }
 

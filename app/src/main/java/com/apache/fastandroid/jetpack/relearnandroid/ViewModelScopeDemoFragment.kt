@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_viewmodel_scope.*
 class ViewModelScopeDemoFragment:BaseLifecycleFragment<FragmentViewmodelScopeBindingImpl>() {
 
     private lateinit var shareViewModel: ShareViewModel
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_viewmodel_scope
     }
 

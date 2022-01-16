@@ -15,7 +15,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
 public class ClipChildFragment extends BaseStatusFragmentNew {
 
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.custom_view_clipchild;
     }
 

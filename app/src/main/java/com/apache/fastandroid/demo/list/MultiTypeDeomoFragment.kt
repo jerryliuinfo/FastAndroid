@@ -14,7 +14,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  */
 
 class MultiTypeDeomoFragment:BaseStatusFragmentNew() {
- override fun inflateContentView(): Int {
+ override fun getLayoutId(): Int {
    return R.layout.multitype_demo
  }
 

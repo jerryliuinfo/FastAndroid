@@ -28,7 +28,7 @@ class CouroutineDemoFragment:BaseLifecycleFragment<FragmentKotlinCouritineBindin
     companion object{
         private const val TAG = "CouroutineDemoFragment"
     }
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_kotlin_couritine
     }
 

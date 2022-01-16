@@ -19,7 +19,6 @@ import com.apache.fastandroid.demo.component.loadsir.callback.EmptyCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.ErrorCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.LoadingCallback;
 import com.apache.fastandroid.demo.component.loadsir.callback.TimeoutCallback;
-import com.apache.fastandroid.jetpack.lifecycle.ApplicationLifecycleObserverNew;
 import com.apache.fastandroid.performance.startup.faster.Task1New;
 import com.apache.fastandroid.performance.startup.faster.Task2New;
 import com.apache.fastandroid.performance.startup.faster.Task3New;
@@ -50,8 +49,6 @@ import com.wxy.appstartfaster.dispatcher.AppStartTaskDispatcher;
 import java.io.File;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.lifecycle.ViewModelStore;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.multidex.MultiDex;
@@ -100,8 +97,8 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         //traceview 开始检测
        // Debug.startMethodTracing("APP");
 
-        Lifecycle lifecycle = ProcessLifecycleOwner.get().getLifecycle();
-        lifecycle.addObserver(new ApplicationLifecycleObserverNew(ProcessLifecycleOwner.get()));
+//        Lifecycle lifecycle = ProcessLifecycleOwner.get().getLifecycle();
+//        lifecycle.addObserver(new ApplicationLifecycleObserverNew(ProcessLifecycleOwner.get()));
 
         //systrace 开始检测
 //        TraceCompat.beginSection("trace");

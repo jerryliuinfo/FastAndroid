@@ -98,7 +98,7 @@ public abstract class BaseDatebindingFragment<VB extends ViewDataBinding> extend
     }
 
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         throw new IllegalArgumentException("don't call this method in BaseDatebindingFragment");
     }
 

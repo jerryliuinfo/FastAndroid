@@ -16,7 +16,7 @@ import androidx.core.widget.NestedScrollView
  * https://t.zsxq.com/VfmEiIA
  */
 class DrakeetTextviewFragment:BaseFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.drakeet_textview
     }
 

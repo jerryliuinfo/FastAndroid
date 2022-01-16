@@ -42,7 +42,7 @@ class DrakeetCommonFragment:BaseFragment() {
     companion object{
         private const val TAG = "DrakeetCommonFragment";
     }
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_drakeet_knowledge
     }
 

@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_com_recycleview.*
 class DrakeetEdgeEffectDemoFragment : BaseStatusFragmentNew() {
 
    private lateinit var mAdapter: BaseQuickAdapter<String,BaseViewHolder>
-	 override fun inflateContentView(): Int {
+	 override fun getLayoutId(): Int {
 			return R.layout.fragment_com_recycleview
 	 }
 

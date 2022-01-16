@@ -9,7 +9,7 @@ import android.view.View;
  */
 
 public interface IView {
-    int inflateContentView();
+    int getLayoutId();
     void bindUI(View rootView);
     void layoutInit(LayoutInflater inflater, Bundle savedInstanceState);
 }

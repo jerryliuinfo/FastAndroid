@@ -16,7 +16,7 @@ import androidx.annotation.IntDef;
  */
 public class IntDefFragment extends BaseFragment {
    @Override
-   public int inflateContentView() {
+   public int getLayoutId() {
       return R.layout.fragment_common;
    }
 

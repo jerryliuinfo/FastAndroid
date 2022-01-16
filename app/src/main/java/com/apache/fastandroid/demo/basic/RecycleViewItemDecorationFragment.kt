@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.recycleview_item_decoration.*
 
 
 class RecycleViewItemDecorationFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.recycleview_item_decoration
     }
 

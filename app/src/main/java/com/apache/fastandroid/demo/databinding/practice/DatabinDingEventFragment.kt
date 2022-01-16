@@ -20,7 +20,7 @@ class DatabinDingEventFragment: BaseDatebindingFragment<FragmentDatabindingTwoew
         private const val TAG = "DatabinDingEventFragment"
     }
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_databinding_twoeway_event
     }
 

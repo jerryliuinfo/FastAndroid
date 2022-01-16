@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.design_mode_observer.*
  * Created by Jerry on 2021/8/11.
  */
 class ObserverModeFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.design_mode_observer
     }
 

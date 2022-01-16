@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_design_param_type.*
  * Created by Jerry on 2021/9/21.
  */
 class ParamTypeDemoFragment:BaseFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_design_param_type
     }
 

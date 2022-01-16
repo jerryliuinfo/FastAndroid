@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.drawable_custom.*
  * Created by Jerry on 2021/12/14.
  */
 class DrawableDemoFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_drawable_demo
     }
 

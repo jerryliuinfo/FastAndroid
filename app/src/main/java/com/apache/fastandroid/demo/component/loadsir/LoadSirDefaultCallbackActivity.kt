@@ -17,7 +17,7 @@ import java.util.*
 class LoadSirDefaultCallbackActivity:BaseStatusFragmentNew() {
     private lateinit var loadService: LoadService<Any>
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.loadsir_activity_activity_convertor
     }
 

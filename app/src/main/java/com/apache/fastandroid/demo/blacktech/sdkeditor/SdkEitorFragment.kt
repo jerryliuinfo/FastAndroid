@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_black_tech_sdk_editor.*
  * Created by Jerry on 2022/1/15.
  */
 class SdkEitorFragment:BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_black_tech_sdk_editor
     }
 

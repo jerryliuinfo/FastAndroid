@@ -25,7 +25,7 @@ abstract class BaseListFragment: BaseStatusFragmentNew() {
 
     abstract fun initDatas():ArrayList<ViewItemBean>
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_custom_view
     }
 

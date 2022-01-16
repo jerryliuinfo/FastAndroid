@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.fragment_stable_ids.*
 class RecycleviewStabledIdsFragment:BaseFragment() {
     private var items: MutableList<Item> = ArrayList()
     private lateinit var adapter: StableIdAdapter
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.drakeet_recycleview_set_has_stableids
     }
 

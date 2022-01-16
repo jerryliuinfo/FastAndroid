@@ -9,7 +9,7 @@ import com.tesla.framework.ui.fragment.BaseFragment;
  */
 class DemoFragment extends BaseFragment {
    @Override
-   public int inflateContentView() {
+   public int getLayoutId() {
       return 0;
    }
 

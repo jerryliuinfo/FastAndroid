@@ -9,7 +9,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 
  */
 class ConstraintWidthDefaultFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_width_default
     }
 }

@@ -31,7 +31,7 @@ public class BizFragment extends BaseStatusFragmentNew {
 
 
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return -1;
     }
 

@@ -12,7 +12,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  */
 
 class Android10ScopStorageDemoFragment : BaseStatusFragmentNew() {
-	 override fun inflateContentView(): Int {
+	 override fun getLayoutId(): Int {
 			return R.layout.fragment_common
 	 }
 }

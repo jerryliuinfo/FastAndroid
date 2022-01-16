@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.coordinator_basic.*
  * Created by Jerry on 2020/11/19.
  */
 class CoordinatorBasicFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.coordinator_basic
     }
 

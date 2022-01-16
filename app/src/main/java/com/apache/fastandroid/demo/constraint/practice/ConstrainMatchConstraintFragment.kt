@@ -8,7 +8,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  *
  */
 class ConstrainMatchConstraintFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_match_constraint
     }
 }

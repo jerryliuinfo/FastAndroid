@@ -76,10 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
         if (getLayoutId() > 0) {
             setContentView(getLayoutId());
         }
-
         getLifecycle().addObserver(NetworkStateManager.getInstance());
-//        BarUtils.setStatusBarColor(this, Color.TRANSPARENT);
-//        BarUtils.setStatusBarLightMode(this, true);
         bindView();
         layoutInit(savedInstanceState);
     }

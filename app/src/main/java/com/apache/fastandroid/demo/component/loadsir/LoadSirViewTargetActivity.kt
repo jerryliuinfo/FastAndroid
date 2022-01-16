@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.loadsir_activity_view.*
  * Created by  on 2021/12/18.
  */
 class LoadSirViewTargetActivity:BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.loadsir_activity_view
     }
 

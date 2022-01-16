@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.drawable_custom.*
 class LoadingDrawableFragment: BaseStatusFragmentNew() {
 
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.drawable_custom
     }
 

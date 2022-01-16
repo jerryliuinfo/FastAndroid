@@ -27,7 +27,7 @@ class WorkManagerChainDemoFragment: BaseStatusFragmentNew() {
             .setRequiresBatteryNotLow(true)
             .build()
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_workmananger_chain
     }
     private lateinit var instance:WorkManager

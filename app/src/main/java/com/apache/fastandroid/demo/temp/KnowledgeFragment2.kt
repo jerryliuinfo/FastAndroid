@@ -27,7 +27,7 @@ class KnowledgeFragment2: BaseStatusFragmentNew() {
     }
     private lateinit var adapter: BaseQuickAdapter<ViewItemBean,BaseViewHolder>
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_temp_knowledge2
     }
 

@@ -6,23 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
-import android.text.InputFilter;
-import android.text.Spanned;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.basic.RecycleViewItemDecorationFragment2;
-import com.apache.fastandroid.demo.bean.AuthToken;
+import com.apache.fastandroid.demo.temp.ApiDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
-import com.apache.fastandroid.util.AccessDenyException;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.orhanobut.logger.Logger;
@@ -37,12 +31,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.core.ObservableEmitter;
-import io.reactivex.rxjava3.core.ObservableOnSubscribe;
-import io.reactivex.rxjava3.functions.Function;
-import io.reactivex.rxjava3.schedulers.Schedulers;
+
 
 @AptTest(path = "main")
 @BindPath("login/login")
@@ -94,45 +83,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         Logger.d(String.format("external file dir:%s, cache:%s",context.getExternalFilesDir(null),context.getExternalCacheDir()));
 
 
-        TextView textView = new TextView(this);
-        String str = "Longfu2012";
-        textView.setFilters(new InputFilter[]{new MyFilter("")});
+        DemoListActivity.launch(this);
+        FragmentContainerActivity.launch(this,ApiDemoFragment.class,null);
 
     }
 
-    public class MyFilter implements InputFilter {
-        String ch = null;
-        String str = null;
-
-        public MyFilter(String str) {
-            this.str = str;
-        }
-
-        public CharSequence filter(CharSequence source, int start, int end,
-                                   Spanned dest, int dstart, int dend) {
-            //最后输入的一个字符
-            if (dest.length() < str.length()) {
-                //截取未过滤的最后一个字符
-                ch = str.substring(dstart + start, dstart + end);
-            } else {
-                return dest.subSequence(dstart, dend);
-            }
-
-            if (ch.equals(source)) {
-                Toast.makeText(MainActivity.this, "符合要求",
-                        Toast.LENGTH_SHORT).show();
-                //符合规定要求的字符以原输入显示
-                return dest.subSequence(dstart, dend) + source.toString();
-            } else {
-                Toast.makeText(MainActivity.this, "不符合要求喔~",
-                        Toast.LENGTH_SHORT).show();
-                //如果没有按要求输入字符，则该字符被“*”代替，并显示
-                return dest.subSequence(dstart, dend) + "*";
-            }
-
-        }
-
-    }
 
     private int retryCount = 0;
 

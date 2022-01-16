@@ -15,7 +15,7 @@ import com.youth.banner.indicator.CircleIndicator;
  */
 public class BannerDemoFragment2 extends BaseStatusFragmentNew {
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.widget_banner;
     }
 

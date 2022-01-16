@@ -7,7 +7,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  * 约束宽度在目标控件的范围内
  */
 class ConstraintWidthFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_width
     }
 }

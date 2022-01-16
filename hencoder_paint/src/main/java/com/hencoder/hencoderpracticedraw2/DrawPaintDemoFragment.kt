@@ -30,7 +30,7 @@ class DrawPaintDemoFragment: BaseStatusFragmentNew() {
             PageModel(R.layout.sample_fill_path, R.string.title_fill_path, R.layout.practice_fill_path)
     )
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_draw_paint_demo
     }
 

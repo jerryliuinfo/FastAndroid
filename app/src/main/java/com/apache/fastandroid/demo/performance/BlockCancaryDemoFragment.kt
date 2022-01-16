@@ -11,7 +11,7 @@ import kotlin.system.measureTimeMillis
  * Created by Jerry on 2020/12/28.
  */
 class BlockCancaryDemoFragment : BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.performance_block_cancary
     }
 

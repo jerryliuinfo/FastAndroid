@@ -8,7 +8,6 @@
             name="vm"
             type="com.apache.fastandroid.article.ArticleDetailViewModel" />
 
-
     </data>
 
     <LinearLayout

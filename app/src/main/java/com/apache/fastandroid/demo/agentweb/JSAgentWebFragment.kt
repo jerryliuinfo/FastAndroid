@@ -13,7 +13,7 @@ import org.json.JSONObject
  * Created by Jerry on 2021/9/23.
  */
 class JSAgentWebFragment:AgentWebFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_agent_web_js
     }
     private var mBridgeWebView: BridgeWebView? = null

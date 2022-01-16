@@ -45,7 +45,7 @@ open class RxJava3PracticeFragment:BaseFragment() {
     }
     private val compositeDisposable = CompositeDisposable()
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_rxjava3_practice
     }
 

@@ -11,7 +11,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  * Created by Jerry on 2022/1/15.
  */
 class BestPayDemoFragment:BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_bestpay
     }
 

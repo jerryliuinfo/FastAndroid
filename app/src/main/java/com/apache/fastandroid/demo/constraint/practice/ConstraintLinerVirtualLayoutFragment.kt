@@ -5,7 +5,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 
 
 class ConstraintLinerVirtualLayoutFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_liner_virtual_layout
     }
 }

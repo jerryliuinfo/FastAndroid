@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.temp_reflection.*
 class ReflectionDemoFragment:BaseFragment() {
 
     private lateinit var drawerLayout:DrawerLayout
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.temp_reflection
     }
 

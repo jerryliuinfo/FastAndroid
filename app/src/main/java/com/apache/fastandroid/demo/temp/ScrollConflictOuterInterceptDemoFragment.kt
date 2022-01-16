@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.temp_scroll_conflict_outer_intercept.*
  * Created by Jerry on 2021/8/6.
  */
 class ScrollConflictOuterInterceptDemoFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.temp_scroll_conflict_outer_intercept
     }
 

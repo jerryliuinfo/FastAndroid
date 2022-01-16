@@ -20,7 +20,7 @@ class MessageQueueNotIdleFragment:BaseStatusFragmentNew() {
     companion object{
         private val TAG = "HitPitDemoListFragment"
     }
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_hit_pit
     }
 

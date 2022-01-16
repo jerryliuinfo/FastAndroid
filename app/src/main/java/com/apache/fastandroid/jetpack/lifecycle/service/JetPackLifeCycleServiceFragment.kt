@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_jetpack_lifecycle_service.*
  */
 class JetPackLifeCycleServiceFragment: BaseStatusFragmentNew() {
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
        return R.layout.fragment_jetpack_lifecycle_service
     }
 

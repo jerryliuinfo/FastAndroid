@@ -30,7 +30,7 @@ class DrawTextDemoFragment: BaseStatusFragmentNew() {
 
     )
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_practice_demo
     }
 

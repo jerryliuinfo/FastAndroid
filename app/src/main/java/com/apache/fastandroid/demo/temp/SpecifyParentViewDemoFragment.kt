@@ -11,7 +11,7 @@ import com.tesla.framework.ui.fragment.BaseFragment
  * Created by Jerry on 2021/10/26.
  */
 class SpecifyParentViewDemoFragment:BaseFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.temp_specify_parent_view
     }
 

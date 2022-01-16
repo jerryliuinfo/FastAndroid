@@ -10,7 +10,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  */
 class RoomDemoFragment: BaseStatusFragmentNew() {
 //    var instance = StudentDatabase.getInstance()
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_jetpack_room
     }
 

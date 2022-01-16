@@ -12,7 +12,7 @@ import java.util.*
  * Created by Jerry on 2020/12/31.
  */
 class SingleTonLiveDataFragment2: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_jetpack_livedata_singleton2
     }
 

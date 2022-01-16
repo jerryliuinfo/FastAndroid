@@ -5,7 +5,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 
 
 class ConstraintBaselineFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_baseline
     }
 }

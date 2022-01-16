@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.constraint_place_holder.*
  * 移动到此占位符中
  */
 class ConstrainPlaceHolderFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_place_holder
     }
 

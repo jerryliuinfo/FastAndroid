@@ -11,7 +11,7 @@ import com.tesla.framework.ui.fragment.BaseFragment
  * 参考：https://mp.weixin.qq.com/s/81vD1sT9F5LR07H9fqj5QQ
  */
 class DataClassPitDemoFragment:BaseFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_common
     }
     companion object{

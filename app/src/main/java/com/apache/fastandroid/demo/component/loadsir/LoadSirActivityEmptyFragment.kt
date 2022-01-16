@@ -21,7 +21,7 @@ import kotlin.concurrent.thread
  * Created by Jerry on 2021/12/16.
  */
 class LoadSirActivityEmptyFragment:BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.loadsir_activity_empty
     }
 

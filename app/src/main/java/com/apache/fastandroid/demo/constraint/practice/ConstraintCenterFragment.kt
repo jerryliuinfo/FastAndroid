@@ -15,7 +15,7 @@ android:layout_alignParentRight="true"，
  则开发者在xml中定义的Textview的宽度不会生效，会被拉伸至屏幕宽度
  */
 class ConstraintCenterFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_center
     }
 }

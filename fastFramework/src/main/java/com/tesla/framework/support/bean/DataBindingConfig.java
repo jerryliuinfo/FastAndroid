@@ -19,8 +19,8 @@ public class DataBindingConfig {
 
 
     public DataBindingConfig(@NonNull Integer layout,
-                             @NonNull Integer vmVariableId,
-                             @NonNull ViewModel stateViewModel) {
+                             Integer vmVariableId,
+                             ViewModel stateViewModel) {
         this.layout = layout;
         this.vmVariableId = vmVariableId;
         this.stateViewModel = stateViewModel;

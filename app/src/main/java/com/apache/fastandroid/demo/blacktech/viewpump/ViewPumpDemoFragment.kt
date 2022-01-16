@@ -13,7 +13,7 @@ import com.tesla.framework.ui.fragment.BaseFragment
  * Created by Jerry on 2021/10/18.
  */
 class ViewPumpDemoFragment: BaseFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.blacktech_view_pump
     }
 

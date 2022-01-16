@@ -34,7 +34,7 @@ class AsyncToSyncDemoFragment:BaseFragment() {
         private  const val TAG = "ApiDemoFragment"
     }
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.temp_asynctosync_usage_demo
     }
 

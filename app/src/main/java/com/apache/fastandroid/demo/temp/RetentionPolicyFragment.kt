@@ -10,7 +10,7 @@ import com.apache.fastandroid.demo.temp.retention.Config
  * Created by Jerry on 2021/3/1.
  */
 class RetentionPolicyFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_common
     }
 

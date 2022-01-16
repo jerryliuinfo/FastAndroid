@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_magnifier.*
  * Created by Jerry on 2022/1/3.
  */
 class OMagnifierDemoFragment:BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_magnifier
     }
 

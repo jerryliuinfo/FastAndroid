@@ -12,7 +12,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  *
  */
 class ConstraintGuidelineBeginEndFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_guideline_begin_end
     }
 

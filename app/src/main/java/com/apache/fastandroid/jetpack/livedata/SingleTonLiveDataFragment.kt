@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_jetpack_livedata_singleton.*
  * Created by Jerry on 2020/12/31.
  */
 class SingleTonLiveDataFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_jetpack_livedata_singleton
     }
 

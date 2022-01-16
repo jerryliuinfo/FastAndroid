@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.constraint_flow_wrap_mode.*
 
  */
 class ConstraintFlowWrapModeFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_flow_wrap_mode
     }
 

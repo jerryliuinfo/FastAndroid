@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_black_tech_permission_monitor.*
  * Created by Jerry on 2022/1/15.
  */
 class PermissionMonitorFragment:BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_black_tech_permission_monitor
     }
 

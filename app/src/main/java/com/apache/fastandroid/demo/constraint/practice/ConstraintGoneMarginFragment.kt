@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.constraint_gone_margin.*
  *
  */
 class ConstraintGoneMarginFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_gone_margin
     }
 

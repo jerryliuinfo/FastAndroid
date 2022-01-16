@@ -8,7 +8,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  * 默认规则
  */
 class LaunchModeFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.android_basic_launch_mode
     }
 }

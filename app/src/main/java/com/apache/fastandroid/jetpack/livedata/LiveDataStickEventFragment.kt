@@ -16,7 +16,7 @@ class LiveDataStickEventFragment : BaseStatusFragmentNew(){
     companion object{
         val TAG = "LiveDataBasicFragment"
     }
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_jetpack_livedata_stick_event
     }
 

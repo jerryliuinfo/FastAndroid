@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.constraint_group.*
  *
  */
 class ConstraintGroupFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_group
     }
 

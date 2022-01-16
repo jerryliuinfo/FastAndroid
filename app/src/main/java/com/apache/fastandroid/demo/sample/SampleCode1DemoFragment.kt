@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.sample1_check_callback_exist.*
  * Created by  on 2021/12/18.
  */
 class SampleCode1DemoFragment:BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.sample1_check_callback_exist
     }
 

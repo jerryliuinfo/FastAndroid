@@ -27,7 +27,7 @@ class LoadSirConvertorActivity:BaseStatusFragmentNew() {
     private val ERROR_CODE = 0x01
     private lateinit var loadService: LoadService<HttpResult>
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.loadsir_activity_activity_convertor
     }
 

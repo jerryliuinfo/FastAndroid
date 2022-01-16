@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.constraint_layer.*
  */
 class ConstraintLayerFragment: BaseStatusFragmentNew() {
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_layer
     }
 

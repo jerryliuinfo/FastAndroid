@@ -7,7 +7,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  * Created by Jerry on 2020/11/19.
  */
 class ConstraintCenterRelativeLayoutFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_center_relative_layout
     }
 }

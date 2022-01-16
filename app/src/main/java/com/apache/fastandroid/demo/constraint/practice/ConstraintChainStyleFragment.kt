@@ -7,7 +7,7 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  *
  */
 class ConstraintChainStyleFragment: BaseStatusFragmentNew() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.constraint_chain_style
     }
 }

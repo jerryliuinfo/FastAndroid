@@ -19,7 +19,7 @@ import java.lang.reflect.Type
  * 参考：https://mp.weixin.qq.com/s/jVRTFTiwTtr7P7vyAj8G7A
  */
 class GsonSerializeDemoFragment:BaseFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_common
     }
     companion object{

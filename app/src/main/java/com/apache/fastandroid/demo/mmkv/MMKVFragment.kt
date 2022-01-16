@@ -17,7 +17,7 @@ class MMKVFragment: BaseStatusFragmentNew() {
     companion object{
         private const val TAG = "MMKVFragment"
     }
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_mmkv
     }
 

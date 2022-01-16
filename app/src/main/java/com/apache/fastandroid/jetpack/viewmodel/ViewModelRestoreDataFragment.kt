@@ -22,7 +22,7 @@ class ViewModelRestoreDataFragment: BaseStatusFragmentNew() {
 
     private lateinit var userInfoViewModel:UserInfoViewModel
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
        return R.layout.fragment_jetpack_viewmodel_restore_data
     }
 

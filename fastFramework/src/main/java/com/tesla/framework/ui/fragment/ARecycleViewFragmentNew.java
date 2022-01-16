@@ -16,14 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
  *
  * Created by JerryLiu on 17/04/08.
  */
-public abstract class ARecycleViewFragmentNew<Q extends ViewDataBinding> extends BaseLifecycleFragment<Q>{
+public abstract class ARecycleViewFragmentNew<Q extends ViewDataBinding> extends BaseStatusFragmentNew{
     @Override
-    public int inflateContentView() {
+    public int getLayoutId() {
         return R.layout.comm_ui_recycleview_new;
     }
 
     private RecyclerView mRecycleView;
     private BaseQuickAdapter adapter;
+
+    protected abstract Q bindView();
+
 
     @Override
     public void bindUI(View rootView) {

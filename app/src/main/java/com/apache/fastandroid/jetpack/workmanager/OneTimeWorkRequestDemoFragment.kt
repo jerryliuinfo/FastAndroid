@@ -34,7 +34,7 @@ class OneTimeWorkRequestDemoFragment: BaseStatusFragmentNew() {
             .addTag(TAG)
             .setInputData(inputData)
             .build()
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_workmananger_basic
     }
     private lateinit var instance:WorkManager

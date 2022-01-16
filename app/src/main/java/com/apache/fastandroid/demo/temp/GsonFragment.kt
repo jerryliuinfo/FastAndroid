@@ -19,7 +19,7 @@ class GsonFragment: BaseStatusFragmentNew() {
     companion object{
         val TAG = "GsonFragment"
     }
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.gson_demo
     }
 

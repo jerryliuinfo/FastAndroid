@@ -15,7 +15,7 @@ class LifecycleHandlerFragment: BaseStatusFragmentNew() {
 
     private lateinit var lifecycleHandler:LifecycleHandler
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
        return R.layout.fragment_jetpack_lifecycle
     }
 

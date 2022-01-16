@@ -21,7 +21,7 @@ class LoadSirConstraintLayoutActivity :BaseStatusFragmentNew() {
 
     private lateinit var loadService: LoadService<Any>
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.activity_loadsir_constraintlayout
     }
 

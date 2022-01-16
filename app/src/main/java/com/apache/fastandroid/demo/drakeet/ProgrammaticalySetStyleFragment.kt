@@ -19,7 +19,7 @@ import kotlin.math.roundToInt
  * https://t.zsxq.com/AiIIMBu
  */
 class ProgrammaticalySetStyleFragment: BaseFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_programily_set_style
     }
 

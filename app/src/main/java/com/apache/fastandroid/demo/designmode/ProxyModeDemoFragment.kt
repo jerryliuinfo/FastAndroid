@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_design_mode_proxy.*
  * Created by Jerry on 2021/9/19.
  */
 class ProxyModeDemoFragment:BaseFragment() {
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_design_mode_proxy
     }
 

@@ -16,7 +16,7 @@ class DatabinDingObservableDemoFragment: BaseDatebindingFragment<FragmentDatabin
         private const val TAG = "DatabinDingBasicDemo"
     }
 
-    override fun inflateContentView(): Int {
+    override fun getLayoutId(): Int {
        return R.layout.fragment_databinding_oneway_bind_observable
     }
 
