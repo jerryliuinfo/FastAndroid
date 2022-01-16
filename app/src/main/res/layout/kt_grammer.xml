@@ -17,7 +17,8 @@
         app:flow_wrapMode="aligned"
         app:flow_horizontalGap="10dp"
         app:flow_verticalGap="10dp"
-        app:constraint_referenced_ids="btn_on_each,btn_method_cost,btn_set_bean_field,btn_high_order_function"
+        app:constraint_referenced_ids="btn_on_each,btn_method_cost,btn_set_bean_field,btn_high_order_function,
+        btn_lambda"
         />
     <Button
         android:id="@+id/btn_on_each"
@@ -48,6 +49,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="函数作为构造参数"
+        />
+    <Button
+        android:id="@+id/btn_lambda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Laumbda"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

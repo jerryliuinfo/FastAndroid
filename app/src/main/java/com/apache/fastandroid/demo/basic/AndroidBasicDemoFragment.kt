@@ -13,6 +13,7 @@ class AndroidBasicDemoFragment:BaseListFragment() {
         return arrayListOf(
                 ViewItemBean("启动模式", "启动模式", LaunchModeFragment::class.java)
                 ,ViewItemBean("RecycleView ItemDecoration", "ItemDecoration", RecycleViewItemDecorationFragment::class.java)
+                ,ViewItemBean("FlexibleDivider", "FlexibleDivider", RecycleViewItemDecorationFragment2::class.java)
 
         )
     }

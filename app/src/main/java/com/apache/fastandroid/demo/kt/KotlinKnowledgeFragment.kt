@@ -35,6 +35,8 @@ class KotlinKnowledgeFragment:BaseFragment() {
                 Thread.sleep(100)
             }
             com.orhanobut.logger.Logger.d("costTime:${costTime}")
+
+            println()
         }
         btn_coerceAtLeast.setOnClickListener {
             com.orhanobut.logger.Logger.d("${3.coerceAtLeast(5)}")
@@ -47,8 +49,21 @@ class KotlinKnowledgeFragment:BaseFragment() {
             com.orhanobut.logger.Logger.d("frame: ${it}")
         }
         btn_high_order_function.setOnClickListener {
-            mFrameCalculator.listener.invoke(20)
+
+            //这里加了两个 ：： 就变成了对象，一个函数类型的对象，kotlin 中函数可以作为参数传递的本质是：函数可以作为对象存在
+            val result1 =  a(::b)
+            val result2 = ::b
+            println( "result1:$result1, result2:$result2")
         }
+    }
+
+
+    fun a(function: (Int) -> String):String{
+        return function(1)
+    }
+
+    fun b(param:Int):String{
+        return param.toString()
     }
 
 

@@ -34,6 +34,7 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("ShapeableImageView", "ShapeableImageView", ShapeImageviewDemoFragment::class.java)
                 ,ViewItemBean("CustomRoundTextview", "CustomRoundTextview", RoundViewDemoFragment::class.java)
                 ,ViewItemBean("Drawable", "Drawable", DrawableListFragment::class.java)
+                ,ViewItemBean("RecycleviewDivider", "RecycleviewDivider", DrawableListFragment::class.java)
 
 
         )

@@ -19,8 +19,8 @@ import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.demo.basic.RecycleViewItemDecorationFragment2;
 import com.apache.fastandroid.demo.bean.AuthToken;
-import com.apache.fastandroid.demo.glide.GlideBasicUsageFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.apache.fastandroid.util.AccessDenyException;
 import com.blankj.utilcode.util.ToastUtils;
@@ -128,7 +128,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        FragmentContainerActivity.launch(this, ViewPumpDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrakeetTextviewFragment.class,null);
 //        FragmentContainerActivity.launch(this, PermissionMonitorFragment.class,null);
-        FragmentContainerActivity.launch(this, GlideBasicUsageFragment.class,null);
+//        FragmentContainerActivity.launch(this, GlideBasicUsageFragment.class,null);
+//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
+        FragmentContainerActivity.launch(this, RecycleViewItemDecorationFragment2.class,null);
 
         Context context = getApplicationContext();
         Logger.d(String.format("context file dir:%s, cache:%s",context.getFilesDir(),context.getCacheDir()));

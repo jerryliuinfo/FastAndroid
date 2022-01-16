@@ -33,7 +33,7 @@ class GlideCallbackListenFragment: BaseStatusFragmentNew() {
             Glide.with(activity).load(url).asBitmap().into(simpleBitmapTarget)
         }
         btn_view_target.setOnClickListener {
-            Glide.with(activity).load(url).into(mylayout.viewTarget)
+//            Glide.with(activity).load(url).into(mylayout.viewTarget)
         }
 
         btn_pre_load.setOnClickListener {

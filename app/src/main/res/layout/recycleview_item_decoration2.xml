@@ -16,7 +16,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:paddingLeft="20dp"
 
             />
 
@@ -25,41 +24,41 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycleview"
-            android:layout_marginTop="200dp"
             android:orientation="horizontal"
             app:flow_wrapMode="aligned"
             app:flow_horizontalGap="10dp"
-            app:constraint_referenced_ids="tv_default_divider,tv_modify_divider,
-            tv_custom_divider,tv_horizontal_divider"
-            />
-        <Button
-            android:id="@+id/tv_default_divider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="系统默认分割线"
+            app:constraint_referenced_ids="tv_horizontal_divider,tv_paint_divider,
+            tv_drawable_divider,tv_grider_divider"
             />
 
-        <Button
-            android:id="@+id/tv_modify_divider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="修改系统分割线样式"
-
-            />
-
-        <Button
-            android:id="@+id/tv_custom_divider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="自定义ItemDecoration"
-            />
         <Button
             android:id="@+id/tv_horizontal_divider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HorizontalDividerItemDecoration"
+            android:text="Normal"
 
             />
+        <Button
+            android:id="@+id/tv_paint_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paint"
+
+            />
+        <Button
+            android:id="@+id/tv_drawable_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Drawable"
+
+            />
+        <Button
+        android:id="@+id/tv_grider_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GridDivider"
+
+        />
 
 
 

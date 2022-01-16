@@ -1,5 +1,6 @@
 package com.apache.fastandroid.demo.basic
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -11,7 +12,7 @@ import com.apache.fastandroid.demo.adapter.CommentAdapter
 import com.apache.fastandroid.demo.decoration.CommentItemDecoration
 import com.blankj.utilcode.util.ResourceUtils
 import com.tesla.framework.kt.removeDecorations
-import kotlinx.android.synthetic.main.android_basic_recycleview_adapter.recycleview
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import kotlinx.android.synthetic.main.recycleview_item_decoration.*
 
 
@@ -55,6 +56,33 @@ class RecycleViewItemDecorationFragment: BaseStatusFragmentNew() {
             }
 
         }
+        tv_horizontal_divider.setOnClickListener {
+            recycleview.apply {
+                removeDecorations()
+                addItemDecoration( HorizontalDividerItemDecoration.Builder(context)
+                    .color(Color.RED)
+                    .sizeResId(R.dimen.divider_height)
+                    .marginResId(R.dimen.divider_height)
+                    .build()
+                )
+//                    .addItemDecoration(
+//                        HorizontalDividerItemDecoration.Builder(context)
+//                            .color(Color.RED)
+//                            .sizeResId(R.dimen.divider_height)
+//                            .marginResId(R.dimen.divider_height)
+//                            .build()
+//                    )
+            }
+          /*  recycleview.addItemDecoration(
+                HorizontalDividerItemDecoration.Builder(context)
+                    .color(Color.RED)
+                    .sizeResId(R.dimen.divider_height)
+                    .marginResId(R.dimen.divider_height)
+                    .build()
+            )*/
+        }
+
+
 
 
 

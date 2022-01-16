@@ -116,6 +116,7 @@ ext {
             weishu                             :  "me.weishu:epic:1.0.0",
             AppDress                           :  "com.github.lenebf:AppDress:Tag",
             sdk_edit                           :  "com.github.iwhys:sdk-editor-plugin:1.1.7",
+            flexible_divider                   :  "com.yqritc:recyclerview-flexibledivider:1.4.0",
 
 
     ]
@@ -197,7 +198,7 @@ ext {
                     rootProject.thirdLib.qmui,
 
                     rootProject.thirdLib.glide,
-                    rootProject.thirdLib.glideOkhttp,
+//                    rootProject.thirdLib.glideOkhttp,
 
 
                     rootProject.thirdLib.brvh,
@@ -207,6 +208,7 @@ ext {
                     rootProject.thirdLib.EasyTrack,
                     rootProject.thirdLib.PermissionMonitor,
                     rootProject.thirdLib.weishu,
+                    rootProject.thirdLib.flexible_divider,
 //                    rootProject.thirdLib.AppDress,
 //                    rootProject.thirdLib.sdk_edit,
             ]
