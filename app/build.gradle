@@ -183,7 +183,7 @@ android {
     signingConfigs {
 
 
-        release {
+       /* release {
             storePassword properties.getProperty('KEYSTORE_PASSWORD')
             storeFile file(properties.getProperty('KEYSTORE_FILE'))
             keyAlias properties.getProperty('KEYSTORE_ALIAS')
@@ -196,7 +196,7 @@ android {
             storeFile file(properties.getProperty('KEYSTORE_FILE'))
             keyAlias properties.getProperty('KEYSTORE_ALIAS')
             keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
-        }
+        }*/
     }
 
     buildTypes {
@@ -221,7 +221,7 @@ android {
             buildConfigField('boolean', 'LOG_DEBUG', "false")
             buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
             //必须要现在上面配置 signingConfigs 信息，否则会报错
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
         }
         debug {
             debuggable = true
@@ -232,7 +232,7 @@ android {
             buildConfigField('boolean', 'LOG_DEBUG', "true")
             buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
 
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
 
 
         }

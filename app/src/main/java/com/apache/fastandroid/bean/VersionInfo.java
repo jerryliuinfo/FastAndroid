@@ -5,12 +5,7 @@ import java.io.Serializable;
 
 import androidx.annotation.Keep;
 
-/**
- * description:
- * author hui.zhu
- * date 2017/3/4
- * copyright TCL-MIG
- */
+
 @Keep
 public class VersionInfo implements Serializable {
     public static final int UPDATE_FORCE = 1;

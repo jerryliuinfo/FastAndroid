@@ -194,18 +194,11 @@ ext {
                     rootProject.thirdLib.reactivexRxjava2,
                     rootProject.thirdLib.reactivexRxandroid,
 
-
-
-
-
                     rootProject.androidLib.kotlinx_coroutines_core,
                     rootProject.androidLib.kotlinx_coroutines_android,
 
-
                     rootProject.androidLib.cardview,
                     rootProject.androidLib.palette,
-
-
 
                     rootProject.thirdLib.bugly,
 //                    rootProject.thirdLib.buglyNativeCrash,
@@ -238,11 +231,6 @@ ext {
             ]
 
     ]
-
-
-
-
-
 }
 
 

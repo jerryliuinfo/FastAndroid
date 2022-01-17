@@ -16,13 +16,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 
-/**
- * description:
- * author chaojiong.zhang
- * data: 2020/4/24
- * copyright TCL-MIBC
- * 如果是返回值只有code和msg，没有data值的情况， Call 中的参数用 Protocol<BaseResponse>
- */
+
 public interface ApiService {
 
 //     置顶数据

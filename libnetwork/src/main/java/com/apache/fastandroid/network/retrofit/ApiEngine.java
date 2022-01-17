@@ -13,12 +13,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 
 
-/**
- * description: 连接
- * author hui.zhu
- * data: 2020-04-24
- * copyright TCL-MIBC
- */
+
 public final class ApiEngine {
     private static final Object car = new Object();
     private static final Object sword = new Object();

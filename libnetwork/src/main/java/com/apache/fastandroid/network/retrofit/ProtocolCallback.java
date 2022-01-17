@@ -7,12 +7,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 
-/**
- * description:
- * author hui.zhu
- * date 2017/3/6
- * copyright TCL-MIG
- */
+
 
 public abstract class ProtocolCallback<T> implements retrofit2.Callback<BaseResponse<T>>, ProtocolHandler<T> {
     private static final String TAG = "ProtocolCallback";

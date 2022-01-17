@@ -225,6 +225,5 @@ class CouroutineDemoFragment:BaseLifecycleFragment<FragmentKotlinCouritineBindin
         super.onDestroy()
         mainScope.cancel()
     }
-
-
 }
+
