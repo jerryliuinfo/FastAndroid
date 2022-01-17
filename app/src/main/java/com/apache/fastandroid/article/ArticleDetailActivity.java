@@ -9,28 +9,24 @@ import android.view.ViewGroup;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.apache.fastandroid.BR;
-import com.apache.fastandroid.R;
 import com.apache.fastandroid.databinding.ActivityArticleDetailBinding;
 import com.just.agentweb.AgentWeb;
 import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
 import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.support.bean.DataBindingConfig;
-import com.tesla.framework.ui.activity.BaseDatabindingActivity;
+import com.tesla.framework.ui.activity.BaseVmActivity;
 
 /**
  * Created by Jerry on 2021/9/23.
  */
-public class ArticleDetailActivity extends BaseDatabindingActivity<ActivityArticleDetailBinding> {
+public class ArticleDetailActivity extends BaseVmActivity<ActivityArticleDetailBinding> {
     public static final String TAG = "ArticleDetailActivity";
 
     private ArticleDetailViewModel articleDetailViewModel;
-
-    private TextView mTitle;
-    private View mBack;
+//
+//    private TextView mTitle;
+//    private View mBack;
 
 
     public static void launch(Activity from,String title,String url) {
@@ -46,8 +42,8 @@ public class ArticleDetailActivity extends BaseDatabindingActivity<ActivityArtic
         public void onReceivedTitle(WebView view, String title) {
             super.onReceivedTitle(view, title);
             NLog.d(TAG, "onReceivedTitle title: %s",title);
-            articleDetailViewModel.title.set(title);
-            mTitle.setText(title);
+//            articleDetailViewModel.title.set(title);
+            mBinding.customBar.detailTitle.setText(title);
         }
     };
 
@@ -65,7 +61,7 @@ public class ArticleDetailActivity extends BaseDatabindingActivity<ActivityArtic
         }
     };
 
-    @Override
+   /* @Override
     protected void initViewModel() {
         articleDetailViewModel = getActivityViewModel(ArticleDetailViewModel.class);
     }
@@ -83,6 +79,11 @@ public class ArticleDetailActivity extends BaseDatabindingActivity<ActivityArtic
 
         mTitle =  getBinding().getRoot().findViewById(R.id.detail_title);
         mBack =  getBinding().getRoot().findViewById(R.id.detail_back);
+    }*/
+
+    @Override
+    public ActivityArticleDetailBinding bindView() {
+        return ActivityArticleDetailBinding.inflate(getLayoutInflater());
     }
 
     @Override
@@ -92,7 +93,7 @@ public class ArticleDetailActivity extends BaseDatabindingActivity<ActivityArtic
         String title = getIntent().getStringExtra("title");
         articleDetailViewModel.title.set(getIntent().getStringExtra("title"));
         articleDetailViewModel.url.set(getIntent().getStringExtra("url"));
-        mTitle.setText(title);
+        mBinding.customBar.detailTitle.setText(title);
 
 
         AgentWeb.with(this)
@@ -103,7 +104,7 @@ public class ArticleDetailActivity extends BaseDatabindingActivity<ActivityArtic
                 .ready()
                 .go(articleDetailViewModel.url.get());
 
-        mBack.setOnClickListener(new View.OnClickListener() {
+        mBinding.customBar.detailBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -112,4 +113,9 @@ public class ArticleDetailActivity extends BaseDatabindingActivity<ActivityArtic
 
     }
 
+    @Override
+    protected void initViewModel() {
+        super.initViewModel();
+        articleDetailViewModel = getActivityViewModel(ArticleDetailViewModel.class);
+    }
 }

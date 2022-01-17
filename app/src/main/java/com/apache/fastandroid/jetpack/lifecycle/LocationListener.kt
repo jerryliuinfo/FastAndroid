@@ -8,7 +8,7 @@ import com.tesla.framework.component.lifecycle.LifecycleObserverAdapter
 /**
  * Created by Jerry on 2020/11/1.
  */
-class LocationListener(lifecycleOwner: LifecycleOwner, private val onLocationChangeListener: OnLocationChangeListener): DefaultLifecycleObserver {
+class LocationListener(lifecycleOwner: LifecycleOwner, private val onLocationChangeListener: OnLocationChangeListener?): DefaultLifecycleObserver {
 
     companion object{
         const val TAG = "JetPackLifeCycleListener"
@@ -33,7 +33,7 @@ class LocationListener(lifecycleOwner: LifecycleOwner, private val onLocationCha
         super.onStart(owner)
         startLocation()
 
-        onLocationChangeListener.onLocationChanged(100,100)
+        onLocationChangeListener?.onLocationChanged(100,100)
     }
 
     override fun onStop(owner: LifecycleOwner) {

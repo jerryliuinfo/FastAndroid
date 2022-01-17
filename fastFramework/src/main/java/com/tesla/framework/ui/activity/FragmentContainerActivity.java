@@ -7,13 +7,14 @@ import android.text.TextUtils;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.log.FastLog;
+import com.tesla.framework.databinding.CommUiFragmentContainerBinding;
 
 import java.lang.reflect.Method;
 
 import androidx.fragment.app.Fragment;
 
 
-public class FragmentContainerActivity extends BaseActivity {
+public class FragmentContainerActivity extends BaseVmActivity<CommUiFragmentContainerBinding> {
 
     private int overrideTheme = -1;
 
@@ -112,9 +113,11 @@ public class FragmentContainerActivity extends BaseActivity {
     }
 
     @Override
-    public int getLayoutId() {
-        return R.layout.comm_ui_fragment_container;
+    public CommUiFragmentContainerBinding bindView() {
+        return CommUiFragmentContainerBinding.inflate(getLayoutInflater());
     }
+
+
 
 
 

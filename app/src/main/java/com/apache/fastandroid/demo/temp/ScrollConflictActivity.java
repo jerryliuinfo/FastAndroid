@@ -4,20 +4,21 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.apache.fastandroid.R;
-import com.tesla.framework.ui.activity.BaseActivity;
-
+import com.apache.fastandroid.databinding.TempScrollConflictBinding;
+import com.tesla.framework.ui.activity.BaseVmActivity;
 
 
 /**
  * Created by blueberry on 2016/6/20.
  */
-public class ScrollConflictActivity extends BaseActivity implements View.OnClickListener {
+public class ScrollConflictActivity extends BaseVmActivity<TempScrollConflictBinding> implements View.OnClickListener {
+
 
 
 
     @Override
-    public int getLayoutId() {
-        return R.layout.temp_srcoll_confict_activity_view;
+    public TempScrollConflictBinding bindView() {
+        return TempScrollConflictBinding.inflate(getLayoutInflater());
     }
 
     @Override

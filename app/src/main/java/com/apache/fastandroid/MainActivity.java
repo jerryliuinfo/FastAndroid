@@ -14,6 +14,7 @@ import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
+import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.temp.ApiDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
@@ -23,23 +24,20 @@ import com.orhanobut.logger.Logger;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
-import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.ui.activity.BaseVmActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 
 
 @AptTest(path = "main")
 @BindPath("login/login")
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements View.OnClickListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
-    DrawerLayout mDrawerLayout;
-    NavigationView mNavigationView;
     private ActionBarDrawerToggle drawerToggle;
     private int selecteId = -1;
 
@@ -49,20 +47,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         from.startActivity(intent);
     }
 
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_main;
-    }
+
 
     @Override
-    protected void bindView() {
-        super.bindView();
-        mDrawerLayout = findViewById(R.id.drawer);
-        mNavigationView = findViewById(R.id.navigation_view);
-
+    public ActivityMainBinding bindView() {
+        return ActivityMainBinding.inflate(getLayoutInflater());
     }
 
-    private UserBean userBean;
     @CostTime
     @Override
     public void layoutInit(Bundle savedInstanceState) {
@@ -73,7 +64,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setupDrawer(savedInstanceState);
         setupNavigationView();
         loadMenuData();
-        MenuItem menuItem = mNavigationView.getMenu().getItem(0);
+        MenuItem menuItem = mBinding.navigationView.getMenu().getItem(0);
         menuItem.setChecked(true);
         onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
 
@@ -86,32 +77,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         DemoListActivity.launch(this);
         FragmentContainerActivity.launch(this,ApiDemoFragment.class,null);
 
-    }
-
-
-    private int retryCount = 0;
-
-    private boolean initializated = false;
-
-    private String getData(){
-        Logger.d("getData");
-        return "Hello";
 
     }
+
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         String key = intent.getStringExtra("key");
         Parcelable user = intent.getParcelableExtra("user");
-
         if (user != null){
             UserBean userBean = (UserBean) user;
             NLog.d(TAG, "onNewIntent key: %s",key);
 
             NLog.d(TAG, "userBean: %s",userBean);
         }
-
-
     }
 
 
@@ -122,7 +102,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void loadMenuData(){
-        View headView = mNavigationView.getHeaderView(0);
     }
 
     @Override
@@ -133,7 +112,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void setupDrawer(Bundle savedInstanceState) {
-        drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+        drawerToggle = new ActionBarDrawerToggle(this, mBinding.drawer,
                 getToolbar(), R.string.draw_open, R.string.draw_close) {
 
             public void onDrawerClosed(View view) {
@@ -147,13 +126,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
 
         };
-        mDrawerLayout.addDrawerListener(drawerToggle);
+        mBinding.drawer.addDrawerListener(drawerToggle);
     }
 
     private void setupNavigationView(){
-        View headerView = mNavigationView.getHeaderView(0);
-
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        mBinding.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 FastLog.d(TAG, "onNavigationItemSelected item title = %s", item.getTitle());
@@ -193,12 +170,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     public boolean isDrawerOpened() {
-        return mDrawerLayout.isDrawerOpen(Gravity.LEFT) || mDrawerLayout.isDrawerOpen(Gravity.RIGHT);
+        return mBinding.drawer.isDrawerOpen(Gravity.LEFT) || mBinding.drawer.isDrawerOpen(Gravity.RIGHT);
     }
 
     public void closeDrawer() {
         if (isDrawerOpened()){
-            mDrawerLayout.closeDrawers();
+            mBinding.drawer.closeDrawers();
         }
     }
 

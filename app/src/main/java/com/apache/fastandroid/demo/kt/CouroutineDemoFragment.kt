@@ -81,9 +81,12 @@ class CouroutineDemoFragment:BaseLifecycleFragment<FragmentKotlinCouritineBindin
     private fun coroutineZip() {
        job =  GlobalScope.launch(Dispatchers.IO) {
             try {
+                //asyn 会创建一个有结果的协程，但是这个结果不是以返回值形式返回的，而是以
                 val request1 = async { apiService.listReposKt("rengwuxian") }
                 val request2 = async { apiService.listReposKt("jerryliuinfo") }
-                Logger.d("${request1.await()[0].name}.${request2.await()[1].name} ")
+                // = 的右边会比左边先执行
+                val text = "${request1.await()[0].name}.${request2.await()[1].name} "
+                Logger.d(text)
             }catch (e:Exception){
                 e.printStackTrace()
             }
@@ -123,7 +126,7 @@ class CouroutineDemoFragment:BaseLifecycleFragment<FragmentKotlinCouritineBindin
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val respName = apiService.listReposKt("jerryliuinfo")
-                Logger.d("resoname: ${respName}")
+                Logger.d("resp name: ${respName},thread: ${Thread.currentThread().name}")
 
             }catch (e:Exception){
                 e.printStackTrace()
@@ -135,7 +138,7 @@ class CouroutineDemoFragment:BaseLifecycleFragment<FragmentKotlinCouritineBindin
         apiService.listReposRx("jerryliuinfo")
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                Logger.d("resoname: ${it[0].name}")
+                Logger.d("resp name: ${it[0].name}")
             },{
                 it.printStackTrace()
             })

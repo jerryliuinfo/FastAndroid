@@ -29,17 +29,14 @@ import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
 import com.hencoder.hencoderpracticedraw4.MatrixDemoFragment
 import com.tesla.framework.support.bean.DataBindingConfig
-import com.tesla.framework.ui.activity.BaseActivity
-import com.tesla.framework.ui.activity.BaseDatabindingActivity
-import com.tesla.framework.ui.activity.FragmentArgs
-import com.tesla.framework.ui.activity.FragmentContainerActivity
+import com.tesla.framework.ui.activity.*
 import com.tesla.framework.ui.widget.edgeeffect.StretchEdgeEffectFactoryNew
 import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
  * Created by Jerry on 2020/10/31.
  */
-class DemoListActivity : BaseActivity() {
+class DemoListActivity : BaseVmActivity<ActivityDemoListBinding>() {
 
     private val viewModel: DemoListViewModel by viewModels()
     companion object {
@@ -77,11 +74,6 @@ class DemoListActivity : BaseActivity() {
     }
 
 
-    override fun getLayoutId(): Int {
-        return R.layout.activity_demo_list
-    }
-
-
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
         recycleview.apply {
@@ -105,7 +97,9 @@ class DemoListActivity : BaseActivity() {
 
     }
 
-
+    override fun bindView(): ActivityDemoListBinding {
+        return ActivityDemoListBinding.inflate(layoutInflater)
+    }
 
 
 }

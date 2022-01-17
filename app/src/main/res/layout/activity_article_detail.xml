@@ -17,7 +17,10 @@
         android:orientation="vertical"
        >
         <include
+            android:id="@+id/custom_bar"
             layout="@layout/custom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             />
     </LinearLayout>
 </layout>

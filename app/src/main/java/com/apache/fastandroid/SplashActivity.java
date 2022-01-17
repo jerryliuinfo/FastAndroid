@@ -6,19 +6,23 @@ import android.os.Handler;
 
 import com.apache.artemis_annotation.DIActivity;
 import com.apache.fastandroid.bean.UserBean;
+import com.apache.fastandroid.databinding.ActivitySplashBinding;
 import com.orhanobut.logger.Logger;
 import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.ui.activity.BaseVmActivity;
 
 /**
  * Created by jerryliu on 2017/4/10.
  */
 @DIActivity
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseVmActivity<ActivitySplashBinding> {
     public static final String TAG = SplashActivity.class.getSimpleName();
 
+
+
     @Override
-    public int getLayoutId() {
-        return R.layout.activity_splash;
+    public ActivitySplashBinding bindView() {
+        return ActivitySplashBinding.inflate(getLayoutInflater());
     }
 
     @Override

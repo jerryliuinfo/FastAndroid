@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewStub
 import android.widget.TextView
+import androidx.viewbinding.ViewBinding
 import com.tesla.framework.R
 import com.tesla.framework.common.callback.RequestLifecycle
 
@@ -11,7 +12,7 @@ import com.tesla.framework.common.callback.RequestLifecycle
  * Created by Jerry on 2021/3/26.
  * 封装
  */
-abstract class BaseStatusActivity:BaseActivity(),RequestLifecycle{
+abstract class BaseStatusActivity<V:ViewBinding>:BaseVmActivity<V>(),RequestLifecycle{
     /**
      * Activity中由于服务器异常导致加载失败显示的布局。
      */
