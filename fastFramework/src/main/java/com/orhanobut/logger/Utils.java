@@ -1,5 +1,7 @@
 package com.orhanobut.logger;
 
+import android.util.Log;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.UnknownHostException;
@@ -12,7 +14,6 @@ import static com.orhanobut.logger.Logger.ASSERT;
 import static com.orhanobut.logger.Logger.DEBUG;
 import static com.orhanobut.logger.Logger.ERROR;
 import static com.orhanobut.logger.Logger.INFO;
-import static com.orhanobut.logger.Logger.VERBOSE;
 import static com.orhanobut.logger.Logger.WARN;
 
 /**
@@ -94,17 +95,17 @@ final class Utils {
 
   static String logLevel(int value) {
     switch (value) {
-      case VERBOSE:
+      case Log.VERBOSE:
         return "VERBOSE";
-      case DEBUG:
+      case Log.DEBUG:
         return "DEBUG";
-      case INFO:
+      case Log.INFO:
         return "INFO";
-      case WARN:
+      case Log.WARN:
         return "WARN";
-      case ERROR:
+      case Log.ERROR:
         return "ERROR";
-      case ASSERT:
+      case Log.ASSERT:
         return "ASSERT";
       default:
         return "UNKNOWN";

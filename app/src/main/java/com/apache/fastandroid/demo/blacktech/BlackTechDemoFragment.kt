@@ -15,6 +15,7 @@ class BlackTechDemoFragment:BaseListFragment() {
             ViewItemBean("ViewPump","https://github.com/B3nedikt/ViewPump", ViewPumpDemoFragment::class.java)
             ,ViewItemBean("监控App隐私权限方法调用","监控App隐私权限方法调用", PermissionMonitorFragment::class.java)
             ,ViewItemBean("sdk_editor","sdk_editor", SdkEitorFragment::class.java)
+            ,ViewItemBean("pararoid","pararoid", SdkEitorFragment::class.java)
         )
     }
 

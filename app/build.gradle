@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
+//apply plugin: 'io.michaelrocks.paranoid'
 //com.hc.gradle为resources/META-INF/gradle-plugins
-//下的properties文件名称
-//apply plugin: 'com.rocketx'
+
 
 //apply plugin: 'sdk-editor'
 
@@ -521,9 +521,3 @@ task ex37CustomProperty{
 }
 
 
-
-
-
-
-
-//test

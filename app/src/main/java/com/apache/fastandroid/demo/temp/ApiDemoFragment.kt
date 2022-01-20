@@ -30,7 +30,7 @@ import kotlin.concurrent.thread
 /**
  * Created by Jerry on 2021/10/27.
  */
-class ApiDemoFragment:BaseVBFragment<TempApiUsageDemoBinding>() {
+class ApiDemoFragment:BaseVBFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBinding::inflate) {
     companion object{
         private  const val TAG = "ApiDemoFragment"
     }
@@ -155,10 +155,12 @@ class ApiDemoFragment:BaseVBFragment<TempApiUsageDemoBinding>() {
         }
 
     }
+/*
 
     override fun bindView(): TempApiUsageDemoBinding {
         return TempApiUsageDemoBinding.inflate(layoutInflater)
     }
+*/
 
 
 }

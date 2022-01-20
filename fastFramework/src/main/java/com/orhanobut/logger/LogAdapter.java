@@ -1,5 +1,7 @@
 package com.orhanobut.logger;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -10,6 +12,8 @@ import androidx.annotation.Nullable;
  * @see DiskLogAdapter
  */
 public interface LogAdapter {
+
+  default void doInit(Context context){};
 
   /**
    * Used to determine whether log should be printed out or not.

@@ -25,10 +25,14 @@ class MMKVFragment: BaseStatusFragmentNew() {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
+        MMKV.initialize(context)
         kv = MMKV.defaultMMKV()
 
         btn_basic.setOnClickListener {
 
+            val putResult = kv.putString("name", "jerry").commit()
+            val getResult = kv.getString("name", null)
+            NLog.d(TAG,"putResult: ${putResult}, getResult: $getResult")
 
             kv.encode("bool", true)
             NLog.d(TAG,"bool: " + kv.decodeBool("bool"))

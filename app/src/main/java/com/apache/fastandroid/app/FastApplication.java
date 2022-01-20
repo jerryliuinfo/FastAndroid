@@ -55,6 +55,7 @@ import androidx.multidex.MultiDex;
 import dev.b3nedikt.viewpump.ViewPump;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
+import timber.log.TimerLogger;
 
 /**
  * Created by jerryliu on 2017/3/26.
@@ -89,6 +90,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 //        initLoop();
         // data/data/com.apache.fastandroid/files/mmkv
         String rootDir = MMKV.initialize(this);
+        Logger.d("mmkv rootDir:%s",rootDir);
         initBlockCancary();
         initAnr();
         initCrash();
@@ -259,6 +261,9 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
     private void initLog(){
 
         com.orhanobut.logger.Logger.addLogAdapter(new DiskLogAdapter());
+
+        com.orhanobut.logger.Logger.addLogAdapter(new TimerLogger());
+
     }
 
     private String getLogPath(){
@@ -266,6 +271,10 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         FileUtils.createOrExistsDir(dir);
         return dir;
     }
+
+
+    /** A tree which logs important information for crash reporting. */
+
 
 
 

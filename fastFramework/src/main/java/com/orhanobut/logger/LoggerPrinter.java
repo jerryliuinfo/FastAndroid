@@ -1,5 +1,7 @@
 package com.orhanobut.logger;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,12 +22,6 @@ import javax.xml.transform.stream.StreamSource;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import static com.orhanobut.logger.Logger.ASSERT;
-import static com.orhanobut.logger.Logger.DEBUG;
-import static com.orhanobut.logger.Logger.ERROR;
-import static com.orhanobut.logger.Logger.INFO;
-import static com.orhanobut.logger.Logger.VERBOSE;
-import static com.orhanobut.logger.Logger.WARN;
 import static com.orhanobut.logger.Utils.checkNotNull;
 
 class LoggerPrinter implements Printer {
@@ -50,11 +46,11 @@ class LoggerPrinter implements Printer {
   }
 
   @Override public void d(@NonNull String message, @Nullable Object... args) {
-    log(DEBUG, null, message, args);
+    log(Log.DEBUG, null, message, args);
   }
 
   @Override public void d(@Nullable Object object) {
-    log(DEBUG, null, Utils.toString(object));
+    log(Log.DEBUG, null, Utils.toString(object));
   }
 
   @Override public void e(@NonNull String message, @Nullable Object... args) {
@@ -62,23 +58,23 @@ class LoggerPrinter implements Printer {
   }
 
   @Override public void e(@Nullable Throwable throwable, @NonNull String message, @Nullable Object... args) {
-    log(ERROR, throwable, message, args);
+    log(Log.ERROR, throwable, message, args);
   }
 
   @Override public void w(@NonNull String message, @Nullable Object... args) {
-    log(WARN, null, message, args);
+    log(Log.WARN, null, message, args);
   }
 
   @Override public void i(@NonNull String message, @Nullable Object... args) {
-    log(INFO, null, message, args);
+    log(Log.INFO, null, message, args);
   }
 
   @Override public void v(@NonNull String message, @Nullable Object... args) {
-    log(VERBOSE, null, message, args);
+    log(Log.VERBOSE, null, message, args);
   }
 
   @Override public void wtf(@NonNull String message, @Nullable Object... args) {
-    log(ASSERT, null, message, args);
+    log(Log.ASSERT, null, message, args);
   }
 
   @Override public void json(@Nullable String json) {

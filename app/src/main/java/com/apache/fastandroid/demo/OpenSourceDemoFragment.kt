@@ -5,6 +5,7 @@ import com.apache.fastandroid.demo.agentweb.AgentWebDemoListFragment
 import com.apache.fastandroid.demo.bestpay.BestPayDemoFragment
 import com.apache.fastandroid.demo.component.loadsir.LoadSirDemoListFragment
 import com.apache.fastandroid.demo.glide.GlideDemoFragment
+import com.apache.fastandroid.demo.hawk.HawkDemoFragment
 import com.apache.fastandroid.demo.list.MultiTypeDeomoFragment
 import com.apache.fastandroid.demo.logger.LoggerDemoFragment
 import com.apache.fastandroid.demo.rxjava.RxJavaDemoListFragment
@@ -24,6 +25,7 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("logger", "LoadSir", LoggerDemoFragment::class.java)
                 ,ViewItemBean("MultiType", "MultiType", MultiTypeDeomoFragment::class.java)
                 ,ViewItemBean("BestPay", "BestPay", BestPayDemoFragment::class.java)
+                ,ViewItemBean("Hawk", "Hawk", HawkDemoFragment::class.java)
 
         )
     }

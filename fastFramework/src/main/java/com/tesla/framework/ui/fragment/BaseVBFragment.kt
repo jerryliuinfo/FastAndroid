@@ -27,7 +27,7 @@ import java.lang.reflect.ParameterizedType
 /**
  * Fragment基类
  */
-abstract class BaseVBFragment<T : ViewBinding> : Fragment() {
+abstract class BaseVBFragment<T : ViewBinding>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) : Fragment() {
 
 
     private var isFirstLoad = true
@@ -50,7 +50,8 @@ abstract class BaseVBFragment<T : ViewBinding> : Fragment() {
     @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        viewBinding = bindView()
+        viewBinding = inflater(inflater, container, false)
+
         bindUI(viewBinding.root)
 
         return viewBinding.root
@@ -66,7 +67,7 @@ abstract class BaseVBFragment<T : ViewBinding> : Fragment() {
 
     open fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {}
 
-    protected abstract fun bindView(): T
+//    protected abstract fun bindView(): T
 
     @CallSuper
     override fun onDestroyView() {

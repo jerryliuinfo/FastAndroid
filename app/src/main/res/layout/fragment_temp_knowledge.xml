@@ -15,7 +15,7 @@
         app:flow_wrapMode="aligned"
         app:constraint_referenced_ids="tv_message,tv_name,btn_textview_horizontal_scroll,btn_collections_suffle,
         btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs,btn_textview_inputFilter,
-        btn_collection_wrapper"
+        btn_collection_wrapper,btn_verify_init"
         />
 
     <TextView
@@ -91,7 +91,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="对集合类包装"
+        />
 
+    <Button
+        android:id="@+id/btn_verify_init"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="校验调用者是否设置了某个值"
         />
 
     <EditText
