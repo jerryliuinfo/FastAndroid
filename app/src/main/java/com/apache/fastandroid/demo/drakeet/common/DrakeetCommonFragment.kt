@@ -9,8 +9,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.EdgeEffect
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -20,8 +18,7 @@ import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.UserBean
 import com.apache.fastandroid.jetpack.lifecycle.service.MyService
-import com.blankj.utilcode.util.RomUtils
-import com.orhanobut.logger.Logger
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.common.device.DeviceName
 import com.tesla.framework.common.util.AndroidVersion
 import com.tesla.framework.common.util.CommonUtil
@@ -32,7 +29,6 @@ import com.tesla.framework.common.util.toast.ToastCompat
 import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_drakeet_knowledge.*
 import java.lang.Exception
-import java.nio.channels.AsynchronousChannel
 
 /**
  * Created by Jerry on 2021/10/15.

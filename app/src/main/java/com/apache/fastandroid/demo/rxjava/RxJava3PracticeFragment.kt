@@ -16,7 +16,7 @@ import com.apache.fastandroid.network.response.BaseResponse
 import com.apache.fastandroid.network.retrofit.ApiEngine
 import com.apache.fastandroid.util.AccessDenyException
 import com.apache.fastandroid.util.NetworkException
-import com.orhanobut.logger.Logger
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.*

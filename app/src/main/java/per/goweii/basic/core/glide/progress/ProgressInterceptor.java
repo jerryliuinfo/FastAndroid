@@ -2,7 +2,7 @@ package per.goweii.basic.core.glide.progress;
 
 import android.text.TextUtils;
 
-import com.orhanobut.logger.Logger;
+import com.tesla.framework.component.logger.Logger;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;

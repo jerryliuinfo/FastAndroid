@@ -5,24 +5,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
-        android:id="@+id/btn_request_permission_normal"
+        android:id="@+id/btn_builder_global"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="普通方式申请权限"
+        android:text="全局配置"
         />
 
     <Button
-        android:id="@+id/btn_request_permission_permissionX"
+        android:id="@+id/btn_builer_single"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_request_permission_normal"
-        android:text="PermissionX申请权限"
-
+        app:layout_constraintStart_toEndOf="@+id/btn_builder_global"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="单次配置"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

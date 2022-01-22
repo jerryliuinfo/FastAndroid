@@ -9,7 +9,7 @@ import com.apache.fastandroid.util.extensitons.runOnUIDelay
 import com.apache.fastandroid.util.extensitons.showLoading
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import com.orhanobut.logger.Logger
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.loadsir_activity_view.*
 

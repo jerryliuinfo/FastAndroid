@@ -2,7 +2,7 @@ package com.apache.fastandroid.tink;
 
 import android.content.Context;
 
-import com.orhanobut.logger.Logger;
+import com.tesla.framework.component.logger.Logger;
 
 import java.io.File;
 import java.lang.reflect.Array;

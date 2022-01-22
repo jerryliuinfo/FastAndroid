@@ -33,8 +33,9 @@ import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.Utils;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.kingja.loadsir.core.LoadSir;
-import com.orhanobut.logger.DiskLogAdapter;
-import com.orhanobut.logger.Logger;
+import com.tesla.framework.component.logger.AndroidLogAdapter;
+import com.tesla.framework.component.logger.DiskLogAdapter;
+import com.tesla.framework.component.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mmkv.MMKV;
@@ -178,13 +179,13 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
                 .cost(new TimeListener() {
                     @Override
                     public void itemCost(@NonNull String name, long time, @NonNull String threadName) {
-                        com.orhanobut.logger.Logger.d(String.format("startup-itemCost:%s time: %s threadName:%s",name,time,threadName));
+                        Logger.d(String.format("startup-itemCost:%s time: %s threadName:%s",name,time,threadName));
 
                     }
 
                     @Override
                     public void allCost(long time) {
-                        com.orhanobut.logger.Logger.d(String.format("startup-allCost:%s ",time));
+                        Logger.d(String.format("startup-allCost:%s ",time));
 
                     }
                 })
@@ -260,9 +261,10 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
     private void initLog(){
 
-        com.orhanobut.logger.Logger.addLogAdapter(new DiskLogAdapter());
+        Logger.addLogAdapter(new DiskLogAdapter());
+        Logger.addLogAdapter(new AndroidLogAdapter());
 
-        com.orhanobut.logger.Logger.addLogAdapter(new TimerLogger());
+        Logger.addLogAdapter(new TimerLogger());
 
     }
 

@@ -1,13 +1,12 @@
 package com.apache.fastandroid.demo.performance
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.blankj.utilcode.util.Utils
 import com.microsoft.office.outlook.magnifierlib.Magnifier
 import com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig
-import com.orhanobut.logger.Logger
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.fragment_magnifier.*
 

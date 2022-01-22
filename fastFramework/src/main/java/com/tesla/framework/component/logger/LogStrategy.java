@@ -1,4 +1,4 @@
-package com.orhanobut.logger;
+package com.tesla.framework.component.logger;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

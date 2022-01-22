@@ -1,13 +1,11 @@
 package com.apache.fastandroid.demo.decoration
 
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.*
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.blankj.utilcode.util.ConvertUtils
-import com.orhanobut.logger.Logger
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.dp
 import com.tesla.framework.kt.dpInt
 

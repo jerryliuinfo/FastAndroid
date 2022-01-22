@@ -1,6 +1,6 @@
 package com.apache.fastandroid.demo.rxjava.operator;
 
-import com.orhanobut.logger.Logger;
+import com.tesla.framework.component.logger.Logger;
 
 import java.util.concurrent.TimeUnit;
 

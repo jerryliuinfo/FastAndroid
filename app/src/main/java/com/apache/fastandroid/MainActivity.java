@@ -16,14 +16,15 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.hawk.HawkDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
+import com.apache.fastandroid.jetpack.livedata.LiveDataWrongUsageActivity;
+import com.apache.fastandroid.jetpack.livedata.LiveDataWrongUsageFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
-import com.orhanobut.logger.Logger;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
+import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.ui.activity.BaseVmActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
@@ -77,8 +78,8 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
         DemoListActivity.launch(this);
 //        FragmentContainerActivity.launch(this,ApiDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, MMKVFragment.class,null);
-        FragmentContainerActivity.launch(this, HawkDemoFragment.class,null);
-
+//        FragmentContainerActivity.launch(this, HawkDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, LiveDataWrongUsageFragment.class,null);
 
     }
 

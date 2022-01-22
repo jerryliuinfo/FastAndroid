@@ -1,4 +1,4 @@
-package com.orhanobut.logger;
+package com.tesla.framework.component.logger;
 
 import android.util.Log;
 
@@ -9,12 +9,6 @@ import java.util.Arrays;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import static com.orhanobut.logger.Logger.ASSERT;
-import static com.orhanobut.logger.Logger.DEBUG;
-import static com.orhanobut.logger.Logger.ERROR;
-import static com.orhanobut.logger.Logger.INFO;
-import static com.orhanobut.logger.Logger.WARN;
 
 /**
  * Provides convenient methods to some common operations

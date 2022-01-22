@@ -4,7 +4,7 @@ import android.content.Context
 import com.apache.fastandroid.demo.hawk.impl.*
 import com.apache.fastandroid.demo.hawk.interfaces.*
 import com.google.gson.Gson
-import com.orhanobut.logger.Logger
+import com.tesla.framework.component.logger.Logger
 
 /**
  * Created by Jerry on 2022/1/20.

@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator
-import com.tesla.framework.common.util.log.Logger
 import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.kt_grammer.*
 import kotlin.system.measureTimeMillis
@@ -34,19 +34,19 @@ class KotlinKnowledgeFragment:BaseFragment() {
             val costTime = measureTimeMillis {
                 Thread.sleep(100)
             }
-            com.orhanobut.logger.Logger.d("costTime:${costTime}")
+            Logger.d("costTime:${costTime}")
 
             println()
         }
         btn_coerceAtLeast.setOnClickListener {
-            com.orhanobut.logger.Logger.d("${3.coerceAtLeast(5)}")
+            Logger.d("${3.coerceAtLeast(5)}")
         }
         btn_set_bean_field.setOnClickListener {
             ViewItemBean("Kotlin").title = "Java"
         }
 
         mFrameCalculator = FrameCalculator{
-            com.orhanobut.logger.Logger.d("frame: ${it}")
+            Logger.d("frame: ${it}")
         }
         btn_high_order_function.setOnClickListener {
 

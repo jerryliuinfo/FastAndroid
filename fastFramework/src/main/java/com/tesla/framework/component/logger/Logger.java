@@ -1,9 +1,9 @@
-package com.orhanobut.logger;
+package com.tesla.framework.component.logger;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import static com.orhanobut.logger.Utils.checkNotNull;
+import static com.tesla.framework.component.logger.Utils.checkNotNull;
 
 /**
  * <pre>

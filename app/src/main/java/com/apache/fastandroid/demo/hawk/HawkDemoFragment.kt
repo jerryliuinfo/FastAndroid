@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentHawkBinding
 import com.apache.fastandroid.demo.hawk.interfaces.ILogInterceptor
-import com.orhanobut.logger.Logger
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**

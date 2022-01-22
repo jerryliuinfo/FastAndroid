@@ -12,62 +12,44 @@
         app:flow_horizontalGap="10dp"
         android:orientation="horizontal"
         app:flow_wrapMode="aligned"
-        app:constraint_referenced_ids="btn_change,btn_transform_map,btn_transform_switch_map
-        ,btn_media_livedata,btn_livedata_bus,btn_livedata_listen_network"
         />
 
-    <TextView
-        android:id="@+id/text_result"
+    <Button
+        android:id="@+id/btn_event_normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="LiveData"
+        android:text="普通方式跳转详情页"
         />
-
-
     <Button
-        android:id="@+id/btn_change"
+        android:id="@+id/btn_event_normal2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="修改数据"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_event_normal"
+        android:text="普通方式跳转详情页2"
         />
-
     <Button
-        android:id="@+id/btn_transform_map"
+        android:id="@+id/btn_single_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Map"
-        />
-
-
-    <Button
-        android:id="@+id/btn_transform_switch_map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SwitchMap"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_event_normal2"
+        android:text="采用singleEvent方式跳转"
         />
 
     <Button
-        android:id="@+id/btn_media_livedata"
+        android:id="@+id/btn_event_wrapper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MediaLivedata"
-        />
-
-    <Button
-        android:id="@+id/btn_livedata_bus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="基于LiveData的事件总线"
-        />
-    <Button
-        android:id="@+id/btn_livedata_listen_network"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LiveData 监听网络"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_single_event"
+        android:text="采用事件包装器方式跳转"
         />
 
 

@@ -1,4 +1,4 @@
-package com.orhanobut.logger;
+package com.tesla.framework.component.logger;
 
 import android.content.Context;
 

@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.SystemClock
 import com.apache.fastandroid.R
 import com.blankj.utilcode.util.NotificationUtils
-import com.orhanobut.logger.Logger
+import com.tesla.framework.component.logger.Logger
 
 /**
  * Created by Jerry on 2022/1/8.

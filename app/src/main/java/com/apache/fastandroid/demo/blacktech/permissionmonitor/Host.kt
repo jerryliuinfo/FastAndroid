@@ -1,6 +1,6 @@
 package com.apache.fastandroid.demo.blacktech.permissionmonitor
 
-import com.orhanobut.logger.Logger
+import com.tesla.framework.component.logger.Logger
 
 /**
  * Created by Jerry on 2022/1/15.

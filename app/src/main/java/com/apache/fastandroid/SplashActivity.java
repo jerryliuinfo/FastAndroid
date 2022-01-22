@@ -7,8 +7,7 @@ import android.os.Handler;
 import com.apache.artemis_annotation.DIActivity;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.databinding.ActivitySplashBinding;
-import com.orhanobut.logger.Logger;
-import com.tesla.framework.ui.activity.BaseActivity;
+import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.ui.activity.BaseVmActivity;
 
 /**

@@ -3,7 +3,7 @@ package com.tesla.framework.applike;
 import android.app.Application;
 import android.content.Context;
 
-import com.orhanobut.logger.Logger;
+import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.kt.SPreference;
 
 import java.lang.reflect.Field;

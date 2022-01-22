@@ -1,6 +1,6 @@
 package com.apache.fastandroid.demo.designmode.chain
 
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.logger.Logger
 
 /**
  * Created by Jerry on 2021/10/19.
@@ -16,7 +16,7 @@ open class FInterceptorChain(private val interceptors:List<FInterceptor>, privat
     }
 
     override fun procced(request: FRequest): FResult {
-        NLog.d(TAG, "InterceptorChain procced index: %s, request: %s",index,request)
+        Logger.d("InterceptorChain procced index: %s, request: %s",index,request)
         if (index == interceptors.size){
             return FResult(request.name,request.url)
         }

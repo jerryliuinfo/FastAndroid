@@ -4,6 +4,7 @@ import android.content.res.Resources
 import android.graphics.Paint
 import android.graphics.Rect
 import android.util.TypedValue
+import com.tesla.framework.component.livedata.NetworkLiveData
 import kotlin.math.pow
 
 val Float.dp
@@ -62,3 +63,12 @@ fun Paint.textCenterY(text:String, baseY:Float):Float{
     return baseY + rect.height() / 2
 }
 
+fun Int.networkStatus(): String {
+    return when(this){
+        NetworkLiveData.NetworkState.NONE -> "未连接"
+        NetworkLiveData.NetworkState.CONNECT -> "已连接"
+        NetworkLiveData.NetworkState.WIFI -> "WIFI"
+        NetworkLiveData.NetworkState.CELLULAR -> "移动网络"
+        else -> "未知"
+    }
+}

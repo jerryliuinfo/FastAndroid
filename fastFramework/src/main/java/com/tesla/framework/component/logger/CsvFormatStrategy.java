@@ -1,4 +1,4 @@
-package com.orhanobut.logger;
+package com.tesla.framework.component.logger;
 
 import android.os.Environment;
 import android.os.Handler;
@@ -12,7 +12,7 @@ import java.util.Locale;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import static com.orhanobut.logger.Utils.checkNotNull;
+import static com.tesla.framework.component.logger.Utils.checkNotNull;
 
 /**
  * CSV formatted file logging for Android.

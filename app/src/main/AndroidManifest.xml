@@ -83,6 +83,7 @@
             android:exported="true">
          </activity>
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"/>
+        <activity android:name=".jetpack.livedata.LiveDataWrongUsageActivity"/>
 
 
 

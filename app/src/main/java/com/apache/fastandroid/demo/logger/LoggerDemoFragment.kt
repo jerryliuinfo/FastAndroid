@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.R
-import com.orhanobut.logger.*
+import com.tesla.framework.component.logger.*
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import java.util.*
 
@@ -44,7 +44,11 @@ class LoggerDemoFragment:BaseStatusFragmentNew() {
    .tag("My custom tag") // (Optional) Custom tag for each log. Default PRETTY_LOGGER
    .build()
 
-  Logger.addLogAdapter(AndroidLogAdapter(formatStrategy!!))
+  Logger.addLogAdapter(
+      AndroidLogAdapter(
+          formatStrategy!!
+      )
+  )
 
   Logger.addLogAdapter(object : AndroidLogAdapter() {
    override fun isLoggable(priority: Int, tag: String?): Boolean {
@@ -63,7 +67,11 @@ class LoggerDemoFragment:BaseStatusFragmentNew() {
    .methodCount(0)
    .build()
 
-  Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
+  Logger.addLogAdapter(
+      AndroidLogAdapter(
+          formatStrategy
+      )
+  )
   Logger.i("no thread info and method info")
 
   Logger.t("tag").e("Custom tag for only one use")
@@ -84,7 +92,11 @@ class LoggerDemoFragment:BaseStatusFragmentNew() {
    .methodCount(0)
    .tag("MyTag")
    .build()
-  Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
+  Logger.addLogAdapter(
+      AndroidLogAdapter(
+          formatStrategy
+      )
+  )
 
   Logger.w("my log message with my tag")
  }

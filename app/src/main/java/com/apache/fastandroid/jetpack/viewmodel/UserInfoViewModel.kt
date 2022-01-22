@@ -3,7 +3,6 @@ package com.apache.fastandroid.jetpack.viewmodel
 import android.widget.Toast
 import androidx.lifecycle.*
 import com.apache.fastandroid.demo.bean.user.UserBean
-import com.apache.fastandroid.jetpack.BaseViewModel
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.blankj.utilcode.util.Utils
 import com.tesla.framework.common.util.log.NLog
@@ -24,12 +23,7 @@ class UserInfoViewModel(private val reporsity: UserReporsity):BaseStatusViewMode
         countLiveData.value = (countLiveData.value?.plus(1))
     }
 
-
     private val addressInput = MutableLiveData<String>()
-
-    fun changeAddress(address:String){
-        addressInput.value = address
-    }
 
 
 
@@ -40,47 +34,67 @@ class UserInfoViewModel(private val reporsity: UserReporsity):BaseStatusViewMode
             var result = reporsity.getPostCard(address)
             NLog.d(NLog.TAG, "thread333: ${Thread.currentThread().name}")
 
-            postCardLiveData.value = result
+            postCardLiveData.value = result ?: ""
         }
     }
 
 
 
-    private val mUserInfo: MutableLiveData<UserBean> by lazy {
-        MutableLiveData<UserBean>().also {
-        }
+    private val _mUserInfo: MutableLiveData<UserBean> = MutableLiveData()
+    val mUserInfo:LiveData<UserBean> = _mUserInfo
+
+    val mMapLiveData:LiveData<String> = Transformations.map(_mUserInfo){ userBean ->
+        userBean.age.toString()
     }
 
-    val mUserName:LiveData<String> = Transformations.map(mUserInfo){ userBean ->
-        userBean.name
+    val mSwitchMapSourceLiveData = MutableLiveData<Boolean>(false)
+
+
+    val livedata1 = MutableLiveData<String>().apply {
+        value = "LiveData1 数据"
     }
-
-
-
-    private fun loadUser(){
-        NLog.d(TAG, "loadUser ---->")
-        mUserInfo.postValue(UserBean("Zhangsan",18))
+    val livedata2 = MutableLiveData<String>().apply {
+        value = "LiveData2 数据"
     }
-
-
-    fun changeValue(){
-        val userBean = UserBean("Python:${Random.nextInt(20)}" ,Random.nextInt(10))
-        mUserInfo.postValue(userBean)
-    }
-
-
-
-    val livedata1 = MutableLiveData<String>()
-    val livedata2 = MutableLiveData<String>()
-
-    val livedataSwitch = MutableLiveData<Boolean>()
-
-    val livedataSwitchMap = Transformations.switchMap(livedataSwitch) {
+    val livedataSwitchMap:LiveData<String> = Transformations.switchMap(mSwitchMapSourceLiveData) {
         if (it){
             return@switchMap livedata1
         }
         return@switchMap livedata2
     }
+
+    fun doSwitchMap(){
+        mSwitchMapSourceLiveData.value =  ! mSwitchMapSourceLiveData.value!!
+    }
+
+    val mediatorLiveData = MediatorLiveData<String>()
+    val mediatorLiveSource1 = MediatorLiveData<String>()
+    val mediatorLiveSource2 = MediatorLiveData<String>()
+
+
+
+    private fun loadUser(){
+        NLog.d(TAG, "loadUser ---->")
+        _mUserInfo.postValue(UserBean("Zhangsan",18))
+    }
+
+
+    fun changeAge(){
+        var userInfo = _mUserInfo.value
+        if (userInfo == null){
+            userInfo = UserBean("jerry",18)
+        }
+        userInfo.apply {
+            age = Random.nextInt(10)
+        }
+        _mUserInfo.value = userInfo
+    }
+
+
+
+
+
+
 
 
     companion object{
@@ -107,5 +121,8 @@ class UserInfoViewModel(private val reporsity: UserReporsity):BaseStatusViewMode
             error(e)
         }
     }
+
+
+
 }
 

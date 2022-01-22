@@ -2,7 +2,7 @@ package timber.log
 
 import android.content.Context
 import android.util.Log
-import com.orhanobut.logger.LogAdapter
+import com.tesla.framework.component.logger.LogAdapter
 import com.tesla.framework.BuildConfig
 import timber.log.Timber.DebugTree
 import timber.log.Timber.Forest.plant

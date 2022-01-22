@@ -1,11 +1,11 @@
-package com.orhanobut.logger;
+package com.tesla.framework.component.logger;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import static com.orhanobut.logger.Utils.checkNotNull;
+import static com.tesla.framework.component.logger.Utils.checkNotNull;
 
 /**
  * LogCat implementation for {@link LogStrategy}

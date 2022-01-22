@@ -7,6 +7,7 @@ import android.text.TextUtils;
 
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.log.FastLog;
+import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.databinding.CommUiFragmentContainerBinding;
 
 import java.lang.reflect.Method;
@@ -40,10 +41,10 @@ public class FragmentContainerActivity extends BaseVmActivity<CommUiFragmentCont
     }
 
     public static void launchForResult(Fragment fragment, Class<? extends Fragment> clazz, FragmentArgs args, int requestCode) {
-        launchForResult((BaseActivity) fragment.getActivity(),clazz,args,requestCode);
+        launchForResult((BaseVmActivity) fragment.getActivity(),clazz,args,requestCode);
     }
 
-    public static void launchForResult(BaseActivity from, Class<? extends Fragment> clazz, FragmentArgs args, int requestCode) {
+    public static void launchForResult(BaseVmActivity from, Class<? extends Fragment> clazz, FragmentArgs args, int requestCode) {
         Intent intent = new Intent(from, FragmentContainerActivity.class);
         intent.putExtra(EXTRA_CLASS_NAME, clazz.getName());
         if (args != null)
@@ -59,6 +60,7 @@ public class FragmentContainerActivity extends BaseVmActivity<CommUiFragmentCont
             finish();
             return;
         }
+        Logger.d(String.format("FragmentContainerActivity onCreate this:%s", this));
 
         int contentId = R.layout.comm_ui_fragment_container;
 

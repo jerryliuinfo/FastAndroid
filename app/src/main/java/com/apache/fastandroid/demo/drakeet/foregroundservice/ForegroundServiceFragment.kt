@@ -1,13 +1,10 @@
 package com.apache.fastandroid.demo.drakeet.foregroundservice
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
-import android.widget.Toast
 import com.apache.fastandroid.R
-import com.orhanobut.logger.Logger
 import com.tesla.framework.ui.fragment.BaseFragment
 
 /**

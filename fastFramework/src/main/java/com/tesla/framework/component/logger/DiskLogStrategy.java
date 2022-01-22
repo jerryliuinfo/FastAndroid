@@ -1,4 +1,4 @@
-package com.orhanobut.logger;
+package com.tesla.framework.component.logger;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import static com.orhanobut.logger.Utils.checkNotNull;
+import static com.tesla.framework.component.logger.Utils.checkNotNull;
 
 /**
  * Abstract class that takes care of background threading the file log operation on Android.

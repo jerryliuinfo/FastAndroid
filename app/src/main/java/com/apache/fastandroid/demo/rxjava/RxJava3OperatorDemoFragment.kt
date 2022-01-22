@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.rxjava.operator.RetryWithDelay
-import com.orhanobut.logger.Logger
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.runOnUiThreadDelay
 import com.tesla.framework.ui.fragment.BaseFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -23,7 +23,6 @@ import io.reactivex.rxjava3.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_rxjava.*
 import kotlinx.android.synthetic.main.fragment_rxjava2.*
 import kotlinx.android.synthetic.main.fragment_rxjava3.*
-import java.lang.Exception
 import java.lang.IllegalArgumentException
 import java.lang.RuntimeException
 import java.util.*
