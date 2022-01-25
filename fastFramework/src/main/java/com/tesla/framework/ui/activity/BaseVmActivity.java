@@ -7,8 +7,8 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.R;
+import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.component.network.NetworkStateManager;
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
 import com.tesla.framework.ui.widget.CustomToolbar;
@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Set;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
@@ -49,6 +50,8 @@ public abstract class BaseVmActivity<V extends ViewBinding> extends AppCompatAct
     private ViewModelProvider mApplicationProvider;
 
 
+
+
     /**
      * 判断当前Activity是否在前台。
      */
@@ -68,17 +71,21 @@ public abstract class BaseVmActivity<V extends ViewBinding> extends AppCompatAct
         super.onCreate(savedInstanceState);
         activity = this;
         mBinding = bindView();
-        initViewModel();
+
         setContentView(mBinding.getRoot());
+        initViewModel();
+        setUpActionBar();
         getLifecycle().addObserver(NetworkStateManager.getInstance());
+
+        initView(mBinding.getRoot());
+        layoutInit(savedInstanceState);
+    }
+
+    protected void setUpActionBar(){
         mToolbar = findViewById(R.id.toolbar);
         if (mToolbar != null){
             setSupportActionBar(mToolbar);
         }
-
-
-        initView(mBinding.getRoot());
-        layoutInit(savedInstanceState);
     }
 
     protected void initView(View rootView){
@@ -238,9 +245,11 @@ public abstract class BaseVmActivity<V extends ViewBinding> extends AppCompatAct
 
 
     protected void setToolbarTitle(String msg) {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(msg);
-
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null){
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+            supportActionBar.setTitle(msg);
+        }
     }
 
     @Override
@@ -282,6 +291,7 @@ public abstract class BaseVmActivity<V extends ViewBinding> extends AppCompatAct
     }
 
     protected void initViewModel() {}
+
 
 
 }

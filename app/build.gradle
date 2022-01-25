@@ -1,7 +1,9 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'io.michaelrocks.paranoid'
 //com.hc.gradle为resources/META-INF/gradle-plugins
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 //apply plugin: 'sdk-editor'
 
@@ -287,7 +289,11 @@ android {
     }
 
 
-
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 
 
     buildFeatures{
@@ -421,6 +427,7 @@ task customTask{
 
 dependencies {
     api fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
 
     println("isTopicRunAlone:${isTopicRunAlone}")
 
@@ -489,6 +496,24 @@ dependencies {
     annotationProcessor project(':artemis_compiler')
 
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
+
+
+
+    // Testing-only dependencies
+    androidTestImplementation 'androidx.test:core:' + rootProject.coreVersion
+    androidTestImplementation 'androidx.test:core-ktx:' + rootProject.coreVersion
+    androidTestImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
+    androidTestImplementation 'androidx.test.ext:junit-ktx:' + rootProject.extJUnitVersion
+    androidTestImplementation 'androidx.test:runner:' + rootProject.runnerVersion
+    androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
+
+    testImplementation 'androidx.test:core:' + rootProject.coreVersion;
+    testImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.robolectric:robolectric:' + rootProject.robolectricVersion
+    testImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
+    testImplementation 'androidx.test.espresso:espresso-intents:' + rootProject.espressoVersion
+    testImplementation 'androidx.test.ext:truth:' + rootProject.extTruthVersion
 
 
 }

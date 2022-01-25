@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment1">
+
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.apache.fastandroid.demo.navigation.NavFragment1"
+        android:label="Fragment1"
+        tools:layout="@layout/navigation_fragment_1"
+
+        >
+<!--        配置跳转到 Fragment2 的action， 当设置 navigation 的id 为action_fragment1_to_fragment2
+        时将会跳转到 id 为 fragment2 的fragment，也就是  com.apache.fastandroid.demo.navigation.NavFragment2
+-->
+        <action
+            android:id="@+id/action_fragment1_to_fragment2"
+            app:destination="@id/fragment2"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            />
+<!--携带默认参数-->
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="我是默认携带的参数"
+            />
+        <argument
+            android:name="age"
+            app:argType="integer"
+            android:defaultValue="10"
+            />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.apache.fastandroid.demo.navigation.NavFragment2"
+        android:label="Fragment2"
+        tools:layout="@layout/navigation_fragment_2"
+        >
+        <action
+            android:id="@+id/action_fragment2_to_fragment1"
+            app:destination="@id/fragment1"
+            />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="我是默认携带的参数"
+            />
+        <argument
+            android:name="age"
+            app:argType="integer"
+            android:defaultValue="24"
+            />
+
+        <deepLink
+            android:id="@+id/deepLink"
+            android:autoVerify="true"
+            app:uri="http://aa.bb.com/fragment2/${name}/{age}"
+            />
+
+    </fragment>
+
+    <activity android:id="@+id/activity_bottom_navigation"
+        android:name="com.apache.fastandroid.demo.navigation.NavigationBottomNavigationActivity"
+        />
+
+</navigation>

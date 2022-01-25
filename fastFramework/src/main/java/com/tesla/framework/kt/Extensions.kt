@@ -72,3 +72,15 @@ fun Int.networkStatus(): String {
         else -> "未知"
     }
 }
+
+
+/**
+ * 这个方法但是定义在文件里面的，java中通过 ExtensionsKt.echo() 调用， 定义在文件中的方法最终都会变成public static 的方法和变量
+ */
+fun echo(){
+
+}
+
+inline fun inlineFunction(msg:String){
+    println("inlne:${msg}")
+}

@@ -1,8 +1,9 @@
 package com.apache.fastandroid.network.retrofit;
 
+import android.os.Build;
+
 import com.apache.fastandroid.network.retrofit.convertor.CustomGsonConverterFactory;
 import com.apache.fastandroid.retrofit.ApiConstant;
-import com.mooc.libnetwork.BuildConfig;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -57,15 +58,17 @@ public final class ApiEngine {
                 .connectTimeout(20, TimeUnit.SECONDS)
                 .readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
                 .retryOnConnectionFailure(true);
+        //https://t.zsxq.com/nUnEune
+        if (Build.VERSION.SDK_INT >= 28){
+            client.pingInterval(3, TimeUnit.SECONDS);
+        }
 
         List<Interceptor> interceptors = client.interceptors();
         interceptors.add(new HeaderInterceptor());
         interceptors.add(new ErrorInterceptor());
 //        interceptors.add(new TokenInterceptor(SPUtils.getInstance("userInfo").getString("token")));
-        if (BuildConfig.DEBUG) {
-            HttpLogInterceptor logInterceptor = new HttpLogInterceptor();
-            interceptors.add(logInterceptor);
-        }
+        HttpLogInterceptor logInterceptor = new HttpLogInterceptor();
+        interceptors.add(logInterceptor);
     }
 
 

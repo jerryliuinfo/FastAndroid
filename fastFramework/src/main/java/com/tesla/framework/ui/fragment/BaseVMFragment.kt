@@ -27,7 +27,7 @@ import java.lang.reflect.ParameterizedType
 /**
  * Fragment基类
  */
-abstract class BaseVBFragment<T : ViewBinding>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) : Fragment() {
+abstract class BaseVMFragment<T : ViewBinding>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) : Fragment() {
 
 
     private var isFirstLoad = true

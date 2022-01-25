@@ -1,128 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.apache.fastandroid"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools">
-
-    <permission
-        android:name="com.optimize.performance.permission.JPUSH_MESSAGE"
-        android:protectionLevel="signature" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="com.optimize.performance.permission.JPUSH_MESSAGE" />
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-
-
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-<!--    <uses-permission android:name="android.permission.CAMERA"  />-->
-
-<!--    如果您请求硬件相关的权限（例如 CAMERA），则 Google Play 会假设您的应用需要底层硬件功能，并从设备过滤掉不提供该功能的应用。
-        要控制过滤，务必在 <uses-feature> 元素中显式声明硬件功能，而不是依赖 Google Play“发现” <uses-permission> 元素中的要求。
-        然后，如果要对特定功能停用过滤，可将 android:required="false" 属性添加到 <uses-feature> 声明中。
-        https://developer.android.com/guide/topics/manifest/uses-permission-element
-        -->
-
-    <uses-feature android:required="false" android:name="android.hardware.camera" />
-
-    <uses-sdk tools:overrideLibrary="com.android.support:multidex:1.0.2"/>
-
-
-<!--    App/Activity就可以进入分屏模式了 -->
-<!--    android:label="${appName}"-->
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.apache.fastandroid">
 
     <application
         android:name=".app.FastApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:resizeableActivity="false"
-        android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config"
-        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
-        tools:replace="android:theme,android:icon,android:label,android:allowBackup"
+        android:resizeableActivity="false"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        >
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
+        tools:replace="android:theme,android:icon,android:label,android:allowBackup">
 
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:exported="true"
-            android:theme="@style/Splashscreen"
-            >
+            android:theme="@style/Splashscreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".demo.DemoListActivity" >
+
+        <activity android:name=".demo.DemoListActivity">
 
         </activity>
-
         <activity
             android:name=".MainActivity"
 
-            android:launchMode="singleTask"
-            android:exported="true">
-         </activity>
-        <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"/>
-        <activity android:name=".jetpack.livedata.LiveDataWrongUsageActivity"/>
-
-
-
-        <activity android:name=".demo.temp.ScrollConflictActivity"
             android:exported="true"
+            android:launchMode="singleTask"></activity>
+
+        <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity" />
+        <activity android:name=".jetpack.livedata.LiveDataWrongUsageActivity" />
+        <activity
+            android:name=".demo.temp.ScrollConflictActivity"
+            android:exported="true" />
+
+
+        <activity
+            android:name=".demo.blacktech.ViewPumpDemoActivity"
+            android:exported="true"
+
             />
 
-        <activity android:name=".demo.blacktech.ViewPumpDemoActivity"
-            android:exported="true"
-
-            />
-
-
-
-        <activity android:name=".article.ArticleDetailActivity"
+        <activity
+            android:name=".article.ArticleDetailActivity"
             android:configChanges="orientation|keyboardHidden|navigation|locale"
+            android:exported="true"
             android:launchMode="singleTask"
-            android:exported="true"
-
-            />
-
-        <activity android:name=".demo.drakeet.foregroundservice.ForegroundServiceActivity"
-            android:exported="true"
 
             />
 
 
-        <service android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService"/>
-        <service android:name=".demo.drakeet.foregroundservice.InhibitorService"/>
+        <activity
+            android:name=".demo.drakeet.foregroundservice.ForegroundServiceActivity"
+            android:exported="true"
+            />
 
+        <activity
+            android:name=".demo.unitest.UnitTestActivity"
+            android:exported="true"
+            />
+
+
+        <activity android:name=".demo.navigation.NavigationDemoActivity">
+            <nav-graph android:value="@navigation/nav_graph" />
+        </activity>
+
+        <activity
+            android:name="com.apache.fastandroid.demo.navigation.NavigationBottomNavigationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_navigation_bottom_navigation"
+            />
 
         <meta-data
             android:name="channelId"
             android:value="${UMENG_CHANNEL}" />
 
+        <service android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService" />
+        <service android:name=".demo.drakeet.foregroundservice.InhibitorService" />
+
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
 
     </application>
 
+    <permission
+        android:name="com.optimize.performance.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.optimize.performance.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!--    <uses-permission android:name="android.permission.CAMERA"  />-->
+
+    <!--    如果您请求硬件相关的权限（例如 CAMERA），则 Google Play 会假设您的应用需要底层硬件功能，并从设备过滤掉不提供该功能的应用。
+            要控制过滤，务必在 <uses-feature> 元素中显式声明硬件功能，而不是依赖 Google Play“发现” <uses-permission> 元素中的要求。
+            然后，如果要对特定功能停用过滤，可将 android:required="false" 属性添加到 <uses-feature> 声明中。
+            https://developer.android.com/guide/topics/manifest/uses-permission-element
+            -->
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+    <!--    App/Activity就可以进入分屏模式了 -->
+    <!--    android:label="${appName}"-->
+
+
+    <uses-sdk tools:overrideLibrary="com.android.support:multidex:1.0.2" />
 
 
 </manifest>
+

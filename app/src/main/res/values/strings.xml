@@ -14,16 +14,12 @@
     <string name="nav_musici">音乐轻听</string>
 
 
-
     <string name="tab_pic_beanuty">美女</string>
     <string name="tab_pic_carton">动漫</string>
     <string name="tab_pic_star">明星</string>
     <string name="tab_pic_car">汽车</string>
     <string name="tab_pic_take_photo">摄影</string>
     <string name="tab_pic_food">美食</string>
-
-
-
 
 
     <!--Splash页面开始-->
@@ -56,4 +52,9 @@
     <string name="custom_textview_prefixed_text">\n[CustomTextView] %s</string>
     <string name="regular_button">Klicke hier um die Sprache zu ändern</string>
     <string name="regular_textview">This is a regular TextView</string>
+    <string name="title_activity_navigation_bottom_navigation">NavigationBottomNavigationActivity
+    </string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

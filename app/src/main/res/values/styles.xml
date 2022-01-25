@@ -99,4 +99,7 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+
+    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

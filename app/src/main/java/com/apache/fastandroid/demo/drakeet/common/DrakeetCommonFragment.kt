@@ -17,7 +17,9 @@ import com.apache.fastandroid.LogUtils
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.UserBean
+import com.apache.fastandroid.demo.temp.bean.ReflectBean
 import com.apache.fastandroid.jetpack.lifecycle.service.MyService
+import com.blankj.utilcode.util.ReflectUtils
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.common.device.DeviceName
 import com.tesla.framework.common.util.AndroidVersion
@@ -95,8 +97,8 @@ class DrakeetCommonFragment:BaseFragment() {
 
                 }
             }
-
         }
+
 
         //btn_launchMode
 
@@ -123,6 +125,12 @@ class DrakeetCommonFragment:BaseFragment() {
 
         }
 
+        //https://t.zsxq.com/eeIeU3n
+        btn_reflect.setOnClickListener {
+            ReflectUtils.reflect(ReflectBean::class.java).field("sCacheList", arrayListOf("Jerry","Tom"))
+            var sCacheList:List<String> = ReflectUtils.reflect(ReflectBean::class.java).field("sCacheList").get<List<String> >()
+            com.tesla.framework.component.logger.Logger.d("length:${sCacheList}")
+        }
 
         Logger.d("context file dir:${requireContext().filesDir}, cache:${requireContext().cacheDir}, " +
                 "externalFileDir:${requireContext().getExternalFilesDir(null)}, externalCacheDir:${requireContext().externalCacheDir}",

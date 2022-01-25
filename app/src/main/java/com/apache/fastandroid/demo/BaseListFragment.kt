@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
+import com.apache.fastandroid.demo.navigation.NavigationDemoActivity
+import com.apache.fastandroid.jetpack.livedata.LiveDataWrongUsageActivity
 import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
@@ -67,18 +69,26 @@ abstract class BaseListFragment: BaseStatusFragmentNew() {
             holder.txtTitle.text = viewItemBean.title
             holder.txt_description.text = viewItemBean.description
             holder.itemView.setOnClickListener {
-                if (viewItemBean.clazz == null){
+                if (viewItemBean.clazz == null && viewItemBean.activity == null){
                     return@setOnClickListener
                 }
-                val args = FragmentArgs()
-                args.add("title", viewItemBean.title)
-                FragmentContainerActivity.launch(this@BaseListFragment.activity,viewItemBean.clazz,args)
+                if (viewItemBean.clazz != null){
+                    val args = FragmentArgs()
+                    args.add("title", viewItemBean.title)
+                    FragmentContainerActivity.launch(this@BaseListFragment.activity,viewItemBean.clazz,args)
+                }else{
+//                    startActivity<NavigationDemoActivity>(requireActivity())
+
+                    com.tesla.framework.kt.startActivity<NavigationDemoActivity>(requireContext())
+
+                }
+
             }
         }
 
         override fun getItemViewType(position: Int): Int {
             val viewItemBean = MODELS[position]
-            return if (viewItemBean.clazz == null) {
+            return if (viewItemBean.clazz == null && viewItemBean.activity == null) {
                 R.layout.layout_cell_bord_item_title
             } else {
                 R.layout.layout_cell_bord_item

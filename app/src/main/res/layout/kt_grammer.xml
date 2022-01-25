@@ -17,8 +17,10 @@
         app:flow_wrapMode="aligned"
         app:flow_horizontalGap="10dp"
         app:flow_verticalGap="10dp"
-        app:constraint_referenced_ids="btn_on_each,btn_method_cost,btn_set_bean_field,btn_high_order_function,
-        btn_lambda"
+        app:constraint_referenced_ids="btn_on_each,btn_method_cost,btn_high_order_function,
+             btn_clazz_paramter,btn_java_kotlin_call_each_other,btn_nested_function,btn_expand_function,btn_expand_function2,
+             btn_lambda,btn_inline
+        "
         />
     <Button
         android:id="@+id/btn_on_each"
@@ -38,23 +40,60 @@
         android:layout_height="wrap_content"
         android:text="取最小不小于某个值"
         />
-    <Button
-        android:id="@+id/btn_set_bean_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="bean中方法使用apply设置参数"
-        />
+
     <Button
         android:id="@+id/btn_high_order_function"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="函数作为构造参数"
+        android:text="高阶函数"
         />
+
+    <Button
+        android:id="@+id/btn_clazz_paramter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="传递Class参数"
+        />
+    <Button
+        android:id="@+id/btn_java_kotlin_call_each_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kotlin与java互相调用"
+        />
+    <Button
+        android:id="@+id/btn_nested_function"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="函数嵌套"
+        />
+
+    <Button
+        android:id="@+id/btn_expand_function"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="扩展函数"
+        />
+
+    <Button
+        android:id="@+id/btn_expand_function2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="扩展函数2"
+        />
+
+
     <Button
         android:id="@+id/btn_lambda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Laumbda"
+        android:text="Laumbda 表达式"
+        />
+
+    <Button
+        android:id="@+id/btn_inline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inline"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

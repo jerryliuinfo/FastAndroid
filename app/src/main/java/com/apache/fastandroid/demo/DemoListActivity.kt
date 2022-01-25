@@ -64,6 +64,7 @@ class DemoListActivity : BaseVmActivity<ActivityDemoListBinding>() {
                 ,ViewItemBean("TransitionMannager", "TransitionMannager", TransitionDemoFragment::class.java)
                 ,ViewItemBean("采坑", "采坑", HitPitDemoListFragment::class.java)
                 ,ViewItemBean("Sample", "Sample", SampleCodeDemoListFragment::class.java)
+                ,ViewItemBean("单元测试", "单元测试", SampleCodeDemoListFragment::class.java)
 
 
         )

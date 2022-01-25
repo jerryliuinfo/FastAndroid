@@ -2,6 +2,7 @@ package com.apache.fastandroid.demo.temp
 
 import android.content.Context
 import android.content.IntentFilter
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
@@ -18,7 +19,11 @@ import android.widget.Toast
 import android.text.Spanned
 
 import android.text.InputFilter
+import android.util.LruCache
 import com.apache.fastandroid.MainActivity
+import com.apache.fastandroid.demo.temp.bean.ReflectBean
+import com.blankj.utilcode.util.ReflectUtils
+import com.tesla.framework.common.util.log.Logger
 
 
 /**
@@ -64,6 +69,8 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
 
         val str = "Longfu2012"
         et_userName.filters = arrayOf<InputFilter>(MyFilter(str,context))
+
+
 
     }
 

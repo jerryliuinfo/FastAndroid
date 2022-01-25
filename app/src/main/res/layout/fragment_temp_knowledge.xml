@@ -1,112 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.helper.widget.Flow
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal"
-        app:flow_horizontalGap="10dp"
-        app:flow_verticalGap="10dp"
-        app:flow_wrapMode="aligned"
-        app:constraint_referenced_ids="tv_message,tv_name,btn_textview_horizontal_scroll,btn_collections_suffle,
-        btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs,btn_textview_inputFilter,
-        btn_collection_wrapper,btn_verify_init"
-        />
 
-    <TextView
-        android:id="@+id/tv_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="我是文本 "
-        />
-
-    <Button
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="测试知识点"
-        />
-
-    <Button
-        android:id="@+id/btn_textview_horizontal_scroll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="testTextViewHorizontalScroll"
-
-
-        />
-    <Button
-        android:id="@+id/btn_collections_suffle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Collections.suffle"
-        android:layout_marginStart="20dp"
-        />
-
-    <Button
-        android:id="@+id/btn_linerlayoutCompat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LinerlayoutCompat"
-
-        />
-    <Button
-        android:id="@+id/btn_multi_channel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="定义多渠道"
-
-        />
-    <Button
-        android:id="@+id/btn_sisuo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="死锁"
-
-        />
-    <Button
-        android:id="@+id/btn_varargs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kotlin可变参数"
-
-        />
-
-    <Button
-        android:id="@+id/btn_textview_inputFilter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="InputFilter"
-
-        />
-
-    <Button
-        android:id="@+id/btn_collection_wrapper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="对集合类包装"
-        />
-
-    <Button
-        android:id="@+id/btn_verify_init"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="校验调用者是否设置了某个值"
-        />
-
-    <EditText
-        android:id="@+id/et_userName"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginBottom="40dp"
-        android:background="@color/gray_btn"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+       >
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal"
+            app:flow_horizontalGap="10dp"
+            app:flow_verticalGap="10dp"
+            app:flow_wrapMode="aligned"
+            app:constraint_referenced_ids="tv_message,tv_name,btn_textview_horizontal_scroll,btn_collections_suffle,
+        btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs,btn_textview_inputFilter,
+        btn_collection_wrapper,btn_verify_init,btn_reflect"
+            />
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我是文本 "
+            />
+
+        <Button
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="测试知识点"
+            />
+
+        <Button
+            android:id="@+id/btn_textview_horizontal_scroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="testTextViewHorizontalScroll"
+
+
+            />
+        <Button
+            android:id="@+id/btn_collections_suffle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Collections.suffle"
+            android:layout_marginStart="20dp"
+            />
+
+        <Button
+            android:id="@+id/btn_linerlayoutCompat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LinerlayoutCompat"
+
+            />
+        <Button
+            android:id="@+id/btn_multi_channel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="定义多渠道"
+
+            />
+        <Button
+            android:id="@+id/btn_sisuo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="死锁"
+
+            />
+        <Button
+            android:id="@+id/btn_varargs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kotlin可变参数"
+
+            />
+
+        <Button
+            android:id="@+id/btn_textview_inputFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="InputFilter"
+
+            />
+
+        <Button
+            android:id="@+id/btn_collection_wrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="对集合类包装"
+            />
+
+        <Button
+            android:id="@+id/btn_verify_init"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="校验调用者是否设置了某个值"
+            />
+
+        <Button
+            android:id="@+id/btn_reflect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="反射"
+            />
+
+        <EditText
+            android:id="@+id/et_userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginBottom="40dp"
+            android:background="@color/gray_btn"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

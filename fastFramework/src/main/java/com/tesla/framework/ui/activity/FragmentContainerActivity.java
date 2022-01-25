@@ -10,12 +10,13 @@ import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.databinding.CommUiFragmentContainerBinding;
 
+import java.io.Serializable;
 import java.lang.reflect.Method;
 
 import androidx.fragment.app.Fragment;
 
 
-public class FragmentContainerActivity extends BaseVmActivity<CommUiFragmentContainerBinding> {
+public class FragmentContainerActivity extends BaseVmActivity<com.tesla.framework.databinding.CommUiFragmentContainerBinding> {
 
     private int overrideTheme = -1;
 
@@ -108,6 +109,13 @@ public class FragmentContainerActivity extends BaseVmActivity<CommUiFragmentCont
 
         if (fragment != null) {
             getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, fragment, FRAGMENT_TAG).commit();
+        }
+
+        if (values != null && values.get("title") != null){
+            Serializable serializable = values.get("title");
+            if (serializable != null && serializable instanceof String){
+                setToolbarTitle((String) serializable);
+            }
         }
 
         if (getSupportActionBar() != null)

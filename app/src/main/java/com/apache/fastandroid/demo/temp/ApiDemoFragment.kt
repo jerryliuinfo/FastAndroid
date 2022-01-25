@@ -1,23 +1,14 @@
 package com.apache.fastandroid.demo.temp
 
 import android.annotation.SuppressLint
-import android.content.ContentResolver
-import android.database.Cursor
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewConfiguration
 import androidx.arch.core.executor.ArchTaskExecutor
-import androidx.core.view.ViewCompat
-import com.apache.fastandroid.MainActivity
-import com.apache.fastandroid.R
 import com.apache.fastandroid.adapter.FlowTagAdapter
 import com.apache.fastandroid.databinding.TempApiUsageDemoBinding
-import com.blankj.utilcode.util.SPUtils
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseVMFragment
 import kotlinx.android.synthetic.main.temp_api_usage_demo.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -30,7 +21,7 @@ import kotlin.concurrent.thread
 /**
  * Created by Jerry on 2021/10/27.
  */
-class ApiDemoFragment:BaseVBFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBinding::inflate) {
+class ApiDemoFragment:BaseVMFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBinding::inflate) {
     companion object{
         private  const val TAG = "ApiDemoFragment"
     }

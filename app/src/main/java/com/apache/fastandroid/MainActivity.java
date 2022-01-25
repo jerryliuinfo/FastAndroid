@@ -16,9 +16,8 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment;
 import com.apache.fastandroid.home.HomeFragment;
-import com.apache.fastandroid.jetpack.livedata.LiveDataWrongUsageActivity;
-import com.apache.fastandroid.jetpack.livedata.LiveDataWrongUsageFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.tesla.framework.common.util.log.FastLog;
@@ -75,13 +74,19 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
         Logger.d(String.format("external file dir:%s, cache:%s",context.getExternalFilesDir(null),context.getExternalCacheDir()));
 
 
-        DemoListActivity.launch(this);
-//        FragmentContainerActivity.launch(this,ApiDemoFragment.class,null);
+//        DemoListActivity.launch(this);
+        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
 //        FragmentContainerActivity.launch(this, MMKVFragment.class,null);
 //        FragmentContainerActivity.launch(this, HawkDemoFragment.class,null);
-        FragmentContainerActivity.launch(this, LiveDataWrongUsageFragment.class,null);
+//        FragmentContainerActivity.launch(this, LiveDataWrongUsageFragment.class,null);
+//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
+//        startActivity(new Intent(this, NavigationDemoActivity.class));
+//        startActivity(new Intent(this, NavigationBottomNavigationActivity.class));
+
 
     }
+
+
 
 
     @Override
