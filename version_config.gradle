@@ -2,10 +2,9 @@ ext {
 
     //Android编译版本管理
     android = [
-            compileSdkVersion:  29,
-            buildToolsVersion: '29.0.3',
-            minSdkVersion    : 29,
-            targetSdkVersion : 31,
+            compileSdkVersion:  30,
+            minSdkVersion    : 21,
+            targetSdkVersion : 30,
 
             versionCode : 10003,
             //major:minor.patch

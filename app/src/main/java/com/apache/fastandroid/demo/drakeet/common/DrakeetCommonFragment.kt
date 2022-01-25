@@ -132,6 +132,7 @@ class DrakeetCommonFragment:BaseFragment() {
             com.tesla.framework.component.logger.Logger.d("length:${sCacheList}")
         }
 
+
         Logger.d("context file dir:${requireContext().filesDir}, cache:${requireContext().cacheDir}, " +
                 "externalFileDir:${requireContext().getExternalFilesDir(null)}, externalCacheDir:${requireContext().externalCacheDir}",
         )

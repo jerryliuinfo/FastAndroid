@@ -12,6 +12,7 @@ import android.util.Printer;
 import android.view.WindowManager;
 
 import com.apache.fastandroid.component.anr.AnrConfig;
+import com.apache.fastandroid.crash.Fabric;
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor;
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor;
 import com.apache.fastandroid.demo.component.loadsir.callback.CustomCallback;
@@ -33,15 +34,14 @@ import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.Utils;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.kingja.loadsir.core.LoadSir;
-import com.tesla.framework.component.logger.AndroidLogAdapter;
-import com.tesla.framework.component.logger.DiskLogAdapter;
-import com.tesla.framework.component.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
-import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mmkv.MMKV;
 import com.tesla.framework.applike.FApplication;
 import com.tesla.framework.common.device.DeviceName;
 import com.tesla.framework.common.util.LaunchTimer;
+import com.tesla.framework.component.logger.AndroidLogAdapter;
+import com.tesla.framework.component.logger.DiskLogAdapter;
+import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.component.startup.Group;
 import com.tesla.framework.component.startup.StartupManager;
 import com.tesla.framework.component.startup.TimeListener;
@@ -80,7 +80,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         mAppViewModelStore = new ViewModelStore();
 
         initLog();
-        initBugly();
+        crashReport();
         initLoop();
         Logger.d("Application onCreate ");
         initAndroidUtil();
@@ -195,10 +195,9 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
     }
 
-    private void initBugly(){
+    private void crashReport(){
 //        CrashReport.initCrashReport(getApplicationContext(), "397713a129", false);
-        CrashReport.initCrashReport(getApplicationContext(), "a397701fd5", false);
-
+        Fabric.init(this);
     }
 
 

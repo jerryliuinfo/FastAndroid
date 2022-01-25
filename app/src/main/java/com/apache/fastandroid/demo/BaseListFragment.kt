@@ -1,6 +1,7 @@
 package com.apache.fastandroid.demo
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -73,13 +74,12 @@ abstract class BaseListFragment: BaseStatusFragmentNew() {
                     return@setOnClickListener
                 }
                 if (viewItemBean.clazz != null){
-                    val args = FragmentArgs()
+                    val args = FragmentArgs.transToArgs(viewItemBean.args)
                     args.add("title", viewItemBean.title)
                     FragmentContainerActivity.launch(this@BaseListFragment.activity,viewItemBean.clazz,args)
-                }else{
-//                    startActivity<NavigationDemoActivity>(requireActivity())
-
-                    com.tesla.framework.kt.startActivity<NavigationDemoActivity>(requireContext())
+                }else if (viewItemBean.activity != null){
+                    val intent = Intent(requireActivity(), viewItemBean.activity)
+                    startActivity(intent)
 
                 }
 

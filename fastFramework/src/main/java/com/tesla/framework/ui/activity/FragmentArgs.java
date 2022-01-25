@@ -36,10 +36,12 @@ public class FragmentArgs implements Serializable {
 
     public static FragmentArgs transToArgs(Bundle bundle) {
         FragmentArgs args = new FragmentArgs();
-        for (String s : bundle.keySet()) {
-            Object o = bundle.get(s);
-            if (o == null) continue;
-            args.add(s, (Serializable) o);
+        if (bundle != null){
+            for (String s : bundle.keySet()) {
+                Object o = bundle.get(s);
+                if (o == null) continue;
+                args.add(s, (Serializable) o);
+            }
         }
         return args;
     }

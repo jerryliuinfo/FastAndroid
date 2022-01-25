@@ -1,5 +1,6 @@
 package com.apache.fastandroid.demo.drakeet
 
+import android.os.Bundle
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.drakket.hookcontext.HookContextFragment
@@ -23,8 +24,10 @@ class DrakeetDemoListFragment:BaseListFragment() {
             ,ViewItemBean("ServiceOnTaskRemoved", "ServiceOnTaskRemoved", RegionDeocderFragment::class.java)
             ,ViewItemBean("代码保护、隐藏", "ServiceOnTaskRemoved", RegionDeocderFragment::class.java)
             ,ViewItemBean("Textview偏僻方法", "Textview偏僻方法", DrakeetTextviewFragment::class.java)
-
-        )
+            ,ViewItemBean("流畅动画", "一启动就执行动画", FluentAnimationDemoFragment::class.java)
+            ,ViewItemBean("流畅动画", "主线程空闲时执行动画", FluentAnimationDemoFragment::class.java, args = Bundle().apply {
+                putBoolean("doOnIdle",true)
+            }))
     }
 
 

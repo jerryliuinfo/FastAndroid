@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
-//apply plugin: 'sdk-editor'
+apply plugin: 'sdk-editor'
 
 //apply plugin: 'largeimage-monitor'
 
@@ -426,7 +426,16 @@ task customTask{
 }
 
 dependencies {
-    api fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
+//    api fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
+
+    fileTree(include: ['*.jar', '*.aar'], dir: 'libs').each {
+        def name = it.name
+        def index = name.lastIndexOf(".")
+        def fileName = name[0..<index]
+        def extName = name[(index + 1)..<name.length()]
+        implementation(name: fileName, ext: extName, changing: true)
+        println "implementation name: ${fileName}, ext:${extName}"
+    }
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
 
     println("isTopicRunAlone:${isTopicRunAlone}")
@@ -516,6 +525,8 @@ dependencies {
     testImplementation 'androidx.test.ext:truth:' + rootProject.extTruthVersion
 
 
+    //https://github.com/LSPosed/AndroidHiddenApiBypass
+    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:4.2'
 }
 
 

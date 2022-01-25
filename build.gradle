@@ -54,6 +54,10 @@ buildscript {
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
 
 
+        //https://github.com/iwhys/sdk-editor-plugin
+        classpath 'com.github.iwhys:sdk-editor-plugin:1.1.7'
+
+
 //        classpath 'io.michaelrocks:paranoid-gradle-plugin:0.3.7'
 
 

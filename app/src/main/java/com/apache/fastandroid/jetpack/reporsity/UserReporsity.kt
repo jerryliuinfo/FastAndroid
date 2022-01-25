@@ -39,4 +39,17 @@ class UserReporsity( val userDao: UserDao, val userNetwork: UserNetwork) {
             return sInstance
         }
     }
+
+    suspend fun loadComment() :List<String>{
+        val comments = arrayListOf<String>()
+        withContext(Dispatchers.IO){
+
+            for (index in 1..100){
+                Thread.sleep(5)
+                comments.add("comment: ${index}")
+            }
+
+        }
+        return comments
+    }
 }

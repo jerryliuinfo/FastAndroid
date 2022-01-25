@@ -22,6 +22,7 @@ import android.text.InputFilter
 import android.util.LruCache
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.demo.temp.bean.ReflectBean
+import com.apache.fastandroid.demo.temp.concurrency.Player
 import com.blankj.utilcode.util.ReflectUtils
 import com.tesla.framework.common.util.log.Logger
 
@@ -67,11 +68,22 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
             initvarArgs("aaa","bbb")
         }
 
+        btn_concurrence.setOnClickListener {
+            concurencyUsage()
+        }
+
         val str = "Longfu2012"
         et_userName.filters = arrayOf<InputFilter>(MyFilter(str,context))
 
 
 
+    }
+
+    private fun concurencyUsage() {
+        val player1:Player = Player(Player.PLAYER1)
+        val player2:Player = Player(Player.PLAYER2)
+        Thread(player1).start()
+        Thread(player2).start()
     }
 
     class MyFilter(str: String?, val context: Context?) : InputFilter {
