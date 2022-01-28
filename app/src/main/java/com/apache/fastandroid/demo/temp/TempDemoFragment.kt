@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.temp
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.drakket.hookcontext.HookContextFragment
+import com.apache.fastandroid.demo.snaphelper.SnapHelperDemoFragment
 import com.apache.fastandroid.demo.temp.reflect.ReflectionDemoFragment
 
 /**
@@ -29,6 +30,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("Api用法", "Api用法", ApiDemoFragment::class.java)
                 ,ViewItemBean("异步转同步", "异步转同步", AsyncToSyncDemoFragment::class.java)
                 ,ViewItemBean("死锁", "死锁", ConcurrencyDemoFragment::class.java)
+                ,ViewItemBean("RecycleviewSnapHelper", "RecycleviewSnapHelper", SnapHelperDemoFragment::class.java)
 
         )
     }

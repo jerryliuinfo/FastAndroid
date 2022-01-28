@@ -30,7 +30,6 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("NestedScrollView", "NestedScrollView", NestedScrollViewFragment::class.java)
                 ,ViewItemBean("NoDrawable", "NoDrawable", NoDrawableFragment::class.java)
                 ,ViewItemBean("LoadingDrawable", "LoadingDrawable", LoadingDrawableFragment::class.java)
-                ,ViewItemBean("SnapHelper", "SnapHelper", SnapHelperDemoFragment::class.java)
                 ,ViewItemBean("ShapeableImageView", "ShapeableImageView", ShapeImageviewDemoFragment::class.java)
                 ,ViewItemBean("CustomRoundTextview", "CustomRoundTextview", RoundViewDemoFragment::class.java)
                 ,ViewItemBean("Drawable", "Drawable", DrawableListFragment::class.java)

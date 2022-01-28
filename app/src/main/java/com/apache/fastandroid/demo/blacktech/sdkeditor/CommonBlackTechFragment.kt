@@ -3,7 +3,6 @@ package com.apache.fastandroid.demo.blacktech.sdkeditor
 import android.content.pm.ApplicationInfo
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.core.os.BuildCompat
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentBlackTechBinding
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
@@ -16,7 +15,8 @@ import java.util.stream.StreamSupport.stream
 /**
  * Created by Jerry on 2022/1/15.
  */
-class CommonBlackTechFragment:BaseVMFragment<FragmentBlackTechBinding>(FragmentBlackTechBinding::inflate) {
+class CommonBlackTechFragment :
+    BaseVMFragment<FragmentBlackTechBinding>(FragmentBlackTechBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
@@ -24,11 +24,11 @@ class CommonBlackTechFragment:BaseVMFragment<FragmentBlackTechBinding>(FragmentB
 
         //https://github.com/iwhys/sdk-editor-plugin/blob/master/项目简析.md
         viewBinding.btnSdkEditor.setOnClickListener {
-            BuildCompat.isAtLeastR()
+//            BuildCompat.isAtLeastR()
         }
-       viewBinding.btnAndroidHiddenApiByPass.setOnClickListener {
+        viewBinding.btnAndroidHiddenApiByPass.setOnClickListener {
 //           HiddenApiBypass.invoke(ApplicationInfo::class.java,  ApplicationInfo(), "usesNonSdkApi"/*, args*/)
 
-       }
+        }
     }
 }

@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
-apply plugin: 'sdk-editor'
+//apply plugin: 'sdk-editor'
 
 //apply plugin: 'largeimage-monitor'
 

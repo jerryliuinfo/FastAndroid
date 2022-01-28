@@ -34,7 +34,7 @@ class DatebinDingBasicDemoFragment: BaseDatebindingFragment<FragmentDatabindingB
 
 
         tv_modify_age.setOnClickListener {
-            userViewModel.getUsers().value!!.age = ++ userViewModel.getUsers().value!!.age
+//            userViewModel.getDataBindingConfigtUsers().value!!.age = userViewModel.getUsers().value!!.age
         }
 
     }

@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.apache.artemis_annotation.DIActivity;
-import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.databinding.ActivitySplashBinding;
+import com.apache.fastandroid.demo.bean.UserBean;
 import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.ui.activity.BaseVmActivity;
 
@@ -42,7 +42,7 @@ public class SplashActivity extends BaseVmActivity<ActivitySplashBinding> {
 
 
     private void toMain(){
-        UserBean userBean = new UserBean();
+        UserBean userBean = new UserBean("Tom",10);
         MainActivity.launch(SplashActivity.this,userBean);
         SplashActivity.this.finish();
     }

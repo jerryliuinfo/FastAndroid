@@ -16,7 +16,7 @@ import androidx.core.os.HandlerCompat
 import com.apache.fastandroid.LogUtils
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
-import com.apache.fastandroid.bean.UserBean
+import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.temp.bean.ReflectBean
 import com.apache.fastandroid.jetpack.lifecycle.service.MyService
 import com.blankj.utilcode.util.ReflectUtils
@@ -148,7 +148,7 @@ class DrakeetCommonFragment:BaseFragment() {
         val intent = Intent(context,MainActivity::class.java).apply {
             action = "Action_1"
             addFlags(CommonUtil.getFlagsCompat(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP))
-            putExtra("user",UserBean("zhangsan"))
+            putExtra("user", UserBean("zhangsan"))
             putExtra("key","value")
         }
 

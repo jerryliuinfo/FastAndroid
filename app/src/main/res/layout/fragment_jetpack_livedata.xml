@@ -13,7 +13,7 @@
         android:orientation="horizontal"
         app:flow_wrapMode="aligned"
         app:constraint_referenced_ids="btn_change,btn_transform_map,btn_transform_switch_map
-        ,btn_media_livedata,btn_livedata_bus,btn_livedata_listen_network"
+        ,btn_media_livedata,btn_livedata_bus,btn_livedata_listen_network,btn_livedata_setnull"
         />
 
     <TextView
@@ -68,6 +68,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LiveData 监听网络"
+        />
+
+    <Button
+        android:id="@+id/btn_livedata_setnull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LiveData 设置空数据"
         />
 
 

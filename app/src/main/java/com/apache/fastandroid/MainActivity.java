@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,10 +12,10 @@ import android.view.View;
 import com.apache.artemis_annotation.AptTest;
 import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
-import com.apache.fastandroid.bean.UserBean;
 import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
-import com.apache.fastandroid.demo.blacktech.sdkeditor.CommonBlackTechFragment;
+import com.apache.fastandroid.demo.bean.UserBean;
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -26,6 +25,10 @@ import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.ui.activity.BaseVmActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -77,12 +80,15 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 //        DemoListActivity.launch(this);
 //        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
 //        FragmentContainerActivity.launch(this, DrakeetDemoListFragment.class,null);
-        FragmentContainerActivity.launch(this, CommonBlackTechFragment.class,null);
+//        FragmentContainerActivity.launch(this, CommonBlackTechFragment.class,null);
+//        FragmentContainerActivity.launch(this, SnapHelperDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
 //        FragmentContainerActivity.launch(this, MMKVFragment.class,null);
 //        FragmentContainerActivity.launch(this, HawkDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, LiveDataWrongUsageFragment.class,null);
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
+        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2.class,null);
+//        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
 //        startActivity(new Intent(this, NavigationDemoActivity.class));
 //        startActivity(new Intent(this, NavigationBottomNavigationActivity.class));
 
@@ -96,13 +102,15 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         String key = intent.getStringExtra("key");
-        Parcelable user = intent.getParcelableExtra("user");
+        Serializable user = intent.getSerializableExtra("user");
         if (user != null){
             UserBean userBean = (UserBean) user;
             NLog.d(TAG, "onNewIntent key: %s",key);
 
             NLog.d(TAG, "userBean: %s",userBean);
         }
+
+
     }
 
 
@@ -237,6 +245,19 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 
 
 
+    private <T> List<T> filter(List<T> originalList, PreCondition<T> condition){
+        List<T> list = new ArrayList<>();
+        for (T t : originalList) {
+            if (condition.filter(t)){
+                list.add(t);
+            }
+        }
+        return list;
+    }
+
+    interface PreCondition<T>{
+        boolean filter(T t);
+    }
 
 }
 

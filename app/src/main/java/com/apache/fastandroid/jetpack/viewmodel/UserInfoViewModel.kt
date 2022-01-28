@@ -2,7 +2,7 @@ package com.apache.fastandroid.jetpack.viewmodel
 
 import android.widget.Toast
 import androidx.lifecycle.*
-import com.apache.fastandroid.demo.bean.user.UserBean
+import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.blankj.utilcode.util.Utils
 import com.tesla.framework.common.util.log.NLog

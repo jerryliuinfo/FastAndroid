@@ -1,5 +1,6 @@
 package com.apache.fastandroid.demo.temp
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.IntentFilter
 import android.graphics.Typeface
@@ -8,9 +9,6 @@ import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewTreeObserver
 import com.apache.fastandroid.R
-import com.blankj.utilcode.util.MetaDataUtils
-import com.blankj.utilcode.util.ThreadUtils
-import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
@@ -23,8 +21,9 @@ import android.util.LruCache
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.demo.temp.bean.ReflectBean
 import com.apache.fastandroid.demo.temp.concurrency.Player
-import com.blankj.utilcode.util.ReflectUtils
+import com.blankj.utilcode.util.*
 import com.tesla.framework.common.util.log.Logger
+import per.goweii.anylayer.AnyLayer
 
 
 /**
@@ -71,14 +70,21 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
         btn_concurrence.setOnClickListener {
             concurencyUsage()
         }
+        btn_showDialogWithApplicationContext.setOnClickListener {
+            showDialogWithApplicationContext()
+        }
 
         val str = "Longfu2012"
         et_userName.filters = arrayOf<InputFilter>(MyFilter(str,context))
-
-
-
     }
 
+
+    private fun showDialogWithApplicationContext(){
+        AlertDialog.Builder(Utils.getApp())
+            .setTitle("I am title")
+            .show()
+
+    }
     private fun concurencyUsage() {
         val player1:Player = Player(Player.PLAYER1)
         val player2:Player = Player(Player.PLAYER2)
@@ -171,10 +177,23 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
     private val set3 = set1.addAll(set2)
 
 
+    private fun <T> filter(originalList: List<T>, condition:(T) -> Boolean): List<T> {
+        val list = arrayListOf<T>()
+        for (t in originalList) {
+            if (condition(t)) {
+                list.add(t)
+            }
+        }
+        return list
+    }
 
-
-
-
+    private fun <T,R> map(originalList: List<T>, transform:(T) -> R): List<R> {
+        val list = arrayListOf<R>()
+        for (t in originalList) {
+            list.add(transform(t))
+        }
+        return list
+    }
 
 
 }

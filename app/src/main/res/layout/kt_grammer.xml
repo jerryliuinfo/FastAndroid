@@ -5,95 +5,192 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
+            >
 
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal"
-        app:flow_wrapMode="aligned"
-        app:flow_horizontalGap="10dp"
-        app:flow_verticalGap="10dp"
-        app:constraint_referenced_ids="btn_on_each,btn_method_cost,btn_high_order_function,
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal"
+                app:flow_wrapMode="aligned"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:constraint_referenced_ids="btn_on_each,btn_method_cost,btn_high_order_function,
              btn_clazz_paramter,btn_java_kotlin_call_each_other,btn_nested_function,btn_expand_function,btn_expand_function2,
-             btn_lambda,btn_inline
+             btn_lambda,btn_inline,btn_campanion_object,btn_keyword_by,btn_by_delegate,btn_sealedClass,btn_sealedClass2,
+             btn_deconstruction,btn_iterator,btn_withIndex,btn_takeUnless,btn_takeIf,btn_operator,btn_custom_operator
         "
-        />
-    <Button
-        android:id="@+id/btn_on_each"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="onEach"
-        />
-    <Button
-        android:id="@+id/btn_method_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="方法耗时计算"
-        />
-    <Button
-        android:id="@+id/btn_coerceAtLeast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="取最小不小于某个值"
-        />
+                />
 
-    <Button
-        android:id="@+id/btn_high_order_function"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="高阶函数"
-        />
+            <Button
+                android:id="@+id/btn_on_each"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="onEach"
+                />
+            <Button
+                android:id="@+id/btn_method_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="方法耗时计算"
+                />
+            <Button
+                android:id="@+id/btn_coerceAtLeast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="取最小不小于某个值"
+                />
 
-    <Button
-        android:id="@+id/btn_clazz_paramter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="传递Class参数"
-        />
-    <Button
-        android:id="@+id/btn_java_kotlin_call_each_other"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kotlin与java互相调用"
-        />
-    <Button
-        android:id="@+id/btn_nested_function"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="函数嵌套"
-        />
+            <Button
+                android:id="@+id/btn_high_order_function"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="高阶函数"
+                />
 
-    <Button
-        android:id="@+id/btn_expand_function"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="扩展函数"
-        />
+            <Button
+                android:id="@+id/btn_clazz_paramter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="传递Class参数"
+                />
+            <Button
+                android:id="@+id/btn_java_kotlin_call_each_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kotlin与java互相调用"
+                />
+            <Button
+                android:id="@+id/btn_nested_function"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="函数嵌套"
+                />
 
-    <Button
-        android:id="@+id/btn_expand_function2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="扩展函数2"
-        />
+            <Button
+                android:id="@+id/btn_expand_function"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="扩展函数"
+                />
+
+            <Button
+                android:id="@+id/btn_expand_function2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="扩展函数2"
+                />
 
 
-    <Button
-        android:id="@+id/btn_lambda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Laumbda 表达式"
-        />
+            <Button
+                android:id="@+id/btn_lambda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Laumbda 表达式"
+                />
 
-    <Button
-        android:id="@+id/btn_inline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Inline"
-        />
+            <Button
+                android:id="@+id/btn_inline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inline"
+                />
+            <Button
+                android:id="@+id/btn_campanion_object"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="伴生对象写单例"
+                />
+            <Button
+                android:id="@+id/btn_keyword_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="by关键字"
+                />
+            <Button
+                android:id="@+id/btn_by_delegate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="by动态代理"
+                />
+
+            <Button
+                android:id="@+id/btn_sealedClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SealedClass"
+                />
+
+            <Button
+                android:id="@+id/btn_sealedClass2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="密闭类实现枚举"
+                />
+
+            <Button
+                android:id="@+id/btn_deconstruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="解构"
+                />
+
+            <Button
+                android:id="@+id/btn_iterator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kotlin循环"
+                />
+
+            <Button
+                android:id="@+id/btn_withIndex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WithIndex"
+                />
+
+            <Button
+                android:id="@+id/btn_takeUnless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TakeUnless"
+                />
+
+            <Button
+                android:id="@+id/btn_takeIf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TakeIf"
+                />
+            <Button
+                android:id="@+id/btn_operator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="集合操作符"
+                />
+
+            <Button
+                android:id="@+id/btn_custom_operator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自定义集合操作符"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

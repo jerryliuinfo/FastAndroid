@@ -3,16 +3,10 @@ package com.apache.fastandroid.demo.hitpit
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.apache.fastandroid.bean.UserBean
-import com.apache.fastandroid.demo.bean.People
 import com.apache.fastandroid.demo.bean.Person
-import com.apache.fastandroid.state.UserInfo
 import com.blankj.utilcode.util.GsonUtils
-import com.google.gson.Gson
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseFragment
-import java.lang.Exception
-import java.lang.reflect.Type
 
 /**
  * Created by Jerry on 2021/12/14.

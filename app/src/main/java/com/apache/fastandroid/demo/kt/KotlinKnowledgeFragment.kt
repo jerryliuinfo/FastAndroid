@@ -3,19 +3,19 @@ package com.apache.fastandroid.demo.kt
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.BuildConfig
-import com.apache.fastandroid.R
-import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.databinding.KtGrammerBinding
+import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.kt.bean.Dog
 import com.apache.fastandroid.demo.kt.bean.JavaMain
 import com.apache.fastandroid.demo.kt.bean.KotlinMain
 import com.apache.fastandroid.demo.kt.bean.printName
+import com.apache.fastandroid.demo.kt.sealed.PlayerUI
+import com.apache.fastandroid.demo.kt.sealed.PlayerViewType
+import com.apache.fastandroid.demo.kt.sealed.User
 import com.kingja.loadsir.core.LoadSir
 import com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.kt.inlineFunction
-import com.tesla.framework.ui.fragment.BaseFragment
 import com.tesla.framework.ui.fragment.BaseVMFragment
 import kotlinx.android.synthetic.main.kt_grammer.*
 import java.io.File
@@ -100,6 +100,72 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
             inlineUsage()
             nonInlineUsage()
         }
+        btn_campanion_object.setOnClickListener {
+            Logger.d("SingleObject: ${SingleObject.get()}")
+            Logger.d("SingleObject2: ${SingleObject.get()}")
+        }
+        btn_keyword_by.setOnClickListener {
+            ByTest.Zoo(ByTest.Cat()).bark()
+
+        }
+        btn_by_delegate.setOnClickListener {
+            ByTest.ZooBy(ByTest.Cat()).bark()
+        }
+
+        viewBinding.btnSealedClass.setOnClickListener {
+            val user = UserBean("jerry",20)
+        }
+
+        viewBinding.btnSealedClass2.setOnClickListener {
+            var user = User(1, "name")
+            PlayerUI.get().showPlayer(user)
+             user = User(1, "name", PlayerViewType.GREEN)
+            PlayerUI.get().showPlayer(user)
+            user = User(1, "name", PlayerViewType.VIP("VIP播放器","VIP播放器内容"))
+            PlayerUI.get().showPlayer(user)
+
+        }
+        viewBinding.btnDeconstruction.setOnClickListener {
+            val user = UserBean("Tom",11)
+            val (name,age, nick2) = user
+            Logger.d("name:$name, age:$age,nick2:$nick2")
+
+            val map = mapOf<String,String>("key1" to "value1", "key2" to "value2")
+            map.forEach {
+                Logger.d("${it.key}:${it.value}")
+            }
+        }
+        viewBinding.btnIterator.setOnClickListener {
+
+            iteratorFun()
+        }
+        viewBinding.btnWithIndex.setOnClickListener {
+            val list = arrayListOf("aa", "bb", "cc")
+            for ((index, value ) in list.withIndex()){
+                Logger.d("with index: ${index}:${value}")
+
+            }
+        }
+
+
+        viewBinding.btnTakeUnless.setOnClickListener {
+            testUnless("Hello Kitty","Kit")
+            testUnless("Hello Tom", "Kit")
+        }
+
+        viewBinding.btnTakeIf.setOnClickListener {
+            testTakeIf("Hello Kitty","Kit")
+            testTakeIf("Hello Tom", "Kit")
+        }
+        viewBinding.btnOperator.setOnClickListener {
+            testOperator()
+            testOperation2()
+        }
+
+        viewBinding.btnCustomOperator.setOnClickListener {
+           testMyOperator()
+
+        }
 
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
@@ -107,6 +173,113 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
         defaultParamFun("hello")
         defaultParamFun()
 
+    }
+
+    private fun testOperator(){
+        val list = arrayListOf<Char>('a','b','c','d')
+        list.map {
+           it - 'a'
+        }.filter {
+            it > 0
+        }
+            //返回符号 闭包的第一个值
+            .find {
+            it > 1
+        }
+        Logger.d("list:$list")
+
+    }
+
+    private fun testOperation2(){
+        val a = arrayOf("4","0","7","i","f","w","0","9")
+        val index = arrayOf(5,4,9,4,8,3,1,9,2,1,7)
+
+        index.filter {
+            println("testOperation2 filter i:$it")
+            it < a.size
+        }.map {
+            println("testOperation2 map i:$it")
+            a[it]
+        }.reduce { acc, s ->
+            return@reduce "$acc $s"
+        }
+            .also {
+                println("testOperation2 密码是:${it}")
+            }
+    }
+
+    private fun testMyOperator(){
+        val list = arrayListOf<Char>('a','b','c','d')
+        list.myMap {
+            it - 'a'
+        }.myFilter {
+            it > 0
+        }
+            //返回符号 闭包的第一个值
+            .find {
+                it > 1
+            }
+        Logger.d("list22:$list")
+    }
+
+
+
+
+    /**
+     * 不满足条件就返回本身，否则返回null
+     */
+    private fun testUnless(name:String, keyword:String){
+        name.indexOf(keyword)
+            .takeUnless {
+                Logger.d("testTakeUnless it: ${it}")
+                it < 0
+
+            }?.let {
+                Logger.d( "testTakeUnless has $keyword")
+            }
+    }
+
+    private fun testTakeIf(name:String, keyword:String){
+        name.indexOf(keyword)
+            .takeIf {
+                Logger.d("testTakeIf it: ${it}")
+                it > 0
+
+            }?.let {
+                Logger.d( "testTakeIf has $keyword")
+            }
+    }
+
+    private fun iteratorFun() {
+        val builder = StringBuilder()
+        for (i in 1..3){
+            builder.append(i).append(",")
+        }
+        Logger.d("in: ${builder.toString()}")
+        builder.clear()
+
+        for (i in 2 until 4){
+            builder.append(i).append(",")
+        }
+        Logger.d("until: ${builder.toString()}")
+        builder.clear()
+
+        for (i in 5 downTo 2){
+            builder.append(i).append(",")
+        }
+        Logger.d("downTo: ${builder.toString()}")
+        builder.clear()
+
+        for (i in 1..6 step 2){
+            builder.append(i).append(",")
+        }
+        Logger.d("in step: ${builder.toString()}")
+        builder.clear()
+
+        repeat(3){
+            builder.append(it).append(",")
+        }
+        Logger.d("repeat: ${builder.toString()}")
     }
 
     private fun nonInlineUsage() {
@@ -243,4 +416,32 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
     fun File.readTextha(charset: Charset= Charset.defaultCharset()):String = readBytes().toString(charset)
     fun LoadSir.Builder.debug() = BuildConfig.DEBUG
 
+
+
+    private fun <T> myfilter(originalList: List<T>, condition:(T) -> Boolean): List<T> {
+        val list = mutableListOf<T>()
+        for (t in originalList) {
+            if (condition(t)) {
+                list.add(t)
+            }
+        }
+        return list
+    }
+
+    private fun <T,R> myMap(originalList: List<T>, transform:(T) -> R): List<R> {
+        val list = mutableListOf<R>()
+        for (t in originalList) {
+            list.add(transform(t))
+        }
+        return list
+    }
+
+
+    fun <T, R> Iterable<T>.myMap(transform: (T) -> R): List<R> {
+        return myMap(ArrayList<T>(), transform)
+    }
+
+    fun <T> Iterable<T>.myFilter(preCondtion: (T) -> Boolean): List<T> {
+        return myfilter(ArrayList<T>(), preCondtion)
+    }
 }

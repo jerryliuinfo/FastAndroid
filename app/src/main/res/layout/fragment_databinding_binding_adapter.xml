@@ -45,7 +45,6 @@
             app:layout_constraintHorizontal_bias="0.8"
             android:textSize="20sp"
             tools:text="20"
-            android:text="@{String.valueOf(user.age)}"
             />
 
         <ImageView

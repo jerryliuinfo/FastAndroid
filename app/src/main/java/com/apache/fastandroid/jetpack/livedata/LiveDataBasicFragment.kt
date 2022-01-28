@@ -88,6 +88,14 @@ class LiveDataBasicFragment : BaseVMFragment<FragmentJetpackLivedataBinding>(Fra
             listenerNetworkByLivedata()
         }
 
+        viewBinding.btnLivedataSetnull.setOnClickListener {
+            userViewModel.livedata1.value= null
+        }
+
+        userViewModel.livedata1.observe(this){
+            Logger.d("livedata1 value:${it}")
+        }
+
     }
 
     private fun listenerNetworkByLivedata() {

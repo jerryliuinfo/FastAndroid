@@ -22,7 +22,7 @@
             app:flow_wrapMode="aligned"
             app:constraint_referenced_ids="tv_message,tv_name,btn_textview_horizontal_scroll,btn_collections_suffle,
         btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs,btn_textview_inputFilter,
-        btn_collection_wrapper,btn_verify_init,btn_reflect,btn_concurrence"
+        btn_collection_wrapper,btn_verify_init,btn_reflect,btn_concurrence,btn_showDialogWithApplicationContext"
             />
 
         <TextView
@@ -120,6 +120,14 @@
             android:layout_height="wrap_content"
             android:text="模拟并发死锁"
             />
+        <Button
+            android:id="@+id/btn_showDialogWithApplicationContext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Application弹出对话框"
+            />
+
+
 
         <EditText
             android:id="@+id/et_userName"
