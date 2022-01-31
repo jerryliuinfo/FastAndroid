@@ -100,7 +100,5 @@ class CouroutineDemoFragment2:BaseVMFragment<FragmentKotlinCouritine2Binding>(Fr
         }
     }
 
-
-
 }
 
