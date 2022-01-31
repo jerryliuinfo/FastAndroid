@@ -2,35 +2,22 @@ package com.apache.fastandroid.demo.kt
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.databinding.KtGrammer2Binding
-import com.apache.fastandroid.databinding.KtGrammerBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.kt.bean.Dog
-import com.apache.fastandroid.demo.kt.bean.JavaMain
-import com.apache.fastandroid.demo.kt.bean.KotlinMain
-import com.apache.fastandroid.demo.kt.bean.printName
-import com.apache.fastandroid.demo.kt.sealed.PlayerUI
-import com.apache.fastandroid.demo.kt.sealed.PlayerViewType
-import com.apache.fastandroid.demo.kt.sealed.User
-import com.kingja.loadsir.core.LoadSir
-import com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator
-import com.tesla.framework.common.util.log.NLog
+import com.apache.fastandroid.demo.kt.genericity.*
+import com.blankj.utilcode.util.GsonUtils
+import com.google.gson.Gson
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseVMFragment
 import kotlinx.android.synthetic.main.kt_grammer.*
 import java.io.File
-import java.nio.charset.Charset
-import kotlin.random.Random
-import kotlin.reflect.KClass
-import kotlin.system.measureTimeMillis
 
 /**
  * Created by Jerry on 2021/10/18.
  */
 class KotlinKnowledgeFragment2:BaseVMFragment<KtGrammer2Binding>(KtGrammer2Binding::inflate) {
     companion object{
-        private const val TAG = "KotlinKnowledgeFragment"
+        private const val TAG = "kotlinknowledgefragment"
     }
 
 
@@ -63,7 +50,143 @@ class KotlinKnowledgeFragment2:BaseVMFragment<KtGrammer2Binding>(KtGrammer2Bindi
             typeAliasUsage()
         }
 
+        viewBinding.btnGetterSetter.setOnClickListener {
+           getSetUsage()
+        }
+
+        viewBinding.btnLambdaInterrupt.setOnClickListener {
+            lambdaInterrupt()
+        }
+        viewBinding.btnNeilian.setOnClickListener {
+            inlineUsage2()
+        }
+
+        viewBinding.btnCrossInline.setOnClickListener {
+            crossInlineUsage()
+        }
+
+        viewBinding.btnAnonymous.setOnClickListener {
+            anonymousFun()
+        }
+
+        viewBinding.btnKtGenericity.setOnClickListener {
+            val genericity = KtGenericity<GenericityAImpl>()
+            genericity.add(GenericityAImpl())
+        }
+
+        viewBinding.btnKtRealGenericity.setOnClickListener {
+
+            val userBean = UserBean("jerry",10)
+            var json = GsonUtils.toJson(userBean)
+
+            //Java 泛型
+            JavaGeneric.fromJson(json, UserBean::class.java)
+            //Kotlin 泛型
+            val userBean2 = Gson().fromJson2<UserBean>(json)
+            println("json: $json, userBean2 name:${userBean2.name}, age:${userBean2.age}")
+        }
+
+        viewBinding.btnKtClassRealGenericity.setOnClickListener {
+
+            val p1 = GenericView.Companion.invoke<GenericView.Presenter>().presenter
+            //p2 其实是通过 P1 的形式创建的
+            val p2 = GenericView<GenericView.Presenter>().presenter
+
+            println("p1:$p1, p2:$p2")
+
+            p1.test()
+            p2.test()
+        }
+
+
     }
+
+
+
+
+    private fun anonymousFun(){
+        val test = fun (){
+            println("test")
+            //这里只会 return 调匿名函数本身
+            return
+        }
+        println("hello")
+    }
+
+
+
+    /**
+     * crossinline 不允许 inline 的 Lamba 中断外部函数执行,
+     */
+    private fun crossInlineUsage() {
+        crossinlineFun {
+            println("test1")
+            return@crossinlineFun
+            println("hello1")
+        }
+        println("hello2")
+    }
+
+    /**
+     *  内部 lambda 是不允许中断外部函数执行的,所以 会打印出下面的hello
+     */
+    private fun lambdaInterrupt(){
+        lambdaFunc {
+            println("test1")
+            return@lambdaFunc
+        }
+        println("hello")
+    }
+
+    private fun lambdaFunc(l: () -> Unit){
+        l.invoke()
+    }
+
+    private inline fun inlineFun(l: () -> Unit){
+        l.invoke()
+    }
+
+    private inline fun crossinlineFun(crossinline l: () -> Unit){
+        l.invoke()
+    }
+
+
+    /**
+     * inline 的 lambda 可以中断外部函数调用, 因此不会输出后面的 hello
+     */
+    private  fun inlineUsage2(){
+        inlineFun {
+            println("test2")
+            return
+        }
+        println("hello")
+    }
+
+
+
+
+
+
+    private fun getSetUsage(){
+        println(string)
+        string = "world"
+        println(string)
+
+        println("msg:$msg")
+    }
+
+    var string:String ?= null
+        get() {
+            return field + "get"
+        }
+        set(value) {
+            field = "$value set"
+        }
+
+    val msg:String ?= null
+        get() {
+            return field + ", hello"
+        }
 
     /**
      *  @SinceKotlin("1.1") public actual typealias LinkedHashMap<K, V> = java.util.LinkedHashMap<K, V> kotlin中的HashMap 就是映射的java的HashMap

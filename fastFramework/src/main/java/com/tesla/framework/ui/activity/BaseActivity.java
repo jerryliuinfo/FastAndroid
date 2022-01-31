@@ -8,8 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.R;
+import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.component.network.NetworkStateManager;
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
 import com.tesla.framework.ui.widget.CustomToolbar;

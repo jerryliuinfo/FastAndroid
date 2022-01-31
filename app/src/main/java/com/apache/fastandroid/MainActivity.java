@@ -15,7 +15,8 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.UserBean;
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2;
+import com.apache.fastandroid.demo.kt.coroutine.CouroutineDemoFragment2;
+import com.apache.fastandroid.demo.kt.coroutine.LaunchCoroutine;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -34,6 +35,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
+import kotlin.Result;
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
+import kotlin.coroutines.CoroutineContext;
+import kotlinx.coroutines.android.HandlerContext;
 
 
 @AptTest(path = "main")
@@ -87,10 +93,12 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 //        FragmentContainerActivity.launch(this, HawkDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, LiveDataWrongUsageFragment.class,null);
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
-        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2.class,null);
+//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2.class,null);
+        FragmentContainerActivity.launch(this, CouroutineDemoFragment2.class,null);
 //        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
 //        startActivity(new Intent(this, NavigationDemoActivity.class));
 //        startActivity(new Intent(this, NavigationBottomNavigationActivity.class));
+
 
 
     }

@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.kt
+package com.apache.fastandroid.demo.kt.coroutine
 
 import android.os.Bundle
 import android.view.LayoutInflater

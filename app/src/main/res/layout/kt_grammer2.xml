@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -27,7 +28,8 @@
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
                 app:constraint_referenced_ids="btn_let_run,btn_also_apply,btn_with,btn_common_operator,
-                btn_operator_overload,btn_zhongzui,btn_typeAlias"
+                btn_operator_overload,btn_zhongzui,btn_typeAlias,btn_getter_setter,btn_lambda_interrupt,
+                btn_neilian,btn_crossInline,btn_anonymous,btn_kt_genericity,btn_kt_real_genericity,btn_kt_class_real_genericity"
                 />
 
             <Button
@@ -62,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="运算符重载"
-                />
+                tools:ignore="MissingConstraints" />
 
             <Button
                 android:id="@+id/btn_zhongzui"
@@ -75,6 +77,61 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TypeAlis"
+                />
+
+            <Button
+                android:id="@+id/btn_getter_setter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GetSetter"
+                />
+
+            <Button
+                android:id="@+id/btn_lambda_interrupt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lambda 中断"
+                />
+
+            <Button
+                android:id="@+id/btn_neilian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inline"
+                />
+
+            <Button
+                android:id="@+id/btn_crossInline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CrossInline"
+                />
+
+            <Button
+                android:id="@+id/btn_anonymous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="匿名函数"
+                />
+            <Button
+                android:id="@+id/btn_kt_genericity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kotlin泛型"
+                />
+
+            <Button
+                android:id="@+id/btn_kt_real_genericity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kotlin 函数参数真泛型"
+                />
+
+            <Button
+                android:id="@+id/btn_kt_class_real_genericity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kotlin 类真泛型"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
