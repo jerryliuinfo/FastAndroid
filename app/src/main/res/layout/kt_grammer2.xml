@@ -29,7 +29,8 @@
                 app:flow_verticalGap="10dp"
                 app:constraint_referenced_ids="btn_let_run,btn_also_apply,btn_with,btn_common_operator,
                 btn_operator_overload,btn_zhongzui,btn_typeAlias,btn_getter_setter,btn_lambda_interrupt,
-                btn_neilian,btn_crossInline,btn_anonymous,btn_kt_genericity,btn_kt_real_genericity,btn_kt_class_real_genericity"
+                btn_neilian,btn_crossInline,btn_anonymous,btn_kt_genericity,btn_kt_real_genericity,
+                btn_kt_class_real_genericity,btn_join_tostring"
                 />
 
             <Button
@@ -132,6 +133,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Kotlin 类真泛型"
+                />
+            <Button
+                android:id="@+id/btn_join_tostring"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="List JoinToString"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

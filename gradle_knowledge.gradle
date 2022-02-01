@@ -1,0 +1,23 @@
+apply from: "gradle_learn/definitive_guide/chapter02.gradle"
+apply from: "gradle_learn/definitive_guide/chapter03.gradle"
+apply from: "gradle_learn/definitive_guide/chapter04.gradle"
+apply from: "gradle_learn/definitive_guide/chapter04_8.gradle"
+apply from: "gradle_learn/definitive_guide/chapter05.gradle"
+apply from: "gradle_learn/definitive_guide/chapter06.gradle"
+apply from: "gradle_learn/definitive_guide/chapter07.gradle"
+apply from: "gradle_learn/definitive_guide/chapter08.gradle"
+
+
+
+apply from: "gradle_learn/gradle_user_guide/user_guide_chapter06.gradle"
+apply from: "gradle_learn/gradle_user_guide/user_guide_chapter11.gradle"
+apply from: "gradle_learn/gradle_user_guide/user_guide_chapter13.gradle"
+apply from: "gradle_learn/gradle_user_guide/user_guide_chapter15.gradle"
+apply from: "gradle_learn/gradle_user_guide/user_guide_chapter16.gradle"
+apply from: "gradle_learn/gradle_user_guide/user_guide_chapter17.gradle"
+
+
+
+apply from: "gradle_learn/gradle_tech/gradle_tecn_chapter01_core_config.gradle"
+apply from: "gradle_learn/gradle_tech/gradle_tecn_chapter02_gradle_basic.gradle"
+apply from: "gradle_learn/gradle_tech/gradle_custom_plugin.gradle"

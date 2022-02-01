@@ -17,6 +17,7 @@ import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_kotlin_couritine.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import java.lang.Exception
@@ -88,6 +89,18 @@ class CouroutineDemoFragment2:BaseVMFragment<FragmentKotlinCouritine2Binding>(Fr
         viewBinding.btnCouroutineTheory.setOnClickListener {
             testCoroutineTheory()
         }
+
+        viewBinding.btnChannel.setOnClickListener {
+            testChannel()
+        }
+
+        viewBinding.btnChannelBus.setOnClickListener {
+            "hello".post()
+
+            onEvent { str:String ->
+                println("receive :$str")
+            }
+        }
     }
 
     private fun testCoroutineTheory(){
@@ -100,5 +113,35 @@ class CouroutineDemoFragment2:BaseVMFragment<FragmentKotlinCouritine2Binding>(Fr
         }
     }
 
+
+    private fun testChannel(){
+        val channel = Channel<Int>()
+        GlobalScope.launch {
+            launch {
+                get(channel)
+            }
+            launch {
+                put(channel)
+            }
+            delay(3000)
+        }
+
+        Thread.sleep(2000)
+        channel.cancel()
+
+    }
+
+    suspend fun get(channel:Channel<Int>){
+        while (true){
+            println(channel.receive())
+        }
+    }
+
+    suspend fun put(channel:Channel<Int>){
+        var i = 0
+        while (true){
+            channel.send(i++)
+        }
+    }
 }
 

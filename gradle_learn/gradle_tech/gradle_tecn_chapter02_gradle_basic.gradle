@@ -5,5 +5,16 @@ task threeMetaExpression{
     int value = 1
     println "${""}"
 
+    def student = new Student()
+    println("name222:${student.name}, age:${student.age}")
+
+}
+
+class Student{
+    def String name
+    public void getName(){
+        println "student getName"
+    }
+    def int age
 
 }

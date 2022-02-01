@@ -1,5 +1,7 @@
 package com.apache.fastandroid.demo.kt.genericity
 
+import android.content.Context
+import android.os.Build
 import com.google.gson.Gson
 
 /**
@@ -40,4 +42,10 @@ class GenericityAImpl:GeCallback,Runnable{
  */
 inline fun <reified T> Gson.fromJson2(json:String):T{
     return fromJson(json, T::class.java)
+}
+
+inline fun <reified T> Context.getSystemService() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+    getSystemService(T::class.java)
+} else {
+    null
 }

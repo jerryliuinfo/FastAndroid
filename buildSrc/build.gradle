@@ -1,0 +1,13 @@
+repositories {
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    //注意这里要用 implementation，而不是 classPath
+    implementation "com.android.tools.build:gradle:4.0.2"
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

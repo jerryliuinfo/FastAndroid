@@ -16,41 +16,16 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+//插件的名字和 .properties 的文件名字保持一致
+apply plugin: 'com.fastandroid.release'
+
+releaseInfo{
+    name "RengwuxianHello"
+}
+
+
 //apply plugin 的名称为 /buildSrc/src/main/resources/META-INF/gradle-plugins目录下的 xx.properties 的名称
 //apply plugin: 'com.myplugin'
-
-/**
- * 这里 myPlugin 为 com.fastandroid.plugin.MyPlugin.java 这个类中 通过 target.extensions.create("myPlugin",ExtensionBean)
- * 中创建的名称
- * name 和 value 属性为 ExtensionBean中定义的属性
- */
-//myPlugin{
-//    name "This is myPlugin name"
-//    value "This is myPlugin value "
-//}
-
-/*apply plugin: MyFirstPlugin
-artemis{
-    name = "jerry"
-    age = 18
-}
-
-class MyFirstPlugin implements Plugin<Project>{
-
-
-    @Override
-    void apply(org.gradle.api.Project target) {
-        MyFirstPluginBean pluginBean = project.extensions.create("artemis",MyFirstPluginBean.class)
-        project.afterEvaluate {
-            println "name:${pluginBean.name}, age:${pluginBean.age}"
-        }
-    }
-}
-
-class MyFirstPluginBean{
-    public String name = 'defaultName'
-    public int age = 0
-}*/
 
 
 Properties properties = new Properties()

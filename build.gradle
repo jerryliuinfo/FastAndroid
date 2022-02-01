@@ -2,27 +2,10 @@
 apply from: "version_config.gradle"
 apply from: "version.gradle"
 apply from: "gradletest.gradle"
-apply from: "gradle_learn/definitive_guide/chapter02.gradle"
-apply from: "gradle_learn/definitive_guide/chapter03.gradle"
-apply from: "gradle_learn/definitive_guide/chapter04.gradle"
-apply from: "gradle_learn/definitive_guide/chapter04_8.gradle"
-apply from: "gradle_learn/definitive_guide/chapter05.gradle"
-apply from: "gradle_learn/definitive_guide/chapter06.gradle"
-apply from: "gradle_learn/definitive_guide/chapter07.gradle"
-apply from: "gradle_learn/definitive_guide/chapter08.gradle"
-
-
-apply from: "gradle_learn/gradle_user_guide/user_guide_chapter06.gradle"
-apply from: "gradle_learn/gradle_user_guide/user_guide_chapter11.gradle"
-apply from: "gradle_learn/gradle_user_guide/user_guide_chapter13.gradle"
-apply from: "gradle_learn/gradle_user_guide/user_guide_chapter15.gradle"
-apply from: "gradle_learn/gradle_user_guide/user_guide_chapter16.gradle"
-apply from: "gradle_learn/gradle_user_guide/user_guide_chapter17.gradle"
+apply from: "gradle_knowledge.gradle"
 
 
 
-apply from: "gradle_learn/gradle_tech/gradle_tecn_chapter01_core_config.gradle"
-apply from: "gradle_learn/gradle_tech/gradle_tecn_chapter02_gradle_basic.gradle"
 
 
 
@@ -32,18 +15,13 @@ buildscript {
     ext.kotlin_version = '1.3.72'
 
     repositories {
+
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
         google()
-        repositories {
-            maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
 
-            mavenCentral()
-
-            google()
-
-            maven { url 'https://jitpack.io' }
-            maven { url "https://plugins.gradle.org/m2/" }
-
-        }
+        maven { url 'https://jitpack.io' }
+        maven { url "https://plugins.gradle.org/m2/" }
 
     }
     dependencies {

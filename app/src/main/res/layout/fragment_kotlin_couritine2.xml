@@ -18,7 +18,8 @@
             android:orientation="horizontal"
             app:flow_horizontalGap="10dp"
             app:constraint_referenced_ids="btn_launch_coroutine,btn_async_await,
-            btn_coroutine_launch_param,btn_suspend_continuation,btn_couroutine_theory"
+            btn_coroutine_launch_param,btn_suspend_continuation,btn_couroutine_theory
+            ,btn_channel,btn_channel_bus"
             app:flow_wrapMode="aligned"
             />
 
@@ -50,6 +51,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="协程内部实现原理" />
+
+        <Button
+            android:id="@+id/btn_channel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Channel" />
+
+        <Button
+            android:id="@+id/btn_channel_bus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ChannelBus" />
 
 
 

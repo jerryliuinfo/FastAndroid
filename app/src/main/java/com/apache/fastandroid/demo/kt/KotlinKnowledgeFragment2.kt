@@ -1,7 +1,9 @@
 package com.apache.fastandroid.demo.kt
 
+import android.app.ActivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.core.content.ContextCompat.getSystemService
 import com.apache.fastandroid.databinding.KtGrammer2Binding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.kt.genericity.*
@@ -84,6 +86,8 @@ class KotlinKnowledgeFragment2:BaseVMFragment<KtGrammer2Binding>(KtGrammer2Bindi
             //Kotlin 泛型
             val userBean2 = Gson().fromJson2<UserBean>(json)
             println("json: $json, userBean2 name:${userBean2.name}, age:${userBean2.age}")
+
+            val manage:ActivityManager? = activity?.getSystemService<ActivityManager>()
         }
 
         viewBinding.btnKtClassRealGenericity.setOnClickListener {
@@ -97,7 +101,12 @@ class KotlinKnowledgeFragment2:BaseVMFragment<KtGrammer2Binding>(KtGrammer2Bindi
             p1.test()
             p2.test()
         }
-
+        viewBinding.btnJoinTostring.setOnClickListener {
+            val list = arrayListOf<UserBean>(UserBean("jerry",10),UserBean("Tom",11)).map {
+                it.name
+            }.joinToString(separator = ",")
+            println(list)
+        }
 
     }
 
