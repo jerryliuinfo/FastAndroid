@@ -26,7 +26,7 @@ import java.util.HashMap
 /**
  * Created by JerryLiu on 17/04/08.
  */
-abstract class BaseVmActivityNew<V : ViewBinding>(val inflater: (inflater: LayoutInflater) -> V) : AppCompatActivity(),
+abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: LayoutInflater) -> V) : AppCompatActivity(),
     OnToolbarDoubleClickListener {
     protected lateinit var activityHelper: BaseActivityHelper
     protected lateinit var mBinding: V

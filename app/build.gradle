@@ -9,6 +9,14 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 
 //apply plugin: 'largeimage-monitor'
 
+
+//https://github.com/SmartDengg/click-debounce
+apply plugin: 'smartdengg.clickdebounce'
+debounce {
+    // enable log
+    loggable = true
+}
+
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 
 
@@ -73,7 +81,8 @@ def getAppVersionCode(){
 }
 
 android {
-    compileSdkVersion rootProject.android.compileSdkVersion
+//    compileSdkVersion rootProject.android.compileSdkVersion
+    compileSdkVersion AppConfig.compileSdk
 //    buildToolsVersion rootProject.android.buildToolsVersion
     defaultConfig {
         applicationId "com.apache.fastandroid"
@@ -477,8 +486,8 @@ dependencies {
 
 
     //必须加行这行，否则proxyToolProcessor无法自动生成类
-    implementation project(':artemis_annotation')
-    annotationProcessor project(':artemis_compiler')
+    implementation project(':aop_annotation')
+    annotationProcessor project(':xaop-runtime')
 
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
 

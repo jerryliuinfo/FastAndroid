@@ -42,9 +42,9 @@ class TokenInterceptor(private var token:String):Interceptor {
         }
     }
 
-    private fun getNewToken(): String {
-        var newToken: String
-        var refreshToken: String
+    private fun getNewToken(): String? {
+        var newToken: String?
+        var refreshToken: String?
         synchronized(TokenInterceptor::class.java) {
             val refresh = spUtils.getLong(KEY_REFRESH_TOKEN, 0)
 
@@ -52,8 +52,8 @@ class TokenInterceptor(private var token:String):Interceptor {
             val refreshTokenR = ApiEngine.getApiService()
             val call = refreshTokenR.refreshToken(refresh)
             val execute = call.execute()
-            newToken = execute.body()!!.data.access_token
-            refreshToken = execute.body()!!.data.refresh_token
+            newToken = execute.body()!!.data?.access_token
+            refreshToken = execute.body()!!.data?.refresh_token
             spUtils.put(KEY_REFRESH_TOKEN, refreshToken)
         }
         return newToken

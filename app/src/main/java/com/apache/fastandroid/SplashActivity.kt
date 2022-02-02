@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Parcelable
-import com.apache.artemis_annotation.DIActivity
 import com.tesla.framework.ui.activity.BaseVmActivity
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.SplashActivity
@@ -15,7 +14,6 @@ import com.tesla.framework.ui.activity.BaseVmActivityNew
 /**
  * Created by jerryliu on 2017/4/10.
  */
-@DIActivity
 class SplashActivity : BaseVmActivityNew<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
 
 

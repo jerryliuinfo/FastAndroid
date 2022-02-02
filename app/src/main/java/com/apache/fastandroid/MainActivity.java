@@ -9,13 +9,11 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.apache.artemis_annotation.AptTest;
-import com.apache.artemis_annotation.BindPath;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.UserBean;
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2;
+import com.apache.fastandroid.demo.blacktech.ClickDebounceFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -36,8 +34,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 
 
-@AptTest(path = "main")
-@BindPath("login/login")
+
 public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements View.OnClickListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -87,7 +84,8 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 //        FragmentContainerActivity.launch(this, HawkDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, LiveDataWrongUsageFragment.class,null);
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
-        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2.class,null);
+//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2.class,null);
+        FragmentContainerActivity.launch(this, ClickDebounceFragment.class,null);
 //        FragmentContainerActivity.launch(this, CouroutineDemoFragment2.class,null);
 //        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
 //        startActivity(new Intent(this, NavigationDemoActivity.class));

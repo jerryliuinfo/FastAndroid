@@ -80,6 +80,8 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         mAppViewModelStore = new ViewModelStore();
 
         initLog();
+
+        initAop();
         crashReport();
         initLoop();
         Logger.d("Application onCreate ");
@@ -123,6 +125,11 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         initPermissionMonitor();
 
         initAppDress();
+    }
+
+    private void initAop() {
+//        XAOP.init(this);
+//        XAOP.debug(true);
     }
 
     private void initAndroidUtil(){

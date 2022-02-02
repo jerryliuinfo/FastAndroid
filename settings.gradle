@@ -4,7 +4,7 @@ include ':hencoder_plus'
 include ':hencoder_paint'
 include ':hencode_basic'
 include ':libnetwork'
-include ':app', ':artemis_annotation', ':artemis_compiler',  'baselib', ':fastFramework'
+include ':app', ':aop_annotation',':xaop-runtime',   'baselib', ':fastFramework'
 rootProject.name = "Android"
 
 include ':libnetwork'
