@@ -1,5 +1,7 @@
 package com.apache.fastandroid.network.retrofit;
 
+import android.os.Build;
+
 import com.tesla.framework.common.util.log.NLog;
 
 import org.jetbrains.annotations.NotNull;
@@ -24,8 +26,9 @@ public class HeaderInterceptor implements Interceptor {
 
         Request.Builder builder = chain.request().newBuilder();
         try {
-            builder.addHeader("c", "US")
-                    .addHeader("l", "en");
+            //添加公共请求头
+            builder.addHeader("brand", Build.BRAND)
+                    .addHeader("model", Build.MODEL);
         } catch (Exception e) {
             NLog.printStackTrace(TAG, e);
         }

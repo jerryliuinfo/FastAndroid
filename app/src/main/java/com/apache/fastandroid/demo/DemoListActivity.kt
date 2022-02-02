@@ -37,7 +37,7 @@ import kotlinx.android.synthetic.main.activity_demo_list.*
 /**
  * Created by Jerry on 2020/10/31.
  */
-class DemoListActivity : BaseVmActivity<ActivityDemoListBinding>() {
+class DemoListActivity : BaseVmActivityNew<ActivityDemoListBinding>(ActivityDemoListBinding::inflate) {
 
     private val viewModel: DemoListViewModel by viewModels()
     companion object {
@@ -114,9 +114,7 @@ class DemoListActivity : BaseVmActivity<ActivityDemoListBinding>() {
 
     }
 
-    override fun bindView(): ActivityDemoListBinding {
-        return ActivityDemoListBinding.inflate(layoutInflater)
-    }
+
 
 
 }

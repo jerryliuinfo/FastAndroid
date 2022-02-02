@@ -10,8 +10,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityNavigationBottomNavigationBinding
 import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVmActivityNew
 
-class NavigationBottomNavigationActivity : BaseVmActivity<ActivityNavigationBottomNavigationBinding>() {
+class NavigationBottomNavigationActivity : BaseVmActivityNew<ActivityNavigationBottomNavigationBinding>(ActivityNavigationBottomNavigationBinding::inflate) {
 
 
     override fun layoutInit(savedInstanceState: Bundle?) {
@@ -26,7 +27,4 @@ class NavigationBottomNavigationActivity : BaseVmActivity<ActivityNavigationBott
 
     }
 
-    override fun bindView(): ActivityNavigationBottomNavigationBinding {
-        return ActivityNavigationBottomNavigationBinding.inflate(layoutInflater)
-    }
 }

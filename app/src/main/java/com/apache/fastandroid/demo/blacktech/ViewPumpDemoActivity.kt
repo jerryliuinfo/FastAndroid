@@ -7,6 +7,7 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.BlacktechViewPumpBinding
 import com.tesla.framework.ui.activity.BaseActivity
 import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVmActivityNew
 import kotlinx.android.synthetic.main.blacktech_view_pump.*
 import java.util.*
 
@@ -14,7 +15,7 @@ import java.util.*
  * Created by Jerry on 2021/10/19.
  * https://github.com/B3nedikt/ViewPump
  */
-class ViewPumpDemoActivity:BaseVmActivity<BlacktechViewPumpBinding>() {
+class ViewPumpDemoActivity:BaseVmActivityNew<BlacktechViewPumpBinding>(BlacktechViewPumpBinding::inflate) {
 
 
     private var appCompatDelegate: AppCompatDelegate? = null
@@ -39,9 +40,6 @@ class ViewPumpDemoActivity:BaseVmActivity<BlacktechViewPumpBinding>() {
         }
     }
 
-    override fun bindView(): BlacktechViewPumpBinding {
-        return BlacktechViewPumpBinding.inflate(layoutInflater)
-    }
 
 
 }

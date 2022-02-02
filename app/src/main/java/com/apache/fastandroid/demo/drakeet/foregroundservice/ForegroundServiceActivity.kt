@@ -8,11 +8,12 @@ import android.widget.TextView
 import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 /**
  * Created by Jerry on 2021/10/18.
  */
-class ForegroundServiceActivity:BaseVmActivity<FragmentCommonBinding>() {
+class ForegroundServiceActivity:BaseVmActivityNew<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
     private lateinit var msg:String
 
     private val handler = Handler()
@@ -42,9 +43,7 @@ class ForegroundServiceActivity:BaseVmActivity<FragmentCommonBinding>() {
         text = string + text
     }
 
-    override fun bindView(): FragmentCommonBinding {
-        return FragmentCommonBinding.inflate(layoutInflater)
-    }
+
 
 
 }

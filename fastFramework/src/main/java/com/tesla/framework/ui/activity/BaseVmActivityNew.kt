@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -25,9 +26,9 @@ import java.util.HashMap
 /**
  * Created by JerryLiu on 17/04/08.
  */
-abstract class BaseVmActivity<V : ViewBinding> : AppCompatActivity(),
+abstract class BaseVmActivityNew<V : ViewBinding>(val inflater: (inflater: LayoutInflater) -> V) : AppCompatActivity(),
     OnToolbarDoubleClickListener {
-    val activityHelper: BaseActivityHelper? = null
+    protected lateinit var activityHelper: BaseActivityHelper
     protected lateinit var mBinding: V
 
     // 当有Fragment Attach到这个Activity的时候，就会保存
@@ -49,12 +50,13 @@ abstract class BaseVmActivity<V : ViewBinding> : AppCompatActivity(),
         fragmentRefs = HashMap()
         super.onCreate(savedInstanceState)
         activity = this
-        mBinding = bindView()
-        setContentView(mBinding!!.root)
+        mBinding = inflater(layoutInflater)
+        setContentView(mBinding.root)
+        activityHelper = BaseActivityHelper(this,this)
         initViewModel()
         setUpActionBar()
         lifecycle.addObserver(NetworkStateManager.getInstance())
-        initView(mBinding!!.root)
+        initView(mBinding.root)
         layoutInit(savedInstanceState)
 
     }
@@ -90,7 +92,6 @@ abstract class BaseVmActivity<V : ViewBinding> : AppCompatActivity(),
         isActive = false
     }
 
-    abstract fun bindView(): V
     @JvmOverloads
     fun showContent(target: Class<out BaseStatusFragmentNew>, bundle: Bundle? = null) {
         try {

@@ -14,11 +14,12 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentJetpackNavigationBinding
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 /**
  * Created by Jerry on 2022/1/22.
  */
-class NavigationDemoActivity:BaseVmActivity<FragmentJetpackNavigationBinding>(){
+class NavigationDemoActivity:BaseVmActivityNew<FragmentJetpackNavigationBinding>(FragmentJetpackNavigationBinding::inflate){
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -70,8 +71,5 @@ class NavigationDemoActivity:BaseVmActivity<FragmentJetpackNavigationBinding>(){
         }
     }
 
-    override fun bindView(): FragmentJetpackNavigationBinding {
-        return FragmentJetpackNavigationBinding.inflate(layoutInflater)
-    }
 
 }

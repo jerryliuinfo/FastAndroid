@@ -21,7 +21,10 @@ apply plugin: 'com.fastandroid.release'
 
 releaseInfo{
     //kotlin 定义方式需要定义成 key = value 的形式， 如果 是 groovy 定义 方式写成 name   value
-    name = "RengwuxianHello"
+    versionCode = "1"
+    versionName = "1.0.0"
+    versionInfo = "第一个版本~"
+    fileName = "releases.xml"
 }
 
 

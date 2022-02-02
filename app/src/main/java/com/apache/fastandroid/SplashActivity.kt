@@ -1,58 +1,47 @@
-package com.apache.fastandroid;
+package com.apache.fastandroid
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-
-import com.apache.artemis_annotation.DIActivity;
-import com.apache.fastandroid.databinding.ActivitySplashBinding;
-import com.apache.fastandroid.demo.bean.UserBean;
-import com.tesla.framework.component.logger.Logger;
-import com.tesla.framework.ui.activity.BaseVmActivity;
+import android.content.Intent
+import android.os.Bundle
+import android.os.Handler
+import android.os.Parcelable
+import com.apache.artemis_annotation.DIActivity
+import com.tesla.framework.ui.activity.BaseVmActivity
+import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.SplashActivity
+import com.apache.fastandroid.databinding.ActivitySplashBinding
+import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 /**
  * Created by jerryliu on 2017/4/10.
  */
 @DIActivity
-public class SplashActivity extends BaseVmActivity<ActivitySplashBinding> {
-    public static final String TAG = SplashActivity.class.getSimpleName();
+class SplashActivity : BaseVmActivityNew<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
 
 
-
-    @Override
-    public ActivitySplashBinding bindView() {
-        return ActivitySplashBinding.inflate(getLayoutInflater());
+    override fun layoutInit(savedInstanceState: Bundle?) {
+        super.layoutInit(savedInstanceState)
+        Logger.d("SplashActivity layoutInit")
+        Handler().postDelayed({ toMain() }, 2000)
     }
 
-    @Override
-    public void layoutInit(Bundle savedInstanceState) {
-        super.layoutInit(savedInstanceState);
-        Logger.d("SplashActivity layoutInit");
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                toMain();
-
-            }
-        },2000);
-
+    private fun toMain() {
+        val userBean = UserBean("Tom", 10)
+        MainActivity.launch(this@SplashActivity, userBean)
+        finish()
     }
 
-
-
-
-    private void toMain(){
-        UserBean userBean = new UserBean("Tom",10);
-        MainActivity.launch(SplashActivity.this,userBean);
-        SplashActivity.this.finish();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (data != null){
-            UserBean userBean = data.getParcelableExtra("userBean");
-            Logger.d("userBean = %s",userBean);
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data?.getParcelableExtra<Parcelable>("userBean") != null) {
+            val userBean: UserBean = data.getParcelableExtra<Parcelable>("userBean") as UserBean
+            Logger.d("userBean = %s", userBean)
         }
+    }
+
+
+
+    companion object {
+        val TAG = SplashActivity::class.java.simpleName
     }
 }

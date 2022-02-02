@@ -5,11 +5,12 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.DrakeetLooperActivityBinding
 import com.tesla.framework.ui.activity.BaseActivity
 import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 /**
  * Created by Jerry on 2021/10/18.
  */
-class UnDeclareActivity: BaseVmActivity<DrakeetLooperActivityBinding>() {
+class UnDeclareActivity: BaseVmActivityNew<DrakeetLooperActivityBinding>(DrakeetLooperActivityBinding::inflate) {
 
 
     override fun layoutInit(savedInstanceState: Bundle?) {
@@ -17,7 +18,4 @@ class UnDeclareActivity: BaseVmActivity<DrakeetLooperActivityBinding>() {
 
     }
 
-    override fun bindView(): DrakeetLooperActivityBinding {
-        return DrakeetLooperActivityBinding.inflate(layoutInflater)
-    }
 }

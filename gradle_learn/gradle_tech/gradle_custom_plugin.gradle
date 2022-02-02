@@ -79,7 +79,7 @@ task testMap {
 
 task testFile(){
 
-    File file = new File('./version.properties')
+   /* File file = new File('./version.properties')
 
     def text = file.getText()
     def text2 = file.readLines()
@@ -87,7 +87,7 @@ task testFile(){
 
     file.eachLine { oneLine, lineNo ->
         println "${lineNo} ${oneLine}"
-    }
+    }*/
 }
 apply plugin: PluginDemo
 
