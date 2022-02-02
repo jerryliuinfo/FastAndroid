@@ -92,6 +92,8 @@ public abstract class BaseVmActivity<V extends ViewBinding> extends AppCompatAct
 
     }
 
+
+
     @Override
     protected void onResume() {
         super.onResume();

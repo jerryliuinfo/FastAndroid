@@ -81,6 +81,9 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomTo
         layoutInit(savedInstanceState);
     }
 
+
+
+
     @Override
     protected void onResume() {
         super.onResume();

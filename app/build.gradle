@@ -20,8 +20,10 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.fastandroid.release'
 
 releaseInfo{
-    name "RengwuxianHello"
+    //kotlin 定义方式需要定义成 key = value 的形式， 如果 是 groovy 定义 方式写成 name   value
+    name = "RengwuxianHello"
 }
+
 
 
 //apply plugin 的名称为 /buildSrc/src/main/resources/META-INF/gradle-plugins目录下的 xx.properties 的名称
@@ -99,12 +101,6 @@ android {
         resValue "string", "appDisplayName", ""
 
 
-      /*  javaCompileOptions {
-            annotationProcessorOptions {
-                includeCompileClasspath = true
-                //                arguments = [moduleName: project.getName()]
-            }
-        }*/
         defaultConfig {
             ndk {
                 // 设置支持的SO库架构
@@ -120,6 +116,8 @@ android {
          */
         consumerProguardFiles "consumer-rules.pro"
     }
+
+
 
     productFlavors {
         dev {

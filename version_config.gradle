@@ -64,7 +64,7 @@ ext {
     extJUnitVersion = "1.1.4-alpha03"
     runnerVersion = "1.4.1-alpha03"
     espressoVersion = "3.5.0-alpha03"
-
+    immersionbar = "3.0.0"
 
 
     thirdLib = [
@@ -130,6 +130,9 @@ ext {
             AppDress                           :  "com.github.lenebf:AppDress:Tag",
             sdk_edit                           :  "com.github.iwhys:sdk-editor-plugin:1.1.7",
             flexible_divider                   :  "com.yqritc:recyclerview-flexibledivider:1.4.0",
+            immersionbar                       :  "com.gyf.immersionbar:immersionbar:${immersionbar}",
+            immersionbar_components            :  "com.gyf.immersionbar:immersionbar-components:${immersionbar}",
+            immersionbar_ktx                   :  "com.gyf.immersionbar:immersionbar-ktx:${immersionbar}",
 
 
     ]
@@ -250,6 +253,12 @@ ext {
                     rootProject.thirdLib.PermissionMonitor,
                     rootProject.thirdLib.weishu,
                     rootProject.thirdLib.flexible_divider,
+
+
+                    rootProject.thirdLib.immersionbar_components,
+                    rootProject.thirdLib.immersionbar_ktx,
+                    rootProject.thirdLib.immersionbar,
+
 //                    rootProject.thirdLib.AppDress,
 //                    rootProject.thirdLib.sdk_edit,
             ]

@@ -25,6 +25,7 @@ import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.transition.TransitionDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.RelearnAndroidDemoFragment
+import com.gyf.immersionbar.ktx.immersionBar
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
 import com.hencoder.hencoderpracticedraw4.MatrixDemoFragment
@@ -75,8 +76,23 @@ class DemoListActivity : BaseVmActivity<ActivityDemoListBinding>() {
     }
 
 
+    /**
+     * 状态栏导航栏初始化
+     */
+    private fun initSystemBar() {
+        immersionBar {
+            transparentStatusBar()
+            statusBarDarkFont(true)
+            navigationBarColor(R.color.white)
+            navigationBarDarkIcon(true)
+        }
+    }
+
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
+
+        initSystemBar()
+
         recycleview.apply {
             layoutManager = GridLayoutManager(this@DemoListActivity, 2)
             adapter = DemoItemAdapter(MODELS).apply {
