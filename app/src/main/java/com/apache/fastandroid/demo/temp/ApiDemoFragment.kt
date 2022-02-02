@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewConfiguration
 import androidx.arch.core.executor.ArchTaskExecutor
-import com.apache.fastandroid.adapter.FlowTagAdapter
 import com.apache.fastandroid.databinding.TempApiUsageDemoBinding
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseVMFragment
-import kotlinx.android.synthetic.main.temp_api_usage_demo.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -25,45 +23,38 @@ class ApiDemoFragment:BaseVMFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBi
     companion object{
         private  const val TAG = "ApiDemoFragment"
     }
-//
-//    override fun getLayoutId(): Int {
-//        return R.layout.temp_api_usage_demo
-//    }
-
-    private val tags = mutableListOf<String>(
-        "获取触发移动事件的最小距离",
-        "android多语言适配，获取布局方向",
-        "CountDown让多个线程等待",
-        "CountDown让单个线程等待",
-        "BreakPoint调试",
-
-        "同步账号信息(正确)",
-        "同步账号信息(错误)",
-        "集合流操作",
-        "ArchTaskExecutor"
-    )
-
-
 
     @SuppressLint("RestrictedApi")
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
 
-        val adapter = FlowTagAdapter(context)
-        flowlayout_normal_select.adapter = adapter
-        adapter.addTags(tags)
+        viewBinding.btnTouchSlop.setOnClickListener {
+            scaleTouchSlop()
+        }
 
-        flowlayout_normal_select.setOnTagClickListener { parent, view, position ->
-            when (position) {
-                0 -> scaleTouchSlop()
-                1 -> getLayoutDirection()
-                2 -> testCountDownLatch1()
-                3 -> testCountDownLatch2()
-                4 -> testBreakPoint()
-                7 -> testStream()
-                8 -> testArchTaskExecutor()
-            }
+        viewBinding.btnDirection.setOnClickListener {
+            getLayoutDirection()
+        }
+
+        viewBinding.btnCountDown.setOnClickListener {
+            testCountDownLatch1()
+        }
+
+        viewBinding.btnCountDown2.setOnClickListener {
+            testCountDownLatch2()
+        }
+
+        viewBinding.btnBreakPoint.setOnClickListener {
+            testBreakPoint()
+        }
+
+        viewBinding.btnStream.setOnClickListener {
+            testStream()
+        }
+
+        viewBinding.btnStream.setOnClickListener {
+            testArchTaskExecutor()
         }
 
     }

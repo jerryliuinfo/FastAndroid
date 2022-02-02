@@ -1,12 +1,9 @@
 package com.apache.fastandroid.performance.startup.faster
 
 import com.apache.fastandroid.performance.TaskUtil
-import com.optimize.performance.launchstarter.task.Task
-import com.optimize.performance.launchstarter.utils.DispatcherExecutor
 import com.wxy.appstartfaster.executor.TaskExceutorManager
 import com.wxy.appstartfaster.task.AppStartTask
 import java.util.concurrent.Executor
-import java.util.concurrent.ExecutorService
 
 /**
  * Created by Jerry on 2021/4/17.

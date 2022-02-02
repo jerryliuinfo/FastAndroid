@@ -4,7 +4,6 @@ import android.content.Context
 import com.apache.fastandroid.demo.hawk.impl.DefaultHawkFacade
 import com.apache.fastandroid.demo.hawk.interfaces.HawkFacade
 import com.tesla.framework.common.util.Preconditions
-import com.xuexiang.xui.utils.Utils.checkNull
 
 /**
  * Created by Jerry on 2022/1/19.

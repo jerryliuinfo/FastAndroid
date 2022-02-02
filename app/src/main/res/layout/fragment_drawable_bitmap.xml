@@ -48,7 +48,6 @@
             android:layout_height="100dp"
             android:text="StateListDrawable"
             android:gravity="center"
-            android:background="@drawable/drawable_statelist"
             android:layout_marginBottom="10dp"
             />
 

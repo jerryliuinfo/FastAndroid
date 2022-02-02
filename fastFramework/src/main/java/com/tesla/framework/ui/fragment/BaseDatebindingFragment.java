@@ -82,8 +82,6 @@ public abstract class BaseDatebindingFragment<VB extends ViewDataBinding> extend
         for (int i = 0, length = bindingParams.size(); i < length; i++) {
             mBinding.setVariable(bindingParams.keyAt(i), bindingParams.valueAt(i));
         }
-        setContentView((ViewGroup) mBinding.getRoot());
-
 
         return mBinding.getRoot();
     }

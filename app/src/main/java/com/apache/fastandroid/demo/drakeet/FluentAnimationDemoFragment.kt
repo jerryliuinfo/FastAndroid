@@ -20,10 +20,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.tesla.framework.common.util.DrakeetUtils.doOnMainThreadIdle
 import com.tesla.framework.ui.fragment.BaseVMFragment
-import com.xuexiang.xui.adapter.recyclerview.GridDividerItemDecoration
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
-import kotlinx.android.synthetic.main.fragment_drakeet_knowledge.*
-import kotlinx.android.synthetic.main.fragment_temp_knowledge2.*
 
 /**
  * Created by Jerry on 2022/1/25.

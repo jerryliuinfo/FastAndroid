@@ -3,7 +3,7 @@ ext {
     //Android编译版本管理
     android = [
             compileSdkVersion:  30,
-            minSdkVersion    : 21,
+            minSdkVersion    : 23,
             targetSdkVersion : 30,
 
             versionCode : 10003,
@@ -287,7 +287,7 @@ def readLocalProperty(String key) {
 //        value = Boolean.parseBoolean(properties.getProperty(key, 'false'))
         value = properties.getProperty(key, '')
     }
-    println(String.format("property key=%s value=%S", key, value))
+    println(String.format("property222 key=%s value=%S", key, value))
     return value
 }
 

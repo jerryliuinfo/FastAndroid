@@ -63,7 +63,10 @@ public class SingleClickAspectJ {
             }
         }
         if (view != null) {
-            if (!ClickUtils.isFastDoubleClick(view, singleClick.value())) {
+            boolean fastDoubleClick = ClickUtils.isFastDoubleClick(view, singleClick.value());
+            Log.d(TAG, String.format("aroundJoinPoint fastDoubleClick:%s",fastDoubleClick));
+
+            if (!fastDoubleClick) {
                 joinPoint.proceed();//不是快速点击，执行原方法
             } else {
                 XLogger.d(Utils.getMethodDescribeInfo(joinPoint) + ":发生快速点击，View id:" + view.getId());

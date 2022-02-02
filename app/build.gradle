@@ -1,21 +1,18 @@
 apply plugin: 'com.android.application'
+apply from: 'and_res_guard.gradle'
+
 //apply plugin: 'io.michaelrocks.paranoid'
 //com.hc.gradle为resources/META-INF/gradle-plugins
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
+
 //apply plugin: 'sdk-editor'
 
 //apply plugin: 'largeimage-monitor'
 
 
-//https://github.com/SmartDengg/click-debounce
-apply plugin: 'smartdengg.clickdebounce'
-debounce {
-    // enable log
-    loggable = true
-}
 
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 
@@ -170,20 +167,21 @@ android {
     signingConfigs {
 
 
-       /* release {
-            storePassword properties.getProperty('KEYSTORE_PASSWORD')
-            storeFile file(properties.getProperty('KEYSTORE_FILE'))
+        release {
             keyAlias properties.getProperty('KEYSTORE_ALIAS')
             keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
+            storePassword   readLocalProperty('KEYSTORE_PASSWORD')
+            storeFile file(readLocalProperty('KEYSTORE_FILE'))
         }
 
 
         debug {
-            storePassword properties.getProperty('KEYSTORE_PASSWORD')
-            storeFile file(properties.getProperty('KEYSTORE_FILE'))
-            keyAlias properties.getProperty('KEYSTORE_ALIAS')
+            keyAlias readLocalProperty('KEYSTORE_ALIAS')
             keyPassword properties.getProperty('KEYSTORE_ALIAS_PASSWORD')
-        }*/
+            storePassword   readLocalProperty('KEYSTORE_PASSWORD')
+            storeFile file(readLocalProperty('KEYSTORE_FILE'))
+
+        }
     }
 
     buildTypes {
@@ -208,7 +206,7 @@ android {
             buildConfigField('boolean', 'LOG_DEBUG', "false")
             buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
             //必须要现在上面配置 signingConfigs 信息，否则会报错
-//            signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
         }
         debug {
             debuggable = true
@@ -218,9 +216,7 @@ android {
             manifestPlaceholders = [appName: "FastAnd测试版"]
             buildConfigField('boolean', 'LOG_DEBUG', "true")
             buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
-
-//            signingConfig signingConfigs.release
-
+            signingConfig signingConfigs.debug
 
         }
     }
@@ -459,16 +455,12 @@ dependencies {
     implementation rootProject.ext.thirdLib.permissionx
     implementation rootProject.ext.thirdLib.viewpump
 
-    debugImplementation rootProject.ext.thirdLib.blockcanary
-    debugImplementation rootProject.ext.thirdLib.AppStartFaster
+    implementation rootProject.ext.thirdLib.blockcanary
+    implementation rootProject.ext.thirdLib.AppStartFaster
 
-    debugImplementation rootProject.ext.thirdLib.XUI
-    debugImplementation rootProject.ext.thirdLib.XUI
 
     implementation rootProject.ext.thirdLib.lottie
-//    implementation rootProject.ext.thirdLib.device_name
-    //日志
-//    implementation rootProject.ext.thirdLib.logger
+
 
 
 

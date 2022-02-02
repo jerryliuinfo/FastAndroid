@@ -1,100 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-
-
-   <!-- <LinearLayout
-        android:id="@+id/liner1"
+    android:orientation="vertical">
+    <androidx.constraintlayout.helper.widget.Flow
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:flow_wrapMode="aligned"
+        app:flow_verticalGap="10dp"
+        app:flow_horizontalGap="10dp"
+        app:constraint_referenced_ids="btn_TouchSlop,btn_direction,btn_countDown,btn_countDown2,
+            btn_BreakPoint,btn_stream,btn_archTaskExecutor"
+
+        />
+
+    <Button
+        android:id="@+id/btn_TouchSlop"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="30dp"
-        >
-        <Button
-            android:id="@+id/tv_get_scaled_touch_slop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="获取触发移动事件的最小距离"
-            />
+        android:text="获取触发移动事件的最小距离"
+        />
+
+    <Button
+        android:id="@+id/btn_direction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="android多语言适配，获取布局方向"
+        />
+    <Button
+        android:id="@+id/btn_countDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CountDown"
+        />
+
+    <Button
+        android:id="@+id/btn_countDown2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CountDown2"
+        />
+
+    <Button
+        android:id="@+id/btn_BreakPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BreakPoint"
+        />
+    <Button
+        android:id="@+id/btn_stream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stream"
+        />
+    <Button
+        android:id="@+id/btn_archTaskExecutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ArchTaskExecutor"
+        />
 
 
-        <Button
-            android:id="@+id/tv_get_LayoutDirection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="android多语言适配，获取布局方向"
-            />
-
-        <Button
-            android:id="@+id/btn_countdown_usage1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CountDown让多个线程等待"
-            />
-        <Button
-            android:id="@+id/btn_countdown_usage2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CountDown让单个线程等待"
-            />
-
-        <Button
-            android:id="@+id/btn_content_provider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ContentProvider"
-            />
-
-        <Button
-            android:id="@+id/btn_breakPoint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BreakPoint"
-            />
-
-        <Button
-            android:id="@+id/btn_sync_account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="同步账号信息(正确)"
-
-            />
-
-        <Button
-            android:id="@+id/btn_sync_account_error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="同步账号信息(错误)"
-            />
-
-
-        <Button
-            android:id="@+id/btn_stream"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="集合流操作"
-            />
-        <Button
-            android:id="@+id/btn_archTaskExecutor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ArchTaskExecutor"
-            />
-
-    </LinearLayout>-->
-
-    <com.xuexiang.xui.widget.flowlayout.FlowTagLayout
-        android:id="@+id/flowlayout_normal_select"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-
-
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

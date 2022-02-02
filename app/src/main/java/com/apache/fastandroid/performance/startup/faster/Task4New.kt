@@ -1,7 +1,6 @@
 package com.apache.fastandroid.performance.startup.faster
 
 import com.apache.fastandroid.performance.TaskUtil
-import com.optimize.performance.launchstarter.task.Task
 import com.wxy.appstartfaster.task.AppStartTask
 
 /**
