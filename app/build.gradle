@@ -477,6 +477,10 @@ dependencies {
 //    implementation project(':easypay')
 
 
+    //android 11 FreeReflection一个允许你在Android P上使用反射而没有任何限制的库
+    implementation 'me.weishu:free_reflection:3.0.1'
+
+
     //必须加行这行，否则proxyToolProcessor无法自动生成类
     implementation project(':xaop_annotation')
     annotationProcessor project(':xaop-runtime')

@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
 import android.util.Printer;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.apache.fastandroid.component.anr.AnrConfig;
 import com.apache.fastandroid.crash.Fabric;
@@ -31,6 +33,7 @@ import com.apache.fastandroid.performance.startup.startup.SDK4;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.ThreadUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.kingja.loadsir.core.LoadSir;
@@ -45,6 +48,9 @@ import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.component.startup.Group;
 import com.tesla.framework.component.startup.StartupManager;
 import com.tesla.framework.component.startup.TimeListener;
+import com.wanjian.cockroach.Cockroach;
+import com.wanjian.cockroach.DebugSafeModeUI;
+import com.wanjian.cockroach.ExceptionHandler;
 import com.wxy.appstartfaster.dispatcher.AppStartTaskDispatcher;
 
 import java.io.File;
@@ -82,7 +88,9 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         initLog();
 
         initAop();
+        initCrash();
         crashReport();
+        initCockroach();
         initLoop();
         Logger.d("Application onCreate ");
         initAndroidUtil();
@@ -96,7 +104,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         Logger.d("mmkv rootDir:%s",rootDir);
         initBlockCancary();
         initAnr();
-        initCrash();
+
         initImageLoader();
 
         //traceview 开始检测
@@ -109,7 +117,6 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 //        TraceCompat.beginSection("trace");
 
         //初始化crash统计
-        initCrashAndAnalysis();
         initHttp();
 
 
@@ -197,9 +204,49 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
                     }
                 })
                 .start(this);
+    }
 
-        ;
+    private void initCockroach(){
+        final Thread.UncaughtExceptionHandler sysExcepHandler = Thread.getDefaultUncaughtExceptionHandler();
+        final Toast toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+        DebugSafeModeUI.init(this);
+        Cockroach.install(this, new ExceptionHandler() {
+            @Override
+            protected void onUncaughtExceptionHappened(Thread thread, Throwable throwable) {
+                Log.e("AndroidRuntime", "--->onUncaughtExceptionHappened:" + thread + "<---", throwable);
+//                CrashLog.saveCrashLog(getApplicationContext(), throwable);
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ToastUtils.showShort("已经进入安全模式");
+                    }
+                });
+            }
 
+            @Override
+            protected void onBandageExceptionHappened(Throwable throwable) {
+                throwable.printStackTrace();//打印警告级别log，该throwable可能是最开始的bug导致的，无需关心
+                toast.setText("Cockroach Worked");
+                toast.show();
+            }
+
+            @Override
+            protected void onEnterSafeMode() {
+                ToastUtils.showShort("已经进入安全模式");
+                DebugSafeModeUI.showSafeModeUI();
+
+
+            }
+
+            @Override
+            protected void onMayBeBlackScreen(Throwable e) {
+                Thread thread = Looper.getMainLooper().getThread();
+                Log.e("AndroidRuntime", "--->onUncaughtExceptionHappened:" + thread + "<---", e);
+                //黑屏时建议直接杀死app
+                sysExcepHandler.uncaughtException(thread, new RuntimeException("black screen"));
+            }
+
+        });
     }
 
     private void crashReport(){
