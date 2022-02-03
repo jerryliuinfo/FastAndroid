@@ -24,6 +24,17 @@ android {
 
     kotlinOptions {
     }
+
+    lintOptions {
+        /**
+         * https://blog.csdn.net/u010230055/article/details/80742626  去掉 app:lintVitalRelease 这个任务，这个任务很耗时，
+         * 设置 checkReleaseBuilds false 就不会执行这个任务了
+         */
+        checkReleaseBuilds false
+        abortOnError false
+        //检查是否使用了最新api
+//        check 'NewApi'
+    }
 }
 
 dependencies {

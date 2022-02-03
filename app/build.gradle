@@ -478,7 +478,7 @@ dependencies {
 
 
     //必须加行这行，否则proxyToolProcessor无法自动生成类
-    implementation project(':aop_annotation')
+    implementation project(':xaop_annotation')
     annotationProcessor project(':xaop-runtime')
 
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"

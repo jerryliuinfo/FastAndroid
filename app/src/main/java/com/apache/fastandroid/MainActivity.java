@@ -15,6 +15,7 @@ import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.UserBean;
 import com.apache.fastandroid.demo.blacktech.ClickDebounceFragmentNew;
 import com.apache.fastandroid.home.HomeFragment;
+import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.tesla.framework.common.util.log.FastLog;
@@ -93,8 +94,7 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 //        startActivity(new Intent(this, NavigationBottomNavigationActivity.class));
 
 
-
-
+        ThreadUtils.getFixedPool()
 
     }
 

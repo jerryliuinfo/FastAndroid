@@ -22,8 +22,7 @@ class UserInfo private constructor() {
 
     companion object {
         @JvmStatic
-        val instance =
-            Holder.INSTANCE
+        val instance = Holder.INSTANCE
         const val USERNAME_KEY = "username"
         const val USERID_KEY = "userid"
         const val LOGIN_KEY = "login"

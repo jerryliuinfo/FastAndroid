@@ -29,7 +29,7 @@ dependencies {
     compileOnly Dependencies.appCompat
     //磁盘缓存的依赖包
     implementation 'com.jakewharton:disklrucache:2.0.2'
-    api project(':aop_annotation')
+    api project(':xaop_annotation')
 }
 
 android.libraryVariants.all { variant ->
