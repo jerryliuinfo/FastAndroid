@@ -22,7 +22,8 @@
             app:flow_wrapMode="aligned"
             app:constraint_referenced_ids="tv_message,tv_name,btn_textview_horizontal_scroll,btn_collections_suffle,
         btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs,btn_textview_inputFilter,
-        btn_collection_wrapper,btn_verify_init,btn_reflect,btn_concurrence,btn_showDialogWithApplicationContext"
+        btn_collection_wrapper,btn_verify_init,btn_reflect,btn_concurrence,btn_showDialogWithApplicationContext,
+        btn_location_onscreen,btn_list_init"
             />
 
         <TextView
@@ -61,7 +62,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LinerlayoutCompat"
-
             />
         <Button
             android:id="@+id/btn_multi_channel"
@@ -125,6 +125,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Application弹出对话框"
+            />
+        <Button
+            android:id="@+id/btn_location_onscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LocationOnScreen"
+            />
+        <Button
+            android:id="@+id/btn_list_init"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List初始化"
             />
 
 

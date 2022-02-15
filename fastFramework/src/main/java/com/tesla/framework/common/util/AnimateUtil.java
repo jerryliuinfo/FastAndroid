@@ -6,10 +6,16 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.annotation.SuppressLint;
+import android.text.InputFilter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
 
-import static android.animation.ValueAnimator.*;
+import java.lang.reflect.Field;
+
+import static android.animation.ValueAnimator.INFINITE;
+import static android.animation.ValueAnimator.ofFloat;
 
 /**
  * Created by winghe on 2016/3/24.
@@ -84,4 +90,47 @@ public class AnimateUtil {
         return scale;
     }
 
+
+    public static int getMaxLengthForTextView(TextView textView)
+
+    {
+        int maxLength = -1;
+
+        for (InputFilter filter : textView.getFilters()) {
+
+            if (filter instanceof InputFilter.LengthFilter) {
+
+                try {
+
+                    Field maxLengthField = filter.getClass().getDeclaredField("mMax");
+
+                    maxLengthField.setAccessible(true);
+
+                    if (maxLengthField.isAccessible()) {
+
+                        maxLength = maxLengthField.getInt(filter);
+
+                    }
+
+                } catch (IllegalAccessException e) {
+
+                    Log.w(filter.getClass().getName(), e);
+
+                } catch (IllegalArgumentException e) {
+
+                    Log.w(filter.getClass().getName(), e);
+
+                } catch (NoSuchFieldException e) {
+
+                    Log.w(filter.getClass().getName(), e);
+
+                } // if an Exception is thrown, Log it and return -1
+
+            }
+
+        }
+
+        return maxLength;
+
+    }
 }

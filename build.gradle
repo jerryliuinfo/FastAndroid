@@ -58,6 +58,9 @@ buildscript {
 
         classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.21'
 
+        //
+//        classpath 'gradle.plugin.cn.cxzhengzheng.methodTracePlugin:tracemanplugin:1.0.4'
+
 
 
     }

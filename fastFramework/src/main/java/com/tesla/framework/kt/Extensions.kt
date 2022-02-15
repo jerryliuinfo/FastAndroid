@@ -84,3 +84,19 @@ fun echo(){
 inline fun inlineFunction(msg:String){
     println("inlne:${msg}")
 }
+
+fun Array<Int>.swap(pos1:Int, pos2:Int){
+    val tmp = this[pos1]
+    this[pos1] = this[pos2]
+    this[pos2] = tmp
+}
+
+fun <T> Array<T>.maxCustomize(greater:(T,T) -> Boolean):T?{
+    var max: T? = null
+    for (item in this){
+        if (max == null || greater(item,max)){
+            max = item
+        }
+    }
+    return max
+}

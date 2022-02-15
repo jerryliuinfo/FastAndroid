@@ -404,8 +404,30 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
 
                         }
                         else if (
-                                stack.contains("Toast"))
-                        {
+                                stack.contains("SelectionHandleView")
+                                || stack.contains("Magnifier.show")
+                                || stack.contains("ViewRootImpl.handleDragEvent")
+                                || stack.contains("PinnedPopWindow.show")
+                                || stack.contains("FloatingToolbar.show")
+                                || stack.contains("Context.startForegroundService() did")
+                                || stack.contains("BaseInputConnection")
+                                || stack.contains("getTextBeforeCursor")
+                                || stack.contains("startDragAndDrop")
+                                || stack.contains("dispatchDragAndDrop")
+                                || stack.contains("TextClassificationAsyncTask")
+                                || stack.contains("startSelectionActionModeAsync")
+                                || stack.contains("Editor.touchePositionIsInSelection")
+                                || stack.contains("BlinkHandler.finishBlink")
+                                || stack.contains("TextClassificationHelper")
+                                || stack.contains("AppMeasurementService")
+                                || stack.contains("SuggestionSPopupwindoW")
+                                || stack.contains("ASynCinputstage")
+                                || stack.contains("HandleView.updatePosition")
+                                || stack.contains("onDialogDISmissed")
+                                || stack.contains("com.oppo.intent.action.TRANSLATE")
+                                || stack.contains("Accessibi1ityInteractionContro11er")
+                                || stack.contains("BadTokenException")
+                        ) {
                             e.printStackTrace();
                         }else {
                             throw e;

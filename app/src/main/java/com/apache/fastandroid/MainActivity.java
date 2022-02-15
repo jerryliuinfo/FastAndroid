@@ -13,7 +13,8 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.UserBean;
-import com.apache.fastandroid.demo.performance.CockroachDemoFragment;
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment;
+import com.apache.fastandroid.demo.kt.bean.AnimalDefault;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -80,21 +81,32 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 //        FragmentContainerActivity.launch(this, CommonBlackTechFragment.class,null);
 //        FragmentContainerActivity.launch(this, SnapHelperDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
+        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
 //        FragmentContainerActivity.launch(this, MMKVFragment.class,null);
 //        FragmentContainerActivity.launch(this, HawkDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, LiveDataWrongUsageFragment.class,null);
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2.class,null);
 //        FragmentContainerActivity.launch(this, ClickDebounceFragment.class,null);
-        FragmentContainerActivity.launch(this, CockroachDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, CockroachDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, CouroutineDemoFragment2.class,null);
 //        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
 //        startActivity(new Intent(this, NavigationDemoActivity.class));
 //        startActivity(new Intent(this, NavigationBottomNavigationActivity.class));
 
+        AnimalDefault animalDefault = new AnimalDefault("jerry");
+        AnimalDefault animalDefault2 = new AnimalDefault("jerry",1);
+
 
 
     }
+
+    private List<String> list = new ArrayList<String>(){
+        {
+            add("one");
+            add("two");
+        }
+    };
 
 
 

@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.temp
 import android.app.AlertDialog
 import android.content.Context
 import android.content.IntentFilter
+import android.graphics.Rect
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
@@ -19,27 +20,23 @@ import android.text.Spanned
 import android.text.InputFilter
 import android.util.LruCache
 import com.apache.fastandroid.MainActivity
+import com.apache.fastandroid.databinding.FragmentTempKnowledgeBinding
 import com.apache.fastandroid.demo.temp.bean.ReflectBean
 import com.apache.fastandroid.demo.temp.concurrency.Player
 import com.blankj.utilcode.util.*
 import com.tesla.framework.common.util.log.Logger
+import com.tesla.framework.ui.fragment.BaseVMFragment
 import per.goweii.anylayer.AnyLayer
 
 
 /**
  * Created by Jerry on 2021/9/6.
  */
-class KnowledgeFragment: BaseStatusFragmentNew() {
+class KnowledgeFragment: BaseVMFragment<FragmentTempKnowledgeBinding>(FragmentTempKnowledgeBinding::inflate) {
     private val items:MutableList<String> = ArrayList()
     companion object{
         private const val TAG = "KnowledgeFragment"
     }
-
-    private lateinit var mContext: Context
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_temp_knowledge
-    }
-
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
@@ -56,22 +53,42 @@ class KnowledgeFragment: BaseStatusFragmentNew() {
             items.subList(0,5).shuffle()
             NLog.d(TAG, "suffle: ${items}")
         }
-        btn_multi_channel.setOnClickListener {
+
+        viewBinding.btnMultiChannel.setOnClickListener {
             ToastUtils.showShort(MetaDataUtils.getMetaDataInApp("HOST"))
         }
+
         btn_sisuo.setOnClickListener {
 
         }
 
-        btn_varargs.setOnClickListener {
+        viewBinding.btnVarargs.setOnClickListener {
             initvarArgs("aaa","bbb")
         }
 
-        btn_concurrence.setOnClickListener {
+        viewBinding.btnConcurrence.setOnClickListener {
             concurencyUsage()
         }
-        btn_showDialogWithApplicationContext.setOnClickListener {
+
+        viewBinding.btnShowDialogWithApplicationContext.setOnClickListener {
             showDialogWithApplicationContext()
+        }
+
+        viewBinding.btnLocationOnscreen.setOnClickListener {
+            val location = IntArray(2)
+            viewBinding.btnLocationOnscreen.getLocationOnScreen(location)
+            val rect = Rect()
+            rect.apply {
+                left = location[0]
+                top = location[1]
+                right = location[0] + viewBinding.btnLocationOnscreen.width
+                bottom = location[1] + viewBinding.btnLocationOnscreen.height
+            }
+            println("rect:${rect.toString()}")
+        }
+
+        viewBinding.btnListInit.setOnClickListener {
+
         }
 
         val str = "Longfu2012"

@@ -26,11 +26,12 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_on_each,btn_method_cost,btn_high_order_function,
+                app:constraint_referenced_ids="btn_on_each,btn_method_cost,btn_high_order_function,btn_extension_high_order_function,
              btn_clazz_paramter,btn_java_kotlin_call_each_other,btn_nested_function,btn_expand_function,btn_expand_function2,
              btn_lambda,btn_inline,btn_campanion_object,btn_keyword_by,btn_by_delegate,btn_sealedClass,btn_sealedClass2,
-             btn_deconstruction,btn_iterator,btn_withIndex,btn_takeUnless,btn_takeIf,btn_operator,btn_custom_operator
-        "
+             btn_deconstruction,btn_iterator,btn_withIndex,btn_takeUnless,btn_takeIf,btn_operator,btn_custom_operator,
+             btn_when_operator,btn_generic_parameter,btn_tail_fun,btn_object_property,btn_proxy_mode,btn_nested_class,
+             btn_template_class,edittext"
                 />
 
             <Button
@@ -57,6 +58,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="高阶函数"
+                />
+
+            <Button
+                android:id="@+id/btn_extension_high_order_function"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="扩展高阶函数"
                 />
 
             <Button
@@ -185,6 +193,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="自定义集合操作符"
+                />
+            <Button
+                android:id="@+id/btn_when_operator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="when控制语句"
+                />
+
+            <Button
+                android:id="@+id/btn_generic_parameter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="泛型参数"
+                />
+
+            <Button
+                android:id="@+id/btn_tail_fun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="尾递归函数"
+                />
+            <Button
+                android:id="@+id/btn_object_property"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="访问单例属性"
+                />
+
+            <Button
+                android:id="@+id/btn_proxy_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="代理模式"
+                />
+
+            <Button
+                android:id="@+id/btn_nested_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="嵌套类"
+                />
+            <Button
+                android:id="@+id/btn_template_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="模版类"
+                />
+
+            <EditText
+                android:id="@+id/edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:hint="name"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

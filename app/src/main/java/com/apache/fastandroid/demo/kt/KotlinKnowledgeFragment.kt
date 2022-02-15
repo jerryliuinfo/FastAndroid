@@ -5,21 +5,24 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.databinding.KtGrammerBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.kt.bean.Dog
-import com.apache.fastandroid.demo.kt.bean.JavaMain
-import com.apache.fastandroid.demo.kt.bean.KotlinMain
-import com.apache.fastandroid.demo.kt.bean.printName
+import com.apache.fastandroid.demo.kt.bean.*
+import com.apache.fastandroid.demo.kt.bean.Bird.InnerClass2
 import com.apache.fastandroid.demo.kt.sealed.PlayerUI
 import com.apache.fastandroid.demo.kt.sealed.PlayerViewType
+import com.apache.fastandroid.demo.kt.sealed.SeasonNameSealed
 import com.apache.fastandroid.demo.kt.sealed.User
+import com.apache.fastandroid.util.DateUtil
 import com.kingja.loadsir.core.LoadSir
 import com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator
+import com.tesla.framework.common.util.HideTextWatcher
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.maxCustomize
 import com.tesla.framework.ui.fragment.BaseVMFragment
 import kotlinx.android.synthetic.main.kt_grammer.*
 import java.io.File
 import java.nio.charset.Charset
+import kotlin.math.cos
 import kotlin.random.Random
 import kotlin.reflect.KClass
 import kotlin.system.measureTimeMillis
@@ -57,23 +60,27 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
         mFrameCalculator = FrameCalculator{
             Logger.d("frame: ${it}")
         }
-        btn_high_order_function.setOnClickListener {
+        viewBinding.btnHighOrderFunction.setOnClickListener {
             highOrderFunction()
+            println(highOrderFun2())
         }
-        btn_clazz_paramter.setOnClickListener {
+        viewBinding.btnExtensionHighOrderFunction.setOnClickListener {
+            println(extenseHighOrderFunction())
+        }
+        viewBinding.btnClazzParamter.setOnClickListener {
             passJavaClass(JavaMain::class.java)
             passKotlinClass(KotlinMain::class)
             println(KotlinMain.instance.hashCode())
 
         }
-        btn_java_kotlin_call_each_other.setOnClickListener {
+        viewBinding.btnJavaKotlinCallEachOther.setOnClickListener {
             format("")
         }
-        btn_nested_function.setOnClickListener {
+        viewBinding.btnNestedFunction.setOnClickListener {
             nestedFunction()
         }
 
-        btn_expand_function.setOnClickListener {
+        viewBinding.btnExpandFunction.setOnClickListener {
             val file = File(requireContext().filesDir, "test.txt")
             file.writeText("hello:${Random.nextInt(10)}")
 
@@ -85,35 +92,36 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
             }
         }
 
-        btn_expand_function2.setOnClickListener {
+        viewBinding.btnExpandFunction2.setOnClickListener {
             /**
              * 输出的 是 animal，而不是 dog，因为kotlin 的扩展方法是静态地给一个类添加方法，
              * 是不具备动态运行时的多态效应,扩展函数会被编译成一个静态函数
              */
             Dog().printName(Dog())
         }
-        btn_lambda.setOnClickListener {
+        viewBinding.btnLambda.setOnClickListener {
             lambdaUsage()
         }
 
-        btn_inline.setOnClickListener {
+        viewBinding.btnInline.setOnClickListener {
             inlineUsage()
             nonInlineUsage()
         }
-        btn_campanion_object.setOnClickListener {
+        viewBinding.btnCampanionObject.setOnClickListener {
             Logger.d("SingleObject: ${SingleObject.get()}")
             Logger.d("SingleObject2: ${SingleObject.get()}")
         }
-        btn_keyword_by.setOnClickListener {
+        viewBinding.btnKeywordBy.setOnClickListener {
             ByTest.Zoo(ByTest.Cat()).bark()
 
         }
-        btn_by_delegate.setOnClickListener {
+        viewBinding.btnByDelegate.setOnClickListener {
             ByTest.ZooBy(ByTest.Cat()).bark()
         }
 
+
         viewBinding.btnSealedClass.setOnClickListener {
-            val user = UserBean("jerry",20)
+           sealedClass()
         }
 
         viewBinding.btnSealedClass2.setOnClickListener {
@@ -164,16 +172,143 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
 
         viewBinding.btnCustomOperator.setOnClickListener {
            testMyOperator()
-
         }
+
+
+        viewBinding.btnWhenOperator.setOnClickListener {
+            testWhenOperator()
+        }
+
+        viewBinding.btnGenericParameter.setOnClickListener {
+            println(genericFun("四大发明", "火药","指南针"))
+
+            val array1:Array<Int> = arrayOf(1,2,3)
+            val array2:Array<Double> = arrayOf(1.1,2.2,3.3)
+            //报错
+//            setArrayNum(array1)
+            setArrayNum2(array1)
+            setArrayNum2(array2)
+        }
+        viewBinding.btnTailFun.setOnClickListener {
+            var startTime = System.currentTimeMillis()
+            var result = findXPoint()
+            println("findXPoint1 result:$result, cost time: ${System.currentTimeMillis() - startTime} ms")
+            startTime = System.currentTimeMillis()
+            result = findXPoint2()
+            println("findXPoint2 result:$result, cost time: ${System.currentTimeMillis() - startTime} ms")
+        }
+
+        viewBinding.btnObjectProperty.setOnClickListener {
+            println("dataTime:${DateUtil.nowDateTime}, date:${DateUtil.nowDate}, time:${DateUtil.nowTime}")
+        }
+
+        viewBinding.btnProxyMode.setOnClickListener {
+            proxyMode()
+        }
+
+        viewBinding.btnNestedClass.setOnClickListener {
+            nestedClass()
+        }
+
+        viewBinding.btnTemplateClass.setOnClickListener {
+            templateClass()
+        }
+
+        viewBinding.edittext.addTextChangedListener(HideTextWatcher(viewBinding.edittext))
 
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
 
-        defaultParamFun("hello")
-        defaultParamFun()
+    }
+
+    private fun templateClass() {
+        var river = when(count ++ %4){
+            0 -> River("小溪",100)
+            1 -> River("瀑布",99.9f)
+            2 -> River("三间",50.5f)
+            else -> River("大河","一千")
+        }
+        println(river.getInfo())
+    }
+
+    private fun sealedClass() {
+        var season = when(count ++ %4){
+            0 -> SeasonNameSealed.Spring("春天")
+            1 -> SeasonNameSealed.Summer("夏天")
+            2 -> SeasonNameSealed.Autumn("秋天")
+            else -> SeasonNameSealed.Spring("冬天")
+        }
+
+        val text = when(season){
+            is SeasonNameSealed.Spring -> season.name
+            is SeasonNameSealed.Summer -> season.name
+            is SeasonNameSealed.Autumn -> season.name
+            is SeasonNameSealed.Winter -> season.name
+        }
+        println("season by sealed class:$text")
 
     }
+
+    private fun nestedClass() {
+    }
+
+    private fun proxyMode() {
+        var fow = when(count ++ % 6)
+        {
+            0 -> WildFow("老鹰",Bird.MAILE, BehaviorFly())
+            1 -> WildFow("凤凰", behavior = BehaviorFly())
+            2 -> WildFow("大雁",Bird.FEMAILE, BehaviorFly())
+            3 -> WildFow("企鹅", behavior = BehaviorSwim())
+            4 -> WildFow("鸵鸟",Bird.MAILE, BehaviorRun())
+            5 -> WildFow("鸳鸯",behavior = BehaviorRun())
+            else -> WildFow("老鹰",Bird.MAILE, BehaviorRun())
+        }
+        println(fow.name)
+    }
+
+
+    var count:Int = 0
+    private fun testWhenOperator() {
+        when(count){
+            1,3,5,7,9 -> println("case1")
+            in 11..18 -> println("case2")
+            !in 6..10 -> println("case3")
+            else -> println("case4")
+        }
+        count = (count +1) % 20
+
+        val name:String ? = null
+        val length = name?.length?: -1
+    }
+
+    private fun <T> genericFun(tag:String, vararg otherInfo :T?):String{
+        var str = "$tag "
+        for (item in otherInfo){
+            str = "$str ${item.toString()}"
+        }
+        return str
+    }
+
+
+    private fun setArrayNum(array: Array<Number>){
+        var result = "数组元素: "
+        for (item in array){
+            result = "$result$item"
+        }
+        println(result)
+    }
+
+     private inline fun <reified T:Number> setArrayNum2(array: Array<T>){
+        var result = "数组元素: "
+        for (item in array){
+            result = "$result$item"
+        }
+        println(result)
+    }
+
+    fun findXPoint(x:Double = 1.0):Double = if (x == cos(x)) x else findXPoint(cos(x))
+    tailrec fun findXPoint2(x:Double = 1.0):Double = if (x == cos(x)) x else findXPoint2(cos(x))
+
 
     private fun testOperator(){
         val list = arrayListOf<Char>('a','b','c','d')
@@ -304,17 +439,49 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
             println("打印日志")
         }
 
-
         val runnable = Runnable{
             println("Runnable run")
         }
-
 //        val function: () -> Unit
         //加了两个 ：： 就变成了对象
        val function = runnable::run
 
         onlyIf(true,function)
     }
+
+    private fun <T> mxCustom(array: Array<T>, greater:(T,T) -> Boolean):T?{
+        var max:T? = null
+        for (item in array){
+            if (max == null || greater(item,max)){
+                max = item
+            }
+        }
+        return max
+    }
+
+
+    private fun highOrderFun2():String{
+        val array:Array<String> = arrayOf("How", "do","you","do", "I'm    ","Fine")
+        count++
+        return when(count % 4){
+            0 -> "字符串数组的默认最大值为:${array.maxOrNull()}"
+            1 -> "字符串数组按长度比较的最大值为:${mxCustom(array) { a, b -> a.length > b.length }}"
+            2 -> "字符串数组的默认最大值(使用高阶函数):${mxCustom(array) { a, b -> a > b }}"
+            else -> "字符串数组去掉空格的最大值:${mxCustom(array) { a, b -> a.trim().length > b.trim().length }}"
+        }
+    }
+
+    private fun extenseHighOrderFunction():String {
+        val array:Array<String> = arrayOf("How", "do","you","do", "I'm    ","Fine")
+        count++
+        return when(count % 4){
+            0 -> "字符串数组的默认最大值为:${array.maxOrNull()}"
+            1 -> "字符串数组按长度比较的最大值为:${array.maxCustomize { a, b -> a.length > b.length }}"
+            2 -> "字符串数组的默认最大值(使用高阶函数):${array.maxCustomize { a, b -> a > b }}"
+            else -> "字符串数组去掉空格的最大值:${array.maxCustomize{ a, b -> a.trim().length > b.trim().length }}"
+        }
+    }
+
 
 
 
@@ -444,4 +611,6 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
     fun <T> Iterable<T>.myFilter(preCondtion: (T) -> Boolean): List<T> {
         return myfilter(ArrayList<T>(), preCondtion)
     }
+
+
 }
