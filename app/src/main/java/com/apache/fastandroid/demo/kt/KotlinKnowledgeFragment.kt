@@ -694,5 +694,4 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
         return myfilter(ArrayList<T>(), preCondtion)
     }
 
-
 }
