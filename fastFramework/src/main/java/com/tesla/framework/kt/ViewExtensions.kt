@@ -122,3 +122,6 @@ fun RecyclerView.removeDecorations(){
         removeItemDecorationAt(i)
     }
 }
+
+
+operator fun ViewGroup.plusAssign(other:View) = addView(other)

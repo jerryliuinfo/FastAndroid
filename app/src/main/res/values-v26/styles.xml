@@ -9,6 +9,8 @@
   当Android API​​ 26及以上版本，我们现在可以将drawable设置为新提供的windowSplashscreenContent属性，该属性引用drawable以用作窗口的初始屏幕内容。
         此drawable现在将放置在windowBackground属性的顶部，其边界由系统栏插入 解决启动画面中状态栏和到账栏的颜色与主题启动画面不一致 -->
         <item name="android:windowSplashscreenContent">@drawable/splashscreen</item>
+        <item name="android:navigationBarColor">#202122</item>
+
     </style>
 
 

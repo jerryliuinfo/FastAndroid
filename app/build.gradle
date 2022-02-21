@@ -122,6 +122,10 @@ android {
             }
         }
 
+        buildConfigField('boolean', 'LOG_DEBUG', "true")
+        buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
+        buildConfigField 'String', 'WEB_URL', '"http://www.default.com"'
+
         /**
          * defaultConfig 下的consumerProguardFiles 配置的*.pro文件将会在library
          module打包成aar时，以proguard.txt的形式存在，将参与到集成这个arr的App编译中，但不参与这个library
@@ -204,8 +208,7 @@ android {
             debuggable true    //默认false，可不写
             minifyEnabled = false
             manifestPlaceholders = [appName: "FastAnd测试版"]
-            buildConfigField('boolean', 'LOG_DEBUG', "true")
-            buildConfigField('String', "BUGLY_APP_ID", "\"a397701fd5\"")
+
         }
     }
 
@@ -243,7 +246,7 @@ android {
                 def flavorName = variant.flavorName
                 //flavorName:prodPay   fileName:app-prod-pay-debug.apk
 //                println "flavorName: ${flavorName}, fileName:${output.outputFile.name}"
-                output.outputFileName = "${"FastAndroid"}_${flavorName}_${versionName}_${getDate()}_${buildType}.apk"
+                output.outputFileName = "${"FastAndroid"}_${flavorName}_${versionName}_${buildType}.apk"
             }
         }
     }

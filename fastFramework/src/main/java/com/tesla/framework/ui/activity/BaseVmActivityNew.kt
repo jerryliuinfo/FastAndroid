@@ -9,19 +9,17 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
-import com.tesla.framework.ui.activity.BaseActivityHelper
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
-import androidx.lifecycle.ViewModelProvider
-import com.tesla.framework.component.network.NetworkStateManager
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.viewbinding.ViewBinding
 import com.gyf.immersionbar.ktx.immersionBar
 import com.tesla.framework.R
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.component.network.NetworkStateManager
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
 import java.lang.ref.WeakReference
-import java.util.HashMap
 
 /**
  * Created by JerryLiu on 17/04/08.
@@ -81,7 +79,7 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
         }
     }
 
-    protected fun initView(rootView: View?) {}
+    open fun initView(rootView: View?) {}
     override fun onResume() {
         super.onResume()
         isActive = true
@@ -236,4 +234,8 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
     companion object {
         const val TAG = "Activity-Base"
     }
+
+
+
+
 }

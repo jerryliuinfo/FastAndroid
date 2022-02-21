@@ -46,6 +46,4 @@ public interface ApiService {
     Call<BaseResponse<TokenInfo>> refreshToken(@Path("id") long id);
 
 
-
-
 }

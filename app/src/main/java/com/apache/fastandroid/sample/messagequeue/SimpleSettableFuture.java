@@ -16,7 +16,7 @@ public class SimpleSettableFuture<T> {
 
     public void set(T result) {
         if (this.mReadyLatch.getCount() == 0L) {
-            throw new RuntimeException("Result has already been set!");
+            throw new RuntimeException("SealedResult has already been set!");
         } else {
             this.mResult = result;
             this.mReadyLatch.countDown();

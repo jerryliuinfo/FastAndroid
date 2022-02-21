@@ -203,8 +203,14 @@ class KotlinKnowledgeFragment2:BaseVMFragment<KtGrammer2Binding>(KtGrammer2Bindi
      */
     private fun typeAliasUsage() {
         val a:File = A("build")
+        trainUsers(listOf())
+
 
         val map = HashMap<String,String>()
+    }
+
+    fun trainUsers(userList: UserList){
+
     }
 
     private fun zhongZuiExpression() {
@@ -309,3 +315,4 @@ class KotlinKnowledgeFragment2:BaseVMFragment<KtGrammer2Binding>(KtGrammer2Bindi
 
 //用 A 来代表 File
 typealias A = File
+typealias UserList = List<UserBean>

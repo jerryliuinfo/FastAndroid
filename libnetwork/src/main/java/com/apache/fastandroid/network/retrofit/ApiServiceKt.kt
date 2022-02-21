@@ -1,6 +1,8 @@
 package com.apache.fastandroid.network.retrofit
 
 import com.apache.fastandroid.network.model.Repo
+import com.apache.fastandroid.network.model.ResultData
+import com.tencent.bugly.crashreport.biz.UserInfoBean
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Call
@@ -30,4 +32,10 @@ interface ApiServiceKt {
 
  @GET("/user/{user}/repos")
  fun listReposRx2(@Path("user") user:String): Observable<List<Repo>>
+
+ @GET("/user/{user}/login")
+ suspend fun login(@Path("user") userId:String):UserInfoBean
+
+ @GET("article/get/{id}")
+ suspend fun getArticleById(@Path("id") id: Long): ResultData<Repo>
 }

@@ -78,6 +78,7 @@ public final class ApiEngine {
     }
 
     private static ApiService sApiService;
+    private static ApiServiceKt sApiServiceKt;
     public static ApiService getApiService() {
         if (sApiService == null){
             sApiService = getRetrofit().create(ApiService.class);
@@ -85,6 +86,12 @@ public final class ApiEngine {
         return getRetrofit().create(ApiService.class);
     }
 
+    public static ApiServiceKt getApiServiceKt() {
+        if (sApiServiceKt == null){
+            sApiServiceKt = getRetrofit().create(ApiServiceKt.class);
+        }
+        return getRetrofit().create(ApiServiceKt.class);
+    }
 
     private static FakeApi sFakeApi;
     public static FakeApi getFakeApi(){

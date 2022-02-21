@@ -33,7 +33,6 @@
         </activity>
         <activity
             android:name=".MainActivity"
-
             android:exported="true"
             android:launchMode="singleTask"></activity>
 
@@ -98,6 +97,10 @@
     <permission
         android:name="com.optimize.performance.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
+
+    <!--
+       Don't let Google Play filter out devices that just have don't have camera.
+   -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />

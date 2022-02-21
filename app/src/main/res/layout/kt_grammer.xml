@@ -11,8 +11,10 @@
         android:orientation="vertical"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
 
             >
 
@@ -26,14 +28,26 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_on_each,btn_method_cost,btn_high_order_function,btn_extension_high_order_function,
+                app:constraint_referenced_ids="btn_operator_overload2,btn_object,btn_on_each,btn_method_cost,btn_coerceAtLeast,btn_high_order_function,btn_extension_high_order_function,
              btn_clazz_paramter,btn_java_kotlin_call_each_other,btn_nested_function,btn_expand_function,btn_expand_function2,
              btn_lambda,btn_inline,btn_campanion_object,btn_keyword_by,btn_by_delegate,btn_sealedClass,btn_sealedClass2,
              btn_deconstruction,btn_iterator,btn_withIndex,btn_takeUnless,btn_takeIf,btn_operator,btn_custom_operator,
              btn_when_operator,btn_generic_parameter,btn_tail_fun,btn_object_property,btn_proxy_mode,btn_nested_class,
-             btn_template_class,edittext"
+             btn_template_class,btn_Suspend,edittext"
                 />
 
+            <Button
+                android:id="@+id/btn_operator_overload2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="操作符重载"
+                />
+            <Button
+                android:id="@+id/btn_object"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="object"
+                />
             <Button
                 android:id="@+id/btn_on_each"
                 android:layout_width="wrap_content"
@@ -240,6 +254,12 @@
                 android:layout_height="wrap_content"
                 android:text="模版类"
                 />
+            <Button
+                android:id="@+id/btn_Suspend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suspend"
+                />
 
             <EditText
                 android:id="@+id/edittext"
@@ -247,6 +267,15 @@
                 android:layout_height="wrap_content"
                 android:maxLength="6"
                 android:hint="name"
+                />
+
+            <LinearLayout
+                android:id="@+id/linerlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edittext"
+                android:orientation="vertical"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

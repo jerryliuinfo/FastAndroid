@@ -32,6 +32,18 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
+    buildTypes {
+        release {
+            minifyEnabled true
+            /**
+             * buildType下proguardFiles配置的*.pro文件作用与library
+             module打包成aar的编译过程，仅作用于本module的编译混淆过程。
+             */
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -52,17 +64,7 @@ android {
         abortOnError false
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            /**
-             * buildType下proguardFiles配置的*.pro文件作用与library
-             module打包成aar的编译过程，仅作用于本module的编译混淆过程。
-             */
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-        }
-    }
 }
 
 

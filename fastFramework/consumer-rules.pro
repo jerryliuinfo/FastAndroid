@@ -1,0 +1,1 @@
+-keep class com.tesla.framework.component.logger.** {*;}

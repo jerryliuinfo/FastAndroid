@@ -1,27 +1,37 @@
 package com.apache.fastandroid.demo.kt
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.TextView
 import com.apache.fastandroid.BuildConfig
+import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.KtGrammerBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.kt.bean.*
-import com.apache.fastandroid.demo.kt.bean.Bird.InnerClass2
-import com.apache.fastandroid.demo.kt.sealed.PlayerUI
-import com.apache.fastandroid.demo.kt.sealed.PlayerViewType
-import com.apache.fastandroid.demo.kt.sealed.SeasonNameSealed
-import com.apache.fastandroid.demo.kt.sealed.User
+import com.apache.fastandroid.demo.kt.inline.PreferenceManager
+import com.apache.fastandroid.demo.kt.inline.onlyIf
+import com.apache.fastandroid.demo.kt.inline.onlyIf2
+import com.apache.fastandroid.demo.kt.operatoroverload.*
+import com.apache.fastandroid.demo.kt.sealed.*
+import com.apache.fastandroid.network.model.Repo
+import com.apache.fastandroid.network.retrofit.ApiEngine
 import com.apache.fastandroid.util.DateUtil
+import com.blankj.utilcode.util.ScreenUtils
 import com.kingja.loadsir.core.LoadSir
 import com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator
 import com.tesla.framework.common.util.HideTextWatcher
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.maxCustomize
+import com.tesla.framework.kt.plusAssign
 import com.tesla.framework.ui.fragment.BaseVMFragment
-import kotlinx.android.synthetic.main.kt_grammer.*
+import kotlinx.android.synthetic.main.navigation_fragment_1.*
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import java.io.File
 import java.nio.charset.Charset
+import kotlin.coroutines.Continuation
 import kotlin.math.cos
 import kotlin.random.Random
 import kotlin.reflect.KClass
@@ -41,10 +51,13 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        btn_on_each.setOnClickListener {
+        viewBinding.btnObject.setOnClickListener {
+            objectExpression()
+        }
+        viewBinding.btnOnEach.setOnClickListener {
             onEach()
         }
-        btn_method_cost.setOnClickListener {
+        viewBinding.btnMethodCost.setOnClickListener {
             val costTime = measureTimeMillis {
                 Thread.sleep(100)
             }
@@ -52,7 +65,7 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
 
             println()
         }
-        btn_coerceAtLeast.setOnClickListener {
+        viewBinding.btnCoerceAtLeast.setOnClickListener {
             Logger.d("${3.coerceAtLeast(5)}")
         }
 
@@ -216,9 +229,76 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
 
         viewBinding.edittext.addTextChangedListener(HideTextWatcher(viewBinding.edittext))
 
+        viewBinding.btnSuspend.setOnClickListener {
+            MainScope().launch {
+                testSuspend()
+            }
+        }
+        viewBinding.btnOperatorOverload2.setOnClickListener {
+            operatationOverload()
+        }
+
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
 
+    }
+
+
+    fun objectExpression(){
+
+
+    }
+
+
+    /**
+     * 如果在API中发现某个类有unaryPlus()、unaryMinus()、not()方法，
+     * 那就说明可对该类的实例使用单目前缀运算符+、-、!进行运算。
+     */
+    private fun operatationOverload() {
+        val choir = Choir()
+        var singer = Singer("朗朗")
+        choir += singer
+        println(choir.singers)
+        println("contains:${choir.contains(singer)}, not contains:${!choir.contains(Singer("朗朗"))}")
+
+        val a = 10
+        val b = -a
+        //Returns the negative of this value
+        val c = a.unaryMinus()
+        //Returns this value
+        val d = a.unaryPlus()
+        println()
+
+        var point1 = Point(5,5)
+        val point2 = Point(1,2)
+        //plus
+//        var plus = point1 + point2
+        var minus = point1 - point2
+        var times = point1 * point2
+        var div = point1 / point2
+        var rem = point1 % point2
+        var compareTo = point1 > point2
+
+        point1 += point2
+//        println("+:${plus}, -:${minus}, *:${times}, /:${div}, %:${rem}, >:${compareTo}, +=:${point1}")
+        println(" -:${minus}, *:${times}, /:${div}, %:${rem}, >:${compareTo}, +=:${point1}")
+
+        val textView = TextView(context).apply {
+            text = "dynamic text"
+            setTextColor(context.getColor(R.color.black))
+        }
+        viewBinding.linerlayout += textView
+    }
+
+
+    private suspend fun testSuspend():Repo{
+        val user = ApiEngine.getApiServiceKt().getArticleById(10)
+        return user.data
+    }
+
+    private suspend fun testSuspend2(completion:Continuation<Any?>):Repo{
+        val user = ApiEngine.getApiServiceKt().getArticleById(10)
+        return user.data
     }
 
     private fun templateClass() {
@@ -246,6 +326,13 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
             is SeasonNameSealed.Winter -> season.name
         }
         println("season by sealed class:$text")
+
+        doAction1(SealedResult.Success(10))
+        doAction1(SealedResult.ERROR(IllegalArgumentException("invalid param")))
+
+        doAction2(SealedResult2.Success(10))
+        doAction2(SealedResult2.Error.NonRecoverableError(IllegalArgumentException("NonRecoverableError -->")))
+        doAction2(SealedResult2.Error.RecoverableError(IllegalArgumentException("RecoverableError -->")))
 
     }
 
@@ -427,6 +514,12 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
         onlyIf2(true){
             println("inline 打印日志")
         }
+
+        context?.let {
+            val userInfoManager = PreferenceManager(it.getSharedPreferences("userInfo", Context.MODE_PRIVATE))
+            userInfoManager.saveToken("abcd1234")
+        }
+
     }
 
     private fun highOrderFunction() {
@@ -486,17 +579,6 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
 
 
 
-    fun onlyIf(debug:Boolean, block:() -> Unit){
-        if (debug){
-            block()
-        }
-    }
-
-    inline fun onlyIf2(debug:Boolean, block:() -> Unit){
-        if (debug){
-            block()
-        }
-    }
 
 
     private fun lambdaUsage() {
