@@ -1,12 +1,17 @@
 package com.apache.fastandroid.network.retrofit
 
+import com.apache.fastandroid.network.model.Article
+import com.apache.fastandroid.network.model.HomeArticleResponse
 import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.model.ResultData
+import com.apache.fastandroid.network.response.BaseResponse
+import com.apache.fastandroid.network.response.EmptyResponse
 import com.tencent.bugly.crashreport.biz.UserInfoBean
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 
@@ -19,8 +24,20 @@ import retrofit2.http.Path
 
 interface ApiServiceKt {
 
- @GET("/user/{user}/repos")
-  fun listRepos(@Path("user") user:String): Call<List<Repo>>
+ @GET("/article/top/json")
+// suspend fun loadTopArticleCo(): Call<BaseResponse<List<Article>?>>
+ //不要用 Call<BaseResponse<List<Article>?>> 的方式，否则会报Unable to invoke no-args constructor for retrofit2.Call
+ suspend fun loadTopArticleCo(): BaseResponse<List<Article>>?
+
+ @GET("/article/list/{pageNum}/json")
+ suspend fun loadHomeArticleCo(@Path("pageNum") pageNum: Int): BaseResponse<HomeArticleResponse>?
+
+
+ @POST("/lg/collect/{id}/json")
+ suspend fun collect(@Path("id") id: Int): Call<BaseResponse<EmptyResponse>>
+
+ @POST("/lg/uncollect_originId/{id}/json")
+ suspend fun unCollect(@Path("id") id: Int): Call<BaseResponse<EmptyResponse>>
 
   @GET("/user/{user}/repos")
   suspend fun listReposKt(@Path("user") user:String):List<Repo>
@@ -28,13 +45,6 @@ interface ApiServiceKt {
 
  @GET("/user/{user}/repos")
   fun listReposRx(@Path("user") user:String): Single<List<Repo>>
-
-
- @GET("/user/{user}/repos")
- fun listReposRx2(@Path("user") user:String): Observable<List<Repo>>
-
- @GET("/user/{user}/login")
- suspend fun login(@Path("user") userId:String):UserInfoBean
 
  @GET("article/get/{id}")
  suspend fun getArticleById(@Path("id") id: Long): ResultData<Repo>

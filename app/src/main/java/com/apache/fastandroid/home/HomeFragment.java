@@ -7,10 +7,10 @@ import android.view.View;
 import com.apache.fastandroid.article.ArticleDetailActivity;
 import com.apache.fastandroid.article.ArticleViewModel;
 import com.apache.fastandroid.bean.CollectBean;
-import com.apache.fastandroid.jetpack.StateData;
 import com.apache.fastandroid.network.model.Article;
 import com.apache.fastandroid.network.model.HomeArticleResponse;
 import com.apache.fastandroid.state.UserInfo;
+import com.apache.fastandroid.util.InjectorUtil;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBinding;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragmentNew;
@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 /**
  * Created by Jerry on 2021/7/1.
@@ -35,14 +36,20 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
     }
 
 
-    private HomeViewModel homeViewModel;
+//    private HomeViewModel homeViewModel;
+
+    private HomeViewModelKt mHomeViewModelKt;
 
     private ArticleViewModel mArticleViewModel;
 
+
+
     @Override
     protected void initViewModel() {
-        homeViewModel = getFragmentScopeViewModel(HomeViewModel.class);
-        mArticleViewModel = getFragmentScopeViewModel(ArticleViewModel.class);
+//        homeViewModel = getFragmentScopeViewModel(HomeViewModel.class);
+
+        mHomeViewModelKt = new ViewModelProvider(this, InjectorUtil.getHomeModelFactory()).get(HomeViewModelKt.class);
+        mArticleViewModel = new ViewModelProvider(this, InjectorUtil.getArticeModelFactory()).get(ArticleViewModel.class);
     }
 
     @Override
@@ -56,44 +63,32 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
     public void layoutInit(LayoutInflater inflater, Bundle savedInstanceState) {
         super.layoutInit(inflater, savedInstanceState);
 
-
-        homeViewModel.getHomeArticleLiveData().observe(this, new Observer<StateData<HomeArticleResponse>>() {
+        mHomeViewModelKt.getHomeArticleLiveData().observe(this, new Observer<HomeArticleResponse>() {
             @Override
-            public void onChanged(StateData<HomeArticleResponse> listData) {
-                //置顶文章
-                homeViewModel.getTopArticleLiveData().observe(HomeFragment.this, new Observer<StateData<List<Article>>>() {
+            public void onChanged(HomeArticleResponse listData) {
+                mHomeViewModelKt.getTopArticleLiveData().observe(HomeFragment.this, new Observer<List<Article>>() {
                     @Override
-                    public void onChanged(StateData<List<Article>> topData) {
-                        //置顶文章只添加一次
+                    public void onChanged(List<Article> topList) {
                         if (isFristPage() && mTopArticlesLoadTimes == 0){
                             mTopArticlesLoadTimes++;
-                            if (topData.isSuccess() && listData.isSuccess()){
-                                List<Article> topList = topData.getData();
-//                                ToastUtils.showShort("list data:"+ listData);
-//                                List<Article> middleList = listData.getData().getDatas();
+                            if (topList != null && listData != null){
                                 List<Article> totalList = new ArrayList<>();
                                 totalList.addAll(topList);
-//                                totalList.addAll(middleList);
+                                totalList.addAll(listData.getDatas());
                                 handleData(totalList,true);
-                            }else if (listData.isSuccess()){
-                                handleData(listData.getData().getDatas(),true);
+                            }else if (listData != null){
+                                handleData(listData.getDatas(),true);
                             }else {
-                                /*showLoadErrorView("", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        onRefresh();
-                                    }
-                                });*/
+
                             }
                             dismissRefreshing();
                         }
                     }
                 });
-
                 //非第一页
                 if (!isFristPage()){
-                    if (listData.isSuccess()){
-                        handleData(listData.getData().getDatas(),false);
+                    if (listData != null){
+                        handleData(listData.getDatas(),false);
                     }else {
                         getAdapter().loadMoreFail();
                     }
@@ -101,24 +96,23 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
 
             }
         });
-        mArticleViewModel.stateLiveData.observe(this, new Observer<StateData<CollectBean>>() {
-            @Override
-            public void onChanged(StateData<CollectBean> stateData) {
-                if (stateData.isSuccess()){
-                    CollectBean item = stateData.getData();
-                    getItemById(item.getId()).setCollect(item.getStatus());
-                    getAdapter().notifyDataSetChanged();
-                }
-            }
 
+        mArticleViewModel.getStatus().observe(this, new Observer<CollectBean>() {
+            @Override
+            public void onChanged(CollectBean item) {
+                getItemById(item.getId()).setCollect(item.getStatus());
+                getAdapter().notifyDataSetChanged();
+            }
         });
+
 
         onRefresh();
         getAdapter().setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Article item = (Article) getAdapter().getItem(position);
-                ArticleDetailActivity.launch(getActivity(),item.getTitle(),item.getLink());
+//                ArticleDetailActivity.launch(getActivity(),item.getTitle(),item.getLink());
+                ArticleDetailActivity.launch(getActivity(),item.getTitle(),"https://ykt.eduyun.cn");
             }
         });
         getAdapter().setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
@@ -172,7 +166,8 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
         showRefreshing();
         mCurrentPage = 0;
         mTopArticlesLoadTimes = 0;
-        homeViewModel.loadHomeData(mCurrentPage);
+        mHomeViewModelKt.loadHomeData(mCurrentPage);
+
     }
 
     @Override
@@ -182,7 +177,7 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
 
     @Override
     protected void onLoadMore() {
-        homeViewModel.loadHomeData(++mCurrentPage);
+        mHomeViewModelKt.loadHomeData(++mCurrentPage);
     }
 
     @Override

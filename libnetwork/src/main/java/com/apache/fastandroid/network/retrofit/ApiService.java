@@ -23,9 +23,7 @@ public interface ApiService {
     @GET("/article/top/json")
     Call<BaseResponse<List<Article>>> loadTopArticleCo();
 
-    //     置顶数据
-    @GET("/article/top/json")
-    Observable<BaseResponse<List<Article>>> loadTopArticleCo2();
+
 
 
     //     置顶下面数据

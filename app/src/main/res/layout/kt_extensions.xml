@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            >
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal"
+                app:flow_wrapMode="aligned"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:constraint_referenced_ids="btn_animatorKt,btn_drawableKt"
+                />
+            <Button
+                android:id="@+id/btn_animatorKt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AnimatorKt"
+                />
+            <Button
+            android:id="@+id/btn_drawableKt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DrawableKt"
+            />
+
+            <ImageView
+                android:id="@+id/iv_avator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_drawableKt"
+                android:layout_marginTop="30dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

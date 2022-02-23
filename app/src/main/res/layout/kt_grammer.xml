@@ -28,7 +28,7 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_operator_overload2,btn_object,btn_on_each,btn_method_cost,btn_coerceAtLeast,btn_high_order_function,btn_extension_high_order_function,
+                app:constraint_referenced_ids="btn_delegate,btn_refied,btn_operator_overload2,btn_object,btn_on_each,btn_method_cost,btn_coerceAtLeast,btn_high_order_function,btn_extension_high_order_function,
              btn_clazz_paramter,btn_java_kotlin_call_each_other,btn_nested_function,btn_expand_function,btn_expand_function2,
              btn_lambda,btn_inline,btn_campanion_object,btn_keyword_by,btn_by_delegate,btn_sealedClass,btn_sealedClass2,
              btn_deconstruction,btn_iterator,btn_withIndex,btn_takeUnless,btn_takeIf,btn_operator,btn_custom_operator,
@@ -36,6 +36,18 @@
              btn_template_class,btn_Suspend,edittext"
                 />
 
+            <Button
+                android:id="@+id/btn_delegate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托代理"
+                />
+            <Button
+                android:id="@+id/btn_refied"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Refied 关键字"
+                />
             <Button
                 android:id="@+id/btn_operator_overload2"
                 android:layout_width="wrap_content"

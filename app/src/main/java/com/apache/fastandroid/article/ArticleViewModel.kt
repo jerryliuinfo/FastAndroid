@@ -1,22 +1,37 @@
-package com.apache.fastandroid.article;
+package com.apache.fastandroid.article
 
-import com.apache.fastandroid.bean.CollectBean;
-import com.apache.fastandroid.home.HomeReporsitory;
-import com.apache.fastandroid.jetpack.BaseViewModel;
-import com.apache.fastandroid.jetpack.StateLiveData;
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.apache.fastandroid.bean.CollectBean
+import com.apache.fastandroid.jetpack.BaseViewModel
 
 /**
  * Created by Jerry on 2021/10/14.
  */
-public class ArticleViewModel extends BaseViewModel {
+class ArticleViewModel(private val reporsitory: ArticleReporsitoryKt) : BaseViewModel() {
+    @JvmField
+    var _status = MutableLiveData<CollectBean>()
 
-   public StateLiveData<CollectBean> stateLiveData = new StateLiveData<>();
+    val status:LiveData<CollectBean>
+        get() = _status
 
-   public void collect(int id){
-      HomeReporsitory.newInstance().collect(stateLiveData,id);
-   }
+    fun collect(id: Int) {
+        launch({
+            reporsitory.collect( id)
+            _status.value = CollectBean(id,true)
+        },{
 
-   public void unCollect(int id){
-      HomeReporsitory.newInstance().uncollect(stateLiveData,id);
-   }
+        })
+
+    }
+
+    fun unCollect(id: Int) {
+        launch({
+            reporsitory.uncollect( id)
+            _status.value = CollectBean(id,false)
+
+        },{
+
+        })
+    }
 }

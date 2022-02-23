@@ -1,15 +1,14 @@
 package com.apache.fastandroid.demo.kt
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.apache.fastandroid.home.HomeReporsitory
+import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.tesla.framework.common.util.log.NLog
 import kotlinx.coroutines.*
 
 /**
  * Created by Jerry on 2021/10/28.
  */
-class CoroutineVewModel: ViewModel() {
+class CoroutineVewModel(private val reporsitory: HomeReporsitoryKt): ViewModel() {
     companion object{
         private const val TAG = "CoroutineVewModel"
     }
@@ -24,7 +23,7 @@ class CoroutineVewModel: ViewModel() {
                 withContext(Dispatchers.IO){
                     Thread.sleep(5000)
                     NLog.d(TAG, "loadByViewModel run thread: %s",Thread.currentThread().name)
-                    HomeReporsitory.newInstance().loadHomeArticleCoSync(1)
+                    reporsitory.loadHomeArticleCo(1)
                 }
             }.onSuccess {
                 NLog.d(TAG, "loadByViewModel onSuccess thread: %s, data: %s",Thread.currentThread().name,it.size)

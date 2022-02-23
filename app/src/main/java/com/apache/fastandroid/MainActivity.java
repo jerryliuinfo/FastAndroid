@@ -13,8 +13,6 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.UserBean;
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment;
-import com.apache.fastandroid.demo.kt.bean.AnimalDefault;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -23,7 +21,6 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.ui.activity.BaseVmActivity;
-import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -81,7 +78,7 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 //        FragmentContainerActivity.launch(this, CommonBlackTechFragment.class,null);
 //        FragmentContainerActivity.launch(this, SnapHelperDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
-        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
+//        FragmentContainerActivity.launch(this, KotlinExtensionsFragment.class,null);
 //        FragmentContainerActivity.launch(this, MMKVFragment.class,null);
 //        FragmentContainerActivity.launch(this, HawkDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, LiveDataWrongUsageFragment.class,null);
@@ -93,9 +90,6 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 //        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
 //        startActivity(new Intent(this, NavigationDemoActivity.class));
 //        startActivity(new Intent(this, NavigationBottomNavigationActivity.class));
-
-        AnimalDefault animalDefault = new AnimalDefault("jerry");
-        AnimalDefault animalDefault2 = new AnimalDefault("jerry",1);
 
 
 
@@ -254,22 +248,6 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
     public void onDestroy() {
         super.onDestroy();
         FastBus.getInstance().unregiste(this);
-    }
-
-
-
-    private <T> List<T> filter(List<T> originalList, PreCondition<T> condition){
-        List<T> list = new ArrayList<>();
-        for (T t : originalList) {
-            if (condition.filter(t)){
-                list.add(t);
-            }
-        }
-        return list;
-    }
-
-    interface PreCondition<T>{
-        boolean filter(T t);
     }
 
 }

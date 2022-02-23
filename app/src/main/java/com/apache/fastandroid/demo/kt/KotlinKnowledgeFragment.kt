@@ -1,23 +1,28 @@
 package com.apache.fastandroid.demo.kt
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.TextView
+import androidx.core.animation.doOnEnd
+import androidx.core.animation.doOnStart
 import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.KtGrammerBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.kt.bean.*
+import com.apache.fastandroid.demo.kt.delegate.DelegateList
+import com.apache.fastandroid.demo.kt.delegate.People
 import com.apache.fastandroid.demo.kt.inline.PreferenceManager
 import com.apache.fastandroid.demo.kt.inline.onlyIf
 import com.apache.fastandroid.demo.kt.inline.onlyIf2
 import com.apache.fastandroid.demo.kt.operatoroverload.*
+import com.apache.fastandroid.demo.kt.refied.RefiedDemo
 import com.apache.fastandroid.demo.kt.sealed.*
 import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.retrofit.ApiEngine
 import com.apache.fastandroid.util.DateUtil
-import com.blankj.utilcode.util.ScreenUtils
 import com.kingja.loadsir.core.LoadSir
 import com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator
 import com.tesla.framework.common.util.HideTextWatcher
@@ -26,7 +31,6 @@ import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.maxCustomize
 import com.tesla.framework.kt.plusAssign
 import com.tesla.framework.ui.fragment.BaseVMFragment
-import kotlinx.android.synthetic.main.navigation_fragment_1.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import java.io.File
@@ -50,6 +54,16 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
+
+
+
+        viewBinding.btnDelegate.setOnClickListener {
+            delegate()
+        }
+
+        viewBinding.btnRefied.setOnClickListener {
+            refiedTest()
+        }
 
         viewBinding.btnObject.setOnClickListener {
             objectExpression()
@@ -240,6 +254,46 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
 
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
+
+    }
+
+    private fun animatorKt() {
+        val animator = ObjectAnimator.ofFloat(0f,1f)
+        animator.doOnStart {
+            println("doOnStart")
+        }
+        animator.doOnEnd {
+            println("doOnEnd")
+        }
+        animator.start()
+
+    }
+
+    private fun delegate() {
+        val delegateList = DelegateList<String>().apply {
+            add("one")
+            add("two")
+        }
+        delegateList.remove("one")
+        var deletedItem = delegateList.deletedItem
+        println("delegate deletedItem:${deletedItem}")
+
+        val people = People("jerry", "liu")
+        people.name = "libel"
+        people.lastname= "ou"
+        println("delegate updateCount:${people.updateCount}")
+    }
+
+    private fun refiedTest() {
+        val refiedDemo = RefiedDemo()
+        refiedDemo.printStringType()
+        refiedDemo.printIntType()
+
+
+
+        val intCall: Int = refiedDemo.calculate(123643f)
+        val floatCall: Float = refiedDemo.calculate(123643f)
+        println("intCall:${intCall}, floatCall:${floatCall}")
 
     }
 

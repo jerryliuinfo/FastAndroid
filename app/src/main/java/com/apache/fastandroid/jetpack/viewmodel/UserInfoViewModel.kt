@@ -114,13 +114,7 @@ class UserInfoViewModel(private val reporsity: UserReporsity):BaseStatusViewMode
         }
     }
 
-    private fun launch(block: suspend () -> Unit, error: suspend (Throwable) -> Unit) = viewModelScope.launch {
-        try {
-            block()
-        } catch (e: Throwable) {
-            error(e)
-        }
-    }
+
 
 
 
