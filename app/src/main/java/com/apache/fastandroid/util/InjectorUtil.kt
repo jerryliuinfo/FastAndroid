@@ -5,13 +5,14 @@ import com.apache.fastandroid.article.ArticleNetwork
 import com.apache.fastandroid.article.ArticleReporsitoryKt
 import com.apache.fastandroid.home.HomeModelFactory
 import com.apache.fastandroid.home.HomeReporsitoryKt
+import com.apache.fastandroid.home.db.HomeDatabase
 import com.apache.fastandroid.home.network.HomeNetwork
 
 
 object InjectorUtil {
 
     @JvmStatic
-    private fun getHomeRepository() = HomeReporsitoryKt.getInstance(HomeNetwork.getInstance())
+    private fun getHomeRepository() = HomeReporsitoryKt.getInstance(HomeDatabase.getHomeDao(), HomeNetwork.getInstance())
     @JvmStatic
     private fun getArticleRepository() = ArticleReporsitoryKt.getInstance(ArticleNetwork.getInstance())
 

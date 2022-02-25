@@ -13,6 +13,5 @@ data class User(
     @PrimaryKey var id:Int,
     @ColumnInfo(name = "first_name") var name:String,
     var playerType:PlayerViewType = PlayerViewType.BLUE){
-    constructor():this("")
-    constructor(name: String):this(0,name)
+
 }

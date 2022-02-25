@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.apache.fastandroid.jetpack.BaseViewModel
 import com.apache.fastandroid.network.model.Article
 import com.apache.fastandroid.network.model.HomeArticleResponse
+import com.tesla.framework.common.util.log.Logger
 import kotlinx.coroutines.launch
 
 /**
@@ -21,6 +22,12 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
 
     val homeArticleLiveData:LiveData<HomeArticleResponse>
         get() = _homeArticleLiveData
+
+
+    private val _text = MutableLiveData<String>().apply {
+        value = "This is home Fragment"
+    }
+    val text: LiveData<String> = _text
 
     fun loadHomeArticleCo(pageNum: Int){
         launch({
@@ -43,6 +50,11 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
             })
         }
 
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        com.tesla.framework.component.logger.Logger.d("onCleared cancel viewModel")
     }
 
 

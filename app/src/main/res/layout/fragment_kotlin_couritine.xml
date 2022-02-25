@@ -17,11 +17,23 @@
             app:layout_constraintTop_toTopOf="parent"
             android:orientation="horizontal"
             app:flow_horizontalGap="10dp"
-            app:constraint_referenced_ids="btn_traditional_switch_thread,
+            app:constraint_referenced_ids="btn_suspendCoroutine,btn_job_dispatcher,btn_traditional_switch_thread,
             btn_coroutine_switch_thread,btn_corotine_retrofit,btn_rxjava,btn_rxjava_zip,
-            btn_couroutine_zip,btn_couroutine_cance_job,btn_mainscope"
+            btn_couroutine_zip,btn_awaitAll,btn_couroutine_cance_job,btn_mainscope"
             app:flow_wrapMode="aligned"
             />
+
+        <Button
+            android:id="@+id/btn_suspendCoroutine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SuspendCoroutine" />
+
+        <Button
+            android:id="@+id/btn_job_dispatcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job+Dispatcher" />
 
         <Button
             android:id="@+id/btn_traditional_switch_thread"
@@ -56,6 +68,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="协程合并两个请求" />
+
+        <Button
+            android:id="@+id/btn_awaitAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="awaitAll" />
         <Button
             android:id="@+id/btn_couroutine_cance_job"
             android:layout_width="wrap_content"

@@ -3,6 +3,7 @@ apply from: 'and_res_guard.gradle'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -89,8 +90,8 @@ android {
     compileSdkVersion AppConfig.compileSdk
     defaultConfig {
         applicationId "com.apache.fastandroid"
-        minSdkVersion rootProject.android.minSdkVersion
-        targetSdkVersion rootProject.android.targetSdkVersion
+        minSdkVersion AppConfig.minSdk
+        targetSdkVersion AppConfig.targetSdk
 
         versionCode getAppVersionCode()
         versionName AppConfig.versionName

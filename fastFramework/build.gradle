@@ -7,17 +7,15 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
-//apply from: "../maven-publish2.gradle"
+
 
 android {
-    compileSdkVersion rootProject.android.compileSdkVersion
-//    buildToolsVersion rootProject.android.buildToolsVersion
+    compileSdkVersion AppConfig.compileSdk
 
     defaultConfig {
-        minSdkVersion rootProject.android.minSdkVersion
-        targetSdkVersion rootProject.android.targetSdkVersion
+        minSdkVersion AppConfig.minSdk
+        targetSdkVersion AppConfig.targetSdk
 
 
 

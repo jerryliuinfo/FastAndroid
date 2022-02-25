@@ -12,12 +12,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.apache.fastandroid.databinding.FragmentDashboardBinding
 import com.apache.fastandroid.databinding.FragmentHomeBinding
+import com.apache.fastandroid.home.HomeViewModelKt
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseVMFragment
 
 class NavigationHomeFragment : BaseVMFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-  private  val dashboardViewModel: HomeViewModel by viewModels()
+  private  val dashboardViewModel: HomeViewModelKt by viewModels()
 
 
   override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

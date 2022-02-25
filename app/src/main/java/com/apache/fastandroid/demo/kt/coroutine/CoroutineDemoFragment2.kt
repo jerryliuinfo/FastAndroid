@@ -28,9 +28,9 @@ import kotlin.jvm.internal.Intrinsics
  * Created by Jerry on 2021/10/28.
  * 协程
  */
-class CouroutineDemoFragment2:BaseVMFragment<FragmentKotlinCouritine2Binding>(FragmentKotlinCouritine2Binding::inflate) {
+class CoroutineDemoFragment2:BaseVMFragment<FragmentKotlinCouritine2Binding>(FragmentKotlinCouritine2Binding::inflate) {
     companion object{
-        private const val TAG = "CouroutineDemoFragment"
+        private const val TAG = "CoroutineDemoFragment"
     }
 
 

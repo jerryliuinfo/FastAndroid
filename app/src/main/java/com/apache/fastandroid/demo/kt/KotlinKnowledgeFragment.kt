@@ -257,6 +257,11 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
 
     }
 
+    fun interface Transformer<T,U>{
+        fun transform()
+    }
+
+
     private fun animatorKt() {
         val animator = ObjectAnimator.ofFloat(0f,1f)
         animator.doOnStart {

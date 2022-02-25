@@ -49,7 +49,6 @@ dependencies {
 
 
     testImplementation 'junit:junit:4.12'
-    implementation 'androidx.annotation:annotation:1.0.0'
 
 
 

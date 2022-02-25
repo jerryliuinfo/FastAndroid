@@ -26,7 +26,6 @@ interface ApiServiceKt {
 
  @GET("/article/top/json")
 // suspend fun loadTopArticleCo(): Call<BaseResponse<List<Article>?>>
- //不要用 Call<BaseResponse<List<Article>?>> 的方式，否则会报Unable to invoke no-args constructor for retrofit2.Call
  suspend fun loadTopArticleCo(): BaseResponse<List<Article>>?
 
  @GET("/article/list/{pageNum}/json")

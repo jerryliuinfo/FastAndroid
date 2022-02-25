@@ -2,7 +2,6 @@ package com.tesla.framework.common.util
 
 import android.app.PendingIntent
 import android.os.Build
-import androidx.annotation.ChecksSdkIntAtLeast
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
@@ -35,7 +34,7 @@ object CommonUtil {
      * 即便内容是一样的，这引起的麻烦是我们不得不重复手写  Build.VERSION.SDK_INT >= Build.VERSION_CODES.O 代码
      *
      */
-    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.O)
+//    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.O)
     fun isAtLeastO(): Boolean {
         //26
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
@@ -43,7 +42,7 @@ object CommonUtil {
 
     // Required API level is passed in as first argument, and function
     // in second parameter is executed if SDK_INT is at least that high:
-    @ChecksSdkIntAtLeast(parameter = 0, lambda = 1)
+//    @ChecksSdkIntAtLeast(parameter = 0, lambda = 1)
     inline fun fromApi(value: Int, action: () -> Unit) {
         if (Build.VERSION.SDK_INT >= value) {
             action()
@@ -52,7 +51,7 @@ object CommonUtil {
 
 
     // Kotlin property:
-    @get:ChecksSdkIntAtLeast(api = Build.VERSION_CODES.GINGERBREAD)
+//    @get:ChecksSdkIntAtLeast(api = Build.VERSION_CODES.GINGERBREAD)
     val isGingerbread: Boolean
         get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD
 

@@ -2,14 +2,23 @@ package com.apache.fastandroid.demo.kt.coroutine
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentKotlinCouritineBinding
+import com.apache.fastandroid.home.HomeReporsitoryKt
+import com.apache.fastandroid.home.db.HomeDao
+import com.apache.fastandroid.home.db.HomeDatabase
+import com.apache.fastandroid.home.network.HomeNetwork
 import com.apache.fastandroid.network.retrofit.ApiEngine
 import com.apache.fastandroid.network.retrofit.ApiServiceKt
 import com.apache.fastandroid.network.retrofit.convertor.CustomGsonConverterFactory
 import com.apache.fastandroid.util.extensitons.runOnUi
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.awaitNextLayout
 import com.tesla.framework.ui.fragment.BaseLifecycleFragment
+import com.tesla.framework.ui.fragment.BaseVMFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -24,19 +33,25 @@ import kotlin.concurrent.thread
  * Created by Jerry on 2021/10/28.
  * 协程
  */
-class CouroutineDemoFragment:BaseLifecycleFragment<FragmentKotlinCouritineBinding>() {
+class CoroutineDemoFragment:BaseVMFragment<FragmentKotlinCouritineBinding>(FragmentKotlinCouritineBinding::inflate) {
     companion object{
-        private const val TAG = "CouroutineDemoFragment"
+        private const val TAG = "CoroutineDemoFragment"
     }
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_kotlin_couritine
-    }
+
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
         initRetrofit()
-        btn_traditional_switch_thread.setOnClickListener {
+
+        viewBinding.btnSuspendCoroutine.setOnClickListener {
+            suspendCoroutineUsage()
+        }
+
+        viewBinding.btnJobDispatcher.setOnClickListener {
+            jobDispatcher()
+        }
+        viewBinding.btnTraditionalSwitchThread.setOnClickListener {
             traditionalSwitchThread()
         }
         btn_coroutine_switch_thread.setOnClickListener {
@@ -56,15 +71,20 @@ class CouroutineDemoFragment:BaseLifecycleFragment<FragmentKotlinCouritineBindin
         btn_rxjava_zip.setOnClickListener {
            rxZip()
         }
-        btn_couroutine_zip.setOnClickListener {
+        viewBinding.btnCouroutineZip.setOnClickListener {
             coroutineZip()
         }
-        btn_couroutine_cance_job.setOnClickListener {
+
+        viewBinding.btnAwaitAll.setOnClickListener {
+            coroutineAwaitAll()
+        }
+
+        viewBinding.btnCouroutineCanceJob.setOnClickListener {
             job?.let {
                 it.cancel()
             }
         }
-        btn_mainscope.setOnClickListener {
+        viewBinding.btnMainscope.setOnClickListener {
             //使用 MainScope 不用指定Dispatchers.IO了
             mainScope.launch {
                 apiService.listReposKt("rengwuxian")
@@ -73,8 +93,50 @@ class CouroutineDemoFragment:BaseLifecycleFragment<FragmentKotlinCouritineBindin
 
     }
 
+    private fun suspendCoroutineUsage() {
+        lifecycleScope.launch {
+            viewBinding.tvResult.apply {
+                isInvisible = true
+                text = "Hi everyone"
+
+                awaitNextLayout()
+
+                isVisible = true
+                translationY= - height.toFloat()
+                animate().translationY(0f)
+
+            }
+
+        }
+
+    }
+
+
+    val scope = CoroutineScope(Job() +(Dispatchers.Main) )
+    private fun jobDispatcher() {
+        scope.launch {
+            var topList = reporsitoryKt.loadTopArticleCo()
+            println("thread:${Thread.currentThread()},topList size:${topList?.size}")
+        }
+    }
+
+    private fun coroutineAwaitAll() {
+        lifecycleScope.launch {
+            val start = System.currentTimeMillis()
+            val deferred = listOf(
+                 async { reporsitoryKt.testData1() },
+                async { reporsitoryKt.testData2() }
+            )
+            deferred.awaitAll()
+            println("awaitAll:finish cost:${System.currentTimeMillis() - start} ms")
+        }
+    }
+
     private  var job: Job? = null
-    private val mainScope = MainScope();
+    private val mainScope = MainScope()
+
+
+    private val reporsitoryKt = HomeReporsitoryKt(HomeDatabase.getHomeDao(), HomeNetwork.getInstance())
 
 
 
@@ -90,6 +152,16 @@ class CouroutineDemoFragment:BaseLifecycleFragment<FragmentKotlinCouritineBindin
             }catch (e:Exception){
                 e.printStackTrace()
             }
+        }
+
+
+
+        lifecycleScope.launch {
+            val deferredOne = async { reporsitoryKt.testData1() }
+            val deferredTwo = async { reporsitoryKt.testData2() }
+            val result1 = deferredOne.await()
+            val result2 = deferredTwo.await()
+            println("result1:${result1}, result2:${result2}")
         }
     }
 

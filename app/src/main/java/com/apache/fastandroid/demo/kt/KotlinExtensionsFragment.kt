@@ -11,6 +11,9 @@ import android.widget.TextView
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.view.doOnDetach
+import androidx.core.view.doOnLayout
+import androidx.core.view.doOnPreDraw
 import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.KtExtensionsBinding
@@ -88,6 +91,15 @@ class KotlinExtensionsFragment:BaseVMFragment<KtExtensionsBinding>(KtExtensionsB
             println("doOnEnd")
         }
         animator.start()
+
+    }
+
+    private fun viewKtExtension() {
+        viewBinding.ivAvator.also {
+            it.doOnPreDraw {  }
+            it.doOnLayout {  }
+            it.doOnDetach {  }
+        }
 
     }
 }
