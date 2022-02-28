@@ -11,6 +11,8 @@ import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.KtGrammerBinding
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.kt.annotation.ImAPlant
+import com.apache.fastandroid.demo.kt.annotation.Plant
 import com.apache.fastandroid.demo.kt.bean.*
 import com.apache.fastandroid.demo.kt.delegate.DelegateList
 import com.apache.fastandroid.demo.kt.delegate.People
@@ -35,10 +37,14 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import java.io.File
 import java.nio.charset.Charset
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.coroutines.Continuation
 import kotlin.math.cos
 import kotlin.random.Random
 import kotlin.reflect.KClass
+import kotlin.reflect.full.findAnnotation
+import kotlin.reflect.full.findAnnotations
 import kotlin.system.measureTimeMillis
 
 /**
@@ -55,7 +61,26 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+        viewBinding.btnSAM.setOnClickListener {
+            samUsage()
+        }
 
+        viewBinding.btnCreateHighOrderFunc.setOnClickListener {
+            createHighOrderFunc()
+        }
+        viewBinding.btnJoinTostring.setOnClickListener {
+            joinToStringUsage()
+        }
+
+        viewBinding.btnLableBreak.setOnClickListener {
+            labelBreak()
+        }
+        viewBinding.btnAnnotation.setOnClickListener {
+            annotationUsage()
+        }
+        viewBinding.btnCheck.setOnClickListener {
+            checkFuncUsage()
+        }
 
         viewBinding.btnDelegate.setOnClickListener {
             delegate()
@@ -254,7 +279,68 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
 
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
+    }
 
+    private fun samUsage() {
+        val runnable = Runnable { println("I am a runnable") }
+
+    }
+
+    private fun createHighOrderFunc() {
+        val fruit = Fruit("apple")
+        myWith(fruit.name){
+//            var capitize =  replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
+            var capitize =  capitalize()
+            println(capitize)
+        }
+    }
+
+    inline fun myWith(name: String, block: String.() -> Unit){
+        name.block()
+    }
+
+    private fun joinToStringUsage() {
+        val fruit = mutableListOf(Fruit("Apple"),Fruit("Pear"),Fruit("banana"))
+        val result = fruit.map { it.name }.filter {
+            it.contains("a")
+        }.joinToString(", ") { it }
+        println(result)
+    }
+
+    private fun lambdaUsage2(){
+        val waterFilter = {dirty:Int -> dirty / 2}
+    }
+
+    private fun labelBreak() {
+        outloop@ for (i in 1..100){
+            print(i)
+            for (j in 1..100){
+                if (i > 10){
+                    break@outloop
+                }
+            }
+        }
+    }
+
+    private fun annotationUsage() {
+        val classObj = Plant::class
+        for (a in classObj.annotations){
+            val annotationClass = a.annotationClass
+            println("simpleName:${annotationClass.simpleName}, isOpen:${annotationClass.isOpen}, isCompanion:${annotationClass.isCompanion}")
+        }
+
+        val myAnnotationObject = classObj.findAnnotation<ImAPlant>()
+        println(myAnnotationObject)
+    }
+
+    private fun checkFuncUsage() {
+        val age = 18
+        check(age > 10)
+    }
+
+    fun intRange(){
+        IntRange(1,6).map {  }
+        println(1..6)
     }
 
     fun interface Transformer<T,U>{
@@ -643,6 +729,9 @@ class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding:
     private fun lambdaUsage() {
        echo.invoke("Zhangtao")
        echo("Jerry")
+        val waterFilter = {dirty:Int -> dirty / 2}
+        println(waterFilter(30))
+
 
 
     }

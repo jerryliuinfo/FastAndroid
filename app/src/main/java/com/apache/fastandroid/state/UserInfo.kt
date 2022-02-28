@@ -13,8 +13,6 @@ import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener
  */
 class UserInfo private constructor() {
 
-
-
     private var isLogin: Boolean by SPreference(LOGIN_KEY, false)
 
     // 设置默认状态

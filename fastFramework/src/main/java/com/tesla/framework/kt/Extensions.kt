@@ -100,3 +100,4 @@ fun <T> Array<T>.maxCustomize(greater:(T,T) -> Boolean):T?{
     }
     return max
 }
+

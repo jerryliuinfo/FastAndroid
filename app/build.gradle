@@ -93,7 +93,8 @@ android {
         minSdkVersion AppConfig.minSdk
         targetSdkVersion AppConfig.targetSdk
 
-        versionCode getAppVersionCode()
+//        versionCode getAppVersionCode()
+        versionCode AppConfig.versionCode
         versionName AppConfig.versionName
 
         //dex突破65535的限制
@@ -409,6 +410,7 @@ dependencies {
     implementation rootProject.ext.androidLib.multidex
 
 
+
     implementation rootProject.ext.thirdLib.superTextView
     implementation rootProject.ext.thirdLib.banner
     implementation rootProject.ext.thirdLib.agentweb
@@ -459,7 +461,8 @@ dependencies {
     implementation project(':hencoder_clipmatrix')
 //    implementation project(':easypay')
 
-
+//https://github.com/LSPosed/AndroidHiddenApiBypass
+    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:4.2'
     //android 11 FreeReflection一个允许你在Android P上使用反射而没有任何限制的库
     implementation 'me.weishu:free_reflection:3.0.1'
 
@@ -473,7 +476,7 @@ dependencies {
 
 
     // Testing-only dependencies
-    androidTestImplementation 'androidx.test:core:' + rootProject.coreVersion
+    /*androidTestImplementation 'androidx.test:core:' + rootProject.coreVersion
     androidTestImplementation 'androidx.test:core-ktx:' + rootProject.coreVersion
     androidTestImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
     androidTestImplementation 'androidx.test.ext:junit-ktx:' + rootProject.extJUnitVersion
@@ -486,11 +489,10 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:' + rootProject.robolectricVersion
     testImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
     testImplementation 'androidx.test.espresso:espresso-intents:' + rootProject.espressoVersion
-    testImplementation 'androidx.test.ext:truth:' + rootProject.extTruthVersion
+    testImplementation 'androidx.test.ext:truth:' + rootProject.extTruthVersion*/
 
 
-    //https://github.com/LSPosed/AndroidHiddenApiBypass
-    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:4.2'
+
 
 
 //    debugImplementation 'com.github.zhengcx:MethodTraceMan:1.0.7'

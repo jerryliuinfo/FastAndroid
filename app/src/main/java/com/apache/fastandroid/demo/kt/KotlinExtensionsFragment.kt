@@ -22,6 +22,9 @@ import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.kt.bean.*
 import com.apache.fastandroid.demo.kt.delegate.DelegateList
 import com.apache.fastandroid.demo.kt.delegate.People
+import com.apache.fastandroid.demo.kt.extensions.GreenLeafyPlant
+import com.apache.fastandroid.demo.kt.extensions.print
+import com.apache.fastandroid.demo.kt.extensions.pull
 import com.apache.fastandroid.demo.kt.inline.PreferenceManager
 import com.apache.fastandroid.demo.kt.inline.onlyIf
 import com.apache.fastandroid.demo.kt.inline.onlyIf2
@@ -30,6 +33,7 @@ import com.apache.fastandroid.demo.kt.refied.RefiedDemo
 import com.apache.fastandroid.demo.kt.sealed.*
 import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.retrofit.ApiEngine
+import com.apache.fastandroid.state.AquariumPlant
 import com.apache.fastandroid.util.DateUtil
 import com.blankj.utilcode.util.ResourceUtils
 import com.kingja.loadsir.core.LoadSir
@@ -68,8 +72,25 @@ class KotlinExtensionsFragment:BaseVMFragment<KtExtensionsBinding>(KtExtensionsB
         viewBinding.btnDrawableKt.setOnClickListener {
             drawableKt()
         }
-
+        viewBinding.btnExtends.setOnClickListener {
+            extensionOverload()
+        }
     }
+
+    private fun extensionOverload(){
+        val plant = GreenLeafyPlant(10)
+        //print GreenLeafyPlant
+        plant.print()
+        val acquirePlant: AquariumPlant = plant
+        //print AquariumPlant
+        acquirePlant.print()
+
+        //可空接收器
+        val plaint2:AquariumPlant ?= null
+        plaint2.pull()
+    }
+
+
 
     private fun drawableKt() {
         val drawable = ColorDrawable(requireContext().getColor(R.color.comm_red)).apply {

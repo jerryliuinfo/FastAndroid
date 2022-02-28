@@ -1,11 +1,8 @@
 package com.tesla.framework.common.util
 
 import android.text.Editable
-import android.text.TextWatcher
 import android.widget.EditText
 import com.blankj.utilcode.util.KeyboardUtils
-import com.blankj.utilcode.util.Utils
-import com.blankj.utilcode.util.ViewUtils
 
 /**
  * Created by Jerry on 2022/2/7.

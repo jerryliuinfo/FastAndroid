@@ -28,7 +28,7 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_animatorKt,btn_drawableKt"
+                app:constraint_referenced_ids="btn_animatorKt,btn_drawableKt,btn_extends"
                 />
             <Button
                 android:id="@+id/btn_animatorKt"
@@ -42,6 +42,14 @@
             android:layout_height="wrap_content"
             android:text="DrawableKt"
             />
+
+            <Button
+                android:id="@+id/btn_extends"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="扩展函数继承"
+                />
+
 
             <ImageView
                 android:id="@+id/iv_avator"

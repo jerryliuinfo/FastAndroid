@@ -87,10 +87,10 @@ android {
 
 dependencies {
 
-    implementation(Dependencies.appCompat)
-    implementation(Dependencies.core_ktx)
-    implementation(Dependencies.constraintlayout)
-    implementation(Dependencies.googleMaterial)
+    implementation(Libs.appCompat)
+    implementation(Libs.core_ktx)
+    implementation(Libs.constraintlayout)
+    implementation(Libs.googleMaterial)
 
 
     implementation(project(":baselib"))

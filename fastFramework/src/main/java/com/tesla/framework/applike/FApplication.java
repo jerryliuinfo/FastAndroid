@@ -9,6 +9,8 @@ import com.tesla.framework.kt.SPreference;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import androidx.lifecycle.ViewModel;
+
 /**
  * Created by jerryliu on 2017/3/26.
  */

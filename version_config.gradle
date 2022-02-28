@@ -157,7 +157,8 @@ ext {
 
 
             //Kotlin
-            kotlin_stdlib                    : "org.jetbrains.kotlin:kotlin-stdlib:1.5.20",
+            kotlin_stdlib                    : "org.jetbrains.kotlin:kotlin-stdlib:1.6.10",
+            kotlin_reflect                   : "org.jetbrains.kotlin:kotlin-reflect:${Versions.INSTANCE.kotlin_stdlib}",
 
 
 
@@ -212,6 +213,7 @@ ext {
                     rootProject.androidLib.androidx_fragment_ktx,
 
                     rootProject.androidLib.kotlin_stdlib,
+                    rootProject.androidLib.kotlin_reflect,
 
                     rootProject.androidLib.androidx_lifecycle_common,
                     rootProject.androidLib.androidx_lifecycle_runtime,
