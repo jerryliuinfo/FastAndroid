@@ -28,8 +28,51 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_sum,btn_intRange,btn_partition,btn_createPair,btn_triple,
+                app:constraint_referenced_ids="btn_transform,btn_element_operator,btn_order_operator,btn_map_operator,btn_produce_operator,btn_filter,btn_statics,btn_intRange,btn_createPair,btn_triple,
                 btn_destruct_pair_triple,btn_hashMap"
+                />
+            <Button
+                android:id="@+id/btn_transform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="转换类"
+                />
+            <Button
+                android:id="@+id/btn_element_operator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元素操作符"
+                />
+            <Button
+                android:id="@+id/btn_order_operator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="顺序操作符"
+                />
+            <Button
+                android:id="@+id/btn_map_operator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="映射操作符"
+                />
+            <Button
+                android:id="@+id/btn_produce_operator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="生产操作符"
+                />
+
+            <Button
+                android:id="@+id/btn_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过滤操作符"
+                />
+            <Button
+                android:id="@+id/btn_statics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="统计操作符"
                 />
 
             <Button
@@ -39,12 +82,6 @@
                 android:text="IntRange"
                 />
 
-            <Button
-                android:id="@+id/btn_partition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="将集合分成两个部分:partition"
-                />
 
             <Button
                 android:id="@+id/btn_createPair"
@@ -66,12 +103,7 @@
                 android:text="Pair,Triple 结构"
                 />
 
-            <Button
-                android:id="@+id/btn_sum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sum"
-                />
+
             <Button
                 android:id="@+id/btn_hashMap"
                 android:layout_width="wrap_content"

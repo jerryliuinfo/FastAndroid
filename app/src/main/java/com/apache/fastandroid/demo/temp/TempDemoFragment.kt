@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.temp
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.drakket.hookcontext.HookContextFragment
+import com.apache.fastandroid.demo.launchermode.LaunchModeDemoFragment
 import com.apache.fastandroid.demo.snaphelper.SnapHelperDemoFragment
 import com.apache.fastandroid.demo.temp.reflect.ReflectionDemoFragment
 
@@ -31,6 +32,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("异步转同步", "异步转同步", AsyncToSyncDemoFragment::class.java)
                 ,ViewItemBean("死锁", "死锁", ConcurrencyDemoFragment::class.java)
                 ,ViewItemBean("RecycleviewSnapHelper", "RecycleviewSnapHelper", SnapHelperDemoFragment::class.java)
+                ,ViewItemBean("启动模式", "启动模式", LaunchModeDemoFragment::class.java)
 
         )
     }
