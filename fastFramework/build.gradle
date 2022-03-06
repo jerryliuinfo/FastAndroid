@@ -67,15 +67,19 @@ dependencies {
 
     implementation Libs.appCompat
     implementation Libs.material
-    implementation Libs.swiperefreshLayout
     implementation Libs.constraintLayout
+
+    implementation Libs.core_ktx
+    implementation Libs.activity_ktx
+    implementation Libs.fragment_ktx
+
+    implementation Libs.swiperefreshLayout
     implementation Libs.cardview
     implementation Libs.recyclerview
     implementation Libs.palette
-    implementation Libs.core_ktx
+
     implementation Libs.kotlin_stdlib
-    implementation Libs.activity_ktx
-    implementation Libs.fragment_ktx
+
 
     implementation Libs.glide
     implementation Libs.gson

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -8,8 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowAnimationStyle">@style/anim_fade</item>
         <item name="textAllCaps">false</item>
-<!--        设置字体颜色-->
-        <item name="android:textColor">@color/primary_text</item>
+
+        <!-- Window decor -->
+<!--        <item name="android:windowLightStatusBar" tools:targetApi="m">@bool/use_light_status</item>-->
+        <item name="android:statusBarColor">@color/transparent</item>
+<!--        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">@bool/use_light_navigation</item>-->
+        <item name="android:navigationBarColor">#40000000</item>
 
 
     </style>

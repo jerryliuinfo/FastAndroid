@@ -2,15 +2,15 @@ package com.hencoder.hencoderpracticedraw4
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
-import kotlinx.android.synthetic.main.fragment_practice_demo.*
+import com.hencoder.hencoderpracticedraw4.databinding.FragmentPracticeDemoBinding
+import com.tesla.framework.ui.fragment.BaseVMFragment
 
 /**
  * Created by Jerry on 2020/11/11.
  */
-class MatrixDemoFragment: BaseStatusFragmentNew() {
+class MatrixDemoFragment: BaseVMFragment<FragmentPracticeDemoBinding>(FragmentPracticeDemoBinding::inflate) {
 
 
     private val pageModels = arrayListOf(
@@ -30,17 +30,19 @@ class MatrixDemoFragment: BaseStatusFragmentNew() {
 
     )
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_practice_demo
-    }
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        setToolbarTitle("范围裁切")
+//        setToolbarTitle("范围裁切")
 
-        pager.adapter = PageAdapter(pageModels,activity!!.supportFragmentManager)
-        tabLayout.setupWithViewPager(pager)
+//        pager.adapter = PageAdapter(pageModels,activity!!.supportFragmentManager)
+//        tabLayout.setupWithViewPager(pager)
+
+        viewBinding.pager.let {
+            it.adapter = PageAdapter(pageModels,requireActivity().supportFragmentManager)
+            viewBinding.tabLayout.setupWithViewPager(it)
+        }
 
     }
 

@@ -6,12 +6,13 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
 import com.apache.fastandroid.hencoder.paint.R
-import kotlinx.android.synthetic.main.fragment_draw_paint_demo.*
+import com.apache.fastandroid.hencoder.paint.databinding.FragmentDrawPaintDemoBinding
+import com.tesla.framework.ui.fragment.BaseVMFragment
 
 /**
  * Created by Jerry on 2020/11/11.
  */
-class DrawPaintDemoFragment: BaseStatusFragmentNew() {
+class DrawPaintDemoFragment: BaseVMFragment<FragmentDrawPaintDemoBinding>(FragmentDrawPaintDemoBinding::inflate) {
 
     private val pageModels = arrayListOf(
             PageModel(R.layout.sample_linear_gradient, R.string.title_linear_gradient, R.layout.practice_linear_gradient),
@@ -30,16 +31,17 @@ class DrawPaintDemoFragment: BaseStatusFragmentNew() {
             PageModel(R.layout.sample_fill_path, R.string.title_fill_path, R.layout.practice_fill_path)
     )
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_draw_paint_demo
-    }
+
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        setToolbarTitle("Paint详解")
-        pager.adapter = PageAdapter(pageModels,activity!!.supportFragmentManager)
-        tabLayout.setupWithViewPager(pager)
+//        setToolbarTitle("Paint详解")
+        viewBinding.pager.let {
+            it.adapter = PageAdapter(pageModels,requireActivity().supportFragmentManager)
+            viewBinding.tabLayout.setupWithViewPager(it)
+        }
+
 
     }
 

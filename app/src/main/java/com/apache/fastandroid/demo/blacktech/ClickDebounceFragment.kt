@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import com.apache.fastandroid.databinding.FragmentDebounceClickBinding
 import com.tesla.framework.ui.fragment.BaseVMFragment
-import com.xuexiang.xaop.DebugLog
-import com.xuexiang.xaop.Intercept
-import com.xuexiang.xaop.SingleClick
+
 
 /**
  * Created by Jerry on 2022/1/15.
@@ -31,9 +29,9 @@ class ClickDebounceFragment : BaseVMFragment<FragmentDebounceClickBinding>(Fragm
     /**
      * 设置5秒内响应一次点击
      */
-    @SingleClick(5000)
-    @DebugLog(priority = Log.ERROR)
-    @Intercept(3)
+//    @SingleClick(5000)
+//    @DebugLog(priority = Log.ERROR)
+//    @Intercept(3)
     fun handleOnClick(v: View?) {
        println ("点击响应！")
     }

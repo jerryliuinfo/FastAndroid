@@ -36,5 +36,9 @@ object Versions {
     const val mockito_kotlin = "2.0.0-RC3"
     const val androidxArch = "2.0.0"
 
+
+    const val agp = "4.0.2"
+    const val kgp = "7.0.1"
+
 }
 

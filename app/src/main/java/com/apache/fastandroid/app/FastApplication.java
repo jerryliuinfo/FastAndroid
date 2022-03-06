@@ -429,6 +429,10 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
                                 || stack.contains("com.oppo.intent.action.TRANSLATE")
                                 || stack.contains("Accessibi1ityInteractionContro11er")
                                 || stack.contains("BadTokenException")
+                                || stack.contains("Service.startForeground()")
+                                || stack.contains("com.swift.sandhook")
+                                || stack.contains("updateForceDarkMode")
+                                || stack.contains("ClipboardService")
                         ) {
                             e.printStackTrace();
                         }else {
@@ -447,6 +451,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
             }
         });
     }
+
 
     private void initAnr(){
         AnrConfig config = AnrConfig.with().set_timeoutInterval(2000)

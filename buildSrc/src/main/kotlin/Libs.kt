@@ -23,6 +23,8 @@ object Libs {
 
 
 
+    const val agp = "com.android.tools.build:gradle:${Versions.agp}"
+    const val kgp = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
 
 
     val lifecycle = arrayOf(
@@ -35,22 +37,22 @@ object Libs {
 
     val navigation = arrayOf(
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}",
-        "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}",
+        "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
     )
     val immersionbar = arrayOf(
         "com.gyf.immersionbar:immersionbar:${Versions.immersionbar}",
         "com.gyf.immersionbar:immersionbar-components:${Versions.immersionbar}",
-        "com.gyf.immersionbar:immersionbar-ktx:${Versions.immersionbar}",
+        "com.gyf.immersionbar:immersionbar-ktx:${Versions.immersionbar}"
     )
 
     val rxJava = arrayOf(
         "io.reactivex.rxjava3:rxjava:${Versions.rxjava}",
-        "io.reactivex.rxjava3:rxandroid:${Versions.rxjava}",
+        "io.reactivex.rxjava3:rxandroid:${Versions.rxjava}"
     )
 
     val room = arrayOf(
         "androidx.room:room-runtime:${Versions.Room}",
-        "androidx.room:room-ktx:${Versions.Room}",
+        "androidx.room:room-ktx:${Versions.Room}"
 //        "androidx.room:room-compiler:${Versions.Room}",
     )
 

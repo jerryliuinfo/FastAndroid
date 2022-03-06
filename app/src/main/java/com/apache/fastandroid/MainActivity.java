@@ -13,7 +13,7 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.UserBean;
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment;
+import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -34,7 +34,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
-
 
 
 public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements View.OnClickListener {
@@ -93,7 +92,8 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 //        FragmentContainerActivity.launch(this, MMKVFragment.class,null);
 //        FragmentContainerActivity.launch(this, HawkDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, LiveDataWrongUsageFragment.class,null);
-        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
+//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
+        FragmentContainerActivity.launch(this, CollectionDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2.class,null);
 //        FragmentContainerActivity.launch(this, ClickDebounceFragment.class,null);
 //        FragmentContainerActivity.launch(this, CockroachDemoFragment.class,null);
@@ -145,6 +145,7 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("selecteId", selecteId);
+
 
     }
 
