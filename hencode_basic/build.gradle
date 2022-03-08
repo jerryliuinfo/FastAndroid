@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
@@ -34,6 +33,12 @@ android {
         abortOnError false
         //检查是否使用了最新api
 //        check 'NewApi'
+    }
+
+    buildFeatures{
+        dataBinding = true
+        // for view binding :
+        viewBinding = true
     }
 }
 

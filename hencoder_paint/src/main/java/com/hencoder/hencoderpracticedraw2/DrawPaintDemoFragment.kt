@@ -2,6 +2,7 @@ package com.hencoder.hencoderpracticedraw2
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import com.apache.fastandroid.artemis.ui.BasePageFragment
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
@@ -12,9 +13,10 @@ import com.tesla.framework.ui.fragment.BaseVMFragment
 /**
  * Created by Jerry on 2020/11/11.
  */
-class DrawPaintDemoFragment: BaseVMFragment<FragmentDrawPaintDemoBinding>(FragmentDrawPaintDemoBinding::inflate) {
+class DrawPaintDemoFragment: BasePageFragment() {
 
-    private val pageModels = arrayListOf(
+    override fun loadPageModels(): MutableList<PageModel> {
+        return arrayListOf(
             PageModel(R.layout.sample_linear_gradient, R.string.title_linear_gradient, R.layout.practice_linear_gradient),
             PageModel(R.layout.sample_radial_gradient, R.string.title_radial_gradient, R.layout.practice_radial_gradient),
             PageModel(R.layout.sample_sweep_gradient, R.string.title_sweep_gradient, R.layout.practice_sweep_gradient),
@@ -29,20 +31,7 @@ class DrawPaintDemoFragment: BaseVMFragment<FragmentDrawPaintDemoBinding>(Fragme
             PageModel(R.layout.sample_mask_filter, R.string.title_mask_filter, R.layout.practice_mask_filter),
             PageModel(R.layout.sample_text_path, R.string.title_text_path, R.layout.practice_text_path),
             PageModel(R.layout.sample_fill_path, R.string.title_fill_path, R.layout.practice_fill_path)
-    )
-
-
-
-
-    override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
-        super.layoutInit(inflater, savedInstanceSate)
-//        setToolbarTitle("Paint详解")
-        viewBinding.pager.let {
-            it.adapter = PageAdapter(pageModels,requireActivity().supportFragmentManager)
-            viewBinding.tabLayout.setupWithViewPager(it)
-        }
-
-
+        )
     }
 
 

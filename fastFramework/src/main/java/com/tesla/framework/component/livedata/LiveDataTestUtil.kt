@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.apache.fastandroid;
+package com.tesla.framework.component.livedata;
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

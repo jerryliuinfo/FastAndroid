@@ -6,7 +6,6 @@ import com.apache.fastandroid.databinding.FragmentJetpackLivedataWrongUsageBindi
 import com.apache.fastandroid.jetpack.relearnandroid.vm.ShareViewModel
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.startActivity
-import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 import com.tesla.framework.ui.activity.FragmentContainerActivity
@@ -108,7 +107,7 @@ class LiveDataWrongUsageActivity : BaseVmActivityNew<FragmentJetpackLivedataWron
             shareViewModel.goToDetailByEventWrapper("Hello")
         }
         shareViewModel.navigationToDetailEventWrapper.observe(this){
-            var content = it.getContentIfHandled()
+            var content = it.getContentIfNotHandled()
             Logger.d("LiveDataWrongUsageFragment useEventWrapper onChange content:${content}")
             content?.let {
                 FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)

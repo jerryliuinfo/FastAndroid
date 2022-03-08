@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Base.AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -10,10 +10,17 @@
         <item name="textAllCaps">false</item>
 
         <!-- Window decor -->
-<!--        <item name="android:windowLightStatusBar" tools:targetApi="m">@bool/use_light_status</item>-->
         <item name="android:statusBarColor">@color/transparent</item>
-<!--        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">@bool/use_light_navigation</item>-->
         <item name="android:navigationBarColor">#40000000</item>
+
+        <!--        不允许多点触控-->
+        <item name="android:splitMotionEvents">false</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+
+
+    </style>
+    <style name="AppTheme" parent="Base.AppTheme">
+
 
 
     </style>

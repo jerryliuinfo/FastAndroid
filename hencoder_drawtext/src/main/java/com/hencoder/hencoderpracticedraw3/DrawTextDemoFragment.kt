@@ -1,20 +1,19 @@
 package com.hencoder.hencoderpracticedraw3
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
-import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
+
+import com.apache.fastandroid.artemis.ui.BasePageFragment
+
 import com.apache.fastandroid.artemis.ui.bean.PageModel
-import com.hencoder.hencoderpracticedraw3.databinding.FragmentPracticeDemoBinding
-import com.tesla.framework.ui.fragment.BaseVMFragment
+
 
 /**
  * Created by Jerry on 2020/11/11.
  */
-class DrawTextDemoFragment: BaseVMFragment<FragmentPracticeDemoBinding>(FragmentPracticeDemoBinding::inflate) {
+class DrawTextDemoFragment: BasePageFragment() {
 
 
-    private val pageModels = arrayListOf(
+    override fun loadPageModels(): MutableList<PageModel> {
+        return arrayListOf(
             PageModel(R.layout.practice_run_advance_view, R.string.title_get_run_advance, R.layout.practice_run_advance_view),
             PageModel(R.layout.practice_measure_text, R.string.title_measure_text, R.layout.practice_measure_text),
             PageModel(R.layout.practice_get_font_metrics, R.string.title_get_font_metrics, R.layout.practice_get_font_metrics),
@@ -29,21 +28,7 @@ class DrawTextDemoFragment: BaseVMFragment<FragmentPracticeDemoBinding>(Fragment
             PageModel(R.layout.practice_get_font_spacing, R.string.title_get_font_spacing, R.layout.practice_get_font_spacing),
             PageModel(R.layout.practice_set_text_align, R.string.title_set_text_align, R.layout.practice_set_text_align)
 
-    )
-
-
-
-
-    override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
-        super.layoutInit(inflater, savedInstanceSate)
-//        setToolbarTitle("DrawText")
-
-        viewBinding.pager.let {
-            it.adapter = PageAdapter(pageModels,requireActivity().supportFragmentManager)
-            viewBinding.tabLayout.setupWithViewPager(it)
-        }
-
-
+        )
     }
 
 }

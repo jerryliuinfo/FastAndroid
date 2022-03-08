@@ -2,19 +2,21 @@ package com.apache.fastandroid
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.artemis.ui.BasePageFragment
 import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
 import com.apache.fastandroid.hencoder.basic.R
-import com.tesla.framework.common.util.log.NLog
-import kotlinx.android.synthetic.main.fragment_practice_demo.*
+import com.apache.fastandroid.hencoder.basic.databinding.FragmentPracticeDemoBinding
+import com.tesla.framework.ui.fragment.BaseVMFragment
 
 /**
  * Created by Jerry on 2020/11/11.
  */
-class DrawBasicDemoFragment: BaseStatusFragmentNew() {
+class DrawBasicDemoFragment: BasePageFragment() {
 
-    private val pageModels = arrayListOf(
+
+    override fun loadPageModels(): MutableList<PageModel> {
+        return arrayListOf(
             PageModel(R.layout.sample_pie_chart, R.string.title_draw_pie_chart, R.layout.practice_pie_chart),
             PageModel(R.layout.sample_histogram, R.string.title_draw_histogram, R.layout.practice_histogram2),
             PageModel(R.layout.sample_color, R.string.title_draw_color, R.layout.practice_color),
@@ -27,26 +29,7 @@ class DrawBasicDemoFragment: BaseStatusFragmentNew() {
             PageModel(R.layout.sample_arc, R.string.title_draw_arc, R.layout.practice_arc),
             PageModel(R.layout.sample_path, R.string.title_draw_path, R.layout.practice_path),
             PageModel(R.layout.sample_path, "圆角文字", R.layout.practice_path)
-    )
-
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_practice_demo
-    }
-
-
-    override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
-        super.layoutInit(inflater, savedInstanceSate)
-//        setToolbarTitle("绘制基础")
-
-
-        pager.adapter = PageAdapter(pageModels,activity!!.supportFragmentManager)
-        tabLayout.setupWithViewPager(pager)
-        NLog.d(TAG, "JHELLO")
-        NLog.d(TAG, "JHELLO")
-        NLog.d(TAG, "JHELLO")
-        NLog.d(TAG, "JHELLO22222")
-        NLog.d(TAG, "8888888")
-
+        )
     }
 
 
