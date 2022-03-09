@@ -41,7 +41,7 @@ class DefaultWeatherDataSource(private val dispatcher: CoroutineDispatcher):Weat
 
     override suspend fun fetchNewData() {
         withContext(Dispatchers.Main){
-            _cahceData.value = "Fetching new data"
+            _cahceData.value = "Fetching new data..."
             _cahceData.value = simulateNetworkDataFetch()
         }
     }

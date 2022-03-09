@@ -32,6 +32,7 @@ class WeatherInfoViewModel(private val dataSource: WeatherDataSource):ViewModel(
     val cacheData = dataSource.cachedData
 
     fun onRefresh(){
+        Logger.d("onRefresh --->")
        // Launch a coroutine that reads from a remote data source and updates cache
         viewModelScope.launch {
             dataSource.fetchNewData()

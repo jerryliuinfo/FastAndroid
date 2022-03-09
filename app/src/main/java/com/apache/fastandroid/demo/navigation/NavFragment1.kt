@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.NavigationFragment1Binding
-import com.tesla.framework.ui.fragment.BaseVMFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2022/1/23.
  */
-class NavFragment1:BaseVMFragment<NavigationFragment1Binding>(NavigationFragment1Binding::inflate) {
+class NavFragment1:BaseVBFragment<NavigationFragment1Binding>(NavigationFragment1Binding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

@@ -2,37 +2,28 @@ package com.apache.fastandroid.demo.temp
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.IntentFilter
 import android.graphics.Rect
-import android.graphics.Typeface
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewTreeObserver
-import com.apache.fastandroid.R
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
 import android.widget.Toast
 
 import android.text.Spanned
 
 import android.text.InputFilter
-import android.util.LruCache
-import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.databinding.FragmentTempKnowledgeBinding
-import com.apache.fastandroid.demo.temp.bean.ReflectBean
 import com.apache.fastandroid.demo.temp.concurrency.Player
 import com.blankj.utilcode.util.*
-import com.tesla.framework.common.util.log.Logger
-import com.tesla.framework.ui.fragment.BaseVMFragment
-import per.goweii.anylayer.AnyLayer
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 
 /**
  * Created by Jerry on 2021/9/6.
  */
-class KnowledgeFragment: BaseVMFragment<FragmentTempKnowledgeBinding>(FragmentTempKnowledgeBinding::inflate) {
+class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTempKnowledgeBinding::inflate) {
     private val items:MutableList<String> = ArrayList()
     companion object{
         private const val TAG = "KnowledgeFragment"

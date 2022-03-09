@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.apache.fastandroid.jetpack.viewmodel.WeatherInfoViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label1"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:paddingBottom="8dp"
+            android:paddingEnd="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:text="@{Long.toString(viewmodel.currentTime)}"
+            android:textSize="24sp"
+            tools:text="1561470022" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label2"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/time_transformed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:paddingBottom="8dp"
+            android:paddingEnd="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:text="@{viewmodel.currentTimeTransformed}"
+            android:textSize="18sp"
+            tools:text="TOKYO" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label3"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/current_weather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:paddingBottom="8dp"
+            android:paddingEnd="8dp"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:text="@{viewmodel.currentWeather}"
+            android:textSize="24sp"
+            tools:text="Tokyo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label4"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/cached_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:paddingBottom="8dp"
+            android:paddingEnd="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:text="@{viewmodel.cacheData}"
+            android:textSize="24sp"
+            tools:text="This is old data" />
+
+        <Button
+            android:id="@+id/refresh_button"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:onClick="@{() -> viewmodel.onRefresh()}"
+            android:text="@string/refresh_label" />
+    </LinearLayout>
+</layout>

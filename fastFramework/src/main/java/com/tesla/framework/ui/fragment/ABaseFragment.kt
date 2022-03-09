@@ -9,86 +9,31 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.ComponentActivity
 import androidx.annotation.CallSuper
-import androidx.annotation.IdRes
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
-import androidx.viewbinding.ViewBinding
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import java.lang.IllegalStateException
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import java.lang.reflect.Method
-import java.lang.reflect.ParameterizedType
-
 
 /**
- * Fragment基类
+ * Created by Jerry on 2022/3/10.
  */
-abstract class BaseVMFragment<T : ViewBinding>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) : Fragment() {
-
-
+open class ABaseFragment:Fragment() {
     private var isFirstLoad = true
-
-
-    protected lateinit var viewBinding: T
-    private val compositeDisposable = CompositeDisposable()
     protected lateinit var mActivity: ComponentActivity
-
 
     private var mFragmentProvider: ViewModelProvider? = null
     private var mActivityProvider: ViewModelProvider? = null
     private var mApplicationProvider: ViewModelProvider? = null
 
+    private val compositeDisposable = CompositeDisposable()
+
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mActivity = requireActivity()
-    }
-
-    @CallSuper
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        viewBinding = inflater(inflater, container, false)
-
-        bindUI(viewBinding.root)
-
-        return viewBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        layoutInit(layoutInflater,savedInstanceState)
-    }
-
-    open fun bindUI(rootView: View?) {}
-
-    open fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {}
-
-//    protected abstract fun bindView(): T
-
-    @CallSuper
-    override fun onDestroyView() {
-        compositeDisposable.dispose()
-        super.onDestroyView()
-    }
-
-    /**
-     * 添加Disposable
-     */
-    protected fun addDisposable(disposable: Disposable) {
-        compositeDisposable.add(disposable)
-    }
-
-
-    open fun getRootView(): View {
-        return viewBinding.root
-    }
-
-    open fun <T : View?> findViewById(@IdRes resId: Int): T {
-        return getRootView().findViewById(resId)
     }
 
     override fun onResume() {
@@ -158,4 +103,17 @@ abstract class BaseVMFragment<T : ViewBinding>(val inflater: (inflater: LayoutIn
     protected open fun initViewModel() {}
 
 
+
+    @CallSuper
+    override fun onDestroyView() {
+        compositeDisposable.dispose()
+        super.onDestroyView()
+    }
+
+    /**
+     * 添加Disposable
+     */
+     fun addDisposable(disposable: Disposable) {
+        compositeDisposable.add(disposable)
+    }
 }

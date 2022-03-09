@@ -1,12 +1,7 @@
 package com.hencoder.hencoderpracticedraw4
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import com.apache.fastandroid.artemis.ui.BasePageFragment
-import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
-import com.hencoder.hencoderpracticedraw4.databinding.FragmentPracticeDemoBinding
-import com.tesla.framework.ui.fragment.BaseVMFragment
 
 /**
  * Created by Jerry on 2020/11/11.

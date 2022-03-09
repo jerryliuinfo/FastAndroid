@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentKtCollectionBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.tesla.framework.ui.fragment.BaseVMFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import okhttp3.internal.filterList
 
 /**
  * Created by Jerry on 2022/2/27.
  */
-class CollectionDemoFragment:BaseVMFragment<FragmentKtCollectionBinding>(FragmentKtCollectionBinding::inflate) {
+class CollectionDemoFragment:BaseVBFragment<FragmentKtCollectionBinding>(FragmentKtCollectionBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

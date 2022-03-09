@@ -14,7 +14,7 @@ import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.UserBean;
 import com.apache.fastandroid.home.HomeFragment;
-import com.apache.fastandroid.jetpack.livedata.LiveDataBestPracticeFragment;
+import com.apache.fastandroid.jetpack.livedata.LiveDataBestPracticeFragment2;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.tesla.framework.common.util.log.FastLog;
@@ -76,7 +76,7 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 
         Map<String,String> map = new HashMap<>();
 //        LiveDataWrongUsageActivity.launch(this);
-        FragmentContainerActivity.launch(this, LiveDataBestPracticeFragment.class,null);
+        FragmentContainerActivity.launch(this, LiveDataBestPracticeFragment2.class,null);
 
 //                FragmentContainerActivity.launch(this, CoroutineDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment.class,null);

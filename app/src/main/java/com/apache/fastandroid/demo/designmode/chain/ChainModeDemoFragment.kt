@@ -6,12 +6,12 @@ import com.apache.fastandroid.databinding.FragmentDesignModeChainBinding
 import com.apache.fastandroid.demo.designmode.chain.interceptors.CustomInterceptor1
 import com.apache.fastandroid.demo.designmode.chain.interceptors.CustomInterceptor3
 import com.apache.fastandroid.demo.designmode.chain.interceptors.CustomInterceptor2
-import com.tesla.framework.ui.fragment.BaseVMFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2021/10/19.
  */
-class ChainModeDemoFragment:BaseVMFragment<FragmentDesignModeChainBinding>(FragmentDesignModeChainBinding::inflate) {
+class ChainModeDemoFragment:BaseVBFragment<FragmentDesignModeChainBinding>(FragmentDesignModeChainBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

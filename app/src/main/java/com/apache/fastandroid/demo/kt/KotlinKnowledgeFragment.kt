@@ -32,25 +32,23 @@ import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.maxCustomize
 import com.tesla.framework.kt.plusAssign
-import com.tesla.framework.ui.fragment.BaseVMFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import java.io.File
 import java.nio.charset.Charset
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.coroutines.Continuation
 import kotlin.math.cos
 import kotlin.random.Random
 import kotlin.reflect.KClass
 import kotlin.reflect.full.findAnnotation
-import kotlin.reflect.full.findAnnotations
 import kotlin.system.measureTimeMillis
 
 /**
  * Created by Jerry on 2021/10/18.
  */
-class KotlinKnowledgeFragment:BaseVMFragment<KtGrammerBinding>(KtGrammerBinding::inflate) {
+class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding::inflate) {
     companion object{
         private const val TAG = "KotlinKnowledgeFragment"
     }

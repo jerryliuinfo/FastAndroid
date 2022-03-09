@@ -1,14 +1,8 @@
 package com.hencoder.hencoderpracticedraw2
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import com.apache.fastandroid.artemis.ui.BasePageFragment
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
-import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
 import com.apache.fastandroid.hencoder.paint.R
-import com.apache.fastandroid.hencoder.paint.databinding.FragmentDrawPaintDemoBinding
-import com.tesla.framework.ui.fragment.BaseVMFragment
 
 /**
  * Created by Jerry on 2020/11/11.

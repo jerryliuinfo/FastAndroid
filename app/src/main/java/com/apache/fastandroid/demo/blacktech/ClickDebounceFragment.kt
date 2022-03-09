@@ -1,17 +1,16 @@
 package com.apache.fastandroid.demo.blacktech
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import com.apache.fastandroid.databinding.FragmentDebounceClickBinding
-import com.tesla.framework.ui.fragment.BaseVMFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 
 /**
  * Created by Jerry on 2022/1/15.
  */
-class ClickDebounceFragment : BaseVMFragment<FragmentDebounceClickBinding>(FragmentDebounceClickBinding::inflate) {
+class ClickDebounceFragment : BaseVBFragment<FragmentDebounceClickBinding>(FragmentDebounceClickBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

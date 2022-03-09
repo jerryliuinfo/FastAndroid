@@ -1,13 +1,8 @@
 package com.apache.fastandroid
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import com.apache.fastandroid.artemis.ui.BasePageFragment
-import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
 import com.apache.fastandroid.hencoder.basic.R
-import com.apache.fastandroid.hencoder.basic.databinding.FragmentPracticeDemoBinding
-import com.tesla.framework.ui.fragment.BaseVMFragment
 
 /**
  * Created by Jerry on 2020/11/11.

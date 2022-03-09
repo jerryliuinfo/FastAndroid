@@ -9,13 +9,13 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentCockroachBinding
 import com.apache.fastandroid.demo.performance.cockroach.LifecycleExceptionActivity
 import com.apache.fastandroid.demo.performance.cockroach.UnknowAct
-import com.tesla.framework.ui.fragment.BaseVMFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import java.lang.RuntimeException
 
 /**
  * Created by Jerry on 2022/2/3.
  */
-class CockroachDemoFragment:BaseVMFragment<FragmentCockroachBinding>(FragmentCockroachBinding::inflate) {
+class CockroachDemoFragment:BaseVBFragment<FragmentCockroachBinding>(FragmentCockroachBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

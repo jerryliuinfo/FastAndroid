@@ -3,15 +3,18 @@ package com.apache.fastandroid.jetpack.livedata
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
+import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentBestPracticeLivedata2Binding
 import com.apache.fastandroid.databinding.FragmentBestPracticeLivedataBinding
 import com.apache.fastandroid.jetpack.viewmodel.WeatherInfoViewModel
 import com.apache.fastandroid.jetpack.viewmodel.WeatherViewModelFactory
+import com.tesla.framework.ui.fragment.BaseDBFragment
 import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2020/11/5.
  */
-class LiveDataBestPracticeFragment : BaseVBFragment<FragmentBestPracticeLivedataBinding>(FragmentBestPracticeLivedataBinding::inflate){
+class LiveDataBestPracticeFragment2 : BaseDBFragment<FragmentBestPracticeLivedata2Binding>(FragmentBestPracticeLivedata2Binding::inflate){
     companion object{
         val TAG = "LiveDataBestPracticeFragment"
     }
@@ -21,24 +24,12 @@ class LiveDataBestPracticeFragment : BaseVBFragment<FragmentBestPracticeLivedata
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewModel.currentTime.observe(this){
-            viewBinding.time.text = it.toString()
-        }
-        viewModel.currentTimeTransformed.observe(this){
-            viewBinding.timeTransformed.text = it
-        }
+       viewBinding.lifecycleOwner = this
+        viewBinding.viewmodel = viewModel
+    }
 
-        viewModel.currentWeather.observe(this){
-            viewBinding.currentWeather.text = it
-        }
-
-        viewModel.cacheData.observe(this){
-            viewBinding.cachedValue.text = it
-        }
-
-        viewBinding.refreshButton.setOnClickListener {
-            viewModel.onRefresh()
-        }
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_best_practice_livedata2
     }
 
 

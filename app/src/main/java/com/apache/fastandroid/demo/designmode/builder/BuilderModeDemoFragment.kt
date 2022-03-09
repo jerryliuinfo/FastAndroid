@@ -8,12 +8,12 @@ import com.apache.fastandroid.demo.component.loadsir.callback.EmptyCallback
 import com.apache.fastandroid.demo.hawk.Hawk
 import com.apache.fastandroid.demo.hawk.interfaces.ILogInterceptor
 import com.kingja.loadsir.core.LoadSir
-import com.tesla.framework.ui.fragment.BaseVMFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2021/9/19.
  */
-class BuilderModeDemoFragment:BaseVMFragment<FragmentBuilderModeBinding>(FragmentBuilderModeBinding::inflate) {
+class BuilderModeDemoFragment:BaseVBFragment<FragmentBuilderModeBinding>(FragmentBuilderModeBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

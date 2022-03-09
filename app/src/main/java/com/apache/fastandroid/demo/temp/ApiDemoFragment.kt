@@ -7,7 +7,7 @@ import android.view.ViewConfiguration
 import androidx.arch.core.executor.ArchTaskExecutor
 import com.apache.fastandroid.databinding.TempApiUsageDemoBinding
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseVMFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -19,7 +19,7 @@ import kotlin.concurrent.thread
 /**
  * Created by Jerry on 2021/10/27.
  */
-class ApiDemoFragment:BaseVMFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBinding::inflate) {
+class ApiDemoFragment:BaseVBFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBinding::inflate) {
     companion object{
         private  const val TAG = "ApiDemoFragment"
     }

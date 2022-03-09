@@ -3,21 +3,19 @@ package com.apache.fastandroid.demo.kt
 import android.app.ActivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.core.content.ContextCompat.getSystemService
 import com.apache.fastandroid.databinding.KtGrammer2Binding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.kt.genericity.*
 import com.blankj.utilcode.util.GsonUtils
 import com.google.gson.Gson
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVMFragment
-import kotlinx.android.synthetic.main.kt_grammer.*
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import java.io.File
 
 /**
  * Created by Jerry on 2021/10/18.
  */
-class KotlinKnowledgeFragment2:BaseVMFragment<KtGrammer2Binding>(KtGrammer2Binding::inflate) {
+class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Binding::inflate) {
     companion object{
         private const val TAG = "kotlinknowledgefragment"
     }

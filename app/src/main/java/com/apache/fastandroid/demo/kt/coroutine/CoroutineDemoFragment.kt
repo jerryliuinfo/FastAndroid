@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentKotlinCouritineBinding
 import com.apache.fastandroid.home.HomeReporsitoryKt
-import com.apache.fastandroid.home.db.HomeDao
 import com.apache.fastandroid.home.db.HomeDatabase
 import com.apache.fastandroid.home.network.HomeNetwork
 import com.apache.fastandroid.network.retrofit.ApiEngine
@@ -17,8 +15,7 @@ import com.apache.fastandroid.network.retrofit.convertor.CustomGsonConverterFact
 import com.apache.fastandroid.util.extensitons.runOnUi
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.awaitNextLayout
-import com.tesla.framework.ui.fragment.BaseLifecycleFragment
-import com.tesla.framework.ui.fragment.BaseVMFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -33,7 +30,7 @@ import kotlin.concurrent.thread
  * Created by Jerry on 2021/10/28.
  * 协程
  */
-class CoroutineDemoFragment:BaseVMFragment<FragmentKotlinCouritineBinding>(FragmentKotlinCouritineBinding::inflate) {
+class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(FragmentKotlinCouritineBinding::inflate) {
     companion object{
         private const val TAG = "CoroutineDemoFragment"
     }

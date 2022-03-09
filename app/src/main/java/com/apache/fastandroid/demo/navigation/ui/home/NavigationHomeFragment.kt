@@ -2,21 +2,15 @@ package com.apache.fastandroid.demo.navigation.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
-import androidx.activity.viewModels
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.apache.fastandroid.databinding.FragmentDashboardBinding
 import com.apache.fastandroid.databinding.FragmentHomeBinding
 import com.apache.fastandroid.home.HomeViewModelKt
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVMFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
-class NavigationHomeFragment : BaseVMFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+class NavigationHomeFragment : BaseVBFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
   private  val dashboardViewModel: HomeViewModelKt by viewModels()
 

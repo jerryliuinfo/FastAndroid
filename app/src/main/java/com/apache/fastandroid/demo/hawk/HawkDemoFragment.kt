@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentHawkBinding
 import com.apache.fastandroid.demo.hawk.interfaces.ILogInterceptor
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVMFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2022/1/20.
  */
-class HawkDemoFragment: BaseVMFragment<FragmentHawkBinding>(FragmentHawkBinding::inflate) {
+class HawkDemoFragment: BaseVBFragment<FragmentHawkBinding>(FragmentHawkBinding::inflate) {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
