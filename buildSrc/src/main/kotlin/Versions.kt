@@ -2,6 +2,8 @@
  * Created by Jerry on 2022/2/26.
  */
 object Versions {
+    const val kotlin = "1.6.10"
+
     const val appCompat = "1.1.0"
     const val material = "1.4.0-alpha01"
     const val constraintlayout = "2.0.4"
@@ -12,12 +14,15 @@ object Versions {
     const val fragment_ktx = "1.3.6"
     const val palette_ktx = "1.0.0"
     const val annotation = "1.0.0"
-    const val kotlin_stdlib = "1.6.10"
 
     const val navigationVersion = "2.3.5"
     const val lifecycle_version = "2.3.1"
     const val Room = "2.4.1"
     const val coroutines = "1.3.5"
+
+    const val retrofit = "2.8.1"
+    const val retrofitRxjava = "2.9.0"
+
     const val workmanager = "2.2.0"
     const val multidex = "2.0.0"
     const val gson = "2.8.2"
@@ -37,7 +42,7 @@ object Versions {
     const val androidxArch = "2.0.0"
 
 
-    const val agp = "4.0.2"
+    const val agp = "7.0.4"
     const val kgp = "7.0.1"
 
 }

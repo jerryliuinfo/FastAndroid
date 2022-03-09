@@ -10,6 +10,7 @@ class JetPackLiveDataListFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
                 ViewItemBean("LiveData基本用法", "LiveData", LiveDataBasicFragment::class.java),
+                ViewItemBean("LiveData最佳实践️", "LiveData最佳实践️", LiveDataBestPracticeFragment::class.java),
                 ViewItemBean("LiveDat不恰当用法","LiveDat不恰当用法", LiveDataWrongUsageFragment::class.java)
         )
     }

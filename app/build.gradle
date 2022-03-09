@@ -309,11 +309,14 @@ android {
 
 
     //将SO库打包到apk内
-    sourceSets {
+   /* sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
-    }
+
+    }*/
+
+
 
     //AspectJ 报错 参考:https://blog.csdn.net/zhangshuny/article/details/106056790,
     // https://blog.csdn.net/tian2342/article/details/102698564
@@ -466,36 +469,9 @@ dependencies {
     implementation 'me.weishu:free_reflection:3.0.1'
 
 
-    //必须加行这行，否则proxyToolProcessor无法自动生成类
-//    implementation project(':xaop_annotation')
-//    annotationProcessor project(':xaop-runtime')
 
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
 
-
-
-    // Testing-only dependencies
-    /*androidTestImplementation 'androidx.test:core:' + rootProject.coreVersion
-    androidTestImplementation 'androidx.test:core-ktx:' + rootProject.coreVersion
-    androidTestImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
-    androidTestImplementation 'androidx.test.ext:junit-ktx:' + rootProject.extJUnitVersion
-    androidTestImplementation 'androidx.test:runner:' + rootProject.runnerVersion
-    androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
-
-    testImplementation 'androidx.test:core:' + rootProject.coreVersion;
-    testImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:' + rootProject.robolectricVersion
-    testImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
-    testImplementation 'androidx.test.espresso:espresso-intents:' + rootProject.espressoVersion
-    testImplementation 'androidx.test.ext:truth:' + rootProject.extTruthVersion*/
-
-
-
-
-
-//    debugImplementation 'com.github.zhengcx:MethodTraceMan:1.0.7'
-//    releaseImplementation 'com.github.zhengcx:MethodTraceMan:1.0.5-noop'0
 
 }
 

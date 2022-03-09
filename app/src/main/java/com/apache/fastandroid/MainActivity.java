@@ -13,8 +13,8 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.UserBean;
-import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
+import com.apache.fastandroid.jetpack.livedata.LiveDataBestPracticeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.tesla.framework.common.util.log.FastLog;
@@ -75,6 +75,8 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
         Logger.d(String.format("external file dir:%s, cache:%s",context.getExternalFilesDir(null),context.getExternalCacheDir()));
 
         Map<String,String> map = new HashMap<>();
+//        LiveDataWrongUsageActivity.launch(this);
+        FragmentContainerActivity.launch(this, LiveDataBestPracticeFragment.class,null);
 
 //                FragmentContainerActivity.launch(this, CoroutineDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment.class,null);
@@ -93,7 +95,7 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 //        FragmentContainerActivity.launch(this, HawkDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, LiveDataWrongUsageFragment.class,null);
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
-        FragmentContainerActivity.launch(this, CollectionDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, CollectionDemoFragment.class,null);
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2.class,null);
 //        FragmentContainerActivity.launch(this, ClickDebounceFragment.class,null);
 //        FragmentContainerActivity.launch(this, CockroachDemoFragment.class,null);

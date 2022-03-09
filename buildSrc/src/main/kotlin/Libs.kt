@@ -1,5 +1,6 @@
 object Libs {
 
+    const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val material = "com.google.android.material:material:${Versions.material}"
@@ -9,8 +10,7 @@ object Libs {
     const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
     const val palette = "androidx.palette:palette-ktx:1.0.0"
 
-    const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
-    const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin_stdlib}"
+    const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
 
     const val activity_ktx = "androidx.activity:activity-ktx:${Versions.activity_ktx}"
     const val fragment_ktx = "androidx.fragment:fragment-ktx:${Versions.fragment_ktx}"
@@ -21,11 +21,17 @@ object Libs {
     const val utilcode = "com.blankj:utilcodex:1.31.0"
     const val brvh = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.brvh}"
 
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
 
 
     const val agp = "com.android.tools.build:gradle:${Versions.agp}"
     const val kgp = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
 
+
+    val kotlin = arrayOf(
+        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}",
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+    )
 
     val lifecycle = arrayOf(
         "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle_version}",
@@ -49,6 +55,19 @@ object Libs {
         "io.reactivex.rxjava3:rxjava:${Versions.rxjava}",
         "io.reactivex.rxjava3:rxandroid:${Versions.rxjava}"
     )
+
+    val coroutine = arrayOf(
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    )
+
+    val retrofit = arrayOf(
+        "com.squareup.retrofit2:retrofit:${Versions.retrofit}",
+        "com.squareup.retrofit2:converter-gson:${Versions.retrofit}",
+        "com.squareup.retrofit2:converter-scalars:${Versions.retrofit}",
+        "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofitRxjava}"
+    )
+
 
     val room = arrayOf(
         "androidx.room:room-runtime:${Versions.Room}",

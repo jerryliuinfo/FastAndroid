@@ -49,12 +49,9 @@ class LiveDataWrongUsageActivity : BaseVmActivityNew<FragmentJetpackLivedataWron
             shareViewModel.goToDetail()
         }
         shareViewModel.navigationToDetail.observe(this){
-             Logger.d("LiveDataWrongUsageFragment navigationToDetail observer:${it}")
+             Logger.d("LiveDataWrongUsageFragment byNormal observer:${it}")
              if (it){
-                 MainScope().launch {
-                     sleep()
-                     FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)
-                 }
+                 FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)
              }
         }
     }
@@ -66,17 +63,14 @@ class LiveDataWrongUsageActivity : BaseVmActivityNew<FragmentJetpackLivedataWron
      * 这种方法的问题是有一些样板（每个事件在 ViewModel 中有一个新方法）并且容易出错；很容易忘记观察者对 ViewModel 的调用。
      */
     private fun byNormalRestValue(){
-        mBinding.btnEventNormal.setOnClickListener {
-            shareViewModel.goToDetail()
+        mBinding.btnEventNormal2.setOnClickListener {
+            shareViewModel.goToDetail2()
         }
-        shareViewModel.navigationToDetail.observe(this){
-            Logger.d("LiveDataWrongUsageFragment navigationToDetail onChanged:${it}")
+        shareViewModel.navigationToDetail2.observe(this){
+            Logger.d("LiveDataWrongUsageFragment byNormalRestValue onChanged:${it}")
             shareViewModel.navigationHasHanded()
             if (it){
-                MainScope().launch {
-                    sleep()
-                    FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)
-                }
+                FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)
             }
         }
     }
@@ -92,12 +86,9 @@ class LiveDataWrongUsageActivity : BaseVmActivityNew<FragmentJetpackLivedataWron
             shareViewModel.goToDetailBySingleEvent()
         }
         shareViewModel.navigationToDetailSingleEvent.observe(this){
-            Logger.d("LiveDataWrongUsageFragment navigationToDetail onChanged:${it}")
-            shareViewModel.navigationHasHanded()
-            MainScope().launch {
-                sleep()
-                FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)
-            }
+            Logger.d("LiveDataWrongUsageFragment bySingleEvent onChanged:${it}")
+            FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)
+
         }
     }
 
@@ -107,9 +98,10 @@ class LiveDataWrongUsageActivity : BaseVmActivityNew<FragmentJetpackLivedataWron
             shareViewModel.goToDetailByEventWrapper("Hello")
         }
         shareViewModel.navigationToDetailEventWrapper.observe(this){
-            var content = it.getContentIfNotHandled()
-            Logger.d("LiveDataWrongUsageFragment useEventWrapper onChange content:${content}")
-            content?.let {
+            var content1 = it.getContentIfNotHandled()
+            var content2 = it.getContentIfNotHandled()
+            Logger.d("LiveDataWrongUsageFragment useEventWrapper onChange content1:${content1}, content2:${content2}")
+            content1?.let {
                 FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)
             }
         }
@@ -122,6 +114,7 @@ class LiveDataWrongUsageActivity : BaseVmActivityNew<FragmentJetpackLivedataWron
 
 
     companion object{
+        @JvmStatic
         fun launch(activity: Activity){
             startActivity<LiveDataWrongUsageActivity>(activity)
         }

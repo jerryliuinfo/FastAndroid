@@ -158,7 +158,7 @@ ext {
 
             //Kotlin
             kotlin_stdlib                    : "org.jetbrains.kotlin:kotlin-stdlib:1.6.10",
-            kotlin_reflect                   : "org.jetbrains.kotlin:kotlin-reflect:${Versions.INSTANCE.kotlin_stdlib}",
+            kotlin_reflect                   : "org.jetbrains.kotlin:kotlin-reflect:${Versions.INSTANCE.kotlin}",
 
 
 

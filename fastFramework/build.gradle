@@ -86,7 +86,7 @@ dependencies {
     implementation Libs.brvh
 
     implementation (*Libs.rxJava)
-    implementation (*Libs.room)
+//    implementation (*Libs.room)
 
 
     implementation(*Libs.lifecycle)

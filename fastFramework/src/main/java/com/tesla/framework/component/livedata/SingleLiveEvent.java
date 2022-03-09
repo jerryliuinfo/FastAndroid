@@ -21,8 +21,9 @@ public class SingleLiveEvent<T> extends MutableLiveData<T> {
         super.observe(owner, new Observer<T>() {
             @Override
             public void onChanged(@Nullable T t) {
-                Logger.d(String.format("SingleLiveEvent onChanged: %s",mPending.get()));
+                Logger.d(String.format("LiveDataWrongUsageFragment SingleLiveEvent onChanged get: %s",mPending.get()));
                 if (mPending.compareAndSet(true, false)) {
+                    Logger.d(String.format("LiveDataWrongUsageFragment SingleLiveEvent onChanged"));
                     observer.onChanged(t);
                 }
             }

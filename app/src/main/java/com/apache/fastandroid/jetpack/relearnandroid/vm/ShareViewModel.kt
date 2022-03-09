@@ -27,6 +27,10 @@ class ShareViewModel:ViewModel() {
     private val _navigationToDetail = MutableLiveData<Boolean>()
     val navigationToDetail: LiveData<Boolean> = _navigationToDetail
 
+    private val _navigationToDetail2 = MutableLiveData<Boolean>()
+    val navigationToDetail2: LiveData<Boolean> = _navigationToDetail2
+
+
 
     //OK: SingleLiveEvent 方式
     private val _navigationToDetailSingleEvent = SingleLiveEvent<Any>()
@@ -37,14 +41,18 @@ class ShareViewModel:ViewModel() {
         val navigationToDetailEventWrapper:LiveData<Event<String>> = _navigationToDetailEventWrapper
 
     fun goToDetail(){
-        _navigationToDetail.value = true
+        _navigationToDetail.postValue(true)
+    }
+
+    fun goToDetail2(){
+        _navigationToDetail2.postValue(true)
     }
 
     /**
      * fragment 或者 activity监听到数据后就重置一下标志位，但是你这种方法不可靠，万一调用者忘记调用了怎么办
      */
     fun navigationHasHanded(){
-        _navigationToDetail.value = false
+        _navigationToDetail.postValue(false)
 
     }
 
@@ -54,6 +62,7 @@ class ShareViewModel:ViewModel() {
     }
 
     fun goToDetailByEventWrapper(itemId:String) {
-        _navigationToDetailSingleEvent.value = Event(itemId)
+        //设置一个新的值
+        _navigationToDetailEventWrapper.value = Event(itemId)
     }
 }
