@@ -21,7 +21,7 @@ public class JavaMain {
     }
 
     public static void main(String[] args) {
-        File file = new File(Utils.getApp().getFilesDir(), "test.txt");
+        File file = new File(Utils.getApp().getFilesDir(), "uitest.txt");
         FilesKt.readText(file, StandardCharsets.UTF_8);
     }
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:id="@+id/rootView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        />
+
+
+    <Button
+        android:id="@+id/btn_root_null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="root = null"
+        android:gravity="center"
+        />
+    <Button
+        android:id="@+id/btn_root_null2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="root null, addView with Params"
+        android:gravity="center"
+
+        />
+    <Button
+        android:id="@+id/btn_root_not_null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="root != null ,attachToRoot = false"
+        android:gravity="center"
+
+        />
+
+    <Button
+        android:id="@+id/btn_root_not_null2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="root != null ,attachToRoot = true"
+        android:gravity="center"
+        />
+
+    <Button
+        android:id="@+id/btn_activity_result_api"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ActivityResultApi"
+        android:gravity="center"
+        />
+
+
+</LinearLayout>

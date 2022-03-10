@@ -99,7 +99,7 @@ android {
 
         //dex突破65535的限制
         multiDexEnabled true
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        testInstrumentationRunner 'androidx.uitest.runner.AndroidJUnitRunner'
         //5.0以下将svg图片生成指定维度的图片
         vectorDrawables.generatedDensities('xhdpi', 'xxhdpi')
 
@@ -221,7 +221,7 @@ android {
         //用来设置 adb install 安装这个操作的设置项的
         /**
          * -r: replace existing application
-         * -t: allow test packages
+         * -t: allow uitest packages
          * -s: install application on sdcard
          * -d: allow version code downgrade
          * -g: grant all runtime permissions
@@ -309,12 +309,17 @@ android {
 
 
     //将SO库打包到apk内
-   /* sourceSets {
+    sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
 
-    }*/
+        test {
+            java.srcDirs += "src/uiTest/java"
+            resources.srcDirs += 'src/uiTest/resources'
+        }
+
+    }
 
 
 
@@ -486,7 +491,7 @@ sourceSets{
         resourceDir = "main/res"
     }
     test{
-        resourceDir = "test/res"
+        resourceDir = "uitest/res"
     }
 }
 

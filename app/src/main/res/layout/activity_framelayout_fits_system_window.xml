@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--FrameLayout 中设置     android:fitsSystemWindows="true"
+是无用的，因为FrameLayout 内部并没有对这个属性做处理，可以仿照
+Coordinatelayout 的方式来处理
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff66ff"
+
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/yifei"
+        />
+<!--  CoordinatorLayout 会对所有子view进行偏移,保证他们不会被状态栏挡住  -->
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        />
+
+</FrameLayout>

@@ -14,7 +14,6 @@ import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.UserBean;
 import com.apache.fastandroid.home.HomeFragment;
-import com.apache.fastandroid.jetpack.livedata.LiveDataBestPracticeFragment2;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.tesla.framework.common.util.log.FastLog;
@@ -22,7 +21,6 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.ui.activity.BaseVmActivity;
-import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -32,6 +30,7 @@ import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 
@@ -74,35 +73,13 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
         Logger.d(String.format("context file dir:%s, cache:%s",context.getFilesDir(),context.getCacheDir()));
         Logger.d(String.format("external file dir:%s, cache:%s",context.getExternalFilesDir(null),context.getExternalCacheDir()));
 
-        Map<String,String> map = new HashMap<>();
-//        LiveDataWrongUsageActivity.launch(this);
-        FragmentContainerActivity.launch(this, LiveDataBestPracticeFragment2.class,null);
+//        FragmentContainerActivity.launch(this, LiveDataBestPracticeFragment2.class,null);
+//        FragmentContainerActivity.launch(this, TempDemoFragment.class,null);
 
-//                FragmentContainerActivity.launch(this, CoroutineDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, CollectionDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, KotlinExtensionsFragment.class,null);
-//        FragmentContainerActivity.launch(this, GenericDemoFragment.class,null);
+//        startActivity(new Intent(this, FitSystemWindowDemoActivity.class));
+//        startActivity(new Intent(this, FitSystemWindowDemoActivity2.class));
+//        startActivity(new Intent(this, FitSystemWindowFrameLayoutDemoActivity.class));
 
-
-//        DemoListActivity.launch(this);
-//        FragmentContainerActivity.launch(this, DrakeetCommonFragment.class,null);
-//        FragmentContainerActivity.launch(this, DrakeetDemoListFragment.class,null);
-//        FragmentContainerActivity.launch(this, CommonBlackTechFragment.class,null);
-//        FragmentContainerActivity.launch(this, SnapHelperDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
-//        FragmentContainerActivity.launch(this, KotlinExtensionsFragment.class,null);
-//        FragmentContainerActivity.launch(this, MMKVFragment.class,null);
-//        FragmentContainerActivity.launch(this, HawkDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, LiveDataWrongUsageFragment.class,null);
-//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment.class,null);
-//        FragmentContainerActivity.launch(this, CollectionDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2.class,null);
-//        FragmentContainerActivity.launch(this, ClickDebounceFragment.class,null);
-//        FragmentContainerActivity.launch(this, CockroachDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, CoroutineDemoFragment2.class,null);
-//        FragmentContainerActivity.launch(this, KnowledgeFragment.class,null);
-//        startActivity(new Intent(this, NavigationDemoActivity.class));
-//        startActivity(new Intent(this, NavigationBottomNavigationActivity.class));
 
 
 
@@ -152,8 +129,9 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
     }
 
     private void setupDrawer(Bundle savedInstanceState) {
+        Toolbar toolbar = findViewById(R.id.toolbar);
         drawerToggle = new ActionBarDrawerToggle(this, mBinding.drawer,
-                getToolbar(), R.string.draw_open, R.string.draw_close) {
+                toolbar, R.string.draw_open, R.string.draw_close) {
 
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);

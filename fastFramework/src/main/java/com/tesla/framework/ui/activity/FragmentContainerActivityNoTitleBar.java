@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import com.tesla.framework.R;
 import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.component.logger.Logger;
-import com.tesla.framework.databinding.CommUiFragmentContainerBinding;
+import com.tesla.framework.databinding.CommUiFragmentContainerNoTitlebarBinding;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 import androidx.fragment.app.Fragment;
 
 
-public class FragmentContainerActivity extends BaseVmActivity<com.tesla.framework.databinding.CommUiFragmentContainerBinding> {
+public class FragmentContainerActivityNoTitleBar extends BaseVmActivity<CommUiFragmentContainerNoTitlebarBinding> {
 
 
     public static final String FRAGMENT_TAG = "FRAGMENT_CONTAINER";
@@ -33,7 +33,7 @@ public class FragmentContainerActivity extends BaseVmActivity<com.tesla.framewor
      * @param args
      */
     public static void launch(Activity activity, Class<? extends Fragment> clazz, FragmentArgs args) {
-        Intent intent = new Intent(activity, FragmentContainerActivity.class);
+        Intent intent = new Intent(activity, FragmentContainerActivityNoTitleBar.class);
         intent.putExtra(EXTRA_CLASS_NAME, clazz.getName());
         if (args != null)
             intent.putExtra(EXTRA_ARGS, args);
@@ -45,7 +45,7 @@ public class FragmentContainerActivity extends BaseVmActivity<com.tesla.framewor
     }
 
     public static void launchForResult(BaseVmActivity from, Class<? extends Fragment> clazz, FragmentArgs args, int requestCode) {
-        Intent intent = new Intent(from, FragmentContainerActivity.class);
+        Intent intent = new Intent(from, FragmentContainerActivityNoTitleBar.class);
         intent.putExtra(EXTRA_CLASS_NAME, clazz.getName());
         if (args != null)
             intent.putExtra(EXTRA_ARGS, args);
@@ -62,7 +62,6 @@ public class FragmentContainerActivity extends BaseVmActivity<com.tesla.framewor
         }
         Logger.d(String.format("FragmentContainerActivity onCreate this:%s", this));
 
-        int contentId = R.layout.comm_ui_fragment_container;
 
         FragmentArgs values = (FragmentArgs) getIntent().getSerializableExtra(EXTRA_ARGS);
 
@@ -105,8 +104,8 @@ public class FragmentContainerActivity extends BaseVmActivity<com.tesla.framewor
     }
 
     @Override
-    public CommUiFragmentContainerBinding bindView() {
-        return CommUiFragmentContainerBinding.inflate(getLayoutInflater());
+    public CommUiFragmentContainerNoTitlebarBinding bindView() {
+        return CommUiFragmentContainerNoTitlebarBinding.inflate(getLayoutInflater());
     }
 
 

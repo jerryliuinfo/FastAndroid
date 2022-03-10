@@ -80,7 +80,6 @@ abstract class BaseListFragment: BaseStatusFragmentNew() {
                 }else if (viewItemBean.activity != null){
                     val intent = Intent(requireActivity(), viewItemBean.activity)
                     startActivity(intent)
-
                 }
 
             }

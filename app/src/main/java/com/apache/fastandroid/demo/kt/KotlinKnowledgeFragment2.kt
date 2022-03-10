@@ -113,7 +113,7 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
 
     private fun anonymousFun(){
         val test = fun (){
-            println("test")
+            println("uitest")
             //这里只会 return 调匿名函数本身
             return
         }

@@ -28,15 +28,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".demo.DemoListActivity">
+        <activity android:name=".demo.DemoListActivity"/>
+        <activity android:name=".demo.style.FitSystemWindowDemoActivity"/>
+        <activity android:name=".demo.style.FitSystemWindowDemoActivity2"/>
+        <activity android:name=".demo.style.FitSystemWindowFrameLayoutDemoActivity"/>
+        <activity android:name=".demo.temp.activityresult.ActivityResultDemoActivity"/>
+        <activity android:name=".demo.temp.activityresult.SecondActivityDemoActivity"/>
 
-        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTask"></activity>
 
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity" />
+        <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivityNoTitleBar" />
         <activity android:name=".jetpack.livedata.LiveDataWrongUsageActivity" />
         <activity
             android:name=".demo.temp.ScrollConflictActivity"

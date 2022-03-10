@@ -2,9 +2,13 @@ package com.apache.fastandroid.demo.temp
 
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
-import com.apache.fastandroid.demo.drakket.hookcontext.HookContextFragment
+import com.apache.fastandroid.demo.LayoutInflaterDemoFragment
 import com.apache.fastandroid.demo.launchermode.LaunchModeDemoFragment
 import com.apache.fastandroid.demo.snaphelper.SnapHelperDemoFragment
+import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity
+import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity2
+import com.apache.fastandroid.demo.style.FitSystemWindowFrameLayoutDemoActivity
+import com.apache.fastandroid.demo.temp.activityresult.ActivityResultDemoActivity
 import com.apache.fastandroid.demo.temp.reflect.ReflectionDemoFragment
 
 /**
@@ -33,6 +37,11 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("死锁", "死锁", ConcurrencyDemoFragment::class.java)
                 ,ViewItemBean("RecycleviewSnapHelper", "RecycleviewSnapHelper", SnapHelperDemoFragment::class.java)
                 ,ViewItemBean("启动模式", "启动模式", LaunchModeDemoFragment::class.java)
+                ,ViewItemBean("FitSystemWindow", "FitSystemWindow", activity = FitSystemWindowDemoActivity::class.java)
+                ,ViewItemBean("FitSystemWindow2", "FitSystemWindow2", activity = FitSystemWindowDemoActivity2::class.java)
+                ,ViewItemBean("FitSystemWindow3", "FitSystemWindow3", activity = FitSystemWindowFrameLayoutDemoActivity::class.java)
+                ,ViewItemBean("LayoutInflater", "LayoutInflater",  LayoutInflaterDemoFragment::class.java)
+                ,ViewItemBean("ActivityResultApi", "ActivityResultApi",  activity = ActivityResultDemoActivity::class.java)
 
         )
     }

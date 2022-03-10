@@ -11,7 +11,7 @@ class GenericView<T> (val clazz: Class<T>) {
 
     class Presenter{
         fun test(){
-            println("Presenter test")
+            println("Presenter uitest")
         }
     }
 

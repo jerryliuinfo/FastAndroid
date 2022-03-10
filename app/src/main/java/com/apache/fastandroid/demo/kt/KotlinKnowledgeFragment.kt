@@ -131,7 +131,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         }
 
         viewBinding.btnExpandFunction.setOnClickListener {
-            val file = File(requireContext().filesDir, "test.txt")
+            val file = File(requireContext().filesDir, "uitest.txt")
             file.writeText("hello:${Random.nextInt(10)}")
 
             println(file.readText())

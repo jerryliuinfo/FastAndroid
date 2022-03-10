@@ -2,25 +2,24 @@ package com.tesla.framework.ui.activity
 
 import android.app.Activity
 import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
-import com.tesla.framework.ui.activity.BaseActivityHelper
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
-import androidx.lifecycle.ViewModelProvider
-import com.tesla.framework.component.network.NetworkStateManager
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.viewbinding.ViewBinding
 import com.gyf.immersionbar.ktx.immersionBar
 import com.tesla.framework.R
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.component.network.NetworkStateManager
+import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
 import java.lang.ref.WeakReference
-import java.util.HashMap
 
 /**
  * Created by JerryLiu on 17/04/08.
@@ -44,13 +43,17 @@ abstract class BaseVmActivity<V : ViewBinding> : AppCompatActivity(),
      * 当前Activity的实例。
      */
     protected var activity: Activity? = null
+
     var toolbar: Toolbar? = null
+
+    //    var toolbar: Toolbar? = null
     override fun onCreate(savedInstanceState: Bundle?) {
-        fragmentRefs = HashMap()
         super.onCreate(savedInstanceState)
+        fragmentRefs = HashMap()
         activity = this
         mBinding = bindView()
         setContentView(mBinding!!.root)
+//        initSystemBar()
         initViewModel()
         setUpActionBar()
         lifecycle.addObserver(NetworkStateManager.getInstance())
@@ -74,10 +77,14 @@ abstract class BaseVmActivity<V : ViewBinding> : AppCompatActivity(),
 
     protected fun setUpActionBar() {
         toolbar = findViewById(R.id.toolbar)
-        if (toolbar != null) {
+        toolbar?.let {
             setSupportActionBar(toolbar)
+            val actionBar = supportActionBar
+            actionBar?.setDisplayHomeAsUpEnabled(true)
         }
     }
+
+
 
     protected fun initView(rootView: View?) {}
     override fun onResume() {
@@ -187,12 +194,16 @@ abstract class BaseVmActivity<V : ViewBinding> : AppCompatActivity(),
         return false
     }
 
-    protected fun setToolbarTitle(msg: String?) {
-        val supportActionBar = supportActionBar
+    fun setToolbarTitle(msg: String?) {
+       /* val supportActionBar = supportActionBar
         if (supportActionBar != null) {
-            supportActionBar.setDisplayHomeAsUpEnabled(true)
             supportActionBar.title = msg
-        }
+        }*/
+
+//        toolbar?.let {
+//            it.setTitle(msg)
+//        }
+        supportActionBar?.title = msg
     }
 
     override fun onDestroy() {

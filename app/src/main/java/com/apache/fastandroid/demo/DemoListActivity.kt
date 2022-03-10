@@ -39,7 +39,6 @@ import kotlinx.android.synthetic.main.activity_demo_list.*
  */
 class DemoListActivity : BaseVmActivityNew<ActivityDemoListBinding>(ActivityDemoListBinding::inflate) {
 
-    private val viewModel: DemoListViewModel by viewModels()
     companion object {
         private val MODELS = arrayListOf(
                 ViewItemBean("JetPack", "JetPack", JetPackDemoFragment::class.java),
@@ -76,22 +75,9 @@ class DemoListActivity : BaseVmActivityNew<ActivityDemoListBinding>(ActivityDemo
     }
 
 
-    /**
-     * 状态栏导航栏初始化
-     */
-    private fun initSystemBar() {
-        immersionBar {
-            transparentStatusBar()
-            statusBarDarkFont(true)
-            navigationBarColor(R.color.white)
-            navigationBarDarkIcon(true)
-        }
-    }
-
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
 
-        initSystemBar()
 
         recycleview.apply {
             layoutManager = GridLayoutManager(this@DemoListActivity, 2)
