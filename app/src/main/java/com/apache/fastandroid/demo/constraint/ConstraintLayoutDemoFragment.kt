@@ -26,7 +26,8 @@ class ConstraintLayoutDemoFragment: BaseListFragment() {
                 ViewItemBean("DimensionRatio", "DimensionRatio", ConstraintDimensionRatioFragment::class.java),
 
 
-                ViewItemBean("ChainStyle", "约束链风格", ConstraintChainStyleFragment::class.java),
+                ViewItemBean("HorizontalChainStyle", "HorizontalChainStyle", ConstraintChainStyleFragment::class.java),
+                ViewItemBean("VerticalChainStyle", "VerticalChainStyle", ConstraintVerticalChainStyleFragment::class.java),
 
                 ViewItemBean("Weight权重", "百分比控件", ConstraintWeightFragment::class.java),
 

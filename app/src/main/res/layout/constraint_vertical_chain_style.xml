@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+        android:id="@+id/textview1_1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        android:text="packed"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageview1_2"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+   <ImageView
+       android:id="@+id/imageview1_2"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:src="@mipmap/ic_launcher"
+       android:scaleType="centerCrop"
+       app:layout_constraintStart_toStartOf="@id/textview1_1"
+       app:layout_constraintEnd_toEndOf="@id/textview1_1"
+       app:layout_constraintTop_toBottomOf="@+id/textview1_1"
+       app:layout_constraintBottom_toTopOf="@id/textview1_2"
+       android:layout_marginVertical="20dp"
+       />
+
+    <ImageView
+        android:id="@+id/textview1_2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="@id/imageview1_2"
+        app:layout_constraintEnd_toEndOf="@id/imageview1_2"
+        app:layout_constraintTop_toBottomOf="@+id/imageview1_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+
+
+    <TextView
+        android:id="@+id/textview2_1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        android:text="spread"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageview2_2"
+        app:layout_constraintVertical_chainStyle="spread"
+        />
+
+
+    <ImageView
+        android:id="@+id/imageview2_2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@id/textview2_1"
+        app:layout_constraintEnd_toEndOf="@id/textview2_1"
+        app:layout_constraintTop_toBottomOf="@+id/textview2_1"
+        app:layout_constraintBottom_toTopOf="@+id/textview2_3"
+        android:layout_marginVertical="20dp"
+        />
+
+    <ImageView
+        android:id="@+id/textview2_3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@+id/textview2_1"
+        app:layout_constraintEnd_toEndOf="@+id/textview2_1"
+        app:layout_constraintTop_toBottomOf="@+id/imageview2_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

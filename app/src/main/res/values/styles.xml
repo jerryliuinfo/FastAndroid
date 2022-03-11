@@ -19,6 +19,10 @@
         <item name="android:windowEnableSplitTouch">false</item>
 
 
+        <item name="android:textColor">@color/colorPrimary</item>
+
+
+
     </style>
     <style name="AppTheme" parent="Base.AppTheme">
 

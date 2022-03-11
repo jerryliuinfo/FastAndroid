@@ -34,6 +34,9 @@
         <activity android:name=".demo.style.FitSystemWindowFrameLayoutDemoActivity"/>
         <activity android:name=".demo.temp.activityresult.ActivityResultDemoActivity"/>
         <activity android:name=".demo.temp.activityresult.SecondActivityDemoActivity"/>
+        <activity android:name="com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity"/>
+        <activity android:name="com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity"/>
+        <activity android:name="com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity"/>
 
         <activity
             android:name=".MainActivity"

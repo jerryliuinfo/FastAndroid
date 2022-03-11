@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
-import com.apache.fastandroid.demo.navigation.NavigationDemoActivity
-import com.apache.fastandroid.jetpack.livedata.LiveDataWrongUsageActivity
 import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew

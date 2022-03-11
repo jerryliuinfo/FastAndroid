@@ -13,6 +13,7 @@ import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.databinding.ActivityMainBinding;
 import com.apache.fastandroid.demo.DemoListActivity;
 import com.apache.fastandroid.demo.bean.UserBean;
+import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment;
 import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -21,12 +22,11 @@ import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.ui.activity.BaseVmActivity;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -72,6 +72,9 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
         Context context = getApplicationContext();
         Logger.d(String.format("context file dir:%s, cache:%s",context.getFilesDir(),context.getCacheDir()));
         Logger.d(String.format("external file dir:%s, cache:%s",context.getExternalFilesDir(null),context.getExternalCacheDir()));
+
+        FragmentContainerActivity.launch(this, JetPackDemoFragment.class,null);
+
 
 //        FragmentContainerActivity.launch(this, LiveDataBestPracticeFragment2.class,null);
 //        FragmentContainerActivity.launch(this, TempDemoFragment.class,null);

@@ -52,7 +52,7 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
         setContentView(mBinding.root)
         activityHelper = BaseActivityHelper(this,this)
         initViewModel()
-        setUpActionBar()
+//        setUpActionBar()
         lifecycle.addObserver(NetworkStateManager.getInstance())
         initView(mBinding.root)
         layoutInit(savedInstanceState)
@@ -72,7 +72,7 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
         }
     }
 
-    protected fun setUpActionBar() {
+    open fun setUpActionBar() {
         toolbar = findViewById(R.id.toolbar)
         if (toolbar != null) {
             setSupportActionBar(toolbar)
@@ -121,7 +121,11 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
         fragmentRefs!!.remove(tag)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    /**
+     * 暂时不实现这个方法，避免使用 drawalayout 时无法打开抽屉，满足了
+     * item.itemId == android.R.id.home 的条件无法打开抽屉
+     */
+   /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (activityHelper != null) {
             val handle = activityHelper.onOptionsItemSelected(item)
             if (handle) {
@@ -132,7 +136,7 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
             if (onHomeClick()) return true
         }
         return super.onOptionsItemSelected(item)
-    }
+    }*/
 
     protected fun onHomeClick(): Boolean {
         if (activityHelper != null) {

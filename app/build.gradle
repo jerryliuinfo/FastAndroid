@@ -398,6 +398,8 @@ task customTask{
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
 //    api fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
 
     fileTree(include: ['*.jar', '*.aar'], dir: 'libs').each {

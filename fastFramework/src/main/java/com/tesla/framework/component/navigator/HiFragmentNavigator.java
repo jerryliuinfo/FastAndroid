@@ -150,7 +150,7 @@ public class HiFragmentNavigator extends Navigator<HiFragmentNavigator.Destinati
         if (className.charAt(0) == '.') {
             className = mContext.getPackageName() + className;
         }
-        //com.apache.fastandroid.demo.navigation.ui.home.NavigationHomeFragment -> NavigationHomeFragment
+        //com.apache.fastandroid.jetpack.ui.home.NavigationHomeFragment -> NavigationHomeFragment
         String tag = className.substring(className.lastIndexOf(".")+1);
         Fragment frag = mFragmentManager.findFragmentByTag(tag);
         if (frag == null){
