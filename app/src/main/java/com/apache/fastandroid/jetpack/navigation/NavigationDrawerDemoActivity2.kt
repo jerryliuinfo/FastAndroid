@@ -1,4 +1,4 @@
-package com.apache.fastandroid.jetpack.navigation.drawer
+package com.apache.fastandroid.jetpack.navigation
 
 import android.content.res.Resources
 import android.os.Bundle
@@ -21,7 +21,7 @@ import com.tesla.framework.ui.activity.BaseVmActivityNew
 /**
  * Created by Jerry on 2022/3/11.
  */
-class NavigationDrawerDemoActivity:BaseVmActivityNew<NavigationDrawerActivityBinding>(NavigationDrawerActivityBinding::inflate) {
+class NavigationDrawerDemoActivity2:BaseVmActivityNew<NavigationDrawerActivityBinding>(NavigationDrawerActivityBinding::inflate) {
 
     private lateinit var appBarConfiguration : AppBarConfiguration
 
@@ -40,21 +40,10 @@ class NavigationDrawerDemoActivity:BaseVmActivityNew<NavigationDrawerActivityBin
 
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
-        // TODO STEP 9.5 - Create an AppBarConfiguration with the correct top-level destinations
-        // You should also remove the old appBarConfiguration setup above
-        val drawerLayout : DrawerLayout? = findViewById(R.id.drawer_layout)
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.home_dest, R.id.deeplink_dest),
-            drawerLayout)
-        // TODO END STEP 9.5
-
         setupActionBar(navController, appBarConfiguration)
 
         //抽屉或者大屏左边的导航栏
         setupNavigationMenu(navController)
-
-
-
         navController.addOnDestinationChangedListener { controller, destination, args ->
             val dest: String = try {
                 resources.getResourceName(destination.id)
@@ -66,11 +55,6 @@ class NavigationDrawerDemoActivity:BaseVmActivityNew<NavigationDrawerActivityBin
             Log.d("NavigationActivity", "Navigated to $dest")
         }
     }
-
-
-
-
-
 
     private fun setupNavigationMenu(navController: NavController) {
         // TODO STEP 9.4 - Use NavigationUI to set up a Navigation View
@@ -91,19 +75,18 @@ class NavigationDrawerDemoActivity:BaseVmActivityNew<NavigationDrawerActivityBin
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val retValue = super.onCreateOptionsMenu(menu)
-        val navigationView = findViewById<NavigationView>(R.id.nav_view)
-        // The NavigationView already has these same navigation items, so we only add
-        // navigation items to the menu here if there isn't a NavigationView
-        if (navigationView == null) {
-            menuInflater.inflate(R.menu.overflow_menu, menu)
-            return true
-        }
-        return retValue
+
+    /**
+     * 让右上角显示 setting 的图标
+     */
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.overflow_menu,menu)
+        return true
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //return super.onOptionsItemSelected(item)
         // TODO STEP 9.2 - Have Navigation UI Handle the item selection - make sure to delete
         //  the old return statement above
 //        // Have the NavigationUI look for an action or destination matching the menu
@@ -115,7 +98,6 @@ class NavigationDrawerDemoActivity:BaseVmActivityNew<NavigationDrawerActivityBin
         // TODO END STEP 9.2
     }
 
-
     /**
      * onBackPressed和onSupportNavigateUp都可以使应用程序后退，很多时候的功能相同，但是在个别的场景下，还是有一定的区别
      * 在使用toolbar的情况下，onBackPressed可以使系统自带的后退按钮，onSupportNavigateUp可以使用toolbar的后退按钮后退
@@ -123,5 +105,6 @@ class NavigationDrawerDemoActivity:BaseVmActivityNew<NavigationDrawerActivityBin
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.nav_host).navigateUp(appBarConfiguration)
     }
+
 
 }

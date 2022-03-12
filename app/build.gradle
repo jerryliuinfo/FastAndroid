@@ -3,7 +3,7 @@ apply from: 'and_res_guard.gradle'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-
+//Navigation 传递参数插件
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'

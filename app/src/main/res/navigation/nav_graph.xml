@@ -23,6 +23,7 @@
     </fragment>
 
     <fragment
+        android:label="Step1"
         android:id="@+id/flow_step1"
         android:name="com.apache.fastandroid.jetpack.navigation.NavStepOneFragment"
         tools:layout="@layout/flow_step_one_fragment"
@@ -40,6 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/flow_step2"
+        android:label="Step2"
         android:name="com.apache.fastandroid.jetpack.navigation.NavStepOneFragment"
         tools:layout="@layout/flow_step_two_fragment"
         >
@@ -55,6 +57,7 @@
 
     <fragment
         android:id="@+id/deeplink_dest"
+        android:label="DeepLink"
         android:name="com.apache.fastandroid.jetpack.navigation.DeepLinkFragment"
         tools:layout="@layout/nav_deeplink_fragment"
         >
@@ -63,6 +66,14 @@
             android:defaultValue="Android!"/>
 
         <deepLink app:uri="www.example.com/{myarg}" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/settings_dest"
+        android:label="Setting"
+        android:name="com.apache.fastandroid.jetpack.navigation.NavSettingFragment"
+        tools:layout="@layout/nav_settings_fragment"
+        >
 
     </fragment>
 </navigation>

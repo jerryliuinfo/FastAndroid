@@ -6,6 +6,7 @@ import com.apache.fastandroid.demo.databinding.DatabindingFragmentDemo
 import com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity
 import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleDemoFragment
 import com.apache.fastandroid.jetpack.livedata.*
+import com.apache.fastandroid.jetpack.navigation.NavigationDrawerDemoActivity2
 import com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity
 import com.apache.fastandroid.jetpack.viewmodel.JetPackViewModelListFragment
 import com.apache.fastandroid.jetpack.workmanager.WorkManagerListDemo
@@ -22,6 +23,7 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("DataBindg", "DataBindg", DatabindingFragmentDemo::class.java)
                 ,ViewItemBean("Navigation", "Navigation", activity= NavigationDemoActivity::class.java)
                 ,ViewItemBean("NavigationDrawerLayout", "NavigationDrawerLayout", activity= NavigationDrawerDemoActivity::class.java)
+                ,ViewItemBean("Navigation2", "Navigation2", activity= NavigationDrawerDemoActivity2::class.java)
 //                ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
                 ,ViewItemBean("WorkManager", "WorkManager", WorkManagerListDemo::class.java)
                 ,ViewItemBean("ViewModelFactory", "ViewModelFactory", WorkManagerListDemo::class.java)

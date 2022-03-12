@@ -1,0 +1,5 @@
+第一阶段和第二阶段之间执行
+Hello settings.gradle
+
+> Task :buildSrc:compileKotlin FAILED
+The `kotlin-dsl` plugin applied to project ':buildSrc' enables experimental Kotlin compiler features. For more information see https://docs.gradle.org/6.7.1/userguide/kotlin_dsl.html#sec:kotlin-dsl_plugin

@@ -1,41 +1,34 @@
 package com.apache.fastandroid;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.apache.fastandroid.annotations.CostTime;
-import com.apache.fastandroid.databinding.ActivityMainBinding;
-import com.apache.fastandroid.demo.DemoListActivity;
+import com.apache.fastandroid.databinding.ActivityMainNewBinding;
 import com.apache.fastandroid.demo.bean.UserBean;
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment;
-import com.apache.fastandroid.home.HomeFragment;
 import com.blankj.utilcode.util.ToastUtils;
-import com.google.android.material.navigation.NavigationView;
-import com.tesla.framework.common.util.log.FastLog;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
-import com.tesla.framework.component.logger.Logger;
 import com.tesla.framework.ui.activity.BaseVmActivity;
 import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 
-public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements View.OnClickListener {
+public class MainActivity extends BaseVmActivity<ActivityMainNewBinding> implements View.OnClickListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
     private ActionBarDrawerToggle drawerToggle;
@@ -50,9 +43,11 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 
 
     @Override
-    public ActivityMainBinding bindView() {
-        return ActivityMainBinding.inflate(getLayoutInflater());
+    public ActivityMainNewBinding bindView() {
+        return ActivityMainNewBinding.inflate(getLayoutInflater());
     }
+
+    private NavController mNavController;
 
     @CostTime
     @Override
@@ -64,37 +59,37 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
         setupDrawer(savedInstanceState);
         setupNavigationView();
         loadMenuData();
-        MenuItem menuItem = mBinding.navigationView.getMenu().getItem(0);
-        menuItem.setChecked(true);
-        onMenuItemClicked(menuItem.getItemId(),menuItem.getTitle().toString());
+
+        NavHostFragment hostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host);
+        mNavController = hostFragment.getNavController();
 
 
-        Context context = getApplicationContext();
-        Logger.d(String.format("context file dir:%s, cache:%s",context.getFilesDir(),context.getCacheDir()));
-        Logger.d(String.format("external file dir:%s, cache:%s",context.getExternalFilesDir(null),context.getExternalCacheDir()));
+
+        AppBarConfiguration configuration = new AppBarConfiguration.Builder(mNavController.getGraph()).build();
+        configuration = new AppBarConfiguration.Builder(R.id.home_dest,R.id.demo_dest).setOpenableLayout(mBinding.drawer).build();
+
+        setupActionBar(mNavController,configuration);
+        setupNavigationMenu(mNavController);
+
 
         FragmentContainerActivity.launch(this, JetPackDemoFragment.class,null);
+    }
 
+    private void setupActionBar(NavController navController,
+                               AppBarConfiguration appBarConfig) {
 
-//        FragmentContainerActivity.launch(this, LiveDataBestPracticeFragment2.class,null);
-//        FragmentContainerActivity.launch(this, TempDemoFragment.class,null);
-
-//        startActivity(new Intent(this, FitSystemWindowDemoActivity.class));
-//        startActivity(new Intent(this, FitSystemWindowDemoActivity2.class));
-//        startActivity(new Intent(this, FitSystemWindowFrameLayoutDemoActivity.class));
-
-
-
+        /**
+         * 当导航的目的地发生变化时， NavigationUI 将会自动切换展示的 label
+         * 使用 AppBarConfiguration 时，它将会决定是显示 抽屉图标还是 向上箭头?
+         */
+        NavigationUI.setupActionBarWithNavController(this, navController,appBarConfig);
 
     }
 
-    private List<String> list = new ArrayList<String>(){
-        {
-            add("one");
-            add("two");
-        }
-    };
 
+    private void setupNavigationMenu( NavController navController) {
+        NavigationUI.setupWithNavController(mBinding.navigationView, navController);
+    }
 
 
 
@@ -151,7 +146,7 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
     }
 
     private void setupNavigationView(){
-        mBinding.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        /*mBinding.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 FastLog.d(TAG, "onNavigationItemSelected item title = %s", item.getTitle());
@@ -159,14 +154,16 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
                 onMenuItemClicked(item.getItemId(), item.getTitle().toString());
                 return true;
             }
-        });
+        });*/
+
+
 
     }
 
 
     public void onMenuItemClicked(int itemId, String title){
 
-        Fragment fragment = null;
+      /*  Fragment fragment = null;
         switch (itemId){
             case R.id.nav_item_home:
                 fragment = HomeFragment.newInstance();
@@ -174,7 +171,7 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 
             case R.id.nav_item_demo:
 
-                startActivity(new Intent(this,DemoListActivity.class));
+//                startActivity(new Intent(this,DemoListActivity.class));
                 return;
         }
 
@@ -186,7 +183,7 @@ public class MainActivity extends BaseVmActivity<ActivityMainBinding> implements
 
         closeDrawer();
 
-        selecteId = itemId;
+        selecteId = itemId;*/
     }
 
 
