@@ -4,6 +4,8 @@ import android.content.res.Resources
 import android.graphics.Paint
 import android.graphics.Rect
 import android.util.TypedValue
+import com.blankj.utilcode.util.StringUtils
+import com.blankj.utilcode.util.Utils
 import com.tesla.framework.component.livedata.NetworkLiveData
 import kotlin.math.pow
 
@@ -14,6 +16,9 @@ val Float.dp
             Resources.getSystem().displayMetrics
     )
 
+
+val Int.resIdToString
+    get()  = Utils.getApp().getString(this)
 
 val Int.dp
     get() = this.toFloat().dp

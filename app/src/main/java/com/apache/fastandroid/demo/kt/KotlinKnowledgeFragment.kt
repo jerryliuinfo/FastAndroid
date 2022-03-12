@@ -59,6 +59,10 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+        viewBinding.btnInitArray.setOnClickListener {
+            initArrayElement()
+        }
+
         viewBinding.btnSAM.setOnClickListener {
             samUsage()
         }
@@ -277,6 +281,13 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
+    }
+
+    private fun initArrayElement() {
+        val users = Array(3){
+            UserBean("person:$it", 18 + it)
+        }
+        println("users:$users")
     }
 
     private fun samUsage() {

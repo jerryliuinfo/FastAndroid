@@ -23,6 +23,7 @@ import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.sample.SampleCodeDemoListFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.transition.TransitionDemoFragment
+import com.apache.fastandroid.demo.widget.UIWidgetDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.RelearnAndroidDemoFragment
 import com.gyf.immersionbar.ktx.immersionBar
@@ -37,7 +38,7 @@ import kotlinx.android.synthetic.main.activity_demo_list.*
 /**
  * Created by Jerry on 2020/10/31.
  */
-class DemoListActivity : BaseListFragment() {
+class DemoListFragment : BaseListFragment() {
 
 
     override fun initDatas(): ArrayList<ViewItemBean> {
@@ -48,6 +49,7 @@ class DemoListActivity : BaseListFragment() {
             ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
             ViewItemBean("Hencoder", "绘制文字", DrawTextDemoFragment::class.java),
             ViewItemBean("Hencoder", "范围裁切", MatrixDemoFragment::class.java),
+            ViewItemBean("UI小控件", "UI小控件", UIWidgetDemoFragment::class.java),
 
             ViewItemBean("CustomViewWidget", "自定义控件", CustomViewFragment::class.java),
             ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),

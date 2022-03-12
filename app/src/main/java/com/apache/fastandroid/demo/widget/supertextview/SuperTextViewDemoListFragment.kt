@@ -27,7 +27,7 @@ class SuperTextViewDemoListFragment: BaseStatusFragmentNew() {
         super.layoutInit(inflater, savedInstanceSate)
         setToolbarTitle("DrawText")
 
-        pager.adapter = PageAdapter(pageModels,activity!!.supportFragmentManager,true)
+        pager.adapter = PageAdapter(pageModels,requireActivity().supportFragmentManager,true)
         tabLayout.setupWithViewPager(pager)
 
     }

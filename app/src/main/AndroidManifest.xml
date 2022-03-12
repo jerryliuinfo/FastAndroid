@@ -36,6 +36,7 @@
         <activity android:name="com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity"/>
         <activity android:name="com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity"/>
         <activity android:name=".jetpack.navigation.NavigationDrawerDemoActivity2"/>
+        <activity android:name=".jetpack.navigation.advance.AdvanceNavigationActivity"/>
 
         <activity
             android:name=".MainActivity"

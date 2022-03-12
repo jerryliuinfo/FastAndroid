@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.View;
 
 import com.apache.fastandroid.annotations.CostTime;
@@ -20,7 +19,6 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity;
 import java.io.Serializable;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.MutableLiveData;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -57,14 +55,11 @@ public class MainActivity extends BaseVmActivity<ActivityMainNewBinding> impleme
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         setupDrawer(savedInstanceState);
-        setupNavigationView();
         loadMenuData();
 
         NavHostFragment hostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host);
         mNavController = hostFragment.getNavController();
-
-
-
+//        mNavController = Navigation.findNavController();
         AppBarConfiguration configuration = new AppBarConfiguration.Builder(mNavController.getGraph()).build();
         configuration = new AppBarConfiguration.Builder(R.id.home_dest,R.id.demo_dest).setOpenableLayout(mBinding.drawer).build();
 
@@ -122,14 +117,11 @@ public class MainActivity extends BaseVmActivity<ActivityMainNewBinding> impleme
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("selecteId", selecteId);
-
-
     }
 
     private void setupDrawer(Bundle savedInstanceState) {
-        Toolbar toolbar = findViewById(R.id.toolbar);
         drawerToggle = new ActionBarDrawerToggle(this, mBinding.drawer,
-                toolbar, R.string.draw_open, R.string.draw_close) {
+                mBinding.toolbar, R.string.draw_open, R.string.draw_close) {
 
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
@@ -145,67 +137,9 @@ public class MainActivity extends BaseVmActivity<ActivityMainNewBinding> impleme
         mBinding.drawer.addDrawerListener(drawerToggle);
     }
 
-    private void setupNavigationView(){
-        /*mBinding.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                FastLog.d(TAG, "onNavigationItemSelected item title = %s", item.getTitle());
-                item.setChecked(true);
-                onMenuItemClicked(item.getItemId(), item.getTitle().toString());
-                return true;
-            }
-        });*/
 
 
 
-    }
-
-
-    public void onMenuItemClicked(int itemId, String title){
-
-      /*  Fragment fragment = null;
-        switch (itemId){
-            case R.id.nav_item_home:
-                fragment = HomeFragment.newInstance();
-                break;
-
-            case R.id.nav_item_demo:
-
-//                startActivity(new Intent(this,DemoListActivity.class));
-                return;
-        }
-
-
-        if (fragment != null && selecteId != itemId){
-            getSupportActionBar().setTitle(title);
-            getSupportFragmentManager().beginTransaction().replace(R.id.lay_content,fragment, "MainFragment").commit();
-        }
-
-        closeDrawer();
-
-        selecteId = itemId;*/
-    }
-
-
-    public boolean isDrawerOpened() {
-        return mBinding.drawer.isDrawerOpen(Gravity.LEFT) || mBinding.drawer.isDrawerOpen(Gravity.RIGHT);
-    }
-
-    public void closeDrawer() {
-        if (isDrawerOpened()){
-            mBinding.drawer.closeDrawers();
-        }
-    }
-
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-
-        if (drawerToggle != null){
-            drawerToggle.syncState();
-        }
-    }
 
 
     private boolean canFinish = false;

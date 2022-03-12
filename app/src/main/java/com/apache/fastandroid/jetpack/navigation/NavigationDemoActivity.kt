@@ -20,6 +20,8 @@ class NavigationDemoActivity:BaseVmActivityNew<ActivityNavigationDemoBinding>(Ac
 
     private lateinit var appBarConfiguration : AppBarConfiguration
 
+    private lateinit var navController: NavController
+
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
 
@@ -27,7 +29,7 @@ class NavigationDemoActivity:BaseVmActivityNew<ActivityNavigationDemoBinding>(Ac
 
         val hostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment ?: return
 
-        val navController = hostFragment.navController
+        navController = hostFragment.navController
 
         /*Fragment.findNavController()
         View.findNavController()
@@ -37,6 +39,7 @@ class NavigationDemoActivity:BaseVmActivityNew<ActivityNavigationDemoBinding>(Ac
 
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
+        setupBottomNavigationView(navController)
 
         setupActionBar(navController,appBarConfiguration)
 
@@ -50,7 +53,6 @@ class NavigationDemoActivity:BaseVmActivityNew<ActivityNavigationDemoBinding>(Ac
             Logger.d("Navigated to $des")
 
         }
-        setupBottomNavigationView(navController)
     }
 
     private fun setupActionBar(navController: NavController,
@@ -90,7 +92,7 @@ class NavigationDemoActivity:BaseVmActivityNew<ActivityNavigationDemoBinding>(Ac
      * 在使用toolbar的情况下，onBackPressed可以使系统自带的后退按钮，onSupportNavigateUp可以使用toolbar的后退按钮后退
      */
     override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.nav_host).navigateUp(appBarConfiguration)
+        return navController.navigateUp(appBarConfiguration)
     }
 
 }

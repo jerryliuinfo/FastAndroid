@@ -15,7 +15,7 @@ public class PageFragmentSingle extends Fragment {
     @LayoutRes
     int sampleLayoutRes;
 
-    public static PageFragmentSingle newInstance(@LayoutRes int sampleLayoutRes, @LayoutRes int practiceLayoutRes) {
+    public static PageFragmentSingle newInstance(@LayoutRes int sampleLayoutRes) {
         PageFragmentSingle fragment = new PageFragmentSingle();
         Bundle args = new Bundle();
         args.putInt("sampleLayoutRes", sampleLayoutRes);

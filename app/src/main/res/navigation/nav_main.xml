@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/demo_dest"
-        android:name="com.apache.fastandroid.demo.DemoListActivity"
+        android:name="com.apache.fastandroid.demo.DemoListFragment"
         android:label="DemoList"
         tools:layout="@layout/fragment_nav_home"
         >

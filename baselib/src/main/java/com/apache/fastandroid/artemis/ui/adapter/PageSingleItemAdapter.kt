@@ -10,14 +10,10 @@ import com.apache.fastandroid.artemis.ui.bean.PageModel
 /**
  * Created by Jerry on 2020/11/11.
  */
-class PageAdapter(private val pageModels: List<PageModel>, fm: FragmentManager, private val single:Boolean = false): FragmentPagerAdapter(fm) {
+class PageSingleItemAdapter(private val pageModels: List<PageModel>, fm: FragmentManager): FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
-        return if (single){
-            PageFragmentSingle.newInstance(pageModels[position].sampleLayoutRes)
-        }else{
-            PageFragment.newInstance(pageModels[position].sampleLayoutRes,pageModels[position].practiceLayoutRes)
-        }
+        return  PageFragmentSingle.newInstance(pageModels[position].sampleLayoutRes)
 
     }
 

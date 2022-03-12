@@ -49,9 +49,38 @@
             android:name="flowStepNumber"
             app:argType="integer"
             android:defaultValue="2"/>
+
+<!--
+//按返回键时回到哪里
+app:popUpTo="@id/home_dest"-->
+<!--        app:popUpTo="@id/home_dest"-->
+<!--        app:popUpToInclusive="true"-->
+
         <action
             android:id="@+id/next_action"
+            app:destination="@id/flow_step3"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/flow_step3"
+        android:label="Step2"
+        android:name="com.apache.fastandroid.jetpack.navigation.NavStepThreeFragment"
+        tools:layout="@layout/flow_step_three_fragment"
+        >
+        <argument
+            android:name="flowStepNumber"
+            app:argType="integer"
+            android:defaultValue="2"/>
+
+
+<!--按返回键回到哪里-->
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/flow_step1"
             app:popUpTo="@id/home_dest"
+            app:popUpToInclusive="true"
+
             />
     </fragment>
 

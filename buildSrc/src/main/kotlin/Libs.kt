@@ -43,7 +43,8 @@ object Libs {
 
     val navigation = arrayOf(
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}",
-        "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
+        "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}",
+        "androidx.navigation:navigation-runtime-ktx:${Versions.navigationVersion}"
     )
     val immersionbar = arrayOf(
         "com.gyf.immersionbar:immersionbar:${Versions.immersionbar}",

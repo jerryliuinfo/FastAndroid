@@ -15,13 +15,14 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.NavigationDrawerActivityBinding
+import com.apache.fastandroid.databinding.NavigationW960Binding
 import com.google.android.material.navigation.NavigationView
 import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 /**
  * Created by Jerry on 2022/3/11.
  */
-class NavigationDrawerDemoActivity2:BaseVmActivityNew<NavigationDrawerActivityBinding>(NavigationDrawerActivityBinding::inflate) {
+class NavigationDrawerDemoActivity2:BaseVmActivityNew<NavigationW960Binding>(NavigationW960Binding::inflate) {
 
     private lateinit var appBarConfiguration : AppBarConfiguration
 
@@ -57,12 +58,9 @@ class NavigationDrawerDemoActivity2:BaseVmActivityNew<NavigationDrawerActivityBi
     }
 
     private fun setupNavigationMenu(navController: NavController) {
-        // TODO STEP 9.4 - Use NavigationUI to set up a Navigation View
-//        // In split screen mode, you can drag this view out from the left
-//        // This does NOT modify the actionbar
+
         val sideNavView = findViewById<NavigationView>(R.id.nav_view)
         sideNavView?.setupWithNavController(navController)
-        // TODO END STEP 9.4
     }
 
     private fun setupActionBar(navController: NavController,
