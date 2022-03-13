@@ -2,6 +2,8 @@ package com.apache.fastandroid.jetpack.navigation.advance.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentLeaderboardBinding
 import com.apache.fastandroid.demo.BaseListFragment
@@ -31,7 +33,8 @@ class LeaderboardFragment:BaseVBFragment<FragmentLeaderboardBinding>(FragmentLea
             helper.setText(R.id.user_name_text,item)
             helper.setImageResource(R.id.user_avatar_image, listOfAvatars[helper.adapterPosition % listOfAvatars.size])
             helper.itemView.setOnClickListener {
-
+                val args = bundleOf("username" to item)
+                helper.itemView.findNavController().navigate(R.id.leaderboard_to_profile,args)
             }
         }
 

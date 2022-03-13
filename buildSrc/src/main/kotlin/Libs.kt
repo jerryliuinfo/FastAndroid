@@ -18,14 +18,25 @@ object Libs {
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
+    const val fastjson = "com.alibaba:fastjson:${Versions.fastjson}"
     const val utilcode = "com.blankj:utilcodex:1.31.0"
     const val brvh = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.brvh}"
+    const val mmkv = "com.tencent:mmkv-static:1.2.10"
+    const val anyLayer = "com.github.goweii:AnyLayer:4.1.4-androidx"
+    const val easyTrack = "com.github.pengxurui:EasyTrack:v1.0.1"
+    const val permissionMonitor = "com.github.huage2580:PermissionMonitor:1.0.1"
+    const val weishu = "me.weishu:epic:1.0.0"
+    const val sdk_editor = "com.github.iwhys:sdk-editor-plugin:1.1.7"
+
+    const val qmui = "com.qmuiteam:qmui:2.0.0-alpha10"
+    const val flexibledivider = "om.yqritc:recyclerview-flexibledivider:1.4.0"
 
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
 
 
     const val agp = "com.android.tools.build:gradle:${Versions.agp}"
     const val kgp = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
+
 
 
     val kotlin = arrayOf(
@@ -57,9 +68,21 @@ object Libs {
         "io.reactivex.rxjava3:rxandroid:${Versions.rxjava}"
     )
 
+    val bugly = arrayOf(
+        "com.tencent.bugly:crashreport:${Versions.bugly}",
+        "com.tencent.bugly:nativecrashreport:${Versions.bugly}"
+    )
+
+
     val coroutine = arrayOf(
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}",
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    )
+
+    val okhttp = arrayOf(
+        "com.squareup.okhttp3:okhttp:${Versions.okhttp}",
+        "com.squareup.okhttp3:okhttp-bom:${Versions.okhttp}",
+        "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}",
     )
 
     val retrofit = arrayOf(
@@ -75,6 +98,7 @@ object Libs {
         "androidx.room:room-ktx:${Versions.Room}"
 //        "androidx.room:room-compiler:${Versions.Room}",
     )
+
 
 
     val tests = arrayOf(

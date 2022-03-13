@@ -37,12 +37,11 @@ android {
 
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility rootProject.sourceCompatibilityVersion
+        targetCompatibility rootProject.targetCompatibilityVersion
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+
 
     buildFeatures{
         dataBinding = true

@@ -6,8 +6,6 @@ import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.model.ResultData
 import com.apache.fastandroid.network.response.BaseResponse
 import com.apache.fastandroid.network.response.EmptyResponse
-import com.tencent.bugly.crashreport.biz.UserInfoBean
-import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Call
 import retrofit2.http.GET

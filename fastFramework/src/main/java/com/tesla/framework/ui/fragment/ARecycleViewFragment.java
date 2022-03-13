@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
  *
  * Created by JerryLiu on 17/04/08.
  */
-public abstract class ARecycleViewFragmentNew<Q extends ViewDataBinding> extends BaseStatusFragmentNew{
+public abstract class ARecycleViewFragment<Q extends ViewDataBinding> extends BaseStatusFragmentNew{
     @Override
     public int getLayoutId() {
         return R.layout.comm_ui_recycleview_new;
@@ -40,14 +40,14 @@ public abstract class ARecycleViewFragmentNew<Q extends ViewDataBinding> extends
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX,
                                        int oldScrollY) {
-                ARecycleViewFragmentNew.this.onScrollChange(v,scrollX,scrollY,oldScrollX,oldScrollY);
+                ARecycleViewFragment.this.onScrollChange(v,scrollX,scrollY,oldScrollX,oldScrollY);
             }
         });
         getRefreshView().addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                ARecycleViewFragmentNew.this.onScrollStateChanged(recyclerView,newState);
+                ARecycleViewFragment.this.onScrollStateChanged(recyclerView,newState);
             }
         });
         adapter = createAdapter();

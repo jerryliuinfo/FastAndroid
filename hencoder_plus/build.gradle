@@ -9,6 +9,12 @@ android {
         targetSdkVersion rootProject.android.targetSdkVersion
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility rootProject.sourceCompatibilityVersion
+        targetCompatibility rootProject.targetCompatibilityVersion
+    }
+
 
     buildTypes {
         release {

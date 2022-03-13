@@ -28,6 +28,27 @@
         android:label="Leaderboard"
         tools:layout="@layout/fragment_leaderboard">
 
+        <action
+            android:id="@+id/leaderboard_to_profile"
+            app:destination="@+id/userProfile"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+
+        <argument
+            android:name="username"
+            app:argType="string"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userProfile"
+        android:name="com.apache.fastandroid.jetpack.navigation.advance.list.UserProfileFragment"
+        android:label="userProfile"
+        tools:layout="@layout/fragment_user_profile">
+
     </fragment>
 
 </navigation>

@@ -11,8 +11,8 @@ ext {
             versionName :"1.0.3"
     ]
 
-    sourceCompatibilityVersion = JavaVersion.VERSION_1_8
-    targetCompatibilityVersion = JavaVersion.VERSION_1_8
+    sourceCompatibilityVersion = JavaVersion.VERSION_11
+    targetCompatibilityVersion = JavaVersion.VERSION_11
 
     designVersion = "27.0.1"
 

@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.jetpack
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.databinding.DatabindingFragmentDemo
+import com.apache.fastandroid.demo.room.RoomDemoFragment
 import com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity
 import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleDemoFragment
 import com.apache.fastandroid.jetpack.livedata.*
@@ -10,7 +11,6 @@ import com.apache.fastandroid.jetpack.navigation.NavigationDrawerDemoActivity2
 import com.apache.fastandroid.jetpack.navigation.advance.AdvanceNavigationActivity
 import com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity
 import com.apache.fastandroid.jetpack.viewmodel.JetPackViewModelListFragment
-import com.apache.fastandroid.jetpack.workmanager.WorkManagerListDemo
 
 /**
  * Created by Jerry on 2020/11/11.
@@ -27,8 +27,7 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("Navigation2", "左边固定显示Naviagtion", activity= NavigationDrawerDemoActivity2::class.java)
                 ,ViewItemBean("AdvanceNavigation", "AdvanceNavigation", activity= AdvanceNavigationActivity::class.java)
 //                ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
-                ,ViewItemBean("WorkManager", "WorkManager", WorkManagerListDemo::class.java)
-                ,ViewItemBean("ViewModelFactory", "ViewModelFactory", WorkManagerListDemo::class.java)
+                ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
         )
     }
 }

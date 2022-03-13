@@ -19,6 +19,11 @@ android {
          */
         consumerProguardFiles "consumer-rules.pro"
     }
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility rootProject.sourceCompatibilityVersion
+        targetCompatibility rootProject.targetCompatibilityVersion
+    }
 
     buildFeatures{
         dataBinding = true

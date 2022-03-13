@@ -30,6 +30,11 @@ open class ABaseFragment:Fragment() {
 
     private val compositeDisposable = CompositeDisposable()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initViewModel()
+    }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

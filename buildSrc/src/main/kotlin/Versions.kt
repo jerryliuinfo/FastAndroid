@@ -1,8 +1,12 @@
+import org.apache.tools.ant.taskdefs.condition.JavaVersion
+
 /**
  * Created by Jerry on 2022/2/26.
  */
 object Versions {
     const val kotlin = "1.6.10"
+
+
 
     const val appCompat = "1.1.0"
     const val material = "1.4.0-alpha01"
@@ -17,9 +21,10 @@ object Versions {
 
     const val navigationVersion = "2.3.5"
     const val lifecycle_version = "2.3.1"
-    const val Room = "2.4.1"
+    const val Room = "2.2.3"
     const val coroutines = "1.3.5"
 
+    const val okhttp = "4.8.0"
     const val retrofit = "2.8.1"
     const val retrofitRxjava = "2.9.0"
 
@@ -31,7 +36,7 @@ object Versions {
     const val qmui = "2.0.0-alpha10"
     const val rxjava = "3.0.0"
     const val immersionbar = "3.0.0"
-    const val bugly = "3.2.1"
+    const val bugly = "4.0.0"
     const val brvh = "2.9.30"
 
 

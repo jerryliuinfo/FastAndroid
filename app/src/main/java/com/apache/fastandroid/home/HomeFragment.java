@@ -12,7 +12,7 @@ import com.apache.fastandroid.network.model.HomeArticleResponse;
 import com.apache.fastandroid.state.UserInfo;
 import com.apache.fastandroid.util.InjectorUtil;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBinding;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragmentNew;
 import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener;
 
@@ -21,13 +21,16 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Jerry on 2021/7/1.
  */
-public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements CollectListener {
+public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew<Article> implements CollectListener {
     public static final String TAG ="HomeFragment";
 
 
@@ -36,24 +39,22 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
     }
 
 
-//    private HomeViewModel homeViewModel;
 
     private HomeViewModelKt mHomeViewModelKt;
 
     private ArticleViewModel mArticleViewModel;
 
-
-
     @Override
-    protected void initViewModel() {
-//        homeViewModel = getFragmentScopeViewModel(HomeViewModel.class);
-
+    protected  void initViewModel(){
         mHomeViewModelKt = new ViewModelProvider(this, InjectorUtil.getHomeModelFactory()).get(HomeViewModelKt.class);
         mArticleViewModel = new ViewModelProvider(this, InjectorUtil.getArticeModelFactory()).get(ArticleViewModel.class);
     }
 
+
+
+    @NonNull
     @Override
-    protected BaseQuickAdapter createAdapter() {
+    public BaseQuickAdapter<Article, BaseViewHolder> createAdapter() {
         return new ArticleAdapter(null);
     }
 
@@ -90,7 +91,7 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
                     if (listData != null){
                         handleData(listData.getDatas(),false);
                     }else {
-                        getAdapter().loadMoreFail();
+                        getMAdapter().loadMoreFail();
                     }
                 }
 
@@ -101,32 +102,34 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
             @Override
             public void onChanged(CollectBean item) {
                 getItemById(item.getId()).setCollect(item.getStatus());
-                getAdapter().notifyDataSetChanged();
+                getMAdapter().notifyDataSetChanged();
             }
         });
 
 
         onRefresh();
-        getAdapter().setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Article item = (Article) getAdapter().getItem(position);
-//                ArticleDetailActivity.launch(getActivity(),item.getTitle(),item.getLink());
-                ArticleDetailActivity.launch(getActivity(),item.getTitle(),"https://ykt.eduyun.cn");
-            }
-        });
-        getAdapter().setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                Article item = (Article) getAdapter().getItem(position);
-                UserInfo.getInstance().collect(getActivity(), item.getId(),HomeFragment.this);
-            }
-        });
+
     }
 
 
+    @Override
+    public void onItemClick(@Nullable BaseQuickAdapter<Object, BaseViewHolder> adapter, @Nullable View view, Article article) {
+        ArticleDetailActivity.launch(getActivity(),article.getTitle(),"https://ykt.eduyun.cn");
+    }
+
+    @Override
+    public void onItemChildClick(@NonNull BaseQuickAdapter<Object, BaseViewHolder> adapter, @NonNull View view, Article article) {
+        UserInfo.getInstance().collect(getActivity(), article.getId(),HomeFragment.this);
+    }
+
+    @Nullable
+    @Override
+    protected RecyclerView.LayoutManager configLayoutManager() {
+        return super.configLayoutManager();
+    }
+
     private Article getItemById(int id){
-        List<Article> datas= getAdapter().getData();
+        List<Article> datas= getMAdapter().getData();
         for (Article article : datas) {
             if (id == article.getId()){
                 return article;
@@ -137,21 +140,23 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
 
 
     private void handleData(List<Article> data, boolean isRefresh){
+        dismissRefreshing();
+
         final int size = data == null ? 0 : data.size();
         if (isRefresh) {
-            getAdapter().setNewData(data);
+            mAdapter.setNewData(data);
 
         } else {
-            getAdapter().addData(data);
+            mAdapter.addData(data);
         }
-        dismissRefreshing();
         // 返回列表为空显示加载完毕
         if (size == 0 ) {
             //只有大于一页，才展示"no more data"
-            getAdapter().loadMoreEnd(isFristPage());
+            mAdapter.loadMoreEnd(isFristPage());
         } else {
-            getAdapter().loadMoreComplete();
+            mAdapter.loadMoreComplete();
         }
+        mAdapter.notifyDataSetChanged();
     }
 
     private boolean isFristPage(){
@@ -161,19 +166,18 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
 
     private int mCurrentPage = 0;
 
-    @Override
     public void onRefresh() {
-        showRefreshing();
+//        showRefreshing();
         mCurrentPage = 0;
         mTopArticlesLoadTimes = 0;
         mHomeViewModelKt.loadHomeData(mCurrentPage);
 
     }
 
-    @Override
-    protected CommUiRecycleviewSwiperefreshNewBinding bindView() {
-        return null;
-    }
+//    @Override
+//    protected CommUiRecycleviewSwiperefreshNewBinding bindView() {
+//        return null;
+//    }
 
     @Override
     protected void onLoadMore() {
@@ -189,5 +193,7 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew implements
         }
 
     }
+
+
 }
 

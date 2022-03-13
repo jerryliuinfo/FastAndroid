@@ -9,12 +9,10 @@ import android.view.View;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.databinding.ActivityMainNewBinding;
 import com.apache.fastandroid.demo.bean.UserBean;
-import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.ui.activity.BaseVmActivity;
-import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import java.io.Serializable;
 
@@ -59,7 +57,6 @@ public class MainActivity extends BaseVmActivity<ActivityMainNewBinding> impleme
 
         NavHostFragment hostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host);
         mNavController = hostFragment.getNavController();
-//        mNavController = Navigation.findNavController();
         AppBarConfiguration configuration = new AppBarConfiguration.Builder(mNavController.getGraph()).build();
         configuration = new AppBarConfiguration.Builder(R.id.home_dest,R.id.demo_dest).setOpenableLayout(mBinding.drawer).build();
 
@@ -67,7 +64,7 @@ public class MainActivity extends BaseVmActivity<ActivityMainNewBinding> impleme
         setupNavigationMenu(mNavController);
 
 
-        FragmentContainerActivity.launch(this, JetPackDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, JetPackDemoFragment.class,null);
     }
 
     private void setupActionBar(NavController navController,

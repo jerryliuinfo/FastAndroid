@@ -1,5 +1,116 @@
+Starting a Gradle Daemon (subsequent builds will be faster)
 第一阶段和第二阶段之间执行
 Hello settings.gradle
 
-> Task :buildSrc:compileKotlin FAILED
-The `kotlin-dsl` plugin applied to project ':buildSrc' enables experimental Kotlin compiler features. For more information see https://docs.gradle.org/6.7.1/userguide/kotlin_dsl.html#sec:kotlin-dsl_plugin
+> Task :buildSrc:compileKotlin
+w: Runtime JAR files in the classpath should have the same version. These files were found in the classpath:
+    /Users/jerry/.gradle/wrapper/dists/gradle-7.3.2-all/4h7zmfyirw3l9vsxqbzv7bhr8/gradle-7.3.2/lib/kotlin-stdlib-1.5.31.jar (version 1.5)
+    /Users/jerry/.gradle/wrapper/dists/gradle-7.3.2-all/4h7zmfyirw3l9vsxqbzv7bhr8/gradle-7.3.2/lib/kotlin-stdlib-common-1.5.31.jar (version 1.5)
+    /Users/jerry/.gradle/wrapper/dists/gradle-7.3.2-all/4h7zmfyirw3l9vsxqbzv7bhr8/gradle-7.3.2/lib/kotlin-stdlib-jdk7-1.5.31.jar (version 1.5)
+    /Users/jerry/.gradle/wrapper/dists/gradle-7.3.2-all/4h7zmfyirw3l9vsxqbzv7bhr8/gradle-7.3.2/lib/kotlin-stdlib-jdk8-1.5.31.jar (version 1.5)
+    /Users/jerry/.gradle/wrapper/dists/gradle-7.3.2-all/4h7zmfyirw3l9vsxqbzv7bhr8/gradle-7.3.2/lib/kotlin-reflect-1.5.31.jar (version 1.5)
+    /Users/jerry/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.6.0/baf82c475e9372c25407f3d132439e4aa803b8b8/kotlin-stdlib-jdk8-1.6.0.jar (version 1.6)
+    /Users/jerry/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.5.31/1523fcd842a47da0820cea772b19c51056fec8a9/kotlin-reflect-1.5.31.jar (version 1.5)
+    /Users/jerry/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.6.0/da6bdc87391322974a43ccc00a25536ae74dad51/kotlin-stdlib-jdk7-1.6.0.jar (version 1.6)
+    /Users/jerry/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.6.0/a40b8b22529b733892edf4b73468ce598bb17f04/kotlin-stdlib-1.6.0.jar (version 1.6)
+    /Users/jerry/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.6.0/7857e365f925cfa060f941c1357cda1f8790502c/kotlin-stdlib-common-1.6.0.jar (version 1.6)
+w: Consider providing an explicit dependency on kotlin-reflect 1.6 to prevent strange errors
+w: Some runtime JAR files in the classpath have an incompatible version. Consider removing them from the classpath
+
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:pluginDescriptors UP-TO-DATE
+> Task :buildSrc:processResources UP-TO-DATE
+> Task :buildSrc:classes UP-TO-DATE
+> Task :buildSrc:inspectClassesForKotlinIC UP-TO-DATE
+> Task :buildSrc:jar UP-TO-DATE
+> Task :buildSrc:assemble UP-TO-DATE
+> Task :buildSrc:compileTestKotlin NO-SOURCE
+> Task :buildSrc:pluginUnderTestMetadata
+> Task :buildSrc:compileTestJava NO-SOURCE
+> Task :buildSrc:compileTestGroovy NO-SOURCE
+> Task :buildSrc:processTestResources NO-SOURCE
+> Task :buildSrc:testClasses UP-TO-DATE
+> Task :buildSrc:test NO-SOURCE
+> Task :buildSrc:validatePlugins UP-TO-DATE
+> Task :buildSrc:check UP-TO-DATE
+> Task :buildSrc:build UP-TO-DATE
+
+> Configure project :
+java.util.ArrayList
+2
+6
+5
+[2, 3, 4]
+haha =------>
+java.util.LinkedHashMap
+width:1024, height:768
+width222:width, height222:1024
+width222:height, height222:768
+property222 key=credencial.username value=
+username:
+3
+3
+add1:2, add2:4
+名字是: null
+名字是: 张三
+年龄是: 12
+helloClosure2: name is zhangsan
+helloClosure2: age is 18
+thisObject:class chapter02_9r6g6rd74hgm6pelr3lq62xgn
+owner:class chapter02_9r6g6rd74hgm6pelr3lq62xgn$_run_closure8
+delegate:class chapter02_9r6g6rd74hgm6pelr3lq62xgn$_run_closure8
+Context this:class chapter02_9r6g6rd74hgm6pelr3lq62xgn in root
+method3 in root
+Delegate this:class Delegate in Delegate
+method3 in Delegate
+name is zhangsan, age is 20
+ex36Hello doFirst
+ex44DoLast --->
+ex46OrderTask1 --->
+ex46OrderTask2 --->
+ex47DiasbledTask --->
+该 missTask 任务不存在，请查证后再执行
+Hello world!
+4.time:0
+4.time:1
+4.time:2
+4.time:3
+path:/Users/jerry/work/FastAndroid/app/src/main/assets
+expression:unknow
+
+name222:null, age:0
+sortList before:[1, 3, 2, 5, 4]
+sortList after:[1, 2, 3, 4, 5]
+sortList remove:[1, 3, 4, 5]
+sortList findList:4
+sortList:1 max:5}
+sortList countNum:2
+testMap v1: value1
+testMap each key: key1,value: value1
+testMap each key: key2,value: value2
+testMap eachWithIndex key: key1,value: value1, index:0
+testMap eachWithIndex key: key2,value: value2, index:1
+testMap findAllResult: [key2:value2]
+buildDir:/Users/jerry/work/project/Android/build, name:Android
+aaa
+bbb
+app:project ':app'
+baselib:project ':baselib'
+basic_res:project ':basic_res'
+fastFramework:project ':fastFramework'
+hencode_basic:project ':hencode_basic'
+hencoder_clipmatrix:project ':hencoder_clipmatrix'
+hencoder_drawtext:project ':hencoder_drawtext'
+hencoder_paint:project ':hencoder_paint'
+hencoder_plus:project ':hencoder_plus'
+libnetwork:project ':libnetwork'
+Hello PluginDemo:name in plugin  --->
+正式执行task 之前(第2阶段和第三阶段之间)  ->
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.3.2/userguide/command_line_interface.html#sec:command_line_warnings
+7 actionable tasks: 2 executed, 5 up-to-date
