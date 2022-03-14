@@ -21,6 +21,7 @@ import com.apache.fastandroid.demo.hitpit.HitPitDemoListFragment
 import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.sample.SampleCodeDemoListFragment
+import com.apache.fastandroid.demo.tablayout.ArticleTabsFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.transition.TransitionDemoFragment
 import com.apache.fastandroid.demo.widget.UIWidgetDemoFragment
@@ -68,6 +69,7 @@ class DemoListFragment : BaseListFragment() {
             ,ViewItemBean("采坑", "采坑", HitPitDemoListFragment::class.java)
             ,ViewItemBean("Sample", "Sample", SampleCodeDemoListFragment::class.java)
             ,ViewItemBean("单元测试", "单元测试", SampleCodeDemoListFragment::class.java)
+            ,ViewItemBean("TabLayoutFragment", "TabLayoutFragment", ArticleTabsFragment::class.java)
 
 
         )

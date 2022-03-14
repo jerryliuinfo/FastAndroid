@@ -14,7 +14,7 @@ import kotlin.coroutines.suspendCoroutine
  * Created by Jerry on 2022/2/23.
  */
 class HomeNetwork {
-    private val apiServiceKt = ApiEngine.getApiServiceKt()
+    private val apiServiceKt = ApiEngine.apiServiceKt
 
     /**
      * ApiServiceKt 接口返回的是 Call 类型时，需要用await

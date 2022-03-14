@@ -6,7 +6,7 @@
 
     <Button
         android:id="@+id/btn_insert"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -14,26 +14,44 @@
         android:text="增加一条数据"
         />
     <Button
-        android:id="@+id/btn_delete"
-        android:layout_width="match_parent"
+        android:id="@+id/btn_insert_no_query"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_insert"
+        app:layout_constraintTop_toBottomOf="@+id/btn_insert"
+        android:text="增加一条数据不手动刷新"
+        />
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_insert_no_query"
         android:text="删除一条数据"
         />
     <Button
-        android:id="@+id/btn_modify"
-        android:layout_width="match_parent"
+        android:id="@+id/btn_delete_all"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_delete"
+        android:text="删除所有数据"
+        />
+    <Button
+        android:id="@+id/btn_modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_delete_all"
         android:text="修改数据"
         />
     <Button
         android:id="@+id/btn_query_by_id"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,12 +59,31 @@
         android:text="根据id查找数据"
         />
     <Button
-        android:id="@+id/btn_query_all"
-        android:layout_width="match_parent"
+        android:id="@+id/btn_query_by_condition"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_modify"
+        android:text="根据条件查询数据"
+        />
+
+    <Button
+        android:id="@+id/btn_query_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_query_by_condition"
         android:text="查找所有数据"
         />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_query_all"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

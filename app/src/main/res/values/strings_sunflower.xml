@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="garden_empty" translation_description="Text that is shown on the 'My Garden' screen when no plants have been added to the user's garden">Your garden is empty</string>
+</resources>

@@ -135,6 +135,14 @@ android {
          ————————————————
          */
         consumerProguardFiles "consumer-rules.pro"
+
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation":
+                                      "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     signingConfigs {
@@ -144,6 +152,10 @@ android {
         debug {
             setSigningConfigKey(debug, REPO_PROPS)
         }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
     }
 
 
@@ -452,10 +464,16 @@ dependencies {
     implementation rootProject.ext.thirdLib.blockcanary
     implementation rootProject.ext.thirdLib.AppStartFaster
 
+    implementation Libs.viewPage2
+
 
     implementation rootProject.ext.thirdLib.lottie
 
-
+    implementation(*Libs.room)
+//    annotationProcessor Libs.room_compiler
+    //kotlin 用 kapt
+//    kapt Libs.room_compiler
+    kapt "androidx.room:room-compiler:$Versions.Room"
 
 
 

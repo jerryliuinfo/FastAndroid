@@ -9,10 +9,13 @@ import android.view.View;
 import com.apache.fastandroid.annotations.CostTime;
 import com.apache.fastandroid.databinding.ActivityMainNewBinding;
 import com.apache.fastandroid.demo.bean.UserBean;
+import com.apache.fastandroid.demo.room.RoomDemoFragment;
+import com.apache.fastandroid.demo.temp.savestate.SaveStateHandleFragment;
 import com.blankj.utilcode.util.ToastUtils;
 import com.tesla.framework.common.util.log.NLog;
 import com.tesla.framework.component.eventbus.FastBus;
 import com.tesla.framework.ui.activity.BaseVmActivity;
+import com.tesla.framework.ui.activity.FragmentContainerActivity;
 
 import java.io.Serializable;
 
@@ -65,6 +68,8 @@ public class MainActivity extends BaseVmActivity<ActivityMainNewBinding> impleme
 
 
 //        FragmentContainerActivity.launch(this, JetPackDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, RoomDemoFragment.class,null);
+        FragmentContainerActivity.launch(this, SaveStateHandleFragment.class,null);
     }
 
     private void setupActionBar(NavController navController,

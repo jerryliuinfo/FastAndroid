@@ -24,6 +24,9 @@ object Versions {
     const val Room = "2.2.3"
     const val coroutines = "1.3.5"
 
+    const val viewPager2 = "1.0.0"
+
+
     const val okhttp = "4.8.0"
     const val retrofit = "2.8.1"
     const val retrofitRxjava = "2.9.0"

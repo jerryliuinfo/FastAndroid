@@ -91,7 +91,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
         initAop();
         initCrash();
         crashReport();
-        initCockroach();
+//        initCockroach();
         initLoop();
         Logger.d("Application onCreate ");
         initAndroidUtil();

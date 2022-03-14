@@ -49,7 +49,7 @@ class TokenInterceptor(private var token:String):Interceptor {
             val refresh = spUtils.getLong(KEY_REFRESH_TOKEN, 0)
 
             //刷新access_token的接口请求
-            val refreshTokenR = ApiEngine.getApiService()
+            val refreshTokenR = ApiEngine.apiService
             val call = refreshTokenR.refreshToken(refresh)
             val execute = call.execute()
             newToken = execute.body()!!.data?.access_token

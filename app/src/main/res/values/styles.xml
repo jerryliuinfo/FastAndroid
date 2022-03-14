@@ -1,18 +1,72 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="Base.AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+
+
+   <!-- 1.colorPrimary                    应用的主要色调,actionBar默认使用该颜色,Toolbar导航栏的底色
+
+    2.colorPrimaryDark            应用的主要暗色调,statusBarColor默认使用该颜色
+
+    3.statusBarColor                 状态栏颜色,默认使用colorPrimaryDark
+
+    4.windowBackground       窗口背景颜色
+
+    5.navigationBarColor        底部栏颜色
+
+    6.colorForeground            应用的前景色,ListView的分割线,switch滑动区默认使用该颜色
+
+    7.colorBackground            应用的背景色,popMenu的背景默认使用该颜色
+
+    8.colorAccent                    CheckBox,RadioButton,SwitchCompat等一般控件的选中效果默认采用该颜色
+
+    9.colorControlNormal        CheckBox,RadioButton,SwitchCompat等默认状态的颜色。
+
+    10.colorControlHighlight   控件按压时的色调
+
+    11.colorControlActivated    控件选中时的颜色,默认使用colorAccent
+
+    12.colorButtonNormal        默认按钮的背景颜色
+
+    13.editTextColor                  默认EditView输入框字体的颜色。
+    -->
+
+    <style name="Base.Theme.AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!--  应用的主要暗色调,statusBarColor默认使用该颜色-->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--  应用的主要色调,actionBar默认使用该颜色,Toolbar导航栏的底色 -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+    <!--        CheckBox,RadioButton,SwitchCompat等一般控件的选中效果默认采用该颜色-->
         <item name="colorAccent">@color/colorAccent</item>
+
+<!--  用于显示在原色上方的元素的颜色（例如，文本和图标，根据可访问性，通常为白色或半透明的黑色）-->
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+
+<!--        用于显示在表面颜色顶部的元素的颜色-->
+<!--        <item name="colorOnSurface">@color/sunflower_black</item>-->
+
+        <!--用于表面的颜色（即材料“纸张”）-->
+<!--    <item name="colorSurface">@color/sunflower_gray_50</item>-->
+
+<!--        您应用程式的次要品牌色彩，主要用于强调某些需要突出的小部件-->
+<!--        <item name="colorSecondary">@color/sunflower_yellow_500</item>-->
+
+<!--        所有其他屏幕内容后面的颜色-->
+        <item name="android:colorBackground">@color/white</item>
+
 
         <item name="android:windowAnimationStyle">@style/anim_fade</item>
         <item name="textAllCaps">false</item>
 
-        <!-- Window decor -->
+<!--        状态栏颜色,默认使用colorPrimaryDark-->
         <item name="android:statusBarColor">@color/transparent</item>
+<!--        底部栏颜色-->
         <item name="android:navigationBarColor">#40000000</item>
+
+<!--        DisableOnly RadioButton checkbox等控件的文字-->
+<!--        <item name="textColorPrimary">#40000000</item>-->
+
+<!--        应用的主要文字颜色,actionBar的标题文字默认使用该颜色 -->
+<!--        <item name="textColorPrimary">#40000000</item>-->
 
         <!--        不允许多点触控-->
         <item name="android:splitMotionEvents">false</item>
@@ -24,7 +78,7 @@
 
 
     </style>
-    <style name="AppTheme" parent="Base.AppTheme">
+    <style name="Theme.AppTheme" parent="Base.Theme.AppTheme">
 
 
 

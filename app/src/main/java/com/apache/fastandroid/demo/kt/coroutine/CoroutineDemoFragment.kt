@@ -186,7 +186,7 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
             .addConverterFactory(CustomGsonConverterFactory.create())
             .addConverterFactory(CustomGsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            .client(ApiEngine.getOkHttpClient())
+            .client(ApiEngine.okHttpClient)
             .build()
         apiService = retrofit.create(ApiServiceKt::class.java)
     }

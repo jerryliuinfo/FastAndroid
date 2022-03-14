@@ -8,7 +8,7 @@ import retrofit2.await
  * Created by Jerry on 2022/2/23.
  */
 class ArticleNetwork {
-    private val apiServiceKt = ApiEngine.getApiServiceKt()
+    private val apiServiceKt = ApiEngine.apiServiceKt
 
     suspend fun collect(id:Int)  = apiServiceKt.collect(id).await()
 

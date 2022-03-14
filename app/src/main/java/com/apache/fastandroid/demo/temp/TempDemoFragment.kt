@@ -10,6 +10,7 @@ import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity2
 import com.apache.fastandroid.demo.style.FitSystemWindowFrameLayoutDemoActivity
 import com.apache.fastandroid.demo.temp.activityresult.ActivityResultDemoActivity
 import com.apache.fastandroid.demo.temp.reflect.ReflectionDemoFragment
+import com.apache.fastandroid.demo.temp.savestate.SaveStateHandleFragment
 
 /**
  * Created by Jerry on 2021/3/1.
@@ -42,6 +43,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("FitSystemWindow3", "FitSystemWindow3", activity = FitSystemWindowFrameLayoutDemoActivity::class.java)
                 ,ViewItemBean("LayoutInflater", "LayoutInflater",  LayoutInflaterDemoFragment::class.java)
                 ,ViewItemBean("ActivityResultApi", "ActivityResultApi",  activity = ActivityResultDemoActivity::class.java)
+                ,ViewItemBean("SavedStateHandle", "SavedStateHandle",  SaveStateHandleFragment::class.java)
 
         )
     }

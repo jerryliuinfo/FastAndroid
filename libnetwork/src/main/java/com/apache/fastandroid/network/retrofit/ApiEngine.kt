@@ -1,106 +1,107 @@
-package com.apache.fastandroid.network.retrofit;
+package com.apache.fastandroid.network.retrofit
 
-import android.os.Build;
+import android.os.Build
+import retrofit2.Retrofit
+import com.apache.fastandroid.network.retrofit.convertor.CustomGsonConverterFactory
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
+import com.apache.fastandroid.retrofit.ApiConstant
+import com.blankj.utilcode.util.ToastUtils
+import com.mooc.libnetwork.BuildConfig
+import okhttp3.CertificatePinner
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import java.util.*
+import java.util.concurrent.TimeUnit
 
-import com.apache.fastandroid.network.retrofit.convertor.CustomGsonConverterFactory;
-import com.apache.fastandroid.retrofit.ApiConstant;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
-
-
-
-public final class ApiEngine {
-    private static final Object car = new Object();
-    private static final Object sword = new Object();
-
-    public static final String TAG = "ApiEngine";
-
-    private final static int CONN_TIMEOUT = 10000;
-    private final static int READ_TIMEOUT = 10000;
-
-    public static void main(String[] args) {
-
+object ApiEngine {
+    private val car = Any()
+    private val sword = Any()
+    const val TAG = "ApiEngine"
+    private const val CONN_TIMEOUT = 10000
+    private const val READ_TIMEOUT = 10000
+    @JvmStatic
+    fun main(args: Array<String>) {
     }
 
-    private static OkHttpClient sOkHttpClient;
-
-    public static OkHttpClient getOkHttpClient(){
-        if (sOkHttpClient == null){
-            OkHttpClient.Builder mBuilder = new OkHttpClient().newBuilder();
-            onOkHttpClientCreated(mBuilder);
-            sOkHttpClient = mBuilder.build();
+    private var sOkHttpClient: OkHttpClient? = null
+    val okHttpClient: OkHttpClient?
+        get() {
+            if (sOkHttpClient == null) {
+                sOkHttpClient = onOkHttpClientCreated()
+            }
+            return sOkHttpClient
         }
-        return sOkHttpClient;
-    }
-
-    private static Retrofit sRetrofit;
-    private static Retrofit getRetrofit(){
-        if (sRetrofit == null){
-            Retrofit.Builder builder = new Retrofit.Builder();
-            sRetrofit =  builder
+    private var sRetrofit: Retrofit? = null
+    private val retrofit: Retrofit?
+        private get() {
+            if (sRetrofit == null) {
+                val builder = Retrofit.Builder()
+                sRetrofit = builder
                     .addConverterFactory(CustomGsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                    .client(getOkHttpClient())
+                    .client(okHttpClient)
                     .baseUrl(ApiConstant.BASE_URL)
-                    .build();
+                    .build()
+            }
+            return sRetrofit
         }
-        return sRetrofit;
-    }
 
-    private static void onOkHttpClientCreated(OkHttpClient.Builder client) {
-        client.connectTimeout(CONN_TIMEOUT, TimeUnit.MILLISECONDS)
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
-                .retryOnConnectionFailure(true);
+    private fun onOkHttpClientCreated():OkHttpClient {
+        val builder = OkHttpClient().newBuilder()
+        builder.connectTimeout(CONN_TIMEOUT.toLong(), TimeUnit.MILLISECONDS)
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(READ_TIMEOUT.toLong(), TimeUnit.MILLISECONDS)
+            .retryOnConnectionFailure(true)
         //https://t.zsxq.com/nUnEune
-        if (Build.VERSION.SDK_INT >= 28){
-            client.pingInterval(3, TimeUnit.SECONDS);
+        if (Build.VERSION.SDK_INT >= 28) {
+            builder.pingInterval(3, TimeUnit.SECONDS)
         }
 
-        List<Interceptor> interceptors = client.interceptors();
-        interceptors.add(new HeaderInterceptor());
-        interceptors.add(new ErrorInterceptor());
-        HttpLogInterceptor logInterceptor = new HttpLogInterceptor();
-        interceptors.add(logInterceptor);
+       /* builder.certificatePinner(CertificatePinner.Builder()
+            .apply {
+                if (Date() < Date(2022,Calendar.OCTOBER,7)){
+                    add("https://www.wanandroid.com","sha256/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=\"")
+                }else if (BuildConfig.DEBUG){
+                    ToastUtils.showShort("请更新证书和实践")
+                }
+            }
+            .build())*/
+
+        val interceptors: MutableList<Interceptor> = builder.interceptors()
+        interceptors.add(HeaderInterceptor())
+        interceptors.add(ErrorInterceptor())
+        val logInterceptor = HttpLogInterceptor()
+        interceptors.add(logInterceptor)
+        return builder.build()
     }
 
-
-    public static <T> T getService(Class<T> cls) {
-        final Retrofit retrofit = getRetrofit();
-        return retrofit.create(cls);
+    fun <T> getService(cls: Class<T>?): T {
+        val retrofit = retrofit
+        return retrofit!!.create(cls)
     }
 
-    private static ApiService sApiService;
-    private static ApiServiceKt sApiServiceKt;
-    public static ApiService getApiService() {
-        if (sApiService == null){
-            sApiService = getRetrofit().create(ApiService.class);
+    private var sApiService: ApiService? = null
+    private var sApiServiceKt: ApiServiceKt? = null
+    val apiService: ApiService
+        get() {
+            if (sApiService == null) {
+                sApiService = retrofit!!.create(ApiService::class.java)
+            }
+            return retrofit!!.create(ApiService::class.java)
         }
-        return getRetrofit().create(ApiService.class);
-    }
-
-    public static ApiServiceKt getApiServiceKt() {
-        if (sApiServiceKt == null){
-            sApiServiceKt = getRetrofit().create(ApiServiceKt.class);
+    val apiServiceKt: ApiServiceKt
+        get() {
+            if (sApiServiceKt == null) {
+                sApiServiceKt = retrofit!!.create(ApiServiceKt::class.java)
+            }
+            return retrofit!!.create(ApiServiceKt::class.java)
         }
-        return getRetrofit().create(ApiServiceKt.class);
-    }
-
-    private static FakeApi sFakeApi;
-    public static FakeApi getFakeApi(){
-        if (sFakeApi == null){
-            sFakeApi = new FakeApi();
+    private var sFakeApi: FakeApi? = null
+    val fakeApi: FakeApi?
+        get() {
+            if (sFakeApi == null) {
+                sFakeApi = FakeApi()
+            }
+            return sFakeApi
         }
-        return sFakeApi;
-    }
-
-
-
-
 }

@@ -1,98 +1,97 @@
-package com.tesla.framework.ui.fragment;
+package com.tesla.framework.ui.fragment
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-
-import com.google.android.material.tabs.TabLayout;
-import com.tesla.framework.R;
-import com.tesla.framework.databinding.FragmentTablayoutBinding;
-import com.tesla.framework.support.bean.ITabItem;
-import com.tesla.framework.ui.fragment.adpater.PageTabAdapter;
-
-import java.util.ArrayList;
-
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-
-import static androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
+import android.os.Bundle
+import android.view.LayoutInflater
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import com.tesla.framework.databinding.FragmentTablayoutBinding
+import com.tesla.framework.support.bean.ITabItem
 
 /**
  * 对TabLayout的封装
  */
-public abstract class ATabsTabLayoutFragmentNew extends BaseLifecycleFragment<FragmentTablayoutBinding> {
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
-    private ArrayList<ITabItem> tabItems;
-    @Override
-    public int getLayoutId() {
-        return R.layout.fragment_tablayout;
+abstract class ATabsTabLayoutFragmentNew : BaseVBFragment<FragmentTablayoutBinding>(FragmentTablayoutBinding::inflate) {
+
+    private var tabItems: ArrayList<ITabItem>? = null
+
+
+    override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
+        super.layoutInit(inflater, savedInstanceState)
+
+        setupViewPage()
     }
 
+    abstract fun createTabAdapter(): FragmentStateAdapter
 
+    var selectedTabIndex = 0
+        private set
 
-    @Override
-    public void layoutInit(LayoutInflater inflater, Bundle savedInstanceSate) {
-        super.layoutInit(inflater, savedInstanceSate);
-        viewPager = findViewById(R.id.viewpager);
-        tabLayout = findViewById(R.id.tabLayout);
-
-        tabLayout.setTabMode(TabLayout.MODE_FIXED);
-
-        setupViewPage();
-
-    }
-
-    private int selectedTabIndex;
-    private void setupViewPage(){
-        tabLayout.setupWithViewPager(viewPager);
-
-        tabItems = generateTabs();
-        PageTabAdapter pagerAdapter = new PageTabAdapter(getChildFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, tabItems) {
-
-            @Override
-            public Fragment getFragmentByPosition(int position, ITabItem tabItem) {
-                return newFragment(position,tabItem);
+    private fun setupViewPage() {
+      /*  viewBinding.tabLayout.apply {
+            tabMode = TabLayout.MODE_FIXED
+            setupWithViewPager(viewBinding.viewpager)
+        }*/
+       /* val pagerAdapter: PageTabAdapter = object : PageTabAdapter(
+            childFragmentManager,
+            FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,
+            tabItems
+        ) {
+            override fun getFragmentByPosition(position: Int, tabItem: ITabItem): Fragment {
+                return newFragment(position, tabItem)
             }
-        };
+        }*/
 
-        viewPager.setAdapter(pagerAdapter);
-        //懒加载，其实还是会加载多一个,在fragment中去控制延迟加载
-        viewPager.setOffscreenPageLimit(tabItems.size());
-        viewPager.setCurrentItem(selectedTabIndex);
-        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                ATabsTabLayoutFragmentNew.this.onPageSelected(position);
-            }
-        });
-    }
-
-    protected void onPageSelected(int position){
-        selectedTabIndex = position;
-    }
-
-    protected abstract Fragment newFragment(int position,ITabItem tabItem);
-
-    protected abstract ArrayList<ITabItem> generateTabs();
-
-
-    public void setCurrentItem(int index){
-        if (selectedTabIndex == index){
-            return;
+        viewBinding.viewpager.apply {
+            adapter = createTabAdapter()
         }
-        viewPager.setCurrentItem(index);
+
+        TabLayoutMediator(viewBinding.tabLayout, viewBinding.viewpager) { tab, position ->
+            onConfigureTab(tab,position)
+        }.attach()
+
+
+
+        /*viewBinding.viewpager.apply {
+            adapter = pagerAdapter
+            offscreenPageLimit = tabItems?.size ?:1
+            currentItem = selectedTabIndex
+            addOnPageChangeListener(object :ViewPager.OnPageChangeListener{
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+
+                }
+
+                override fun onPageSelected(position: Int) {
+                    this@ATabsTabLayoutFragmentNew.onPageSelected(position)
+                }
+
+                override fun onPageScrollStateChanged(state: Int) {
+                }
+
+            })
+
+        }*/
+
+
     }
 
-    public ViewPager getViewPager() {
-        return viewPager;
+    abstract fun onConfigureTab(tab: TabLayout.Tab, position: Int)
+
+    protected fun onPageSelected(position: Int) {
+        selectedTabIndex = position
     }
 
-    public TabLayout getTabLayout() {
-        return tabLayout;
-    }
+//    protected abstract fun newFragment(position: Int, tabItem: ITabItem?): Fragment
+//    protected abstract fun generateTabs(): ArrayList<ITabItem>
 
-    public int getSelectedTabIndex() {
-        return selectedTabIndex;
+    fun setCurrentItem(index: Int) {
+        if (selectedTabIndex == index) {
+            return
+        }
+        viewBinding.viewpager.currentItem = index
     }
 }

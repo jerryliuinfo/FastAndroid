@@ -37,6 +37,9 @@ object Libs {
     const val agp = "com.android.tools.build:gradle:${Versions.agp}"
     const val kgp = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
 
+    const val room_compiler = "androidx.room:room-compiler:${Versions.Room}"
+    const val viewPage2 = "androidx.viewpager2:viewpager2:${Versions.viewPager2}"
+
 
 
     val kotlin = arrayOf(

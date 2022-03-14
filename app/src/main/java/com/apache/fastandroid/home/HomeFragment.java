@@ -167,17 +167,14 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew<Article> i
     private int mCurrentPage = 0;
 
     public void onRefresh() {
-//        showRefreshing();
+        showRefreshing();
         mCurrentPage = 0;
         mTopArticlesLoadTimes = 0;
         mHomeViewModelKt.loadHomeData(mCurrentPage);
 
     }
 
-//    @Override
-//    protected CommUiRecycleviewSwiperefreshNewBinding bindView() {
-//        return null;
-//    }
+
 
     @Override
     protected void onLoadMore() {

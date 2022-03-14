@@ -84,14 +84,14 @@ open class RxJava3PracticeFragment:BaseFragment() {
                 if (token == null){
                     return@flatMap Observable.error(IllegalArgumentException("token is null"))
                 }else{
-                    return@flatMap ApiEngine.getFakeApi().getFakeData(FakeToken(token,false))
+                    return@flatMap ApiEngine.fakeApi!!.getFakeData(FakeToken(token,false))
                 }
             }.retryWhen(object :Function<Observable<out Throwable?>, Observable<*>>{
                 override fun apply(t: Observable<out Throwable?>): Observable<*> {
                     return t.flatMap {
                         if (it is IllegalArgumentException){
                             return@flatMap Observable.timer(1,TimeUnit.SECONDS).flatMap {
-                               return@flatMap ApiEngine.getFakeApi().getFakeData(FakeToken(token,false))
+                               return@flatMap ApiEngine.fakeApi!!.getFakeData(FakeToken(token,false))
                                     .doOnNext {
                                         token = it.name
                                     }
@@ -155,7 +155,7 @@ open class RxJava3PracticeFragment:BaseFragment() {
             .doOnNext {
                 tvResult.append("第 ${it} 次轮询：")
 
-                ApiEngine.getApiService().loadHomeArticleCo2(1)
+                ApiEngine.apiService.loadHomeArticleCo2(1)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
@@ -176,7 +176,7 @@ open class RxJava3PracticeFragment:BaseFragment() {
      */
     private fun pollingRequestWithCondition() {
         var repeatWhenCount = 0
-        val disposable =  ApiEngine.getApiService().loadHomeArticleCo2(1)
+        val disposable =  ApiEngine.apiService.loadHomeArticleCo2(1)
             .repeatWhen {
                 it.flatMap {
                     if (++repeatWhenCount <= 2){
@@ -202,7 +202,7 @@ open class RxJava3PracticeFragment:BaseFragment() {
 //            throw NetworkException("network error")
             return Observable.error(NetworkException("network error"))
         }
-        return ApiEngine.getApiService().loadHomeArticleCo2(1)
+        return ApiEngine.apiService.loadHomeArticleCo2(1)
     }
 
     private fun onErrorResumeNext() {

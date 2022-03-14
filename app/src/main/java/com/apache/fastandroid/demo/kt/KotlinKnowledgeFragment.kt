@@ -12,7 +12,6 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.KtGrammerBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.kt.annotation.ImAPlant
-import com.apache.fastandroid.demo.kt.annotation.Plant
 import com.apache.fastandroid.demo.kt.bean.*
 import com.apache.fastandroid.demo.kt.delegate.DelegateList
 import com.apache.fastandroid.demo.kt.delegate.People
@@ -22,6 +21,7 @@ import com.apache.fastandroid.demo.kt.inline.onlyIf2
 import com.apache.fastandroid.demo.kt.operatoroverload.*
 import com.apache.fastandroid.demo.kt.refied.RefiedDemo
 import com.apache.fastandroid.demo.kt.sealed.*
+import com.apache.fastandroid.demo.room.Plant
 import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.retrofit.ApiEngine
 import com.apache.fastandroid.util.DateUtil
@@ -446,12 +446,12 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
 
     private suspend fun testSuspend():Repo{
-        val user = ApiEngine.getApiServiceKt().getArticleById(10)
+        val user = ApiEngine.apiServiceKt.getArticleById(10)
         return user.data
     }
 
     private suspend fun testSuspend2(completion:Continuation<Any?>):Repo{
-        val user = ApiEngine.getApiServiceKt().getArticleById(10)
+        val user = ApiEngine.apiServiceKt.getArticleById(10)
         return user.data
     }
 
