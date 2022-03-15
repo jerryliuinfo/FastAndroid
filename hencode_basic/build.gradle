@@ -21,6 +21,9 @@ android {
         sourceCompatibility rootProject.sourceCompatibilityVersion
         targetCompatibility rootProject.targetCompatibilityVersion
     }
+    kotlinOptions {
+        jvmTarget = rootProject.sourceCompatibilityVersion
+    }
 
 
     lintOptions {
@@ -52,10 +55,6 @@ dependencies {
     implementation project(':baselib')
     implementation project(':fastFramework')
 
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 }
 

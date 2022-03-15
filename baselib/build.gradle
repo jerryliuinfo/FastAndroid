@@ -19,7 +19,9 @@ android {
         targetCompatibility rootProject.targetCompatibilityVersion
     }
 
-
+    kotlinOptions {
+        jvmTarget = rootProject.sourceCompatibilityVersion
+    }
 
     dataBinding{
         enabled=true
@@ -41,7 +43,15 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation rootProject.ext.dependencies2.publicImplementation
+
+    implementation Libs.appCompat
+    implementation Libs.material
+    implementation Libs.cardview
+    implementation Libs.constraintLayout
+
+    implementation Libs.core_ktx
+    implementation Libs.activity_ktx
+    implementation Libs.fragment_ktx
 
     implementation project(':fastFramework')
 

@@ -20,11 +20,13 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
     compileOptions {
-        coreLibraryDesugaringEnabled true
+//        coreLibraryDesugaringEnabled true
         sourceCompatibility rootProject.sourceCompatibilityVersion
         targetCompatibility rootProject.targetCompatibilityVersion
     }
-
+    kotlinOptions {
+        jvmTarget = rootProject.sourceCompatibilityVersion
+    }
 
     buildFeatures{
         dataBinding = true

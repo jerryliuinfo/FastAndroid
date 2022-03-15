@@ -1,5 +1,6 @@
 object Libs {
 
+
     const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
@@ -43,8 +44,9 @@ object Libs {
 
 
     val kotlin = arrayOf(
-        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}",
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+//        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}",
+        "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}",
+        "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     )
 
     val lifecycle = arrayOf(
@@ -53,6 +55,11 @@ object Libs {
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}",
         "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}",
         "androidx.lifecycle:lifecycle-service:${Versions.lifecycle_version}"
+    )
+
+    val coroutine = arrayOf(
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     )
 
     val navigation = arrayOf(
@@ -73,14 +80,32 @@ object Libs {
 
     val bugly = arrayOf(
         "com.tencent.bugly:crashreport:${Versions.bugly}",
-        "com.tencent.bugly:nativecrashreport:${Versions.bugly}"
     )
 
 
-    val coroutine = arrayOf(
-        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}",
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    val otherThirdLibs = arrayOf(
+        "com.github.goweii:AnyLayer:4.1.4-androidx",
+        "com.github.pengxurui:EasyTrack:v1.0.1",
+        "com.github.huage2580:PermissionMonitor:1.0.1",
+        "me.weishu:epic:1.0.0",
+        "com.yqritc:recyclerview-flexibledivider:1.4.0",
+        "com.youth.banner:banner:2.1.0",
+        "com.github.Justson.AgentWeb:agentweb-core:v4.1.9",
+        "com.squareup.picasso:picasso:2.5.2",
+        "com.nostra13.universalimageloader:universal-image-loader:1.9.3",
+        "com.github.lzyzsd:jsbridge:1.0.4",
+        "com.github.markzhai:blockcanary-android:1.5.0",
+        "com.squareup.leakcanary:leakcanary-support-fragment:1.6.3",
+        "com.permissionx.guolindev:permissionx:1.4.0",
+        "dev.b3nedikt.viewpump:viewpump:4.0.7",
+        "com.github.NoEndToLF:AppStartFaster:1.0.3",
+        "com.airbnb.android:lottie:2.8.0",
+        "com.github.lygttpod:SuperTextView:2.4.6",
+        "com.kingja.loadsir:loadsir:1.3.8",
     )
+
+
+
 
     val okhttp = arrayOf(
         "com.squareup.okhttp3:okhttp:${Versions.okhttp}",

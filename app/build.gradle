@@ -30,9 +30,6 @@ releaseInfo{
 
 
 
-//apply plugin 的名称为 /buildSrc/src/main/resources/META-INF/gradle-plugins目录下的 xx.properties 的名称
-//apply plugin: 'com.myplugin'
-
 
 buildscript {
     repositories {
@@ -278,7 +275,6 @@ android {
         viewBinding = true
     }
     compileOptions {
-//        coreLibraryDesugaringEnabled true
         sourceCompatibility rootProject.sourceCompatibilityVersion
         targetCompatibility rootProject.targetCompatibilityVersion
     }
@@ -353,6 +349,9 @@ android {
 
     }
 
+
+
+
 }
 
 kotlin {
@@ -410,7 +409,7 @@ task customTask{
 }
 
 dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
 //    api fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
 
@@ -427,53 +426,57 @@ dependencies {
     println("isTopicRunAlone:${isTopicRunAlone}")
 
 
-    implementation rootProject.ext.dependencies2.publicImplementation
+
+    implementation Libs.appCompat
+    implementation Libs.material
+    implementation Libs.cardview
+    implementation Libs.constraintLayout
+
+    implementation Libs.core_ktx
+    implementation Libs.activity_ktx
+    implementation Libs.fragment_ktx
+
+    implementation Libs.swiperefreshLayout
+    implementation Libs.recyclerview
+    implementation Libs.palette
+
+    implementation Libs.glide
+    implementation Libs.gson
+    implementation Libs.utilcode
+    implementation Libs.brvh
+    implementation Libs.mmkv
+    implementation Libs.qmui
+
+    implementation (*Libs.bugly)
+
+    implementation (*Libs.rxJava)
+    implementation(*Libs.retrofit)
+
+
+    implementation(*Libs.lifecycle)
+    implementation(*Libs.coroutine)
+    implementation(*Libs.navigation)
+    implementation(*Libs.immersionbar)
+    implementation(*Libs.otherThirdLibs)
+
+
     implementation rootProject.ext.androidLib.multidex
 
 
-
-    implementation rootProject.ext.thirdLib.superTextView
-    implementation rootProject.ext.thirdLib.banner
-    implementation rootProject.ext.thirdLib.agentweb
-    implementation rootProject.ext.thirdLib.picasso
-    implementation rootProject.ext.thirdLib.imageLoader
-    implementation rootProject.ext.thirdLib.jsbridge
-
-    implementation rootProject.ext.thirdLib.loadSir
-
-    implementation rootProject.ext.thirdLib.reactivexRxjava2
-    implementation rootProject.ext.thirdLib.reactivexRxandroid
-
-
-//    implementation rootProject.ext.androidLib.androidx_workmanager
     implementation ('androidx.work:work-runtime:2.2.0'){
         exclude group: 'androidx.arch.core'
     }
-    implementation rootProject.ext.thirdLib.blockcanary
-    implementation rootProject.ext.thirdLib.leakcanary
 
 
-    implementation rootProject.ext.thirdLib.retrofit
-    implementation rootProject.ext.thirdLib.retrofitConverterGson
-    implementation rootProject.ext.thirdLib.retrofitConverterScalars
-    implementation rootProject.ext.thirdLib.retrofitAdapterRx
-
-    implementation rootProject.ext.thirdLib.permissionx
-    implementation rootProject.ext.thirdLib.viewpump
-
-    implementation rootProject.ext.thirdLib.blockcanary
-    implementation rootProject.ext.thirdLib.AppStartFaster
 
     implementation Libs.viewPage2
 
+    implementation(*Libs.kotlin)
 
-    implementation rootProject.ext.thirdLib.lottie
 
     implementation(*Libs.room)
-//    annotationProcessor Libs.room_compiler
     //kotlin 用 kapt
-//    kapt Libs.room_compiler
-    kapt "androidx.room:room-compiler:$Versions.Room"
+    kapt Libs.room_compiler
 
 
 

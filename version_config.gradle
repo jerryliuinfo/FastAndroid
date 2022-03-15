@@ -126,7 +126,6 @@ ext {
             EasyTrack                          :  "com.github.pengxurui:EasyTrack:v1.0.1",
             PermissionMonitor                  :  "com.github.huage2580:PermissionMonitor:1.0.1",
             weishu                             :  "me.weishu:epic:1.0.0",
-            AppDress                           :  "com.github.lenebf:AppDress:Tag",
             sdk_edit                           :  "com.github.iwhys:sdk-editor-plugin:1.1.7",
             flexible_divider                   :  "com.yqritc:recyclerview-flexibledivider:1.4.0",
             immersionbar                       :  "com.gyf.immersionbar:immersionbar:${immersionbar}",
@@ -198,68 +197,6 @@ ext {
 
 
 
-
-    //所有模块的公共库，务必不要随意在这里面添加依赖
-    dependencies2 = [
-            publicImplementation: [
-                    rootProject.androidLib.appcompatV7,
-                    rootProject.androidLib.googleMaterial,
-                    rootProject.androidLib.cardview,
-                    rootProject.androidLib.palette,
-
-
-                    rootProject.androidLib.core_ktx,
-                    rootProject.androidLib.androidx_activity_ktx,
-                    rootProject.androidLib.androidx_fragment_ktx,
-
-                    rootProject.androidLib.kotlin_stdlib,
-                    rootProject.androidLib.kotlin_reflect,
-
-                    rootProject.androidLib.androidx_lifecycle_common,
-                    rootProject.androidLib.androidx_lifecycle_runtime,
-                    rootProject.androidLib.androidx_lifecycle_livedata,
-                    rootProject.androidLib.androidx_lifecycle_viewmodel_ktx,
-
-                    rootProject.androidLib.kotlinx_coroutines_core,
-                    rootProject.androidLib.kotlinx_coroutines_android,
-
-                    rootProject.androidLib.navigation_fragment_ktx,
-                    rootProject.androidLib.navigation_ui_ktx,
-
-
-
-
-
-                    rootProject.thirdLib.reactivexRxjava2,
-                    rootProject.thirdLib.reactivexRxandroid,
-
-                    rootProject.thirdLib.bugly,
-
-                    rootProject.thirdLib.gson,
-                    rootProject.thirdLib.fastjson,
-                    rootProject.thirdLib.qmui,
-
-                    rootProject.thirdLib.glide,
-
-
-                    rootProject.thirdLib.brvh,
-                    rootProject.thirdLib.mmkv,
-                    rootProject.thirdLib.utilcodex,
-                    rootProject.thirdLib.AnyLayer,
-                    rootProject.thirdLib.EasyTrack,
-                    rootProject.thirdLib.PermissionMonitor,
-                    rootProject.thirdLib.weishu,
-                    rootProject.thirdLib.flexible_divider,
-
-
-                    rootProject.thirdLib.immersionbar_components,
-                    rootProject.thirdLib.immersionbar_ktx,
-                    rootProject.thirdLib.immersionbar,
-
-//                    rootProject.thirdLib.AppDress,
-//                    rootProject.thirdLib.sdk_edit,
-            ]
-    ]
 
     dependencies = [
             basic: [

@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
-//    buildToolsVersion rootProject.android.buildToolsVersion
 
     defaultConfig {
         minSdkVersion rootProject.android.minSdkVersion
@@ -20,7 +19,9 @@ android {
         sourceCompatibility rootProject.sourceCompatibilityVersion
         targetCompatibility rootProject.targetCompatibilityVersion
     }
-
+    kotlinOptions {
+        jvmTarget = rootProject.sourceCompatibilityVersion
+    }
 
     buildFeatures{
         dataBinding = true
@@ -33,28 +34,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation rootProject.ext.dependencies2.publicImplementation
 
-    implementation rootProject.ext.thirdLib.okhttp3
-    implementation rootProject.ext.thirdLib.okhttp3_boom
-    implementation rootProject.ext.thirdLib.okhttp3_log
-
-    implementation rootProject.ext.thirdLib.retrofit
-    implementation rootProject.ext.thirdLib.retrofitConverterGson
-    implementation rootProject.ext.thirdLib.retrofitConverterScalars
-    implementation rootProject.ext.thirdLib.retrofitAdapterRx
-
-//    implementation rootProject.ext.dependencies2.publicImplementation
-
-   /* implementation (*Libs.kotlin)
-
-    implementation Libs.gson
-    implementation Libs.utilcode
-
+    implementation(*Libs.kotlin)
     implementation (*Libs.retrofit)
     implementation (*Libs.okhttp)
-    implementation (*Libs.coroutine)*/
-
+    implementation (Libs.gson)
+    implementation (Libs.utilcode)
 
 
     rootProject.ext.dependencies.basic.each{
