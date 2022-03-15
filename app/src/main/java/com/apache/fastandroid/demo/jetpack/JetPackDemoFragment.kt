@@ -4,6 +4,7 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.databinding.DatabindingFragmentDemo
 import com.apache.fastandroid.demo.room.RoomDemoFragment
+import com.apache.fastandroid.demo.sunflower.fragement.SunFlowerTabsFragment
 import com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity
 import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleDemoFragment
 import com.apache.fastandroid.jetpack.livedata.*
@@ -28,6 +29,7 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("AdvanceNavigation", "AdvanceNavigation", activity= AdvanceNavigationActivity::class.java)
 //                ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
                 ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
+                ,ViewItemBean("SunFlower", "SunFlower", SunFlowerTabsFragment::class.java)
         )
     }
 }

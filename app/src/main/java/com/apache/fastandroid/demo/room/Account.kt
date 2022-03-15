@@ -8,8 +8,8 @@ import com.apache.fastandroid.demo.bean.Vegetable
 /**
  * Created by Jerry on 2022/3/13.
  */
-@Entity(tableName = "plant" )
-data class Plant(
+@Entity(tableName = "account" )
+data class Account(
     var name:String,
     var description:String,
     @PrimaryKey

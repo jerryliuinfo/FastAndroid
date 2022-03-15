@@ -85,7 +85,7 @@ object Libs {
     val okhttp = arrayOf(
         "com.squareup.okhttp3:okhttp:${Versions.okhttp}",
         "com.squareup.okhttp3:okhttp-bom:${Versions.okhttp}",
-        "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}",
+        "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
     )
 
     val retrofit = arrayOf(

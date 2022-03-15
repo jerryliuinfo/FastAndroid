@@ -37,7 +37,7 @@ android {
 
 
     compileOptions {
-        coreLibraryDesugaringEnabled true
+//        coreLibraryDesugaringEnabled true
         sourceCompatibility rootProject.sourceCompatibilityVersion
         targetCompatibility rootProject.targetCompatibilityVersion
     }
@@ -78,16 +78,12 @@ dependencies {
 
     implementation Libs.kotlin_stdlib
 
-
     implementation Libs.glide
     implementation Libs.gson
     implementation Libs.utilcode
     implementation Libs.brvh
 
     implementation (*Libs.rxJava)
-//    implementation (*Libs.room)
-
-
     implementation(*Libs.lifecycle)
     implementation(*Libs.navigation)
     implementation(*Libs.immersionbar)

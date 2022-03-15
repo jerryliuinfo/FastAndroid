@@ -21,7 +21,7 @@ import com.apache.fastandroid.demo.kt.inline.onlyIf2
 import com.apache.fastandroid.demo.kt.operatoroverload.*
 import com.apache.fastandroid.demo.kt.refied.RefiedDemo
 import com.apache.fastandroid.demo.kt.sealed.*
-import com.apache.fastandroid.demo.room.Plant
+import com.apache.fastandroid.demo.room.Account
 import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.retrofit.ApiEngine
 import com.apache.fastandroid.util.DateUtil
@@ -151,7 +151,6 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
              * 输出的 是 animal，而不是 dog，因为kotlin 的扩展方法是静态地给一个类添加方法，
              * 是不具备动态运行时的多态效应,扩展函数会被编译成一个静态函数
              */
-            Dog().printName(Dog())
         }
         viewBinding.btnLambda.setOnClickListener {
             lambdaUsage()
@@ -332,7 +331,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
     private fun annotationUsage() {
-        val classObj = Plant::class
+        val classObj = Account::class
         for (a in classObj.annotations){
             val annotationClass = a.annotationClass
             println("simpleName:${annotationClass.simpleName}, isOpen:${annotationClass.isOpen}, isCompanion:${annotationClass.isCompanion}")

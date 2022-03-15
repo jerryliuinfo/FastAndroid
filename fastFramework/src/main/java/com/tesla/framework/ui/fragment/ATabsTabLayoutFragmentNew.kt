@@ -7,13 +7,15 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.tesla.framework.databinding.FragmentTablayoutBinding
 import com.tesla.framework.support.bean.ITabItem
+import com.tesla.framework.support.bean.TabItem
+import com.tesla.framework.ui.fragment.tab.MyFragmentStateAdapter
 
 /**
  * 对TabLayout的封装
  */
 abstract class ATabsTabLayoutFragmentNew : BaseVBFragment<FragmentTablayoutBinding>(FragmentTablayoutBinding::inflate) {
 
-    private var tabItems: ArrayList<ITabItem>? = null
+    private lateinit var mAdapter:MyFragmentStateAdapter
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
@@ -22,35 +24,21 @@ abstract class ATabsTabLayoutFragmentNew : BaseVBFragment<FragmentTablayoutBindi
         setupViewPage()
     }
 
-    abstract fun createTabAdapter(): FragmentStateAdapter
+    abstract fun createTabAdapter(): MyFragmentStateAdapter
+
 
     var selectedTabIndex = 0
         private set
 
     private fun setupViewPage() {
-      /*  viewBinding.tabLayout.apply {
-            tabMode = TabLayout.MODE_FIXED
-            setupWithViewPager(viewBinding.viewpager)
-        }*/
-       /* val pagerAdapter: PageTabAdapter = object : PageTabAdapter(
-            childFragmentManager,
-            FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,
-            tabItems
-        ) {
-            override fun getFragmentByPosition(position: Int, tabItem: ITabItem): Fragment {
-                return newFragment(position, tabItem)
-            }
-        }*/
-
+        mAdapter  = createTabAdapter()
         viewBinding.viewpager.apply {
-            adapter = createTabAdapter()
+            adapter = mAdapter
         }
 
         TabLayoutMediator(viewBinding.tabLayout, viewBinding.viewpager) { tab, position ->
-            onConfigureTab(tab,position)
+            onConfigureTab(tab,position,mAdapter.tabs[position])
         }.attach()
-
-
 
         /*viewBinding.viewpager.apply {
             adapter = pagerAdapter
@@ -79,7 +67,7 @@ abstract class ATabsTabLayoutFragmentNew : BaseVBFragment<FragmentTablayoutBindi
 
     }
 
-    abstract fun onConfigureTab(tab: TabLayout.Tab, position: Int)
+    abstract fun onConfigureTab(tab: TabLayout.Tab, position: Int,tabItem:TabItem)
 
     protected fun onPageSelected(position: Int) {
         selectedTabIndex = position
