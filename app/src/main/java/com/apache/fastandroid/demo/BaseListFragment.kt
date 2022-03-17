@@ -74,7 +74,10 @@ abstract class BaseListFragment: BaseStatusFragmentNew() {
                 if (viewItemBean.clazz != null){
                     val args = FragmentArgs.transToArgs(viewItemBean.args)
                     args.add("title", viewItemBean.title)
-                    FragmentContainerActivity.launch(this@BaseListFragment.activity,viewItemBean.clazz,args)
+                    this@BaseListFragment.activity?.let { it1 ->
+                        FragmentContainerActivity.launch(
+                            it1,viewItemBean.clazz,args)
+                    }
                 }else if (viewItemBean.activity != null){
                     val intent = Intent(requireActivity(), viewItemBean.activity)
                     startActivity(intent)

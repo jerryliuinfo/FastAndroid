@@ -3,6 +3,8 @@ package com.apache.fastandroid.jetpack.navigation
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.NavSettingsFragmentBinding
+import com.apache.fastandroid.setting.AboutActivity
+import com.tesla.framework.kt.startActivity
 import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
@@ -13,5 +15,7 @@ class NavSettingFragment:BaseVBFragment<NavSettingsFragmentBinding>(NavSettingsF
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+
+        startActivity<AboutActivity>(requireContext())
     }
 }

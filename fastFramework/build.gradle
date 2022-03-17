@@ -3,6 +3,7 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply from: '../gradle-mvn-push.gradle'
 
 
 android {

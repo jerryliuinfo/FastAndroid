@@ -3,13 +3,9 @@ package com.apache.fastandroid.demo.blacktech
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.ViewPumpAppCompatDelegate
-import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.BlacktechViewPumpBinding
-import com.tesla.framework.ui.activity.BaseActivity
-import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.BaseVmActivityNew
 import kotlinx.android.synthetic.main.blacktech_view_pump.*
-import java.util.*
 
 /**
  * Created by Jerry on 2021/10/19.

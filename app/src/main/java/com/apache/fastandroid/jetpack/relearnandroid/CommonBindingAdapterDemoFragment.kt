@@ -59,7 +59,9 @@ class CommonBindingAdapterDemoFragment:BaseDatebindingFragment<DatabindingComBin
             NLog.d(TAG, "ClickProxy toMain")
             //默认持有外部类的引用，直接访问外部类的方法属性
             var activity = this@CommonBindingAdapterDemoFragment.activity
-            FragmentContainerActivity.launch(activity, DesignModeDemoFragment::class.java, null)
+            if (activity != null) {
+                FragmentContainerActivity.launch(activity, DesignModeDemoFragment::class.java, null)
+            }
         }
 
         fun clickTestVisible(){

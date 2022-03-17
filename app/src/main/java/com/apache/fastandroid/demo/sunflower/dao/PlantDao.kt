@@ -23,6 +23,6 @@ interface PlantDao {
     fun getPlant(plantId: String): Flow<Plant>
 
 //    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    suspend fun insertAll(vararg plant: Plant)
+//    suspend fun insertAll( plant: Plant)
 
 }

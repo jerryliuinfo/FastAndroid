@@ -65,7 +65,19 @@ buildscript {
                     details.useVersion "1.6.10"
                 }
 
+                if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
+                    details.useVersion "1.6.10"
+                }
 
+                if (requested.group == 'androidx.appcompat' && requested.name == 'appcompat') {
+                    details.useVersion Versions.appCompat
+                }
+
+                if (requested.group == "androidx") {
+                    if (!requested.name.startsWith("multidex")) {
+                        details.useVersion "${targetSdk}.+"
+                    }
+                }
             }
         }
     }

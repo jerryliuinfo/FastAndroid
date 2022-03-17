@@ -114,7 +114,7 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew<Article> i
 
     @Override
     public void onItemClick(@Nullable BaseQuickAdapter<Object, BaseViewHolder> adapter, @Nullable View view, Article article) {
-        ArticleDetailActivity.launch(getActivity(),article.getTitle(),"https://ykt.eduyun.cn");
+        ArticleDetailActivity.launch(getActivity(),article.getTitle(),article.getLink());
     }
 
     @Override

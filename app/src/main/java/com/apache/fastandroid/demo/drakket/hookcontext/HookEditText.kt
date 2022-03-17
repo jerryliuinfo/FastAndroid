@@ -12,10 +12,11 @@ import androidx.appcompat.widget.AppCompatEditText
  *
  */
 
+/*
 class HookEditText(context:Context,attrs: AttributeSet ?= null) : AppCompatEditText(HookContext(context),attrs) {
  init {
  //注意: 这里要使用 getContext，不能使用 context, 因为这里访问到的context为 constructor的context，是未包装过的
   setText(getContext().getString(123))
 
  }
-}
+}*/

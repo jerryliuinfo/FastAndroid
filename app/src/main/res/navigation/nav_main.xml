@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/home_dest"
         android:name="com.apache.fastandroid.home.HomeFragment"
-        android:label="Home"
+        android:label="首页"
         tools:layout="@layout/fragment_nav_home"
         >
 
@@ -37,6 +37,24 @@
         android:label="DemoList"
         tools:layout="@layout/fragment_nav_home"
         >
+
+        <action
+            android:id="@+id/home_to_step_one"
+            app:destination="@+id/flow_step1"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settings_dest"
+        android:label="Setting"
+        android:name="com.apache.fastandroid.jetpack.navigation.NavSettingFragment"
+        tools:layout="@layout/nav_settings_fragment"
+        >
+
 
         <action
             android:id="@+id/home_to_step_one"

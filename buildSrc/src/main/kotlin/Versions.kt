@@ -8,7 +8,7 @@ object Versions {
 
 
 
-    const val appCompat = "1.1.0"
+    const val appCompat = "1.3.0-alpha02"
     const val material = "1.4.0-alpha01"
     const val constraintlayout = "2.0.4"
     const val cardview = "1.0.0"

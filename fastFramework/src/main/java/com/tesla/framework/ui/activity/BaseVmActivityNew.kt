@@ -76,6 +76,11 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
         toolbar = findViewById(R.id.toolbar)
         if (toolbar != null) {
             setSupportActionBar(toolbar)
+
+        }
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
         }
     }
 
@@ -193,7 +198,6 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
     protected fun setToolbarTitle(msg: String?) {
         val supportActionBar = supportActionBar
         if (supportActionBar != null) {
-            supportActionBar.setDisplayHomeAsUpEnabled(true)
             supportActionBar.title = msg
         }
     }
@@ -239,6 +243,13 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
         const val TAG = "Activity-Base"
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home){
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 
 

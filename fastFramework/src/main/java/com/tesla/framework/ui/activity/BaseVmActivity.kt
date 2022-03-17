@@ -80,7 +80,10 @@ abstract class BaseVmActivity<V : ViewBinding> : AppCompatActivity(),
         toolbar?.let {
             setSupportActionBar(toolbar)
             val actionBar = supportActionBar
-            actionBar?.setDisplayHomeAsUpEnabled(true)
+            actionBar?.also {
+                it.setDisplayHomeAsUpEnabled(true)
+                it.setDisplayShowHomeEnabled(true)
+            }
         }
     }
 
@@ -245,5 +248,13 @@ abstract class BaseVmActivity<V : ViewBinding> : AppCompatActivity(),
 
     companion object {
         const val TAG = "Activity-Base"
+    }
+
+    /**
+     * onContentChanged –> onCreate –> onStart –> onPostCreate –> onResume–> onPostResume –> onPause –> onStop –> onDestroy
+    onPostCreate方法是指onCreate方法彻底执行完毕的回调，onPostResume类似，这两个方法官方说法是一般不会重写
+     */
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
     }
 }

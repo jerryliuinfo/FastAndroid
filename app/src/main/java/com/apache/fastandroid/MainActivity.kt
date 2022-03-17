@@ -1,180 +1,133 @@
-package com.apache.fastandroid;
+package com.apache.fastandroid
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
+import android.app.Activity
 
-import com.apache.fastandroid.annotations.CostTime;
-import com.apache.fastandroid.databinding.ActivityMainNewBinding;
-import com.apache.fastandroid.demo.bean.UserBean;
-import com.blankj.utilcode.util.ToastUtils;
-import com.tesla.framework.common.util.log.NLog;
-import com.tesla.framework.component.eventbus.FastBus;
-import com.tesla.framework.ui.activity.BaseVmActivity;
+import com.tesla.framework.ui.activity.BaseVmActivity
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.navigation.NavController
+import com.apache.fastandroid.annotations.CostTime
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import android.content.Intent
+import android.os.Bundle
+import android.os.Handler
+import android.view.View
+import com.apache.fastandroid.demo.bean.UserBean
+import com.tesla.framework.common.util.log.NLog
+import com.blankj.utilcode.util.ToastUtils
+import androidx.lifecycle.MutableLiveData
+import com.apache.fastandroid.databinding.ActivityMainNewBinding
+import com.tesla.framework.component.eventbus.FastBus
 
-import java.io.Serializable;
-
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.lifecycle.MutableLiveData;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-
-public class MainActivity extends BaseVmActivity<ActivityMainNewBinding> implements View.OnClickListener {
-
-    public static final String TAG = MainActivity.class.getSimpleName();
-    private ActionBarDrawerToggle drawerToggle;
-    private int selecteId = -1;
-
-    public static void launch(Activity from, UserBean userBean){
-        Intent intent = new Intent(from, MainActivity.class);
-        intent.putExtra("userBean",userBean);
-        from.startActivity(intent);
+class MainActivity : BaseVmActivity<ActivityMainNewBinding>(), View.OnClickListener {
+    private val selecteId = -1
+    override fun bindView(): ActivityMainNewBinding {
+        return ActivityMainNewBinding.inflate(layoutInflater)
     }
 
-
-
-    @Override
-    public ActivityMainNewBinding bindView() {
-        return ActivityMainNewBinding.inflate(getLayoutInflater());
-    }
-
-    private NavController mNavController;
-
+    private var mNavController: NavController? = null
     @CostTime
-    @Override
-    public void layoutInit(Bundle savedInstanceState) {
-        super.layoutInit(savedInstanceState);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
-        setupDrawer(savedInstanceState);
-        loadMenuData();
-
-        NavHostFragment hostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host);
-        mNavController = hostFragment.getNavController();
-        AppBarConfiguration configuration = new AppBarConfiguration.Builder(mNavController.getGraph()).build();
-        configuration = new AppBarConfiguration.Builder(R.id.home_dest,R.id.demo_dest).setOpenableLayout(mBinding.drawer).build();
-
-        setupActionBar(mNavController,configuration);
-        setupNavigationMenu(mNavController);
+    override fun layoutInit(savedInstanceState: Bundle?) {
+        super.layoutInit(savedInstanceState)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(false)
+        setupDrawer(savedInstanceState)
+        loadMenuData()
+        val hostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment?
+        mNavController = hostFragment!!.navController
+        var configuration = AppBarConfiguration.Builder(mNavController!!.graph).build()
+        configuration =
+            AppBarConfiguration.Builder(R.id.home_dest, R.id.demo_dest).setOpenableLayout(
+                mBinding!!.drawer
+            ).build()
+        setupActionBar(mNavController!!, configuration)
+        setupNavigationMenu(mNavController!!)
 
 
 //        FragmentContainerActivity.launch(this, JetPackDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, RoomDemoFragment.class,null);
-//        FragmentContainerActivity.launch(this, SaveStateHandleFragment.class,null);
-//        FragmentContainerActivity.launch(this, SunFlowerTabsFragment.class,null);
     }
 
-    private void setupActionBar(NavController navController,
-                               AppBarConfiguration appBarConfig) {
-
+    private fun setupActionBar(
+        navController: NavController,
+        appBarConfig: AppBarConfiguration
+    ) {
         /**
          * 当导航的目的地发生变化时， NavigationUI 将会自动切换展示的 label
          * 使用 AppBarConfiguration 时，它将会决定是显示 抽屉图标还是 向上箭头?
          */
-        NavigationUI.setupActionBarWithNavController(this, navController,appBarConfig);
-
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfig)
     }
 
-
-    private void setupNavigationMenu( NavController navController) {
-        NavigationUI.setupWithNavController(mBinding.navigationView, navController);
+    private fun setupNavigationMenu(navController: NavController) {
+        NavigationUI.setupWithNavController(mBinding!!.navigationView, navController)
     }
 
-
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        String key = intent.getStringExtra("key");
-        Serializable user = intent.getSerializableExtra("user");
-        if (user != null){
-            UserBean userBean = (UserBean) user;
-            NLog.d(TAG, "onNewIntent key: %s",key);
-
-            NLog.d(TAG, "userBean: %s",userBean);
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        val key = intent.getStringExtra("key")
+        val user = intent.getSerializableExtra("user")
+        if (user != null) {
+            val userBean = user as UserBean
+            NLog.d(TAG, "onNewIntent key: %s", key)
+            NLog.d(TAG, "userBean: %s", userBean)
         }
-
-
     }
 
-
-
-    @Override
-    public void setContentView(View view) {
-        super.setContentView(view);
+    override fun setContentView(view: View) {
+        super.setContentView(view)
     }
 
-    private void loadMenuData(){
+    private fun loadMenuData() {}
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("selecteId", selecteId)
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("selecteId", selecteId);
-    }
-
-    private void setupDrawer(Bundle savedInstanceState) {
-        drawerToggle = new ActionBarDrawerToggle(this, mBinding.drawer,
-                mBinding.toolbar, R.string.draw_open, R.string.draw_close) {
-
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-
+    private fun setupDrawer(savedInstanceState: Bundle?) {
+        val drawerToggle = object : ActionBarDrawerToggle(
+            this, mBinding!!.drawer,
+            mBinding!!.toolbar, R.string.draw_open, R.string.draw_close
+        ) {
+            override fun onDrawerClosed(view: View) {
+                super.onDrawerClosed(view)
             }
 
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
+            override fun onDrawerOpened(drawerView: View) {
+                super.onDrawerOpened(drawerView)
             }
-
-        };
-        mBinding.drawer.addDrawerListener(drawerToggle);
+        }
+        mBinding.drawer.addDrawerListener(drawerToggle)
     }
 
-
-
-
-
-
-    private boolean canFinish = false;
-    @Override
-    public boolean onBackClick() {
+    private var canFinish = false
+    override fun onBackClick(): Boolean {
         if (!canFinish) {
-            canFinish = true;
-            ToastUtils.showShort("再按一次退出");
-
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    canFinish = false;
-                }
-
-            }, 1500);
-            return true;
+            canFinish = true
+            ToastUtils.showShort("再按一次退出")
+            Handler().postDelayed({ canFinish = false }, 1500)
+            return true
         }
-
-        return super.onBackClick();
+        return super.onBackClick()
     }
 
-    private MutableLiveData<Boolean> result = new MutableLiveData<>();
-
-    @Override
-    public void onClick(View v) {
-        result.setValue(!result.getValue());
+    private val result = MutableLiveData<Boolean>()
+    override fun onClick(v: View) {
+        result.value = !result.value!!
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        FastBus.getInstance().unregiste(this);
+    public override fun onDestroy() {
+        super.onDestroy()
+        FastBus.getInstance().unregiste(this)
     }
 
+    companion object {
+        val TAG = MainActivity::class.java.simpleName
+        fun launch(from: Activity, userBean: UserBean?) {
+            val intent = Intent(from, MainActivity::class.java)
+            intent.putExtra("userBean", userBean)
+            from.startActivity(intent)
+        }
+    }
 }
-

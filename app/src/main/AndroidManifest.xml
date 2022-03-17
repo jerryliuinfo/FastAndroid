@@ -28,6 +28,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="Main"
+            android:launchMode="singleTask"/>
+
+        <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity" />
+
+
         <activity android:name=".demo.style.FitSystemWindowDemoActivity"/>
         <activity android:name=".demo.style.FitSystemWindowDemoActivity2"/>
         <activity android:name=".demo.style.FitSystemWindowFrameLayoutDemoActivity"/>
@@ -38,13 +47,6 @@
         <activity android:name=".jetpack.navigation.NavigationDrawerDemoActivity2"/>
         <activity android:name=".jetpack.navigation.advance.AdvanceNavigationActivity"/>
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:launchMode="singleTask"></activity>
-
-        <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity" />
-        <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivityNoTitleBar" />
         <activity android:name=".jetpack.livedata.LiveDataWrongUsageActivity" />
         <activity
             android:name=".demo.temp.ScrollConflictActivity"
@@ -54,7 +56,10 @@
         <activity
             android:name=".demo.blacktech.ViewPumpDemoActivity"
             android:exported="true"
-
+            />
+        <activity
+            android:name=".setting.AboutActivity"
+            android:exported="true"
             />
 
         <activity
@@ -76,16 +81,6 @@
             android:exported="true"
             />
 
-
-        <activity android:name=".demo.navigation.NavigationDemoActivity">
-            <nav-graph android:value="@navigation/nav_graph" />
-        </activity>
-
-        <activity
-            android:name="com.apache.fastandroid.demo.navigation.NavigationBottomNavigationActivity"
-            android:exported="false"
-            android:label="@string/title_activity_navigation_bottom_navigation"
-            />
 
         <meta-data
             android:name="channelId"

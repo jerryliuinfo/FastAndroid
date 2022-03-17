@@ -1,10 +1,7 @@
 package com.apache.fastandroid.demo.drakeet
 
 import android.os.Bundle
-import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.DrakeetLooperActivityBinding
-import com.tesla.framework.ui.activity.BaseActivity
-import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 /**

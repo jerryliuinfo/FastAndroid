@@ -30,7 +30,7 @@
     13.editTextColor                  默认EditView输入框字体的颜色。
     -->
 
-    <style name="Base.Theme.AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Base.Theme.AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
 
         <!--  应用的主要色调,actionBar默认使用该颜色,Toolbar导航栏的底色 -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -41,6 +41,7 @@
 
 <!--  用于显示在原色上方的元素的颜色（例如，文本和图标，根据可访问性，通常为白色或半透明的黑色）-->
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">@bool/windowLightNavigationBar</item>
 
 <!--        用于显示在表面颜色顶部的元素的颜色-->
 <!--        <item name="colorOnSurface">@color/sunflower_black</item>-->
