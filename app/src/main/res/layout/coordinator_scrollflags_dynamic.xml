@@ -20,7 +20,7 @@
             android:fitsSystemWindows="true"
             android:minHeight="60dp"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -37,7 +37,7 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/Theme.AppTheme.PopupOverlay"
-                app:title="enterAlways"
+                app:title="exitUntilCollapsed"
                 app:titleTextColor="@color/white"
                 />
 
@@ -56,11 +56,6 @@
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <Button
-        android:id="@+id/btn_update_mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="修改模式"
-        android:layout_gravity="bottom|center"
-        />
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

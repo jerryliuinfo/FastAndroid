@@ -10,6 +10,7 @@
        android:layout_height="wrap_content"
        >
        <androidx.appcompat.widget.Toolbar
+           android:id="@+id/toolbar"
            android:layout_width="match_parent"
            android:layout_height="?android:attr/actionBarSize"
            app:popupTheme="@style/Theme.AppTheme.PopupOverlay"
@@ -19,6 +20,14 @@
            />
    </com.google.android.material.appbar.AppBarLayout>
     <include layout="@layout/content_scrolling" />
+
+    <Button
+        android:id="@+id/btn_update_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="修改模式"
+        android:layout_gravity="bottom|center"
+        />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

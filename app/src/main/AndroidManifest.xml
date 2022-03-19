@@ -63,6 +63,11 @@
             />
 
         <activity
+            android:name=".jetpack.navigation.NavSettingActivity"
+            android:exported="true"
+            />
+
+        <activity
             android:name=".article.ArticleDetailActivity"
             android:configChanges="orientation|keyboardHidden|navigation|locale"
             android:exported="true"

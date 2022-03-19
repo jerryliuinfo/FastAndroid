@@ -30,7 +30,8 @@
     13.editTextColor                  默认EditView输入框字体的颜色。
     -->
 
-    <style name="Base.Theme.AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+<!--    <style name="Base.Theme.AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">-->
+    <style name="Base.Theme.AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!--  应用的主要色调,actionBar默认使用该颜色,Toolbar导航栏的底色 -->
         <item name="colorPrimary">@color/colorPrimary</item>

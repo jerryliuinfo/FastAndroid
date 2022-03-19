@@ -22,6 +22,7 @@ class CoordinatorExitUntilCollapseFragment :
         super.layoutInit(inflater, savedInstanceState)
 
 
+
     }
 
 

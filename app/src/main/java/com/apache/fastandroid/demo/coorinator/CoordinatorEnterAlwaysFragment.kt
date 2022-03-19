@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.coorinator
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.CoordinatorScrollflagsEnteralwaysBinding
+import com.google.android.material.appbar.AppBarLayout
 
 
 import com.tesla.framework.ui.fragment.BaseVBFragment
@@ -20,10 +21,7 @@ class CoordinatorEnterAlwaysFragment :
     BaseVBFragment<CoordinatorScrollflagsEnteralwaysBinding>(CoordinatorScrollflagsEnteralwaysBinding::inflate) {
 
 
-    override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
-        super.layoutInit(inflater, savedInstanceState)
 
-    }
 
 
 }

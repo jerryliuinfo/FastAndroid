@@ -13,10 +13,11 @@ import com.apache.fastandroid.demo.BaseListFragment
 class CoordinatorLayoutDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-                ViewItemBean("CoordinateLayout", "scroll", CoordinatorBasicFragment::class.java,addTitleBar = false),
+                ViewItemBean("CoordinateLayout", "scroll", CoordinatorScrollFragment::class.java,addTitleBar = false),
                 ViewItemBean("CoordinateLayout", "enterAlways", CoordinatorEnterAlwaysFragment::class.java,addTitleBar = false),
                 ViewItemBean("CoordinateLayout", "enterAlwaysCollapsed", CoordinatorEnterAlwaysCollpaseFragment::class.java,addTitleBar = false),
                 ViewItemBean("CoordinateLayout", "exitUntilCollapse", CoordinatorExitUntilCollapseFragment::class.java,addTitleBar = false),
+                ViewItemBean("CoordinateLayout", "dynamicScrollFlags", CoordinatorExitUntilCollapseFragment::class.java,addTitleBar = false),
 
         )
     }
