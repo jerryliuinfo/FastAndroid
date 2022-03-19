@@ -9,22 +9,16 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        >
-       <View
+       <androidx.appcompat.widget.Toolbar
            android:layout_width="match_parent"
-           android:layout_height="50dp"
-           android:background="#5FF"
-           app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
-           />
-       <View
-           android:layout_width="match_parent"
-           android:layout_height="50dp"
-           android:background="#FF00FF"
+           android:layout_height="?android:attr/actionBarSize"
+           app:popupTheme="@style/Theme.AppTheme.PopupOverlay"
+           app:layout_scrollFlags="scroll"
+           app:title="scrollFlags-scroll"
+           app:titleTextColor="@color/white"
            />
    </com.google.android.material.appbar.AppBarLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        />
+    <include layout="@layout/content_scrolling" />
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

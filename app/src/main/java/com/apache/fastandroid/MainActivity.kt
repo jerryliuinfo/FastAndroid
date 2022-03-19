@@ -18,7 +18,11 @@ import com.tesla.framework.common.util.log.NLog
 import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
+import com.apache.fastandroid.demo.PreferenceFragmentDemo
+import com.apache.fastandroid.demo.coorinator.CoordinatorLayoutDemoFragment
+import com.apache.fastandroid.demo.temp.KnowledgeFragment
 import com.tesla.framework.component.eventbus.FastBus
+import com.tesla.framework.ui.activity.FragmentContainerActivity
 
 class MainActivity : BaseVmActivity<ActivityMainNewBinding>(), View.OnClickListener {
     private val selecteId = -1
@@ -46,7 +50,8 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(), View.OnClickListe
         setupNavigationMenu(mNavController!!)
 
 
-//        FragmentContainerActivity.launch(this, JetPackDemoFragment.class,null);
+//        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java)
+        FragmentContainerActivity.launch(this, CoordinatorLayoutDemoFragment::class.java)
     }
 
     private fun setupActionBar(

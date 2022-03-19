@@ -174,10 +174,9 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew<Article> i
 
     }
 
-
-
     @Override
-    protected void onLoadMore() {
+    public void onLoadMoreRequested() {
+        super.onLoadMoreRequested();
         mHomeViewModelKt.loadHomeData(++mCurrentPage);
     }
 

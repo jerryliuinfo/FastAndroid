@@ -11,7 +11,7 @@ import java.io.Serializable
  */
 data class ViewItemBean (var title:String, val description:String = "",
                          val clazz: Class<out Fragment>? = null,
-                         val activity: Class<out Activity>? = null,val args:Bundle?= null):Serializable{
+                         val activity: Class<out Activity>? = null,val args:Bundle?= null,val addTitleBar:Boolean= true):Serializable{
 
     constructor(title: String,clazz: Class<out Fragment>?): this(title,title,clazz)
 

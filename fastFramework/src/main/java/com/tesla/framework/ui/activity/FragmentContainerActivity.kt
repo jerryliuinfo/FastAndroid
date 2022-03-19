@@ -79,11 +79,13 @@ class FragmentContainerActivity : BaseVmActivityNew<CommUiFragmentContainerBindi
          * @param args
          */
         @JvmStatic
-        fun launch(activity: Activity, clazz: Class<out Fragment?>, args: FragmentArgs?, addTitleBar:Boolean = true) {
+        fun launch(activity: Activity, clazz: Class<out Fragment?>, args: FragmentArgs? = null, addTitleBar:Boolean = true) {
             val intent = Intent(activity, FragmentContainerActivity::class.java)
             intent.putExtra(EXTRA_CLASS_NAME, clazz.name)
             intent.putExtra(EXTRA_ADD_TITLE_BAR, addTitleBar)
-            if (args != null) intent.putExtra(EXTRA_ARGS, args)
+            args?.let {
+                intent.putExtra(EXTRA_ARGS, it)
+            }
             activity.startActivity(intent)
         }
         @JvmStatic

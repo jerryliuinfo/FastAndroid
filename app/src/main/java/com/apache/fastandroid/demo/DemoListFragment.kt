@@ -70,6 +70,7 @@ class DemoListFragment : BaseListFragment() {
             ,ViewItemBean("Sample", "Sample", SampleCodeDemoListFragment::class.java)
             ,ViewItemBean("单元测试", "单元测试", SampleCodeDemoListFragment::class.java)
             ,ViewItemBean("TabLayoutFragment", "TabLayoutFragment", ArticleTabsFragment::class.java)
+            ,ViewItemBean("PreferenceFragment", "PreferenceFragment", PreferenceFragmentDemo::class.java)
 
 
         )

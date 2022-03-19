@@ -14,6 +14,7 @@ import android.widget.Toast
 import android.text.Spanned
 
 import android.text.InputFilter
+import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentTempKnowledgeBinding
 import com.apache.fastandroid.demo.temp.concurrency.Player
 import com.blankj.utilcode.util.*
@@ -31,6 +32,22 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
+
+
+        //注意：语言要是非中文才会 生效
+        viewBinding.tvQuatity.setOnClickListener {
+            var size = 1
+            var result1 = resources.getQuantityString(R.plurals.subtitle_plural,size,size)
+            println("quantity = 1 output:$result1")
+
+            size = 2
+            result1 = resources.getQuantityString(R.plurals.subtitle_plural,size,size)
+            println("quantity = 2 output:$result1")
+
+            size = 4
+            result1 = resources.getQuantityString(R.plurals.subtitle_plural,size,size)
+            println("quantity = 4 output:$result1")
+        }
 
         forAddSeperator()
         addOnPredrawListener()

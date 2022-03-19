@@ -31,7 +31,7 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
-                    onScrollStateChanged(recyclerView, newState)
+                    onRecycleViewScrollStateChanged(recyclerView, newState)
                 }
             })
             adapter = mAdapter
@@ -60,9 +60,14 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
 
     abstract fun createAdapter():BaseQuickAdapter<T, BaseViewHolder>
 
-    protected abstract fun onLoadMore()
 
     override fun onLoadMoreRequested() {
+
+    }
+
+
+
+    override fun onRefresh() {
     }
 
     open fun onScrollChange(
@@ -72,7 +77,7 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
 
     }
 
-    open fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+    open fun onRecycleViewScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
 
     }
 
@@ -111,8 +116,7 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
 
     }
 
-    override fun onRefresh() {
-    }
+
 
     open fun showRefreshing() {
         viewBinding.swipeRefreshLayout.run {

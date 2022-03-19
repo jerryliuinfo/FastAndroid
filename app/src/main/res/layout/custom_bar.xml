@@ -20,7 +20,7 @@
             android:layout_height="20dp"
             android:clickable="true"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/qmui_icon_topbar_back"
+            android:src="@drawable/ic_arrow_back_black_24dp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

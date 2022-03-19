@@ -15,6 +15,7 @@ object Libs {
 
     const val activity_ktx = "androidx.activity:activity-ktx:${Versions.activity_ktx}"
     const val fragment_ktx = "androidx.fragment:fragment-ktx:${Versions.fragment_ktx}"
+    const val preference = "androidx.preference:preference:${Versions.preference}"
 
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"

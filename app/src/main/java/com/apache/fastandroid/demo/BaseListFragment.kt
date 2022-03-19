@@ -76,7 +76,7 @@ abstract class BaseListFragment: BaseStatusFragmentNew() {
                     args.add("title", viewItemBean.title)
                     this@BaseListFragment.activity?.let { it1 ->
                         FragmentContainerActivity.launch(
-                            it1,viewItemBean.clazz,args)
+                            it1,viewItemBean.clazz, addTitleBar = viewItemBean.addTitleBar)
                     }
                 }else if (viewItemBean.activity != null){
                     val intent = Intent(requireActivity(), viewItemBean.activity)

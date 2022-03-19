@@ -16,6 +16,7 @@ object Versions {
     const val core_ktx = "1.4.1"
     const val activity_ktx = "1.3.1"
     const val fragment_ktx = "1.3.6"
+    const val preference = "1.1.0-alpha04"
     const val palette_ktx = "1.0.0"
     const val annotation = "1.0.0"
 

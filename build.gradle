@@ -65,9 +65,7 @@ buildscript {
                     details.useVersion "1.6.10"
                 }
 
-                if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
-                    details.useVersion "1.6.10"
-                }
+
 
                 if (requested.group == 'androidx.appcompat' && requested.name == 'appcompat') {
                     details.useVersion Versions.appCompat
@@ -96,11 +94,7 @@ allprojects {
 
 
 
-        flatDir {
-            dirs 'libs'
-            dirs project(':app').file('libs')
-            dirs project(':fastFramework').file('libs')
-        }
+
     }
     configurations.all {
         resolutionStrategy.force "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"

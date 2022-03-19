@@ -80,21 +80,19 @@
 
 
     </style>
+
     <style name="Theme.AppTheme" parent="Base.Theme.AppTheme">
 
 
 
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="Theme.AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
 
-    <style name="FastAnd.Splashscreen" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@drawable/splashscreen</item>
-    </style>
 
 
     <style name="anim_fade" parent="@android:style/Animation.Activity">
@@ -178,5 +176,7 @@
 
 
     <style name="Toolbar" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <style name="Theme.AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

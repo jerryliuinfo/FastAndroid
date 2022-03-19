@@ -425,8 +425,7 @@ dependencies {
 
     println("isTopicRunAlone:${isTopicRunAlone}")
 
-
-
+    implementation(*Libs.kotlin)
     implementation Libs.appCompat
     implementation Libs.material
     implementation Libs.cardview
@@ -439,6 +438,7 @@ dependencies {
     implementation Libs.swiperefreshLayout
     implementation Libs.recyclerview
     implementation Libs.palette
+    implementation Libs.preference
 
     implementation Libs.glide
     implementation Libs.gson
@@ -471,7 +471,7 @@ dependencies {
 
     implementation Libs.viewPage2
 
-    implementation(*Libs.kotlin)
+
 
 
     implementation(*Libs.room)
@@ -499,7 +499,7 @@ dependencies {
 
 
 
-    implementation 'androidx.core:core:1.3.0'
+
 
 }
 
