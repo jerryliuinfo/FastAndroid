@@ -7,13 +7,13 @@ import com.blankj.utilcode.util.CacheDoubleUtils
 import com.blankj.utilcode.util.CacheMemoryUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 /**
  * Created by Jerry on 2022/2/24.
  */
 
-class HomeDao {
-
+class HomeDao @Inject constructor() {
 
     suspend fun cacheHomeData(pageNum: Int, articleList: HomeArticleResponse) {
         withContext(Dispatchers.IO) {
@@ -26,7 +26,10 @@ class HomeDao {
         return@withContext serializable as HomeArticleResponse
     }
 
+    fun doWork(){
+        println("Do some work in Repository.")
 
+    }
 
 
 

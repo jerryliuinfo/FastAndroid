@@ -18,10 +18,8 @@ import com.tesla.framework.common.util.log.NLog
 import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
-import com.apache.fastandroid.demo.PreferenceFragmentDemo
-import com.apache.fastandroid.demo.coorinator.CoordinatorLayoutDemoFragment
-import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
-import com.apache.fastandroid.demo.temp.KnowledgeFragment
+import com.apache.fastandroid.demo.kt.coroutine.BennyHuoCoroutineDemoFragment
+import com.apache.fastandroid.jetpack.hit.HitDemoFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 
@@ -53,7 +51,10 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(), View.OnClickListe
 
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java)
 //        FragmentContainerActivity.launch(this, CoordinatorLayoutDemoFragment::class.java)
-        FragmentContainerActivity.launch(this, JetPackDemoFragment::class.java)
+//        FragmentContainerActivity.launch(this, JetPackDemoFragment::class.java)
+//        FragmentContainerActivity.launch(this, LyricDemoFragment::class.java)
+//        FragmentContainerActivity.launch(this, BennyHuoCoroutineDemoFragment::class.java)
+        FragmentContainerActivity.launch(this, HitDemoFragment::class.java)
     }
 
     private fun setupActionBar(

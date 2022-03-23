@@ -1,12 +1,11 @@
 package com.apache.fastandroid.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.apache.fastandroid.jetpack.BaseViewModel
 import com.apache.fastandroid.network.model.Article
 import com.apache.fastandroid.network.model.HomeArticleResponse
 import com.tesla.framework.common.util.log.Logger
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
@@ -41,21 +40,28 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
     fun loadHomeData(pageNum: Int) {
         loadHomeArticleCo(pageNum)
         if (pageNum == 0){
-            launch({
-                var topArticleCo = reporsitoryKt.loadTopArticleCo()
-                _topArticleLiveData.value = topArticleCo ?: emptyList()
-            },{
-                _topArticleLiveData.value = emptyList()
-
-            })
+           loadTopArticle()
         }
 
+    }
+
+
+    fun loadTopArticle(){
+        launch({
+            var topArticleCo = reporsitoryKt.loadTopArticleCo()
+            _topArticleLiveData.value = topArticleCo ?: emptyList()
+        },{
+            _topArticleLiveData.value = emptyList()
+
+        })
     }
 
     override fun onCleared() {
         super.onCleared()
         com.tesla.framework.component.logger.Logger.d("onCleared cancel viewModel")
     }
+
+
 
 
 }

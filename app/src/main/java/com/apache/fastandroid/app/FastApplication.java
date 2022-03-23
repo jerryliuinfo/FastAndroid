@@ -60,6 +60,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelStore;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.multidex.MultiDex;
+import dagger.hilt.android.HiltAndroidApp;
 import dev.b3nedikt.viewpump.ViewPump;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -68,7 +69,7 @@ import timber.log.TimerLogger;
 /**
  * Created by jerryliu on 2017/3/26.
  */
-
+@HiltAndroidApp
 public class FastApplication extends Application implements ViewModelStoreOwner {
     public static final String TAG = FastApplication.class.getSimpleName();
 
@@ -451,6 +452,7 @@ public class FastApplication extends Application implements ViewModelStoreOwner 
             }
         });
     }
+
 
 
     private void initAnr(){

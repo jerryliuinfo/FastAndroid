@@ -6,8 +6,6 @@ import org.apache.tools.ant.taskdefs.condition.JavaVersion
 object Versions {
     const val kotlin = "1.6.10"
 
-
-
     const val appCompat = "1.3.0-alpha02"
     const val material = "1.4.0-alpha01"
     const val constraintlayout = "2.0.4"
@@ -19,9 +17,11 @@ object Versions {
     const val preference = "1.1.0-alpha04"
     const val palette_ktx = "1.0.0"
     const val annotation = "1.0.0"
+    const val hit = "2.38"
 
     const val navigationVersion = "2.3.5"
     const val lifecycle_version = "2.3.1"
+    //room 2.4.0 版本可以不用手动写 migration 了
     const val Room = "2.2.3"
     const val coroutines = "1.3.5"
 
@@ -43,13 +43,10 @@ object Versions {
     const val bugly = "4.0.0"
     const val brvh = "2.9.30"
 
-
-
     const val junit = "4.12"
     const val mockito = "2.23.0"
     const val mockito_kotlin = "2.0.0-RC3"
     const val androidxArch = "2.0.0"
-
 
     const val agp = "7.0.4"
     const val kgp = "7.0.1"

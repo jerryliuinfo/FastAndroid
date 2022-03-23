@@ -1,16 +1,7 @@
 package com.apache.fastandroid.demo
 
-import android.app.Activity
-import android.content.Intent
-import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
-import com.apache.fastandroid.DemoListViewModel
 import com.apache.fastandroid.DrawBasicDemoFragment
-import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
-import com.apache.fastandroid.databinding.ActivityDemoListBinding
-import com.apache.fastandroid.demo.adapter.DemoItemAdapter
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
 import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
 import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
@@ -18,7 +9,8 @@ import com.apache.fastandroid.demo.coorinator.CoordinatorLayoutDemoFragment
 import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
 import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
 import com.apache.fastandroid.demo.hitpit.HitPitDemoListFragment
-import com.apache.fastandroid.demo.jetpack.JetPackDemoFragment
+import com.apache.fastandroid.jetpack.JetPackDemoFragment
+import com.apache.fastandroid.demo.lyric.LyricDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.sample.SampleCodeDemoListFragment
 import com.apache.fastandroid.demo.tablayout.ArticleTabsFragment
@@ -27,14 +19,9 @@ import com.apache.fastandroid.demo.transition.TransitionDemoFragment
 import com.apache.fastandroid.demo.widget.UIWidgetDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.RelearnAndroidDemoFragment
-import com.gyf.immersionbar.ktx.immersionBar
 import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
 import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
 import com.hencoder.hencoderpracticedraw4.MatrixDemoFragment
-import com.tesla.framework.support.bean.DataBindingConfig
-import com.tesla.framework.ui.activity.*
-import com.tesla.framework.ui.widget.edgeeffect.StretchEdgeEffectFactoryNew
-import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
  * Created by Jerry on 2020/10/31.
@@ -71,6 +58,7 @@ class DemoListFragment : BaseListFragment() {
             ,ViewItemBean("单元测试", "单元测试", SampleCodeDemoListFragment::class.java)
             ,ViewItemBean("TabLayoutFragment", "TabLayoutFragment", ArticleTabsFragment::class.java)
             ,ViewItemBean("PreferenceFragment", "PreferenceFragment", PreferenceFragmentDemo::class.java)
+            ,ViewItemBean("Lyric", "Lyric", LyricDemoFragment::class.java)
 
 
         )

@@ -10,7 +10,9 @@ import com.tesla.framework.R
 import com.tesla.framework.common.util.log.FastLog
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.databinding.CommUiFragmentContainerBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FragmentContainerActivity : BaseVmActivityNew<CommUiFragmentContainerBinding>(CommUiFragmentContainerBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         val className = intent.getStringExtra(EXTRA_CLASS_NAME)

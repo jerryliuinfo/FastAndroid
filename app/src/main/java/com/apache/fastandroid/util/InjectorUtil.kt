@@ -7,6 +7,10 @@ import com.apache.fastandroid.home.HomeModelFactory
 import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.db.HomeDatabase
 import com.apache.fastandroid.home.network.HomeNetwork
+import com.apache.fastandroid.jetpack.reporsity.UserDao
+import com.apache.fastandroid.jetpack.reporsity.UserNetwork
+import com.apache.fastandroid.jetpack.reporsity.UserReporsity
+import com.apache.fastandroid.jetpack.viewmodel.UserModelFactory
 
 
 object InjectorUtil {
@@ -21,4 +25,14 @@ object InjectorUtil {
 
     @JvmStatic
     fun getArticeModelFactory() = ArticleModelFactory(getArticleRepository())
+
+
+    @JvmStatic
+    fun getUserInfoReporsity() = UserReporsity.getInstance(
+        UserDao.getInstance(),
+        UserNetwork().getInstance()
+    )
+
+    @JvmStatic
+    fun getUserModelFactory() = UserModelFactory(getUserInfoReporsity())
 }

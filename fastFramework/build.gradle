@@ -3,6 +3,7 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 apply from: '../gradle-mvn-push.gradle'
 
 
@@ -76,7 +77,7 @@ dependencies {
 
     implementation Libs.swiperefreshLayout
     implementation Libs.cardview
-    implementation Libs.recyclerview
+//    implementation Libs.recyclerview
     implementation Libs.palette
 
     implementation Libs.kotlin_stdlib
@@ -91,7 +92,8 @@ dependencies {
     implementation(*Libs.navigation)
     implementation(*Libs.immersionbar)
 
-
+    implementation (*Libs.hit)
+    kapt (*Libs.hit_compiler)
 }
 
 

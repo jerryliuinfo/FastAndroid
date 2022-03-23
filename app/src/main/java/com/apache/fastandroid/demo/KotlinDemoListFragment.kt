@@ -7,6 +7,7 @@ import com.apache.fastandroid.demo.kt.coroutine.CoroutineDemoFragment2
 import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
 import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
 import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.BennyHuoCoroutineDemoFragment
 import com.apache.fastandroid.demo.kt.generics.GenericDemoFragment
 
 /**
@@ -23,6 +24,7 @@ class KotlinDemoListFragment:BaseListFragment()
             ,ViewItemBean("范型","范型", GenericDemoFragment::class.java)
             ,ViewItemBean("协程","协程", CoroutineDemoFragment::class.java)
             ,ViewItemBean("协程2","协程2", CoroutineDemoFragment2::class.java)
+            ,ViewItemBean("协程3","BennyHuo", BennyHuoCoroutineDemoFragment::class.java)
         )
     }
 }

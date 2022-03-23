@@ -47,6 +47,9 @@ buildscript {
 
         classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.21'
 
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
+
+
 
     }
 

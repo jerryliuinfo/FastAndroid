@@ -3,18 +3,16 @@ apply from: 'and_res_guard.gradle'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
 //Navigation 传递参数插件
 apply plugin: "androidx.navigation.safeargs.kotlin"
-apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 println("read Property MethodTraceMan:${readLocalProperty("MethodTraceMan")}")
 
 
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
-
-
 
 
 //插件的名字和 .properties 的文件名字保持一致
@@ -31,21 +29,7 @@ releaseInfo{
 
 
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-    }
-}
 
-repositories {
-    mavenCentral()
-
-    flatDir {
-        dirs 'libs'
-    }
-}
 def getAppVersionName(){
     def stdout = new ByteArrayOutputStream()
     exec {
@@ -436,7 +420,7 @@ dependencies {
     implementation Libs.fragment_ktx
 
     implementation Libs.swiperefreshLayout
-    implementation Libs.recyclerview
+//    implementation Libs.recyclerview
     implementation Libs.palette
     implementation Libs.preference
 
@@ -458,6 +442,10 @@ dependencies {
     implementation(*Libs.navigation)
     implementation(*Libs.immersionbar)
     implementation(*Libs.otherThirdLibs)
+
+
+    implementation (*Libs.hit)
+    kapt (*Libs.hit_compiler)
 
 
     implementation rootProject.ext.androidLib.multidex
