@@ -59,46 +59,46 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnInitArray.setOnClickListener {
+        mBinding.btnInitArray.setOnClickListener {
             initArrayElement()
         }
 
-        viewBinding.btnSAM.setOnClickListener {
+        mBinding.btnSAM.setOnClickListener {
             samUsage()
         }
 
-        viewBinding.btnCreateHighOrderFunc.setOnClickListener {
+        mBinding.btnCreateHighOrderFunc.setOnClickListener {
             createHighOrderFunc()
         }
-        viewBinding.btnJoinTostring.setOnClickListener {
+        mBinding.btnJoinTostring.setOnClickListener {
             joinToStringUsage()
         }
 
-        viewBinding.btnLableBreak.setOnClickListener {
+        mBinding.btnLableBreak.setOnClickListener {
             labelBreak()
         }
-        viewBinding.btnAnnotation.setOnClickListener {
+        mBinding.btnAnnotation.setOnClickListener {
             annotationUsage()
         }
-        viewBinding.btnCheck.setOnClickListener {
+        mBinding.btnCheck.setOnClickListener {
             checkFuncUsage()
         }
 
-        viewBinding.btnDelegate.setOnClickListener {
+        mBinding.btnDelegate.setOnClickListener {
             delegate()
         }
 
-        viewBinding.btnRefied.setOnClickListener {
+        mBinding.btnRefied.setOnClickListener {
             refiedTest()
         }
 
-        viewBinding.btnObject.setOnClickListener {
+        mBinding.btnObject.setOnClickListener {
             objectExpression()
         }
-        viewBinding.btnOnEach.setOnClickListener {
+        mBinding.btnOnEach.setOnClickListener {
             onEach()
         }
-        viewBinding.btnMethodCost.setOnClickListener {
+        mBinding.btnMethodCost.setOnClickListener {
             val costTime = measureTimeMillis {
                 Thread.sleep(100)
             }
@@ -106,7 +106,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
             println()
         }
-        viewBinding.btnCoerceAtLeast.setOnClickListener {
+        mBinding.btnCoerceAtLeast.setOnClickListener {
             Logger.d("${3.coerceAtLeast(5)}")
         }
 
@@ -114,27 +114,27 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         mFrameCalculator = FrameCalculator{
             Logger.d("frame: ${it}")
         }
-        viewBinding.btnHighOrderFunction.setOnClickListener {
+        mBinding.btnHighOrderFunction.setOnClickListener {
             highOrderFunction()
             println(highOrderFun2())
         }
-        viewBinding.btnExtensionHighOrderFunction.setOnClickListener {
+        mBinding.btnExtensionHighOrderFunction.setOnClickListener {
             println(extenseHighOrderFunction())
         }
-        viewBinding.btnClazzParamter.setOnClickListener {
+        mBinding.btnClazzParamter.setOnClickListener {
             passJavaClass(JavaMain::class.java)
             passKotlinClass(KotlinMain::class)
             println(KotlinMain.instance.hashCode())
 
         }
-        viewBinding.btnJavaKotlinCallEachOther.setOnClickListener {
+        mBinding.btnJavaKotlinCallEachOther.setOnClickListener {
             format("")
         }
-        viewBinding.btnNestedFunction.setOnClickListener {
+        mBinding.btnNestedFunction.setOnClickListener {
             nestedFunction()
         }
 
-        viewBinding.btnExpandFunction.setOnClickListener {
+        mBinding.btnExpandFunction.setOnClickListener {
             val file = File(requireContext().filesDir, "uitest.txt")
             file.writeText("hello:${Random.nextInt(10)}")
 
@@ -146,38 +146,38 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             }
         }
 
-        viewBinding.btnExpandFunction2.setOnClickListener {
+        mBinding.btnExpandFunction2.setOnClickListener {
             /**
              * 输出的 是 animal，而不是 dog，因为kotlin 的扩展方法是静态地给一个类添加方法，
              * 是不具备动态运行时的多态效应,扩展函数会被编译成一个静态函数
              */
         }
-        viewBinding.btnLambda.setOnClickListener {
+        mBinding.btnLambda.setOnClickListener {
             lambdaUsage()
         }
 
-        viewBinding.btnInline.setOnClickListener {
+        mBinding.btnInline.setOnClickListener {
             inlineUsage()
             nonInlineUsage()
         }
-        viewBinding.btnCampanionObject.setOnClickListener {
+        mBinding.btnCampanionObject.setOnClickListener {
             Logger.d("SingleObject: ${SingleObject.get()}")
             Logger.d("SingleObject2: ${SingleObject.get()}")
         }
-        viewBinding.btnKeywordBy.setOnClickListener {
+        mBinding.btnKeywordBy.setOnClickListener {
             ByTest.Zoo(ByTest.Cat()).bark()
 
         }
-        viewBinding.btnByDelegate.setOnClickListener {
+        mBinding.btnByDelegate.setOnClickListener {
             ByTest.ZooBy(ByTest.Cat()).bark()
         }
 
 
-        viewBinding.btnSealedClass.setOnClickListener {
+        mBinding.btnSealedClass.setOnClickListener {
            sealedClass()
         }
 
-        viewBinding.btnSealedClass2.setOnClickListener {
+        mBinding.btnSealedClass2.setOnClickListener {
             var user = User(1, "name")
             PlayerUI.get().showPlayer(user)
              user = User(1, "name", PlayerViewType.GREEN)
@@ -186,7 +186,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             PlayerUI.get().showPlayer(user)
 
         }
-        viewBinding.btnDeconstruction.setOnClickListener {
+        mBinding.btnDeconstruction.setOnClickListener {
             val user = UserBean("Tom",11)
             val (name,age, nick2) = user
             Logger.d("name:$name, age:$age,nick2:$nick2")
@@ -196,11 +196,11 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
                 Logger.d("${it.key}:${it.value}")
             }
         }
-        viewBinding.btnIterator.setOnClickListener {
+        mBinding.btnIterator.setOnClickListener {
 
             iteratorFun()
         }
-        viewBinding.btnWithIndex.setOnClickListener {
+        mBinding.btnWithIndex.setOnClickListener {
             val list = arrayListOf("aa", "bb", "cc")
             for ((index, value ) in list.withIndex()){
                 Logger.d("with index: ${index}:${value}")
@@ -209,30 +209,30 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         }
 
 
-        viewBinding.btnTakeUnless.setOnClickListener {
+        mBinding.btnTakeUnless.setOnClickListener {
             testUnless("Hello Kitty","Kit")
             testUnless("Hello Tom", "Kit")
         }
 
-        viewBinding.btnTakeIf.setOnClickListener {
+        mBinding.btnTakeIf.setOnClickListener {
             testTakeIf("Hello Kitty","Kit")
             testTakeIf("Hello Tom", "Kit")
         }
-        viewBinding.btnOperator.setOnClickListener {
+        mBinding.btnOperator.setOnClickListener {
             testOperator()
             testOperation2()
         }
 
-        viewBinding.btnCustomOperator.setOnClickListener {
+        mBinding.btnCustomOperator.setOnClickListener {
            testMyOperator()
         }
 
 
-        viewBinding.btnWhenOperator.setOnClickListener {
+        mBinding.btnWhenOperator.setOnClickListener {
             testWhenOperator()
         }
 
-        viewBinding.btnGenericParameter.setOnClickListener {
+        mBinding.btnGenericParameter.setOnClickListener {
             println(genericFun("四大发明", "火药","指南针"))
 
             val array1:Array<Int> = arrayOf(1,2,3)
@@ -242,7 +242,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             setArrayNum2(array1)
             setArrayNum2(array2)
         }
-        viewBinding.btnTailFun.setOnClickListener {
+        mBinding.btnTailFun.setOnClickListener {
             var startTime = System.currentTimeMillis()
             var result = findXPoint()
             println("findXPoint1 result:$result, cost time: ${System.currentTimeMillis() - startTime} ms")
@@ -251,30 +251,30 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             println("findXPoint2 result:$result, cost time: ${System.currentTimeMillis() - startTime} ms")
         }
 
-        viewBinding.btnObjectProperty.setOnClickListener {
+        mBinding.btnObjectProperty.setOnClickListener {
             println("dataTime:${DateUtil.nowDateTime}, date:${DateUtil.nowDate}, time:${DateUtil.nowTime}")
         }
 
-        viewBinding.btnProxyMode.setOnClickListener {
+        mBinding.btnProxyMode.setOnClickListener {
             proxyMode()
         }
 
-        viewBinding.btnNestedClass.setOnClickListener {
+        mBinding.btnNestedClass.setOnClickListener {
             nestedClass()
         }
 
-        viewBinding.btnTemplateClass.setOnClickListener {
+        mBinding.btnTemplateClass.setOnClickListener {
             templateClass()
         }
 
-        viewBinding.edittext.addTextChangedListener(HideTextWatcher(viewBinding.edittext))
+        mBinding.edittext.addTextChangedListener(HideTextWatcher(mBinding.edittext))
 
-        viewBinding.btnSuspend.setOnClickListener {
+        mBinding.btnSuspend.setOnClickListener {
             MainScope().launch {
                 testSuspend()
             }
         }
-        viewBinding.btnOperatorOverload2.setOnClickListener {
+        mBinding.btnOperatorOverload2.setOnClickListener {
             operatationOverload()
         }
 
@@ -440,7 +440,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             text = "dynamic text"
             setTextColor(context.getColor(R.color.black))
         }
-        viewBinding.linerlayout += textView
+        mBinding.linerlayout += textView
     }
 
 

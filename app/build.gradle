@@ -450,10 +450,12 @@ dependencies {
 
     implementation rootProject.ext.androidLib.multidex
 
+    implementation Libs.workManager
 
-    implementation ('androidx.work:work-runtime:2.2.0'){
-        exclude group: 'androidx.arch.core'
-    }
+
+//    implementation ('androidx.work:work-runtime:2.2.0'){
+//        exclude group: 'androidx.arch.core'
+//    }
 
 
 

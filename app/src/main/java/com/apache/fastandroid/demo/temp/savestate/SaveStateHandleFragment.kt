@@ -23,7 +23,7 @@ class SaveStateHandleFragment:BaseVBFragment<FragmentSavestateHandleBinding>(Fra
 
         println("SaveStateHandleFragment viewModel:${viewModel}, name:${viewModel.nameLiveData.value}, blog:${viewModel.blogLiveData.value}")
 
-        viewBinding.btnInsert.setOnClickListener {
+        mBinding.btnInsert.setOnClickListener {
             viewModel.nameLiveData.value = "Zhangsan"
             viewModel.blogLiveData.value = "www.baidu.com"
             viewModel.addNumber()
@@ -47,7 +47,7 @@ class SaveStateHandleFragment:BaseVBFragment<FragmentSavestateHandleBinding>(Fra
     }
 
     private fun updateUI(){
-        viewBinding.tvResult.text = "name:${viewModel.nameLiveData.value}, blog:${viewModel.blogLiveData.value}, number:${viewModel.getContentNumber().value}"
+        mBinding.tvResult.text = "name:${viewModel.nameLiveData.value}, blog:${viewModel.blogLiveData.value}, number:${viewModel.getContentNumber().value}"
 
     }
 

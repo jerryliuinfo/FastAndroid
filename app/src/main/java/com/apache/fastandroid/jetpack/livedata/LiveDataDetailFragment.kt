@@ -16,7 +16,7 @@ class LiveDataDetailFragment : BaseVBFragment<FragementJetpackLivedataDetailBind
         super.layoutInit(inflater, savedInstanceSate)
 
 
-        viewBinding.btnGoback.setOnClickListener {
+        mBinding.btnGoback.setOnClickListener {
             requireActivity().finish()
         }
 

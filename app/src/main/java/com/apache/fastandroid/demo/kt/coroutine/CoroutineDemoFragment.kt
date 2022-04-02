@@ -41,14 +41,14 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
 
         initRetrofit()
 
-        viewBinding.btnSuspendCoroutine.setOnClickListener {
+        mBinding.btnSuspendCoroutine.setOnClickListener {
             suspendCoroutineUsage()
         }
 
-        viewBinding.btnJobDispatcher.setOnClickListener {
+        mBinding.btnJobDispatcher.setOnClickListener {
             jobDispatcher()
         }
-        viewBinding.btnTraditionalSwitchThread.setOnClickListener {
+        mBinding.btnTraditionalSwitchThread.setOnClickListener {
             traditionalSwitchThread()
         }
         btn_coroutine_switch_thread.setOnClickListener {
@@ -68,20 +68,20 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
         btn_rxjava_zip.setOnClickListener {
            rxZip()
         }
-        viewBinding.btnCouroutineZip.setOnClickListener {
+        mBinding.btnCouroutineZip.setOnClickListener {
             coroutineZip()
         }
 
-        viewBinding.btnAwaitAll.setOnClickListener {
+        mBinding.btnAwaitAll.setOnClickListener {
             coroutineAwaitAll()
         }
 
-        viewBinding.btnCouroutineCanceJob.setOnClickListener {
+        mBinding.btnCouroutineCanceJob.setOnClickListener {
             job?.let {
                 it.cancel()
             }
         }
-        viewBinding.btnMainscope.setOnClickListener {
+        mBinding.btnMainscope.setOnClickListener {
             //使用 MainScope 不用指定Dispatchers.IO了
             mainScope.launch {
                 apiService.listReposKt("rengwuxian")
@@ -92,7 +92,7 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
 
     private fun suspendCoroutineUsage() {
         lifecycleScope.launch {
-            viewBinding.tvResult.apply {
+            mBinding.tvResult.apply {
                 isInvisible = true
                 text = "Hi everyone"
 

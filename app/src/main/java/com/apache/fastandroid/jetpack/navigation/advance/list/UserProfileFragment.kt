@@ -13,6 +13,6 @@ class UserProfileFragment:BaseVBFragment<FragmentUserProfileBinding>(FragmentUse
         super.layoutInit(inflater, savedInstanceState)
 
         val username = arguments?.getString("username") ?: "Ali Corners"
-        viewBinding.profileUserName.text = username
+        mBinding.profileUserName.text = username
     }
 }

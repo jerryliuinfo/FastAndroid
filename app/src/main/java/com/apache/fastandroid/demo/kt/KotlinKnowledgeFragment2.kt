@@ -25,56 +25,56 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnLetRun.setOnClickListener {
+        mBinding.btnLetRun.setOnClickListener {
             testLetRun()
         }
 
-        viewBinding.btnAlsoApply.setOnClickListener {
+        mBinding.btnAlsoApply.setOnClickListener {
             testAlsoApply()
         }
-        viewBinding.btnWith.setOnClickListener {
+        mBinding.btnWith.setOnClickListener {
             testWith()
         }
 
-        viewBinding.btnCommonOperator.setOnClickListener {
+        mBinding.btnCommonOperator.setOnClickListener {
             commonOperation()
         }
 
-        viewBinding.btnOperatorOverload.setOnClickListener {
+        mBinding.btnOperatorOverload.setOnClickListener {
             testOperatorOverload()
         }
-        viewBinding.btnZhongzui.setOnClickListener {
+        mBinding.btnZhongzui.setOnClickListener {
             zhongZuiExpression()
         }
-        viewBinding.btnTypeAlias.setOnClickListener {
+        mBinding.btnTypeAlias.setOnClickListener {
             typeAliasUsage()
         }
 
-        viewBinding.btnGetterSetter.setOnClickListener {
+        mBinding.btnGetterSetter.setOnClickListener {
            getSetUsage()
         }
 
-        viewBinding.btnLambdaInterrupt.setOnClickListener {
+        mBinding.btnLambdaInterrupt.setOnClickListener {
             lambdaInterrupt()
         }
-        viewBinding.btnNeilian.setOnClickListener {
+        mBinding.btnNeilian.setOnClickListener {
             inlineUsage2()
         }
 
-        viewBinding.btnCrossInline.setOnClickListener {
+        mBinding.btnCrossInline.setOnClickListener {
             crossInlineUsage()
         }
 
-        viewBinding.btnAnonymous.setOnClickListener {
+        mBinding.btnAnonymous.setOnClickListener {
             anonymousFun()
         }
 
-        viewBinding.btnKtGenericity.setOnClickListener {
+        mBinding.btnKtGenericity.setOnClickListener {
             val genericity = KtGenericity<GenericityAImpl>()
             genericity.add(GenericityAImpl())
         }
 
-        viewBinding.btnKtRealGenericity.setOnClickListener {
+        mBinding.btnKtRealGenericity.setOnClickListener {
 
             val userBean = UserBean("jerry",10)
             var json = GsonUtils.toJson(userBean)
@@ -88,7 +88,7 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
             val manage:ActivityManager? = activity?.getSystemService<ActivityManager>()
         }
 
-        viewBinding.btnKtClassRealGenericity.setOnClickListener {
+        mBinding.btnKtClassRealGenericity.setOnClickListener {
 
             val p1 = GenericView.Companion.invoke<GenericView.Presenter>().presenter
             //p2 其实是通过 P1 的形式创建的
@@ -99,7 +99,7 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
             p1.test()
             p2.test()
         }
-        viewBinding.btnJoinTostring.setOnClickListener {
+        mBinding.btnJoinTostring.setOnClickListener {
             val list = arrayListOf<UserBean>(UserBean("jerry",10),UserBean("Tom",11)).map {
                 it.name
             }.joinToString(separator = ",")

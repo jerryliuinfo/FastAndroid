@@ -21,7 +21,7 @@ class CoroutineDemoFragment2:BaseVBFragment<FragmentKotlinCouritine2Binding>(Fra
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnLaunchCoroutine.setOnClickListener {
+        mBinding.btnLaunchCoroutine.setOnClickListener {
             runBlocking {
                 Logger.d("runBlocking thread: ${Thread.currentThread().name}")
                 
@@ -43,7 +43,7 @@ class CoroutineDemoFragment2:BaseVBFragment<FragmentKotlinCouritine2Binding>(Fra
             }
         }
 
-        viewBinding.btnAsyncAwait.setOnClickListener {
+        mBinding.btnAsyncAwait.setOnClickListener {
             runBlocking {
                 val job:Deferred<String> = async {
                     delay(500)
@@ -60,25 +60,25 @@ class CoroutineDemoFragment2:BaseVBFragment<FragmentKotlinCouritine2Binding>(Fra
             }
         }
 
-        viewBinding.btnCoroutineLaunchParam.setOnClickListener {
+        mBinding.btnCoroutineLaunchParam.setOnClickListener {
 
         }
 
-        viewBinding.btnSuspendContinuation.setOnClickListener {
+        mBinding.btnSuspendContinuation.setOnClickListener {
             GlobalScope.launch {
                 LaunchCoroutine.testSuspendContinuation()
             }
         }
 
-        viewBinding.btnCouroutineTheory.setOnClickListener {
+        mBinding.btnCouroutineTheory.setOnClickListener {
             testCoroutineTheory()
         }
 
-        viewBinding.btnChannel.setOnClickListener {
+        mBinding.btnChannel.setOnClickListener {
             testChannel()
         }
 
-        viewBinding.btnChannelBus.setOnClickListener {
+        mBinding.btnChannelBus.setOnClickListener {
             "hello".post()
 
             onEvent { str:String ->

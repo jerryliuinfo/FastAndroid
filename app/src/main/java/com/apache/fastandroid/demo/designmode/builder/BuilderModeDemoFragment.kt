@@ -18,7 +18,7 @@ class BuilderModeDemoFragment:BaseVBFragment<FragmentBuilderModeBinding>(Fragmen
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnBuilderGlobal.setOnClickListener {
+        mBinding.btnBuilderGlobal.setOnClickListener {
             Hawk.init(requireContext()).apply {
                 logInterceptor = object :ILogInterceptor{
                     override fun onLog(message: String) {
@@ -27,7 +27,7 @@ class BuilderModeDemoFragment:BaseVBFragment<FragmentBuilderModeBinding>(Fragmen
                 }
             }.build()
 
-            viewBinding.btnBuilerSingle.setOnClickListener {
+            mBinding.btnBuilerSingle.setOnClickListener {
                 val loadSir = LoadSir.Builder()
                     .addCallback(EmptyCallback())
                     .addCallback(AnimateCallback())

@@ -32,7 +32,7 @@ class FluentAnimationDemoFragment: BaseVBFragment<FragmentFluentAnimationBinding
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        val targetLayer = viewBinding.rootView
+        val targetLayer = mBinding.rootView
         val doOnIdle:Boolean = arguments?.getBoolean("doOnIdle",false) == true
         if (doOnIdle){
             targetLayer.isInvisible = true
@@ -50,8 +50,8 @@ class FluentAnimationDemoFragment: BaseVBFragment<FragmentFluentAnimationBinding
                 helper.setText(R.id.tv_title, item)
             }
         }
-        viewBinding.recyclerView.adapter = mAdapter
-        viewBinding.recyclerView.apply {
+        mBinding.recyclerView.adapter = mAdapter
+        mBinding.recyclerView.apply {
             adapter = mAdapter
             layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL,false)
             addItemDecoration( HorizontalDividerItemDecoration.Builder(context)

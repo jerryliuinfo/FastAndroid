@@ -14,9 +14,9 @@ abstract class BasePageFragment : BaseVBFragment<FragmentPracticeDemoBinding>(Fr
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
-        viewBinding.pager.let {
+        mBinding.pager.let {
             it.adapter = PageAdapter(loadPageModels(),requireActivity().supportFragmentManager)
-            viewBinding.tabLayout.setupWithViewPager(it)
+            mBinding.tabLayout.setupWithViewPager(it)
         }
     }
 

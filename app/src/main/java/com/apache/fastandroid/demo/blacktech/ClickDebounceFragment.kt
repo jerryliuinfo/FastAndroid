@@ -16,7 +16,7 @@ class ClickDebounceFragment : BaseVBFragment<FragmentDebounceClickBinding>(Fragm
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnDebounce.setOnClickListener {
+        mBinding.btnDebounce.setOnClickListener {
             println("btnDebounce click time:${System.currentTimeMillis()}")
             handleOnClick(it)
         }

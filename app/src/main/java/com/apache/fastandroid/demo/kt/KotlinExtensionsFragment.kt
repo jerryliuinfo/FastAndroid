@@ -32,13 +32,13 @@ class KotlinExtensionsFragment:BaseVBFragment<KtExtensionsBinding>(KtExtensionsB
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnAnimatorKt.setOnClickListener {
+        mBinding.btnAnimatorKt.setOnClickListener {
             animatorKt()
         }
-        viewBinding.btnDrawableKt.setOnClickListener {
+        mBinding.btnDrawableKt.setOnClickListener {
             drawableKt()
         }
-        viewBinding.btnExtends.setOnClickListener {
+        mBinding.btnExtends.setOnClickListener {
             extensionOverload()
         }
     }
@@ -63,7 +63,7 @@ class KotlinExtensionsFragment:BaseVBFragment<KtExtensionsBinding>(KtExtensionsB
             bounds = Rect(100,100,400,400)
         }
         var bitmap = drawable.toBitmap(200,200)
-        val imageView:ImageView = viewBinding.ivAvator
+        val imageView:ImageView = mBinding.ivAvator
         imageView.setImageBitmap(bitmap)
 
 
@@ -82,7 +82,7 @@ class KotlinExtensionsFragment:BaseVBFragment<KtExtensionsBinding>(KtExtensionsB
     }
 
     private fun viewKtExtension() {
-        viewBinding.ivAvator.also {
+        mBinding.ivAvator.also {
             it.doOnPreDraw {  }
             it.doOnLayout {  }
             it.doOnDetach {  }

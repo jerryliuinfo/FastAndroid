@@ -17,8 +17,11 @@ import com.apache.fastandroid.demo.bean.UserBean
 import com.tesla.framework.common.util.log.NLog
 import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
+import androidx.room.Room
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.kt.coroutine.BennyHuoCoroutineDemoFragment
+import com.apache.fastandroid.demo.room.RoomDemoFragment
+import com.apache.fastandroid.demo.sunflower.fragement.SunFlowerHomeViewPagerFragment
 import com.apache.fastandroid.jetpack.hit.HitDemoFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.ui.activity.FragmentContainerActivity
@@ -54,7 +57,9 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(), View.OnClickListe
 //        FragmentContainerActivity.launch(this, JetPackDemoFragment::class.java)
 //        FragmentContainerActivity.launch(this, LyricDemoFragment::class.java)
 //        FragmentContainerActivity.launch(this, BennyHuoCoroutineDemoFragment::class.java)
-        FragmentContainerActivity.launch(this, HitDemoFragment::class.java)
+//        FragmentContainerActivity.launch(this, HitDemoFragment::class.java)
+//        FragmentContainerActivity.launch(this, RoomDemoFragment::class.java)
+        FragmentContainerActivity.launch(this, SunFlowerHomeViewPagerFragment::class.java,null,false)
     }
 
     private fun setupActionBar(

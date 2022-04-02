@@ -21,10 +21,10 @@ class PermissionXFragment: BaseVBFragment<FragmentPermissionBinding>(FragmentPer
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
-        viewBinding.btnRequestPermissionNormal.setOnClickListener {
+        mBinding.btnRequestPermissionNormal.setOnClickListener {
             doNoramlPermissionRequest()
         }
-        viewBinding.btnRequestPermissionPermissionX.setOnClickListener {
+        mBinding.btnRequestPermissionPermissionX.setOnClickListener {
             PermissionX.init(this).permissions(permission.CAMERA)
                 .request { allGranted, grantedList, deniedList ->
                     if (allGranted) {

@@ -41,9 +41,9 @@
         <item name="colorAccent">@color/colorAccent</item>
 
 <!--  用于显示在原色上方的元素的颜色（例如，文本和图标，根据可访问性，通常为白色或半透明的黑色）-->
-        <item name="colorOnPrimary">@color/colorOnPrimary</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">@bool/windowLightNavigationBar</item>
 
+        <item name="colorSurface">@color/sunflower_gray_50</item>
+        <item name="colorSecondary">@color/sunflower_yellow_500</item>
 <!--        用于显示在表面颜色顶部的元素的颜色-->
 <!--        <item name="colorOnSurface">@color/sunflower_black</item>-->
 

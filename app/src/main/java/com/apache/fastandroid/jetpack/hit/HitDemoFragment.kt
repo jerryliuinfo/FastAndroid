@@ -3,14 +3,10 @@ package com.apache.fastandroid.jetpack.hit
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FragmentHitBinding
 import com.apache.fastandroid.demo.bean.*
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import javax.inject.Inject
 
@@ -62,39 +58,39 @@ class HitDemoFragment:BaseVBFragment<FragmentHitBinding>(FragmentHitBinding::inf
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnInjectMember.setOnClickListener {
+        mBinding.btnInjectMember.setOnClickListener {
             truck.delivery()
         }
 
-        viewBinding.btnInjectWithParam.setOnClickListener {
+        mBinding.btnInjectWithParam.setOnClickListener {
             truck2.delivery()
         }
 
-        viewBinding.btnInjectInterface.setOnClickListener {
+        mBinding.btnInjectInterface.setOnClickListener {
             truck2.deliveryByEngine()
         }
 
-        viewBinding.btnInjectInterfaceMultiParam.setOnClickListener {
+        mBinding.btnInjectInterfaceMultiParam.setOnClickListener {
             truck2.deliveryByInterfaceWithTwoParams()
         }
 
-        viewBinding.btnInjectThirdParty.setOnClickListener {
+        mBinding.btnInjectThirdParty.setOnClickListener {
             println("inject okhttpClient: ${okHttpClient}")
         }
 
-        viewBinding.btnInjectSingleton.setOnClickListener {
+        mBinding.btnInjectSingleton.setOnClickListener {
             println("inject singleton truck: ${singletonTruck}")
         }
 
-        viewBinding.btnBuiltinAppQualifier.setOnClickListener {
+        mBinding.btnBuiltinAppQualifier.setOnClickListener {
             println("inject application context:${builtInApplicationQualifer}")
         }
 
-        viewBinding.btnBuiltinActivityQualifier.setOnClickListener {
+        mBinding.btnBuiltinActivityQualifier.setOnClickListener {
             println("inject activity context:${builtInActivityQualifer}")
         }
 
-        viewBinding.btnInjectViewModel.setOnClickListener {
+        mBinding.btnInjectViewModel.setOnClickListener {
             println("inject viewModel :${viewModel}")
             viewModel.doWork()
         }

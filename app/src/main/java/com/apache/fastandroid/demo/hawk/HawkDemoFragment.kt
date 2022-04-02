@@ -15,7 +15,7 @@ class HawkDemoFragment: BaseVBFragment<FragmentHawkBinding>(FragmentHawkBinding:
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.tvHawk.setOnClickListener {
+        mBinding.tvHawk.setOnClickListener {
             timeHawkInit()
             timeHawkPut()
             timeHawkGet()

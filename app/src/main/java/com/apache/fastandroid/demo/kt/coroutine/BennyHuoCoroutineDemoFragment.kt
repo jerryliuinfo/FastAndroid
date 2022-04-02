@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FragmentCoroutineBennyhuoBinding
-import com.apache.fastandroid.home.HomeModelFactory
-import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.HomeViewModelKt
 import com.apache.fastandroid.util.InjectorUtil
 import com.tesla.framework.component.logger.Logger
@@ -26,14 +24,14 @@ class BennyHuoCoroutineDemoFragment:BaseVBFragment<FragmentCoroutineBennyhuoBind
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnStartPolling.setOnClickListener {
+        mBinding.btnStartPolling.setOnClickListener {
             doPoll()
         }
 
-        viewBinding.btnStartPolling2.setOnClickListener {
+        mBinding.btnStartPolling2.setOnClickListener {
             doPollByJob()
         }
-        viewBinding.btnStopPolling.setOnClickListener {
+        mBinding.btnStopPolling.setOnClickListener {
             cancel()
         }
 

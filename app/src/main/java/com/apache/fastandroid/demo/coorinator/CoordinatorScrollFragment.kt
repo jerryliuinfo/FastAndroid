@@ -21,9 +21,9 @@ class CoordinatorScrollFragment: BaseVBFragment<CoordinatorBasicBinding>(Coordin
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnUpdateMode.setOnClickListener {
+        mBinding.btnUpdateMode.setOnClickListener {
 
-            val layoutParams:AppBarLayout.LayoutParams = viewBinding.toolbar.layoutParams as AppBarLayout.LayoutParams
+            val layoutParams:AppBarLayout.LayoutParams = mBinding.toolbar.layoutParams as AppBarLayout.LayoutParams
             if (count % size ==  0){
                 layoutParams.scrollFlags = SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
             }else if (count % size ==  1){
@@ -31,7 +31,7 @@ class CoordinatorScrollFragment: BaseVBFragment<CoordinatorBasicBinding>(Coordin
             } else if (count % size ==  2){
                 layoutParams.scrollFlags = SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
             }
-            viewBinding.toolbar.layoutParams = layoutParams
+            mBinding.toolbar.layoutParams = layoutParams
             count++
         }
 

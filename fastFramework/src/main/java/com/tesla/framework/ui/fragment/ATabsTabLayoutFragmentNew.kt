@@ -2,11 +2,9 @@ package com.tesla.framework.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.tesla.framework.databinding.FragmentTablayoutBinding
-import com.tesla.framework.support.bean.ITabItem
 import com.tesla.framework.support.bean.TabItem
 import com.tesla.framework.ui.fragment.tab.MyFragmentStateAdapter
 
@@ -32,11 +30,11 @@ abstract class ATabsTabLayoutFragmentNew : BaseVBFragment<FragmentTablayoutBindi
 
     private fun setupViewPage() {
         mAdapter  = createTabAdapter()
-        viewBinding.viewpager.apply {
+        mBinding.viewpager.apply {
             adapter = mAdapter
         }
 
-        TabLayoutMediator(viewBinding.tabLayout, viewBinding.viewpager) { tab, position ->
+        TabLayoutMediator(mBinding.tabLayout, mBinding.viewpager) { tab, position ->
             onConfigureTab(tab,position,mAdapter.tabs[position])
         }.attach()
 
@@ -80,6 +78,6 @@ abstract class ATabsTabLayoutFragmentNew : BaseVBFragment<FragmentTablayoutBindi
         if (selectedTabIndex == index) {
             return
         }
-        viewBinding.viewpager.currentItem = index
+        mBinding.viewpager.currentItem = index
     }
 }

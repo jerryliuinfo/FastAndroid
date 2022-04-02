@@ -23,7 +23,7 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
         super.layoutInit(inflater, savedInstanceState)
         mAdapter = createAdapter()
 
-        viewBinding.recycleview.apply {
+        mBinding.recycleview.apply {
             setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
                 onScrollChange(v,scrollX,scrollY,oldScrollX,oldScrollY)
             }
@@ -37,7 +37,7 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
             adapter = mAdapter
         }
         mAdapter.run {
-            setOnLoadMoreListener(this@ARecycleViewSwipeRefreshFragmentNew, viewBinding.recycleview)
+            setOnLoadMoreListener(this@ARecycleViewSwipeRefreshFragmentNew, mBinding.recycleview)
             setOnItemClickListener { adapter, view, position ->
                 onItemClick(adapter, view, data[position])
             }
@@ -96,15 +96,15 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
      * @return
      */
     protected open fun getFirstVisiblePosition(): Int {
-        if (viewBinding.recycleview.layoutManager is LinearLayoutManager) {
-            val linearLayoutManager = viewBinding.recycleview.layoutManager as LinearLayoutManager
+        if (mBinding.recycleview.layoutManager is LinearLayoutManager) {
+            val linearLayoutManager = mBinding.recycleview.layoutManager as LinearLayoutManager
             return linearLayoutManager.findFirstVisibleItemPosition()
         }
         return 0
     }
 
     protected fun setupSwipeRefreshLayout() {
-        viewBinding.swipeRefreshLayout.apply {
+        mBinding.swipeRefreshLayout.apply {
             setOnRefreshListener(this@ARecycleViewSwipeRefreshFragmentNew)
             setColorSchemeResources(
                     R.color.holo_blue_bright,
@@ -119,7 +119,7 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
 
 
     open fun showRefreshing() {
-        viewBinding.swipeRefreshLayout.run {
+        mBinding.swipeRefreshLayout.run {
             if (!isRefreshing){
                 isRefreshing = true
             }
@@ -128,7 +128,7 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
     }
 
     open fun dismissRefreshing() {
-        viewBinding.swipeRefreshLayout.run {
+        mBinding.swipeRefreshLayout.run {
             if (isRefreshing){
                 isRefreshing = false
             }

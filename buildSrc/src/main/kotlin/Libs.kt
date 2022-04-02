@@ -15,6 +15,9 @@ object Libs {
 
     const val activity_ktx = "androidx.activity:activity-ktx:${Versions.activity_ktx}"
     const val fragment_ktx = "androidx.fragment:fragment-ktx:${Versions.fragment_ktx}"
+    const val workManager = "androidx.work:work-runtime-ktx:${Versions.workmanager}"
+
+
     const val preference = "androidx.preference:preference:${Versions.preference}"
 
 
@@ -90,10 +93,11 @@ object Libs {
         "com.github.huage2580:PermissionMonitor:1.0.1",
         "me.weishu:epic:1.0.0",
         "com.yqritc:recyclerview-flexibledivider:1.4.0",
+
         "com.youth.banner:banner:2.1.0",
+
         "com.github.Justson.AgentWeb:agentweb-core:v4.1.9",
         "com.squareup.picasso:picasso:2.5.2",
-        "com.nostra13.universalimageloader:universal-image-loader:1.9.3",
         "com.github.lzyzsd:jsbridge:1.0.4",
         "com.github.markzhai:blockcanary-android:1.5.0",
         "com.squareup.leakcanary:leakcanary-support-fragment:1.6.3",

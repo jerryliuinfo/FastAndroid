@@ -22,8 +22,8 @@ class LyricDemoFragment:BaseVBFragment<FragmentLyricBinding>(FragmentLyricBindin
 
 
 
-        viewBinding.btnPlay.setOnClickListener {
-            viewBinding.lyricView.run {
+        mBinding.btnPlay.setOnClickListener {
+            mBinding.lyricView.run {
                 val lyric = LyricUtils.parseLyric(resources.openRawResource(R.raw.testfile), "UTF-8")
                 setLyric(lyric)
                 setLyricIndex(0)
@@ -34,7 +34,7 @@ class LyricDemoFragment:BaseVBFragment<FragmentLyricBinding>(FragmentLyricBindin
         lifecycleScope.launch {
             while (isActive){
                 try {
-                    viewBinding.lyricView.setLyricIndex(sentenceIndex++)
+                    mBinding.lyricView.setLyricIndex(sentenceIndex++)
                 }catch (e:Exception){
                     e.printStackTrace()
                     if (e is CancellationException) throw e

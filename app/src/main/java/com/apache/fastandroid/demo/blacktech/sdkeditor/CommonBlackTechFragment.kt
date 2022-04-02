@@ -16,10 +16,10 @@ class CommonBlackTechFragment :
         super.layoutInit(inflater, savedInstanceState)
 
         //https://github.com/iwhys/sdk-editor-plugin/blob/master/项目简析.md
-        viewBinding.btnSdkEditor.setOnClickListener {
+        mBinding.btnSdkEditor.setOnClickListener {
 //            BuildCompat.isAtLeastR()
         }
-        viewBinding.btnAndroidHiddenApiByPass.setOnClickListener {
+        mBinding.btnAndroidHiddenApiByPass.setOnClickListener {
 //           HiddenApiBypass.invoke(ApplicationInfo::class.java,  ApplicationInfo(), "usesNonSdkApi"/*, args*/)
 
         }

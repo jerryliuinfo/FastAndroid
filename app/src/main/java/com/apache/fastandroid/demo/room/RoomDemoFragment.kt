@@ -1,18 +1,13 @@
 package com.apache.fastandroid.demo.room
 
-import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.AdapterView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentJetpackRoomBinding
-import com.apache.fastandroid.demo.sunflower.dao.PlantDao
-import com.apache.fastandroid.generated.callback.OnClickListener
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -23,7 +18,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.concurrent.atomic.AtomicInteger
-import kotlin.random.Random
 
 /**
  * Created by Jerry on 2021/3/17.
@@ -39,31 +33,37 @@ class RoomDemoFragment: BaseVBFragment<FragmentJetpackRoomBinding>(FragmentJetpa
 
         plantDao = AccountDatabase.getInstance()
         mAdapter = PlantAdapter(plantDao)
-        viewBinding.recyclerView.apply {
+        mBinding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context,RecyclerView.VERTICAL,false)
             adapter = mAdapter
 
         }
-        viewBinding.btnInsert.setOnClickListener {
+        mBinding.btnInsert.setOnClickListener {
             operation {
                 val plants = Array<Account>(5){
                     val id = atomicInteger.addAndGet(1)
                     Account("name:$id", "desc:$id", id.toLong(), (id).toLong())
                 }
+                //Room 的操作本来就是主线安全的，因此没必要切换线程
                 plantDao.insert(plants.toList())
+
+                println("insert thread: ${Thread.currentThread().name}")
             }
         }
-        viewBinding.btnDeleteAll.setOnClickListener {
+        mBinding.btnDeleteAll.setOnClickListener {
             operation {
                 plantDao.deleteAll()
+                println("deleteAll thread: ${Thread.currentThread().name}")
             }
         }
 
-        viewBinding.btnQueryByCondition.setOnClickListener {
+        mBinding.btnQueryByCondition.setOnClickListener {
             lifecycleScope.launch {
                 val queryList = withContext(Dispatchers.IO){
                     return@withContext plantDao.queryByAge(5)
                 }
+                println("btnQueryByCondition thread: ${Thread.currentThread().name}")
+
                 mAdapter.setNewData(queryList)
             }
         }
@@ -78,9 +78,10 @@ class RoomDemoFragment: BaseVBFragment<FragmentJetpackRoomBinding>(FragmentJetpa
 
     private fun operation(block:() -> Unit){
         lifecycleScope.launch {
-            withContext(Dispatchers.IO){
-                block.invoke()
-            }
+//            withContext(Dispatchers.IO){
+//                block.invoke()
+//            }
+            block.invoke()
         }
 
     }

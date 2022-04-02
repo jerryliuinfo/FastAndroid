@@ -9,7 +9,6 @@ import android.os.Build;
 import android.text.TextUtils;
 
 import com.apache.fastandroid.R;
-import com.nostra13.universalimageloader.utils.L;
 
 import androidx.core.app.NotificationCompat;
 
@@ -26,7 +25,7 @@ public class NotifyCompatYc {
 
     public static void setONotifyChannel(NotificationManager manager, NotificationCompat.Builder builder, String channeId, String channelName) {
         if (TextUtils.isEmpty(channeId)||TextUtils.isEmpty(channelName)){
-            L.e("NotifyCompatYc:  ".concat("安卓8.0的通知兼容库中 channeId 与 channelName 不能为empty"));
+//            L.e("NotifyCompatYc:  ".concat("安卓8.0的通知兼容库中 channeId 与 channelName 不能为empty"));
         }
         if (Build.VERSION.SDK_INT >= 26) {
             //第三个参数设置通知的优先级别

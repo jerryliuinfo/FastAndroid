@@ -14,7 +14,7 @@ class TitleFragment:BaseVBFragment<FragmentAdvanceNavTitleBinding>(FragmentAdvan
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.aboutBtn.setOnClickListener {
+        mBinding.aboutBtn.setOnClickListener {
             it.findNavController().navigate(R.id.action_title_to_about)
         }
     }

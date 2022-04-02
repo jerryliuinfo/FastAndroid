@@ -15,52 +15,52 @@ class CollectionDemoFragment:BaseVBFragment<FragmentKtCollectionBinding>(Fragmen
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnTransform.setOnClickListener {
+        mBinding.btnTransform.setOnClickListener {
             transoform()
         }
-        viewBinding.btnElementOperator.setOnClickListener {
+        mBinding.btnElementOperator.setOnClickListener {
             elementOperator()
         }
 
-        viewBinding.btnOrderOperator.setOnClickListener {
+        mBinding.btnOrderOperator.setOnClickListener {
             orderTransform()
         }
 
-        viewBinding.btnMapOperator.setOnClickListener {
+        mBinding.btnMapOperator.setOnClickListener {
             mapOperator()
         }
 
-        viewBinding.btnProduceOperator.setOnClickListener {
+        mBinding.btnProduceOperator.setOnClickListener {
             produceOperator()
         }
 
-        viewBinding.btnStatics.setOnClickListener {
+        mBinding.btnStatics.setOnClickListener {
             staticsUsage()
         }
 
 
-        viewBinding.btnFilter.setOnClickListener {
+        mBinding.btnFilter.setOnClickListener {
             filter()
         }
 
 
 
-        viewBinding.btnIntRange.setOnClickListener {
+        mBinding.btnIntRange.setOnClickListener {
             intRangeUsage()
         }
 
-        viewBinding.btnCreatePair.setOnClickListener {
+        mBinding.btnCreatePair.setOnClickListener {
             createPair()
         }
-        viewBinding.btnTriple.setOnClickListener {
+        mBinding.btnTriple.setOnClickListener {
             triple()
         }
-        viewBinding.btnDestructPairTriple.setOnClickListener {
+        mBinding.btnDestructPairTriple.setOnClickListener {
             destructPairTriple()
         }
 
 
-        viewBinding.btnHashMap.setOnClickListener {
+        mBinding.btnHashMap.setOnClickListener {
             hashMapUsage()
         }
     }

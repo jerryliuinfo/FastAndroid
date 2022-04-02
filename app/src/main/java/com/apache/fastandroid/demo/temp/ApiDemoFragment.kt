@@ -29,31 +29,31 @@ class ApiDemoFragment:BaseVBFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBi
         super.layoutInit(inflater, savedInstanceState)
 
 
-        viewBinding.btnTouchSlop.setOnClickListener {
+        mBinding.btnTouchSlop.setOnClickListener {
             scaleTouchSlop()
         }
 
-        viewBinding.btnDirection.setOnClickListener {
+        mBinding.btnDirection.setOnClickListener {
             getLayoutDirection()
         }
 
-        viewBinding.btnCountDown.setOnClickListener {
+        mBinding.btnCountDown.setOnClickListener {
             testCountDownLatch1()
         }
 
-        viewBinding.btnCountDown2.setOnClickListener {
+        mBinding.btnCountDown2.setOnClickListener {
             testCountDownLatch2()
         }
 
-        viewBinding.btnBreakPoint.setOnClickListener {
+        mBinding.btnBreakPoint.setOnClickListener {
             testBreakPoint()
         }
 
-        viewBinding.btnStream.setOnClickListener {
+        mBinding.btnStream.setOnClickListener {
             testStream()
         }
 
-        viewBinding.btnStream.setOnClickListener {
+        mBinding.btnStream.setOnClickListener {
             testArchTaskExecutor()
         }
 

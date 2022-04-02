@@ -6,7 +6,6 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentLeaderboardBinding
-import com.apache.fastandroid.demo.BaseListFragment
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.tesla.framework.ui.fragment.BaseVBFragment
@@ -20,7 +19,7 @@ class LeaderboardFragment:BaseVBFragment<FragmentLeaderboardBinding>(FragmentLea
         super.layoutInit(inflater, savedInstanceState)
 
 
-        viewBinding.leaderboardList.apply {
+        mBinding.leaderboardList.apply {
             val datas = Array(10){ "Person: $it"}
             setHasFixedSize(true)
             adapter = LeaderAdapter(R.layout.list_view_item, datas.toList())

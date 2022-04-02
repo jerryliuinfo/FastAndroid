@@ -18,7 +18,7 @@ class ChainModeDemoFragment:BaseVBFragment<FragmentDesignModeChainBinding>(Fragm
         super.layoutInit(inflater, savedInstanceState)
 
 
-        viewBinding.btnBasicUsage.setOnClickListener {
+        mBinding.btnBasicUsage.setOnClickListener {
 
 
 

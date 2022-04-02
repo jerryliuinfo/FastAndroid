@@ -1,15 +1,13 @@
 package com.apache.fastandroid.demo.sunflower.fragement
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.view.*
 import android.widget.ImageView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.SavedStateHandle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentPlantListBinding
 import com.apache.fastandroid.demo.sunflower.bean.Plant
 import com.apache.fastandroid.demo.sunflower.db.SunFlowDatabase
 import com.apache.fastandroid.demo.sunflower.repository.PlantRepository
@@ -24,35 +22,40 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
 /**
  * Created by Jerry on 2022/3/14.
  */
-class PlantListViewFragment:BaseVBFragment<CommUiRecycleviewNewBinding>(CommUiRecycleviewNewBinding::inflate) {
+class PlantListFragment:BaseVBFragment<FragmentPlantListBinding>(FragmentPlantListBinding::inflate) {
 
     private val mViewModel:PlantListViewModel by viewModels{
         val platnDao = SunFlowDatabase.getInstance(requireContext()).plantDao()
         PlantListViewModelFactory(PlantRepository.getInstance(platnDao), SavedStateHandle())
     }
 
-    private lateinit var mAdapter:PlantAdapter
+    override fun bindUI(rootView: View?) {
+        super.bindUI(rootView)
+        //需要加上这个，onCreateOptionsMenu 才会生效
+        setHasOptionsMenu(true)
+    }
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        setHasOptionsMenu(true)
-        viewBinding.recycleview.apply {
-            mAdapter = PlantAdapter().apply {
-                layoutManager = GridLayoutManager(requireContext(),2)
-            }
-            adapter = mAdapter
-        }
 
-        mViewModel.plants.observe(this){
-            mAdapter.setNewData(it)
-        }
+        val adapter = PlantAdapter()
+        mBinding.plantList.adapter = adapter
+
+
+        subscribeUI(adapter)
 
     }
 
+    private fun subscribeUI(adapter:PlantAdapter){
+        mViewModel.plants.observe(this){
+            adapter.setNewData(it)
+        }
+    }
+
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_plant_list,menu)
-
+        inflater.inflate(R.menu.menu_plant_list, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

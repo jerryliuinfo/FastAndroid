@@ -6,10 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.apache.fastandroid.demo.sunflower.bean.Converters
 import com.apache.fastandroid.demo.sunflower.bean.GardenPlanting
 import com.apache.fastandroid.demo.sunflower.bean.Plant
 import com.apache.fastandroid.demo.sunflower.dao.PlantDao
+import com.apache.fastandroid.demo.sunflower.utilitis.DATABASE_NAME
+import com.apache.fastandroid.demo.sunflower.works.SeedDatabaseWorker
 
 /**
  * Created by Jerry on 2022/3/14.
@@ -23,8 +27,6 @@ abstract class SunFlowDatabase:RoomDatabase() {
 
 
     companion object{
-        const val DATABASE_NAME = "sunflower-db"
-
 
         @Volatile private var instance:SunFlowDatabase?= null
 
@@ -43,8 +45,9 @@ abstract class SunFlowDatabase:RoomDatabase() {
                     object : RoomDatabase.Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
-//                            val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>().build()
-//                            WorkManager.getInstance(context).enqueue(request)
+                            println("buildDatabase --->")
+                            val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>().build()
+                            WorkManager.getInstance(context).enqueue(request)
                         }
                     }
                 )

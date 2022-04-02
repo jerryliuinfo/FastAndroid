@@ -35,7 +35,7 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
 
 
         //注意：语言要是非中文才会 生效
-        viewBinding.tvQuatity.setOnClickListener {
+        mBinding.tvQuatity.setOnClickListener {
             var size = 1
             var result1 = resources.getQuantityString(R.plurals.subtitle_plural,size,size)
             println("quantity = 1 output:$result1")
@@ -62,7 +62,7 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
             NLog.d(TAG, "suffle: ${items}")
         }
 
-        viewBinding.btnMultiChannel.setOnClickListener {
+        mBinding.btnMultiChannel.setOnClickListener {
             ToastUtils.showShort(MetaDataUtils.getMetaDataInApp("HOST"))
         }
 
@@ -70,32 +70,32 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
 
         }
 
-        viewBinding.btnVarargs.setOnClickListener {
+        mBinding.btnVarargs.setOnClickListener {
             initvarArgs("aaa","bbb")
         }
 
-        viewBinding.btnConcurrence.setOnClickListener {
+        mBinding.btnConcurrence.setOnClickListener {
             concurencyUsage()
         }
 
-        viewBinding.btnShowDialogWithApplicationContext.setOnClickListener {
+        mBinding.btnShowDialogWithApplicationContext.setOnClickListener {
             showDialogWithApplicationContext()
         }
 
-        viewBinding.btnLocationOnscreen.setOnClickListener {
+        mBinding.btnLocationOnscreen.setOnClickListener {
             val location = IntArray(2)
-            viewBinding.btnLocationOnscreen.getLocationOnScreen(location)
+            mBinding.btnLocationOnscreen.getLocationOnScreen(location)
             val rect = Rect()
             rect.apply {
                 left = location[0]
                 top = location[1]
-                right = location[0] + viewBinding.btnLocationOnscreen.width
-                bottom = location[1] + viewBinding.btnLocationOnscreen.height
+                right = location[0] + mBinding.btnLocationOnscreen.width
+                bottom = location[1] + mBinding.btnLocationOnscreen.height
             }
             println("rect:${rect.toString()}")
         }
 
-        viewBinding.btnListInit.setOnClickListener {
+        mBinding.btnListInit.setOnClickListener {
 
         }
 

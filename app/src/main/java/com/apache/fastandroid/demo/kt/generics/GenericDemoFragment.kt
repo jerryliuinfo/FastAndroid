@@ -15,18 +15,18 @@ class GenericDemoFragment:BaseVBFragment<FragmentGenericTypeBinding>(FragmentGen
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnGeneric.setOnClickListener {
+        mBinding.btnGeneric.setOnClickListener {
             genericUsage()
         }
 
-        viewBinding.btnInout.setOnClickListener {
+        mBinding.btnInout.setOnClickListener {
             inOutUsage()
         }
 
-        viewBinding.btnGeneric2.setOnClickListener {
+        mBinding.btnGeneric2.setOnClickListener {
             genericUsage2()
         }
-        viewBinding.btnRefied.setOnClickListener {
+        mBinding.btnRefied.setOnClickListener {
             refiedUsage()
         }
     }

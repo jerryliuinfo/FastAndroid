@@ -22,21 +22,21 @@ class LiveDataBestPracticeFragment : BaseVBFragment<FragmentBestPracticeLivedata
         super.layoutInit(inflater, savedInstanceState)
 
         viewModel.currentTime.observe(this){
-            viewBinding.time.text = it.toString()
+            mBinding.time.text = it.toString()
         }
         viewModel.currentTimeTransformed.observe(this){
-            viewBinding.timeTransformed.text = it
+            mBinding.timeTransformed.text = it
         }
 
         viewModel.currentWeather.observe(this){
-            viewBinding.currentWeather.text = it
+            mBinding.currentWeather.text = it
         }
 
         viewModel.cacheData.observe(this){
-            viewBinding.cachedValue.text = it
+            mBinding.cachedValue.text = it
         }
 
-        viewBinding.refreshButton.setOnClickListener {
+        mBinding.refreshButton.setOnClickListener {
             viewModel.onRefresh()
         }
     }

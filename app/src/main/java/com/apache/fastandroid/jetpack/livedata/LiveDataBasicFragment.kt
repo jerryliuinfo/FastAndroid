@@ -60,35 +60,35 @@ class LiveDataBasicFragment : BaseVBFragment<FragmentJetpackLivedataBinding>(Fra
 
         priceLiveData = StockLiveData.get("")
         nameLiveData.observe(this, Observer<String> { t -> LogUtils.d("onChanged : $t")
-            viewBinding.textResult.text = t
+            mBinding.textResult.text = t
         })
         priceLiveData.observe(this){
-            viewBinding.textResult.text = it.toString()
+            mBinding.textResult.text = it.toString()
 
         }
-       viewBinding.btnChange.setOnClickListener {
+       mBinding.btnChange.setOnClickListener {
             nameLiveData.value = "jerry"
         }
-        viewBinding.btnTransformMap.setOnClickListener {
+        mBinding.btnTransformMap.setOnClickListener {
             initTransformationsMap()
         }
 
-        viewBinding.btnTransformSwitchMap.setOnClickListener {
+        mBinding.btnTransformSwitchMap.setOnClickListener {
             initTransformationsSwitchMap()
         }
 
-        viewBinding.btnMediaLivedata.setOnClickListener {
+        mBinding.btnMediaLivedata.setOnClickListener {
             initMediaLiveData()
         }
-        viewBinding.btnLivedataBus.setOnClickListener {
+        mBinding.btnLivedataBus.setOnClickListener {
             initLiveDataBus();
         }
 
-        viewBinding.btnLivedataListenNetwork.setOnClickListener {
+        mBinding.btnLivedataListenNetwork.setOnClickListener {
             listenerNetworkByLivedata()
         }
 
-        viewBinding.btnLivedataSetnull.setOnClickListener {
+        mBinding.btnLivedataSetnull.setOnClickListener {
             userViewModel.livedata1.value= null
         }
 
@@ -100,14 +100,14 @@ class LiveDataBasicFragment : BaseVBFragment<FragmentJetpackLivedataBinding>(Fra
 
     private fun listenerNetworkByLivedata() {
         NetworkLiveData.getInstance().observe(this, Observer<Int> {
-            viewBinding.textResult.text = it.networkStatus()
+            mBinding.textResult.text = it.networkStatus()
         })
     }
 
     private fun initLiveDataBus() {
         LiveDataBus.get().with("banner").observe(this,
             {
-                viewBinding.textResult.text = it.toString()
+                mBinding.textResult.text = it.toString()
             })
         LiveDataBus.get().with("banner").postValue("Hello : ${Random.nextInt(100)}" )
     }
@@ -115,7 +115,7 @@ class LiveDataBasicFragment : BaseVBFragment<FragmentJetpackLivedataBinding>(Fra
     private fun initTransformationsMap(){
         userViewModel.mMapLiveData.observe(this){
             Logger.d("initTransformationsMap onchange: $it")
-            viewBinding.textResult.text = it.toString()
+            mBinding.textResult.text = it.toString()
         }
         userViewModel.changeAge()
 
@@ -124,7 +124,7 @@ class LiveDataBasicFragment : BaseVBFragment<FragmentJetpackLivedataBinding>(Fra
 
     private fun initTransformationsSwitchMap(){
         userViewModel.livedataSwitchMap.observe(this){
-            viewBinding.textResult.text = it.toString()
+            mBinding.textResult.text = it.toString()
         }
         userViewModel.doSwitchMap()
     }
@@ -140,7 +140,7 @@ class LiveDataBasicFragment : BaseVBFragment<FragmentJetpackLivedataBinding>(Fra
         chagneLivedata1 = !chagneLivedata1
         userViewModel.mediatorLiveData.observe (this, Observer {
             NLog.d("mediaLiveData onChange: %s", it)
-            viewBinding.textResult.text = it
+            mBinding.textResult.text = it
 
         })
 

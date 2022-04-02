@@ -20,15 +20,15 @@ class NavHomeFragment:BaseVBFragment<FragmentNavHomeBinding>(FragmentNavHomeBind
         //需要加上这个，onCreateOptionsMenu 才会生效
         setHasOptionsMenu(true)
 
-        viewBinding.navigateDestinationButton.setOnClickListener {
+        mBinding.navigateDestinationButton.setOnClickListener {
             findNavController().navigate(R.id.home_to_step_one)
         }
-        viewBinding.navigateDestinationByDirection.setOnClickListener {
+        mBinding.navigateDestinationByDirection.setOnClickListener {
             findNavController().navigate(NavHomeFragmentDirections.homeToStepOne())
         }
-        viewBinding.navigateActionButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.home_to_step_one))
+        mBinding.navigateActionButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.home_to_step_one))
 
-        viewBinding.navigateActionButtonSafeArgs.setOnClickListener {
+        mBinding.navigateActionButtonSafeArgs.setOnClickListener {
             val args = Bundle().apply {
                 putInt("flowStepNumber",3)
             }
