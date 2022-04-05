@@ -8,6 +8,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentPlantListBinding
+import com.apache.fastandroid.demo.sunflower.adapter.PlantAdapterNew
 import com.apache.fastandroid.demo.sunflower.bean.Plant
 import com.apache.fastandroid.demo.sunflower.db.SunFlowDatabase
 import com.apache.fastandroid.demo.sunflower.repository.PlantRepository
@@ -29,16 +30,14 @@ class PlantListFragment:BaseVBFragment<FragmentPlantListBinding>(FragmentPlantLi
         PlantListViewModelFactory(PlantRepository.getInstance(platnDao), SavedStateHandle())
     }
 
-    override fun bindUI(rootView: View?) {
-        super.bindUI(rootView)
-        //需要加上这个，onCreateOptionsMenu 才会生效
-        setHasOptionsMenu(true)
-    }
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+        setHasOptionsMenu(true)
 
-        val adapter = PlantAdapter()
+        val adapter = PlantAdapterNew(requireActivity()).apply {
+            setHasStableIds(true)
+        }
         mBinding.plantList.adapter = adapter
 
 
@@ -46,9 +45,9 @@ class PlantListFragment:BaseVBFragment<FragmentPlantListBinding>(FragmentPlantLi
 
     }
 
-    private fun subscribeUI(adapter:PlantAdapter){
+    private fun subscribeUI(adapter:PlantAdapterNew){
         mViewModel.plants.observe(this){
-            adapter.setNewData(it)
+            adapter.submitList(it)
         }
     }
 

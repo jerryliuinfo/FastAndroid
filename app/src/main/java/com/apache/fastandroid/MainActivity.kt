@@ -57,9 +57,9 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(), View.OnClickListe
 //        FragmentContainerActivity.launch(this, JetPackDemoFragment::class.java)
 //        FragmentContainerActivity.launch(this, LyricDemoFragment::class.java)
 //        FragmentContainerActivity.launch(this, BennyHuoCoroutineDemoFragment::class.java)
-//        FragmentContainerActivity.launch(this, HitDemoFragment::class.java)
+        FragmentContainerActivity.launch(this, HitDemoFragment::class.java)
 //        FragmentContainerActivity.launch(this, RoomDemoFragment::class.java)
-        FragmentContainerActivity.launch(this, SunFlowerHomeViewPagerFragment::class.java,null,false)
+//        FragmentContainerActivity.launch(this, SunFlowerHomeViewPagerFragment::class.java,null,false)
     }
 
     private fun setupActionBar(

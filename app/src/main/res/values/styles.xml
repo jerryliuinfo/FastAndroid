@@ -43,15 +43,11 @@
 <!--  用于显示在原色上方的元素的颜色（例如，文本和图标，根据可访问性，通常为白色或半透明的黑色）-->
 
         <item name="colorSurface">@color/sunflower_gray_50</item>
+
+        <!--        您应用程式的次要品牌色彩，主要用于强调某些需要突出的小部件-->
+
         <item name="colorSecondary">@color/sunflower_yellow_500</item>
-<!--        用于显示在表面颜色顶部的元素的颜色-->
-<!--        <item name="colorOnSurface">@color/sunflower_black</item>-->
 
-        <!--用于表面的颜色（即材料“纸张”）-->
-<!--    <item name="colorSurface">@color/sunflower_gray_50</item>-->
-
-<!--        您应用程式的次要品牌色彩，主要用于强调某些需要突出的小部件-->
-<!--        <item name="colorSecondary">@color/sunflower_yellow_500</item>-->
 
 <!--        所有其他屏幕内容后面的颜色-->
         <item name="android:colorBackground">@color/white</item>
@@ -65,11 +61,6 @@
 <!--        底部栏颜色-->
         <item name="android:navigationBarColor">#40000000</item>
 
-<!--        DisableOnly RadioButton checkbox等控件的文字-->
-<!--        <item name="textColorPrimary">#40000000</item>-->
-
-<!--        应用的主要文字颜色,actionBar的标题文字默认使用该颜色 -->
-<!--        <item name="textColorPrimary">#40000000</item>-->
 
         <!--        不允许多点触控-->
         <item name="android:splitMotionEvents">false</item>

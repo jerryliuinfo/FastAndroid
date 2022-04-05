@@ -24,12 +24,9 @@ object ApiEngine {
     }
 
     private var sOkHttpClient: OkHttpClient? = null
-    val okHttpClient: OkHttpClient?
+    val okHttpClient: OkHttpClient
         get() {
-            if (sOkHttpClient == null) {
-                sOkHttpClient = onOkHttpClientCreated()
-            }
-            return sOkHttpClient
+            return sOkHttpClient?:onOkHttpClientCreated()
         }
     private var sRetrofit: Retrofit? = null
     private val retrofit: Retrofit?

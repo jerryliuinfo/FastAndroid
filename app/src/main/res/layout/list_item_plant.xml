@@ -33,6 +33,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="26dp"
+        android:onClick="@{clickListener}"
         app:cardElevation="2dp"
         app:cardPreventCornerOverlap="false"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Sunflower.Card">
@@ -46,6 +47,7 @@
                     android:layout_width="0dp"
                     android:layout_height="95dp"
                     android:scaleType="centerCrop"
+                    app:imageFromUrl="@{plant.imageUrl}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -56,6 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:layout_marginTop="16dp"
+                    android:text="@{plant.name}"
                     android:textAppearance="?attr/textAppearanceListItem"
                     android:gravity="center_horizontal"
                     app:layout_constraintEnd_toEndOf="parent"

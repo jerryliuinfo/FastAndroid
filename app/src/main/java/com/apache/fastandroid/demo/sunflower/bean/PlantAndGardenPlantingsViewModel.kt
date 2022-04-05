@@ -19,7 +19,7 @@ package com.apache.fastandroid.demo.sunflower.bean
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class PlantAndGardenPlantingsInfo(plantings: PlantAndGardenPlantings) {
+class PlantAndGardenPlantingsViewModel(plantings: PlantAndGardenPlantings) {
     private val plant = checkNotNull(plantings.plant)
     private val gardenPlanting = plantings.gardenPlantings[0]
 

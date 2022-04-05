@@ -2,6 +2,7 @@ package com.apache.fastandroid.demo.sunflower.fragement
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.apache.fastandroid.R
@@ -30,7 +31,8 @@ class SunFlowerHomeViewPagerFragment :BaseVBFragment<FragmentViewPagerBinding>(F
             tab.setIcon(getTabIcon(position))
             tab.text = (getTabTitle(position))
         }.attach()
-
+        //
+        (activity as AppCompatActivity).setSupportActionBar(mBinding.toolbar)
     }
 
     private fun getTabIcon(position: Int): Int {

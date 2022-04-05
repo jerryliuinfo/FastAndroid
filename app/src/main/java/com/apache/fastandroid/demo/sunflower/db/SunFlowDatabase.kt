@@ -11,6 +11,7 @@ import androidx.work.WorkManager
 import com.apache.fastandroid.demo.sunflower.bean.Converters
 import com.apache.fastandroid.demo.sunflower.bean.GardenPlanting
 import com.apache.fastandroid.demo.sunflower.bean.Plant
+import com.apache.fastandroid.demo.sunflower.dao.GardenPlantingDao
 import com.apache.fastandroid.demo.sunflower.dao.PlantDao
 import com.apache.fastandroid.demo.sunflower.utilitis.DATABASE_NAME
 import com.apache.fastandroid.demo.sunflower.works.SeedDatabaseWorker
@@ -24,6 +25,7 @@ import com.apache.fastandroid.demo.sunflower.works.SeedDatabaseWorker
 abstract class SunFlowDatabase:RoomDatabase() {
 
     abstract fun plantDao():PlantDao
+    abstract fun gardenPlantingDao():GardenPlantingDao
 
 
     companion object{

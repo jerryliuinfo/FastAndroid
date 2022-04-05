@@ -3,6 +3,7 @@ apply from: 'and_res_guard.gradle'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+//hit
 apply plugin: 'dagger.hilt.android.plugin'
 
 //Navigation 传递参数插件
@@ -117,7 +118,8 @@ android {
          */
         consumerProguardFiles "consumer-rules.pro"
 
-
+// Consult the README on instructions for setting up Unsplash API key
+        buildConfigField("String", "UNSPLASH_ACCESS_KEY", "\"" + getUnsplashAccess() + "\"")
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += ["room.schemaLocation":
@@ -442,6 +444,7 @@ dependencies {
     implementation(*Libs.navigation)
     implementation(*Libs.immersionbar)
     implementation(*Libs.otherThirdLibs)
+//    debugImplementation 'com.guolindev.glance:glance:1.1.0'
 
 
     implementation (*Libs.hit)
@@ -453,10 +456,6 @@ dependencies {
     implementation Libs.workManager
 
 
-//    implementation ('androidx.work:work-runtime:2.2.0'){
-//        exclude group: 'androidx.arch.core'
-//    }
-
 
 
     implementation Libs.viewPage2
@@ -467,6 +466,8 @@ dependencies {
     implementation(*Libs.room)
     //kotlin 用 kapt
     kapt Libs.room_compiler
+
+
 
 
 
@@ -532,4 +533,8 @@ private static Properties loadProperties(File file) {
         System.err.println "\"${file}\" not found"
     }
     return props
+}
+
+def getUnsplashAccess() {
+    return project.findProperty("unsplash_access_key")
 }
