@@ -10,12 +10,12 @@ import android.content.Intent
  * @CreateDate: 2020/5/1 16:34
  */
 
-inline fun <reified T> startActivity(context: Context) {
+inline fun <reified T> launchActivity(context: Context) {
     val intent = Intent(context, T::class.java)
     context.startActivity(intent)
 }
 
-inline fun <reified T> startActivity(context: Context, block: Intent.() -> Unit) {
+inline fun <reified T> launchActivity(context: Context, block: Intent.() -> Unit) {
     val intent = Intent(context, T::class.java)
     intent.block()
     context.startActivity(intent)

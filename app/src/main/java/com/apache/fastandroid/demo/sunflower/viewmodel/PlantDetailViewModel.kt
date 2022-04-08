@@ -9,6 +9,7 @@ import com.apache.fastandroid.demo.sunflower.repository.GardenPlantingRepository
 import com.apache.fastandroid.demo.sunflower.repository.PlantRepository
 import com.apache.fastandroid.jetpack.BaseViewModel
 import kotlinx.coroutines.launch
+import java.lang.IllegalArgumentException
 
 /**
  * Created by Jerry on 2022/4/3.
@@ -40,7 +41,12 @@ class PlantDetailViewModel(private val plantRepository: PlantRepository,private 
     class PlantDetailViewModelFactory(private val plantRepository: PlantRepository,private val gardenPlantingRepository: GardenPlantingRepository,
                                       private val plantId:String): ViewModelProvider.NewInstanceFactory(){
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return PlantDetailViewModel(plantRepository,gardenPlantingRepository,plantId) as T
+            if (modelClass.isAssignableFrom(PlantDetailViewModel::class.java)){
+                return PlantDetailViewModel(plantRepository,gardenPlantingRepository,plantId) as T
+            }else{
+                throw IllegalArgumentException("Unknown ViewModel class")
+            }
+
         }
     }
 }

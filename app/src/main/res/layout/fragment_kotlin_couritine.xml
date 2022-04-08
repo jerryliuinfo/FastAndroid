@@ -17,11 +17,16 @@
             app:layout_constraintTop_toTopOf="parent"
             android:orientation="horizontal"
             app:flow_horizontalGap="10dp"
-            app:constraint_referenced_ids="btn_suspendCoroutine,btn_job_dispatcher,btn_traditional_switch_thread,
-            btn_coroutine_switch_thread,btn_corotine_retrofit,btn_rxjava,btn_rxjava_zip,
+            app:constraint_referenced_ids="btn_traditional_switch_thread,btn_suspendCoroutine,btn_retrofit_suspend,btn_retrofit_call,btn_job_dispatcher,
+            btn_coroutine_switch_thread,btn_rxjava,btn_rxjava_zip,
             btn_couroutine_zip,btn_awaitAll,btn_couroutine_cance_job,btn_mainscope"
             app:flow_wrapMode="aligned"
             />
+        <Button
+            android:id="@+id/btn_traditional_switch_thread"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="传统线程切换" />
 
         <Button
             android:id="@+id/btn_suspendCoroutine"
@@ -35,21 +40,22 @@
             android:layout_height="wrap_content"
             android:text="Job+Dispatcher" />
 
-        <Button
-            android:id="@+id/btn_traditional_switch_thread"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="传统线程切换" />
+
         <Button
             android:id="@+id/btn_coroutine_switch_thread"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="协程线程切换" />
         <Button
-            android:id="@+id/btn_corotine_retrofit"
+            android:id="@+id/btn_retrofit_suspend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="协程和Retrofit结合" />
+            android:text="Retrofit使用 Suspend修饰" />
+        <Button
+            android:id="@+id/btn_retrofit_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retrofit 返回 Call" />
 
         <Button
             android:id="@+id/btn_rxjava"

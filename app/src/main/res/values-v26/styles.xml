@@ -1,7 +1,7 @@
 <resources>
 
 
-    <style name="Splashscreen" parent="Base.Theme.AppTheme">
+    <style name="Splashscreen" parent="Base.Theme">
   <!--    https://t.zsxq.com/Q7mq7mM
 
   当Android API​​ 26及以上版本，我们现在可以将drawable设置为新提供的windowSplashscreenContent属性，该属性引用drawable以用作窗口的初始屏幕内容。

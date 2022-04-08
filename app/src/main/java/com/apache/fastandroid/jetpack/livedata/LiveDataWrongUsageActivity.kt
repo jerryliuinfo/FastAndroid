@@ -5,12 +5,10 @@ import android.os.Bundle
 import com.apache.fastandroid.databinding.FragmentJetpackLivedataWrongUsageBinding
 import com.apache.fastandroid.jetpack.relearnandroid.vm.ShareViewModel
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.kt.startActivity
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 import com.tesla.framework.ui.activity.FragmentContainerActivity
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 
 /**
  * Created by Jerry on 2020/11/5.
@@ -116,7 +114,7 @@ class LiveDataWrongUsageActivity : BaseVmActivityNew<FragmentJetpackLivedataWron
     companion object{
         @JvmStatic
         fun launch(activity: Activity){
-            startActivity<LiveDataWrongUsageActivity>(activity)
+            launchActivity<LiveDataWrongUsageActivity>(activity)
         }
     }
 

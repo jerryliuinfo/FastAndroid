@@ -77,12 +77,5 @@ class PlantListFragment:BaseVBFragment<FragmentPlantListBinding>(FragmentPlantLi
         }
     }
 
-    class PlantAdapter:BaseQuickAdapter<Plant,BaseViewHolder>(R.layout.list_item_plant){
-        override fun convert(helper: BaseViewHolder, item: Plant) {
-            val imageView = helper.getView<ImageView>(R.id.plant_item_image)
-            ImageLoaderManager.getInstance().showImage(imageView,item.imageUrl)
-            helper.setText(R.id.plant_item_title, item.name)
-        }
 
-    }
 }

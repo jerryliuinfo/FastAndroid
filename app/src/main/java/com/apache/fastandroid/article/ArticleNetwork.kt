@@ -2,17 +2,33 @@ package com.apache.fastandroid.article
 
 import com.apache.fastandroid.home.network.HomeNetwork
 import com.apache.fastandroid.network.retrofit.ApiEngine
+import com.apache.fastandroid.network.retrofit.BaseNetwork
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.await
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 /**
  * Created by Jerry on 2022/2/23.
  */
-class ArticleNetwork {
+class ArticleNetwork:BaseNetwork() {
     private val apiServiceKt = ApiEngine.apiServiceKt
 
-    suspend fun collect(id:Int)  = apiServiceKt.collect(id).await()
+    suspend fun collect(id:Int)  = getResult {
+        apiServiceKt.collect(id).await()
+    }
 
-    suspend fun uncollect(id:Int)  = apiServiceKt.unCollect(id).await()
+    suspend fun collect2(id:Int)  = getResult {
+        apiServiceKt.collect2(id)
+    }
+
+    suspend fun uncollect(id:Int)  = getResult {
+        apiServiceKt.unCollect(id).await()
+    }
+
 
     companion object{
         private var instance: ArticleNetwork?= null

@@ -10,6 +10,8 @@ import com.mooc.libnetwork.BuildConfig
 import okhttp3.CertificatePinner
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -29,18 +31,19 @@ object ApiEngine {
             return sOkHttpClient?:onOkHttpClientCreated()
         }
     private var sRetrofit: Retrofit? = null
-    private val retrofit: Retrofit?
+    private val retrofit: Retrofit
         private get() {
             if (sRetrofit == null) {
                 val builder = Retrofit.Builder()
                 sRetrofit = builder
-                    .addConverterFactory(CustomGsonConverterFactory.create())
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                     .client(okHttpClient)
                     .baseUrl(ApiConstant.BASE_URL)
                     .build()
             }
-            return sRetrofit
+            return sRetrofit!!
         }
 
     private fun onOkHttpClientCreated():OkHttpClient {
@@ -89,7 +92,7 @@ object ApiEngine {
     val apiServiceKt: ApiServiceKt
         get() {
             if (sApiServiceKt == null) {
-                sApiServiceKt = retrofit!!.create(ApiServiceKt::class.java)
+                sApiServiceKt = retrofit.create(ApiServiceKt::class.java)
             }
             return retrofit!!.create(ApiServiceKt::class.java)
         }

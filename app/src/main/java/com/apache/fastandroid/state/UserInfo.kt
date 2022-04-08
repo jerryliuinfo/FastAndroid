@@ -19,8 +19,17 @@ class UserInfo private constructor() {
     var mState: UserState = if (isLogin) LoginState() else LogoutState()
 
     companion object {
-        @JvmStatic
-        val instance = Holder.INSTANCE
+        lateinit var  instance:UserInfo
+        fun instance():UserInfo{
+            if (instance == null){
+                synchronized(UserInfo::class){
+                    if (instance == null){
+                        instance = UserInfo()
+                    }
+                }
+            }
+            return instance
+        }
         const val USERNAME_KEY = "username"
         const val USERID_KEY = "userid"
         const val LOGIN_KEY = "login"

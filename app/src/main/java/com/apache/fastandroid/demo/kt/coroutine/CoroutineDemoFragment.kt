@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_kotlin_couritine.*
 import kotlinx.coroutines.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
+import retrofit2.await
 import java.lang.Exception
 import kotlin.concurrent.thread
 
@@ -41,6 +42,9 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
 
         initRetrofit()
 
+        mBinding.btnTraditionalSwitchThread.setOnClickListener {
+            traditionalSwitchThread()
+        }
         mBinding.btnSuspendCoroutine.setOnClickListener {
             suspendCoroutineUsage()
         }
@@ -48,18 +52,16 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
         mBinding.btnJobDispatcher.setOnClickListener {
             jobDispatcher()
         }
-        mBinding.btnTraditionalSwitchThread.setOnClickListener {
-            traditionalSwitchThread()
-        }
-        btn_coroutine_switch_thread.setOnClickListener {
+
+        mBinding.btnCoroutineSwitchThread.setOnClickListener {
             coroutineSwitchThread()
         }
-        btn_corotine_retrofit.setOnClickListener {
-            doRetrofitRequest()
+        mBinding.btnRetrofitSuspend.setOnClickListener {
+            doRetrofitSuspendRequest()
         }
 
-        btn_corotine_retrofit.setOnClickListener {
-            doRetrofitRequest()
+        mBinding.btnRetrofitCall.setOnClickListener {
+            doRetrofitReturnCallRequest()
         }
         btn_rxjava.setOnClickListener {
             doRxjavaRequest()
@@ -184,17 +186,28 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .addConverterFactory(CustomGsonConverterFactory.create())
-            .addConverterFactory(CustomGsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(ApiEngine.okHttpClient)
             .build()
         apiService = retrofit.create(ApiServiceKt::class.java)
     }
 
-    private fun doRetrofitRequest(){
+    private fun doRetrofitSuspendRequest(){
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val respName = apiService.listReposKt("jerryliuinfo")
+                Logger.d("resp name: ${respName},thread: ${Thread.currentThread().name}")
+
+            }catch (e:Exception){
+                e.printStackTrace()
+            }
+        }
+    }
+
+    private fun doRetrofitReturnCallRequest(){
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val respName = apiService.listReposKt2("jerryliuinfo").await()
                 Logger.d("resp name: ${respName},thread: ${Thread.currentThread().name}")
 
             }catch (e:Exception){

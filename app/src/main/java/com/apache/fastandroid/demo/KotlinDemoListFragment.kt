@@ -22,9 +22,7 @@ class KotlinDemoListFragment:BaseListFragment()
             ,ViewItemBean("Kotlin集合","Kotlin集合", CollectionDemoFragment::class.java)
             ,ViewItemBean("Kotlin语法扩展函数","Kotlin语法扩展函数", KotlinExtensionsFragment::class.java)
             ,ViewItemBean("范型","范型", GenericDemoFragment::class.java)
-            ,ViewItemBean("协程","协程", CoroutineDemoFragment::class.java)
-            ,ViewItemBean("协程2","协程2", CoroutineDemoFragment2::class.java)
-            ,ViewItemBean("协程3","BennyHuo", BennyHuoCoroutineDemoFragment::class.java)
+
         )
     }
 }

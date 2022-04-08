@@ -79,8 +79,11 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
 
         }
         supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
+            //使左上角图标是否显示，如果设成false，则没有程序图标，仅仅就个标题，否则，显示应用程序图标，对应id为Android.R.id.home，对应ActionBar.DISPLAY_SHOW_HOME
             setDisplayShowHomeEnabled(true)
+            //给左上角图标的左边加上一个返回的图标 。对应ActionBar.DISPLAY_HOME_AS_UP
+            setDisplayHomeAsUpEnabled(true)
+
         }
     }
 

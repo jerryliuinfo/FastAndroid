@@ -68,6 +68,16 @@
             />
 
         <activity
+            android:name=".demo.cheese.CheeseActivity"
+            android:exported="false"
+            />
+        <activity
+            android:name=".demo.cheese.CheeseDetailActivity"
+            android:exported="false"
+            />
+
+
+        <activity
             android:name=".article.ArticleDetailActivity"
             android:configChanges="orientation|keyboardHidden|navigation|locale"
             android:exported="true"

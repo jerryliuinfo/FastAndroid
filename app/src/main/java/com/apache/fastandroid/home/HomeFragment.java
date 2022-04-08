@@ -9,7 +9,6 @@ import com.apache.fastandroid.article.ArticleViewModel;
 import com.apache.fastandroid.bean.CollectBean;
 import com.apache.fastandroid.network.model.Article;
 import com.apache.fastandroid.network.model.HomeArticleResponse;
-import com.apache.fastandroid.state.UserInfo;
 import com.apache.fastandroid.util.InjectorUtil;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -119,7 +118,14 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew<Article> i
 
     @Override
     public void onItemChildClick(@NonNull BaseQuickAdapter<Object, BaseViewHolder> adapter, @NonNull View view, Article article) {
-        UserInfo.getInstance().collect(getActivity(), article.getId(),HomeFragment.this);
+//        UserInfo.getInstance().collect(getActivity(), article.getId(),HomeFragment.this);
+
+        int id = article.getId();
+        if (getItemById(id).getCollect()){
+            mArticleViewModel.unCollect(id);
+        }else {
+            mArticleViewModel.collect(id);
+        }
     }
 
     @Nullable

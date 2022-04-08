@@ -66,4 +66,8 @@
         <item quantity="one">%1$s crime</item>
         <item quantity="other">%1$s crimes</item>
     </plurals>
+
+
+
+
 </resources>

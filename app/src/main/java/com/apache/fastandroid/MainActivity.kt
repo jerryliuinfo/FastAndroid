@@ -19,32 +19,37 @@ import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
+import com.apache.fastandroid.demo.cheese.CheeseActivity
 import com.apache.fastandroid.demo.kt.coroutine.BennyHuoCoroutineDemoFragment
 import com.apache.fastandroid.demo.room.RoomDemoFragment
 import com.apache.fastandroid.demo.sunflower.fragement.SunFlowerHomeViewPagerFragment
+import com.apache.fastandroid.jetpack.coroutine.CoroutineDemoListFragment
 import com.apache.fastandroid.jetpack.hit.HitDemoFragment
 import com.tesla.framework.component.eventbus.FastBus
+import com.tesla.framework.kt.launchActivity
+import com.tesla.framework.ui.activity.BaseVmActivityNew
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 
-class MainActivity : BaseVmActivity<ActivityMainNewBinding>(), View.OnClickListener {
+class MainActivity : BaseVmActivityNew<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
     private val selecteId = -1
-    override fun bindView(): ActivityMainNewBinding {
+   /* override fun bindView(): ActivityMainNewBinding {
         return ActivityMainNewBinding.inflate(layoutInflater)
-    }
+    }*/
 
     private var mNavController: NavController? = null
     @CostTime
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setDisplayShowHomeEnabled(false)
+//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar!!.setDisplayShowHomeEnabled(false)
+
+        setSupportActionBar(mBinding.toolbar)
         setupDrawer(savedInstanceState)
         loadMenuData()
         val hostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment?
         mNavController = hostFragment!!.navController
-        var configuration = AppBarConfiguration.Builder(mNavController!!.graph).build()
-        configuration =
+        val configuration =
             AppBarConfiguration.Builder(R.id.home_dest, R.id.demo_dest).setOpenableLayout(
                 mBinding!!.drawer
             ).build()
@@ -57,9 +62,11 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(), View.OnClickListe
 //        FragmentContainerActivity.launch(this, JetPackDemoFragment::class.java)
 //        FragmentContainerActivity.launch(this, LyricDemoFragment::class.java)
 //        FragmentContainerActivity.launch(this, BennyHuoCoroutineDemoFragment::class.java)
-        FragmentContainerActivity.launch(this, HitDemoFragment::class.java)
+//        FragmentContainerActivity.launch(this, HitDemoFragment::class.java)
 //        FragmentContainerActivity.launch(this, RoomDemoFragment::class.java)
 //        FragmentContainerActivity.launch(this, SunFlowerHomeViewPagerFragment::class.java,null,false)
+//        FragmentContainerActivity.launch(this, CoroutineDemoListFragment::class.java,null,false)
+//        launchActivity<CheeseActivity>(this)
     }
 
     private fun setupActionBar(

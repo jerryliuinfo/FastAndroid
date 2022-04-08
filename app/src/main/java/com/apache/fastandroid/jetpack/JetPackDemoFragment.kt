@@ -2,9 +2,11 @@ package com.apache.fastandroid.jetpack
 
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
+import com.apache.fastandroid.demo.cheese.CheeseActivity
 import com.apache.fastandroid.demo.databinding.DatabindingFragmentDemo
 import com.apache.fastandroid.demo.room.RoomDemoFragment
 import com.apache.fastandroid.demo.sunflower.fragement.SunFlowerHomeViewPagerFragment
+import com.apache.fastandroid.jetpack.coroutine.CoroutineDemoListFragment
 import com.apache.fastandroid.jetpack.hit.HitDemoFragment
 import com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity
 import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleDemoFragment
@@ -30,8 +32,11 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("AdvanceNavigation", "AdvanceNavigation", activity= AdvanceNavigationActivity::class.java)
 //                ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
                 ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
+                ,ViewItemBean("Coroutine", "Coroutine", CoroutineDemoListFragment::class.java)
+
                 ,ViewItemBean("Hit", "Hit", HitDemoFragment::class.java)
                 ,ViewItemBean("SunFlower", "SunFlower", SunFlowerHomeViewPagerFragment::class.java,addTitleBar = false)
+                ,ViewItemBean("Cheese", "Cheese",null, CheeseActivity::class.java,addTitleBar = false)
         )
     }
 }

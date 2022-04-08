@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.NavSettingsFragmentBinding
 import com.apache.fastandroid.setting.AboutActivity
-import com.tesla.framework.kt.startActivity
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
@@ -16,6 +16,6 @@ class NavSettingFragment:BaseVBFragment<NavSettingsFragmentBinding>(NavSettingsF
         super.layoutInit(inflater, savedInstanceState)
 
 
-        startActivity<AboutActivity>(requireContext())
+        launchActivity<AboutActivity>(requireContext())
     }
 }

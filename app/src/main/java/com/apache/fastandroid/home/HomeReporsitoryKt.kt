@@ -35,13 +35,6 @@ class HomeReporsitoryKt(private val homeDao:HomeDao, private val network: HomeNe
         artices!!.data
     }
 
-    suspend fun collect(id:Int):EmptyResponse = withContext(Dispatchers.IO){
-        network.collect(id).data
-    }
-
-    suspend fun uncollect(id:Int):EmptyResponse = withContext(Dispatchers.IO){
-        network.uncollect(id).data
-    }
 
 
     companion object{

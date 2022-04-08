@@ -31,7 +31,7 @@
     -->
 
 <!--    <style name="Base.Theme.AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">-->
-    <style name="Base.Theme.AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Base.Theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!--  应用的主要色调,actionBar默认使用该颜色,Toolbar导航栏的底色 -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -66,18 +66,14 @@
         <item name="android:splitMotionEvents">false</item>
         <item name="android:windowEnableSplitTouch">false</item>
 
-
         <item name="android:textColor">@color/colorPrimary</item>
 
-
-
     </style>
 
-    <style name="Theme.AppTheme" parent="Base.Theme.AppTheme">
+    <style name="Theme.AppTheme" parent="Base.Theme"/>
 
+    <style name="AppTheme.OverlapSystemBar" parent="Base.Theme" />
 
-
-    </style>
 
     <style name="Theme.AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -171,4 +167,14 @@
     <style name="Theme.AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
 </resources>
