@@ -21,7 +21,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.Calendar
 import java.util.Calendar.DAY_OF_YEAR
-
 @Entity(tableName = "plants")
 data class Plant(
     @PrimaryKey @ColumnInfo(name = "id")

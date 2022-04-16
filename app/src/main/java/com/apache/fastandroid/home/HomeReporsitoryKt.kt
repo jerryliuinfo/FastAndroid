@@ -54,6 +54,8 @@ class HomeReporsitoryKt(private val homeDao:HomeDao, private val network: HomeNe
         delay(Random.nextInt(500,3000).toLong())
         "testData1"
     }
+
+
     suspend fun testData2():String = withContext(Dispatchers.IO){
         delay(Random.nextInt(1000,4000).toLong())
         "testData2"

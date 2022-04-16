@@ -5,104 +5,156 @@
     <data>
 
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
 
-        <androidx.constraintlayout.helper.widget.Flow
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="horizontal"
-            app:flow_horizontalGap="10dp"
-            app:constraint_referenced_ids="btn_traditional_switch_thread,btn_suspendCoroutine,btn_retrofit_suspend,btn_retrofit_call,btn_job_dispatcher,
-            btn_coroutine_switch_thread,btn_rxjava,btn_rxjava_zip,
-            btn_couroutine_zip,btn_awaitAll,btn_couroutine_cance_job,btn_mainscope"
-            app:flow_wrapMode="aligned"
-            />
-        <Button
-            android:id="@+id/btn_traditional_switch_thread"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="传统线程切换" />
-
-        <Button
-            android:id="@+id/btn_suspendCoroutine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SuspendCoroutine" />
-
-        <Button
-            android:id="@+id/btn_job_dispatcher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Job+Dispatcher" />
-
-
-        <Button
-            android:id="@+id/btn_coroutine_switch_thread"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="协程线程切换" />
-        <Button
-            android:id="@+id/btn_retrofit_suspend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Retrofit使用 Suspend修饰" />
-        <Button
-            android:id="@+id/btn_retrofit_call"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Retrofit 返回 Call" />
-
-        <Button
-            android:id="@+id/btn_rxjava"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="协程和Rxjava结合" />
-
-        <Button
-            android:id="@+id/btn_rxjava_zip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rxjava合并两个请求" />
-
-        <Button
-            android:id="@+id/btn_couroutine_zip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="协程合并两个请求" />
-
-        <Button
-            android:id="@+id/btn_awaitAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="awaitAll" />
-        <Button
-            android:id="@+id/btn_couroutine_cance_job"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="使用Job取消协程" />
-
-        <Button
-            android:id="@+id/btn_mainscope"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MainScope 使用" />
-
-        <TextView
-            android:id="@+id/tv_result"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="48dp"
-            android:text="Hello"
-            style="@style/textView_black_16sp"
-            />
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal"
+                app:flow_horizontalGap="2dp"
+                app:constraint_referenced_ids="btn_traditional_switch_thread,btn_coroutine_switch_thread,btn_retrofit_suspend,btn_retrofit_call,btn_retrofit_handleException,
+            btn_handleException2,btn_suspendCoroutine,
+            btn_job_dispatcher,
+            btn_rxjava_signle,btn_rxjava_zip,
+            btn_couroutine_zip,btn_awaitAll,btn_couroutine_cance_job,btn_mainscope,
+            btn_coroutineScope,btn_ensure_coroutine_active,btn_cancel_coroutine,
+            btn_aysncToSync,btn_multiUsers"
+                app:flow_wrapMode="aligned"
+                />
+            <Button
+                android:id="@+id/btn_traditional_switch_thread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="传统线程切换" />
+
+            <Button
+                android:id="@+id/btn_suspendCoroutine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SuspendCoroutine" />
+
+            <Button
+                android:id="@+id/btn_job_dispatcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Job+Dispatcher" />
+
+
+            <Button
+                android:id="@+id/btn_coroutine_switch_thread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="协程线程切换" />
+            <Button
+                android:id="@+id/btn_retrofit_suspend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RSuspend修饰" />
+            <Button
+                android:id="@+id/btn_retrofit_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="返回 Call" />
+
+            <Button
+                android:id="@+id/btn_retrofit_handleException"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Retrofit 处理异常信息" />
+
+            <Button
+                android:id="@+id/btn_handleException2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手动处理异常信息" />
+
+            <Button
+                android:id="@+id/btn_rxjava_signle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rxjava Single" />
+
+            <Button
+                android:id="@+id/btn_rxjava_zip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rxjava zip" />
+
+            <Button
+                android:id="@+id/btn_couroutine_zip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Async Wait" />
+
+            <Button
+                android:id="@+id/btn_awaitAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="awaitAll" />
+            <Button
+                android:id="@+id/btn_couroutine_cance_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用Job取消协程" />
+
+            <Button
+                android:id="@+id/btn_mainscope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MainScope 使用" />
+            <Button
+                android:id="@+id/btn_coroutineScope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CoroutineScope" />
+            <Button
+                android:id="@+id/btn_ensure_coroutine_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="检查协程是否取消" />
+
+            <Button
+                android:id="@+id/btn_cancel_coroutine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="取消协程" />
+            <Button
+                android:id="@+id/btn_aysncToSync"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="异步变同步" />
+
+            <Button
+                android:id="@+id/btn_multiUsers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="返回多个user对象" />
+
+
+            <TextView
+                android:id="@+id/tv_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="48dp"
+                android:text="Hello"
+                style="@style/textView_black_16sp"
+                />
 
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
 </layout>

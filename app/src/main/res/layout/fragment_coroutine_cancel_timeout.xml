@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:flow_wrapMode="aligned"
+        app:flow_horizontalGap="10dp"
+        app:constraint_referenced_ids="btn_cancelJob,btn_jobIsCooperation,btn_make_calculate_cancable,
+        btn_withTimeout,btn_withTimeoutOrNull,btn_async_timeout_resource, btn_default_order,btn_async_await,btn_lazy_start_async,btn_async_style,
+        btn_async_concurrency,btn_child_coroutine_failed"
+        tools:ignore="NotSibling" />
+
+    <Button
+        android:id="@+id/btn_cancelJob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cancel Job" />
+    <Button
+        android:id="@+id/btn_jobIsCooperation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消是协作的" />
+    <Button
+        android:id="@+id/btn_make_calculate_cancable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使计算可取消" />
+    <Button
+        android:id="@+id/btn_withTimeout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="超时(withTimeout)" />
+    <Button
+        android:id="@+id/btn_withTimeoutOrNull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="withTimeoutOrNull" />
+    <Button
+        android:id="@+id/btn_async_timeout_resource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="异步超时和资源" />
+    <Button
+        android:id="@+id/btn_default_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="默认顺序调用" />
+
+    <Button
+        android:id="@+id/btn_async_await"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Asyn并发" />
+    <Button
+        android:id="@+id/btn_lazy_start_async"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lazy启动Aysnc" />
+    <Button
+        android:id="@+id/btn_async_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Async风格函数" />
+    <Button
+        android:id="@+id/btn_async_concurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Async结构化并发" />
+    <Button
+        android:id="@+id/btn_child_coroutine_failed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="子协程失败" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

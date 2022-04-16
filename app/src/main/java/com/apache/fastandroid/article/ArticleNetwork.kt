@@ -17,10 +17,16 @@ import kotlin.coroutines.suspendCoroutine
 class ArticleNetwork:BaseNetwork() {
     private val apiServiceKt = ApiEngine.apiServiceKt
 
+    /**
+     * 以 Call 形式返回结果
+     */
     suspend fun collect(id:Int)  = getResult {
         apiServiceKt.collect(id).await()
     }
 
+    /**
+     * 使用 suspend 关键字直接返回结果
+     */
     suspend fun collect2(id:Int)  = getResult {
         apiServiceKt.collect2(id)
     }

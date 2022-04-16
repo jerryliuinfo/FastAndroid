@@ -88,12 +88,13 @@ dependencies {
     implementation Libs.brvh
 
     implementation (*Libs.rxJava)
-    implementation(*Libs.lifecycle)
-    implementation(*Libs.navigation)
     implementation(*Libs.immersionbar)
 
-    implementation (*Libs.hit)
-    kapt (*Libs.hit_compiler)
+
+    implementation(*Jetpack.lifecycle)
+    implementation(*Jetpack.navigation)
+    implementation (*Jetpack.hit)
+    kapt (*Jetpack.hit_compiler)
 }
 
 

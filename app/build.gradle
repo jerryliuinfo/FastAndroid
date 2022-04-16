@@ -439,16 +439,21 @@ dependencies {
     implementation(*Libs.retrofit)
 
 
-    implementation(*Libs.lifecycle)
+    implementation(*Jetpack.lifecycle)
+    implementation(*Jetpack.navigation)
+    implementation(*Jetpack.room)
+    implementation (*Jetpack.hit)
+    kapt (*Jetpack.hit_compiler)
+
+
+
     implementation(*Libs.coroutine)
-    implementation(*Libs.navigation)
     implementation(*Libs.immersionbar)
     implementation(*Libs.otherThirdLibs)
 //    debugImplementation 'com.guolindev.glance:glance:1.1.0'
 
 
-    implementation (*Libs.hit)
-    kapt (*Libs.hit_compiler)
+
 
 
     implementation rootProject.ext.androidLib.multidex
@@ -463,7 +468,6 @@ dependencies {
 
 
 
-    implementation(*Libs.room)
     //kotlin 用 kapt
     kapt Libs.room_compiler
 

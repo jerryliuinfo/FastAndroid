@@ -8,10 +8,11 @@
         android:id="@+id/flow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="btn_start_polling,btn_start_polling2,btn_stop_polling"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:flow_wrapMode="aligned"
+        app:constraint_referenced_ids="btn_start_polling,btn_start_polling2,btn_stop_polling"
+
         />
 
     <Button

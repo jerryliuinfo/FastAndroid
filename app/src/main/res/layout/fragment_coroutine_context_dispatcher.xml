@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:flow_wrapMode="aligned"
+        app:flow_horizontalGap="10dp"
+        app:constraint_referenced_ids="btn_dispatchers_threads,btn_coroutine_nameing,btn_assemble_context_element,
+        btn_action_scope,btn_thread_local_data"
+        tools:ignore="NotSibling" />
+
+
+    <Button
+        android:id="@+id/btn_dispatchers_threads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="调度器与线程" />
+
+    <Button
+        android:id="@+id/btn_coroutine_nameing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="协程命名" />
+    <Button
+        android:id="@+id/btn_assemble_context_element"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="组合上下文中的元素" />
+
+    <Button
+        android:id="@+id/btn_action_scope"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="作用域" />
+    <Button
+        android:id="@+id/btn_thread_local_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="线程局部数据" />
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

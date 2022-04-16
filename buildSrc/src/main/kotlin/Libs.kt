@@ -53,24 +53,12 @@ object Libs {
         "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     )
 
-    val lifecycle = arrayOf(
-        "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle_version}",
-        "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle_version}",
-        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}",
-        "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}",
-        "androidx.lifecycle:lifecycle-service:${Versions.lifecycle_version}"
-    )
-
     val coroutine = arrayOf(
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}",
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     )
 
-    val navigation = arrayOf(
-        "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}",
-        "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}",
-        "androidx.navigation:navigation-runtime-ktx:${Versions.navigationVersion}"
-    )
+
     val immersionbar = arrayOf(
         "com.gyf.immersionbar:immersionbar:${Versions.immersionbar}",
         "com.gyf.immersionbar:immersionbar-components:${Versions.immersionbar}",
@@ -127,12 +115,6 @@ object Libs {
     )
 
 
-    val room = arrayOf(
-        "androidx.room:room-runtime:${Versions.Room}",
-        "androidx.room:room-ktx:${Versions.Room}"
-//        "androidx.room:room-compiler:${Versions.Room}",
-    )
-
 
     val hit = arrayOf(
         "com.google.dagger:hilt-android:${Versions.hit}",
@@ -160,7 +142,39 @@ object Libs {
 
 }
 
+object Jetpack{
 
+    val lifecycle = arrayOf(
+        "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle_version}",
+        "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle_version}",
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}",
+        "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}",
+        "androidx.lifecycle:lifecycle-service:${Versions.lifecycle_version}"
+    )
+    val navigation = arrayOf(
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}",
+        "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}",
+        "androidx.navigation:navigation-runtime-ktx:${Versions.navigationVersion}"
+    )
+
+    val room = arrayOf(
+        "androidx.room:room-runtime:${Versions.Room}",
+        "androidx.room:room-ktx:${Versions.Room}"
+//        "androidx.room:room-compiler:${Versions.Room}",
+    )
+
+
+    val hit = arrayOf(
+        "com.google.dagger:hilt-android:${Versions.hit}",
+        //hit 对 viewmodel 的支持
+        "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02",
+    )
+    val hit_compiler = arrayOf(
+        "com.google.dagger:hilt-android-compiler:${Versions.hit}",
+        //hit 对 viewmodel 的支持
+        "androidx.hilt:hilt-compiler:1.0.0-alpha02"
+    )
+}
 
 
 

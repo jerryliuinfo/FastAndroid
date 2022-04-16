@@ -10,6 +10,7 @@ import androidx.core.animation.doOnStart
 import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.KtGrammerBinding
+import com.apache.fastandroid.demo.bean.ConstructBean
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.kt.annotation.ImAPlant
 import com.apache.fastandroid.demo.kt.bean.*
@@ -187,7 +188,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
         }
         mBinding.btnDeconstruction.setOnClickListener {
-            val user = UserBean("Tom",11)
+            val user = ConstructBean("Tom",11)
             val (name,age, nick2) = user
             Logger.d("name:$name, age:$age,nick2:$nick2")
 

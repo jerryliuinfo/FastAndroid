@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:flow_wrapMode="aligned"
+        app:flow_horizontalGap="10dp"
+        app:constraint_referenced_ids="btn_sequence,btn_suspend,btn_flow,btn_flow_block
+        ,btn_flow_is_cold,btn_flow_cancel,btn_flow_builder"
+
+        tools:ignore="NotSibling" />
+
+    <Button
+        android:id="@+id/btn_sequence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="表示多个值(Sequence)" />
+    <Button
+        android:id="@+id/btn_suspend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="挂起函数" />
+    <Button
+        android:id="@+id/btn_flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flow" />
+    <Button
+        android:id="@+id/btn_flow_block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flow_block" />
+
+    <Button
+        android:id="@+id/btn_flow_is_cold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flow is cold" />
+    <Button
+        android:id="@+id/btn_flow_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flow 取消" />
+    <Button
+        android:id="@+id/btn_flow_builder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="留构建器(asFlow)" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

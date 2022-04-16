@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:flow_wrapMode="aligned"
+        app:flow_horizontalGap="10dp"
+        app:constraint_referenced_ids="btn_ensure_coroutine_active,btn_cancel_coroutine,btn_cancel_all_coroutine
+        ,btn_cancel_job1,btn_cancel_normal,btn_cancel_immediately,btn_deferred_cancel,btn_handle_cancel,
+        btn_handleByCatch,btn_cancel_callSuspend"
+
+        tools:ignore="NotSibling" />
+
+    <Button
+        android:id="@+id/btn_ensure_coroutine_active"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="检查协程是否取消" />
+
+    <Button
+        android:id="@+id/btn_cancel_coroutine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消协程" />
+
+    <Button
+        android:id="@+id/btn_cancel_all_coroutine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消整个协程" />
+    <Button
+        android:id="@+id/btn_cancel_job1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消单个协程" />
+    <Button
+        android:id="@+id/btn_cancel_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="普通取消" />
+    <Button
+        android:id="@+id/btn_cancel_immediately"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="立刻取消" />
+    <Button
+        android:id="@+id/btn_deferred_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deferred cancel" />
+    <Button
+        android:id="@+id/btn_handle_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="处理取消异常" />
+    <Button
+        android:id="@+id/btn_handleByCatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tryCatch中处理异常" />
+    <Button
+        android:id="@+id/btn_cancel_callSuspend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="被取消时调用挂起函数" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

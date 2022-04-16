@@ -16,6 +16,7 @@ class BlackTechDemoFragment:BaseListFragment() {
             ,ViewItemBean("监控App隐私权限方法调用","监控App隐私权限方法调用", PermissionMonitorFragment::class.java)
             ,ViewItemBean("sdk_editor","sdk_editor", CommonBlackTechFragment::class.java)
             ,ViewItemBean("ClickDebounce","ClickDebounce", ClickDebounceFragment::class.java)
+            ,ViewItemBean("字符串加密","字符串加密", EncryptDemoFragment::class.java)
         )
     }
 

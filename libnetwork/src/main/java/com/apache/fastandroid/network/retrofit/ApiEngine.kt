@@ -7,6 +7,8 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import com.apache.fastandroid.retrofit.ApiConstant
 import com.blankj.utilcode.util.ToastUtils
 import com.mooc.libnetwork.BuildConfig
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import okhttp3.CertificatePinner
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

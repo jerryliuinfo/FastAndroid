@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:flow_wrapMode="aligned"
+        app:flow_horizontalGap="10dp"
+        app:constraint_referenced_ids="btn_firstCoroutine,btn_suspend,btn_coroutineScope,
+        btn_jobJoin,btn_performance_coroutine,btn_performance_thread,btn_cancel_timeout,
+        btn_ensure_active,btn_doInFinaly,btn_nonCancable"
+
+        tools:ignore="NotSibling" />
+
+    <Button
+        android:id="@+id/btn_firstCoroutine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="第一个协程" />
+    <Button
+        android:id="@+id/btn_suspend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Suspend" />
+
+    <Button
+        android:id="@+id/btn_coroutineScope"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CoroutineScope" />
+    <Button
+        android:id="@+id/btn_jobJoin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Job Join等待" />
+
+    <Button
+        android:id="@+id/btn_performance_coroutine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="协程性能" />
+    <Button
+        android:id="@+id/btn_performance_thread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="协程性能" />
+
+    <Button
+        android:id="@+id/btn_cancel_timeout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消与超时" />
+
+    <Button
+        android:id="@+id/btn_ensure_active"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="检查取消" />
+    <Button
+        android:id="@+id/btn_doInFinaly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Finaly释放资源" />
+    <Button
+        android:id="@+id/btn_nonCancable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nonCancable" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

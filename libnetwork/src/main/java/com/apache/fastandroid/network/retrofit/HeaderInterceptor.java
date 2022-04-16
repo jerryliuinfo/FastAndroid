@@ -32,6 +32,8 @@ public class HeaderInterceptor implements Interceptor {
         } catch (Exception e) {
             NLog.printStackTrace(TAG, e);
         }
+
+
         return chain.proceed(builder.build());
     }
 }

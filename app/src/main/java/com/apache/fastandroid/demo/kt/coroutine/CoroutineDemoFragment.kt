@@ -4,38 +4,47 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.apache.fastandroid.article.ArticleNetwork
 import com.apache.fastandroid.databinding.FragmentKotlinCouritineBinding
 import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.db.HomeDatabase
 import com.apache.fastandroid.home.network.HomeNetwork
+import com.apache.fastandroid.network.model.Repo
+import com.apache.fastandroid.network.response.BaseResponse
+import com.apache.fastandroid.network.response.EmptyResponse
 import com.apache.fastandroid.network.retrofit.ApiEngine
 import com.apache.fastandroid.network.retrofit.ApiServiceKt
 import com.apache.fastandroid.network.retrofit.convertor.CustomGsonConverterFactory
 import com.apache.fastandroid.util.extensitons.runOnUi
+import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.awaitNextLayout
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_kotlin_couritine.*
 import kotlinx.coroutines.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
-import retrofit2.await
-import java.lang.Exception
+import java.io.File
+import java.nio.charset.Charset
+import java.nio.charset.StandardCharsets
+import java.nio.file.Files
 import kotlin.concurrent.thread
 
 /**
  * Created by Jerry on 2021/10/28.
  * 协程
  */
-class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(FragmentKotlinCouritineBinding::inflate) {
-    companion object{
+class CoroutineDemoFragment :
+    BaseVBFragment<FragmentKotlinCouritineBinding>(FragmentKotlinCouritineBinding::inflate) {
+    companion object {
         private const val TAG = "CoroutineDemoFragment"
     }
 
+    private val viewModel:CoroutineVewModel by viewModels()
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
@@ -63,15 +72,24 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
         mBinding.btnRetrofitCall.setOnClickListener {
             doRetrofitReturnCallRequest()
         }
-        btn_rxjava.setOnClickListener {
-            doRxjavaRequest()
+
+        mBinding.btnRetrofitHandleException.setOnClickListener {
+            doRetrofitHandleException()
         }
 
-        btn_rxjava_zip.setOnClickListener {
-           rxZip()
+        mBinding.btnHandleException2.setOnClickListener {
+            doHanleException()
+        }
+
+        mBinding.btnRxjavaSignle.setOnClickListener {
+            doRxjavaSingleRequest()
+        }
+
+        mBinding.btnRxjavaZip.setOnClickListener {
+            rxZip()
         }
         mBinding.btnCouroutineZip.setOnClickListener {
-            coroutineZip()
+            coroutineAsyncWait()
         }
 
         mBinding.btnAwaitAll.setOnClickListener {
@@ -90,6 +108,63 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
             }
         }
 
+        mBinding.btnCoroutineScope.setOnClickListener {
+            coroutineScopeRequest()
+        }
+        mBinding.btnAysncToSync.setOnClickListener {
+            callbackToSuspend()
+        }
+
+        mBinding.btnMultiUsers.setOnClickListener {
+            loadMultiUser()
+        }
+    }
+
+    private fun loadMultiUser() {
+        mainScope.launch {
+            val userIds = arrayOf("jerry","zhangsan","lisi")
+            val users = userIds.map { id ->
+                viewModel.getUserInfoById(id)
+            }
+            println(users)
+        }
+
+    }
+    private fun callbackToSuspend() {
+        mainScope.launch {
+            try {
+                val result:BaseResponse<EmptyResponse> = viewModel.callbackToSuspend()
+                println("result:${result}")
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+        }
+    }
+
+    private val coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+    private fun coroutineScopeRequest() {
+       viewModel.coroutineScopeRequest()
+    }
+
+    private fun doHanleException() {
+        mainScope.launch {
+            viewModel.getArticleById(21630)
+        }
+    }
+
+    private fun doRetrofitHandleException() {
+        lifecycleScope.launch {
+            val response = apiService.listReposKtWithErrorHandle("rengwuxian")
+            println("result :${response}")
+            if (response.isSuccessful){
+                val repo: List<Repo>? = response.body()
+                println("success repo:$repo")
+
+            }else{
+                println("faile :${response.raw()}")
+            }
+        }
     }
 
     private fun suspendCoroutineUsage() {
@@ -101,7 +176,7 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
                 awaitNextLayout()
 
                 isVisible = true
-                translationY= - height.toFloat()
+                translationY = -height.toFloat()
                 animate().translationY(0f)
 
             }
@@ -111,7 +186,7 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
     }
 
 
-    val scope = CoroutineScope(Job() +(Dispatchers.Main) )
+    val scope = CoroutineScope(Job() + (Dispatchers.Main))
     private fun jobDispatcher() {
         scope.launch {
             var topList = reporsitoryKt.loadTopArticleCo()
@@ -123,39 +198,25 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
         lifecycleScope.launch {
             val start = System.currentTimeMillis()
             val deferred = listOf(
-                 async { reporsitoryKt.testData1() },
+                async { reporsitoryKt.testData1() },
                 async { reporsitoryKt.testData2() }
             )
-            deferred.awaitAll()
-            println("awaitAll:finish cost:${System.currentTimeMillis() - start} ms")
+            val list = deferred.awaitAll()
+            println("awaitAll list: ${list}, finish cost:${System.currentTimeMillis() - start} ms")
         }
     }
 
-    private  var job: Job? = null
+    private var job: Job? = null
     private val mainScope = MainScope()
 
+    private val mNetworkApi:ArticleNetwork = ArticleNetwork.getInstance()
 
-    private val reporsitoryKt = HomeReporsitoryKt(HomeDatabase.getHomeDao(), HomeNetwork.getInstance())
-
-
-
-    private fun coroutineZip() {
-       job =  GlobalScope.launch(Dispatchers.IO) {
-            try {
-                //asyn 会创建一个有结果的协程，但是这个结果不是以返回值形式返回的，而是以
-                val request1 = async { apiService.listReposKt("rengwuxian") }
-                val request2 = async { apiService.listReposKt("jerryliuinfo") }
-                // = 的右边会比左边先执行
-                val text = "${request1.await()[0].name}.${request2.await()[1].name} "
-                Logger.d(text)
-            }catch (e:Exception){
-                e.printStackTrace()
-            }
-        }
+    private val reporsitoryKt =
+        HomeReporsitoryKt(HomeDatabase.getHomeDao(), HomeNetwork.getInstance())
 
 
-
-        lifecycleScope.launch {
+    private fun coroutineAsyncWait() {
+        job = lifecycleScope.launch {
             val deferredOne = async { reporsitoryKt.testData1() }
             val deferredTwo = async { reporsitoryKt.testData2() }
             val result1 = deferredOne.await()
@@ -164,25 +225,26 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
         }
     }
 
-    private fun rxZip(){
+    private fun rxZip() {
         val request1 = apiService.listReposRx("rengwuxian")
         val request2 = apiService.listReposRx("jerryliuinfo")
-        Single.zip(request1,request2) { list1, list2 ->
+
+        Single.zip(request1, request2) { list1, list2 ->
             "list1:${list1[0].name}, list2:${list2[0].name}"
         }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).subscribe({ combinded ->
-            println("combinded:${combinded}")
-        },{
-            it.printStackTrace()
-        })
+                println("combinded:${combinded}")
+            }, {
+                it.printStackTrace()
+            })
 
 
     }
 
     private lateinit var apiService: ApiServiceKt
 
-    private fun initRetrofit(){
+    private fun initRetrofit() {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .addConverterFactory(CustomGsonConverterFactory.create())
@@ -192,36 +254,37 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
         apiService = retrofit.create(ApiServiceKt::class.java)
     }
 
-    private fun doRetrofitSuspendRequest(){
+    private fun doRetrofitSuspendRequest() {
         GlobalScope.launch(Dispatchers.Main) {
-            try {
-                val respName = apiService.listReposKt("jerryliuinfo")
-                Logger.d("resp name: ${respName},thread: ${Thread.currentThread().name}")
-
-            }catch (e:Exception){
-                e.printStackTrace()
+            val response = mNetworkApi.collect2(21630)
+            response.exceptionOrNull()?.let {
+                ToastUtils.showShort(it.message)
             }
+            Logger.d("resp name: ${response},thread: ${Thread.currentThread().name}")
         }
     }
 
-    private fun doRetrofitReturnCallRequest(){
+    private fun doRetrofitReturnCallRequest() {
         GlobalScope.launch(Dispatchers.Main) {
-            try {
-                val respName = apiService.listReposKt2("jerryliuinfo").await()
-                Logger.d("resp name: ${respName},thread: ${Thread.currentThread().name}")
-
-            }catch (e:Exception){
-                e.printStackTrace()
+            val response = withContext(Dispatchers.IO) {
+                mNetworkApi.collect(ARTICLE_ID)
             }
+            response.exceptionOrNull()?.let {
+                ToastUtils.showShort(it.message)
+            }
+            Logger.d("resp name: ${response},thread: ${Thread.currentThread().name}")
+
         }
     }
 
-    private fun doRxjavaRequest(){
+    private val ARTICLE_ID = 21630
+
+    private fun doRxjavaSingleRequest() {
         apiService.listReposRx("jerryliuinfo")
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 Logger.d("resp name: ${it[0].name}")
-            },{
+            }, {
                 it.printStackTrace()
             })
 
@@ -240,7 +303,7 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
         }
     }
 
-    private fun coroutineSwitchThread(){
+    private fun coroutineSwitchThread() {
         //GlobalScope.launc 创建的协程是在后台执行的
         GlobalScope.launch(Dispatchers.Main) {
             ioCode1()
@@ -252,51 +315,55 @@ class CoroutineDemoFragment:BaseVBFragment<FragmentKotlinCouritineBinding>(Fragm
         }
     }
 
-    suspend fun ioCode1(){
+    suspend fun ioCode1() {
         //切到子线程
-        withContext(Dispatchers.IO){
+        withContext(Dispatchers.IO) {
             println("Coroutines Camp io1:${Thread.currentThread().name}")
         }
 
     }
-    fun uiCode1(){
+
+    fun uiCode1() {
         println("Coroutines Camp ui1:${Thread.currentThread().name}")
     }
 
-    suspend fun ioCode2(){
+    suspend fun ioCode2() {
         //切到子线程
-        withContext(Dispatchers.IO){
+        withContext(Dispatchers.IO) {
             println("Coroutines Camp io2:${Thread.currentThread().name}")
         }
     }
 
-    fun uiCode2(){
+    fun uiCode2() {
         println("Coroutines Camp ui2:${Thread.currentThread().name}")
     }
 
-    suspend fun ioCode3(){
-        withContext(Dispatchers.IO){
+    suspend fun ioCode3() {
+        withContext(Dispatchers.IO) {
             println("Coroutines Camp io3:${Thread.currentThread().name}")
         }
     }
-    fun uiCode3(){
+
+    fun uiCode3() {
         println("Coroutines Camp ui3:${Thread.currentThread().name}")
     }
 
 
-    private fun classicIoCode1(block: () -> Unit){
+    private fun classicIoCode1(block: () -> Unit) {
         thread {
             println("classic io1: ${Thread.currentThread().name}")
             runOnUi(block)
         }
     }
-    private fun classicIoCode2(block: () -> Unit){
+
+    private fun classicIoCode2(block: () -> Unit) {
         thread {
             println("classic io2: ${Thread.currentThread().name}")
             runOnUi(block)
         }
     }
-    private fun classicIoCode3(block: () -> Unit){
+
+    private fun classicIoCode3(block: () -> Unit) {
         thread {
             println("classic io3: ${Thread.currentThread().name}")
             runOnUi(block)
