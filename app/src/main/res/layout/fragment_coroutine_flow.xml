@@ -1,60 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:flow_wrapMode="aligned"
-        app:flow_horizontalGap="10dp"
-        app:constraint_referenced_ids="btn_sequence,btn_suspend,btn_flow,btn_flow_block
-        ,btn_flow_is_cold,btn_flow_cancel,btn_flow_builder"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:flow_wrapMode="aligned"
+            app:flow_horizontalGap="10dp"
+            app:constraint_referenced_ids="btn_sequence,btn_suspend,btn_flow,btn_flow_block
+        ,btn_flow_is_cold,btn_flow_cancel,btn_flow_builder,btn_flow_is_cold,btn_flow_map,
+        btn_flow_transform,btn_flow_take,btn_end_flow,btn_flow_is_continuous,btn_flow_context,
+        btn_witchContext_error,btn_flowOn,btn_flow_buffer,btn_flow_conflate,btn_flow_collectLatest,
+        btn_flow_zip,btn_flow_combine,btn_flatMapConcat,btn_flatMapMerge,btn_flow_exception,
+         btn_flow_catch_all,btn_exception_transparency,btn_transparency_catch,btn_declare_catch,
+        btn_command_finally,btn_declare_finally,btn_onCompletionCatch,btn_launch_flow"
 
-        tools:ignore="NotSibling" />
+            tools:ignore="NotSibling" />
 
-    <Button
-        android:id="@+id/btn_sequence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="表示多个值(Sequence)" />
-    <Button
-        android:id="@+id/btn_suspend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="挂起函数" />
-    <Button
-        android:id="@+id/btn_flow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Flow" />
-    <Button
-        android:id="@+id/btn_flow_block"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Flow_block" />
+        <Button
+            android:id="@+id/btn_sequence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="表示多个值(Sequence)" />
+        <Button
+            android:id="@+id/btn_suspend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="挂起函数" />
+        <Button
+            android:id="@+id/btn_flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flow" />
+        <Button
+            android:id="@+id/btn_flow_block"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flow_block" />
 
-    <Button
-        android:id="@+id/btn_flow_is_cold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Flow is cold" />
-    <Button
-        android:id="@+id/btn_flow_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Flow 取消" />
-    <Button
-        android:id="@+id/btn_flow_builder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="留构建器(asFlow)" />
+        <Button
+            android:id="@+id/btn_flow_is_cold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flow is cold" />
+        <Button
+            android:id="@+id/btn_flow_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flow 取消" />
+        <Button
+            android:id="@+id/btn_flow_builder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="留构建器(asFlow)" />
+
+        <Button
+            android:id="@+id/btn_flow_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Map" />
+        <Button
+            android:id="@+id/btn_flow_transform"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="转换(transform)" />
+        <Button
+            android:id="@+id/btn_flow_take"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="限长(Take)" />
+
+        <Button
+            android:id="@+id/btn_end_flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="末端流操作符" />
+        <Button
+            android:id="@+id/btn_flow_is_continuous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="流是连续的" />
+        <Button
+            android:id="@+id/btn_flow_context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="流上下文" />
+
+        <Button
+            android:id="@+id/btn_witchContext_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WithContext发出错误" />
+        <Button
+            android:id="@+id/btn_flowOn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FlowOn" />
+
+        <Button
+            android:id="@+id/btn_flow_buffer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="缓冲(Buffer)" />
+        <Button
+            android:id="@+id/btn_flow_conflate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跳过中间值(Conflate)" />
+        <Button
+            android:id="@+id/btn_flow_collectLatest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最新值(collectLatest)" />
+
+        <Button
+            android:id="@+id/btn_flow_zip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flow zip" />
+        <Button
+            android:id="@+id/btn_flow_combine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flow Combine" />
+        <Button
+            android:id="@+id/btn_flatMapConcat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="flatMapConcat" />
+        <Button
+            android:id="@+id/btn_flatMapMerge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="flatMapMerge" />
+        <Button
+            android:id="@+id/btn_flow_exception"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="流异常" />
+
+        <Button
+            android:id="@+id/btn_flow_catch_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="一切都已捕获" />
+        <Button
+            android:id="@+id/btn_exception_transparency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="异常透明性" />
+        <Button
+            android:id="@+id/btn_transparency_catch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="透明捕获" />
+        <Button
+            android:id="@+id/btn_declare_catch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="声明式捕获" />
+        <Button
+            android:id="@+id/btn_command_finally"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="命令式finally块" />
+        <Button
+            android:id="@+id/btn_declare_finally"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="声明式finally块" />
+        <Button
+            android:id="@+id/btn_onCompletionCatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="onCompletionCatch" />
+        <Button
+            android:id="@+id/btn_launch_flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="启动流" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

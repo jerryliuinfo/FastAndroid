@@ -16,9 +16,14 @@ import kotlin.random.Random
  */
 class HomeReporsitoryKt(private val homeDao:HomeDao, private val network: HomeNetwork,private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO, ) {
 
-    suspend fun loadHomeArticleCo(pageNum:Int): HomeArticleResponse = withContext(defaultDispatcher){
+    suspend fun loadTopArticleCo():List<Article>? = withContext(Dispatchers.IO){
+        println("loadTopArticleCo thread: ${Thread.currentThread().name}")
+        var artices = network.loadTopArticleCo()
+        artices!!.data
+    }
 
-        delay(10000)
+
+    suspend fun loadHomeArticleCo(pageNum:Int): HomeArticleResponse = withContext(defaultDispatcher){
         var artices = network.loadHomeArticleCo(pageNum)
         if (artices != null){
             homeDao.cacheHomeData(pageNum,artices.data)
@@ -26,13 +31,6 @@ class HomeReporsitoryKt(private val homeDao:HomeDao, private val network: HomeNe
         }else{
             return@withContext homeDao.getCacheHomeData(pageNum)
         }
-    }
-
-    suspend fun loadTopArticleCo():List<Article>? = withContext(Dispatchers.IO){
-        delay(Random.nextLong(500,1000))
-        println("loadTopArticleCo thread: ${Thread.currentThread().name}")
-        var artices = network.loadTopArticleCo()
-        artices!!.data
     }
 
 

@@ -31,8 +31,6 @@ import java.lang.reflect.ParameterizedType
  */
 abstract class BaseDBFragment<T : ViewDataBinding>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) : ABaseFragment() {
 
-
-
     protected lateinit var viewBinding: T
 
     @CallSuper

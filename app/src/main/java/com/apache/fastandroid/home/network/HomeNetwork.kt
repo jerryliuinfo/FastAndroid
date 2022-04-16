@@ -1,31 +1,18 @@
 package com.apache.fastandroid.home.network
 
-import com.apache.fastandroid.network.response.EmptyResponse
-import com.apache.fastandroid.network.retrofit.ApiEngine
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.await
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
+import com.apache.fastandroid.base.BaseRepository
 
 /**
  * Created by Jerry on 2022/2/23.
  */
-class HomeNetwork {
-    private val apiServiceKt = ApiEngine.apiServiceKt
+class HomeNetwork :BaseRepository(){
 
     /**
      * ApiServiceKt 接口返回的是 Call 类型时，需要用await
      */
-    suspend fun loadTopArticleCo() = apiServiceKt.loadTopArticleCo()
+    suspend fun loadTopArticleCo() = apiService.loadTopArticleCo()
 
-    suspend fun loadHomeArticleCo(pageNum:Int) = apiServiceKt.loadHomeArticleCo(pageNum)
-
-
-
-
+    suspend fun loadHomeArticleCo(pageNum:Int) = apiService.loadHomeArticleCo(pageNum)
 
 
 

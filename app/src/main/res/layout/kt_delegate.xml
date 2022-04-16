@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            >
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal"
+                app:flow_wrapMode="aligned"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:constraint_referenced_ids="btn_keyword_by,btn_byLazyProperty,btn_delegateObservable,btn_vetoable,btn_by_map,btn_by_delegate"
+                />
+
+
+            <Button
+                android:id="@+id/btn_keyword_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="by关键字"
+                />
+            <Button
+                android:id="@+id/btn_byLazyProperty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="延迟属性 lazy"
+                />
+            <Button
+                android:id="@+id/btn_delegateObservable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="可观察属性Observable"
+                />
+            <Button
+                android:id="@+id/btn_vetoable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="vetoable 函数
+"
+                />
+            <Button
+                android:id="@+id/btn_by_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="属性存储在映射中
+"
+                />
+            <Button
+                android:id="@+id/btn_by_delegate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="by动态代理"
+                />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

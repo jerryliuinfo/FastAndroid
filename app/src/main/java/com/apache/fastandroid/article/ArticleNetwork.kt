@@ -1,21 +1,14 @@
 package com.apache.fastandroid.article
 
-import com.apache.fastandroid.home.network.HomeNetwork
-import com.apache.fastandroid.network.retrofit.ApiEngine
 import com.apache.fastandroid.network.retrofit.BaseNetwork
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import retrofit2.await
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
 
 /**
  * Created by Jerry on 2022/2/23.
  */
 class ArticleNetwork:BaseNetwork() {
-    private val apiServiceKt = ApiEngine.apiServiceKt
+    private val apiServiceKt = RetrofitFactory.instance.apiService
 
     /**
      * 以 Call 形式返回结果

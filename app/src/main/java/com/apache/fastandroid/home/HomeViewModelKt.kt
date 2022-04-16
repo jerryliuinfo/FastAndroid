@@ -58,7 +58,6 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        com.tesla.framework.component.logger.Logger.d("onCleared cancel viewModel")
     }
 
 

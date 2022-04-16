@@ -35,7 +35,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
 
-    implementation(*Libs.kotlin)
+    implementation(*Kotlin.kotlin)
     implementation (*Libs.retrofit)
     implementation (*Libs.okhttp)
     implementation (Libs.gson)

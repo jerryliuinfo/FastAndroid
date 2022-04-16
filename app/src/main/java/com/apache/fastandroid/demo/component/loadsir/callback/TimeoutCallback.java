@@ -19,7 +19,7 @@ public class TimeoutCallback extends Callback {
 
     @Override
     protected int onCreateView() {
-        return R.layout.layout_timeout;
+        return R.layout.loadsir_layout_timeout;
     }
 
     @Override

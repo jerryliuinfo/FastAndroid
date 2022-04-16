@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.annotation.IdRes
 import androidx.viewbinding.ViewBinding
+import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 
 /**
  * Fragment基类
  */
 abstract class BaseVBFragment<T : ViewBinding>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) : ABaseFragment() {
-
-
 
     protected lateinit var mBinding: T
 
@@ -29,9 +28,17 @@ abstract class BaseVBFragment<T : ViewBinding>(val inflater: (inflater: LayoutIn
         return mBinding.root
     }
 
+    fun toolbarTitle():String?{
+        return null
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        toolbarTitle()?.let {
+            val base = activity as BaseVmActivityNew<T>
+            base.setToolbarTitle(it)
+        }
         layoutInit(layoutInflater,savedInstanceState)
     }
 

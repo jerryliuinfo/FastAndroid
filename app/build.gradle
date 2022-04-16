@@ -411,7 +411,7 @@ dependencies {
 
     println("isTopicRunAlone:${isTopicRunAlone}")
 
-    implementation(*Libs.kotlin)
+    implementation(*Kotlin.kotlin)
     implementation Libs.appCompat
     implementation Libs.material
     implementation Libs.cardview

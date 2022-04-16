@@ -15,7 +15,7 @@ import com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBinding
  * Created by Jerry on 2022/3/12.
  */
 open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUiRecycleviewSwiperefreshNewBinding>(CommUiRecycleviewSwiperefreshNewBinding::inflate),
-    BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
+    BaseQuickAdapter.RequestLoadMoreListener {
 
     protected lateinit var mAdapter:BaseQuickAdapter<T, BaseViewHolder>
 
@@ -45,6 +45,7 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
                 onItemChildClick(adapter,view,data[position])
             }
         }
+        setupSwipeRefreshLayout()
 
     }
 
@@ -67,7 +68,7 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
 
 
 
-    override fun onRefresh() {
+    open fun onRefreshData() {
     }
 
     open fun onScrollChange(
@@ -105,7 +106,9 @@ open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUi
 
     protected fun setupSwipeRefreshLayout() {
         mBinding.swipeRefreshLayout.apply {
-            setOnRefreshListener(this@ARecycleViewSwipeRefreshFragmentNew)
+            setOnRefreshListener{
+                onRefreshData()
+            }
             setColorSchemeResources(
                     R.color.holo_blue_bright,
                     R.color.holo_green_light,

@@ -9,4 +9,8 @@ class People(name:String, lastname:String) {
     var name:String by FormatDelegate()
 
     var updateCount = 0
+
+    val d1:String by ReadOnlyDelegate()
+    var d2:Int by ReadWriteDelegate()
+
 }

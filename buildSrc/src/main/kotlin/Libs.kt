@@ -45,13 +45,8 @@ object Libs {
     const val room_compiler = "androidx.room:room-compiler:${Versions.Room}"
     const val viewPage2 = "androidx.viewpager2:viewpager2:${Versions.viewPager2}"
 
+    const val loadSir = "com.kingja.loadsir:loadsir:1.3.8"
 
-
-    val kotlin = arrayOf(
-//        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}",
-        "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}",
-        "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
-    )
 
     val coroutine = arrayOf(
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}",
@@ -94,7 +89,7 @@ object Libs {
         "com.github.NoEndToLF:AppStartFaster:1.0.3",
         "com.airbnb.android:lottie:2.8.0",
         "com.github.lygttpod:SuperTextView:2.4.6",
-        "com.kingja.loadsir:loadsir:1.3.8",
+        loadSir,
         "com.drakeet.about:about:2.5.0",
         "com.drakeet.multitype:multitype:4.3.0",
     )
@@ -115,18 +110,6 @@ object Libs {
     )
 
 
-
-    val hit = arrayOf(
-        "com.google.dagger:hilt-android:${Versions.hit}",
-        //hit 对 viewmodel 的支持
-        "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02",
-    )
-    val hit_compiler = arrayOf(
-        "com.google.dagger:hilt-android-compiler:${Versions.hit}",
-        //hit 对 viewmodel 的支持
-        "androidx.hilt:hilt-compiler:1.0.0-alpha02"
-    )
-
     val tests = arrayOf(
         "junit:junit:4.13.2"
     )
@@ -139,6 +122,21 @@ object Libs {
     const val viewPump = "dev.b3nedikt.viewpump:viewpump:4.0.10"
     const val reword = "dev.b3nedikt.reword:reword:4.0.1"
 
+
+}
+
+object Test{
+    val tests = arrayOf(
+        "junit:junit:4.13.2"
+    )
+}
+
+object Kotlin{
+    val kotlin = arrayOf(
+//        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}",
+        "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}",
+        "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
+    )
 
 }
 

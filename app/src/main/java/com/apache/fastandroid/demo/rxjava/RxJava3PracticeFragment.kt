@@ -13,13 +13,12 @@ import com.apache.fastandroid.demo.rxjava.operator.RetryWithDelay
 import com.apache.fastandroid.network.model.FakeToken
 import com.apache.fastandroid.network.model.HomeArticleResponse
 import com.apache.fastandroid.network.response.BaseResponse
-import com.apache.fastandroid.network.retrofit.ApiEngine
+import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.apache.fastandroid.util.AccessDenyException
 import com.apache.fastandroid.util.NetworkException
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.*
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -27,11 +26,8 @@ import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.functions.Function
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.PublishSubject
-import kotlinx.android.synthetic.main.fragment_rxjava2.*
-import kotlinx.android.synthetic.main.fragment_rxjava3.*
 import kotlinx.android.synthetic.main.fragment_rxjava3_practice.*
 import java.lang.IllegalArgumentException
-import java.util.*
 import java.util.concurrent.TimeUnit
 
 
@@ -84,14 +80,14 @@ open class RxJava3PracticeFragment:BaseFragment() {
                 if (token == null){
                     return@flatMap Observable.error(IllegalArgumentException("token is null"))
                 }else{
-                    return@flatMap ApiEngine.fakeApi!!.getFakeData(FakeToken(token,false))
+                    return@flatMap RetrofitFactory.instance.fakeApi.getFakeData(FakeToken(token,false))
                 }
             }.retryWhen(object :Function<Observable<out Throwable?>, Observable<*>>{
                 override fun apply(t: Observable<out Throwable?>): Observable<*> {
                     return t.flatMap {
                         if (it is IllegalArgumentException){
                             return@flatMap Observable.timer(1,TimeUnit.SECONDS).flatMap {
-                               return@flatMap ApiEngine.fakeApi!!.getFakeData(FakeToken(token,false))
+                               return@flatMap RetrofitFactory.instance.fakeApi.getFakeData(FakeToken(token,false))
                                     .doOnNext {
                                         token = it.name
                                     }
@@ -155,7 +151,7 @@ open class RxJava3PracticeFragment:BaseFragment() {
             .doOnNext {
                 tvResult.append("第 ${it} 次轮询：")
 
-                ApiEngine.apiService.loadHomeArticleCo2(1)
+                RetrofitFactory.instance.apiService.loadHomeArticleCo2(1)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
@@ -176,7 +172,7 @@ open class RxJava3PracticeFragment:BaseFragment() {
      */
     private fun pollingRequestWithCondition() {
         var repeatWhenCount = 0
-        val disposable =  ApiEngine.apiService.loadHomeArticleCo2(1)
+        val disposable =  RetrofitFactory.instance.apiService.loadHomeArticleCo2(1)
             .repeatWhen {
                 it.flatMap {
                     if (++repeatWhenCount <= 2){
@@ -202,7 +198,7 @@ open class RxJava3PracticeFragment:BaseFragment() {
 //            throw NetworkException("network error")
             return Observable.error(NetworkException("network error"))
         }
-        return ApiEngine.apiService.loadHomeArticleCo2(1)
+        return RetrofitFactory.instance.apiService.loadHomeArticleCo2(1)
     }
 
     private fun onErrorResumeNext() {

@@ -6,21 +6,16 @@ import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.db.HomeDatabase
 import com.apache.fastandroid.home.network.HomeNetwork
-import com.apache.fastandroid.network.model.Repo
-import com.apache.fastandroid.network.model.ResultData
 import com.apache.fastandroid.network.response.BaseResponse
 import com.apache.fastandroid.network.response.EmptyResponse
-import com.apache.fastandroid.network.retrofit.ApiEngine
-import com.apache.fastandroid.state.UserInfo
+import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.tesla.framework.common.util.log.NLog
-import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.HttpException
 import retrofit2.Response
 import java.lang.Exception
-import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
@@ -32,7 +27,6 @@ class CoroutineVewModel() : ViewModel() {
         private const val TAG = "CoroutineVewModel"
     }
 
-    private val apiServiceKt = ApiEngine.apiServiceKt
 
     override fun onCleared() {
         super.onCleared()
@@ -49,7 +43,7 @@ class CoroutineVewModel() : ViewModel() {
 
     suspend fun callbackToSuspend() =
         suspendCoroutine<BaseResponse<EmptyResponse>> { continuation ->
-            apiServiceKt.collect(1000).enqueue(object : Callback<BaseResponse<EmptyResponse>> {
+            RetrofitFactory.instance.apiService.collect(1000).enqueue(object : Callback<BaseResponse<EmptyResponse>> {
                 override fun onResponse(
                     call: Call<BaseResponse<EmptyResponse>>,
                     response: Response<BaseResponse<EmptyResponse>>
@@ -78,7 +72,7 @@ class CoroutineVewModel() : ViewModel() {
 
     suspend fun getArticleById(id: Long) {
         val result = try {
-            Result.success(ApiEngine.apiServiceKt.collect(21613))
+            Result.success(RetrofitFactory.instance.apiService.collect(21613))
         } catch (ex: Exception) {
             Result.failure(Throwable(ex.message))
         }
@@ -88,7 +82,7 @@ class CoroutineVewModel() : ViewModel() {
 
     fun getArticleByIdWithRunCatching(id: Long) {
         val result = kotlin.runCatching {
-            ApiEngine.apiServiceKt.collect(21613)
+            RetrofitFactory.instance.apiService.collect(21613)
         }
         println("result2:${result} thread:${Thread.currentThread().name}")
 

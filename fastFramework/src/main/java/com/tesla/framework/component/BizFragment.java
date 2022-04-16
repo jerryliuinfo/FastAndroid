@@ -3,7 +3,7 @@ package com.tesla.framework.component;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.tesla.framework.ui.activity.BaseVmActivity;
+import com.tesla.framework.ui.activity.BaseVmActivityNew;
 import com.tesla.framework.ui.fragment.BaseLifecycleFragment;
 import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
 
@@ -54,7 +54,7 @@ public class BizFragment extends BaseStatusFragmentNew {
             bizFragment = new BizFragment();
             bizFragment.mActivity = activity;
 
-            if (activity instanceof BaseVmActivity && ((BaseVmActivity) activity).isDestroyed()) {
+            if (activity instanceof BaseVmActivityNew && ((BaseVmActivityNew) activity).isDestroyed()) {
                 return bizFragment;
             }
 

@@ -94,6 +94,8 @@ fun Array<Int>.swap(pos1:Int, pos2:Int){
     val tmp = this[pos1]
     this[pos1] = this[pos2]
     this[pos2] = tmp
+
+
 }
 
 fun <T> Array<T>.maxCustomize(greater:(T,T) -> Boolean):T?{

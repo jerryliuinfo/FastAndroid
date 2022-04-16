@@ -106,7 +106,7 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew<Article> i
         });
 
 
-        onRefresh();
+        onRefreshData();
 
     }
 
@@ -172,7 +172,8 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew<Article> i
 
     private int mCurrentPage = 0;
 
-    public void onRefresh() {
+    @Override
+    public void onRefreshData() {
         showRefreshing();
         mCurrentPage = 0;
         mTopArticlesLoadTimes = 0;

@@ -9,10 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.ComponentActivity
 import androidx.annotation.CallSuper
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import com.kingja.loadsir.core.LoadService
+import com.kingja.loadsir.core.LoadSir
+import com.tesla.framework.component.vm.ShareViewModel
+import com.tesla.framework.ui.fragment.view.BaseView
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import java.lang.IllegalStateException
@@ -20,9 +25,11 @@ import java.lang.IllegalStateException
 /**
  * Created by Jerry on 2022/3/10.
  */
-open class ABaseFragment:Fragment() {
+open class ABaseFragment:Fragment(),BaseView {
     private var isFirstLoad = true
-    protected lateinit var mActivity: ComponentActivity
+    lateinit var mActivity: AppCompatActivity
+    lateinit var mContext: Context
+    lateinit var mShareViewModel: ShareViewModel
 
     private var mFragmentProvider: ViewModelProvider? = null
     private var mActivityProvider: ViewModelProvider? = null
@@ -32,13 +39,15 @@ open class ABaseFragment:Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mShareViewModel = getApplicationScopeViewModel(ShareViewModel::class.java)
         initViewModel()
     }
 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mActivity = requireActivity()
+        mActivity = context as AppCompatActivity
+        mContext = requireActivity().baseContext
     }
 
     override fun onResume() {
@@ -120,5 +129,33 @@ open class ABaseFragment:Fragment() {
      */
      fun addDisposable(disposable: Disposable) {
         compositeDisposable.add(disposable)
+    }
+
+    private var loadService: LoadService<*>? = null
+
+    /**
+     * 注册 PlaceHolderView 默认显示PlaceHolderView
+     * 数据加载成功需要调用 showSuccess(Constant.COMMON_KEY) 来显示原来的页面
+     */
+    override fun registerDefaultLoad(view: View, key: String) {
+       /* val loadSir = LoadSir.Builder()
+            .addCallback(PlaceHolderCallBack(placeHolderLayoutID))
+            .addCallback(EmptyCallBack())
+            .addCallback(ErrorCallBack())
+            .setDefaultCallback(PlaceHolderCallBack::class.java)
+            .build()
+        loadService =  loadSir.register(view) {  reLoad() }*/
+    }
+
+    override fun showLoading(key: String) {
+    }
+
+    override fun showSuccess(key: String) {
+    }
+
+    override fun showEmpty(key: String) {
+    }
+
+    override fun showError(msg: String, key: String) {
     }
 }

@@ -14,8 +14,7 @@ import com.apache.fastandroid.home.network.HomeNetwork
 import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.response.BaseResponse
 import com.apache.fastandroid.network.response.EmptyResponse
-import com.apache.fastandroid.network.retrofit.ApiEngine
-import com.apache.fastandroid.network.retrofit.ApiServiceKt
+import com.apache.fastandroid.network.retrofit.ApiService
 import com.apache.fastandroid.network.retrofit.convertor.CustomGsonConverterFactory
 import com.apache.fastandroid.util.extensitons.runOnUi
 import com.blankj.utilcode.util.ToastUtils
@@ -26,12 +25,9 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.*
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
-import java.io.File
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
-import java.nio.file.Files
 import kotlin.concurrent.thread
 
 /**
@@ -242,16 +238,18 @@ class CoroutineDemoFragment :
 
     }
 
-    private lateinit var apiService: ApiServiceKt
+    private lateinit var apiService: ApiService
 
     private fun initRetrofit() {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .addConverterFactory(CustomGsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            .client(ApiEngine.okHttpClient)
+            .client(OkHttpClient.Builder().build())
             .build()
-        apiService = retrofit.create(ApiServiceKt::class.java)
+        apiService = retrofit.create(ApiService::class.java)
+
+
     }
 
     private fun doRetrofitSuspendRequest() {

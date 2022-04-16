@@ -13,7 +13,7 @@ public class PlaceholderCallback extends Callback {
 
     @Override
     protected int onCreateView() {
-        return R.layout.layout_placeholder;
+        return R.layout.loadsir_layout_placeholder;
     }
 
     @Override

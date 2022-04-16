@@ -13,7 +13,7 @@ public class CustomCallback extends Callback {
 
     @Override
     protected int onCreateView() {
-        return R.layout.layout_custom;
+        return R.layout.loadsir_layout_custom;
     }
 
     @Override

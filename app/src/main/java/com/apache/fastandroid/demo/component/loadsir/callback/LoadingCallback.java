@@ -12,7 +12,7 @@ public class LoadingCallback extends Callback {
 
     @Override
     protected int onCreateView() {
-        return R.layout.layout_loading;
+        return R.layout.loadsir_layout_loading;
     }
 
 

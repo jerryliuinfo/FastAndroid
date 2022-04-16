@@ -1,6 +1,6 @@
 package com.apache.fastandroid.demo.kt.coroutine
 
-import com.apache.fastandroid.network.retrofit.ApiEngine
+import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -16,7 +16,7 @@ object CoroutineScopeUtil {
     fun coroutineScopeRequest() {
         val job1 = coroutineScope.launch {
             try {
-                val result1 = ApiEngine.apiServiceKt.getArticleById(21613)
+                val result1 = RetrofitFactory.instance.apiService.getArticleById(21613)
                 println("coroutineScope onSuccess result1:$result1, thread:${Thread.currentThread().name}")
             }catch (ex: Exception){
                 ex.printStackTrace()

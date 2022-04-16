@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tesla.framework.common.util.log.FastLog;
-import com.tesla.framework.ui.activity.BaseVmActivity;
+import com.tesla.framework.ui.activity.BaseVmActivityNew;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -92,7 +92,7 @@ public abstract class BaseFragment extends Fragment implements IView{
 
 
     protected void setToolbarTitle(String msg){
-        BaseVmActivity baseActivity = (BaseVmActivity) getActivity();
+        BaseVmActivityNew baseActivity = (BaseVmActivityNew) getActivity();
         ActionBar supportActionBar = baseActivity.getSupportActionBar();
         FastLog.d(TAG, "supportActionBar: %s",supportActionBar);
         if (supportActionBar != null){

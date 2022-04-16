@@ -86,6 +86,7 @@ dependencies {
     implementation Libs.gson
     implementation Libs.utilcode
     implementation Libs.brvh
+    implementation Libs.loadSir
 
     implementation (*Libs.rxJava)
     implementation(*Libs.immersionbar)

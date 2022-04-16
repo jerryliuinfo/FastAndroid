@@ -15,26 +15,6 @@ public class FakeApi {
 
    Random random = new Random();
 
-  /* public io.reactivex.Observable<FakeToken> getFakeToken(@NonNull String fakeAuth) {
-      return io.reactivex.Observable.just(fakeAuth)
-              .map(new Function<String, FakeToken>() {
-                 @Override
-                 public FakeToken apply(String fakeAuth) {
-                    // Add some random delay to mock the network delay
-                    int fakeNetworkTimeCost = random.nextInt(500) + 500;
-                    try {
-                       Thread.sleep(fakeNetworkTimeCost);
-                    } catch (InterruptedException e) {
-                       e.printStackTrace();
-                    }
-
-                    FakeToken fakeToken = new FakeToken();
-                    fakeToken.token = createToken();
-                    return fakeToken;
-                 }
-              });
-   }*/
-
    private static String createToken() {
       return "fake_token_" + System.currentTimeMillis() % 10000;
    }

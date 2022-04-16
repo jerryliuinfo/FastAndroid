@@ -4,8 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import com.apache.fastandroid.databinding.FragmentCoroutineExceptionBinding
-import com.apache.fastandroid.network.retrofit.ApiEngine
-import com.apache.fastandroid.network.retrofit.ApiServiceKt
+import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.coroutines.*
@@ -75,7 +74,7 @@ class CoroutineExceptionDemoFragment:BaseVBFragment<FragmentCoroutineExceptionBi
             launch {
                 async {
                     val deferred = async {
-                        ApiEngine.apiServiceKt.listReposKt("jerry")
+                        RetrofitFactory.instance.apiService.listReposKt("jerry")
                     }
                     deferred.await()
                 }
@@ -88,7 +87,7 @@ class CoroutineExceptionDemoFragment:BaseVBFragment<FragmentCoroutineExceptionBi
         mainScope.launch {
             supervisorScope {
                 val deferred = async {
-                    ApiEngine.apiServiceKt.listReposKt("jerry")
+                    RetrofitFactory.instance.apiService.listReposKt("jerry")
                 }
                 try {
                     //调用 await 才可能抛出异常 Handle exception thrown in async

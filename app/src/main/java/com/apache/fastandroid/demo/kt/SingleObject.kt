@@ -11,9 +11,8 @@ class SingleObject private constructor(){
         }
     }
 
-    protected object Holder{
+    private object Holder{
         val instance = SingleObject()
     }
-
 
 }

@@ -198,7 +198,7 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
         return false
     }
 
-    protected fun setToolbarTitle(msg: String?) {
+    fun setToolbarTitle(msg: String?) {
         val supportActionBar = supportActionBar
         if (supportActionBar != null) {
             supportActionBar.title = msg

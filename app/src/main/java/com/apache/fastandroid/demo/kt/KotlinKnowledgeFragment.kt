@@ -24,7 +24,7 @@ import com.apache.fastandroid.demo.kt.refied.RefiedDemo
 import com.apache.fastandroid.demo.kt.sealed.*
 import com.apache.fastandroid.demo.room.Account
 import com.apache.fastandroid.network.model.Repo
-import com.apache.fastandroid.network.retrofit.ApiEngine
+import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.apache.fastandroid.util.DateUtil
 import com.kingja.loadsir.core.LoadSir
 import com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator
@@ -39,8 +39,8 @@ import kotlinx.coroutines.launch
 import java.io.File
 import java.nio.charset.Charset
 import kotlin.collections.ArrayList
-import kotlin.coroutines.Continuation
 import kotlin.math.cos
+import kotlin.properties.Delegates
 import kotlin.random.Random
 import kotlin.reflect.KClass
 import kotlin.reflect.full.findAnnotation
@@ -59,6 +59,9 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
+        mBinding.btnSingleInstance.setOnClickListener {
+            singleInstance()
+        }
 
         mBinding.btnInitArray.setOnClickListener {
             initArrayElement()
@@ -92,23 +95,25 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         mBinding.btnRefied.setOnClickListener {
             refiedTest()
         }
+        mBinding.btnOperatorOverload2.setOnClickListener {
+            operatationOverload()
+        }
 
         mBinding.btnObject.setOnClickListener {
             objectExpression()
         }
         mBinding.btnOnEach.setOnClickListener {
-            onEach()
+
+            println( onEach())
         }
         mBinding.btnMethodCost.setOnClickListener {
             val costTime = measureTimeMillis {
                 Thread.sleep(100)
             }
-            Logger.d("costTime:${costTime}")
-
-            println()
+            println("costTime:${costTime}")
         }
         mBinding.btnCoerceAtLeast.setOnClickListener {
-            Logger.d("${3.coerceAtLeast(5)}")
+            println("${3.coerceAtLeast(5)}")
         }
 
 
@@ -161,17 +166,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             inlineUsage()
             nonInlineUsage()
         }
-        mBinding.btnCampanionObject.setOnClickListener {
-            Logger.d("SingleObject: ${SingleObject.get()}")
-            Logger.d("SingleObject2: ${SingleObject.get()}")
-        }
-        mBinding.btnKeywordBy.setOnClickListener {
-            ByTest.Zoo(ByTest.Cat()).bark()
 
-        }
-        mBinding.btnByDelegate.setOnClickListener {
-            ByTest.ZooBy(ByTest.Cat()).bark()
-        }
 
 
         mBinding.btnSealedClass.setOnClickListener {
@@ -275,12 +270,115 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
                 testSuspend()
             }
         }
-        mBinding.btnOperatorOverload2.setOnClickListener {
-            operatationOverload()
-        }
+
 
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
+    }
+
+    private object ObjectInstance{
+        fun test(){
+
+        }
+    }
+
+    private class SingleInstance{
+        fun test(){
+
+        }
+        companion object{
+            private var instance:SingleInstance ?= null
+            fun instance():SingleInstance{
+                return instance ?: synchronized(this){
+                    instance ?:SingleInstance().also { instance = it }
+                }
+            }
+        }
+    }
+
+    class SingleObject private constructor(){
+        fun test() {
+
+        }
+
+        companion object{
+            fun getInstance():SingleObject{
+                return Holder.instance
+            }
+        }
+
+        private object Holder{
+            val instance = SingleObject()
+        }
+
+    }
+
+    private fun singleInstance() {
+        //object 单例
+        ObjectInstance.test()
+        SingleInstance.instance().test()
+        SingleObject.getInstance().test()
+    }
+
+
+    private class ByMap(val map:Map<String,Any?>){
+        val name:String by map
+        val age:Int by map
+    }
+
+    private fun savePropertyToMap() {
+        val user = ByMap(mapOf(
+            "name" to "西哥",
+            "age" to 25
+            ))
+        println("name:${user.name}, age:${user.age}")
+    }
+
+    var vetoableProp:Int by Delegates.vetoable(0){
+        property, oldValue,newValue ->
+        println("property: $property: $oldValue -> $newValue ")
+        newValue > oldValue
+    }
+
+
+    private fun vetoableTest() {
+        println("vetoableProp: ${vetoableProp}")
+        vetoableProp = 10
+        println("vetoableProp: ${vetoableProp}")
+        //这个赋值不会生效，因为 5 没有大于 10
+        vetoableProp = 5
+        println("vetoableProp: ${vetoableProp}")
+        vetoableProp = 100
+        println("vetoableProp: ${vetoableProp}")
+
+    }
+
+    var observableProp: String by Delegates.observable("默认值：xxx"){
+            property, oldValue, newValue ->
+        println("property: $property: $oldValue -> $newValue ")
+    }
+
+
+    /**
+     * 如果你要观察一个属性的变化过程，那么可以将属性委托给Delegates.observable
+
+     */
+    private fun delegateObservable() {
+        observableProp = "第1次修改值"
+        observableProp = "第2次修改值"
+    }
+
+
+
+    val lazyProp:String by lazy {
+        println("第一次调用才会执行")
+        "Hello"
+    }
+    private fun byLazy() {
+        //延迟属性
+        println(lazyProp)
+        println(lazyProp)
+        println(lazyProp)
     }
 
     private fun initArrayElement() {
@@ -310,9 +408,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
     private fun joinToStringUsage() {
         val fruit = mutableListOf(Fruit("Apple"),Fruit("Pear"),Fruit("banana"))
-        val result = fruit.map { it.name }.filter {
-            it.contains("a")
-        }.joinToString(", ") { it }
+        val result = fruit.map { it.name }.joinToString(", ") { it }
         println(result)
     }
 
@@ -343,8 +439,11 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
     private fun checkFuncUsage() {
-        val age = 18
-        check(age > 10)
+        val age = 1
+        check(age > 10){
+            "age is less than 10"
+        }
+        println("age is bigger than 10")
     }
 
     fun intRange(){
@@ -369,6 +468,9 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
     }
 
+    /**
+     * https://juejin.cn/post/6844904038589267982
+     */
     private fun delegate() {
         val delegateList = DelegateList<String>().apply {
             add("one")
@@ -381,15 +483,19 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         val people = People("jerry", "liu")
         people.name = "libel"
         people.lastname= "ou"
-        println("delegate updateCount:${people.updateCount}")
+        println("delegate name:${people.name}, updateCount:${people.updateCount}")
+
+
+        //属性委托
+        people.d2 = 10
+        println("d1:${people.d1}, d2:${people.d2}")
+
     }
 
     private fun refiedTest() {
         val refiedDemo = RefiedDemo()
         refiedDemo.printStringType()
         refiedDemo.printIntType()
-
-
 
         val intCall: Int = refiedDemo.calculate(123643f)
         val floatCall: Float = refiedDemo.calculate(123643f)
@@ -446,12 +552,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
 
     private suspend fun testSuspend():Repo{
-        val user = ApiEngine.apiServiceKt.getArticleById(10)
-        return user.data
-    }
-
-    private suspend fun testSuspend2(completion:Continuation<Any?>):Repo{
-        val user = ApiEngine.apiServiceKt.getArticleById(10)
+        val user = RetrofitFactory.instance.apiService.getArticleById(10)
         return user.data
     }
 

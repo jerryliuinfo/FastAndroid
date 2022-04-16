@@ -54,8 +54,9 @@ class FragmentContainerActivity : BaseVmActivityNew<CommUiFragmentContainerBindi
         }
         showToolbar?.let { showToolbar ->
             if (showToolbar){
-                val toolbar = LayoutInflater.from(this@FragmentContainerActivity).inflate(R.layout.layout_toolbar,null)
-                mBinding.header.addView(toolbar)
+                val toolbarView = LayoutInflater.from(this@FragmentContainerActivity).inflate(R.layout.layout_toolbar,null)
+
+                mBinding.header.addView(toolbarView)
             }
             setUpActionBar()
             values?.get("title")?.let { tit ->
@@ -97,11 +98,11 @@ class FragmentContainerActivity : BaseVmActivityNew<CommUiFragmentContainerBindi
             args: FragmentArgs?,
             requestCode: Int
         ) {
-            launchForResult(fragment.activity as BaseVmActivity<*>?, clazz, args, requestCode)
+            launchForResult(fragment.activity as BaseVmActivityNew<*>?, clazz, args, requestCode)
         }
 
         fun launchForResult(
-            from: BaseVmActivity<*>?,
+            from: BaseVmActivityNew<*>?,
             clazz: Class<out Fragment?>,
             args: FragmentArgs?,
             requestCode: Int

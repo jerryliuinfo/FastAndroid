@@ -1,11 +1,6 @@
 package com.apache.fastandroid.article
 
-import com.apache.fastandroid.home.network.HomeNetwork
-import com.apache.fastandroid.network.model.Article
-import com.apache.fastandroid.network.model.HomeArticleResponse
-import com.apache.fastandroid.network.response.BaseResponse
 import com.apache.fastandroid.network.response.EmptyResponse
-import com.apache.fastandroid.network.retrofit.ApiEngine
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

@@ -20,6 +20,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.cheese.CheeseActivity
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
 import com.apache.fastandroid.demo.kt.coroutine.*
 import com.apache.fastandroid.demo.room.RoomDemoFragment
 import com.apache.fastandroid.demo.sunflower.fragement.SunFlowerHomeViewPagerFragment
@@ -70,6 +71,7 @@ class MainActivity : BaseVmActivityNew<ActivityMainNewBinding>(ActivityMainNewBi
 //        FragmentContainerActivity.launch(this, CoroutineCancelDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, CoroutineCancelTimeoutDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, CoroutineContextDispatcherDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, FlowDemoFragment::class.java,null)
 //        launchActivity<CheeseActivity>(this)
     }
