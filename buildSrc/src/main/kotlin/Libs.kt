@@ -1,24 +1,28 @@
-object Libs {
 
 
+
+
+/**
+ * AndroidX相关依赖
+ *
+ * @author zwb
+ * @since 2/27/22
+ */
+object AndroidX {
     const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
-
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val material = "com.google.android.material:material:${Versions.material}"
-    const val swiperefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
-    const val cardview = "androidx.cardview:cardview:${Versions.cardview}"
-    const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
-    const val palette = "androidx.palette:palette-ktx:1.0.0"
-
-    const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    const val swiperefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     const val activity_ktx = "androidx.activity:activity-ktx:${Versions.activity_ktx}"
     const val fragment_ktx = "androidx.fragment:fragment-ktx:${Versions.fragment_ktx}"
-    const val workManager = "androidx.work:work-runtime-ktx:${Versions.workmanager}"
-
-
+    const val cardview = "androidx.cardview:cardview:${Versions.cardview}"
+    const val palette = "androidx.palette:palette-ktx:1.0.0"
     const val preference = "androidx.preference:preference:${Versions.preference}"
+}
+
+object Libs {
 
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
@@ -36,7 +40,6 @@ object Libs {
     const val qmui = "com.qmuiteam:qmui:2.0.0-alpha10"
     const val flexibledivider = "om.yqritc:recyclerview-flexibledivider:1.4.0"
 
-    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
 
 
     const val agp = "com.android.tools.build:gradle:${Versions.agp}"
@@ -64,11 +67,6 @@ object Libs {
         "io.reactivex.rxjava3:rxjava:${Versions.rxjava}",
         "io.reactivex.rxjava3:rxandroid:${Versions.rxjava}"
     )
-
-    val bugly = arrayOf(
-        "com.tencent.bugly:crashreport:${Versions.bugly}",
-    )
-
 
     val otherThirdLibs = arrayOf(
         "com.github.goweii:AnyLayer:4.1.4-androidx",
@@ -131,9 +129,12 @@ object Test{
     )
 }
 
+
+
+
+
 object Kotlin{
     val kotlin = arrayOf(
-//        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}",
         "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}",
         "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     )
@@ -155,6 +156,9 @@ object Jetpack{
         "androidx.navigation:navigation-runtime-ktx:${Versions.navigationVersion}"
     )
 
+    val workManager = "androidx.work:work-runtime-ktx:${Versions.workmanager}"
+
+
     val room = arrayOf(
         "androidx.room:room-runtime:${Versions.Room}",
         "androidx.room:room-ktx:${Versions.Room}"
@@ -175,7 +179,24 @@ object Jetpack{
 }
 
 
+/**
+ * SDK相关依赖
+ *
+ * @author zwb
+ * @since 2/27/22
+ */
+object SDK {
+    // 腾讯Bugly 异常上报
+    const val TencentBugly = "com.tencent.bugly:crashreport:${Versions.bugly}"
 
+    // Bugly native异常上报
+    const val TencentBuglyNative = "com.tencent.bugly:nativecrashreport:${Versions.buglyNative}"
 
+    // 腾讯X5WebView
+    const val TencentTBSX5 = "com.tencent.tbs.tbssdk:sdk:43939"
+}
 
+object Compiler {
+
+}
 

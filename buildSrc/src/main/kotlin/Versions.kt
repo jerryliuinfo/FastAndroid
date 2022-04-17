@@ -40,7 +40,8 @@ object Versions {
     const val qmui = "2.0.0-alpha10"
     const val rxjava = "3.0.0"
     const val immersionbar = "3.0.0"
-    const val bugly = "4.0.0"
+    const val bugly = "3.3.9"
+    const val buglyNative = "3.8.0"
     const val brvh = "2.9.30"
 
     const val junit = "4.12"

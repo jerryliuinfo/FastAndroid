@@ -74,8 +74,6 @@ android {
         applicationId "com.apache.fastandroid"
         minSdkVersion AppConfig.minSdk
         targetSdkVersion AppConfig.targetSdk
-
-//        versionCode getAppVersionCode()
         versionCode AppConfig.versionCode
         versionName AppConfig.versionName
 
@@ -412,19 +410,19 @@ dependencies {
     println("isTopicRunAlone:${isTopicRunAlone}")
 
     implementation(*Kotlin.kotlin)
-    implementation Libs.appCompat
-    implementation Libs.material
-    implementation Libs.cardview
-    implementation Libs.constraintLayout
 
-    implementation Libs.core_ktx
-    implementation Libs.activity_ktx
-    implementation Libs.fragment_ktx
+    implementation AndroidX.appCompat
+    implementation AndroidX.material
+    implementation AndroidX.cardview
+    implementation AndroidX.constraintLayout
+    implementation AndroidX.core_ktx
 
-    implementation Libs.swiperefreshLayout
-//    implementation Libs.recyclerview
-    implementation Libs.palette
-    implementation Libs.preference
+    implementation AndroidX.activity_ktx
+    implementation AndroidX.fragment_ktx
+    implementation AndroidX.swiperefreshLayout
+    implementation AndroidX.palette
+    implementation AndroidX.preference
+
 
     implementation Libs.glide
     implementation Libs.gson
@@ -433,7 +431,8 @@ dependencies {
     implementation Libs.mmkv
     implementation Libs.qmui
 
-    implementation (*Libs.bugly)
+    implementation (SDK.TencentBugly)
+    implementation (SDK.TencentBuglyNative)
 
     implementation (*Libs.rxJava)
     implementation(*Libs.retrofit)
@@ -458,7 +457,7 @@ dependencies {
 
     implementation rootProject.ext.androidLib.multidex
 
-    implementation Libs.workManager
+    implementation Jetpack.workManager
 
 
 

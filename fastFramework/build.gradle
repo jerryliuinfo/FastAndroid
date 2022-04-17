@@ -1,86 +1,12 @@
 
-apply plugin: 'com.android.library'
-
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
 apply from: '../gradle-mvn-push.gradle'
 
+apply from: '../base_lib.gradle'
 
-android {
-    compileSdkVersion AppConfig.compileSdk
-
-    defaultConfig {
-        minSdkVersion AppConfig.minSdk
-        targetSdkVersion AppConfig.targetSdk
-
-        /**
-         * defaultConfig 下的consumerProguardFiles 配置的*.pro文件将会在library
-         module打包成aar时，以proguard.txt的形式存在，将参与到集成这个arr的App编译中，但不参与这个library
-         module打包成aar的编译过程；
-         consumerProguardFiles 会被 主App模块 作为混淆文件使用导入，而 proguardFiles 则不会。
-         这个属性只作用于我们创建的 library 中
-         ————————————————
-         */
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            /**
-             * buildType下proguardFiles配置的*.pro文件作用与library
-             module打包成aar的编译过程，仅作用于本module的编译混淆过程。
-             */
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-        }
-    }
-
-
-    compileOptions {
-//        coreLibraryDesugaringEnabled true
-        sourceCompatibility rootProject.sourceCompatibilityVersion
-        targetCompatibility rootProject.targetCompatibilityVersion
-    }
-    kotlinOptions {
-        jvmTarget = rootProject.sourceCompatibilityVersion
-    }
-
-    buildFeatures{
-        dataBinding = true
-        // for view binding :
-         viewBinding = true
-    }
-
-
-    lintOptions {
-        abortOnError false
-    }
-
-
-}
 
 
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-
-
-    implementation Libs.appCompat
-    implementation Libs.material
-    implementation Libs.constraintLayout
-
-    implementation Libs.core_ktx
-    implementation Libs.activity_ktx
-    implementation Libs.fragment_ktx
-
-    implementation Libs.swiperefreshLayout
-    implementation Libs.cardview
-//    implementation Libs.recyclerview
-    implementation Libs.palette
-
-    implementation Libs.kotlin_stdlib
 
     implementation Libs.glide
     implementation Libs.gson
@@ -91,11 +17,9 @@ dependencies {
     implementation (*Libs.rxJava)
     implementation(*Libs.immersionbar)
 
-
     implementation(*Jetpack.lifecycle)
     implementation(*Jetpack.navigation)
-    implementation (*Jetpack.hit)
-    kapt (*Jetpack.hit_compiler)
+
 }
 
 
