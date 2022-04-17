@@ -6,7 +6,7 @@ import com.apache.fastandroid.databinding.FragmentJetpackLivedataWrongUsageBindi
 import com.apache.fastandroid.jetpack.relearnandroid.vm.ShareViewModel
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.launchActivity
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 
@@ -14,7 +14,7 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity
  * Created by Jerry on 2020/11/5.
  *  //https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150
  */
-class LiveDataWrongUsageActivity : BaseVmActivityNew<FragmentJetpackLivedataWrongUsageBinding>(FragmentJetpackLivedataWrongUsageBinding::inflate){
+class LiveDataWrongUsageActivity : BaseVmActivity<FragmentJetpackLivedataWrongUsageBinding>(FragmentJetpackLivedataWrongUsageBinding::inflate){
 
 
     private lateinit var shareViewModel: ShareViewModel

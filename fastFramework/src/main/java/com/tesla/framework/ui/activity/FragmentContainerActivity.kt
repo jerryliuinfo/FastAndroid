@@ -11,7 +11,7 @@ import com.tesla.framework.common.util.log.FastLog
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.databinding.CommUiFragmentContainerBinding
 
-class FragmentContainerActivity : BaseVmActivityNew<CommUiFragmentContainerBinding>(CommUiFragmentContainerBinding::inflate) {
+class FragmentContainerActivity : BaseVmActivity<CommUiFragmentContainerBinding>(CommUiFragmentContainerBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         val className = intent.getStringExtra(EXTRA_CLASS_NAME)
         if (TextUtils.isEmpty(className)) {
@@ -96,11 +96,11 @@ class FragmentContainerActivity : BaseVmActivityNew<CommUiFragmentContainerBindi
             args: FragmentArgs?,
             requestCode: Int
         ) {
-            launchForResult(fragment.activity as BaseVmActivityNew<*>?, clazz, args, requestCode)
+            launchForResult(fragment.activity as BaseVmActivity<*>?, clazz, args, requestCode)
         }
 
         fun launchForResult(
-            from: BaseVmActivityNew<*>?,
+            from: BaseVmActivity<*>?,
             clazz: Class<out Fragment?>,
             args: FragmentArgs?,
             requestCode: Int

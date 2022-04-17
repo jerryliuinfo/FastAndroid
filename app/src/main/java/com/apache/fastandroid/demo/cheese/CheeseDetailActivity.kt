@@ -18,17 +18,14 @@ package com.apache.fastandroid.demo.cheese
 import android.os.Bundle
 import android.view.Menu
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityCheeseDetailBinding
-import com.apache.fastandroid.databinding.ActivityCheeseMainBinding
 import com.apache.fastandroid.demo.cheese.Cheeses.randomCheeseDrawable
 import com.bumptech.glide.Glide
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
-class CheeseDetailActivity : BaseVmActivityNew<ActivityCheeseDetailBinding>(ActivityCheeseDetailBinding::inflate) {
+class CheeseDetailActivity : BaseVmActivity<ActivityCheeseDetailBinding>(ActivityCheeseDetailBinding::inflate) {
 
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)

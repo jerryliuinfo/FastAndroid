@@ -3,17 +3,16 @@ package com.apache.fastandroid.demo.temp.activityresult
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.databinding.ActivityResultApiBinding
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
 /**
  * Created by Jerry on 2022/3/10.
  * https://mp.weixin.qq.com/s/C62WVau-AU0MH7S4Ix85ew
  */
-class ActivityResultDemoActivity:BaseVmActivityNew<ActivityResultApiBinding>(ActivityResultApiBinding::inflate) {
+class ActivityResultDemoActivity:BaseVmActivity<ActivityResultApiBinding>(ActivityResultApiBinding::inflate) {
 
 
     private val requestDataLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->

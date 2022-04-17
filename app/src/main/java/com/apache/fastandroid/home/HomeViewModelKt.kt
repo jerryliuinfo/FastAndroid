@@ -34,6 +34,7 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
             _homeArticleLiveData.value = articles
         },{
             it.printStackTrace()
+            _homeArticleLiveData.value = HomeArticleResponse(0, emptyList(),0,true,0,10,20)
         })
     }
 

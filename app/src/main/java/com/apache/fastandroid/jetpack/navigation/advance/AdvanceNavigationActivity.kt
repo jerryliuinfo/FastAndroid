@@ -2,7 +2,6 @@ package com.apache.fastandroid.jetpack.navigation.advance
 
 import android.os.Bundle
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -10,12 +9,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityNavigationAdvanceBinding
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
 /**
  * Created by Jerry on 2022/3/12.
  */
-class AdvanceNavigationActivity:BaseVmActivityNew<ActivityNavigationAdvanceBinding>(ActivityNavigationAdvanceBinding::inflate) {
+class AdvanceNavigationActivity:BaseVmActivity<ActivityNavigationAdvanceBinding>(ActivityNavigationAdvanceBinding::inflate) {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration

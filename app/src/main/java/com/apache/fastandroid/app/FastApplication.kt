@@ -46,6 +46,7 @@ import com.wanjian.cockroach.Cockroach
 import com.wanjian.cockroach.DebugSafeModeUI
 import com.wanjian.cockroach.ExceptionHandler
 import com.wxy.appstartfaster.dispatcher.AppStartTaskDispatcher
+import com.zwb.lib_base.utils.network.NetworkStateClient
 import dagger.hilt.android.HiltAndroidApp
 import dev.b3nedikt.viewpump.ViewPump.init
 import timber.log.TimerLogger
@@ -74,6 +75,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
         val time = measureTimeMillis {
             context = this
             mAppViewModelStore = ViewModelStore()
+            initAndroidUtil()
             initLog()
             initAop()
             initCrash()
@@ -81,7 +83,9 @@ class FastApplication : Application(), ViewModelStoreOwner {
             //        initCockroach();
             initLoop()
             Logger.d("Application onCreate ")
-            initAndroidUtil()
+
+            NetworkStateClient.register()
+
 
 //        initTaskByTaskDispatcher();
 //        initTaskByAppFaster();

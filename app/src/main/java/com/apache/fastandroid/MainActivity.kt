@@ -18,9 +18,9 @@ import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.tesla.framework.component.eventbus.FastBus
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
-class MainActivity : BaseVmActivityNew<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
+class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
     private val selecteId = -1
    /* override fun bindView(): ActivityMainNewBinding {
         return ActivityMainNewBinding.inflate(layoutInflater)

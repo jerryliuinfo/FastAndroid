@@ -4,14 +4,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.ViewPumpAppCompatDelegate
 import com.apache.fastandroid.databinding.BlacktechViewPumpBinding
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 import kotlinx.android.synthetic.main.blacktech_view_pump.*
 
 /**
  * Created by Jerry on 2021/10/19.
  * https://github.com/B3nedikt/ViewPump
  */
-class ViewPumpDemoActivity:BaseVmActivityNew<BlacktechViewPumpBinding>(BlacktechViewPumpBinding::inflate) {
+class ViewPumpDemoActivity:BaseVmActivity<BlacktechViewPumpBinding>(BlacktechViewPumpBinding::inflate) {
 
 
     private var appCompatDelegate: AppCompatDelegate? = null

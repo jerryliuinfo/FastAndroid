@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.tesla.framework.ui.fragment.BaseVBFragment
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.fragment.ABaseFragment
 
 /**
@@ -66,7 +66,7 @@ class BizFragment : ABaseFragment() {
             if (bizFragment == null) {
                 bizFragment = BizFragment()
                 bizFragment.mActivity = activity
-                if (activity is BaseVmActivityNew<*> && activity.isDestroyed) {
+                if (activity is BaseVmActivity<*> && activity.isDestroyed) {
                     return bizFragment
                 }
                 activity.supportFragmentManager.beginTransaction()

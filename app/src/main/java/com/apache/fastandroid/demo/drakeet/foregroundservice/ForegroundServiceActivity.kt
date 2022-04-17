@@ -7,12 +7,12 @@ import android.os.Handler
 import android.widget.TextView
 import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
 /**
  * Created by Jerry on 2021/10/18.
  */
-class ForegroundServiceActivity:BaseVmActivityNew<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
+class ForegroundServiceActivity:BaseVmActivity<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
     private lateinit var msg:String
 
     private val handler = Handler()

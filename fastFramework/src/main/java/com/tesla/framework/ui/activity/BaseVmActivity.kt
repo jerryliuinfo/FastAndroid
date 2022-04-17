@@ -13,19 +13,25 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.viewbinding.ViewBinding
+import com.blankj.utilcode.util.ToastUtils
 import com.gyf.immersionbar.ktx.immersionBar
 import com.tesla.framework.R
+import com.tesla.framework.common.util.AndroidBugFixUtils
+import com.tesla.framework.component.livedata.NetworkLiveData
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.network.NetworkStateManager
 import com.tesla.framework.ui.fragment.ABaseFragment
 import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
+import com.zwb.lib_base.utils.network.AutoRegisterNetListener
+import com.zwb.lib_base.utils.network.NetworkStateChangeListener
+import com.zwb.lib_base.utils.network.NetworkTypeEnum
 import java.lang.ref.WeakReference
 
 /**
  * Created by JerryLiu on 17/04/08.
  */
-abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: LayoutInflater) -> V) : AppCompatActivity(),
-    OnToolbarDoubleClickListener {
+abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutInflater) -> V) : AppCompatActivity(),
+    OnToolbarDoubleClickListener, NetworkStateChangeListener {
     protected lateinit var activityHelper: BaseActivityHelper
     protected lateinit var mBinding: V
 
@@ -52,12 +58,24 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
         setContentView(mBinding.root)
         activityHelper = BaseActivityHelper(this,this)
         initViewModel()
-//        setUpActionBar()
-        lifecycle.addObserver(NetworkStateManager.getInstance())
+        initNetworkListener()
+
         initView(mBinding.root)
         layoutInit(savedInstanceState)
 
 
+    }
+
+    /**
+     * 初始化网络状态监听
+     * @return Unit
+     */
+    private fun initNetworkListener() {
+        lifecycle.addObserver(AutoRegisterNetListener(this))
+//        NetworkLiveData.getInstance().observe(this){
+//            Logger.d("network it: $it")
+//        }
+//        lifecycle.addObserver(NetworkStateManager.getInstance())
     }
 
 
@@ -209,6 +227,7 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
     override fun onDestroy() {
         super.onDestroy()
         activity = null
+        AndroidBugFixUtils.fixSoftInputLeaks(this)
     }
 
     protected fun <T : ViewModel?> getActivityViewModel(modelClass: Class<T>): T {
@@ -253,6 +272,15 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun networkConnectChange(isConnected: Boolean) {
+        Logger.d("networkConnectChange isConnected:$isConnected")
+        ToastUtils.showShort("网络状况: $isConnected")
+    }
+
+    override fun networkTypeChange(type: NetworkTypeEnum) {
+        Logger.d("networkTypeChange type:$type")
     }
 
 

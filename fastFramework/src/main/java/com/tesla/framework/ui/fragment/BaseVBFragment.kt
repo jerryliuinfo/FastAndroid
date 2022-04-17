@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.annotation.IdRes
 import androidx.viewbinding.ViewBinding
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
 
 /**
@@ -39,7 +39,7 @@ abstract class BaseVBFragment<T : ViewBinding>(val inflater: (inflater: LayoutIn
         super.onViewCreated(view, savedInstanceState)
 
         toolbarTitle()?.let {
-            val base = activity as BaseVmActivityNew<T>
+            val base = activity as BaseVmActivity<T>
             base.setToolbarTitle(it)
         }
         layoutInit(layoutInflater,savedInstanceState)

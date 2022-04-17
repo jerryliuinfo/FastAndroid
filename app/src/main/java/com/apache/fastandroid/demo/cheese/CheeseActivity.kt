@@ -1,7 +1,6 @@
 package com.apache.fastandroid.demo.cheese
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
@@ -16,13 +15,12 @@ import com.apache.fastandroid.databinding.ActivityCheeseMainBinding
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.tesla.framework.ui.activity.BaseVmActivityNew
-import com.tesla.framework.ui.activity.FragmentContainerActivity
+import com.tesla.framework.ui.activity.BaseVmActivity
 
 /**
  * Created by Jerry on 2022/4/5.
  */
-class CheeseActivity:BaseVmActivityNew<ActivityCheeseMainBinding>(ActivityCheeseMainBinding::inflate) {
+class CheeseActivity:BaseVmActivity<ActivityCheeseMainBinding>(ActivityCheeseMainBinding::inflate) {
 
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)

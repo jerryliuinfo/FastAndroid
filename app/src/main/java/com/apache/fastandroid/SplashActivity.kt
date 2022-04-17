@@ -7,12 +7,12 @@ import android.os.Parcelable
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.databinding.ActivitySplashBinding
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
 /**
  * Created by jerryliu on 2017/4/10.
  */
-class SplashActivity : BaseVmActivityNew<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
+class SplashActivity : BaseVmActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
 
 
     override fun layoutInit(savedInstanceState: Bundle?) {

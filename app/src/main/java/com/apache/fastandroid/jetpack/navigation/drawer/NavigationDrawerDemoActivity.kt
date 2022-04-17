@@ -3,10 +3,8 @@ package com.apache.fastandroid.jetpack.navigation.drawer
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -16,12 +14,12 @@ import androidx.navigation.ui.*
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.NavigationDrawerActivityBinding
 import com.google.android.material.navigation.NavigationView
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
 /**
  * Created by Jerry on 2022/3/11.
  */
-class NavigationDrawerDemoActivity:BaseVmActivityNew<NavigationDrawerActivityBinding>(NavigationDrawerActivityBinding::inflate) {
+class NavigationDrawerDemoActivity:BaseVmActivity<NavigationDrawerActivityBinding>(NavigationDrawerActivityBinding::inflate) {
 
     private lateinit var appBarConfiguration : AppBarConfiguration
 

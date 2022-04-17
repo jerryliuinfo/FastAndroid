@@ -13,12 +13,12 @@ import com.just.agentweb.AgentWeb
 import com.just.agentweb.WebChromeClient
 import com.just.agentweb.WebViewClient
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
 /**
  * Created by Jerry on 2021/9/23.
  */
-class ArticleDetailActivity : BaseVmActivityNew<ActivityArticleDetailBinding>(ActivityArticleDetailBinding::inflate) {
+class ArticleDetailActivity : BaseVmActivity<ActivityArticleDetailBinding>(ActivityArticleDetailBinding::inflate) {
     private var articleDetailViewModel: ArticleDetailViewModel? = null
     private val mWebChromeClient: WebChromeClient = object : WebChromeClient() {
         override fun onReceivedTitle(view: WebView, title: String) {

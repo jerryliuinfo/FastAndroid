@@ -2,12 +2,12 @@ package com.apache.fastandroid.demo.drakeet
 
 import android.os.Bundle
 import com.apache.fastandroid.databinding.DrakeetLooperActivityBinding
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
 /**
  * Created by Jerry on 2021/10/18.
  */
-class UnDeclareActivity: BaseVmActivityNew<DrakeetLooperActivityBinding>(DrakeetLooperActivityBinding::inflate) {
+class UnDeclareActivity: BaseVmActivity<DrakeetLooperActivityBinding>(DrakeetLooperActivityBinding::inflate) {
 
 
     override fun layoutInit(savedInstanceState: Bundle?) {

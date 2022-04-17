@@ -1,6 +1,5 @@
 package com.tesla.framework.ui.activity
 
-import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -10,7 +9,7 @@ import com.tesla.framework.databinding.ActivitySingleFragmentBinding
 /**
  * Boilerplate for a FragmentActivity containing a single stack of Fragments.
  */
- abstract class SingleFragmentActivity<T : Fragment> : BaseVmActivityNew<ActivitySingleFragmentBinding>(ActivitySingleFragmentBinding::inflate) {
+ abstract class SingleFragmentActivity<T : Fragment> : BaseVmActivity<ActivitySingleFragmentBinding>(ActivitySingleFragmentBinding::inflate) {
     lateinit var fragment: T
 
     override fun initView(rootView: View?) {

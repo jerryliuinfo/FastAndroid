@@ -11,12 +11,12 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityNavigationDemoBinding
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.activity.BaseVmActivity
 
 /**
  * Created by Jerry on 2022/3/10.
  */
-class NavigationDemoActivity:BaseVmActivityNew<ActivityNavigationDemoBinding>(ActivityNavigationDemoBinding::inflate) {
+class NavigationDemoActivity:BaseVmActivity<ActivityNavigationDemoBinding>(ActivityNavigationDemoBinding::inflate) {
 
     private lateinit var appBarConfiguration : AppBarConfiguration
 

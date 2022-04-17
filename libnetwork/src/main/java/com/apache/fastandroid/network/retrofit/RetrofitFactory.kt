@@ -1,4 +1,5 @@
 package com.apache.fastandroid.network.retrofit
+import android.os.Build
 import com.apache.fastandroid.network.interceptor.CookieInterceptor
 import com.apache.fastandroid.network.interceptor.HeaderInterceptor
 import com.apache.fastandroid.network.interceptor.HttpLogInterceptor
@@ -10,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -37,6 +39,7 @@ class RetrofitFactory private constructor() {
     }
 
     companion object {
+        private const val TIMEOUT = 10L
         val instance by lazy {
             RetrofitFactory()
         }
@@ -44,12 +47,21 @@ class RetrofitFactory private constructor() {
 
     private fun initOkHttpClient(): OkHttpClient {
 
-        return OkHttpClient.Builder()
-            .addInterceptor(HeaderInterceptor())
-            .addInterceptor(HttpLogInterceptor())
-            .addInterceptor(CookieInterceptor())
-            .addInterceptor(LoginInterceptor())
-            .build()
+        return OkHttpClient.Builder().apply {
+            connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+            readTimeout(TIMEOUT, TimeUnit.SECONDS)
+            retryOnConnectionFailure(true)
+            //https://t.zsxq.com/nUnEune
+            if (Build.VERSION.SDK_INT >= 28) {
+                pingInterval(3, TimeUnit.SECONDS)
+            }
+
+        }.apply {
+            addInterceptor(HeaderInterceptor())
+            addInterceptor(HttpLogInterceptor())
+            addInterceptor(CookieInterceptor())
+            addInterceptor(LoginInterceptor())
+        }.build()
     }
     /*private fun initLoggingIntercept(): Interceptor {
         return HttpLoggingInterceptor { message ->
