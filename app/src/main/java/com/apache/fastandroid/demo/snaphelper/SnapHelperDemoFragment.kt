@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.SnapheplerBinding
 import com.apache.fastandroid.widget.SpaceItemDecoration
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_demo_list.*
  * 用于辅助RecyclerView在滚动结束时将Item对齐到某个位置。特别是列表横向滑动时，
  * 很多时候不会让列表滑到任意位置，而是会有一定的规则限制，这时候就可以通过SnapHelper来定义对齐规则了
  */
-class SnapHelperDemoFragment: BaseStatusFragmentNew() {
+class SnapHelperDemoFragment: BaseVBFragment<SnapheplerBinding>(SnapheplerBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
@@ -41,9 +42,4 @@ class SnapHelperDemoFragment: BaseStatusFragmentNew() {
     }
 
 
-
-
-    override fun getLayoutId(): Int {
-        return R.layout.snaphepler
-    }
 }

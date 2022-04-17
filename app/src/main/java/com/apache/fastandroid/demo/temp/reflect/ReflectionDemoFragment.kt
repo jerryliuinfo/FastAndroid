@@ -7,19 +7,18 @@ import android.view.View
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.TempReflectionBinding
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.temp_reflection.*
 
 /**
  * Created by Jerry on 2021/10/27.
  */
-class ReflectionDemoFragment:BaseFragment() {
+class ReflectionDemoFragment:BaseVBFragment<TempReflectionBinding>(TempReflectionBinding::inflate) {
 
     private lateinit var drawerLayout:DrawerLayout
-    override fun getLayoutId(): Int {
-        return R.layout.temp_reflection
-    }
+
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
@@ -71,6 +70,10 @@ class ReflectionDemoFragment:BaseFragment() {
         method.isAccessible = true
         method.invoke(drawerLayout,startDrawer,100f)
 
+    }
+
+    companion object{
+        private const val TAG = "ReflectionDemoFragment"
     }
 
 }

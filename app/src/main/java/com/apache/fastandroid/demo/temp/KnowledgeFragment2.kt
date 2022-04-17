@@ -5,13 +5,13 @@ import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.GridLayoutManager
-import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
+import com.apache.fastandroid.databinding.FragmentTempKnowledge2Binding
 import com.apache.fastandroid.demo.temp.adapter.KnowlegeAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
 import kotlinx.android.synthetic.main.fragment_temp_knowledge2.*
 import java.lang.StringBuilder
@@ -19,18 +19,13 @@ import java.lang.StringBuilder
 /**
  * Created by Jerry on 2021/9/6.
  */
-class KnowledgeFragment2: BaseStatusFragmentNew() {
+class KnowledgeFragment2: BaseVBFragment<FragmentTempKnowledge2Binding>(FragmentTempKnowledge2Binding::inflate) {
 
     private val items:MutableList<String> = ArrayList()
     companion object{
         private const val TAG = "KnowledgeFragment"
     }
     private lateinit var adapter: BaseQuickAdapter<ViewItemBean,BaseViewHolder>
-
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_temp_knowledge2
-    }
-
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

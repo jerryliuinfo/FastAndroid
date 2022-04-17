@@ -7,28 +7,27 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.CustomViewClipchildBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.clip_to_padding_layout_item.view.*
 import kotlinx.android.synthetic.main.custom_view_clip_to_padding.*
 
 /**
  * Created by Jerry on 2020/12/2.
  */
-class ClipToPaddingFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.custom_view_clip_to_padding
-    }
+class ClipToPaddingFragment :
+    BaseVBFragment<CustomViewClipchildBinding>(CustomViewClipchildBinding::inflate) {
 
-    companion object{
+    companion object {
         private val list = arrayListOf(
-                                                  "A","B","C","D","E",
-                                                  "A","B","C","D","E",
-                                                  "A","B","C","D","E",
-                                                  "A","B","C","D","E",
-                                                    "A","B","C","D","E",
-                                                    "A","B","C","D","E",
-                                                    "A","B","C","D","E",
-                                                    "A","B","C","D","E"
+            "A", "B", "C", "D", "E",
+            "A", "B", "C", "D", "E",
+            "A", "B", "C", "D", "E",
+            "A", "B", "C", "D", "E",
+            "A", "B", "C", "D", "E",
+            "A", "B", "C", "D", "E",
+            "A", "B", "C", "D", "E",
+            "A", "B", "C", "D", "E"
         )
     }
 
@@ -37,14 +36,19 @@ class ClipToPaddingFragment: BaseStatusFragmentNew() {
 
         recycleview.apply {
             adapter = MyAdapter(list)
-            layoutManager = LinearLayoutManager(this@ClipToPaddingFragment.context,RecyclerView.VERTICAL,false)
+            layoutManager = LinearLayoutManager(
+                this@ClipToPaddingFragment.context,
+                RecyclerView.VERTICAL,
+                false
+            )
         }
     }
 
-    private class MyAdapter(val data:List<String>) : RecyclerView.Adapter<ItemViewHolder>() {
+    private class MyAdapter(val data: List<String>) : RecyclerView.Adapter<ItemViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.clip_to_padding_layout_item, parent, false)
+            val itemView = LayoutInflater.from(parent.context)
+                .inflate(R.layout.clip_to_padding_layout_item, parent, false)
             return ItemViewHolder(itemView)
         }
 
@@ -58,7 +62,7 @@ class ClipToPaddingFragment: BaseStatusFragmentNew() {
 
     }
 
-    private class ItemViewHolder(val view: View): RecyclerView.ViewHolder(view)
+    private class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 
 
 }

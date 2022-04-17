@@ -3,7 +3,7 @@ package com.apache.fastandroid.demo.component.loadsir
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.LoadsirActivityActivityConvertorBinding
 import com.apache.fastandroid.demo.component.loadsir.callback.EmptyCallback
 import com.apache.fastandroid.demo.component.loadsir.callback.ErrorCallback
 import com.apache.fastandroid.demo.component.loadsir.callback.LoadingCallback
@@ -13,23 +13,20 @@ import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.Convertor
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
-import kotlinx.android.synthetic.main.loadsir_activity_activity_convertor.*
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import java.util.*
 import kotlin.concurrent.thread
 
 /**
  * Created by  on 2021/12/18.
  */
-class LoadSirConvertorActivity:BaseStatusFragmentNew() {
+class LoadSirConvertorActivity:BaseVBFragment<LoadsirActivityActivityConvertorBinding>(LoadsirActivityActivityConvertorBinding::inflate) {
     private val mHttpResult = HttpResult(Random().nextInt(2), ArrayList())
     private val SUCCESS_CODE = 0x00
     private val ERROR_CODE = 0x01
     private lateinit var loadService: LoadService<HttpResult>
 
-    override fun getLayoutId(): Int {
-        return R.layout.loadsir_activity_activity_convertor
-    }
+
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

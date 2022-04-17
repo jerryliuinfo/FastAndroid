@@ -4,21 +4,16 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.TempShouldDelayPressStateBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 
 /**
  * Created by Jerry on 2021/3/1.
  */
-class ViewGroupShouldDelayPressStateFragment: BaseStatusFragmentNew() {
+class ViewGroupShouldDelayPressStateFragment: BaseVBFragment<TempShouldDelayPressStateBinding>(TempShouldDelayPressStateBinding::inflate) {
     companion object{
         val TAG = "ViewGroupShouldDelayPressStateFragment"
-    }
-
-
-    override fun getLayoutId(): Int {
-        return R.layout.temp_should_delay_press_state
     }
 
     @SuppressLint("RestrictedApi")

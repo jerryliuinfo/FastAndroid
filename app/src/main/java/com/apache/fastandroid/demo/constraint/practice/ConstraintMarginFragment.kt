@@ -2,16 +2,12 @@ package com.apache.fastandroid.demo.constraint.practice
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.LinerMarginBinding
 import com.tesla.framework.common.util.log.FastLog
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.constraint_margin.*
 
-class ConstraintMarginFragment: BaseStatusFragmentNew() {
-
-    override fun getLayoutId(): Int {
-        return R.layout.liner_margin
-    }
+class ConstraintMarginFragment: BaseVBFragment<LinerMarginBinding>(LinerMarginBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

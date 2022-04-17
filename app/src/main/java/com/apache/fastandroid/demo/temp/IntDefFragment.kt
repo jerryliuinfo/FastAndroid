@@ -1,57 +1,32 @@
-package com.apache.fastandroid.demo.temp;
+package com.apache.fastandroid.demo.temp
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-
-import com.apache.fastandroid.R;
-import com.tesla.framework.ui.fragment.BaseFragment;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-
-import androidx.annotation.IntDef;
+import androidx.annotation.IntDef
+import com.apache.fastandroid.databinding.FragmentCommonBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
+import java.lang.annotation.Retention
+import java.lang.annotation.RetentionPolicy
 
 /**
  * Created by Jerry on 2021/10/22.
  */
-public class IntDefFragment extends BaseFragment {
-   @Override
-   public int getLayoutId() {
-      return R.layout.fragment_common;
-   }
-
-   @Override
-   public void layoutInit(LayoutInflater inflater, Bundle savedInstanceState) {
-      super.layoutInit(inflater, savedInstanceState);
-
-   }
-
-   public static final int GET_ONE               = 0x00000002;
-
-   public static final int GET_TWO               = 0x00000004;
-
-   public static final int GET_THREE             = 0x00000008;
+class IntDefFragment : BaseVBFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
 
 
-   @IntDef({
-           GET_ONE,
-           GET_TWO,
-           GET_THREE,
-   })
-   @Retention(RetentionPolicy.SOURCE)
-   public @interface TypeInfoFlags {
 
-   }
+    @IntDef(GET_ONE, GET_TWO, GET_THREE)
+    @Retention(RetentionPolicy.SOURCE)
+    annotation class TypeInfoFlags
 
+    fun getTypeBean(@TypeInfoFlags flags: Int) {
+        if (flags and GET_ONE != 0) {
+        } else if (flags and GET_TWO != 0) {
+        } else if (flags and GET_THREE != 0) {
+        }
+    }
 
-   public void getTypeBean(@TypeInfoFlags int flags){
-      if ( (flags & GET_ONE ) != 0) {
-
-      }else if ((flags & GET_TWO ) != 0){
-
-      }else if ((flags & GET_THREE ) != 0){
-
-      }
-
-   }
+    companion object {
+        const val GET_ONE = 0x00000002
+        const val GET_TWO = 0x00000004
+        const val GET_THREE = 0x00000008
+    }
 }

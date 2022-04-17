@@ -7,7 +7,6 @@ import android.os.Handler
 import android.widget.TextView
 import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 /**

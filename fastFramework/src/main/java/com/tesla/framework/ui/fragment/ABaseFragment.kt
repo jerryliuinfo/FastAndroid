@@ -4,10 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.activity.ComponentActivity
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -15,12 +12,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.kingja.loadsir.core.LoadService
-import com.kingja.loadsir.core.LoadSir
 import com.tesla.framework.component.vm.ShareViewModel
 import com.tesla.framework.ui.fragment.view.BaseView
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
-import java.lang.IllegalStateException
 
 /**
  * Created by Jerry on 2022/3/10.
@@ -157,5 +152,23 @@ open class ABaseFragment:Fragment(),BaseView {
     }
 
     override fun showError(msg: String, key: String) {
+    }
+
+    /**
+     * Action的home被点击了
+     *
+     * @return
+     */
+    open fun onHomeClick(): Boolean {
+        return onBackClick()
+    }
+
+    /**
+     * 返回按键被点击了
+     *
+     * @return
+     */
+    open fun onBackClick(): Boolean {
+        return false
     }
 }

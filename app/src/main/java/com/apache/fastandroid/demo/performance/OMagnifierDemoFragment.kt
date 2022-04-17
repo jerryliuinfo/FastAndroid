@@ -2,21 +2,18 @@ package com.apache.fastandroid.demo.performance
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentMagnifierBinding
 import com.blankj.utilcode.util.Utils
 import com.microsoft.office.outlook.magnifierlib.Magnifier
 import com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.fragment_magnifier.*
 
 /**
  * Created by Jerry on 2022/1/3.
  */
-class OMagnifierDemoFragment:BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_magnifier
-    }
+class OMagnifierDemoFragment:BaseVBFragment<FragmentMagnifierBinding>(FragmentMagnifierBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

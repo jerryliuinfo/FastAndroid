@@ -1,75 +1,78 @@
-package com.tesla.framework.component;
+package com.tesla.framework.component
 
-import android.app.Activity;
-import android.content.Intent;
-
-import com.tesla.framework.ui.activity.BaseVmActivityNew;
-import com.tesla.framework.ui.fragment.BaseLifecycleFragment;
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew;
-
-import androidx.fragment.app.FragmentActivity;
+import android.app.Activity
+import androidx.fragment.app.FragmentActivity
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.activity.BaseVmActivityNew
+import com.tesla.framework.ui.fragment.ABaseFragment
 
 /**
  * Created by jerryliu on 2017/6/6.
  * Fragment是一个神器，是跨Activity和Fragment之前通讯的重要的桥梁
  */
+class BizFragment : ABaseFragment() {
+    private val realActivity: Activity?
+        private get() = if (activity != null) {
+            activity
+        } else mActivity
 
-public class BizFragment extends BaseStatusFragmentNew {
-    private FragmentActivity mActivity;
-    private static final String BIZ_FRAGMENT_TAG = "com.apache.fastandroid.base.BizFragment";
-    private Activity getRealActivity() {
-        if (getActivity() != null){
-            return getActivity();
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    companion object {
+        private const val BIZ_FRAGMENT_TAG = "com.apache.fastandroid.base.BizFragment"
+        operator fun get(activity: FragmentActivity): BizFragment? {
+            return activity.supportFragmentManager.findFragmentByTag(BIZ_FRAGMENT_TAG) as BizFragment?
         }
 
-        return mActivity;
-    }
-    static BizFragment get(FragmentActivity activity) {
-        return (BizFragment) activity.getSupportFragmentManager().findFragmentByTag(BIZ_FRAGMENT_TAG);
-    }
-
-
-
-    @Override
-    public int getLayoutId() {
-        return -1;
-    }
-
-    public static BizFragment createBizFragment(BaseLifecycleFragment fragment){
-        if (fragment != null && fragment.getActivity() != null){
-            BizFragment bizFragment = (BizFragment) fragment.getActivity().getSupportFragmentManager().findFragmentByTag(BIZ_FRAGMENT_TAG);
-            if (bizFragment == null){
-                bizFragment = new BizFragment();
-                fragment.getActivity().getSupportFragmentManager().
-                        beginTransaction().add(bizFragment,BIZ_FRAGMENT_TAG).commitAllowingStateLoss();
+        fun createBizFragment(fragment: BaseVBFragment<*>?): BizFragment? {
+            if (fragment != null && fragment.activity != null) {
+                var bizFragment = fragment.activity!!.supportFragmentManager.findFragmentByTag(
+                    BIZ_FRAGMENT_TAG
+                ) as BizFragment?
+                if (bizFragment == null) {
+                    bizFragment = BizFragment()
+                    fragment.activity!!
+                        .supportFragmentManager.beginTransaction()
+                        .add(bizFragment, BIZ_FRAGMENT_TAG).commitAllowingStateLoss()
+                }
+                return bizFragment
             }
-            return bizFragment;
+            return null
         }
-        return null;
-    }
 
-    public static BizFragment createBizFragment(FragmentActivity activity) {
-        BizFragment bizFragment = (BizFragment) activity.getSupportFragmentManager().findFragmentByTag(BIZ_FRAGMENT_TAG);
-        if (bizFragment == null) {
-            bizFragment = new BizFragment();
-            bizFragment.mActivity = activity;
-
-            if (activity instanceof BaseVmActivityNew && ((BaseVmActivityNew) activity).isDestroyed()) {
-                return bizFragment;
+        fun createBizFragment(activity: AppCompatActivity): BizFragment {
+            var bizFragment =
+                activity.supportFragmentManager.findFragmentByTag(BIZ_FRAGMENT_TAG) as BizFragment?
+            if (bizFragment == null) {
+                bizFragment = BizFragment()
+                bizFragment.mActivity = activity
+                if (activity is BaseVmActivityNew<*> && activity.isDestroyed) {
+                    return bizFragment
+                }
+                activity.supportFragmentManager.beginTransaction()
+                    .add(bizFragment, BIZ_FRAGMENT_TAG).commit()
             }
-
-            activity.getSupportFragmentManager().beginTransaction().add(bizFragment, BIZ_FRAGMENT_TAG).commit();
+            return bizFragment
         }
-        return bizFragment;
-    }
-
-
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-
     }
 }

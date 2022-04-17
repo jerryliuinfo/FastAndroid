@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentProgramilySetStyleBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.tesla.framework.kt.dp
-import com.tesla.framework.ui.fragment.BaseFragment
-import kotlinx.android.synthetic.main.fragment_drakeet_knowledge.*
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.fragment_programily_set_style.*
 import kotlin.math.roundToInt
 
@@ -18,10 +18,7 @@ import kotlin.math.roundToInt
  * Created by Jerry on 2021/10/15.
  * https://t.zsxq.com/AiIIMBu
  */
-class ProgrammaticalySetStyleFragment: BaseFragment() {
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_programily_set_style
-    }
+class ProgrammaticalySetStyleFragment: BaseVBFragment<FragmentProgramilySetStyleBinding>(FragmentProgramilySetStyleBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

@@ -2,18 +2,16 @@ package com.apache.fastandroid.demo.hitpit
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2021/12/14.
  * 参考：https://mp.weixin.qq.com/s/81vD1sT9F5LR07H9fqj5QQ
  */
-class DataClassPitDemoFragment:BaseFragment() {
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_common
-    }
+class DataClassPitDemoFragment:BaseVBFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
+
     companion object{
         private const val TAG = "DataClassPitDemoFragment"
     }

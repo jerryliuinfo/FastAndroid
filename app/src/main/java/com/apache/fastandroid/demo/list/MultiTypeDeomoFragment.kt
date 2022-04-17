@@ -2,8 +2,8 @@ package com.apache.fastandroid.demo.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.MultitypeDemoBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 
 /**
@@ -13,12 +13,10 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  *
  */
 
-class MultiTypeDeomoFragment:BaseStatusFragmentNew() {
- override fun getLayoutId(): Int {
-   return R.layout.multitype_demo
- }
+class MultiTypeDeomoFragment : BaseVBFragment<MultitypeDemoBinding>(MultitypeDemoBinding::inflate) {
 
- override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
-  super.layoutInit(inflater, savedInstanceState)
- }
+
+    override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
+        super.layoutInit(inflater, savedInstanceState)
+    }
 }

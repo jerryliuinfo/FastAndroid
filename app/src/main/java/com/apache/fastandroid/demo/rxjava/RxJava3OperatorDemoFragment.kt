@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.TextView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentRxjava3Binding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.rxjava.operator.RetryWithDelay
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.runOnUiThreadDelay
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.*
 import io.reactivex.rxjava3.core.Observable
@@ -20,12 +21,9 @@ import io.reactivex.rxjava3.functions.BiFunction
 import io.reactivex.rxjava3.functions.Predicate
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.PublishSubject
-import kotlinx.android.synthetic.main.fragment_rxjava.*
-import kotlinx.android.synthetic.main.fragment_rxjava2.*
 import kotlinx.android.synthetic.main.fragment_rxjava3.*
 import java.lang.IllegalArgumentException
 import java.lang.RuntimeException
-import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
@@ -33,14 +31,12 @@ import kotlin.random.Random
 /**
  * Created by Jerry on 2021/9/9.
  */
-open class RxJava3OperatorDemoFragment:BaseFragment() {
+open class RxJava3OperatorDemoFragment:BaseVBFragment<FragmentRxjava3Binding>(FragmentRxjava3Binding::inflate) {
     companion object{
         private const val TAG = "RxJava3DemoFragment"
         private const val LINE_SEPERATOR = "\n"
     }
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_rxjava3
-    }
+
 
     private lateinit var result:TextView
 

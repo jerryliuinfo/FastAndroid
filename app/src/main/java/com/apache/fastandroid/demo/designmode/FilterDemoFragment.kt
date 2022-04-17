@@ -2,18 +2,15 @@ package com.apache.fastandroid.demo.designmode
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
-import com.blankj.utilcode.util.CollectionUtils
+import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2021/9/23.
  */
-class FilterDemoFragment:BaseFragment() {
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_common
-    }
+class FilterDemoFragment:BaseVBFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
+
     companion object{
         private const val TAG = "FilterDemoFragment"
     }

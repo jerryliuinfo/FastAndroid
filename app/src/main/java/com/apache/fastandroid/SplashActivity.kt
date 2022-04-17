@@ -4,9 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Parcelable
-import com.tesla.framework.ui.activity.BaseVmActivity
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.SplashActivity
 import com.apache.fastandroid.databinding.ActivitySplashBinding
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.activity.BaseVmActivityNew

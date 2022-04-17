@@ -1,15 +1,7 @@
 package com.apache.fastandroid.demo.hitpit
 
-import android.os.Bundle
-import android.os.Looper
-import android.os.MessageQueue
-import android.view.LayoutInflater
-import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
-import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 
 /**
  * Created by Jerry on 2021/12/12.

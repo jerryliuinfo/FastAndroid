@@ -3,23 +3,22 @@ package com.apache.fastandroid.demo.component.loadsir
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.LoadsirActivityActivityConvertorBinding
 import com.apache.fastandroid.util.extensitons.runOnUIDelay
 import com.kingja.loadsir.callback.HintCallback
 import com.kingja.loadsir.callback.ProgressCallback
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
-import java.util.*
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by  on 2021/12/18.
  */
-class LoadSirDefaultCallbackActivity:BaseStatusFragmentNew() {
+class LoadSirDefaultCallbackActivity:
+    BaseVBFragment<LoadsirActivityActivityConvertorBinding>(LoadsirActivityActivityConvertorBinding::inflate) {
     private lateinit var loadService: LoadService<Any>
 
-    override fun getLayoutId(): Int {
-        return R.layout.loadsir_activity_activity_convertor
-    }
+
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

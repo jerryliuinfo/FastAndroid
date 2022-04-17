@@ -3,17 +3,14 @@ package com.apache.fastandroid.demo.temp
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.TempScrollConflictInnerInterceptBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.temp_scroll_conflict.listView
 
 /**
  * Created by Jerry on 2021/8/6.
  */
-class ScrollConflictInnernterceptDemoFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.temp_scroll_conflict_inner_intercept
-    }
+class ScrollConflictInnernterceptDemoFragment: BaseVBFragment<TempScrollConflictInnerInterceptBinding>(TempScrollConflictInnerInterceptBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

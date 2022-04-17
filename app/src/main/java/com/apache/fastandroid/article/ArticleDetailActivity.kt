@@ -8,13 +8,11 @@ import android.view.ViewGroup
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.widget.LinearLayout
-import com.apache.fastandroid.article.ArticleDetailActivity
 import com.apache.fastandroid.databinding.ActivityArticleDetailBinding
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.WebChromeClient
 import com.just.agentweb.WebViewClient
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 /**

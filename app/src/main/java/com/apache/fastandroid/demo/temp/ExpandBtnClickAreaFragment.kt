@@ -5,18 +5,15 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.TouchDelegate
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.ExpandBtnClickAreaBinding
 import com.blankj.utilcode.util.ToastUtils
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.expand_btn_click_area.*
 
 /**
  * Created by Jerry on 2021/3/1.
  */
-class ExpandBtnClickAreaFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.expand_btn_click_area
-    }
+class ExpandBtnClickAreaFragment: BaseVBFragment<ExpandBtnClickAreaBinding>(ExpandBtnClickAreaBinding::inflate) {
 
     @SuppressLint("RestrictedApi")
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {

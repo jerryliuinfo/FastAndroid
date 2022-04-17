@@ -2,19 +2,16 @@ package com.apache.fastandroid.demo.glide
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.GlideTransformDemoBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.glide_transform_demo.*
 
 /**
  * Created by Jerry on 2021/6/24.
  */
-class GlideTransformFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.glide_transform_demo
-    }
+class GlideTransformFragment: BaseVBFragment<GlideTransformDemoBinding>(GlideTransformDemoBinding::inflate) {
 
     val url = "https://www.baidu.com/img/bd_logo1.png"
 

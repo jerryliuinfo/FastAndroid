@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import com.apache.fastandroid.BuildConfig
-import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.tesla.framework.component.logger.*
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import java.util.*
 
 
@@ -17,87 +17,84 @@ import java.util.*
  *
  */
 
-class LoggerDemoFragment:BaseStatusFragmentNew() {
- override fun getLayoutId(): Int {
-  return R.layout.fragment_common
- }
-
- override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
-  super.layoutInit(inflater, savedInstanceState)
-
-  Log.d("Tag", "I'm a log which you don't see easily, hehe")
-  Log.d("json content", "{ \"key\": 3, \n \"value\": something}")
-  Log.d("error", "There is a crash somewhere or any warning")
-
-  Logger.addLogAdapter(AndroidLogAdapter())
-  Logger.d("message")
-
-  Logger.clearLogAdapters()
+class LoggerDemoFragment : BaseVBFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
 
 
+    override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
+        super.layoutInit(inflater, savedInstanceState)
 
-  var formatStrategy: FormatStrategy = PrettyFormatStrategy.newBuilder()
-   .showThreadInfo(false) // (Optional) Whether to show thread info or not. Default true
-   .methodCount(0) // (Optional) How many method line to show. Default 2
-   .methodOffset(3) // (Optional) Skips some method invokes in stack trace. Default 5
-   //        .logStrategy(customLog) // (Optional) Changes the log strategy to print out. Default LogCat
-   .tag("My custom tag") // (Optional) Custom tag for each log. Default PRETTY_LOGGER
-   .build()
+        Log.d("Tag", "I'm a log which you don't see easily, hehe")
+        Log.d("json content", "{ \"key\": 3, \n \"value\": something}")
+        Log.d("error", "There is a crash somewhere or any warning")
 
-  Logger.addLogAdapter(
-      AndroidLogAdapter(
-          formatStrategy!!
-      )
-  )
+        Logger.addLogAdapter(AndroidLogAdapter())
+        Logger.d("message")
 
-  Logger.addLogAdapter(object : AndroidLogAdapter() {
-   override fun isLoggable(priority: Int, tag: String?): Boolean {
-    return BuildConfig.DEBUG
-   }
-  })
-
-  Logger.addLogAdapter(DiskLogAdapter())
+        Logger.clearLogAdapters()
 
 
-  Logger.w("no thread info and only 1 method")
+        var formatStrategy: FormatStrategy = PrettyFormatStrategy.newBuilder()
+            .showThreadInfo(false) // (Optional) Whether to show thread info or not. Default true
+            .methodCount(0) // (Optional) How many method line to show. Default 2
+            .methodOffset(3) // (Optional) Skips some method invokes in stack trace. Default 5
+            //        .logStrategy(customLog) // (Optional) Changes the log strategy to print out. Default LogCat
+            .tag("My custom tag") // (Optional) Custom tag for each log. Default PRETTY_LOGGER
+            .build()
 
-  Logger.clearLogAdapters()
-  formatStrategy = PrettyFormatStrategy.newBuilder()
-   .showThreadInfo(false)
-   .methodCount(0)
-   .build()
+        Logger.addLogAdapter(
+            AndroidLogAdapter(
+                formatStrategy!!
+            )
+        )
 
-  Logger.addLogAdapter(
-      AndroidLogAdapter(
-          formatStrategy
-      )
-  )
-  Logger.i("no thread info and method info")
+        Logger.addLogAdapter(object : AndroidLogAdapter() {
+            override fun isLoggable(priority: Int, tag: String?): Boolean {
+                return BuildConfig.DEBUG
+            }
+        })
 
-  Logger.t("tag").e("Custom tag for only one use")
+        Logger.addLogAdapter(DiskLogAdapter())
 
-  Logger.json("{ \"key\": 3, \"value\": something}")
 
-  Logger.d(Arrays.asList("foo", "bar"))
+        Logger.w("no thread info and only 1 method")
 
-  val map: MutableMap<String, String> = HashMap()
-  map["key"] = "value"
-  map["key1"] = "value2"
+        Logger.clearLogAdapters()
+        formatStrategy = PrettyFormatStrategy.newBuilder()
+            .showThreadInfo(false)
+            .methodCount(0)
+            .build()
 
-  Logger.d(map)
+        Logger.addLogAdapter(
+            AndroidLogAdapter(
+                formatStrategy
+            )
+        )
+        Logger.i("no thread info and method info")
 
-  Logger.clearLogAdapters()
-  formatStrategy = PrettyFormatStrategy.newBuilder()
-   .showThreadInfo(false)
-   .methodCount(0)
-   .tag("MyTag")
-   .build()
-  Logger.addLogAdapter(
-      AndroidLogAdapter(
-          formatStrategy
-      )
-  )
+        Logger.t("tag").e("Custom tag for only one use")
 
-  Logger.w("my log message with my tag")
- }
+        Logger.json("{ \"key\": 3, \"value\": something}")
+
+        Logger.d(Arrays.asList("foo", "bar"))
+
+        val map: MutableMap<String, String> = HashMap()
+        map["key"] = "value"
+        map["key1"] = "value2"
+
+        Logger.d(map)
+
+        Logger.clearLogAdapters()
+        formatStrategy = PrettyFormatStrategy.newBuilder()
+            .showThreadInfo(false)
+            .methodCount(0)
+            .tag("MyTag")
+            .build()
+        Logger.addLogAdapter(
+            AndroidLogAdapter(
+                formatStrategy
+            )
+        )
+
+        Logger.w("my log message with my tag")
+    }
 }

@@ -2,7 +2,6 @@ package com.apache.fastandroid
 
 import android.app.Activity
 
-import com.tesla.framework.ui.activity.BaseVmActivity
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.NavController
 import com.apache.fastandroid.annotations.CostTime
@@ -17,19 +16,9 @@ import com.apache.fastandroid.demo.bean.UserBean
 import com.tesla.framework.common.util.log.NLog
 import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
-import androidx.room.Room
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
-import com.apache.fastandroid.demo.cheese.CheeseActivity
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
-import com.apache.fastandroid.demo.kt.coroutine.*
-import com.apache.fastandroid.demo.room.RoomDemoFragment
-import com.apache.fastandroid.demo.sunflower.fragement.SunFlowerHomeViewPagerFragment
-import com.apache.fastandroid.jetpack.coroutine.CoroutineDemoListFragment
-import com.apache.fastandroid.jetpack.hit.HitDemoFragment
 import com.tesla.framework.component.eventbus.FastBus
-import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVmActivityNew
-import com.tesla.framework.ui.activity.FragmentContainerActivity
 
 class MainActivity : BaseVmActivityNew<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
     private val selecteId = -1

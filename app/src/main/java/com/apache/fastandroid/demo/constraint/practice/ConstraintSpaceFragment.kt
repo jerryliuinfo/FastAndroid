@@ -2,9 +2,9 @@ package com.apache.fastandroid.demo.constraint.practice
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.ConstraintSpaceBinding
 import com.tesla.framework.common.util.log.FastLog
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.constraint_space.*
 
 /**
@@ -14,11 +14,8 @@ import kotlinx.android.synthetic.main.constraint_space.*
  * constrinatLayout中不能使用-margin的方式来完成传统布局中的一些错误的效果，但是可以借助space来实现类似的功能
  *
  */
-class ConstraintSpaceFragment: BaseStatusFragmentNew() {
+class ConstraintSpaceFragment: BaseVBFragment<ConstraintSpaceBinding>(ConstraintSpaceBinding::inflate) {
 
-    override fun getLayoutId(): Int {
-        return R.layout.constraint_space
-    }
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

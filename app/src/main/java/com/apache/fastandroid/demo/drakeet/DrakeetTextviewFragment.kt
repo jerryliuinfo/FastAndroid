@@ -2,23 +2,19 @@ package com.apache.fastandroid.demo.drakeet
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.drakeet_textview.*
-import android.widget.ScrollView
 
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
+import com.apache.fastandroid.databinding.DrakeetTextviewBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 
 /**
  * Created by Jerry on 2021/11/7.
  * https://t.zsxq.com/VfmEiIA
  */
-class DrakeetTextviewFragment:BaseFragment() {
-    override fun getLayoutId(): Int {
-        return R.layout.drakeet_textview
-    }
+class DrakeetTextviewFragment:BaseVBFragment<DrakeetTextviewBinding>(DrakeetTextviewBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

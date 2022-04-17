@@ -16,6 +16,7 @@ import androidx.core.os.HandlerCompat
 import com.apache.fastandroid.LogUtils
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentDrakeetKnowledgeBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.temp.bean.ReflectBean
 import com.apache.fastandroid.jetpack.lifecycle.service.MyService
@@ -28,20 +29,17 @@ import com.tesla.framework.common.util.DrakeetUtils
 import com.tesla.framework.common.util.DrakeetUtils.doOnMainThreadIdle
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.common.util.toast.ToastCompat
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.fragment_drakeet_knowledge.*
 import java.lang.Exception
 
 /**
  * Created by Jerry on 2021/10/15.
  */
-class DrakeetCommonFragment:BaseFragment() {
+class DrakeetCommonFragment:BaseVBFragment<FragmentDrakeetKnowledgeBinding>(FragmentDrakeetKnowledgeBinding::inflate) {
 
     companion object{
         private const val TAG = "DrakeetCommonFragment";
-    }
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_drakeet_knowledge
     }
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
@@ -76,7 +74,7 @@ class DrakeetCommonFragment:BaseFragment() {
             },4000)
         }
         btn_string_hash_conflict.setOnClickListener {
-            NLog.d(BaseFragment.TAG, "Aa's hashCode is:${"Aa".hashCode()}, BB' s hashCode is: ${"BB".hashCode()}")
+            NLog.d(TAG, "Aa's hashCode is:${"Aa".hashCode()}, BB' s hashCode is: ${"BB".hashCode()}")
         }
         var i = 0;
         btn_print_call_chain.setOnClickListener {

@@ -2,7 +2,6 @@ package com.apache.fastandroid.demo.agentweb
 
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,17 +11,15 @@ import android.webkit.WebView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentAgentWebInActivityBinding
 import com.just.agentweb.*
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2021/9/23.
  */
-open class AgentWebFragment:BaseFragment() {
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_agent_web_in_activity
-    }
+open class AgentWebFragment:BaseVBFragment<FragmentAgentWebInActivityBinding>(FragmentAgentWebInActivityBinding::inflate) {
 
     companion object{
         private const val TAG = "AgentWebFragment"

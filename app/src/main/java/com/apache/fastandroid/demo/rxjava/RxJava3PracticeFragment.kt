@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentRxjava3PracticeBinding
 import com.apache.fastandroid.demo.bean.AuthToken
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.rxjava.operator.RetryWithDelay
@@ -17,7 +18,7 @@ import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.apache.fastandroid.util.AccessDenyException
 import com.apache.fastandroid.util.NetworkException
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Observer
@@ -34,16 +35,13 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by Jerry on 2021/9/9.
  */
-open class RxJava3PracticeFragment:BaseFragment() {
+open class RxJava3PracticeFragment:BaseVBFragment<FragmentRxjava3PracticeBinding>(FragmentRxjava3PracticeBinding::inflate) {
     companion object{
         private const val TAG = "RxJava3DemoFragment"
         private const val LINE_SEPERATOR = "\n"
     }
     private val compositeDisposable = CompositeDisposable()
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_rxjava3_practice
-    }
 
     private lateinit var tvResult:TextView
 

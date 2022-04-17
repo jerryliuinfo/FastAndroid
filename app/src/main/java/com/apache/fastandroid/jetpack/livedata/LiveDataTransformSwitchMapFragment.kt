@@ -3,21 +3,21 @@ package com.apache.fastandroid.jetpack.livedata
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.lifecycle.Observer
-import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentJetpackLivedataTransformSwitchMapBinding
 import com.apache.fastandroid.jetpack.reporsity.UserDao
 import com.apache.fastandroid.jetpack.reporsity.UserNetwork
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
 import com.tesla.framework.common.util.SimpleTextWatcher
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_map.text_name
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_switch_map.*
 
 /**
  * Created by Jerry on 2021/2/7.
  */
-class LiveDataTransformSwitchMapFragment: BaseStatusFragmentNew() {
+class LiveDataTransformSwitchMapFragment: BaseVBFragment<FragmentJetpackLivedataTransformSwitchMapBinding>(
+    FragmentJetpackLivedataTransformSwitchMapBinding::inflate) {
     companion object{
         private const val TAG = "LiveDataTransformMapFragment"
     }
@@ -27,9 +27,7 @@ class LiveDataTransformSwitchMapFragment: BaseStatusFragmentNew() {
             UserDao.getInstance(),
             UserNetwork().getInstance()))
     }
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_jetpack_livedata_transform_switch_map
-    }
+
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

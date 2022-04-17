@@ -2,18 +2,15 @@ package com.apache.fastandroid.demo.databinding.practice
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.BR
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentDatabindingBasisUserBinding
-import com.apache.fastandroid.databinding.FragmentDatabindingBasisUserBindingImpl
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.databinding.UserViewModel
-import com.tesla.framework.support.bean.DataBindingConfig
-import com.tesla.framework.ui.fragment.BaseDatebindingFragment
+import com.tesla.framework.ui.fragment.BaseDBFragment
 import kotlinx.android.synthetic.main.fragment_databinding_basis_user.*
 
 
-class DatebinDingBasicDemoFragment: BaseDatebindingFragment<FragmentDatabindingBasisUserBinding>() {
+class DatebinDingBasicDemoFragment: BaseDBFragment<FragmentDatabindingBasisUserBinding>(FragmentDatabindingBasisUserBinding::inflate) {
     companion object{
         private const val TAG = "DatabinDingBasicDemo"
     }
@@ -23,9 +20,6 @@ class DatebinDingBasicDemoFragment: BaseDatebindingFragment<FragmentDatabindingB
         userViewModel = getFragmentScopeViewModel(UserViewModel::class.java)
     }
 
-    override fun getDataBindingConfig(): DataBindingConfig {
-       return DataBindingConfig(R.layout.fragment_databinding_basis_user,BR.vm,userViewModel)
-    }
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
@@ -39,6 +33,9 @@ class DatebinDingBasicDemoFragment: BaseDatebindingFragment<FragmentDatabindingB
 
     }
 
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_databinding_basis_user
+    }
 
 
 }

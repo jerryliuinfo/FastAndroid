@@ -2,21 +2,18 @@ package com.apache.fastandroid.demo.performance.practice
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
 import com.apache.fastandroid.component.anr.AnrConfig
 import com.apache.fastandroid.component.anr.AnrManager
+import com.apache.fastandroid.databinding.PerformanceAnrWatchdogBinding
 import com.github.anrwatchdog.ANRWatchDog
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.performance_anr_watchdog.*
 
 /**
  * Created by Jerry on 2020/12/28.
  */
-class AnrWatchDogDemoFragment : BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.performance_anr_watchdog
-    }
+class AnrWatchDogDemoFragment : BaseVBFragment<PerformanceAnrWatchdogBinding>(PerformanceAnrWatchdogBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
@@ -24,7 +21,7 @@ class AnrWatchDogDemoFragment : BaseStatusFragmentNew() {
             startAnr()
         }
         btn_thread_sleep.setOnClickListener {
-            Thread.sleep(6 * 1000)
+            Thread.sleep(6000)
         }
 
         btn_InfiniteLopper.setOnClickListener {

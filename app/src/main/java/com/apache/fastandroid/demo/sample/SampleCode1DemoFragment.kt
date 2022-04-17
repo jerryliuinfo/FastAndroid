@@ -4,20 +4,15 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.Message
-import android.view.Choreographer
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
-import com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.Sample1CheckCallbackExistBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.sample1_check_callback_exist.*
 
 /**
  * Created by  on 2021/12/18.
  */
-class SampleCode1DemoFragment:BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.sample1_check_callback_exist
-    }
+class SampleCode1DemoFragment:BaseVBFragment<Sample1CheckCallbackExistBinding>(Sample1CheckCallbackExistBinding::inflate) {
 
     companion object {
         private const val HANDLE_MSG = 0

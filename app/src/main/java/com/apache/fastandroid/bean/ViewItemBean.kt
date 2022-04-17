@@ -3,7 +3,6 @@ package com.apache.fastandroid.bean
 import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.tesla.framework.ui.activity.BaseVmActivity
 import java.io.Serializable
 
 /**

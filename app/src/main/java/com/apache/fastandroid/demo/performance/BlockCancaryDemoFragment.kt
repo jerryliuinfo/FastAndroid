@@ -2,18 +2,14 @@ package com.apache.fastandroid.demo.performance
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.PerformanceBlockCancaryBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.performance_block_cancary.*
-import kotlin.system.measureTimeMillis
 
 /**
  * Created by Jerry on 2020/12/28.
  */
-class BlockCancaryDemoFragment : BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.performance_block_cancary
-    }
+class BlockCancaryDemoFragment : BaseVBFragment<PerformanceBlockCancaryBinding>(PerformanceBlockCancaryBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
@@ -21,7 +17,7 @@ class BlockCancaryDemoFragment : BaseStatusFragmentNew() {
 //            BlockCanary.install(view!!.context.applicationContext, AppBlockCanaryContext()).start()
         }
         btn_thread_sleep.setOnClickListener {
-            Thread.sleep(10 * 1000)
+            Thread.sleep(1000)
 
         }
 

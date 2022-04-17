@@ -3,8 +3,8 @@ package com.apache.fastandroid.demo.constraint.practice
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.constraintlayout.helper.widget.Flow
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.ConstraintFlowWrapModeBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.constraint_flow_wrap_mode.*
 
 /**
@@ -15,11 +15,7 @@ import kotlinx.android.synthetic.main.constraint_flow_wrap_mode.*
  *         app:flow_maxElementsWrap="4"：每行最多显示几个元素
 
  */
-class ConstraintFlowWrapModeFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.constraint_flow_wrap_mode
-    }
-
+class ConstraintFlowWrapModeFragment: BaseVBFragment<ConstraintFlowWrapModeBinding>(ConstraintFlowWrapModeBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

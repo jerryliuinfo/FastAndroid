@@ -48,9 +48,7 @@
         <activity android:name=".jetpack.navigation.advance.AdvanceNavigationActivity"/>
 
         <activity android:name=".jetpack.livedata.LiveDataWrongUsageActivity" />
-        <activity
-            android:name=".demo.temp.ScrollConflictActivity"
-            android:exported="true" />
+
 
 
         <activity

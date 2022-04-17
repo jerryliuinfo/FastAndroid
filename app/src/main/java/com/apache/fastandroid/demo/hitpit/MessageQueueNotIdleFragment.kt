@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.os.Looper
 import android.os.MessageQueue
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentHitPitBinding
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2021/12/12.
@@ -16,12 +15,9 @@ import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
  * 参考:https://juejin.cn/post/6936440588635996173?share_token=e3cb2750-a5d9-498b-b345-1539fe421665
  *
  */
-class MessageQueueNotIdleFragment:BaseStatusFragmentNew() {
+class MessageQueueNotIdleFragment:BaseVBFragment<FragmentHitPitBinding>(FragmentHitPitBinding::inflate) {
     companion object{
         private val TAG = "HitPitDemoListFragment"
-    }
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_hit_pit
     }
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

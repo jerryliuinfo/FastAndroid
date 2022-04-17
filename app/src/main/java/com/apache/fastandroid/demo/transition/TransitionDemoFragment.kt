@@ -9,26 +9,24 @@ import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
-import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentTransitionBinding
 import com.google.android.material.transition.platform.MaterialArcMotion
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.tesla.framework.component.imageloader.ImageLoaderManager
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2021/11/10.
  */
-class TransitionDemoFragment:BaseFragment() {
+class TransitionDemoFragment: BaseVBFragment<FragmentTransitionBinding>(FragmentTransitionBinding::inflate) {
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_transition
-    }
+
 
     private lateinit var largeImage:ImageView
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
-        val thumbnail = findViewById<ImageView>(R.id.thumbnail)
+        val thumbnail = mBinding.thumbnail
         val layout = thumbnail.parent as ConstraintLayout
         ImageLoaderManager.getInstance().showImage(thumbnail,"https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx3.sinaimg.cn%2Fmw690%2Fc17fd038ly1gw39cvqaooj20u0190n1l.jpg&refer=http%3A%2F%2Fwx3.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639105758&t=8ca673f7f8002024d1234bf9e6a978a4",activity)
         thumbnail.setOnClickListener {

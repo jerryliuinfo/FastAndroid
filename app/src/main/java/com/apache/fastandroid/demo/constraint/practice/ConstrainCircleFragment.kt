@@ -1,11 +1,9 @@
 package com.apache.fastandroid.demo.constraint.practice
 
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.ConstraintCircleBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 
-class ConstrainCircleFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.constraint_circle
-    }
+class ConstrainCircleFragment: BaseVBFragment<ConstraintCircleBinding>(ConstraintCircleBinding::inflate) {
+
 }

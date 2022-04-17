@@ -11,24 +11,22 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
+import com.apache.fastandroid.databinding.FragmentCustomViewBinding
 import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
  * Created by Jerry on 2020/12/3.
  */
-abstract class BaseListFragment: BaseStatusFragmentNew() {
+abstract class BaseListFragment: BaseVBFragment<FragmentCustomViewBinding>(FragmentCustomViewBinding::inflate) {
 
 
     private lateinit var MODELS:ArrayList<ViewItemBean>
 
     abstract fun initDatas():ArrayList<ViewItemBean>
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_custom_view
-    }
 
     companion object{
         fun launch(from:Activity, MODELS:ArrayList<ViewItemBean> ){

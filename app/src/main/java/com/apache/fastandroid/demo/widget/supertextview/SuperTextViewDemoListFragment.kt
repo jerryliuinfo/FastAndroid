@@ -5,27 +5,24 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.FragmentPracticeDemoBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.fragment_practice_demo.*
 
 /**
  * Created by Jerry on 2021/5/18.
  */
-class SuperTextViewDemoListFragment: BaseStatusFragmentNew() {
+class SuperTextViewDemoListFragment: BaseVBFragment<FragmentPracticeDemoBinding>(FragmentPracticeDemoBinding::inflate) {
 
     private val pageModels = arrayListOf(
             PageModel(R.layout.stv_superbutton, "SuperButton")
 
     )
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_practice_demo
-    }
-
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        setToolbarTitle("DrawText")
+//        setToolbarTitle("DrawText")
 
         pager.adapter = PageAdapter(pageModels,requireActivity().supportFragmentManager,true)
         tabLayout.setupWithViewPager(pager)

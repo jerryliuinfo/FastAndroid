@@ -2,7 +2,7 @@ package com.apache.fastandroid.demo.component.loadsir
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.LoadsirActivityViewBinding
 import com.apache.fastandroid.demo.component.loadsir.callback.LoadingCallback
 import com.apache.fastandroid.demo.component.loadsir.callback.TimeoutCallback
 import com.apache.fastandroid.util.extensitons.runOnUIDelay
@@ -10,16 +10,13 @@ import com.apache.fastandroid.util.extensitons.showLoading
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.loadsir_activity_view.*
 
 /**
  * Created by  on 2021/12/18.
  */
-class LoadSirViewTargetActivity:BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.loadsir_activity_view
-    }
+class LoadSirViewTargetActivity:BaseVBFragment<LoadsirActivityViewBinding>(LoadsirActivityViewBinding::inflate) {
 
     private lateinit var loadService: LoadService<Any>
 

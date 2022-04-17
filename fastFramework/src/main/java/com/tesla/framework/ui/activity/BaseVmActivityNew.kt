@@ -17,7 +17,7 @@ import com.gyf.immersionbar.ktx.immersionBar
 import com.tesla.framework.R
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.network.NetworkStateManager
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.ABaseFragment
 import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
 import java.lang.ref.WeakReference
 
@@ -30,7 +30,7 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
     protected lateinit var mBinding: V
 
     // 当有Fragment Attach到这个Activity的时候，就会保存
-    private var fragmentRefs: MutableMap<String, WeakReference<BaseStatusFragmentNew>>? = null
+    private var fragmentRefs: MutableMap<String, WeakReference<ABaseFragment>>? = null
     private var mActivityProvider: ViewModelProvider? = null
     private var mApplicationProvider: ViewModelProvider? = null
 
@@ -56,6 +56,7 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
         lifecycle.addObserver(NetworkStateManager.getInstance())
         initView(mBinding.root)
         layoutInit(savedInstanceState)
+
 
     }
 
@@ -99,7 +100,7 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
     }
 
     @JvmOverloads
-    fun showContent(target: Class<out BaseStatusFragmentNew>, bundle: Bundle? = null) {
+    fun showContent(target: Class<out ABaseFragment>, bundle: Bundle? = null) {
         try {
             val fragment = target.newInstance()
             if (bundle != null) {
@@ -121,7 +122,7 @@ abstract class BaseVmActivityNew<V : ViewBinding>(var inflater: (inflater: Layou
      * 子类重写这个方法，初始化视图
      */
     open fun layoutInit(savedInstanceState: Bundle?) {}
-    fun addFragment(tag: String, fragment: BaseStatusFragmentNew) {
+    fun addFragment(tag: String, fragment: ABaseFragment) {
         fragmentRefs!![tag] = WeakReference(fragment)
     }
 

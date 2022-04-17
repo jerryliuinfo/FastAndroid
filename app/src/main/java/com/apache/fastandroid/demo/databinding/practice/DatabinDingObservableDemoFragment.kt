@@ -2,16 +2,14 @@ package com.apache.fastandroid.demo.databinding.practice
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.BR
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentDatabindingOnewayBindObservableBinding
 import com.apache.fastandroid.demo.bean.UserObservableBean
 import com.apache.fastandroid.demo.databinding.UserViewModel
-import com.tesla.framework.support.bean.DataBindingConfig
-import com.tesla.framework.ui.fragment.BaseDatebindingFragment
+import com.tesla.framework.ui.fragment.BaseDBFragment
 
 
-class DatabinDingObservableDemoFragment: BaseDatebindingFragment<FragmentDatabindingOnewayBindObservableBinding>() {
+class DatabinDingObservableDemoFragment: BaseDBFragment<FragmentDatabindingOnewayBindObservableBinding>(FragmentDatabindingOnewayBindObservableBinding::inflate) {
     companion object{
         private const val TAG = "DatabinDingBasicDemo"
     }
@@ -30,26 +28,22 @@ class DatabinDingObservableDemoFragment: BaseDatebindingFragment<FragmentDatabin
             age = 10
         }
 
-        binding.user = user
+        viewBinding.user = user
 
-        binding.tvModifyName.setOnClickListener {
+        viewBinding.tvModifyName.setOnClickListener {
             user.apply {
                 name = "lisi"
                 age =  20
             }
         }
 
-        binding.tvModifyAge.setOnClickListener {
+        viewBinding.tvModifyAge.setOnClickListener {
             user.plus()
         }
     }
 
     private lateinit var viewModel: UserViewModel
 
-
-    override fun getDataBindingConfig(): DataBindingConfig {
-        return DataBindingConfig(R.layout.fragment_databinding_twoeway_bind, BR.vm,viewModel)
-    }
 
     override fun initViewModel() {
         viewModel = getFragmentScopeViewModel(UserViewModel::class.java)

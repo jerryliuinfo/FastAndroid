@@ -9,21 +9,18 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.RecycleviewItemDecoration2Binding
 import com.apache.fastandroid.demo.adapter.CommentAdapter
 import com.tesla.framework.kt.dp
 import com.tesla.framework.kt.removeDecorations
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import com.yqritc.recyclerviewflexibledivider.FlexibleDividerDecoration
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import kotlinx.android.synthetic.main.recycleview_item_decoration.tv_horizontal_divider
 import kotlinx.android.synthetic.main.recycleview_item_decoration2.*
 
 
-class RecycleViewItemDecorationFragment2: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.recycleview_item_decoration2
-    }
-
+class RecycleViewItemDecorationFragment2: BaseVBFragment<RecycleviewItemDecoration2Binding>(RecycleviewItemDecoration2Binding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

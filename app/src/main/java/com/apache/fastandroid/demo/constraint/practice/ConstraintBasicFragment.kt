@@ -1,13 +1,11 @@
 package com.apache.fastandroid.demo.constraint.practice
 
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.ConstraintBasicBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2020/11/19.
  */
-class ConstraintBasicFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.constraint_basic
-    }
+class ConstraintBasicFragment: BaseVBFragment<ConstraintBasicBinding>(ConstraintBasicBinding::inflate) {
+
 }

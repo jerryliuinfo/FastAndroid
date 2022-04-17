@@ -5,15 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.drawerlayout.widget.DrawerLayout
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseFragment
+import com.apache.fastandroid.databinding.TempSpecifyParentViewBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2021/10/26.
  */
-class SpecifyParentViewDemoFragment:BaseFragment() {
-    override fun getLayoutId(): Int {
-        return R.layout.temp_specify_parent_view
-    }
+class SpecifyParentViewDemoFragment:BaseVBFragment<TempSpecifyParentViewBinding>(TempSpecifyParentViewBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

@@ -3,20 +3,19 @@ package com.apache.fastandroid.demo.glide
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.GlideCacheUsageDemoBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.model.GlideUrl
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.glide_basic_usage_demo.image
 import kotlinx.android.synthetic.main.glide_cache_usage_demo.*
 
 /**
  * Created by Jerry on 2021/6/24.
  */
-class GlideCacheUsageFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.glide_cache_usage_demo
-    }
+class GlideCacheUsageFragment: BaseVBFragment<GlideCacheUsageDemoBinding>(GlideCacheUsageDemoBinding::inflate) {
+
     val url = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fblog%2F201406%2F12%2F20140612042459_nN5mZ.jpeg&refer=http%3A%2F%2Fcdn.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627090612&t=376413dceca7371b4b2086cdbb955ff2?token=99988882999"
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {

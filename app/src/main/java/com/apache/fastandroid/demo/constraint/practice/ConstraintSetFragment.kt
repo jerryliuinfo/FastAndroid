@@ -6,14 +6,12 @@ import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.ConstraintSetBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.constraint_set.*
 
 
-class ConstraintSetFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.constraint_set
-    }
+class ConstraintSetFragment: BaseVBFragment<ConstraintSetBinding>(ConstraintSetBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

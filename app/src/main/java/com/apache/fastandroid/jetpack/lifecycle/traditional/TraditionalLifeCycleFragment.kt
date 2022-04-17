@@ -1,19 +1,13 @@
 package com.apache.fastandroid.jetpack.lifecycle.traditional
 
 import android.os.Bundle
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.FragmentTraditionalLifecycleBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2020/11/1.
  */
-class TraditionalLifeCycleFragment: BaseStatusFragmentNew() {
-
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_traditional_lifecycle
-    }
-
-
+class TraditionalLifeCycleFragment: BaseVBFragment<FragmentTraditionalLifecycleBinding>(FragmentTraditionalLifecycleBinding::inflate) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

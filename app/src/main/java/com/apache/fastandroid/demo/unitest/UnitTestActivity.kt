@@ -2,7 +2,6 @@ package com.apache.fastandroid.demo.unitest
 
 import android.os.Bundle
 import com.apache.fastandroid.databinding.ActivityUnitTestBinding
-import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.BaseVmActivityNew
 
 /**

@@ -13,9 +13,12 @@ import com.tesla.framework.ui.activity.BaseVmActivityNew
 /**
  * Fragment基类
  */
+
 abstract class BaseVBFragment<T : ViewBinding>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) : ABaseFragment() {
 
     protected lateinit var mBinding: T
+    val TAG = "BaseVBFragment"
+
 
     @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

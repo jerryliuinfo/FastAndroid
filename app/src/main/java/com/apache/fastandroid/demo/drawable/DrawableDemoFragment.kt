@@ -4,18 +4,15 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.tesla.framework.kt.dp
+import com.apache.fastandroid.databinding.FragmentDrawableDemoBinding
 import com.tesla.framework.kt.dpInt
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.drawable_custom.*
 
 /**
  * Created by Jerry on 2021/12/14.
  */
-class DrawableDemoFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_drawable_demo
-    }
+class DrawableDemoFragment: BaseVBFragment<FragmentDrawableDemoBinding>(FragmentDrawableDemoBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

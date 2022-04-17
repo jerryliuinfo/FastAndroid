@@ -3,16 +3,16 @@ package com.apache.fastandroid.demo.temp
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.TempBitOrAndDemoBinding
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.temp_bit_or_and_demo.*
 
 
 /**
  * Created by Jerry on 2021/3/1.
  */
-class BitOrAndFragment: BaseStatusFragmentNew() {
+class BitOrAndFragment: BaseVBFragment<TempBitOrAndDemoBinding>(TempBitOrAndDemoBinding::inflate) {
     companion object{
         val TAG = "EnumFragment"
     }
@@ -29,9 +29,6 @@ class BitOrAndFragment: BaseStatusFragmentNew() {
 
     val PFLAG_4 = 0x00000008
 
-    override fun getLayoutId(): Int {
-        return R.layout.temp_bit_or_and_demo
-    }
 
     @SuppressLint("RestrictedApi")
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {

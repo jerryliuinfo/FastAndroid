@@ -2,13 +2,11 @@ package com.apache.fastandroid.demo.drakeet
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.EdgeEffect
-import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentComRecycleviewBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.drakeet.purewriter.widget.StretchEdgeEffect
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.fragment_com_recycleview.*
 
 
@@ -19,12 +17,10 @@ import kotlinx.android.synthetic.main.fragment_com_recycleview.*
  *
  */
 
-class DrakeetEdgeEffectDemoFragment : BaseStatusFragmentNew() {
+class DrakeetEdgeEffectDemoFragment : BaseVBFragment<FragmentComRecycleviewBinding>(FragmentComRecycleviewBinding::inflate) {
 
    private lateinit var mAdapter: BaseQuickAdapter<String,BaseViewHolder>
-	 override fun getLayoutId(): Int {
-			return R.layout.fragment_com_recycleview
-	 }
+
 
 	 override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
 			super.layoutInit(inflater, savedInstanceState)

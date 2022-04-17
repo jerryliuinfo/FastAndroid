@@ -223,7 +223,7 @@ class CollectionDemoFragment:BaseVBFragment<FragmentKtCollectionBinding>(Fragmen
 
 
     private fun hashMapUsage() {
-        val defualt = numberMap.getOrDefault("four", "sorry,I don't know")
+        val defualt = numberMap.getOrDefault("four", 3)
         val getOrElse = numberMap.getOrElse("four"){
             println("")
             "no contains value for this"

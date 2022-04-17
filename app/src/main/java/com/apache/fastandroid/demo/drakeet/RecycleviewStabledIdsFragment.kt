@@ -1,7 +1,6 @@
 package com.apache.fastandroid.demo.drakeet
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -12,11 +11,10 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.DrakeetRecycleviewSetHasStableidsBinding
 import com.microsoft.sample.stableids.Item
 import com.microsoft.sample.stableids.StableIdAdapter
-import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseFragment
-import kotlinx.android.synthetic.main.fragment_stable_ids.*
+import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2021/10/18.
@@ -24,12 +22,9 @@ import kotlinx.android.synthetic.main.fragment_stable_ids.*
  * 加上这一行代码，在 item change、remove、udpate以及item position改变的情况下，
  * 调用 adapter 的notifyDatasetChanged 自动会有动画效果的
  */
-class RecycleviewStabledIdsFragment:BaseFragment() {
+class RecycleviewStabledIdsFragment:BaseVBFragment<DrakeetRecycleviewSetHasStableidsBinding>(DrakeetRecycleviewSetHasStableidsBinding::inflate) {
     private var items: MutableList<Item> = ArrayList()
     private lateinit var adapter: StableIdAdapter
-    override fun getLayoutId(): Int {
-        return R.layout.drakeet_recycleview_set_has_stableids
-    }
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

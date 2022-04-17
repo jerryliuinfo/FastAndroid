@@ -7,14 +7,12 @@ import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.ActivityConstraintStartBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.constraint_set.*
 
 
-class ConstraintSetSwitchLayoutFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.activity_constraint_start
-    }
+class ConstraintSetSwitchLayoutFragment: BaseVBFragment<ActivityConstraintStartBinding>(ActivityConstraintStartBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

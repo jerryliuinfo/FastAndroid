@@ -2,10 +2,10 @@ package com.apache.fastandroid.demo.mmkv
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.FragmentMmkvBinding
 import com.tencent.mmkv.MMKV
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.fragment_mmkv.*
 import java.util.*
 
@@ -13,12 +13,9 @@ import java.util.*
 /**
  * Created by Jerry on 2021/8/31.
  */
-class MMKVFragment: BaseStatusFragmentNew() {
+class MMKVFragment: BaseVBFragment<FragmentMmkvBinding>(FragmentMmkvBinding::inflate) {
     companion object{
         private const val TAG = "MMKVFragment"
-    }
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_mmkv
     }
 
     private lateinit var kv: MMKV

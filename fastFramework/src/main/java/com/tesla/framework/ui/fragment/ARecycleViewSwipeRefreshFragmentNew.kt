@@ -14,7 +14,7 @@ import com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBinding
 /**
  * Created by Jerry on 2022/3/12.
  */
-open abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUiRecycleviewSwiperefreshNewBinding>(CommUiRecycleviewSwiperefreshNewBinding::inflate),
+abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUiRecycleviewSwiperefreshNewBinding>(CommUiRecycleviewSwiperefreshNewBinding::inflate),
     BaseQuickAdapter.RequestLoadMoreListener {
 
     protected lateinit var mAdapter:BaseQuickAdapter<T, BaseViewHolder>

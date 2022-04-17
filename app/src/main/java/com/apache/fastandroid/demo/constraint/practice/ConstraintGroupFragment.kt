@@ -3,8 +3,8 @@ package com.apache.fastandroid.demo.constraint.practice
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import com.apache.fastandroid.R
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.apache.fastandroid.databinding.ConstraintGroupBinding
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.constraint_group.*
 
 /**
@@ -12,10 +12,7 @@ import kotlinx.android.synthetic.main.constraint_group.*
  *
  *
  */
-class ConstraintGroupFragment: BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.constraint_group
-    }
+class ConstraintGroupFragment: BaseVBFragment<ConstraintGroupBinding>(ConstraintGroupBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

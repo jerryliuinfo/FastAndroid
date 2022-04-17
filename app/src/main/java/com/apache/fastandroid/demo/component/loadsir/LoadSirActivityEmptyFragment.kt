@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.LoadsirActivityEmptyBinding
 import com.apache.fastandroid.demo.component.loadsir.callback.EmptyCallback
 import com.apache.fastandroid.util.extensitons.runOnUIDelay
 import com.apache.fastandroid.util.extensitons.showLoading
@@ -14,16 +15,13 @@ import com.kingja.loadsir.callback.Callback
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.kingja.loadsir.core.Transport
-import com.tesla.framework.ui.fragment.BaseStatusFragmentNew
+import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlin.concurrent.thread
 
 /**
  * Created by Jerry on 2021/12/16.
  */
-class LoadSirActivityEmptyFragment:BaseStatusFragmentNew() {
-    override fun getLayoutId(): Int {
-        return R.layout.loadsir_activity_empty
-    }
+class LoadSirActivityEmptyFragment:BaseVBFragment<LoadsirActivityEmptyBinding>(LoadsirActivityEmptyBinding::inflate) {
 
     private lateinit var loadService: LoadService<Any>
 
