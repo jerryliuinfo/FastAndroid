@@ -17,8 +17,12 @@ import com.tesla.framework.common.util.log.NLog
 import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
+import com.apache.fastandroid.demo.app.MvvmMailDemoFragment
+import com.apache.fastandroid.demo.mvi.MviDemoFragment
+import com.apache.fastandroid.demo.temp.KnowledgeFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.FragmentContainerActivity
 
 class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
     private val selecteId = -1
@@ -62,6 +66,9 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, CoroutineContextDispatcherDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, FlowDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, MvvmMailDemoFragment::class.java,null)
+        FragmentContainerActivity.launch(this, MviDemoFragment::class.java,null)
 //        launchActivity<CheeseActivity>(this)
     }
 
@@ -140,7 +147,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
     companion object {
         val TAG = MainActivity::class.java.simpleName
-        fun launch(from: Activity, userBean: UserBean?) {
+        fun launch(from: Activity, userBean: UserBean? = null) {
             val intent = Intent(from, MainActivity::class.java)
             intent.putExtra("userBean", userBean)
             from.startActivity(intent)

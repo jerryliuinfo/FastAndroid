@@ -25,13 +25,13 @@ import retrofit2.http.Path
 interface ApiService {
 
     @GET("/article/top/json")
-    suspend fun loadTopArticleCo(): BaseResponse<List<Article>>?
+    suspend fun loadTopArticleCo(): BaseResponse<List<Article>>
 
     @GET("/article/top/json")
     fun loadTopArticleCo2(): Call<BaseResponse<List<Article>>>
 
     @GET("/article/list/{pageNum}/json")
-    suspend fun loadHomeArticleCo(@Path("pageNum") pageNum: Int): BaseResponse<HomeArticleResponse>?
+    suspend fun loadHomeArticleCo(@Path("pageNum") pageNum: Int): BaseResponse<HomeArticleResponse>
 
 
     @GET("/article/list/{pageNum}/json")

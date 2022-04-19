@@ -24,6 +24,7 @@ import com.tesla.framework.ui.fragment.ABaseFragment
 import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
 import com.zwb.lib_base.utils.network.AutoRegisterNetListener
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
+import com.zwb.lib_base.utils.network.NetworkStateClient
 import com.zwb.lib_base.utils.network.NetworkTypeEnum
 import java.lang.ref.WeakReference
 
@@ -71,6 +72,7 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
      * @return Unit
      */
     private fun initNetworkListener() {
+        NetworkStateClient.register()
         lifecycle.addObserver(AutoRegisterNetListener(this))
 //        NetworkLiveData.getInstance().observe(this){
 //            Logger.d("network it: $it")
@@ -275,14 +277,18 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
     }
 
     override fun networkConnectChange(isConnected: Boolean) {
-        Logger.d("networkConnectChange isConnected:$isConnected")
+        println("BaseVmActivity networkConnectChange isConnected:$isConnected")
         ToastUtils.showShort("网络状况: $isConnected")
     }
 
     override fun networkTypeChange(type: NetworkTypeEnum) {
-        Logger.d("networkTypeChange type:$type")
+        println("BaseVmActivity networkTypeChange type:$type")
     }
-
+    fun showToast(msg:String?){
+        msg?.let {
+            ToastUtils.showShort(msg)
+        }
+    }
 
 
 }

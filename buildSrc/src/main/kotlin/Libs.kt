@@ -39,6 +39,7 @@ object Libs {
 
     const val qmui = "com.qmuiteam:qmui:2.0.0-alpha10"
     const val flexibledivider = "om.yqritc:recyclerview-flexibledivider:1.4.0"
+    const val multidex = "androidx.multidex:multidex:2.0.0"
 
 
 

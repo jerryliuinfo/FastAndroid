@@ -12,12 +12,13 @@ import kotlinx.coroutines.launch
  * Created by Jerry on 2022/2/23.
  */
 class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
+
     private val _topArticleLiveData = MutableLiveData<List<Article>>()
+    val topArticleLiveData:LiveData<List<Article>> = _topArticleLiveData
+
 
     private val _homeArticleLiveData = MutableLiveData<HomeArticleResponse>()
 
-    val topArticleLiveData:LiveData<List<Article>>
-        get() = _topArticleLiveData
 
     val homeArticleLiveData:LiveData<HomeArticleResponse>
         get() = _homeArticleLiveData

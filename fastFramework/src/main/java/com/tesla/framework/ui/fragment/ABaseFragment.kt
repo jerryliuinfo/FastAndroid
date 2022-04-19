@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import com.blankj.utilcode.util.ToastUtils
 import com.kingja.loadsir.core.LoadService
 import com.tesla.framework.component.vm.ShareViewModel
 import com.tesla.framework.ui.fragment.view.BaseView
@@ -143,15 +144,21 @@ open class ABaseFragment:Fragment(),BaseView {
     }
 
     override fun showLoading(key: String) {
+        println("showLoading key:$key")
     }
 
     override fun showSuccess(key: String) {
+        println("showSuccess key:$key")
     }
 
     override fun showEmpty(key: String) {
+        println("showEmpty key:$key")
+
     }
 
     override fun showError(msg: String, key: String) {
+        println("showError key:$key")
+
     }
 
     /**
@@ -170,5 +177,11 @@ open class ABaseFragment:Fragment(),BaseView {
      */
     open fun onBackClick(): Boolean {
         return false
+    }
+
+    fun showToast(msg:String?){
+        msg?.let {
+            ToastUtils.showShort(msg)
+        }
     }
 }

@@ -5,10 +5,12 @@ import com.apache.fastandroid.home.network.HomeNetwork
 import com.apache.fastandroid.network.model.Article
 import com.apache.fastandroid.network.model.HomeArticleResponse
 import com.apache.fastandroid.network.response.EmptyResponse
+import com.apache.fastandroid.util.extensitons.PageState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 import kotlin.random.Random
 
 /**
@@ -16,20 +18,37 @@ import kotlin.random.Random
  */
 class HomeReporsitoryKt(private val homeDao:HomeDao, private val network: HomeNetwork,private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO, ) {
 
-    suspend fun loadTopArticleCo():List<Article>? = withContext(Dispatchers.IO){
+    suspend fun loadTopArticleCo():List<Article>?{
         println("loadTopArticleCo thread: ${Thread.currentThread().name}")
         var artices = network.loadTopArticleCo()
-        artices!!.data
+        return artices?.data
+    }
+
+    suspend fun loadTopArticleCoByPageStatus():PageState<List<Article>>{
+        val apiResponse =   try {
+            network.loadTopArticleCo()
+        }catch (e:Exception){
+            e.printStackTrace()
+           return PageState.Error(e)
+        }
+
+        return apiResponse.data?.let {
+            PageState.Success(it)
+        } ?: kotlin.run {
+            PageState.Error("Failed to get News")
+        }
+
     }
 
 
-    suspend fun loadHomeArticleCo(pageNum:Int): HomeArticleResponse = withContext(defaultDispatcher){
+
+    suspend fun loadHomeArticleCo(pageNum:Int): HomeArticleResponse? {
         var artices = network.loadHomeArticleCo(pageNum)
         if (artices != null){
             homeDao.cacheHomeData(pageNum,artices.data)
-            return@withContext artices.data
+            return artices.data
         }else{
-            return@withContext homeDao.getCacheHomeData(pageNum)
+            return homeDao.getCacheHomeData(pageNum)
         }
     }
 

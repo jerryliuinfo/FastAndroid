@@ -28,15 +28,29 @@ class RetrofitFactory private constructor() {
         return retrofit.create(clazz)
     }
 
+    fun <Service> createService(serviceClass: Class<Service>, baseUrl: String): Service {
+        return newRetrofitBuilder()
+            .baseUrl(baseUrl)
+            .build()
+            .create(serviceClass)
+    }
+
     init {
-        retrofit = Retrofit.Builder()
+        retrofit = newRetrofitBuilder()
+            .baseUrl(ApiConstant.BASE_URL)
+            .build()
+    }
+
+
+    private fun newRetrofitBuilder():Retrofit.Builder{
+        return Retrofit.Builder()
             .baseUrl(ApiConstant.BASE_URL)
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(initOkHttpClient())
-            .build()
     }
+
 
     companion object {
         private const val TIMEOUT = 10L

@@ -260,7 +260,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
         Logger.addLogAdapter(DiskLogAdapter())
         Logger.addLogAdapter(AndroidLogAdapter())
         Logger.addLogAdapter(TimerLogger())
-        NLog.setDebug(true, com.tesla.framework.common.util.log.Logger.DEBUG)
+//        NLog.setDebug(true, com.tesla.framework.common.util.log.Logger.DEBUG)
     }
 
     private val logPath: String

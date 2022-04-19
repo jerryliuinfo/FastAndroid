@@ -19,36 +19,22 @@ buildscript {
 
     }
     dependencies {
-        classpath Libs.agp
-        classpath Libs.kgp
-
-//        classpath(rootProject.extra["androidPlugin"].toString())
-//        classpath(rootProject.extra["kotlinPlugin"].toString())
-
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
+        classpath PluginConfig.agp
+        classpath PluginConfig.kgp
+        classpath PluginConfig.andResGuard
+        classpath PluginConfig.hilt
+        classpath PluginConfig.maven_gradle_plugin
+        classpath PluginConfig.navigation
 
 
         //https://github.com/iwhys/sdk-editor-plugin
         classpath 'com.github.iwhys:sdk-editor-plugin:1.1.7'
 
 
-//        classpath 'io.michaelrocks:paranoid-gradle-plugin:0.3.7'
-
-
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' // 添加这行
-        //定义在这里，这样每个module都可以使用
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
-        // 配置自动上传符号表插件，注：为了能快速并准确地定位用户APP发生Crash的代码位置，Bugly使用符号表对APP发生Crash的程序堆栈进行解析和还原
 
-//        classpath 'io.github.trycatchx:rocketx:1.0.1'
 
         classpath fileTree(dir: './Plugin', include: ['*.jar'])
-
-
-        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.21'
-
-        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
-
 
 
     }
@@ -67,6 +53,9 @@ buildscript {
                 if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
                     details.useVersion "1.6.10"
                 }
+//                if (requested.group == 'androidx.lifecycle') {
+//                    details.useVersion "2.4.1"
+//                }
 
 
 

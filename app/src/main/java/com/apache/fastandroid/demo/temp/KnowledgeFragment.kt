@@ -3,28 +3,40 @@ package com.apache.fastandroid.demo.temp
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Rect
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
 import android.os.Bundle
+import android.text.InputFilter
+import android.text.Spanned
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewTreeObserver
-import com.tesla.framework.common.util.log.NLog
-import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
 import android.widget.Toast
-
-import android.text.Spanned
-
-import android.text.InputFilter
+import androidx.core.content.ContextCompat.getSystemService
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentTempKnowledgeBinding
 import com.apache.fastandroid.demo.temp.concurrency.Player
-import com.blankj.utilcode.util.*
+import com.blankj.utilcode.util.MetaDataUtils
+import com.blankj.utilcode.util.ToastUtils
+import com.blankj.utilcode.util.Utils
+import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.livedata.NetworkLiveData
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.zwb.lib_base.utils.network.AutoRegisterNetListener
+import com.zwb.lib_base.utils.network.NetworkStateChangeListener
+import com.zwb.lib_base.utils.network.NetworkStateClient
+import com.zwb.lib_base.utils.network.NetworkTypeEnum
+import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
 
 
 /**
  * Created by Jerry on 2021/9/6.
  */
-class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTempKnowledgeBinding::inflate) {
+class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTempKnowledgeBinding::inflate),
+    NetworkStateChangeListener {
     private val items:MutableList<String> = ArrayList()
     companion object{
         private const val TAG = "KnowledgeFragment"
@@ -69,6 +81,7 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
         btn_sisuo.setOnClickListener {
 
         }
+        
 
         mBinding.btnVarargs.setOnClickListener {
             initvarArgs("aaa","bbb")
@@ -98,9 +111,28 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
         mBinding.btnListInit.setOnClickListener {
 
         }
+        mBinding.btnNetwork.setOnClickListener {
+            listenerNetwork()
+        }
+
 
         val str = "Longfu2012"
         et_userName.filters = arrayOf<InputFilter>(MyFilter(str,context))
+    }
+
+    private fun listenerNetwork() {
+        val networkCallback = NetworkCallbackImpl()
+        val builder = NetworkRequest.Builder()
+        val request = builder.build()
+        val connMgr = activity?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        connMgr.registerNetworkCallback(request, networkCallback)
+        NetworkLiveData.getInstance().observe(this){
+            Logger.d("network type: $it")
+        }
+        lifecycle.addObserver(AutoRegisterNetListener(this))
+
+
+
     }
 
 
@@ -220,5 +252,50 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
         return list
     }
 
+    class NetworkCallbackImpl: ConnectivityManager.NetworkCallback() {
+        override fun onAvailable(network: Network) {
+            super.onAvailable(network)
+            println("网络已链接");
+
+        }
+
+        override fun onLost(network: Network) {
+            super.onLost(network)
+            println("网络已断开");
+
+        }
+
+        override fun onCapabilitiesChanged(
+            network: Network,
+            networkCapabilities: NetworkCapabilities
+        ) {
+            super.onCapabilitiesChanged(network, networkCapabilities)
+
+            if (networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)) {
+                if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                    println("KnowledgeFragment wifi已经连接")
+                } else if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                    println("KnowledgeFragment 数据流量已经连接")
+
+                } else {
+                    println("KnowledgeFragment 其他网络")
+
+                }
+            }
+        }
+
+
+
+
+    }
+
+    override fun networkTypeChange(type: NetworkTypeEnum) {
+        println("KnowledgeFragment networkTypeChange: $type")
+
+    }
+
+    override fun networkConnectChange(isConnected: Boolean) {
+        println("KnowledgeFragment networkConnectChange: $isConnected")
+    }
 
 }

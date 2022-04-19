@@ -101,6 +101,9 @@ dependencies {
     implementation AndroidX.palette
     implementation AndroidX.preference
 
+    implementation (Libs.gson)
+    implementation (Libs.utilcode)
+
     implementation project(':baselib')
     implementation project(':fastFramework')
 }

@@ -25,7 +25,7 @@ class ArticleDetailActivity : BaseVmActivity<ActivityArticleDetailBinding>(Activ
             super.onReceivedTitle(view, title)
             NLog.d(TAG, "onReceivedTitle title: %s", title)
             //            articleDetailViewModel.title.set(title);
-            mBinding!!.customBar.detailTitle.text = title
+            mBinding.customBar.detailTitle.text = title
         }
     }
     private val mWebViewClient: WebViewClient = object : WebViewClient() {

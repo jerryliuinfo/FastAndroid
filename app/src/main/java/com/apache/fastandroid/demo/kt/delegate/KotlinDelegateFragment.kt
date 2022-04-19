@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.KtDelegateBinding
 import com.apache.fastandroid.demo.kt.ByTest
+import com.tesla.framework.kt.SPreference
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlin.properties.Delegates
 
@@ -17,6 +18,10 @@ class KotlinDelegateFragment:BaseVBFragment<KtDelegateBinding>(KtDelegateBinding
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
+
+        mBinding.btnSp.setOnClickListener {
+            spByDelegate()
+        }
 
         mBinding.btnKeywordBy.setOnClickListener {
             ByTest.Zoo(ByTest.Cat()).bark()
@@ -40,6 +45,11 @@ class KotlinDelegateFragment:BaseVBFragment<KtDelegateBinding>(KtDelegateBinding
 
 
 
+    }
+
+    private fun spByDelegate() {
+        val name:String by SPreference("name","zhangsan")
+        println()
     }
 
 

@@ -25,6 +25,8 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function2;
 
 /**
  * Created by Jerry on 2021/7/1.
@@ -54,7 +56,14 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew<Article> i
     @NonNull
     @Override
     public BaseQuickAdapter<Article, BaseViewHolder> createAdapter() {
-        return new ArticleAdapter(null);
+        return new ArticleAdapter(null, new Function2<View, Integer, Unit>() {
+            @Override
+            public Unit invoke(View view, Integer integer) {
+                return null;
+            }
+        });
+
+
     }
 
     private int mTopArticlesLoadTimes;

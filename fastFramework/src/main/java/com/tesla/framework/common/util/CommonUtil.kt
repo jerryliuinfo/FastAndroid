@@ -6,12 +6,19 @@ import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
+import java.lang.reflect.ParameterizedType
 
 
 /**
  * Created by Jerry on 2021/11/10.
  */
 object CommonUtil {
+
+    fun <T> getClass(t:Any):Class<T>{
+        return (t.javaClass.genericSuperclass as ParameterizedType)
+            .actualTypeArguments[0] as Class<T>
+    }
+
     /**
      * 源自:https://t.zsxq.com/Nvzjyn2
      * 解决三星 Android 9 及以上手机，通知栏消息PendingIntent中如果带有ParcelableExtra对象，会导致当该消息被点击后，接收该Intent的代码拿不到原本放入其中的所有

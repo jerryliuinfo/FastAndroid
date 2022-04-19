@@ -19,7 +19,7 @@ ext.mainApp = true  //设置为true，表示此module为主app module，一直�
 //插件的名字和 .properties 的文件名字保持一致
 apply plugin: 'com.fastandroid.release'
 
-releaseInfo{
+releaseInfo {
     //kotlin 定义方式需要定义成 key = value 的形式， 如果 是 groovy 定义 方式写成 name   value
     versionCode = "1"
     versionName = "1.0.0"
@@ -28,10 +28,7 @@ releaseInfo{
 }
 
 
-
-
-
-def getAppVersionName(){
+def getAppVersionName() {
     def stdout = new ByteArrayOutputStream()
     exec {
         commandLine 'git', 'describe', '--abbrev=0', '--tags'
@@ -45,7 +42,7 @@ def computeVersionName(label) {
     return "2.7.${android.defaultConfig.versionCode}-${label}"
 }
 
-def getAppVersionCode(){
+def getAppVersionCode() {
     def stdout = new ByteArrayOutputStream()
     exec {
         commandLine 'git', 'tag', '--list'
@@ -92,7 +89,7 @@ android {
          * 这样我们引用的第三方库，特别是 support library 和 google play services 这两个主要的大库，
          * 因为国际化的问题，他们都支持了几十种语言，但是对于我们的app 来说只需要中文的语言就可以了
          */
-        resConfigs('zh-rCN','hdpi')
+        resConfigs('zh-rCN', 'hdpi')
 
         resValue "string", "appDisplayName", ""
 
@@ -165,13 +162,7 @@ android {
         }
 
 
-
-
     }
-
-
-
-
 
 
     buildTypes {
@@ -208,8 +199,7 @@ android {
     }
 
 
-
-    adbOptions{
+    adbOptions {
         timeOutInMs = 5000
         //用来设置 adb install 安装这个操作的设置项的
         /**
@@ -219,10 +209,8 @@ android {
          * -d: allow version code downgrade
          * -g: grant all runtime permissions
          */
-        installOptions '-r','-s'
+        installOptions '-r', '-s'
     }
-
-
 
 
     resourcePrefix ""
@@ -234,8 +222,7 @@ android {
 //        }
         //outputs 属性是一个list集合，遍历找到以 .apk 结尾，说明是 apk文件
         variant.outputs.each { output ->
-            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')){
-
+            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')) {
                 def versionName = variant.versionName
                 def buildType = variant.buildType.name
                 def flavorName = variant.flavorName
@@ -254,17 +241,17 @@ android {
     }
 
 
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
         viewBinding = true
     }
     compileOptions {
-        sourceCompatibility rootProject.sourceCompatibilityVersion
-        targetCompatibility rootProject.targetCompatibilityVersion
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = rootProject.sourceCompatibilityVersion
+        jvmTarget = JavaVersion.VERSION_1_8
     }
 
 
@@ -314,7 +301,6 @@ android {
     }
 
 
-
     //AspectJ 报错 参考:https://blog.csdn.net/zhangshuny/article/details/106056790,
     // https://blog.csdn.net/tian2342/article/details/102698564
 //    aspectjx{
@@ -332,8 +318,6 @@ android {
         javaMaxHeapSize "4g"
 
     }
-
-
 
 
 }
@@ -360,7 +344,7 @@ afterEvaluate {
     android.applicationVariants.all { variant ->
         def capitalized = variant.name.capitalize()
         //ProdPayDebug、ProdFreeDebug、DevPayDebug、DevFreeDebug
-        if (capitalized == "ProdPayDebug"){
+        if (capitalized == "ProdPayDebug") {
             def build = new StringBuilder()
             build.append("name:${variant.name}\n")
             build.append("description:${variant.description}\n")
@@ -386,8 +370,8 @@ afterEvaluate {
     }
 }
 
-task customTask{
-    doLast{
+task customTask {
+    doLast {
         println "customTask doLast  -->"
     }
 }
@@ -431,19 +415,18 @@ dependencies {
     implementation Libs.mmkv
     implementation Libs.qmui
 
-    implementation (SDK.TencentBugly)
-    implementation (SDK.TencentBuglyNative)
+    implementation(SDK.TencentBugly)
+    implementation(SDK.TencentBuglyNative)
 
-    implementation (*Libs.rxJava)
+    implementation(*Libs.rxJava)
     implementation(*Libs.retrofit)
 
 
     implementation(*Jetpack.lifecycle)
     implementation(*Jetpack.navigation)
     implementation(*Jetpack.room)
-    implementation (*Jetpack.hit)
-    kapt (*Jetpack.hit_compiler)
-
+    implementation(*Jetpack.hit)
+    kapt(*Jetpack.hit_compiler)
 
 
     implementation(*Libs.coroutine)
@@ -452,19 +435,12 @@ dependencies {
 //    debugImplementation 'com.guolindev.glance:glance:1.1.0'
 
 
-
-
-
-    implementation rootProject.ext.androidLib.multidex
+    implementation Libs.multidex
 
     implementation Jetpack.workManager
 
 
-
-
     implementation Libs.viewPage2
-
-
 
 
     //kotlin 用 kapt
@@ -472,11 +448,10 @@ dependencies {
 
 
 
+    implementation project(":fastFramework")
+    implementation project(":baselib")
 
 
-    rootProject.ext.dependencies.basic.each{
-        implementation project(it)
-    }
     implementation project(":libnetwork")
     implementation project(':hencode_basic')
     implementation project(':hencoder_paint')
@@ -491,34 +466,25 @@ dependencies {
     implementation 'me.weishu:free_reflection:3.0.1'
 
 
-
-
-
-
 }
 
 
-
-sourceSets.all{
+sourceSets.all {
     ext.resourceDir = null
 }
 
-sourceSets{
-    main{
+sourceSets {
+    main {
         resourceDir = "main/res"
     }
-    test{
+    test {
         resourceDir = "uitest/res"
     }
 }
 
 
-
-
-
-
 private setSigningConfigKey(config, Properties props) {
-    if(props != null) {
+    if (props != null) {
         config.storeFile = props['keystore'] == null ? null : file(props['keystore'])
         config.storePassword = props['store.pass']
         config.keyAlias = props['key.alias']

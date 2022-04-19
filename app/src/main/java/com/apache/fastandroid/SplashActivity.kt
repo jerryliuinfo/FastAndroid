@@ -1,9 +1,8 @@
 package com.apache.fastandroid
 
 import android.content.Intent
-import android.os.Bundle
-import android.os.Handler
-import android.os.Parcelable
+import android.os.*
+import android.view.View
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.databinding.ActivitySplashBinding
 import com.tesla.framework.component.logger.Logger
@@ -18,14 +17,9 @@ class SplashActivity : BaseVmActivity<ActivitySplashBinding>(ActivitySplashBindi
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
         Logger.d("SplashActivity layoutInit")
-        Handler().postDelayed({ toMain() }, 2000)
+        time.start()
     }
 
-    private fun toMain() {
-        val userBean = UserBean("Tom", 10)
-        MainActivity.launch(this@SplashActivity, userBean)
-        finish()
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -35,7 +29,27 @@ class SplashActivity : BaseVmActivity<ActivitySplashBinding>(ActivitySplashBindi
         }
     }
 
+    private var time = object :CountDownTimer(5000,1000){
+        override fun onTick(millisUntilFinished: Long) {
+            val remainTime = "${millisUntilFinished / 1000} S"
+            mBinding.tvCountDown.text = remainTime
+            if(millisUntilFinished / 1000==1L ){
+                MainActivity.launch(this@SplashActivity)
+                finish()
+            }
+            mBinding.tvCountDown.visibility = View.VISIBLE
+        }
 
+        override fun onFinish() {
+
+        }
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        time.cancel()
+    }
 
     companion object {
         val TAG = SplashActivity::class.java.simpleName

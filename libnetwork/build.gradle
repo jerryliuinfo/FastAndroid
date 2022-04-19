@@ -1,48 +1,11 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-
-android {
-    compileSdkVersion rootProject.android.compileSdkVersion
-
-    defaultConfig {
-        minSdkVersion rootProject.android.minSdkVersion
-        targetSdkVersion rootProject.android.targetSdkVersion
-
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-
-        consumerProguardFiles "consumer-rules.pro"
-    }
+apply from: '../base_module.gradle'
 
 
-    compileOptions {
-//        coreLibraryDesugaringEnabled true
-        sourceCompatibility rootProject.sourceCompatibilityVersion
-        targetCompatibility rootProject.targetCompatibilityVersion
-    }
-    kotlinOptions {
-        jvmTarget = rootProject.sourceCompatibilityVersion
-    }
-
-    buildFeatures{
-        dataBinding = true
-        // for view binding :
-        viewBinding = true
-    }
-
-}
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-
-    implementation(*Kotlin.kotlin)
     implementation (*Libs.retrofit)
     implementation (*Libs.okhttp)
-    implementation (Libs.gson)
-    implementation (Libs.utilcode)
 
 
-    rootProject.ext.dependencies.basic.each{
-        implementation project(it)
-    }
 }

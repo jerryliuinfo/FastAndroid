@@ -52,9 +52,7 @@ class NetworkLiveData:LiveData<Int>() {
         if (!mListeners.contains(listener)){
             mListeners.add(listener);
         }
-        observe(owner, Observer<Int> {
 
-        })
     }
 
     companion object {
