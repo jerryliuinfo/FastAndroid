@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
 
+  -->
 
+<!-- This layout contains some patterns that should be avoided and are fixed in
+ the viewmodel layout. -->
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
 
+        <import type="com.apache.fastandroid.R"/>
+        <import type="com.apache.fastandroid.demo.databinding.util.ConverterUtil"/>
+
         <variable
-            name="viewmodel"
-            type="com.apache.fastandroid.demo.databinding.data.ProfileLiveDataViewModel"/>
+            name="framgent"
+            type="com.apache.fastandroid.demo.databinding.practice.DatabindingObservableFiledFragment" />
+        <variable
+            name="user"
+            type="com.apache.fastandroid.demo.databinding.data.ObservableFieldProfile" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <!-- A simple binding between a TextView and a string observable in the ViewModel -->
 
         <TextView
             android:id="@+id/name"
@@ -26,13 +33,12 @@
             android:layout_marginEnd="128dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{viewmodel.name}"
+            android:text="@{user.name}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name_label"/>
 
-        <!-- A simple binding between a TextView and a string observable in the ViewModel -->
         <TextView
             android:id="@+id/lastname"
             android:layout_width="0dp"
@@ -40,14 +46,16 @@
             android:layout_marginEnd="128dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{viewmodel.lastName}"
+            android:text="@{user.lastName}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lastname_label"/>
 
-        <!-- A custom Binding Adapter (`app:popularityIcon`) is used passing `viewmodel.popularity`
-        as a parameter. Because it's a @Bindable property, the ImageView is automatically updated.
+        <!-- Layout expressions can be *too* powerful. It's preferred to avoid this type of
+        view logic in the layout. Instead, use Binding Adapters (see ViewModelActivity).
+
+        Also, `app:srcCompat` is bound to setImageResource.
         -->
         <ImageView
             android:id="@+id/imageView"
@@ -55,7 +63,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginTop="24dp"
-            android:contentDescription="@string/profile_avatar_cd"
             android:minHeight="48dp"
             android:minWidth="48dp"
             app:layout_constraintBottom_toTopOf="@+id/likes_label"
@@ -63,15 +70,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintVertical_chainStyle="packed"
-            app:popularityIcon="@{viewmodel.popularity}"/>
+            app:srcCompat="@{user.likes &lt; 4 ? R.drawable.ic_person_black_96dp : R.drawable.ic_whatshot_black_96dp }"
+            app:tint="@{user.likes > 9 ? @color/star : @android:color/black}" />
 
         <!-- Conversions like Integer to String are expressions simple enough for the layout. An
-        alternative would be to create a getter in the ViewModel to expose likes as Strings. -->
+        alternative would be to create a getter in the ViewModel for likes as a String. -->
         <TextView
             android:id="@+id/likes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{Integer.toString(viewmodel.likes)}"
+            android:text="@{Integer.toString(user.likes)}"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_constraintBottom_toTopOf="@+id/like_button"
             app:layout_constraintEnd_toEndOf="@+id/likes_label"
@@ -79,19 +87,24 @@
             app:layout_constraintStart_toStartOf="@+id/likes_label"
             app:layout_constraintTop_toBottomOf="@+id/likes_label"/>
 
-        <!-- Listeners can accept lambdas so in this case the ViewModel deals with the event,
-        bypassing the activity. -->
+        <!-- Note that the `android:onClick` attribute is going to call the onLike() method in the
+         activity, polluting it with logic. See the `ViewModelActivity` for a better alternative.
+         -->
+
+        <!--            android:onClick="@{(view) -> framgent.onLike()}"-->
+
         <Button
             android:id="@+id/like_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
-            android:onClick="@{() -> viewmodel.onLike()}"
             android:text="@string/like"
+            android:onClick="@{(view) -> framgent.onLike(view)}"
             app:layout_constraintBottom_toTopOf="@+id/progressBar"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/likes"/>
 
         <TextView
@@ -128,9 +141,11 @@
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/imageView"/>
 
-
         <!-- android:progressTint is only available in API 21+ so we deal with that in the
-         Binding Adapter. -->
+        Binding Adapter.
+
+        The android:visibility attribute is used to showcase BindingConversions,
+        see the README for a better alternative with a BindingAdapter.-->
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
@@ -140,9 +155,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:max="@{100}"
-            app:hideIfZero="@{viewmodel.likes}"
-            app:progressTint="@{viewmodel.popularity}"
-            app:progressScaled="@{viewmodel.likes}"
+            android:visibility="@{ConverterUtil.isZero(user.likes)}"
+            app:progressScaled="@{user.likes}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/like_button"
             app:layout_constraintHorizontal_bias="0.5"

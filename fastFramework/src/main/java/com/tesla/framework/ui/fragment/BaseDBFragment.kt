@@ -37,6 +37,9 @@ abstract class BaseDBFragment<T : ViewDataBinding>(val inflater: (inflater: Layo
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         viewBinding = DataBindingUtil.inflate(inflater, getLayoutId(),container, false)
+        viewBinding.apply {
+            lifecycleOwner = this@BaseDBFragment
+        }
 
         bindUI(viewBinding.root)
 

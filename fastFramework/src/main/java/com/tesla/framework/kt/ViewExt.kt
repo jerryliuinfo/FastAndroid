@@ -5,9 +5,15 @@ import android.content.res.Resources
 import android.graphics.Paint
 import android.graphics.Rect
 import android.util.TypedValue
+import android.view.View
 import androidx.annotation.StringRes
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import com.blankj.utilcode.util.StringUtils
 import com.blankj.utilcode.util.Utils
+import com.google.android.material.snackbar.Snackbar
+import com.tesla.framework.component.livedata.Event
 import com.tesla.framework.component.livedata.NetworkLiveData
 import kotlin.math.pow
 
@@ -70,17 +76,6 @@ fun Int.getValue(): String = kotlin.run {
     }
 }
 
-fun Paint.textCenterX(text:String, orginalCenterX: Float):Float{
-    val rect = Rect()
-    getTextBounds(text,0,text.length,rect)
-    return (orginalCenterX - rect.width() / 2).toFloat()
-}
-
-fun Paint.textCenterY(text:String, baseY:Float):Float{
-    val rect = Rect()
-    getTextBounds(text,0,text.length,rect)
-    return baseY + rect.height() / 2
-}
 
 fun Int.networkStatus(): String {
     return when(this){

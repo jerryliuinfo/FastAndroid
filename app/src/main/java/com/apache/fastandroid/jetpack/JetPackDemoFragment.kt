@@ -3,7 +3,7 @@ package com.apache.fastandroid.jetpack
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.cheese.CheeseActivity
-import com.apache.fastandroid.demo.databinding.DatabindingFragmentDemo
+import com.apache.fastandroid.demo.databinding.DatabindingDemoFragment
 import com.apache.fastandroid.demo.room.RoomDemoFragment
 import com.apache.fastandroid.demo.sunflower.fragement.SunFlowerHomeViewPagerFragment
 import com.apache.fastandroid.jetpack.coroutine.CoroutineDemoListFragment
@@ -25,7 +25,7 @@ class JetPackDemoFragment: BaseListFragment() {
                 ViewItemBean("LifeCycle应用", "LifeCycle应用", JetPackLifeCycleDemoFragment::class.java)
                 ,ViewItemBean("LiveData", "LiveData", JetPackLiveDataListFragment::class.java)
                 ,ViewItemBean("ViewModel", "ViewModel", JetPackViewModelListFragment::class.java)
-                ,ViewItemBean("DataBindg", "DataBindg", DatabindingFragmentDemo::class.java)
+                ,ViewItemBean("DataBindg", "DataBindg", DatabindingDemoFragment::class.java)
                 ,ViewItemBean("Navigation", "Navigation", activity= NavigationDemoActivity::class.java)
                 ,ViewItemBean("NavigationDrawerLayout", "NavigationDrawerLayout", activity= NavigationDrawerDemoActivity::class.java)
                 ,ViewItemBean("Navigation2", "左边固定显示Naviagtion", activity= NavigationDrawerDemoActivity2::class.java)

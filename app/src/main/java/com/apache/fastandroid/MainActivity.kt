@@ -17,9 +17,8 @@ import com.tesla.framework.common.util.log.NLog
 import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
-import com.apache.fastandroid.demo.app.MvvmMailDemoFragment
-import com.apache.fastandroid.demo.mvi.MviDemoFragment
-import com.apache.fastandroid.demo.temp.KnowledgeFragment
+import com.apache.fastandroid.demo.databinding.practice.DatabindingObservableFiledFragment
+import com.apache.fastandroid.demo.databinding.practice.DatabindingViewModelFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
@@ -68,7 +67,8 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, FlowDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, MvvmMailDemoFragment::class.java,null)
-        FragmentContainerActivity.launch(this, MviDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, MviDemoFragment::class.java,null)
+        FragmentContainerActivity.launch(this, DatabindingViewModelFragment::class.java,null)
 //        launchActivity<CheeseActivity>(this)
     }
 

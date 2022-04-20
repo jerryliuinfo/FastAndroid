@@ -2,6 +2,7 @@ package com.tesla.framework.kt
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.os.Handler
@@ -9,7 +10,12 @@ import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import com.tesla.framework.component.livedata.Event
 import kotlinx.coroutines.suspendCancellableCoroutine
 
 /**
@@ -207,4 +213,53 @@ fun RecyclerView.clearDecorations() {
 
 fun View.setBackground(drawable:Drawable){
     ViewCompat.setBackground(this,drawable )
+}
+
+
+fun View.showSnackbar(snackbarText: String, timeLength: Int) {
+    Snackbar.make(this, snackbarText, timeLength).run {
+        addCallback(object : Snackbar.Callback() {
+            override fun onShown(sb: Snackbar?) {
+//                EspressoIdlingResource.increment()
+            }
+
+            override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+//                EspressoIdlingResource.decrement()
+            }
+        })
+        show()
+    }
+}
+
+/**
+ * Triggers a snackbar message when the value contained by snackbarTaskMessageLiveEvent is modified.
+ */
+fun View.setupSnackbar(
+    lifecycleOwner: LifecycleOwner,
+    snackbarEvent: LiveData<Event<Int>>,
+    timeLength: Int
+) {
+
+    snackbarEvent.observe(
+        lifecycleOwner,
+        Observer { event ->
+            event.getContentIfNotHandled()?.let {
+                showSnackbar(context.getString(it), timeLength)
+            }
+        }
+    )
+}
+
+
+
+fun Paint.textCenterX(text:String, orginalCenterX: Float):Float{
+    val rect = Rect()
+    getTextBounds(text,0,text.length,rect)
+    return (orginalCenterX - rect.width() / 2).toFloat()
+}
+
+fun Paint.textCenterY(text:String, baseY:Float):Float{
+    val rect = Rect()
+    getTextBounds(text,0,text.length,rect)
+    return baseY + rect.height() / 2
 }
