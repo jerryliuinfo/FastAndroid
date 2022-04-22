@@ -7,11 +7,13 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/nav_home"/>
 
-
         <item
             android:id="@id/demo_dest"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Demo"/>
+
+
+
     </group>
 
     <item android:title="Communicate">

@@ -200,4 +200,23 @@ object SDK {
 object Compiler {
 
 }
+// AndroidX Test - Instrumented testing
+/*androidTestImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
+androidTestImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+androidTestImplementation "androidx.test:rules:$androidXTestRulesVersion"
+androidTestImplementation "androidx.room:room-testing:$roomVersion"
+androidTestImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+androidTestImplementation "androidx.navigation:navigation-testing:$navigationVersion"
 
+*/
+
+object AndroidTest{
+    val espresso = arrayOf(
+        "androidx.test.espresso:espresso-core:${Versions.espressoVersion}",
+        "androidx.test.espresso:espresso-contrib:${Versions.espressoVersion}",
+        "androidx.test.espresso:espresso-intents:${Versions.espressoVersion}",
+        "androidx.test.espresso.idling:idling-concurrent:${Versions.espressoVersion}",
+    )
+    val espresso_idling = "androidx.test.espresso:espresso-idling-resource:${Versions.espressoVersion}"
+
+}

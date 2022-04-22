@@ -117,6 +117,7 @@ abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUiRecyc
                 )
         }
 
+
     }
 
 

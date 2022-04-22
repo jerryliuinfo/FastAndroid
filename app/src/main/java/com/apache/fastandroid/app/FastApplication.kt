@@ -22,6 +22,8 @@ import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor
 import com.apache.fastandroid.demo.component.loadsir.callback.*
 import com.blankj.utilcode.util.*
+import com.example.android.architecture.blueprints.todoapp.ServiceLocator
+import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import com.kingja.loadsir.core.LoadSir
 import com.squareup.leakcanary.LeakCanary
 import com.tencent.mmkv.MMKV
@@ -360,6 +362,12 @@ class FastApplication : Application(), ViewModelStoreOwner {
             .setDefaultCallback(LoadingCallback::class.java) //设置默认状态页
             .commit()
     }
+
+    // Depends on the flavor,
+    val taskRepository: TasksRepository
+        get() = ServiceLocator.provideTasksRepository(this)
+
+
 
     companion object {
         val TAG = FastApplication::class.java.simpleName

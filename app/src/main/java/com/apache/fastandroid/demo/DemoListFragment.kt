@@ -60,6 +60,7 @@ class DemoListFragment : BaseListFragment() {
             ,ViewItemBean("TabLayoutFragment", "TabLayoutFragment", ArticleTabsFragment::class.java)
             ,ViewItemBean("PreferenceFragment", "PreferenceFragment", PreferenceFragmentDemo::class.java)
             ,ViewItemBean("Lyric", "Lyric", LyricDemoFragment::class.java)
+            ,ViewItemBean("各个组件style介绍", "各个组件style介绍", LyricDemoFragment::class.java)
 
 
         )

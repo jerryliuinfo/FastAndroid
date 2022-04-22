@@ -138,6 +138,10 @@ android {
 
 
     productFlavors {
+        mock {
+            dimension "env"
+            applicationIdSuffix = ".mock"
+        }
         dev {
             versionName computeVersionName('dev')
             dimension "env"
@@ -160,6 +164,7 @@ android {
             resValue 'string', 'channel_tips', 'prod渠道欢迎你'
             signingConfig signingConfigs.release
         }
+
 
 
     }
@@ -426,6 +431,11 @@ dependencies {
     implementation(*Jetpack.navigation)
     implementation(*Jetpack.room)
     implementation(*Jetpack.hit)
+    implementation(AndroidTest.espresso_idling)
+
+
+    implementation(*AndroidTest.espresso)
+
     kapt(*Jetpack.hit_compiler)
 
 

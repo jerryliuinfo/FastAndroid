@@ -52,5 +52,8 @@ object Versions {
     const val agp = "7.0.4"
     const val kgp = "7.0.1"
 
+    const val espressoVersion = "3.5.0-alpha04"
+
+
 }
 

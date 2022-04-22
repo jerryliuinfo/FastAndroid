@@ -19,22 +19,19 @@ import androidx.lifecycle.MutableLiveData
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.widget.lyric.LyricFragment
 import com.apache.fastandroid.jetpack.livedata.LiveDataWrongUsageActivity
+import com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity
 import com.tesla.framework.component.eventbus.FastBus
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 
 class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
     private val selecteId = -1
-   /* override fun bindView(): ActivityMainNewBinding {
-        return ActivityMainNewBinding.inflate(layoutInflater)
-    }*/
 
     private var mNavController: NavController? = null
     @CostTime
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
-//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar!!.setDisplayShowHomeEnabled(false)
 
         setSupportActionBar(mBinding.toolbar)
         setupDrawer(savedInstanceState)
@@ -72,7 +69,10 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, SystemViewFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, LyricFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, LyricFragment::class.java,null)
-        LiveDataWrongUsageActivity.launch(this)
+//        LiveDataWrongUsageActivity.launch(this)
+
+//        launchActivity<TasksActivity>(this)
+
     //        launchActivity<CheeseActivity>(this)
     }
 

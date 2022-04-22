@@ -23,6 +23,7 @@ abstract class BaseVBFragment<T : ViewBinding>(val inflater: (inflater: LayoutIn
     @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+
         mBinding = inflater(inflater, container, false)
 
         bindUI(mBinding.root)

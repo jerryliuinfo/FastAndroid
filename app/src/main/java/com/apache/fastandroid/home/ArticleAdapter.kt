@@ -12,7 +12,7 @@ import com.tesla.framework.common.util.N
 /**
  * Created by Jerry on 2021/7/1.
  */
-class ArticleAdapter(data: List<Article>?,val listener :(View,Int) -> Unit ? ) :
+class ArticleAdapter(data: List<Article>,val listener :(View,Int) -> Unit ? ) :
     BaseQuickAdapter<Article, BaseViewHolder>(R.layout.article_item, data) {
 
 

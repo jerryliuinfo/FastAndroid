@@ -57,4 +57,8 @@
     <color name="green_btn_color_pressed">#05bca2</color>
     <color name="popular">#ff76a5</color>
     <color name="star">#ff0057</color>
+
+    <drawable name="completedTaskBackground">#CCCCCC</drawable>
+
+    <drawable name="touchFeedback">#CFD8DC</drawable>
 </resources>

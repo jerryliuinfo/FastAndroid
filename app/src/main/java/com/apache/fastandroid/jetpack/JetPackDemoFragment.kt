@@ -15,6 +15,7 @@ import com.apache.fastandroid.jetpack.navigation.NavigationDrawerDemoActivity2
 import com.apache.fastandroid.jetpack.navigation.advance.AdvanceNavigationActivity
 import com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity
 import com.apache.fastandroid.jetpack.viewmodel.JetPackViewModelListFragment
+import com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity
 
 /**
  * Created by Jerry on 2020/11/11.
@@ -36,6 +37,7 @@ class JetPackDemoFragment: BaseListFragment() {
 
                 ,ViewItemBean("Hit", "Hit", HitDemoFragment::class.java)
                 ,ViewItemBean("SunFlower", "SunFlower", SunFlowerHomeViewPagerFragment::class.java,addTitleBar = false)
+                ,ViewItemBean("TodoApp", "TodoApp", activity = TasksActivity::class.java,addTitleBar = false)
                 ,ViewItemBean("Cheese", "Cheese",null, CheeseActivity::class.java,addTitleBar = false)
         )
     }

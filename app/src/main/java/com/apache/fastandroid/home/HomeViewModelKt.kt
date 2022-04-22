@@ -13,7 +13,11 @@ import kotlinx.coroutines.launch
  */
 class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
 
-    private val _topArticleLiveData = MutableLiveData<List<Article>>()
+    private val _topArticleLiveData : MutableLiveData<List<Article>> by lazy {
+        MutableLiveData<List<Article>>().also {
+            loadHomeData(1)
+        }
+    }
     val topArticleLiveData:LiveData<List<Article>> = _topArticleLiveData
 
 
@@ -49,6 +53,7 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
 
 
     fun loadTopArticle(){
+        println("loadTopArticle ---> ")
         launch({
             var topArticleCo = reporsitoryKt.loadTopArticleCo()
             _topArticleLiveData.value = topArticleCo ?: emptyList()
