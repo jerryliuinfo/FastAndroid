@@ -16,7 +16,7 @@ import kotlin.random.Random
 /**
  * Created by Jerry on 2022/2/23.
  */
-class HomeReporsitoryKt(private val homeDao:HomeDao, private val network: HomeNetwork,private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO, ) {
+class HomeReporsitoryKt(private val homeDao:HomeDao, private val network: HomeNetwork) {
 
     suspend fun loadTopArticleCo():List<Article>?{
         println("loadTopArticleCo thread: ${Thread.currentThread().name}")

@@ -6,7 +6,9 @@ import com.apache.fastandroid.demo.databinding.practice.*
 
 /**
  *
- * 参考:https://github.com/android/databinding-samples
+ * 参考:
+ * https://github.com/android/databinding-samples
+ * https://developer.android.com/topic/libraries/data-binding/index.html
  */
 class DatabindingDemoFragment:BaseListFragment() {
 

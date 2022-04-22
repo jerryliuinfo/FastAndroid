@@ -8,6 +8,7 @@ import com.tesla.framework.component.logger.Logger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.lang.IllegalArgumentException
 
 /**
  * Created by Jerry on 2022/3/9.
@@ -56,7 +57,10 @@ object WeatherViewModelFactory:ViewModelProvider.Factory{
     private val dataSource = DefaultWeatherDataSource(Dispatchers.IO)
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return WeatherInfoViewModel(dataSource) as T
+        if (modelClass.isAssignableFrom(WeatherInfoViewModel::class.java)){
+            return WeatherInfoViewModel(dataSource) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 
 }

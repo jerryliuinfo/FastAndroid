@@ -43,9 +43,10 @@ class PlantDetailViewModel(private val plantRepository: PlantRepository,private 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(PlantDetailViewModel::class.java)){
                 return PlantDetailViewModel(plantRepository,gardenPlantingRepository,plantId) as T
-            }else{
-                throw IllegalArgumentException("Unknown ViewModel class")
             }
+
+            throw IllegalArgumentException("Unknown ViewModel class")
+
 
         }
     }

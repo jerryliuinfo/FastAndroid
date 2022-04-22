@@ -16,18 +16,11 @@ import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDex
 import com.apache.fastandroid.component.anr.AnrConfig
+import com.apache.fastandroid.component.anr.AnrManager
 import com.apache.fastandroid.crash.Fabric.init
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor
 import com.apache.fastandroid.demo.component.loadsir.callback.*
-import com.apache.fastandroid.performance.startup.faster.Task1New
-import com.apache.fastandroid.performance.startup.faster.Task2New
-import com.apache.fastandroid.performance.startup.faster.Task3New
-import com.apache.fastandroid.performance.startup.faster.Task4New
-import com.apache.fastandroid.performance.startup.startup.SDK1
-import com.apache.fastandroid.performance.startup.startup.SDK2
-import com.apache.fastandroid.performance.startup.startup.SDK3
-import com.apache.fastandroid.performance.startup.startup.SDK4
 import com.blankj.utilcode.util.*
 import com.kingja.loadsir.core.LoadSir
 import com.squareup.leakcanary.LeakCanary
@@ -35,17 +28,12 @@ import com.tencent.mmkv.MMKV
 import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.device.DeviceName
 import com.tesla.framework.common.util.LaunchTimer
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.logger.AndroidLogAdapter
 import com.tesla.framework.component.logger.DiskLogAdapter
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.component.startup.Group
-import com.tesla.framework.component.startup.StartupManager.addGroup
-import com.tesla.framework.component.startup.TimeListener
 import com.wanjian.cockroach.Cockroach
 import com.wanjian.cockroach.DebugSafeModeUI
 import com.wanjian.cockroach.ExceptionHandler
-import com.wxy.appstartfaster.dispatcher.AppStartTaskDispatcher
 import com.zwb.lib_base.utils.network.NetworkStateClient
 import dagger.hilt.android.HiltAndroidApp
 import dev.b3nedikt.viewpump.ViewPump.init
@@ -140,46 +128,11 @@ class FastApplication : Application(), ViewModelStoreOwner {
     }
 
     private fun initTaskByAppFaster() {
-        AppStartTaskDispatcher.getInstance()
-            .setContext(this)
-            .setShowLog(true)
-            .setAllTaskWaitTimeOut(5000)
-            .addAppStartTask(Task2New())
-            .addAppStartTask(Task4New())
-            .addAppStartTask(Task3New())
-            .addAppStartTask(Task1New())
-            .start()
-            .await()
+
     }
 
     private fun initTaskByStartup() {
-        addGroup { group: Group ->
-            group.add(SDK1())
-            group.add(SDK2())
-            null
-        }
-            .addGroup { group: Group ->
-                group.add(SDK3())
-                group.add(SDK4())
-                null
-            }
-            .cost(object : TimeListener {
-                override fun itemCost(name: String, time: Long, threadName: String) {
-                    Logger.d(
-                        String.format(
-                            "startup-itemCost:%s time: %s threadName:%s",
-                            name,
-                            time,
-                            threadName
-                        )
-                    )
-                }
 
-                override fun allCost(time: Long) {
-                    Logger.d(String.format("startup-allCost:%s ", time))
-                }
-            })
-            .start(this)
     }
 
     private fun initCockroach() {
@@ -361,7 +314,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
             .setIgnoreDebugger(true)
             .setReportMainThreadOnly()
             .setAnrInterceptor { duration -> 3000 - duration }.build()
-        //        AnrManager.getInstance().start(config);
+                AnrManager.getInstance().start(config);
     }
 
     private fun initViewPump() {

@@ -83,10 +83,14 @@ class LiveDataWrongUsageActivity : BaseVmActivity<FragmentJetpackLivedataWrongUs
         mBinding.btnSingleEvent.setOnClickListener {
             shareViewModel.goToDetailBySingleEvent()
         }
-        shareViewModel.navigationToDetailSingleEvent.observe(this){
-            Logger.d("LiveDataWrongUsageFragment bySingleEvent onChanged:${it}")
-            FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)
 
+        shareViewModel.navigationToDetailSingleEvent.observe(this){
+            println("LiveDataWrongUsageFragment22 bySingleEvent onChanged:${it}")
+//            FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)
+        }
+        shareViewModel.navigationToDetailSingleEvent.observe(this){
+            println("LiveDataWrongUsageFragment11 bySingleEvent onChanged:${it}")
+            FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)
         }
     }
 
@@ -98,7 +102,7 @@ class LiveDataWrongUsageActivity : BaseVmActivity<FragmentJetpackLivedataWrongUs
         shareViewModel.navigationToDetailEventWrapper.observe(this){
             var content1 = it.getContentIfNotHandled()
             var content2 = it.getContentIfNotHandled()
-            Logger.d("LiveDataWrongUsageFragment useEventWrapper onChange content1:${content1}, content2:${content2}")
+            println("LiveDataWrongUsageFragment useEventWrapper onChange content1:${content1}, content2:${content2}")
             content1?.let {
                 FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)
             }

@@ -19,6 +19,7 @@ class SampleCodeDemoListFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
             ViewItemBean("registerCallback","registerCallback",SampleCode1DemoFragment::class.java)
+            ,ViewItemBean("Observable","Observable",SampleCodeDemo2Fragment::class.java)
 
         )
 

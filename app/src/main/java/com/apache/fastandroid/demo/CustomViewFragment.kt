@@ -3,17 +3,15 @@ package com.apache.fastandroid.demo
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.other.ClipChildFragment
 import com.apache.fastandroid.demo.other.ClipToPaddingFragment
-import com.apache.fastandroid.demo.constraint.practice.ConstraintBasicFragment
 import com.apache.fastandroid.demo.customview.EditTextFragment
+import com.apache.fastandroid.demo.widget.lyric.LyricFragment
 import com.apache.fastandroid.demo.customview.NestedScrollViewFragment
-import com.apache.fastandroid.demo.drawable.DrawableDemoFragment
+import com.apache.fastandroid.demo.customview.SystemViewFragment
 import com.apache.fastandroid.demo.drawable.DrawableListFragment
 import com.apache.fastandroid.demo.nodrawable.LoadingDrawableFragment
 import com.apache.fastandroid.demo.nodrawable.NoDrawableFragment
 import com.apache.fastandroid.demo.roudview.RoundViewDemoFragment
 import com.apache.fastandroid.demo.shapeimageview.ShapeImageviewDemoFragment
-import com.apache.fastandroid.demo.snaphelper.SnapHelperDemoFragment
-import com.apache.fastandroid.demo.temp.GenericClassDemoFragment
 import com.apache.fastandroid.demo.temp.SpanableStringFragment
 import java.util.*
 
@@ -34,6 +32,8 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("CustomRoundTextview", "CustomRoundTextview", RoundViewDemoFragment::class.java)
                 ,ViewItemBean("Drawable", "Drawable", DrawableListFragment::class.java)
                 ,ViewItemBean("RecycleviewDivider", "RecycleviewDivider", DrawableListFragment::class.java)
+                ,ViewItemBean("普通系统控件", "普通系统控件", SystemViewFragment::class.java)
+                ,ViewItemBean("Lyric", "Lyric", LyricFragment::class.java)
 
 
         )

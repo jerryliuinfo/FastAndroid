@@ -10,7 +10,6 @@ import com.apache.fastandroid.jetpack.viewmodel.UserModelFactory
  */
 object InjectUtil {
 
-
     private fun getUserInfoReporsity() = UserReporsity.getInstance(UserDao.getInstance(),
         UserNetwork().getInstance()
     )

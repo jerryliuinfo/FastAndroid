@@ -40,6 +40,7 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("UI小控件", "UI小控件", UIWidgetDemoFragment::class.java),
 
             ViewItemBean("CustomViewWidget", "自定义控件", CustomViewFragment::class.java),
+            ViewItemBean("系统控件", "系统控件", CustomViewFragment::class.java),
             ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
             ViewItemBean("CoordinatorLayout", "CoordinatorLayout", CoordinatorLayoutDemoFragment::class.java),
             ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),

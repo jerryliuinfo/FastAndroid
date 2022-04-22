@@ -17,8 +17,8 @@ import com.tesla.framework.common.util.log.NLog
 import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
-import com.apache.fastandroid.demo.databinding.practice.DatabindingObservableFiledFragment
-import com.apache.fastandroid.demo.databinding.practice.DatabindingViewModelFragment
+import com.apache.fastandroid.demo.widget.lyric.LyricFragment
+import com.apache.fastandroid.jetpack.livedata.LiveDataWrongUsageActivity
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
@@ -68,8 +68,12 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, MvvmMailDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, MviDemoFragment::class.java,null)
-        FragmentContainerActivity.launch(this, DatabindingViewModelFragment::class.java,null)
-//        launchActivity<CheeseActivity>(this)
+//        FragmentContainerActivity.launch(this, DatabindingViewModelFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, SystemViewFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, LyricFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, LyricFragment::class.java,null)
+        LiveDataWrongUsageActivity.launch(this)
+    //        launchActivity<CheeseActivity>(this)
     }
 
     private fun setupActionBar(
