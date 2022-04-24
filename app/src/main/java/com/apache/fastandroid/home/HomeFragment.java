@@ -1,37 +1,9 @@
 package com.apache.fastandroid.home;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-
-import com.apache.fastandroid.article.ArticleDetailActivity;
-import com.apache.fastandroid.article.ArticleViewModel;
-import com.apache.fastandroid.bean.CollectBean;
-import com.apache.fastandroid.network.model.Article;
-import com.apache.fastandroid.network.model.HomeArticleResponse;
-import com.apache.fastandroid.util.InjectorUtil;
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
-import com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragmentNew;
-import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function2;
-
 /**
  * Created by Jerry on 2021/7/1.
  */
-public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew<Article> implements CollectListener {
+/*public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew<Article> implements CollectListener {
     public static final String TAG ="HomeFragment";
 
 
@@ -207,5 +179,5 @@ public class HomeFragment extends ARecycleViewSwipeRefreshFragmentNew<Article> i
     }
 
 
-}
+}*/
 

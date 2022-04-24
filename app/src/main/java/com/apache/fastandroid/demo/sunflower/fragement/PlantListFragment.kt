@@ -1,23 +1,19 @@
 package com.apache.fastandroid.demo.sunflower.fragement
 
 import android.os.Bundle
-import android.view.*
-import android.widget.ImageView
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.SavedStateHandle
-import androidx.recyclerview.widget.GridLayoutManager
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentPlantListBinding
 import com.apache.fastandroid.demo.sunflower.adapter.PlantAdapterNew
-import com.apache.fastandroid.demo.sunflower.bean.Plant
 import com.apache.fastandroid.demo.sunflower.db.SunFlowDatabase
 import com.apache.fastandroid.demo.sunflower.repository.PlantRepository
 import com.apache.fastandroid.demo.sunflower.viewmodel.PlantListViewModel
 import com.apache.fastandroid.demo.sunflower.viewmodel.PlantListViewModelFactory
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
-import com.tesla.framework.component.imageloader.ImageLoaderManager
-import com.tesla.framework.databinding.CommUiRecycleviewNewBinding
 import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**

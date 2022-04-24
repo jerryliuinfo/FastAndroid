@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/home_dest"
-        android:name="com.apache.fastandroid.home.HomeFragment"
+        android:name="com.apache.fastandroid.home.HomeFragmentNew"
         android:label="首页"
         tools:layout="@layout/fragment_nav_home"
         >
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/topic_dest"
-        android:name="com.apache.fastandroid.home.HomeFragment"
+        android:name="com.apache.fastandroid.home.HomeFragmentNew"
         android:label="Home"
         tools:layout="@layout/fragment_nav_home"
         >

@@ -103,9 +103,9 @@
         </activity>
 
 
-        <meta-data
+       <!-- <meta-data
             android:name="channelId"
-            android:value="${UMENG_CHANNEL}" />
+            android:value="${UMENG_CHANNEL}" />-->
 
         <service android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService" />
         <service android:name=".demo.drakeet.foregroundservice.InhibitorService" />

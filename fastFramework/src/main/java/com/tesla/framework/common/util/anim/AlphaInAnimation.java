@@ -6,6 +6,8 @@ import android.view.View;
 
 import com.chad.library.adapter.base.animation.BaseAnimation;
 
+import androidx.annotation.NonNull;
+
 
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
@@ -22,8 +24,11 @@ public class AlphaInAnimation implements BaseAnimation {
         mFrom = from;
     }
 
+
+
+    @NonNull
     @Override
-    public Animator[] getAnimators(View view) {
+    public Animator[] animators(@NonNull View view) {
         return new Animator[]{ObjectAnimator.ofFloat(view, "alpha", mFrom, 1f)};
     }
 }

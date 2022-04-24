@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.entity.MultiItemEntity
  * Created by Jerry on 2021/9/9.
  */
 data class Person(val name:String, val age:Int?): MultiItemEntity {
-    override fun getItemType(): Int {
-        return 2
-    }
+
+    override val itemType: Int
+        get() = 2
 }

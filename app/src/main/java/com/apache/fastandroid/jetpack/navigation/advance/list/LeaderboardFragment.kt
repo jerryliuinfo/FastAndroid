@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentLeaderboardBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
@@ -27,7 +27,7 @@ class LeaderboardFragment:BaseVBFragment<FragmentLeaderboardBinding>(FragmentLea
 
     }
 
-   class LeaderAdapter(layoutId:Int, datas:List<String>):BaseQuickAdapter<String,BaseViewHolder>(layoutId, datas){
+   class LeaderAdapter(layoutId:Int, datas:List<String>):BaseQuickAdapter<String, BaseViewHolder>(layoutId, datas.toMutableList()){
         override fun convert(helper: BaseViewHolder, item: String) {
             helper.setText(R.id.user_name_text,item)
             helper.setImageResource(R.id.user_avatar_image, listOfAvatars[helper.adapterPosition % listOfAvatars.size])

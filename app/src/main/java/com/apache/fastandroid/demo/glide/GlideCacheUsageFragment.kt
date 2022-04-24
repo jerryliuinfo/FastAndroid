@@ -23,27 +23,27 @@ class GlideCacheUsageFragment: BaseVBFragment<GlideCacheUsageDemoBinding>(GlideC
 
 
         btn_skip_memory.setOnClickListener {
-            Glide.with(activity).load(url)
+           /* Glide.with(activity).load(url)
                     .placeholder(R.drawable.sample_footer_loading)
                     .skipMemoryCache(true)
-                    .into(image)
+                    .into(image)*/
         }
         btn_none_disk_cache.setOnClickListener {
-            Glide.with(activity).load(url)
+           /* Glide.with(activity).load(url)
                     .placeholder(R.drawable.sample_footer_loading)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .into(image)
+                    .into(image)*/
         }
         btn_custom_url.setOnClickListener {
-            Glide.with(activity).load(MyGlideUrl(url))
+            /*Glide.with(activity).load(MyGlideUrl(url))
                     .placeholder(R.drawable.sample_footer_loading)
 
-                    .into(image)
+                    .into(image)*/
         }
         btn_global_custom_url.setOnClickListener {
-            Glide.with(activity).load(url)
+            /*Glide.with(activity).load(url)
                     .placeholder(R.drawable.sample_footer_loading)
-                    .into(image)
+                    .into(image)*/
         }
 
 

@@ -15,10 +15,11 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentFluentAnimationBinding
 import com.apache.fastandroid.demo.databinding.UserViewModel
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.common.util.DrakeetUtils.doOnMainThreadIdle
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
+import okhttp3.internal.toImmutableList
 
 /**
  * Created by Jerry on 2022/1/25.
@@ -46,7 +47,8 @@ class FluentAnimationDemoFragment: BaseVBFragment<FragmentFluentAnimationBinding
         }
 
         mAdapter = object : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_comment) {
-            override fun convert(helper: BaseViewHolder, item: String?) {
+
+            override fun convert(helper: BaseViewHolder, item: String) {
                 helper.setText(R.id.tv_title, item)
             }
         }
@@ -62,7 +64,7 @@ class FluentAnimationDemoFragment: BaseVBFragment<FragmentFluentAnimationBinding
             )
         }
         userViewModel.commentsLiveData.observe(this){
-            mAdapter.setNewData(it)
+            mAdapter.setNewData(it.toMutableList())
         }
         userViewModel.loadCommentData()
 

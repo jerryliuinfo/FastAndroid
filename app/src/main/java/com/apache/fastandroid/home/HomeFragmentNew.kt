@@ -1,0 +1,135 @@
+package com.apache.fastandroid.home
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import androidx.fragment.app.viewModels
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.apache.fastandroid.R
+import com.apache.fastandroid.article.ArticleDetailActivity
+import com.apache.fastandroid.databinding.FragmentHomeBinding
+import com.apache.fastandroid.databinding.ItemArticleBinding
+import com.apache.fastandroid.network.model.Article
+import com.apache.fastandroid.util.InjectorUtil
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.module.LoadMoreModule
+import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
+import com.example.android.architecture.blueprints.todoapp.ScrollChildSwipeRefreshLayout
+import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayout
+import com.tesla.framework.ui.fragment.BaseDBFragment
+
+/**
+ * Created by Jerry on 2022/4/23.
+ */
+class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+
+    private val mHomeViewModel:HomeViewModelKt by viewModels { InjectorUtil.getHomeModelFactory() }
+
+    private lateinit var  swipeRefreshLayout: ScrollChildSwipeRefreshLayout
+
+    private lateinit var mAdapter: HomeAdaptet
+
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_home
+    }
+
+    override fun bindUI(rootView: View?) {
+        super.bindUI(rootView)
+        swipeRefreshLayout = viewBinding.swipeRefreshLayout
+    }
+
+
+    override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
+        super.layoutInit(inflater, savedInstanceState)
+
+        mAdapter = HomeAdaptet().apply {
+           /* initLoadMore()
+            setOnItemClickListener{ adapter,view,position ->
+                val article = getItem(position)
+                ArticleDetailActivity.launch(requireActivity(), article.title, article.link)
+            }
+*/
+        }
+        viewBinding.recycleview.apply {
+            adapter = mAdapter
+        }
+        swipeRefreshLayout.apply {
+            setupRefreshLayout(this)
+            setOnRefreshListener {
+                refresh()
+            }
+        }
+
+        mHomeViewModel.homeArticleLiveData.observe(this){
+            handleData(it.datas)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // 进入页面，刷新数据
+        swipeRefreshLayout.isRefreshing = true
+        refresh()
+    }
+
+    /**
+     * 刷新
+     */
+    private fun refresh() {
+        // 这里的作用是防止下拉刷新的时候还可以上拉加载
+        mAdapter.loadMoreModule.isEnableLoadMore = false
+        // 下拉刷新，需要重置页数
+        mHomeViewModel.onRefresh()
+    }
+
+    private fun handleData(data:List<Article>){
+        mAdapter.loadMoreModule.isEnableLoadMore= true
+        if (viewBinding.swipeRefreshLayout.isRefreshing){
+            viewBinding.swipeRefreshLayout.isRefreshing = false
+        }
+
+        if (mHomeViewModel.pageInfo.isFirstPage()) {
+            //如果是加载的第一页数据，用 setData()
+            mAdapter.setList(data)
+        } else {
+            //不是第一页，则用add
+            mAdapter.addData(data)
+        }
+
+        if (data.isEmpty()) {
+            //如果不够一页,显示没有更多数据布局
+            mAdapter.loadMoreModule.loadMoreEnd()
+//            Tips.show("no modelre data")
+        } else {
+            mAdapter.loadMoreModule.loadMoreComplete()
+        }
+        // page加一
+        mHomeViewModel.pageInfo.nextPage()
+
+    }
+
+    private fun initLoadMore() {
+        mAdapter.loadMoreModule.apply {
+            setOnLoadMoreListener{
+                mHomeViewModel.loadMore()
+            }
+            isAutoLoadMore = true
+            //当自动加载开启，同时数据不满一屏时，是否继续执行自动加载更多(默认为true)
+            isEnableLoadMoreIfNotFullPage = false
+        }
+
+    }
+
+
+    class HomeAdaptet:BaseQuickAdapter<Article,BaseDataBindingHolder<ItemArticleBinding>>(R.layout.item_article),LoadMoreModule{
+        override fun convert(holder: BaseDataBindingHolder<ItemArticleBinding>, item: Article) {
+            val dataBinding = holder.dataBinding
+            dataBinding?.apply {
+                article = item
+                executePendingBindings()
+            }
+        }
+
+    }
+
+}

@@ -42,7 +42,7 @@ object Versions {
     const val immersionbar = "3.0.0"
     const val bugly = "3.3.9"
     const val buglyNative = "3.8.0"
-    const val brvh = "2.9.30"
+    const val brvh = "3.0.7"
 
     const val junit = "4.12"
     const val mockito = "2.23.0"

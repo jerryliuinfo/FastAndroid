@@ -6,14 +6,14 @@ import android.widget.TextView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.network.model.Article
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.common.util.N
 
 /**
  * Created by Jerry on 2021/7/1.
  */
-class ArticleAdapter(data: List<Article>,val listener :(View,Int) -> Unit ? ) :
-    BaseQuickAdapter<Article, BaseViewHolder>(R.layout.article_item, data) {
+class ArticleAdapter(data: List<Article>,val listener :(View,Int) -> Unit  ) :
+    BaseQuickAdapter<Article, BaseViewHolder>(R.layout.article_item, data.toMutableList()) {
 
 
     override fun convert(holder: BaseViewHolder, it: Article) {
@@ -23,13 +23,13 @@ class ArticleAdapter(data: List<Article>,val listener :(View,Int) -> Unit ? ) :
             .setText(R.id.item_article_date, it.niceDate)
             .setText(R.id.item_article_type, handleCategory(it))
             .setImageResource(R.id.item_list_collect, isCollect(it))
-            .addOnClickListener(R.id.item_list_collect)
+//            .addOnClickListener(R.id.item_list_collect)
             .setVisible(R.id.item_article_new, it.fresh)
             .setVisible(R.id.item_article_top_article, it.top)
             .setGone(R.id.item_article_top_article, it.top)
 
         holder.getView<TextView>(R.id.item_article_author).setOnClickListener {
-            listener?.invoke(it, holder.bindingAdapterPosition)
+            listener?.invoke(it, holder.layoutPosition)
         }
     }
 

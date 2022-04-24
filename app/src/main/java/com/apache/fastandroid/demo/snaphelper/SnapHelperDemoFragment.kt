@@ -9,7 +9,7 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.SnapheplerBinding
 import com.apache.fastandroid.widget.SpaceItemDecoration
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.activity_demo_list.*
 
@@ -27,7 +27,7 @@ class SnapHelperDemoFragment: BaseVBFragment<SnapheplerBinding>(SnapheplerBindin
         val datas = arrayListOf("aaa", "bbb", "ccc", "aaa", "bbb", "ccc", "aaa", "bbb", "ccc", "aaa", "bbb", "ccc","aaa", "bbb", "ccc", "aaa", "bbb", "ccc", "aaa", "bbb", "ccc", "aaa", "bbb", "ccc");
 
         val quickAdapter:BaseQuickAdapter<String, BaseViewHolder> = object :BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_snap_helper, datas){
-            override fun convert(helper: BaseViewHolder, item: String?) {
+            override fun convert(helper: BaseViewHolder, item: String) {
                 helper.setText(R.id.tv_name,item)
             }
         }

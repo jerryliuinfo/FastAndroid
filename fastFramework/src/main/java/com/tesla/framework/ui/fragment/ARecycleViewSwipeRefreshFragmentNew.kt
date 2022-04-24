@@ -1,19 +1,9 @@
 package com.tesla.framework.ui.fragment
 
-import android.R
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
-import com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBinding
-
 /**
  * Created by Jerry on 2022/3/12.
  */
+/*
 abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUiRecycleviewSwiperefreshNewBinding>(CommUiRecycleviewSwiperefreshNewBinding::inflate),
     BaseQuickAdapter.RequestLoadMoreListener {
 
@@ -83,19 +73,23 @@ abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUiRecyc
     }
 
 
-    /**
+    */
+/**
      * 默认是LinearLayoutManager
      *
      * @return
-     */
+     *//*
+
     protected open fun configLayoutManager(): RecyclerView.LayoutManager? {
         return LinearLayoutManager(activity)
     }
 
-    /**
+    */
+/**
      * 获取第一个可见的position
      * @return
-     */
+     *//*
+
     protected open fun getFirstVisiblePosition(): Int {
         if (mBinding.recycleview.layoutManager is LinearLayoutManager) {
             val linearLayoutManager = mBinding.recycleview.layoutManager as LinearLayoutManager
@@ -138,4 +132,4 @@ abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUiRecyc
             }
         }
     }
-}
+}*/

@@ -145,7 +145,7 @@ android {
         dev {
             versionName computeVersionName('dev')
             dimension "env"
-            manifestPlaceholders = [UMENG_CHANNEL: "dev"]
+//            manifestPlaceholders = [UMENG_CHANNEL: "dev"]
             resValue "string", "appDisplayName", "FastDev"
             buildConfigField 'String', 'WEB_URL', '"http://www.dev.com"'
             resValue 'string', 'channel_tips', 'dev渠道欢迎你'
@@ -154,7 +154,7 @@ android {
         prod {
             dimension "env"
             versionName computeVersionName('r')
-            manifestPlaceholders = [UMENG_CHANNEL: "prod"]
+//            manifestPlaceholders = [UMENG_CHANNEL: "prod"]
             resValue "string", "appDisplayName", "FastProd"
             buildConfigField 'String', 'WEB_URL', '"http://www.prod.com"'
             /**

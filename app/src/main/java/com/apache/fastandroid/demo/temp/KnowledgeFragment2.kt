@@ -9,7 +9,7 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.databinding.FragmentTempKnowledge2Binding
 import com.apache.fastandroid.demo.temp.adapter.KnowlegeAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
@@ -25,7 +25,7 @@ class KnowledgeFragment2: BaseVBFragment<FragmentTempKnowledge2Binding>(Fragment
     companion object{
         private const val TAG = "KnowledgeFragment"
     }
-    private lateinit var adapter: BaseQuickAdapter<ViewItemBean,BaseViewHolder>
+    private lateinit var adapter: BaseQuickAdapter<ViewItemBean, BaseViewHolder>
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
@@ -42,9 +42,7 @@ class KnowledgeFragment2: BaseVBFragment<FragmentTempKnowledge2Binding>(Fragment
         recyclerView.adapter = adapter
         recyclerView.layoutManager= GridLayoutManager(context,3)
         adapter.setNewData(items)
-        adapter.onItemClickListener = BaseQuickAdapter.OnItemClickListener { adapter, view, position ->
 
-        }
 
     }
 

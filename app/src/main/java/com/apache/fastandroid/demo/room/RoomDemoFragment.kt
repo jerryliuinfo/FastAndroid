@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentJetpackRoomBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.databinding.LayoutEdittextBinding
@@ -64,7 +64,7 @@ class RoomDemoFragment: BaseVBFragment<FragmentJetpackRoomBinding>(FragmentJetpa
                 }
                 println("btnQueryByCondition thread: ${Thread.currentThread().name}")
 
-                mAdapter.setNewData(queryList)
+                mAdapter.setNewData(queryList.toMutableList())
             }
         }
 
@@ -87,7 +87,7 @@ class RoomDemoFragment: BaseVBFragment<FragmentJetpackRoomBinding>(FragmentJetpa
     }
 
     private fun  updateView(list:List<Account>){
-        mAdapter.setNewData(list)
+        mAdapter.setNewData(list.toMutableList())
     }
 
     private  class PlantAdapter(val plantDao: AccountDao):BaseQuickAdapter<Account,BaseViewHolder>(R.layout.item_plant){
@@ -95,11 +95,11 @@ class RoomDemoFragment: BaseVBFragment<FragmentJetpackRoomBinding>(FragmentJetpa
             helper.setText(R.id.tv_id, item.id.toString())
             helper.setText(R.id.tv_name, item.name)
 
-            helper.setOnClickListener(R.id.btn_delete
+          /*  helper.setOnClickListener(R.id.btn_delete
             ) { v -> showDeleteDialog(item, v) }
 
             helper.setOnClickListener(R.id.btn_edit
-            ) { v -> showEditDialog(item, v) }
+            ) { v -> showEditDialog(item, v) }*/
 
         }
 

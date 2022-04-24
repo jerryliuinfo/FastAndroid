@@ -27,7 +27,7 @@ class MviDemoFragment: BaseVBFragment<FragmentMviBinding>(FragmentMviBinding::in
     private val viewModel: MviViewModel by viewModels{InjectorUtil.getMviModelFactory()}
 
     private val newsRvAdapter by lazy {
-        ArticleAdapter(null){view,position ->
+        ArticleAdapter(emptyList()){ view, position ->
             ToastUtils.showShort("onclick ${position}")
         }
     }
@@ -56,7 +56,7 @@ class MviDemoFragment: BaseVBFragment<FragmentMviBinding>(FragmentMviBinding::in
 
             observeState(activity as LifecycleOwner, MainViewState::newsList) {
                 println("list: ${it.size}")
-                newsRvAdapter.setNewData(it)
+                newsRvAdapter.setList(it.toMutableList())
             }
             observeState(activity as LifecycleOwner, MainViewState::fetchStatus) {
                 when (it) {

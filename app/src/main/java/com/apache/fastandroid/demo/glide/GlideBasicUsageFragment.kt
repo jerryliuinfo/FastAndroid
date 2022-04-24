@@ -34,28 +34,28 @@ class GlideBasicUsageFragment: BaseVBFragment<GlideBasicUsageDemoBinding>(GlideB
                     .into(image)
         }
         btn_disable_cache.setOnClickListener {
-            Glide.with(requireActivity()).load(url)
+           /* Glide.with(requireActivity()).load(url)
                     //不缓存图片
                     .diskCacheStrategy(DiskCacheStrategy.RESULT)
                     .placeholder(R.drawable.sample_footer_loading)
-                    .into(image)
+                    .into(image)*/
 
         }
         btn_dimension.setOnClickListener {
-            Glide.with(requireActivity()).load(url)
+           /* Glide.with(requireActivity()).load(url)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .placeholder(R.drawable.sample_footer_loading)
                     //glide只会将图片加载成100*100读到内存中(和显示的大小不是一个东西),而不管ImageView的大小是多少
                     .override(100, 100)
-                    .into(image)
+                    .into(image)*/
         }
         btn_origin_size.setOnClickListener {
-            Glide.with(requireActivity()).load(url)
+           /* Glide.with(requireActivity()).load(url)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .placeholder(R.drawable.sample_footer_loading)
                     //glide只会将图片加载成100*100,而不管ImageView的大小是多少
                     .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
-                    .into(image)
+                    .into(image)*/
         }
     }
 

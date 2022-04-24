@@ -2,7 +2,7 @@ package com.apache.fastandroid.demo.adapter;
 
 import com.apache.fastandroid.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
 import java.util.List;
 
@@ -18,7 +18,8 @@ public class PulltoRefreshAdapter extends BaseQuickAdapter<String, BaseViewHolde
 
     @Override
     protected void convert(BaseViewHolder helper, String item) {
-        switch (helper.getLayoutPosition() % 3) {
+        helper.setImageResource(R.id.img, R.mipmap.animation_img1);
+       /* switch (helper.() % 3) {
             case 0:
                 helper.setImageResource(R.id.img, R.mipmap.animation_img1);
                 break;
@@ -30,6 +31,6 @@ public class PulltoRefreshAdapter extends BaseQuickAdapter<String, BaseViewHolde
                 break;
             default:
                 break;
-        }
+        }*/
     }
 }

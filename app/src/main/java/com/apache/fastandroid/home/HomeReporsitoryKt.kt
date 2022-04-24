@@ -18,10 +18,10 @@ import kotlin.random.Random
  */
 class HomeReporsitoryKt(private val homeDao:HomeDao, private val network: HomeNetwork) {
 
-    suspend fun loadTopArticleCo():List<Article>?{
+    suspend fun loadTopArticleCo():List<Article>{
         println("loadTopArticleCo thread: ${Thread.currentThread().name}")
         var artices = network.loadTopArticleCo()
-        return artices?.data
+        return artices.data
     }
 
     suspend fun loadTopArticleCoByPageStatus():PageState<List<Article>>{
@@ -42,13 +42,13 @@ class HomeReporsitoryKt(private val homeDao:HomeDao, private val network: HomeNe
 
 
 
-    suspend fun loadHomeArticleCo(pageNum:Int): HomeArticleResponse? {
+    suspend fun loadHomeArticleCo(pageNum:Int): HomeArticleResponse {
         var artices = network.loadHomeArticleCo(pageNum)
-        if (artices != null){
+        return if (artices != null){
             homeDao.cacheHomeData(pageNum,artices.data)
-            return artices.data
+            artices.data
         }else{
-            return homeDao.getCacheHomeData(pageNum)
+            homeDao.getCacheHomeData(pageNum)
         }
     }
 

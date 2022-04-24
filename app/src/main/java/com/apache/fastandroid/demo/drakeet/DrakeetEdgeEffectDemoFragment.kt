@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentComRecycleviewBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.fragment_com_recycleview.*
 
@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_com_recycleview.*
 
 class DrakeetEdgeEffectDemoFragment : BaseVBFragment<FragmentComRecycleviewBinding>(FragmentComRecycleviewBinding::inflate) {
 
-   private lateinit var mAdapter: BaseQuickAdapter<String,BaseViewHolder>
+   private lateinit var mAdapter: BaseQuickAdapter<String, BaseViewHolder>
 
 
 	 override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
