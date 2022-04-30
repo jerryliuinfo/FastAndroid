@@ -22,6 +22,7 @@ import java.lang.IllegalStateException
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
+import com.tesla.framework.kt.inflateBinding
 import java.lang.reflect.Method
 import java.lang.reflect.ParameterizedType
 
@@ -32,15 +33,24 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseDBFragment<T : ViewDataBinding>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) : ABaseFragment() {
 
     protected lateinit var viewBinding: T
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewBinding = inflateBinding<T>(layoutInflater).apply {
+            lifecycleOwner = this@BaseDBFragment
+        }
+
+    }
 
     @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        viewBinding = DataBindingUtil.inflate(inflater, getLayoutId(),container, false)
+       /* viewBinding = inflater(inflater, container, false)
+
+
         viewBinding.apply {
             lifecycleOwner = this@BaseDBFragment
         }
-
+*/
         bindUI(viewBinding.root)
 
 

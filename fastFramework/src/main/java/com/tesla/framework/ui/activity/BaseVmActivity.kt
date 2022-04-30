@@ -2,6 +2,9 @@ package com.tesla.framework.ui.activity
 
 import android.app.Activity
 import android.content.res.Configuration
+import android.content.res.Resources
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -13,6 +16,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.viewbinding.ViewBinding
+import com.blankj.utilcode.util.AdaptScreenUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.gyf.immersionbar.ktx.immersionBar
 import com.tesla.framework.R
@@ -20,6 +24,7 @@ import com.tesla.framework.common.util.AndroidBugFixUtils
 import com.tesla.framework.component.livedata.NetworkLiveData
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.network.NetworkStateManager
+import com.tesla.framework.kt.inflateBinding
 import com.tesla.framework.ui.fragment.ABaseFragment
 import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
 import com.zwb.lib_base.utils.network.AutoRegisterNetListener
@@ -55,7 +60,8 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
         fragmentRefs = HashMap()
         super.onCreate(savedInstanceState)
         activity = this
-        mBinding = inflater(layoutInflater)
+//        mBinding = inflater(layoutInflater)
+        mBinding = inflateBinding(layoutInflater)
         setContentView(mBinding.root)
         activityHelper = BaseActivityHelper(this,this)
         initViewModel()
@@ -66,6 +72,8 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
 
 
     }
+
+
 
     /**
      * 初始化网络状态监听
@@ -266,6 +274,8 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
 
     companion object {
         const val TAG = "Activity-Base"
+        private const val MOBILE_DESIGN_WIDTH_IN_DP = 375
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -289,6 +299,16 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
             ToastUtils.showShort(msg)
         }
     }
+
+   /* override fun getResources(): Resources {
+        val rawResources = super.getResources()
+        return if (rawResources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            AdaptScreenUtils.adaptWidth(rawResources, MOBILE_DESIGN_WIDTH_IN_DP)
+        } else {
+            AdaptScreenUtils.adaptHeight(rawResources, MOBILE_DESIGN_WIDTH_IN_DP)
+        }
+    }*/
+
 
 
 }

@@ -9,7 +9,6 @@ import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.WindowManager.BadTokenException
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
@@ -21,7 +20,11 @@ import com.apache.fastandroid.crash.Fabric.init
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor
 import com.apache.fastandroid.demo.component.loadsir.callback.*
-import com.blankj.utilcode.util.*
+import com.apache.fastandroid.util.Global
+import com.blankj.utilcode.util.CrashUtils
+import com.blankj.utilcode.util.FileUtils
+import com.blankj.utilcode.util.ToastUtils
+import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.ServiceLocator
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import com.kingja.loadsir.core.LoadSir
@@ -260,55 +263,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
     }
 
     private fun initLoop() {
-        ThreadUtils.runOnUiThread {
-            while (true) {
-                try {
-                    Looper.loop()
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    val stack = Log.getStackTraceString(e)
-                    if (e is SecurityException) {
-                    } else if (e is BadTokenException) {
-                    } else if (e is IndexOutOfBoundsException) {
-                    } else if (stack.contains("SelectionHandleView")
-                        || stack.contains("Magnifier.show")
-                        || stack.contains("ViewRootImpl.handleDragEvent")
-                        || stack.contains("PinnedPopWindow.show")
-                        || stack.contains("FloatingToolbar.show")
-                        || stack.contains("Context.startForegroundService() did")
-                        || stack.contains("BaseInputConnection")
-                        || stack.contains("getTextBeforeCursor")
-                        || stack.contains("startDragAndDrop")
-                        || stack.contains("dispatchDragAndDrop")
-                        || stack.contains("TextClassificationAsyncTask")
-                        || stack.contains("startSelectionActionModeAsync")
-                        || stack.contains("Editor.touchePositionIsInSelection")
-                        || stack.contains("BlinkHandler.finishBlink")
-                        || stack.contains("TextClassificationHelper")
-                        || stack.contains("AppMeasurementService")
-                        || stack.contains("SuggestionSPopupwindoW")
-                        || stack.contains("ASynCinputstage")
-                        || stack.contains("HandleView.updatePosition")
-                        || stack.contains("onDialogDISmissed")
-                        || stack.contains("com.oppo.intent.action.TRANSLATE")
-                        || stack.contains("Accessibi1ityInteractionContro11er")
-                        || stack.contains("BadTokenException")
-                        || stack.contains("Service.startForeground()")
-                        || stack.contains("com.swift.sandhook")
-                        || stack.contains("updateForceDarkMode")
-                        || stack.contains("ClipboardService")
-                    ) {
-                        e.printStackTrace()
-                    } else {
-                        e.printStackTrace()
-                        //                            throw e;
-                    }
-                }
-            }
-        }
-        Looper.getMainLooper().setMessageLogging {
-            //                Logger.d(TAG, "message: "+ x);
-        }
+       Global.start()
     }
 
     private fun initAnr() {

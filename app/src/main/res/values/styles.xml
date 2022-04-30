@@ -200,4 +200,14 @@
         <attr name="isLrcCurrentTextBold" format="boolean"/>
         <attr name="isLrcIndicatorTextBold" format="boolean"/>
     </declare-styleable>
+
+    <style name="Base.Theme.Toolbar">
+        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.Surface</item>
+    </style>
+    <style name="Base.Theme.InputLayout">
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense</item>
+    </style>
+    <style name="Base.Theme.SendButton">
+        <item name="imageButtonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>
+    </style>
 </resources>

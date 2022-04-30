@@ -12,6 +12,7 @@ import com.apache.fastandroid.demo.nodrawable.LoadingDrawableFragment
 import com.apache.fastandroid.demo.nodrawable.NoDrawableFragment
 import com.apache.fastandroid.demo.roudview.RoundViewDemoFragment
 import com.apache.fastandroid.demo.shapeimageview.ShapeImageviewDemoFragment
+import com.apache.fastandroid.demo.tablayout.ArticleTabsFragment
 import com.apache.fastandroid.demo.temp.SpanableStringFragment
 import java.util.*
 
@@ -34,6 +35,8 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("RecycleviewDivider", "RecycleviewDivider", DrawableListFragment::class.java)
                 ,ViewItemBean("普通系统控件", "普通系统控件", SystemViewFragment::class.java)
                 ,ViewItemBean("Lyric", "Lyric", LyricFragment::class.java)
+                ,ViewItemBean("TabLayoutFragment", "TabLayoutFragment", ArticleTabsFragment::class.java)
+                ,ViewItemBean("PreferenceFragment", "PreferenceFragment", PreferenceFragmentDemo::class.java)
 
 
         )

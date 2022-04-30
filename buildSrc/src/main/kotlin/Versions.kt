@@ -6,12 +6,12 @@ import org.apache.tools.ant.taskdefs.condition.JavaVersion
 object Versions {
     const val kotlin = "1.6.10"
 
-    const val appCompat = "1.3.0-alpha02"
+    const val appCompat = "1.3.1"
     const val material = "1.4.0-alpha01"
     const val constraintlayout = "2.0.4"
     const val cardview = "1.0.0"
     const val recyclerview = "1.1.0"
-    const val core_ktx = "1.4.1"
+    const val core_ktx = "1.6.0"
     const val activity_ktx = "1.3.1"
     const val fragment_ktx = "1.3.6"
     const val preference = "1.1.0-alpha04"

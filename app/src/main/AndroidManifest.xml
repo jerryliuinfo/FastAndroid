@@ -86,12 +86,21 @@
 
         <activity
             android:name=".demo.drakeet.foregroundservice.ForegroundServiceActivity"
-            android:exported="true"
+            android:exported="false"
             />
 
         <activity
             android:name=".demo.unitest.UnitTestActivity"
-            android:exported="true"
+            android:exported="false"
+            />
+        <activity
+            android:name=".demo.drakeet.customview.sample.course.OnlineActivity"
+            android:screenOrientation="landscape"
+            android:exported="false"
+            />
+        <activity
+            android:name=".demo.drakeet.customview.sample.chat.ChatActivity"
+            android:exported="false"
             />
 
         <activity

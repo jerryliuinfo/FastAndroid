@@ -30,6 +30,7 @@ class ArticleNetwork:BaseNetwork() {
 
 
     companion object{
+        @Volatile
         private var instance: ArticleNetwork?= null
         fun getInstance(): ArticleNetwork {
             if (instance == null){

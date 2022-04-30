@@ -52,15 +52,13 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("重学Android", "重学Android", RelearnAndroidDemoFragment::class.java),
             ViewItemBean("黑科技", "黑科技", BlackTechDemoFragment::class.java),
             ViewItemBean("Drakeet", "Drakeet", DrakeetDemoListFragment::class.java),
-            ViewItemBean("Kotlin语法", "Kotlin语法", KotlinDemoListFragment::class.java)
-            ,ViewItemBean("TransitionMannager", "TransitionMannager", TransitionDemoFragment::class.java)
-            ,ViewItemBean("采坑", "采坑", HitPitDemoListFragment::class.java)
-            ,ViewItemBean("Sample", "Sample", SampleCodeDemoListFragment::class.java)
-            ,ViewItemBean("单元测试", "单元测试", SampleCodeDemoListFragment::class.java)
-            ,ViewItemBean("TabLayoutFragment", "TabLayoutFragment", ArticleTabsFragment::class.java)
-            ,ViewItemBean("PreferenceFragment", "PreferenceFragment", PreferenceFragmentDemo::class.java)
-            ,ViewItemBean("Lyric", "Lyric", LyricDemoFragment::class.java)
-            ,ViewItemBean("各个组件style介绍", "各个组件style介绍", LyricDemoFragment::class.java)
+            ViewItemBean("Kotlin语法", "Kotlin语法", KotlinDemoListFragment::class.java),
+            ViewItemBean("TransitionMannager", "TransitionMannager", TransitionDemoFragment::class.java),
+            ViewItemBean("采坑", "采坑", HitPitDemoListFragment::class.java),
+            ViewItemBean("Sample", "Sample", SampleCodeDemoListFragment::class.java),
+            ViewItemBean("单元测试", "单元测试", SampleCodeDemoListFragment::class.java),
+            ViewItemBean("MVI", "MVI", SampleCodeDemoListFragment::class.java),
+            ViewItemBean("各个组件style介绍", "各个组件style介绍", LyricDemoFragment::class.java)
 
 
         )

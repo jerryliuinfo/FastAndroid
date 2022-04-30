@@ -12,6 +12,10 @@ apply plugin: 'kotlin-android-extensions'
 
 println("read Property MethodTraceMan:${readLocalProperty("MethodTraceMan")}")
 
+//https://github.com/MichaelRocks/paranoid
+apply plugin: 'io.michaelrocks.paranoid'
+
+
 
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 
@@ -195,9 +199,15 @@ android {
         }
         debug {
             debuggable = true
+            minifyEnabled false
+            shrinkResources false
+            //应用包名添加.debug后缀
             applicationIdSuffix ".debug"
-            debuggable true    //默认false，可不写
-            minifyEnabled = false
+            //禁用PNG压缩。
+            crunchPngs false
+            //停用Crashlytics，以提高调试 build 的构建速度
+            ext.enableCrashlytics = false
+
             manifestPlaceholders = [appName: "FastAnd测试版"]
 
         }
@@ -411,6 +421,8 @@ dependencies {
     implementation AndroidX.swiperefreshLayout
     implementation AndroidX.palette
     implementation AndroidX.preference
+
+    implementation 'androidx.dynamicanimation:dynamicanimation-ktx:1.0.0-alpha03'
 
 
     implementation Libs.glide

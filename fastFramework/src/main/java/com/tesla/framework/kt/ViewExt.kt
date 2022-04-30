@@ -1,20 +1,29 @@
 package com.tesla.framework.kt
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Paint
 import android.graphics.Rect
+import android.graphics.drawable.Drawable
 import android.util.TypedValue
+import android.view.LayoutInflater
 import android.view.View
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.viewbinding.ViewBinding
 import com.blankj.utilcode.util.StringUtils
 import com.blankj.utilcode.util.Utils
 import com.google.android.material.snackbar.Snackbar
 import com.tesla.framework.component.livedata.Event
 import com.tesla.framework.component.livedata.NetworkLiveData
+import java.lang.reflect.ParameterizedType
 import kotlin.math.pow
 
 /**
@@ -117,3 +126,27 @@ fun <T> Array<T>.maxCustomize(greater:(T,T) -> Boolean):T?{
     return max
 }
 
+
+
+@ColorInt
+fun @receiver:ColorRes Int.getColor(context: Context): Int = ContextCompat.getColor(context, this)
+
+fun @receiver:DrawableRes Int.getDrawable(context: Context): Drawable? =
+    ContextCompat.getDrawable(context, this)
+
+fun @receiver:ColorRes Int.toColorStateList(context: Context): ColorStateList {
+    return ColorStateList.valueOf(getColor(context))
+}
+
+fun @receiver:ColorInt Int.toColorStateListByColor(): ColorStateList {
+    return ColorStateList.valueOf(this)
+}
+
+@Suppress("UNCHECKED_CAST")
+fun <T : ViewBinding> LifecycleOwner.inflateBinding(inflater: LayoutInflater): T {
+    return (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments
+        .filterIsInstance<Class<T>>()
+        .first()
+        .getDeclaredMethod("inflate", LayoutInflater::class.java)
+        .invoke(null, inflater) as T
+}

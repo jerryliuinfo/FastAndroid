@@ -35,10 +35,12 @@ class FitSystemWindowFrameLayoutDemoActivity:AppCompatActivity() {
         frameLayout.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
 
         /**
-         * 现在我们仍然实现了沉浸式状态栏的效果，但问题是FrameLayout中的按钮也延伸到状态栏区域了，这就是前面所说的可交互控件被状态栏遮挡的问题。
+         * 现在我们仍然实现了沉浸式状态栏的效果，但问题是FrameLayout中的按钮也延伸到状态栏区域了，
+         * 这就是前面所说的可交互控件被状态栏遮挡的问题。
          * CoordinatorLayout嘛，它已经帮我们考虑好到这些事情，自动会将内部的控件进行偏移。
          * 而现在FrameLayout显然是不会帮我们做这些事情的，所以我们得想办法自己解决
-         * 这里其实可以借助setOnApplyWindowInsetsListener()函数去监听WindowInsets发生变化的事件，当有监听到发生变化时，我们可以读取顶部Insets的大小，然后对控件进行相应距离的偏移。
+         * 这里其实可以借助setOnApplyWindowInsetsListener()函数去监听WindowInsets发生变化的事件，
+         * 当有监听到发生变化时，我们可以读取顶部Insets的大小，然后对控件进行相应距离的偏移。
          */
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.button

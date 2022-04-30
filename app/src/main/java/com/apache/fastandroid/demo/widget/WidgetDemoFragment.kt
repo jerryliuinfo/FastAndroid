@@ -2,6 +2,7 @@ package com.apache.fastandroid.demo.widget
 
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
+import com.apache.fastandroid.demo.lyric.LyricDemoFragment
 import com.apache.fastandroid.demo.widget.supertextview.SuperTextViewDemoListFragment
 
 /**
@@ -12,6 +13,8 @@ class WidgetDemoFragment: BaseListFragment() {
         return arrayListOf(
                 //https://github.com/youth5201314/banner
                 ViewItemBean("SupterTextView", "SuperTextView", SuperTextViewDemoListFragment::class.java)
+                ,ViewItemBean("Lyric", "Lyric", LyricDemoFragment::class.java)
+
         )
     }
 

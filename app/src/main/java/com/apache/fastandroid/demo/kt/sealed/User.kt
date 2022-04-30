@@ -14,4 +14,7 @@ data class User(
     @ColumnInfo(name = "first_name") var name:String,
     var playerType:PlayerViewType = PlayerViewType.BLUE){
 
+    override fun equals(other: Any?): Boolean {
+        return other is User && other.id == id
+    }
 }

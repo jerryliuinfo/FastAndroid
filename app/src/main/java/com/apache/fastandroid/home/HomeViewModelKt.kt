@@ -5,6 +5,7 @@ import com.apache.fastandroid.bean.PageInfo
 import com.apache.fastandroid.jetpack.BaseViewModel
 import com.apache.fastandroid.network.model.Article
 import com.apache.fastandroid.network.model.HomeArticleResponse
+import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
@@ -12,6 +13,9 @@ import kotlinx.coroutines.launch
  * Created by Jerry on 2022/2/23.
  */
 class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
+
+    private val _forceUpdate = MutableLiveData<Boolean>(false)
+
 
     private val _topArticleLiveData : MutableLiveData<List<Article>> by lazy {
         MutableLiveData<List<Article>>().also {
@@ -25,9 +29,6 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
     val refreshing: LiveData<Boolean> = _refreshing
 
 
-
-
-
     private val _homeArticleLiveData = MutableLiveData<HomeArticleResponse>()
 
     val homeArticleLiveData:LiveData<HomeArticleResponse> = _homeArticleLiveData
@@ -38,6 +39,13 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
         value = "This is home Fragment"
     }
     val text: LiveData<String> = _text
+
+    /**
+     * @param forceUpdate Pass in true to refresh the data in the [TasksDataSource]
+     */
+    fun loadTasks(forceUpdate: Boolean) {
+        _forceUpdate.value = forceUpdate
+    }
 
     fun loadHomeArticleCo(pageNum: Int){
         launch({

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            >
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal"
+                app:flow_wrapMode="aligned"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:constraint_referenced_ids="btn_circulation,btn_when,btn_range,
+                btn_null_check,btn_type_cast,btn_ifCheck,btn_single_expression,
+                btn_with,btn_try,btn_com_usage,btn_Infix,btn_generic,btn_constructor
+                ,btn_iterators,btn_dataclass,btn_enum,btn_sealdclass,btn_highOrderFunction1
+                ,btn_highOrderFunction2,btn_lambda,btn_extensionFunAndProperty"
+                />
+            <Button
+                android:id="@+id/btn_circulation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="遍历"
+                />
+            <Button
+                android:id="@+id/btn_when"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="when"
+                />
+            <Button
+                android:id="@+id/btn_range"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Range"
+                />
+            <Button
+                android:id="@+id/btn_null_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="空值与检测"
+                />
+            <Button
+                android:id="@+id/btn_type_cast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="类型检测与转换"
+                />
+
+            <Button
+                android:id="@+id/btn_ifCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="If 检测"
+                />
+            <Button
+                android:id="@+id/btn_single_expression"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="单函数表达式"
+                />
+            <Button
+                android:id="@+id/btn_with"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="With"
+                />
+            <Button
+                android:id="@+id/btn_try"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TryWithResource"
+                />
+
+            <Button
+                android:id="@+id/btn_com_usage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="常用语法"
+                />
+            <Button
+                android:id="@+id/btn_Infix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Infix"
+                />
+
+            <Button
+                android:id="@+id/btn_generic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="泛型"
+                />
+            <Button
+                android:id="@+id/btn_constructor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="构造器"
+                />
+            <Button
+                android:id="@+id/btn_iterators"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Iterators"
+                />
+            <Button
+                android:id="@+id/btn_dataclass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DataClsss"
+                />
+            <Button
+                android:id="@+id/btn_enum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="枚举"
+                />
+            <Button
+                android:id="@+id/btn_sealdclass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="密闭类"
+                />
+            <Button
+                android:id="@+id/btn_highOrderFunction1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="高阶函数(作为参数)"
+                />
+            <Button
+                android:id="@+id/btn_highOrderFunction2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="高阶函数(作为返回值)"
+                />
+            <Button
+                android:id="@+id/btn_lambda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lambda"
+                />
+            <Button
+                android:id="@+id/btn_extensionFunAndProperty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="扩展方法/属性"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

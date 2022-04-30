@@ -43,6 +43,8 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
         super.layoutInit(inflater, savedInstanceState)
 
         mAdapter = HomeAdaptet().apply {
+            animationEnable = true
+
            /* initLoadMore()
             setOnItemClickListener{ adapter,view,position ->
                 val article = getItem(position)
@@ -121,7 +123,7 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
     }
 
 
-    class HomeAdaptet:BaseQuickAdapter<Article,BaseDataBindingHolder<ItemArticleBinding>>(R.layout.item_article),LoadMoreModule{
+    class HomeAdaptet():BaseQuickAdapter<Article,BaseDataBindingHolder<ItemArticleBinding>>(R.layout.item_article),LoadMoreModule{
         override fun convert(holder: BaseDataBindingHolder<ItemArticleBinding>, item: Article) {
             val dataBinding = holder.dataBinding
             dataBinding?.apply {

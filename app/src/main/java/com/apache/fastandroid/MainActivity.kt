@@ -17,6 +17,9 @@ import com.tesla.framework.common.util.log.NLog
 import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
+import com.apache.fastandroid.demo.blacktech.EncryptDemoFragment
+import com.apache.fastandroid.demo.drakeet.CustomViewGroupFragment
+import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
 import com.apache.fastandroid.demo.widget.lyric.LyricFragment
 import com.apache.fastandroid.jetpack.livedata.LiveDataWrongUsageActivity
 import com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity
@@ -68,7 +71,10 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, DatabindingViewModelFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, SystemViewFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, LyricFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, LyricFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, EncryptDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
 //        LiveDataWrongUsageActivity.launch(this)
 
 //        launchActivity<TasksActivity>(this)

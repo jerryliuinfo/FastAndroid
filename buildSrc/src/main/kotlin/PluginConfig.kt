@@ -7,4 +7,6 @@ object PluginConfig {
     const val hilt = "com.google.dagger:hilt-android-gradle-plugin:2.28-alpha"
     const val maven_gradle_plugin = "com.github.dcendents:android-maven-gradle-plugin:1.4.1"
     const val navigation = "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
+    const val pablo = "io.michaelrocks.pablo:pablo:1.3.1"
+    const val paranoid = "io.michaelrocks:paranoid-gradle-plugin:0.3.7"
 }

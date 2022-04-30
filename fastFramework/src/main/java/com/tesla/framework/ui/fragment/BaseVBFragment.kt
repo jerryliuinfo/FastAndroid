@@ -19,10 +19,12 @@ abstract class BaseVBFragment<T : ViewBinding>(val inflater: (inflater: LayoutIn
     protected lateinit var mBinding: T
     val TAG = "BaseVBFragment"
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
 
         mBinding = inflater(inflater, container, false)
 

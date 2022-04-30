@@ -1,4 +1,4 @@
-package com.chad.baserecyclerviewadapterhelper.entity
+package com.apache.fastandroid.bean
 
 import com.chad.library.adapter.base.entity.MultiItemEntity
 

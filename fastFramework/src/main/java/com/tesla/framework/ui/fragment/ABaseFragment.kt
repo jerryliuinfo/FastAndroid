@@ -13,10 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.blankj.utilcode.util.ToastUtils
 import com.kingja.loadsir.core.LoadService
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.vm.ShareViewModel
 import com.tesla.framework.ui.fragment.view.BaseView
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
+import timber.log.Timber
 
 /**
  * Created by Jerry on 2022/3/10.
@@ -52,6 +54,18 @@ open class ABaseFragment:Fragment(),BaseView {
             isFirstLoad = false
             onLazyLoad()
         }
+        onVisibilityChanged(true)
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        onVisibilityChanged(false)
+    }
+
+
+    open fun onVisibilityChanged(visible: Boolean) {
+        Logger.d("${javaClass.simpleName} ==> onVisibilityChanged = $visible")
     }
 
     /**

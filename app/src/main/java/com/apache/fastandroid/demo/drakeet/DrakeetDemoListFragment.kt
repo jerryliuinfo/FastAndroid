@@ -25,6 +25,7 @@ class DrakeetDemoListFragment:BaseListFragment() {
             ,ViewItemBean("代码保护、隐藏", "ServiceOnTaskRemoved", RegionDeocderFragment::class.java)
             ,ViewItemBean("Textview偏僻方法", "Textview偏僻方法", DrakeetTextviewFragment::class.java)
             ,ViewItemBean("流畅动画", "一启动就执行动画", FluentAnimationDemoFragment::class.java)
+            ,ViewItemBean("自定义ViewGroup", "自定义ViewGroup", CustomViewGroupFragment::class.java)
             ,ViewItemBean("流畅动画", "主线程空闲时执行动画", FluentAnimationDemoFragment::class.java, args = Bundle().apply {
                 putBoolean("doOnIdle",true)
             }))
