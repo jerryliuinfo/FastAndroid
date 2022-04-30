@@ -76,10 +76,6 @@ abstract class BaseDBFragment<T : ViewDataBinding>(val inflater: (inflater: Layo
         return getRootView().findViewById(resId)
     }
 
-    @LayoutRes
-    abstract fun getLayoutId():Int
-
-
 
 
 }

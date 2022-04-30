@@ -92,6 +92,7 @@ object Libs {
         "com.drakeet.about:about:2.5.0",
         "com.drakeet.multitype:multitype:4.3.0",
         "com.github.liangjingkanji:StateLayout:1.2.0",
+        mmkv,
     )
 
 

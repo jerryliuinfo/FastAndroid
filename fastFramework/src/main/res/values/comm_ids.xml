@@ -43,4 +43,12 @@
 
 	<item name="recycleview" type="id"></item>
 
+
+	<item name="btn_cancel" type="id"/><!--取消按钮-->
+	<item name="btn_confirm" type="id"/><!--退出按钮-->
+
+	<item name="container" type="id"/>
+	<item name="progress" type="id"/>
+	<item name="tv_msg" type="id"/>
+
 </resources>

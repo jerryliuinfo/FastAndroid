@@ -11,7 +11,6 @@ import com.apache.fastandroid.jetpack.reporsity.UserNetwork
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.component.livedata.LiveDataBus
 import com.tesla.framework.component.livedata.NetworkLiveData
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.networkStatus
@@ -105,11 +104,7 @@ class LiveDataBasicFragment : BaseVBFragment<FragmentJetpackLivedataBinding>(Fra
     }
 
     private fun initLiveDataBus() {
-        LiveDataBus.get().with("banner").observe(this,
-            {
-                mBinding.textResult.text = it.toString()
-            })
-        LiveDataBus.get().with("banner").postValue("Hello : ${Random.nextInt(100)}" )
+
     }
 
     private fun initTransformationsMap(){

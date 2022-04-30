@@ -2,6 +2,7 @@ package com.apache.fastandroid.demo.temp
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Rect
 import android.net.ConnectivityManager
 import android.net.Network
@@ -14,14 +15,19 @@ import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewTreeObserver
 import android.widget.Toast
+import androidx.activity.addCallback
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.DialogFragment
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentTempKnowledgeBinding
 import com.apache.fastandroid.demo.temp.concurrency.Player
 import com.blankj.utilcode.util.MetaDataUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
+import com.example.android.architecture.blueprints.todoapp.util.hasFragment
 import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.dialog.DialogSelectFragment
 import com.tesla.framework.component.livedata.NetworkLiveData
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseVBFragment
@@ -116,8 +122,34 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
         }
 
 
+
+        requireActivity().onBackPressedDispatcher.addCallback {
+            onBackKeyPressed()
+        }
+
         val str = "Longfu2012"
         et_userName.filters = arrayOf<InputFilter>(MyFilter(str,context))
+    }
+
+    private fun listenerOnBackKey() {
+
+    }
+
+    private fun onBackKeyPressed() {
+        if (!hasFragment(TAG)) {
+            DialogSelectFragment.Builder()
+                .setTitle("确认推出应用吗")
+                .setConfirmText("退出")
+                .setCancelText("取消")
+                .setConfirmClickListener {
+                    ActivityCompat.finishAffinity(requireActivity())
+                }
+                .build()
+                .show(childFragmentManager)
+
+
+        }
+
     }
 
     private fun listenerNetwork() {

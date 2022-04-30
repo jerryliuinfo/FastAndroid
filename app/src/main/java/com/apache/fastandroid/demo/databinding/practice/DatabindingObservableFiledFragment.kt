@@ -38,10 +38,6 @@ class DatabindingObservableFiledFragment :
         }*/
     }
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_databinding_observable_field
-    }
-
     /**
      * This method is triggered by the `android:onclick` attribute in the layout. It puts business
      * logic in the activity, which is not ideal. See {@link ViewModelActivity} for a better

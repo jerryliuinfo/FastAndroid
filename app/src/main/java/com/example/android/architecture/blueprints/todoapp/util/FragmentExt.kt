@@ -20,9 +20,15 @@ package com.example.android.architecture.blueprints.todoapp.util
  */
 
 import android.app.Activity
+import android.content.pm.PackageManager
+import android.graphics.drawable.Drawable
 import androidx.activity.ComponentActivity
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.app.FastApplication
 import com.example.android.architecture.blueprints.todoapp.ViewModelFactory
 
@@ -45,4 +51,25 @@ fun ComponentActivity.getViewModelFactory(): ViewModelFactory {
     val repository = (this as FastApplication).taskRepository
     return ViewModelFactory(repository, this)
 }
+
+fun Fragment.checkPermissions(permissions: Array<String>): Boolean {
+    for (permission in permissions) {
+        if (ContextCompat.checkSelfPermission(requireContext(), permission)
+            != PackageManager.PERMISSION_GRANTED) {
+            return false
+        }
+    }
+    return true
+}
+
+fun Fragment.hasFragment(tag: String): Boolean {
+    return childFragmentManager.findFragmentByTag(tag) != null
+}
+
+fun Fragment.getDrawable(@DrawableRes drawableResId: Int): Drawable? {
+    return ContextCompat.getDrawable(requireActivity(), drawableResId)
+}
+
+inline val Fragment.viewLifecycleScope: LifecycleCoroutineScope
+    get() = viewLifecycleOwner.lifecycleScope
 

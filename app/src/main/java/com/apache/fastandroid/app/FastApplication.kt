@@ -79,26 +79,20 @@ class FastApplication : Application(), ViewModelStoreOwner {
 
             NetworkStateClient.register()
 
-
-//        initTaskByTaskDispatcher();
-//        initTaskByAppFaster();
             initTaskByStartup()
             //        initLoop();
             // data/data/com.apache.fastandroid/files/mmkv
-            val rootDir = MMKV.initialize(this)
-            Logger.d("mmkv rootDir:%s", rootDir)
+            initMMKV()
+
+
+
+
+
             initBlockCancary()
             initAnr()
             initImageLoader()
 
-            //traceview 开始检测
-            // Debug.startMethodTracing("APP");
 
-//        Lifecycle lifecycle = ProcessLifecycleOwner.get().getLifecycle();
-//        lifecycle.addObserver(new ApplicationLifecycleObserverNew(ProcessLifecycleOwner.get()));
-
-            //systrace 开始检测
-//        TraceCompat.beginSection("trace");
 
             //初始化crash统计
             initHttp()
@@ -111,6 +105,11 @@ class FastApplication : Application(), ViewModelStoreOwner {
             initAppDress()
         }
         println("Application onCreate cost time: $time milles")
+    }
+
+    private fun initMMKV() {
+        val rootDir = MMKV.initialize(this)
+        Logger.d("mmkv rootDir:%s", rootDir)
     }
 
     private fun initAop() {

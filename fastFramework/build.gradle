@@ -12,6 +12,9 @@ dependencies {
     implementation Libs.gson
     implementation Libs.utilcode
     implementation Libs.brvh
+
+    implementation Libs.mmkv
+
     implementation Libs.loadSir
 
     implementation (*Libs.rxJava)

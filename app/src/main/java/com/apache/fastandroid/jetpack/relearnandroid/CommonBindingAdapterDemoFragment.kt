@@ -68,8 +68,4 @@ class CommonBindingAdapterDemoFragment:BaseDBFragment<DatabindingComBindAdapterB
         }
     }
 
-    override fun getLayoutId(): Int {
-        return R.layout.databinding_com_bind_adapter
-    }
-
 }

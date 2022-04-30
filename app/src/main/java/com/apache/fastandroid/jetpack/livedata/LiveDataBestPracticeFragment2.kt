@@ -28,9 +28,5 @@ class LiveDataBestPracticeFragment2 : BaseDBFragment<FragmentBestPracticeLivedat
         viewBinding.viewmodel = viewModel
     }
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_best_practice_livedata2
-    }
-
 
 }

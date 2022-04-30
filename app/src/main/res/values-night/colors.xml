@@ -3,4 +3,8 @@
 <!--    <color name="colorPrimary">#282828</color>-->
 <!--    <color name="colorPrimaryDark">#222222</color>-->
 <!--    <color name="colorAccent">#ffffff</color>-->
+
+    <color name="text_theme">#333</color>
+    <color name="three_nine_gray">#88F5F5F5</color>
+
 </resources>

@@ -23,9 +23,7 @@ import com.tesla.framework.ui.fragment.BaseDBFragment
 class PlantDetailFragment:BaseDBFragment<FragmentPlantDetailBinding>(FragmentPlantDetailBinding::inflate) {
 
     private lateinit var plantDetailViewModel: PlantDetailViewModel
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_plant_detail
-    }
+
 
     override fun initViewModel() {
         super.initViewModel()

@@ -28,9 +28,7 @@ class DatabindingViewModelFragment :
 
     }
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_databinding_viewmodel
-    }
+
 
 
 

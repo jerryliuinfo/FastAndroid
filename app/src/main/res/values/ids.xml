@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="xt_click_limit_tag_view">0x01</integer>
+    <item name="status_bar_view" type="id" />
+    <item name="navigation_bar_view" type="id" />
 </resources>

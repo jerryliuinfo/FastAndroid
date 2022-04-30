@@ -327,14 +327,14 @@ android {
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
     }
+
+
     dexOptions {
-        preDexLibraries = true
-        //配置执行 dx 命令时为其分配的最大堆内存，主要用来解决 dx 时内存不够用的情况
-        javaMaxHeapSize "4g"
-
+        // 声明是否对依赖的库进行 dex 预处理来使你的增量构建更快速
+        preDexLibraries true
+        // 设置最大的线程数量使用当运行 dex-in-process 时,默认值是 4
+        maxProcessCount 8
     }
-
-
 }
 
 kotlin {

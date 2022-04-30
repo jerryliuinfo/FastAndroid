@@ -20,6 +20,8 @@ import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.blacktech.EncryptDemoFragment
 import com.apache.fastandroid.demo.drakeet.CustomViewGroupFragment
 import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
+import com.apache.fastandroid.demo.tablayout.BottomTabsFragment
+import com.apache.fastandroid.demo.temp.KnowledgeFragment
 import com.apache.fastandroid.demo.widget.lyric.LyricFragment
 import com.apache.fastandroid.jetpack.livedata.LiveDataWrongUsageActivity
 import com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity
@@ -66,6 +68,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, FlowDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, BottomTabsFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, MvvmMailDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, MviDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, DatabindingViewModelFragment::class.java,null)
@@ -80,6 +83,8 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        launchActivity<TasksActivity>(this)
 
     //        launchActivity<CheeseActivity>(this)
+
+
     }
 
     private fun setupActionBar(
@@ -163,4 +168,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
             from.startActivity(intent)
         }
     }
+
+
+
 }

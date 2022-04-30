@@ -29,9 +29,6 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
 
     private lateinit var mAdapter: HomeAdaptet
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_home
-    }
 
     override fun bindUI(rootView: View?) {
         super.bindUI(rootView)

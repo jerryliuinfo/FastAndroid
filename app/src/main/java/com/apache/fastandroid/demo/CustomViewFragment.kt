@@ -36,6 +36,7 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("普通系统控件", "普通系统控件", SystemViewFragment::class.java)
                 ,ViewItemBean("Lyric", "Lyric", LyricFragment::class.java)
                 ,ViewItemBean("TabLayoutFragment", "TabLayoutFragment", ArticleTabsFragment::class.java)
+                ,ViewItemBean("BottomTabFragment", "BottomTabFragment", ArticleTabsFragment::class.java)
                 ,ViewItemBean("PreferenceFragment", "PreferenceFragment", PreferenceFragmentDemo::class.java)
 
 

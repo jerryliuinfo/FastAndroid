@@ -189,7 +189,7 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
         return onBackClick()
     }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+    /*override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (activityHelper != null) {
             val handle = activityHelper.onKeyDown(keyCode, event)
             if (handle) return true
@@ -198,7 +198,7 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
             if (onBackClick()) return true
         }
         return super.onKeyDown(keyCode, event)
-    }
+    }*/
 
     open fun onBackClick(): Boolean {
         if (activityHelper != null) {

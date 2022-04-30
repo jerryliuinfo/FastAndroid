@@ -61,4 +61,9 @@
     <drawable name="completedTaskBackground">#CCCCCC</drawable>
 
     <drawable name="touchFeedback">#CFD8DC</drawable>
+
+
+    <color name="theme">#272a36</color>
+    <color name="text_theme">#272a36</color>
+    <color name="three_nine_gray">#39F5F5F5</color>
 </resources>

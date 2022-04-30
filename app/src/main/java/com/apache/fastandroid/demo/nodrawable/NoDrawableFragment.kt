@@ -11,9 +11,7 @@ import com.tesla.framework.ui.fragment.BaseDBFragment
  */
 class NoDrawableFragment: BaseDBFragment<FragmentNodrawableBinding>(FragmentNodrawableBinding::inflate) {
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_nodrawable
-    }
+
 
     private lateinit var userViewModel: UserViewModel
 
