@@ -14,24 +14,18 @@ import kotlinx.coroutines.launch
  */
 class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
 
-    private val _forceUpdate = MutableLiveData<Boolean>(false)
+
+    private val _articleList = MutableLiveData<List<Article>>()
+    val articleList: LiveData<List<Article>> = _articleList
 
 
-    private val _topArticleLiveData : MutableLiveData<List<Article>> by lazy {
-        MutableLiveData<List<Article>>().also {
-//            onRefresh()
-        }
-    }
-    val topArticleLiveData:LiveData<List<Article>> = _topArticleLiveData
 
 
     private val _refreshing = MutableLiveData<Boolean>()
     val refreshing: LiveData<Boolean> = _refreshing
 
 
-    private val _homeArticleLiveData = MutableLiveData<HomeArticleResponse>()
 
-    val homeArticleLiveData:LiveData<HomeArticleResponse> = _homeArticleLiveData
 
     val pageInfo = PageInfo()
 
@@ -39,24 +33,6 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
         value = "This is home Fragment"
     }
     val text: LiveData<String> = _text
-
-    /**
-     * @param forceUpdate Pass in true to refresh the data in the [TasksDataSource]
-     */
-    fun loadTasks(forceUpdate: Boolean) {
-        _forceUpdate.value = forceUpdate
-    }
-
-    fun loadHomeArticleCo(pageNum: Int){
-        launch({
-            var articles = reporsitoryKt.loadHomeArticleCo(pageNum)
-            _homeArticleLiveData.value = articles!!
-        },{
-            it.printStackTrace()
-            _homeArticleLiveData.value = HomeArticleResponse(0, emptyList(),0,true,0,10,20)
-        })
-
-    }
 
 
 
@@ -69,7 +45,6 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
        return reporsitoryKt.loadTopArticleCo()
     }
 
-
     fun onRefresh() {
         pageInfo.reset()
         _refreshing.value = true
@@ -77,8 +52,17 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
         viewModelScope.launch {
             val hotData =  async { loadHotData()}
             val topData =  async { loadTopArticle() }
-            _homeArticleLiveData.value = hotData.await()
-            _topArticleLiveData.value = topData.await()
+
+            val articles:MutableList<Article> = arrayListOf()
+
+            topData.await()?.let {
+                articles.addAll(it)
+            }
+            hotData.await().datas?.let {
+                articles.addAll(it)
+            }
+            _articleList.postValue(articles)
+
 
             if (_refreshing.value == true){
                 _refreshing.value = false
@@ -86,9 +70,15 @@ class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
         }
     }
     fun loadMore(){
-        viewModelScope.launch {
-            _homeArticleLiveData.value = loadHotData()!!
-        }
+
+        launch({
+            loadHotData().datas?.let {
+                _articleList.postValue(it)
+            }
+
+        },{
+
+        })
     }
 
 

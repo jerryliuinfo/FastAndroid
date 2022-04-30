@@ -34,7 +34,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.example.android.architecture.blueprints.todoapp.ScrollChildSwipeRefreshLayout
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -46,7 +46,7 @@
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 />
-        </com.example.android.architecture.blueprints.todoapp.ScrollChildSwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </RelativeLayout>
 </layout>

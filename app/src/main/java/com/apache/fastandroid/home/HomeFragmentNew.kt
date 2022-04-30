@@ -3,19 +3,14 @@ package com.apache.fastandroid.home
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.apache.fastandroid.R
 import com.apache.fastandroid.article.ArticleDetailActivity
 import com.apache.fastandroid.databinding.FragmentHomeBinding
-import com.apache.fastandroid.databinding.ItemArticleBinding
 import com.apache.fastandroid.network.model.Article
 import com.apache.fastandroid.util.InjectorUtil
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.module.LoadMoreModule
-import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
-import com.example.android.architecture.blueprints.todoapp.ScrollChildSwipeRefreshLayout
-import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayout
 import com.tesla.framework.ui.fragment.BaseDBFragment
 
 /**
@@ -25,10 +20,9 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
 
     private val mHomeViewModel:HomeViewModelKt by viewModels { InjectorUtil.getHomeModelFactory() }
 
-    private lateinit var  swipeRefreshLayout: ScrollChildSwipeRefreshLayout
+    private lateinit var  swipeRefreshLayout: SwipeRefreshLayout
 
-    private lateinit var mAdapter: HomeAdaptet
-
+    private lateinit var mAdapter: ArticleAdapter
 
     override fun bindUI(rootView: View?) {
         super.bindUI(rootView)
@@ -38,29 +32,32 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
-
-        mAdapter = HomeAdaptet().apply {
+        mAdapter = ArticleAdapter(emptyList()).apply {
             animationEnable = true
-
-           /* initLoadMore()
+//            initLoadMore()
             setOnItemClickListener{ adapter,view,position ->
                 val article = getItem(position)
                 ArticleDetailActivity.launch(requireActivity(), article.title, article.link)
             }
-*/
         }
         viewBinding.recycleview.apply {
             adapter = mAdapter
         }
         swipeRefreshLayout.apply {
-            setupRefreshLayout(this)
+//            setupRefreshLayout(this)
+            setColorSchemeColors(
+                ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
+                ContextCompat.getColor(requireActivity(), R.color.colorAccent),
+                ContextCompat.getColor(requireActivity(), R.color.colorPrimaryDark)
+            )
             setOnRefreshListener {
                 refresh()
             }
         }
+        initLoadMore()
 
-        mHomeViewModel.homeArticleLiveData.observe(this){
-            handleData(it.datas)
+        mHomeViewModel.articleList.observe(this){
+            handleData(it)
         }
     }
 
@@ -102,12 +99,13 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
         } else {
             mAdapter.loadMoreModule.loadMoreComplete()
         }
-        // page加一
+        // page加1
         mHomeViewModel.pageInfo.nextPage()
 
     }
 
     private fun initLoadMore() {
+        println("initLoadMore: ${mAdapter.loadMoreModule}")
         mAdapter.loadMoreModule.apply {
             setOnLoadMoreListener{
                 mHomeViewModel.loadMore()
@@ -120,15 +118,7 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
     }
 
 
-    class HomeAdaptet():BaseQuickAdapter<Article,BaseDataBindingHolder<ItemArticleBinding>>(R.layout.item_article),LoadMoreModule{
-        override fun convert(holder: BaseDataBindingHolder<ItemArticleBinding>, item: Article) {
-            val dataBinding = holder.dataBinding
-            dataBinding?.apply {
-                article = item
-                executePendingBindings()
-            }
-        }
 
-    }
+
 
 }

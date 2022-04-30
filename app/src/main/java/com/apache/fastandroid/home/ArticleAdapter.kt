@@ -6,27 +6,43 @@ import android.widget.TextView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.network.model.Article
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.common.util.N
+import com.tesla.framework.common.util.buildSpannableString
+import com.tesla.framework.kt.getColor
 
 /**
  * Created by Jerry on 2021/7/1.
  */
-class ArticleAdapter(data: List<Article>,val listener :(View,Int) -> Unit  ) :
-    BaseQuickAdapter<Article, BaseViewHolder>(R.layout.article_item, data.toMutableList()) {
+class ArticleAdapter(data: List<Article>, val listener :(View,Int) -> Unit = { viwe,position -> } ) :
+    BaseQuickAdapter<Article, BaseViewHolder>(R.layout.article_item, data.toMutableList()),
+    LoadMoreModule {
+
 
 
     override fun convert(holder: BaseViewHolder, it: Article) {
-
-        holder.setText(R.id.item_article_author, handleAuthor(it))
+        holder
             .setText(R.id.item_article_title, handleTitle(it))
             .setText(R.id.item_article_date, it.niceDate)
             .setText(R.id.item_article_type, handleCategory(it))
             .setImageResource(R.id.item_list_collect, isCollect(it))
-//            .addOnClickListener(R.id.item_list_collect)
-            .setVisible(R.id.item_article_new, it.fresh)
-            .setVisible(R.id.item_article_top_article, it.top)
-            .setGone(R.id.item_article_top_article, it.top)
+
+
+        holder.getView<TextView>(R.id.item_article_author).buildSpannableString {
+            if (it.top){
+                append("置顶  "){
+                    setColor(R.color.holo_red_light.getColor(context))
+                }
+            }
+            if (it.fresh){
+                append("新  "){
+                    setColor(R.color.holo_red_light.getColor(context))
+                }
+            }
+            append(handleAuthor(it))
+        }
+
 
         holder.getView<TextView>(R.id.item_article_author).setOnClickListener {
             listener?.invoke(it, holder.layoutPosition)

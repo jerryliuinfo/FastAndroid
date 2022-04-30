@@ -35,13 +35,6 @@ class BennyHuoCoroutineDemoFragment:BaseVBFragment<FragmentCoroutineBennyhuoBind
             cancel()
         }
 
-        viewModel.homeArticleLiveData.observe(this){
-            println("homeArticleLiveData size:${it.datas?.size}")
-        }
-
-        viewModel.topArticleLiveData.observe(this){
-            println("topArticleLiveData size:${it.size}")
-        }
     }
 
     private fun cancel() {
@@ -60,7 +53,7 @@ class BennyHuoCoroutineDemoFragment:BaseVBFragment<FragmentCoroutineBennyhuoBind
         scope.launch {
             while (isActive){
                 try {
-                    viewModel.loadHomeArticleCo(0)
+                    viewModel.loadHotData()
                 }catch (e:Exception){
                     Logger.d("doPoll coroutine exception:${e.message}")
                     e.printStackTrace()

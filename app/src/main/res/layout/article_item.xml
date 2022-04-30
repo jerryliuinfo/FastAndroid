@@ -31,57 +31,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/item_article_top_article"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/safe_padding"
-            android:layout_marginEnd="@dimen/safe_padding"
-            android:background="@drawable/title_lable_red"
-            android:paddingStart="3dp"
-            android:paddingEnd="3dp"
-            android:text="置顶"
-            android:textColor="@color/holo_red_light"
-            android:textSize="10dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/item_article_author"
-            app:layout_constraintStart_toEndOf="@id/item_article_author"
-            app:layout_constraintTop_toTopOf="@id/item_article_author" />
-
-        <TextView
-            android:id="@+id/item_article_new"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/safe_padding"
-            android:layout_marginLeft="@dimen/safe_padding"
-            android:background="@drawable/title_lable_red"
-            android:paddingLeft="3dp"
-            android:paddingRight="3dp"
-            android:text="新"
-            android:textColor="@color/holo_red_light"
-            android:textSize="10dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/item_article_author"
-            app:layout_constraintStart_toEndOf="@+id/item_article_top_article"
-            app:layout_constraintTop_toTopOf="@+id/item_article_author" />
-
-        <TextView
-            android:id="@+id/item_article_question"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/safe_padding"
-            android:layout_marginLeft="@dimen/safe_padding"
-            android:background="@drawable/title_lable_green"
-            android:paddingLeft="3dp"
-            android:paddingRight="3dp"
-            android:text="问答"
-            android:textColor="@color/holo_green_dark"
-            android:textSize="10dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/item_article_author"
-            app:layout_constraintStart_toEndOf="@+id/item_article_new"
-            app:layout_constraintTop_toTopOf="@+id/item_article_author" />
-
 
         <TextView
             android:id="@+id/item_article_date"

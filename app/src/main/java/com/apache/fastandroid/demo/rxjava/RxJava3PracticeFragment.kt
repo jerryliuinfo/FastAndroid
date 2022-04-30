@@ -132,7 +132,7 @@ open class RxJava3PracticeFragment:BaseVBFragment<FragmentRxjava3PracticeBinding
 
             }) .map<String> {
                 Logger.d("pollingRequestWithCondition map  ")
-                return@map it.data.datas[0].chapterName
+                return@map it.data.datas?.get(0)?.chapterName ?: ""
             }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
