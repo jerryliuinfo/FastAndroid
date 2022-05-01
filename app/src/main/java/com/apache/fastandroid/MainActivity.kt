@@ -20,6 +20,8 @@ import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.blacktech.EncryptDemoFragment
 import com.apache.fastandroid.demo.drakeet.CustomViewGroupFragment
 import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
+import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment2
+import com.apache.fastandroid.demo.skydoves.SandWitchDemoFragment
 import com.apache.fastandroid.demo.tablayout.BottomTabsFragment
 import com.apache.fastandroid.demo.temp.KnowledgeFragment
 import com.apache.fastandroid.demo.widget.lyric.LyricFragment
@@ -78,6 +80,8 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, EncryptDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, SandWitchDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, CollectionDemoFragment2::class.java,null)
 //        LiveDataWrongUsageActivity.launch(this)
 
 //        launchActivity<TasksActivity>(this)

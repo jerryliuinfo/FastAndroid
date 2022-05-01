@@ -28,163 +28,112 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_circulation,btn_when,btn_range,
-                btn_null_check,btn_type_cast,btn_ifCheck,btn_single_expression,
-                btn_with,btn_try,btn_com_usage,btn_Infix,btn_generic,btn_constructor
-                ,btn_iterators,btn_dataclass,btn_enum,btn_sealdclass,btn_highOrderFunction1
-                ,btn_highOrderFunction2,btn_lambda,btn_extensionFunAndProperty,btn_collection
-                ,btn_delegate_mode,btn_destructor"
+                app:constraint_referenced_ids="btn_list,btn_set,btn_map,btn_filter,btn_operator_map
+                ,btn_anyAllNone,btn_find,btn_first_last,btn_count,btn_associate_group_by,btn_partition
+                ,btn_flatMap,btn_MinMax_orNull,btn_sorted,btn_mapElementAccess,btn_zip,btn_getOrElse"
                 />
             <Button
-                android:id="@+id/btn_circulation"
+                android:id="@+id/btn_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="遍历"
+                android:text="List"
                 />
             <Button
-                android:id="@+id/btn_when"
+                android:id="@+id/btn_set"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="when"
+                android:text="Set"
                 />
             <Button
-                android:id="@+id/btn_range"
+                android:id="@+id/btn_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Range"
+                android:text="Map"
                 />
             <Button
-                android:id="@+id/btn_null_check"
+                android:id="@+id/btn_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="空值与检测"
+                android:text="Filter"
                 />
             <Button
-                android:id="@+id/btn_type_cast"
+                android:id="@+id/btn_operator_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="类型检测与转换"
-                />
-
-            <Button
-                android:id="@+id/btn_ifCheck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="If 检测"
+                android:text="Map操作符"
                 />
             <Button
-                android:id="@+id/btn_single_expression"
+                android:id="@+id/btn_anyAllNone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="单函数表达式"
+                android:text="Any-All-None操作符"
                 />
             <Button
-                android:id="@+id/btn_with"
+                android:id="@+id/btn_find"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="With"
+                android:text="Find 操作符"
                 />
             <Button
-                android:id="@+id/btn_try"
+                android:id="@+id/btn_first_last"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TryWithResource"
-                />
-
-            <Button
-                android:id="@+id/btn_com_usage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="常用语法"
+                android:text="First Last操作符"
                 />
             <Button
-                android:id="@+id/btn_Infix"
+                android:id="@+id/btn_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Infix"
-                />
-
-            <Button
-                android:id="@+id/btn_generic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="泛型"
+                android:text="Count"
                 />
             <Button
-                android:id="@+id/btn_constructor"
+                android:id="@+id/btn_associate_group_by"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="构造器"
+                android:text="AssociateBy/GroupBy"
                 />
             <Button
-                android:id="@+id/btn_iterators"
+                android:id="@+id/btn_partition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Iterators"
+                android:text="Partition操作符"
                 />
             <Button
-                android:id="@+id/btn_dataclass"
+                android:id="@+id/btn_flatMap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DataClsss"
+                android:text="FlatMap"
                 />
             <Button
-                android:id="@+id/btn_enum"
+                android:id="@+id/btn_MinMax_orNull"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="枚举"
+                android:text="Min/Max_orNull"
                 />
             <Button
-                android:id="@+id/btn_sealdclass"
+                android:id="@+id/btn_sorted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="密闭类"
+                android:text="Sorted"
                 />
             <Button
-                android:id="@+id/btn_highOrderFunction1"
+                android:id="@+id/btn_mapElementAccess"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="高阶函数(作为参数)"
+                android:text="MapElementAccess"
                 />
             <Button
-                android:id="@+id/btn_highOrderFunction2"
+                android:id="@+id/btn_zip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="高阶函数(作为返回值)"
+                android:text="Zip"
                 />
             <Button
-                android:id="@+id/btn_lambda"
+                android:id="@+id/btn_getOrElse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lambda"
+                android:text="GetOrElse"
                 />
-            <Button
-                android:id="@+id/btn_extensionFunAndProperty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="扩展方法/属性"
-                />
-            <Button
-                android:id="@+id/btn_collection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Collection"
-                />
-
-            <Button
-                android:id="@+id/btn_delegate_mode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="委托模式"
-                />
-
-            <Button
-                android:id="@+id/btn_destructor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="解构"
-                />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

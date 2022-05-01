@@ -22,7 +22,14 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
 
     private lateinit var  swipeRefreshLayout: SwipeRefreshLayout
 
-    private lateinit var mAdapter: ArticleAdapter
+    private  var mAdapter: ArticleAdapter =  ArticleAdapter(emptyList()).apply {
+        animationEnable = true
+        initLoadMore(this)
+        setOnItemClickListener{ adapter,view,position ->
+            val article = getItem(position)
+            ArticleDetailActivity.launch(requireActivity(), article.title, article.link)
+        }
+    }
 
     override fun bindUI(rootView: View?) {
         super.bindUI(rootView)
@@ -32,17 +39,11 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
-        mAdapter = ArticleAdapter(emptyList()).apply {
-            animationEnable = true
-//            initLoadMore()
-            setOnItemClickListener{ adapter,view,position ->
-                val article = getItem(position)
-                ArticleDetailActivity.launch(requireActivity(), article.title, article.link)
-            }
-        }
-        viewBinding.recycleview.apply {
+
+        viewBinding.apply {
             adapter = mAdapter
         }
+
         swipeRefreshLayout.apply {
 //            setupRefreshLayout(this)
             setColorSchemeColors(
@@ -54,7 +55,7 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
                 refresh()
             }
         }
-        initLoadMore()
+
 
         mHomeViewModel.articleList.observe(this){
             handleData(it)
@@ -104,9 +105,8 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
 
     }
 
-    private fun initLoadMore() {
-        println("initLoadMore: ${mAdapter.loadMoreModule}")
-        mAdapter.loadMoreModule.apply {
+    private fun initLoadMore(adapter: ArticleAdapter) {
+        adapter.loadMoreModule.apply {
             setOnLoadMoreListener{
                 mHomeViewModel.loadMore()
             }

@@ -33,6 +33,7 @@ import com.tencent.mmkv.MMKV
 import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.device.DeviceName
 import com.tesla.framework.common.util.LaunchTimer
+import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.logger.AndroidLogAdapter
 import com.tesla.framework.component.logger.DiskLogAdapter
 import com.tesla.framework.component.logger.Logger
@@ -217,7 +218,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
         Logger.addLogAdapter(DiskLogAdapter())
         Logger.addLogAdapter(AndroidLogAdapter())
         Logger.addLogAdapter(TimerLogger())
-//        NLog.setDebug(true, com.tesla.framework.common.util.log.Logger.DEBUG)
+        NLog.setDebug(true, com.tesla.framework.common.util.log.Logger.DEBUG)
     }
 
     private val logPath: String

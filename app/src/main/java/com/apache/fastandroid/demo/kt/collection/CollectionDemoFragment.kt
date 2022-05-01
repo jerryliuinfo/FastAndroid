@@ -88,6 +88,13 @@ class CollectionDemoFragment:BaseVBFragment<FragmentKtCollectionBinding>(Fragmen
         }
         println("groupBy:$groupBy")
     }
+    
+    
+    private fun findUsage(){
+        users.find {
+            it.age > 40
+        }?: "unknow"
+    }
 
     private fun staticsUsage(){
         //判断是不是一个集合，若是，则在判断集合是否为空，若为空则返回false,反之返回true,若不是集合，则返回hasNext
@@ -220,6 +227,7 @@ class CollectionDemoFragment:BaseVBFragment<FragmentKtCollectionBinding>(Fragmen
 
     private val numberMap = hashMapOf("one" to 1, "two" to 2, "three" to 3)
     val list = mutableListOf(1,3,2,4)
+    val users = listOf(UserBean(null,10),UserBean("user2",20),UserBean("user3",30))
 
 
     private fun hashMapUsage() {
@@ -352,7 +360,6 @@ class CollectionDemoFragment:BaseVBFragment<FragmentKtCollectionBinding>(Fragmen
 
 
 
-    val users = listOf(UserBean(null,1),UserBean("user2",2),UserBean("user3",3))
 
 
 

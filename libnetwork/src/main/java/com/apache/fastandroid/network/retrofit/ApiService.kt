@@ -1,11 +1,9 @@
 package com.apache.fastandroid.network.retrofit
 
-import com.apache.fastandroid.network.model.Article
-import com.apache.fastandroid.network.model.HomeArticleResponse
-import com.apache.fastandroid.network.model.Repo
-import com.apache.fastandroid.network.model.ResultData
+import com.apache.fastandroid.network.model.*
 import com.apache.fastandroid.network.response.BaseResponse
 import com.apache.fastandroid.network.response.EmptyResponse
+import com.skydoves.sandwich.ApiResponse
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Call
@@ -64,4 +62,14 @@ interface ApiService {
 
     @GET("article/get/{id}")
     suspend fun getArticleById(@Path("id") id: Long): ResultData<Repo>
+
+
+    @GET("DisneyPosters.json")
+    suspend fun fetchDisneyPostersByCoroutine(): ApiResponse<List<Poster>>
+
+    @GET("DisneyPosters.json")
+    fun fetchDisneyPostersByCall(): Call<List<Poster>>
+
+
+
 }

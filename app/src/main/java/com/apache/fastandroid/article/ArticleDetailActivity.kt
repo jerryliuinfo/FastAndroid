@@ -7,8 +7,14 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
+import androidx.fragment.app.viewModels
 import com.apache.fastandroid.databinding.ActivityArticleDetailBinding
+import com.apache.fastandroid.demo.app.MailViewModel
+import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.WebChromeClient
 import com.just.agentweb.WebViewClient
@@ -19,7 +25,11 @@ import com.tesla.framework.ui.activity.BaseVmActivity
  * Created by Jerry on 2021/9/23.
  */
 class ArticleDetailActivity : BaseVmActivity<ActivityArticleDetailBinding>(ActivityArticleDetailBinding::inflate) {
-    private var articleDetailViewModel: ArticleDetailViewModel? = null
+
+
+    private val mViewModel: ArticleDetailViewModel by viewModels()
+
+
     private val mWebChromeClient: WebChromeClient = object : WebChromeClient() {
         override fun onReceivedTitle(view: WebView, title: String) {
             super.onReceivedTitle(view, title)
@@ -45,12 +55,19 @@ class ArticleDetailActivity : BaseVmActivity<ActivityArticleDetailBinding>(Activ
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
         val title = intent.getStringExtra("title")
-        articleDetailViewModel!!.title.set(intent.getStringExtra("title"))
-        articleDetailViewModel!!.url.set(intent.getStringExtra("url"))
-        mBinding!!.customBar.detailTitle.text = title
+        title?.let {
+            mViewModel.title.set(it)
+            mBinding.customBar.detailTitle.text = it
+
+        }
+        val url = intent.getStringExtra("url")
+        url?.let {
+            mViewModel.url.set(it)
+
+        }
         AgentWeb.with(this)
             .setAgentWebParent(
-                mBinding!!.articleDetail,
+                mBinding.articleDetail,
                 LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
@@ -60,14 +77,22 @@ class ArticleDetailActivity : BaseVmActivity<ActivityArticleDetailBinding>(Activ
             .setWebChromeClient(mWebChromeClient)
             .createAgentWeb()
             .ready()
-            .go(articleDetailViewModel!!.url.get())
-        mBinding!!.customBar.detailBack.setOnClickListener { finish() }
+            .go(url)
+        mBinding.customBar.detailBack.setOnClickListener { finish() }
+
+        //避免内容延伸到了 状态栏底下
+        ViewCompat.setOnApplyWindowInsetsListener(mBinding.customBar.customBar
+        ) { v, insets ->
+            insets?.apply {
+                println("WindowInsetsListener start:$systemWindowInsetLeft, top:$systemWindowInsetTop, right:$systemWindowInsetRight,bottom:$systemWindowInsetBottom")
+                val params = v.layoutParams as LinearLayout.LayoutParams
+                params.topMargin = systemWindowInsetTop
+            }
+            insets
+        }
     }
 
-    override fun initViewModel() {
-        super.initViewModel()
-        articleDetailViewModel = getActivityViewModel(ArticleDetailViewModel::class.java)
-    }
+
 
     companion object {
         const val TAG = "ArticleDetailActivity"
@@ -85,3 +110,5 @@ class ArticleDetailActivity : BaseVmActivity<ActivityArticleDetailBinding>(Activ
         }
     }
 }
+
+

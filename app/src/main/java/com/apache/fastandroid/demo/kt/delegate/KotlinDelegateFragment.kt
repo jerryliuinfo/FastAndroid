@@ -49,7 +49,7 @@ class KotlinDelegateFragment:BaseVBFragment<KtDelegateBinding>(KtDelegateBinding
 
     private fun spByDelegate() {
         val name:String by SPreference("name","zhangsan")
-        println()
+        println(name)
     }
 
 

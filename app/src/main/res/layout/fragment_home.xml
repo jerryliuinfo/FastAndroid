@@ -26,6 +26,10 @@
             name="vm"
             type="com.apache.fastandroid.home.HomeViewModelKt" />
 
+        <variable
+            name="adapter"
+            type="com.apache.fastandroid.home.ArticleAdapter" />
+
     </data>
 
 
@@ -45,6 +49,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+                android:adapter="@{adapter}"
                 />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

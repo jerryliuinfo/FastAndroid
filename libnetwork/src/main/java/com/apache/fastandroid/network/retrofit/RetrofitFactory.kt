@@ -5,6 +5,7 @@ import com.apache.fastandroid.network.interceptor.HeaderInterceptor
 import com.apache.fastandroid.network.interceptor.HttpLogInterceptor
 import com.apache.fastandroid.network.interceptor.LoginInterceptor
 import com.apache.fastandroid.retrofit.ApiConstant
+import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import com.tesla.framework.kt.SPreference
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -24,11 +25,12 @@ import java.util.concurrent.TimeUnit
 class RetrofitFactory private constructor() {
      val retrofit : Retrofit
 
+
     fun <T> create(clazz: Class<T>) : T {
         return retrofit.create(clazz)
     }
 
-    fun <Service> createService(serviceClass: Class<Service>, baseUrl: String): Service {
+    fun <Service> create(serviceClass: Class<Service>, baseUrl: String): Service {
         return newRetrofitBuilder()
             .baseUrl(baseUrl)
             .build()
@@ -47,6 +49,7 @@ class RetrofitFactory private constructor() {
             .baseUrl(ApiConstant.BASE_URL)
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(initOkHttpClient())
     }

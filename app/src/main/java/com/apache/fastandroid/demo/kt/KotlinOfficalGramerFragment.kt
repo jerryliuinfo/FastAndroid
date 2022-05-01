@@ -8,12 +8,16 @@ import com.apache.fastandroid.demo.kt.bit.BitDemo
 import com.apache.fastandroid.demo.kt.common.GsonDemo
 import com.apache.fastandroid.demo.kt.constructor.Asiatic
 import com.apache.fastandroid.demo.kt.constructor.Lion
+import com.apache.fastandroid.demo.kt.delegate.DelegateDemo
+import com.apache.fastandroid.demo.kt.delegate.ElvisPresley
+import com.apache.fastandroid.demo.kt.delegate.TomAraya
 import com.apache.fastandroid.demo.kt.enum.Colour
 import com.apache.fastandroid.demo.kt.enum.State
 import com.apache.fastandroid.demo.kt.extensions.*
 import com.apache.fastandroid.demo.kt.genericity.MultableStack
 import com.apache.fastandroid.demo.kt.genericity.mutableStackOf
 import com.apache.fastandroid.demo.kt.sealed.*
+import com.tesla.framework.kt.SPreference
 import com.tesla.framework.kt.maxAge
 import com.tesla.framework.kt.times
 import com.tesla.framework.ui.fragment.BaseVBFragment
@@ -107,6 +111,55 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
         mBinding.btnExtensionFunAndProperty.setOnClickListener {
             extensionFunAndProperty()
         }
+
+        mBinding.btnDelegateMode.setOnClickListener {
+            delegateModeUsage()
+        }
+        mBinding.btnDestructor.setOnClickListener {
+            destructorUsage()
+        }
+    }
+
+    private fun destructorUsage() {
+        val (x,y,z) =arrayOf(5,10,15)
+        println("x:$x, y:$y, z:$z")
+
+        val map = mapOf("Alice" to 21, "Bob" to 25)
+
+        for ((name,age) in map){
+            println("name:$name,age:$age")
+        }
+        val (min,max) = findMinMax(listOf(3,6,4,5))
+        println("min:$min, max:$max")
+
+    }
+
+    private fun findMinMax(list:List<Int>):Pair<Int,Int>{
+        val min:Int = list.minOrNull()?:10
+        val max:Int = list.maxOrNull()?:10
+        return Pair(min,max)
+    }
+
+
+
+    private fun delegateModeUsage() {
+        //委托类
+        val tomAraya = TomAraya("Thrash Metal")
+        tomAraya.makeSound()
+
+        val elvisPresley = ElvisPresley("Dancin' to the Jailhouse Rock")
+        elvisPresley.makeSound()
+
+        //委托属性
+
+       val delegateDemo = DelegateDemo()
+        println("p:${delegateDemo.p}")
+        delegateDemo.p = "New"
+        println("p:${delegateDemo.p}")
+
+
+
+
     }
 
     private fun extensionFunAndProperty() {
@@ -257,7 +310,7 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
     }
 
 
-    class Person(val name:String){
+    private class Person(val name:String){
         val likedPeople = mutableListOf<Person>()
         infix fun likes(other:Person){
             likedPeople.add(other)

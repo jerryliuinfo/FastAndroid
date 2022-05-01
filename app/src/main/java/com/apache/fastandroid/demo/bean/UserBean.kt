@@ -11,5 +11,4 @@ import java.util.*
  * Created by Jerry on 2021/1/22.
  */
 
-data class UserBean( var name:String?,  var age:Int? = 10):Serializable
-
+data class UserBean( var name:String?,  var age:Int = 10):Serializable

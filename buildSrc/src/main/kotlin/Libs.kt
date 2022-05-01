@@ -27,7 +27,6 @@ object Libs {
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
-    const val fastjson = "com.alibaba:fastjson:${Versions.fastjson}"
     const val utilcode = "com.blankj:utilcodex:1.31.0"
     const val brvh = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.brvh}"
     const val mmkv = "com.tencent:mmkv-static:1.2.10"
@@ -50,6 +49,7 @@ object Libs {
     const val viewPage2 = "androidx.viewpager2:viewpager2:${Versions.viewPager2}"
 
     const val loadSir = "com.kingja.loadsir:loadsir:1.3.8"
+    const val sandwich = "com.github.skydoves:sandwich:1.2.4"
 
 
     val coroutine = arrayOf(
@@ -93,6 +93,7 @@ object Libs {
         "com.drakeet.multitype:multitype:4.3.0",
         "com.github.liangjingkanji:StateLayout:1.2.0",
         mmkv,
+        sandwich,
     )
 
 

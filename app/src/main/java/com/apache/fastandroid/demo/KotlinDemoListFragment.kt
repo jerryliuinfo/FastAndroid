@@ -6,6 +6,7 @@ import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
 import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
 import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
 import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
+import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment2
 import com.apache.fastandroid.demo.kt.delegate.KotlinDelegateFragment
 import com.apache.fastandroid.demo.kt.generics.GenericDemoFragment
 
@@ -21,6 +22,7 @@ class KotlinDemoListFragment:BaseListFragment()
             ,ViewItemBean("Kotlin官方文档","Kotlin官方文档", KotlinOfficalGramerFragment::class.java)
             ,ViewItemBean("Kotlin委托","Kotlin委托",KotlinDelegateFragment::class.java)
             ,ViewItemBean("Kotlin集合","Kotlin集合", CollectionDemoFragment::class.java)
+            ,ViewItemBean("Collection","Collection", CollectionDemoFragment2::class.java)
             ,ViewItemBean("Kotlin语法扩展函数","Kotlin语法扩展函数", KotlinExtensionsFragment::class.java)
             ,ViewItemBean("范型","范型", GenericDemoFragment::class.java)
 

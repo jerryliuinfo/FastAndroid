@@ -28,8 +28,8 @@ object Versions {
     const val viewPager2 = "1.0.0"
 
 
-    const val okhttp = "4.8.0"
-    const val retrofit = "2.8.1"
+    const val okhttp = "4.9.0"
+    const val retrofit = "2.9.0"
     const val retrofitRxjava = "2.9.0"
 
     const val workmanager = "2.2.0"

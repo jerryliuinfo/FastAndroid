@@ -4,6 +4,7 @@ import com.apache.fastandroid.article.ArticleModelFactory
 import com.apache.fastandroid.article.ArticleNetwork
 import com.apache.fastandroid.article.ArticleReporsitoryKt
 import com.apache.fastandroid.demo.mvi.MviViewModel
+import com.apache.fastandroid.demo.skydoves.SandWitchRepository
 import com.apache.fastandroid.home.HomeModelFactory
 import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.db.HomeDatabase
@@ -26,9 +27,6 @@ object InjectorUtil {
 
     @JvmStatic
     fun getMviModelFactory() = MviViewModel.MviModelFactory(getHomeRepository())
-
-    @JvmStatic
-    fun getArticeModelFactory() = ArticleModelFactory(getArticleRepository())
 
 
     @JvmStatic

@@ -4,9 +4,11 @@ import android.text.Html
 import android.view.View
 import android.widget.TextView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.ArticleItemBinding
 import com.apache.fastandroid.network.model.Article
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
+import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.common.util.N
 import com.tesla.framework.common.util.buildSpannableString
@@ -16,12 +18,15 @@ import com.tesla.framework.kt.getColor
  * Created by Jerry on 2021/7/1.
  */
 class ArticleAdapter(data: List<Article>, val listener :(View,Int) -> Unit = { viwe,position -> } ) :
-    BaseQuickAdapter<Article, BaseViewHolder>(R.layout.article_item, data.toMutableList()),
+    BaseQuickAdapter<Article, BaseDataBindingHolder<ArticleItemBinding>>(R.layout.article_item, data.toMutableList()),
     LoadMoreModule {
 
+    override fun convert(holder: BaseDataBindingHolder<ArticleItemBinding>, it: Article) {
 
+        holder.dataBinding?.apply {
 
-    override fun convert(holder: BaseViewHolder, it: Article) {
+        }
+
         holder
             .setText(R.id.item_article_title, handleTitle(it))
             .setText(R.id.item_article_date, it.niceDate)
@@ -48,6 +53,8 @@ class ArticleAdapter(data: List<Article>, val listener :(View,Int) -> Unit = { v
             listener?.invoke(it, holder.layoutPosition)
         }
     }
+
+
 
     private fun handleTitle(article: Article?): String {
         return if (article != null) {
@@ -81,4 +88,6 @@ class ArticleAdapter(data: List<Article>, val listener :(View,Int) -> Unit = { v
     private fun isCollect(article: Article): Int {
         return if (article.collect) R.drawable.collect_selector_icon else R.drawable.uncollect_selector_icon
     }
+
+
 }

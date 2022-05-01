@@ -11,6 +11,7 @@ import com.apache.fastandroid.demo.list.MultiTypeDeomoFragment
 import com.apache.fastandroid.demo.logger.LoggerDemoFragment
 import com.apache.fastandroid.demo.mvi.MviDemoFragment
 import com.apache.fastandroid.demo.rxjava.RxJavaDemoListFragment
+import com.apache.fastandroid.demo.skydoves.SandWitchDemoFragment
 
 /**
  * Created by Jerry on 2020/11/11.
@@ -31,6 +32,7 @@ class OpenSourceDemoFragment: BaseListFragment() {
                     //MVVM Mail
                 ,ViewItemBean("Mvvm Mail", "Mvvm Mail", MvvmMailDemoFragment::class.java)
                 ,ViewItemBean("MVI模式", "shenzhen2017/android-architecture", MviDemoFragment::class.java)
+                ,ViewItemBean("sandwitch", "sandwitch", SandWitchDemoFragment::class.java)
 
         )
     }
