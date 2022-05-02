@@ -25,7 +25,7 @@ object AndroidX {
 object Libs {
 
 
-    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+//    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val utilcode = "com.blankj:utilcodex:1.31.0"
     const val brvh = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.brvh}"
@@ -51,6 +51,13 @@ object Libs {
     const val loadSir = "com.kingja.loadsir:loadsir:1.3.8"
     const val sandwich = "com.github.skydoves:sandwich:1.2.4"
 
+    const val transformation = "com.github.skydoves:transformationlayout:1.1."
+
+
+    val glide = arrayOf(
+        "com.github.bumptech.glide:glide:${Versions.glide}",
+//        "com.github.florent37:glidepalette:${Versions.glidePalette}"
+    )
 
     val coroutine = arrayOf(
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}",
@@ -94,6 +101,9 @@ object Libs {
         "com.github.liangjingkanji:StateLayout:1.2.0",
         mmkv,
         sandwich,
+        "com.github.skydoves:progressview:1.1.3",
+//        transformation,
+
     )
 
 
@@ -123,6 +133,7 @@ object Libs {
     const val restring = "dev.b3nedikt.restring:restring:5.1.4"
     const val viewPump = "dev.b3nedikt.viewpump:viewpump:4.0.10"
     const val reword = "dev.b3nedikt.reword:reword:4.0.1"
+    const val bundler = "com.github.skydoves:bundler:1.0.4"
 
 
 }
@@ -149,10 +160,11 @@ object Jetpack{
 
     val lifecycle = arrayOf(
         "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle_version}",
-        "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle_version}",
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}",
         "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}",
-        "androidx.lifecycle:lifecycle-service:${Versions.lifecycle_version}"
+//        "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle_version}",
+
+//        "androidx.lifecycle:lifecycle-service:${Versions.lifecycle_version}"
     )
     val navigation = arrayOf(
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}",

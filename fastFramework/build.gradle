@@ -8,7 +8,7 @@ apply from: '../base_lib.gradle'
 
 dependencies {
 
-    implementation Libs.glide
+    implementation (*Libs.glide)
     implementation Libs.gson
     implementation Libs.utilcode
     implementation Libs.brvh

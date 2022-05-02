@@ -51,7 +51,7 @@
     <fragment
         android:id="@+id/settings_dest"
         android:label="Setting"
-        android:name="com.apache.fastandroid.jetpack.navigation.NavSettingFragment"
+        android:name="com.apache.fastandroid.setting.SettingFragment"
         tools:layout="@layout/nav_settings_fragment"
         >
 

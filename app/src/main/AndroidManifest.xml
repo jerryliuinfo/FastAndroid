@@ -25,18 +25,31 @@
             android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Splashscreen">
+
+        </activity>
+<!--  activity-alias 使用参考 https://developer.android.com/guide/topics/manifest/activity-alias-element?hl=zh-cn     -->
+
+        <activity-alias
+            android:name=".SplashAliasActivity"
+            android:targetActivity=".SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+
+
+        </activity-alias>
+
+
+
 
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="Main"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTop"/>
 
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity" />
 

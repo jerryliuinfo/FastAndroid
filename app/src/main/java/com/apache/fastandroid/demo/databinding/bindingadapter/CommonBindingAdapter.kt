@@ -20,6 +20,9 @@ import android.text.method.LinkMovementMethod
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.OnBackPressedDispatcherOwner
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.text.HtmlCompat
 import androidx.core.view.GravityCompat
 import androidx.databinding.BindingAdapter
@@ -28,6 +31,7 @@ import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
 import com.apache.fastandroid.R
 import com.blankj.utilcode.util.ClickUtils
 import com.bumptech.glide.Glide
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.tesla.framework.common.util.log.NLog
 
@@ -43,6 +47,38 @@ private const val TAG = "CommonBindingAdapter"
  */
 //object CommonBindingAdapter {
 
+    @BindingAdapter("toast")
+    fun bindToast(view: View, text: String?) {
+        text?.let {
+            Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    @BindingAdapter("paletteImage", "paletteCard")
+    fun bindLoadImagePalette(view: AppCompatImageView, url: String, paletteCard: MaterialCardView) {
+        /*Glide.with(view.context)
+            .load(url)
+            .listener(
+                GlidePalette.with(url)
+                    .use(BitmapPalette.Profile.MUTED_LIGHT)
+                    .intoCallBack { palette ->
+                        val rgb = palette?.dominantSwatch?.rgb
+                        if (rgb != null) {
+                            paletteCard.setCardBackgroundColor(rgb)
+                        }
+                    }.crossfade(true)
+            ).into(view)*/
+    }
+
+    @BindingAdapter("onBackPressed")
+    fun bindOnBackPressed(view: View, onBackPress: Boolean) {
+        val context = view.context
+        if (onBackPress && context is OnBackPressedDispatcherOwner) {
+            view.setOnClickListener {
+                context.onBackPressedDispatcher.onBackPressed()
+            }
+        }
+    }
 
     @BindingAdapter(value = ["imageUrl", "placeHolder"], requireAll = false)
     fun imageUrl(view: ImageView, url: String?, placeHolder: Drawable?) {

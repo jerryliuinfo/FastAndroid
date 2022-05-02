@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string-array name="list_working_mode">
+    <item>列表配置选项1</item>
+    <item>列表配置选项2</item>
+    <item>列表配置选项3</item>
+  </string-array>
+
+  <string-array name="list_working_mode_value">
+    <item>mode_1</item>
+    <item>mode_2</item>
+    <item>mode_3</item>
+  </string-array>
+
+</resources>

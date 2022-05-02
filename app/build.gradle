@@ -425,7 +425,7 @@ dependencies {
     implementation 'androidx.dynamicanimation:dynamicanimation-ktx:1.0.0-alpha03'
 
 
-    implementation Libs.glide
+    implementation (*Libs.glide)
     implementation Libs.gson
     implementation Libs.utilcode
     implementation Libs.brvh

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <PreferenceCategory
+    app:key="normalCategory"
+    app:title="常规">
+
+    <ListPreference
+      app:defaultValue="url_scheme"
+      app:entries="@array/list_working_mode"
+      app:entryValues="@array/list_working_mode_value"
+      app:icon="@drawable/ic_working_mode"
+      app:key="workingMode"
+      app:summary="%s"
+      app:title="工作模式" />
+
+    <Preference
+      app:icon="@drawable/ic_snowflake"
+      app:key="defrostMode"
+      app:summary="配置配置描述"
+      app:title="配置配置标题">
+
+      <intent
+        android:targetClass="com.absinthe.anywhere_.ui.settings.DefrostActivity"
+        android:targetPackage="@string/application_id" />
+    </Preference>
+
+
+
+    <SwitchPreference
+      app:icon="@drawable/ic_rocket"
+      app:key="closeAfterLaunch"
+      app:summary="选项开关描述"
+      app:title="项开关标题" />
+
+    <EditTextPreference
+        app:icon="@drawable/ic_rocket"
+        app:key="webdavHost"
+        app:title="域名" />
+
+  </PreferenceCategory>
+
+
+
+</PreferenceScreen>

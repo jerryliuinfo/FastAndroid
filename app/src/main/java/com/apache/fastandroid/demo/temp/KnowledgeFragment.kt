@@ -36,6 +36,7 @@ import com.zwb.lib_base.utils.network.NetworkStateChangeListener
 import com.zwb.lib_base.utils.network.NetworkStateClient
 import com.zwb.lib_base.utils.network.NetworkTypeEnum
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -129,6 +130,26 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
 
         val str = "Longfu2012"
         et_userName.filters = arrayOf<InputFilter>(MyFilter(str,context))
+
+        mBinding.btnMathFormat.setOnClickListener {
+            mathFormat()
+        }
+
+        mBinding.btnTimeunitToMilles.setOnClickListener {
+            timeUnitToMilles(TimeUnit.SECONDS,1)
+            timeUnitToMilles(TimeUnit.MINUTES,1)
+        }
+    }
+
+    private fun timeUnitToMilles(timeUnit: TimeUnit, amount:Long):Long {
+        return timeUnit.toMillis(amount)
+    }
+
+    private fun mathFormat() {
+        val format = "#%03d"
+        val value1 = String.format(format,1)
+        val value2 = String.format(format,100)
+        println("value1:$value1, value2:$value2")
     }
 
     private fun listenerOnBackKey() {

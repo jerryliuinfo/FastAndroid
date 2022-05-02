@@ -23,7 +23,7 @@
             app:constraint_referenced_ids="tv_quatity,tv_message,tv_name,btn_textview_horizontal_scroll,btn_collections_suffle,
         btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs,btn_textview_inputFilter,
         btn_collection_wrapper,btn_verify_init,btn_reflect,btn_concurrence,btn_showDialogWithApplicationContext,
-        btn_location_onscreen,btn_list_init,btn_network,btn_monitor_back_key"
+        btn_location_onscreen,btn_list_init,btn_network,btn_monitor_back_key,btn_math_format,btn_timeunit_toMilles"
             />
         <Button
             android:id="@+id/tv_quatity"
@@ -158,6 +158,20 @@
             android:layout_height="wrap_content"
             android:text="监听系统返回键"
             />
+        <Button
+            android:id="@+id/btn_math_format"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数字格式化"
+            />
+
+        <Button
+            android:id="@+id/btn_timeunit_toMilles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="时间单位转换成ms"
+            />
+
 
 
         <EditText

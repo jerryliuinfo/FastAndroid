@@ -14,6 +14,7 @@ class WidgetDemoFragment: BaseListFragment() {
                 //https://github.com/youth5201314/banner
                 ViewItemBean("SupterTextView", "SuperTextView", SuperTextViewDemoListFragment::class.java)
                 ,ViewItemBean("Lyric", "Lyric", LyricDemoFragment::class.java)
+                ,ViewItemBean("ProgressView", "ProgressView", ProgressViewDemoFragment::class.java)
 
         )
     }

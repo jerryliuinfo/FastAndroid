@@ -65,13 +65,13 @@ public class OuterInterceptScrollView extends ScrollView {
                     NLog.d(TAG, "list view's range, don't intercept");
 
                 }
-
+                mLastY = ev.getY();
                 break;
             case MotionEvent.ACTION_UP:
                 intercept = false;
                 break;
         }
-        mLastY = ev.getY();
+
         NLog.d(TAG, "CustomScrollView onInterceptTouchEvent intercept: %s",intercept);
         return intercept;
 

@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDex
 import com.apache.fastandroid.component.anr.AnrConfig
 import com.apache.fastandroid.component.anr.AnrManager
+import com.apache.fastandroid.component.once.Once
 import com.apache.fastandroid.crash.Fabric.init
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor
@@ -71,6 +72,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
             mAppViewModelStore = ViewModelStore()
             initAndroidUtil()
             initLog()
+            initOnce()
             initAop()
             initCrash()
             crashReport()
@@ -106,6 +108,10 @@ class FastApplication : Application(), ViewModelStoreOwner {
             initAppDress()
         }
         println("Application onCreate cost time: $time milles")
+    }
+
+    private fun initOnce() {
+        Once.initialise(this)
     }
 
     private fun initMMKV() {

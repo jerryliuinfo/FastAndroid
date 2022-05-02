@@ -16,7 +16,7 @@ class ScrollConflictInnernterceptDemoFragment: BaseVBFragment<TempScrollConflict
         super.layoutInit(inflater, savedInstanceState)
 
 
-        val adapter = ArrayAdapter<String>(context!!,android.R.layout.simple_list_item_1, data)
+        val adapter = ArrayAdapter<String>(requireContext(),android.R.layout.simple_list_item_1, data)
         listView.adapter = adapter
     }
 

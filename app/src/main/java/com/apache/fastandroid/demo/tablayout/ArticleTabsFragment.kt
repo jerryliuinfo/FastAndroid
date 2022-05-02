@@ -39,7 +39,7 @@ class ArticleTabsFragment:ATabsTabLayoutFragmentNew() {
         }
     }
 
-    class ArticleAdapter(tabItems:List<TabItem>,fragment: Fragment) :MyFragmentStateAdapter(tabItems,fragment) {
+    private class ArticleAdapter(tabItems:List<TabItem>,fragment: Fragment) :MyFragmentStateAdapter(tabItems,fragment) {
 
         override fun newFragment(position: Int, tabItem: TabItem): Fragment {
             return when(position){

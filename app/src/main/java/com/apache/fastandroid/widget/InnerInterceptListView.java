@@ -54,7 +54,7 @@ public class InnerInterceptListView extends ListView {
                     //其它情形时不允ScrollView拦截事件
                     getParent().requestDisallowInterceptTouchEvent(true);
                 }
-
+                mLastY = y;
                 break;
 
             case MotionEvent.ACTION_UP:
@@ -63,7 +63,7 @@ public class InnerInterceptListView extends ListView {
             default:
                 break;
         }
-        mLastY = y;
+
         return super.dispatchTouchEvent(ev);
     }
 

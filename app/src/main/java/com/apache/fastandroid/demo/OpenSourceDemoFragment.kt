@@ -5,6 +5,7 @@ import com.apache.fastandroid.demo.agentweb.AgentWebDemoListFragment
 import com.apache.fastandroid.demo.app.MvvmMailDemoFragment
 import com.apache.fastandroid.demo.bestpay.BestPayDemoFragment
 import com.apache.fastandroid.demo.component.loadsir.LoadSirDemoListFragment
+import com.apache.fastandroid.demo.component.once.OnceFragment
 import com.apache.fastandroid.demo.glide.GlideDemoFragment
 import com.apache.fastandroid.demo.hawk.HawkDemoFragment
 import com.apache.fastandroid.demo.list.MultiTypeDeomoFragment
@@ -33,6 +34,8 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("Mvvm Mail", "Mvvm Mail", MvvmMailDemoFragment::class.java)
                 ,ViewItemBean("MVI模式", "shenzhen2017/android-architecture", MviDemoFragment::class.java)
                 ,ViewItemBean("sandwitch", "sandwitch", SandWitchDemoFragment::class.java)
+                ,ViewItemBean("Bundle", "Bundle", SandWitchDemoFragment::class.java)
+                ,ViewItemBean("Once", "Once", OnceFragment::class.java)
 
         )
     }

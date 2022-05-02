@@ -9,11 +9,13 @@ import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -150,3 +152,5 @@ fun <T : ViewBinding> LifecycleOwner.inflateBinding(inflater: LayoutInflater): T
         .getDeclaredMethod("inflate", LayoutInflater::class.java)
         .invoke(null, inflater) as T
 }
+
+
