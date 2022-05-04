@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal"
+                app:flow_horizontalGap="2dp"
+                app:constraint_referenced_ids="btn_flow_basic,btn_flowOf,btn_asFlow,btn_channelFlow
+                ,btn_zip,btn_handle_exception,btn_catch_exception,btn_exception_allFailure,
+                btn_exception_single_Failure"
+                app:flow_wrapMode="aligned"
+                />
+            <Button
+                android:id="@+id/btn_flow_basic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="构建流-flow" />
+            <Button
+                android:id="@+id/btn_flowOf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="构建流-flowOf" />
+            <Button
+                android:id="@+id/btn_asFlow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="构建流-AsFlow" />
+            <Button
+                android:id="@+id/btn_channelFlow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="构建流-channelFlow" />
+
+
+            <Button
+                android:id="@+id/btn_zip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zip操作符" />
+
+            <Button
+                android:id="@+id/btn_handle_exception"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="异常处理(Crash)" />
+            <Button
+                android:id="@+id/btn_catch_exception"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="异常处理(Catch)" />
+
+            <Button
+                android:id="@+id/btn_exception_allFailure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="异常处理全部失败" />
+
+            <Button
+                android:id="@+id/btn_exception_single_Failure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="异常处理单个失败" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</layout>

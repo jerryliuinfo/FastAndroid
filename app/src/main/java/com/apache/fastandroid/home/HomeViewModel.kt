@@ -12,19 +12,14 @@ import kotlinx.coroutines.launch
 /**
  * Created by Jerry on 2022/2/23.
  */
-class HomeViewModelKt(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
+class HomeViewModel(val reporsitoryKt: HomeReporsitoryKt):BaseViewModel() {
 
 
     private val _articleList = MutableLiveData<List<Article>>()
     val articleList: LiveData<List<Article>> = _articleList
 
-
-
-
     private val _refreshing = MutableLiveData<Boolean>()
     val refreshing: LiveData<Boolean> = _refreshing
-
-
 
 
     val pageInfo = PageInfo()

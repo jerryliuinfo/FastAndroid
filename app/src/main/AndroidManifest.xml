@@ -51,6 +51,12 @@
             android:label="Main"
             android:launchMode="singleTop"/>
 
+        <activity
+            android:name=".demo.fluidresize.FluidResizeActivity"
+            android:exported="true"
+            android:label="FluidResize"
+          />
+
         <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity" />
 
 

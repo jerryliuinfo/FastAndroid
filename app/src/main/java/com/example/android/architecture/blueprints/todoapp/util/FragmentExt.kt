@@ -31,6 +31,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.app.FastApplication
 import com.example.android.architecture.blueprints.todoapp.ViewModelFactory
+import com.tesla.framework.ui.activity.FragmentContainerActivity
 
 fun Fragment.getViewModelFactory(): ViewModelFactory {
     val repository = (requireContext().applicationContext as FastApplication).taskRepository
@@ -72,4 +73,6 @@ fun Fragment.getDrawable(@DrawableRes drawableResId: Int): Drawable? {
 
 inline val Fragment.viewLifecycleScope: LifecycleCoroutineScope
     get() = viewLifecycleOwner.lifecycleScope
+
+
 

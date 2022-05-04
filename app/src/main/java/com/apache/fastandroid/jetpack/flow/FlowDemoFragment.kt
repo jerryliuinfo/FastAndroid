@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.kt.coroutine
+package com.apache.fastandroid.jetpack.flow
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ import kotlin.system.measureTimeMillis
 class FlowDemoFragment :
     BaseVBFragment<FragmentCoroutineFlowBinding>(FragmentCoroutineFlowBinding::inflate) {
     companion object {
-        private const val TAG = "FlowDemoFragment"
+        private const val TAG = "FlowBasicUsageFragment"
 
     }
 

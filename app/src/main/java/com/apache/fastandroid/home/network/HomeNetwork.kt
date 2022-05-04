@@ -1,18 +1,19 @@
 package com.apache.fastandroid.home.network
 
 import com.apache.fastandroid.base.BaseRepository
+import com.apache.fastandroid.network.retrofit.ApiServiceFactory
 
 /**
  * Created by Jerry on 2022/2/23.
  */
-class HomeNetwork :BaseRepository(){
+class HomeNetwork {
 
     /**
      * ApiServiceKt 接口返回的是 Call 类型时，需要用await
      */
-    suspend fun loadTopArticleCo() = apiService.loadTopArticleCo()
+    suspend fun loadTopArticleCo() = ApiServiceFactory.apiService.loadTopArticleCo()
 
-    suspend fun loadHomeArticleCo(pageNum:Int) = apiService.loadHomeArticleCo(pageNum)
+    suspend fun loadHomeArticleCo(pageNum:Int) = ApiServiceFactory.apiService.loadHomeArticleCo(pageNum)
 
 
 

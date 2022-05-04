@@ -20,6 +20,18 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
+import com.apache.fastandroid.jetpack.flow.completion.CompletionViewModel
+import com.apache.fastandroid.jetpack.flow.errorhandling.catch.CatchViewModel
+import com.apache.fastandroid.jetpack.flow.errorhandling.emitall.EmitAllViewModel
+import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
+import com.apache.fastandroid.jetpack.flow.local.DatabaseHelperImpl
+import com.apache.fastandroid.jetpack.flow.parallel.ParallelNetworkCallViewModel
+import com.apache.fastandroid.jetpack.flow.room.RoomDbViewModel
+import com.apache.fastandroid.jetpack.flow.serias.SerialNetworkCallViewModel
+import com.apache.fastandroid.jetpack.flow.single.SingleNetworkCallViewModel
+import com.apache.fastandroid.network.retrofit.ApiServiceFactory
+import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTaskViewModel
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import com.example.android.architecture.blueprints.todoapp.statistics.StatisticsViewModel
@@ -50,6 +62,27 @@ class ViewModelFactory constructor(
                 AddEditTaskViewModel(tasksRepository)
             isAssignableFrom(TasksViewModel::class.java) ->
                 TasksViewModel(tasksRepository, handle)
+
+            isAssignableFrom(SingleNetworkCallViewModel::class.java) ->
+                SingleNetworkCallViewModel(ApiHelperImpl(ApiServiceFactory.flowService))
+
+            isAssignableFrom(SerialNetworkCallViewModel::class.java) ->
+                SerialNetworkCallViewModel(ApiHelperImpl(ApiServiceFactory.flowService))
+
+            isAssignableFrom(ParallelNetworkCallViewModel::class.java) ->
+                ParallelNetworkCallViewModel(ApiHelperImpl(ApiServiceFactory.flowService))
+
+            isAssignableFrom(RoomDbViewModel::class.java) ->
+                RoomDbViewModel(ApiHelperImpl(ApiServiceFactory.flowService),DatabaseHelperImpl(DatabaseBuilder.getInstance(Utils.getApp())))
+
+            isAssignableFrom(CatchViewModel::class.java) ->
+                CatchViewModel(ApiHelperImpl(ApiServiceFactory.flowService),DatabaseHelperImpl(DatabaseBuilder.getInstance(Utils.getApp())))
+
+            isAssignableFrom(EmitAllViewModel::class.java) ->
+                EmitAllViewModel(ApiHelperImpl(ApiServiceFactory.flowService),DatabaseHelperImpl(DatabaseBuilder.getInstance(Utils.getApp())))
+
+            isAssignableFrom(CompletionViewModel::class.java) ->
+                CompletionViewModel(ApiHelperImpl(ApiServiceFactory.flowService),DatabaseHelperImpl(DatabaseBuilder.getInstance(Utils.getApp())))
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

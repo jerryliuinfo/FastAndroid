@@ -17,18 +17,9 @@ import com.tesla.framework.common.util.log.NLog
 import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
-import com.apache.fastandroid.demo.blacktech.EncryptDemoFragment
-import com.apache.fastandroid.demo.component.once.OnceFragment
-import com.apache.fastandroid.demo.drakeet.CustomViewGroupFragment
-import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
-import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment2
-import com.apache.fastandroid.demo.skydoves.SandWitchDemoFragment
-import com.apache.fastandroid.demo.tablayout.BottomTabsFragment
-import com.apache.fastandroid.demo.temp.KnowledgeFragment
-import com.apache.fastandroid.demo.widget.ProgressViewDemoFragment
-import com.apache.fastandroid.demo.widget.lyric.LyricFragment
-import com.apache.fastandroid.jetpack.livedata.LiveDataWrongUsageActivity
-import com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity
+import com.apache.fastandroid.demo.fluidresize.FluidResizeActivity
+import com.apache.fastandroid.jetpack.flow.FlowDemoListFragment
+import com.apache.fastandroid.jetpack.flow.serias.SerialNetworkFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVmActivity
@@ -70,7 +61,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, CoroutineCancelTimeoutDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, CoroutineContextDispatcherDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, FlowDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, BottomTabsFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, MvvmMailDemoFragment::class.java,null)
@@ -87,6 +78,12 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, ProgressViewDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, OnceFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, SerialNetworkFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, FlowDemoListFragment::class.java,null)
+
+        launchActivity<FluidResizeActivity>(this)
 //        LiveDataWrongUsageActivity.launch(this)
 
 //        launchActivity<TasksActivity>(this)

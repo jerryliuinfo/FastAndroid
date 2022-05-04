@@ -2,14 +2,12 @@ package com.apache.fastandroid.demo.mvi
 
 import androidx.lifecycle.*
 import com.apache.fastandroid.home.HomeReporsitoryKt
-import com.apache.fastandroid.home.HomeViewModelKt
 import com.apache.fastandroid.util.extensitons.FetchStatus
 import com.apache.fastandroid.util.extensitons.PageState
 import com.apache.fastandroid.util.extensitons.asLiveData
 import com.tesla.framework.component.mvicore.LiveEvents
 import com.tesla.framework.component.mvicore.setEvent
 import com.tesla.framework.component.mvicore.setState
-import com.zj.mvi.core.setState
 import kotlinx.coroutines.launch
 
 /**

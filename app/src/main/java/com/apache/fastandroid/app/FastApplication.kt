@@ -273,11 +273,11 @@ class FastApplication : Application(), ViewModelStoreOwner {
     }
 
     private fun initAnr() {
-        val config = AnrConfig.with().set_timeoutInterval(2000)
+        /*val config = AnrConfig.with().set_timeoutInterval(2000)
             .setIgnoreDebugger(true)
             .setReportMainThreadOnly()
             .setAnrInterceptor { duration -> 3000 - duration }.build()
-                AnrManager.getInstance().start(config);
+                AnrManager.getInstance().start(config);*/
     }
 
     private fun initViewPump() {

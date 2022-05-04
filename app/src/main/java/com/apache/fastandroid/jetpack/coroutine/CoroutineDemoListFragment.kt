@@ -3,6 +3,8 @@ package com.apache.fastandroid.jetpack.coroutine
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.kt.coroutine.*
+import com.apache.fastandroid.jetpack.flow.FlowDemoFragment
+import com.apache.fastandroid.jetpack.flow.FlowBasicUsageFragment
 
 /**
  * Created by Jerry on 2020/10/31.
@@ -17,7 +19,6 @@ class CoroutineDemoListFragment: BaseListFragment() {
             ,ViewItemBean("组合挂起函数","组合挂起函数", CoroutineSuspendFuncDemoFragment::class.java)
             ,ViewItemBean("协程上下文与调度器","协程上下文与调度器", CoroutineContextDispatcherDemoFragment::class.java)
             ,ViewItemBean("协程异常处理","协程异常处理", CoroutineExceptionDemoFragment::class.java)
-            ,ViewItemBean("Flow","Flow", FlowDemoFragment::class.java)
             ,ViewItemBean("BennyHuo","BennyHuo", BennyHuoCoroutineDemoFragment::class.java)
         )
     }

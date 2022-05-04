@@ -24,7 +24,7 @@
 
         <variable
             name="vm"
-            type="com.apache.fastandroid.home.HomeViewModelKt" />
+            type="com.apache.fastandroid.home.HomeViewModel" />
 
         <variable
             name="adapter"

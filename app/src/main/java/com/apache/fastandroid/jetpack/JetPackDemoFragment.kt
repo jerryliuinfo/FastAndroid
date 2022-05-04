@@ -7,6 +7,7 @@ import com.apache.fastandroid.demo.databinding.DatabindingDemoFragment
 import com.apache.fastandroid.demo.room.RoomDemoFragment
 import com.apache.fastandroid.demo.sunflower.fragement.SunFlowerHomeViewPagerFragment
 import com.apache.fastandroid.jetpack.coroutine.CoroutineDemoListFragment
+import com.apache.fastandroid.jetpack.flow.FlowDemoListFragment
 import com.apache.fastandroid.jetpack.hit.HitDemoFragment
 import com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity
 import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleDemoFragment
@@ -31,9 +32,9 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("NavigationDrawerLayout", "NavigationDrawerLayout", activity= NavigationDrawerDemoActivity::class.java)
                 ,ViewItemBean("Navigation2", "左边固定显示Naviagtion", activity= NavigationDrawerDemoActivity2::class.java)
                 ,ViewItemBean("AdvanceNavigation", "AdvanceNavigation", activity= AdvanceNavigationActivity::class.java)
-//                ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
                 ,ViewItemBean("Room", "Room", RoomDemoFragment::class.java)
                 ,ViewItemBean("Coroutine", "Coroutine", CoroutineDemoListFragment::class.java)
+                ,ViewItemBean("Flow", "Flow", FlowDemoListFragment::class.java)
 
                 ,ViewItemBean("Hit", "Hit", HitDemoFragment::class.java)
                 ,ViewItemBean("SunFlower", "SunFlower", SunFlowerHomeViewPagerFragment::class.java,addTitleBar = false)

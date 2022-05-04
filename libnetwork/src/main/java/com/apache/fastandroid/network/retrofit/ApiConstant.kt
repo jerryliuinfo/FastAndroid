@@ -10,6 +10,7 @@ package com.apache.fastandroid.retrofit
 object ApiConstant {
     const val BASE_URL = "https://www.wanandroid.com"
     const val DISNEY_URL = "https://gist.githubusercontent.com/skydoves/aa3bbbf495b0fa91db8a9e89f34e4873/raw/a1a13d37027e8920412da5f00f6a89c5a3dbfb9a/"
+    const val FLOW_BASE_URL = "https://5e510330f2c0d300147c034c.mockapi.io/"
 
     const val USERNAME_KEY = "username"
     const val USERID_KEY = "userid"

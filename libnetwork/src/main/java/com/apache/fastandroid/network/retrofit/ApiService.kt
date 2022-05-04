@@ -6,6 +6,7 @@ import com.apache.fastandroid.network.response.EmptyResponse
 import com.skydoves.sandwich.ApiResponse
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
@@ -69,6 +70,15 @@ interface ApiService {
 
     @GET("DisneyPosters.json")
     fun fetchDisneyPostersByCall(): Call<List<Poster>>
+
+
+
+    fun getUsers(): Flow<List<ApiUser>>
+
+    fun getMoreUsers(): Flow<List<ApiUser>>
+
+    fun getUsersWithError(): Flow<List<ApiUser>>
+
 
 
 

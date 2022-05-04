@@ -9,6 +9,8 @@ import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewTreeObserver
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
@@ -25,6 +27,9 @@ import com.blankj.utilcode.util.Utils
 import com.google.android.material.snackbar.Snackbar
 import com.tesla.framework.component.livedata.Event
 import com.tesla.framework.component.livedata.NetworkLiveData
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import timber.log.Timber
 import java.lang.reflect.ParameterizedType
 import kotlin.math.pow
 
@@ -153,4 +158,57 @@ fun <T : ViewBinding> LifecycleOwner.inflateBinding(inflater: LayoutInflater): T
         .invoke(null, inflater) as T
 }
 
+fun SearchView.getQueryTextChangeStateFlow(): StateFlow<String> {
 
+    val query = MutableStateFlow("")
+
+    setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(query: String?): Boolean {
+            return true
+        }
+
+        override fun onQueryTextChange(newText: String): Boolean {
+            query.value = newText
+            return true
+        }
+    })
+
+    return query
+
+}
+
+/**
+ * Run a function when a View gets measured and laid out on the screen.
+ */
+fun View.onNextMeasure(runnable: () -> Unit) {
+    viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
+        override fun onPreDraw(): Boolean {
+            if (isLaidOut) {
+                viewTreeObserver.removeOnPreDrawListener(this)
+                runnable()
+
+            } else if (visibility == View.GONE) {
+                Timber.w("View's visibility is set to Gone. It'll never be measured: %s", resourceName())
+                viewTreeObserver.removeOnPreDrawListener(this)
+            }
+            return true
+        }
+    })
+}
+
+fun View.resourceName(): String {
+    var name = "<nameless>"
+    try {
+        name = resources.getResourceEntryName(id)
+    } catch (e: Resources.NotFoundException) {
+        // Nothing to see here
+    }
+    return name
+}
+
+
+private fun View.setHeight(height: Int) {
+    val params = layoutParams
+    params.height = height
+    layoutParams = params
+}

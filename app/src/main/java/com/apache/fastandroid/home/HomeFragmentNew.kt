@@ -18,7 +18,7 @@ import com.tesla.framework.ui.fragment.BaseDBFragment
  */
 class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-    private val mHomeViewModel:HomeViewModelKt by viewModels { InjectorUtil.getHomeModelFactory() }
+    private val mHomeViewModel:HomeViewModel by viewModels { InjectorUtil.getHomeModelFactory() }
 
     private lateinit var  swipeRefreshLayout: SwipeRefreshLayout
 
