@@ -17,6 +17,7 @@ import com.apache.fastandroid.demo.bean.UserBean
 import com.tesla.framework.common.util.log.NLog
 import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
+import com.android.example.github.GithubBrowserMainActivity
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.fluidresize.FluidResizeActivity
 import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
@@ -90,6 +91,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
 
 //        launchActivity<FluidResizeActivity>(this)
+//        launchActivity<GithubBrowserMainActivity>(this)
 //        LiveDataWrongUsageActivity.launch(this)
 
 //        launchActivity<TasksActivity>(this)

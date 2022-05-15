@@ -1,5 +1,6 @@
 package com.apache.fastandroid.demo.sampleapp
 
+import com.android.example.github.GithubBrowserMainActivity
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.cheese.CheeseActivity
@@ -25,7 +26,9 @@ class SampleAppDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
             ViewItemBean("SunFlower", "SunFlower", SunFlowerHomeViewPagerFragment::class.java,addTitleBar = false)
-            ,ViewItemBean("TodoApp", "TodoApp", activity = TasksActivity::class.java,addTitleBar = false)
+            ,ViewItemBean("ToUserDaodoApp", "https://github.com/android/architecture-samples", activity = TasksActivity::class.java,addTitleBar = false)
+            ,ViewItemBean("Architecture-component", "https://github.com/android/architecture-samples", activity = TasksActivity::class.java,addTitleBar = false)
+            ,ViewItemBean("GithubBrowser", "GithubBrowser", activity = GithubBrowserMainActivity::class.java,addTitleBar = true)
 
         )
     }

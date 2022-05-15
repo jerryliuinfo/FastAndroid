@@ -55,12 +55,10 @@ abstract class BaseVBFragment<T : ViewBinding>(val inflater: (inflater: LayoutIn
 
 
 
-    open fun getRootView(): View {
-        return mBinding.root
-    }
+
 
     open fun <T : View?> findViewById(@IdRes resId: Int): T {
-        return getRootView().findViewById(resId)
+        return requireView().findViewById(resId)
     }
 
 

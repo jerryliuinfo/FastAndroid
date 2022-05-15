@@ -20,6 +20,14 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.android.example.github.AppExecutors
+import com.android.example.github.api.GithubClient
+import com.android.example.github.db.GithubDb
+import com.android.example.github.repository.RepoRepository
+import com.android.example.github.repository.UserRepository
+import com.android.example.github.ui.repo.RepoViewModel
+import com.android.example.github.ui.search.SearchViewModel
+import com.android.example.github.ui.user.UserViewModel
 import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.HomeViewModel
 import com.apache.fastandroid.home.db.HomeDatabase
@@ -42,6 +50,7 @@ import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepo
 import com.example.android.architecture.blueprints.todoapp.statistics.StatisticsViewModel
 import com.example.android.architecture.blueprints.todoapp.taskdetail.TaskDetailViewModel
 import com.example.android.architecture.blueprints.todoapp.tasks.TasksViewModel
+import java.util.concurrent.Executors
 
 /**
  * Factory for all ViewModels.
@@ -58,6 +67,16 @@ class ViewModelFactory constructor(
         modelClass: Class<T>,
         handle: SavedStateHandle
     ) = with(modelClass) {
+        val executor = AppExecutors(
+            Executors.newSingleThreadExecutor(),
+            Executors.newFixedThreadPool(3),
+            AppExecutors.MainThreadExecutor()
+        )
+        val db = GithubDb.getInstance(Utils.getApp())
+        val repoDao = db.repoDao()
+
+        val repoRepository = RepoRepository.getInstance(executor,db,repoDao,GithubClient.githubService)
+
         when {
             isAssignableFrom(HomeViewModel::class.java) -> {
                 val homeReporsitoryKt = HomeReporsitoryKt.getInstance(HomeDatabase.getHomeDao(), HomeNetwork.getInstance())
@@ -96,6 +115,24 @@ class ViewModelFactory constructor(
 
             isAssignableFrom(TwoLongRunningTasksViewModel::class.java) ->
                 TwoLongRunningTasksViewModel(ApiHelperImpl(ApiServiceFactory.flowService),DatabaseHelperImpl(DatabaseBuilder.getInstance(Utils.getApp())))
+
+
+
+             //Github browser
+
+
+            isAssignableFrom(SearchViewModel::class.java) ->{
+                SearchViewModel(repoRepository)
+            }
+            isAssignableFrom(RepoViewModel::class.java) ->{
+                RepoViewModel(repoRepository)
+            }
+            isAssignableFrom(UserViewModel::class.java) ->{
+                UserViewModel(UserRepository.getInstance(executor,db.userDao(),GithubClient.githubService),repoRepository)
+            }
+
+
+
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

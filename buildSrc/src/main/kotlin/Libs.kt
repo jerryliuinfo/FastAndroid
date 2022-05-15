@@ -189,7 +189,9 @@ object Jetpack{
     val room = arrayOf(
         "androidx.room:room-runtime:${Versions.Room}",
         "androidx.room:room-ktx:${Versions.Room}"
-//        "androidx.room:room-compiler:${Versions.Room}",
+    )
+    val room_compiler = arrayOf(
+        "androidx.room:room-compiler:${Versions.Room}",
     )
 
 

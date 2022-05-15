@@ -24,13 +24,18 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true"
-            android:theme="@style/Splashscreen">
+            android:theme="@style/Splashscreen"/>
 
-        </activity>
+        <activity
+            android:name="com.android.example.github.GithubBrowserMainActivity"
+            android:exported="false"
+            />
+
 <!--  activity-alias 使用参考 https://developer.android.com/guide/topics/manifest/activity-alias-element?hl=zh-cn     -->
 
         <activity-alias
             android:name=".SplashAliasActivity"
+            android:exported="true"
             android:targetActivity=".SplashActivity">
 
             <intent-filter>
@@ -47,45 +52,67 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="Main"
             android:launchMode="singleTop"/>
 
         <activity
             android:name=".demo.fluidresize.FluidResizeActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="FluidResize"
           />
 
-        <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity" />
+        <activity android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"
+            android:exported="false"
+            />
 
 
-        <activity android:name=".demo.style.FitSystemWindowDemoActivity"/>
-        <activity android:name=".demo.style.FitSystemWindowDemoActivity2"/>
-        <activity android:name=".demo.style.FitSystemWindowFrameLayoutDemoActivity"/>
-        <activity android:name=".demo.temp.activityresult.ActivityResultDemoActivity"/>
-        <activity android:name=".demo.temp.activityresult.SecondActivityDemoActivity"/>
-        <activity android:name="com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity"/>
-        <activity android:name="com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity"/>
-        <activity android:name=".jetpack.navigation.NavigationDrawerDemoActivity2"/>
-        <activity android:name=".jetpack.navigation.advance.AdvanceNavigationActivity"/>
+        <activity android:name=".demo.style.FitSystemWindowDemoActivity"
+            android:exported="false"
+            />
+        <activity android:name=".demo.style.FitSystemWindowDemoActivity2"
+            android:exported="false"
+            />
+        <activity android:name=".demo.style.FitSystemWindowFrameLayoutDemoActivity"
+            android:exported="false"
+            />
+        <activity android:name=".demo.temp.activityresult.ActivityResultDemoActivity"
+            android:exported="false"
+            />
+        <activity android:name=".demo.temp.activityresult.SecondActivityDemoActivity"
+            android:exported="false"
+            />
+        <activity android:name="com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity"
+            android:exported="false"
+            />
+        <activity android:name="com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity"
+            android:exported="false"
+            />
+        <activity android:name=".jetpack.navigation.NavigationDrawerDemoActivity2"
+            android:exported="false"
+            />
+        <activity android:name=".jetpack.navigation.advance.AdvanceNavigationActivity"
+            android:exported="false"
+            />
 
-        <activity android:name=".jetpack.livedata.LiveDataWrongUsageActivity" />
+        <activity android:name=".jetpack.livedata.LiveDataWrongUsageActivity"
+            android:exported="false"
+            />
 
 
 
         <activity
             android:name=".demo.blacktech.ViewPumpDemoActivity"
-            android:exported="true"
+            android:exported="false"
             />
         <activity
             android:name=".setting.AboutActivity"
-            android:exported="true"
+            android:exported="false"
             />
 
         <activity
             android:name=".jetpack.navigation.NavSettingActivity"
-            android:exported="true"
+            android:exported="false"
             />
 
         <activity
@@ -101,7 +128,7 @@
         <activity
             android:name=".article.ArticleDetailActivity"
             android:configChanges="orientation|keyboardHidden|navigation|locale"
-            android:exported="true"
+            android:exported="false"
             android:launchMode="singleTask"
 
             />
@@ -129,7 +156,7 @@
         <activity
             android:name="com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity"
             android:windowSoftInputMode="adjustResize"
-            android:exported="true"
+            android:exported="false"
             android:theme="@style/AppTheme.OverlapSystemBar">
 
         </activity>
@@ -139,7 +166,8 @@
             android:name="channelId"
             android:value="${UMENG_CHANNEL}" />-->
 
-        <service android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService" />
+        <service android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService"
+            />
         <service android:name=".demo.drakeet.foregroundservice.InhibitorService" />
 
 

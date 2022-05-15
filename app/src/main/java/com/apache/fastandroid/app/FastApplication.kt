@@ -25,6 +25,7 @@ import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
 import com.apache.fastandroid.jetpack.flow.local.DatabaseHelper
 import com.apache.fastandroid.jetpack.flow.local.DatabaseHelperImpl
 import com.apache.fastandroid.network.retrofit.ApiServiceFactory
+import com.apache.fastandroid.util.Global
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
@@ -262,7 +263,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
     }
 
     private fun initLoop() {
-//       Global.start()
+       Global.start()
     }
 
     private fun initAnr() {

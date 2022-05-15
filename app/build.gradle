@@ -443,6 +443,8 @@ dependencies {
     implementation(*AndroidTest.espresso)
 
     kapt(*Jetpack.hit_compiler)
+    kapt(*Jetpack.room_compiler)
+
 
 
     implementation(*Libs.coroutine)

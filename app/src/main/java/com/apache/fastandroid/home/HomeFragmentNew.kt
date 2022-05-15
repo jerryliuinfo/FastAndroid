@@ -1,15 +1,23 @@
 package com.apache.fastandroid.home
 
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.apache.fastandroid.article.ArticleDetailActivity
 import com.apache.fastandroid.databinding.FragmentHomeBinding
 import com.apache.fastandroid.network.model.Article
+import com.apache.fastandroid.util.extensitons.runOnUIDelay
+import com.apache.fastandroid.util.extensitons.showEmpty
+import com.apache.fastandroid.util.extensitons.showLoading
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayout
+import com.kingja.loadsir.callback.Callback
+import com.kingja.loadsir.core.LoadService
+import com.kingja.loadsir.core.LoadSir
 import com.tesla.framework.ui.fragment.BaseDBFragment
+import kotlinx.android.synthetic.main.activity_loadsir_constraintlayout.*
 
 /**
  * Created by Jerry on 2022/4/23.
@@ -28,8 +36,18 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
         }
     }
 
+    private lateinit var loadService: LoadService<Any>
+
     override fun bindUI(rootView: View?) {
         super.bindUI(rootView)
+
+//        loadService = LoadSir.getDefault().register(this,object : Callback.OnReloadListener{
+//            override fun onReload(v: View?) {
+//                mViewModel.refresh()
+//            }
+//
+//        })
+
     }
 
 
@@ -46,16 +64,17 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
 
 
         mViewModel.articleList.observe(this){
-            handleData(it)
+            if (it.isSuccess){
+//                loadService.showSuccess()
+                handleData(it.getOrNull()?: emptyList())
+            }else{
+//                loadService.showEmpty()
+            }
+
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        // 进入页面，刷新数据
-//        swipeRefreshLayout.isRefreshing = true
-//        refresh()
-    }
+
 
     /**
      * 刷新

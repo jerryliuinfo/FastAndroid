@@ -23,6 +23,7 @@ object Versions {
     const val lifecycle_version = "2.3.1"
     //room 2.4.0 版本可以不用手动写 migration 了
     const val Room = "2.2.3"
+//    const val Room = "2.4.0-alpha05"
     const val coroutines = "1.3.5"
 
     const val viewPager2 = "1.0.0"

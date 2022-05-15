@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
 
 
@@ -45,8 +45,7 @@
 
         <item name="android:textColorPrimary">@android:color/white</item>
 
-        <!--        状态栏颜色,默认使用colorPrimaryDark-->
-<!--        <item name="android:statusBarColor">@color/transparent</item>-->
+
 
         <!--        底部栏颜色-->
         <item name="android:navigationBarColor">#40000000</item>
@@ -69,14 +68,33 @@
         <item name="textAllCaps">false</item>
 
 
-
-
         <!--        不允许多点触控-->
         <item name="android:splitMotionEvents">false</item>
         <item name="android:windowEnableSplitTouch">false</item>
 
         <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/colorPrimary</item>
+
+<!--        <item name="editTextColor">@color/colorPrimary</item>-->
+
+
+
+        <!-- For Android sdk versions 26+. -->
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/opensans_font</item>
+        <!-- Target Android sdk versions < 26 and > 14. -->
+        <item name="fontFamily">@font/opensans_font</item>
+        <!-- sets the style for the overflow button -->
+        <item name="actionOverflowButtonStyle">@style/actionOverflowButtonStyle</item>
 
     </style>
+
+
+
+
+    <!-- This style defines the tint color of the overflow menu button -->
+    <style name="actionOverflowButtonStyle" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/colorAccent</item>
+    </style>
+
 
 </resources>

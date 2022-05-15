@@ -17,7 +17,7 @@ class HomeViewModel(
 ) : BaseViewModel() {
 
 
-    private val _articleList = MutableLiveData<List<Article>>()
+    private val _articleList = MutableLiveData<Result<List<Article>>>()
 //    val articleList: LiveData<List<Article>> = _articleList
 
 
@@ -26,13 +26,12 @@ class HomeViewModel(
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"
     }
-    val text: LiveData<String> = _text
 
     val _dataLoading = MutableLiveData<Boolean>()
     val dataLoading: LiveData<Boolean> = _dataLoading
     private val _forceUpdate = MutableLiveData(false)
 
-    val articleList: LiveData<List<Article>> = _forceUpdate.switchMap { forceUpdate ->
+    val articleList: LiveData<Result<List<Article>>> = _forceUpdate.switchMap { forceUpdate ->
         if (forceUpdate) {
             pageInfo.reset()
             onRefreshData()
@@ -69,19 +68,28 @@ class HomeViewModel(
         pageInfo.reset()
         viewModelScope.launch {
             _dataLoading.value = true
-            val hotData = async { loadHotData() }
-            val topData = async { loadTopArticle() }
+            try {
+                val articles: MutableList<Article> = arrayListOf()
 
-            val articles: MutableList<Article> = arrayListOf()
+                val topData = async { loadTopArticle() }
 
-            topData.await()?.let {
-                articles.addAll(it)
+                topData.await()?.let {
+                    articles.addAll(it)
+                }
+                val hotData = async { loadHotData() }
+                hotData.await().datas?.let {
+                    articles.addAll(it)
+                }
+
+                _articleList.postValue(Result.success(articles))
+            }catch (e:Exception){
+                e.printStackTrace()
+                _articleList.postValue(Result.failure(e))
+            }finally {
+                _dataLoading.value = false
+
             }
-            hotData.await().datas?.let {
-                articles.addAll(it)
-            }
-            _articleList.postValue(articles)
-            _dataLoading.value = false
+
         }
     }
 
@@ -89,7 +97,7 @@ class HomeViewModel(
 
         launch({
             loadHotData().datas?.let {
-                _articleList.postValue(it)
+                _articleList.postValue(Result.success(it))
             }
 
         }, {

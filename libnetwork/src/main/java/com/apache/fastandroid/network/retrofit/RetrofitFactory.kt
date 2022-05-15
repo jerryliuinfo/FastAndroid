@@ -1,5 +1,6 @@
 package com.apache.fastandroid.network.retrofit
 import android.os.Build
+import com.apache.fastandroid.network.calladapter.LiveDataCallAdapterFactory
 import com.apache.fastandroid.network.interceptor.CookieInterceptor
 import com.apache.fastandroid.network.interceptor.HeaderInterceptor
 import com.apache.fastandroid.network.interceptor.NetLogInterceptor
@@ -51,6 +52,7 @@ class RetrofitFactory private constructor() {
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .client(initOkHttpClient())
     }
 
@@ -119,10 +121,5 @@ class RetrofitFactory private constructor() {
         return stringBuilder.deleteCharAt(stringBuilder.length - 1).toString()
     }
 
-    private fun saveCookie(domain: String?, parseCookie: String) {
-        domain?.let {
-            var resutl :String by SPreference("cookie", parseCookie)
-            resutl = parseCookie
-        }
-    }
+
 }

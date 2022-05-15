@@ -30,6 +30,7 @@ import com.google.android.material.navigation.NavigationView
 
 /**
  * Main activity for the todoapp. Holds the Navigation Host Fragment and the Drawer, Toolbar, etc.
+ * https://github.com/android/architecture-samples
  */
 class TasksActivity : AppCompatActivity() {
 
