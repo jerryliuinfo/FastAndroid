@@ -37,8 +37,7 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("Flow", "Flow", FlowDemoListFragment::class.java)
 
                 ,ViewItemBean("Hit", "Hit", HitDemoFragment::class.java)
-                ,ViewItemBean("SunFlower", "SunFlower", SunFlowerHomeViewPagerFragment::class.java,addTitleBar = false)
-                ,ViewItemBean("TodoApp", "TodoApp", activity = TasksActivity::class.java,addTitleBar = false)
+
                 ,ViewItemBean("Cheese", "Cheese",null, CheeseActivity::class.java,addTitleBar = false)
         )
     }

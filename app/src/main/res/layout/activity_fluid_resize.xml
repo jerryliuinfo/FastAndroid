@@ -10,5 +10,6 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:text="Sup world?"
+      android:textColor="@color/comm_red"
     tools:ignore="HardcodedText" />
 </FrameLayout>

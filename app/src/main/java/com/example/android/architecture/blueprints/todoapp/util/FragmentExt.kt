@@ -30,6 +30,7 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.app.FastApplication
+import com.apache.fastandroid.jetpack.flow.FlowViewModelFactory
 import com.example.android.architecture.blueprints.todoapp.ViewModelFactory
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 
@@ -52,6 +53,18 @@ fun ComponentActivity.getViewModelFactory(): ViewModelFactory {
     val repository = (this as FastApplication).taskRepository
     return ViewModelFactory(repository, this)
 }
+
+
+
+fun Fragment.getFlowViewModelFactory(): ViewModelProvider.Factory {
+    val apiHelper = FastApplication.instance.apiHelper
+    val dbHelper = FastApplication.instance.databaseHelper
+    return FlowViewModelFactory(apiHelper, dbHelper)
+}
+
+
+
+
 
 fun Fragment.checkPermissions(permissions: Array<String>): Boolean {
     for (permission in permissions) {

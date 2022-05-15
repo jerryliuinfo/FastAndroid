@@ -50,6 +50,8 @@ object DrakeetUtils {
 
     fun View.doOnMainThreadIdle(action:() -> Unit, timeout:Long? = null){
 //        val handler = Handler(Looper.getMainLooper())
+        val handler = Handler(Looper.getMainLooper())
+
         val idleHandler = MessageQueue.IdleHandler {
             //移除所有消息，避免post delay消息会被执行
             handler.removeCallbacksAndMessages(null)
@@ -79,9 +81,7 @@ object DrakeetUtils {
                 setupIdleHandler(Looper.getMainLooper().queue)
             }else{
                 //6.0 以下不能能直接调 Looper.queue
-                handler.post {
-                    setupIdleHandler(Looper.myQueue())
-                }
+                handler.post { setupIdleHandler(Looper.myQueue()) }
             }
         }
     }

@@ -26,6 +26,7 @@ abstract class BaseFlowRecycleViewFragment:BaseVBFragment<FragmentRecycleviewBin
 
     val users = MutableLiveData<Resource<List<ApiUser>>>()
 
+
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 

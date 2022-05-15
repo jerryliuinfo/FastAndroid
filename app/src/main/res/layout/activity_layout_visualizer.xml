@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+  </data>
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context="me.saket.fluidresize.sample.LayoutVisualizerActivity"
+      tools:ignore="HardcodedText">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/decorview"
+        android:layout_alignEnd="@+id/decorview"
+        android:layout_alignStart="@+id/decorview"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-mono"
+        android:letterSpacing="0.03"
+        android:rotation="20"
+        android:rotationX="-20"
+        android:text="DecorView"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/contentview_container"
+        android:layout_alignEnd="@+id/contentview_container"
+        android:layout_alignStart="@+id/contentview_container"
+        android:layout_marginBottom="-48dp"
+        android:layout_marginStart="36dp"
+        android:elevation="2dp"
+        android:fontFamily="sans-serif-mono"
+        android:letterSpacing="0.03"
+        android:rotation="16"
+        android:rotationX="-20"
+        android:text="android.R.id.content"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:id="@+id/decorview"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shadows"
+        android:clipChildren="true"
+        android:orientation="vertical"
+        android:rotationY="20">
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="16dp"
+          android:background="@color/gray_300" />
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="350dp"
+          android:background="#f9f9f9" />
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="32dp"
+          android:background="@color/gray_900" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/contentview_container"
+        android:layout_width="250dp"
+        android:layout_height="396dp"
+        android:layout_alignStart="@+id/decorview"
+        android:layout_alignTop="@+id/decorview"
+        android:layout_marginTop="-2dp"
+        android:orientation="vertical"
+        android:rotationY="20">
+
+      <View
+          android:id="@+id/contentview"
+          android:layout_width="190dp"
+          android:layout_height="match_parent"
+          android:layout_marginBottom="128dp"
+          android:layout_marginTop="16dp"
+          android:background="@drawable/shadows"
+          android:translationX="20dp" />
+
+      <LinearLayout
+          android:id="@+id/keyboard"
+          android:layout_width="190dp"
+          android:layout_height="124dp"
+          android:layout_alignParentBottom="true"
+          android:layout_marginBottom="24dp"
+          android:background="@drawable/shadows"
+          android:elevation="2dp"
+          android:orientation="vertical"
+          android:translationX="32dp"
+          android:translationY="-4dp"
+          android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FAFAFA"
+            android:gravity="center"
+            android:letterSpacing="0.6"
+            android:text="QWERTYUIOP" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_300" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FAFAFA"
+            android:gravity="center"
+            android:letterSpacing="0.6"
+            android:text="ASDFGHJKL" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_300" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FAFAFA"
+            android:gravity="center"
+            android:letterSpacing="0.6"
+            android:text="ZXCVBNM" />
+      </LinearLayout>
+    </RelativeLayout>
+  </RelativeLayout>
+</layout>

@@ -3,14 +3,12 @@ package com.apache.fastandroid.home
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.apache.fastandroid.R
 import com.apache.fastandroid.article.ArticleDetailActivity
 import com.apache.fastandroid.databinding.FragmentHomeBinding
 import com.apache.fastandroid.network.model.Article
-import com.apache.fastandroid.util.InjectorUtil
+import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
+import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayout
 import com.tesla.framework.ui.fragment.BaseDBFragment
 
 /**
@@ -18,9 +16,8 @@ import com.tesla.framework.ui.fragment.BaseDBFragment
  */
 class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-    private val mHomeViewModel:HomeViewModel by viewModels { InjectorUtil.getHomeModelFactory() }
+    private val mViewModel:HomeViewModel by viewModels { getViewModelFactory() }
 
-    private lateinit var  swipeRefreshLayout: SwipeRefreshLayout
 
     private  var mAdapter: ArticleAdapter =  ArticleAdapter(emptyList()).apply {
         animationEnable = true
@@ -33,7 +30,6 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
 
     override fun bindUI(rootView: View?) {
         super.bindUI(rootView)
-        swipeRefreshLayout = viewBinding.swipeRefreshLayout
     }
 
 
@@ -42,22 +38,14 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
 
         viewBinding.apply {
             adapter = mAdapter
-        }
-
-        swipeRefreshLayout.apply {
-//            setupRefreshLayout(this)
-            setColorSchemeColors(
-                ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
-                ContextCompat.getColor(requireActivity(), R.color.colorAccent),
-                ContextCompat.getColor(requireActivity(), R.color.colorPrimaryDark)
-            )
-            setOnRefreshListener {
-                refresh()
-            }
+            vm = mViewModel
         }
 
 
-        mHomeViewModel.articleList.observe(this){
+        setupRefreshLayout(viewBinding.swipeRefreshLayout,viewBinding.recycleview)
+
+
+        mViewModel.articleList.observe(this){
             handleData(it)
         }
     }
@@ -65,8 +53,8 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
     override fun onStart() {
         super.onStart()
         // 进入页面，刷新数据
-        swipeRefreshLayout.isRefreshing = true
-        refresh()
+//        swipeRefreshLayout.isRefreshing = true
+//        refresh()
     }
 
     /**
@@ -76,16 +64,16 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
         // 这里的作用是防止下拉刷新的时候还可以上拉加载
         mAdapter.loadMoreModule.isEnableLoadMore = false
         // 下拉刷新，需要重置页数
-        mHomeViewModel.onRefresh()
+//        mHomeViewModel.onRefresh()
     }
 
     private fun handleData(data:List<Article>){
         mAdapter.loadMoreModule.isEnableLoadMore= true
-        if (viewBinding.swipeRefreshLayout.isRefreshing){
+      /*  if (viewBinding.swipeRefreshLayout.isRefreshing){
             viewBinding.swipeRefreshLayout.isRefreshing = false
-        }
+        }*/
 
-        if (mHomeViewModel.pageInfo.isFirstPage()) {
+        if (mViewModel.pageInfo.isFirstPage()) {
             //如果是加载的第一页数据，用 setData()
             mAdapter.setList(data)
         } else {
@@ -101,14 +89,14 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
             mAdapter.loadMoreModule.loadMoreComplete()
         }
         // page加1
-        mHomeViewModel.pageInfo.nextPage()
+        mViewModel.pageInfo.nextPage()
 
     }
 
     private fun initLoadMore(adapter: ArticleAdapter) {
         adapter.loadMoreModule.apply {
             setOnLoadMoreListener{
-                mHomeViewModel.loadMore()
+                mViewModel.loadMore()
             }
             isAutoLoadMore = true
             //当自动加载开启，同时数据不满一屏时，是否继续执行自动加载更多(默认为true)

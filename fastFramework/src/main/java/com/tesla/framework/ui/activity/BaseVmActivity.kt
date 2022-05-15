@@ -80,7 +80,7 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
      * @return Unit
      */
     private fun initNetworkListener() {
-        NetworkStateClient.register()
+//        NetworkStateClient.register()
         lifecycle.addObserver(AutoRegisterNetListener(this))
 //        NetworkLiveData.getInstance().observe(this){
 //            Logger.d("network it: $it")

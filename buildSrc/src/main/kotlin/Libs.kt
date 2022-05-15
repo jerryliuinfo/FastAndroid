@@ -52,6 +52,7 @@ object Libs {
     const val sandwich = "com.github.skydoves:sandwich:1.2.4"
 
     const val transformation = "com.github.skydoves:transformationlayout:1.1."
+    const val rxbinding = "com.jakewharton.rxbinding4:rxbinding:4.0.0"
 
 
     val glide = arrayOf(
@@ -103,9 +104,19 @@ object Libs {
         sandwich,
         "com.github.skydoves:progressview:1.1.3",
 //        transformation,
+        rxbinding,
+        "com.drakeet.drawer:drawer:1.0.3"
+
 
     )
 
+    val blackTech = arrayOf(
+        //https://github.com/LSPosed/AndroidHiddenApiBypass
+        "org.lsposed.hiddenapibypass:hiddenapibypass:4.2",
+
+        //android 11 FreeReflection一个允许你在Android P上使用反射而没有任何限制的库
+        "me.weishu:free_reflection:3.0.1",
+    )
 
 
     val okhttp = arrayOf(

@@ -38,6 +38,7 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("TabLayoutFragment", "TabLayoutFragment", ArticleTabsFragment::class.java)
                 ,ViewItemBean("BottomTabFragment", "BottomTabFragment", ArticleTabsFragment::class.java)
                 ,ViewItemBean("PreferenceFragment", "PreferenceFragment", PreferenceFragmentDemo::class.java)
+                ,ViewItemBean("TextSwitch", "TextSwitch", PreferenceFragmentDemo::class.java)
 
 
         )

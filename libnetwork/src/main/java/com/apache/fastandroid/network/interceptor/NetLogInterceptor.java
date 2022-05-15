@@ -20,7 +20,7 @@ import okio.Buffer;
 /**
  * Created by Jerry on 2021/3/23.
  */
-public class HttpLogInterceptor implements Interceptor {
+public class NetLogInterceptor implements Interceptor {
     public static final String TAG = "OKHttp";
     private static final Charset UTF8 = Charset.forName("UTF-8");
     @NotNull

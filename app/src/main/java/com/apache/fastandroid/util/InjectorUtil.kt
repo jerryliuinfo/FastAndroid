@@ -22,8 +22,7 @@ object InjectorUtil {
     @JvmStatic
     private fun getArticleRepository() = ArticleReporsitoryKt.getInstance(ArticleNetwork.getInstance())
 
-    @JvmStatic
-    fun getHomeModelFactory() = HomeModelFactory(getHomeRepository())
+
 
     @JvmStatic
     fun getMviModelFactory() = MviViewModel.MviModelFactory(getHomeRepository())

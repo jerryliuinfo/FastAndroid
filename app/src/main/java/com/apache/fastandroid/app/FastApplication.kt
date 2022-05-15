@@ -14,15 +14,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDex
-import com.apache.fastandroid.component.anr.AnrConfig
-import com.apache.fastandroid.component.anr.AnrManager
 import com.apache.fastandroid.component.once.Once
 import com.apache.fastandroid.crash.Fabric.init
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor
 import com.apache.fastandroid.demo.component.loadsir.callback.*
-import com.apache.fastandroid.util.Global
-import com.blankj.utilcode.util.CrashUtils
+import com.apache.fastandroid.jetpack.flow.api.ApiHelper
+import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
+import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
+import com.apache.fastandroid.jetpack.flow.local.DatabaseHelper
+import com.apache.fastandroid.jetpack.flow.local.DatabaseHelperImpl
+import com.apache.fastandroid.network.retrofit.ApiServiceFactory
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
@@ -30,6 +32,7 @@ import com.example.android.architecture.blueprints.todoapp.ServiceLocator
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import com.kingja.loadsir.core.LoadSir
 import com.squareup.leakcanary.LeakCanary
+import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.mmkv.MMKV
 import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.device.DeviceName
@@ -41,7 +44,6 @@ import com.tesla.framework.component.logger.Logger
 import com.wanjian.cockroach.Cockroach
 import com.wanjian.cockroach.DebugSafeModeUI
 import com.wanjian.cockroach.ExceptionHandler
-import com.zwb.lib_base.utils.network.NetworkStateClient
 import dagger.hilt.android.HiltAndroidApp
 import dev.b3nedikt.viewpump.ViewPump.init
 import timber.log.TimerLogger
@@ -58,7 +60,6 @@ class FastApplication : Application(), ViewModelStoreOwner {
 
     private var mAppViewModelStore: ViewModelStore? = null
 
-    private lateinit var context: Context
 
     override fun onCreate() {
         super.onCreate()
@@ -69,18 +70,19 @@ class FastApplication : Application(), ViewModelStoreOwner {
         }
         val time = measureTimeMillis {
             context = this
+            instance = this
+            databaseHelper = DatabaseHelperImpl(DatabaseBuilder.getInstance(this))
             mAppViewModelStore = ViewModelStore()
             initAndroidUtil()
             initLog()
             initOnce()
             initAop()
-            initCrash()
             crashReport()
             //        initCockroach();
             initLoop()
             Logger.d("Application onCreate ")
 
-            NetworkStateClient.register()
+//            NetworkStateClient.register()
 
             initTaskByStartup()
             //        initLoop();
@@ -88,14 +90,9 @@ class FastApplication : Application(), ViewModelStoreOwner {
             initMMKV()
 
 
-
-
-
             initBlockCancary()
             initAnr()
             initImageLoader()
-
-
 
             //初始化crash统计
             initHttp()
@@ -178,7 +175,6 @@ class FastApplication : Application(), ViewModelStoreOwner {
     }
 
     private fun crashReport() {
-//        CrashReport.initCrashReport(getApplicationContext(), "397713a129", false);
         init(this)
     }
 
@@ -203,10 +199,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
         //        BlockCanary.install(this, new AppBlockCanaryContext()).start();
     }
 
-    private fun initCrash() {
-        //Crash 日志
-        CrashUtils.init(cacheDir) { Logger.d(TAG, "crash info: %s, e: %s") }
-    }
+
 
     override fun attachBaseContext(base: Context) {
         Logger.d("Application attachBaseContext ")
@@ -238,7 +231,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
     /** A tree which logs important information for crash reporting.  */
     private fun initCrashAndAnalysis() {
         //bugly统计
-//        CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,BuildConfig.LOG_DEBUG);
+        CrashReport.initCrashReport(getApplicationContext(),"397713a129",true)
 //        //本地crash日志收集  使用bulgy时不能在本地手机日志
 //        TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, false, 0, SplashActivity.class);
     }
@@ -269,7 +262,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
     }
 
     private fun initLoop() {
-       Global.start()
+//       Global.start()
     }
 
     private fun initAnr() {
@@ -328,10 +321,15 @@ class FastApplication : Application(), ViewModelStoreOwner {
     val taskRepository: TasksRepository
         get() = ServiceLocator.provideTasksRepository(this)
 
+    val apiHelper:ApiHelper = ApiHelperImpl(ApiServiceFactory.flowService)
+    lateinit var  databaseHelper:DatabaseHelper
 
 
     companion object {
         val TAG = FastApplication::class.java.simpleName
+         lateinit var instance: FastApplication
+         lateinit var context: Context
+
 
     }
 }

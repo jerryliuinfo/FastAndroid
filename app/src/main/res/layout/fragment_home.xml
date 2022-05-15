@@ -38,10 +38,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        <com.example.android.architecture.blueprints.todoapp.ScrollChildSwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:refreshing="@{vm.dataLoading}"
+            app:onRefreshListener="@{vm::refresh}"
             >
 
             <androidx.recyclerview.widget.RecyclerView
@@ -54,7 +56,7 @@
                 android:scrollbarThumbVertical="@drawable/scrollbar"
                 android:scrollbars="vertical"
                 />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </com.example.android.architecture.blueprints.todoapp.ScrollChildSwipeRefreshLayout>
 
     </RelativeLayout>
 </layout>

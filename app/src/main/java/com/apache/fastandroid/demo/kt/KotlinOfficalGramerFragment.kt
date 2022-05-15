@@ -17,7 +17,6 @@ import com.apache.fastandroid.demo.kt.extensions.*
 import com.apache.fastandroid.demo.kt.genericity.MultableStack
 import com.apache.fastandroid.demo.kt.genericity.mutableStackOf
 import com.apache.fastandroid.demo.kt.sealed.*
-import com.tesla.framework.kt.SPreference
 import com.tesla.framework.kt.maxAge
 import com.tesla.framework.kt.times
 import com.tesla.framework.ui.fragment.BaseVBFragment
@@ -28,6 +27,7 @@ import java.nio.file.Paths
 import java.util.*
 import kotlin.math.max
 import kotlin.math.roundToInt
+import kotlin.random.Random
 
 /**
  * Created by Jerry on 2021/10/18.
@@ -118,6 +118,91 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
         mBinding.btnDestructor.setOnClickListener {
             destructorUsage()
         }
+        mBinding.btnReturnBreak.setOnClickListener {
+            returnBreakUsage()
+        }
+        mBinding.btnReturnOutside.setOnClickListener {
+            returnFromOutSide()
+        }
+        mBinding.btnReturnInside.setOnClickListener {
+            returnFromInSide()
+        }
+        mBinding.btnReturnNestedInnerclass.setOnClickListener {
+            returnNestedInnerClass()
+        }
+        mBinding.btnTryReturnValue.setOnClickListener {
+            returnValueByTry("2")
+            returnValueByTry("hello")
+        }
+
+    }
+
+
+    private fun lambda(load:() -> Unit = {},
+                       success:(user:User) -> Unit = {},
+                        onError:(errorCode:Int? ,msg:String) -> Unit = {_,_ ->}
+                       ){
+        load()
+        when{
+            Random.nextInt(10) % 2 == 0 -> success(User(10,"zhangsan"))
+            else -> onError(100,"token invalid")
+        }
+
+    }
+
+
+    private fun test(user:User?){
+        user?.name == "zhangsan" ?: println("not zhangsan")
+    }
+
+    private fun returnValueByTry(obj: String) {
+        val result = try {
+            obj.toInt()
+        }catch (e:Exception){
+            null
+        }
+        println(result)
+    }
+
+
+    fun returnNestedInnerClass(){
+        run loop@ {
+            listOf(1,2,3,4,5).forEach {
+                if (it == 3) return@loop
+                println(it)
+            }
+        }
+        println("done with nested loop")
+    }
+
+    fun returnFromOutSide() {
+        listOf(1, 2, 3, 4, 5).forEach {
+            if (it == 3) return // 非局部直接返回到 foo() 的调用者
+            println(it)
+        }
+        println("this point is unreachable")
+    }
+
+    fun returnFromInSide() {
+        listOf(1, 2, 3, 4, 5).forEach abc@{
+            if (it == 3) return@abc // 非局部直接返回到 foo() 的调用者
+            println(it)
+        }
+        println(" done with explicit label")
+    }
+
+    private fun returnBreakUsage() {
+        loop@ for (i in 1..3){
+            println("returnBreakUsage i:$$i")
+            for (j in 1..3){
+                if (j >= 2) {
+                    println("j:${j} break -->")
+                    break@loop
+                }
+                println("j:$$j")
+            }
+        }
+        println("returnBreakUsage done")
     }
 
     private fun destructorUsage() {
@@ -518,12 +603,36 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
 
     private fun typeCheckCast() {
         fun printLength(obj: Any){
+            if (obj !is String){
+                return
+            }
+            if (obj is String){
+                println("obj lenght:${obj.length}")
+            }
             println("Getting the length of ${obj}, result:${getStringLength(obj)?:"Error: the obj is not a string"} ")
         }
         printLength("Incomprehensibilities")
         printLength(1000)
         printLength(listOf(Any()))
+
+        fun printLength2(x:Any){
+            if (x !is String || x.length == 0){
+                return
+            }
+        }
+        printLength2(124)
+
+        fun safeCast(x:Any){
+            val y:String? = x as? String?
+            println(y)
+        }
+        safeCast(100)
+        safeCast("hello")
     }
+
+
+
+
 
 
     private fun getStringLength(obj: Any):Int?{

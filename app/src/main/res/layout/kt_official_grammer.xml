@@ -33,7 +33,8 @@
                 btn_with,btn_try,btn_com_usage,btn_Infix,btn_generic,btn_constructor
                 ,btn_iterators,btn_dataclass,btn_enum,btn_sealdclass,btn_highOrderFunction1
                 ,btn_highOrderFunction2,btn_lambda,btn_extensionFunAndProperty,btn_collection
-                ,btn_delegate_mode,btn_destructor"
+                ,btn_delegate_mode,btn_destructor,btn_return_break,btn_return_outside,btn_return_inside
+                ,btn_return_nested_innerclass,btn_tryReturnValue"
                 />
             <Button
                 android:id="@+id/btn_circulation"
@@ -183,6 +184,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="解构"
+                />
+            <Button
+                android:id="@+id/btn_return_break"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="返回与跳转"
+                />
+            <Button
+                android:id="@+id/btn_return_outside"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="从外层返回"
+                />
+
+            <Button
+                android:id="@+id/btn_return_inside"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="从lambda返回"
+                />
+            <Button
+                android:id="@+id/btn_return_nested_innerclass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="嵌套表达式return"
+                />
+            <Button
+                android:id="@+id/btn_tryReturnValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Try表达式作为返回值"
                 />
 
 

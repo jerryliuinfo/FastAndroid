@@ -2,7 +2,7 @@ package com.apache.fastandroid.network.retrofit
 import android.os.Build
 import com.apache.fastandroid.network.interceptor.CookieInterceptor
 import com.apache.fastandroid.network.interceptor.HeaderInterceptor
-import com.apache.fastandroid.network.interceptor.HttpLogInterceptor
+import com.apache.fastandroid.network.interceptor.NetLogInterceptor
 import com.apache.fastandroid.network.interceptor.LoginInterceptor
 import com.apache.fastandroid.retrofit.ApiConstant
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
@@ -75,7 +75,7 @@ class RetrofitFactory private constructor() {
 
         }.apply {
             addInterceptor(HeaderInterceptor())
-            addInterceptor(HttpLogInterceptor())
+            addInterceptor(NetLogInterceptor())
             addInterceptor(CookieInterceptor())
             addInterceptor(LoginInterceptor())
         }.build()

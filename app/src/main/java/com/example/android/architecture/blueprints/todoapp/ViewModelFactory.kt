@@ -20,6 +20,10 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.apache.fastandroid.home.HomeReporsitoryKt
+import com.apache.fastandroid.home.HomeViewModel
+import com.apache.fastandroid.home.db.HomeDatabase
+import com.apache.fastandroid.home.network.HomeNetwork
 import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
 import com.apache.fastandroid.jetpack.flow.completion.CompletionViewModel
 import com.apache.fastandroid.jetpack.flow.errorhandling.catch.CatchViewModel
@@ -30,6 +34,7 @@ import com.apache.fastandroid.jetpack.flow.parallel.ParallelNetworkCallViewModel
 import com.apache.fastandroid.jetpack.flow.room.RoomDbViewModel
 import com.apache.fastandroid.jetpack.flow.serias.SerialNetworkCallViewModel
 import com.apache.fastandroid.jetpack.flow.single.SingleNetworkCallViewModel
+import com.apache.fastandroid.jetpack.flow.task.twotasks.TwoLongRunningTasksViewModel
 import com.apache.fastandroid.network.retrofit.ApiServiceFactory
 import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTaskViewModel
@@ -54,6 +59,11 @@ class ViewModelFactory constructor(
         handle: SavedStateHandle
     ) = with(modelClass) {
         when {
+            isAssignableFrom(HomeViewModel::class.java) -> {
+                val homeReporsitoryKt = HomeReporsitoryKt.getInstance(HomeDatabase.getHomeDao(), HomeNetwork.getInstance())
+                HomeViewModel(homeReporsitoryKt,handle)
+            }
+
             isAssignableFrom(StatisticsViewModel::class.java) ->
                 StatisticsViewModel(tasksRepository)
             isAssignableFrom(TaskDetailViewModel::class.java) ->
@@ -83,6 +93,9 @@ class ViewModelFactory constructor(
 
             isAssignableFrom(CompletionViewModel::class.java) ->
                 CompletionViewModel(ApiHelperImpl(ApiServiceFactory.flowService),DatabaseHelperImpl(DatabaseBuilder.getInstance(Utils.getApp())))
+
+            isAssignableFrom(TwoLongRunningTasksViewModel::class.java) ->
+                TwoLongRunningTasksViewModel(ApiHelperImpl(ApiServiceFactory.flowService),DatabaseHelperImpl(DatabaseBuilder.getInstance(Utils.getApp())))
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

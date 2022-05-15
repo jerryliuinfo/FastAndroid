@@ -7,6 +7,6 @@ class HomeModelFactory(private val repository: HomeReporsitoryKt) : ViewModelPro
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return HomeViewModel(repository) as T
+        return HomeViewModel(repository,null) as T
     }
 }

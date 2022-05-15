@@ -5,14 +5,22 @@ import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.jetpack.flow.completion.CompletionFragment
 import com.apache.fastandroid.jetpack.flow.errorhandling.catch.CatchFragment
 import com.apache.fastandroid.jetpack.flow.errorhandling.emitall.EmitAllFragment
+import com.apache.fastandroid.jetpack.flow.filter.FilterFragment
+import com.apache.fastandroid.jetpack.flow.map.MapFragment
 import com.apache.fastandroid.jetpack.flow.parallel.ParallelNetworkFragment
+import com.apache.fastandroid.jetpack.flow.retry.RetryFragment
+import com.apache.fastandroid.jetpack.flow.retryexponentialbackoff.RetryExponentialbackoffFragment
+import com.apache.fastandroid.jetpack.flow.retrywhen.RetryWhenFragment
 import com.apache.fastandroid.jetpack.flow.room.RoomDbFragment
+import com.apache.fastandroid.jetpack.flow.search.SearchFragment
 import com.apache.fastandroid.jetpack.flow.serias.SerialNetworkFragment
 import com.apache.fastandroid.jetpack.flow.single.SingleNetworkFragment
 import com.apache.fastandroid.jetpack.flow.task.onetask.LongRunningTaskFragment
+import com.apache.fastandroid.jetpack.flow.task.twotasks.TwoLongRunningTaskFragment
 
 /**
  * Created by Jerry on 2020/10/31.
+ * https://github.com/MindorksOpenSource/Kotlin-Flow-Android-Examples
  */
 class FlowDemoListFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
@@ -27,6 +35,13 @@ class FlowDemoListFragment: BaseListFragment() {
             ,ViewItemBean("EmitAll Error","EmitAll Error", EmitAllFragment::class.java)
             ,ViewItemBean("Completion","Completion", CompletionFragment::class.java)
             ,ViewItemBean("Long Running Task","Long Running Task", LongRunningTaskFragment::class.java)
+            ,ViewItemBean("Two Long Running Tasks","Two Long Running Tasks", TwoLongRunningTaskFragment::class.java)
+            ,ViewItemBean("Filter","Filter", FilterFragment::class.java)
+            ,ViewItemBean("Map","Map", MapFragment::class.java)
+            ,ViewItemBean("Search","Search", SearchFragment::class.java)
+            ,ViewItemBean("Retry","Retry", RetryFragment::class.java)
+            ,ViewItemBean("RetryWhen","RetryWhen", RetryWhenFragment::class.java)
+            ,ViewItemBean("RetryExponentialBackoff","RetryExponentialBackoff", RetryExponentialbackoffFragment::class.java)
 
         )
     }

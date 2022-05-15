@@ -13,6 +13,7 @@ import com.apache.fastandroid.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.lyric.LyricDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.sample.SampleCodeDemoListFragment
+import com.apache.fastandroid.demo.sampleapp.SampleAppDemoFragment
 import com.apache.fastandroid.demo.tablayout.ArticleTabsFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.transition.TransitionDemoFragment
@@ -32,6 +33,7 @@ class DemoListFragment : BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
             ViewItemBean("JetPack", "JetPack", JetPackDemoFragment::class.java),
+            ViewItemBean("Google Sample", "Google Sample", SampleAppDemoFragment::class.java),
 
             ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
             ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),

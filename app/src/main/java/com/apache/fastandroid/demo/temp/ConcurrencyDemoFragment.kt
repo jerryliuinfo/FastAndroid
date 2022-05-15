@@ -22,7 +22,7 @@ class ConcurrencyDemoFragment : BaseVBFragment<FragmentConcurryDemoBinding>(Frag
             Thread(zhangsan, "线程1").start()
             Thread(lisi, "线程2").start()
 
-            //只会打印出zhangsan pay 和 lisi pay
+            //只会打印出zhangsan prod 和 lisi prod
         }
     }
 
