@@ -29,10 +29,8 @@ import com.android.example.github.util.RateLimiter
 import com.android.example.github.vo.Contributor
 import com.android.example.github.vo.Repo
 import com.android.example.github.vo.RepoSearchResult
-import com.android.example.github.vo.Resource
+import com.apache.fastandroid.network.model.Resource
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Repository that handles Repo instances.

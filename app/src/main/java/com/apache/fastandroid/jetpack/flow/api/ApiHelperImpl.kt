@@ -11,7 +11,13 @@ import kotlinx.coroutines.flow.flow
 class ApiHelperImpl(val apiService: FlowApiService):ApiHelper {
     override fun getUsers(): Flow<List<ApiUser>> = flow { emit(apiService.getUsers()) }
 
+    override suspend fun getUsers2(): List<ApiUser> {
+        return apiService.getUsers2()
+    }
+
     override fun getMoreUsers(): Flow<List<ApiUser>> = flow { emit(apiService.getMoreUsers()) }
 
     override fun getUsersWithError(): Flow<List<ApiUser>> = flow { emit(apiService.getUsersWithError()) }
+
+
 }

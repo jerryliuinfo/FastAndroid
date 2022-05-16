@@ -19,9 +19,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.android.example.github.vo.Status" />
+        <import type="com.apache.fastandroid.network.model.Status" />
 
-        <import type="com.android.example.github.vo.Resource" />
+        <import type="com.apache.fastandroid.network.model.Resource" />
 
         <import type="androidx.lifecycle.LiveData"/>
         <import type="com.android.example.github.vo.GithubUser"/>
@@ -33,7 +33,7 @@
 
         <variable
             name="userResource"
-            type="com.android.example.github.vo.Resource" />
+            type="com.apache.fastandroid.network.model.Resource" />
 
         <variable
             name="user"

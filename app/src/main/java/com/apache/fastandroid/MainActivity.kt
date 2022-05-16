@@ -21,6 +21,7 @@ import com.android.example.github.GithubBrowserMainActivity
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.fluidresize.FluidResizeActivity
 import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineRetrofitDemoFragment
 import com.apache.fastandroid.jetpack.flow.FlowDemoListFragment
 import com.apache.fastandroid.jetpack.flow.serias.SerialNetworkFragment
 import com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity
@@ -87,8 +88,9 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, SerialNetworkFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, FlowDemoListFragment::class.java,null)
+        FragmentContainerActivity.launch(this, FlowDemoListFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, CoroutineRetrofitDemoFragment::class.java,null)
 
 //        launchActivity<FluidResizeActivity>(this)
 //        launchActivity<GithubBrowserMainActivity>(this)

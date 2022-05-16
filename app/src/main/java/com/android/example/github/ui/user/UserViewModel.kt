@@ -24,9 +24,8 @@ import com.android.example.github.repository.RepoRepository
 import com.android.example.github.repository.UserRepository
 import com.android.example.github.util.AbsentLiveData
 import com.android.example.github.vo.Repo
-import com.android.example.github.vo.Resource
 import com.android.example.github.vo.GithubUser
-import javax.inject.Inject
+import com.apache.fastandroid.network.model.Resource
 
 class UserViewModel
   constructor(userRepository: UserRepository, repoRepository: RepoRepository) : ViewModel() {

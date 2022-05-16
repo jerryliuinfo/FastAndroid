@@ -59,7 +59,7 @@ class RepoFragmentBackup : Fragment(){
             // we don't need any null checks here for the adapter since LiveData guarantees that
             // it won't call us if fragment is stopped or not started.
             if (listResource?.data != null) {
-                adapter.setNewInstance(listResource.data.toMutableList())
+                adapter.setNewInstance(listResource.data?.toMutableList())
             } else {
                 adapter.setNewInstance(emptyList<Contributor>().toMutableList())
             }

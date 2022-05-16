@@ -13,6 +13,7 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2020/11/5.
+ * https://github.com/android/architecture-components-samples/tree/main/LiveDataSample
  */
 class LiveDataBestPracticeFragment2 : BaseDBFragment<FragmentBestPracticeLivedata2Binding>(FragmentBestPracticeLivedata2Binding::inflate){
     companion object{
@@ -24,7 +25,6 @@ class LiveDataBestPracticeFragment2 : BaseDBFragment<FragmentBestPracticeLivedat
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-       viewBinding.lifecycleOwner = this
         viewBinding.viewmodel = viewModel
     }
 

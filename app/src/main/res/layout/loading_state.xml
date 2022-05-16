@@ -19,9 +19,9 @@
 
     <data>
 
-        <import type="com.android.example.github.vo.Resource" />
+        <import type="com.apache.fastandroid.network.model.Resource" />
 
-        <import type="com.android.example.github.vo.Status" />
+        <import type="com.apache.fastandroid.network.model.Status" />
 
         <variable
             name="resource"

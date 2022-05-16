@@ -50,7 +50,7 @@ class RepoFragment : BaseVBFragment<RepoFragmentBinding>(RepoFragmentBinding::in
             // we don't need any null checks here for the adapter since LiveData guarantees that
             // it won't call us if fragment is stopped or not started.
             if (listResource?.data != null) {
-                myAdapter.setNewInstance(listResource.data.toMutableList())
+                myAdapter.setNewInstance(listResource.data?.toMutableList())
             } else {
 //                myAdapter.setNewInstance(emptyList<Contributor>().toMutableList())
                 myAdapter.setNewInstance(mutableListOf())

@@ -24,7 +24,7 @@ import com.android.example.github.repository.RepoRepository
 import com.android.example.github.util.AbsentLiveData
 import com.android.example.github.vo.Contributor
 import com.android.example.github.vo.Repo
-import com.android.example.github.vo.Resource
+import com.apache.fastandroid.network.model.Resource
 
 class RepoViewModel constructor(repository: RepoRepository) : ViewModel() {
     private val _repoId: MutableLiveData<RepoId> = MutableLiveData()

@@ -69,10 +69,7 @@ class CoroutineCancelTimeoutDemoFragment :
 
     var acquired = 0
 
-    class Resource {
-//        init { acquired = 0 } // Acquire the resource
-//        fun close() { acquired-- } // Release the resource
-    }
+
 
     private fun asyncTimeoutResource() {
         runBlocking {

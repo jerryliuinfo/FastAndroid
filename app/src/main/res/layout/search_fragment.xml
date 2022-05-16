@@ -24,9 +24,9 @@
 
         <import type="java.util.List" />
 
-        <import type="com.android.example.github.vo.Status" />
+        <import type="com.apache.fastandroid.network.model.Status" />
 
-        <import type="com.android.example.github.vo.Resource" />
+        <import type="com.apache.fastandroid.network.model.Resource" />
         <import type="androidx.lifecycle.LiveData"/>
         <variable
             name="query"

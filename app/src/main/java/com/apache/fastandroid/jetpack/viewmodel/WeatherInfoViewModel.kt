@@ -17,7 +17,7 @@ class WeatherInfoViewModel(private val dataSource: WeatherDataSource):ViewModel(
 
     val currentTime:LiveData<Long> = dataSource.getCurrentTime()
 
-    val currentTimeTransformed = currentTime.switchMap {
+    val currentTimeTransformed:LiveData<String> = currentTime.switchMap {
         liveData {
             Logger.d("currentTimeTransformed run in :${Thread.currentThread().name}")
             emit(timeStampToTime(it))

@@ -28,6 +28,8 @@ import com.android.example.github.repository.UserRepository
 import com.android.example.github.ui.repo.RepoViewModel
 import com.android.example.github.ui.search.SearchViewModel
 import com.android.example.github.ui.user.UserViewModel
+import com.apache.fastandroid.demo.kt.coroutine.vm.RetrofitViewModel
+import com.apache.fastandroid.demo.repository.AppRepository
 import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.HomeViewModel
 import com.apache.fastandroid.home.db.HomeDatabase
@@ -131,6 +133,10 @@ class ViewModelFactory constructor(
                 UserViewModel(UserRepository.getInstance(executor,db.userDao(),GithubClient.githubService),repoRepository)
             }
 
+            //Retrofit 和 协程结合使用
+            isAssignableFrom(RetrofitViewModel::class.java) ->{
+                RetrofitViewModel(AppRepository(ApiHelperImpl(ApiServiceFactory.flowService)))
+            }
 
 
             else ->

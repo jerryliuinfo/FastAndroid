@@ -21,7 +21,7 @@ import com.android.example.github.AppExecutors
 import com.android.example.github.api.GithubService
 import com.android.example.github.db.GithubUserDao
 import com.android.example.github.vo.GithubUser
-import com.android.example.github.vo.Resource
+import com.apache.fastandroid.network.model.Resource
 
 /**
  * Repository that handles GithubUser objects.

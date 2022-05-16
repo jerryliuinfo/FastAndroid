@@ -25,7 +25,7 @@ import com.android.example.github.api.ApiEmptyResponse
 import com.android.example.github.api.ApiErrorResponse
 import com.android.example.github.api.ApiResponse
 import com.android.example.github.api.ApiSuccessResponse
-import com.android.example.github.vo.Resource
+import com.apache.fastandroid.network.model.Resource
 
 /**
  * A generic class that can provide a resource backed by both the sqlite database and the network.

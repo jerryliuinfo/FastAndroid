@@ -24,8 +24,8 @@ import androidx.lifecycle.switchMap
 import com.android.example.github.repository.RepoRepository
 import com.android.example.github.util.AbsentLiveData
 import com.android.example.github.vo.Repo
-import com.android.example.github.vo.Resource
-import com.android.example.github.vo.Status
+import com.apache.fastandroid.network.model.Resource
+import com.apache.fastandroid.network.model.Status
 import java.util.Locale
 
 class SearchViewModel constructor(repoRepository: RepoRepository) : ViewModel() {

@@ -11,6 +11,9 @@ interface FlowApiService {
     @GET("users")
     suspend fun getUsers(): List<ApiUser>
 
+    @GET("users")
+    suspend fun getUsers2(): List<ApiUser>
+
     @GET("more-users")
     suspend fun getMoreUsers(): List<ApiUser>
 
