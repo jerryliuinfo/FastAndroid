@@ -8,5 +8,6 @@ import com.apache.fastandroid.jetpack.flow.api.ApiHelper
 class AppRepository(private val apiHelper: ApiHelper) {
 
     suspend fun getUsers() = apiHelper.getUsers2()
+    fun getUsersSingle() = apiHelper.getUsersSingle()
 
 }

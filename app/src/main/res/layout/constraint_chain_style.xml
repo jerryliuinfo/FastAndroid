@@ -9,7 +9,7 @@
         android:id="@+id/textview1"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@color/colorPrimary"
+        android:background="?attr/colorPrimary"
         android:text="packed"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"

@@ -12,13 +12,16 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityCheeseMainBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.tesla.framework.ui.activity.BaseVmActivity
 
 /**
  * Created by Jerry on 2022/4/5.
+ * https://github.com/chrisbanes/cheesesquare
  */
 class CheeseActivity:BaseVmActivity<ActivityCheeseMainBinding>(ActivityCheeseMainBinding::inflate) {
 
@@ -27,6 +30,8 @@ class CheeseActivity:BaseVmActivity<ActivityCheeseMainBinding>(ActivityCheeseMai
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        setToolbarTitle("CheeseSquare")
 
         supportActionBar?.let { ab ->
             ab.setHomeAsUpIndicator(R.drawable.ic_menu)
@@ -37,6 +42,12 @@ class CheeseActivity:BaseVmActivity<ActivityCheeseMainBinding>(ActivityCheeseMai
         setupDrawerContent(navigationView)
 
         setupViewPage()
+
+        val floatingActionButton: FloatingActionButton = findViewById(R.id.fab)
+        floatingActionButton.setOnClickListener { view ->
+            Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+        }
     }
 
     private fun setupViewPage() {

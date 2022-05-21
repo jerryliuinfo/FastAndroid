@@ -22,7 +22,7 @@ import kotlin.coroutines.suspendCoroutine
 /**
  * Created by Jerry on 2021/10/28.
  */
-class CoroutineVewModel() : ViewModel() {
+class CoroutineVewModel : ViewModel() {
     companion object {
         private const val TAG = "CoroutineVewModel"
     }

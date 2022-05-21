@@ -1,6 +1,7 @@
 package com.apache.fastandroid.network.retrofit
 
 import com.apache.fastandroid.network.model.ApiUser
+import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 
@@ -19,4 +20,8 @@ interface FlowApiService {
 
     @GET("error")
     suspend fun getUsersWithError(): List<ApiUser>
+
+
+    @GET("users")
+    fun getUsersSingle(): Single<List<ApiUser>>
 }

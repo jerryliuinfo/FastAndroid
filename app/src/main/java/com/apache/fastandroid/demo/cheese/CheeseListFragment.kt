@@ -27,7 +27,7 @@ class CheeseListFragment:BaseVBFragment<FragmentCheeseListBinding>(FragmentChees
             adapter = itemAdapter
 
         }
-        itemAdapter.setNewData(Cheeses.STRINGS.randomSublist(30).toMutableList())
+        itemAdapter.setNewInstance(Cheeses.STRINGS.randomSublist(30).toMutableList())
         itemAdapter.setOnItemClickListener { adapter, view, position ->
             val item:String = adapter.getItem(position) as String
             launchActivity<CheeseDetailActivity>(requireActivity()){

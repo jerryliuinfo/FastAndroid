@@ -21,6 +21,7 @@ class CoroutineDemoListFragment: BaseListFragment() {
             ,ViewItemBean("协程异常处理","协程异常处理", CoroutineExceptionDemoFragment::class.java)
             ,ViewItemBean("BennyHuo","BennyHuo", BennyHuoCoroutineDemoFragment::class.java)
             ,ViewItemBean("携程与Retrofit结合","携程与Retrofit结合最佳实践", CoroutineRetrofitDemoFragment::class.java)
+            ,ViewItemBean("携程与RxJava结合","携程与RxJava结合", CoroutineRxjavaDemoFragment::class.java)
         )
     }
 

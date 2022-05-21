@@ -26,7 +26,8 @@
         android:id="@+id/view1"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@color/colorPrimary"
+        android:background="?attr/colorPrimary"
+
         />
 
 
@@ -34,7 +35,7 @@
        android:id="@+id/view2"
        android:layout_width="80dp"
        android:layout_height="80dp"
-       android:background="@color/colorPrimary"
+       android:background="?attr/colorPrimary"
        />
 
 
@@ -52,25 +53,25 @@
        android:id="@+id/view4"
        android:layout_width="80dp"
        android:layout_height="80dp"
-       android:background="@color/colorPrimary"
+       android:background="?attr/colorPrimary"
        />
     <View
         android:id="@+id/view5"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@color/colorAccent"
+        android:background="?attr/colorPrimary"
         />
 
     <View
         android:id="@+id/view6"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@color/colorPrimary"
+        android:background="?attr/colorPrimary"
         />
     <View
         android:id="@+id/view7"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@color/colorPrimary"
+        android:background="?attr/colorPrimary"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

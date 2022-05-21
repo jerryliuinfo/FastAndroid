@@ -11,7 +11,7 @@
         android:id="@+id/custom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="?colorPrimaryDark"
         android:padding="10dp">
 
         <ImageView

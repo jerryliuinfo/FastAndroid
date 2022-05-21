@@ -19,20 +19,21 @@ package com.example.android.architecture.blueprints.todoapp.util
  * Extension functions for Fragment.
  */
 
-import android.app.Activity
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
+import android.util.DisplayMetrics
 import androidx.activity.ComponentActivity
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import androidx.core.math.MathUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.apache.fastandroid.R
 import com.apache.fastandroid.app.FastApplication
 import com.apache.fastandroid.jetpack.flow.FlowViewModelFactory
 import com.example.android.architecture.blueprints.todoapp.ViewModelFactory
-import com.tesla.framework.ui.activity.FragmentContainerActivity
 
 fun Fragment.getViewModelFactory(): ViewModelFactory {
     val repository = (requireContext().applicationContext as FastApplication).taskRepository
@@ -86,6 +87,19 @@ fun Fragment.getDrawable(@DrawableRes drawableResId: Int): Drawable? {
 
 inline val Fragment.viewLifecycleScope: LifecycleCoroutineScope
     get() = viewLifecycleOwner.lifecycleScope
+
+
+private fun Fragment.calculateGridSpanCount(): Int {
+    val displayMetrics: DisplayMetrics = getResources().getDisplayMetrics()
+    val displayWidth = displayMetrics.widthPixels
+    val itemSize: Int = getResources().getDimensionPixelSize(R.dimen.cat_toc_item_size)
+    val gridSpanCount = displayWidth / itemSize
+    return MathUtils.clamp(
+        gridSpanCount,
+        1,
+        4,
+    )
+}
 
 
 

@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo
 import com.apache.fastandroid.DrawBasicDemoFragment
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
+import com.apache.fastandroid.demo.bestpractice.BestPracticeDemoFragment
 import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
 import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
 import com.apache.fastandroid.demo.coorinator.CoordinatorLayoutDemoFragment
@@ -34,6 +35,7 @@ class DemoListFragment : BaseListFragment() {
         return arrayListOf(
             ViewItemBean("JetPack", "JetPack", JetPackDemoFragment::class.java),
             ViewItemBean("Google Sample", "Google Sample", SampleAppDemoFragment::class.java),
+            ViewItemBean("最佳实践", "最佳实践", BestPracticeDemoFragment::class.java),
 
             ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
             ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),

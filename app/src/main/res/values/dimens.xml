@@ -73,4 +73,7 @@
 
     <dimen name="photo_size">64dp</dimen>
     <dimen name="default_margin">8dp</dimen>
+
+    <dimen name="cat_toc_item_size">180dp</dimen>
+
 </resources>

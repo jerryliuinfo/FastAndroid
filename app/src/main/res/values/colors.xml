@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+<!--    <color name="colorPrimary">#3F51B5</color>-->
+    <color name="colorPrimary">@color/purple_500</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorOnPrimary">#80000000</color>
@@ -9,9 +10,10 @@
 
 
     <color name="black">#000000</color>
+    <color name="black_800">#121212</color> <!--Color surface (dark)-->
+
 
     <color name="statusForeground">#40000000</color>
-
 
 
     <color name="white">#ffffff</color>
@@ -66,4 +68,5 @@
     <color name="theme">#272a36</color>
     <color name="text_theme">#272a36</color>
     <color name="three_nine_gray">#39F5F5F5</color>
+
 </resources>

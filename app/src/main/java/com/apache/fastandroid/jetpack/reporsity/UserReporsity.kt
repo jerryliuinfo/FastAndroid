@@ -7,6 +7,7 @@ import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
 import com.tesla.framework.common.util.log.NLog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import kotlin.random.Random
 
 /**
@@ -16,7 +17,7 @@ class UserReporsity( val userDao: UserDao, val userNetwork: UserNetwork) {
 
 
     suspend fun getPostCard(address:String) = withContext(Dispatchers.IO) {
-        NLog.d(NLog.TAG, "thread222: ${Thread.currentThread().name}")
+        Timber.d("getPostCard thread:${Thread.currentThread().name}")
         var postCard = userDao.getPostCard(address)
         if (postCard == null){
             postCard = userNetwork.getPostCard(address)

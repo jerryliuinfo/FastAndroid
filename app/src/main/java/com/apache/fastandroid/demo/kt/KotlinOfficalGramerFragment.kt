@@ -138,6 +138,11 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
     }
 
 
+    private fun checkUsage(){
+        val age = 10
+        check(age > 10)
+    }
+
     private fun lambda(load:() -> Unit = {},
                        success:(user:User) -> Unit = {},
                         onError:(errorCode:Int? ,msg:String) -> Unit = {_,_ ->}

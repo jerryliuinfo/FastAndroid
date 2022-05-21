@@ -12,6 +12,7 @@ import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import com.apache.fastandroid.demo.drakeet.customview.sample.chat.ChatActivity
 import com.apache.fastandroid.demo.drakeet.customview.sample.course.OnlineActivity
+import com.google.android.material.appbar.AppBarLayout
 import com.seiko.demo.base.CustomLayout
 
 /**

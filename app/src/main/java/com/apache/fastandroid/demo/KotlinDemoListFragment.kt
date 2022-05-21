@@ -21,6 +21,7 @@ class KotlinDemoListFragment:BaseListFragment()
             ,ViewItemBean("Kotlin委托","Kotlin委托",KotlinDelegateFragment::class.java)
             ,ViewItemBean("Kotlin集合","Kotlin集合", CollectionDemoFragment::class.java)
             ,ViewItemBean("Collection","Collection", CollectionDemoFragment2::class.java)
+            ,ViewItemBean("MathUtil","MathUtil", MathUtilDemoFragment::class.java)
             ,ViewItemBean("Kotlin语法扩展函数","Kotlin语法扩展函数", KotlinExtensionsFragment::class.java)
             ,ViewItemBean("范型","范型", GenericDemoFragment::class.java)
 

@@ -217,6 +217,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
     private fun initLog() {
         Logger.addLogAdapter(DiskLogAdapter())
         Logger.addLogAdapter(AndroidLogAdapter())
+        //添加 Timer
         Logger.addLogAdapter(TimerLogger())
         NLog.setDebug(true, com.tesla.framework.common.util.log.Logger.DEBUG)
     }

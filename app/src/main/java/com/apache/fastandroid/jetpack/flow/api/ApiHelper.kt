@@ -1,6 +1,8 @@
 package com.apache.fastandroid.jetpack.flow.api
 
+import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.network.model.ApiUser
+import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 
@@ -15,5 +17,9 @@ interface ApiHelper {
 
 
     suspend fun getUsers2(): List<ApiUser>
+
+
+    fun getUsersSingle(): Single<List<ApiUser>>
+
 
 }
