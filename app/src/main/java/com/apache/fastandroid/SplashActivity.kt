@@ -3,6 +3,8 @@ package com.apache.fastandroid
 import android.content.Intent
 import android.os.*
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
+import com.apache.fastandroid.app.FastApplication
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.databinding.ActivitySplashBinding
 import com.tesla.framework.component.logger.Logger
@@ -17,6 +19,13 @@ class SplashActivity : BaseVmActivity<ActivitySplashBinding>(ActivitySplashBindi
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
         Logger.d("SplashActivity layoutInit")
+
+        (application as FastApplication).appSetting.nightModeLive.observe(this){ nightMode ->
+            nightMode?.let {
+                AppCompatDelegate.setDefaultNightMode(it)
+            }
+        }
+
         time.start()
     }
 

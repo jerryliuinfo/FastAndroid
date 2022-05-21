@@ -33,7 +33,7 @@
        android:id="@+id/view2"
        android:layout_width="80dp"
        android:layout_height="80dp"
-       android:background="@color/colorPrimary"
+       android:background="?attr/colorPrimary"
        />
 
    <View
@@ -47,7 +47,7 @@
        android:id="@+id/view4"
        android:layout_width="80dp"
        android:layout_height="80dp"
-       android:background="@color/colorPrimary"
+       android:background="?attr/colorPrimary"
        />
     <View
         android:id="@+id/view5"

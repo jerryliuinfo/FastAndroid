@@ -25,7 +25,7 @@
             <View
                 android:layout_width="200dp"
                 android:layout_height="20dp"
-                android:background="@color/colorPrimary" />
+                android:background="?attr/colorPrimary" />
 
         </LinearLayout>
 

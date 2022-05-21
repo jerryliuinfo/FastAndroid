@@ -12,7 +12,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="50dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="?attr/colorPrimaryDark"
         android:text="basic"
         />
 
@@ -20,7 +20,7 @@
         android:id="@+id/textview2"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="?attr/colorPrimaryDark"
         android:text="basic"
         app:layout_constraintStart_toEndOf="@id/textview1"
         app:layout_constraintTop_toTopOf="@id/textview1"

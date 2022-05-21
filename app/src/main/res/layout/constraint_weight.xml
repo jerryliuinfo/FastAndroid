@@ -10,7 +10,7 @@
        android:layout_width="0dp"
        android:layout_height="200dp"
        app:layout_constraintHorizontal_weight="2"
-       android:background="@color/colorPrimary"
+       android:background="?attr/colorPrimary"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintEnd_toStartOf="@id/view2"

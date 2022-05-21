@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDex
+import com.apache.fastandroid.AppSetting
 import com.apache.fastandroid.component.once.Once
 import com.apache.fastandroid.crash.Fabric.init
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor
@@ -61,6 +62,8 @@ class FastApplication : Application(), ViewModelStoreOwner {
 
     private var mAppViewModelStore: ViewModelStore? = null
 
+    lateinit var appSetting: AppSetting
+
 
     override fun onCreate() {
         super.onCreate()
@@ -72,6 +75,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
         val time = measureTimeMillis {
             context = this
             instance = this
+            initNightMode()
             databaseHelper = DatabaseHelperImpl(DatabaseBuilder.getInstance(this))
             mAppViewModelStore = ViewModelStore()
             initAndroidUtil()
@@ -106,6 +110,10 @@ class FastApplication : Application(), ViewModelStoreOwner {
             initAppDress()
         }
         println("Application onCreate cost time: $time milles")
+    }
+
+    private fun initNightMode() {
+        appSetting = AppSetting(getSharedPreferences(DEFAULT_PREFERENCES,Context.MODE_PRIVATE))
     }
 
     private fun initOnce() {
@@ -332,6 +340,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
          lateinit var instance: FastApplication
          lateinit var context: Context
 
+        const val DEFAULT_PREFERENCES = "default_preferences"
 
     }
 }

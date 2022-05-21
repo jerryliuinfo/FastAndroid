@@ -83,6 +83,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="登陆"
-        android:background="@color/colorPrimary"
+        android:background="?attr/colorPrimary"
         />
 </LinearLayout>

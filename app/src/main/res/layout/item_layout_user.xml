@@ -17,7 +17,7 @@
         android:background="@color/white"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="4dp"
-        app:strokeColor="@color/colorPrimaryDark"
+        app:strokeColor="?attr/colorPrimaryDark"
         app:strokeWidth="2dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container"

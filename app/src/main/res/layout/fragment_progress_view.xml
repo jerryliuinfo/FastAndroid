@@ -26,7 +26,7 @@
             app:progressView_borderColor="@color/white"
             app:progressView_borderWidth="2dp"
             app:progressView_colorBackground="@android:color/transparent"
-            app:progressView_colorGradientEnd="@color/colorPrimaryDark"
+            app:progressView_colorGradientEnd="?attr/colorPrimaryDark"
             app:progressView_colorGradientStart="@color/colorPrimary"
             app:progressView_colorProgress="@color/skyBlue"
             app:progressView_highlightAlpha="0.8"
@@ -168,7 +168,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="40dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="?attr/colorPrimaryDark"
             android:text="progress"
             android:textColor="@color/white" />
     </LinearLayout>
