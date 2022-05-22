@@ -38,7 +38,10 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?actionBarSize"
+            app:tabTextColor="?colorOnSurface"
+            app:tabSelectedTextColor="?colorPrimary"
+            app:tabIndicatorColor="?colorPrimary"
             />
 
     </com.google.android.material.appbar.AppBarLayout>

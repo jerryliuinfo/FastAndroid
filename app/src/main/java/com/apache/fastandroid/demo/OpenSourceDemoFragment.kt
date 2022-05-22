@@ -36,6 +36,7 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("sandwitch", "sandwitch", SandWitchDemoFragment::class.java)
                 ,ViewItemBean("Bundle", "Bundle", SandWitchDemoFragment::class.java)
                 ,ViewItemBean("Once", "Once", OnceFragment::class.java)
+                ,ViewItemBean("material-dialogs", "material-dialogs", OnceFragment::class.java)
 
         )
     }

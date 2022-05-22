@@ -1,0 +1,59 @@
+<resources>
+
+
+  <string name="agree">Agree</string>
+  <string name="disagree">Disagree</string>
+  <string name="more_info">More Info</string>
+
+  <string name="choose">Choose</string>
+
+  <string name="shareLocationPrompt">This app wants to access your location.</string>
+  <string name="useGoogleLocationServices">Use Google\'s Location Services?</string>
+  <string name="useGoogleLocationServicesPrompt">Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</string>
+  <string name="htmlContent"><![CDATA[
+    <b>Material Dialogs</b> is a library designed and developed by
+    <a href="https://aidanfollestad.com">Aidan Follestad</a>. As of 2018, Aidan currently works
+    on the <u>Square Device Experience</u> team at <a href="https://github.com/square">Square</a>.<br/><br/>
+    <i><font color="#0099CC">Thanks for using Material Dialogs!</font></i>
+  ]]></string>
+  <string name="socialNetworks">Social Networks</string>
+  <string name="states">States</string>
+  <string name="loremIpsum">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae metus nec sapien
+    elementum interdum ac mollis tortor. Nunc porttitor metus placerat orci auctor, sed dictum
+    magna dapibus. Morbi a lacus ante. Cum sociis natoque penatibus et magnis dis parturient montes,
+    nascetur ridiculus mus. Proin posuere nisl imperdiet lectus elementum accumsan. Etiam lacinia
+    nisi ut nulla fermentum tempus. Integer ornare lacinia diam non maximus. Vestibulum iaculis urna
+    eu elementum scelerisque. Etiam nisl erat, bibendum vitae magna nec, convallis malesuada erat.
+    Cras non porttitor nibh. Pellentesque rhoncus sem luctus felis tincidunt bibendum. Pellentesque
+    vulputate eros at nulla sollicitudin volutpat. Pellentesque laoreet est sit amet erat laoreet,
+    id molestie nulla efficitur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed
+    varius nisl at imperdiet facilisis. Nam in elit sit amet metus dignissim aliquam. Nulla et ante
+    molestie, lobortis velit accumsan, ornare massa. Praesent scelerisque quam ipsum, et feugiat
+    ante aliquet eget. Aenean ultricies vulputate sem.
+  </string>
+  <string name="checkboxConfirm">I understand what this means</string>
+
+  <!-- Custom view example -->
+  <string name="signalStrength">Signal strength</string>
+  <string name="excellent">Excellent</string>
+  <string name="security">Security</string>
+  <string name="securityType">802.1x EAP</string>
+  <string name="password">Password</string>
+  <string name="ssid">SSID</string>
+  <string name="ssidLit">Material Dialogs</string>
+  <string name="showPassword">Show password</string>
+  <string name="googleWifi">Google Wifi</string>
+  <string name="connect">Connect</string>
+
+  <!-- Color Chooser Examples -->
+  <string name="primary_colors">Primary Colors</string>
+  <string name="accent_colors">Accent Colors</string>
+  <string name="custom_colors">Custom Colors</string>
+  <string name="custom_colors_rgb">Custom RGB</string>
+  <string name="custom_colors_argb">Custom ARGB</string>
+
+  <!-- File and Folder Chooser Examples -->
+  <string name="select">Select</string>
+
+</resources>

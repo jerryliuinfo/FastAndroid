@@ -1,47 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/lay_bg"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/splash_bg"
-                android:fitsSystemWindows="true"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/splash_app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="130dp"/>
+    <data>
 
-    <TextView
-        android:id="@+id/splash_slogan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="助您快速开发"
-        style="@style/textView_white_14sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/splash_app_name"/>
+    </data>
 
+    <RelativeLayout
+        android:id="@+id/lay_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/splash_bg"
+        app:layoutFullscreen="@{true}"
 
-    <TextView
-        android:id="@+id/tv_count_down"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/splash_countdown_bg"
-        android:layout_margin="20dp"
-        android:padding="5dp"
-        android:layout_alignParentRight="true"
-        android:text="@string/splash_countdown_count"
-        android:visibility="gone"
-        />
+        >
+
+        <TextView
+            android:id="@+id/splash_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="130dp" />
+
+        <TextView
+            android:id="@+id/splash_slogan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="助您快速开发"
+            style="@style/textView_white_14sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/splash_app_name" />
 
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/splash_countdown_bg"
+            android:layout_margin="20dp"
+            android:padding="5dp"
+            android:layout_alignParentRight="true"
+            android:text="@string/splash_countdown_count"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+</layout>

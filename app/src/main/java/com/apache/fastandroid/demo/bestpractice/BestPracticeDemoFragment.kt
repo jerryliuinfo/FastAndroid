@@ -5,6 +5,7 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.cheese.CheeseActivity
 import com.apache.fastandroid.demo.databinding.DatabindingDemoFragment
+import com.apache.fastandroid.demo.material.ThemeSummaryFragment
 import com.apache.fastandroid.demo.room.RoomDemoFragment
 import com.apache.fastandroid.demo.sunflower.fragement.SunFlowerHomeViewPagerFragment
 import com.apache.fastandroid.jetpack.coroutine.CoroutineDemoListFragment
@@ -26,6 +27,7 @@ class BestPracticeDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
             ViewItemBean("Cheese", "夜间模式最佳实践",null, CheeseActivity::class.java,addTitleBar = false)
+            ,ViewItemBean("MaterailTheme", "MaterailTheme",ThemeSummaryFragment::class.java)
 
         )
     }

@@ -31,6 +31,11 @@
             android:exported="false"
             />
 
+        <activity
+            android:name=".demo.component.materialdialogs.MaterialDialogDemoActivity"
+            android:exported="false"
+            />
+
 <!--  activity-alias 使用参考 https://developer.android.com/guide/topics/manifest/activity-alias-element?hl=zh-cn     -->
 
         <activity-alias

@@ -140,4 +140,19 @@
     <style name="Base.Theme.SendButton">
         <item name="imageButtonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>
     </style>
+
+
+    <style name="SampleHeader" tools:ignore="NewApi">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="SampleButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+
+    </style>
 </resources>

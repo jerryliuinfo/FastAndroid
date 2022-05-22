@@ -77,8 +77,11 @@ object Libs {
         "io.reactivex.rxjava3:rxandroid:${Versions.rxjava}"
     )
 
+
+
+
     val otherThirdLibs = arrayOf(
-        "com.github.goweii:AnyLayer:4.1.4-androidx",
+//        anyLayer,
         "com.github.pengxurui:EasyTrack:v1.0.1",
         "com.github.huage2580:PermissionMonitor:1.0.1",
         "me.weishu:epic:1.0.0",
@@ -105,9 +108,18 @@ object Libs {
         "com.github.skydoves:progressview:1.1.3",
 //        transformation,
         rxbinding,
-        "com.drakeet.drawer:drawer:1.0.3"
+        "com.drakeet.drawer:drawer:1.0.3",
+    )
 
-
+    val materialDialogs = arrayOf(
+        "com.afollestad.material-dialogs:core:${Versions.materialDialog}",
+        "com.afollestad.material-dialogs:input:${Versions.materialDialog}",
+        "com.afollestad.material-dialogs:files:${Versions.materialDialog}",
+        "com.afollestad.material-dialogs:color:${Versions.materialDialog}",
+        "com.afollestad.material-dialogs:bottomsheets:${Versions.materialDialog}",
+        "com.afollestad.material-dialogs:datetime:${Versions.materialDialog}",
+        "com.afollestad:assent:2.3.1",
+        "com.afollestad:date-picker:0.6.1",
     )
 
     val blackTech = arrayOf(

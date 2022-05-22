@@ -7,6 +7,8 @@
 
     </data>
 
+<!--    app:paddingTopSystemWindowInsets="@{true}"-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/custom_bar"
         android:layout_width="match_parent"

@@ -76,4 +76,8 @@
 
     <dimen name="cat_toc_item_size">180dp</dimen>
 
+
+    <!-- Custom view example -->
+    <dimen name="customTitle">14sp</dimen>
+    <dimen name="customEntry">18sp</dimen>
 </resources>

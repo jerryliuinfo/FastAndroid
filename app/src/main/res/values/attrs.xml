@@ -35,4 +35,7 @@
     </declare-styleable>
 
 
+
+    <attr format="color" name="sample_button_color"/>
+    <attr format="color" name="sample_button_text_color"/>
 </resources>

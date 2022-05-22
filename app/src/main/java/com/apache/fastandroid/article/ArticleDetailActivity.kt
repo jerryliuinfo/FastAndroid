@@ -80,8 +80,8 @@ class ArticleDetailActivity : BaseVmActivity<ActivityArticleDetailBinding>(Activ
             .go(url)
         mBinding.customBar.detailBack.setOnClickListener { finish() }
 
-        //避免内容延伸到了 状态栏底下
-        ViewCompat.setOnApplyWindowInsetsListener(mBinding.customBar.customBar
+        //避免内容延伸到了 状态栏底下 在xml中通过 databinding adapter 处理
+        /*ViewCompat.setOnApplyWindowInsetsListener(mBinding.customBar.customBar
         ) { v, insets ->
             insets?.apply {
                 println("WindowInsetsListener start:$systemWindowInsetLeft, top:$systemWindowInsetTop, right:$systemWindowInsetRight,bottom:$systemWindowInsetBottom")
@@ -89,7 +89,9 @@ class ArticleDetailActivity : BaseVmActivity<ActivityArticleDetailBinding>(Activ
                 params.topMargin = systemWindowInsetTop
             }
             insets
-        }
+        }*/
+
+
     }
 
 

@@ -1,6 +1,5 @@
 package com.apache.fastandroid
 
-import android.Manifest
 import android.app.Activity
 
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -17,21 +16,13 @@ import com.apache.fastandroid.demo.bean.UserBean
 import com.tesla.framework.common.util.log.NLog
 import com.blankj.utilcode.util.ToastUtils
 import androidx.lifecycle.MutableLiveData
-import com.android.example.github.GithubBrowserMainActivity
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
-import com.apache.fastandroid.demo.fluidresize.FluidResizeActivity
-import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
-import com.apache.fastandroid.demo.kt.coroutine.CoroutineRetrofitDemoFragment
-import com.apache.fastandroid.jetpack.coroutine.CoroutineDemoListFragment
-import com.apache.fastandroid.jetpack.flow.FlowDemoListFragment
-import com.apache.fastandroid.jetpack.flow.serias.SerialNetworkFragment
+import com.apache.fastandroid.demo.component.materialdialogs.MaterialDialogDemoActivity
 import com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity
-import com.permissionx.guolindev.PermissionX
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
-import java.security.Permission
 
 class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
     private val selecteId = -1
@@ -97,7 +88,11 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        launchActivity<GithubBrowserMainActivity>(this)
 //        LiveDataWrongUsageActivity.launch(this)
 
+//        FragmentContainerActivity.launch(this, JetPackLifeCycleFragment::class.java,null)
+
+
 //        launchActivity<TasksActivity>(this)
+//        launchActivity<MaterialDialogDemoActivity>(this)
 
     //        launchActivity<CheeseActivity>(this)
 

@@ -91,47 +91,4 @@ class RepoFragment : BaseVBFragment<RepoFragmentBinding>(RepoFragmentBinding::in
         initContributorList(repoViewModel)
     }
 
-    /*override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val dataBinding = DataBindingUtil.inflate<RepoFragmentBinding>(
-            inflater,
-            R.layout.repo_fragment,
-            container,
-            false
-        )
-        dataBinding.retryCallback = object : RetryCallback {
-            override fun retry() {
-                repoViewModel.retry()
-            }
-        }
-        binding = dataBinding
-        sharedElementReturnTransition = TransitionInflater.from(context).inflateTransition(R.transition.move)
-        return dataBinding.root
-    }*/
-
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        repoViewModel.setId(params.owner, params.name)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.repo = repoViewModel.repo
-
-        val adapter = ContributorAdapter() {
-            contributor, imageView ->
-            val extras = FragmentNavigatorExtras(
-                    imageView to contributor.login
-            )
-            findNavController().navigate(
-                    RepoFragmentDirections.showUser(contributor.login, contributor.avatarUrl),
-                    extras
-            )
-        }
-        this.adapter = adapter
-        binding.contributorList.adapter = adapter
-        postponeEnterTransition()
-        binding.contributorList.doOnPreDraw {
-            startPostponedEnterTransition()
-        }
-        initContributorList(repoViewModel)
-    }*/
 }

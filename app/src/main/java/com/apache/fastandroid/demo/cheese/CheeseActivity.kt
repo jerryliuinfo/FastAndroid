@@ -23,6 +23,8 @@ import com.tesla.framework.ui.activity.BaseVmActivity
 /**
  * Created by Jerry on 2022/4/5.
  * https://github.com/chrisbanes/cheesesquare
+ * https://github.com/material-components/material-components-android-examples
+ *
  */
 class CheeseActivity:BaseVmActivity<ActivityCheeseMainBinding>(ActivityCheeseMainBinding::inflate) {
 

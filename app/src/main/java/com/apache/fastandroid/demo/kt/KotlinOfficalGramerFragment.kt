@@ -25,6 +25,7 @@ import java.lang.IllegalArgumentException
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.*
+import java.util.concurrent.TimeUnit
 import kotlin.math.max
 import kotlin.math.roundToInt
 import kotlin.random.Random
@@ -770,6 +771,14 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
 
         }
 
+    }
+
+
+    private fun comUsage(){
+        val duration = 342L
+        val timeUnit = TimeUnit.SECONDS
+        val milles = timeUnit.toMillis(duration)
+        println("milles: ${timeUnit}")
     }
 
 
