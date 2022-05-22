@@ -1,6 +1,8 @@
 package com.apache.fastandroid.demo
 
 import com.apache.fastandroid.bean.ViewItemBean
+import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
+import com.apache.fastandroid.demo.coorinator.CoordinatorLayoutDemoFragment
 import com.apache.fastandroid.demo.other.ClipChildFragment
 import com.apache.fastandroid.demo.other.ClipToPaddingFragment
 import com.apache.fastandroid.demo.customview.EditTextFragment
@@ -22,6 +24,8 @@ import java.util.*
 class CustomViewFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
+                ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
+                ViewItemBean("CoordinatorLayout", "CoordinatorLayout", CoordinatorLayoutDemoFragment::class.java),
                 ViewItemBean("ClipChild", "ClipChildFragment", ClipChildFragment::class.java),
                 ViewItemBean("ClipToPadding", "ClipToPaddingFragment", ClipToPaddingFragment::class.java)
                 ,ViewItemBean("SpanableString", "SpanableString", SpanableStringFragment::class.java)

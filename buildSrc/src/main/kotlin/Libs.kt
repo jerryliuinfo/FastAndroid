@@ -109,7 +109,13 @@ object Libs {
 //        transformation,
         rxbinding,
         "com.drakeet.drawer:drawer:1.0.3",
+
+        //敏感词检测
+        "com.github.houbb:sensitive-word:0.2.0",
+
     )
+
+
 
     val materialDialogs = arrayOf(
         "com.afollestad.material-dialogs:core:${Versions.materialDialog}",

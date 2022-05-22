@@ -36,6 +36,7 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("JetPack", "JetPack", JetPackDemoFragment::class.java),
             ViewItemBean("Google Sample", "Google Sample", SampleAppDemoFragment::class.java),
             ViewItemBean("最佳实践", "最佳实践", BestPracticeDemoFragment::class.java),
+            ViewItemBean("工具", "工具", ToolsFragment::class.java),
 
             ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
             ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
@@ -45,8 +46,7 @@ class DemoListFragment : BaseListFragment() {
 
             ViewItemBean("CustomViewWidget", "自定义控件", CustomViewFragment::class.java),
             ViewItemBean("系统控件", "系统控件", CustomViewFragment::class.java),
-            ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
-            ViewItemBean("CoordinatorLayout", "CoordinatorLayout", CoordinatorLayoutDemoFragment::class.java),
+
             ViewItemBean("性能优化", "性能优化", PerformanceDemoFragment::class.java),
             ViewItemBean("临时验证", "临时验证", TempDemoFragment::class.java),
             ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java),

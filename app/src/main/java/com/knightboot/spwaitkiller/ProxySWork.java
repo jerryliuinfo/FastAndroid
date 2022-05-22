@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.performance.spwaitkiller;
+package com.knightboot.spwaitkiller;
 
 import android.os.Build;
 import android.os.Handler;
@@ -18,6 +18,8 @@ class ProxySWork<T> extends LinkedList<T> {
 
     private final QueueWorkAspect queueWorkAspect;
 
+    private static final int VERSION_CODES_S =31;
+
     public ProxySWork(LinkedList<T> proxy,
                       Looper looper, QueueWorkAspect queueWorkAspect) {
         this.proxy = proxy;
@@ -30,7 +32,7 @@ class ProxySWork<T> extends LinkedList<T> {
     @Override
     public Object clone() {
         // <=31
-        if (Build.VERSION.SDK_INT< 31){
+        if (Build.VERSION.SDK_INT<VERSION_CODES_S){
             delegateWork();
             return new LinkedList<T>();
         }else {
@@ -62,7 +64,7 @@ class ProxySWork<T> extends LinkedList<T> {
     @Override
     public int size() {
         //Android 12 change:
-        if (Build.VERSION.SDK_INT>=31){
+        if (Build.VERSION.SDK_INT>=VERSION_CODES_S){
             delegateWork();
             this.queueWorkAspect.processPendingWorkDone();
             return 0;

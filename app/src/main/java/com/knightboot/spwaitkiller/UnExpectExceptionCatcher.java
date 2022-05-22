@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.performance.spwaitkiller;
+package com.knightboot.spwaitkiller;
 
 /**
  * created by Knight-ZXW on 2021/9/14

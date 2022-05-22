@@ -4,6 +4,7 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.blacktech.permissionmonitor.PermissionMonitorFragment
 import com.apache.fastandroid.demo.blacktech.sdkeditor.CommonBlackTechFragment
+import com.apache.fastandroid.demo.blacktech.spwaitkiller.SpWaitKillerDemoFragment
 import com.apache.fastandroid.demo.blacktech.viewpump.ViewPumpDemoFragment
 
 /**
@@ -17,6 +18,8 @@ class BlackTechDemoFragment:BaseListFragment() {
             ,ViewItemBean("sdk_editor","sdk_editor", CommonBlackTechFragment::class.java)
             ,ViewItemBean("ClickDebounce","ClickDebounce", ClickDebounceFragment::class.java)
             ,ViewItemBean("字符串加密","字符串加密", EncryptDemoFragment::class.java)
+            ,ViewItemBean("敏感词检测","houbb/sensitive-word", SensitiveWordDemoFragment::class.java)
+            ,ViewItemBean("SpWaitKiller","解决SP卡顿问题", SpWaitKillerDemoFragment::class.java)
         )
     }
 

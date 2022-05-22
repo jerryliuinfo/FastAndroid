@@ -136,7 +136,7 @@ android {
     productFlavors {
         mock {
             dimension "env"
-            applicationIdSuffix = ".mock"
+//            applicationIdSuffix = ".mock"
         }
 
 

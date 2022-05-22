@@ -1,26 +1,23 @@
 package com.apache.fastandroid
 
 import android.app.Activity
-
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.navigation.NavController
-import com.apache.fastandroid.annotations.CostTime
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import com.apache.fastandroid.demo.bean.UserBean
-import com.tesla.framework.common.util.log.NLog
-import com.blankj.utilcode.util.ToastUtils
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
-import com.apache.fastandroid.demo.component.materialdialogs.MaterialDialogDemoActivity
-import com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity
+import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
+import com.blankj.utilcode.util.ToastUtils
+import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
-import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 
@@ -83,6 +80,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, FlowDemoListFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, CoroutineDemoListFragment::class.java,null)
+        FragmentContainerActivity.launch(this, BlackTechDemoFragment::class.java,null)
 
 //        launchActivity<FluidResizeActivity>(this)
 //        launchActivity<GithubBrowserMainActivity>(this)

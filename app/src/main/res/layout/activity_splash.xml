@@ -13,7 +13,7 @@
         android:orientation="vertical"
         android:background="@drawable/splash_bg"
         app:layoutFullscreen="@{true}"
-
+        app:paddingTopSystemWindowInsets="@{true}"
         >
 
         <TextView

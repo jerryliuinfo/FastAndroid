@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.performance.spwaitkiller;
+package com.knightboot.spwaitkiller;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
