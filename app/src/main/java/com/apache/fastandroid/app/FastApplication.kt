@@ -335,6 +335,5 @@ class FastApplication : Application(), ViewModelStoreOwner {
          lateinit var context: Context
 
         const val DEFAULT_PREFERENCES = "default_preferences"
-
     }
 }
