@@ -9,7 +9,7 @@ import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentSpwaitKillerBinding
-import com.knightboot.spwaitkiller.SpWaitKiller
+import com.apache.fastandroid.component.spkiller.SpWaitKiller
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import org.lsposed.hiddenapibypass.HiddenApiBypass

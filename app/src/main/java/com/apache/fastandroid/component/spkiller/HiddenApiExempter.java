@@ -1,4 +1,4 @@
-package com.knightboot.spwaitkiller;
+package com.apache.fastandroid.component.spkiller;
 
 import android.content.Context;
 
@@ -11,6 +11,6 @@ public interface HiddenApiExempter {
      * 设置 允许调用HiddenApi
      * @return
      */
-    public boolean exempt(Context context);
+    boolean exempt(Context context);
 
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_reporter">CrashReporter</string>
+    <string name="crashes">Crashes</string>
+    <string name="exceptions">Exceptions</string>
+    <string name="view_crash_report">View Crash Report</string>
+    <string name="notification_crash_report_title">Crash Reporter notifications</string>
+    <string name="check_your_message_here">Check your crashes and exceptions here.</string>
+    <string name="delete_confirmation_msg">Are you sure to delete all the crash logs</string>
+    <string name="cancel">CANCEL</string>
+    <string name="ok">OK</string>
+
+
+
+    <string name="null_pointer_exception">Null Pointer</string>
+    <string name="index_out_of_bound_exception">IndexOutOfBound</string>
+    <string name="class_cast_exception">ClassCast Exeption</string>
+    <string name="array_store_exception">ArrayStoreException</string>
+    <string name="add_your_crash">Add your own crash and check if it gets logged</string>
+</resources>

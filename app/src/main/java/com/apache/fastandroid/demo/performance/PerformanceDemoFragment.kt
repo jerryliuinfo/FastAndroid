@@ -2,6 +2,7 @@ package com.apache.fastandroid.demo.performance
 
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
+import com.apache.fastandroid.demo.crashreport.CrashReportDemoFragment
 import com.apache.fastandroid.demo.mmkv.MMKVFragment
 import com.apache.fastandroid.demo.performance.largeimage.LargeImageDemoFragment
 import com.apache.fastandroid.demo.performance.practice.AnrWatchDogDemoFragment
@@ -20,6 +21,7 @@ class PerformanceDemoFragment: BaseListFragment() {
                  ,ViewItemBean("TaskDispatcher", "TaskDispatcher", TaskDispatcherDemoFragment::class.java)
                  ,ViewItemBean("OMagnifier", "OMagnifier", OMagnifierDemoFragment::class.java)
                  ,ViewItemBean("Cockroach", "Cockroach", CockroachDemoFragment::class.java)
+                 ,ViewItemBean("CrashReport", "CrashReport", CrashReportDemoFragment::class.java)
         )
     }
 }

@@ -238,13 +238,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
             return dir
         }
 
-    /** A tree which logs important information for crash reporting.  */
-    private fun initCrashAndAnalysis() {
-        //bugly统计
-        CrashReport.initCrashReport(getApplicationContext(),"397713a129",true)
-//        //本地crash日志收集  使用bulgy时不能在本地手机日志
-//        TUncaughtExceptionHandler.getInstance(getApplicationContext(),configCrashFilePath()).init(this, BuildConfig.DEBUG, false, 0, SplashActivity.class);
-    }
+
 
 
     override fun onConfigurationChanged(newConfig: Configuration) {

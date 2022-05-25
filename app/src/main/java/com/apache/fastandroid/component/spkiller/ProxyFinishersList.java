@@ -1,4 +1,4 @@
-package com.knightboot.spwaitkiller;
+package com.apache.fastandroid.component.spkiller;
 
 import java.util.LinkedList;
 
