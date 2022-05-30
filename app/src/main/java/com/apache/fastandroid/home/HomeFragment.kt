@@ -1,28 +1,21 @@
 package com.apache.fastandroid.home
 
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.apache.fastandroid.article.ArticleDetailActivity
 import com.apache.fastandroid.databinding.FragmentHomeBinding
 import com.apache.fastandroid.network.model.Article
-import com.apache.fastandroid.util.extensitons.runOnUIDelay
-import com.apache.fastandroid.util.extensitons.showEmpty
-import com.apache.fastandroid.util.extensitons.showLoading
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayout
-import com.kingja.loadsir.callback.Callback
 import com.kingja.loadsir.core.LoadService
-import com.kingja.loadsir.core.LoadSir
 import com.tesla.framework.ui.fragment.BaseDBFragment
-import kotlinx.android.synthetic.main.activity_loadsir_constraintlayout.*
 
 /**
  * Created by Jerry on 2022/4/23.
  */
-class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+class HomeFragment:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     private val mViewModel:HomeViewModel by viewModels { getViewModelFactory() }
 
@@ -33,6 +26,8 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
         setOnItemClickListener{ adapter,view,position ->
             val article = getItem(position)
             ArticleDetailActivity.launch(requireActivity(), article.title, article.link)
+
+
         }
     }
 
@@ -76,15 +71,7 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
 
 
 
-    /**
-     * 刷新
-     */
-    private fun refresh() {
-        // 这里的作用是防止下拉刷新的时候还可以上拉加载
-        mAdapter.loadMoreModule.isEnableLoadMore = false
-        // 下拉刷新，需要重置页数
-//        mHomeViewModel.onRefresh()
-    }
+
 
     private fun handleData(data:List<Article>){
         mAdapter.loadMoreModule.isEnableLoadMore= true
@@ -122,6 +109,12 @@ class HomeFragmentNew:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::i
             isEnableLoadMoreIfNotFullPage = false
         }
 
+    }
+
+    companion object{
+        fun newInstance():HomeFragment{
+            return HomeFragment()
+        }
     }
 
 

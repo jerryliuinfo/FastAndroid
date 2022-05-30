@@ -40,7 +40,7 @@ public class InnerInterceptListView extends ListView {
 
                 //满足listView滑动到顶部，如果继续下滑，那就允许scrollView拦截事件
                 if (getFirstVisiblePosition() == 0 && (ev.getY() - mLastY) > 0) {
-                    //允许ScrollView拦截事件
+                    //允许父ScrollView拦截事件
                     getParent().requestDisallowInterceptTouchEvent(false);
                     NLog.d(TAG, "已经滑动到lisview第一个item了, 允许父view拦截事件");
 

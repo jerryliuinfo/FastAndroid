@@ -63,6 +63,12 @@ final Properties REPO_PROPS = loadProperties(REPO_PROPS_FILE)
 
 android {
     compileSdkVersion AppConfig.compileSdk
+
+    //fix bug The minCompileSdk (31) specified in a dependency's AAR metadata  
+
+    configurations.all {
+        resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
+    }
     defaultConfig {
         applicationId "com.apache.fastandroid"
         minSdkVersion AppConfig.minSdk
@@ -153,17 +159,14 @@ android {
             resValue 'string', 'channel_tips', 'prod渠道欢迎你'
             signingConfig signingConfigs.release
         }
-
-
-
     }
 
 
     buildTypes {
 
         release {
-            debuggable true    //默认false，可不写
             minifyEnabled = true
+            debuggable true    //默认false，可不写
             /**
              * 去除无用的资源
              * 开启了这个开关之后，在构建日志中会看到执行 transformClassesWithShrinkResForRelease
@@ -183,8 +186,9 @@ android {
 
         }
         debug {
-            debuggable = true
             minifyEnabled false
+            debuggable = true
+
             shrinkResources false
             //应用包名添加.debug后缀
             applicationIdSuffix ".debug"
@@ -437,6 +441,7 @@ dependencies {
     implementation(*Jetpack.navigation)
     implementation(*Jetpack.room)
     implementation(*Jetpack.hit)
+    implementation(Jetpack.startUp)
     implementation(AndroidTest.espresso_idling)
 
 

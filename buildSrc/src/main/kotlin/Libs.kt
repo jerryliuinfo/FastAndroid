@@ -54,6 +54,9 @@ object Libs {
     const val transformation = "com.github.skydoves:transformationlayout:1.1."
     const val rxbinding = "com.jakewharton.rxbinding4:rxbinding:4.0.0"
 
+    const val arouter_api = "com.alibaba:arouter-api:${Versions.arouter_api_versoion}"
+
+
 
     val glide = arrayOf(
         "com.github.bumptech.glide:glide:${Versions.glide}",
@@ -112,6 +115,7 @@ object Libs {
 
         //敏感词检测
         "com.github.houbb:sensitive-word:0.2.0",
+        arouter_api,
 
     )
 
@@ -223,6 +227,10 @@ object Jetpack{
         //hit 对 viewmodel 的支持
         "androidx.hilt:hilt-compiler:1.0.0-alpha02"
     )
+
+    val startUp = "androidx.startup:startup-runtime:1.0.0-alpha01"
+
+
 }
 
 
@@ -244,7 +252,7 @@ object SDK {
 }
 
 object Compiler {
-
+    const val arouter_compiler = "com.alibaba:arouter-compiler:${Versions.arouter_compiler_versoion}"
 }
 // AndroidX Test - Instrumented testing
 /*androidTestImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"

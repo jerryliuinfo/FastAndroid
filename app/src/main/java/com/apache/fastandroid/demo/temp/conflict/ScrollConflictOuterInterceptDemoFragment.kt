@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.temp
+package com.apache.fastandroid.demo.temp.conflict
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,7 +19,7 @@ class ScrollConflictOuterInterceptDemoFragment: BaseVBFragment<TempScrollConflic
 
         scrollView.setListView(listView)
 
-        val adapter = ArrayAdapter<String>(context!!,android.R.layout.simple_list_item_1, data)
+        val adapter = ArrayAdapter<String>(requireContext(),android.R.layout.simple_list_item_1, data)
         listView.adapter = adapter
     }
 

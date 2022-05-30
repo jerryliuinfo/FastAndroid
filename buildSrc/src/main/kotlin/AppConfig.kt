@@ -9,8 +9,23 @@ object AppConfig {
     private val versionCodeBase = 100010 // XYYZZM; M = Module (tv, mobile)
     val versionCode = versionCodeBase + 3
 
+}
 
 
+interface BuildType {
 
+    companion object {
+        const val RELEASE = "release"
+        const val DEBUG = "debug"
+    }
 
+    val isMinifyEnabled: Boolean
+}
+
+object BuildTypeDebug : BuildType {
+    override val isMinifyEnabled = false
+}
+
+object BuildTypeRelease : BuildType {
+    override val isMinifyEnabled = false
 }

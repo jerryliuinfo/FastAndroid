@@ -16,6 +16,8 @@ import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
 import com.apache.fastandroid.demo.crashreport.CrashReportDemoFragment
+import com.apache.fastandroid.demo.mmkv.MMKVKtxFragment
+import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
@@ -82,7 +84,9 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, CoroutineDemoListFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, BlackTechDemoFragment::class.java,null)
-        FragmentContainerActivity.launch(this, CrashReportDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, CrashReportDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, TempDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, MMKVKtxFragment::class.java,null)
 
 //        launchActivity<FluidResizeActivity>(this)
 //        launchActivity<GithubBrowserMainActivity>(this)

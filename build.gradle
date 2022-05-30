@@ -40,6 +40,10 @@ buildscript {
         classpath fileTree(dir: './Plugin', include: ['*.jar'])
 
 
+        classpath 'com.smallsoho.mobcase:McImage:1.5.1'
+
+
+
     }
 
 //    给所有的子工程统一配置

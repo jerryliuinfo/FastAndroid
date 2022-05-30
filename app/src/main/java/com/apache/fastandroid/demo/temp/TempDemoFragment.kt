@@ -9,6 +9,9 @@ import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity
 import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity2
 import com.apache.fastandroid.demo.style.FitSystemWindowFrameLayoutDemoActivity
 import com.apache.fastandroid.demo.temp.activityresult.ActivityResultDemoActivity
+import com.apache.fastandroid.demo.temp.conflict.ScrollConflictInnernterceptDemoFragment
+import com.apache.fastandroid.demo.temp.conflict.ScrollConflictOuterInterceptDemoFragment
+import com.apache.fastandroid.demo.temp.conflict.ViewPageRecycleViewConflictDemoFragment
 import com.apache.fastandroid.demo.temp.reflect.ReflectionDemoFragment
 import com.apache.fastandroid.demo.temp.savestate.SaveStateHandleFragment
 
@@ -24,6 +27,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("ViewGroup", "shouldDelayChildPressedState", ViewGroupShouldDelayPressStateFragment::class.java)
                 ,ViewItemBean("滑动冲突", "滑动冲突外部拦截法", ScrollConflictOuterInterceptDemoFragment::class.java)
                 ,ViewItemBean("滑动冲突", "滑动冲突内部拦截法", ScrollConflictInnernterceptDemoFragment::class.java)
+                ,ViewItemBean("滑动冲突", "ViewPage2 和 RecycleView 冲突", ViewPageRecycleViewConflictDemoFragment::class.java)
                 ,ViewItemBean("泛型", "泛型", GenericClassDemoFragment::class.java)
                 ,ViewItemBean("RX", "RX操作符", GenericClassDemoFragment::class.java)
                 ,ViewItemBean("知识点", "知识点", KnowledgeFragment::class.java)

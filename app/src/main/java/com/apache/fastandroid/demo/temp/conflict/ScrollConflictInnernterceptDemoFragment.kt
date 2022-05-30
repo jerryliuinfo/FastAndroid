@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.temp
+package com.apache.fastandroid.demo.temp.conflict
 
 import android.os.Bundle
 import android.view.LayoutInflater
