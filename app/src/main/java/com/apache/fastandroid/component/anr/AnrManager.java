@@ -35,6 +35,8 @@ public class AnrManager {
               .setANRInterceptor(anrConfig.getAnrInterceptor())
                .setANRListener(anrConfig.getAnrListener());
       anrWatchDog.start();
+
+
    }
 
 }

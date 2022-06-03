@@ -145,7 +145,6 @@ android {
 //            applicationIdSuffix = ".mock"
         }
 
-
         prod {
             dimension "env"
             versionName computeVersionName('r')
@@ -161,6 +160,10 @@ android {
         }
     }
 
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
+    }
+
 
     buildTypes {
 
@@ -172,8 +175,7 @@ android {
              * 开启了这个开关之后，在构建日志中会看到执行 transformClassesWithShrinkResForRelease
              */
             shrinkResources true
-            //zipAlignEnabled能提供系统和应用的运行效率
-            zipAlignEnabled true
+
             /**
              * 获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk
              * 安装目录下的tools/prlguard

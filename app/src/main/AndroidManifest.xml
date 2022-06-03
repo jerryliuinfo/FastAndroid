@@ -21,6 +21,12 @@
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         tools:replace="android:theme,android:icon,android:label,android:allowBackup">
 
+        <meta-data
+            android:name="CHANNEL"
+            android:value="${CHANNEL_VALUE}" />
+
+
+
         <activity
             android:name=".SplashActivity"
             android:exported="true"

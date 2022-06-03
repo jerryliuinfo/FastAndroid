@@ -24,6 +24,7 @@ class KotlinDemoListFragment:BaseListFragment()
             ,ViewItemBean("MathUtil","MathUtil", MathUtilDemoFragment::class.java)
             ,ViewItemBean("Kotlin语法扩展函数","Kotlin语法扩展函数", KotlinExtensionsFragment::class.java)
             ,ViewItemBean("范型","范型", GenericDemoFragment::class.java)
+            ,ViewItemBean("Kotlin热门问题","StackOverFlow最热门的8个问题", KotlinHotQuestionFragment::class.java)
 
         )
     }

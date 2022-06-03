@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
@@ -16,6 +17,7 @@ import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
 import com.apache.fastandroid.demo.crashreport.CrashReportDemoFragment
+import com.apache.fastandroid.demo.kt.KotlinHotQuestionFragment
 import com.apache.fastandroid.demo.mmkv.MMKVKtxFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.blankj.utilcode.util.ToastUtils
@@ -87,12 +89,14 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, CrashReportDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, TempDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, MMKVKtxFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, CrashReportDemoFragment::class.java,null)
 
 //        launchActivity<FluidResizeActivity>(this)
 //        launchActivity<GithubBrowserMainActivity>(this)
 //        LiveDataWrongUsageActivity.launch(this)
 
 //        FragmentContainerActivity.launch(this, JetPackLifeCycleFragment::class.java,null)
+        FragmentContainerActivity.launch(this, KotlinHotQuestionFragment::class.java,null)
 
 
 //        launchActivity<TasksActivity>(this)
@@ -102,7 +106,21 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
 
 
+        onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                if (System.currentTimeMillis() - mExitTime > 2000){
+                    mExitTime = System.currentTimeMillis()
+                    showToast(R.string.main_exit_app)
+                }else{
+                    moveTaskToBack(true)
+                }
+            }
+
+        })
+
     }
+
+    private var mExitTime:Long = 0
 
     private fun setupActionBar(
         navController: NavController,

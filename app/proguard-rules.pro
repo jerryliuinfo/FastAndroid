@@ -18,84 +18,40 @@
 
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
 
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
 
-#-------------------------------------------定制化区域----------------------------------------------
-#---------------------------------1.实体类---------------------------------
-
-
-
-#-------------------------------------------------------------------------
-
-#---------------------------------2.第三方包-------------------------------
-
-
-
-#---------------------------------Glide 开始-------------------------------
-
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep class * extends com.bumptech.glide.module.AppGlideModule {
- <init>(...);
-}
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
--keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
-  *** rewind();
-}
-
-# for DexGuard only
-#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
-#---------------------------------Glide 结束-------------------------------
-
-
-
-
-
-
--dontwarn com.tencent.bugly.**
--keep public class com.tencent.bugly.**{*;}
-
-#-------------------------------------------------------------------------
-
-#---------------------------------3.与js互相调用的类------------------------
-
-
-
-#-------------------------------------------------------------------------
-
-#---------------------------------4.反射相关的类和方法-----------------------
-
-
-
-#----------------------------------------------------------------------------
-#---------------------------------------------------------------------------------------------------
-
-#-------------------------------------------基本不用动区域--------------------------------------------
-#---------------------------------基本指令区----------------------------------
-
--ignorewarnings
--dontwarn
--optimizationpasses 5
--dontusemixedcaseclassnames
--dontskipnonpubliclibraryclasses
--dontskipnonpubliclibraryclassmembers
--dontpreverify
--verbose
--printmapping proguardMapping.txt
--optimizations !code/simplification/cast,!field/*,!class/merging/*
--keepattributes *Annotation*,InnerClasses
--keepattributes Signature
+-optimizationpasses 5                                                           # 代码混淆的压缩比例，值介于0-7，默认5
+-verbose                                                                        # 混淆时记录日志
+-dontshrink                                                                     # 关闭压缩
+-dontpreverify                                                                  # 关闭预校验(作用于Java平台，Android不需要，去掉可加快混淆)
+-dontoptimize                                                                   # 关闭代码优化
+#-dontobfuscate                                                                  # 关闭混淆
+-ignorewarnings                                                                 # 忽略警告
+-dontusemixedcaseclassnames                                                     # 混淆后类型都为小写
+-dontskipnonpubliclibraryclasses                                                # 不跳过非公共的库的类
+-printmapping mapping.txt                                                       # 生成原类名与混淆后类名的映射文件mapping.txt
+-useuniqueclassmembernames                                                      # 把混淆类中的方法名也混淆
+-allowaccessmodification                                                        # 优化时允许访问并修改有修饰符的类及类的成员
+-renamesourcefileattribute SourceFile                                           # 将源码中有意义的类名转换成SourceFile，用于混淆具体崩溃代码
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*        # 指定混淆时采用的算法
+-keepattributes *Annotation*d                                                   # 保留注解
+-keepattributes Signature                                                       # 保留泛型
 -keepattributes SourceFile,LineNumberTable
-#----------------------------------------------------------------------------
 
-#---------------------------------默认保留区---------------------------------
+
+
+# 指定外部模糊字典
+-obfuscationdictionary ./dictionary
+# 指定class模糊字典
+-classobfuscationdictionary ./dictionary
+# 指定package模糊字典
+-packageobfuscationdictionary ./dictionary
+
+# 保留指定类不被混淆
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Application
 -keep public class * extends android.app.Service
@@ -104,20 +60,35 @@
 -keep public class * extends android.app.backup.BackupAgentHelper
 -keep public class * extends android.preference.Preference
 -keep public class * extends android.view.View
--keep public class com.android.vending.licensing.ILicensingService
--keep class android.support.** {*;}
-
-# natvie方法不被混淆
+# 保留support下的所有类及其内部类
+-dontwarn android.support.**
+-keep class android.support.* {*;}
+# 保留support下的类的继承类及其内部类
+-keep public class * extends android.support.v4.*
+-keep public class * extends android.support.v7.*
+-keep public class * extends android.support.annotation.*
+# 不混淆资源类
+-keep class **.R$* {*;}
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+# 保留本地native方法不被混淆
 -keepclasseswithmembernames class * {
     native <methods>;
 }
--keepclassmembers class * extends android.app.Activity{
-    public void *(android.view.View);
+# 保留方法参数是view的方法，使@OnClick等不会被影响
+-keepclassmembers class * extends android.app.Activity {
+   public void *(android.view.View);
 }
--keepclassmembers enum * {
-    public static **[] values();
-    public static ** valueOf(java.lang.String);
+-keepclassmembers class * extends androidx.fragment.app.Fragment {
+   public void *(android.view.View);
 }
+# 对于带有回调函数的onXXEvent、**On*Listener的，不能被混淆
+-keepclassmembers class * {
+    void *(**On*Event);
+    void *(**On*Listener);
+}
+# 不混淆自定义控件（继承自View）不被混淆
 -keep public class * extends android.view.View{
     *** get*();
     void set*(***);
@@ -125,43 +96,74 @@
     public <init>(android.content.Context, android.util.AttributeSet);
     public <init>(android.content.Context, android.util.AttributeSet, int);
 }
--keepclasseswithmembers class * {
-    public <init>(android.content.Context, android.util.AttributeSet);
-    public <init>(android.content.Context, android.util.AttributeSet, int);
+# 不混淆枚举类
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
 }
 
 
--keep class * implements java.io.Serializable { *; }
--keep class * implements android.os.Parcelable { *; }
-
-
-# R 资源不被混淆
--keep class **.R$* {
- *;
+# 保留Parcelable序列化类不被混淆
+-keepclassmembers class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
 }
--keepclassmembers class * {
-    void *(**On*Event);
+# 保留Serializable序列化的类不被混淆
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    !private <fields>;
+    !private <methods>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
 }
-#----------------------------------------------------------------------------
 
-#---------------------------------webview------------------------------------
--keepclassmembers class fqcn.of.javascript.interface.for.Webview {
-   public *;
+# 避免Log打印输出
+-assumenosideeffects class timber.log.Timber {
+   public static *** v(...);
+   public static *** d(...);
+   public static *** i(...);
+   public static *** w(...);
 }
--keepclassmembers class * extends android.webkit.WebViewClient {
-    public void *(android.webkit.WebView, java.lang.String, android.graphics.Bitmap);
-    public boolean *(android.webkit.WebView, java.lang.String);
+
+
+#----------------------------- kotlinx.coroutines ---------------------------------
+# ServiceLoader support
+-keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}
+-keepnames class kotlinx.coroutines.CoroutineExceptionHandler {}
+# Most of volatile fields are updated with AFU and should not be mangled
+-keepclassmembers class kotlinx.coroutines.** {
+    volatile <fields>;
 }
--keepclassmembers class * extends android.webkit.WebViewClient {
-    public void *(android.webkit.WebView, jav.lang.String);
+# Same story for the standard library's SafeContinuation that also uses AtomicReferenceFieldUpdater
+-keepclassmembers class kotlin.coroutines.SafeContinuation {
+    volatile <fields>;
 }
--keep public class com.apache.fastandroid.network.model.**{*;}
+
+
+
+#----------------------------- gson ---------------------------------
+# Gson specific classes
+-dontwarn sun.misc.**
+# Prevent proguard from stripping interface information from TypeAdapterFactory,
+# JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
+# 保留通过Gson序列化/反序列化的应用程序类不被混淆
+# 将下面替换成自己的实体类
+-keep class com.apache.fastandroid.network.model.** {*;}
 
 
 
 
-#----------------------------------------------------------------------------
-#---------------------------------------------------------------------------------------------------
+
 
 -dontwarn com.tencent.bugly.**
 -keep public class com.tencent.bugly.**{*;}

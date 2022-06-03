@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.kt
+package com.apache.fastandroid.demo.kt.singleton
 
 /**
  * Created by Jerry on 2022/1/27.
@@ -6,7 +6,7 @@ package com.apache.fastandroid.demo.kt
 class SingleObject private constructor(){
 
     companion object{
-        fun get():SingleObject{
+        fun get(): SingleObject {
             return Holder.instance
         }
     }
@@ -15,4 +15,9 @@ class SingleObject private constructor(){
         val instance = SingleObject()
     }
 
+}
+
+
+fun String.test1(){
+    println("SingleObject test1")
 }

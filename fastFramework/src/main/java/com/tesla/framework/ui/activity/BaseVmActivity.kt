@@ -10,6 +10,7 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModel
@@ -300,14 +301,19 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
         }
     }
 
-   /* override fun getResources(): Resources {
-        val rawResources = super.getResources()
-        return if (rawResources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            AdaptScreenUtils.adaptWidth(rawResources, MOBILE_DESIGN_WIDTH_IN_DP)
-        } else {
-            AdaptScreenUtils.adaptHeight(rawResources, MOBILE_DESIGN_WIDTH_IN_DP)
-        }
-    }*/
+    fun showToast(@StringRes msgId:Int){
+       showToast(getString(msgId))
+    }
+
+
+    /* override fun getResources(): Resources {
+         val rawResources = super.getResources()
+         return if (rawResources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+             AdaptScreenUtils.adaptWidth(rawResources, MOBILE_DESIGN_WIDTH_IN_DP)
+         } else {
+             AdaptScreenUtils.adaptHeight(rawResources, MOBILE_DESIGN_WIDTH_IN_DP)
+         }
+     }*/
 
 
 

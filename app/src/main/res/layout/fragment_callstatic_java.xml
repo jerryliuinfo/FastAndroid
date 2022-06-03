@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                >
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="horizontal"
+                    app:flow_wrapMode="aligned"
+                    app:flow_horizontalGap="10dp"
+                    app:flow_verticalGap="10dp"
+                    app:constraint_referenced_ids="btn_call_static_func,btn_call_static_field"
+                    />
+
+                <Button
+                    android:id="@+id/btn_call_static_func"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Java 访问 Kotlin静态成员函数"
+                    />
+
+                <Button
+                    android:id="@+id/btn_call_static_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Java 访问 Kotlin静态成员变量"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

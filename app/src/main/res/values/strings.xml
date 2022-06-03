@@ -26,6 +26,8 @@
     <string name="splash_countdown_count">跳过 %1$s</string>
     <string name="splash_redirecting">正在跳转</string>
 
+    <string name="main_exit_app">再按一次返回桌面</string>
+
 
     <!--Splash页面结束-->
 

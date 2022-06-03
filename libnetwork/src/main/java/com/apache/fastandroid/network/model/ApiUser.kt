@@ -1,6 +1,7 @@
 package com.apache.fastandroid.network.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ApiUser(
     @SerializedName("id")
@@ -11,4 +12,4 @@ data class ApiUser(
     val email: String = "",
     @SerializedName("avatar")
     val avatar: String = ""
-)
+): Serializable

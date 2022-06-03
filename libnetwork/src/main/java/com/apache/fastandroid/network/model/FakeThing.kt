@@ -9,6 +9,4 @@ class FakeThing {
     override fun toString(): String {
         return "FakeThing(id=$id, name=$name)"
     }
-
-
 }
