@@ -12,7 +12,7 @@ object Fabric {
 
     @JvmStatic
     fun init(application: Application){
-        CrashReport.initCrashReport(application.applicationContext, "a397701fd5", false)
+        CrashReport.initCrashReport(application.applicationContext, "397713a129", false)
 
         if (BuildConfig.DEBUG) {
             //initialise reporter with external path

@@ -20,13 +20,18 @@ class SplashActivity : BaseVmActivity<ActivitySplashBinding>(ActivitySplashBindi
         super.layoutInit(savedInstanceState)
         Logger.d("SplashActivity layoutInit")
 
-        (application as FastApplication).appSetting.nightModeLive.observe(this){ nightMode ->
+        (application as FastApplication).appSetting.nightModeLive.observe(this) { nightMode ->
             nightMode?.let {
                 AppCompatDelegate.setDefaultNightMode(it)
             }
         }
 
-        time.start()
+        mCountDownTimer.start()
+
+        mBinding.tvCountDown.setOnClickListener {
+            mCountDownTimer.cancel()
+            toMain()
+        }
     }
 
 
@@ -38,13 +43,12 @@ class SplashActivity : BaseVmActivity<ActivitySplashBinding>(ActivitySplashBindi
         }
     }
 
-    private var time = object :CountDownTimer(5000,1000){
+    private var mCountDownTimer = object : CountDownTimer(5000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
-            val remainTime = "${millisUntilFinished / 1000} S"
+            val remainTime = "跳过|${millisUntilFinished / 1000} S"
             mBinding.tvCountDown.text = remainTime
-            if(millisUntilFinished / 1000==1L ){
-                MainActivity.launch(this@SplashActivity)
-                finish()
+            if (millisUntilFinished / 1000 == 1L) {
+                toMain()
             }
             mBinding.tvCountDown.visibility = View.VISIBLE
         }
@@ -55,9 +59,14 @@ class SplashActivity : BaseVmActivity<ActivitySplashBinding>(ActivitySplashBindi
 
     }
 
+    private fun toMain() {
+        MainActivity.launch(this@SplashActivity)
+        finish()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        time.cancel()
+        mCountDownTimer.cancel()
     }
 
     companion object {

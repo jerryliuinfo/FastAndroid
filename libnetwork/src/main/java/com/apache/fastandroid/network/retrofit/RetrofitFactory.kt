@@ -76,7 +76,7 @@ class RetrofitFactory private constructor() {
             }
 
         }.apply {
-            addInterceptor(HeaderInterceptor())
+//            addInterceptor(HeaderInterceptor())
             addInterceptor(NetLogInterceptor())
             addInterceptor(CookieInterceptor())
             addInterceptor(LoginInterceptor())

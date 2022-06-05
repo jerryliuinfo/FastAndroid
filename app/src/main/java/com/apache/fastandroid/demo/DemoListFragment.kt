@@ -5,17 +5,16 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
 import com.apache.fastandroid.demo.bestpractice.BestPracticeDemoFragment
 import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
-import com.apache.fastandroid.demo.constraint.ConstraintLayoutDemoFragment
-import com.apache.fastandroid.demo.coorinator.CoordinatorLayoutDemoFragment
 import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
 import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
 import com.apache.fastandroid.demo.hitpit.HitPitDemoListFragment
+import com.apache.fastandroid.demo.jni.JniDemoListFragment
+import com.apache.fastandroid.demo.jni.JniJavaCallCDemoFragment
 import com.apache.fastandroid.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.lyric.LyricDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.sample.SampleCodeDemoListFragment
 import com.apache.fastandroid.demo.sampleapp.SampleAppDemoFragment
-import com.apache.fastandroid.demo.tablayout.ArticleTabsFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.transition.TransitionDemoFragment
 import com.apache.fastandroid.demo.widget.UIWidgetDemoFragment
@@ -62,7 +61,8 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("Sample", "Sample", SampleCodeDemoListFragment::class.java),
             ViewItemBean("单元测试", "单元测试", SampleCodeDemoListFragment::class.java),
             ViewItemBean("MVI", "MVI", SampleCodeDemoListFragment::class.java),
-            ViewItemBean("各个组件style介绍", "各个组件style介绍", LyricDemoFragment::class.java)
+            ViewItemBean("各个组件style介绍", "各个组件style介绍", LyricDemoFragment::class.java),
+            ViewItemBean("JNI", "JNI", JniDemoListFragment::class.java)
 
 
         )

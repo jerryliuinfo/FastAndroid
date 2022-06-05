@@ -47,6 +47,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("SavedStateHandle", "SavedStateHandle",  SaveStateHandleFragment::class.java)
                 ,ViewItemBean("ActivityStyle", "给Activity设置style",  SaveStateHandleFragment::class.java)
                 ,ViewItemBean("ActivityStyle", "给Activity设置style",  SaveStateHandleFragment::class.java)
+                ,ViewItemBean("ViewBinding用法", "ViewBinding用法",  ViewBindingUsageDemo::class.java)
 
         )
     }

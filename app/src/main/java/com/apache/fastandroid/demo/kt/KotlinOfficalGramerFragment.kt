@@ -136,12 +136,25 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
             returnValueByTry("hello")
         }
 
+        mBinding.btnCheckRequire.setOnClickListener {
+            checkRequireUsage()
+        }
+
+        "hello" to User(1,"jerry")
+
+
     }
 
-
-    private fun checkUsage(){
+    private fun checkRequireUsage(){
         val age = 10
         check(age > 10)
+        check(age > 10){
+            "check age is less than  ${age}"
+        }
+        require(age > 10)
+        require(age > 10){
+            "require age is less than  ${age}"
+        }
     }
 
     private fun lambda(load:() -> Unit = {},

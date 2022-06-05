@@ -63,6 +63,7 @@ final Properties REPO_PROPS = loadProperties(REPO_PROPS_FILE)
 
 android {
     compileSdkVersion AppConfig.compileSdk
+    ndkVersion '22.1.7171670'
 
     //fix bug The minCompileSdk (31) specified in a dependency's AAR metadata  
 
@@ -75,6 +76,8 @@ android {
         targetSdkVersion AppConfig.targetSdk
         versionCode AppConfig.versionCode
         versionName AppConfig.versionName
+
+
 
         //dex突破65535的限制
         multiDexEnabled true
@@ -99,7 +102,8 @@ android {
         defaultConfig {
             ndk {
                 // 设置支持的SO库架构
-                abiFilters 'armeabi-v7a', 'x86'
+                abiFilters 'arm64-v8a', 'armeabi-v7a'
+
             }
         }
 
@@ -122,6 +126,12 @@ android {
                 arguments += ["room.schemaLocation":
                                       "$projectDir/schemas".toString()]
             }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
         }
     }
 

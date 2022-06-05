@@ -10,14 +10,13 @@ import android.content.res.Resources
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.DisplayMetrics
 import android.util.TypedValue
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.ViewTreeObserver
+import android.view.*
+import android.widget.FrameLayout
 import android.widget.SearchView
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
@@ -36,6 +35,7 @@ import com.blankj.utilcode.util.Utils
 import com.google.android.material.snackbar.Snackbar
 import com.tesla.framework.component.livedata.Event
 import com.tesla.framework.component.livedata.NetworkLiveData
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -517,4 +517,122 @@ fun Paint.textCenterY(text: String, baseY: Float): Float {
     val rect = Rect()
     getTextBounds(text, 0, text.length, rect)
     return baseY + rect.height() / 2
+}
+
+
+
+val View.inScreen:Boolean
+    get() {
+        val screenWidth = context.resources.displayMetrics.widthPixels
+        val screenHeight = context.resources.displayMetrics.heightPixels
+
+        val screenRect = Rect(0,0,screenWidth,screenHeight)
+        val array = IntArray(2)
+        getLocationOnScreen(array)
+        //获取视图矩形
+        val viewRect = Rect(array[0],array[1],array[0] + width,array[1] + height)
+        //判断屏幕和视图举行是否有交集
+        return screenRect.intersect(viewRect)
+    }
+
+
+//协程和生命周期绑定
+/**
+ * 为 Job 扩展凡是,传入 View 类型的参数，表示该 Job 和 View 的生命周期绑定，当
+ * View 生命周期结束时，自动取消协程
+ */
+fun Job.autoDispose(view: View){
+    val isAttached = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && view.isAttachedToWindow
+            || view.windowToken != null
+
+    if (!isAttached){
+        cancel()
+    }
+    val listener = object :View.OnAttachStateChangeListener{
+        override fun onViewAttachedToWindow(v: View?) {
+        }
+
+        override fun onViewDetachedFromWindow(v: View?) {
+            cancel()
+            v?.removeOnAttachStateChangeListener(this)
+        }
+
+    }
+    view.addOnAttachStateChangeListener(listener)
+    invokeOnCompletion {
+        view.removeOnAttachStateChangeListener(listener)
+    }
+
+}
+
+/**
+ *  获取 DecoreView
+ */
+val Activity.decoreView:FrameLayout?
+    get() = takeIf { !isFinishing && !isDestroyed  }?.window?.decorView as? FrameLayout?
+
+/**
+ * RecycleView 添加点击事件处理
+ */
+fun RecyclerView.addOnItemClickListener(listener:(View, Int) ->Unit = {_,_ -> } ){
+
+    addOnItemTouchListener(object :RecyclerView.OnItemTouchListener{
+
+        val gestureDetector = GestureDetector(context,object :GestureDetector.OnGestureListener{
+            override fun onDown(e: MotionEvent?): Boolean {
+                return false
+            }
+
+            override fun onShowPress(e: MotionEvent?) {
+            }
+
+            override fun onSingleTapUp(e: MotionEvent): Boolean {
+                //当单击事件发生时，寻找单击坐标下的控件，并回调监听器
+                e.let {
+                    findChildViewUnder(it.x,it.y)?.let { child ->
+                        listener(child,getChildAdapterPosition(child))
+                    }
+                }
+                return false
+            }
+
+            override fun onScroll(
+                e1: MotionEvent?,
+                e2: MotionEvent?,
+                distanceX: Float,
+                distanceY: Float
+            ): Boolean {
+                return false
+            }
+
+            override fun onLongPress(e: MotionEvent?) {
+            }
+
+            override fun onFling(
+                e1: MotionEvent?,
+                e2: MotionEvent?,
+                velocityX: Float,
+                velocityY: Float
+            ): Boolean {
+                return false
+            }
+
+        })
+
+
+
+        //'在拦截触摸事件时，解析触摸事件'
+        override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+            gestureDetector.onTouchEvent(e)
+            return false
+        }
+
+        override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+        }
+
+        override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+        }
+
+    })
+
 }

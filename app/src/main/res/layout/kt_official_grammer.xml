@@ -34,7 +34,7 @@
                 ,btn_iterators,btn_dataclass,btn_enum,btn_sealdclass,btn_highOrderFunction1
                 ,btn_highOrderFunction2,btn_lambda,btn_extensionFunAndProperty,btn_collection
                 ,btn_delegate_mode,btn_destructor,btn_return_break,btn_return_outside,btn_return_inside
-                ,btn_return_nested_innerclass,btn_tryReturnValue"
+                ,btn_return_nested_innerclass,btn_tryReturnValue,btn_check_require,btn_print_collection"
                 />
             <Button
                 android:id="@+id/btn_circulation"
@@ -217,6 +217,19 @@
                 android:text="Try表达式作为返回值"
                 />
 
+            <Button
+                android:id="@+id/btn_check_require"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckRequire"
+                />
+
+            <Button
+                android:id="@+id/btn_print_collection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="打印集合"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -32,7 +32,9 @@ import com.tesla.framework.common.util.HideTextWatcher
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.maxCustomize
+import com.tesla.framework.kt.ofMap
 import com.tesla.framework.kt.plusAssign
+import com.tesla.framework.kt.print
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -141,15 +143,11 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         }
 
         mBinding.btnExpandFunction.setOnClickListener {
-            val file = File(requireContext().filesDir, "uitest.txt")
-            file.writeText("hello:${Random.nextInt(10)}")
+            expandFunction()
+        }
 
-            println(file.readText())
-
-            //给LoadSir 增加一个方法
-            if (LoadSir.Builder().debug()){
-
-            }
+        mBinding.btnExpandCollection.setOnClickListener {
+            expandCollection()
         }
 
         mBinding.btnExpandFunction2.setOnClickListener {
@@ -274,6 +272,40 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
+    }
+
+    private fun expandFunction() {
+        val file = File(requireContext().filesDir, "uitest.txt")
+        file.writeText("hello:${Random.nextInt(10)}")
+
+        println(file.readText())
+        //给LoadSir 增加一个方法
+        if (LoadSir.Builder().debug()) {
+
+        }
+
+
+    }
+
+    private fun expandCollection(){
+        val users = listOf(
+            User(1,"Lily"),
+            User(2,"Lucy"),
+            User(3,"Jim Green"),
+        )
+        //打印列表
+        val formattedString = users.print { user ->
+            "${user.name }-${user.id}"
+        }
+        println("print list:${formattedString}")
+
+        val map = mapOf(1 to "one", 2 to "two", 3 to "three")
+        val formatedMap =  map.print()
+        println("formatted map:${formatedMap}")
+
+
+        val dataClassStr = User(10, "Jim").ofMap()?.print()
+        println("dataClassStr:$dataClassStr")
     }
 
     private object ObjectInstance{
