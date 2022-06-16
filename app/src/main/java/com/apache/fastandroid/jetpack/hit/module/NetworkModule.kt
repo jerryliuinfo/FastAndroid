@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,11 +14,16 @@ import javax.inject.Singleton
 
 /**
  * Created by Jerry on 2022/3/20.
+ * 组件类型:ApplicationComponent ActivityComponent
  */
 @Module
+//@InstallIn(ActivityComponent::class)
 @InstallIn(ActivityComponent::class)
 class NetworkModule {
 
+    /**
+     * 每次都会创建实例
+     */
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
@@ -27,6 +33,9 @@ class NetworkModule {
             .build()
     }
 
+    /**
+     * 全局单例
+     */
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()

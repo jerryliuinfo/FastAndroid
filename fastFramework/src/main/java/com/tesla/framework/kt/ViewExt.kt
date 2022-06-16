@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.app.Activity
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.content.res.Resources
@@ -13,6 +14,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.os.SystemClock
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.*
@@ -33,6 +35,7 @@ import androidx.viewbinding.ViewBinding
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.google.android.material.snackbar.Snackbar
+import com.tesla.framework.R
 import com.tesla.framework.component.livedata.Event
 import com.tesla.framework.component.livedata.NetworkLiveData
 import kotlinx.coroutines.Job
@@ -635,4 +638,43 @@ fun RecyclerView.addOnItemClickListener(listener:(View, Int) ->Unit = {_,_ -> } 
 
     })
 
+}
+
+
+
+const val SINGLE_CLICK_INTERVAL = 1000
+
+fun View.onSingleClick(
+    interval: Int = SINGLE_CLICK_INTERVAL,
+    isShareSingleClick: Boolean = true,
+    listener: (View) -> Unit
+) {
+    setOnClickListener {
+        determineTriggerSingleClick(interval, isShareSingleClick, listener)
+    }
+
+}
+
+fun View.determineTriggerSingleClick(
+    interval: Int = SINGLE_CLICK_INTERVAL,
+    isShareSingleClick: Boolean = true,
+    listener: View.OnClickListener
+) {
+    val target = if (isShareSingleClick) getActivity(this)?.window?.decorView ?: this else this
+    val millis = target.getTag(R.id.single_click_tag_last_single_click_millis) as? Long ?: 0
+    if (SystemClock.uptimeMillis() - millis >= interval) {
+        target.setTag(R.id.single_click_tag_last_single_click_millis, SystemClock.uptimeMillis())
+        listener.onClick(this)
+    }
+}
+
+private fun getActivity(view: View): Activity? {
+    var context = view.context
+    while (context is ContextWrapper) {
+        if (context is Activity) {
+            return context
+        }
+        context = context.baseContext
+    }
+    return null
 }

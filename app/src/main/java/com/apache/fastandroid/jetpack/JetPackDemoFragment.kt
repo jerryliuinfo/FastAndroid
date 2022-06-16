@@ -6,7 +6,7 @@ import com.apache.fastandroid.demo.databinding.DatabindingDemoFragment
 import com.apache.fastandroid.demo.room.RoomDemoFragment
 import com.apache.fastandroid.jetpack.coroutine.CoroutineDemoListFragment
 import com.apache.fastandroid.jetpack.flow.FlowDemoListFragment
-import com.apache.fastandroid.jetpack.hit.HitDemoFragment
+import com.apache.fastandroid.jetpack.hit.HitDemoActivity
 import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleDemoFragment
 import com.apache.fastandroid.jetpack.livedata.JetPackLiveDataListFragment
 import com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity
@@ -33,7 +33,7 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("Coroutine", "Coroutine", CoroutineDemoListFragment::class.java)
                 ,ViewItemBean("Flow", "Flow", FlowDemoListFragment::class.java)
 
-                ,ViewItemBean("Hit", "Hit", HitDemoFragment::class.java)
+                ,ViewItemBean("Hit", "Hit", activity=HitDemoActivity::class.java)
 
         )
     }

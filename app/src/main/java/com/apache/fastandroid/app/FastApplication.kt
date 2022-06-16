@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
@@ -25,6 +26,7 @@ import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
 import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
 import com.apache.fastandroid.jetpack.flow.local.DatabaseHelper
 import com.apache.fastandroid.jetpack.flow.local.DatabaseHelperImpl
+import com.apache.fastandroid.jetpack.lifecycle.TraditionalProcessLifecycleListener
 import com.apache.fastandroid.network.retrofit.ApiServiceFactory
 import com.apache.fastandroid.util.Global
 import com.blankj.utilcode.util.FileUtils
@@ -48,6 +50,8 @@ import com.wanjian.cockroach.DebugSafeModeUI
 import com.wanjian.cockroach.ExceptionHandler
 import dagger.hilt.android.HiltAndroidApp
 import dev.b3nedikt.viewpump.ViewPump.init
+import jp.wasabeef.takt.Seat
+import jp.wasabeef.takt.Takt
 import timber.log.TimerLogger
 import java.io.File
 import kotlin.system.measureTimeMillis
@@ -75,6 +79,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
         val time = measureTimeMillis {
             context = this
             instance = this
+
             initNightMode()
             databaseHelper = DatabaseHelperImpl(DatabaseBuilder.getInstance(this))
             mAppViewModelStore = ViewModelStore()
@@ -83,7 +88,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
             initOnce()
             initAop()
             crashReport()
-            //        initCockroach();
+            initTakt()
             initLoop()
             Logger.d("Application onCreate ")
 
@@ -108,8 +113,31 @@ class FastApplication : Application(), ViewModelStoreOwner {
             DeviceName.init(this)
             initPermissionMonitor()
             initAppDress()
+
+            Utils.getApp().registerActivityLifecycleCallbacks(TraditionalProcessLifecycleListener(object :TraditionalProcessLifecycleListener.LifecycleCallbackListener{
+                override fun onAppForeground() {
+                    Logger.d("onAppForeground -->")
+                }
+
+                override fun onAppBackground() {
+                    Logger.d("onAppForeground -->")
+                }
+
+            }))
+
         }
         println("Application onCreate cost time: $time milles")
+    }
+
+    private fun initTakt() {
+        Takt.stock(this)
+            .seat(Seat.TOP_RIGHT)
+            .interval(250)
+            .color(Color.WHITE)
+            .size(24f)
+            .alpha(.5f)
+            .listener { fps -> Log.d("Excellent!", fps.toString() + " fps") }
+            .useCustomControl()
     }
 
     private fun initNightMode() {
@@ -185,6 +213,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
 
     private fun crashReport() {
         init(this)
+//        initCockroach();
     }
 
     private fun initImageLoader() {

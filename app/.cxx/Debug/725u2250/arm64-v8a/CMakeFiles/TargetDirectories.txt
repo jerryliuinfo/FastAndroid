@@ -1,0 +1,4 @@
+/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/arm64-v8a/CMakeFiles/hello-jnicallback.dir
+/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/arm64-v8a/CMakeFiles/hello-jni.dir

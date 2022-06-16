@@ -60,7 +60,7 @@ public class LifecycleHandler extends Handler implements DefaultLifecycleObserve
         removeCallbacksAndMessages(null);
     }
 
-    /*private FullLifecycleObserverNew observer = new SimpleLifeCycleObserver(){
+    /*private FullLifecycleObserver observer = new SimpleLifeCycleObserver(){
         @Override
         public void onCreate(@NotNull LifecycleOwner owner) {
             super.onCreate(owner);

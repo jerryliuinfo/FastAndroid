@@ -1,0 +1,5 @@
+ninja: Entering directory `/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/arm64-v8a'
+[1/4] Building C object CMakeFiles/hello-jni.dir/hello-jni.c.o
+[2/4] Building C object CMakeFiles/hello-jnicallback.dir/hello-jnicallback.c.o
+[3/4] Linking C shared library /Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/arm64-v8a/libhello-jni.so
+[4/4] Linking C shared library /Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/arm64-v8a/libhello-jnicallback.so

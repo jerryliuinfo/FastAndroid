@@ -23,6 +23,7 @@ import timber.log.Timber
 /**
  * Created by Jerry on 2022/3/10.
  */
+
 open class ABaseFragment:Fragment(),BaseView {
     private var isFirstLoad = true
     lateinit var mActivity: AppCompatActivity

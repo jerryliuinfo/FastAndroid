@@ -94,8 +94,10 @@ class ViewModelFactory constructor(
             isAssignableFrom(TasksViewModel::class.java) ->
                 TasksViewModel(tasksRepository, handle)
 
+
             isAssignableFrom(SingleNetworkCallViewModel::class.java) ->
                 SingleNetworkCallViewModel(ApiHelperImpl(ApiServiceFactory.flowService))
+
 
             isAssignableFrom(SerialNetworkCallViewModel::class.java) ->
                 SerialNetworkCallViewModel(ApiHelperImpl(ApiServiceFactory.flowService))
@@ -103,8 +105,15 @@ class ViewModelFactory constructor(
             isAssignableFrom(ParallelNetworkCallViewModel::class.java) ->
                 ParallelNetworkCallViewModel(ApiHelperImpl(ApiServiceFactory.flowService))
 
+
+
+
             isAssignableFrom(RoomDbViewModel::class.java) ->
                 RoomDbViewModel(ApiHelperImpl(ApiServiceFactory.flowService),DatabaseHelperImpl(DatabaseBuilder.getInstance(Utils.getApp())))
+
+
+
+
 
             isAssignableFrom(CatchViewModel::class.java) ->
                 CatchViewModel(ApiHelperImpl(ApiServiceFactory.flowService),DatabaseHelperImpl(DatabaseBuilder.getInstance(Utils.getApp())))

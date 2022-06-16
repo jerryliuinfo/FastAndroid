@@ -32,6 +32,7 @@ import com.zwb.lib_base.utils.network.AutoRegisterNetListener
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
 import com.zwb.lib_base.utils.network.NetworkStateClient
 import com.zwb.lib_base.utils.network.NetworkTypeEnum
+import dagger.hilt.android.AndroidEntryPoint
 import java.lang.ref.WeakReference
 
 /**
@@ -57,13 +58,19 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
      */
     protected var activity: Activity? = null
     var toolbar: Toolbar? = null
+    protected lateinit var root: View
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         fragmentRefs = HashMap()
         super.onCreate(savedInstanceState)
         activity = this
-//        mBinding = inflater(layoutInflater)
-        mBinding = inflateBinding(layoutInflater)
-        setContentView(mBinding.root)
+        inflateBinding<V>(layoutInflater).also {
+            mBinding = it
+            setContentView(mBinding.root)
+            root = mBinding.root
+        }
+
         activityHelper = BaseActivityHelper(this,this)
         initViewModel()
         initNetworkListener()

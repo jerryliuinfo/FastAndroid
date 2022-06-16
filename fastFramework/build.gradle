@@ -3,7 +3,8 @@ apply from: '../gradle-mvn-push.gradle'
 
 apply from: '../base_lib.gradle'
 
-
+//hit
+apply plugin: 'dagger.hilt.android.plugin'
 
 
 dependencies {
@@ -22,6 +23,9 @@ dependencies {
 
     implementation(*Jetpack.lifecycle)
     implementation(*Jetpack.navigation)
+
+    implementation(*Jetpack.hit)
+    kapt(*Jetpack.hit_compiler)
 
 }
 

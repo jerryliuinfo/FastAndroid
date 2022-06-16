@@ -6,11 +6,12 @@ import com.apache.fastandroid.network.retrofit.FlowApiService
 import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
 /**
  * Created by Jerry on 2022/5/3.
  */
-class ApiHelperImpl(val apiService: FlowApiService):ApiHelper {
+class ApiHelperImpl @Inject constructor(val apiService: FlowApiService):ApiHelper {
     override fun getUsers(): Flow<List<ApiUser>> = flow { emit(apiService.getUsers()) }
 
     override suspend fun getUsers2(): List<ApiUser> {

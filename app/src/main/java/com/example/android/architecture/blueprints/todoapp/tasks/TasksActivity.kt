@@ -18,8 +18,9 @@ package com.example.android.architecture.blueprints.todoapp.tasks
 import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -34,23 +35,38 @@ import com.google.android.material.navigation.NavigationView
  */
 class TasksActivity : AppCompatActivity() {
 
-    private lateinit var drawerLayout: DrawerLayout
+    private  val drawerLayout by lazy {
+        findViewById<DrawerLayout>(R.id.drawer_layout).apply {
+            setStatusBarBackground(R.color.colorPrimaryDark)
+        }
+    }
+
+    private val navController
+        get() = findNavController(R.id.nav_host_fragment)
+
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.tasks_act)
-        setupNavigationDrawer()
-        setSupportActionBar(findViewById(R.id.toolbar))
 
-        val navController: NavController = findNavController(R.id.nav_host_fragment)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         appBarConfiguration =
             AppBarConfiguration.Builder(R.id.tasks_fragment_dest, R.id.statistics_fragment_dest)
                 .setDrawerLayout(drawerLayout)
                 .build()
+
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        navigationView.setupWithNavController(navController)
+
         setupActionBarWithNavController(navController, appBarConfiguration)
-        findViewById<NavigationView>(R.id.nav_view)
-            .setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val isDrawer = destination.isDrawerDestination()
+            toolbar.setNavigationIcon(if (isDrawer) R.drawable.ic_menu else R.drawable.ic_back)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -58,17 +74,17 @@ class TasksActivity : AppCompatActivity() {
             super.onSupportNavigateUp()
     }
 
-    private fun setupNavigationDrawer() {
-        drawerLayout = (findViewById<DrawerLayout>(R.id.drawer_layout))
-            .apply {
-                setStatusBarBackground(R.color.colorPrimaryDark)
-            }
-    }
 
     companion object{
 
     }
+
+    private fun NavDestination.isDrawerDestination() = id == R.id.tasks_fragment_dest || id == R.id.statistics_fragment_dest
+
 }
+
+
+
 
 // Keys for navigation
 const val ADD_EDIT_RESULT_OK = Activity.RESULT_FIRST_USER + 1

@@ -10,11 +10,12 @@ import com.apache.fastandroid.network.model.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Created by Jerry on 2022/5/4.
  */
-class RoomDbViewModel(private val apiHelper: ApiHelper,private val databaseHelper: DatabaseHelper):BaseViewModel() {
+class RoomDbViewModel @Inject constructor(private val apiHelper: ApiHelper,private val databaseHelper: DatabaseHelper):BaseViewModel() {
 
     val users = MutableLiveData<Resource<List<User>>>()
 

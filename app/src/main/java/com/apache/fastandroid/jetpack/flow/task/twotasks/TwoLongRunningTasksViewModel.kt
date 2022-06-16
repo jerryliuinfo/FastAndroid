@@ -11,8 +11,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TwoLongRunningTasksViewModel(
+class TwoLongRunningTasksViewModel @Inject constructor(
     private val apiHelper: ApiHelper,
     private val dbHelper: DatabaseHelper
 ) : ViewModel() {

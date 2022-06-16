@@ -15,16 +15,12 @@ import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
-import com.apache.fastandroid.demo.crashreport.CrashReportDemoFragment
-import com.apache.fastandroid.demo.kt.KotlinHotQuestionFragment
-import com.apache.fastandroid.demo.mmkv.MMKVKtxFragment
-import com.apache.fastandroid.demo.temp.TempDemoFragment
+import com.apache.fastandroid.jetpack.hit.HitDemoActivity
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVmActivity
-import com.tesla.framework.ui.activity.FragmentContainerActivity
 
 class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
     private val selecteId = -1
@@ -96,7 +92,20 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        LiveDataWrongUsageActivity.launch(this)
 
 //        FragmentContainerActivity.launch(this, JetPackLifeCycleFragment::class.java,null)
-        FragmentContainerActivity.launch(this, KotlinHotQuestionFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, KotlinHotQuestionFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, TempDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, DemoListFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, JniDemoListFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, JetPackLifeCycleDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, ImmerseStatusBarDemoActivity::class.java,null,addTitleBar = false)
+
+//        launchActivity<ImmerseStatusBarDemoActivity>(this)
+         launchActivity<HitDemoActivity>(this)
+
+//        launchActivity<TasksActivity>(this)
+
+//        launchActivity<com.example.hellojnicallback.MainActivity>(this)
 
 
 //        launchActivity<TasksActivity>(this)

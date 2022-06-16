@@ -1,0 +1,53 @@
+{
+  "stringTable": {},
+  "buildFiles": [
+    "/Users/jerry/work/project/Android/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/jerry/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+      "-C",
+      "/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/jerry/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+    "-C",
+    "/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "hello-jni-Debug-arm64-v8a": {
+      "buildCommandComponents": [
+        "/Users/jerry/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+        "-C",
+        "/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/arm64-v8a",
+        "hello-jni"
+      ],
+      "buildType": "debug",
+      "abi": "arm64-v8a",
+      "artifactName": "hello-jni",
+      "output": "/Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/arm64-v8a/libhello-jni.so",
+      "runtimeFiles": []
+    },
+    "hello-jnicallback-Debug-arm64-v8a": {
+      "buildCommandComponents": [
+        "/Users/jerry/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+        "-C",
+        "/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/arm64-v8a",
+        "hello-jnicallback"
+      ],
+      "buildType": "debug",
+      "abi": "arm64-v8a",
+      "artifactName": "hello-jnicallback",
+      "output": "/Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/arm64-v8a/libhello-jnicallback.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {},
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": []
+}

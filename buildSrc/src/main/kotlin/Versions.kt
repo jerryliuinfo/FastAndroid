@@ -4,6 +4,7 @@ import org.apache.tools.ant.taskdefs.condition.JavaVersion
  * Created by Jerry on 2022/2/26.
  */
 object Versions {
+    const val agp = "7.0.4"
     const val kotlin = "1.6.10"
 
     const val appCompat = "1.3.1"
@@ -17,6 +18,7 @@ object Versions {
     const val preference = "1.1.0-alpha04"
     const val palette_ktx = "1.0.0"
     const val annotation = "1.0.0"
+//    const val hit = "2.28-alpha"
     const val hit = "2.38"
 
     const val navigationVersion = "2.3.5"
@@ -51,8 +53,7 @@ object Versions {
     const val mockito_kotlin = "2.0.0-RC3"
     const val androidxArch = "2.0.0"
 
-    const val agp = "7.0.4"
-    const val kgp = "7.0.1"
+
 
     const val espressoVersion = "3.5.0-alpha04"
     const val materialDialog = "3.3.0"

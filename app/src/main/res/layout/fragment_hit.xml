@@ -1,85 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="btn_inject_member,btn_inject_with_param,btn_inject_interface
-            ,btn_inject_interface_multi_param,btn_inject_third_party,btn_inject_singleton,
-            btn_builtin_app_qualifier,btn_builtin_activity_qualifier,btn_inject_viewModel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:flow_wrapMode="aligned"
-        app:flow_horizontalGap="16dp"
-        app:flow_verticalGap="16dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        />
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="btn_not_inject,btn_inject_by_handle,btn_inject_by_handle_multi_param,btn_inject_member,btn_inject_with_param,btn_inject_interface
+            ,btn_inject_interface_multi_param,btn_inject_third_party,btn_inject_third_party_retrofit,btn_component_scope,btn_inject_singleton,
+            btn_builtin_app_qualifier,btn_builtin_activity_qualifier,btn_normal_viewModel,btn_normal_viewModel_withParamter,btn_inject_viewModel,btn_to_activity2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:flow_wrapMode="aligned"
+            app:flow_horizontalGap="16dp"
+            app:flow_verticalGap="16dp"
 
-    <Button
-        android:id="@+id/btn_inject_member"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="简单依赖注入"
-        />
-    <Button
-        android:id="@+id/btn_inject_with_param"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="带参数依赖注入"
-        />
+            />
 
-    <Button
-        android:id="@+id/btn_inject_interface"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="接口依赖注入"
-        />
+        <Button
+            android:id="@+id/btn_not_inject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="非依赖注入"
+            />
+        <Button
+            android:id="@+id/btn_inject_by_handle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手动依赖注入单参数"
+            />
 
-    <Button
-        android:id="@+id/btn_inject_interface_multi_param"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="接口依赖注入多个参数"
-        />
+        <Button
+            android:id="@+id/btn_inject_by_handle_multi_param"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手动依赖注入多参数"
+            />
 
-    <Button
-        android:id="@+id/btn_inject_third_party"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="第三方类注入"
-        />
+        <Button
+            android:id="@+id/btn_inject_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="简单依赖注入"
+            />
+        <Button
+            android:id="@+id/btn_inject_with_param"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="带参数依赖注入"
+            />
 
-    <Button
-        android:id="@+id/btn_inject_singleton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="第三方类注入单例"
-        />
+        <Button
+            android:id="@+id/btn_inject_interface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接口依赖注入(同实例)"
+            />
 
-    <Button
-        android:id="@+id/btn_builtin_app_qualifier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="预置 Application Qualifier"
-        />
+        <Button
+            android:id="@+id/btn_inject_interface_multi_param"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接口依赖注入(不同实例)"
 
-    <Button
-        android:id="@+id/btn_builtin_activity_qualifier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="预置 Activity Qualifier"
-        />
+            />
 
-    <Button
-        android:id="@+id/btn_inject_viewModel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ViewModel注入"
-        />
+        <Button
+            android:id="@+id/btn_inject_third_party"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="第三方类注入OkHttpClient"
+            />
+
+        <Button
+            android:id="@+id/btn_inject_third_party_retrofit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="第三方类注入Retrofit"
+            />
+
+        <Button
+            android:id="@+id/btn_component_scope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="作用于"
+            />
+        <Button
+            android:id="@+id/btn_inject_singleton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="第三方类注入单例"
+            />
+
+        <Button
+            android:id="@+id/btn_builtin_app_qualifier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预置 Application Qualifier"
+            />
+
+        <Button
+            android:id="@+id/btn_builtin_activity_qualifier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预置 Activity Qualifier"
+            />
+
+        <Button
+            android:id="@+id/btn_normal_viewModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="传统ViewModel使用"
+            />
+        <Button
+            android:id="@+id/btn_normal_viewModel_withParamter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="传统ViewModel带参数"
+            />
+
+        <Button
+            android:id="@+id/btn_inject_viewModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ViewModel注入"
+            />
+        <Button
+            android:id="@+id/btn_to_activity2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跳转"
+            />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>

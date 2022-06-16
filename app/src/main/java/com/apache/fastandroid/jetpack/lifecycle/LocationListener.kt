@@ -3,7 +3,6 @@ package com.apache.fastandroid.jetpack.lifecycle
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.component.lifecycle.LifecycleObserverAdapter
 
 /**
  * Created by Jerry on 2020/11/1.

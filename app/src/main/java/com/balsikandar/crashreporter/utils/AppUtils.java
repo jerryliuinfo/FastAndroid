@@ -16,9 +16,7 @@ import java.util.UUID;
 
 import androidx.core.app.ActivityCompat;
 
-/**
- * Created by bali on 12/08/17.
- */
+
 
 public class AppUtils {
     private static String getCurrentLauncherApp(Context context) {

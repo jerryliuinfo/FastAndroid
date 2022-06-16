@@ -1,0 +1,2 @@
+ninja: Entering directory `/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/arm64-v8a'
+ninja: no work to do.

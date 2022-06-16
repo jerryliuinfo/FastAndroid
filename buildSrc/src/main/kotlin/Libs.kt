@@ -223,10 +223,15 @@ object Jetpack{
         "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02",
     )
     val hit_compiler = arrayOf(
-        "com.google.dagger:hilt-android-compiler:${Versions.hit}",
-        //hit 对 viewmodel 的支持
-        "androidx.hilt:hilt-compiler:1.0.0-alpha02"
+//        "com.google.dagger:hilt-android-compiler:${Versions.hit}",
+//        //hit 对 viewmodel 的支持
+//        "androidx.hilt:hilt-compiler:1.0.0-alpha02"
+
+        "androidx.hilt:hilt-compiler:1.0.0-alpha02",
+        "com.google.dagger:hilt-android-compiler:${Versions.hit}"
+
     )
+
 
     val startUp = "androidx.startup:startup-runtime:1.0.0-alpha01"
 

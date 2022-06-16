@@ -9,7 +9,6 @@ import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
 import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
 import com.apache.fastandroid.demo.hitpit.HitPitDemoListFragment
 import com.apache.fastandroid.demo.jni.JniDemoListFragment
-import com.apache.fastandroid.demo.jni.JniJavaCallCDemoFragment
 import com.apache.fastandroid.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.lyric.LyricDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
@@ -17,6 +16,7 @@ import com.apache.fastandroid.demo.sample.SampleCodeDemoListFragment
 import com.apache.fastandroid.demo.sampleapp.SampleAppDemoFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.transition.TransitionDemoFragment
+import com.apache.fastandroid.demo.widget.property.UIPropertyDemoListFragment
 import com.apache.fastandroid.demo.widget.UIWidgetDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.RelearnAndroidDemoFragment
@@ -42,6 +42,7 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("Hencoder", "绘制文字", DrawTextDemoFragment::class.java),
             ViewItemBean("Hencoder", "范围裁切", MatrixDemoFragment::class.java),
             ViewItemBean("UI小控件", "UI小控件", UIWidgetDemoFragment::class.java),
+            ViewItemBean("UI属性", "UI属性", UIPropertyDemoListFragment::class.java),
 
             ViewItemBean("CustomViewWidget", "自定义控件", CustomViewFragment::class.java),
             ViewItemBean("系统控件", "系统控件", CustomViewFragment::class.java),

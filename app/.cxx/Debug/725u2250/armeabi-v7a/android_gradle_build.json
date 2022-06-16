@@ -1,0 +1,53 @@
+{
+  "stringTable": {},
+  "buildFiles": [
+    "/Users/jerry/work/project/Android/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/jerry/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+      "-C",
+      "/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/jerry/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+    "-C",
+    "/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "hello-jnicallback-Debug-armeabi-v7a": {
+      "buildCommandComponents": [
+        "/Users/jerry/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+        "-C",
+        "/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/armeabi-v7a",
+        "hello-jnicallback"
+      ],
+      "buildType": "debug",
+      "abi": "armeabi-v7a",
+      "artifactName": "hello-jnicallback",
+      "output": "/Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/armeabi-v7a/libhello-jnicallback.so",
+      "runtimeFiles": []
+    },
+    "hello-jni-Debug-armeabi-v7a": {
+      "buildCommandComponents": [
+        "/Users/jerry/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+        "-C",
+        "/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/armeabi-v7a",
+        "hello-jni"
+      ],
+      "buildType": "debug",
+      "abi": "armeabi-v7a",
+      "artifactName": "hello-jni",
+      "output": "/Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/armeabi-v7a/libhello-jni.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {},
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": []
+}

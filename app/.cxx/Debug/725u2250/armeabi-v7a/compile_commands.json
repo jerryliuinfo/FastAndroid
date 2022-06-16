@@ -1,0 +1,13 @@
+[
+{
+  "directory": "/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/armeabi-v7a",
+  "command": "/Users/jerry/Library/Android/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi24 --gcc-toolchain=/Users/jerry/Library/Android/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/jerry/Library/Android/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dhello_jnicallback_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/hello-jnicallback.dir/hello-jnicallback.c.o   -c /Users/jerry/work/project/Android/app/src/main/cpp/hello-jnicallback.c",
+  "file": "/Users/jerry/work/project/Android/app/src/main/cpp/hello-jnicallback.c"
+},
+
+{
+  "directory": "/Users/jerry/work/project/Android/app/.cxx/Debug/725u2250/armeabi-v7a",
+  "command": "/Users/jerry/Library/Android/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi24 --gcc-toolchain=/Users/jerry/Library/Android/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/jerry/Library/Android/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dhello_jni_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/hello-jni.dir/hello-jni.c.o   -c /Users/jerry/work/project/Android/app/src/main/cpp/hello-jni.c",
+  "file": "/Users/jerry/work/project/Android/app/src/main/cpp/hello-jni.c"
+}
+]

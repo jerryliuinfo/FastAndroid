@@ -1,16 +1,19 @@
 package com.apache.fastandroid.jetpack.hit.module
 
-import com.apache.fastandroid.demo.bean.*
+import com.apache.fastandroid.jetpack.hit.bind.BindElectricEngine
+import com.apache.fastandroid.jetpack.hit.bind.BindGasEngine
+import com.apache.fastandroid.jetpack.hit.engine.ElectricEngine
+import com.apache.fastandroid.jetpack.hit.engine.Engine
+import com.apache.fastandroid.jetpack.hit.engine.GasEngine
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
-import javax.inject.Qualifier
 
 /**
  * Created by Jerry on 2022/3/20.
  */
-@Module
+@Module //表示这是一个提供注入实例的模块
 @InstallIn(ActivityComponent::class)
 abstract class EngineModule {
 
@@ -21,10 +24,10 @@ abstract class EngineModule {
      */
     @BindGasEngine
     @Binds
-    abstract fun bindGasEngine(gasEngine: GasEngine): Engineer
+    abstract fun bindGasEngine(gasEngine: GasEngine): Engine
 
     @BindElectricEngine
     @Binds
-    abstract fun bindElectricEngine(gasEngine: ElectricEngine): Engineer
+    abstract fun bindElectricEngine(gasEngine: ElectricEngine): Engine
 
 }

@@ -8,6 +8,7 @@ import com.apache.fastandroid.demo.snaphelper.SnapHelperDemoFragment
 import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity
 import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity2
 import com.apache.fastandroid.demo.style.FitSystemWindowFrameLayoutDemoActivity
+import com.apache.fastandroid.demo.style.ImmerseStatusBarDemoActivity
 import com.apache.fastandroid.demo.temp.activityresult.ActivityResultDemoActivity
 import com.apache.fastandroid.demo.temp.conflict.ScrollConflictInnernterceptDemoFragment
 import com.apache.fastandroid.demo.temp.conflict.ScrollConflictOuterInterceptDemoFragment
@@ -42,6 +43,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("FitSystemWindow", "FitSystemWindow", activity = FitSystemWindowDemoActivity::class.java)
                 ,ViewItemBean("FitSystemWindow2", "FitSystemWindow2", activity = FitSystemWindowDemoActivity2::class.java)
                 ,ViewItemBean("FitSystemWindow3", "FitSystemWindow3", activity = FitSystemWindowFrameLayoutDemoActivity::class.java)
+                ,ViewItemBean("沉浸式状态栏黑科技", "沉浸式状态栏黑科技", activity =ImmerseStatusBarDemoActivity::class.java)
                 ,ViewItemBean("LayoutInflater", "LayoutInflater",  LayoutInflaterDemoFragment::class.java)
                 ,ViewItemBean("ActivityResultApi", "ActivityResultApi",  activity = ActivityResultDemoActivity::class.java)
                 ,ViewItemBean("SavedStateHandle", "SavedStateHandle",  SaveStateHandleFragment::class.java)
