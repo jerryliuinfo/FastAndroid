@@ -49,7 +49,7 @@ class CrashReportDemoFragment:BaseVBFragment<ActivityCrashReportBinding>(Activit
         thread {
             try {
                 context1 = null
-                context1!!.resources
+//                context1!!.resources
             } catch (e: Exception) {
                 //log caught Exception
                 CrashReporter.logException(e)

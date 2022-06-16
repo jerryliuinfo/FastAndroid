@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="btn_not_inject,btn_inject_by_handle,btn_inject_by_handle_multi_param,btn_inject_member,btn_inject_with_param,btn_inject_interface
             ,btn_inject_interface_multi_param,btn_inject_third_party,btn_inject_third_party_retrofit,btn_component_scope,btn_inject_singleton,
-            btn_builtin_app_qualifier,btn_builtin_activity_qualifier,btn_normal_viewModel,btn_normal_viewModel_withParamter,btn_inject_viewModel,btn_to_activity2"
+            btn_builtin_app_qualifier,btn_builtin_activity_qualifier,btn_normal_viewModel_withParamter,btn_inject_viewModel,btn_to_activity2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:flow_wrapMode="aligned"
@@ -112,12 +112,7 @@
             android:text="预置 Activity Qualifier"
             />
 
-        <Button
-            android:id="@+id/btn_normal_viewModel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="传统ViewModel使用"
-            />
+
         <Button
             android:id="@+id/btn_normal_viewModel_withParamter"
             android:layout_width="wrap_content"

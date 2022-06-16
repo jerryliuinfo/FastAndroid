@@ -1,25 +1,3 @@
 # ninja log v5
-0	420	1654391376	CMakeFiles/hello-jni.dir/hello-jni.c.o	ee1aeb3f079d62fb
-421	763	1654391376	/Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/arm64-v8a/libhello-jni.so	c122b8fee008f51a
-4	258	1654405124	CMakeFiles/hello-jni.dir/hello-jni.c.o	ee1aeb3f079d62fb
-0	297	1654405124	CMakeFiles/hello-jnicallback.dir/hello-jnicallback.c.o	75635a1dee4fdc93
-258	512	1654405124	/Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/arm64-v8a/libhello-jni.so	c122b8fee008f51a
-298	512	1654405124	/Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/arm64-v8a/libhello-jnicallback.so	32eec34a94f85168
-0	461	1654405746	CMakeFiles/hello-jnicallback.dir/hello-jnicallback.c.o	75635a1dee4fdc93
-461	669	1654405746	/Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/arm64-v8a/libhello-jnicallback.so	32eec34a94f85168
-1	558	1654412220	CMakeFiles/hello-jnicallback.dir/hello-jnicallback.c.o	75635a1dee4fdc93
-558	804	1654412220	/Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/arm64-v8a/libhello-jnicallback.so	32eec34a94f85168
-0	14	0	clean	80381c205511c22a
-0	9	0	clean	80381c205511c22a
-0	6	0	clean	80381c205511c22a
-0	6	0	clean	80381c205511c22a
-0	6	0	clean	80381c205511c22a
-0	6	0	clean	80381c205511c22a
 0	8	0	clean	80381c205511c22a
-0	10	0	clean	80381c205511c22a
-0	5	0	clean	80381c205511c22a
 0	7	0	clean	80381c205511c22a
-2	337	1655369411	CMakeFiles/hello-jni.dir/hello-jni.c.o	ee1aeb3f079d62fb
-1	366	1655369412	CMakeFiles/hello-jnicallback.dir/hello-jnicallback.c.o	75635a1dee4fdc93
-337	551	1655369412	/Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/arm64-v8a/libhello-jni.so	c122b8fee008f51a
-366	551	1655369412	/Users/jerry/work/project/Android/app/build/intermediates/cxx/Debug/725u2250/obj/arm64-v8a/libhello-jnicallback.so	32eec34a94f85168

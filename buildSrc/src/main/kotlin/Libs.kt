@@ -220,16 +220,14 @@ object Jetpack{
     val hit = arrayOf(
         "com.google.dagger:hilt-android:${Versions.hit}",
         //hit 对 viewmodel 的支持
-        "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02",
+        "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hit_viewModel}",
     )
     val hit_compiler = arrayOf(
-//        "com.google.dagger:hilt-android-compiler:${Versions.hit}",
-//        //hit 对 viewmodel 的支持
-//        "androidx.hilt:hilt-compiler:1.0.0-alpha02"
+        //使用hit 时需要
+        "com.google.dagger:hilt-android-compiler:${Versions.hit}",
 
-        "androidx.hilt:hilt-compiler:1.0.0-alpha02",
-        "com.google.dagger:hilt-android-compiler:${Versions.hit}"
-
+        //hit 对 viewmodel 的支持
+        "androidx.hilt:hilt-compiler:${Versions.hit_viewModel}",
     )
 
 

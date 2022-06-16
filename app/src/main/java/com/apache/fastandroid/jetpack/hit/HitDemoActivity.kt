@@ -2,6 +2,7 @@ package com.apache.fastandroid.jetpack.hit
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.apache.fastandroid.databinding.FragmentHitBinding
 import com.apache.fastandroid.demo.bean.*
 import com.apache.fastandroid.jetpack.hit.engine.GasEngine
@@ -70,8 +71,9 @@ class HitDemoActivity:BaseVmActivity<FragmentHitBinding>(FragmentHitBinding::inf
     private val mNormalViewModel: NormalViewModel by viewModels {
         NormalViewModel.NormalViewModelFactory(Repository())
     }
-
-    lateinit var mHitViewModel: HitViewModel
+//
+    private val mHitViewModel: HitViewModel by lazy {
+         ViewModelProvider(this).get(HitViewModel::class.java) }
 
 
 
@@ -138,14 +140,14 @@ class HitDemoActivity:BaseVmActivity<FragmentHitBinding>(FragmentHitBinding::inf
             println("inject activity context:${builtInActivityQualifer}")
         }
 
-        mBinding.btnNormalViewModel.setOnClickListener {
+        mBinding.btnNormalViewModelWithParamter.setOnClickListener {
             println("normal viewModel :${mNormalViewModel}")
             mNormalViewModel.doWork()
         }
 
         mBinding.btnInjectViewModel.setOnClickListener {
             println("inject viewModel :${mHitViewModel}")
-            mHitViewModel.doWork()
+//            mHitViewModel.doWork()
         }
         mBinding.btnToActivity2.setOnClickListener {
             launchActivity<HitDemoActivity2>(this)

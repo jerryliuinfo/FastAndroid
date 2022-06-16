@@ -112,11 +112,11 @@ android {
         }
     }
 
-    externalNativeBuild {
+  /*  externalNativeBuild {
         cmake {
             path "src/main/cpp/CMakeLists.txt"
         }
-    }
+    }*/
 
     signingConfigs {
         release {
@@ -439,6 +439,8 @@ dependencies {
 
     implementation(*Jetpack.room)
     kapt(*Jetpack.room_compiler)
+//    //kotlin 用 kapt
+//    kapt Libs.room_compiler
 
 
     implementation(Jetpack.startUp)
@@ -449,6 +451,8 @@ dependencies {
 
     implementation(*Jetpack.hit)
     kapt(*Jetpack.hit_compiler)
+
+
 
 
 
@@ -471,8 +475,6 @@ dependencies {
     implementation(*Libs.blackTech)
 
 
-    //kotlin 用 kapt
-    kapt Libs.room_compiler
 
 
 

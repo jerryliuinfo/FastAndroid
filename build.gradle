@@ -23,6 +23,7 @@ buildscript {
         classpath PluginConfig.kgp
         classpath PluginConfig.andResGuard
         classpath PluginConfig.hilt
+
         classpath PluginConfig.maven_gradle_plugin
         classpath PluginConfig.navigation
         classpath PluginConfig.pablo

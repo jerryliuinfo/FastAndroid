@@ -20,6 +20,7 @@ object Versions {
     const val annotation = "1.0.0"
 //    const val hit = "2.28-alpha"
     const val hit = "2.38"
+    const val hit_viewModel = "1.0.0-alpha02"
 
     const val navigationVersion = "2.3.5"
     const val lifecycle_version = "2.3.1"
