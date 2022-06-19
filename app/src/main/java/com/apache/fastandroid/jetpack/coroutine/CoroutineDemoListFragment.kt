@@ -3,8 +3,6 @@ package com.apache.fastandroid.jetpack.coroutine
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.kt.coroutine.*
-import com.apache.fastandroid.jetpack.flow.FlowDemoFragment
-import com.apache.fastandroid.jetpack.flow.FlowBasicUsageFragment
 
 /**
  * Created by Jerry on 2020/10/31.

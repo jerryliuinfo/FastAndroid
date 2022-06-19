@@ -1,23 +1,18 @@
-package com.apache.fastandroid.jetpack.flow
+package com.apache.fastandroid.jetpack.flow.basic
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
-import com.apache.fastandroid.databinding.ItemLayoutBinding
 import com.apache.fastandroid.jetpack.flow.adapter.ApiUserAdapter
 import com.apache.fastandroid.network.model.ApiUser
 import com.apache.fastandroid.network.model.Resource
 import com.apache.fastandroid.network.model.Status
 import com.apache.fastandroid.widget.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.tesla.framework.kt.dpInt
-import com.tesla.framework.ui.fragment.BaseDBFragment
 import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**

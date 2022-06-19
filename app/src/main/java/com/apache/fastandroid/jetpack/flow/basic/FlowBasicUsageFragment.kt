@@ -1,4 +1,4 @@
-package com.apache.fastandroid.jetpack.flow
+package com.apache.fastandroid.jetpack.flow.basic
 
 import android.os.Bundle
 import android.view.LayoutInflater

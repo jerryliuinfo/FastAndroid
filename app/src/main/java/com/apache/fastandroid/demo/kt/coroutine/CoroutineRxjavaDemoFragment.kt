@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import com.apache.fastandroid.demo.kt.coroutine.vm.RetrofitViewModel
-import com.apache.fastandroid.jetpack.flow.BaseFlowRecycleViewFragment
+import com.apache.fastandroid.jetpack.flow.basic.BaseFlowRecycleViewFragment
 import com.apache.fastandroid.network.model.ApiUser
 import com.apache.fastandroid.network.model.Resource
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
@@ -15,7 +15,7 @@ import com.example.android.architecture.blueprints.todoapp.util.getViewModelFact
  *https://github.com/MindorksOpenSource/MVVM-Architecture-Android-Beginners
  *
  */
-class CoroutineRxjavaDemoFragment:BaseFlowRecycleViewFragment() {
+class CoroutineRxjavaDemoFragment: BaseFlowRecycleViewFragment() {
 
     private val mViewModel:RetrofitViewModel by viewModels { getViewModelFactory() }
 

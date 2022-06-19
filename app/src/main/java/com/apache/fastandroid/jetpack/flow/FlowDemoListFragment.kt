@@ -2,6 +2,7 @@ package com.apache.fastandroid.jetpack.flow
 
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
+import com.apache.fastandroid.jetpack.flow.basic.FlowBasicUsageFragment
 import com.apache.fastandroid.jetpack.flow.completion.CompletionFragment
 import com.apache.fastandroid.jetpack.flow.errorhandling.catch.CatchFragment
 import com.apache.fastandroid.jetpack.flow.errorhandling.emitall.EmitAllFragment
@@ -18,6 +19,7 @@ import com.apache.fastandroid.jetpack.flow.room.RoomDbFragment
 import com.apache.fastandroid.jetpack.flow.search.SearchFragment
 import com.apache.fastandroid.jetpack.flow.serias.SerialNetworkFragment
 import com.apache.fastandroid.jetpack.flow.single.SingleNetworkFragment
+import com.apache.fastandroid.jetpack.flow.stateflow.StateFlowDemoFragment
 import com.apache.fastandroid.jetpack.flow.task.onetask.LongRunningTaskFragment
 import com.apache.fastandroid.jetpack.flow.task.twotasks.TwoLongRunningTaskFragment
 
@@ -49,6 +51,7 @@ class FlowDemoListFragment: BaseListFragment() {
             ,ViewItemBean("文件下载","文件下载", FlowDownloadFragment::class.java)
             ,ViewItemBean("Flow和 Room 结合","Flow和Room结合", FlowUserInfoFragment::class.java)
             ,ViewItemBean("Flow和 Retrofit 结合","Flow和 Retrofit 结合", FlowRetrofitFragment::class.java)
+            ,ViewItemBean("State and Share Flow","State and Share Flow", StateFlowDemoFragment::class.java)
 
         )
     }

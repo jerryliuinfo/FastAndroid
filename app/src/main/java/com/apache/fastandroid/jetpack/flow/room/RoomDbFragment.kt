@@ -4,15 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
-import com.apache.fastandroid.databinding.ItemLayoutBinding
 import com.apache.fastandroid.databinding.ItemLayoutUserBinding
-import com.apache.fastandroid.jetpack.flow.BaseFlowRecycleViewFragment
 import com.apache.fastandroid.jetpack.flow.data.bean.User
-import com.apache.fastandroid.network.model.ApiUser
-import com.apache.fastandroid.network.model.Resource
 import com.apache.fastandroid.network.model.Status
 import com.apache.fastandroid.widget.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
