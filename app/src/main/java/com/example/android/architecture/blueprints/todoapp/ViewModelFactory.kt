@@ -45,6 +45,7 @@ import com.apache.fastandroid.jetpack.flow.room.RoomDbViewModel
 import com.apache.fastandroid.jetpack.flow.serias.SerialNetworkCallViewModel
 import com.apache.fastandroid.jetpack.flow.single.SingleNetworkCallViewModel
 import com.apache.fastandroid.jetpack.flow.task.twotasks.TwoLongRunningTasksViewModel
+import com.apache.fastandroid.jetpack.flow.vm.PostViewModel
 import com.apache.fastandroid.network.retrofit.ApiServiceFactory
 import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTaskViewModel
@@ -140,6 +141,10 @@ class ViewModelFactory constructor(
             }
             isAssignableFrom(UserViewModel::class.java) ->{
                 UserViewModel(UserRepository.getInstance(executor,db.userDao(),GithubClient.githubService),repoRepository)
+            }
+
+            isAssignableFrom(PostViewModel::class.java) ->{
+                PostViewModel(ApiHelperImpl(ApiServiceFactory.flowService))
             }
 
             //Retrofit 和 协程结合使用

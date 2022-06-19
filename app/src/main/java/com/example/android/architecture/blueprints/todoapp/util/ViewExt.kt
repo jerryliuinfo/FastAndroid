@@ -20,13 +20,17 @@ package com.example.android.architecture.blueprints.todoapp.util
  */
 
 import android.app.Dialog
+import android.app.Notification
+import android.content.Context
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.media.app.NotificationCompat
 import com.apache.fastandroid.R
+import com.balsikandar.crashreporter.utils.Constants
 import com.example.android.architecture.blueprints.todoapp.ScrollChildSwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import com.tesla.framework.component.livedata.Event
@@ -89,3 +93,4 @@ inline fun Dialog.showDialog(func: Dialog.() -> Unit):Dialog = apply {
     this.func()
     this.show()
 }
+

@@ -1,5 +1,6 @@
 package com.apache.fastandroid.demo.designmode.builder
 
+import android.content.pm.ApplicationInfo
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentBuilderModeBinding

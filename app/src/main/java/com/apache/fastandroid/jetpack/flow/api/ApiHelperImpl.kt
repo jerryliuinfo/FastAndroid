@@ -12,7 +12,10 @@ import javax.inject.Inject
  * Created by Jerry on 2022/5/3.
  */
 class ApiHelperImpl @Inject constructor(val apiService: FlowApiService):ApiHelper {
-    override fun getUsers(): Flow<List<ApiUser>> = flow { emit(apiService.getUsers()) }
+    override fun getUsers(): Flow<List<ApiUser>> = flow {
+        val data = apiService.getUsers()
+        emit(data)
+    }
 
     override suspend fun getUsers2(): List<ApiUser> {
         return apiService.getUsers2()

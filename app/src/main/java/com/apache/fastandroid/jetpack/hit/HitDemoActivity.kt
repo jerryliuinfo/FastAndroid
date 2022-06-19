@@ -72,8 +72,7 @@ class HitDemoActivity:BaseVmActivity<FragmentHitBinding>(FragmentHitBinding::inf
         NormalViewModel.NormalViewModelFactory(Repository())
     }
 //
-    private val mHitViewModel: HitViewModel by lazy {
-         ViewModelProvider(this).get(HitViewModel::class.java) }
+//    @Inject lateinit  var  mHitViewModel: HitViewModel
 
 
 
@@ -146,7 +145,7 @@ class HitDemoActivity:BaseVmActivity<FragmentHitBinding>(FragmentHitBinding::inf
         }
 
         mBinding.btnInjectViewModel.setOnClickListener {
-            println("inject viewModel :${mHitViewModel}")
+//            println("inject viewModel :${mHitViewModel}")
 //            mHitViewModel.doWork()
         }
         mBinding.btnToActivity2.setOnClickListener {

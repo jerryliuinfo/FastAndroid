@@ -15,12 +15,18 @@ import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.temp.KnowledgeFragment
+import com.apache.fastandroid.demo.widget.system.SystemWidgetFragment
+import com.apache.fastandroid.jetpack.flow.FlowDemoListFragment
+import com.apache.fastandroid.jetpack.flow.FlowPracticeDemoFragment
 import com.apache.fastandroid.jetpack.hit.HitDemoActivity
+import com.balsikandar.crashreporter.utils.AppConfigUtil
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.FragmentContainerActivity
 
 class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
     private val selecteId = -1
@@ -42,6 +48,10 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
             ).build()
         setupActionBar(mNavController!!, configuration)
         setupNavigationMenu(mNavController!!)
+
+       /* if (AppConfigUtil.isAppUpdated()){
+            AppConfigUtil.appVersionCode = BuildConfig.VERSION_CODE.toLong()
+        }*/
 
 
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java)
@@ -99,9 +109,13 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, JniDemoListFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, JetPackLifeCycleDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, ImmerseStatusBarDemoActivity::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, SystemWidgetFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, FlowPracticeDemoFragment::class.java,null,addTitleBar = false)
+        FragmentContainerActivity.launch(this, FlowDemoListFragment::class.java,null,addTitleBar = false)
 
 //        launchActivity<ImmerseStatusBarDemoActivity>(this)
-         launchActivity<HitDemoActivity>(this)
+//         launchActivity<HitDemoActivity>(this)
 
 //        launchActivity<TasksActivity>(this)
 

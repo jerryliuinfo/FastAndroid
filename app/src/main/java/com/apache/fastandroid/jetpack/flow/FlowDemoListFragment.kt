@@ -8,6 +8,9 @@ import com.apache.fastandroid.jetpack.flow.errorhandling.emitall.EmitAllFragment
 import com.apache.fastandroid.jetpack.flow.filter.FilterFragment
 import com.apache.fastandroid.jetpack.flow.map.MapFragment
 import com.apache.fastandroid.jetpack.flow.parallel.ParallelNetworkFragment
+import com.apache.fastandroid.jetpack.flow.practice.FlowDownloadFragment
+import com.apache.fastandroid.jetpack.flow.practice.FlowRetrofitFragment
+import com.apache.fastandroid.jetpack.flow.practice.FlowUserInfoFragment
 import com.apache.fastandroid.jetpack.flow.retry.RetryFragment
 import com.apache.fastandroid.jetpack.flow.retryexponentialbackoff.RetryExponentialbackoffFragment
 import com.apache.fastandroid.jetpack.flow.retrywhen.RetryWhenFragment
@@ -42,6 +45,10 @@ class FlowDemoListFragment: BaseListFragment() {
             ,ViewItemBean("Retry","Retry", RetryFragment::class.java)
             ,ViewItemBean("RetryWhen","RetryWhen", RetryWhenFragment::class.java)
             ,ViewItemBean("RetryExponentialBackoff","RetryExponentialBackoff", RetryExponentialbackoffFragment::class.java)
+            ,ViewItemBean("Flow应用实践","Flow应用实践", FlowPracticeDemoFragment::class.java)
+            ,ViewItemBean("文件下载","文件下载", FlowDownloadFragment::class.java)
+            ,ViewItemBean("Flow和 Room 结合","Flow和Room结合", FlowUserInfoFragment::class.java)
+            ,ViewItemBean("Flow和 Retrofit 结合","Flow和 Retrofit 结合", FlowRetrofitFragment::class.java)
 
         )
     }

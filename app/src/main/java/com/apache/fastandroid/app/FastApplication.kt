@@ -186,8 +186,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
         DebugSafeModeUI.init(this)
         Cockroach.install(this, object : ExceptionHandler() {
             override fun onUncaughtExceptionHappened(thread: Thread, throwable: Throwable) {
-                Log.e("AndroidRuntime", "--->onUncaughtExceptionHappened:$thread<---", throwable)
-                //                CrashLog.saveCrashLog(getApplicationContext(), throwable);
+                Logger.d("AndroidRuntime", "--->onUncaughtExceptionHappened:$thread<---", throwable)
                 Handler(Looper.getMainLooper()).post { ToastUtils.showShort("已经进入安全模式") }
             }
 
@@ -204,7 +203,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
 
             override fun onMayBeBlackScreen(e: Throwable) {
                 val thread = Looper.getMainLooper().thread
-                Log.e("AndroidRuntime", "--->onUncaughtExceptionHappened:$thread<---", e)
+                Logger.d("AndroidRuntime", "--->onUncaughtExceptionHappened:$thread<---", e)
                 //黑屏时建议直接杀死app
                 sysExcepHandler.uncaughtException(thread, RuntimeException("black screen"))
             }
@@ -213,7 +212,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
 
     private fun crashReport() {
         init(this)
-//        initCockroach();
+//        initCockroach()
     }
 
     private fun initImageLoader() {

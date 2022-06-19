@@ -15,9 +15,11 @@
  */
 package com.tesla.framework.kt
 
+import android.os.SystemClock
 import android.view.View
+import com.tesla.framework.R
 
- object Debouncer {
+object Debouncer {
   @Volatile private var enabled: Boolean = true
   private val enableAgain = Runnable { enabled = true }
 
@@ -38,5 +40,34 @@ import android.view.View
       click(it as T)
     }
   }
+}
+
+
+
+
+const val SINGLE_CLICK_INTERVAL = 1000
+
+fun View.onSingleClick(
+    interval: Int = SINGLE_CLICK_INTERVAL,
+    isShareSingleClick: Boolean = true,
+    listener: (View) -> Unit
+) {
+    setOnClickListener {
+        determineTriggerSingleClick(interval, isShareSingleClick, listener)
+    }
+
+}
+
+fun View.determineTriggerSingleClick(
+    interval: Int = SINGLE_CLICK_INTERVAL,
+    isShareSingleClick: Boolean = true,
+    listener: View.OnClickListener
+) {
+    val target = if (isShareSingleClick) getActivity(this)?.window?.decorView ?: this else this
+    val millis = target.getTag(R.id.single_click_tag_last_single_click_millis) as? Long ?: 0
+    if (SystemClock.uptimeMillis() - millis >= interval) {
+        target.setTag(R.id.single_click_tag_last_single_click_millis, SystemClock.uptimeMillis())
+        listener.onClick(this)
+    }
 }
 

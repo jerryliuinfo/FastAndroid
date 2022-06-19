@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.apache.fastandroid.app.FastApplication
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.databinding.ActivitySplashBinding
+import com.balsikandar.crashreporter.utils.AppConfigUtil
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.activity.BaseVmActivity
 
@@ -32,6 +33,8 @@ class SplashActivity : BaseVmActivity<ActivitySplashBinding>(ActivitySplashBindi
             mCountDownTimer.cancel()
             toMain()
         }
+
+
     }
 
 
@@ -43,7 +46,7 @@ class SplashActivity : BaseVmActivity<ActivitySplashBinding>(ActivitySplashBindi
         }
     }
 
-    private var mCountDownTimer = object : CountDownTimer(5000, 1000) {
+    private var mCountDownTimer = object : CountDownTimer(3000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             val remainTime = "跳过|${millisUntilFinished / 1000} S"
             mBinding.tvCountDown.text = remainTime

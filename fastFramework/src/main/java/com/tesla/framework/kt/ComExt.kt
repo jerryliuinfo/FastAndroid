@@ -1,6 +1,8 @@
 package com.tesla.framework.kt
 
 import androidx.databinding.ObservableInt
+import java.io.InputStream
+import java.io.OutputStream
 import java.lang.StringBuilder
 import kotlin.reflect.KProperty
 
@@ -84,4 +86,26 @@ fun Any.ofMap(): Map<String, Any?>? {
             member.name to value
         }
         ?.toMap()
+}
+
+
+/**
+ * InputStream的扩展函数
+ */
+inline fun InputStream.copyToOut(
+    output: OutputStream,
+    buffSize: Int = DEFAULT_BUFFER_SIZE, progress: (l: Long) -> Unit
+): Long {
+
+    var bytesCopied = 0L
+    var buff = ByteArray(buffSize)
+    var readBytes = read(buff)
+    while (readBytes > 0) {
+        output.write(buff, 0, readBytes)
+        bytesCopied += readBytes
+        readBytes = read(buff)
+        progress(bytesCopied);
+    }
+
+    return bytesCopied;
 }

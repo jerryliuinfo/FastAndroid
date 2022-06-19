@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
 import com.apache.fastandroid.databinding.ItemLayoutBinding
+import com.apache.fastandroid.jetpack.flow.adapter.ApiUserAdapter
 import com.apache.fastandroid.network.model.ApiUser
 import com.apache.fastandroid.network.model.Resource
 import com.apache.fastandroid.network.model.Status
@@ -30,15 +31,7 @@ abstract class BaseFlowRecycleViewFragment:BaseVBFragment<FragmentRecycleviewBin
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        val userAdapter = object: BaseQuickAdapter<ApiUser, BaseDataBindingHolder<ItemLayoutBinding>>(
-            R.layout.item_layout){
-            override fun convert(holder: BaseDataBindingHolder<ItemLayoutBinding>, item: ApiUser) {
-                holder.dataBinding?.apply {
-                    user = item
-                    executePendingBindings()
-                }
-            }
-        }
+        val userAdapter = ApiUserAdapter()
         mBinding.recyclerView.apply {
             adapter = userAdapter
             addItemDecoration(SpaceItemDecoration(10.dpInt))

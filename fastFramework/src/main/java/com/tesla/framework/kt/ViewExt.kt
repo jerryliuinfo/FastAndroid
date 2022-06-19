@@ -3,6 +3,7 @@ package com.tesla.framework.kt
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.SharedPreferences
@@ -15,11 +16,15 @@ import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.DisplayMetrics
+import android.util.Log
 import android.util.TypedValue
 import android.view.*
 import android.widget.FrameLayout
 import android.widget.SearchView
+import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -39,8 +44,10 @@ import com.tesla.framework.R
 import com.tesla.framework.component.livedata.Event
 import com.tesla.framework.component.livedata.NetworkLiveData
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
 import timber.log.Timber
 import java.lang.reflect.ParameterizedType
@@ -86,8 +93,7 @@ val Int.sp
 
 fun Float.powWrapp(n: Int): Float = this.pow(n)
 
-val Int.getString
-    get() = Utils.getApp().getString(this)
+
 
 fun Int.getName(): String {
     return when (this) {
@@ -148,20 +154,6 @@ fun <T> Array<T>.maxCustomize(greater: (T, T) -> Boolean): T? {
     return max
 }
 
-
-@ColorInt
-fun @receiver:ColorRes Int.getColor(context: Context): Int = ContextCompat.getColor(context, this)
-
-fun @receiver:DrawableRes Int.getDrawable(context: Context): Drawable? =
-    ContextCompat.getDrawable(context, this)
-
-fun @receiver:ColorRes Int.toColorStateList(context: Context): ColorStateList {
-    return ColorStateList.valueOf(getColor(context))
-}
-
-fun @receiver:ColorInt Int.toColorStateListByColor(): ColorStateList {
-    return ColorStateList.valueOf(this)
-}
 
 @Suppress("UNCHECKED_CAST")
 fun <T : ViewBinding> LifecycleOwner.inflateBinding(inflater: LayoutInflater): T {
@@ -641,34 +633,7 @@ fun RecyclerView.addOnItemClickListener(listener:(View, Int) ->Unit = {_,_ -> } 
 }
 
 
-
-const val SINGLE_CLICK_INTERVAL = 1000
-
-fun View.onSingleClick(
-    interval: Int = SINGLE_CLICK_INTERVAL,
-    isShareSingleClick: Boolean = true,
-    listener: (View) -> Unit
-) {
-    setOnClickListener {
-        determineTriggerSingleClick(interval, isShareSingleClick, listener)
-    }
-
-}
-
-fun View.determineTriggerSingleClick(
-    interval: Int = SINGLE_CLICK_INTERVAL,
-    isShareSingleClick: Boolean = true,
-    listener: View.OnClickListener
-) {
-    val target = if (isShareSingleClick) getActivity(this)?.window?.decorView ?: this else this
-    val millis = target.getTag(R.id.single_click_tag_last_single_click_millis) as? Long ?: 0
-    if (SystemClock.uptimeMillis() - millis >= interval) {
-        target.setTag(R.id.single_click_tag_last_single_click_millis, SystemClock.uptimeMillis())
-        listener.onClick(this)
-    }
-}
-
-private fun getActivity(view: View): Activity? {
+ fun getActivity(view: View): Activity? {
     var context = view.context
     while (context is ContextWrapper) {
         if (context is Activity) {
@@ -677,4 +642,21 @@ private fun getActivity(view: View): Activity? {
         context = context.baseContext
     }
     return null
+}
+
+//写一个flow型的扩展函数
+fun TextView.textViewFlow() = callbackFlow {
+    //edit监听 相当于新建一个接口对象
+    val textWatch = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable?) {
+            Log.d("ArticleFragment", s.toString())
+            offer(s.toString())
+        }
+    }
+    addTextChangedListener(textWatch)
+    awaitClose {
+        removeTextChangedListener(textWatch)
+    }
 }

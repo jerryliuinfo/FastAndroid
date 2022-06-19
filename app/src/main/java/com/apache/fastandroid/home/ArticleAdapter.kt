@@ -21,6 +21,10 @@ class ArticleAdapter(data: List<Article>, val listener :(View,Int) -> Unit = { v
     BaseQuickAdapter<Article, BaseDataBindingHolder<ArticleItemBinding>>(R.layout.article_item, data.toMutableList()),
     LoadMoreModule {
 
+    init {
+        setHasStableIds(true)
+    }
+
     override fun convert(holder: BaseDataBindingHolder<ArticleItemBinding>, it: Article) {
 
         holder.dataBinding?.apply {

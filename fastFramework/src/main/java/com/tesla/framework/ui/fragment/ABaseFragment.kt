@@ -98,11 +98,21 @@ open class ABaseFragment:Fragment(),BaseView {
     open fun <T : ViewModel?> getApplicationScopeViewModel(modelClass: Class<T>): T {
         if (mApplicationProvider == null) {
             mApplicationProvider = ViewModelProvider(
-                (mActivity.getApplicationContext() as ViewModelStoreOwner),
+                (mActivity.applicationContext as ViewModelStoreOwner),
                 getApplicationFactory(mActivity)!!
             )
         }
         return mApplicationProvider!!.get(modelClass)
+       /* return mApplicationProvider?.get(modelClass) ?: kotlin.run {
+            ViewModelProvider(
+                (mActivity.applicationContext as ViewModelStoreOwner),
+                getApplicationFactory(mActivity)!!
+            ).also {
+                mApplicationProvider = it
+            }
+        }
+*/
+
     }
 
     private  fun getApplicationFactory(activity: Activity): ViewModelProvider.Factory? {

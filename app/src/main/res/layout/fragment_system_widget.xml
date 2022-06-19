@@ -1,0 +1,49 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/padding_small"
+    android:paddingBottom="@dimen/padding_small"
+    android:paddingStart="@dimen/padding_medium"
+    android:paddingEnd="@dimen/padding_medium"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:constraint_referenced_ids="btn_textinput,btn_materal_dialog"
+
+            />
+
+
+        <Button
+            android:id="@+id/btn_textinput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextInputLayout"
+            />
+
+        <Button
+            android:id="@+id/btn_materal_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MaterialDialog"
+            />
+
+        <Button
+            android:id="@+id/btn_scrollable_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ScrollableDialog"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>

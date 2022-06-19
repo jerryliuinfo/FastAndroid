@@ -18,4 +18,8 @@ object ApiServiceFactory {
         ApiConstant.FLOW_BASE_URL
     )
 
+    fun <T> createApi(clazz: Class<T>):T {
+        return RetrofitFactory.instance.create(clazz)
+    }
+
 }

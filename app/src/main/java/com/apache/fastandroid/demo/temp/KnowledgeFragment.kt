@@ -11,6 +11,7 @@ import android.net.NetworkRequest
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.Spanned
+import android.text.TextUtils
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewTreeObserver
@@ -139,6 +140,16 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
             timeUnitToMilles(TimeUnit.SECONDS,1)
             timeUnitToMilles(TimeUnit.MINUTES,1)
         }
+
+        mBinding.btnArrayJoin.setOnClickListener {
+            arrayJoin()
+        }
+    }
+
+    private fun arrayJoin() {
+        val array = arrayOf("AAA","BBB","CCC")
+        val json = TextUtils.join(",",array)
+        println("json: $json")
     }
 
     private fun timeUnitToMilles(timeUnit: TimeUnit, amount:Long):Long {
@@ -259,7 +270,7 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
             paramBuilder.append(key).append("=").append(map[key])
             appendAnd = true
         }
-        NLog.d(TAG, "msg: %s", paramBuilder.toString())
+        Logger.d(TAG, "msg: %s", paramBuilder.toString())
     }
 
     private fun addOnPredrawListener(){

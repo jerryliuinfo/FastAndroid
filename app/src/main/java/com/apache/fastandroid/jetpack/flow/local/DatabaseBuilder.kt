@@ -8,19 +8,18 @@ object DatabaseBuilder {
     private var INSTANCE: AppDatabase? = null
 
     fun getInstance(context: Context): AppDatabase {
-        if (INSTANCE == null) {
-            synchronized(AppDatabase::class) {
-                INSTANCE = buildRoomDB(context)
+        return INSTANCE ?: synchronized(DatabaseBuilder::class) {
+            INSTANCE ?: buildRoomDB(context).also {
+                INSTANCE = it
             }
         }
-        return INSTANCE!!
     }
 
     private fun buildRoomDB(context: Context):AppDatabase =
         Room.databaseBuilder(
             context.applicationContext,
             AppDatabase::class.java,
-            "mindorks-example-coroutines"
+            "users"
         ).build()
 
 }
