@@ -15,6 +15,7 @@ class WidgetDemoFragment: BaseListFragment() {
                 ViewItemBean("SupterTextView", "SuperTextView", SuperTextViewDemoListFragment::class.java)
                 ,ViewItemBean("Lyric", "Lyric", LyricDemoFragment::class.java)
                 ,ViewItemBean("ProgressView", "ProgressView", ProgressViewDemoFragment::class.java)
+                ,ViewItemBean("AndroidFastScroll", "AndroidFastScroll", ProgressViewDemoFragment::class.java)
 
         )
     }

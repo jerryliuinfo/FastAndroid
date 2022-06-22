@@ -4,9 +4,11 @@
     <color name="colorPrimary">@color/purple_500</color>
     <color name="colorPrimaryDark">@color/purple_700</color>
     <color name="colorAccent">#FF4081</color>
+
     <color name="colorOnPrimary">#80000000</color>
 
     <color name="colorGrey">#757575</color>
+    <color name="textColorPrimary">@color/purple_500</color>
 
 
     <color name="black">#000000</color>
@@ -68,5 +70,11 @@
     <color name="theme">#272a36</color>
     <color name="text_theme">#272a36</color>
     <color name="three_nine_gray">#39F5F5F5</color>
+
+
+    <color name="red_ff">#FFFF0000</color>
+    <color name="green_ff">#FF00FF00</color>
+    <color name="blue_ff">#FF0000FF</color>
+    <color name="ten_percent_black">#28000000</color>
 
 </resources>

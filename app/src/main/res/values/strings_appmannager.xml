@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="sort_by_domain">用户应用优先</string>
+    <string name="sort_by_app_label">应用程序标签</string>
+    <string name="sort_by_package_name">包名</string>
+
+
+    <string name="filter_user_apps">用户应用</string>
+    <string name="filter_system_apps">系统应用</string>
+    <string name="filter_apps_with_rules">带有规则的应用</string>
+    <string name="filter_disabled_apps">已停用的应用</string>
+
+</resources>

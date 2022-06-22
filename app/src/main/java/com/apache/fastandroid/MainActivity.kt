@@ -14,8 +14,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
+import com.apache.fastandroid.demo.CustomViewFragment
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.temp.ApiDemoFragment
 import com.apache.fastandroid.demo.temp.KnowledgeFragment
+import com.apache.fastandroid.demo.widget.ListOptions
 import com.apache.fastandroid.demo.widget.system.SystemWidgetFragment
 import com.apache.fastandroid.jetpack.flow.FlowDemoListFragment
 import com.apache.fastandroid.jetpack.flow.FlowPracticeDemoFragment
@@ -112,7 +115,12 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, SystemWidgetFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, FlowPracticeDemoFragment::class.java,null,addTitleBar = false)
-        FragmentContainerActivity.launch(this, FlowDemoListFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, FlowDemoListFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, ApiDemoFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, CustomViewFragment::class.java,null,addTitleBar = false)
+
+
+//        ListOptions().show(supportFragmentManager,"")
 
 //        launchActivity<ImmerseStatusBarDemoActivity>(this)
 //         launchActivity<HitDemoActivity>(this)

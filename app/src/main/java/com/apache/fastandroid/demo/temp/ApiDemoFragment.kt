@@ -5,12 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewConfiguration
 import androidx.arch.core.executor.ArchTaskExecutor
+import androidx.lifecycle.lifecycleScope
+import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.databinding.TempApiUsageDemoBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.ThreadLocalRandom
 import kotlin.concurrent.thread
@@ -43,6 +48,12 @@ class ApiDemoFragment:BaseVBFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBi
 
         mBinding.btnCountDown2.setOnClickListener {
             testCountDownLatch2()
+        }
+        mBinding.btnCountDown2.setOnClickListener {
+            testCountDownLatch2()
+        }
+        mBinding.btnCountdownWaitConfirmDialog.setOnClickListener {
+            confirmDialogCountDown()
         }
 
         mBinding.btnBreakPoint.setOnClickListener {
@@ -99,6 +110,9 @@ class ApiDemoFragment:BaseVBFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBi
     }
 
 
+
+    private val mCountDownLatch = CountDownLatch(1)
+
     /**
      * 让多个线程等待, 模拟并发，让并发线程一起执行
      */
@@ -115,8 +129,41 @@ class ApiDemoFragment:BaseVBFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBi
             Thread.sleep(2000)
             countDownLatch.countDown()
         }
+    }
+
+
+    private fun confirmDialogCountDown(){
+        lifecycleScope.launch(){
+            try {
+                withContext(Dispatchers.IO){
+                    mCountDownLatch.await()
+                }
+
+            }catch (e:Exception){
+                e.printStackTrace()
+
+            }finally {
+                launchActivity<MainActivity>(requireContext())
+            }
+        }
+        showConfirmDialog {
+            mCountDownLatch.countDown()
+        }
 
     }
+
+    private fun showConfirmDialog(block:() -> Unit){
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("请确认隐私协议")
+            .setMessage("点击确认代表您同意隐私协议")
+            .setPositiveButton("确认"){ dialog,_ ->
+                dialog.dismiss()
+                block.invoke()
+            }
+            .show()
+    }
+
+
 
     /**
      * 让单个线程等待, 多个任务完成后进行汇总合作

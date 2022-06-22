@@ -5,12 +5,8 @@ import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FlowFragmentStateflowBinding
-import com.tesla.framework.component.LocalEventBus
-import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.onSingleClick
 import com.tesla.framework.ui.fragment.BaseVBFragment
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 
 /**
  * Created by Jerry on 2022/6/20.
@@ -34,16 +30,8 @@ class StateFlowDemoFragment:BaseVBFragment<FlowFragmentStateflowBinding>(FlowFra
             mViewModel.mCount.collect{
                 mBinding.tvNumber.text = "$it"
             }
-
-
-
         }
-        lifecycleScope.launchWhenCreated {
-            LocalEventBus.events.collectLatest {
-                mBinding.tvResult.text = it.timestamp.toString()
 
-            }
-        }
 
     }
 

@@ -11,7 +11,7 @@
         app:flow_wrapMode="aligned"
         app:flow_verticalGap="10dp"
         app:flow_horizontalGap="10dp"
-        app:constraint_referenced_ids="btn_TouchSlop,btn_direction,btn_countDown,btn_countDown2,
+        app:constraint_referenced_ids="btn_TouchSlop,btn_direction,btn_countDown,btn_countDown2,btn_countdown_wait_confirm_dialog,
             btn_BreakPoint,btn_stream,btn_archTaskExecutor"
 
         />
@@ -41,6 +41,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CountDown2"
+        />
+    <Button
+        android:id="@+id/btn_countdown_wait_confirm_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="等待确认对话框关闭"
         />
 
     <Button

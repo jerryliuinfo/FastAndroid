@@ -156,12 +156,5 @@
 
     </style>
 
-    <style name="AppTheme.TextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeColor">@drawable/outlined_stroke_color</item>
-        <item name="hintTextColor">@color/colorAccent</item>
-        <item name="endIconTint">@color/colorAccent</item>
-    </style>
-
-    <style name="AppTheme.TextAppearance.Input" parent="TextAppearance.MaterialComponents.Subtitle1" />
 
 </resources>

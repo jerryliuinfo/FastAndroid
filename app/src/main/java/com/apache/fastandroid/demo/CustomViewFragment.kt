@@ -15,6 +15,9 @@ import com.apache.fastandroid.demo.roudview.RoundViewDemoFragment
 import com.apache.fastandroid.demo.shapeimageview.ShapeImageviewDemoFragment
 import com.apache.fastandroid.demo.tablayout.ArticleTabsFragment
 import com.apache.fastandroid.demo.temp.SpanableStringFragment
+import com.apache.fastandroid.demo.widget.ChipGroupDemoFragment
+import com.apache.fastandroid.demo.widget.LinearProgressIndicatorDemoFragment
+import com.apache.fastandroid.demo.widget.ListOptions
 import com.apache.fastandroid.demo.widget.system.SystemWidgetFragment
 import java.util.*
 
@@ -43,6 +46,7 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("PreferenceFragment", "PreferenceFragment", PreferenceFragmentDemo::class.java)
                 ,ViewItemBean("TextSwitch", "TextSwitch", PreferenceFragmentDemo::class.java)
                 ,ViewItemBean("TextInputEditText", "TextInputEditText", SystemWidgetFragment::class.java)
+                ,ViewItemBean("LinearProgressIndicator", "LinearProgressIndicator", LinearProgressIndicatorDemoFragment::class.java,addTitleBar = false)
 
 
         )

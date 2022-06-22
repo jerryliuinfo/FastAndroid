@@ -29,6 +29,8 @@ class RecycleViewItemDecorationFragment2: BaseVBFragment<RecycleviewItemDecorati
         recycleview.apply {
             adapter = myAdapter
             layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL,false)
+            //https://blog.csdn.net/fyfcauc/article/details/42424755
+            overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         }
 
 
@@ -68,6 +70,7 @@ class RecycleViewItemDecorationFragment2: BaseVBFragment<RecycleviewItemDecorati
             recycleview.apply {
                 removeDecorations()
                 layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL,false)
+                overScrollMode = RecyclerView.OVER_SCROLL_NEVER
                 val drawableDecoration = HorizontalDividerItemDecoration.Builder(context)
                     .drawable(R.drawable.drawable_divider)
                     .size(15)

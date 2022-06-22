@@ -44,6 +44,7 @@ import com.apache.fastandroid.jetpack.flow.parallel.ParallelNetworkCallViewModel
 import com.apache.fastandroid.jetpack.flow.room.RoomDbViewModel
 import com.apache.fastandroid.jetpack.flow.serias.SerialNetworkCallViewModel
 import com.apache.fastandroid.jetpack.flow.single.SingleNetworkCallViewModel
+import com.apache.fastandroid.jetpack.flow.stateflow.MutableStateViewModel
 import com.apache.fastandroid.jetpack.flow.task.twotasks.TwoLongRunningTasksViewModel
 import com.apache.fastandroid.jetpack.flow.vm.PostViewModel
 import com.apache.fastandroid.network.retrofit.ApiServiceFactory
@@ -152,6 +153,9 @@ class ViewModelFactory constructor(
                 RetrofitViewModel(AppRepository(ApiHelperImpl(ApiServiceFactory.flowService)))
             }
 
+            isAssignableFrom(MutableStateViewModel::class.java) ->{
+                MutableStateViewModel(ApiHelperImpl(ApiServiceFactory.flowService))
+            }
 
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

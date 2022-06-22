@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="vertical"
+    android:scrollIndicators="top|bottom"
+    tools:ignore="UnusedAttribute">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/padding_small"
+        android:paddingBottom="@dimen/padding_small"
+        android:paddingStart="@dimen/padding_medium"
+        android:paddingEnd="@dimen/padding_medium"
+        android:orientation="vertical">
+
+
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/sort_options"
+            android:theme="@style/Widget.MaterialComponents.ChipGroup.Small.Choice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/padding_very_small"
+            app:itemSpacing="@dimen/padding_very_small"
+            app:lineSpacing="@dimen/padding_very_small"
+            app:singleSelection="true" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/filter" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/filter_options"
+            android:theme="@style/Widget.MaterialComponents.ChipGroup.Small.Entry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/padding_very_small"
+            app:itemSpacing="@dimen/padding_very_small"
+            app:lineSpacing="@dimen/padding_very_small" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@android:id/text1"
+            style="@style/AppTheme.TextInputLayout.ExposedDropdownMenu.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="配置文件名称"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@android:id/input"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:singleLine="true" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.core.widget.NestedScrollView>
