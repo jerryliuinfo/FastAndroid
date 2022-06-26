@@ -377,6 +377,14 @@ fun View.visible() {
     }
 }
 
+var View.isVisible:Boolean
+    get() = visibility == View.VISIBLE
+    set(value) {
+        visibility = if (value) View.VISIBLE else View.GONE
+    }
+
+
+
 fun RecyclerView.removeDecorations() {
     for (i in 0 until itemDecorationCount) {
         removeItemDecorationAt(i)

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.databinding.FragmentCustomViewBinding
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.BaseVBFragment
@@ -27,6 +28,8 @@ abstract class BaseListFragment: BaseVBFragment<FragmentCustomViewBinding>(Fragm
 
     abstract fun initDatas():ArrayList<ViewItemBean>
 
+    private lateinit var mAdapter:ItemViewAdapter
+
 
     companion object{
         fun launch(from:Activity, MODELS:ArrayList<ViewItemBean> ){
@@ -41,7 +44,8 @@ abstract class BaseListFragment: BaseVBFragment<FragmentCustomViewBinding>(Fragm
 
         MODELS = initDatas()
         setupLayoutManager()
-        recycleview.adapter = ItemViewAdapter()
+        mAdapter = ItemViewAdapter()
+        recycleview.adapter = mAdapter
     }
 
     open fun setupLayoutManager(){
@@ -50,22 +54,65 @@ abstract class BaseListFragment: BaseVBFragment<FragmentCustomViewBinding>(Fragm
 
 
 
-    private inner class ItemViewAdapter : RecyclerView.Adapter<ItemViewHolder>() {
+    private inner class ItemViewAdapter() : RecyclerView.Adapter<ItemViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val itemView = layoutInflater.inflate(viewType, parent, false)
-            return ItemViewHolder(itemView)
+            return ItemViewHolder(itemView )
         }
 
         override fun getItemCount(): Int {
             return MODELS.size
         }
 
+
+
         override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
             val viewItemBean = MODELS[position]
             holder.txtTitle.text = viewItemBean.title
             holder.txt_description.text = viewItemBean.description
-            holder.itemView.setOnClickListener {
+           /* holder.itemView.setOnClickListener {
+                if (viewItemBean.clazz == null && viewItemBean.activity == null){
+                    return@setOnClickListener
+                }
+                if (viewItemBean.clazz != null){
+                    val args = FragmentArgs.transToArgs(viewItemBean.args)
+                    args.add("title", viewItemBean.title)
+                    this@BaseListFragment.activity?.let { it1 ->
+                        FragmentContainerActivity.launch(
+                            it1,viewItemBean.clazz, args = args, addTitleBar = viewItemBean.addTitleBar)
+                    }
+                }else if (viewItemBean.activity != null){
+                    val intent = Intent(requireActivity(), viewItemBean.activity)
+                    startActivity(intent)
+                }
+
+            }*/
+        }
+
+        override fun getItemViewType(position: Int): Int {
+            val viewItemBean = MODELS[position]
+            return if (viewItemBean.clazz == null && viewItemBean.activity == null) {
+                R.layout.layout_cell_bord_item_title
+            } else {
+                R.layout.layout_cell_bord_item
+            }
+        }
+
+    }
+
+
+    private inner class ItemViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.setOnClickListener {
+                /**
+                 * absoluteAdapterPosition 和 bidingAdapterPostion的区别：
+                 * 在没有使用 MergeAdapter时，两者获取的值是一样的
+                 * 如果使用了 MergeAdapter，bidingAdapterPostion 得到的是元素位于
+                 * 当前绑定 Adapter 的位置，而 absoluteAdapterPosition 方法得到的是
+                 * 在列表中的绝对位置
+                 */
+                val viewItemBean = MODELS[absoluteAdapterPosition]
                 if (viewItemBean.clazz == null && viewItemBean.activity == null){
                     return@setOnClickListener
                 }
@@ -82,22 +129,6 @@ abstract class BaseListFragment: BaseVBFragment<FragmentCustomViewBinding>(Fragm
                 }
 
             }
-        }
-
-        override fun getItemViewType(position: Int): Int {
-            val viewItemBean = MODELS[position]
-            return if (viewItemBean.clazz == null && viewItemBean.activity == null) {
-                R.layout.layout_cell_bord_item_title
-            } else {
-                R.layout.layout_cell_bord_item
-            }
-        }
-
-    }
-
-
-    class ItemViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
-        init {
         }
 
         val txtTitle: TextView = itemView.findViewById(R.id.txt_title)

@@ -12,6 +12,7 @@ object AndroidX {
     const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val material = "com.google.android.material:material:${Versions.material}"
+    const val recyclerview = "androidx.recyclerview:recyclerview:1.2.0-alpha02"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
     const val swiperefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 

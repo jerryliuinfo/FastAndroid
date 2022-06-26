@@ -407,6 +407,7 @@ dependencies {
 
     implementation AndroidX.appCompat
     implementation AndroidX.material
+    implementation AndroidX.recyclerview
     implementation AndroidX.cardview
     implementation AndroidX.constraintLayout
     implementation AndroidX.core_ktx

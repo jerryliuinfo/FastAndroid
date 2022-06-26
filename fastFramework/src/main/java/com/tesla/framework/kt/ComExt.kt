@@ -1,6 +1,8 @@
 package com.tesla.framework.kt
 
+import androidx.annotation.StringRes
 import androidx.databinding.ObservableInt
+import com.blankj.utilcode.util.ToastUtils
 import java.io.InputStream
 import java.io.OutputStream
 import java.lang.StringBuilder
@@ -108,4 +110,12 @@ inline fun InputStream.copyToOut(
     }
 
     return bytesCopied;
+}
+
+fun showShortToast(@StringRes resId:Int){
+    ToastUtils.showShort(resId)
+}
+
+fun showShortToast(msg:String){
+    ToastUtils.showShort(msg)
 }

@@ -6,6 +6,7 @@ import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.drakeet.hookcontext.HookContextFragment
 import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment
 import com.apache.fastandroid.demo.drakeet.foregroundservice.ForegroundServiceFragment
+import com.apache.fastandroid.demo.list.MultiTypeDeomoFragment
 
 /**
  * Created by Jerry on 2021/9/8.
@@ -13,7 +14,8 @@ import com.apache.fastandroid.demo.drakeet.foregroundservice.ForegroundServiceFr
 class DrakeetDemoListFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-             ViewItemBean("HookContext", "HookContext", HookContextFragment::class.java)
+            ViewItemBean("MultiType", "MultiType", MultiTypeDeomoFragment::class.java),
+            ViewItemBean("HookContext", "HookContext", HookContextFragment::class.java)
             ,ViewItemBean("DrakeetCommon", "DrakeetCommon", DrakeetCommonFragment::class.java)
             ,ViewItemBean("EdgeEffect", "EdgeEffect", DrakeetEdgeEffectDemoFragment::class.java)
             ,ViewItemBean("动态newView时设置style", "动态newView时设置style", ProgrammaticalySetStyleFragment::class.java)

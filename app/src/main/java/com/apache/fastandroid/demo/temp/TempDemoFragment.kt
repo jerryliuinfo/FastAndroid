@@ -4,7 +4,6 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.LayoutInflaterDemoFragment
 import com.apache.fastandroid.demo.launchermode.LaunchModeDemoFragment
-import com.apache.fastandroid.demo.snaphelper.SnapHelperDemoFragment
 import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity
 import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity2
 import com.apache.fastandroid.demo.style.FitSystemWindowFrameLayoutDemoActivity
@@ -38,7 +37,6 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("Api用法", "Api用法", ApiDemoFragment::class.java)
                 ,ViewItemBean("异步转同步", "异步转同步", AsyncToSyncDemoFragment::class.java)
                 ,ViewItemBean("死锁", "死锁", ConcurrencyDemoFragment::class.java)
-                ,ViewItemBean("RecycleviewSnapHelper", "RecycleviewSnapHelper", SnapHelperDemoFragment::class.java)
                 ,ViewItemBean("启动模式", "启动模式", LaunchModeDemoFragment::class.java)
                 ,ViewItemBean("FitSystemWindow", "FitSystemWindow", activity = FitSystemWindowDemoActivity::class.java)
                 ,ViewItemBean("FitSystemWindow2", "FitSystemWindow2", activity = FitSystemWindowDemoActivity2::class.java)

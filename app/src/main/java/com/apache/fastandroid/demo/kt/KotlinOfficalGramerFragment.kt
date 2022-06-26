@@ -18,6 +18,7 @@ import com.apache.fastandroid.demo.kt.genericity.MultableStack
 import com.apache.fastandroid.demo.kt.genericity.mutableStackOf
 import com.apache.fastandroid.demo.kt.sealed.*
 import com.tesla.framework.kt.maxAge
+import com.tesla.framework.kt.onSingleClick
 import com.tesla.framework.kt.times
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import java.io.File
@@ -40,6 +41,10 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
+
+        mBinding.btnElvis.onSingleClick {
+            elvisUsage()
+        }
 
         mBinding.btnCirculation.setOnClickListener {
             iterator()
@@ -142,6 +147,25 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
 
         "hello" to User(1,"jerry")
 
+
+    }
+
+    private fun elvisUsage() {
+        val user:User? = getUser()
+        val length = user?.name?.length ?: -1
+        println("length:${length}")
+
+        val name = user?.name?:"unknow"
+        println("name:${name}")
+
+    }
+
+    private fun getUser(): User? {
+        val randomNum = Random.nextInt(10)
+        if (randomNum > 5){
+            return User(randomNum,"Tom")
+        }
+        return null
 
     }
 

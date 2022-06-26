@@ -12,6 +12,6 @@ import java.io.Serializable
 data class User(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "name") val name: String?,
-    @ColumnInfo(name = "email") val email: String?,
-    @ColumnInfo(name = "avatar") val avatar: String?
+    @ColumnInfo(name = "email") val email: String? = null,
+    @ColumnInfo(name = "avatar") val avatar: String? = null
 ): Parcelable

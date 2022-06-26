@@ -27,7 +27,6 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("PermissionX", "PermissionX", PermissionXFragment::class.java)
                 ,ViewItemBean("LoadSir", "LoadSir", LoadSirDemoListFragment::class.java)
                 ,ViewItemBean("logger", "LoadSir", LoggerDemoFragment::class.java)
-                ,ViewItemBean("MultiType", "MultiType", MultiTypeDeomoFragment::class.java)
                 ,ViewItemBean("BestPay", "BestPay", BestPayDemoFragment::class.java)
                 ,ViewItemBean("Hawk", "Hawk", HawkDemoFragment::class.java)
                     //MVVM Mail

@@ -9,6 +9,10 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 dependencies {
 
+    implementation AndroidX.recyclerview
+    implementation AndroidX.appCompat
+
+
     implementation (*Libs.glide)
     implementation Libs.gson
     implementation Libs.utilcode

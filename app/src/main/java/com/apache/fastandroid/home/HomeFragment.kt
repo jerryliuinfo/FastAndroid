@@ -4,6 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.article.ArticleDetailActivity
 import com.apache.fastandroid.databinding.FragmentHomeBinding
 import com.apache.fastandroid.network.model.Article
@@ -50,8 +54,15 @@ class HomeFragment:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         super.layoutInit(inflater, savedInstanceState)
 
         viewBinding.apply {
-            adapter = mAdapter
+//            adapter = mAdapter
             vm = mViewModel
+        }
+
+        viewBinding.recycleview.apply {
+            LinearSnapHelper().attachToRecyclerView(this)
+            layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
+            adapter = mAdapter
+
         }
 
 
