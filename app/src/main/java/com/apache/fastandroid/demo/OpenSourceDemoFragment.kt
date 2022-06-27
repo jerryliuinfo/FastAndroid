@@ -8,7 +8,6 @@ import com.apache.fastandroid.demo.component.loadsir.LoadSirDemoListFragment
 import com.apache.fastandroid.demo.component.once.OnceFragment
 import com.apache.fastandroid.demo.glide.GlideDemoFragment
 import com.apache.fastandroid.demo.hawk.HawkDemoFragment
-import com.apache.fastandroid.demo.list.MultiTypeDeomoFragment
 import com.apache.fastandroid.demo.logger.LoggerDemoFragment
 import com.apache.fastandroid.demo.mvi.MviDemoFragment
 import com.apache.fastandroid.demo.rxjava.RxJavaDemoListFragment

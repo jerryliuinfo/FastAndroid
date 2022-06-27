@@ -3,10 +3,11 @@ package com.apache.fastandroid.demo.drakeet
 import android.os.Bundle
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
+import com.apache.fastandroid.demo.drakeet.aboutpage.AboutPageDemoActivity
 import com.apache.fastandroid.demo.drakeet.hookcontext.HookContextFragment
 import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment
 import com.apache.fastandroid.demo.drakeet.foregroundservice.ForegroundServiceFragment
-import com.apache.fastandroid.demo.list.MultiTypeDeomoFragment
+import com.apache.fastandroid.demo.drakeet.multitype.MultiTypeDemoFragment
 
 /**
  * Created by Jerry on 2021/9/8.
@@ -14,7 +15,8 @@ import com.apache.fastandroid.demo.list.MultiTypeDeomoFragment
 class DrakeetDemoListFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-            ViewItemBean("MultiType", "MultiType", MultiTypeDeomoFragment::class.java),
+            ViewItemBean("MultiType", "MultiType", MultiTypeDemoFragment::class.java),
+            ViewItemBean("AboutPage", "AboutPage", activity = AboutPageDemoActivity::class.java),
             ViewItemBean("HookContext", "HookContext", HookContextFragment::class.java)
             ,ViewItemBean("DrakeetCommon", "DrakeetCommon", DrakeetCommonFragment::class.java)
             ,ViewItemBean("EdgeEffect", "EdgeEffect", DrakeetEdgeEffectDemoFragment::class.java)

@@ -80,4 +80,7 @@
     <!-- Custom view example -->
     <dimen name="customTitle">14sp</dimen>
     <dimen name="customEntry">18sp</dimen>
+
+    <dimen name="normal_space">12dp</dimen>
+
 </resources>

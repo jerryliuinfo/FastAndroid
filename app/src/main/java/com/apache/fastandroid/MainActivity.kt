@@ -16,6 +16,7 @@ import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.CustomViewFragment
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
 import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
 import com.apache.fastandroid.demo.temp.ApiDemoFragment
 import com.apache.fastandroid.demo.temp.KnowledgeFragment
@@ -119,8 +120,8 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, FlowDemoListFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, ApiDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, CustomViewFragment::class.java,null,addTitleBar = false)
-        FragmentContainerActivity.launch(this, CustomViewFragment::class.java,null,addTitleBar = false)
-
+//        FragmentContainerActivity.launch(this, CustomViewFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, DrakeetDemoListFragment::class.java,null,addTitleBar = false)
 
 //        ListOptions().show(supportFragmentManager,"")
 

@@ -20,6 +20,7 @@ import com.apache.fastandroid.demo.temp.SpanableStringFragment
 import com.apache.fastandroid.demo.widget.LinearProgressIndicatorDemoFragment
 import com.apache.fastandroid.demo.widget.lyric.LyricFragment
 import com.apache.fastandroid.demo.widget.mergeadapter.MergeAdapterDemoFragment
+import com.apache.fastandroid.demo.widget.spansize.GridLayoutManagerSpanSizeDemoFragment
 import com.apache.fastandroid.demo.widget.system.SystemWidgetFragment
 
 /**
@@ -52,6 +53,7 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("LinerSnapHelper", "LinerSnapHelper", LinerSnapHelperDemoFragment::class.java,addTitleBar = true)
                 ,ViewItemBean("PageSnapHelper", "PageSnapHelper", PagerSnapHelperDemoFragment::class.java,addTitleBar = true)
                 ,ViewItemBean("MergeAdapter", "MergeAdapter", MergeAdapterDemoFragment::class.java,addTitleBar = true)
+                ,ViewItemBean("GridLayoutManager", "SpanSizeLookup", GridLayoutManagerSpanSizeDemoFragment::class.java,addTitleBar = true)
 
 
         )

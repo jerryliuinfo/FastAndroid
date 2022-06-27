@@ -104,7 +104,7 @@ object Libs {
         "com.airbnb.android:lottie:2.8.0",
         "com.github.lygttpod:SuperTextView:2.4.6",
         loadSir,
-        "com.drakeet.about:about:2.5.0",
+        "com.drakeet.about:about:2.5.1",
         "com.drakeet.multitype:multitype:4.3.0",
         "com.github.liangjingkanji:StateLayout:1.2.0",
         mmkv,

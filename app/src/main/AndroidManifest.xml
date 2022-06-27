@@ -245,6 +245,10 @@
             android:name=".jetpack.hit.HitDemoActivity2"
             android:exported="false"
             />
+        <activity
+            android:name=".demo.drakeet.aboutpage.AboutPageDemoActivity"
+            android:exported="false"
+            />
 
 
     </application>
