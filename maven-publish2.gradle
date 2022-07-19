@@ -14,7 +14,6 @@ def publishedVersion='1.0.2'
 def libraryName = 'FastFramework-library'
 def libraryDescription = 'Simply defining adapters of RecyclerView in Android'
 
-def gitUrl='https://github.com/jerryliuinfo/FastAndroid.git'
 def siteUrl='https://github.com/jerryliuinfo/FastAndroid'
 
 

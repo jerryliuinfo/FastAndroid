@@ -150,6 +150,8 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
 
     }
 
+    private var mPerson:Person ?= null
+
     private fun elvisUsage() {
         val user:User? = getUser()
         val length = user?.name?.length ?: -1
@@ -158,6 +160,48 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
         val name = user?.name?:"unknow"
         println("name:${name}")
 
+        arguments?.getString("name")?.takeIf {
+            it.isNotEmpty()
+        }?: kotlin.run {
+            println("empty url")
+        }
+
+        val state:User? = getState()
+        val result = when(state?.id){
+            1 -> true
+            else -> false
+        }
+        println("result:$result")
+
+        mPerson?.apply {
+            firstName = "update"
+        }?: kotlin.run {
+            Person("origin").also {
+                mPerson = it
+            }
+        }
+        println("mPerson:${mPerson?.firstName}")
+
+        val leng = getMessage()?.length ?: 0
+        toast(leng.toString() +" show")
+
+        val list = listOf(1,2,3)
+        list.forEach {
+            return
+        }
+
+        for (i in 0 until 10){
+            return
+        }
+
+    }
+
+    private fun getMessage(): String? {
+        return null
+    }
+
+    private fun getState(): User? {
+        return null
     }
 
     private fun getUser(): User? {
@@ -438,7 +482,7 @@ class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOff
     }
 
 
-    private class Person(val name:String){
+    private class Person(var firstName:String){
         val likedPeople = mutableListOf<Person>()
         infix fun likes(other:Person){
             likedPeople.add(other)

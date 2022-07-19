@@ -3,31 +3,22 @@ package com.apache.fastandroid.jetpack.flow
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
-import com.apache.fastandroid.databinding.ItemLayoutBinding
 import com.apache.fastandroid.jetpack.flow.adapter.ApiUserAdapter
 import com.apache.fastandroid.jetpack.flow.datasource.FlowPracticeDataSource
 import com.apache.fastandroid.jetpack.flow.datasource.FlowPracticeRepository
 import com.apache.fastandroid.jetpack.flow.ui_state.PostsUiState
 import com.apache.fastandroid.jetpack.flow.vm.PostViewModel
-import com.apache.fastandroid.network.model.ApiUser
 import com.apache.fastandroid.widget.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.dpInt
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * Created by Jerry on 2022/6/19.
@@ -63,12 +54,12 @@ class FlowPracticeDemoFragment:BaseVBFragment<FragmentRecycleviewBinding>(Fragme
                         userAdapter.setNewInstance(postState.postList?.toMutableList())
                     }
                     is PostsUiState.Error -> {
-                        showToast("load error")
+                        toast("load error")
                         mBinding.progressBar.visibility = View.GONE
                         ToastUtils.showShort(postState.exception.message)
                     }
                     is PostsUiState.ShowToast -> {
-                        showToast("Clicked Item is ${postState.id}")
+                        toast("Clicked Item is ${postState.id}")
                         ToastUtils.showShort(postState.id)
                     }
                 }

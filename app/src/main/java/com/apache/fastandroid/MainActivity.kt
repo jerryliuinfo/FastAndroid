@@ -14,22 +14,13 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
-import com.apache.fastandroid.demo.CustomViewFragment
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
+import com.apache.fastandroid.demo.blacktech.ResourcePoetDemoFragment
 import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
-import com.apache.fastandroid.demo.temp.ApiDemoFragment
-import com.apache.fastandroid.demo.temp.KnowledgeFragment
-import com.apache.fastandroid.demo.widget.ListOptions
-import com.apache.fastandroid.demo.widget.system.SystemWidgetFragment
-import com.apache.fastandroid.jetpack.flow.FlowDemoListFragment
-import com.apache.fastandroid.jetpack.flow.FlowPracticeDemoFragment
-import com.apache.fastandroid.jetpack.hit.HitDemoActivity
-import com.balsikandar.crashreporter.utils.AppConfigUtil
+import com.apache.fastandroid.demo.kt.lambda.LambdaDemoFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
-import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVmActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 
@@ -122,6 +113,10 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, CustomViewFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, CustomViewFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, DrakeetDemoListFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, KotlinTrapDemoFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, LambdaDemoFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null,addTitleBar = false)
+        FragmentContainerActivity.launch(this, ResourcePoetDemoFragment::class.java,null,addTitleBar = false)
 
 //        ListOptions().show(supportFragmentManager,"")
 
@@ -138,6 +133,8 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
     //        launchActivity<CheeseActivity>(this)
 
+        showToast(R.string.loading_msg)
+
 
 
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
@@ -153,6 +150,8 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
         })
 
     }
+
+
 
     private var mExitTime:Long = 0
 

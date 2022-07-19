@@ -204,7 +204,7 @@ open class ABaseFragment:Fragment(),BaseView {
         return false
     }
 
-    fun showToast(msg:String?){
+    fun toast(msg:String?){
         msg?.let {
             ToastUtils.showShort(msg)
         }

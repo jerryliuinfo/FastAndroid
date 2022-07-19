@@ -106,9 +106,17 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
             println(list)
         }
 
+        mBinding.btnEvisOperator.setOnClickListener {
+            evisOperatorUsage()
+        }
+
     }
 
-
+    private fun evisOperatorUsage() {
+        arguments?.getString("key")?.takeIf { it.isNotEmpty() } ?: kotlin.run {
+            toast("url为空")
+        }
+    }
 
 
     private fun anonymousFun(){
@@ -123,7 +131,7 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
 
 
     /**
-     * crossinline 不允许 inline 的 Lamba 中断外部函数执行,
+     * crossinline 不允许 inline 的 Lambda 中断外部函数执行,
      */
     private fun crossInlineUsage() {
         crossinlineFun {
@@ -245,6 +253,18 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
         }
         println(letResult)
         println(runResult)
+
+        //通过 let 改变返回值来做链式调用
+        val origin = "abc"
+        origin.let {
+            println("The origin string is $it")
+            it.reversed()
+        }.let {
+            println("The reversed string is $it")
+            it.length
+        }.let {
+            println("The length of the string is $it")
+        }
     }
 
     /**

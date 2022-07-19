@@ -1,15 +1,27 @@
 package com.apache.fastandroid.demo.drakeet.aboutpage
 
+import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.R
 import com.drakeet.about.*
+import com.tesla.framework.kt.showToast
 
 /**
  * Created by Jerry on 2022/6/27.
  */
-class AboutPageDemoActivity:AbsAboutActivity() {
+class AboutPageDemoActivity:AbsAboutActivity(), OnRecommendationClickedListener,
+    OnContributorClickedListener {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        onRecommendationClickedListener = this
+        onContributorClickedListener = this
+    }
+
+
     override fun onCreateHeader(icon: ImageView, slogan: TextView, version: TextView) {
         icon.setImageResource(R.mipmap.ic_launcher)
         slogan.text = "About Page By drakeet"
@@ -75,5 +87,15 @@ class AboutPageDemoActivity:AbsAboutActivity() {
                 "https://github.com/drakeet/MultiType"
             )
         )
+    }
+
+    override fun onRecommendationClicked(itemView: View, recommendation: Recommendation): Boolean {
+        showToast("onRecommendationClicked: " + recommendation.appName)
+        return false
+    }
+
+    override fun onContributorClicked(itemView: View, contributor: Contributor): Boolean {
+        showToast("onContributorClicked: " + contributor.name)
+        return false
     }
 }

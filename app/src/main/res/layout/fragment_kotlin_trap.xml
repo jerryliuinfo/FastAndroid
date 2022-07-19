@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:constraint_referenced_ids="btn_dataclass"
+            />
+
+        <Button
+            android:id="@+id/btn_dataclass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Class反序列化失败"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

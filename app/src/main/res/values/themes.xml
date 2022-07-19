@@ -54,6 +54,11 @@
 
     </style>
 
+    <style name="Theme.AppTheme.Splash" parent="Theme.AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/splash_bg</item>
+    </style>
+
 
 
 

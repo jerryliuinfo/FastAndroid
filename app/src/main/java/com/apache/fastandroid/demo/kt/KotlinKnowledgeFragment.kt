@@ -272,6 +272,12 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
+
+
+        arguments?.getString("key")?.takeIf { it.isNotEmpty() } ?: kotlin.run {
+            toast("url为空")
+        }
+
     }
 
     private fun expandFunction() {

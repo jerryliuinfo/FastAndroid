@@ -8,6 +8,7 @@ import com.apache.fastandroid.demo.drakeet.hookcontext.HookContextFragment
 import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment
 import com.apache.fastandroid.demo.drakeet.foregroundservice.ForegroundServiceFragment
 import com.apache.fastandroid.demo.drakeet.multitype.MultiTypeDemoFragment
+import me.drakeet.floo.sample.FlooMainActivity
 
 /**
  * Created by Jerry on 2021/9/8.
@@ -17,6 +18,7 @@ class DrakeetDemoListFragment:BaseListFragment() {
         return arrayListOf(
             ViewItemBean("MultiType", "MultiType", MultiTypeDemoFragment::class.java),
             ViewItemBean("AboutPage", "AboutPage", activity = AboutPageDemoActivity::class.java),
+            ViewItemBean("Floo", "A dynamic URL router", activity = FlooMainActivity::class.java),
             ViewItemBean("HookContext", "HookContext", HookContextFragment::class.java)
             ,ViewItemBean("DrakeetCommon", "DrakeetCommon", DrakeetCommonFragment::class.java)
             ,ViewItemBean("EdgeEffect", "EdgeEffect", DrakeetEdgeEffectDemoFragment::class.java)

@@ -29,7 +29,7 @@ class SandWitchDemoFragment:BaseVBFragment<FragmentSandswitchBinding>(FragmentSa
             println("posterListLiveData:${it?.size}")
         }
         mViewModel.toastLiveData.observe(this){
-            showToast(it)
+            toast(it)
         }
 
     }

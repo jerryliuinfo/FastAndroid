@@ -34,14 +34,14 @@
                 android:id="@+id/btn_sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SP操作"
+                android:text="属性委托-SP操作"
                 />
 
             <Button
                 android:id="@+id/btn_keyword_by"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="by关键字"
+                android:text="类委托"
                 />
             <Button
                 android:id="@+id/btn_byLazyProperty"

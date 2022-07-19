@@ -82,7 +82,11 @@ object Libs {
     )
 
 
-
+    val drakeetLibs = arrayOf(
+        "com.drakeet.about:about:2.5.1",
+        "com.drakeet.multitype:multitype:4.3.0",
+        "me.drakeet.floo:floo:1.2.0"
+    )
 
     val otherThirdLibs = arrayOf(
 //        anyLayer,
@@ -104,8 +108,7 @@ object Libs {
         "com.airbnb.android:lottie:2.8.0",
         "com.github.lygttpod:SuperTextView:2.4.6",
         loadSir,
-        "com.drakeet.about:about:2.5.1",
-        "com.drakeet.multitype:multitype:4.3.0",
+
         "com.github.liangjingkanji:StateLayout:1.2.0",
         mmkv,
         sandwich,
@@ -117,7 +120,7 @@ object Libs {
         //敏感词检测
         "com.github.houbb:sensitive-word:0.2.0",
         arouter_api,
-
+        "com.commit451:resourcespoet:latest.release.here"
     )
 
 

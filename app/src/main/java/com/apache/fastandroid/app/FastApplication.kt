@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDex
 import com.apache.fastandroid.AppSetting
+import com.apache.fastandroid.R
 import com.apache.fastandroid.component.once.Once
 import com.apache.fastandroid.crash.Fabric.init
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor
@@ -36,7 +37,6 @@ import com.example.android.architecture.blueprints.todoapp.ServiceLocator
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import com.kingja.loadsir.core.LoadSir
 import com.squareup.leakcanary.LeakCanary
-import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.mmkv.MMKV
 import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.device.DeviceName
@@ -52,6 +52,13 @@ import dagger.hilt.android.HiltAndroidApp
 import dev.b3nedikt.viewpump.ViewPump.init
 import jp.wasabeef.takt.Seat
 import jp.wasabeef.takt.Takt
+import me.drakeet.floo.Floo
+import me.drakeet.floo.Target
+import me.drakeet.floo.extensions.LogInterceptor
+import me.drakeet.floo.extensions.OpenDirectlyHandler
+import me.drakeet.floo.sample.PureSchemeInterceptor
+import me.drakeet.floo.sample.TargetNotFoundToaster
+import me.drakeet.floo.sample.WebHandler
 import timber.log.TimerLogger
 import java.io.File
 import kotlin.system.measureTimeMillis
@@ -113,6 +120,7 @@ class FastApplication : Application(), ViewModelStoreOwner {
             DeviceName.init(this)
             initPermissionMonitor()
             initAppDress()
+            initFloo()
 
             Utils.getApp().registerActivityLifecycleCallbacks(TraditionalProcessLifecycleListener(object :TraditionalProcessLifecycleListener.LifecycleCallbackListener{
                 override fun onAppForeground() {
@@ -355,6 +363,31 @@ class FastApplication : Application(), ViewModelStoreOwner {
 
     val apiHelper:ApiHelper = ApiHelperImpl(ApiServiceFactory.flowService)
     lateinit var  databaseHelper:DatabaseHelper
+
+
+    private fun initFloo(){
+        val mappings: MutableMap<String, Target> = HashMap()
+        mappings["m.drakeet.me/home"] = Target("floo://drakeet.sdk/target")
+        mappings["m.drakeet.me/link"] = Target("floo://drakeet.sdk/target")
+        mappings["m.drakeet.me/web"] = Target("floo://drakeet.sdk/web")
+        mappings["m.drakeet.me/container"] = Target("floo://m.drakeet.me/container")
+        mappings["mosaic.chunchun.io:8080"] =
+            Target("https://play.google.com/store/apps/details?id=me.drakeet.puremosaic")
+        mappings["PureWriter"] =
+            Target("https://play.google.com/store/apps/details?id=com.drakeet.purewriter")
+
+        Floo.configuration()
+            .setDebugEnabled(true)
+            .addRequestInterceptor(PureSchemeInterceptor(getString(R.string.scheme)))
+            .addRequestInterceptor(LogInterceptor("Request"))
+            .addTargetInterceptor(PureSchemeInterceptor(getString(R.string.scheme)))
+            .addTargetInterceptor(LogInterceptor("Target"))
+            .addTargetNotFoundHandler(WebHandler())
+            .addTargetNotFoundHandler(OpenDirectlyHandler())
+            .addTargetNotFoundHandler(TargetNotFoundToaster())
+
+        Floo.apply(mappings)
+    }
 
 
     companion object {

@@ -13,11 +13,14 @@ import androidx.core.view.doOnDetach
 import androidx.core.view.doOnLayout
 import androidx.core.view.doOnPreDraw
 import com.apache.fastandroid.R
+import com.apache.fastandroid.bean.Person
 import com.apache.fastandroid.databinding.KtExtensionsBinding
 import com.apache.fastandroid.demo.kt.extensions.GreenLeafyPlant
 import com.apache.fastandroid.demo.kt.extensions.print
 import com.apache.fastandroid.demo.kt.extensions.pull
+import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.state.AquariumPlant
+import com.apache.fastandroid.state.UserInfo
 import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
@@ -57,6 +60,12 @@ class KotlinExtensionsFragment:BaseVBFragment<KtExtensionsBinding>(KtExtensionsB
     }
 
 
+    fun Person?.isAdult():Boolean{
+        return this?.age?.let {
+            it > 10
+        } ?: false
+
+    }
 
     private fun drawableKt() {
         val drawable = ColorDrawable(requireContext().getColor(R.color.comm_red)).apply {

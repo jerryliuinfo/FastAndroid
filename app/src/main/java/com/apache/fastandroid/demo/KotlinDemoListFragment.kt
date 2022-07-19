@@ -6,6 +6,7 @@ import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
 import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment2
 import com.apache.fastandroid.demo.kt.delegate.KotlinDelegateFragment
 import com.apache.fastandroid.demo.kt.generics.GenericDemoFragment
+import com.apache.fastandroid.demo.kt.lambda.LambdaDemoFragment
 
 /**
  * Created by Jerry on 2021/10/18.
@@ -25,6 +26,8 @@ class KotlinDemoListFragment:BaseListFragment()
             ,ViewItemBean("Kotlin语法扩展函数","Kotlin语法扩展函数", KotlinExtensionsFragment::class.java)
             ,ViewItemBean("范型","范型", GenericDemoFragment::class.java)
             ,ViewItemBean("Kotlin热门问题","StackOverFlow最热门的8个问题", KotlinHotQuestionFragment::class.java)
+            ,ViewItemBean("Kotlin踩坑","Kotlin踩坑", KotlinTrapDemoFragment::class.java)
+            ,ViewItemBean("Lambda","Lambda", LambdaDemoFragment::class.java)
 
         )
     }

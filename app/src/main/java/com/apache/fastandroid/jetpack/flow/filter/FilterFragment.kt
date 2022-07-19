@@ -39,7 +39,7 @@ class FilterFragment: BaseVBFragment<FragmentCompletionBinding>(FragmentCompleti
                 Status.ERROR -> {
                     //Handle Error
                     mBinding.progressBar.visibility = View.GONE
-                    showToast(it.message)
+                    toast(it.message)
                 }
             }
         })

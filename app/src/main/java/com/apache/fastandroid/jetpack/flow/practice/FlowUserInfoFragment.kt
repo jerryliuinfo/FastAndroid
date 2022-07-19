@@ -23,7 +23,7 @@ class FlowUserInfoFragment:BaseVBFragment<FlowFragmentRoomBinding>(FlowFragmentR
 
             val id = mBinding.editText1.text?.toString()
             if (id.isNullOrEmpty()){
-                showToast("id is null")
+                toast("id is null")
                 return@setOnClickListener
             }
             id.toInt()?.let { editText1 ->

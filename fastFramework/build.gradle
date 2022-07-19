@@ -1,7 +1,9 @@
 
-apply from: '../gradle-mvn-push.gradle'
 
 apply from: '../base_lib.gradle'
+apply plugin: 'publication'
+
+
 
 //hit
 apply plugin: 'dagger.hilt.android.plugin'

@@ -20,6 +20,7 @@ class BlackTechDemoFragment:BaseListFragment() {
             ,ViewItemBean("字符串加密","字符串加密", EncryptDemoFragment::class.java)
             ,ViewItemBean("敏感词检测","houbb/sensitive-word", SensitiveWordDemoFragment::class.java)
             ,ViewItemBean("SpWaitKiller","解决SP卡顿问题", SpWaitKillerDemoFragment::class.java)
+            ,ViewItemBean("ResourcesPoet","生成Android XML", ResourcePoetDemoFragment::class.java)
         )
     }
 

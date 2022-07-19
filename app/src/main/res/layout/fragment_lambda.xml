@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal"
+            app:flow_wrapMode="aligned"
+            app:flow_horizontalGap="10dp"
+            app:flow_verticalGap="10dp"
+            app:constraint_referenced_ids="btn_no_param,btn_have_param,btn_anonymous_func,btn_reference_func,btn_reference_func2,btn_lambda_example,
+            btn_typeAlias,btn_high_order_function,btn_lambda_receiver"
+            />
+        <Button
+            android:id="@+id/btn_no_param"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="无参数"
+            />
+
+        <Button
+            android:id="@+id/btn_have_param"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="有参数"
+            />
+        <Button
+            android:id="@+id/btn_anonymous_func"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="匿名函数"
+            />
+        <Button
+            android:id="@+id/btn_reference_func"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="引用函数"
+            />
+
+        <Button
+            android:id="@+id/btn_reference_func2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="引用函数2"
+            />
+        <Button
+            android:id="@+id/btn_lambda_example"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lambda 表达式实例"
+            />
+        <Button
+            android:id="@+id/btn_typeAlias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="typealias"
+            />
+        <Button
+            android:id="@+id/btn_high_order_function"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="高阶函数"
+            />
+        <Button
+            android:id="@+id/btn_lambda_receiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lambda参数为有Receiver"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

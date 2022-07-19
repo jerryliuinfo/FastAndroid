@@ -20,6 +20,7 @@ class KotlinDelegateFragment:BaseVBFragment<KtDelegateBinding>(KtDelegateBinding
         super.layoutInit(inflater, savedInstanceState)
 
         mBinding.btnSp.setOnClickListener {
+
             spByDelegate()
         }
 

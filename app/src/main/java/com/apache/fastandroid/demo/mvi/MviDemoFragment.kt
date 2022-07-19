@@ -6,7 +6,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
 import com.apache.fastandroid.databinding.FragmentMviBinding
 import com.apache.fastandroid.home.ArticleAdapter
-import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.util.InjectorUtil
 import com.apache.fastandroid.util.extensitons.FetchStatus
 import com.blankj.utilcode.util.ToastUtils
@@ -84,7 +83,7 @@ class MviDemoFragment: BaseVBFragment<FragmentMviBinding>(FragmentMviBinding::in
 
     private fun renderEvent(viewEvent: MainViewEvent){
         when(viewEvent){
-            is MainViewEvent.ShowToast -> showToast(viewEvent.message)
+            is MainViewEvent.ShowToast -> toast(viewEvent.message)
             is MainViewEvent.ShowSnackbar -> {
                 Snackbar.make(mBinding.coordinatorLayoutRoot, viewEvent.message, Snackbar.LENGTH_SHORT)
                     .show()
