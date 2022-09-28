@@ -120,7 +120,6 @@ object Libs {
         //敏感词检测
         "com.github.houbb:sensitive-word:0.2.0",
         arouter_api,
-        "com.commit451:resourcespoet:latest.release.here"
     )
 
 

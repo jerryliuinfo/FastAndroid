@@ -14,10 +14,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
+import com.apache.fastandroid.demo.WebViewFragment
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.blacktech.ResourcePoetDemoFragment
-import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
-import com.apache.fastandroid.demo.kt.lambda.LambdaDemoFragment
+import com.apache.fastandroid.demo.widget.ListAdapterFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
@@ -116,7 +115,9 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KotlinTrapDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, LambdaDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null,addTitleBar = false)
-        FragmentContainerActivity.launch(this, ResourcePoetDemoFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, ResourcePoetDemoFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, ListAdapterFragment::class.java,null,addTitleBar = false)
+        FragmentContainerActivity.launch(this, WebViewFragment::class.java,null,addTitleBar = false)
 
 //        ListOptions().show(supportFragmentManager,"")
 
