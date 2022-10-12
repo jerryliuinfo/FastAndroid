@@ -238,6 +238,4 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
         }
     }
 
-
-
 }
