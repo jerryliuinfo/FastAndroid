@@ -31,7 +31,7 @@ class CommentItemDecoration(val context:Context): RecyclerView.ItemDecoration() 
 
     private var  bitmap:Bitmap
     init {
-        bitmap = BitmapFactory.decodeResource(context.resources,R.drawable.batman_logo)
+        bitmap = BitmapFactory.decodeResource(context.resources,R.drawable.about_page_card)
     }
 
 

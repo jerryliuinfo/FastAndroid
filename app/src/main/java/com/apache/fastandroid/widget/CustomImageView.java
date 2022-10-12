@@ -38,7 +38,7 @@ public class CustomImageView extends AppCompatImageView {
 //      setImageDrawable(getContext().getDrawable(R.drawable.batman));
 
       if (drawable == null){
-         drawable = getContext().getDrawable(R.drawable.batman);
+         drawable = getContext().getDrawable(R.drawable.add_icon);
       }
       setImageDrawable(drawable);
 

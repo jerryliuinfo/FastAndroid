@@ -49,7 +49,7 @@ class RecycleViewItemDecorationFragment: BaseVBFragment<RecycleviewItemDecoratio
         tv_custom_divider.setOnClickListener {
             recycleview.let {
                 it.removeDecorations()
-                it.addItemDecoration(CommentItemDecoration(it.context))
+//                it.addItemDecoration(CommentItemDecoration(it.context))
             }
 
         }

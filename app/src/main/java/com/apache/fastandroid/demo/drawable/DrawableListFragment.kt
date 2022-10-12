@@ -10,7 +10,6 @@ class DrawableListFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
             ViewItemBean("自定义Drawable", "自定义Drawable",DrawableDemoFragment::class.java)
-            ,ViewItemBean("BitmapDrawable", "BitmapDrawable",BitmapDrawableFragment::class.java)
         )
     }
 

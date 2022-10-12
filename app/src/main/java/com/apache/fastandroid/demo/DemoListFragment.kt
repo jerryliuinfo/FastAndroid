@@ -1,6 +1,5 @@
 package com.apache.fastandroid.demo
 
-import com.apache.fastandroid.DrawBasicDemoFragment
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
 import com.apache.fastandroid.demo.bestpractice.BestPracticeDemoFragment
@@ -20,9 +19,7 @@ import com.apache.fastandroid.demo.widget.property.UIPropertyDemoListFragment
 import com.apache.fastandroid.demo.widget.UIWidgetDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.RelearnAndroidDemoFragment
-import com.hencoder.hencoderpracticedraw2.DrawPaintDemoFragment
-import com.hencoder.hencoderpracticedraw3.DrawTextDemoFragment
-import com.hencoder.hencoderpracticedraw4.MatrixDemoFragment
+
 
 /**
  * Created by Jerry on 2020/10/31.
@@ -37,10 +34,10 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("最佳实践", "最佳实践", BestPracticeDemoFragment::class.java),
             ViewItemBean("工具", "工具", ToolsFragment::class.java),
 
-            ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
-            ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
-            ViewItemBean("Hencoder", "绘制文字", DrawTextDemoFragment::class.java),
-            ViewItemBean("Hencoder", "范围裁切", MatrixDemoFragment::class.java),
+//            ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
+//            ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
+//            ViewItemBean("Hencoder", "绘制文字", DrawTextDemoFragment::class.java),
+//            ViewItemBean("Hencoder", "范围裁切", MatrixDemoFragment::class.java),
             ViewItemBean("UI小控件", "UI小控件", UIWidgetDemoFragment::class.java),
             ViewItemBean("UI属性", "UI属性", UIPropertyDemoListFragment::class.java),
 

@@ -117,7 +117,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, ResourcePoetDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, ListAdapterFragment::class.java,null,addTitleBar = false)
-        FragmentContainerActivity.launch(this, WebViewFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, WebViewFragment::class.java,null,addTitleBar = false)
 
 //        ListOptions().show(supportFragmentManager,"")
 
