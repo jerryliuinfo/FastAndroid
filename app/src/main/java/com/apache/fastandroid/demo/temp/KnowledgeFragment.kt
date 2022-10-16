@@ -229,7 +229,6 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
             }
             return if (ch == source) {
 
-
                 Toast.makeText(
                     context, "符合要求",
                     Toast.LENGTH_SHORT

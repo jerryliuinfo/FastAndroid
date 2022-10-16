@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.tesla.framework.common.util.Preconditions;
-import com.tesla.framework.common.util.log.FastLog;
+import com.tesla.framework.component.logger.Logger;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.DefaultLifecycleObserver;
@@ -50,13 +50,12 @@ public class LifecycleHandler extends Handler implements DefaultLifecycleObserve
 
     @Override
     public void onCreate(@NonNull LifecycleOwner owner) {
-        FastLog.d(TAG, "LifecycleHandler onCreate");
+        Logger.d( "LifecycleHandler onCreate");
     }
 
 
     @Override
     public void onDestroy(@NonNull LifecycleOwner owner) {
-        FastLog.d(TAG, "LifecycleHandler onDestroy removeCallbacksAndMessages");
         removeCallbacksAndMessages(null);
     }
 

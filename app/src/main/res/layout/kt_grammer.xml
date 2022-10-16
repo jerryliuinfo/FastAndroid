@@ -103,12 +103,7 @@
                 android:layout_height="wrap_content"
                 android:text="操作符重载"
                 />
-            <Button
-                android:id="@+id/btn_object"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="object"
-                />
+
             <Button
                 android:id="@+id/btn_on_each"
                 android:layout_width="wrap_content"

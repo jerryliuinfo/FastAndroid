@@ -1,6 +1,6 @@
 package com.apache.fastandroid.demo.designmode.proxy.dynamic;
 
-import com.tesla.framework.common.util.log.FastLog;
+import com.tesla.framework.component.logger.Logger;
 
 /**
  * Created by Jerry on 2019/2/2.
@@ -8,6 +8,6 @@ import com.tesla.framework.common.util.log.FastLog;
 public class RealSubject implements ISubject {
     @Override
     public void request() {
-        FastLog.d("","RealSubject request");
+        Logger.d( "RealSubject request");
     }
 }

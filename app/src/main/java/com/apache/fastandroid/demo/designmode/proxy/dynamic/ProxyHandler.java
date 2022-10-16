@@ -1,6 +1,6 @@
 package com.apache.fastandroid.demo.designmode.proxy.dynamic;
 
-import com.tesla.framework.common.util.log.FastLog;
+import com.tesla.framework.component.logger.Logger;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -19,9 +19,9 @@ public class ProxyHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        FastLog.d(TAG,"before invoke");
+        Logger.d( "before invoke");
         Object result = method.invoke(subject,args);
-        FastLog.d(TAG, "after invoke");
+        Logger.d(  "after invoke");
         return result;
     }
 

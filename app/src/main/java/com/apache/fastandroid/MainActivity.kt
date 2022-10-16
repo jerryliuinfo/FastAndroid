@@ -16,6 +16,7 @@ import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.WebViewFragment
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.kt.official.KotlinOfficialDemoFragment
 import com.apache.fastandroid.demo.widget.ListAdapterFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
@@ -134,8 +135,8 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
     //        launchActivity<CheeseActivity>(this)
 
-        showToast(R.string.loading_msg)
 
+//        FragmentContainerActivity.launch(this, KotlinOfficialDemoFragment::class.java,null,addTitleBar = false)
 
 
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){

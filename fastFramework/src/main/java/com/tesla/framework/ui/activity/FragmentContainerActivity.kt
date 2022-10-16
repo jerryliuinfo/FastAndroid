@@ -7,7 +7,6 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import com.tesla.framework.R
-import com.tesla.framework.common.util.log.FastLog
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.databinding.CommUiFragmentContainerBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,11 +37,9 @@ class FragmentContainerActivity : BaseVmActivity<CommUiFragmentContainerBinding>
                         )
                         method.invoke(fragment, FragmentArgs.transToBundle(values))
                     } catch (e: Exception) {
-                        FastLog.printStackTrace(e)
                     }
                 }
             } catch (e: Exception) {
-                FastLog.printStackTrace(e)
                 finish()
                 return
             }

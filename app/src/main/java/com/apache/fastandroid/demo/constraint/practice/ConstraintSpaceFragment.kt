@@ -3,7 +3,7 @@ package com.apache.fastandroid.demo.constraint.practice
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.ConstraintSpaceBinding
-import com.tesla.framework.common.util.log.FastLog
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.android.synthetic.main.constraint_space.*
 
@@ -22,7 +22,7 @@ class ConstraintSpaceFragment: BaseVBFragment<ConstraintSpaceBinding>(Constraint
 
         var parent = constraint_layout.parent
         while (parent != null) {
-            FastLog.d(TAG, "parent: $parent")
+            Logger.d( "parent: $parent")
             parent = parent.parent
         }
     }

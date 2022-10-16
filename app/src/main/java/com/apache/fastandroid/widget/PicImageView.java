@@ -1,10 +1,11 @@
 package com.apache.fastandroid.widget;
 
 import android.content.Context;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
-import com.tesla.framework.common.util.log.FastLog;
+import com.tesla.framework.component.logger.Logger;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by jerryliu on 2017/4/11.
@@ -57,7 +58,7 @@ public class PicImageView extends androidx.appcompat.widget.AppCompatImageView {
         int iw = imageWidth;
         int ih = imageHeight;
         int heightC = width * ih / iw;
-        FastLog.d(TAG, "width = %s, height = %s, iw = %s, ih = %s, heightC = %s",width,height,iw,ih,heightC);
+        Logger.d( "width = %s, height = %s, iw = %s, ih = %s, heightC = %s",width,height,iw,ih,heightC);
         if (height > 0){
             if (heightC > height){
                 heightC = height;

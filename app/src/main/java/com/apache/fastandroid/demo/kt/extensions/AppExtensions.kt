@@ -2,6 +2,7 @@ package com.apache.fastandroid.demo.kt.extensions
 
 import androidx.navigation.NavOptions
 import androidx.navigation.NavOptionsBuilder
+import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.state.AquariumPlant
 import com.kingja.loadsir.core.LoadSir
 
@@ -25,3 +26,13 @@ fun AquariumPlant?.pull() {
 
 fun loadSirOptions(optionsBuilder: LoadSir.Builder.() -> Unit): LoadSir =
     LoadSir.Builder().apply(optionsBuilder).build()
+
+
+
+
+fun <T,O> List<T>.mapData(transform:(T) -> O):List<O>{
+    val destination = mutableListOf<O>()
+    for (item in this)
+        destination.add(transform(item))
+    return destination
+}

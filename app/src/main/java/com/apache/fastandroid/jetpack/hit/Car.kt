@@ -12,4 +12,9 @@ class Car {
     fun start(){
         engine.start()
     }
+
+    var gallonsOfFuleInTank: Int = 15
+
+        //外界无法调用set，只能调用get
+        private set
 }

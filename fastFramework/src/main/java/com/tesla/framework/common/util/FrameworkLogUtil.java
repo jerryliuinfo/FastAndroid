@@ -1,7 +1,5 @@
 package com.tesla.framework.common.util;
 
-import com.tesla.framework.common.util.log.FastLog;
-
 /**
  * author: 01370340
  * data: 2019/6/13
@@ -16,7 +14,6 @@ public class FrameworkLogUtil {
      * @param args   格式化日志参数
      */
     public static void v(String format, Object... args) {
-        FastLog.v(TAG, format, args);
     }
 
     /**
@@ -26,7 +23,6 @@ public class FrameworkLogUtil {
      * @param args   格式化日志参数
      */
     public static void d(String format, Object... args) {
-        FastLog.d(TAG,format, args);
     }
 
     /**
@@ -36,7 +32,6 @@ public class FrameworkLogUtil {
      * @param args   格式化日志参数
      */
     public static void w(String format, Object... args) {
-        FastLog.w(TAG,format, args);
     }
 
 

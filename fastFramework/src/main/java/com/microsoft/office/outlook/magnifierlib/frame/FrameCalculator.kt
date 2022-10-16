@@ -19,7 +19,7 @@ class FrameCalculator(
 
     private var handlerThread: HandlerThread = HandlerThread(MAGNIFIER_FRAME_CALLBACK_THREAD_NAME).also { it.start() }
 
-    private var handler: Handler = object : Handler(handlerThread.looper) {
+    private val handler: Handler = object : Handler(handlerThread.looper) {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
             when (msg.what) {

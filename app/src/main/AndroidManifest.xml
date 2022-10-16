@@ -254,13 +254,7 @@
 
 
 
-        <activity android:name="me.drakeet.floo.sample.FlooMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+        <activity android:name="me.drakeet.floo.sample.FlooMainActivity"/>
 
         <activity
             android:name="me.drakeet.floo.sample.TargetActivity"

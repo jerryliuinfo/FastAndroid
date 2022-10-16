@@ -43,4 +43,6 @@ class RefiedDemo {
             else -> throw IllegalStateException("Only works with Float and Int")
         }
     }
+
+
 }

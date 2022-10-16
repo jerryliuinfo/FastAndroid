@@ -16,6 +16,9 @@ import com.apache.fastandroid.demo.kt.annotation.ImAPlant
 import com.apache.fastandroid.demo.kt.bean.*
 import com.apache.fastandroid.demo.kt.delegate.DelegateList
 import com.apache.fastandroid.demo.kt.delegate.People
+import com.apache.fastandroid.demo.kt.hignorder.highOrderA
+import com.apache.fastandroid.demo.kt.hignorder.highOrderB
+import com.apache.fastandroid.demo.kt.hignorder.myWith
 import com.apache.fastandroid.demo.kt.inline.PreferenceManager
 import com.apache.fastandroid.demo.kt.inline.onlyIf
 import com.apache.fastandroid.demo.kt.inline.onlyIf2
@@ -101,11 +104,8 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             operatationOverload()
         }
 
-        mBinding.btnObject.setOnClickListener {
-            objectExpression()
-        }
-        mBinding.btnOnEach.setOnClickListener {
 
+        mBinding.btnOnEach.setOnClickListener {
             println( onEach())
         }
         mBinding.btnMethodCost.setOnClickListener {
@@ -123,8 +123,8 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             Logger.d("frame: ${it}")
         }
         mBinding.btnHighOrderFunction.setOnClickListener {
+            createHighOrderFunc()
             highOrderFunction()
-            println(highOrderFun2())
         }
         mBinding.btnExtensionHighOrderFunction.setOnClickListener {
             println(extenseHighOrderFunction())
@@ -224,6 +224,8 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
         mBinding.btnWhenOperator.setOnClickListener {
             testWhenOperator()
+            println(whenUsage())
+
         }
 
         mBinding.btnGenericParameter.setOnClickListener {
@@ -440,9 +442,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         }
     }
 
-    inline fun myWith(name: String, block: String.() -> Unit){
-        name.block()
-    }
+
 
     private fun joinToStringUsage() {
         val fruit = mutableListOf(Fruit("Apple"),Fruit("Pear"),Fruit("banana"))
@@ -532,7 +532,16 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
     private fun refiedTest() {
         val refiedDemo = RefiedDemo()
-        refiedDemo.printStringType()
+
+        //编译报错，因为没有传递 Class 类型，也无法自动推导
+//        refiedDemo.printType()
+
+        // 可以调用，但是必须传递 Class 类型
+        refiedDemo.printType2(Int::class.java)
+
+        //通过泛型参数传递
+        refiedDemo.printType3<String>()
+
         refiedDemo.printIntType()
 
         val intCall: Int = refiedDemo.calculate(123643f)
@@ -542,10 +551,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
 
-    fun objectExpression(){
 
-
-    }
 
 
     /**
@@ -817,9 +823,14 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
     private fun highOrderFunction() {
         //这里加了两个 ：： 就变成了对象，一个函数类型的对象，kotlin 中函数可以作为参数传递的本质是：函数可以作为对象存在
-        val result1 =  a(::b)
-        val result2 = ::b
+//        val result1 =  a(::b)
+//        val result2 = ::b
+
+
+        val result1 = highOrderA (::highOrderB)
+        val result2 = ::highOrderB
         println( "result1:$result1, result2:$result2")
+
 
         onlyIf(true){
             println("打印日志")
@@ -846,7 +857,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
 
-    private fun highOrderFun2():String{
+    private fun whenUsage():String{
         val array:Array<String> = arrayOf("How", "do","you","do", "I'm    ","Fine")
         count++
         return when(count % 4){

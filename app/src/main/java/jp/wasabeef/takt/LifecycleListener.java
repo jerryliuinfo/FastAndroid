@@ -28,7 +28,7 @@ public class LifecycleListener implements Application.ActivityLifecycleCallbacks
     this.listener = listener;
   }
 
-  public interface LifecycleCallbackListener {
+  public interface /**/LifecycleCallbackListener {
     void onAppForeground();
 
     void onAppBackground();

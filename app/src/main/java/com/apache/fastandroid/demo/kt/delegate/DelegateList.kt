@@ -7,6 +7,7 @@ class DelegateList<T>: ArrayList<T>() {
 
     var deletedItem:T ?= null
 
+
     override fun remove(element: T): Boolean {
         deletedItem = element
         return super.remove(element)
