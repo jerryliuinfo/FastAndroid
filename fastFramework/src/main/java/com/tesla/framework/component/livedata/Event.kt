@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 
 /**
  * Created by Jerry on 2022/1/22.
+ * 只会回调一次的 LiveData
  */
 open class Event <out T>(private val content:T) {
 

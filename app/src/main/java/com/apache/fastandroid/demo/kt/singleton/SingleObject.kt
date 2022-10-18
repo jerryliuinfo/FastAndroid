@@ -6,7 +6,7 @@ package com.apache.fastandroid.demo.kt.singleton
 class SingleObject private constructor(){
 
     companion object{
-        fun get(): SingleObject {
+        fun getInstance(): SingleObject {
             return Holder.instance
         }
     }

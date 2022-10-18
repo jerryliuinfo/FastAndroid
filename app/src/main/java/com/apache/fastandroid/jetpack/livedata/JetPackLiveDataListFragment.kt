@@ -12,7 +12,8 @@ class JetPackLiveDataListFragment: BaseListFragment() {
                 ViewItemBean("LiveData基本用法", "LiveData", LiveDataBasicFragment::class.java),
                 ViewItemBean("LiveData最佳实践️", "手动刷新ui", LiveDataBestPracticeFragment::class.java),
                 ViewItemBean("LiveData最佳实践2️", "LiveData最佳实践", LiveDataBestPracticeFragment2::class.java),
-                ViewItemBean("LiveDat不恰当用法","LiveDat不恰当用法", LiveDataWrongUsageFragment::class.java)
+                ViewItemBean("LiveDat不恰当用法","LiveDat不恰当用法", LiveDataWrongUsageFragment::class.java),
+                ViewItemBean("LiveDat高级用法","LiveDat高级用法", LiveDataSensorUsageFragment::class.java),
         )
     }
 

@@ -22,7 +22,6 @@
  *
  */
 
-package com.seiko.common.util.livedata
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.MutableLiveData

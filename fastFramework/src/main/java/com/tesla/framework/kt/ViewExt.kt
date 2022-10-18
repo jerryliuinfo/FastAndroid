@@ -27,6 +27,7 @@ import android.widget.SearchView
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -668,3 +669,20 @@ fun TextView.textViewFlow() = callbackFlow {
         removeTextChangedListener(textWatch)
     }
 }
+
+
+fun View.show() {
+    visibility = View.VISIBLE
+}
+
+fun View.hide() {
+    visibility = View.GONE
+}
+
+fun View.showOrHide(show: Boolean) = if (show) show() else hide()
+
+fun View.dimenFloat(@DimenRes res: Int) = resources.getDimension(res)
+
+fun View.dimenInt(@DimenRes res: Int) = resources.getDimensionPixelSize(res)
+
+

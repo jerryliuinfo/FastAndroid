@@ -25,6 +25,9 @@ import com.apache.fastandroid.demo.kt.inline.onlyIf2
 import com.apache.fastandroid.demo.kt.operatoroverload.*
 import com.apache.fastandroid.demo.kt.refied.RefiedDemo
 import com.apache.fastandroid.demo.kt.sealed.*
+import com.apache.fastandroid.demo.kt.singleton.SingleInstanceSync
+import com.apache.fastandroid.demo.kt.singleton.SingleObject
+import com.apache.fastandroid.demo.kt.singleton.Singleton
 import com.apache.fastandroid.demo.room.Account
 import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
@@ -316,48 +319,16 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         println("dataClassStr:$dataClassStr")
     }
 
-    private object ObjectInstance{
-        fun test(){
 
-        }
-    }
 
-    private class SingleInstance{
-        fun test(){
 
-        }
-        companion object{
-            private var instance:SingleInstance ?= null
-            fun instance():SingleInstance{
-                return instance ?: synchronized(this){
-                    instance ?:SingleInstance().also { instance = it }
-                }
-            }
-        }
-    }
 
-    class SingleObject private constructor(){
-        fun test() {
-
-        }
-
-        companion object{
-            fun getInstance():SingleObject{
-                return Holder.instance
-            }
-        }
-
-        private object Holder{
-            val instance = SingleObject()
-        }
-
-    }
 
     private fun singleInstance() {
         //object 单例
-        ObjectInstance.test()
-        SingleInstance.instance().test()
-        SingleObject.getInstance().test()
+        Singleton.count()
+        SingleInstanceSync.getInstance()
+        SingleObject.getInstance()
     }
 
 
