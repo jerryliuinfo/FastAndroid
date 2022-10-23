@@ -14,10 +14,15 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
+import com.apache.fastandroid.databinding.FragmentDatabindingObservableFieldBinding
 import com.apache.fastandroid.demo.WebViewFragment
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
+import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
 import com.apache.fastandroid.demo.kt.official.KotlinOfficialDemoFragment
 import com.apache.fastandroid.demo.widget.ListAdapterFragment
+import com.apache.fastandroid.jetpack.livedata.LiveDataSensorUsageFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
@@ -28,6 +33,8 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
     private val selecteId = -1
 
     private var mNavController: NavController? = null
+
+
     @CostTime
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
@@ -99,7 +106,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
 //        FragmentContainerActivity.launch(this, JetPackLifeCycleFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinHotQuestionFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
 //        FragmentContainerActivity.launch(this, TempDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, DemoListFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, JniDemoListFragment::class.java,null)
@@ -119,6 +126,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, ResourcePoetDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, ListAdapterFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, WebViewFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, LiveDataSensorUsageFragment::class.java,null,addTitleBar = false)
 
 //        ListOptions().show(supportFragmentManager,"")
 
@@ -136,7 +144,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
     //        launchActivity<CheeseActivity>(this)
 
 
-//        FragmentContainerActivity.launch(this, KotlinOfficialDemoFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null,addTitleBar = false)
 
 
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){

@@ -642,7 +642,7 @@ fun RecyclerView.addOnItemClickListener(listener:(View, Int) ->Unit = {_,_ -> } 
 }
 
 
- fun getActivity(view: View): Activity? {
+ fun getActivityFromView(view: View): Activity? {
     var context = view.context
     while (context is ContextWrapper) {
         if (context is Activity) {

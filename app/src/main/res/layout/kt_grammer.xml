@@ -30,11 +30,11 @@
                 app:flow_verticalGap="10dp"
                 app:constraint_referenced_ids="btn_single_instance,btn_init_array,btn_SAM,btn_create_high_order_func,btn_join_tostring,btn_lable_break,btn_annotation,btn_check,
                 btn_delegate,btn_refied,btn_operator_overload2,btn_object,btn_on_each,btn_method_cost,btn_coerceAtLeast,btn_high_order_function,btn_extension_high_order_function,
-             btn_clazz_paramter,btn_java_kotlin_call_each_other,btn_nested_function,btn_expand_function,btn_expand_collection,btn_expand_function2,
+             btn_clazz_paramter,btn_kotlin_call_java_notnull,btn_kotlin_call_java_nullable,btn_java_call_kotlin,btn_nested_function,btn_expand_function,btn_closeable_use,btn_expand_collection,btn_expand_function2,
              btn_lambda,btn_inline,btn_campanion_object,btn_sealedClass,btn_sealedClass2,
              btn_deconstruction,btn_iterator,btn_withIndex,btn_takeUnless,btn_takeIf,btn_operator,btn_custom_operator,
              btn_when_operator,btn_generic_parameter,btn_tail_fun,btn_object_property,btn_proxy_mode,btn_nested_class,
-             btn_template_class,btn_Suspend,edittext"
+             btn_template_class,edittext"
                 />
             <Button
                 android:id="@+id/btn_single_instance"
@@ -52,7 +52,7 @@
                 android:id="@+id/btn_SAM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SAM"
+                android:text="函数式接口"
                 />
             <Button
                 android:id="@+id/btn_create_high_order_func"
@@ -120,7 +120,7 @@
                 android:id="@+id/btn_coerceAtLeast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="取最小不小于某个值"
+                android:text="Range扩展方法"
                 />
 
             <Button
@@ -144,11 +144,24 @@
                 android:text="传递Class参数"
                 />
             <Button
-                android:id="@+id/btn_java_kotlin_call_each_other"
+                android:id="@+id/btn_kotlin_call_java_notnull"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kotlin与java互相调用"
+                android:text="Kotlin调用java未标记返回可空"
                 />
+            <Button
+                android:id="@+id/btn_kotlin_call_java_nullable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kotlin调用java标记返回可空"
+                />
+            <Button
+                android:id="@+id/btn_java_call_kotlin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="java调用Kotlin"
+                />
+
             <Button
                 android:id="@+id/btn_nested_function"
                 android:layout_width="wrap_content"
@@ -161,6 +174,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="扩展函数"
+                />
+            <Button
+                android:id="@+id/btn_closeable_use"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="流的use方法"
                 />
             <Button
                 android:id="@+id/btn_expand_collection"
@@ -304,12 +323,7 @@
                 android:layout_height="wrap_content"
                 android:text="模版类"
                 />
-            <Button
-                android:id="@+id/btn_Suspend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Suspend"
-                />
+
 
             <EditText
                 android:id="@+id/edittext"

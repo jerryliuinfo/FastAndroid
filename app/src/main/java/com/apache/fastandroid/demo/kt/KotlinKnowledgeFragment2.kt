@@ -3,8 +3,11 @@ package com.apache.fastandroid.demo.kt
 import android.app.ActivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.TextView
+import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.KtGrammer2Binding
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.kt.bean.KotlinMain
 import com.apache.fastandroid.demo.kt.genericity.*
 import com.blankj.utilcode.util.GsonUtils
 import com.google.gson.Gson
@@ -17,7 +20,7 @@ import java.io.File
  */
 class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Binding::inflate) {
     companion object{
-        private const val TAG = "kotlinknowledgefragment"
+        private const val TAG = "KotlinKnowledgeFragment2"
     }
 
 
@@ -25,19 +28,24 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        mBinding.btnLetRun.setOnClickListener {
-            testLetRun()
+        mBinding.btnLet.setOnClickListener {
+            letUsage()
         }
 
-        mBinding.btnAlsoApply.setOnClickListener {
-            testAlsoApply()
-        }
         mBinding.btnWith.setOnClickListener {
-            testWith()
+            withUsage()
         }
 
-        mBinding.btnCommonOperator.setOnClickListener {
-            commonOperation()
+        mBinding.btnRun.setOnClickListener {
+            runUsage()
+        }
+
+        mBinding.btnApply.setOnClickListener {
+            applyUsage()
+        }
+
+        mBinding.btnAlso.setOnClickListener {
+            alsoUsage()
         }
 
         mBinding.btnOperatorOverload.setOnClickListener {
@@ -90,7 +98,7 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
 
         mBinding.btnKtClassRealGenericity.setOnClickListener {
 
-            val p1 = GenericView.Companion.invoke<GenericView.Presenter>().presenter
+            val p1 = GenericView.invoke<GenericView.Presenter>().presenter
             //p2 其实是通过 P1 的形式创建的
             val p2 = GenericView<GenericView.Presenter>().presenter
 
@@ -98,12 +106,6 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
 
             p1.test()
             p2.test()
-        }
-        mBinding.btnJoinTostring.setOnClickListener {
-            val list = arrayListOf<UserBean>(UserBean("jerry",10),UserBean("Tom",11)).map {
-                it.name
-            }.joinToString(separator = ",")
-            println(list)
         }
 
         mBinding.btnEvisOperator.setOnClickListener {
@@ -150,11 +152,18 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
             println("test1")
             return@lambdaFunc
         }
-        println("hello")
+        lambdaFunc("Hello"){
+            it.length
+        }
     }
 
     private fun lambdaFunc(l: () -> Unit){
         l.invoke()
+    }
+
+    private fun lambdaFunc(param:String,l: (String) -> Int){
+        val length = l.invoke(param)
+        Logger.d("lambdaFunc length:$length")
     }
 
     private inline fun inlineFun(l: () -> Unit){
@@ -200,7 +209,7 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
 
     val msg:String ?= null
         get() {
-            return field + ", hello"
+            return "$field, hello"
         }
 
     /**
@@ -219,6 +228,9 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
 
     }
 
+    /**
+     * 中缀表达式
+     */
     private fun zhongZuiExpression() {
         var result1 = 5.vs(6)
         var result2 = 6.vs(5)
@@ -237,22 +249,27 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
         }
     }
 
+
+    private fun getTextView():TextView?{
+        return null
+    }
+
     /**
-     * let 和 run
-     * 相同点:都是返回闭包，而不是调用者本身
-     * 区别是 let 的闭包中是可以参数的，这个参数为 调用者, 而run 是通过this来获取调用者的对象
+     * 特点：
+     *   1. 函数体内使用 it 指代当前对象
+     *   2. 返回值为函数块的最后一行代码或指定 return 表达式
+     *   3. 可以在调用 let 前判空处理
+     *
+     *  适用的场景
+     *   1. 适用 let 函数处理需要针对一个可 null 的对象统一做判空处理(常用)
+     *   2. 需要去明确一个变量所处特定的作用于范围内可适用
      */
-    private fun testLetRun(){
-        val user = UserBean("Tom")
-        val letResult =  user.let {
-            println("let:${it.javaClass}")
+    private fun letUsage(){
+        getTextView()?.let {
+            it.setTextColor(requireContext().getColor(R.color.red_100))
+            it.text = "Hello"
         }
 
-        val runResult =  user.run {
-            println("let:${this.javaClass}")
-        }
-        println(letResult)
-        println(runResult)
 
         //通过 let 改变返回值来做链式调用
         val origin = "abc"
@@ -268,29 +285,18 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
     }
 
     /**
-     * also 和 apply
-     * 相同点:都是返回调用者本身,而不是闭包
-     * 区别是 also 的闭包中是带参数的，apply 的闭包没有带参数，通过this来访问
-     */
-    private fun testAlsoApply(){
-        val user = UserBean("Tom")
-        val letResult =  user.also {
-            println("also:${it.javaClass}")
-        }
-
-         user.apply {
-            println("apply:${this.javaClass}")
-        }.name = "jerry"
-        println(letResult)
-        println(user)
-
-    }
-
-    /**
      * with 比较特殊，不是以扩展方法的形式存在的，而是一个顶级函数
-     * 通常用语对view做一些设置，例如color, size等
+     * 特点：
+     *    1. 在函数块内可以通过 this 指代当前对象
+     *    2. 返回值为函数块的最后一行代码或指定 return 表达式
+     *
+     * 适用场景:
+     *  适用于调用同一个了诶的多个方法时，可以省去类名重复，直接调用类的方法即可，常用
+     *  于 RecycleView 的 onBindViewHolder 方法中将 Model 属性映射到 UI 中
+     *
+     *
      */
-    private fun testWith(){
+    private fun withUsage(){
         val user = UserBean("Tom")
         with(user){
             this.name = "with"
@@ -299,38 +305,66 @@ class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Bindi
 
     }
 
-    private fun commonOperation(){
-        val list = arrayListOf<String>( "Tom","Jerry","KittyNan", "Hansomboy")
-        val singleOrNullResult = list.singleOrNull {
-            it.length > 5
-        }
-        println("firstOrNull:${list.lastOrNull()}, singleOrNullResult:$singleOrNullResult")
 
-        //any 判断集合中是否有指定的元素
-        val anyResult = list.any {
-            it.length > 5
+    /**
+     * 特点:
+     *  1. 在函数块内可以通过 this 指代当前对象
+     *  2. 返回值为函数块的最后一行代码或指定 return 表达式
+     *  3. 可以在调用 let 前判空处理
+     *
+     * 适用场景: 是 let 和 with 两个的函数结合体可， 适用于 let 和 with的任何场景，它弥补了
+     * let 函数在函数体类必须使用 it 参数对象， 在 run 函数中可以像 with 一样可以省略，直接
+     * 访问属性的公有属性和方法，另一方面弥补了 with 函数传入对象的判空问题，在run 函数中可以
+     * 像 let 一样在调用前做判空处理
+     *
+     *
+     */
+    private fun runUsage(){
+        getTextView()?.run {
+            setTextColor(requireContext().getColor(R.color.red_100))
+            text = "Hello"
         }
 
-        //判断集合中的是否都满足条件
-        val allResult =  list.all {
-            it.length > 5
-        }
-        val noneResult =  list.none {
-            it.length > 5
-        }
-
-        val countResult =  list.count {
-            it.length > 5
-        }
-        val reduceResult =  list.reduce { acc, s ->
-            return@reduce "$acc $s"
-        }
-        Logger.d("singleOrNullResult:$singleOrNullResult,anyResult:$anyResult, allResult:$allResult, " +
-                "noneResult:$noneResult,countResult:$countResult,reduceResult:$reduceResult")
     }
+
+
+    /**
+     * 特点:
+     *  1.在函数块内可以通过 this 指代当前对象或省略
+     *  2.返回值是对象本身(this)
+     *  3.可以在调用 apply 前做判空处理
+     *
+     *  适用场景:
+     *  * 适用于 run 函数的任何场景，一般用于连续调用对象的多个方法
+     */
+    private fun applyUsage(){
+        getTextView()?.apply {
+            setTextColor(requireContext().getColor(R.color.red_100))
+            text = "Hello"
+        }
+
+    }
+
+    /**
+     *  1.在函数块内可以通过 it 指代当前对象或省略
+     *  2.返回值是对象本身(this)
+     *  3.可以在调用 also 前做判空处理
+     *
+     *
+     */
+    private fun alsoUsage(){
+       val instance =  KotlinMain.instance.getKotlinMain()
+        Logger.d("instance:$instance")
+
+    }
+
+
 
 }
 
 //用 A 来代表 File
 typealias A = File
+
+typealias Success = (String) -> Void
+
 typealias UserList = List<UserBean>

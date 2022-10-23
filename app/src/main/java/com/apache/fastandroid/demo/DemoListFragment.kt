@@ -29,6 +29,7 @@ class DemoListFragment : BaseListFragment() {
 
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
+            ViewItemBean("Android官方文档", "Android官方文档", JetPackDemoFragment::class.java),
             ViewItemBean("JetPack", "JetPack", JetPackDemoFragment::class.java),
             ViewItemBean("Google Sample", "Google Sample", SampleAppDemoFragment::class.java),
             ViewItemBean("最佳实践", "最佳实践", BestPracticeDemoFragment::class.java),

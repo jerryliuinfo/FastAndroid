@@ -3,12 +3,8 @@ package com.apache.fastandroid.demo.kt
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.math.MathUtils
-import com.apache.fastandroid.databinding.FragmentKtCollection2Binding
 import com.apache.fastandroid.databinding.FragmentMathutilBinding
-import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.kt.sealed.User
 import com.tesla.framework.ui.fragment.BaseVBFragment
-import kotlin.math.abs
 
 /**
  * Created by Jerry on 2022/2/27.

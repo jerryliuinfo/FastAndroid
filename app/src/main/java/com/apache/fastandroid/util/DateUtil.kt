@@ -1,5 +1,6 @@
 package com.apache.fastandroid.util
 
+import com.tesla.framework.component.logger.Logger
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -12,6 +13,7 @@ object DateUtil {
             val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
             return sdf.format(Date())
         }
+
 
     val nowDate:String
         get() {

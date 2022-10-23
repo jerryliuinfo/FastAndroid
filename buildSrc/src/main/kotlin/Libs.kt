@@ -90,7 +90,7 @@ object Libs {
 
     val otherThirdLibs = arrayOf(
 //        anyLayer,
-        "com.github.pengxurui:EasyTrack:v1.0.1",
+//        "com.github.pengxurui:EasyTrack:v1.0.1",
         "com.github.huage2580:PermissionMonitor:1.0.1",
         "me.weishu:epic:1.0.0",
         "com.yqritc:recyclerview-flexibledivider:1.4.0",

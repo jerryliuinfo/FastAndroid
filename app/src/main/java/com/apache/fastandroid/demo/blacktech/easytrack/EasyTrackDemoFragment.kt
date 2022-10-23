@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.blacktech.easytrack
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentBlacktrackEasytrackBinding
+import com.apache.fastandroid.demo.track.statistics.StatisticsUtils
 import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
@@ -13,7 +14,7 @@ class EasyTrackDemoFragment:BaseVBFragment<FragmentBlacktrackEasytrackBinding>(F
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
-
+        StatisticsUtils.init(requireContext())
 
     }
 }

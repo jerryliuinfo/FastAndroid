@@ -19,6 +19,7 @@ class DatabindingObservableFiledFragment :
 
 
 
+
     override fun initViewModel() {
 
 

@@ -15,6 +15,7 @@ class Choir {
         singers.add(singer)
     }
 
+
     operator fun contains(singer: Singer):Boolean{
         return singers.contains(singer)
     }

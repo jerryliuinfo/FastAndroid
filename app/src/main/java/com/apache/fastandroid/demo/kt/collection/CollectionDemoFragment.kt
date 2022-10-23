@@ -3,364 +3,580 @@ package com.apache.fastandroid.demo.kt.collection
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentKtCollectionBinding
+import com.apache.fastandroid.demo.bean.Animal
+import com.apache.fastandroid.demo.bean.Cat
+import com.apache.fastandroid.demo.bean.Dog
 import com.apache.fastandroid.demo.bean.UserBean
+import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseVBFragment
-import okhttp3.internal.filterList
 
 /**
  * Created by Jerry on 2022/2/27.
  */
-class CollectionDemoFragment:BaseVBFragment<FragmentKtCollectionBinding>(FragmentKtCollectionBinding::inflate) {
+class CollectionDemoFragment :
+    BaseVBFragment<FragmentKtCollectionBinding>(FragmentKtCollectionBinding::inflate) {
+
+    private val numberMap = hashMapOf("one" to 1, "two" to 2, "three" to 3)
+    private val list = mutableListOf(1, 10, 5, 7, 5)
+    private val users = listOf(
+        UserBean(null, 9),
+        UserBean("user2", 20),
+        UserBean("user3", 30),
+        UserBean("user4", 10),
+        UserBean("user4", 16),
+        UserBean("user5", 10)
+    )
+
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        mBinding.btnTransform.setOnClickListener {
-            transoform()
-        }
-        mBinding.btnElementOperator.setOnClickListener {
-            elementOperator()
-        }
-
-        mBinding.btnOrderOperator.setOnClickListener {
-            orderTransform()
-        }
-
-        mBinding.btnMapOperator.setOnClickListener {
-            mapOperator()
-        }
-
-        mBinding.btnProduceOperator.setOnClickListener {
-            produceOperator()
-        }
-
-        mBinding.btnStatics.setOnClickListener {
-            staticsUsage()
-        }
 
 
+        mBinding.btnAllAny.setOnClickListener {
+            allAnyNoneUsage()
+        }
+
+        mBinding.btnAverage.setOnClickListener {
+            averageUsage()
+        }
+
+        mBinding.btnChunk.setOnClickListener {
+            chunkUsage()
+        }
+
+        mBinding.btnComponent.setOnClickListener {
+            componentUsage()
+        }
+
+        mBinding.btnCount.setOnClickListener {
+            countUsage()
+        }
+
+        mBinding.btnDistinct.setOnClickListener {
+            distinctUsage()
+        }
+
+        mBinding.btnDrop.setOnClickListener {
+            dropUsage()
+        }
+        mBinding.btnElement.setOnClickListener {
+            elementUsage()
+        }
         mBinding.btnFilter.setOnClickListener {
-            filter()
+            filterUsage()
         }
 
-
-
-        mBinding.btnIntRange.setOnClickListener {
-            intRangeUsage()
+        mBinding.btnFind.setOnClickListener {
+            findUsage()
         }
 
-        mBinding.btnCreatePair.setOnClickListener {
-            createPair()
-        }
-        mBinding.btnTriple.setOnClickListener {
-            triple()
-        }
-        mBinding.btnDestructPairTriple.setOnClickListener {
-            destructPairTriple()
+        mBinding.btnMap.setOnClickListener {
+            mapUsage()
         }
 
+        mBinding.btnFlatmap.setOnClickListener {
+            flatMapUsage()
+        }
 
-        mBinding.btnHashMap.setOnClickListener {
-            hashMapUsage()
+        mBinding.btnForEach.setOnClickListener {
+            forEachUsage()
+        }
+        mBinding.btnGroupby.setOnClickListener {
+            groupByUsage()
+        }
+
+        mBinding.btnGroupby.setOnClickListener {
+            groupByUsage()
+        }
+
+        mBinding.btnIndexOf.setOnClickListener {
+            indexOfUsage()
+        }
+
+        mBinding.btnJoinTo.setOnClickListener {
+            joinToUsage()
+        }
+
+        mBinding.btnMinmax.setOnClickListener {
+            minMaxUsage()
+        }
+
+        mBinding.btnMinus.setOnClickListener {
+            minusUsage()
+        }
+
+        mBinding.btnPartition.setOnClickListener {
+            partitionUsage()
+        }
+
+        mBinding.btnRandom.setOnClickListener {
+            randomUsage()
+        }
+
+        mBinding.btnRequireNotNull.setOnClickListener {
+            requireNotNullUsage()
+        }
+
+        mBinding.btnSingle.setOnClickListener {
+            singleUsage()
+        }
+
+        mBinding.btnSlice.setOnClickListener {
+            sliceUsage()
+        }
+
+        mBinding.btnSortBy.setOnClickListener {
+            sortByUsage()
+        }
+
+        mBinding.btnSum.setOnClickListener {
+            sumUsage()
+        }
+
+        mBinding.btnTake.setOnClickListener {
+            takeUsage()
+        }
+
+        mBinding.btnZip.setOnClickListener {
+            zipUsage()
         }
     }
 
-    private fun mapOperator() {
-        println("map:"+ users.map {
-            it.name
-        })
-        println("mapNotNull:"+ users.mapNotNull {
-            it.name
-        })
-        //根据条件合并两个集合，组成一个新的集合
-        val flatMap = users.flatMap {
-            listOf(it.name, "plus-${it.name}")
-        }
-        println("flatMap:$flatMap")
-
-
-        val groupBy = users.groupBy {
-            if (it.age  != null && it.age!! > 10){
-                "group1"
-            }else{
-                "group2"
-            }
-        }
-        println("groupBy:$groupBy")
-    }
-    
-    
-    private fun findUsage(){
-        users.find {
-            it.age > 40
-        }?: "unknow"
-    }
-
-    private fun staticsUsage(){
-        //判断是不是一个集合，若是，则在判断集合是否为空，若为空则返回false,反之返回true,若不是集合，则返回hasNext
-        println("any():${list.any()}")
-
-        //判断集合中是否存在满足条件的元素。若存在则返回true,反之返回false
-        println("any{}:"+list.any {
-            it > 3
-        })
-
-        //判断集合中的所有元素是否都满足条件。若是则返回true,反之则返回false
-        println("all:"+list.all {
-            it > 3
-        })
-        //和any()函数的作用相反
-        println("none:" + list.none())
-        println("none{...}" + list.none{ it > 3})
-
-        println("max1:"+list.maxOfOrNull {
-            12
-        } + ", max2:"+list.maxOfOrNull {
-            4
-        })
-        //获取方法处理后返回结果最大值对应那个元素的初始值，如果没有则返回null
-        println("maxByOrNull:"+list.maxByOrNull {
-            2
-        })
-        //获取集合中最小的元素，若为空元素集合，则返回null
-        println("minOfOrNull:"+list.minOfOrNull {
-            3
-        })
-        println("minByOrNull:"+list.minByOrNull {
-            3
-        })
-
-        val users = listOf(UserBean("user1",1),UserBean("user2",2),UserBean("user3",3))
-        val mapList:List<Int> = users.map {
-            it.age!!
-        }
-        println("reduceOrNull"+mapList.reduceOrNull { acc, i ->
-            acc + i
-        })
-
-
-        val list = listOf(1,2,3,4,5)
-        //从集合中的第一项到最后一项的累计操作
-        println("reduce:"+list.reduce { acc, i ->
-            acc + i
-        })
-        //从集合中的最后一项到第一项的累计操作
-        println("reduceRight:"+list.reduceRight { i, acc ->
-            i + acc
-        })
-
-        //和reduce{}作用相同，只是其可以操作元素的下标(index)
-        println(list.reduceIndexed { index, acc, item ->
-            acc + item
-        })
-
-
-        //和reduce{}类似，但是fold{}有一个初始值
-        println(list.fold(1) {result, next -> result  + next})
-
-        //foldRight{...} : 和reduceRight{}类似，但是foldRight{}有一个初始值
-        println(list.foldRight(2){item, acc ->
-            acc + item
-        })
-
-        println("sum:"+list.sum())
-
-        val list2 = mutableListOf("a","bb","ccc")
-        //用一个 lambda 表达式来作为参数 替代 java 接口
-        println("sumOf"+list2.sumOf {
-            it.length
-        })
-
-        println("average:"+list.average())
-
-    }
-
-    private fun orderTransform() {
-        list.reverse()
-        //反序。即和初始化的顺序反过来。
-        println("reverse: $list")
-
-        list.sort()
-        //自然升序
-        println("sort: $list")
-
-        //根据条件升序，即把不满足条件的放在前面，满足条件的放在后面
-        list.sortBy {
-            it % 2 ==0
-        }
-        println("sortBy: $list")
-
-        list.sortedDescending()
-        //自然降序
-        println("sortedDescending: $list")
-        //根据条件降序，和`sortedBy{}`相反
-
-        list.sortByDescending {
+    private fun partitionUsage() {
+        val evenOdd = list.partition {
             it % 2 == 0
         }
-        println("sortByDescending: $list")
+        Logger.d("even:${evenOdd.first}, odd:${evenOdd.second}")
+    }
+
+    private fun zipUsage() {
+        val zip = list.zip(users)
+        for (item in zip) {
+            Logger.d("zip item:${item.first}:${item.second}")
+        }
+        val zipWithNext = list.zipWithNext()
+        for (item in zipWithNext) {
+            Logger.d("zipWithNext item:${item.first}:${item.second}")
+        }
+
+        val zipWithNextTransform = list.zipWithNext { a, b ->
+            a + b
+        }
+        for (item in zipWithNextTransform) {
+            Logger.d("zipWithNextTransform item:${item}")
+        }
+
+    }
+
+    private fun takeUsage() {
+        //返回前 n 个元素
+        val take = users.take(2)
+        //返回满足给定条件前的所有元素，一旦满足了给定条件，则后面的元素都不返回了
+        val takeWhile = users.takeWhile {
+            it.age > 15
+        }
+
+
+        val takeLast = users.takeLast(2)
+        val takeLastWhile = users.takeLastWhile {
+            it.age > 15
+        }
+        Logger.d("take:$take, takeWhile:$takeWhile, takeLast:$takeLast, takeLastWhile:$takeLastWhile")
+
+
+        //如果满足条件，则返回对象本身，否则返回 null
+        val takeIf1 = list.takeIf {
+            list.contains(5)
+        }
+        val takeIf2 = list.takeIf {
+            list.contains(100)
+        }
+        Logger.d("takeIf1:$takeIf1, takeIf2:$takeIf2")
+    }
+
+    private fun sumUsage() {
+        val sum = list.sum()
+        val sumOf = users.sumOf {
+            it.age
+        }
+        Logger.d("sum:$sum, sumOf:$sumOf")
+    }
+
+    private fun sortByUsage() {
+        val sortedBy = users.sortedBy {
+            it.age
+        }
+
+        val sortedBy2 = users.sortedBy {
+            -it.age
+        }
+
+
+        val sortedByDescending = users.sortedByDescending {
+            it.age
+        }
+        val comparator = object : Comparator<UserBean> {
+            override fun compare(o1: UserBean?, o2: UserBean?): Int {
+                if (o1 != null && o2 != null) {
+                    return o1.age - o2.age
+                } else if (o1 != null) {
+                    return 1
+                } else if (o2 != null) {
+                    return -1
+                }
+                return 0
+            }
+
+        }
+        val sortedWith = users.sortedWith(comparator)
+        Logger.d("sortedBy:$sortedBy,sortedBy2:$sortedBy2, sortedByDescending:$sortedByDescending, sortedWith:$sortedWith")
+    }
+
+    private fun sliceUsage() {
+        //slice()返回具有给定索引的集合元素列表。索引可以作为范围或整数值的集合传递。
+        val slice = users.slice(1..3)
+        val slice2 = users.slice(0..4 step 2)
+        Logger.d("slice:$slice, slice2:$slice2")
+    }
+
+    private fun singleUsage() {
+        //返回满足条件的的单个元素，如果没有满足条件的元素或者不止一个元素满足，则会抛出异常
+        val single = users.single {
+            it.age > 16
+        }
+        //返回满足条件的的单个元素，如果没有满足条件的元素则返回 null，不会抛出异常
+        val singleOrNull = users.singleOrNull() {
+            it.age > 16
+        }
+        Logger.d("single:$single, singleOrNull:$singleOrNull")
+    }
+
+    private fun requireNotNullUsage() {
+        //
+        users.requireNoNulls()
+    }
+
+    private fun randomUsage() {
+        //返回一个随机的元素,如果集合为空，将会抛出异常
+        val random = users.random()
+        val randomOrNull = users.randomOrNull()
+        Logger.d("random:$random, randomOrNull:$randomOrNull")
+    }
+
+    private fun minusUsage() {
+        //5,7,5
+        val minus = list.minus(arrayOf(1, 10))
+
+        val plus = list.plus(arrayOf(3, 4))
+        Logger.d("minus:$minus, plus:$plus")
+
+    }
+
+    private fun minMaxUsage() {
+        //可能会抛出异常
+        val min = users.minOf {
+            it.age
+        }
+        //不会抛出异常
+        val minOfOrNull = users.minOfOrNull {
+            it.age
+        }
+
+
+        val comparator = object : Comparator<String> {
+            override fun compare(o1: String?, o2: String?): Int {
+                if (o1 != null && o2 != null) {
+                    return o1.length - o2.length
+                } else if (o1 != null) {
+                    return 1
+                } else if (o2 != null) {
+                    return -1
+                }
+                return 0
+            }
+        }
+        //根据 comparator 找出最小值,如果没有最小值，则抛出异常
+        val minOfWith = users.minOfWith(comparator) {
+            it.name ?: "default"
+        }
+        //根据 comparator 找出最小值,如果没有最小值，则返回 null 并且不会会抛出异常
+        val minOfWithOrNull = users.minOfWithOrNull(comparator) {
+            it.name ?: "default"
+        }
+        Logger.d("min:$min, minOfOrNull:$minOfOrNull, minOfWith:$minOfWith, minOfWithOrNull:$minOfWithOrNull")
+
+
+        val maxOf = users.maxOf {
+            it.age
+        }
+
+        val maxOfOrNull = users.maxOfOrNull {
+            it.age
+        }
+
+        val maxOfWith = users.maxOfWith(comparator) {
+            it.name ?: "default"
+        }
+
+        val maxOfWithOrNull = users.maxOfWithOrNull(comparator) {
+            it.name ?: "default"
+        }
+        Logger.d("maxOf:$maxOf, maxOfOrNull:$maxOfOrNull, maxOfWith:$maxOfWith, maxOfWithOrNull:$maxOfWithOrNull")
+
+
+    }
+
+    private fun joinToUsage() {
+        val joinToString = users.joinToString(separator = ",", prefix = "[", postfix = "]") {
+            it.name ?: "default name"
+        }
+        Logger.d("joinToString:$joinToString")
+    }
+
+    private fun indexOfUsage() {
+        val indexOfFirst = users.indexOfFirst {
+            it.age == 7
+        }
+
+        val indexOfLast = users.indexOfLast {
+            it.age == 7
+        }
+        Logger.d("indexOfFirst:$indexOfFirst, indexOfLast:$indexOfLast")
+    }
+
+    private fun mapUsage() {
+        val mapAges = users.map {
+            it.age
+        }
+        Logger.d("mapAges:$mapAges")
+    }
+
+    private fun groupByUsage() {
+        //返回一个根据给定函数分组后的map
+        val groupBy = users.groupBy(UserBean::name, UserBean::age)
+        Logger.d("groupBy:$groupBy")
+
+
+        val associateBy = users.associateBy {
+            it.age
+        }
+        Logger.d("groupBy:$groupBy, associateBy:$associateBy")
+
+    }
+
+    private fun forEachUsage() {
+        //对每一个元素做处理
+        users.forEachIndexed { index, item ->
+            item.age = (item.age + index)
+        }
+        Logger.d("users:$users")
+
+
+    }
+
+
+    /**
+     * 返回对原始数组的每个元素调用转换函数的结果产生的所有元素的单个列表
+     */
+    private fun flatMapUsage() {
+        val fruitsBag = listOf("apple", "orange", "banana", "grapes")  // 1
+        val clothesBag = listOf("shirts", "pants", "jeans")
+        val cart = listOf(fruitsBag, clothesBag)
+        println("cart: $cart")
+        //flatMap 将集合中的每个元素转换为一个迭代对象，并构建转换结果的单个列表
+        val flatMapList: List<UserBean> = cart.flatMap { fruitList ->
+            fruitList.map {
+                UserBean(it, it.length)
+            }
+        }
+        val flatMapIndexList: List<UserBean> = cart.flatMapIndexed { index, fruitList ->
+            fruitList.map {
+                UserBean(it + "$index", it.length)
+            }
+        }
+        println("flatMapBag:$flatMapList")
+        println("flatMapIndexList:$flatMapIndexList")
+    }
+
+    private fun findUsage() {
+        val find = users.find {
+            it.age > 15
+        }
+        val findLast = users.findLast {
+            it.age > 15
+        }
+        val firstOrNull = users.firstOrNull()
+        val firstOrNullPredicate = users.firstOrNull {
+            it.age > 20
+        }
+        val firstNotNullOfOrNull = users.firstNotNullOfOrNull {
+            it.age > 40
+        }
+
+        val lastOrNull = users.lastOrNull()
+
+        val getOrNull = users.getOrNull(10)
+        val getOrElse = users.getOrElse(10) { index ->
+            index * 2
+        }
+
+        Logger.d(
+            "find:$find, findLast:$findLast, firstOrNull:$firstOrNull," +
+                    "firstOrNullPredicate:$firstOrNullPredicate, firstNotNullOfOrNull:$firstNotNullOfOrNull, lastOrNull:$lastOrNull," +
+                    "getOrNull:$getOrNull, getOrElse:$getOrElse"
+        )
+
+    }
+
+    private fun filterUsage() {
+        val filterList = list.filter {
+            it > 6
+        }
+
+        val filterIndexed = list.filterIndexed { index, item ->
+            item > 6 && index > 2
+        }
+
+        val destinationList = mutableListOf(100)
+        list.filterIndexedTo(destinationList) { index, item ->
+            item > 6 && index > 2
+        }
+
+        val animals: List<Animal> = listOf(Cat("Scratchy"), Dog("Poochie"))
+        val filterIsInstanceList = animals.filterIsInstance<Cat>()
+
+
+        val destinationAnimalList = mutableListOf(Cat("Hoho"))
+        val filterIsInstanceToList =
+            animals.filterIsInstanceTo(destinationAnimalList, Cat::class.java)
+
+
+        val filterNotList = list.filterNot {
+            it > 6
+        }
+
+        val destFilterToList = mutableListOf(40)
+        val filterToList = list.filterTo(destFilterToList) {
+            it > 9
+        }
+        Logger.d(
+            "filterList:$filterList, filterIndexed:$filterIndexed,destinationList:$destinationList,filterIsInstanceList" +
+                    ":$filterIsInstanceList,filterIsInstanceToList:$filterIsInstanceToList,filterNotList:$filterNotList,filterToList:$filterToList"
+        )
+    }
+
+    private fun dropUsage() {
+        //返回一个列表，不包括前 2 个元素  5,7,5
+        val drop = list.drop(2)
+        //返回一个列表，不包括最后 2 个元素 1,10,5
+        val dropLast = list.dropLast(2)
+
+        //返回一个列表，从前面往后遍历，不包括第一个满足条件的元素以外
+        val dropWhileList = users.dropWhile {
+            it.age > 13
+        }
+        //返回一个列表，从后面往前遍历，不包括第一个满足条件的元素以外
+        val dropLastWhileList = users.dropLastWhile {
+            it.age > 13
+        }
+        Logger.d("drop:$drop,dropLast:$dropLast, dropWhileList:$dropWhileList,dropLastWhileList:$dropLastWhileList")
+    }
+
+    private fun distinctUsage() {
+        //10,20,30,16
+        val ages = users.map {
+            it.age
+        }.distinct()
+        //
+        Logger.d("distinct ages:$ages")
+
+        //UserBean(null,10),UserBean("user2",20),UserBean("user3",30)
+        val users = users.distinctBy {
+            it.age
+        }
+        Logger.d("distinctBy users:$users")
+
+    }
+
+    private fun countUsage() {
+        val count = users.count()
+        val countPredicate = users.count { user ->
+            user.age > 15
+        }
+        Logger.d("count:$count, countPredicate:$countPredicate")
+    }
+
+    private fun componentUsage() {
+        Logger.d("component1:${list.component1()},component5:${list.component5()},")
+    }
+
+    private fun chunkUsage() {
+        val words = "one two three four five six seven eight nine ten".split(' ')
+        val chunks = words.chunked(3)
+
+        //[ [one, two, three], [four, five, six], [seven, eight, nine], [ten]]
+        Logger.d("chunked:$chunks")
+
+
+        //CharSequence 的扩展函数
+        val codonTable = mapOf(
+            "ATT" to "Isoleucine",
+            "CAA" to "Glutamine",
+            "CGC" to "Arginine",
+            "GGC" to "Glycine"
+        )
+        val dnaFragment = "ATTCGCGGCCGCCAA"
+
+        val proteins = dnaFragment.chunked(3) { codon: CharSequence ->
+            codonTable[codon.toString()] ?: error("Unknown codon")
+        }
+        Logger.d("proteins:$proteins")
+
+
+    }
+
+    private fun averageUsage() {
+        val averageAge = users.map {
+            it.age
+        }.average()
+        Logger.d("averageAge:$averageAge")
+
+    }
+
+
+    private fun allAnyNoneUsage() {
+        //判断集合是否至少含有一个元素
+        println("any:${list.any()}")
+
+        //判断集合中是否存在满足条件的元素。若存在则返回true,反之返回false
+        println("any predicate:" + list.any {
+            it > 3
+        })
+
+        //和any()函数的作用相反,判断是空集合
+        println("none:" + list.none())
+        println("none predicate" + list.none { it > 3 })
+
+        //判断集合中的所有元素是否都满足条件。若是则返回true,反之则返回false
+        println("all:" + list.all {
+            it > 3
+        })
+
     }
 
     /**
      * 元素操作符
      */
-    private fun elementOperator() {
-        println("elementAtOrElse"+list.elementAtOrElse(10){
-            println("defalut value is ${it}")
-        })
-        println("elementAtOrNull"+list.elementAtOrNull(9))
-        println("elementAtOrNull"+list.firstOrNull{
-            it > 4
-        })
-
-    }
-
-    /**
-     * 把集合根据调用集合类相应的高阶函数来转换成相应的数
-     */
-    private fun transoform(){
-        println(list.toIntArray())
-        println(list.javaClass.toString())
-        println(list.toIntArray().javaClass.toString())
-    }
-
-
-    private val numberMap = hashMapOf("one" to 1, "two" to 2, "three" to 3)
-    val list = mutableListOf(1,3,2,4)
-    val users = listOf(UserBean(null,10),UserBean("user2",20),UserBean("user3",30))
-
-
-    private fun hashMapUsage() {
-        val defualt = numberMap.getOrDefault("four", 3)
-        val getOrElse = numberMap.getOrElse("four"){
-            println("")
-            "no contains value for this"
+    private fun elementUsage() {
+        val elementAt = list.elementAt(1)
+        val elementAtOrElse = list.elementAtOrElse(10) {
+            100
         }
-        numberMap.getOrPut("five"){
-            println("not exisit key = five, put an element to map")
-            5
-        }
-        println("default: ${defualt}, getOrElse:${getOrElse}, numberMap:${numberMap}")
-
+        val elementAtOrNull = list.elementAtOrNull(9)
+        Logger.d("elementAt:$elementAt, elementAtOrElse:$elementAtOrElse,elementAtOrNull:$elementAtOrNull")
     }
-
-
-
-    private fun destructPairTriple() {
-        val pair = "fish net" to "cating fish"
-        val (tool, use) = pair
-        println("$tool is used for $use")
-
-        val elements = Triple(1,2,"hello")
-        val (element1, element2, element3) = elements
-        println("$element1 $element2 $element3")
-    }
-
-    private fun triple() {
-        val triple = Triple("A","B","C")
-        val list = triple.toList()
-        println("${triple.toString()}")
-        println(list)
-    }
-
-    private fun createPair() {
-        val equipment = "one" to "apple"
-        println("${equipment.first} used for ${equipment.second}")
-
-        val equipment2 = ("fish net" to "catching fish") to "equipment"
-        println("${equipment2.first} is ${equipment2.second}\n")
-        println("${equipment2.first.second}")
-    }
-
-    private fun intRangeUsage() {
-        val random = (1..6).random()
-        println(random)
-    }
-
-
-
-
-    /**
-     * 生产操作符
-     */
-    private fun produceOperator(){
-        val list1 = listOf(1,2,3,4)
-        val list2 = listOf("kotlin","Android","Java","PHP","JavaScript")
-
-        // 合并两个集合中的元素，组成一个新的集合。也可以使用符号 plus() 和 `+`一样
-        println("plus:"+ list1.plus(list2))
-        println("+:$list1$list2")
-
-        // zip 由两个集合按照相同的下标组成一个新集合。该新集合的类型是：List<Pair>
-        println("zip1:"+ list1.zip(list2))
-        println("zip2:"+list1.zip(list2){       // 组成的新集合由元素少的原集合决定
-                it1,it2-> it1.toString().plus("-").plus(it2)
-        })
-
-        // unzip
-        val newList = listOf(Pair(1,"Kotlin"),Pair(2,"Android"),Pair(3,"Java"),Pair(4,"PHP"))
-        println("unzip:"+newList.unzip())
-
-// partition   将一个集合返回两个list,可用于一个函数返回两个对象的场景
-
-        val partion = list2.partition { it.startsWith("Ja") }
-        println(partion.first.plus("-").plus(partion.second))
-
-    }
-
-    private fun filter(){
-        val list = listOf(1,2,6,4,5,3,4)
-        //把不满足条件的元素过滤掉
-        println("filter:${list.filter {
-            it > 4
-        }}")
-
-        //和filter{}函数的作用相反
-        println("filterNot:${list.filterNot {
-            it > 4
-        }}")
-
-        val filterList2 = list.filterList {
-            this > 4
-        }
-        println("filterList2:${filterList2}")
-
-        //返回集合中前num个元素组成的集合
-
-        println("take:"+ list.take(2))
-        //循环遍历集合，从第一个元素开始遍历集合，当第一个出现不满足条件元素的时候，
-        // 退出遍历。然后把满足条件所有元素组成的集合返回。
-        println("takeWhile:"+ list.takeWhile {
-            it < 4
-        })
-
-        println("takeLast:"+list.takeLast(2))
-        println("takeLastWhile:"+list.takeLastWhile { it < 4 })
-
-        //过滤集合中前num个元素
-        println("dropLast:"+list.dropLast(2))
-
-        //相同条件下，和执行takeLastWhile{...}函数后得到的结果相反
-        println("dropLastWhile:"+ list.dropLastWhile {
-            it > 4
-        })
-        //去除重复元素
-        println("distinct:"+list.distinct())
-        //根据操作元素后的结果去除重复元素
-        println("distinctBy:"+list.distinctBy {
-            if (it % 2 == 0){
-                10
-            } else{
-                it
-            }
-        })
-        println("slice:"+list.slice(IntRange(1,3)))
-
-    }
-
-
-
-
 
 
 }

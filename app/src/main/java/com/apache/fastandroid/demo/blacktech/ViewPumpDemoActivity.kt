@@ -11,21 +11,18 @@ import kotlinx.android.synthetic.main.blacktech_view_pump.*
  * Created by Jerry on 2021/10/19.
  * https://github.com/B3nedikt/ViewPump
  */
-class ViewPumpDemoActivity:BaseVmActivity<BlacktechViewPumpBinding>(BlacktechViewPumpBinding::inflate) {
+class ViewPumpDemoActivity :
+    BaseVmActivity<BlacktechViewPumpBinding>(BlacktechViewPumpBinding::inflate) {
 
 
     private var appCompatDelegate: AppCompatDelegate? = null
 
 
     override fun getDelegate(): AppCompatDelegate {
-        if (appCompatDelegate == null) {
-            appCompatDelegate = ViewPumpAppCompatDelegate(
-                super.getDelegate(),
-                this
-            )
-        }
-
-        return appCompatDelegate!!
+        return appCompatDelegate ?: ViewPumpAppCompatDelegate(
+            super.getDelegate(),
+            this
+        )
     }
 
     override fun layoutInit(savedInstanceState: Bundle?) {
@@ -35,7 +32,6 @@ class ViewPumpDemoActivity:BaseVmActivity<BlacktechViewPumpBinding>(BlacktechVie
 
         }
     }
-
 
 
 }

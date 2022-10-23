@@ -6,6 +6,9 @@ import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.IntRange
+import java.io.Closeable
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 import kotlin.math.ceil
 import kotlin.math.min
 
@@ -74,7 +77,6 @@ fun EditText.onTextChanged(
 }
 
 
-
 const val SECOND: Long = 1000
 const val MINUTE = SECOND * 60
 const val HOUR = MINUTE * 60
@@ -117,4 +119,59 @@ fun Context.toast(message: Int) {
         .apply {
             show()
         }
+}
+
+
+inline fun <T : Closeable?, R> T.myUse(block: (T) -> R): R {
+    return block(this)
+}
+
+@SinceKotlin("1.1")
+inline fun <T> T.myTakeIf(predicate: (T) -> Boolean): T? {
+
+    return if (predicate(this)) this else null
+}
+
+/**
+ * Returns `this` value if it _does not_ satisfy the given [predicate] or `null`, if it does.
+ *
+ * For detailed usage information see the documentation for [scope functions](https://kotlinlang.org/docs/reference/scope-functions.html#takeif-and-takeunless).
+ */
+@SinceKotlin("1.1")
+inline fun <T> T.myTakeUnless(predicate: (T) -> Boolean): T? {
+    return if (!predicate(this)) this else null
+}
+
+inline fun <T> Iterable<T>.myCount(predicate: (T) -> Boolean): Int {
+    if (this is Collection && isEmpty()) return 0
+    var count = 0
+    for (element in this) if (predicate(element)) (++count)
+    return count
+}
+
+inline fun <T, K> Iterable<T>.myDistinctBy(selector: (T) -> K): List<T> {
+    val set = HashSet<K>()
+    val list = ArrayList<T>()
+    for (e in this) {
+        val key = selector(e)
+        if (set.add(key))
+            list.add(e)
+    }
+    return list
+}
+
+inline fun <T> Iterable<T>.myForEachIndexed(action: (index: Int, T) -> Unit): Unit {
+    var index = 0
+    for (item in this) action((index++), item)
+}
+
+inline fun <T> Iterable<T>.myMinOf(selector: (T) -> Double): Double {
+    val iterator = iterator()
+    if (!iterator.hasNext()) throw NoSuchElementException()
+    var minValue = selector(iterator.next())
+    while (iterator.hasNext()) {
+        val v = selector(iterator.next())
+        minValue = minOf(minValue, v)
+    }
+    return minValue
 }

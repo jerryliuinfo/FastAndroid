@@ -63,7 +63,7 @@ fun View.determineTriggerSingleClick(
     isShareSingleClick: Boolean = true,
     listener: View.OnClickListener
 ) {
-    val target = if (isShareSingleClick) getActivity(this)?.window?.decorView ?: this else this
+    val target = if (isShareSingleClick) getActivityFromView(this)?.window?.decorView ?: this else this
     val millis = target.getTag(R.id.single_click_tag_last_single_click_millis) as? Long ?: 0
     if (SystemClock.uptimeMillis() - millis >= interval) {
         target.setTag(R.id.single_click_tag_last_single_click_millis, SystemClock.uptimeMillis())

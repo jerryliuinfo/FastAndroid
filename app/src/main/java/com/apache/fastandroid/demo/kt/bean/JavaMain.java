@@ -7,6 +7,8 @@ import com.blankj.utilcode.util.Utils;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 
+import javax.annotation.Nullable;
+
 import kotlin.io.FilesKt;
 
 /**
@@ -16,8 +18,21 @@ public class JavaMain {
     public static int in = 100;
 
 
-    public static String format(String msg){
+    public static  String format(String msg){
         return TextUtils.isEmpty(msg)? null:msg;
+    }
+
+    public static @Nullable String formatNullable(String msg){
+        return TextUtils.isEmpty(msg)? null:msg;
+    }
+
+
+    public static void javaCallKotlinNotNull(){
+        KotlinMain.Companion.getInstance().notAllowNull(null);
+    }
+
+    public static void javaCallKotlinNull(){
+        KotlinMain.Companion.getInstance().allowNull(null);
     }
 
     public static void main(String[] args) {

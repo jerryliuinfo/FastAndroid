@@ -27,25 +27,19 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_let_run,btn_also_apply,btn_with,btn_common_operator,
+                app:constraint_referenced_ids="btn_let,btn_with,btn_run,btn_apply,btn_also,
                 btn_operator_overload,btn_zhongzui,btn_typeAlias,btn_getter_setter,btn_lambda_interrupt,
                 btn_neilian,btn_crossInline,btn_anonymous,btn_kt_genericity,btn_kt_real_genericity,
-                btn_kt_class_real_genericity,btn_join_tostring,btn_evis_operator"
+                btn_kt_class_real_genericity,btn_evis_operator"
                 />
 
             <Button
-                android:id="@+id/btn_let_run"
+                android:id="@+id/btn_let"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Let 和 Run"
+                android:text="Let"
                 />
 
-            <Button
-                android:id="@+id/btn_also_apply"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Also 和 Apply"
-                />
             <Button
                 android:id="@+id/btn_with"
                 android:layout_width="wrap_content"
@@ -54,11 +48,25 @@
                 />
 
             <Button
-                android:id="@+id/btn_common_operator"
+                android:id="@+id/btn_run"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="常用操作符"
+                android:text="Run"
                 />
+
+            <Button
+                android:id="@+id/btn_apply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apply"
+                />
+            <Button
+                android:id="@+id/btn_also"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Also"
+                />
+
 
             <Button
                 android:id="@+id/btn_operator_overload"
@@ -134,12 +142,7 @@
                 android:layout_height="wrap_content"
                 android:text="Kotlin 类真泛型"
                 />
-            <Button
-                android:id="@+id/btn_join_tostring"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="List JoinToString"
-                />
+
             <Button
                 android:id="@+id/btn_evis_operator"
                 android:layout_width="wrap_content"

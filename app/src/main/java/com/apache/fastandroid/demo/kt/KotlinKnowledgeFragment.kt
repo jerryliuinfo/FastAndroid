@@ -57,13 +57,13 @@ import kotlin.system.measureTimeMillis
 /**
  * Created by Jerry on 2021/10/18.
  */
-class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding::inflate) {
-    companion object{
+class KotlinKnowledgeFragment : BaseVBFragment<KtGrammerBinding>(KtGrammerBinding::inflate) {
+    companion object {
         private const val TAG = "KotlinKnowledgeFragment"
     }
 
 
-    private lateinit var mFrameCalculator:FrameCalculator
+    private lateinit var mFrameCalculator: FrameCalculator
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
@@ -109,7 +109,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
 
         mBinding.btnOnEach.setOnClickListener {
-            println( onEach())
+            println(onEach())
         }
         mBinding.btnMethodCost.setOnClickListener {
             val costTime = measureTimeMillis {
@@ -118,12 +118,12 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             println("costTime:${costTime}")
         }
         mBinding.btnCoerceAtLeast.setOnClickListener {
-            println("${3.coerceAtLeast(5)}")
+            rangeUsage()
         }
 
-
-        mFrameCalculator = FrameCalculator{
-            Logger.d("frame: ${it}")
+        //
+        mFrameCalculator = FrameCalculator {
+            Logger.d("frame: $it")
         }
         mBinding.btnHighOrderFunction.setOnClickListener {
             createHighOrderFunc()
@@ -138,8 +138,16 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             println(KotlinMain.instance.hashCode())
 
         }
-        mBinding.btnJavaKotlinCallEachOther.setOnClickListener {
-            format("")
+        mBinding.btnKotlinCallJavaNotnull.setOnClickListener {
+            kotlinCallJavaNonNull("")
+        }
+        mBinding.btnKotlinCallJavaNullable.setOnClickListener {
+            kotlinCallJavaMarkNullable("")
+        }
+
+        mBinding.btnJavaCallKotlin.setOnClickListener {
+
+            javaCallKotlin()
         }
         mBinding.btnNestedFunction.setOnClickListener {
             nestedFunction()
@@ -149,9 +157,10 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             expandFunction()
         }
 
-        mBinding.btnExpandCollection.setOnClickListener {
-            expandCollection()
+        mBinding.btnCloseableUse.setOnClickListener {
+            closeableUse()
         }
+
 
         mBinding.btnExpandFunction2.setOnClickListener {
             /**
@@ -169,26 +178,25 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         }
 
 
-
         mBinding.btnSealedClass.setOnClickListener {
-           sealedClass()
+            sealedClass()
         }
 
         mBinding.btnSealedClass2.setOnClickListener {
             var user = User(1, "name")
             PlayerUI.get().showPlayer(user)
-             user = User(1, "name", PlayerViewType.GREEN)
+            user = User(1, "name", PlayerViewType.GREEN)
             PlayerUI.get().showPlayer(user)
-            user = User(1, "name", PlayerViewType.VIP("VIP播放器","VIP播放器内容"))
+            user = User(1, "name", PlayerViewType.VIP("VIP播放器", "VIP播放器内容"))
             PlayerUI.get().showPlayer(user)
 
         }
         mBinding.btnDeconstruction.setOnClickListener {
-            val user = ConstructBean("Tom",11)
-            val (name,age, nick2) = user
+            val user = ConstructBean("Tom", 11)
+            val (name, age, nick2) = user
             Logger.d("name:$name, age:$age,nick2:$nick2")
 
-            val map = mapOf<String,String>("key1" to "value1", "key2" to "value2")
+            val map = mapOf<String, String>("key1" to "value1", "key2" to "value2")
             map.forEach {
                 Logger.d("${it.key}:${it.value}")
             }
@@ -199,7 +207,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         }
         mBinding.btnWithIndex.setOnClickListener {
             val list = arrayListOf("aa", "bb", "cc")
-            for ((index, value ) in list.withIndex()){
+            for ((index, value) in list.withIndex()) {
                 Logger.d("with index: ${index}:${value}")
 
             }
@@ -207,12 +215,12 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
 
         mBinding.btnTakeUnless.setOnClickListener {
-            testUnless("Hello Kitty","Kit")
+            testUnless("Hello Kitty", "Kit")
             testUnless("Hello Tom", "Kit")
         }
 
         mBinding.btnTakeIf.setOnClickListener {
-            testTakeIf("Hello Kitty","Kit")
+            testTakeIf("Hello Kitty", "Kit")
             testTakeIf("Hello Tom", "Kit")
         }
         mBinding.btnOperator.setOnClickListener {
@@ -221,7 +229,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         }
 
         mBinding.btnCustomOperator.setOnClickListener {
-           testMyOperator()
+            testMyOperator()
         }
 
 
@@ -232,22 +240,30 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         }
 
         mBinding.btnGenericParameter.setOnClickListener {
-            println(genericFun("四大发明", "火药","指南针"))
+            println(genericFun("四大发明", "火药", "指南针"))
 
-            val array1:Array<Int> = arrayOf(1,2,3)
-            val array2:Array<Double> = arrayOf(1.1,2.2,3.3)
+            val array1: Array<Int> = arrayOf(1, 2, 3)
+            val array2: Array<Double> = arrayOf(1.1, 2.2, 3.3)
             //报错
 //            setArrayNum(array1)
             setArrayNum2(array1)
             setArrayNum2(array2)
         }
         mBinding.btnTailFun.setOnClickListener {
-            var startTime = System.currentTimeMillis()
-            var result = findXPoint()
-            println("findXPoint1 result:$result, cost time: ${System.currentTimeMillis() - startTime} ms")
-            startTime = System.currentTimeMillis()
-            result = findXPoint2()
-            println("findXPoint2 result:$result, cost time: ${System.currentTimeMillis() - startTime} ms")
+            var costTime1 = measureTimeMillis {
+                var result = findXPoint()
+                println("findXPoint1 result:$result")
+            }
+
+            println("findXPoint1 costTime:$costTime1 ms")
+
+            costTime1 = measureTimeMillis {
+                var result = findXPoint2()
+                println("findXPoint1 result:$result")
+            }
+
+            println("findXPoint2 costTime:$costTime1 ms")
+
         }
 
         mBinding.btnObjectProperty.setOnClickListener {
@@ -268,11 +284,6 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
         mBinding.edittext.addTextChangedListener(HideTextWatcher(mBinding.edittext))
 
-        mBinding.btnSuspend.setOnClickListener {
-            MainScope().launch {
-                testSuspend()
-            }
-        }
 
 
         //关键字冲突 用 反引号转义
@@ -282,6 +293,52 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         arguments?.getString("key")?.takeIf { it.isNotEmpty() } ?: kotlin.run {
             toast("url为空")
         }
+
+    }
+
+    private fun javaCallKotlin() {
+        //java 中调用kotlin 定义的参数不可为空的方法
+        try {
+            JavaMain.javaCallKotlinNotNull()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        //java 中调用kotlin 定义的参数可为空的方法
+        JavaMain.javaCallKotlinNull()
+    }
+
+    private fun closeableUse() {
+        val path = requireContext().cacheDir
+        val file = File(path,"/home/test.txt")
+        val parentFile = file.parentFile
+        if (parentFile.isDirectory && !parentFile.exists()){
+            parentFile.mkdir()
+        }
+        if (!file.exists()){
+            file.createNewFile()
+        }
+
+
+        //该方法内部使用 use 实现
+        file.writeText("Hello World")
+
+        val readText = file.readText()
+        Logger.d("readText:$readText")
+    }
+
+    private fun rangeUsage() {
+        var param = 10
+        val minValue = 5
+        val maxValue = 20
+        //不能小于指定的参数值  5
+        println("result1:${param.coerceAtLeast(minValue)}")
+        //不能小于指定的参数值 10
+        println("result2:${param.coerceAtLeast(maxValue)}")
+
+        //不能大于指定值 5
+        println("result3:${param.coerceAtMost(minValue)}")
+        //不能大于指定值 10
+        println("result2:${param.coerceAtMost(maxValue)}")
 
     }
 
@@ -298,30 +355,26 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
     }
 
-    private fun expandCollection(){
+    private fun expandCollection() {
         val users = listOf(
-            User(1,"Lily"),
-            User(2,"Lucy"),
-            User(3,"Jim Green"),
+            User(1, "Lily"),
+            User(2, "Lucy"),
+            User(3, "Jim Green"),
         )
         //打印列表
         val formattedString = users.print { user ->
-            "${user.name }-${user.id}"
+            "${user.name}-${user.id}"
         }
         println("print list:${formattedString}")
 
         val map = mapOf(1 to "one", 2 to "two", 3 to "three")
-        val formatedMap =  map.print()
-        println("formatted map:${formatedMap}")
+        val formateedMap = map.print()
+        println("formatted map:${formateedMap}")
 
 
         val dataClassStr = User(10, "Jim").ofMap()?.print()
         println("dataClassStr:$dataClassStr")
     }
-
-
-
-
 
 
     private fun singleInstance() {
@@ -332,21 +385,22 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
 
-    private class ByMap(val map:Map<String,Any?>){
-        val name:String by map
-        val age:Int by map
+    private class ByMap(val map: Map<String, Any?>) {
+        val name: String by map
+        val age: Int by map
     }
 
     private fun savePropertyToMap() {
-        val user = ByMap(mapOf(
-            "name" to "西哥",
-            "age" to 25
-            ))
+        val user = ByMap(
+            mapOf(
+                "name" to "西哥",
+                "age" to 25
+            )
+        )
         println("name:${user.name}, age:${user.age}")
     }
 
-    var vetoableProp:Int by Delegates.vetoable(0){
-        property, oldValue,newValue ->
+    var vetoableProp: Int by Delegates.vetoable(0) { property, oldValue, newValue ->
         println("property: $property: $oldValue -> $newValue ")
         newValue > oldValue
     }
@@ -364,8 +418,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
     }
 
-    var observableProp: String by Delegates.observable("默认值：xxx"){
-            property, oldValue, newValue ->
+    var observableProp: String by Delegates.observable("默认值：xxx") { property, oldValue, newValue ->
         println("property: $property: $oldValue -> $newValue ")
     }
 
@@ -380,11 +433,11 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
 
-
-    val lazyProp:String by lazy {
+    val lazyProp: String by lazy {
         println("第一次调用才会执行")
         "Hello"
     }
+
     private fun byLazy() {
         //延迟属性
         println(lazyProp)
@@ -393,43 +446,62 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
     private fun initArrayElement() {
-        val users = Array(3){
+        val users = Array(3) {
             UserBean("person:$it", 18 + it)
         }
         println("users:$users")
     }
 
+    /**
+     *
+     * 只有一个抽象方法的接口称为函数式接口或 SAM（单一抽象方法）接口。函数式接口可以有多个非抽象成员，但只能有一个抽象成员。
+     */
     private fun samUsage() {
         val runnable = Runnable { println("I am a runnable") }
 
+        //如果不使用 SAM 转换，那么你需要像这样编写代码：
+        val isEven = object : ICallback {
+            override fun accept(i: Int): Boolean {
+                return i % 2 == 0
+            }
+        }
+
+        //通过利用 Kotlin 的 SAM 转换，可以改为以下等效代码：
+
+        val isEven2 = ICallback {
+            it % 2 == 0
+        }
+
+
+    }
+
+    fun interface ICallback {
+        fun accept(i: Int): Boolean
     }
 
     private fun createHighOrderFunc() {
         val fruit = Fruit("apple")
-        myWith(fruit.name){
+        myWith(fruit.name) {
 //            var capitize =  replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
-            var capitize =  capitalize()
+            var capitize = capitalize()
             println(capitize)
         }
     }
 
 
-
     private fun joinToStringUsage() {
-        val fruit = mutableListOf(Fruit("Apple"),Fruit("Pear"),Fruit("banana"))
+        val fruit = mutableListOf(Fruit("Apple"), Fruit("Pear"), Fruit("banana"))
         val result = fruit.map { it.name }.joinToString(", ") { it }
         println(result)
     }
 
-    private fun lambdaUsage2(){
-        val waterFilter = {dirty:Int -> dirty / 2}
-    }
+
 
     private fun labelBreak() {
-        outloop@ for (i in 1..100){
+        outloop@ for (i in 1..100) {
             print(i)
-            for (j in 1..100){
-                if (i > 10){
+            for (j in 1..100) {
+                if (i > 10) {
                     break@outloop
                 }
             }
@@ -438,7 +510,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
     private fun annotationUsage() {
         val classObj = Account::class
-        for (a in classObj.annotations){
+        for (a in classObj.annotations) {
             val annotationClass = a.annotationClass
             println("simpleName:${annotationClass.simpleName}, isOpen:${annotationClass.isOpen}, isCompanion:${annotationClass.isCompanion}")
         }
@@ -449,24 +521,24 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
     private fun checkFuncUsage() {
         val age = 1
-        check(age > 10){
+        check(age > 10) {
             "age is less than 10"
         }
         println("age is bigger than 10")
     }
 
-    fun intRange(){
-        IntRange(1,6).map {  }
+    fun intRange() {
+        IntRange(1, 6).map { }
         println(1..6)
     }
 
-    fun interface Transformer<T,U>{
+    fun interface Transformer<T, U> {
         fun transform()
     }
 
 
     private fun animatorKt() {
-        val animator = ObjectAnimator.ofFloat(0f,1f)
+        val animator = ObjectAnimator.ofFloat(0f, 1f)
         animator.doOnStart {
             println("doOnStart")
         }
@@ -491,7 +563,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 
         val people = People("jerry", "liu")
         people.name = "libel"
-        people.lastname= "ou"
+        people.lastname = "ou"
         println("delegate name:${people.name}, updateCount:${people.updateCount}")
 
 
@@ -522,9 +594,6 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
 
-
-
-
     /**
      * 如果在API中发现某个类有unaryPlus()、unaryMinus()、not()方法，
      * 那就说明可对该类的实例使用单目前缀运算符+、-、!进行运算。
@@ -544,8 +613,8 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         val d = a.unaryPlus()
         println()
 
-        var point1 = Point(5,5)
-        val point2 = Point(1,2)
+        var point1 = Point(5, 5)
+        val point2 = Point(1, 2)
         //plus
 //        var plus = point1 + point2
         var minus = point1 - point2
@@ -566,30 +635,30 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
 
-    private suspend fun testSuspend():Repo{
+    private suspend fun testSuspend(): Repo {
         val user = RetrofitFactory.instance.apiService.getArticleById(10)
         return user.data
     }
 
     private fun templateClass() {
-        var river = when(count ++ %4){
-            0 -> River("小溪",100)
-            1 -> River("瀑布",99.9f)
-            2 -> River("三间",50.5f)
-            else -> River("大河","一千")
+        var river = when (count++ % 4) {
+            0 -> River("小溪", 100)
+            1 -> River("瀑布", 99.9f)
+            2 -> River("三间", 50.5f)
+            else -> River("大河", "一千")
         }
         println(river.getInfo())
     }
 
     private fun sealedClass() {
-        var season = when(count ++ %4){
+        var season = when (count++ % 4) {
             0 -> SeasonNameSealed.Spring("春天")
             1 -> SeasonNameSealed.Summer("夏天")
             2 -> SeasonNameSealed.Autumn("秋天")
             else -> SeasonNameSealed.Spring("冬天")
         }
 
-        val text = when(season){
+        val text = when (season) {
             is SeasonNameSealed.Spring -> season.name
             is SeasonNameSealed.Summer -> season.name
             is SeasonNameSealed.Autumn -> season.name
@@ -610,81 +679,80 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
     private fun proxyMode() {
-        var fow = when(count ++ % 6)
-        {
-            0 -> WildFow("老鹰",Bird.MAILE, BehaviorFly())
+        var fow = when (count++ % 6) {
+            0 -> WildFow("老鹰", Bird.MAILE, BehaviorFly())
             1 -> WildFow("凤凰", behavior = BehaviorFly())
-            2 -> WildFow("大雁",Bird.FEMAILE, BehaviorFly())
+            2 -> WildFow("大雁", Bird.FEMAILE, BehaviorFly())
             3 -> WildFow("企鹅", behavior = BehaviorSwim())
-            4 -> WildFow("鸵鸟",Bird.MAILE, BehaviorRun())
-            5 -> WildFow("鸳鸯",behavior = BehaviorRun())
-            else -> WildFow("老鹰",Bird.MAILE, BehaviorRun())
+            4 -> WildFow("鸵鸟", Bird.MAILE, BehaviorRun())
+            5 -> WildFow("鸳鸯", behavior = BehaviorRun())
+            else -> WildFow("老鹰", Bird.MAILE, BehaviorRun())
         }
         println(fow.name)
     }
 
 
-    var count:Int = 0
+    var count: Int = 0
     private fun testWhenOperator() {
-        when(count){
-            1,3,5,7,9 -> println("case1")
+        when (count) {
+            1, 3, 5, 7, 9 -> println("case1")
             in 11..18 -> println("case2")
             !in 6..10 -> println("case3")
             else -> println("case4")
         }
-        count = (count +1) % 20
+        count = (count + 1) % 20
 
-        val name:String ? = null
-        val length = name?.length?: -1
+        val name: String? = null
+        val length = name?.length ?: -1
     }
 
-    private fun <T> genericFun(tag:String, vararg otherInfo :T?):String{
+    private fun <T> genericFun(tag: String, vararg otherInfo: T?): String {
         var str = "$tag "
-        for (item in otherInfo){
+        for (item in otherInfo) {
             str = "$str ${item.toString()}"
         }
         return str
     }
 
 
-    private fun setArrayNum(array: Array<Number>){
+    private fun setArrayNum(array: Array<Number>) {
         var result = "数组元素: "
-        for (item in array){
+        for (item in array) {
             result = "$result$item"
         }
         println(result)
     }
 
-     private inline fun <reified T:Number> setArrayNum2(array: Array<T>){
+    private inline fun <reified T : Number> setArrayNum2(array: Array<T>) {
         var result = "数组元素: "
-        for (item in array){
+        for (item in array) {
             result = "$result$item"
         }
         println(result)
     }
 
-    fun findXPoint(x:Double = 1.0):Double = if (x == cos(x)) x else findXPoint(cos(x))
-    tailrec fun findXPoint2(x:Double = 1.0):Double = if (x == cos(x)) x else findXPoint2(cos(x))
+    private fun findXPoint(x: Double = 1.0): Double = if (x == cos(x)) x else findXPoint(cos(x))
+    private tailrec fun findXPoint2(x: Double = 1.0): Double = if (x == cos(x)) x else findXPoint2(cos(x))
 
 
-    private fun testOperator(){
-        val list = arrayListOf<Char>('a','b','c','d')
+    private fun testOperator() {
+        val list = arrayListOf<Char>('a', 'b', 'c', 'd')
         list.map {
-           it - 'a'
+            it - 'a'
         }.filter {
             it > 0
         }
             //返回符号 闭包的第一个值
             .find {
-            it > 1
-        }
+                it > 1
+            }
         Logger.d("list:$list")
 
     }
 
-    private fun testOperation2(){
-        val a = arrayOf("4","0","7","i","f","w","0","9")
-        val index = arrayOf(5,4,9,4,8,3,1,9,2,1,7)
+    private fun testOperation2() {
+        val a = arrayOf("4", "0", "7", "i", "f", "w", "0", "9")
+        val index = arrayOf(5, 4, 9, 4, 8, 3, 1, 9, 2, 1, 7)
 
         index.filter {
             println("testOperation2 filter i:$it")
@@ -700,8 +768,8 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
             }
     }
 
-    private fun testMyOperator(){
-        val list = arrayListOf<Char>('a','b','c','d')
+    private fun testMyOperator() {
+        val list = arrayListOf<Char>('a', 'b', 'c', 'd')
         list.myMap {
             it - 'a'
         }.myFilter {
@@ -715,78 +783,79 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
 
-
-
     /**
      * 不满足条件就返回本身，否则返回null
      */
-    private fun testUnless(name:String, keyword:String){
+    private fun testUnless(name: String, keyword: String) {
         name.indexOf(keyword)
             .takeUnless {
                 Logger.d("testTakeUnless it: ${it}")
                 it < 0
 
             }?.let {
-                Logger.d( "testTakeUnless has $keyword")
+                Logger.d("testTakeUnless has $keyword")
             }
     }
 
-    private fun testTakeIf(name:String, keyword:String){
+    private fun testTakeIf(name: String, keyword: String) {
         name.indexOf(keyword)
             .takeIf {
                 Logger.d("testTakeIf it: ${it}")
                 it > 0
 
             }?.let {
-                Logger.d( "testTakeIf has $keyword")
+                Logger.d("testTakeIf has $keyword")
             }
     }
 
     private fun iteratorFun() {
         val builder = StringBuilder()
-        for (i in 1..3){
+        //in 方式
+        for (i in 1..3) {
             builder.append(i).append(",")
         }
         Logger.d("in: ${builder.toString()}")
         builder.clear()
 
-        for (i in 2 until 4){
+        for (i in 2 until 4) {
             builder.append(i).append(",")
         }
         Logger.d("until: ${builder.toString()}")
         builder.clear()
 
-        for (i in 5 downTo 2){
+        for (i in 5 downTo 2) {
             builder.append(i).append(",")
         }
         Logger.d("downTo: ${builder.toString()}")
         builder.clear()
 
-        for (i in 1..6 step 2){
+        for (i in 1..6 step 2) {
             builder.append(i).append(",")
         }
         Logger.d("in step: ${builder.toString()}")
         builder.clear()
 
-        repeat(3){
+        repeat(3) {
             builder.append(it).append(",")
         }
         Logger.d("repeat: ${builder.toString()}")
+
     }
 
     private fun nonInlineUsage() {
-        onlyIf(true){
+        onlyIf(true) {
             println("no inline 打印日志")
         }
     }
 
     private fun inlineUsage() {
-        onlyIf2(true){
+        onlyIf2(true) {
             println("inline 打印日志")
         }
 
         context?.let {
-            val userInfoManager = PreferenceManager(it.getSharedPreferences("userInfo", Context.MODE_PRIVATE))
+            val userInfoManager =
+                PreferenceManager(it.getSharedPreferences("userInfo", Context.MODE_PRIVATE))
             userInfoManager.saveToken("abcd1234")
         }
 
@@ -798,29 +867,29 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
 //        val result2 = ::b
 
 
-        val result1 = highOrderA (::highOrderB)
+        val result1 = highOrderA(::highOrderB)
         val result2 = ::highOrderB
-        println( "result1:$result1, result2:$result2")
+        println("result1:$result1, result2:$result2")
 
 
-        onlyIf(true){
+        onlyIf(true) {
             println("打印日志")
         }
 
-        val runnable = Runnable{
+        val runnable = Runnable {
             println("Runnable run")
         }
 //        val function: () -> Unit
         //加了两个 ：： 就变成了对象
-       val function = runnable::run
+        val function = runnable::run
 
-        onlyIf(true,function)
+        onlyIf(true, function)
     }
 
-    private fun <T> mxCustom(array: Array<T>, greater:(T,T) -> Boolean):T?{
-        var max:T? = null
-        for (item in array){
-            if (max == null || greater(item,max)){
+    private fun <T> mxCustom(array: Array<T>, greater: (T, T) -> Boolean): T? {
+        var max: T? = null
+        for (item in array) {
+            if (max == null || greater(item, max)) {
                 max = item
             }
         }
@@ -828,10 +897,10 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
 
-    private fun whenUsage():String{
-        val array:Array<String> = arrayOf("How", "do","you","do", "I'm    ","Fine")
+    private fun whenUsage(): String {
+        val array: Array<String> = arrayOf("How", "do", "you", "do", "I'm    ", "Fine")
         count++
-        return when(count % 4){
+        return when (count % 4) {
             0 -> "字符串数组的默认最大值为:${array.maxOrNull()}"
             1 -> "字符串数组按长度比较的最大值为:${mxCustom(array) { a, b -> a.length > b.length }}"
             2 -> "字符串数组的默认最大值(使用高阶函数):${mxCustom(array) { a, b -> a > b }}"
@@ -839,34 +908,28 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         }
     }
 
-    private fun extenseHighOrderFunction():String {
-        val array:Array<String> = arrayOf("How", "do","you","do", "I'm    ","Fine")
+    private fun extenseHighOrderFunction(): String {
+        val array: Array<String> = arrayOf("How", "do", "you", "do", "I'm    ", "Fine")
         count++
-        return when(count % 4){
+        return when (count % 4) {
             0 -> "字符串数组的默认最大值为:${array.maxOrNull()}"
             1 -> "字符串数组按长度比较的最大值为:${array.maxCustomize { a, b -> a.length > b.length }}"
             2 -> "字符串数组的默认最大值(使用高阶函数):${array.maxCustomize { a, b -> a > b }}"
-            else -> "字符串数组去掉空格的最大值:${array.maxCustomize{ a, b -> a.trim().length > b.trim().length }}"
+            else -> "字符串数组去掉空格的最大值:${array.maxCustomize { a, b -> a.trim().length > b.trim().length }}"
         }
     }
 
 
-
-
-
-
-
     private fun lambdaUsage() {
-       echo.invoke("Zhangtao")
-       echo("Jerry")
-        val waterFilter = {dirty:Int -> dirty / 2}
+        echo.invoke("Zhangtao")
+        echo("Jerry")
+        val waterFilter = { dirty: Int -> dirty / 2 }
         println(waterFilter(30))
-
 
 
     }
 
-    val echo = { name:String ->
+    val echo = { name: String ->
         println(name)
     }
 
@@ -878,11 +941,11 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
      * 用途：某些条件下触发地柜的函数，不希望被外部函数访问到的函数
      * 一般情况下不推荐使用，因为会降低代码可读性，一般用于特殊场景，比如递归,不希望被外部函数调用
      */
-    private fun nestedFunction(){
+    private fun nestedFunction() {
         val str = "Hello world"
-        fun say(count: Int = 5){
+        fun say(count: Int = 5) {
             println(str)
-            if (count > 0){
+            if (count > 0) {
                 say(count - 1)
             }
         }
@@ -890,37 +953,49 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
     }
 
 
-
-    private fun defaultParamFun(msg:String = "默认值"){
-        println(msg)
-    }
-
-    private fun format(str:String){
+    private fun kotlinCallJavaNonNull(str: String) {
         val fmt1 = JavaMain.format(str)
         //上面一行虽然不会报错 但是调用 fmt1.length 会报错
-//        println(fmt1.length)
+        println(fmt1.length)
+
         //这里会报错， 因为返回的是null 但是接收的是 非空
-        val fmt2:String = JavaMain.format(str)
-        val fmt3:String? = JavaMain.format(str)
+        val fmt2: String = JavaMain.format(str)
+        println("fmt2:$fmt2")
+
+
+        //这样是可以的
+        val fmt3: String? = JavaMain.format(str)
+    }
+
+    private fun kotlinCallJavaMarkNullable(str: String) {
+        val fmt1 = JavaMain.formatNullable(str)
+        //上面一行虽然不会报错 但是调用 fmt1.length 会报错
+        println(fmt1?.length ?: "length is 0")
+
+        //这里会强制使用可空变量接收
+        val fmt2: String? = JavaMain.formatNullable(str)
+        println(fmt2?.length ?: "length is 0000")
+
+
     }
 
 
-    fun a(function: (Int) -> String):String{
+    fun a(function: (Int) -> String): String {
         return function(1)
     }
 
-    fun b(param:Int):String{
+    fun b(param: Int): String {
         return param.toString()
     }
 
 
-    private fun onEach(vararg numbs: Int):String{
-       mutableSetOf("aa","bb","cc").onEach {
-           if (it == "bb"){
-               return@onEach
-           }
-           NLog.d(TAG, it)
-       }
+    private fun onEach(vararg numbs: Int): String {
+        mutableSetOf("aa", "bb", "cc").onEach {
+            if (it == "bb") {
+                return@onEach
+            }
+            NLog.d(TAG, it)
+        }
         return "Hello"
     }
 
@@ -940,12 +1015,13 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         println(clz.simpleName)
     }
 
-    fun File.readTextha(charset: Charset= Charset.defaultCharset()):String = readBytes().toString(charset)
+    fun File.readTextha(charset: Charset = Charset.defaultCharset()): String =
+        readBytes().toString(charset)
+
     fun LoadSir.Builder.debug() = BuildConfig.DEBUG
 
 
-
-    private fun <T> myfilter(originalList: List<T>, condition:(T) -> Boolean): List<T> {
+    private fun <T> myfilter(originalList: List<T>, condition: (T) -> Boolean): List<T> {
         val list = mutableListOf<T>()
         for (t in originalList) {
             if (condition(t)) {
@@ -955,7 +1031,7 @@ class KotlinKnowledgeFragment:BaseVBFragment<KtGrammerBinding>(KtGrammerBinding:
         return list
     }
 
-    private fun <T,R> myMap(originalList: List<T>, transform:(T) -> R): List<R> {
+    private fun <T, R> myMap(originalList: List<T>, transform: (T) -> R): List<R> {
         val list = mutableListOf<R>()
         for (t in originalList) {
             list.add(transform(t))

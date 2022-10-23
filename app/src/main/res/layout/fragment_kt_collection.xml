@@ -28,89 +28,186 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_transform,btn_element_operator,btn_order_operator,btn_map_operator,btn_produce_operator,btn_filter,btn_statics,btn_intRange,btn_createPair,btn_triple,
-                btn_destruct_pair_triple,btn_hashMap"
+                app:constraint_referenced_ids="btn_all_any,btn_average,btn_chunk,btn_component,btn_count,btn_distinct
+                    ,btn_drop,btn_element,btn_filter,btn_find,btn_map,btn_flatmap,btn_forEach,btn_groupby,btn_indexOf,
+                    btn_joinTo,btn_minmax,btn_minus,btn_partition,btn_random,btn_require_not_null,btn_single,btn_slice,btn_sortBy,
+                    btn_sum,btn_take,btn_zip
+                "
                 />
             <Button
-                android:id="@+id/btn_transform"
+                android:id="@+id/btn_all_any"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="转换类"
-                />
-            <Button
-                android:id="@+id/btn_element_operator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="元素操作符"
-                />
-            <Button
-                android:id="@+id/btn_order_operator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="顺序操作符"
-                />
-            <Button
-                android:id="@+id/btn_map_operator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="映射操作符"
-                />
-            <Button
-                android:id="@+id/btn_produce_operator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="生产操作符"
+                android:text="All、Any、None"
                 />
 
+            <Button
+                android:id="@+id/btn_average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Average"
+                />
+            <Button
+                android:id="@+id/btn_chunk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="chunke"
+                />
+            <Button
+                android:id="@+id/btn_component"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Component"
+                />
+            <Button
+                android:id="@+id/btn_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="count"
+                />
+            <Button
+                android:id="@+id/btn_distinct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="distinct"
+                />
+
+            <Button
+                android:id="@+id/btn_drop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="drop"
+                />
+            <Button
+                android:id="@+id/btn_element"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="element"
+                />
             <Button
                 android:id="@+id/btn_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="过滤操作符"
-                />
-            <Button
-                android:id="@+id/btn_statics"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="统计操作符"
+                android:text="filter"
                 />
 
             <Button
-                android:id="@+id/btn_intRange"
+                android:id="@+id/btn_find"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IntRange"
+                android:text="find"
+                />
+            <Button
+                android:id="@+id/btn_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="map"
+                />
+            <Button
+                android:id="@+id/btn_flatmap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FlatMap"
+                />
+            <Button
+                android:id="@+id/btn_forEach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="forEach"
+                />
+            <Button
+                android:id="@+id/btn_groupby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="groupBy"
+                />
+            <Button
+                android:id="@+id/btn_indexOf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="indexof"
+                />
+            <Button
+                android:id="@+id/btn_joinTo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="joinTo"
+                />
+            <Button
+                android:id="@+id/btn_minmax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Min、Max"
+                />
+
+            <Button
+                android:id="@+id/btn_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minus、Plus"
+                />
+            <Button
+                android:id="@+id/btn_partition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="partition"
                 />
 
 
             <Button
-                android:id="@+id/btn_createPair"
+                android:id="@+id/btn_random"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CreatePair"
-                />
-            <Button
-                android:id="@+id/btn_triple"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Triple"
+                android:text="Random"
                 />
 
             <Button
-                android:id="@+id/btn_destruct_pair_triple"
+                android:id="@+id/btn_require_not_null"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pair,Triple 结构"
+                android:text="Require not null"
+                />
+            <Button
+                android:id="@+id/btn_single"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Single"
+                />
+
+            <Button
+                android:id="@+id/btn_slice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Slice"
                 />
 
 
             <Button
-                android:id="@+id/btn_hashMap"
+                android:id="@+id/btn_sortBy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HashMap"
+                android:text="sortBy"
                 />
 
+            <Button
+                android:id="@+id/btn_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sum"
+                />
+            <Button
+                android:id="@+id/btn_take"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="take"
+                />
+
+            <Button
+                android:id="@+id/btn_zip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="zip"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

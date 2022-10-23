@@ -9,7 +9,7 @@ import com.blankj.utilcode.util.KeyboardUtils
  */
 class HideTextWatcher(private val editText: EditText):SimpleTextWatcher() {
 
-    private val mMaxLenght:Int = AnimateUtil.getMaxLengthForTextView(editText)
+    private val mMaxLength:Int = AnimateUtil.getMaxLengthForTextView(editText)
 
     private var mStr:String ?= null
 
@@ -24,7 +24,7 @@ class HideTextWatcher(private val editText: EditText):SimpleTextWatcher() {
         if (mStr.isNullOrEmpty()){
             return
         }
-        if (mStr?.length!! >= mMaxLenght){
+        if (mStr?.length!! >= mMaxLength){
             KeyboardUtils.hideSoftInput(editText)
         }
     }
