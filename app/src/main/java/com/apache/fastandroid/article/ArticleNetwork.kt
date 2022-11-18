@@ -8,7 +8,7 @@ import retrofit2.await
  * Created by Jerry on 2022/2/23.
  */
 class ArticleNetwork:BaseNetwork() {
-    private val apiServiceKt = RetrofitFactory.instance.apiService
+    private val apiServiceKt = RetrofitFactory.get().apiService()
 
     /**
      * 以 Call 形式返回结果

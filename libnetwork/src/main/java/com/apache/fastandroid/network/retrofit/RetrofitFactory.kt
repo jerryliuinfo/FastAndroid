@@ -2,12 +2,10 @@ package com.apache.fastandroid.network.retrofit
 import android.os.Build
 import com.apache.fastandroid.network.calladapter.LiveDataCallAdapterFactory
 import com.apache.fastandroid.network.interceptor.CookieInterceptor
-import com.apache.fastandroid.network.interceptor.HeaderInterceptor
 import com.apache.fastandroid.network.interceptor.NetLogInterceptor
 import com.apache.fastandroid.network.interceptor.LoginInterceptor
 import com.apache.fastandroid.retrofit.ApiConstant
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
-import com.tesla.framework.kt.SPreference
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
@@ -24,24 +22,42 @@ import java.util.concurrent.TimeUnit
  */
 
 class RetrofitFactory private constructor() {
-     val retrofit : Retrofit
+     private val mRetrofit : Retrofit
+
+     private val apiService:ApiService
+
+     private val apiService2:ApiService
+
+     private val okHttpClient:OkHttpClient
 
 
     fun <T> create(clazz: Class<T>) : T {
-        return retrofit.create(clazz)
+        return mRetrofit.create(clazz)
     }
 
+    /**
+     * 指定baseUrl
+     */
     fun <Service> create(serviceClass: Class<Service>, baseUrl: String): Service {
         return newRetrofitBuilder()
             .baseUrl(baseUrl)
+            .client(okHttpClient)
             .build()
             .create(serviceClass)
     }
 
     init {
-        retrofit = newRetrofitBuilder()
+
+        okHttpClient = initOkHttpClient()
+
+        mRetrofit = newRetrofitBuilder()
             .baseUrl(ApiConstant.BASE_URL)
+            .client(okHttpClient)
             .build()
+
+        apiService = create(ApiService::class.java)
+
+        apiService2 = create(ApiService::class.java)
     }
 
 
@@ -53,16 +69,8 @@ class RetrofitFactory private constructor() {
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
-            .client(initOkHttpClient())
     }
 
-
-    companion object {
-        private const val TIMEOUT = 10L
-        val instance by lazy {
-            RetrofitFactory()
-        }
-    }
 
     private fun initOkHttpClient(): OkHttpClient {
 
@@ -82,19 +90,29 @@ class RetrofitFactory private constructor() {
             addInterceptor(LoginInterceptor())
         }.build()
     }
-    /*private fun initLoggingIntercept(): Interceptor {
-        return HttpLoggingInterceptor { message ->
-            try {
-                val text: String = URLDecoder.decode(message, "utf-8")
-            } catch (e: UnsupportedEncodingException) {
-                e.printStackTrace()
-            }
-        }.apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
-    }*/
 
-    val apiService:ApiService = create(ApiService::class.java)
+
+
+    fun apiService():ApiService = apiService
+
+    private object Holder{
+        val instance = RetrofitFactory()
+    }
+
+    companion object {
+        private const val TIMEOUT = 10L
+        val instance by lazy {
+            RetrofitFactory()
+        }
+
+        fun get():RetrofitFactory{
+            return Holder.instance
+        }
+    }
+
+
+
+
 
     private var sFakeApi: FakeApi? = null
     val fakeApi: FakeApi

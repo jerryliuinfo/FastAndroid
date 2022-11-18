@@ -74,7 +74,7 @@ class CoroutineExceptionDemoFragment:BaseVBFragment<FragmentCoroutineExceptionBi
             launch {
                 async {
                     val deferred = async {
-                        RetrofitFactory.instance.apiService.listReposKt("jerry")
+                        RetrofitFactory.get().apiService().listReposKt("jerry")
                     }
                     deferred.await()
                 }
@@ -87,7 +87,7 @@ class CoroutineExceptionDemoFragment:BaseVBFragment<FragmentCoroutineExceptionBi
         mainScope.launch {
             supervisorScope {
                 val deferred = async {
-                    RetrofitFactory.instance.apiService.listReposKt("jerry")
+                    RetrofitFactory.get().apiService().listReposKt("jerry")
                 }
                 try {
                     //调用 await 才可能抛出异常 Handle exception thrown in async

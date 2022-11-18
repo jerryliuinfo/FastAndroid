@@ -7,14 +7,13 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.apache.fastandroid.app.FastApplication
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.databinding.ActivitySplashBinding
-import com.balsikandar.crashreporter.utils.AppConfigUtil
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 
 /**
  * Created by jerryliu on 2017/4/10.
  */
-class SplashActivity : BaseVmActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
+class SplashActivity : BaseVBActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
 
 
     override fun layoutInit(savedInstanceState: Bundle?) {

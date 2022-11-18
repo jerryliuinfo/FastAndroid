@@ -13,12 +13,12 @@ import androidx.navigation.ui.*
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.NavigationW960Binding
 import com.google.android.material.navigation.NavigationView
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 
 /**
  * Created by Jerry on 2022/3/11.
  */
-class NavigationDrawerDemoActivity2:BaseVmActivity<NavigationW960Binding>(NavigationW960Binding::inflate) {
+class NavigationDrawerDemoActivity2:BaseVBActivity<NavigationW960Binding>(NavigationW960Binding::inflate) {
 
     private lateinit var appBarConfiguration : AppBarConfiguration
 

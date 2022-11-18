@@ -16,7 +16,7 @@ object CoroutineScopeUtil {
     fun coroutineScopeRequest() {
         val job1 = coroutineScope.launch {
             try {
-                val result1 = RetrofitFactory.instance.apiService.getArticleById(21613)
+                val result1 = RetrofitFactory.get().apiService().getArticleById(21613)
                 println("coroutineScope onSuccess result1:$result1, thread:${Thread.currentThread().name}")
             }catch (ex: Exception){
                 ex.printStackTrace()

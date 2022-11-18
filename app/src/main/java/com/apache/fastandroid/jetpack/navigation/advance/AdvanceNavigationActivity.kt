@@ -9,12 +9,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityNavigationAdvanceBinding
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 
 /**
  * Created by Jerry on 2022/3/12.
  */
-class AdvanceNavigationActivity:BaseVmActivity<ActivityNavigationAdvanceBinding>(ActivityNavigationAdvanceBinding::inflate) {
+class AdvanceNavigationActivity:BaseVBActivity<ActivityNavigationAdvanceBinding>(ActivityNavigationAdvanceBinding::inflate) {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration

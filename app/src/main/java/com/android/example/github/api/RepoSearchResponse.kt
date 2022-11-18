@@ -25,7 +25,7 @@ import com.google.gson.annotations.SerializedName
  * because we are keeping a search result in 1 row and denormalizing list of results into a single
  * column.
  */
-data class RepoSearchResponse(
+ data class RepoSearchResponse(
     @SerializedName("total_count")
     val total: Int = 0,
     @SerializedName("items")

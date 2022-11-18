@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.ViewPumpAppCompatDelegate
 import com.apache.fastandroid.databinding.BlacktechViewPumpBinding
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 import kotlinx.android.synthetic.main.blacktech_view_pump.*
 
 /**
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.blacktech_view_pump.*
  * https://github.com/B3nedikt/ViewPump
  */
 class ViewPumpDemoActivity :
-    BaseVmActivity<BlacktechViewPumpBinding>(BlacktechViewPumpBinding::inflate) {
+    BaseVBActivity<BlacktechViewPumpBinding>(BlacktechViewPumpBinding::inflate) {
 
 
     private var appCompatDelegate: AppCompatDelegate? = null

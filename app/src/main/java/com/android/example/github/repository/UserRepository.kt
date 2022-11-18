@@ -47,6 +47,7 @@ class UserRepository  constructor(
     }
 
     companion object{
+        @Volatile
         private var sInstance:UserRepository ?= null
         fun getInstance(appExecutors: AppExecutors,userDao: GithubUserDao,githubService: GithubService):UserRepository{
             return sInstance ?: synchronized(this){

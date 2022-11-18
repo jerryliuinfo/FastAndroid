@@ -23,7 +23,7 @@ import androidx.lifecycle.LifecycleOwner;
  */
 public class BaseActivityHelper implements FullLifecycleObserver {
     //当前Activity
-    private BaseVmActivity mActivity;
+    private BaseVBActivity mActivity;
 
 
     /**
@@ -38,13 +38,13 @@ public class BaseActivityHelper implements FullLifecycleObserver {
 
     private LifecycleOwner mLifecycleOwner;
 
-    public BaseActivityHelper(BaseVmActivity mActivity, LifecycleOwner mLifecycleOwner) {
+    public BaseActivityHelper(BaseVBActivity mActivity, LifecycleOwner mLifecycleOwner) {
         this.mActivity = mActivity;
         this.mLifecycleOwner = mLifecycleOwner;
         mLifecycleOwner.getLifecycle().addObserver(new LifecycleObserverAdapter(mLifecycleOwner,this));
     }
 
-    public BaseVmActivity getActivity() {
+    public BaseVBActivity getActivity() {
         return mActivity;
     }
 

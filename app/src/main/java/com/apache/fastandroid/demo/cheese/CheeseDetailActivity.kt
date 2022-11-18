@@ -23,9 +23,9 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityCheeseDetailBinding
 import com.apache.fastandroid.demo.cheese.Cheeses.randomCheeseDrawable
 import com.bumptech.glide.Glide
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 
-class CheeseDetailActivity : BaseVmActivity<ActivityCheeseDetailBinding>(ActivityCheeseDetailBinding::inflate) {
+class CheeseDetailActivity : BaseVBActivity<ActivityCheeseDetailBinding>(ActivityCheeseDetailBinding::inflate) {
 
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)

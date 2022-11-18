@@ -2,6 +2,14 @@ package com.apache.fastandroid.network.model;
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
 
+    fun isLoading():Boolean{
+        return status == Status.LOADING
+    }
+
+    fun isLoadFailed():Boolean{
+        return status == Status.ERROR
+    }
+
     companion object {
 
         fun <T> success(data: T?): Resource<T> {

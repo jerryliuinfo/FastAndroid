@@ -22,7 +22,9 @@ class ArticleReporsitoryKt(private val network:ArticleNetwork) {
 
 
     companion object{
+        @Volatile
         private var instance:ArticleReporsitoryKt ?= null
+
         fun getInstance(network: ArticleNetwork):ArticleReporsitoryKt{
             if (instance == null){
                 synchronized(ArticleReporsitoryKt::class.java){

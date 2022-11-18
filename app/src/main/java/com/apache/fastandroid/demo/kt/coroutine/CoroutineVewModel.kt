@@ -43,7 +43,7 @@ class CoroutineVewModel : ViewModel() {
 
     suspend fun callbackToSuspend() =
         suspendCoroutine<BaseResponse<EmptyResponse>> { continuation ->
-            RetrofitFactory.instance.apiService.collect(1000).enqueue(object : Callback<BaseResponse<EmptyResponse>> {
+            RetrofitFactory.get().apiService().collect(1000).enqueue(object : Callback<BaseResponse<EmptyResponse>> {
                 override fun onResponse(
                     call: Call<BaseResponse<EmptyResponse>>,
                     response: Response<BaseResponse<EmptyResponse>>
@@ -72,7 +72,7 @@ class CoroutineVewModel : ViewModel() {
 
     suspend fun getArticleById(id: Long) {
         val result = try {
-            Result.success(RetrofitFactory.instance.apiService.collect(21613))
+            Result.success(RetrofitFactory.get().apiService().collect(21613))
         } catch (ex: Exception) {
             Result.failure(Throwable(ex.message))
         }
@@ -82,7 +82,7 @@ class CoroutineVewModel : ViewModel() {
 
     fun getArticleByIdWithRunCatching(id: Long) {
         val result = kotlin.runCatching {
-            RetrofitFactory.instance.apiService.collect(21613)
+            RetrofitFactory.get().apiService().collect(21613)
         }
         println("result2:${result} thread:${Thread.currentThread().name}")
 

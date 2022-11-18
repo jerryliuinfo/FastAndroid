@@ -38,7 +38,8 @@ import java.lang.ref.WeakReference
 /**
  * Created by JerryLiu on 17/04/08.
  */
-abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutInflater) -> V) : AppCompatActivity(),
+abstract class BaseVBActivity<V : ViewBinding>(var inflater: (inflater: LayoutInflater) -> V) :
+    AppCompatActivity(),
     OnToolbarDoubleClickListener, NetworkStateChangeListener {
     protected lateinit var activityHelper: BaseActivityHelper
     protected lateinit var mBinding: V
@@ -71,7 +72,7 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
             root = mBinding.root
         }
 
-        activityHelper = BaseActivityHelper(this,this)
+        activityHelper = BaseActivityHelper(this, this)
         initViewModel()
         initNetworkListener()
 
@@ -80,7 +81,6 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
 
 
     }
-
 
 
     /**
@@ -170,18 +170,18 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
      * 暂时不实现这个方法，避免使用 drawalayout 时无法打开抽屉，满足了
      * item.itemId == android.R.id.home 的条件无法打开抽屉
      */
-   /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (activityHelper != null) {
-            val handle = activityHelper.onOptionsItemSelected(item)
-            if (handle) {
-                return true
-            }
-        }
-        if (item.itemId == android.R.id.home) {
-            if (onHomeClick()) return true
-        }
-        return super.onOptionsItemSelected(item)
-    }*/
+    /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
+         if (activityHelper != null) {
+             val handle = activityHelper.onOptionsItemSelected(item)
+             if (handle) {
+                 return true
+             }
+         }
+         if (item.itemId == android.R.id.home) {
+             if (onHomeClick()) return true
+         }
+         return super.onOptionsItemSelected(item)
+     }*/
 
     protected fun onHomeClick(): Boolean {
         if (activityHelper != null) {
@@ -287,7 +287,7 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home){
+        if (item.itemId == android.R.id.home) {
             finish()
             return true
         }
@@ -295,21 +295,22 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
     }
 
     override fun networkConnectChange(isConnected: Boolean) {
-        println("BaseVmActivity networkConnectChange isConnected:$isConnected")
+        println("BaseVBActivity networkConnectChange isConnected:$isConnected")
         ToastUtils.showShort("网络状况: $isConnected")
     }
 
     override fun networkTypeChange(type: NetworkTypeEnum) {
-        println("BaseVmActivity networkTypeChange type:$type")
+        println("BaseVBActivity networkTypeChange type:$type")
     }
-    fun showToast(msg:String?){
+
+    fun showToast(msg: String?) {
         msg?.let {
             ToastUtils.showShort(msg)
         }
     }
 
-    fun showToast(@StringRes msgId:Int){
-       showToast(getString(msgId))
+    fun showToast(@StringRes msgId: Int) {
+        showToast(getString(msgId))
     }
 
 
@@ -321,7 +322,6 @@ abstract class BaseVmActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
              AdaptScreenUtils.adaptHeight(rawResources, MOBILE_DESIGN_WIDTH_IN_DP)
          }
      }*/
-
 
 
 }

@@ -635,11 +635,6 @@ class KotlinKnowledgeFragment : BaseVBFragment<KtGrammerBinding>(KtGrammerBindin
     }
 
 
-    private suspend fun testSuspend(): Repo {
-        val user = RetrofitFactory.instance.apiService.getArticleById(10)
-        return user.data
-    }
-
     private fun templateClass() {
         var river = when (count++ % 4) {
             0 -> River("小溪", 100)

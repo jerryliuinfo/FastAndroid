@@ -42,8 +42,8 @@ final Properties REPO_PROPS = loadProperties(REPO_PROPS_FILE)
 
 
 android {
-    compileSdkVersion AppConfig.compileSdk
-    ndkVersion AppConfig.ndk
+    compileSdkVersion AndroidConfig.compileSdk
+    ndkVersion AndroidConfig.ndk
 
     //fix bug The minCompileSdk (31) specified in a dependency's AAR metadata  
 
@@ -52,10 +52,10 @@ android {
     }
     defaultConfig {
         applicationId "com.apache.fastandroid"
-        minSdkVersion AppConfig.minSdk
-        targetSdkVersion AppConfig.targetSdk
-        versionCode AppConfig.versionCode
-        versionName AppConfig.versionName
+        minSdkVersion AndroidConfig.minSdk
+        targetSdkVersion AndroidConfig.targetSdk
+        versionCode AndroidConfig.versionCode
+        versionName AndroidConfig.versionName
 
 
 

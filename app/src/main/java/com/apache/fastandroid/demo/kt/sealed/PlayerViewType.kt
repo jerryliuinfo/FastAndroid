@@ -5,11 +5,11 @@ package com.apache.fastandroid.demo.kt.sealed
  */
 sealed class PlayerViewType {
 
-    object GREEN:PlayerViewType()
+    object GREEN : PlayerViewType()
 
-    object BLUE:PlayerViewType()
+    object BLUE : PlayerViewType()
 
-    class VIP(val title:String?, val message:String?):PlayerViewType()
+    class VIP(val title: String?, val message: String?) : PlayerViewType()
 }
 
 fun getPlayerView(type: PlayerViewType) = when (type) {

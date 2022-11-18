@@ -20,6 +20,7 @@ class CoroutineDemoListFragment: BaseListFragment() {
             ,ViewItemBean("BennyHuo","BennyHuo", BennyHuoCoroutineDemoFragment::class.java)
             ,ViewItemBean("携程与Retrofit结合","携程与Retrofit结合最佳实践", CoroutineRetrofitDemoFragment::class.java)
             ,ViewItemBean("携程与RxJava结合","携程与RxJava结合", CoroutineRxjavaDemoFragment::class.java)
+            ,ViewItemBean("携程做网络请求","携程做网络请求", CoroutineNetworkDemoFragment::class.java)
         )
     }
 

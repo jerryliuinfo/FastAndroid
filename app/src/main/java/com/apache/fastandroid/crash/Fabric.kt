@@ -10,6 +10,7 @@ import com.tencent.bugly.crashreport.CrashReport
  */
 object Fabric {
 
+
     @JvmStatic
     fun init(application: Application){
         CrashReport.initCrashReport(application.applicationContext, "397713a129", false)

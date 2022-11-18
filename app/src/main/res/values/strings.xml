@@ -1,56 +1,60 @@
 <resources>
+    <plurals name="subtitle_plural">
+        <item quantity="one">%1$s crime</item>
+        <item quantity="other">%1$s crimes</item>
+    </plurals>
     <string name="app_name">FastAndroid</string>
     <string name="draw_open">打开</string>
-    <string name="draw_close">关闭</string>
 
 
     <!--导航栏-->
+    <string name="draw_close">关闭</string>
     <string name="nav_home">首页</string>
     <string name="nav_posts">主题帖子</string>
     <string name="nav_novel">小说</string>
     <string name="nav_wallpaer">精美壁纸</string>
     <string name="nav_pic">图片浏览</string>
     <string name="nav_video">视频爽看</string>
+
+
     <string name="nav_musici">音乐轻听</string>
-
-
     <string name="tab_pic_beanuty">美女</string>
     <string name="tab_pic_carton">动漫</string>
     <string name="tab_pic_star">明星</string>
     <string name="tab_pic_car">汽车</string>
     <string name="tab_pic_take_photo">摄影</string>
-    <string name="tab_pic_food">美食</string>
 
 
     <!--Splash页面开始-->
+    <string name="tab_pic_food">美食</string>
     <string name="splash_countdown_count">跳过 %1$s</string>
-    <string name="splash_redirecting">正在跳转</string>
 
-    <string name="main_exit_app">再按一次返回桌面</string>
+    <string name="splash_redirecting">正在跳转</string>
 
 
     <!--Splash页面结束-->
 
+    <string name="main_exit_app">再按一次返回桌面</string>
     <string name="photo_collections">图集：%1$s</string>
+
+
     <string name="custom_view_round_imageview">RoundImageView</string>
-
-
     <string name="login_privacy_content2">成长空间采用严格的数据安全措施保护您的隐私安全。请充分阅读%1$s后，点击【同意并使用】。您也可以选择【不同意并退出】，成长空间将无法为您提供产品和服务。</string>
     <string name="experience_info2">若您是16周岁以下的未成年人，请确保您的父母或监护人已经仔细阅读%1$s，并进行确认。</string>
     <string name="experience_info3">《儿童隐私政策》</string>
     <string name="login_register_timer_num">重新发送( %02d )</string>
+
     <string name="login_register_get_phone_code">获取验证码</string>
 
+
     <string name="got_token_and_data">token:%1$s\n\n获取到的数据：\nID：%2$d\n用户名：%3$s</string>
-
-
     <string name="property_name">MainValue</string>
+
     <string name="long_text">This is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long text
     This is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long text
     This is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long text
     This is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long text
     This is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long textThis is a long texThis is a long text This is a long texThis is a long textThis is a long texThis is a long textThis is a long texThis is a long text,long texThis is a long text</string>
-
     <string name="custom_textview_prefixed_text">\n[CustomTextView] %s</string>
     <string name="regular_button">Klicke hier um die Sprache zu ändern</string>
     <string name="regular_textview">This is a regular TextView</string>
@@ -59,22 +63,17 @@
     <string name="title_home">Home</string>
     <string name="title_deepLink">Deep Link</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_notifications">Notifications</string>
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
-    <plurals name="subtitle_plural">
-        <item quantity="one">%1$s crime</item>
-        <item quantity="other">%1$s crimes</item>
-    </plurals>
 
 
     <string name="card_content">这是一个来自 Drakeet 独立开发的 纯纯打码 App 中的关于页面。\n\n纯纯打码 是一款专注打码的轻应用，包含功能：传统马赛克、毛玻璃效果、选区和手指模式打，更有创新型高亮打码和 LowPoly 风格马赛克。\n只为满足一个纯纯的打码需求，让打码也能成为一种赏心悦目。\n\n如今我将这个页面从这个精致的应用中抽离出来开源，和我一贯做的开源项目一样，仅仅是为了让更多人获得方便。它代码干净易读，布局清晰优雅，在尺寸方面花费了许多调整的时间。\n\n很高兴能够分享给大家！最后，为了展示在卡片中能够自动识别链接和支持链接，我粘贴了纯纯打码的下载地址，你可以尝试点击试试，谢谢：\n\nhttps://play.google.com/store/apps/details?id=me.drakeet.puremosaic</string>
     <string name="share_content">分享一款应用：「纯纯打码」，可能是最好用的打码软件，支持传统马赛克、毛玻璃，以及手指、选区打码，更有创意型高亮打码、LowPoly 风格，轻巧漂亮，打码也能够成为一种赏心悦目，推荐：http://t.cn/RbRjE4u</string>
     <string name="pure_writer">Pure Writer</string>
     <string name="pure_mosaic">Pure Mosaic</string>
-
 
 
 </resources>

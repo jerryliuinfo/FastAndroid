@@ -13,6 +13,7 @@
     <dimen name="sp_19">19sp</dimen>
     <dimen name="sp_20">20sp</dimen>
 
+    <dimen name="card_corner_radius">21</dimen>
 
     <dimen name="icon_round_radius">22dp</dimen>
     <dimen name="webview_title_icon_width">28dp</dimen>

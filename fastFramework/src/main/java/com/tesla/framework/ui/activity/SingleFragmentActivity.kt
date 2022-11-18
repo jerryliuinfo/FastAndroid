@@ -9,7 +9,7 @@ import com.tesla.framework.databinding.ActivitySingleFragmentBinding
 /**
  * Boilerplate for a FragmentActivity containing a single stack of Fragments.
  */
- abstract class SingleFragmentActivity<T : Fragment> : BaseVmActivity<ActivitySingleFragmentBinding>(ActivitySingleFragmentBinding::inflate) {
+ abstract class SingleFragmentActivity<T : Fragment> : BaseVBActivity<ActivitySingleFragmentBinding>(ActivitySingleFragmentBinding::inflate) {
     lateinit var fragment: T
 
     override fun initView(rootView: View?) {

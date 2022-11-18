@@ -379,6 +379,8 @@ class CollectionDemoFragment :
 
     /**
      * 返回对原始数组的每个元素调用转换函数的结果产生的所有元素的单个列表
+     * 遍历所有元素，为每一个元素创建集合，最后把所有的集合放在一个集合中
+     *
      */
     private fun flatMapUsage() {
         val fruitsBag = listOf("apple", "orange", "banana", "grapes")  // 1

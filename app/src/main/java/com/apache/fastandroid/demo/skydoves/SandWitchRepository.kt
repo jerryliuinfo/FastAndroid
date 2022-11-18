@@ -13,6 +13,7 @@ class SandWitchRepository:BaseRepository() {
     fun fetchPostersByCall() = ApiServiceFactory.disneyService.fetchDisneyPostersByCall()
 
     companion object{
+        @Volatile
         private var repository:SandWitchRepository ?= null
 
         fun getInstance():SandWitchRepository{

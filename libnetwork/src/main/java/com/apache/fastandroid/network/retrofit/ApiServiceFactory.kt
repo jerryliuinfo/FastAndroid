@@ -7,19 +7,19 @@ import com.apache.fastandroid.retrofit.ApiConstant
  */
 object ApiServiceFactory {
     val apiService:ApiService by lazy {
-        RetrofitFactory.instance.create(ApiService::class.java)
+        RetrofitFactory.get().create(ApiService::class.java)
     }
 
-    val disneyService:ApiService =  RetrofitFactory.instance.create(ApiService::class.java,
+    val disneyService:ApiService =  RetrofitFactory.get().create(ApiService::class.java,
         ApiConstant.DISNEY_URL
     )
 
-    val flowService:FlowApiService =  RetrofitFactory.instance.create(FlowApiService::class.java,
+    val flowService:FlowApiService =  RetrofitFactory.get().create(FlowApiService::class.java,
         ApiConstant.FLOW_BASE_URL
     )
 
     fun <T> createApi(clazz: Class<T>):T {
-        return RetrofitFactory.instance.create(clazz)
+        return RetrofitFactory.get().create(clazz)
     }
 
 }

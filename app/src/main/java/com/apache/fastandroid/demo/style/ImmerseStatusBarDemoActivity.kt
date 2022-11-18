@@ -9,7 +9,7 @@ import androidx.core.graphics.ColorUtils
 import androidx.palette.graphics.Palette
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentImmerseStatusbarBinding
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 
 /**
  * Created by Jerry on 2022/6/14.
@@ -17,7 +17,7 @@ import com.tesla.framework.ui.activity.BaseVmActivity
  *
  */
 class ImmerseStatusBarDemoActivity :
-    BaseVmActivity<FragmentImmerseStatusbarBinding>(FragmentImmerseStatusbarBinding::inflate) {
+    BaseVBActivity<FragmentImmerseStatusbarBinding>(FragmentImmerseStatusbarBinding::inflate) {
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
         mBinding.darkImageBtn.setOnClickListener {

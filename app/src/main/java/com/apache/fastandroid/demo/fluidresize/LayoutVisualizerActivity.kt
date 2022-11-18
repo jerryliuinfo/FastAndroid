@@ -11,11 +11,11 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityLayoutVisualizerBinding
 import com.tesla.framework.kt.onNextMeasure
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 import io.reactivex.rxjava3.subjects.PublishSubject
 
 @SuppressLint("CheckResult")
-class LayoutVisualizerActivity : BaseVmActivity<ActivityLayoutVisualizerBinding>(ActivityLayoutVisualizerBinding::inflate) {
+class LayoutVisualizerActivity : BaseVBActivity<ActivityLayoutVisualizerBinding>(ActivityLayoutVisualizerBinding::inflate) {
 
 //  private val contentView by bindView<View>(R.id.contentview)
 //  private val keyboardView by bindView<View>(R.id.keyboard)

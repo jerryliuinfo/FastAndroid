@@ -6,6 +6,7 @@ import com.apache.fastandroid.demo.bestpractice.BestPracticeDemoFragment
 import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
 import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
 import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
+import com.apache.fastandroid.demo.guide.GuideDemoListFragment
 import com.apache.fastandroid.demo.hitpit.HitPitDemoListFragment
 import com.apache.fastandroid.demo.jni.JniDemoListFragment
 import com.apache.fastandroid.jetpack.JetPackDemoFragment
@@ -29,7 +30,7 @@ class DemoListFragment : BaseListFragment() {
 
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-            ViewItemBean("Android官方文档", "Android官方文档", JetPackDemoFragment::class.java),
+            ViewItemBean("Android官方文档", "Android官方文档", GuideDemoListFragment::class.java),
             ViewItemBean("JetPack", "JetPack", JetPackDemoFragment::class.java),
             ViewItemBean("Google Sample", "Google Sample", SampleAppDemoFragment::class.java),
             ViewItemBean("最佳实践", "最佳实践", BestPracticeDemoFragment::class.java),

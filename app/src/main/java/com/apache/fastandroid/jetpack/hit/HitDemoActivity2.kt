@@ -1,13 +1,9 @@
 package com.apache.fastandroid.jetpack.hit
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import com.apache.fastandroid.databinding.FragmentHit2Binding
-import com.apache.fastandroid.databinding.FragmentHitBinding
 import com.apache.fastandroid.demo.bean.*
-import com.apache.fastandroid.jetpack.hit.engine.GasEngine
-import com.apache.fastandroid.jetpack.hit.tyre.ChinaTyre
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -29,7 +25,7 @@ import javax.inject.Inject
  */
 
 @AndroidEntryPoint
-class HitDemoActivity2:BaseVmActivity<FragmentHit2Binding>(FragmentHit2Binding::inflate) {
+class HitDemoActivity2:BaseVBActivity<FragmentHit2Binding>(FragmentHit2Binding::inflate) {
 
 
     @Inject

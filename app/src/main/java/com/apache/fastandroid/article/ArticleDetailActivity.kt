@@ -7,24 +7,19 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.activity.viewModels
-import androidx.core.view.ViewCompat
-import androidx.fragment.app.viewModels
 import com.apache.fastandroid.databinding.ActivityArticleDetailBinding
-import com.apache.fastandroid.demo.app.MailViewModel
-import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.WebChromeClient
 import com.just.agentweb.WebViewClient
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 
 /**
  * Created by Jerry on 2021/9/23.
  */
-class ArticleDetailActivity : BaseVmActivity<ActivityArticleDetailBinding>(ActivityArticleDetailBinding::inflate) {
+class ArticleDetailActivity : BaseVBActivity<ActivityArticleDetailBinding>(ActivityArticleDetailBinding::inflate) {
 
 
     private val mViewModel: ArticleDetailViewModel by viewModels()

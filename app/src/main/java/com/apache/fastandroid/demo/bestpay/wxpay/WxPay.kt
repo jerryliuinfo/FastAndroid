@@ -25,6 +25,7 @@ class WxPay:XPayStrategy<WxPayInfo> {
 
 
     companion object{
+        @Volatile
         private lateinit var sInstance:WxPay
         fun getInstance():WxPay{
             if (!::sInstance.isInitialized){

@@ -9,14 +9,14 @@ apply plugin: 'kotlin-kapt'
 //}
 
 android {
-    compileSdkVersion AppConfig.compileSdk
+    compileSdkVersion AndroidConfig.compileSdk
 
     defaultConfig {
 
-        minSdkVersion AppConfig.minSdk
-        targetSdkVersion AppConfig.targetSdk
-        versionCode AppConfig.versionCode
-        versionName AppConfig.versionName
+        minSdkVersion AndroidConfig.minSdk
+        targetSdkVersion AndroidConfig.targetSdk
+        versionCode AndroidConfig.versionCode
+        versionName AndroidConfig.versionName
 
         consumerProguardFiles "consumer-rules.pro"
 

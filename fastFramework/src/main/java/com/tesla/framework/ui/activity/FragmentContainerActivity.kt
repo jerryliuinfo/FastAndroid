@@ -12,7 +12,7 @@ import com.tesla.framework.databinding.CommUiFragmentContainerBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FragmentContainerActivity : BaseVmActivity<CommUiFragmentContainerBinding>(CommUiFragmentContainerBinding::inflate) {
+class FragmentContainerActivity : BaseVBActivity<CommUiFragmentContainerBinding>(CommUiFragmentContainerBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         val className = intent.getStringExtra(EXTRA_CLASS_NAME)
         if (TextUtils.isEmpty(className)) {
@@ -95,11 +95,11 @@ class FragmentContainerActivity : BaseVmActivity<CommUiFragmentContainerBinding>
             args: FragmentArgs?,
             requestCode: Int
         ) {
-            launchForResult(fragment.activity as BaseVmActivity<*>?, clazz, args, requestCode)
+            launchForResult(fragment.activity as BaseVBActivity<*>?, clazz, args, requestCode)
         }
 
         fun launchForResult(
-            from: BaseVmActivity<*>?,
+            from: BaseVBActivity<*>?,
             clazz: Class<out Fragment?>,
             args: FragmentArgs?,
             requestCode: Int

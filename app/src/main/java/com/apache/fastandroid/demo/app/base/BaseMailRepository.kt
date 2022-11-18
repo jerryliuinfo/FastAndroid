@@ -8,6 +8,6 @@ import com.apache.fastandroid.network.retrofit.RetrofitFactory
  */
 open class BaseMailRepository {
     protected val apiService: ApiService by lazy {
-        RetrofitFactory.instance.create(ApiService::class.java)
+        RetrofitFactory.get().apiService()
     }
 }

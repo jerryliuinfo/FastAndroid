@@ -6,13 +6,13 @@ import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.databinding.ActivityResultApiBinding
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 
 /**
  * Created by Jerry on 2022/3/10.
  * https://mp.weixin.qq.com/s/C62WVau-AU0MH7S4Ix85ew
  */
-class ActivityResultDemoActivity:BaseVmActivity<ActivityResultApiBinding>(ActivityResultApiBinding::inflate) {
+class ActivityResultDemoActivity:BaseVBActivity<ActivityResultApiBinding>(ActivityResultApiBinding::inflate) {
 
 
     private val requestDataLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->

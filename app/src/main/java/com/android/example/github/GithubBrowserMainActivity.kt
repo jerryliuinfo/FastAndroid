@@ -17,15 +17,14 @@
 package com.android.example.github
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.GithubBrowserActivityMainBinding
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 
-class GithubBrowserMainActivity : BaseVmActivity<GithubBrowserActivityMainBinding>(GithubBrowserActivityMainBinding::inflate),
+class GithubBrowserMainActivity : BaseVBActivity<GithubBrowserActivityMainBinding>(GithubBrowserActivityMainBinding::inflate),
     NavController.OnDestinationChangedListener {
 
     override fun layoutInit(savedInstanceState: Bundle?) {

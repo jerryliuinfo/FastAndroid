@@ -149,7 +149,7 @@ open class RxJava3PracticeFragment:BaseVBFragment<FragmentRxjava3PracticeBinding
             .doOnNext {
                 tvResult.append("第 ${it} 次轮询：")
 
-                RetrofitFactory.instance.apiService.loadHomeArticleCo2(1)
+                RetrofitFactory.get().apiService().loadHomeArticleCo2(1)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
@@ -170,7 +170,7 @@ open class RxJava3PracticeFragment:BaseVBFragment<FragmentRxjava3PracticeBinding
      */
     private fun pollingRequestWithCondition() {
         var repeatWhenCount = 0
-        val disposable =  RetrofitFactory.instance.apiService.loadHomeArticleCo2(1)
+        val disposable =  RetrofitFactory.get().apiService().loadHomeArticleCo2(1)
             .repeatWhen {
                 it.flatMap {
                     if (++repeatWhenCount <= 2){
@@ -196,7 +196,7 @@ open class RxJava3PracticeFragment:BaseVBFragment<FragmentRxjava3PracticeBinding
 //            throw NetworkException("network error")
             return Observable.error(NetworkException("network error"))
         }
-        return RetrofitFactory.instance.apiService.loadHomeArticleCo2(1)
+        return RetrofitFactory.get().apiService().loadHomeArticleCo2(1)
     }
 
     private fun onErrorResumeNext() {

@@ -29,6 +29,8 @@ import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.util.hasFragment
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.dialog.DialogSelectFragment
+import com.tesla.framework.component.ignore.IgnoreFirstEventListener
+import com.tesla.framework.component.ignore.IgnoreMultiEventListener
 import com.tesla.framework.component.livedata.NetworkLiveData
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseVBFragment
@@ -129,8 +131,7 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
             onBackKeyPressed()
         }
 
-        val str = "Longfu2012"
-        et_userName.filters = arrayOf<InputFilter>(MyFilter(str,context))
+
 
         mBinding.btnMathFormat.setOnClickListener {
             mathFormat()
@@ -144,6 +145,32 @@ class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTe
         mBinding.btnArrayJoin.setOnClickListener {
             arrayJoin()
         }
+
+        mBinding.btnMetaData.setOnClickListener {
+            metaDataUsage()
+        }
+
+
+        val ignoreFirstEventListener = IgnoreFirstEventListener{
+            Logger.d("ignoreFirstEventListener block")
+        }
+
+        val ignoreMultiEventListener = IgnoreMultiEventListener{
+            Logger.d("IgnoreMultiEventListener block")
+        }
+
+        mBinding.btnIgnoreFirstEvent.setOnClickListener {
+            ignoreFirstEventListener.onTrigger()
+        }
+
+        mBinding.btnIgnoreMultiEvent.setOnClickListener {
+            ignoreMultiEventListener.onTrigger()
+        }
+    }
+
+    private fun metaDataUsage() {
+        val appChannel = MetaDataUtils.getMetaDataInApp("appChannel")
+        Logger.d("appChannel:$appChannel")
     }
 
     private fun arrayJoin() {

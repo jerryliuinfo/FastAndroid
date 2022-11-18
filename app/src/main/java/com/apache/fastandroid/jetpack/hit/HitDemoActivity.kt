@@ -2,13 +2,12 @@ package com.apache.fastandroid.jetpack.hit
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.apache.fastandroid.databinding.FragmentHitBinding
 import com.apache.fastandroid.demo.bean.*
 import com.apache.fastandroid.jetpack.hit.engine.GasEngine
 import com.apache.fastandroid.jetpack.hit.tyre.ChinaTyre
 import com.tesla.framework.kt.launchActivity
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -30,7 +29,7 @@ import javax.inject.Inject
  */
 
 @AndroidEntryPoint
-class HitDemoActivity:BaseVmActivity<FragmentHitBinding>(FragmentHitBinding::inflate) {
+class HitDemoActivity:BaseVBActivity<FragmentHitBinding>(FragmentHitBinding::inflate) {
 
     /**
      * Hilt注入的字段是不可以声明成private的

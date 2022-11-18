@@ -18,7 +18,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 
 /**
  * Created by Jerry on 2022/4/5.
@@ -26,7 +26,7 @@ import com.tesla.framework.ui.activity.BaseVmActivity
  * https://github.com/material-components/material-components-android-examples
  *
  */
-class CheeseActivity:BaseVmActivity<ActivityCheeseMainBinding>(ActivityCheeseMainBinding::inflate) {
+class CheeseActivity:BaseVBActivity<ActivityCheeseMainBinding>(ActivityCheeseMainBinding::inflate) {
 
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)

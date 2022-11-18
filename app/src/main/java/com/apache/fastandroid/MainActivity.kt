@@ -14,22 +14,19 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
-import com.apache.fastandroid.databinding.FragmentDatabindingObservableFieldBinding
-import com.apache.fastandroid.demo.WebViewFragment
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
-import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
-import com.apache.fastandroid.demo.kt.official.KotlinOfficialDemoFragment
-import com.apache.fastandroid.demo.widget.ListAdapterFragment
-import com.apache.fastandroid.jetpack.livedata.LiveDataSensorUsageFragment
+import com.apache.fastandroid.demo.guide.ActivityPropertyDemoFragment
+import com.apache.fastandroid.demo.guide.GuideDemoListFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineNetworkDemoFragment
+import com.apache.fastandroid.demo.kt.practice.JuejinKtDemoListFragment
+import com.apache.fastandroid.demo.temp.KnowledgeFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 
-class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
+class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
     private val selecteId = -1
 
     private var mNavController: NavController? = null
@@ -73,6 +70,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, JuejinKtDemoListFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, BottomTabsFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, MvvmMailDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, MviDemoFragment::class.java,null)
@@ -126,7 +124,9 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, ResourcePoetDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, ListAdapterFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, WebViewFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, LiveDataSensorUsageFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, GuideDemoListFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, CoroutineNetworkDemoFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, ActivityPropertyDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 
@@ -142,6 +142,7 @@ class MainActivity : BaseVmActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        launchActivity<MaterialDialogDemoActivity>(this)
 
     //        launchActivity<CheeseActivity>(this)
+//            launchActivity<ManifestDemoActivity>(this)
 
 
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null,addTitleBar = false)

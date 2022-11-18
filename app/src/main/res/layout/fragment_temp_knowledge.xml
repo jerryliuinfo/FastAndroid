@@ -23,7 +23,8 @@
             app:constraint_referenced_ids="tv_quatity,tv_message,tv_name,btn_textview_horizontal_scroll,btn_collections_suffle,
         btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs,btn_textview_inputFilter,
         btn_collection_wrapper,btn_verify_init,btn_reflect,btn_concurrence,btn_showDialogWithApplicationContext,
-        btn_location_onscreen,btn_list_init,btn_network,btn_monitor_back_key,btn_math_format,btn_timeunit_toMilles,btn_array_join"
+        btn_location_onscreen,btn_list_init,btn_network,btn_monitor_back_key,btn_math_format,btn_timeunit_toMilles,btn_array_join,
+        btn_metaData,btn_ignore_firstEvent,btn_ignore_multiEvent"
             />
         <Button
             android:id="@+id/tv_quatity"
@@ -179,18 +180,31 @@
             android:text="对数组进行分隔"
             />
 
-
-
-
-
-        <EditText
-            android:id="@+id/et_userName"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btn_metaData"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginBottom="40dp"
-            android:background="@color/gray_btn"
+            android:text="MetaData"
             />
+
+        <Button
+            android:id="@+id/btn_ignore_firstEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="忽略第一个事件"
+            />
+
+        <Button
+            android:id="@+id/btn_ignore_multiEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="忽略第n个事件"
+            />
+
+
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

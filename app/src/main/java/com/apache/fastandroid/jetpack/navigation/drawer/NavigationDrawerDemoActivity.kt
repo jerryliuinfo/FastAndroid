@@ -14,12 +14,12 @@ import androidx.navigation.ui.*
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.NavigationDrawerActivityBinding
 import com.google.android.material.navigation.NavigationView
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 
 /**
  * Created by Jerry on 2022/3/11.
  */
-class NavigationDrawerDemoActivity:BaseVmActivity<NavigationDrawerActivityBinding>(NavigationDrawerActivityBinding::inflate) {
+class NavigationDrawerDemoActivity:BaseVBActivity<NavigationDrawerActivityBinding>(NavigationDrawerActivityBinding::inflate) {
 
     private lateinit var appBarConfiguration : AppBarConfiguration
 

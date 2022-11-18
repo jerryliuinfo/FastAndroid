@@ -6,7 +6,7 @@ package com.apache.fastandroid.demo.kt.singleton
 class SingleInstanceSync {
 
     companion object{
-
+        @Volatile
         private var sInstance:SingleInstanceSync ?= null
 
         fun getInstance():SingleInstanceSync{

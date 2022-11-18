@@ -60,10 +60,10 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityMaterialDialogsBinding
 import com.apache.fastandroid.util.extensitons.lifecycleOwner
 import com.tesla.framework.kt.*
-import com.tesla.framework.ui.activity.BaseVmActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 
 /** @author Aidan Follestad (afollestad) */
-class MaterialDialogDemoActivity : BaseVmActivity<ActivityMaterialDialogsBinding>(ActivityMaterialDialogsBinding::inflate) {
+class MaterialDialogDemoActivity : BaseVBActivity<ActivityMaterialDialogsBinding>(ActivityMaterialDialogsBinding::inflate) {
   private var debugMode = false
   private lateinit var prefs: SharedPreferences
 

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            >
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal"
+                app:flow_wrapMode="aligned"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:constraint_referenced_ids="btn_jvmOverloads,btn_default_param,btn_varargs,btn_unit_nothing,
+                btn_init,btn_nested_inner_class,btn_extends_dataclass,btn_func_type,btn_func_as_types,btn_func_as_return
+                "
+                />
+            <Button
+                android:id="@+id/btn_jvmOverloads"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JvmOverloads"
+                />
+            <Button
+                android:id="@+id/btn_default_param"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="默认参数"
+                />
+            <Button
+                android:id="@+id/btn_varargs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="可变量参数"
+                />
+
+            <Button
+                android:id="@+id/btn_unit_nothing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="返回Unit和Nothing"
+                />
+
+            <Button
+                android:id="@+id/btn_init"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="init"
+                />
+
+            <Button
+                android:id="@+id/btn_nested_inner_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="嵌套类和内部类"
+                />
+
+            <Button
+                android:id="@+id/btn_extends_dataclass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="数据类不能被继承"
+                />
+
+            <Button
+                android:id="@+id/btn_func_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="func_type"
+                />
+
+            <Button
+                android:id="@+id/btn_func_as_types"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="函数可以作为其他函数的参数"
+                />
+
+            <Button
+                android:id="@+id/btn_func_as_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="函数可以作为其他函数的返回值"
+                />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
