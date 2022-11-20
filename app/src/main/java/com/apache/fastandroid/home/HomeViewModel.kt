@@ -4,7 +4,9 @@ import androidx.lifecycle.*
 import com.apache.fastandroid.bean.PageInfo
 import com.apache.fastandroid.jetpack.BaseViewModel
 import com.apache.fastandroid.network.model.Article
+import com.apache.fastandroid.network.model.ArticleApi
 import com.apache.fastandroid.network.model.HomeArticleResponse
+import com.tesla.framework.component.logger.Logger
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
@@ -18,7 +20,6 @@ class HomeViewModel(
 
 
     private val _articleList = MutableLiveData<Result<List<Article>>>()
-//    val articleList: LiveData<List<Article>> = _articleList
 
 
     val pageInfo = PageInfo()
@@ -40,7 +41,6 @@ class HomeViewModel(
     }
 
 
-
     fun refresh() {
         _forceUpdate.postValue(true)
     }
@@ -53,13 +53,16 @@ class HomeViewModel(
         _forceUpdate.postValue(true)
     }
 
+    fun loadAuthorInfo(authorId: String) {
+        Logger.d("loadAuthorInfo authorId:$authorId")
+    }
 
     suspend fun loadHotData(): HomeArticleResponse {
         return reporsitoryKt.loadHomeArticleCo(pageInfo.page)
     }
 
 
-    suspend fun loadTopArticle(): List<Article> {
+    suspend fun loadTopArticle(): List<ArticleApi> {
         return reporsitoryKt.loadTopArticleCo()
     }
 
@@ -69,7 +72,7 @@ class HomeViewModel(
         viewModelScope.launch {
             _dataLoading.value = true
             try {
-                val articles: MutableList<Article> = arrayListOf()
+                val articles: MutableList<ArticleApi> = arrayListOf()
 
                 val topData = async { loadTopArticle() }
 
@@ -81,11 +84,15 @@ class HomeViewModel(
                     articles.addAll(it)
                 }
 
-                _articleList.postValue(Result.success(articles))
-            }catch (e:Exception){
+                val articleList: List<Article> = articles.map {
+                    convertToArticle(it)
+                }
+
+                _articleList.postValue(Result.success(articleList))
+            } catch (e: Exception) {
                 e.printStackTrace()
                 _articleList.postValue(Result.failure(e))
-            }finally {
+            } finally {
                 _dataLoading.value = false
 
             }
@@ -96,8 +103,12 @@ class HomeViewModel(
     fun loadMore() {
 
         launch({
-            loadHotData().datas?.let {
-                _articleList.postValue(Result.success(it))
+            loadHotData().datas?.let { apiList ->
+                val articleList: List<Article> = apiList.map {
+                    convertToArticle(it)
+                }
+
+                _articleList.postValue(Result.success(articleList))
             }
 
         }, {
@@ -106,4 +117,43 @@ class HomeViewModel(
     }
 
 
+    private fun convertToArticle(api: ArticleApi): Article {
+        return api.let {
+            Article(
+                author = it.author,
+                shareUser = it.shareUser,
+                chapterName = it.chapterName,
+                link = it.link,
+                title = it.title,
+                collect = it.collect,
+                superChapterName = it.superChapterName,
+                niceDate = it.niceDate,
+                fresh = it.fresh,
+                top = it.top,
+                loadAuthorInfo = {
+                    loadAuthorInfo(api.author)
+                }
+
+            )
+        }
+    }
+
+}
+
+fun ArticleApi.toArticle(): Article {
+    return this.let {
+        Article(
+            author = it.author,
+            shareUser = it.shareUser,
+            chapterName = it.chapterName,
+            link = it.link,
+            title = it.title,
+            collect = it.collect,
+            superChapterName = it.superChapterName,
+            niceDate = it.niceDate,
+            fresh = it.fresh,
+            top = it.top,
+
+            )
+    }
 }

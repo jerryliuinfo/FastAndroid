@@ -10,6 +10,8 @@ import com.apache.fastandroid.demo.kt.coroutine.*
 class CoroutineDemoListFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
+            ViewItemBean("协程最佳实践","协程最佳实践在Frament中", CoroutineBestPracticeFragment::class.java),
+            ViewItemBean("协程最佳实践","协程最佳实践在Activity中", CoroutineBestPracticeFragment::class.java),
             ViewItemBean("协程","协程", CoroutineDemoFragment::class.java)
             ,ViewItemBean("协程基础","协程基础", CoroutineBasicDemoFragment::class.java)
             ,ViewItemBean("协程取消","协程取消", CoroutineCancelDemoFragment::class.java)

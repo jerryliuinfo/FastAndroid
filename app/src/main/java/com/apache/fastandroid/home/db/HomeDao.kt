@@ -1,6 +1,5 @@
 package com.apache.fastandroid.home.db
 
-import com.apache.fastandroid.network.model.Article
 import com.apache.fastandroid.network.model.HomeArticleResponse
 import com.blankj.utilcode.util.CacheDiskUtils
 import com.blankj.utilcode.util.CacheDoubleUtils

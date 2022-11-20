@@ -2,11 +2,9 @@ package com.apache.fastandroid.home
 
 import com.apache.fastandroid.home.db.HomeDao
 import com.apache.fastandroid.home.network.HomeNetwork
-import com.apache.fastandroid.network.model.Article
+import com.apache.fastandroid.network.model.ArticleApi
 import com.apache.fastandroid.network.model.HomeArticleResponse
-import com.apache.fastandroid.network.response.EmptyResponse
 import com.apache.fastandroid.util.extensitons.PageState
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
@@ -18,13 +16,13 @@ import kotlin.random.Random
  */
 class HomeReporsitoryKt(private val homeDao:HomeDao, private val network: HomeNetwork) {
 
-    suspend fun loadTopArticleCo():List<Article>{
+    suspend fun loadTopArticleCo():List<ArticleApi>{
         println("loadTopArticleCo thread: ${Thread.currentThread().name}")
         var artices = network.loadTopArticleCo()
         return artices.data
     }
 
-    suspend fun loadTopArticleCoByPageStatus():PageState<List<Article>>{
+    suspend fun loadTopArticleCoByPageStatus():PageState<List<ArticleApi>>{
         val apiResponse =   try {
             network.loadTopArticleCo()
         }catch (e:Exception){

@@ -2,6 +2,7 @@ package com.apache.fastandroid.demo.mvi
 
 import androidx.lifecycle.*
 import com.apache.fastandroid.home.HomeReporsitoryKt
+import com.apache.fastandroid.home.toArticle
 import com.apache.fastandroid.util.extensitons.FetchStatus
 import com.apache.fastandroid.util.extensitons.PageState
 import com.apache.fastandroid.util.extensitons.asLiveData
@@ -52,7 +53,7 @@ class MviViewModel(val repository: HomeReporsitoryKt):ViewModel() {
                 }
                 is PageState.Success -> {
                     _viewStates.setState {
-                        copy(fetchStatus = FetchStatus.Fetched, newsList = result.data)
+                        copy(fetchStatus = FetchStatus.Fetched, newsList = result.data.map { it.toArticle() })
                     }
                 }
             }

@@ -6,14 +6,15 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.article.ArticleDetailActivity
 import com.apache.fastandroid.databinding.FragmentHomeBinding
 import com.apache.fastandroid.network.model.Article
+import com.apache.fastandroid.network.model.ArticleApi
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayout
 import com.kingja.loadsir.core.LoadService
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseDBFragment
 
 /**
@@ -24,13 +25,15 @@ class HomeFragment:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private val mViewModel:HomeViewModel by viewModels { getViewModelFactory() }
 
 
-    private  var mAdapter: ArticleAdapter =  ArticleAdapter(emptyList()).apply {
+    private  var mAdapter: ArticleAdapter =  ArticleAdapter(emptyList(), listener = { view, index ->
+        Logger.d("onClick Author index:$index")
+
+    }).apply {
         animationEnable = true
         initLoadMore(this)
         setOnItemClickListener{ adapter,view,position ->
             val article = getItem(position)
             ArticleDetailActivity.launch(requireActivity(), article.title, article.link)
-
 
         }
     }

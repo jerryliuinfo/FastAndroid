@@ -23,12 +23,13 @@ import kotlinx.coroutines.cancel
 /**
  * Created by Jerry on 2022/6/19.
  */
-class FlowPracticeDemoFragment:BaseVBFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
+class FlowPracticeDemoFragment :
+    BaseVBFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
 
-//    @Inject lateinit var postViewModel: PostViewModel
-    private val mViewModel:PostViewModel by viewModels {
+    //    @Inject lateinit var postViewModel: PostViewModel
+    private val mViewModel: PostViewModel by viewModels {
         getViewModelFactory()
-}
+    }
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
@@ -41,8 +42,8 @@ class FlowPracticeDemoFragment:BaseVBFragment<FragmentRecycleviewBinding>(Fragme
         }
 
         lifecycleScope.launchWhenStarted {
-            mViewModel.uiState.collect{ postState ->
-                when(postState){
+            mViewModel.uiState.collect { postState ->
+                when (postState) {
                     is PostsUiState.Loading -> {
                         mBinding.progressBar.isVisible = true
                         mBinding.recyclerView.isVisible = false
@@ -70,7 +71,7 @@ class FlowPracticeDemoFragment:BaseVBFragment<FragmentRecycleviewBinding>(Fragme
         val dataSource = FlowPracticeDataSource()
         val repository = FlowPracticeRepository(dataSource)
         lifecycleScope.launchWhenStarted {
-            repository.count.collect{
+            repository.count.collect {
                 Logger.d("count collect: $it")
             }
         }

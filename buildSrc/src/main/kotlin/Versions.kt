@@ -23,7 +23,7 @@ object Versions {
     const val hit_viewModel = "1.0.0-alpha02"
 
     const val navigationVersion = "2.3.5"
-    const val lifecycle_version = "2.3.1"
+    const val lifecycle_version = "2.4.0"
     //room 2.4.0 版本可以不用手动写 migration 了
     const val Room = "2.2.3"
 //    const val Room = "2.4.0-alpha05"

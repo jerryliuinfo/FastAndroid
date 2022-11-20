@@ -9,7 +9,6 @@ import com.apache.fastandroid.network.model.Article
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
-import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.common.util.N
 import com.tesla.framework.common.util.buildSpannableString
 import com.tesla.framework.kt.getColor
@@ -17,7 +16,7 @@ import com.tesla.framework.kt.getColor
 /**
  * Created by Jerry on 2021/7/1.
  */
-class ArticleAdapter(data: List<Article>, val listener :(View,Int) -> Unit = { viwe,position -> } ) :
+class ArticleAdapter(data: List<Article>, val listener :(View, Int) -> Unit = { viwe, position -> } ) :
     BaseQuickAdapter<Article, BaseDataBindingHolder<ArticleItemBinding>>(R.layout.article_item, data.toMutableList()),
     LoadMoreModule {
 
@@ -25,36 +24,37 @@ class ArticleAdapter(data: List<Article>, val listener :(View,Int) -> Unit = { v
         setHasStableIds(true)
     }
 
-    override fun convert(holder: BaseDataBindingHolder<ArticleItemBinding>, it: Article) {
+    override fun convert(holder: BaseDataBindingHolder<ArticleItemBinding>, article: Article) {
 
         holder.dataBinding?.apply {
 
         }
 
         holder
-            .setText(R.id.item_article_title, handleTitle(it))
-            .setText(R.id.item_article_date, it.niceDate)
-            .setText(R.id.item_article_type, handleCategory(it))
-            .setImageResource(R.id.item_list_collect, isCollect(it))
+            .setText(R.id.item_article_title, handleTitle(article))
+            .setText(R.id.item_article_date, article.niceDate)
+            .setText(R.id.item_article_type, handleCategory(article))
+            .setImageResource(R.id.item_list_collect, isCollect(article))
 
 
         holder.getView<TextView>(R.id.item_article_author).buildSpannableString {
-            if (it.top){
+            if (article.top){
                 append("置顶  "){
                     setColor(R.color.holo_red_light.getColor(context))
                 }
             }
-            if (it.fresh){
+            if (article.fresh){
                 append("新  "){
                     setColor(R.color.holo_red_light.getColor(context))
                 }
             }
-            append(handleAuthor(it))
+            append(handleAuthor(article))
         }
 
 
         holder.getView<TextView>(R.id.item_article_author).setOnClickListener {
-            listener?.invoke(it, holder.layoutPosition)
+//            listener?.invoke(it, holder.layoutPosition)
+            article.loadAuthorInfo()
         }
     }
 

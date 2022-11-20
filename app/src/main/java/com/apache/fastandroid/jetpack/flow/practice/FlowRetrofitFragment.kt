@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FlowFragmentRetrofitBinding
 import com.apache.fastandroid.home.ArticleAdapter
+import com.apache.fastandroid.home.toArticle
 import com.apache.fastandroid.jetpack.flow.vm.FlowUserViewModel
 import com.tesla.framework.common.util.log.Logger
 import com.tesla.framework.kt.textViewFlow
@@ -39,7 +40,7 @@ class FlowRetrofitFragment:BaseVBFragment<FlowFragmentRetrofitBinding>(FlowFragm
 
         mViewModel.mArticleState.observe(this){
             com.tesla.framework.component.logger.Logger.d("articles size :${it.size}")
-            mAdapter.setNewInstance(it.toMutableList())
+            mAdapter.setNewInstance(it.map { it.toArticle() }.toMutableList())
         }
     }
 }

@@ -8,7 +8,7 @@ import com.apache.fastandroid.home.db.HomeDatabase
 import com.apache.fastandroid.home.network.HomeNetwork
 import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
-import com.apache.fastandroid.network.model.Article
+import com.apache.fastandroid.network.model.ArticleApi
 import com.blankj.utilcode.util.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -23,7 +23,7 @@ class FlowUserViewModel:ViewModel() {
     private val mUserDao = DatabaseBuilder.getInstance(Utils.getApp()).userDao()
     private val homeReporsitoryKt = HomeReporsitoryKt.getInstance(HomeDatabase.getHomeDao(), HomeNetwork.getInstance())
 
-    val mArticleState = MutableLiveData<List<Article>>()
+    val mArticleState = MutableLiveData<List<ArticleApi>>()
 
 
     fun insert(id:Int, name:String){

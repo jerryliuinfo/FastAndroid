@@ -1,11 +1,9 @@
 package com.apache.fastandroid.demo.app
 
 import androidx.lifecycle.MutableLiveData
-import com.apache.fastandroid.base.BaseRepository
 import com.apache.fastandroid.demo.app.base.BaseMailRepository
 import com.apache.fastandroid.demo.app.base.dataConvert
-import com.apache.fastandroid.home.network.HomeNetwork
-import com.apache.fastandroid.network.model.Article
+import com.apache.fastandroid.network.model.ArticleApi
 import com.zwb.mvvm_mall.base.viewstate.State
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -15,11 +13,11 @@ import kotlinx.coroutines.withContext
  */
 class MailRepository(private val loadState:MutableLiveData<State>):BaseMailRepository() {
 
-    suspend fun loadTopArticleCo():List<Article> {
+    suspend fun loadTopArticleCo():List<ArticleApi> {
         var artices = apiService.loadTopArticleCo().dataConvert(loadState)
         return artices
     }
-    suspend fun loadTopArticleCo2():List<Article> = withContext(Dispatchers.IO) {
+    suspend fun loadTopArticleCo2():List<ArticleApi> = withContext(Dispatchers.IO) {
         var artices = apiService.loadTopArticleCo().dataConvert(loadState)
         return@withContext artices
     }

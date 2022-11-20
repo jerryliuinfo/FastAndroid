@@ -1,6 +1,7 @@
 package com.apache.fastandroid.demo.mvi
 
 import com.apache.fastandroid.network.model.Article
+import com.apache.fastandroid.network.model.ArticleApi
 import com.apache.fastandroid.util.extensitons.FetchStatus
 
 

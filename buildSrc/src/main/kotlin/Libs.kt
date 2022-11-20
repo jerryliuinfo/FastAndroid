@@ -196,8 +196,12 @@ object Jetpack{
 
     val lifecycle = arrayOf(
         "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle_version}",
+        //ViewModelScope
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}",
+        //LiveData
         "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}",
+        //LifecycleScope
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle_version}",
 //        "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle_version}",
 
 //        "androidx.lifecycle:lifecycle-service:${Versions.lifecycle_version}"

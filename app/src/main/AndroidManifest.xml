@@ -3,6 +3,390 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.apache.fastandroid">
 
+    <application
+        android:name=".app.FastApplication"
+        android:allowBackup="false"
+        android:banner="@mipmap/ic_launcher"
+        android:extractNativeLibs="true"
+        android:fullBackupContent="@xml/backup_content"
+        android:icon="@mipmap/ic_launcher"
+        android:label="FastAndroid"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
+        android:resizeableActivity="false"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppTheme"
+        android:usesCleartextTraffic="true"
+
+
+        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
+        tools:replace="android:theme,android:icon,android:label,android:allowBackup">
+
+
+        <activity
+            android:name="com.apache.fastandroid.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Splashscreen">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".demo.style.ImmerseStatusBarDemoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="com.android.example.github.GithubBrowserMainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".demo.component.materialdialogs.MaterialDialogDemoActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="Main"
+            android:launchMode="singleTop" />
+
+        <activity
+            android:name=".demo.fluidresize.FluidResizeActivity"
+            android:exported="false"
+            android:label="FluidResize" />
+
+        <!--  activity-alias 使用参考 https://developer.android.com/guide/topics/manifest/activity-alias-element?hl=zh-cn     -->
+
+        <activity
+            android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".demo.style.FitSystemWindowDemoActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".demo.style.FitSystemWindowDemoActivity2"
+            android:exported="false" />
+
+        <activity
+            android:name=".demo.style.FitSystemWindowFrameLayoutDemoActivity"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".demo.temp.activityresult.ActivityResultDemoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".demo.temp.activityresult.SecondActivityDemoActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".jetpack.navigation.NavigationDrawerDemoActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".jetpack.navigation.advance.AdvanceNavigationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".jetpack.livedata.LiveDataWrongUsageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".demo.blacktech.ViewPumpDemoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".setting.AboutActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".jetpack.navigation.NavSettingActivity"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".demo.cheese.CheeseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".demo.cheese.CheeseDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".article.ArticleDetailActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|locale"
+            android:exported="false"
+            android:launchMode="singleTask"
+
+            />
+
+        <activity
+            android:name=".demo.drakeet.foregroundservice.ForegroundServiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".demo.unitest.UnitTestActivity"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".demo.drakeet.customview.sample.course.OnlineActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+
+
+        <activity
+            android:name=".demo.drakeet.customview.sample.chat.ChatActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.OverlapSystemBar"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
+        <activity
+            android:name="com.balsikandar.crashreporter.ui.CrashReporterActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.balsikandar.android.task"
+
+            />
+        <activity
+            android:name="com.balsikandar.crashreporter.ui.LogMessageActivity"
+            android:exported="false"
+            android:parentActivityName="com.balsikandar.crashreporter.ui.CrashReporterActivity"
+
+            />
+
+        <activity
+            android:name="com.example.hellojnicallback.JniMainActivity"
+            android:exported="false" />
+
+
+        <!-- <meta-data
+             android:name="channelId"
+             android:value="${UMENG_CHANNEL}" />-->
+
+        <activity
+            android:name=".jetpack.hit.HitDemoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".jetpack.hit.HitDemoActivity2"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".demo.drakeet.aboutpage.AboutPageDemoActivity"
+            android:exported="false" />
+
+
+        <activity android:name="me.drakeet.floo.sample.FlooMainActivity" />
+
+        <activity
+            android:name="me.drakeet.floo.sample.TargetActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="drakeet.sdk"
+                    android:path="/target"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="me.drakeet.floo.sample.WebActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="drakeet.sdk"
+                    android:path="/web"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="me.drakeet.floo.sample.ContainerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="m.drakeet.me"
+                    android:path="/container"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
+        </activity>
+        <activity android:name="me.drakeet.floo.sample.NotRegisteredActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="m.drakeet.me"
+                    android:path="/not_registered"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".demo.guide.ManifestDemoActivity"
+            android:allowTaskReparenting="true"
+
+            android:alwaysRetainTaskState="true"
+
+            android:autoRemoveFromRecents="true"
+
+            />
+        <activity
+            android:name=".demo.guide.activity.FinishOnTaskLaunchActivity"
+            android:finishOnTaskLaunch="true"
+            android:label="FinishOnTaskLaunch" />
+
+
+        <activity
+            android:name=".demo.guide.activity.SingleTaskDemoActivity"
+            android:label="SingleTask"
+            android:launchMode="singleTask" />
+
+        <activity
+            android:name=".demo.guide.activity.SingleInstanceDemoActivity"
+            android:label="SingleTask"
+            android:launchMode="singleInstance" />
+
+        <meta-data
+            android:name="appChannel"
+            android:value="google" />
+
+
+        <meta-data
+            android:name="CHANNEL"
+            android:value="${CHANNEL_VALUE}" />
+
+
+        <!--
+
+        https://developer.android.com/guide/topics/manifest/activity-element
+        allowTaskReparenting: 作用是Activity的迁移。当allowTaskReparenting属性和TaskAffinity配合使用时，Activity可以从一个任务栈迁移到另一个任务栈。
+        现在有两个应用A和B，A启动了B的一个Activity C，然后按Home键回到桌面，然后再单击B的桌面图标，这个时候不是启动了B的主Activity，而是重新显示了已经被应用A启动的Activity C。我们也可以理解为，C从A的任务栈转移到了B的任务栈中。
+        可以这么理解，由于A启动了C，这个时候C只能运行在A的任务栈中，但是C属于B应用，正常情况下，它的TaskAffinity值肯定不可能和A的任务栈相同，所以当B启动后，B会创建自己的任务栈，这个时候系统发现C原本想要的任务栈已经创建了，所以就把C从A的任务栈中转移过来了。
+
+        alwaysRetainTaskState:
+        正常情况下，当用户从主屏幕重新选择某个任务时，系统会在特定情况下清除该任务（从根 Activity 上的堆栈中移除所有 Activity）。通常，如果用户在一段时间（如 30 分钟）内未访问任务，系统会执行此操作。
+        不过，如果该属性的值是“true”，则无论用户如何返回任务，该任务始终会显示最后一次的状态。例如，该属性非常适用于网络浏览器这类应用，因为其中存在大量用户不愿丢失的状态（如多个打开的标签页
+
+        autoRemoveFromRecents:
+
+        由具有该属性的 Activity 启动的任务是否一直保留在概览屏幕中，直至任务中的最后一个 Activity 完成为止。若为 true，则自动从概览屏幕中移除任务。它会替换调用方使用的 FLAG_ACTIVITY_RETAIN_IN_RECENTS。它必须是布尔值“true”或“false”
+        -->
+
+        <provider
+            android:name="com.balsikandar.crashreporter.CrashReporterInitProvider"
+            android:authorities="${applicationId}.CrashReporterInitProvider"
+            android:enabled="true"
+            android:exported="false" />
+
+
+        <receiver
+            android:name=".demo.guide.receiver.DemoReceiver"
+            android:directBootAware="true"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.apache.fastframework.author" />
+
+        <!--
+            permission:实体启动服务或绑定到服务所必需的权限的名称。如果 startService()、bindService() 或 stopService() 的调用方尚未获得此权限，该方法将不起作用，且系统不会将 Intent 对象传送给服务。
+                process:运行服务的进程的名称。通常，应用的所有组件都会在为应用创建的默认进程中运行。它与应用软件包的名称相同。<application> 元素的 process 属性可以为所有组件设置不同的默认值。不过，组件可以使用其自己的 process 属性替换默认属性，从而允许您跨多个进程分布应用。
+
+        -->
+
+        <service android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService" />
+
+
+        <!--
+            directBootAware:广播接收器是否可感知直接启动；即，它是否可以在用户解锁设备之前运行。默认值为false
+            exported:广播接收器是否可以接收来自其应用外部非系统来源的消息 - 如果可以，则为“true”，如果不可以，则为“false”。如果为“false”，则广播接收器只能接收由系统、同一应用或具有相同用户 ID 的应用的组件发送的消息。
+            如果未指定值，默认值取决于广播接收器是否包含 Intent 过滤器。如果接收器至少包含一个 intent 过滤器，则默认值为“true”。否则，默认值为“false”
+            permission:广播方要向广播接收器发送消息而必须具备的权限的名称。如果未设置此属性，则由 <application> 元素的 permission 属性设置的权限会应用于广播接收器
+
+        -->
+
+        <service
+            android:name=".demo.drakeet.foregroundservice.InhibitorService"
+            android:permission="com.apache.fastandroid.InhibitorService"
+
+            />
+
+
+        <!--        Google Play 使用您的应用清单中声明的 <uses-library> 元素，从不符合其库要求的设备中过滤掉您的应用
+
+ 指定应用必须与之关联的共享库。 此元素告知系统将库的代码添加到软件包的类加载器中。
+ 以下表示 org.apache.http.legacy 库不是必须的
+ <uses-library> 标记的顺序很重要：它会影响应用加载时的类查询和解析顺序。某些库可能有重复的类，在这种情况下，位置在前的库优先。
+
+此元素还会影响应用在特定设备上安装以及应用在 Google Play 上的可用性：
+
+android:required："true"：如果没有此库，则应用将无法正常运行。系统不允许在没有此库的设备上安装应用。
+"false"：应用可以使用此库（如果存在），但专门在没有此库的情况下运行（如果有必要）。系统允许安装应用，即使不存在此库也是如此。如果您使用 "false"，则需要在运行时检查有没有此库。
+要检查库，您可以使用反射来确定有没有特定类。
+ -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+
+    </application>
+    <permission
+        android:name="com.optimize.performance.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="true" />
+
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.optimize.performance.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
     <!--
     Application 节点设置: https://developer.android.com/guide/topics/manifest/application-element#reparent
     android:banner="@mipmap/ic_banner":移动设备用 icon, TV 用 banner
@@ -60,357 +444,28 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
 
     -->
 
-    <application
-        android:name=".app.FastApplication"
-        android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
-        android:banner="@mipmap/ic_launcher"
-        android:extractNativeLibs="true"
-        android:label="FastAndroid"
-        android:networkSecurityConfig="@xml/network_security_config"
-        android:resizeableActivity="false"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.AppTheme"
-        android:usesCleartextTraffic="true"
-        android:fullBackupContent="@xml/backup_content"
-        android:largeHeap="true"
-        android:requestLegacyExternalStorage="true"
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
-        tools:replace="android:theme,android:icon,android:label,android:allowBackup">
-
-
-        <meta-data
-            android:name="appChannel"
-            android:value="google" />
-
-        <activity
-            android:name="com.apache.fastandroid.SplashActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Splashscreen">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
-
-        </activity>
-
-
-        <activity
-            android:name=".demo.style.ImmerseStatusBarDemoActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.android.example.github.GithubBrowserMainActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".demo.component.materialdialogs.MaterialDialogDemoActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="Main"
-            android:launchMode="singleTop" />
-
-        <!--  activity-alias 使用参考 https://developer.android.com/guide/topics/manifest/activity-alias-element?hl=zh-cn     -->
-
-        <activity
-            android:name=".demo.fluidresize.FluidResizeActivity"
-            android:exported="false"
-            android:label="FluidResize" />
-
-
-        <activity
-            android:name="com.tesla.framework.ui.activity.FragmentContainerActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".demo.style.FitSystemWindowDemoActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".demo.style.FitSystemWindowDemoActivity2"
-            android:exported="false" />
-
-
-        <activity
-            android:name=".demo.style.FitSystemWindowFrameLayoutDemoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".demo.temp.activityresult.ActivityResultDemoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".demo.temp.activityresult.SecondActivityDemoActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".jetpack.navigation.NavigationDrawerDemoActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".jetpack.navigation.advance.AdvanceNavigationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".jetpack.livedata.LiveDataWrongUsageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".demo.blacktech.ViewPumpDemoActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".setting.AboutActivity"
-            android:exported="false" />
-
-
-        <activity
-            android:name=".jetpack.navigation.NavSettingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".demo.cheese.CheeseActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".demo.cheese.CheeseDetailActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".article.ArticleDetailActivity"
-            android:configChanges="orientation|keyboardHidden|navigation|locale"
-            android:exported="false"
-            android:launchMode="singleTask"
-
-            />
-        <activity
-            android:name=".demo.drakeet.foregroundservice.ForegroundServiceActivity"
-            android:exported="false" />
-
-
-        <activity
-            android:name=".demo.unitest.UnitTestActivity"
-            android:exported="false" />
-
-
-        <activity
-            android:name=".demo.drakeet.customview.sample.course.OnlineActivity"
-            android:exported="false"
-            android:screenOrientation="landscape" />
-
-        <activity
-            android:name=".demo.drakeet.customview.sample.chat.ChatActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity"
-            android:exported="false"
-            android:theme="@style/AppTheme.OverlapSystemBar"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
-        <activity
-            android:name="com.balsikandar.crashreporter.ui.CrashReporterActivity"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:taskAffinity="com.balsikandar.android.task"
-
-            />
-
-        <activity
-            android:name="com.balsikandar.crashreporter.ui.LogMessageActivity"
-            android:exported="false"
-            android:parentActivityName="com.balsikandar.crashreporter.ui.CrashReporterActivity"
-
-            />
-
-
-        <!-- <meta-data
-             android:name="channelId"
-             android:value="${UMENG_CHANNEL}" />-->
-
-        <activity
-            android:name="com.example.hellojnicallback.JniMainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".jetpack.hit.HitDemoActivity"
-            android:exported="false" />
-
-
-        <activity
-            android:name=".jetpack.hit.HitDemoActivity2"
-            android:exported="false" />
-
-
-        <activity
-            android:name=".demo.drakeet.aboutpage.AboutPageDemoActivity"
-            android:exported="false" />
-
-        <activity android:name="me.drakeet.floo.sample.FlooMainActivity" />
-
-        <activity
-            android:name="me.drakeet.floo.sample.TargetActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="drakeet.sdk"
-                    android:path="/target"
-                    android:scheme="@string/scheme" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name="me.drakeet.floo.sample.WebActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="drakeet.sdk"
-                    android:path="/web"
-                    android:scheme="@string/scheme" />
-            </intent-filter>
-        </activity>
-        <activity android:name="me.drakeet.floo.sample.ContainerActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="m.drakeet.me"
-                    android:path="/container"
-                    android:scheme="@string/scheme" />
-            </intent-filter>
-        </activity>
-        <activity android:name="me.drakeet.floo.sample.NotRegisteredActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="m.drakeet.me"
-                    android:path="/not_registered"
-                    android:scheme="@string/scheme" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".demo.guide.ManifestDemoActivity"
-            android:allowTaskReparenting="true"
-
-            android:alwaysRetainTaskState="true"
-
-            android:autoRemoveFromRecents="true"
-
-            />
-
-
-        <activity
-            android:name=".demo.guide.activity.FinishOnTaskLaunchActivity"
-            android:finishOnTaskLaunch="true"
-            android:label="FinishOnTaskLaunch" />
-
-        <activity
-            android:name=".demo.guide.activity.SingleTaskDemoActivity"
-            android:label="SingleTask"
-            android:launchMode="singleTask" />
-
-        <activity
-            android:name=".demo.guide.activity.SingleInstanceDemoActivity"
-            android:label="SingleTask"
-            android:launchMode="singleInstance" />
-
-
-        <meta-data
-            android:name="CHANNEL"
-            android:value="${CHANNEL_VALUE}" />
-
-
-        <!--
-
-        https://developer.android.com/guide/topics/manifest/activity-element
-        allowTaskReparenting: 作用是Activity的迁移。当allowTaskReparenting属性和TaskAffinity配合使用时，Activity可以从一个任务栈迁移到另一个任务栈。
-        现在有两个应用A和B，A启动了B的一个Activity C，然后按Home键回到桌面，然后再单击B的桌面图标，这个时候不是启动了B的主Activity，而是重新显示了已经被应用A启动的Activity C。我们也可以理解为，C从A的任务栈转移到了B的任务栈中。
-        可以这么理解，由于A启动了C，这个时候C只能运行在A的任务栈中，但是C属于B应用，正常情况下，它的TaskAffinity值肯定不可能和A的任务栈相同，所以当B启动后，B会创建自己的任务栈，这个时候系统发现C原本想要的任务栈已经创建了，所以就把C从A的任务栈中转移过来了。
-
-        alwaysRetainTaskState:
-        正常情况下，当用户从主屏幕重新选择某个任务时，系统会在特定情况下清除该任务（从根 Activity 上的堆栈中移除所有 Activity）。通常，如果用户在一段时间（如 30 分钟）内未访问任务，系统会执行此操作。
-        不过，如果该属性的值是“true”，则无论用户如何返回任务，该任务始终会显示最后一次的状态。例如，该属性非常适用于网络浏览器这类应用，因为其中存在大量用户不愿丢失的状态（如多个打开的标签页
-
-        autoRemoveFromRecents:
-
-        由具有该属性的 Activity 启动的任务是否一直保留在概览屏幕中，直至任务中的最后一个 Activity 完成为止。若为 true，则自动从概览屏幕中移除任务。它会替换调用方使用的 FLAG_ACTIVITY_RETAIN_IN_RECENTS。它必须是布尔值“true”或“false”
-        -->
-
-        <provider
-            android:name="com.balsikandar.crashreporter.CrashReporterInitProvider"
-            android:authorities="${applicationId}.CrashReporterInitProvider"
-            android:enabled="true"
-            android:exported="false" />
-
-
-        <service android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService" />
-
-        <service android:name=".demo.drakeet.foregroundservice.InhibitorService" />
-
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
-
-
-    </application>
-
-    <permission
-        android:name="com.optimize.performance.permission.JPUSH_MESSAGE"
-        android:protectionLevel="signature" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
     <!--
        Don't let Google Play filter out devices that just have don't have camera.
+
+       Google Play 会利用应用清单中声明的 <uses-feature> 元素，从不符合应用硬件和软件功能要求的设备上过滤该应用。
+
+       通过指定应用所要求的功能，您可以让 Google Play 仅向设备符合应用功能要求的用户（而非所有用户）提供您的应用。
+       android:required:表示应用是否需要 android:name 中所指定功能的布尔值
+       当您为某项功能声明 android:required="true" 时，即是规定当设备不具有该指定功能时，应用无法正常工作，或设计为无法正常工作。
+       当您为某项功能声明 android:required="false" 时，则意味着如果设备具有该功能，应用会在必要时优先使用该功能，但应用设计为不使用该指定功能也可正常工作。
+       如果未予声明，则 android:required 的默认值为 "true"。
+
    -->
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
-
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="com.optimize.performance.permission.JPUSH_MESSAGE" />
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-
     <uses-permission android:name="android.permission.BLUETOOTH" />
 
+    <!--    没有蓝牙功能的应用将不允许安装此应用-->
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
 
     <!--    <uses-permission android:name="android.permission.CAMERA"  />-->
 
@@ -419,6 +474,7 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             然后，如果要对特定功能停用过滤，可将 android:required="false" 属性添加到 <uses-feature> 声明中。
             https://developer.android.com/guide/topics/manifest/uses-permission-element
             -->
+
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
