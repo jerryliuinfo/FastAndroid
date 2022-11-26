@@ -20,6 +20,7 @@ import com.apache.fastandroid.demo.guide.GuideDemoListFragment
 import com.apache.fastandroid.demo.kt.coroutine.CoroutineNetworkDemoFragment
 import com.apache.fastandroid.demo.kt.practice.JuejinKtDemoListFragment
 import com.apache.fastandroid.demo.temp.KnowledgeFragment
+import com.apache.fastandroid.jetpack.lifecycle.customlifecycle.CustomLifecycleOwnerFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
@@ -48,6 +49,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
             ).build()
         setupActionBar(mNavController!!, configuration)
         setupNavigationMenu(mNavController!!)
+
+
 
        /* if (AppConfigUtil.isAppUpdated()){
             AppConfigUtil.appVersionCode = BuildConfig.VERSION_CODE.toLong()
@@ -144,10 +147,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
     //        launchActivity<CheeseActivity>(this)
 //            launchActivity<ManifestDemoActivity>(this)
 
-
-//        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null,addTitleBar = false)
-
-
+//        FragmentContainerActivity.launch(this, CustomLifecycleOwnerFragment::class.java,null,addTitleBar = false)
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
                 if (System.currentTimeMillis() - mExitTime > 2000){

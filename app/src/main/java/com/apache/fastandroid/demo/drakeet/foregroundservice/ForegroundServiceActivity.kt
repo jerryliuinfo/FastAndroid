@@ -28,7 +28,7 @@ class ForegroundServiceActivity:BaseVBActivity<FragmentCommonBinding>(FragmentCo
 
     private fun startService(){
         handler.postDelayed({
-               val intent = Intent(activity,InhibitorService::class.java)
+               val intent = Intent(this,InhibitorService::class.java)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 activity?.startForegroundService(intent)
                 Logger.d("startForegroundService -->")

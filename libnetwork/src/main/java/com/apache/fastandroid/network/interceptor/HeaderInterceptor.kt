@@ -2,7 +2,6 @@ package com.apache.fastandroid.network.interceptor
 
 import android.os.Build
 
-import com.tesla.framework.common.util.log.NLog
 import okhttp3.*
 import java.io.IOException
 import java.lang.Exception

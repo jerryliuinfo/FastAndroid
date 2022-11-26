@@ -3,7 +3,6 @@ package com.apache.fastandroid.jetpack.relearnandroid
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
-import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.DatabindingComBindAdapterBinding
 import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.vm.CommonBindAdapterViewModel
@@ -31,7 +30,7 @@ class CommonBindingAdapterDemoFragment:BaseDBFragment<DatabindingComBindAdapterB
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.btnTestVisible.setOnClickListener {
+        mBinding.btnTestVisible.setOnClickListener {
             viewModel.loading.set(true)
             Handler().postDelayed({
                 viewModel.loading.set(false)

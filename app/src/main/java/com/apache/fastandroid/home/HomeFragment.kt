@@ -2,7 +2,6 @@ package com.apache.fastandroid.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.article.ArticleDetailActivity
 import com.apache.fastandroid.databinding.FragmentHomeBinding
 import com.apache.fastandroid.network.model.Article
-import com.apache.fastandroid.network.model.ArticleApi
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayout
 import com.kingja.loadsir.core.LoadService
@@ -40,28 +38,16 @@ class HomeFragment:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private lateinit var loadService: LoadService<Any>
 
-    override fun bindUI(rootView: View?) {
-        super.bindUI(rootView)
-
-//        loadService = LoadSir.getDefault().register(this,object : Callback.OnReloadListener{
-//            override fun onReload(v: View?) {
-//                mViewModel.refresh()
-//            }
-//
-//        })
-
-    }
-
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        viewBinding.apply {
+        mBinding.apply {
 //            adapter = mAdapter
             vm = mViewModel
         }
 
-        viewBinding.recycleview.apply {
+        mBinding.recycleview.apply {
             LinearSnapHelper().attachToRecyclerView(this)
             layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
             adapter = mAdapter
@@ -69,7 +55,7 @@ class HomeFragment:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
 
 
-        setupRefreshLayout(viewBinding.swipeRefreshLayout,viewBinding.recycleview)
+        setupRefreshLayout(mBinding.swipeRefreshLayout,mBinding.recycleview)
 
 
         mViewModel.articleList.observe(this){

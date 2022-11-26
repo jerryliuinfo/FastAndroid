@@ -20,19 +20,13 @@ class CustomLifecycleOwnerFragment : BaseVBFragment<FragmentJetpackLifecycleCust
     private val lifecycleOb = LifecycleEventObserver { source, event ->
 
         when (event) {
-
             Lifecycle.Event.ON_DESTROY -> {
                 Logger.d("LifecycleEventObserver onDestroy")
-
                 // 销毁逻辑
                 for (index in 0 until mBinding.stubContainer.childCount) {
-
                     val child = mBinding.stubContainer.getChildAt(index)
-
                     if (child is StubView) {
-
                         child.release()
-
                     }
 
                 }
@@ -60,7 +54,7 @@ class CustomLifecycleOwnerFragment : BaseVBFragment<FragmentJetpackLifecycleCust
         }
 
         mBinding.btnUnInstall.setOnClickListener {
-            stubVH.install()
+            stubVH.unInstall()
         }
 
         lifecycle.addObserver(lifecycleOb)

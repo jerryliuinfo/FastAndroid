@@ -4,7 +4,6 @@ import com.apache.fastandroid.network.calladapter.LiveDataCallAdapterFactory
 import com.apache.fastandroid.network.interceptor.CookieInterceptor
 import com.apache.fastandroid.network.interceptor.NetLogInterceptor
 import com.apache.fastandroid.network.interceptor.LoginInterceptor
-import com.apache.fastandroid.retrofit.ApiConstant
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

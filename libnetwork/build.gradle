@@ -1,6 +1,16 @@
-apply from: '../base_module.gradle'
+apply from: '../base_lib.gradle'
+
+android {
+
+    defaultConfig {
+        //配置aar的混淆规则，该 aar 被应用集成时将会自动带上这些混淆规则，无需再手动配置 aar 的混淆
+        consumerProguardFiles "consumer-rules.pro"
+    }
 
 
+
+
+}
 
 dependencies {
 
@@ -10,5 +20,6 @@ dependencies {
 
     implementation (Libs.sandwich)
 
+    implementation project(':fastFramework')
 
 }

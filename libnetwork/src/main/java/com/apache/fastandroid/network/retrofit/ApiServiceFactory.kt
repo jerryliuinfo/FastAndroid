@@ -1,6 +1,5 @@
 package com.apache.fastandroid.network.retrofit
 
-import com.apache.fastandroid.retrofit.ApiConstant
 
 /**
  * Created by Jerry on 2022/5/3.

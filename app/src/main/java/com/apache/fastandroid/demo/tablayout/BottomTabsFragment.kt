@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.apache.fastandroid.R
-import com.apache.fastandroid.databinding.FragmentBottomTabs2Binding
 import com.apache.fastandroid.databinding.FragmentBottomTabsBinding
 import com.apache.fastandroid.databinding.MainTabItemBinding
 import com.google.android.material.tabs.TabLayout
@@ -44,7 +43,7 @@ class BottomTabsFragment:BaseDBFragment<FragmentBottomTabsBinding>(FragmentBotto
     }
 
     private fun initTableLayout() {
-        viewBinding.viewpager.apply {
+        mBinding.viewpager.apply {
             adapter = object : FragmentStateAdapter(
                 requireActivity().supportFragmentManager,
                 viewLifecycleOwner.lifecycle
@@ -61,7 +60,7 @@ class BottomTabsFragment:BaseDBFragment<FragmentBottomTabsBinding>(FragmentBotto
             offscreenPageLimit = fragments.size
         }
 
-        viewBinding.tabLayout.apply {
+        mBinding.tabLayout.apply {
             addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab) {
                     setColorFilter(tab.customView, R.color.three_nine_gray)
@@ -74,8 +73,8 @@ class BottomTabsFragment:BaseDBFragment<FragmentBottomTabsBinding>(FragmentBotto
                 override fun onTabReselected(tab: TabLayout.Tab) {}
             })
         }
-        TabLayoutMediator(viewBinding.tabLayout, viewBinding.viewpager, false, false) { tab, position ->
-            val item = MainTabItemBinding.inflate(LayoutInflater.from(viewBinding.root.context))
+        TabLayoutMediator(mBinding.tabLayout, mBinding.viewpager, false, false) { tab, position ->
+            val item = MainTabItemBinding.inflate(LayoutInflater.from(mBinding.root.context))
             item.icon.setImageResource(tabDrawable[position])
             item.icon.setColorFilter(ContextCompat.getColor(item.icon.context, R.color.text_theme))
             item.name.text = tabTexts[position]

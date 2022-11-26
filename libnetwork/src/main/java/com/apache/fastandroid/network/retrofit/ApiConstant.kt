@@ -1,4 +1,4 @@
-package com.apache.fastandroid.retrofit
+package com.apache.fastandroid.network.retrofit
 
 /**
  * Created with Android Studio.

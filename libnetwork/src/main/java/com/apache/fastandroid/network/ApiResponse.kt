@@ -16,6 +16,7 @@
 
 package com.android.example.github.api
 
+import com.tesla.framework.component.logger.Logger
 import retrofit2.Response
 import timber.log.Timber
 import java.util.regex.Pattern
@@ -78,7 +79,7 @@ data class ApiSuccessResponse<T>(
                 try {
                     Integer.parseInt(matcher.group(1)!!)
                 } catch (ex: NumberFormatException) {
-                    Timber.w("cannot parse next page from %s", next)
+                    Logger.w("cannot parse next page from %s", next)
                     null
                 }
             }

@@ -2,9 +2,9 @@ package com.apache.fastandroid.network.util
 
 import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.model.Resource
+import com.tesla.framework.component.logger.Logger
 
 import kotlinx.coroutines.*
-import timber.log.Timber
 
 
 fun <T> request(
@@ -21,7 +21,7 @@ fun <T> request(
         }
     } catch (e: Exception) {
         e.printStackTrace()
-        Timber.e("Http Request Exception message %s", e.message)
+        Logger.e("Http Request Exception message %s", e.message)
         withContext(Dispatchers.Main) {
             handler?.handleException(this.coroutineContext, e)
             callback.invoke(Resource.error(e.message ?:"unknow error", null))

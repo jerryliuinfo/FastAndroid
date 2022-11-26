@@ -28,6 +28,10 @@ import com.apache.fastandroid.demo.kt.sealed.*
 import com.apache.fastandroid.demo.kt.singleton.SingleInstanceSync
 import com.apache.fastandroid.demo.kt.singleton.SingleObject
 import com.apache.fastandroid.demo.kt.singleton.Singleton
+import com.apache.fastandroid.demo.kt.staticusage.Foo
+import com.apache.fastandroid.demo.kt.staticusage.ObjectClass
+import com.apache.fastandroid.demo.kt.staticusage.topLevelFun1
+import com.apache.fastandroid.demo.kt.staticusage.topLevelFun2
 import com.apache.fastandroid.demo.room.Account
 import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
@@ -44,6 +48,7 @@ import com.tesla.framework.kt.print
 import com.tesla.framework.ui.fragment.BaseVBFragment
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.io.File
 import java.nio.charset.Charset
 import kotlin.collections.ArrayList
@@ -305,6 +310,29 @@ class KotlinKnowledgeFragment : BaseVBFragment<KtGrammerBinding>(KtGrammerBindin
         }
         //java 中调用kotlin 定义的参数可为空的方法
         JavaMain.javaCallKotlinNull()
+
+
+        callStaticFunUsage()
+        callStaticFieldUsage()
+
+    }
+
+    private fun callStaticFunUsage() {
+        Foo.f()
+        Foo.f2()
+        ObjectClass.f()
+        ObjectClass.f2()
+        topLevelFun1()
+        topLevelFun2()
+    }
+
+    private fun callStaticFieldUsage() {
+        Foo.name
+        Foo.name2
+        Timber.d(Foo.name3)
+        ObjectClass.name
+        ObjectClass.name2
+        Timber.d(ObjectClass.name3)
     }
 
     private fun closeableUse() {

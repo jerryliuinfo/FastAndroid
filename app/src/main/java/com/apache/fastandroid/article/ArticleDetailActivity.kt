@@ -14,12 +14,13 @@ import com.just.agentweb.AgentWeb
 import com.just.agentweb.WebChromeClient
 import com.just.agentweb.WebViewClient
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.activity.BaseVBActivity
+import com.tesla.framework.ui.activity.BaseBindingActivity
 
 /**
  * Created by Jerry on 2021/9/23.
  */
-class ArticleDetailActivity : BaseVBActivity<ActivityArticleDetailBinding>(ActivityArticleDetailBinding::inflate) {
+//class ArticleDetailActivity : BaseVBActivity<ActivityArticleDetailBinding>(ActivityArticleDetailBinding::inflate) {
+class ArticleDetailActivity : BaseBindingActivity<ActivityArticleDetailBinding>() {
 
 
     private val mViewModel: ArticleDetailViewModel by viewModels()

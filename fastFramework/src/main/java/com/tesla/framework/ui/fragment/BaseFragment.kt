@@ -4,8 +4,11 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.CallSuper
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -15,6 +18,8 @@ import com.blankj.utilcode.util.ToastUtils
 import com.kingja.loadsir.core.LoadService
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.vm.ShareViewModel
+import com.tesla.framework.ui.activity.BaseActivity
+import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.fragment.view.BaseView
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
@@ -24,15 +29,19 @@ import timber.log.Timber
  * Created by Jerry on 2022/3/10.
  */
 
-open class ABaseFragment:Fragment(),BaseView {
+open abstract class BaseFragment:Fragment(),BaseView {
     private var isFirstLoad = true
     lateinit var mActivity: AppCompatActivity
     lateinit var mContext: Context
     lateinit var mShareViewModel: ShareViewModel
 
+    private  lateinit var mRootView:View
+
     private var mFragmentProvider: ViewModelProvider? = null
     private var mActivityProvider: ViewModelProvider? = null
     private var mApplicationProvider: ViewModelProvider? = null
+
+    open abstract fun inflateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):View?
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -40,6 +49,30 @@ open class ABaseFragment:Fragment(),BaseView {
         super.onCreate(savedInstanceState)
         mShareViewModel = getApplicationScopeViewModel(ShareViewModel::class.java)
         initViewModel()
+    }
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflateView(inflater,container, savedInstanceState)?.also {
+            mRootView = it
+        }
+    }
+
+    open fun bindUI(rootView: View?) {}
+
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        toolbarTitle()?.let {
+            (requireActivity() as BaseActivity).setToolbarTitle(it)
+        }
+        bindUI(view)
+        layoutInit(layoutInflater,savedInstanceState)
     }
 
 
@@ -199,4 +232,16 @@ open class ABaseFragment:Fragment(),BaseView {
             ToastUtils.showShort(msg)
         }
     }
+
+    open fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {}
+
+
+    fun toolbarTitle():String?{
+        return null
+    }
+
+    open fun <T : View?> findViewById(@IdRes resId: Int): T {
+        return mRootView.findViewById(resId)
+    }
+
 }

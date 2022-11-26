@@ -42,11 +42,11 @@ class PlantDetailFragment:BaseDBFragment<FragmentPlantDetailBinding>(FragmentPla
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
         setHasOptionsMenu(true)
-        viewBinding.apply {
+        mBinding.apply {
             viewModel = plantDetailViewModel
             lifecycleOwner = viewLifecycleOwner
             callback = Callback{ plant ->
-                hideAppBarFab(viewBinding.fab)
+                hideAppBarFab(mBinding.fab)
                 plantDetailViewModel.addPlantToGarden()
                 Snackbar.make(root, R.string.added_plant_to_garden, Snackbar.LENGTH_LONG)
                     .show()
