@@ -4,27 +4,23 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/tv_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="LifeCycle监听位置改变"
-        />
-
     <Button
-        android:id="@+id/btn_dialog_dismiss"
+        android:id="@+id/btn_install"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_location"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="Dialog自动执行dismiss"
-
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Install"
         />
+    <Button
+        android:id="@+id/btn_unInstall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_install"
+        android:text="UnInstall"
+        />
+
 
     <LinearLayout
         android:id="@+id/stubContainer"
@@ -33,7 +29,7 @@
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_dialog_dismiss"
+        app:layout_constraintTop_toBottomOf="@+id/btn_unInstall"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

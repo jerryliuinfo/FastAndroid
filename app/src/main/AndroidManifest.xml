@@ -19,8 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppTheme"
         android:usesCleartextTraffic="true"
-
-
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         tools:replace="android:theme,android:icon,android:label,android:allowBackup">
 
@@ -133,6 +131,7 @@
             android:exported="false"
             android:launchMode="singleTask"
 
+
             />
 
         <activity
@@ -196,7 +195,9 @@
             android:exported="false" />
 
 
-        <activity android:name="me.drakeet.floo.sample.FlooMainActivity" />
+        <activity android:name="me.drakeet.floo.sample.FlooMainActivity"
+            android:exported="false"
+            />
 
         <activity
             android:name="me.drakeet.floo.sample.TargetActivity"
@@ -230,7 +231,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="me.drakeet.floo.sample.ContainerActivity">
+        <activity
+            android:name="me.drakeet.floo.sample.ContainerActivity"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -243,7 +247,9 @@
                     android:scheme="@string/scheme" />
             </intent-filter>
         </activity>
-        <activity android:name="me.drakeet.floo.sample.NotRegisteredActivity">
+        <activity android:name="me.drakeet.floo.sample.NotRegisteredActivity"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -258,6 +264,7 @@
         </activity>
         <activity
             android:name=".demo.guide.ManifestDemoActivity"
+            android:exported="false"
             android:allowTaskReparenting="true"
 
             android:alwaysRetainTaskState="true"
@@ -267,17 +274,23 @@
             />
         <activity
             android:name=".demo.guide.activity.FinishOnTaskLaunchActivity"
+            android:exported="false"
+
             android:finishOnTaskLaunch="true"
             android:label="FinishOnTaskLaunch" />
 
 
         <activity
             android:name=".demo.guide.activity.SingleTaskDemoActivity"
+            android:exported="false"
+
             android:label="SingleTask"
             android:launchMode="singleTask" />
 
         <activity
             android:name=".demo.guide.activity.SingleInstanceDemoActivity"
+            android:exported="false"
+
             android:label="SingleTask"
             android:launchMode="singleInstance" />
 
@@ -327,7 +340,10 @@
 
         -->
 
-        <service android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService" />
+        <service android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService"
+
+            android:exported="false"
+            />
 
 
         <!--
@@ -341,6 +357,7 @@
         <service
             android:name=".demo.drakeet.foregroundservice.InhibitorService"
             android:permission="com.apache.fastandroid.InhibitorService"
+            android:exported="false"
 
             />
 
@@ -373,14 +390,26 @@ android:required："true"：如果没有此库，则应用将无法正常运行�
         android:name="android.hardware.bluetooth"
         android:required="true" />
 
+    <!-- Internet -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+
+    <!-- Storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.optimize.performance.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
+
+
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -445,7 +474,6 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
     -->
 
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 

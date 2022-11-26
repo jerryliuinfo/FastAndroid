@@ -56,7 +56,7 @@ object WeatherViewModelFactory:ViewModelProvider.Factory{
 
     private val dataSource = DefaultWeatherDataSource(Dispatchers.IO)
 
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(WeatherInfoViewModel::class.java)){
             return WeatherInfoViewModel(dataSource) as T
         }

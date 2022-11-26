@@ -76,7 +76,7 @@ class CheeseActivity:BaseVBActivity<ActivityCheeseMainBinding>(ActivityCheeseMai
                     setToolbarTitle("Home")
                 }
                 R.id.nav_messages -> {
-                    setToolbarTitle("Message")
+                    setToolbarTitle("News")
                 }
                 R.id.nav_friends -> {
                     setToolbarTitle("Friends")

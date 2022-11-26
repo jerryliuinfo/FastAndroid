@@ -15,6 +15,7 @@ import com.tesla.framework.kt.getColor
 
 /**
  * Created by Jerry on 2021/7/1.
+ * 警告：将 ViewModel 传入 RecyclerView 适配器是一种不妥的做法，因为它会将适配器与 ViewModel 类紧密耦合。
  */
 class ArticleAdapter(data: List<Article>, val listener :(View, Int) -> Unit = { viwe, position -> } ) :
     BaseQuickAdapter<Article, BaseDataBindingHolder<ArticleItemBinding>>(R.layout.article_item, data.toMutableList()),
@@ -52,6 +53,12 @@ class ArticleAdapter(data: List<Article>, val listener :(View, Int) -> Unit = { 
         }
 
 
+        holder.getView<TextView>(R.id.item_article_author).setOnClickListener {
+            //方式1 使用回调接口，在 fragment 中调用viewmodel 中的接口
+            //
+//            listener?.invoke(it, holder.layoutPosition)
+            article.loadAuthorInfo()
+        }
         holder.getView<TextView>(R.id.item_article_author).setOnClickListener {
 //            listener?.invoke(it, holder.layoutPosition)
             article.loadAuthorInfo()

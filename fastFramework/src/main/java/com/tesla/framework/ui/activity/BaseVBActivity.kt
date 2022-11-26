@@ -248,14 +248,14 @@ abstract class BaseVBActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
         AndroidBugFixUtils.fixSoftInputLeaks(this)
     }
 
-    protected fun <T : ViewModel?> getActivityViewModel(modelClass: Class<T>): T {
+    protected fun <T : ViewModel> getActivityViewModel(modelClass: Class<T>): T {
         if (mActivityProvider == null) {
             mActivityProvider = ViewModelProvider(this)
         }
         return mActivityProvider!![modelClass]
     }
 
-    protected fun <T : ViewModel?> getApplicationScopeViewModel(modelClass: Class<T>): T {
+    protected fun <T : ViewModel> getApplicationScopeViewModel(modelClass: Class<T>): T {
         if (mApplicationProvider == null) {
             mApplicationProvider =
                 ViewModelProvider((this.applicationContext as ViewModelStoreOwner))

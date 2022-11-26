@@ -9,8 +9,12 @@ import com.apache.fastandroid.home.network.HomeNetwork
 import com.apache.fastandroid.network.response.BaseResponse
 import com.apache.fastandroid.network.response.EmptyResponse
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
+import com.blankj.utilcode.util.NetworkUtils
 import com.tesla.framework.common.util.log.NLog
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.HttpException
@@ -25,6 +29,37 @@ import kotlin.coroutines.suspendCoroutine
 class CoroutineVewModel : ViewModel() {
     companion object {
         private const val TAG = "CoroutineVewModel"
+    }
+
+    private val _uiState = MutableStateFlow(NewsUiState(isLoading = true))
+    //将可修改的 MutableStateFlow 转换成 只读的 StateFlow
+    val uiState = _uiState.asStateFlow()
+
+    data class NewsUiState(
+        val userMessages:List<News> = listOf(),
+        val isLoading: Boolean = false,
+        val userMessage:String? = null
+    )
+
+    data class News(val id: Long, val message: String)
+
+    fun refreshNews(){
+        viewModelScope.launch {
+            if (!NetworkUtils.isConnected()){
+                _uiState.update {  currentUiState ->
+                    currentUiState.copy(userMessage = "No Internet connection")
+                }
+
+                return@launch
+            }
+            //do something else
+        }
+    }
+
+    fun userMessageShown() {
+        _uiState.update { currentUiState ->
+            currentUiState.copy(userMessage = null)
+        }
     }
 
 

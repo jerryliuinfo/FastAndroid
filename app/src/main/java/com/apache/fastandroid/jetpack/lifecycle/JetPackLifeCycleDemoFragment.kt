@@ -2,6 +2,7 @@ package com.apache.fastandroid.jetpack.lifecycle
 
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
+import com.apache.fastandroid.jetpack.lifecycle.customlifecycle.CustomLifecycleOwnerFragment
 import com.apache.fastandroid.jetpack.lifecycle.handler.LifecycleHandlerFragment
 import com.apache.fastandroid.jetpack.lifecycle.service.JetPackLifeCycleServiceFragment
 import com.apache.fastandroid.jetpack.lifecycle.traditional.TraditionalLifeCycleFragment
@@ -18,6 +19,7 @@ class JetPackLifeCycleDemoFragment: BaseListFragment() {
                 ,ViewItemBean("App进入前后台判断", "App进入前后台判断", AppForeGroundFragment::class.java)
                 ,ViewItemBean("任意一个类监听生命周期", "任意一个类监听生命周期", JetPackListenLifecycleFragment::class.java)
                 ,ViewItemBean("LifeCycleHandler", "不会泄露的Handler", LifecycleHandlerFragment::class.java)
+                ,ViewItemBean("实现自定义 LifecycleOwner", "实现自定义 LifecycleOwner", CustomLifecycleOwnerFragment::class.java)
         )
     }
 
