@@ -6,7 +6,7 @@ import com.apache.fastandroid.databinding.FragmentSenstiveWordBinding
 import com.github.houbb.sensitive.word.api.IWordResult
 import com.github.houbb.sensitive.word.core.SensitiveWordHelper
 import com.github.houbb.sensitive.word.support.result.WordResultHandlers
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlin.system.measureTimeMillis
 
 
@@ -14,7 +14,7 @@ import kotlin.system.measureTimeMillis
  * Created by Jerry on 2022/4/15.
  * https://github.com/houbb/sensitive-word
  */
-class SensitiveWordDemoFragment:BaseVBFragment<FragmentSenstiveWordBinding>(FragmentSenstiveWordBinding::inflate) {
+class SensitiveWordDemoFragment:BaseBindingFragment<FragmentSenstiveWordBinding>(FragmentSenstiveWordBinding::inflate) {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 

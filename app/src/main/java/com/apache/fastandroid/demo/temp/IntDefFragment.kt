@@ -2,14 +2,14 @@ package com.apache.fastandroid.demo.temp
 
 import androidx.annotation.IntDef
 import com.apache.fastandroid.databinding.FragmentCommonBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy
 
 /**
  * Created by Jerry on 2021/10/22.
  */
-class IntDefFragment : BaseVBFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
+class IntDefFragment : BaseBindingFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
 
 
 

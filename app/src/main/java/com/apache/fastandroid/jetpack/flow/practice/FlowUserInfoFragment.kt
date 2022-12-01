@@ -7,12 +7,12 @@ import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FlowFragmentRoomBinding
 import com.apache.fastandroid.jetpack.flow.adapter.UserAdapter
 import com.apache.fastandroid.jetpack.flow.vm.FlowUserViewModel
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/6/19.
  */
-class FlowUserInfoFragment:BaseVBFragment<FlowFragmentRoomBinding>(FlowFragmentRoomBinding::inflate) {
+class FlowUserInfoFragment:BaseBindingFragment<FlowFragmentRoomBinding>(FlowFragmentRoomBinding::inflate) {
 
     private val mViewModel by viewModels<FlowUserViewModel>()
 

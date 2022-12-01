@@ -11,14 +11,14 @@ import com.apache.fastandroid.util.extensitons.showLoading
 import com.kingja.loadsir.callback.Callback
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.activity_loadsir_constraintlayout.*
 
 /**
  * Created by Jerry on 2021/12/16.
  */
 class LoadSirConstraintLayoutActivity :
-    BaseVBFragment<ActivityLoadsirConstraintlayoutBinding>(ActivityLoadsirConstraintlayoutBinding::inflate) {
+    BaseBindingFragment<ActivityLoadsirConstraintlayoutBinding>(ActivityLoadsirConstraintlayoutBinding::inflate) {
 
     private lateinit var loadService: LoadService<Any>
 

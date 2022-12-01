@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.CoordinatorBasicBinding
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.LayoutParams.*
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 
 /**
@@ -14,7 +14,7 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
    当ScrollView将要向上滚动的时候， 优先将AppBarLayout的childView滚出屏幕，然后ScrollView才开始滚动；
 
  */
-class CoordinatorScrollFragment: BaseVBFragment<CoordinatorBasicBinding>(CoordinatorBasicBinding::inflate) {
+class CoordinatorScrollFragment: BaseBindingFragment<CoordinatorBasicBinding>(CoordinatorBasicBinding::inflate) {
 
     val size = 3
     var count:Int = 0

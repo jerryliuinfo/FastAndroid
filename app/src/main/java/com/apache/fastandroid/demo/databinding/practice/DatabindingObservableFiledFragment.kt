@@ -6,11 +6,11 @@ import android.view.View
 import androidx.databinding.ObservableInt
 import com.apache.fastandroid.databinding.FragmentDatabindingObservableFieldBinding
 import com.apache.fastandroid.demo.databinding.data.ObservableFieldProfile
-import com.tesla.framework.ui.fragment.BaseDBFragment
+import com.tesla.framework.ui.fragment.BaseDataBindingFragment
 
 
 class DatabindingObservableFiledFragment :
-    BaseDBFragment<FragmentDatabindingObservableFieldBinding>(FragmentDatabindingObservableFieldBinding::inflate) {
+    BaseDataBindingFragment<FragmentDatabindingObservableFieldBinding>(FragmentDatabindingObservableFieldBinding::inflate) {
     companion object {
         private const val TAG = "DatabindingObservableFiledFragment"
     }

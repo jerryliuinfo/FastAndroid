@@ -11,12 +11,12 @@ import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.kt.launchActivity
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/4/5.
  */
-class CheeseListFragment:BaseVBFragment<FragmentCheeseListBinding>(FragmentCheeseListBinding::inflate) {
+class CheeseListFragment:BaseBindingFragment<FragmentCheeseListBinding>(FragmentCheeseListBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

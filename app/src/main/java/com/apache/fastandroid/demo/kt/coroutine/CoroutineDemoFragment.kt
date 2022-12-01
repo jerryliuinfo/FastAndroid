@@ -20,7 +20,7 @@ import com.apache.fastandroid.util.extensitons.runOnUi
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.awaitNextLayout
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -35,7 +35,7 @@ import kotlin.concurrent.thread
  * 协程
  */
 class CoroutineDemoFragment :
-    BaseVBFragment<FragmentKotlinCouritineBinding>(FragmentKotlinCouritineBinding::inflate) {
+    BaseBindingFragment<FragmentKotlinCouritineBinding>(FragmentKotlinCouritineBinding::inflate) {
     companion object {
         private const val TAG = "CoroutineDemoFragment"
     }

@@ -11,7 +11,7 @@ import com.apache.fastandroid.databinding.TempApiUsageDemoBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.kt.launchActivity
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -24,7 +24,7 @@ import kotlin.concurrent.thread
 /**
  * Created by Jerry on 2021/10/27.
  */
-class ApiDemoFragment:BaseVBFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBinding::inflate) {
+class ApiDemoFragment:BaseBindingFragment<TempApiUsageDemoBinding>(TempApiUsageDemoBinding::inflate) {
     companion object{
         private  const val TAG = "ApiDemoFragment"
     }

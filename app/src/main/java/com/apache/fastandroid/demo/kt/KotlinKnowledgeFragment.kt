@@ -33,8 +33,6 @@ import com.apache.fastandroid.demo.kt.staticusage.ObjectClass
 import com.apache.fastandroid.demo.kt.staticusage.topLevelFun1
 import com.apache.fastandroid.demo.kt.staticusage.topLevelFun2
 import com.apache.fastandroid.demo.room.Account
-import com.apache.fastandroid.network.model.Repo
-import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.apache.fastandroid.util.DateUtil
 import com.kingja.loadsir.core.LoadSir
 import com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator
@@ -45,9 +43,7 @@ import com.tesla.framework.kt.maxCustomize
 import com.tesla.framework.kt.ofMap
 import com.tesla.framework.kt.plusAssign
 import com.tesla.framework.kt.print
-import com.tesla.framework.ui.fragment.BaseVBFragment
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import timber.log.Timber
 import java.io.File
 import java.nio.charset.Charset
@@ -62,7 +58,7 @@ import kotlin.system.measureTimeMillis
 /**
  * Created by Jerry on 2021/10/18.
  */
-class KotlinKnowledgeFragment : BaseVBFragment<KtGrammerBinding>(KtGrammerBinding::inflate) {
+class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerBinding::inflate) {
     companion object {
         private const val TAG = "KotlinKnowledgeFragment"
     }

@@ -11,7 +11,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentSpwaitKillerBinding
 import com.apache.fastandroid.component.spkiller.SpWaitKiller
 import com.tesla.framework.ui.activity.FragmentContainerActivity
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 import java.util.*
 import java.util.concurrent.CountDownLatch
@@ -21,7 +21,7 @@ import java.util.concurrent.CountDownLatch
  * Created by Jerry on 2022/4/15.
  * https://github.com/Knight-ZXW/SpWaitKiller
  */
-class SpWaitKillerDemoFragment:BaseVBFragment<FragmentSpwaitKillerBinding>(FragmentSpwaitKillerBinding::inflate) {
+class SpWaitKillerDemoFragment:BaseBindingFragment<FragmentSpwaitKillerBinding>(FragmentSpwaitKillerBinding::inflate) {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 

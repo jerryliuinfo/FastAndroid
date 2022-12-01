@@ -9,13 +9,13 @@ import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.TempReflectionBinding
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.temp_reflection.*
 
 /**
  * Created by Jerry on 2021/10/27.
  */
-class ReflectionDemoFragment:BaseVBFragment<TempReflectionBinding>(TempReflectionBinding::inflate) {
+class ReflectionDemoFragment:BaseBindingFragment<TempReflectionBinding>(TempReflectionBinding::inflate) {
 
     private lateinit var drawerLayout:DrawerLayout
 

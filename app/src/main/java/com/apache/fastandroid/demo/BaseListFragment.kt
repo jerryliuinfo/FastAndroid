@@ -12,16 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.databinding.FragmentCustomViewBinding
-import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
  * Created by Jerry on 2020/12/3.
  */
-abstract class BaseListFragment: BaseVBFragment<FragmentCustomViewBinding>(FragmentCustomViewBinding::inflate) {
+abstract class BaseListFragment: BaseBindingFragment<FragmentCustomViewBinding>(FragmentCustomViewBinding::inflate) {
 
 
     private lateinit var MODELS:ArrayList<ViewItemBean>

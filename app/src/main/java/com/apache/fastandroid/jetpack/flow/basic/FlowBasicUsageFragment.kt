@@ -3,7 +3,7 @@ package com.apache.fastandroid.jetpack.flow.basic
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentFlowBasicUsageBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
  * Created by Jerry on 2022/5/3.
  * https://blog.mindorks.com/what-is-flow-in-kotlin-and-how-to-use-it-in-android-project
  */
-class FlowBasicUsageFragment:BaseVBFragment<FragmentFlowBasicUsageBinding>(FragmentFlowBasicUsageBinding::inflate) {
+class FlowBasicUsageFragment:BaseBindingFragment<FragmentFlowBasicUsageBinding>(FragmentFlowBasicUsageBinding::inflate) {
 
     private val mainScope = MainScope()
 

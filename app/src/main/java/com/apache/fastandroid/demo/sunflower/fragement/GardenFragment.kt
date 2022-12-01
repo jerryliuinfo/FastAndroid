@@ -11,13 +11,12 @@ import com.apache.fastandroid.demo.sunflower.adapter.PLANT_LIST_PAGE_INDEX
 import com.apache.fastandroid.demo.sunflower.db.SunFlowDatabase
 import com.apache.fastandroid.demo.sunflower.repository.GardenPlantingRepository
 import com.apache.fastandroid.demo.sunflower.viewmodel.GardenPlantingListViewModel
-import com.apache.fastandroid.demo.sunflower.viewmodel.PlantDetailViewModel
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/3/23.
  */
-class GardenFragment:BaseVBFragment<FragmentGardenBinding>(FragmentGardenBinding::inflate) {
+class GardenFragment:BaseBindingFragment<FragmentGardenBinding>(FragmentGardenBinding::inflate) {
 
     private val viewModel:GardenPlantingListViewModel by viewModels{ GardenPlantingListViewModel.GardenPlantingViewModelFactory(
         GardenPlantingRepository.getInstance(SunFlowDatabase.getInstance(requireContext()).gardenPlantingDao())

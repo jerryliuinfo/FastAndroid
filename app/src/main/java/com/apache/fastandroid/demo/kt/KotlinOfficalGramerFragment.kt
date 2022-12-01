@@ -20,7 +20,7 @@ import com.apache.fastandroid.demo.kt.sealed.*
 import com.tesla.framework.kt.maxAge
 import com.tesla.framework.kt.onSingleClick
 import com.tesla.framework.kt.times
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragmentRef
 import java.io.File
 import java.lang.IllegalArgumentException
 import java.nio.file.Files
@@ -34,7 +34,8 @@ import kotlin.random.Random
 /**
  * Created by Jerry on 2021/10/18.
  */
-class KotlinOfficalGramerFragment:BaseVBFragment<KtOfficialGrammerBinding>(KtOfficialGrammerBinding::inflate) {
+//class KotlinOfficalGramerFragment:BaseBindingFragment<KtOfficialGrammerBinding>(KtOfficialGrammerBinding::inflate) {
+class KotlinOfficalGramerFragment:BaseBindingFragmentRef<KtOfficialGrammerBinding>() {
     companion object{
         private const val TAG = "KotlinOfficalGramerFragment"
     }

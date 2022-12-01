@@ -15,13 +15,13 @@ import com.kingja.loadsir.callback.Callback
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.kingja.loadsir.core.Transport
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlin.concurrent.thread
 
 /**
  * Created by Jerry on 2021/12/16.
  */
-class LoadSirActivityEmptyFragment:BaseVBFragment<LoadsirActivityEmptyBinding>(LoadsirActivityEmptyBinding::inflate) {
+class LoadSirActivityEmptyFragment:BaseBindingFragment<LoadsirActivityEmptyBinding>(LoadsirActivityEmptyBinding::inflate) {
 
     private lateinit var loadService: LoadService<Any>
 

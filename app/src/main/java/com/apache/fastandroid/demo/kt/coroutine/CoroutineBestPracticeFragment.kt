@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FragmentCouritineBestPracticeBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.launch
 
 /**
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
  * 协程
  */
 class CoroutineBestPracticeFragment :
-    BaseVBFragment<FragmentCouritineBestPracticeBinding>(FragmentCouritineBestPracticeBinding::inflate) {
+    BaseBindingFragment<FragmentCouritineBestPracticeBinding>(FragmentCouritineBestPracticeBinding::inflate) {
     companion object {
         private const val TAG = "CoroutineDemoFragment"
     }

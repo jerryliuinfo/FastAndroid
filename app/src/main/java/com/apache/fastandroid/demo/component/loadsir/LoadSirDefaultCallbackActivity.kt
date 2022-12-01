@@ -9,13 +9,13 @@ import com.kingja.loadsir.callback.HintCallback
 import com.kingja.loadsir.callback.ProgressCallback
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by  on 2021/12/18.
  */
 class LoadSirDefaultCallbackActivity:
-    BaseVBFragment<LoadsirActivityActivityConvertorBinding>(LoadsirActivityActivityConvertorBinding::inflate) {
+    BaseBindingFragment<LoadsirActivityActivityConvertorBinding>(LoadsirActivityActivityConvertorBinding::inflate) {
     private lateinit var loadService: LoadService<Any>
 
 

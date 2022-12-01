@@ -26,16 +26,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.android.example.github.ui.common.RetryCallback
-import com.android.example.github.vo.Contributor
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.RepoFragmentBinding
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * The UI Controller for displaying a Github Repo's information with its contributors.
  */
-class RepoFragment : BaseVBFragment<RepoFragmentBinding>(RepoFragmentBinding::inflate){
+class RepoFragment : BaseBindingFragment<RepoFragmentBinding>(RepoFragmentBinding::inflate){
 
     val repoViewModel: RepoViewModel by viewModels {
         getViewModelFactory()

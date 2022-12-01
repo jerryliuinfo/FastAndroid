@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.constraintlayout.helper.widget.Flow
 import com.apache.fastandroid.databinding.ConstraintFlowWrapModeBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.constraint_flow_wrap_mode.*
 
 /**
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.constraint_flow_wrap_mode.*
  *         app:flow_maxElementsWrap="4"：每行最多显示几个元素
 
  */
-class ConstraintFlowWrapModeFragment: BaseVBFragment<ConstraintFlowWrapModeBinding>(ConstraintFlowWrapModeBinding::inflate) {
+class ConstraintFlowWrapModeFragment: BaseBindingFragment<ConstraintFlowWrapModeBinding>(ConstraintFlowWrapModeBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

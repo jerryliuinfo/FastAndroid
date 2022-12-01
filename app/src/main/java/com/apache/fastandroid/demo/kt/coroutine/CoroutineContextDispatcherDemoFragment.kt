@@ -2,13 +2,9 @@ package com.apache.fastandroid.demo.kt.coroutine
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.databinding.FragmentCoroutineCancelTimeoutBinding
 import com.apache.fastandroid.databinding.FragmentCoroutineContextDispatcherBinding
-import com.apache.fastandroid.databinding.FragmentCoroutineSuspendBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.*
-import java.lang.ArithmeticException
-import kotlin.system.measureTimeMillis
 
 /**
  * Created by Jerry on 2021/10/28.
@@ -16,7 +12,7 @@ import kotlin.system.measureTimeMillis
  * 参考：https://book.kotlincn.net/text/coroutine-context-and-dispatchers.html
  */
 class CoroutineContextDispatcherDemoFragment :
-    BaseVBFragment<FragmentCoroutineContextDispatcherBinding>(FragmentCoroutineContextDispatcherBinding::inflate) {
+    BaseBindingFragment<FragmentCoroutineContextDispatcherBinding>(FragmentCoroutineContextDispatcherBinding::inflate) {
     companion object {
         private const val TAG = "CoroutineCancelTimeoutDemoFragment"
     }

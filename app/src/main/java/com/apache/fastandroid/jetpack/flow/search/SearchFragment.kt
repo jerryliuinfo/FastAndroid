@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.ActivitySearchBinding
 import com.tesla.framework.kt.getQueryTextChangeStateFlow
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlin.coroutines.CoroutineContext
@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 /**
  * Created by Jerry on 2022/5/5.
  */
-class SearchFragment:BaseVBFragment<ActivitySearchBinding>(ActivitySearchBinding::inflate),CoroutineScope {
+class SearchFragment:BaseBindingFragment<ActivitySearchBinding>(ActivitySearchBinding::inflate),CoroutineScope {
 
     private lateinit var job: Job
 

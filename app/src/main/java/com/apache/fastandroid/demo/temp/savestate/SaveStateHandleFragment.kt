@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import com.apache.fastandroid.databinding.FragmentSavestateHandleBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/3/14.
@@ -15,7 +15,7 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
   SavedStateHandle组件可以看作是ViewModel功能的扩展，解决ViewModel无法感知onSaveInstanceState被触发的问题
 
  */
-class SaveStateHandleFragment:BaseVBFragment<FragmentSavestateHandleBinding>(FragmentSavestateHandleBinding::inflate) {
+class SaveStateHandleFragment:BaseBindingFragment<FragmentSavestateHandleBinding>(FragmentSavestateHandleBinding::inflate) {
 
     private val viewModel:SaveStateViewModel by viewModels()
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

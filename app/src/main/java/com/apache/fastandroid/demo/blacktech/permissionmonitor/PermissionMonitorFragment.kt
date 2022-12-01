@@ -7,13 +7,13 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentBlackTechPermissionMonitorBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_black_tech_permission_monitor.*
 
 /**
  * Created by Jerry on 2022/1/15.
  */
-class PermissionMonitorFragment:BaseVBFragment<FragmentBlackTechPermissionMonitorBinding>(FragmentBlackTechPermissionMonitorBinding::inflate) {
+class PermissionMonitorFragment:BaseBindingFragment<FragmentBlackTechPermissionMonitorBinding>(FragmentBlackTechPermissionMonitorBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

@@ -3,7 +3,7 @@ package com.apache.fastandroid.demo.constraint.practice
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.ConstraintLayerBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.constraint_layer.*
 
 /**
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.constraint_layer.*
  * 给Layer添加动画，就是给里面的每一个视图添加动画，对于一些复杂的动画的场景还是比较有用的
  * 这里我们讲A，B，C添加到一个Layer, 同时设置背景色和padding
  */
-class ConstraintLayerFragment: BaseVBFragment<ConstraintLayerBinding>(ConstraintLayerBinding::inflate) {
+class ConstraintLayerFragment: BaseBindingFragment<ConstraintLayerBinding>(ConstraintLayerBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {

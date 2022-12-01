@@ -1,11 +1,11 @@
 package com.apache.fastandroid.demo.constraint.practice
 
 import com.apache.fastandroid.databinding.ConstraintChainStyleBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  *
  */
-class ConstraintChainStyleFragment: BaseVBFragment<ConstraintChainStyleBinding>(ConstraintChainStyleBinding::inflate) {
+class ConstraintChainStyleFragment: BaseBindingFragment<ConstraintChainStyleBinding>(ConstraintChainStyleBinding::inflate) {
 
 }

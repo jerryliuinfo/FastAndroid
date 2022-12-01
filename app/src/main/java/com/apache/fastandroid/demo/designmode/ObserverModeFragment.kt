@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.DesignModeObserverBinding
 import com.apache.fastandroid.demo.designmode.observer.StandardController
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.design_mode_observer.*
 
 /**
  * Created by Jerry on 2021/8/11.
  */
-class ObserverModeFragment: BaseVBFragment<DesignModeObserverBinding>(DesignModeObserverBinding::inflate) {
+class ObserverModeFragment: BaseBindingFragment<DesignModeObserverBinding>(DesignModeObserverBinding::inflate) {
 
     private lateinit var controller: StandardController
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

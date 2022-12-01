@@ -29,14 +29,14 @@ import com.tesla.framework.common.util.DrakeetUtils
 import com.tesla.framework.common.util.DrakeetUtils.doOnMainThreadIdle
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.common.util.toast.ToastCompat
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_drakeet_knowledge.*
 import java.lang.Exception
 
 /**
  * Created by Jerry on 2021/10/15.
  */
-class DrakeetCommonFragment:BaseVBFragment<FragmentDrakeetKnowledgeBinding>(FragmentDrakeetKnowledgeBinding::inflate) {
+class DrakeetCommonFragment:BaseBindingFragment<FragmentDrakeetKnowledgeBinding>(FragmentDrakeetKnowledgeBinding::inflate) {
 
     companion object{
         private const val TAG = "DrakeetCommonFragment";

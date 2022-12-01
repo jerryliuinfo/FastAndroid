@@ -13,11 +13,11 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentLyric2Binding
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.io.IOException
 
 
-class LyricFragment: BaseVBFragment<FragmentLyric2Binding>(FragmentLyric2Binding::inflate){
+class LyricFragment: BaseBindingFragment<FragmentLyric2Binding>(FragmentLyric2Binding::inflate){
 
     private val mMediaPlayer = MediaPlayer()
     private lateinit var mLrcView: LrcView

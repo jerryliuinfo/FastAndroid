@@ -11,8 +11,6 @@ public class KidsException extends RuntimeException {
 
 
 
-
-
     private KidsException(Throwable cause) {
         super(cause);
     }

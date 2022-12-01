@@ -7,13 +7,13 @@ import com.blankj.utilcode.util.Utils
 import com.microsoft.office.outlook.magnifierlib.Magnifier
 import com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_magnifier.*
 
 /**
  * Created by Jerry on 2022/1/3.
  */
-class OMagnifierDemoFragment:BaseVBFragment<FragmentMagnifierBinding>(FragmentMagnifierBinding::inflate) {
+class OMagnifierDemoFragment:BaseBindingFragment<FragmentMagnifierBinding>(FragmentMagnifierBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

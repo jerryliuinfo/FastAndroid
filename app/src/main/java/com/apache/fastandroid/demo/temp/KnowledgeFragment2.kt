@@ -11,7 +11,7 @@ import com.apache.fastandroid.demo.temp.adapter.KnowlegeAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
 import kotlinx.android.synthetic.main.fragment_temp_knowledge2.*
 import java.lang.StringBuilder
@@ -19,7 +19,7 @@ import java.lang.StringBuilder
 /**
  * Created by Jerry on 2021/9/6.
  */
-class KnowledgeFragment2: BaseVBFragment<FragmentTempKnowledge2Binding>(FragmentTempKnowledge2Binding::inflate) {
+class KnowledgeFragment2: BaseBindingFragment<FragmentTempKnowledge2Binding>(FragmentTempKnowledge2Binding::inflate) {
 
     private val items:MutableList<String> = ArrayList()
     companion object{

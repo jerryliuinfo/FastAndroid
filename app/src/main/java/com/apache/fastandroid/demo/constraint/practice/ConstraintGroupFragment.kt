@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.apache.fastandroid.databinding.ConstraintGroupBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.constraint_group.*
 
 /**
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.constraint_group.*
  *
  *
  */
-class ConstraintGroupFragment: BaseVBFragment<ConstraintGroupBinding>(ConstraintGroupBinding::inflate) {
+class ConstraintGroupFragment: BaseBindingFragment<ConstraintGroupBinding>(ConstraintGroupBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

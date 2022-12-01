@@ -10,7 +10,7 @@ import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.rxjava.operator.RetryWithDelay
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.runOnUiThreadDelay
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.*
 import io.reactivex.rxjava3.core.Observable
@@ -31,7 +31,7 @@ import kotlin.random.Random
 /**
  * Created by Jerry on 2021/9/9.
  */
-open class RxJava3OperatorDemoFragment:BaseVBFragment<FragmentRxjava3Binding>(FragmentRxjava3Binding::inflate) {
+open class RxJava3OperatorDemoFragment:BaseBindingFragment<FragmentRxjava3Binding>(FragmentRxjava3Binding::inflate) {
     companion object{
         private const val TAG = "RxJava3DemoFragment"
         private const val LINE_SEPERATOR = "\n"

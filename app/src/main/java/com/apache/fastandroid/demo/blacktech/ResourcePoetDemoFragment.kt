@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentResourcePoetBinding
 import com.commit451.resourcespoet.ResourcesPoet
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/7/19.
  */
-class ResourcePoetDemoFragment:BaseVBFragment<FragmentResourcePoetBinding>(FragmentResourcePoetBinding::inflate) {
+class ResourcePoetDemoFragment:BaseBindingFragment<FragmentResourcePoetBinding>(FragmentResourcePoetBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

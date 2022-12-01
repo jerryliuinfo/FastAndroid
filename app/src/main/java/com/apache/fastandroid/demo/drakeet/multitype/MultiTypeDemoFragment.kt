@@ -6,10 +6,9 @@ import androidx.annotation.VisibleForTesting
 import com.apache.fastandroid.demo.drakeet.multitype.onetomany.Data
 import com.apache.fastandroid.demo.drakeet.multitype.onetomany.UserType1ViewHolder
 import com.apache.fastandroid.demo.drakeet.multitype.onetomany.UserType2ViewHolder
-import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.drakeet.multitype.MultiTypeAdapter
 import com.tesla.framework.databinding.FragmentRecycleview2Binding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.util.ArrayList
 
 
@@ -20,7 +19,7 @@ import java.util.ArrayList
  *
  */
 
-class MultiTypeDemoFragment : BaseVBFragment<FragmentRecycleview2Binding>(FragmentRecycleview2Binding::inflate) {
+class MultiTypeDemoFragment : BaseBindingFragment<FragmentRecycleview2Binding>(FragmentRecycleview2Binding::inflate) {
 
     private lateinit var mAdapter:MultiTypeAdapter
 

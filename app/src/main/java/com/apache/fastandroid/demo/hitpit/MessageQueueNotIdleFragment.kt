@@ -6,7 +6,7 @@ import android.os.MessageQueue
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentHitPitBinding
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/12/12.
@@ -15,7 +15,7 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
  * 参考:https://juejin.cn/post/6936440588635996173?share_token=e3cb2750-a5d9-498b-b345-1539fe421665
  *
  */
-class MessageQueueNotIdleFragment:BaseVBFragment<FragmentHitPitBinding>(FragmentHitPitBinding::inflate) {
+class MessageQueueNotIdleFragment:BaseBindingFragment<FragmentHitPitBinding>(FragmentHitPitBinding::inflate) {
     companion object{
         private val TAG = "HitPitDemoListFragment"
     }

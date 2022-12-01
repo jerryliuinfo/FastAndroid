@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import com.apache.fastandroid.databinding.FragmentDatabindingViewmodelBinding
 import com.apache.fastandroid.demo.databinding.data.ProfileLiveDataViewModel
-import com.tesla.framework.ui.fragment.BaseDBFragment
+import com.tesla.framework.ui.fragment.BaseDataBindingFragment
 
 
 class DatabindingViewModelFragment :
-    BaseDBFragment<FragmentDatabindingViewmodelBinding>(FragmentDatabindingViewmodelBinding::inflate) {
+    BaseDataBindingFragment<FragmentDatabindingViewmodelBinding>(FragmentDatabindingViewmodelBinding::inflate) {
     companion object {
         private const val TAG = "ViewModelFragment"
     }

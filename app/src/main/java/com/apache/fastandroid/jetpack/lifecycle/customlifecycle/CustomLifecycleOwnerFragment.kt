@@ -6,13 +6,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import com.apache.fastandroid.databinding.FragmentJetpackLifecycleCustomRegistryBinding
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/11/20.
  * https://www.modb.pro/db/556544
  */
-class CustomLifecycleOwnerFragment : BaseVBFragment<FragmentJetpackLifecycleCustomRegistryBinding>(
+class CustomLifecycleOwnerFragment : BaseBindingFragment<FragmentJetpackLifecycleCustomRegistryBinding>(
     FragmentJetpackLifecycleCustomRegistryBinding::inflate
 ) {
 

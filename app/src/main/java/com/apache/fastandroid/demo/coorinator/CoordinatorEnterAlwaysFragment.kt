@@ -1,12 +1,9 @@
 package com.apache.fastandroid.demo.coorinator
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.CoordinatorScrollflagsEnteralwaysBinding
-import com.google.android.material.appbar.AppBarLayout
 
 
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2020/11/19.
@@ -18,7 +15,7 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
 
  */
 class CoordinatorEnterAlwaysFragment :
-    BaseVBFragment<CoordinatorScrollflagsEnteralwaysBinding>(CoordinatorScrollflagsEnteralwaysBinding::inflate) {
+    BaseBindingFragment<CoordinatorScrollflagsEnteralwaysBinding>(CoordinatorScrollflagsEnteralwaysBinding::inflate) {
 
 
 

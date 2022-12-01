@@ -12,13 +12,13 @@ import com.apache.fastandroid.demo.kt.genericity.*
 import com.blankj.utilcode.util.GsonUtils
 import com.google.gson.Gson
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.io.File
 
 /**
  * Created by Jerry on 2021/10/18.
  */
-class KotlinKnowledgeFragment2:BaseVBFragment<KtGrammer2Binding>(KtGrammer2Binding::inflate) {
+class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2Binding::inflate) {
     companion object{
         private const val TAG = "KotlinKnowledgeFragment2"
     }

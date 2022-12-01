@@ -10,13 +10,13 @@ import com.apache.fastandroid.util.extensitons.showLoading
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.loadsir_activity_view.*
 
 /**
  * Created by  on 2021/12/18.
  */
-class LoadSirViewTargetActivity:BaseVBFragment<LoadsirActivityViewBinding>(LoadsirActivityViewBinding::inflate) {
+class LoadSirViewTargetActivity:BaseBindingFragment<LoadsirActivityViewBinding>(LoadsirActivityViewBinding::inflate) {
 
     private lateinit var loadService: LoadService<Any>
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.tesla.framework.component.logger.Logger
+import timber.log.Timber
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
@@ -13,6 +14,11 @@ import java.util.concurrent.atomic.AtomicBoolean
 class SingleLiveEvent<T> : MutableLiveData<T>() {
     private val mPending = AtomicBoolean(false)
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
+
+        if (hasActiveObservers()) {
+            Logger.w("Multiple observers registered but only one will be notified of changes.")
+        }
+
         super.observe(owner) { t ->
             println("SingleLiveEvent onChange: ${mPending.get()}")
             if (mPending.compareAndSet(true, false)) {

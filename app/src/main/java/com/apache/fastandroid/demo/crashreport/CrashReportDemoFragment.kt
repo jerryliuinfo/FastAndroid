@@ -7,14 +7,14 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.ActivityCrashReportBinding
 import com.balsikandar.crashreporter.CrashReporter
 import com.balsikandar.crashreporter.ui.CrashReporterActivity
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlin.concurrent.thread
 
 /**
  * Created by Jerry on 2022/5/25.
  * https://github.com/MindorksOpenSource/CrashReporter
  */
-class CrashReportDemoFragment:BaseVBFragment<ActivityCrashReportBinding>(ActivityCrashReportBinding::inflate) {
+class CrashReportDemoFragment:BaseBindingFragment<ActivityCrashReportBinding>(ActivityCrashReportBinding::inflate) {
 
     var context1: Context? = null
     var mContext2: Context? = null

@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.TouchDelegate
 import com.apache.fastandroid.databinding.ExpandBtnClickAreaBinding
 import com.blankj.utilcode.util.ToastUtils
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.expand_btn_click_area.*
 
 /**
  * Created by Jerry on 2021/3/1.
  */
-class ExpandBtnClickAreaFragment: BaseVBFragment<ExpandBtnClickAreaBinding>(ExpandBtnClickAreaBinding::inflate) {
+class ExpandBtnClickAreaFragment: BaseBindingFragment<ExpandBtnClickAreaBinding>(ExpandBtnClickAreaBinding::inflate) {
 
     @SuppressLint("RestrictedApi")
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {

@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentLyricBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.*
 
 /**
  * Created by Jerry on 2022/3/20.
  */
-class LyricDemoFragment:BaseVBFragment<FragmentLyricBinding>(FragmentLyricBinding::inflate) {
+class LyricDemoFragment:BaseBindingFragment<FragmentLyricBinding>(FragmentLyricBinding::inflate) {
 
     private var sentenceIndex = 0
 

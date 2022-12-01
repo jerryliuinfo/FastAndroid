@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/9/23.
  */
-class FilterDemoFragment:BaseVBFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
+class FilterDemoFragment:BaseBindingFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
 
     companion object{
         private const val TAG = "FilterDemoFragment"

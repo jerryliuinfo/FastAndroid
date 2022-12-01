@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.apache.fastandroid.databinding.ConstraintPlaceHolderBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.constraint_place_holder.*
 
 /**
  * Placeholder 作用是用来占位，它可以在布局中占好位置，通过app:content 属性或者动态调用 setContent() 设置内容，来让某个控件
  * 移动到此占位符中
  */
-class ConstrainPlaceHolderFragment: BaseVBFragment<ConstraintPlaceHolderBinding>(ConstraintPlaceHolderBinding::inflate) {
+class ConstrainPlaceHolderFragment: BaseBindingFragment<ConstraintPlaceHolderBinding>(ConstraintPlaceHolderBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

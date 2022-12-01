@@ -4,34 +4,97 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <Button
-        android:id="@+id/btn_basic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="基本用法"
-        />
 
-    <Button
-        android:id="@+id/btn_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_basic"
-        android:text="删除查询"
-        />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-    <Button
-        android:id="@+id/btn_save_individual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_delete"
-        android:text="单独存储"
-        />
+
+            >
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal"
+                app:flow_wrapMode="aligned"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:constraint_referenced_ids="btn_mmkvInt,btn_mmkvIntDefault,btn_mmkvLong,btn_mmkvLongDefault,
+                btn_mmkvBoolean,btn_mmkvBooleanDefault,btn_putParcelable,btn_removeValue,btn_removeValues
+                "
+                />
+            <Button
+                android:id="@+id/btn_mmkvInt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mmkvInt"
+                />
+            <Button
+                android:id="@+id/btn_mmkvIntDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mmkvIntDefault"
+                />
+
+            <Button
+                android:id="@+id/btn_mmkvLong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mmkvLong"
+                />
+            <Button
+                android:id="@+id/btn_mmkvLongDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mmkvLongDefault"
+                />
+
+            <Button
+                android:id="@+id/btn_mmkvBoolean"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mmkvBoolean"
+                />
+            <Button
+                android:id="@+id/btn_mmkvBooleanDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mmkvBooleanDefault"
+                />
+
+            <Button
+                android:id="@+id/btn_putParcelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="putParcelable"
+                />
+            <Button
+                android:id="@+id/btn_removeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="removeValue"
+                />
+            <Button
+                android:id="@+id/btn_removeValues"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="removeValues"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

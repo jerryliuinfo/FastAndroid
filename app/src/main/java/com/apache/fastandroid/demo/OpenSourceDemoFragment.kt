@@ -9,6 +9,8 @@ import com.apache.fastandroid.demo.component.once.OnceFragment
 import com.apache.fastandroid.demo.glide.GlideDemoFragment
 import com.apache.fastandroid.demo.hawk.HawkDemoFragment
 import com.apache.fastandroid.demo.logger.LoggerDemoFragment
+import com.apache.fastandroid.demo.mmkv.MMKVFragment
+import com.apache.fastandroid.demo.mmkv.MMKVKtxFragment
 import com.apache.fastandroid.demo.mvi.MviDemoFragment
 import com.apache.fastandroid.demo.rxjava.RxJavaDemoListFragment
 import com.apache.fastandroid.demo.skydoves.SandWitchDemoFragment
@@ -28,6 +30,8 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("logger", "LoadSir", LoggerDemoFragment::class.java)
                 ,ViewItemBean("BestPay", "BestPay", BestPayDemoFragment::class.java)
                 ,ViewItemBean("Hawk", "Hawk", HawkDemoFragment::class.java)
+            ,ViewItemBean("MMKV", "MMKV", MMKVFragment::class.java)
+            ,ViewItemBean("MMKV KTX", "MMKV KTX", MMKVKtxFragment::class.java)
                     //MVVM Mail
                 ,ViewItemBean("Mvvm Mail", "Mvvm Mail", MvvmMailDemoFragment::class.java)
                 ,ViewItemBean("MVI模式", "shenzhen2017/android-architecture", MviDemoFragment::class.java)

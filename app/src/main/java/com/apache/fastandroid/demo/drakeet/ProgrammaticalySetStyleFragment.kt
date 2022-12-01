@@ -10,7 +10,7 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentProgramilySetStyleBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.tesla.framework.kt.dp
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_programily_set_style.*
 import kotlin.math.roundToInt
 
@@ -18,7 +18,7 @@ import kotlin.math.roundToInt
  * Created by Jerry on 2021/10/15.
  * https://t.zsxq.com/AiIIMBu
  */
-class ProgrammaticalySetStyleFragment: BaseVBFragment<FragmentProgramilySetStyleBinding>(FragmentProgramilySetStyleBinding::inflate) {
+class ProgrammaticalySetStyleFragment: BaseBindingFragment<FragmentProgramilySetStyleBinding>(FragmentProgramilySetStyleBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

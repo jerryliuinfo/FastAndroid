@@ -7,13 +7,13 @@ import com.apache.fastandroid.component.anr.AnrManager
 import com.apache.fastandroid.databinding.PerformanceAnrWatchdogBinding
 import com.github.anrwatchdog.ANRWatchDog
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.performance_anr_watchdog.*
 
 /**
  * Created by Jerry on 2020/12/28.
  */
-class AnrWatchDogDemoFragment : BaseVBFragment<PerformanceAnrWatchdogBinding>(PerformanceAnrWatchdogBinding::inflate) {
+class AnrWatchDogDemoFragment : BaseBindingFragment<PerformanceAnrWatchdogBinding>(PerformanceAnrWatchdogBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

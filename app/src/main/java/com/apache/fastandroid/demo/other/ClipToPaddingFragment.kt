@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.CustomViewClipchildBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.clip_to_padding_layout_item.view.*
 import kotlinx.android.synthetic.main.custom_view_clip_to_padding.*
 
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.custom_view_clip_to_padding.*
  * Created by Jerry on 2020/12/2.
  */
 class ClipToPaddingFragment :
-    BaseVBFragment<CustomViewClipchildBinding>(CustomViewClipchildBinding::inflate) {
+    BaseBindingFragment<CustomViewClipchildBinding>(CustomViewClipchildBinding::inflate) {
 
     companion object {
         private val list = arrayListOf(

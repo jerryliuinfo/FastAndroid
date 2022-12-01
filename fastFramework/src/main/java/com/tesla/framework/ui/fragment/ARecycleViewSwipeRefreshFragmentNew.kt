@@ -4,7 +4,7 @@ package com.tesla.framework.ui.fragment
  * Created by Jerry on 2022/3/12.
  */
 /*
-abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseVBFragment<CommUiRecycleviewSwiperefreshNewBinding>(CommUiRecycleviewSwiperefreshNewBinding::inflate),
+abstract class ARecycleViewSwipeRefreshFragmentNew<T>:BaseBindingFragment<CommUiRecycleviewSwiperefreshNewBinding>(CommUiRecycleviewSwiperefreshNewBinding::inflate),
     BaseQuickAdapter.RequestLoadMoreListener {
 
     protected lateinit var mAdapter:BaseQuickAdapter<T, BaseViewHolder>

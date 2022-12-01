@@ -20,13 +20,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Fragment to display a list of subsystems that show the values of this app's theme.
  */
 class ThemeSummaryFragment :
-    BaseVBFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
+    BaseBindingFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

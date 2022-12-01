@@ -13,12 +13,12 @@ import com.apache.fastandroid.network.model.Status
 import com.apache.fastandroid.widget.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.kt.dpInt
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/5/3.
  */
-abstract class BaseFlowRecycleViewFragment:BaseVBFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
+abstract class BaseFlowRecycleViewFragment:BaseBindingFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
 
     val users = MutableLiveData<Resource<List<ApiUser>>>()
 

@@ -29,10 +29,10 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.UserFragmentBinding
 import com.bumptech.glide.Glide
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.util.concurrent.TimeUnit
 
-class UserFragment : BaseVBFragment<UserFragmentBinding>(UserFragmentBinding::inflate) {
+class UserFragment : BaseBindingFragment<UserFragmentBinding>(UserFragmentBinding::inflate) {
 
 
 //    var binding by autoCleared<UserFragmentBinding>()

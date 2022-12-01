@@ -16,7 +16,7 @@
 
 @file:Suppress("unused")
 
-package com.dylanc.mmkv
+package com.apache.fastandroid.component.mmkv
 
 import android.os.Parcelable
 import com.tencent.mmkv.MMKV
@@ -37,107 +37,66 @@ import kotlin.reflect.KProperty
  * @author Dylan Cai
  */
 interface MMKVOwner {
-  val kv: MMKV get() = com.dylanc.mmkv.kv
-}
+  val kv: MMKV
+    get() = default ?: throw IllegalStateException("If you use MMKV in Application, you should set MMKVOwner.default first.")
 
-val kv: MMKV = MMKV.defaultMMKV()
+  companion object {
+    @JvmStatic
+    var default: MMKV? = null
+  }
+}
 
 fun MMKVOwner.mmkvInt(default: Int = 0) =
-  MMKVProperty(MMKV::decodeInt, MMKV::encode, default)
+  MMKVProperty({ kv.decodeInt(it, default) }, { kv.encode(first, second) })
 
 fun MMKVOwner.mmkvLong(default: Long = 0L) =
-  MMKVProperty(MMKV::decodeLong, MMKV::encode, default)
+  MMKVProperty({ kv.decodeLong(it, default) }, { kv.encode(first, second) })
 
 fun MMKVOwner.mmkvBool(default: Boolean = false) =
-  MMKVProperty(MMKV::decodeBool, MMKV::encode, default)
+  MMKVProperty({ kv.decodeBool(it, default) }, { kv.encode(first, second) })
 
 fun MMKVOwner.mmkvFloat(default: Float = 0f) =
-  MMKVProperty(MMKV::decodeFloat, MMKV::encode, default)
+  MMKVProperty({ kv.decodeFloat(it, default) }, { kv.encode(first, second) })
 
 fun MMKVOwner.mmkvDouble(default: Double = 0.0) =
-  MMKVProperty(MMKV::decodeDouble, MMKV::encode, default)
+  MMKVProperty({ kv.decodeDouble(it, default) }, { kv.encode(first, second) })
 
 fun MMKVOwner.mmkvString() =
-  MMKVNullableProperty(MMKV::decodeString, MMKV::encode)
+  MMKVProperty({ kv.decodeString(it) }, { kv.encode(first, second) })
 
 fun MMKVOwner.mmkvString(default: String) =
-  MMKVNullablePropertyWithDefault<String>(MMKV::decodeString, MMKV::encode, default)
+  MMKVProperty({ kv.decodeString(it) ?: default }, { kv.encode(first, second) })
 
-fun MMKVOwner.mmkvStringSet(): ReadWriteProperty<MMKVOwner, Set<String>?> =
-  MMKVNullableProperty(MMKV::decodeStringSet, MMKV::encode)
+fun MMKVOwner.mmkvStringSet() =
+  MMKVProperty({ kv.decodeStringSet(it) }, { kv.encode(first, second) })
 
 fun MMKVOwner.mmkvStringSet(default: Set<String>) =
-  MMKVNullablePropertyWithDefault(MMKV::decodeStringSet, MMKV::encode, default)
+  MMKVProperty({ kv.decodeStringSet(it) ?: default }, { kv.encode(first, second) })
 
 fun MMKVOwner.mmkvBytes() =
-  MMKVNullableProperty(MMKV::decodeBytes, MMKV::encode)
+  MMKVProperty({ kv.decodeBytes(it) }, { kv.encode(first, second) })
 
 fun MMKVOwner.mmkvBytes(default: ByteArray) =
-  MMKVNullablePropertyWithDefault(MMKV::decodeBytes, MMKV::encode, default)
+  MMKVProperty({ kv.decodeBytes(it) ?: default }, { kv.encode(first, second) })
 
 inline fun <reified T : Parcelable> MMKVOwner.mmkvParcelable() =
-  MMKVParcelableProperty(T::class.java)
+  MMKVProperty({ kv.decodeParcelable(it, T::class.java) }, { kv.encode(first, second) })
 
 inline fun <reified T : Parcelable> MMKVOwner.mmkvParcelable(default: T) =
-  MMKVParcelablePropertyWithDefault(T::class.java, default)
+  MMKVProperty({ kv.decodeParcelable(it, T::class.java) ?: default }, { kv.encode(first, second) })
 
 class MMKVProperty<V>(
-  private val decode: MMKV.(String, V) -> V,
-  private val encode: MMKV.(String, V) -> Boolean,
-  private val defaultValue: V
+  private val decode: (String) -> V,
+  private val encode: Pair<String, V>.() -> Boolean
 ) : ReadWriteProperty<MMKVOwner, V> {
+  private var cache: V? = null
+
   override fun getValue(thisRef: MMKVOwner, property: KProperty<*>): V =
-    thisRef.kv.decode(property.name, defaultValue)
+    cache ?: decode(property.name).also { cache = it }
 
   override fun setValue(thisRef: MMKVOwner, property: KProperty<*>, value: V) {
-    thisRef.kv.encode(property.name, value)
-  }
-}
-
-class MMKVNullableProperty<V>(
-  private val decode: MMKV.(String, V?) -> V?,
-  private val encode: MMKV.(String, V?) -> Boolean
-) : ReadWriteProperty<MMKVOwner, V?> {
-  override fun getValue(thisRef: MMKVOwner, property: KProperty<*>): V? =
-    thisRef.kv.decode(property.name, null)
-
-  override fun setValue(thisRef: MMKVOwner, property: KProperty<*>, value: V?) {
-    thisRef.kv.encode(property.name, value)
-  }
-}
-
-class MMKVNullablePropertyWithDefault<V>(
-  private val decode: MMKV.(String, V?) -> V?,
-  private val encode: MMKV.(String, V?) -> Boolean,
-  private val defaultValue: V
-) : ReadWriteProperty<MMKVOwner, V> {
-  override fun getValue(thisRef: MMKVOwner, property: KProperty<*>): V =
-    thisRef.kv.decode(property.name, null) ?: defaultValue
-
-  override fun setValue(thisRef: MMKVOwner, property: KProperty<*>, value: V) {
-    thisRef.kv.encode(property.name, value)
-  }
-}
-
-class MMKVParcelableProperty<V : Parcelable>(
-  private val clazz: Class<V>
-) : ReadWriteProperty<MMKVOwner, V?> {
-  override fun getValue(thisRef: MMKVOwner, property: KProperty<*>): V? =
-    thisRef.kv.decodeParcelable(property.name, clazz)
-
-  override fun setValue(thisRef: MMKVOwner, property: KProperty<*>, value: V?) {
-    thisRef.kv.encode(property.name, value)
-  }
-}
-
-class MMKVParcelablePropertyWithDefault<V : Parcelable>(
-  private val clazz: Class<V>,
-  private val defaultValue: V
-) : ReadWriteProperty<MMKVOwner, V> {
-  override fun getValue(thisRef: MMKVOwner, property: KProperty<*>): V =
-    thisRef.kv.decodeParcelable(property.name, clazz) ?: defaultValue
-
-  override fun setValue(thisRef: MMKVOwner, property: KProperty<*>, value: V) {
-    thisRef.kv.encode(property.name, value)
+    if (encode(property.name to value)) {
+      cache = value
+    }
   }
 }

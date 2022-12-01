@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.databinding.FragmentJetpackLivedataSeniorUsageBinding
-import com.apache.fastandroid.databinding.FragmentJetpackLivedataWrongUsageBinding
 import com.apache.fastandroid.demo.extension.onTextChanged
 import com.apache.fastandroid.demo.extension.setTextAndMaintainSelection
 import com.tesla.framework.component.livedata.distinct
@@ -14,12 +13,12 @@ import com.tesla.framework.component.livedata.map
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.showToast
 
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2020/11/5.
  */
-class LiveDataSensorUsageFragment : BaseVBFragment<FragmentJetpackLivedataSeniorUsageBinding>(FragmentJetpackLivedataSeniorUsageBinding::inflate){
+class LiveDataSensorUsageFragment : BaseBindingFragment<FragmentJetpackLivedataSeniorUsageBinding>(FragmentJetpackLivedataSeniorUsageBinding::inflate){
 
     val mNameLiveData = MutableLiveData<String>()
 

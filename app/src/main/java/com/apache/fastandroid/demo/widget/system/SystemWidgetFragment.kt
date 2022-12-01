@@ -7,15 +7,14 @@ import androidx.core.text.HtmlCompat
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentSystemWidgetBinding
 import com.apache.fastandroid.widget.ScrollableDialogBuilder
-import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.ResourceUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/6/18.
  */
-class SystemWidgetFragment:BaseVBFragment<FragmentSystemWidgetBinding>(FragmentSystemWidgetBinding::inflate) {
+class SystemWidgetFragment:BaseBindingFragment<FragmentSystemWidgetBinding>(FragmentSystemWidgetBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

@@ -14,12 +14,12 @@ import com.apache.fastandroid.demo.sunflower.db.SunFlowDatabase
 import com.apache.fastandroid.demo.sunflower.repository.PlantRepository
 import com.apache.fastandroid.demo.sunflower.viewmodel.PlantListViewModel
 import com.apache.fastandroid.demo.sunflower.viewmodel.PlantListViewModelFactory
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/3/14.
  */
-class PlantListFragment:BaseVBFragment<FragmentPlantListBinding>(FragmentPlantListBinding::inflate) {
+class PlantListFragment:BaseBindingFragment<FragmentPlantListBinding>(FragmentPlantListBinding::inflate) {
 
     private val mViewModel:PlantListViewModel by viewModels{
         val platnDao = SunFlowDatabase.getInstance(requireContext()).plantDao()

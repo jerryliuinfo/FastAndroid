@@ -3,13 +3,13 @@ package com.apache.fastandroid.demo.performance
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.PerformanceBlockCancaryBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.performance_block_cancary.*
 
 /**
  * Created by Jerry on 2020/12/28.
  */
-class BlockCancaryDemoFragment : BaseVBFragment<PerformanceBlockCancaryBinding>(PerformanceBlockCancaryBinding::inflate) {
+class BlockCancaryDemoFragment : BaseBindingFragment<PerformanceBlockCancaryBinding>(PerformanceBlockCancaryBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

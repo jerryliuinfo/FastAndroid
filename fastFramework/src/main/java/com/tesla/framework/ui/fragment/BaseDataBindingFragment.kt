@@ -11,7 +11,7 @@ import com.tesla.framework.kt.inflateBinding
 /**
  * Fragment基类
  */
-abstract class BaseDBFragment<T : ViewDataBinding>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) : BaseFragment() {
+abstract class BaseDataBindingFragment<T : ViewDataBinding>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) : BaseFragment() {
 
     protected lateinit var mBinding: T
 
@@ -21,7 +21,7 @@ abstract class BaseDBFragment<T : ViewDataBinding>(val inflater: (inflater: Layo
         savedInstanceState: Bundle?
     ): View {
         mBinding = inflateBinding<T>(layoutInflater).apply {
-            lifecycleOwner = this@BaseDBFragment
+            lifecycleOwner = this@BaseDataBindingFragment
         }
         return mBinding.root
     }

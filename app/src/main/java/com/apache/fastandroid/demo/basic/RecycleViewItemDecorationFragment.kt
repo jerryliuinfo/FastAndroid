@@ -9,15 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.RecycleviewItemDecorationBinding
 import com.apache.fastandroid.demo.adapter.CommentAdapter
-import com.apache.fastandroid.demo.decoration.CommentItemDecoration
 import com.blankj.utilcode.util.ResourceUtils
 import com.tesla.framework.kt.removeDecorations
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import kotlinx.android.synthetic.main.recycleview_item_decoration.*
 
 
-class RecycleViewItemDecorationFragment: BaseVBFragment<RecycleviewItemDecorationBinding>(RecycleviewItemDecorationBinding::inflate) {
+class RecycleViewItemDecorationFragment: BaseBindingFragment<RecycleviewItemDecorationBinding>(RecycleviewItemDecorationBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

@@ -15,12 +15,12 @@ import com.apache.fastandroid.demo.sunflower.repository.PlantRepository
 import com.apache.fastandroid.demo.sunflower.viewmodel.PlantDetailViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import com.tesla.framework.ui.fragment.BaseDBFragment
+import com.tesla.framework.ui.fragment.BaseDataBindingFragment
 
 /**
  * Created by Jerry on 2022/4/3.
  */
-class PlantDetailFragment:BaseDBFragment<FragmentPlantDetailBinding>(FragmentPlantDetailBinding::inflate) {
+class PlantDetailFragment:BaseDataBindingFragment<FragmentPlantDetailBinding>(FragmentPlantDetailBinding::inflate) {
 
     private lateinit var plantDetailViewModel: PlantDetailViewModel
 

@@ -376,15 +376,15 @@ class FastApplication : Application(), ViewModelStoreOwner {
         mappings["PureWriter"] =
             Target("https://play.google.com/store/apps/details?id=com.drakeet.purewriter")
 
-        Floo.configuration()
-            .setDebugEnabled(true)
-            .addRequestInterceptor(PureSchemeInterceptor(getString(R.string.scheme)))
-            .addRequestInterceptor(LogInterceptor("Request"))
-            .addTargetInterceptor(PureSchemeInterceptor(getString(R.string.scheme)))
-            .addTargetInterceptor(LogInterceptor("Target"))
-            .addTargetNotFoundHandler(WebHandler())
-            .addTargetNotFoundHandler(OpenDirectlyHandler())
-            .addTargetNotFoundHandler(TargetNotFoundToaster())
+//        Floo.configuration()
+//            .setDebugEnabled(true)
+//            .addRequestInterceptor(PureSchemeInterceptor(getString(R.string.scheme)))
+//            .addRequestInterceptor(LogInterceptor("Request"))
+//            .addTargetInterceptor(PureSchemeInterceptor(getString(R.string.scheme)))
+//            .addTargetInterceptor(LogInterceptor("Target"))
+//            .addTargetNotFoundHandler(WebHandler())
+//            .addTargetNotFoundHandler(OpenDirectlyHandler())
+//            .addTargetNotFoundHandler(TargetNotFoundToaster())
 
         Floo.apply(mappings)
     }

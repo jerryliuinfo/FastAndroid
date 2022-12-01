@@ -7,13 +7,13 @@ import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.DelayInitTaskDispatcher
 import com.tesla.framework.component.ITask
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.performance_task_dispatcher.*
 
 /**
  * Created by Jerry on 2021/11/15.
  */
-class TaskDispatcherDemoFragment: BaseVBFragment<PerformanceTaskDispatcherBinding>(PerformanceTaskDispatcherBinding::inflate) {
+class TaskDispatcherDemoFragment: BaseBindingFragment<PerformanceTaskDispatcherBinding>(PerformanceTaskDispatcherBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

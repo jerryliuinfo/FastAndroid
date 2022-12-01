@@ -11,13 +11,13 @@ import androidx.core.content.ContextCompat
 import com.apache.fastandroid.databinding.FragmentPermissionBinding
 import com.blankj.utilcode.util.ToastUtils
 import com.permissionx.guolindev.PermissionX
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.lang.Exception
 
 /**
  * Created by Jerry on 2021/10/22.
  */
-class PermissionXFragment: BaseVBFragment<FragmentPermissionBinding>(FragmentPermissionBinding::inflate) {
+class PermissionXFragment: BaseBindingFragment<FragmentPermissionBinding>(FragmentPermissionBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

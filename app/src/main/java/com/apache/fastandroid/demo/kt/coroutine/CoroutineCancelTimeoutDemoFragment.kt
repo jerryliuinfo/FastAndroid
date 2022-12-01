@@ -3,7 +3,7 @@ package com.apache.fastandroid.demo.kt.coroutine
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCoroutineCancelTimeoutBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.*
 import java.lang.ArithmeticException
 import kotlin.system.measureTimeMillis
@@ -14,7 +14,7 @@ import kotlin.system.measureTimeMillis
  * 参考：https://book.kotlincn.net/text/cancellation-and-timeouts.html
  */
 class CoroutineCancelTimeoutDemoFragment :
-    BaseVBFragment<FragmentCoroutineCancelTimeoutBinding>(FragmentCoroutineCancelTimeoutBinding::inflate) {
+    BaseBindingFragment<FragmentCoroutineCancelTimeoutBinding>(FragmentCoroutineCancelTimeoutBinding::inflate) {
     companion object {
         private const val TAG = "CoroutineCancelTimeoutDemoFragment"
     }

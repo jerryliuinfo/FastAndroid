@@ -8,7 +8,7 @@ import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.vm.CommonBindAdapterViewModel
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.activity.FragmentContainerActivity
-import com.tesla.framework.ui.fragment.BaseDBFragment
+import com.tesla.framework.ui.fragment.BaseDataBindingFragment
 
 /**
  * Created by Jerry on 2021/9/8.
@@ -16,7 +16,7 @@ import com.tesla.framework.ui.fragment.BaseDBFragment
  * 其实它俩各有各的特点，ObservableField 的特点是支持防抖，在 set 的数据不变的情况下，
  * 可以避免不必要的重复绘制。LiveData 则没有防抖的特性。所以可以根据场合来选择合适的方案。
  */
-class CommonBindingAdapterDemoFragment:BaseDBFragment<DatabindingComBindAdapterBinding>(DatabindingComBindAdapterBinding::inflate) {
+class CommonBindingAdapterDemoFragment:BaseDataBindingFragment<DatabindingComBindAdapterBinding>(DatabindingComBindAdapterBinding::inflate) {
     companion object{
         private const val URL = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fblog%2F201406%2F12%2F20140612042459_nN5mZ.jpeg&refer=http%3A%2F%2Fcdn.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627090612&t=376413dceca7371b4b2086cdbb955ff2"
         const val TAG = ""

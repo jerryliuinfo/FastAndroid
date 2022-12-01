@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.apache.fastandroid.databinding.FragmentDebounceClickBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 
 /**
  * Created by Jerry on 2022/1/15.
  */
-class ClickDebounceFragment : BaseVBFragment<FragmentDebounceClickBinding>(FragmentDebounceClickBinding::inflate) {
+class ClickDebounceFragment : BaseBindingFragment<FragmentDebounceClickBinding>(FragmentDebounceClickBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

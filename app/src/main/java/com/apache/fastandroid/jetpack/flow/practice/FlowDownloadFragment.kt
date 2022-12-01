@@ -8,13 +8,13 @@ import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FlowFragmentDownloadBinding
 import com.example.flowpractice.download.DownLoadManager
 import com.example.flowpractice.download.DownloadStatus
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.io.File
 
 /**
  * Created by Jerry on 2022/6/19.
  */
-class FlowDownloadFragment:BaseVBFragment<FlowFragmentDownloadBinding>(FlowFragmentDownloadBinding::inflate) {
+class FlowDownloadFragment:BaseBindingFragment<FlowFragmentDownloadBinding>(FlowFragmentDownloadBinding::inflate) {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 

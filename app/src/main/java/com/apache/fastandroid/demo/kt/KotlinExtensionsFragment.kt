@@ -23,16 +23,14 @@ import com.apache.fastandroid.demo.extension.timeString
 import com.apache.fastandroid.demo.kt.extensions.GreenLeafyPlant
 import com.apache.fastandroid.demo.kt.extensions.print
 import com.apache.fastandroid.demo.kt.extensions.pull
-import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.state.AquariumPlant
-import com.apache.fastandroid.state.UserInfo
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/10/18.
  */
-class KotlinExtensionsFragment:BaseVBFragment<KtExtensionsBinding>(KtExtensionsBinding::inflate) {
+class KotlinExtensionsFragment:BaseBindingFragment<KtExtensionsBinding>(KtExtensionsBinding::inflate) {
     companion object{
         private const val TAG = "KotlinExtensionsFragment"
     }

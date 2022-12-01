@@ -14,7 +14,7 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.DrakeetRecycleviewSetHasStableidsBinding
 import com.microsoft.sample.stableids.Item
 import com.microsoft.sample.stableids.StableIdAdapter
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/10/18.
@@ -22,7 +22,7 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
  * 加上这一行代码，在 item change、remove、udpate以及item position改变的情况下，
  * 调用 adapter 的notifyDatasetChanged 自动会有动画效果的
  */
-class RecycleviewStabledIdsFragment:BaseVBFragment<DrakeetRecycleviewSetHasStableidsBinding>(DrakeetRecycleviewSetHasStableidsBinding::inflate) {
+class RecycleviewStabledIdsFragment:BaseBindingFragment<DrakeetRecycleviewSetHasStableidsBinding>(DrakeetRecycleviewSetHasStableidsBinding::inflate) {
     private var items: MutableList<Item> = ArrayList()
     private lateinit var adapter: StableIdAdapter
 

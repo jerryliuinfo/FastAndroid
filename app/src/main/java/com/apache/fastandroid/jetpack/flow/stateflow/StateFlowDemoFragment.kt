@@ -6,12 +6,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FlowFragmentStateflowBinding
 import com.tesla.framework.kt.onSingleClick
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/6/20.
  */
-class StateFlowDemoFragment:BaseVBFragment<FlowFragmentStateflowBinding>(FlowFragmentStateflowBinding::inflate) {
+class StateFlowDemoFragment:BaseBindingFragment<FlowFragmentStateflowBinding>(FlowFragmentStateflowBinding::inflate) {
 
     private val mViewModel by viewModels<MutableStateViewModel>()
 

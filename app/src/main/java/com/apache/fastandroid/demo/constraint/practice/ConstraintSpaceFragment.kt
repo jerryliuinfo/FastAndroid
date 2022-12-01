@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.ConstraintSpaceBinding
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.constraint_space.*
 
 /**
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.constraint_space.*
  * constrinatLayout中不能使用-margin的方式来完成传统布局中的一些错误的效果，但是可以借助space来实现类似的功能
  *
  */
-class ConstraintSpaceFragment: BaseVBFragment<ConstraintSpaceBinding>(ConstraintSpaceBinding::inflate) {
+class ConstraintSpaceFragment: BaseBindingFragment<ConstraintSpaceBinding>(ConstraintSpaceBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {

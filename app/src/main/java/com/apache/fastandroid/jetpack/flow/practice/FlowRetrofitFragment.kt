@@ -8,16 +8,14 @@ import com.apache.fastandroid.databinding.FlowFragmentRetrofitBinding
 import com.apache.fastandroid.home.ArticleAdapter
 import com.apache.fastandroid.home.toArticle
 import com.apache.fastandroid.jetpack.flow.vm.FlowUserViewModel
-import com.tesla.framework.common.util.log.Logger
 import com.tesla.framework.kt.textViewFlow
-import com.tesla.framework.ui.fragment.BaseVBFragment
-import com.zj.mvi.core.observeState
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.flow.collectLatest
 
 /**
  * Created by Jerry on 2022/6/19.
  */
-class FlowRetrofitFragment:BaseVBFragment<FlowFragmentRetrofitBinding>(FlowFragmentRetrofitBinding::inflate) {
+class FlowRetrofitFragment:BaseBindingFragment<FlowFragmentRetrofitBinding>(FlowFragmentRetrofitBinding::inflate) {
 
     private val mViewModel by viewModels<FlowUserViewModel>()
 

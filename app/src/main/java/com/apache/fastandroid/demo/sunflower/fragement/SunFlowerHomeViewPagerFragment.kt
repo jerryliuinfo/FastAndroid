@@ -3,24 +3,18 @@ package com.apache.fastandroid.demo.sunflower.fragement
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentViewPagerBinding
 import com.apache.fastandroid.demo.sunflower.adapter.SunFlowerPagerAdapter
 import com.apache.fastandroid.demo.tablayout.MY_GARDEN_PAGE_INDEX
 import com.apache.fastandroid.demo.tablayout.PLANT_LIST_PAGE_INDEX
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.tesla.framework.support.bean.TabItem
-import com.tesla.framework.ui.fragment.ATabsTabLayoutFragmentNew
-import com.tesla.framework.ui.fragment.BaseVBFragment
-import com.tesla.framework.ui.fragment.tab.MyFragmentStateAdapter
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/3/14.
  */
-class SunFlowerHomeViewPagerFragment :BaseVBFragment<FragmentViewPagerBinding>(FragmentViewPagerBinding::inflate){
+class SunFlowerHomeViewPagerFragment :BaseBindingFragment<FragmentViewPagerBinding>(FragmentViewPagerBinding::inflate){
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

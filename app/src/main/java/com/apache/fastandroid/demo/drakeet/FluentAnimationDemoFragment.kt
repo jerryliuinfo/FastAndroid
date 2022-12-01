@@ -17,15 +17,14 @@ import com.apache.fastandroid.demo.databinding.UserViewModel
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.common.util.DrakeetUtils.doOnMainThreadIdle
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
-import okhttp3.internal.toImmutableList
 
 /**
  * Created by Jerry on 2022/1/25.
  * https://t.zsxq.com/JEyZjQv
  */
-class FluentAnimationDemoFragment: BaseVBFragment<FragmentFluentAnimationBinding>(FragmentFluentAnimationBinding::inflate) {
+class FluentAnimationDemoFragment: BaseBindingFragment<FragmentFluentAnimationBinding>(FragmentFluentAnimationBinding::inflate) {
 
     private val userViewModel:UserViewModel by viewModels()
     private lateinit var mAdapter: BaseQuickAdapter<String,BaseViewHolder>

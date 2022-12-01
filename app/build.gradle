@@ -13,7 +13,7 @@ apply plugin: 'kotlin-android-extensions'
 println("read Property MethodTraceMan:${readLocalProperty("MethodTraceMan")}")
 
 //https://github.com/MichaelRocks/paranoid
-apply plugin: 'io.michaelrocks.paranoid'
+//apply plugin: 'io.michaelrocks.paranoid'
 
 
 

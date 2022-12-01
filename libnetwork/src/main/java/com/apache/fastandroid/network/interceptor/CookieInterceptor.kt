@@ -15,7 +15,6 @@ import java.lang.Exception
 class CookieInterceptor : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
-        val request: Request = chain.request()
         //添加公共请求头
         val newBuilder = chain.request().newBuilder()
             .apply {

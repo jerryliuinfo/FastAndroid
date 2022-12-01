@@ -13,7 +13,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.databinding.LayoutEdittextBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger
 /**
  * Created by Jerry on 2021/3/17.
  */
-class RoomDemoFragment: BaseVBFragment<FragmentJetpackRoomBinding>(FragmentJetpackRoomBinding::inflate) {
+class RoomDemoFragment: BaseBindingFragment<FragmentJetpackRoomBinding>(FragmentJetpackRoomBinding::inflate) {
 
     private lateinit var plantDao: AccountDao
     private lateinit var mAdapter: PlantAdapter

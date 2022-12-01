@@ -13,7 +13,7 @@ import com.tesla.framework.databinding.FragmentRecycleview2Binding
  * Fragment基类
  */
 
-abstract class BaseBRVHFragment<T,VH : BaseViewHolder>:BaseVBFragment<FragmentRecycleview2Binding>(FragmentRecycleview2Binding::inflate) {
+abstract class BaseBRVHFragment<T,VH : BaseViewHolder>:BaseBindingFragment<FragmentRecycleview2Binding>(FragmentRecycleview2Binding::inflate) {
 
     var mAdapter:BaseQuickAdapter<T,VH> ?= null
 

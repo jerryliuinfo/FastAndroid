@@ -36,9 +36,9 @@ import com.android.example.github.vo.Repo
 import com.apache.fastandroid.databinding.SearchFragmentBinding
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.google.android.material.snackbar.Snackbar
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
-class SearchFragment : BaseVBFragment<SearchFragmentBinding>(SearchFragmentBinding::inflate) {
+class SearchFragment : BaseBindingFragment<SearchFragmentBinding>(SearchFragmentBinding::inflate) {
 
 
     var adapter by autoCleared<RepoListAdapter>()

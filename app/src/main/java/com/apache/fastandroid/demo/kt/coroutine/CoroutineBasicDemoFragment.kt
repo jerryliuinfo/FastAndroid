@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FragmentCoroutineBasicBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.*
 import kotlin.concurrent.thread
 
@@ -14,7 +14,7 @@ import kotlin.concurrent.thread
  * 协程基础
  * 参考：https://book.kotlincn.net/text/coroutines-basics.html
  */
-class CoroutineBasicDemoFragment:BaseVBFragment<FragmentCoroutineBasicBinding>(FragmentCoroutineBasicBinding::inflate) {
+class CoroutineBasicDemoFragment:BaseBindingFragment<FragmentCoroutineBasicBinding>(FragmentCoroutineBasicBinding::inflate) {
     companion object{
         private const val TAG = "CoroutineCancelDemoFragment"
         private const val ARTICLE_ID = 21613L

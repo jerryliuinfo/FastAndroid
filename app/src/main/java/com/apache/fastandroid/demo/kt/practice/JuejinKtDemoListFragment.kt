@@ -8,13 +8,13 @@ import com.apache.fastandroid.demo.kt.func.JvmOverloadsDemo
 import com.apache.fastandroid.demo.kt.hignorder.FuncAsParamDemo
 import com.tesla.framework.component.logger.Logger
 
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/10/18.
  */
 class JuejinKtDemoListFragment :
-    BaseVBFragment<FragmentJuejinKtBinding>(FragmentJuejinKtBinding::inflate) {
+    BaseBindingFragment<FragmentJuejinKtBinding>(FragmentJuejinKtBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

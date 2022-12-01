@@ -16,7 +16,7 @@
 
 @file:Suppress("unused")
 
-package com.dylanc.mmkv
+package com.apache.fastandroid.component.mmkv
 
 import android.content.Context
 import androidx.startup.Initializer

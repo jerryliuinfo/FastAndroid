@@ -3,18 +3,14 @@ package com.apache.fastandroid.demo.kt.extension
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentLambdaBinding
-import com.apache.fastandroid.demo.kt.inline.Doggo
-import com.apache.fastandroid.demo.kt.inline.DoggoId
-import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.tesla.framework.kt.MyDialog
-import com.tesla.framework.ui.fragment.BaseVBFragment
-import java.util.function.IntFunction
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlin.random.Random
 
 /**
  * Created by Jerry on 2022/7/14.
  */
-class ExtensionDemoFragment:BaseVBFragment<FragmentLambdaBinding>(FragmentLambdaBinding::inflate) {
+class ExtensionDemoFragment:BaseBindingFragment<FragmentLambdaBinding>(FragmentLambdaBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

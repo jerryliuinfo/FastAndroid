@@ -8,12 +8,12 @@ import androidx.lifecycle.Observer
 import com.apache.fastandroid.databinding.FragmentCompletionBinding
 import com.apache.fastandroid.network.model.Status
 import com.example.android.architecture.blueprints.todoapp.util.getFlowViewModelFactory
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/5/12.
  */
-class RetryFragment: BaseVBFragment<FragmentCompletionBinding>(FragmentCompletionBinding::inflate) {
+class RetryFragment: BaseBindingFragment<FragmentCompletionBinding>(FragmentCompletionBinding::inflate) {
 
     private val viewModel: RetryViewModel by viewModels{getFlowViewModelFactory()}
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

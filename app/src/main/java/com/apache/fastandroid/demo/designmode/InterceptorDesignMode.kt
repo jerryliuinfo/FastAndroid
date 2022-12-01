@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.github.anrwatchdog.ANRWatchDog
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/9/24.
  */
-class InterceptorDesignMode:BaseVBFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
+class InterceptorDesignMode:BaseBindingFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

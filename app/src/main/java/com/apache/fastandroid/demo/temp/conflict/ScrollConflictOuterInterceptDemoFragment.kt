@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import com.apache.fastandroid.databinding.TempScrollConflictOuterInterceptBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.temp_scroll_conflict.listView
 import kotlinx.android.synthetic.main.temp_scroll_conflict_outer_intercept.*
 
 /**
  * Created by Jerry on 2021/8/6.
  */
-class ScrollConflictOuterInterceptDemoFragment: BaseVBFragment<TempScrollConflictOuterInterceptBinding>(TempScrollConflictOuterInterceptBinding::inflate) {
+class ScrollConflictOuterInterceptDemoFragment: BaseBindingFragment<TempScrollConflictOuterInterceptBinding>(TempScrollConflictOuterInterceptBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

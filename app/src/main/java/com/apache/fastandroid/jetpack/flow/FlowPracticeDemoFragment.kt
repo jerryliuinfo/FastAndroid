@@ -17,14 +17,14 @@ import com.blankj.utilcode.util.ToastUtils
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.dpInt
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.cancel
 
 /**
  * Created by Jerry on 2022/6/19.
  */
 class FlowPracticeDemoFragment :
-    BaseVBFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
+    BaseBindingFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
 
     //    @Inject lateinit var postViewModel: PostViewModel
     private val mViewModel: PostViewModel by viewModels {

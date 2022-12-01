@@ -6,13 +6,13 @@ import android.view.View
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentConcurryDemoBinding
 import com.apache.fastandroid.demo.temp.concurry.PlayerNew
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/11/3.
  * 模拟死锁发生
  */
-class ConcurrencyDemoFragment : BaseVBFragment<FragmentConcurryDemoBinding>(FragmentConcurryDemoBinding::inflate) {
+class ConcurrencyDemoFragment : BaseBindingFragment<FragmentConcurryDemoBinding>(FragmentConcurryDemoBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

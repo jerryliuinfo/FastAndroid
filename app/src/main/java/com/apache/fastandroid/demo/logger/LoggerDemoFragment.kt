@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.tesla.framework.component.logger.*
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.util.*
 
 
@@ -17,7 +17,7 @@ import java.util.*
  *
  */
 
-class LoggerDemoFragment : BaseVBFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
+class LoggerDemoFragment : BaseBindingFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

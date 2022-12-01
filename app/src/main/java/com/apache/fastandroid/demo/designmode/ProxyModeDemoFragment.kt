@@ -8,13 +8,13 @@ import com.apache.fastandroid.demo.designmode.proxy.ServiceApiV2
 import com.apache.fastandroid.demo.designmode.proxy.dynamic.ISubject
 import com.apache.fastandroid.demo.designmode.proxy.dynamic.ProxyHandler
 import com.apache.fastandroid.demo.designmode.proxy.dynamic.RealSubject
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_design_mode_proxy.*
 
 /**
  * Created by Jerry on 2021/9/19.
  */
-class ProxyModeDemoFragment:BaseVBFragment<FragmentDesignModeProxyBinding>(FragmentDesignModeProxyBinding::inflate) {
+class ProxyModeDemoFragment:BaseBindingFragment<FragmentDesignModeProxyBinding>(FragmentDesignModeProxyBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

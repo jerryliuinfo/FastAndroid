@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.GlideTransformDemoBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.glide_transform_demo.*
 
 /**
  * Created by Jerry on 2021/6/24.
  */
-class GlideTransformFragment: BaseVBFragment<GlideTransformDemoBinding>(GlideTransformDemoBinding::inflate) {
+class GlideTransformFragment: BaseBindingFragment<GlideTransformDemoBinding>(GlideTransformDemoBinding::inflate) {
 
     val url = "https://www.baidu.com/img/bd_logo1.png"
 

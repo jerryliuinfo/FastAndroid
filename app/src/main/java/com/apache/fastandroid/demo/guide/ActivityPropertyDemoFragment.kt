@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.ActivityPropertyBinding
 import com.apache.fastandroid.demo.guide.activity.FinishOnTaskLaunchActivity
 import com.tesla.framework.kt.launchActivity
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 
-class ActivityPropertyDemoFragment : BaseVBFragment<ActivityPropertyBinding>(ActivityPropertyBinding::inflate) {
+class ActivityPropertyDemoFragment : BaseBindingFragment<ActivityPropertyBinding>(ActivityPropertyBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

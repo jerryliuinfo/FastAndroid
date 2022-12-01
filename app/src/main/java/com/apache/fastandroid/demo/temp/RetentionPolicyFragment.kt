@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.apache.fastandroid.demo.temp.retention.Config
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/3/1.
  */
-class RetentionPolicyFragment: BaseVBFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
+class RetentionPolicyFragment: BaseBindingFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)

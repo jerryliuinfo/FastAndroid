@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.fragment.BaseFragment
 
@@ -36,7 +36,7 @@ class BizFragment : BaseFragment() {
             return activity.supportFragmentManager.findFragmentByTag(BIZ_FRAGMENT_TAG) as BizFragment?
         }
 
-        fun createBizFragment(fragment: BaseVBFragment<*>?): BizFragment? {
+        fun createBizFragment(fragment: BaseBindingFragment<*>?): BizFragment? {
             if (fragment != null && fragment.activity != null) {
                 var bizFragment = fragment.activity!!.supportFragmentManager.findFragmentByTag(
                     BIZ_FRAGMENT_TAG

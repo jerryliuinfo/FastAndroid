@@ -3,12 +3,12 @@ package com.apache.fastandroid.demo.widget
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentProgressViewBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/5/1.
  */
-class ProgressViewDemoFragment:BaseVBFragment<FragmentProgressViewBinding>(FragmentProgressViewBinding::inflate){
+class ProgressViewDemoFragment:BaseBindingFragment<FragmentProgressViewBinding>(FragmentProgressViewBinding::inflate){
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 

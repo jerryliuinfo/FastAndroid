@@ -12,13 +12,13 @@ import com.apache.fastandroid.jetpack.flow.adapter.UserAdapter
 import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.network.model.Status
 import com.example.android.architecture.blueprints.todoapp.util.getFlowViewModelFactory
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 
 /**
  * Created by Jerry on 2022/5/12.
  */
-class MapFragment:BaseVBFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
+class MapFragment:BaseBindingFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
 
     private val viewModel:MapViewModel by viewModels { getFlowViewModelFactory() }
     private lateinit var mAdapter: UserAdapter

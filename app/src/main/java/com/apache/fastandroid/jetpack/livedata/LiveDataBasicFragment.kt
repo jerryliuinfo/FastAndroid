@@ -14,13 +14,13 @@ import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.livedata.NetworkLiveData
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.networkStatus
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlin.random.Random
 
 /**
  * Created by Jerry on 2020/11/5.
  */
-class LiveDataBasicFragment : BaseVBFragment<FragmentJetpackLivedataBinding>(FragmentJetpackLivedataBinding::inflate){
+class LiveDataBasicFragment : BaseBindingFragment<FragmentJetpackLivedataBinding>(FragmentJetpackLivedataBinding::inflate){
     companion object{
         val TAG = "LiveDataBasicFragment"
     }

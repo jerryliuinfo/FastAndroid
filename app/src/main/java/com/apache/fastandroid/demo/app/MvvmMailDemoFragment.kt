@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.databinding.FragmentMvvmMailBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.zwb.mvvm_mall.base.viewstate.State
 import com.zwb.mvvm_mall.base.viewstate.StateType
 
@@ -13,7 +13,7 @@ import com.zwb.mvvm_mall.base.viewstate.StateType
  * Created by Jerry on 2022/1/20.
  *
  */
-class MvvmMailDemoFragment: BaseVBFragment<FragmentMvvmMailBinding>(FragmentMvvmMailBinding::inflate) {
+class MvvmMailDemoFragment: BaseBindingFragment<FragmentMvvmMailBinding>(FragmentMvvmMailBinding::inflate) {
 
     private val mViewModel:MailViewModel by viewModels()
 

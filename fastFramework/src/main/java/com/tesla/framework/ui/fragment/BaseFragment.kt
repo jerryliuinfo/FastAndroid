@@ -57,9 +57,11 @@ open abstract class BaseFragment:Fragment(),BaseView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflateView(inflater,container, savedInstanceState)?.also {
+        val rootView =  inflateView(inflater,container, savedInstanceState)?.also {
             mRootView = it
         }
+
+        return rootView
     }
 
     open fun bindUI(rootView: View?) {}

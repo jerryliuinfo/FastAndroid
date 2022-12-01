@@ -7,11 +7,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.apache.fastandroid.demo.adapter.BodyAdapter
-import com.apache.fastandroid.demo.adapter.TitleAdapter
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.databinding.FragmentRecycleview2Binding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import masteryi.me.mergeadapterdemo.FooterAdapter
 import masteryi.me.mergeadapterdemo.HeaderAdapter
 import masteryi.me.mergeadapterdemo.ItemAdapter
@@ -20,7 +18,7 @@ import masteryi.me.mergeadapterdemo.ItemAdapter
 /**
  * Created by Jerry on 2022/6/26.
  */
-class MergeAdapterDemoFragment:BaseVBFragment<FragmentRecycleview2Binding>(FragmentRecycleview2Binding::inflate) {
+class MergeAdapterDemoFragment:BaseBindingFragment<FragmentRecycleview2Binding>(FragmentRecycleview2Binding::inflate) {
 
     private val mViewModel:ContactAdapterViewModel by viewModels()
 

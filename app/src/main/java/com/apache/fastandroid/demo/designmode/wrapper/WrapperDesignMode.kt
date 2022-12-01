@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
 import com.apache.fastandroid.databinding.FragmentCommonBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/10/13.
  */
-class WrapperDesignMode:BaseVBFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
+class WrapperDesignMode:BaseBindingFragment<FragmentCommonBinding>(FragmentCommonBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

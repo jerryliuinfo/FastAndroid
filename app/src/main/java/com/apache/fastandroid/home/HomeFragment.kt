@@ -13,12 +13,12 @@ import com.example.android.architecture.blueprints.todoapp.util.getViewModelFact
 import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayout
 import com.kingja.loadsir.core.LoadService
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseDBFragment
+import com.tesla.framework.ui.fragment.BaseDataBindingFragment
 
 /**
  * Created by Jerry on 2022/4/23.
  */
-class HomeFragment:BaseDBFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+class HomeFragment:BaseDataBindingFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     private val mViewModel:HomeViewModel by viewModels { getViewModelFactory() }
 

@@ -10,13 +10,13 @@ import com.apache.fastandroid.databinding.FragmentViewbindingUsageBinding
 import com.apache.fastandroid.databinding.ItemCommentBinding
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.kt.addOnItemClickListener
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.item_comment.view.*
 
 /**
  * Created by Jerry on 2022/6/4.
  */
-class ViewBindingUsageDemo:BaseVBFragment<FragmentViewbindingUsageBinding>(FragmentViewbindingUsageBinding::inflate) {
+class ViewBindingUsageDemo:BaseBindingFragment<FragmentViewbindingUsageBinding>(FragmentViewbindingUsageBinding::inflate) {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 

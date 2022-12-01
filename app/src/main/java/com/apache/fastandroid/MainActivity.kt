@@ -17,8 +17,10 @@ import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.guide.ActivityPropertyDemoFragment
 import com.apache.fastandroid.demo.guide.GuideDemoListFragment
+import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
 import com.apache.fastandroid.demo.kt.coroutine.CoroutineNetworkDemoFragment
 import com.apache.fastandroid.demo.kt.practice.JuejinKtDemoListFragment
+import com.apache.fastandroid.demo.mmkv.MMKVKtxFragment
 import com.apache.fastandroid.demo.temp.KnowledgeFragment
 import com.apache.fastandroid.jetpack.lifecycle.customlifecycle.CustomLifecycleOwnerFragment
 import com.blankj.utilcode.util.ToastUtils
@@ -124,6 +126,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KotlinTrapDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, LambdaDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null,addTitleBar = false)
+        FragmentContainerActivity.launch(this, MMKVKtxFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, ResourcePoetDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, ListAdapterFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, WebViewFragment::class.java,null,addTitleBar = false)

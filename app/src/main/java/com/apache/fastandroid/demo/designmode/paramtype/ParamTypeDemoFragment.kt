@@ -6,13 +6,13 @@ import com.apache.fastandroid.databinding.FragmentDesignParamTypeBinding
 import com.apache.fastandroid.demo.designmode.proxy.ServiceApiV2
 import com.apache.fastandroid.demo.designmode.proxy.ServiceMgr
 import com.apache.fastandroid.demo.designmode.proxy.WechatApi
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_design_param_type.*
 
 /**
  * Created by Jerry on 2021/9/21.
  */
-class ParamTypeDemoFragment:BaseVBFragment<FragmentDesignParamTypeBinding>(FragmentDesignParamTypeBinding::inflate) {
+class ParamTypeDemoFragment:BaseBindingFragment<FragmentDesignParamTypeBinding>(FragmentDesignParamTypeBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

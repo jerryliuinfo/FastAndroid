@@ -15,7 +15,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.tesla.framework.kt.dpInt
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 
 
@@ -23,7 +23,7 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
  * Created by Jerry on 2022/5/3.
  * https://blog.mindorks.com/terminal-operators-in-kotlin-flow
  */
-class RoomDbFragment:BaseVBFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate){
+class RoomDbFragment:BaseBindingFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate){
 
     private val mViewModel: RoomDbViewModel by viewModels{getViewModelFactory()}
 

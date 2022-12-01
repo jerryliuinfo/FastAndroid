@@ -3,7 +3,7 @@ package com.apache.fastandroid.demo.constraint.practice
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.ConstraintGuidelineBeginEndBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  *layout_constraintGuide_percent
@@ -11,7 +11,7 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
  * app:layout_constraintGuide_end=""
  *
  */
-class ConstraintGuidelineBeginEndFragment: BaseVBFragment<ConstraintGuidelineBeginEndBinding>(
+class ConstraintGuidelineBeginEndFragment: BaseBindingFragment<ConstraintGuidelineBeginEndBinding>(
     ConstraintGuidelineBeginEndBinding::inflate) {
 
 

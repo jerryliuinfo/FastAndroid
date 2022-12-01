@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentDesignModeDelegateBinding
 import com.apache.fastandroid.demo.designmode.proxy.ServiceApi
 import com.apache.fastandroid.demo.designmode.proxy.ServiceApiV2
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_design_mode_proxy.*
 
 /**
  * Created by Jerry on 2021/9/19.
  */
-class DelegateDemoFragment:BaseVBFragment<FragmentDesignModeDelegateBinding>(FragmentDesignModeDelegateBinding::inflate) {
+class DelegateDemoFragment:BaseBindingFragment<FragmentDesignModeDelegateBinding>(FragmentDesignModeDelegateBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

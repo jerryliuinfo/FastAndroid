@@ -15,12 +15,12 @@ import com.apache.fastandroid.widget.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.tesla.framework.kt.dpInt
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/7/19.
  */
-class ListAdapterFragment:BaseVBFragment<FragmentComRecycleviewBinding>(FragmentComRecycleviewBinding::inflate) {
+class ListAdapterFragment:BaseBindingFragment<FragmentComRecycleviewBinding>(FragmentComRecycleviewBinding::inflate) {
 
     private val userAdapter = AlbumListAdapter{
         toast("onClick ${it.name}")

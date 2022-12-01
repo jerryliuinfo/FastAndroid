@@ -9,10 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.apache.fastandroid.R
-import com.apache.fastandroid.databinding.FlowStepOneFragmentBinding
-import com.apache.fastandroid.databinding.FragmentNavHomeBinding
-import com.apache.fastandroid.databinding.FragmentStepOneBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
 
 /**
  * Created by Jerry on 2022/3/11.

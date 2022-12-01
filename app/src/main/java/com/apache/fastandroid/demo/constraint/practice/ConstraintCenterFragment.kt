@@ -1,7 +1,7 @@
 package com.apache.fastandroid.demo.constraint.practice
 
 import com.apache.fastandroid.databinding.ConstraintCenterBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2020/11/19.
@@ -14,6 +14,6 @@ android:layout_alignParentLeft="true"
 android:layout_alignParentRight="true"，
  则开发者在xml中定义的Textview的宽度不会生效，会被拉伸至屏幕宽度
  */
-class ConstraintCenterFragment: BaseVBFragment<ConstraintCenterBinding>(ConstraintCenterBinding::inflate) {
+class ConstraintCenterFragment: BaseBindingFragment<ConstraintCenterBinding>(ConstraintCenterBinding::inflate) {
 
 }

@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import androidx.recyclerview.widget.GridLayoutManager
 import com.apache.fastandroid.R
 import com.tesla.framework.databinding.FragmentRecycleview2Binding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import masteryi.me.mergeadapterdemo.ItemAdapter
 
 /**
  * Created by Jerry on 2022/6/26.
  */
-class GridLayoutManagerSpanSizeDemoFragment:BaseVBFragment<FragmentRecycleview2Binding>(FragmentRecycleview2Binding::inflate) {
+class GridLayoutManagerSpanSizeDemoFragment:BaseBindingFragment<FragmentRecycleview2Binding>(FragmentRecycleview2Binding::inflate) {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 

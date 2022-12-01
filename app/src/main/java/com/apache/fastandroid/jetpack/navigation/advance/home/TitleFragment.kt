@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import androidx.navigation.findNavController
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentAdvanceNavTitleBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/3/12.
  */
-class TitleFragment:BaseVBFragment<FragmentAdvanceNavTitleBinding>(FragmentAdvanceNavTitleBinding::inflate) {
+class TitleFragment:BaseBindingFragment<FragmentAdvanceNavTitleBinding>(FragmentAdvanceNavTitleBinding::inflate) {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 

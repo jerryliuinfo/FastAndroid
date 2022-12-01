@@ -13,12 +13,12 @@ import com.apache.fastandroid.databinding.FragmentBottomTabsBinding
 import com.apache.fastandroid.databinding.MainTabItemBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.tesla.framework.ui.fragment.BaseDBFragment
+import com.tesla.framework.ui.fragment.BaseDataBindingFragment
 
 /**
  * Created by Jerry on 2022/4/30.
  */
-class BottomTabsFragment:BaseDBFragment<FragmentBottomTabsBinding>(FragmentBottomTabsBinding::inflate) {
+class BottomTabsFragment:BaseDataBindingFragment<FragmentBottomTabsBinding>(FragmentBottomTabsBinding::inflate) {
 
     private val tabTexts = arrayOf("首页", "导航", "问答", "项目", "我的")
     private val tabDrawable = intArrayOf(

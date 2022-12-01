@@ -12,7 +12,7 @@ import com.blankj.utilcode.util.ToastUtils
 import com.google.android.material.snackbar.Snackbar
 import com.tesla.framework.component.mvicore.observeEvent
 import com.tesla.framework.component.mvicore.observeState
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/1/20.
@@ -21,7 +21,7 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
  * https://proandroiddev.com/best-architecture-for-android-mvi-livedata-viewmodel-71a3a5ac7ee3
  * https://juejin.cn/post/6920427168749060110
  */
-class MviDemoFragment: BaseVBFragment<FragmentMviBinding>(FragmentMviBinding::inflate) {
+class MviDemoFragment: BaseBindingFragment<FragmentMviBinding>(FragmentMviBinding::inflate) {
 
     private val viewModel: MviViewModel by viewModels{InjectorUtil.getMviModelFactory()}
 

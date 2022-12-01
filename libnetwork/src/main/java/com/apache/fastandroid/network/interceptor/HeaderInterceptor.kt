@@ -14,9 +14,9 @@ import java.lang.Exception
 class HeaderInterceptor : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
-        val request: Request = chain.request()
+        val originRequest: Request = chain.request()
         //添加公共请求头
-        val newBuilder = chain.request().newBuilder()
+        val newBuilder = originRequest.newBuilder()
             .apply {
                 addHeader("brand", Build.BRAND)
                 addHeader("model", Build.MODEL)

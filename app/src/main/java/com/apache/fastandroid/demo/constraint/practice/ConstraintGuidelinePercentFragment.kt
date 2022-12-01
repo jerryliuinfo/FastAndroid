@@ -1,7 +1,7 @@
 package com.apache.fastandroid.demo.constraint.practice
 
 import com.apache.fastandroid.databinding.ConstraintGuidelinePercentBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  *layout_constraintGuide_percent
@@ -9,6 +9,6 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
  * app:layout_constraintGuide_end=""
  *
  */
-class ConstraintGuidelinePercentFragment: BaseVBFragment<ConstraintGuidelinePercentBinding>(ConstraintGuidelinePercentBinding::inflate) {
+class ConstraintGuidelinePercentFragment: BaseBindingFragment<ConstraintGuidelinePercentBinding>(ConstraintGuidelinePercentBinding::inflate) {
 
 }

@@ -10,12 +10,12 @@ import com.apache.fastandroid.util.extensitons.runOnUIDelay
 import com.apache.fastandroid.util.extensitons.showEmpty
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by  on 2021/12/18.
  */
-class LoadSirLottieActivity:BaseVBFragment<LoadsirActivityActivityConvertorBinding>(LoadsirActivityActivityConvertorBinding::inflate) {
+class LoadSirLottieActivity:BaseBindingFragment<LoadsirActivityActivityConvertorBinding>(LoadsirActivityActivityConvertorBinding::inflate) {
 
     private lateinit var loadService: LoadService<Any>
 

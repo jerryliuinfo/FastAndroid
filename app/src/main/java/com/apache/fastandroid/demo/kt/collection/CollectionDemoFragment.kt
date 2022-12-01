@@ -7,15 +7,14 @@ import com.apache.fastandroid.demo.bean.Animal
 import com.apache.fastandroid.demo.bean.Cat
 import com.apache.fastandroid.demo.bean.Dog
 import com.apache.fastandroid.demo.bean.UserBean
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/2/27.
  */
 class CollectionDemoFragment :
-    BaseVBFragment<FragmentKtCollectionBinding>(FragmentKtCollectionBinding::inflate) {
+    BaseBindingFragment<FragmentKtCollectionBinding>(FragmentKtCollectionBinding::inflate) {
 
     private val numberMap = hashMapOf("one" to 1, "two" to 2, "three" to 3)
     private val list = mutableListOf(1, 10, 5, 7, 5)

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentMmkvBinding
 import com.tencent.mmkv.MMKV
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_mmkv.*
 import java.util.*
 
@@ -13,7 +13,7 @@ import java.util.*
 /**
  * Created by Jerry on 2021/8/31.
  */
-class MMKVFragment: BaseVBFragment<FragmentMmkvBinding>(FragmentMmkvBinding::inflate) {
+class MMKVFragment: BaseBindingFragment<FragmentMmkvBinding>(FragmentMmkvBinding::inflate) {
     companion object{
         private const val TAG = "MMKVFragment"
     }

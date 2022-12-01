@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import com.apache.fastandroid.databinding.FragmentCoroutineExceptionBinding
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.blankj.utilcode.util.ToastUtils
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.*
 
 /**
@@ -14,7 +14,7 @@ import kotlinx.coroutines.*
  * 协程异常处理
  * 参考：https://medium.com/androiddevelopers/exceptions-in-coroutines-ce8da1ec060c
  */
-class CoroutineExceptionDemoFragment:BaseVBFragment<FragmentCoroutineExceptionBinding>(FragmentCoroutineExceptionBinding::inflate) {
+class CoroutineExceptionDemoFragment:BaseBindingFragment<FragmentCoroutineExceptionBinding>(FragmentCoroutineExceptionBinding::inflate) {
     companion object{
         private const val TAG = "CoroutineCancelDemoFragment"
         private const val ARTICLE_ID = 21613L

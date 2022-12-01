@@ -5,15 +5,13 @@ import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import com.apache.fastandroid.databinding.FragmentCoroutineNetworkBinding
 import com.apache.fastandroid.demo.kt.coroutine.vm.RetrofitViewModel
-import com.apache.fastandroid.network.model.Status
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/10/27.
  */
-class CoroutineNetworkDemoFragment:BaseVBFragment<FragmentCoroutineNetworkBinding>(FragmentCoroutineNetworkBinding::inflate) {
-
+class CoroutineNetworkDemoFragment:BaseBindingFragment<FragmentCoroutineNetworkBinding>(FragmentCoroutineNetworkBinding::inflate) {
 
     private val mViewModel: RetrofitViewModel by viewModels { getViewModelFactory() }
 

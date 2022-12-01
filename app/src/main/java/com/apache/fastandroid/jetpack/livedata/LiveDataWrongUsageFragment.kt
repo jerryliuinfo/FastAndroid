@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentJetpackLivedataWrongUsageBinding
 
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2020/11/5.
  */
-class LiveDataWrongUsageFragment : BaseVBFragment<FragmentJetpackLivedataWrongUsageBinding>(FragmentJetpackLivedataWrongUsageBinding::inflate){
+class LiveDataWrongUsageFragment : BaseBindingFragment<FragmentJetpackLivedataWrongUsageBinding>(FragmentJetpackLivedataWrongUsageBinding::inflate){
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {

@@ -4,16 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCoroutineCancelBinding
 import com.blankj.utilcode.util.ToastUtils
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.*
-import kotlin.coroutines.Continuation
 
 /**
  * Created by Jerry on 2021/10/28.
  * 协程取消
  * 参考：https://medium.com/androiddevelopers/cancellation-in-coroutines-aa6b90163629
  */
-class CoroutineCancelDemoFragment:BaseVBFragment<FragmentCoroutineCancelBinding>(FragmentCoroutineCancelBinding::inflate) {
+class CoroutineCancelDemoFragment:BaseBindingFragment<FragmentCoroutineCancelBinding>(FragmentCoroutineCancelBinding::inflate) {
     companion object{
         private const val TAG = "CoroutineCancelDemoFragment"
     }

@@ -13,14 +13,14 @@ import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.Convertor
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.util.*
 import kotlin.concurrent.thread
 
 /**
  * Created by  on 2021/12/18.
  */
-class LoadSirConvertorActivity:BaseVBFragment<LoadsirActivityActivityConvertorBinding>(LoadsirActivityActivityConvertorBinding::inflate) {
+class LoadSirConvertorActivity:BaseBindingFragment<LoadsirActivityActivityConvertorBinding>(LoadsirActivityActivityConvertorBinding::inflate) {
     private val mHttpResult = HttpResult(Random().nextInt(2), ArrayList())
     private val SUCCESS_CODE = 0x00
     private val ERROR_CODE = 0x01

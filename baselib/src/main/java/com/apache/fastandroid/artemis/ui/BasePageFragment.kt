@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.artemis.ui.adapter.PageAdapter
 import com.apache.fastandroid.artemis.ui.bean.PageModel
 import com.tesla.framework.databinding.FragmentPracticeDemoBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/3/8.
  */
-abstract class BasePageFragment : BaseVBFragment<FragmentPracticeDemoBinding>(FragmentPracticeDemoBinding::inflate){
+abstract class BasePageFragment : BaseBindingFragment<FragmentPracticeDemoBinding>(FragmentPracticeDemoBinding::inflate){
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

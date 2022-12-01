@@ -3,7 +3,7 @@ package com.apache.fastandroid.jetpack.flow
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCoroutineFlowBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlin.system.measureTimeMillis
@@ -14,7 +14,7 @@ import kotlin.system.measureTimeMillis
  * 参考：https://book.kotlincn.net/text/flow.html
  */
 class FlowDemoFragment :
-    BaseVBFragment<FragmentCoroutineFlowBinding>(FragmentCoroutineFlowBinding::inflate) {
+    BaseBindingFragment<FragmentCoroutineFlowBinding>(FragmentCoroutineFlowBinding::inflate) {
     companion object {
         private const val TAG = "FlowBasicUsageFragment"
 

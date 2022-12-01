@@ -1,11 +1,11 @@
 package com.apache.fastandroid.demo.constraint.practice
 
 import com.apache.fastandroid.databinding.ConstraintBiasBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  *
  */
-class ConstraintBiasFragment: BaseVBFragment<ConstraintBiasBinding>(ConstraintBiasBinding::inflate) {
+class ConstraintBiasFragment: BaseBindingFragment<ConstraintBiasBinding>(ConstraintBiasBinding::inflate) {
 
 }

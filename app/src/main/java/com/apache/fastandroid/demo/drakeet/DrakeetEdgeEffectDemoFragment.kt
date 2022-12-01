@@ -6,7 +6,7 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentComRecycleviewBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_com_recycleview.*
 
 
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_com_recycleview.*
  *
  */
 
-class DrakeetEdgeEffectDemoFragment : BaseVBFragment<FragmentComRecycleviewBinding>(FragmentComRecycleviewBinding::inflate) {
+class DrakeetEdgeEffectDemoFragment : BaseBindingFragment<FragmentComRecycleviewBinding>(FragmentComRecycleviewBinding::inflate) {
 
    private lateinit var mAdapter: BaseQuickAdapter<String, BaseViewHolder>
 

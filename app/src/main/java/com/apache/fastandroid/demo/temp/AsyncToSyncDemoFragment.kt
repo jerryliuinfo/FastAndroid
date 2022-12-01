@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.TempAsynctosyncUsageDemoBinding
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.temp_asynctosync_usage_demo.*
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.ThreadLocalRandom
@@ -14,7 +14,7 @@ import kotlin.concurrent.thread
 /**
  * Created by Jerry on 2021/10/27.
  */
-class AsyncToSyncDemoFragment:BaseVBFragment<TempAsynctosyncUsageDemoBinding>(TempAsynctosyncUsageDemoBinding::inflate) {
+class AsyncToSyncDemoFragment:BaseBindingFragment<TempAsynctosyncUsageDemoBinding>(TempAsynctosyncUsageDemoBinding::inflate) {
     companion object{
         private  const val TAG = "ApiDemoFragment"
     }

@@ -2,11 +2,10 @@ package com.apache.fastandroid.demo.coorinator
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.databinding.CoordinatorScrollflagsEnteralwaysBinding
 import com.apache.fastandroid.databinding.CoordinatorScrollflagsExituntilCollapseBinding
 
 
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2020/11/19.
@@ -15,7 +14,7 @@ import com.tesla.framework.ui.fragment.BaseVBFragment
  * 您需要滚动到页面顶部。当你向下滚动时，正常的滚动就会像其他的 ScrollView 一样出现。
  */
 class CoordinatorExitUntilCollapseFragment :
-    BaseVBFragment<CoordinatorScrollflagsExituntilCollapseBinding>(CoordinatorScrollflagsExituntilCollapseBinding::inflate) {
+    BaseBindingFragment<CoordinatorScrollflagsExituntilCollapseBinding>(CoordinatorScrollflagsExituntilCollapseBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

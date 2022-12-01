@@ -8,12 +8,12 @@ import com.apache.fastandroid.demo.component.loadsir.callback.PlaceholderCallbac
 import com.apache.fastandroid.demo.kt.extensions.loadSirOptions
 import com.apache.fastandroid.util.extensitons.runOnUIDelay
 import com.kingja.loadsir.core.LoadSir
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by  on 2021/12/18.
  */
-class LoadSirPlaceholderActivity:BaseVBFragment<LoadsirLayoutPlaceholderBinding>(LoadsirLayoutPlaceholderBinding::inflate) {
+class LoadSirPlaceholderActivity:BaseBindingFragment<LoadsirLayoutPlaceholderBinding>(LoadsirLayoutPlaceholderBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

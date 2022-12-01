@@ -1,19 +1,14 @@
 package com.apache.fastandroid.demo.jni
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.TextView
 import androidx.annotation.Keep
 import com.apache.fastandroid.databinding.ActivityJniCallbackBinding
-import com.apache.fastandroid.databinding.FragmentJniDemoBinding
 import com.tesla.framework.kt.runOnUiThread
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/6/5.
  */
-class JniCCallJavaDemoFragment:BaseVBFragment<ActivityJniCallbackBinding>(ActivityJniCallbackBinding::inflate) {
+class JniCCallJavaDemoFragment:BaseBindingFragment<ActivityJniCallbackBinding>(ActivityJniCallbackBinding::inflate) {
 
     var hour = 0
     var minute = 0

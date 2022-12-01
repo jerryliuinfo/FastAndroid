@@ -3,12 +3,12 @@ package com.apache.fastandroid.demo
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentToolsBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/5/22.
  */
-class ToolsFragment:BaseVBFragment<FragmentToolsBinding>(FragmentToolsBinding::inflate) {
+class ToolsFragment:BaseBindingFragment<FragmentToolsBinding>(FragmentToolsBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

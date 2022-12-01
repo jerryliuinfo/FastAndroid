@@ -6,12 +6,12 @@ import com.apache.fastandroid.databinding.FragmentKotlinTrapBinding
 import com.apache.fastandroid.demo.bean.Person
 import com.blankj.utilcode.util.GsonUtils
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/6/28.
  */
-class KotlinTrapDemoFragment :BaseVBFragment<FragmentKotlinTrapBinding>(FragmentKotlinTrapBinding::inflate){
+class KotlinTrapDemoFragment :BaseBindingFragment<FragmentKotlinTrapBinding>(FragmentKotlinTrapBinding::inflate){
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 

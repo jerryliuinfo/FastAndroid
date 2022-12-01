@@ -13,12 +13,12 @@ import com.apache.fastandroid.databinding.FragmentTransitionBinding
 import com.google.android.material.transition.platform.MaterialArcMotion
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.tesla.framework.component.imageloader.ImageLoaderManager
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/11/10.
  */
-class TransitionDemoFragment: BaseVBFragment<FragmentTransitionBinding>(FragmentTransitionBinding::inflate) {
+class TransitionDemoFragment: BaseBindingFragment<FragmentTransitionBinding>(FragmentTransitionBinding::inflate) {
 
 
 

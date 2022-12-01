@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentJetpackLifecycleBinding
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.lifecycle.LifecycleHandler
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2020/10/31.
  * 不会内存泄漏的Handler
  */
-class LifecycleHandlerFragment: BaseVBFragment<FragmentJetpackLifecycleBinding>(FragmentJetpackLifecycleBinding::inflate) {
+class LifecycleHandlerFragment: BaseBindingFragment<FragmentJetpackLifecycleBinding>(FragmentJetpackLifecycleBinding::inflate) {
 
     private lateinit var lifecycleHandler:LifecycleHandler
 

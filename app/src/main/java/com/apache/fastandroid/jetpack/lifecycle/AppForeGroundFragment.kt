@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.apache.fastandroid.databinding.FragmentJetpackLifecycleForegroundBinding
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2020/10/31.
  */
 class AppForeGroundFragment :
-    BaseVBFragment<FragmentJetpackLifecycleForegroundBinding>(FragmentJetpackLifecycleForegroundBinding::inflate),
+    BaseBindingFragment<FragmentJetpackLifecycleForegroundBinding>(FragmentJetpackLifecycleForegroundBinding::inflate),
     TraditionalProcessLifecycleListener.LifecycleCallbackListener {
 
 

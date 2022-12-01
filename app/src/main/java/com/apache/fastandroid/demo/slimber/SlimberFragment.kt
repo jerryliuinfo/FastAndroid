@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentSlimberBinding
 import com.tesla.framework.component.logD
 import com.tesla.framework.component.logV
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import timber.log.Timber
 
 
@@ -13,7 +13,7 @@ import timber.log.Timber
  * Created by Jerry on 2021/8/31.
  * https://github.com/DylanCaiCoding/MMKV-KTX
  */
-class SlimberFragment: BaseVBFragment<FragmentSlimberBinding>(FragmentSlimberBinding::inflate) {
+class SlimberFragment: BaseBindingFragment<FragmentSlimberBinding>(FragmentSlimberBinding::inflate) {
     companion object{
         private const val TAG = "MMKVFragment"
     }

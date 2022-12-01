@@ -14,12 +14,12 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentAgentWebInActivityBinding
 import com.just.agentweb.*
 import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/9/23.
  */
-open class AgentWebFragment:BaseVBFragment<FragmentAgentWebInActivityBinding>(FragmentAgentWebInActivityBinding::inflate) {
+open class AgentWebFragment:BaseBindingFragment<FragmentAgentWebInActivityBinding>(FragmentAgentWebInActivityBinding::inflate) {
 
     companion object{
         private const val TAG = "AgentWebFragment"

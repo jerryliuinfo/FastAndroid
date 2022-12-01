@@ -10,10 +10,10 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.component.once.Amount
 import com.apache.fastandroid.component.once.Once
 import com.apache.fastandroid.databinding.FragmentComponentOnceBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.util.concurrent.TimeUnit
 
-class OnceFragment : BaseVBFragment<FragmentComponentOnceBinding>(FragmentComponentOnceBinding::inflate) {
+class OnceFragment : BaseBindingFragment<FragmentComponentOnceBinding>(FragmentComponentOnceBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

@@ -6,12 +6,12 @@ import com.apache.fastandroid.databinding.FragmentGenericTypeBinding
 import com.apache.fastandroid.demo.kt.generics.supply.WaterSupply
 import com.apache.fastandroid.demo.kt.generics.supply.impl.LakeWater
 import com.apache.fastandroid.demo.kt.generics.supply.impl.TapWater
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/2/27.
  */
-class GenericDemoFragment:BaseVBFragment<FragmentGenericTypeBinding>(FragmentGenericTypeBinding::inflate) {
+class GenericDemoFragment:BaseBindingFragment<FragmentGenericTypeBinding>(FragmentGenericTypeBinding::inflate) {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 

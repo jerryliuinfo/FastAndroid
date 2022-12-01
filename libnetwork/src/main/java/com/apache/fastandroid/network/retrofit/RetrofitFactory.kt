@@ -1,9 +1,7 @@
 package com.apache.fastandroid.network.retrofit
 import android.os.Build
 import com.apache.fastandroid.network.calladapter.LiveDataCallAdapterFactory
-import com.apache.fastandroid.network.interceptor.CookieInterceptor
-import com.apache.fastandroid.network.interceptor.NetLogInterceptor
-import com.apache.fastandroid.network.interceptor.LoginInterceptor
+import com.apache.fastandroid.network.interceptor.*
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -83,7 +81,10 @@ class RetrofitFactory private constructor() {
             }
 
         }.apply {
-//            addInterceptor(HeaderInterceptor())
+            addInterceptor(HeaderInterceptor())
+            //处理错误码的拦截器 https://juejin.cn/post/6844903975028785159?share_token=c0d3237c-1ab3-4b7c-834f-07b502b865ea
+            addInterceptor(HandleHttpCodeInterceptor())
+            addInterceptor(HandleErrorInterceptor())
             addInterceptor(NetLogInterceptor())
             addInterceptor(CookieInterceptor())
             addInterceptor(LoginInterceptor())

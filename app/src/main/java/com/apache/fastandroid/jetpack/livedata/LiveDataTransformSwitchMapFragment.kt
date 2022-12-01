@@ -9,14 +9,14 @@ import com.apache.fastandroid.jetpack.reporsity.UserNetwork
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
 import com.tesla.framework.common.util.SimpleTextWatcher
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_map.text_name
 import kotlinx.android.synthetic.main.fragment_jetpack_livedata_transform_switch_map.*
 
 /**
  * Created by Jerry on 2021/2/7.
  */
-class LiveDataTransformSwitchMapFragment: BaseVBFragment<FragmentJetpackLivedataTransformSwitchMapBinding>(
+class LiveDataTransformSwitchMapFragment: BaseBindingFragment<FragmentJetpackLivedataTransformSwitchMapBinding>(
     FragmentJetpackLivedataTransformSwitchMapBinding::inflate) {
     companion object{
         private const val TAG = "LiveDataTransformMapFragment"

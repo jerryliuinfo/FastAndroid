@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.KtDelegateBinding
 import com.apache.fastandroid.demo.kt.ByTest
 import com.tesla.framework.kt.SPreference
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlin.properties.Delegates
 
 /**
  * Created by Jerry on 2021/10/18.
  */
-class KotlinDelegateFragment:BaseVBFragment<KtDelegateBinding>(KtDelegateBinding::inflate) {
+class KotlinDelegateFragment:BaseBindingFragment<KtDelegateBinding>(KtDelegateBinding::inflate) {
     companion object{
         private const val TAG = "KotlinDelegateFragment"
     }

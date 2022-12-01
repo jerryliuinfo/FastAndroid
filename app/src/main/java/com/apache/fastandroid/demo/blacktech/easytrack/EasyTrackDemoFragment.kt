@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentBlacktrackEasytrackBinding
 import com.apache.fastandroid.demo.track.statistics.StatisticsUtils
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/1/15.
  */
-class EasyTrackDemoFragment:BaseVBFragment<FragmentBlacktrackEasytrackBinding>(FragmentBlacktrackEasytrackBinding::inflate) {
+class EasyTrackDemoFragment:BaseBindingFragment<FragmentBlacktrackEasytrackBinding>(FragmentBlacktrackEasytrackBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

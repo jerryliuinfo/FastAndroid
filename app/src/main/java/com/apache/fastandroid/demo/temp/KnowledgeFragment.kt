@@ -2,7 +2,6 @@ package com.apache.fastandroid.demo.temp
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.graphics.Rect
 import android.net.ConnectivityManager
 import android.net.Network
@@ -18,8 +17,6 @@ import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.fragment.app.DialogFragment
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentTempKnowledgeBinding
 import com.apache.fastandroid.demo.temp.concurrency.Player
@@ -33,10 +30,9 @@ import com.tesla.framework.component.ignore.IgnoreFirstEventListener
 import com.tesla.framework.component.ignore.IgnoreMultiEventListener
 import com.tesla.framework.component.livedata.NetworkLiveData
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.zwb.lib_base.utils.network.AutoRegisterNetListener
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
-import com.zwb.lib_base.utils.network.NetworkStateClient
 import com.zwb.lib_base.utils.network.NetworkTypeEnum
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
 import java.util.concurrent.TimeUnit
@@ -45,7 +41,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by Jerry on 2021/9/6.
  */
-class KnowledgeFragment: BaseVBFragment<FragmentTempKnowledgeBinding>(FragmentTempKnowledgeBinding::inflate),
+class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(FragmentTempKnowledgeBinding::inflate),
     NetworkStateChangeListener {
     private val items:MutableList<String> = ArrayList()
     companion object{

@@ -6,16 +6,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FragmentCoroutineBennyhuoBinding
 import com.apache.fastandroid.home.HomeViewModel
-import com.apache.fastandroid.util.InjectorUtil
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.*
 
 /**
  * Created by Jerry on 2022/3/20.
  */
-class BennyHuoCoroutineDemoFragment:BaseVBFragment<FragmentCoroutineBennyhuoBinding>(FragmentCoroutineBennyhuoBinding::inflate) {
+class BennyHuoCoroutineDemoFragment:BaseBindingFragment<FragmentCoroutineBennyhuoBinding>(FragmentCoroutineBennyhuoBinding::inflate) {
 
     private val viewModel:HomeViewModel by viewModels{getViewModelFactory()}
 

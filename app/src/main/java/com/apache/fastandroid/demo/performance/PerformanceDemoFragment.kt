@@ -19,8 +19,6 @@ class PerformanceDemoFragment: BaseListFragment() {
                 ViewItemBean("AnrWatchDog", "AnrWatchDog", AnrWatchDogDemoFragment::class.java)
                 ,ViewItemBean("BlockCancary", "BlockCancary", BlockCancaryDemoFragment::class.java)
                 ,ViewItemBean("LargetImageMonitor", "大图监控", LargeImageDemoFragment::class.java)
-                 ,ViewItemBean("MMKV", "MMKV", MMKVFragment::class.java)
-                 ,ViewItemBean("MMKV扩展库", "MMKV扩展库", MMKVKtxFragment::class.java)
                  ,ViewItemBean("Slimber", "Slimber", SlimberFragment::class.java)
 
                  ,ViewItemBean("TaskDispatcher", "TaskDispatcher", TaskDispatcherDemoFragment::class.java)

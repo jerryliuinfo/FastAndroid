@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentBestpayBinding
 import com.apache.fastandroid.demo.bean.WxPayResp
 import com.apache.fastandroid.demo.bestpay.wxpay.WxPay
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/1/15.
  */
-class BestPayDemoFragment:BaseVBFragment<FragmentBestpayBinding>(FragmentBestpayBinding::inflate) {
+class BestPayDemoFragment:BaseBindingFragment<FragmentBestpayBinding>(FragmentBestpayBinding::inflate) {
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

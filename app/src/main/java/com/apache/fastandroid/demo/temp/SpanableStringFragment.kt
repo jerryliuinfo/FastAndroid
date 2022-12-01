@@ -12,12 +12,12 @@ import android.view.View
 import android.widget.TextView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentSpannableStringBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2021/1/20.
  */
-class SpanableStringFragment : BaseVBFragment<FragmentSpannableStringBinding>(FragmentSpannableStringBinding::inflate) {
+class SpanableStringFragment : BaseBindingFragment<FragmentSpannableStringBinding>(FragmentSpannableStringBinding::inflate) {
     private lateinit var mChildrenPrivacyText: TextView
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

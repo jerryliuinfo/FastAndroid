@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import com.apache.fastandroid.databinding.FragmentSandswitchBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/5/1.
  */
-class SandWitchDemoFragment:BaseVBFragment<FragmentSandswitchBinding>(FragmentSandswitchBinding::inflate) {
+class SandWitchDemoFragment:BaseBindingFragment<FragmentSandswitchBinding>(FragmentSandswitchBinding::inflate) {
 
     private val mViewModel:SandSwitchViewModel by viewModels()
 

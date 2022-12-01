@@ -11,7 +11,7 @@ import com.tesla.framework.ui.fragment.tab.MyFragmentStateAdapter
 /**
  * 对TabLayout的封装
  */
-abstract class ATabsTabLayoutFragmentNew : BaseVBFragment<FragmentTablayoutBinding>(FragmentTablayoutBinding::inflate) {
+abstract class ATabsTabLayoutFragmentNew : BaseBindingFragment<FragmentTablayoutBinding>(FragmentTablayoutBinding::inflate) {
 
     private lateinit var mAdapter:MyFragmentStateAdapter
 

@@ -7,14 +7,14 @@ import kotlinx.android.synthetic.main.drakeet_textview.*
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import com.apache.fastandroid.databinding.DrakeetTextviewBinding
-import com.tesla.framework.ui.fragment.BaseVBFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 
 /**
  * Created by Jerry on 2021/11/7.
  * https://t.zsxq.com/VfmEiIA
  */
-class DrakeetTextviewFragment:BaseVBFragment<DrakeetTextviewBinding>(DrakeetTextviewBinding::inflate) {
+class DrakeetTextviewFragment:BaseBindingFragment<DrakeetTextviewBinding>(DrakeetTextviewBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
