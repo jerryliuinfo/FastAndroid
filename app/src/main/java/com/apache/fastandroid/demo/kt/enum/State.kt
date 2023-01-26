@@ -8,3 +8,10 @@ enum class State {
     RUNNING,
     FINISHED,
 }
+
+
+enum class Grade(private val age:Int, private val desc:String) {
+    PRIMARY(6, "小学"),
+    MIDDLE(9,"中学"),
+    University(18, "大学"),
+}

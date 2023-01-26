@@ -12,17 +12,19 @@ import com.apache.fastandroid.demo.kt.genericity.*
 import com.blankj.utilcode.util.GsonUtils
 import com.google.gson.Gson
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.fromJson2
+import com.tesla.framework.kt.getMySystemService
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.io.File
 
 /**
  * Created by Jerry on 2021/10/18.
+ * done
  */
 class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2Binding::inflate) {
     companion object{
         private const val TAG = "KotlinKnowledgeFragment2"
     }
-
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
@@ -93,7 +95,7 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
             val userBean2 = Gson().fromJson2<UserBean>(json)
             println("json: $json, userBean2 name:${userBean2.name}, age:${userBean2.age}")
 
-            val manage:ActivityManager? = activity?.getSystemService<ActivityManager>()
+            val manage:ActivityManager? = activity?.getMySystemService<ActivityManager>()
         }
 
         mBinding.btnKtClassRealGenericity.setOnClickListener {
@@ -127,7 +129,7 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
             //这里只会 return 调匿名函数本身
             return
         }
-        println("hello")
+        test.invoke()
     }
 
 
@@ -166,12 +168,12 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
         Logger.d("lambdaFunc length:$length")
     }
 
-    private inline fun inlineFun(l: () -> Unit){
-        l.invoke()
+    private inline fun inlineFun(block: () -> Unit){
+        block.invoke()
     }
 
-    private inline fun crossinlineFun(crossinline l: () -> Unit){
-        l.invoke()
+    private inline fun crossinlineFun(crossinline block: () -> Unit){
+        block.invoke()
     }
 
 
@@ -244,6 +246,7 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
      * 运算符重载
      */
     private fun testOperatorOverload(){
+        //..  重载了 rangeTo
         for (i in 1..100 step 20){
             println("testOperatorOverload $i")
         }

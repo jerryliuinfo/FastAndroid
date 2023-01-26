@@ -17,7 +17,11 @@ class UserInfoViewModel(private val reporsity: UserReporsity):BaseStatusViewMode
 
     val countLiveData:MutableLiveData<Int> = MutableLiveData(0)
 
-    val postCardLiveData = MutableLiveData<String>()
+    val postCardLiveData: MutableLiveData<String> by lazy {
+        //初始化调用
+        loadPostCard("beijing")
+        MutableLiveData<String>()
+    }
 
     fun plusNew(){
         countLiveData.value = (countLiveData.value?.plus(1))

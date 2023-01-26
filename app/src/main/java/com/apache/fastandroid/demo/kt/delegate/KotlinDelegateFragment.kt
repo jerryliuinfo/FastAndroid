@@ -20,13 +20,11 @@ class KotlinDelegateFragment:BaseBindingFragment<KtDelegateBinding>(KtDelegateBi
         super.layoutInit(inflater, savedInstanceState)
 
         mBinding.btnSp.setOnClickListener {
-
             spByDelegate()
         }
 
         mBinding.btnKeywordBy.setOnClickListener {
-            ByTest.Zoo(ByTest.Cat()).bark()
-
+            classDelegate()
         }
         mBinding.btnByDelegate.setOnClickListener {
             ByTest.ZooBy(ByTest.Cat()).bark()
@@ -44,13 +42,30 @@ class KotlinDelegateFragment:BaseBindingFragment<KtDelegateBinding>(KtDelegateBi
             savePropertyToMap()
         }
 
-
-
     }
+
+    private fun classDelegate() {
+        //委托类
+        val tomAraya = TomAraya("Thrash Metal")
+        tomAraya.makeSound()
+
+        val elvisPresley = ElvisPresley("Dancin' to the Jailhouse Rock")
+        elvisPresley.makeSound()
+
+        ByTest.Zoo(ByTest.Cat()).bark()
+    }
+
 
     private fun spByDelegate() {
         val name:String by SPreference("name","zhangsan")
         println(name)
+
+        //委托属性
+
+        val delegateDemo = DelegateDemo()
+        println("p:${delegateDemo.p}")
+        delegateDemo.p = "New"
+        println("p:${delegateDemo.p}")
     }
 
 

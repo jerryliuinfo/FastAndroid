@@ -15,14 +15,8 @@ import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.guide.ActivityPropertyDemoFragment
-import com.apache.fastandroid.demo.guide.GuideDemoListFragment
-import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
-import com.apache.fastandroid.demo.kt.coroutine.CoroutineNetworkDemoFragment
-import com.apache.fastandroid.demo.kt.practice.JuejinKtDemoListFragment
-import com.apache.fastandroid.demo.mmkv.MMKVKtxFragment
-import com.apache.fastandroid.demo.temp.KnowledgeFragment
-import com.apache.fastandroid.jetpack.lifecycle.customlifecycle.CustomLifecycleOwnerFragment
+import com.apache.fastandroid.demo.guide.appdata.AppDataDemoFragment
+import com.apache.fastandroid.demo.searchPreference.SearchPreferenceDemoListFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
@@ -126,18 +120,23 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KotlinTrapDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, LambdaDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null,addTitleBar = false)
-        FragmentContainerActivity.launch(this, MMKVKtxFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, MMKVKtxFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, DatabindingViewModelFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, ResourcePoetDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, ListAdapterFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, WebViewFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, GuideDemoListFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, KotlinDemoListFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, CoroutineNetworkDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, ActivityPropertyDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, SearchPreferenceDemoListFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, AppDataDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 
 //        launchActivity<ImmerseStatusBarDemoActivity>(this)
 //         launchActivity<HitDemoActivity>(this)
+//         launchActivity<BundleDemoActivity>(this)
 
 //        launchActivity<TasksActivity>(this)
 

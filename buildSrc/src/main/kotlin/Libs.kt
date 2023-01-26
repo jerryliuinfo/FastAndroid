@@ -43,8 +43,8 @@ object Libs {
 
 
 
-    const val agp = "com.android.tools.build:gradle:${Versions.agp}"
-    const val kgp = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
+//    const val agp = "com.android.tools.build:gradle:${Versions.agp}"
+//    const val kgp = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
 
     const val room_compiler = "androidx.room:room-compiler:${Versions.Room}"
     const val viewPage2 = "androidx.viewpager2:viewpager2:${Versions.viewPager2}"
@@ -120,6 +120,10 @@ object Libs {
         //敏感词检测
         "com.github.houbb:sensitive-word:0.2.0",
         arouter_api,
+//        https://github.com/skydoves/Bundler
+        "com.github.skydoves:bundler:1.0.4",
+        //SearchPreference
+        "com.github.ByteHamster:SearchPreference:v2.3.0",
     )
 
 

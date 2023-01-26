@@ -9,4 +9,7 @@
 
     <color name="white">#ffffff</color>
 
+    <!-- Blue Theme -->
+    <color name="accent_blue">#54759E</color>
+
 </resources>

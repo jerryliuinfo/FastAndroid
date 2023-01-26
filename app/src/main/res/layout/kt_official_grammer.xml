@@ -28,12 +28,12 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_elvis,btn_type_check_transfer,btn_circulation,btn_when,btn_range,
+                app:constraint_referenced_ids="btn_elvis,btn_circulation,btn_when,btn_range,
                 btn_null_check,btn_type_cast,btn_ifCheck,btn_single_expression,
-                btn_with,btn_try,btn_com_usage,btn_Infix,btn_generic,btn_constructor
-                ,btn_iterators,btn_dataclass,btn_enum,btn_sealdclass,btn_highOrderFunction1
-                ,btn_highOrderFunction2,btn_lambda,btn_extensionFunAndProperty,btn_collection
-                ,btn_delegate_mode,btn_destructor,btn_return_break,btn_return_outside,btn_return_inside
+                btn_try,btn_com_usage,btn_Infix,btn_generic,btn_constructor
+                ,btn_dataclass,btn_enum,btn_sealdclass,btn_highOrderFunction1
+                ,btn_lambda,btn_extensionFunAndProperty,
+                ,btn_destructor,btn_return_break,btn_return_outside,btn_return_inside
                 ,btn_return_nested_innerclass,btn_tryReturnValue,btn_check_require,btn_print_collection"
                 />
             <Button
@@ -43,12 +43,7 @@
                 android:text="Elvis操作符"
                 />
 
-            <Button
-                android:id="@+id/btn_type_check_transfer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="类型检测和转换"
-                />
+
             <Button
                 android:id="@+id/btn_circulation"
                 android:layout_width="wrap_content"
@@ -92,12 +87,7 @@
                 android:layout_height="wrap_content"
                 android:text="单函数表达式"
                 />
-            <Button
-                android:id="@+id/btn_with"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="With"
-                />
+
             <Button
                 android:id="@+id/btn_try"
                 android:layout_width="wrap_content"
@@ -130,12 +120,7 @@
                 android:layout_height="wrap_content"
                 android:text="构造器"
                 />
-            <Button
-                android:id="@+id/btn_iterators"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Iterators"
-                />
+
             <Button
                 android:id="@+id/btn_dataclass"
                 android:layout_width="wrap_content"
@@ -158,14 +143,9 @@
                 android:id="@+id/btn_highOrderFunction1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="高阶函数(作为参数)"
+                android:text="高阶函数"
                 />
-            <Button
-                android:id="@+id/btn_highOrderFunction2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="高阶函数(作为返回值)"
-                />
+
             <Button
                 android:id="@+id/btn_lambda"
                 android:layout_width="wrap_content"
@@ -177,19 +157,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="扩展方法/属性"
-                />
-            <Button
-                android:id="@+id/btn_collection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Collection"
-                />
-
-            <Button
-                android:id="@+id/btn_delegate_mode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="委托模式"
                 />
 
             <Button

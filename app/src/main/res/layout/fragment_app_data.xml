@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:flow_horizontalGap="10dp"
+        android:orientation="horizontal"
+        app:flow_wrapMode="aligned"
+        app:constraint_referenced_ids="btn_app_exclusive_inner_space,btn_app_exclusive_outer_space,
+        btn_openFileOutput,btn_openFileInput,btn_filelist,btn_createTempFile,btn_delete_cache_file,
+        btn_delete_file,btn_verify_available,btn_select_physic_storage_position,btn_create_cache_file_in_external,
+        btn_media_storage,btn_installLocation,btn_send_data_to_other_app,btn_text_preview,btn_receive_data"
+        />
+
+    <Button
+        android:id="@+id/btn_app_exclusive_inner_space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="应用专属文件(内部存储空间)"
+        />
+    <Button
+        android:id="@+id/btn_app_exclusive_outer_space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="应用专属文件(外部存储空间)"
+        />
+    <Button
+        android:id="@+id/btn_openFileOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用信息流存储文件"
+        />
+    <Button
+        android:id="@+id/btn_openFileInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用信息流访问文件"
+        />
+    <Button
+    android:id="@+id/btn_filelist"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="查看文件列表：fileList"
+    />
+
+    <Button
+        android:id="@+id/btn_createTempFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建缓存文件"
+        />
+    <Button
+        android:id="@+id/btn_delete_cache_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="移除缓存文件(File.delete)"
+        />
+
+    <Button
+        android:id="@+id/btn_delete_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="移除缓存文件(Context.deleteFile)"
+        />
+
+    <Button
+        android:id="@+id/btn_verify_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="验证存储空间的可用性"
+        />
+    <Button
+        android:id="@+id/btn_select_physic_storage_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择物理存储位置"
+        />
+
+    <Button
+        android:id="@+id/btn_create_cache_file_in_external"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="在外部存储空间中创建缓存文件"
+        />
+    <Button
+        android:id="@+id/btn_media_storage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="媒体内容"
+        />
+
+    <Button
+        android:id="@+id/btn_installLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="指定应用安装所处的存储控件"
+        />
+ <Button
+        android:id="@+id/btn_send_data_to_other_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用 Android Sharesheet"
+        />
+
+    <Button
+        android:id="@+id/btn_text_preview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="向文本预览添加丰富的内容"
+        />
+
+    <Button
+        android:id="@+id/btn_receive_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="从其他应用接收简单的数据"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

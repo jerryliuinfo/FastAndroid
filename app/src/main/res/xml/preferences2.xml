@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:search="http://schemas.android.com/apk/com.bytehamster.lib.preferencesearch">
+
+    <CheckBoxPreference
+            android:title="Checkbox"
+            android:summary="This checkbox is a preference coming from a second file"
+            android:key="secondfile" />
+
+    <CheckBoxPreference
+            android:title="Checkbox"
+            android:summary="This checkbox is a preference coming from a second file"
+            search:summary="This summary is only displayed in search"
+            android:key="searchsummary" />
+
+    <CheckBoxPreference
+            android:title="Checkbox"
+            android:summary="This checkbox has additional keywords"
+            search:keywords="42, 23"
+            android:key="searchkeyword" />
+
+    <CheckBoxPreference
+            android:title="Ignored"
+            android:summary="This checkbox should not be displayed"
+            android:key="ignoredcheckbox"
+            search:ignore="true" />
+
+</PreferenceScreen>

@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ItemCommentBinding
 import com.tesla.framework.kt.showShortToast
-import kotlinx.android.synthetic.main.item_comment.view.*
 
 /**
  * Created by Jerry on 2022/6/26.

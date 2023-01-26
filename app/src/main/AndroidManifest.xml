@@ -3,6 +3,149 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.apache.fastandroid">
 
+    <permission
+        android:name="com.optimize.performance.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="true" />
+
+    <!-- Internet -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+
+
+
+
+
+    <!-- Storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+    <!-- For background jobs -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.optimize.performance.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+
+
+
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
+    <!--
+    Application 节点设置: https://developer.android.com/guide/topics/manifest/application-element#reparent
+    android:banner="@mipmap/ic_banner":移动设备用 icon, TV 用 banner
+
+     android:extractNativeLibs="true":https://www.google.com/search?q=android%3Aextractnativelibs&sxsrf=ALiCzsbYjRKtsCyYBebQzw794XxLlG40EQ%3A1655439926158&ei=NgKsYuajCe6v2roPuuWr4AE&oq=&gs_lcp=Cgdnd3Mtd2l6EAEYATIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzoHCAAQRxCwA0oECEEYAEoECEYYAFDaFFjaFGCqI2gDcAF4AIABAIgBAJIBAJgBAKABAbABCsgBCsABAQ&sclient=gws-wiz
+
+
+     android:extractNativeLibs = true时，gradle打包时会对工程中的so库进行压缩，最终生成apk包的体积会减小。
+    但用户在手机端进行apk安装时，系统会对压缩后的so库进行解压，从而造成用户安装apk的时间变长。
+
+    android:hasFragileUserData="true":
+
+    android:allowClearUserData：是否允许应用重置用户数据。这些数据包括标志（如用户是否看到了介绍性提示）以及用户可自定义的设置和偏好设置。此属性的默认值为 true。
+   注意：只有属于系统映像的应用才能明确声明此属性。第三方应用不能在其清单文件中包含此属性。
+
+
+     android:appCategory:声明此应用的类别。类别可以在汇总电池使用、网络使用或磁盘使用等情况时，将多个应用进行有效分组。仅当应用很好地符合某个具体类别时，才定义该值。
+
+     android:debuggable:是否可以调试应用（即使在处于用户模式的设备上运行时）。如果可以调试，则设为 "true"；如果无法调试，则设为 "false"。默认值为 "false"。
+
+     android:networkSecurityConfig:指定包含应用的网络安全配置的 XML 文件的名称。值必须是对包含相应配置的 XML 资源文件的引用。
+
+此属性是在 API 级别 24 中添加的。
+     android:persistent:应用是否应始终保持运行状态。如果应该，则设为 "true"；如果不应该，则设为 "false"。默认值为 "false"。应用通常不应设置此标志；持久性模式仅适用于某些系统应用。
+     android:requestLegacyExternalStorage:应用是否请求停用分区存储。根据政策或应用兼容性方面的变更，系统可能不会接受此停用请求。
+
+android:testOnly:指示此应用是否仅用于测试目的。例如，它可能会在自身之外公开功能或数据，这样会导致安全漏洞，但对测试很有用。此类 APK 只能通过 adb 安装，您不能将其发布到 Google Play。
+,当您点击 Run 图标  时，Android Studio 会自动添加此属性。
+
+    android:theme:对样式资源的引用，用于为应用中的所有 Activity 定义默认主题。各个 activity 可以通过设置自己的 theme 属性来替换默认值。如需了解详情，请参阅样式和主题开发者指南。
+
+    android:usesCleartextTraffic: 指示应用是否打算使用明文网络流量，如明文 HTTP。 对于目标 API 级别为 27 或更低级别的应用，默认值为 "true"。对于目标 API 级别为 28 或更高级别的应用，默认值为 "false"。
+:
+
+    android:usesCleartextTraffic:指示应用是否打算使用明文网络流量，如明文 HTTP。 对于目标 API 级别为 27 或更低级别的应用，默认值为 "true"。对于目标 API 级别为 28 或更高级别的应用，默认值为 "false"
+
+
+
+
+    category 节点: <intent-filter> 向 Intent 过滤器添加类别名称。如需详细了解 Intent 过滤器和类别规范在过滤器中的作用.类别的名称。标准类别在 Intent 类中定义为 CATEGORY_name 常量。此处分配的名称可以根据这些常量推导出来，方法是在 CATEGORY_ 后跟的 name 前面加上“android.intent.category.”作为前缀。例如，CATEGORY_LAUNCHER 的字符串值为“android.intent.category.LAUNCHER”。
+    为了接收隐式 intent，您必须在 intent 过滤器中添加 CATEGORY_DEFAULT 类别。如果您没有在 Intent 过滤器中声明该类别，则任何隐式 Intent 都不会解析为您的 Activity。
+
+
+
+    permission节点 :声明可用于限制访问此应用或其他应用的特定组件或功能的安全权限。如需详细了解权限的工作原理，请参阅简介中的权限部分以及安全与权限文档。
+
+    <permission android:description="string resource"
+            android:icon="drawable resource"
+            android:label="string resource"
+            android:name="string"
+            android:permissionGroup="string"
+            android:protectionLevel=["normal" | "dangerous" |
+                                     "signature" | ...] />
+
+
+    -->
+
+
+
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <!--
+       Don't let Google Play filter out devices that just have don't have camera.
+
+       Google Play 会利用应用清单中声明的 <uses-feature> 元素，从不符合应用硬件和软件功能要求的设备上过滤该应用。
+
+       通过指定应用所要求的功能，您可以让 Google Play 仅向设备符合应用功能要求的用户（而非所有用户）提供您的应用。
+       android:required:表示应用是否需要 android:name 中所指定功能的布尔值
+       当您为某项功能声明 android:required="true" 时，即是规定当设备不具有该指定功能时，应用无法正常工作，或设计为无法正常工作。
+       当您为某项功能声明 android:required="false" 时，则意味着如果设备具有该功能，应用会在必要时优先使用该功能，但应用设计为不使用该指定功能也可正常工作。
+       如果未予声明，则 android:required 的默认值为 "true"。
+
+   -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <!--    没有蓝牙功能的应用将不允许安装此应用-->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+
+    <!--    <uses-permission android:name="android.permission.CAMERA"  />-->
+
+    <!--    如果您请求硬件相关的权限（例如 CAMERA），则 Google Play 会假设您的应用需要底层硬件功能，并从设备过滤掉不提供该功能的应用。
+            要控制过滤，务必在 <uses-feature> 元素中显式声明硬件功能，而不是依赖 Google Play“发现” <uses-permission> 元素中的要求。
+            然后，如果要对特定功能停用过滤，可将 android:required="false" 属性添加到 <uses-feature> 声明中。
+            https://developer.android.com/guide/topics/manifest/uses-permission-element
+            -->
+
+
+
+
+
+    <!--    App/Activity就可以进入分屏模式了 -->
+    <!--    android:label="${appName}"-->
+
+
+    <uses-sdk tools:overrideLibrary="com.android.support:multidex:1.0.2" />
+
     <application
         android:name=".app.FastApplication"
         android:allowBackup="false"
@@ -20,6 +163,7 @@
         android:theme="@style/Theme.AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
+        android:installLocation="preferExternal"
         tools:replace="android:theme,android:icon,android:label,android:allowBackup">
 
 
@@ -266,18 +410,40 @@
             android:name=".demo.guide.ManifestDemoActivity"
             android:exported="false"
             android:allowTaskReparenting="true"
-
             android:alwaysRetainTaskState="true"
-
             android:autoRemoveFromRecents="true"
 
             />
         <activity
             android:name=".demo.guide.activity.FinishOnTaskLaunchActivity"
             android:exported="false"
-
             android:finishOnTaskLaunch="true"
             android:label="FinishOnTaskLaunch" />
+
+<!--
+  定义了 android:permission  的activity， 当某个应用启动该 activity 时必须有响应的权限才能启动
+   -->
+
+        <activity
+            android:name=".demo.guide.IntentFilterDemoActivity"
+            android:permission="com.google.socialapp.permission.SHARE_POST"
+            android:icon="@drawable/ic_arrow"
+            android:label="我是定义了IntentFilter的activity"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".demo.component.bundle.BundleDemoActivity"
+            android:exported="false"
+            />
+
+        <activity android:name=".demo.component.bundle.BundleReceiverActivity"
+            android:exported="false"
+            />
 
 
         <activity
@@ -294,6 +460,20 @@
             android:label="SingleTask"
             android:launchMode="singleInstance" />
 
+        <activity android:name=".demo.searchPreference.SimpleExample"
+            android:exported="false"
+            />
+        <activity android:name=".demo.searchPreference.EnhancedExample"
+            android:exported="false"
+            />
+        <activity android:name=".demo.searchPreference.NoPreferencesExample"
+            android:exported="false"
+            />
+        <activity android:name=".demo.searchPreference.SearchViewExample"
+            android:exported="false"
+            />
+
+
         <meta-data
             android:name="appChannel"
             android:value="google" />
@@ -304,6 +484,26 @@
             android:value="${CHANNEL_VALUE}" />
 
 
+
+        <activity android:name=".demo.guide.appdata.ReceiveDataDemoActivity"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
         <!--
 
         https://developer.android.com/guide/topics/manifest/activity-element
@@ -360,6 +560,21 @@
             android:exported="false"
 
             />
+        <service android:name=".demo.service.LocalService"
+            android:exported="false"
+            />
+        <service android:name=".demo.service.MessengerService"
+            android:exported="false"
+            />
+        <service android:name=".demo.service.AidlService"
+            android:exported="true"
+            android:enabled="true"
+            >
+            <intent-filter>
+                <action android:name="com.apache.fastandroid.service.operate" />
+            </intent-filter>
+
+        </service>
 
 
         <!--        Google Play 使用您的应用清单中声明的 <uses-library> 元素，从不符合其库要求的设备中过滤掉您的应用
@@ -380,140 +595,7 @@ android:required："true"：如果没有此库，则应用将无法正常运行�
 
 
     </application>
-    <permission
-        android:name="com.optimize.performance.permission.JPUSH_MESSAGE"
-        android:protectionLevel="signature" />
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.bluetooth"
-        android:required="true" />
 
-    <!-- Internet -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
-
-
-    <!-- Storage -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-
-
-
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="com.optimize.performance.permission.JPUSH_MESSAGE" />
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-
-
-
-
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-
-    <!--
-    Application 节点设置: https://developer.android.com/guide/topics/manifest/application-element#reparent
-    android:banner="@mipmap/ic_banner":移动设备用 icon, TV 用 banner
-
-     android:extractNativeLibs="true":https://www.google.com/search?q=android%3Aextractnativelibs&sxsrf=ALiCzsbYjRKtsCyYBebQzw794XxLlG40EQ%3A1655439926158&ei=NgKsYuajCe6v2roPuuWr4AE&oq=&gs_lcp=Cgdnd3Mtd2l6EAEYATIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzIHCCMQ6gIQJzoHCAAQRxCwA0oECEEYAEoECEYYAFDaFFjaFGCqI2gDcAF4AIABAIgBAJIBAJgBAKABAbABCsgBCsABAQ&sclient=gws-wiz
-
-
-     android:extractNativeLibs = true时，gradle打包时会对工程中的so库进行压缩，最终生成apk包的体积会减小。
-    但用户在手机端进行apk安装时，系统会对压缩后的so库进行解压，从而造成用户安装apk的时间变长。
-
-    android:hasFragileUserData="true":
-
-    android:allowClearUserData：是否允许应用重置用户数据。这些数据包括标志（如用户是否看到了介绍性提示）以及用户可自定义的设置和偏好设置。此属性的默认值为 true。
-   注意：只有属于系统映像的应用才能明确声明此属性。第三方应用不能在其清单文件中包含此属性。
-
-
-     android:appCategory:声明此应用的类别。类别可以在汇总电池使用、网络使用或磁盘使用等情况时，将多个应用进行有效分组。仅当应用很好地符合某个具体类别时，才定义该值。
-
-     android:debuggable:是否可以调试应用（即使在处于用户模式的设备上运行时）。如果可以调试，则设为 "true"；如果无法调试，则设为 "false"。默认值为 "false"。
-
-     android:networkSecurityConfig:指定包含应用的网络安全配置的 XML 文件的名称。值必须是对包含相应配置的 XML 资源文件的引用。
-
-此属性是在 API 级别 24 中添加的。
-     android:persistent:应用是否应始终保持运行状态。如果应该，则设为 "true"；如果不应该，则设为 "false"。默认值为 "false"。应用通常不应设置此标志；持久性模式仅适用于某些系统应用。
-     android:requestLegacyExternalStorage:应用是否请求停用分区存储。根据政策或应用兼容性方面的变更，系统可能不会接受此停用请求。
-
-android:testOnly:指示此应用是否仅用于测试目的。例如，它可能会在自身之外公开功能或数据，这样会导致安全漏洞，但对测试很有用。此类 APK 只能通过 adb 安装，您不能将其发布到 Google Play。
-,当您点击 Run 图标  时，Android Studio 会自动添加此属性。
-
-    android:theme:对样式资源的引用，用于为应用中的所有 Activity 定义默认主题。各个 activity 可以通过设置自己的 theme 属性来替换默认值。如需了解详情，请参阅样式和主题开发者指南。
-
-    android:usesCleartextTraffic: 指示应用是否打算使用明文网络流量，如明文 HTTP。 对于目标 API 级别为 27 或更低级别的应用，默认值为 "true"。对于目标 API 级别为 28 或更高级别的应用，默认值为 "false"。
-:
-
-    android:usesCleartextTraffic:指示应用是否打算使用明文网络流量，如明文 HTTP。 对于目标 API 级别为 27 或更低级别的应用，默认值为 "true"。对于目标 API 级别为 28 或更高级别的应用，默认值为 "false"
-
-
-
-
-    category 节点: <intent-filter> 向 Intent 过滤器添加类别名称。如需详细了解 Intent 过滤器和类别规范在过滤器中的作用.类别的名称。标准类别在 Intent 类中定义为 CATEGORY_name 常量。此处分配的名称可以根据这些常量推导出来，方法是在 CATEGORY_ 后跟的 name 前面加上“android.intent.category.”作为前缀。例如，CATEGORY_LAUNCHER 的字符串值为“android.intent.category.LAUNCHER”。
-    为了接收隐式 intent，您必须在 intent 过滤器中添加 CATEGORY_DEFAULT 类别。如果您没有在 Intent 过滤器中声明该类别，则任何隐式 Intent 都不会解析为您的 Activity。
-
-
-
-    permission节点 :声明可用于限制访问此应用或其他应用的特定组件或功能的安全权限。如需详细了解权限的工作原理，请参阅简介中的权限部分以及安全与权限文档。
-
-    <permission android:description="string resource"
-            android:icon="drawable resource"
-            android:label="string resource"
-            android:name="string"
-            android:permissionGroup="string"
-            android:protectionLevel=["normal" | "dangerous" |
-                                     "signature" | ...] />
-
-
-    -->
-
-
-
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-
-    <!--
-       Don't let Google Play filter out devices that just have don't have camera.
-
-       Google Play 会利用应用清单中声明的 <uses-feature> 元素，从不符合应用硬件和软件功能要求的设备上过滤该应用。
-
-       通过指定应用所要求的功能，您可以让 Google Play 仅向设备符合应用功能要求的用户（而非所有用户）提供您的应用。
-       android:required:表示应用是否需要 android:name 中所指定功能的布尔值
-       当您为某项功能声明 android:required="true" 时，即是规定当设备不具有该指定功能时，应用无法正常工作，或设计为无法正常工作。
-       当您为某项功能声明 android:required="false" 时，则意味着如果设备具有该功能，应用会在必要时优先使用该功能，但应用设计为不使用该指定功能也可正常工作。
-       如果未予声明，则 android:required 的默认值为 "true"。
-
-   -->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-
-    <!--    没有蓝牙功能的应用将不允许安装此应用-->
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
-
-    <!--    <uses-permission android:name="android.permission.CAMERA"  />-->
-
-    <!--    如果您请求硬件相关的权限（例如 CAMERA），则 Google Play 会假设您的应用需要底层硬件功能，并从设备过滤掉不提供该功能的应用。
-            要控制过滤，务必在 <uses-feature> 元素中显式声明硬件功能，而不是依赖 Google Play“发现” <uses-permission> 元素中的要求。
-            然后，如果要对特定功能停用过滤，可将 android:required="false" 属性添加到 <uses-feature> 声明中。
-            https://developer.android.com/guide/topics/manifest/uses-permission-element
-            -->
-
-
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-
-    <!--    App/Activity就可以进入分屏模式了 -->
-    <!--    android:label="${appName}"-->
-
-
-    <uses-sdk tools:overrideLibrary="com.android.support:multidex:1.0.2" />
 
 
 </manifest>

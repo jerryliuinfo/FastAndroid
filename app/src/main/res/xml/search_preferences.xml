@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <com.bytehamster.lib.preferencesearch.SearchPreference
+            android:key="searchPreference" />
+
+    <CheckBoxPreference
+            android:title="Checkbox"
+            android:summary="This is a checkbox preference"
+            android:key="checkbox"/>
+
+    <PreferenceCategory
+            android:title="This is a preference category">
+        <CheckBoxPreference
+                android:title="Checkbox in category"
+                android:summary="This is a checkbox preference inside a category"
+                android:key="checkbox2"/>
+    </PreferenceCategory>
+
+    <PreferenceScreen
+            android:key="screen"
+            android:title="Screen"
+            android:summary="This is a PreferenceScreen">
+        <CheckBoxPreference
+                android:title="Checkbox in screen"
+                android:summary="This is a checkbox preference inside a PreferenceScreen"
+                android:key="checkbox3"/>
+    </PreferenceScreen>
+
+    <CheckBoxPreference
+            android:title="@string/app_name"
+            android:summary="This checkbox demonstrates @string resources"
+            android:key="string"/>
+
+    <EditTextPreference
+            android:title="Edit text"
+            android:summary="This is an edit text preference"
+            android:key="edittext"/>
+
+    <SwitchPreference
+            android:title="Switch preference"
+            android:summary="This allows to use a nice switch"
+            android:key="switch"/>
+
+    <ListPreference
+            android:title="List preference"
+            android:entries="@android:array/emailAddressTypes"
+            android:entryValues="@android:array/emailAddressTypes"
+            android:key="list"
+            android:summary="This allows to select from a list" />
+
+    <MultiSelectListPreference
+            android:title="Multi select list preference"
+            android:entries="@android:array/emailAddressTypes"
+            android:entryValues="@android:array/emailAddressTypes"
+            android:key="multilist"
+            android:summary="This allows to select multiple entries from a list" />
+
+    <CheckBoxPreference
+            android:title="Checkbox 4"
+            android:summary="This checkbox is just there to fill the screen"
+            android:key="checkbox4"/>
+
+    <CheckBoxPreference
+            android:title="Checkbox 5"
+            android:summary="This checkbox is just there to fill the screen"
+            android:key="checkbox4"/>
+
+    <CheckBoxPreference
+            android:title="Checkbox 6"
+            android:summary="This checkbox is just there to fill the screen"
+            android:key="checkbox4"/>
+
+    <CheckBoxPreference
+            android:title="Far down"
+            android:summary="A preference that is very far down on the screen, so it has to be scrolled to"
+            android:key="fardown"/>
+</PreferenceScreen>

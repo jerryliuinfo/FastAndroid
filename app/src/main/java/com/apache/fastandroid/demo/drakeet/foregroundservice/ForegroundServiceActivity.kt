@@ -33,6 +33,8 @@ class ForegroundServiceActivity:BaseVBActivity<FragmentCommonBinding>(FragmentCo
                 activity?.startForegroundService(intent)
                 Logger.d("startForegroundService -->")
                 startService()
+            }else{
+                activity?.startService(intent)
             }
 
         }, 200)

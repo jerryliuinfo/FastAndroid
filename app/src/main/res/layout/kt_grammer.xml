@@ -28,12 +28,12 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_single_instance,btn_init_array,btn_SAM,btn_create_high_order_func,btn_join_tostring,btn_lable_break,btn_annotation,btn_check,
-                btn_delegate,btn_refied,btn_operator_overload2,btn_object,btn_on_each,btn_method_cost,btn_coerceAtLeast,btn_high_order_function,btn_extension_high_order_function,
+                app:constraint_referenced_ids="btn_single_instance,btn_init_array,btn_SAM,btn_join_tostring,btn_lable_break,btn_annotation,
+                btn_delegate,btn_refied,btn_operator_overload2,btn_on_each,btn_method_cost,btn_coerceAtLeast,btn_high_order_function,btn_extension_high_order_function,
              btn_clazz_paramter,btn_kotlin_call_java_notnull,btn_kotlin_call_java_nullable,btn_java_call_kotlin,btn_nested_function,btn_expand_function,btn_closeable_use,btn_expand_collection,btn_expand_function2,
              btn_lambda,btn_inline,btn_campanion_object,btn_sealedClass,btn_sealedClass2,
-             btn_deconstruction,btn_iterator,btn_withIndex,btn_takeUnless,btn_takeIf,btn_operator,btn_custom_operator,
-             btn_when_operator,btn_generic_parameter,btn_tail_fun,btn_object_property,btn_proxy_mode,btn_nested_class,
+             btn_deconstruction,btn_iterator,btn_withIndex,btn_takeUnless,btn_takeIf,btn_custom_operator,
+             btn_when_operator,btn_generic_parameter,btn_tail_fun,btn_object_property,btn_proxy_mode,
              btn_template_class,edittext"
                 />
             <Button
@@ -54,12 +54,7 @@
                 android:layout_height="wrap_content"
                 android:text="函数式接口"
                 />
-            <Button
-                android:id="@+id/btn_create_high_order_func"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="自定义高阶函数"
-                />
+
             <Button
                 android:id="@+id/btn_join_tostring"
                 android:layout_width="wrap_content"
@@ -78,12 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="Annotation"
                 />
-            <Button
-                android:id="@+id/btn_check"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Check函数"
-                />
+
             <Button
                 android:id="@+id/btn_delegate"
                 android:layout_width="wrap_content"
@@ -264,12 +254,7 @@
                 android:layout_height="wrap_content"
                 android:text="TakeIf"
                 />
-            <Button
-                android:id="@+id/btn_operator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="集合操作符"
-                />
+
 
             <Button
                 android:id="@+id/btn_custom_operator"
@@ -311,12 +296,7 @@
                 android:text="代理模式"
                 />
 
-            <Button
-                android:id="@+id/btn_nested_class"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="嵌套类"
-                />
+
             <Button
                 android:id="@+id/btn_template_class"
                 android:layout_width="wrap_content"
