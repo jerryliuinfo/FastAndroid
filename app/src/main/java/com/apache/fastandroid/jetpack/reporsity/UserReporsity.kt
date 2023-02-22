@@ -56,5 +56,15 @@ class UserReporsity( val userDao: UserDao, val userNetwork: UserNetwork) {
     }
 
 
+    fun getList():List<String>{
+        val random = Random.nextLong(1000)
+        println("loadMessageHeader random time:$random")
+        Thread.sleep(random)
+        if (random > 800){
+            java.lang.IllegalStateException("time out")
+        }
+        return listOf("zhangsan")
+    }
+
 
 }

@@ -21,10 +21,10 @@ class KotlinDemoListFragment:BaseListFragment()
             ,ViewItemBean("Kotlin语法2","Kotlin语法2", KotlinKnowledgeFragment2::class.java)
             ,ViewItemBean("Kotlin委托","Kotlin委托",KotlinDelegateFragment::class.java)
             ,ViewItemBean("Kotlin 开发实践","基于Kotlin的 Android app开发实践",JuejinKtDemoListFragment::class.java)
+            ,ViewItemBean("Kotlin 基础","Kotlin 基础",JuejinKtDemoListFragment::class.java)
 
 
             ,ViewItemBean("Kotlin集合","Kotlin集合", CollectionDemoFragment::class.java)
-            ,ViewItemBean("MathUtil","MathUtil", MathUtilDemoFragment::class.java)
             ,ViewItemBean("Kotlin语法扩展函数","Kotlin语法扩展函数", KotlinExtensionsFragment::class.java)
             ,ViewItemBean("范型","范型", GenericDemoFragment::class.java)
             ,ViewItemBean("Kotlin热门问题","StackOverFlow最热门的8个问题", KotlinHotQuestionFragment::class.java)

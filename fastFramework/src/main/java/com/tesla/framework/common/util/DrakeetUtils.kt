@@ -11,8 +11,15 @@ import android.view.View
 import androidx.annotation.IntRange
 import com.tesla.framework.BuildConfig
 import com.tesla.framework.common.util.log.NLog
+import io.reactivex.rxjava3.plugins.RxJavaPlugins
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import java.lang.IllegalStateException
 import java.lang.StringBuilder
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 
 /**
  * Created by Jerry on 2021/11/15.
@@ -95,5 +102,24 @@ object DrakeetUtils {
         targetIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         context.startActivity(targetIntent)
         Runtime.getRuntime().exit(0)
+    }
+
+
+    /**
+     * https://t.zsxq.com/0a0ywJ3qE
+     * 避免在 Kotlin Coroutine 里写 try-catch 的小技巧
+     */
+    fun CoroutineScope.tryLaunch(context:CoroutineContext = EmptyCoroutineContext,
+                                 start:CoroutineStart = CoroutineStart.DEFAULT,
+                                 block: suspend CoroutineScope.() -> Unit
+                                 ):Job{
+        return launch(context,start) {
+            try {
+                block
+            } catch (e: Exception) {
+                RxJavaPlugins.getErrorHandler()?.accept(e)
+            }
+        }
+
     }
 }

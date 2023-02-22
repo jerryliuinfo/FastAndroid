@@ -28,14 +28,18 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_clamp"
+                app:constraint_referenced_ids="btn_kotlin_basic"
+
                 />
-                <Button
-                    android:id="@+id/btn_clamp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="限制在某个范围内"
-                    />
+            <Button
+                android:id="@+id/btn_kotlin_basic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kotlin基础"
+                />
+
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

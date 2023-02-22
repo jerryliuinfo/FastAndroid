@@ -16,12 +16,15 @@ import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.guide.appdata.AppDataDemoFragment
+import com.apache.fastandroid.demo.location.LocationDemoFragment
 import com.apache.fastandroid.demo.searchPreference.SearchPreferenceDemoListFragment
+import com.apache.fastandroid.jetpack.livedata.LiveDataLoaderFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
+import timber.log.Timber
 
 class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
     private val selecteId = -1
@@ -32,6 +35,19 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
     @CostTime
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
+
+        // If the app's main task was not created using the default launch intent (e.g. from a notification, a widget,
+        // or a shortcut), using the app icon to "launch" the app will create a new MessageList instance instead of only
+        // bringing the app's task to the foreground. We catch this situation here and simply finish the activity. This
+        // will bring the task to the foreground, showing the last active screen.
+        if (intent.action == Intent.ACTION_MAIN && intent.hasCategory(Intent.CATEGORY_LAUNCHER) && !isTaskRoot) {
+            Timber.v("Not displaying MessageList. Only bringing the app task to the foreground.")
+            finish()
+            return
+        }
+
+
+
 
         setSupportActionBar(mBinding.toolbar)
         setupDrawer(savedInstanceState)
@@ -131,6 +147,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, ActivityPropertyDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, SearchPreferenceDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, AppDataDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, LiveDataLoaderFragment::class.java,null,addTitleBar = true)
+        FragmentContainerActivity.launch(this, LocationDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 

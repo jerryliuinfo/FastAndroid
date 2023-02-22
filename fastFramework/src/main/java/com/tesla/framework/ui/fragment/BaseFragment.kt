@@ -35,7 +35,7 @@ open abstract class BaseFragment:Fragment(),BaseView {
     lateinit var mContext: Context
     lateinit var mShareViewModel: ShareViewModel
 
-    private  lateinit var mRootView:View
+    lateinit var mRootView:View
 
     private var mFragmentProvider: ViewModelProvider? = null
     private var mActivityProvider: ViewModelProvider? = null

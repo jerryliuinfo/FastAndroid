@@ -28,7 +28,7 @@ object Libs {
 
 //    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
-    const val utilcode = "com.blankj:utilcodex:1.31.0"
+    const val utilcode = "com.blankj:utilcodex:1.31.1"
     const val brvh = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.brvh}"
     const val mmkv = "com.tencent:mmkv-static:1.2.10"
     const val anyLayer = "com.github.goweii:AnyLayer:4.1.4-androidx"

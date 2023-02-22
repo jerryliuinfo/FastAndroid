@@ -34,6 +34,7 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("Hawk", "Hawk", HawkDemoFragment::class.java)
                 ,ViewItemBean("MMKV", "MMKV", MMKVFragment::class.java)
                 ,ViewItemBean("MMKV KTX", "MMKV KTX", MMKVKtxFragment::class.java)
+                ,ViewItemBean("UtilCodex", "UtilCodex", MMKVKtxFragment::class.java)
                     //MVVM Mail
                 ,ViewItemBean("Mvvm Mail", "Mvvm Mail", MvvmMailDemoFragment::class.java)
                 ,ViewItemBean("MVI模式", "shenzhen2017/android-architecture", MviDemoFragment::class.java)

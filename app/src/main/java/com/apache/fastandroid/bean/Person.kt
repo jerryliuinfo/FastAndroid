@@ -12,4 +12,8 @@ data class Person(val name:String, val age:Int? ): MultiItemEntity, Parcelable {
 
     override val itemType: Int
         get() = 2
+
+    @get:Synchronized
+    @set:Synchronized
+    var deletePolicy = 0
 }

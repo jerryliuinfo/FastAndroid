@@ -2,12 +2,17 @@ package com.apache.fastandroid.network.retrofit
 import android.os.Build
 import com.apache.fastandroid.network.calladapter.LiveDataCallAdapterFactory
 import com.apache.fastandroid.network.interceptor.*
+import com.blankj.utilcode.util.ToastUtils
+import com.mooc.libnetwork.BuildConfig
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.util.Calendar
+import java.util.Date
 import java.util.concurrent.TimeUnit
 
 
@@ -75,10 +80,22 @@ class RetrofitFactory private constructor() {
             connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             readTimeout(TIMEOUT, TimeUnit.SECONDS)
             retryOnConnectionFailure(true)
-            //https://t.zsxq.com/nUnEune
+            //https://t.zsxq.com/nUnEune: 优化 android 9.0 上 http 请求的 SocketTimeoutException
             if (Build.VERSION.SDK_INT >= 28) {
                 pingInterval(3, TimeUnit.SECONDS)
             }
+            /**
+             * https://t.zsxq.com/0aruxCqjq
+             * 低成本实现网络请求安全方法，例如我们服务器的过期使劲是 2023 年 11 月，我们可以在 2023 年 10 月之前
+             * 总是检查证书的 Pinning，而过了这个时间就不检查证书的 Pining，当证书过期后我们可以放心的进行更换服务端证书
+             */
+            certificatePinner(CertificatePinner.Builder().apply {
+                if (Date() < Date(2023,Calendar.OCTOBER,7)){
+                    add("www.wanandroid.com", "sha256/Jkegy5Sc8Gjzbi65ztVCGTV90JysJOm3uRtbrclTpOc=")
+                }else if (BuildConfig.DEBUG){
+                    ToastUtils.showLong("请更新证书和时间")
+                }
+            }.build())
 
         }.apply {
             addInterceptor(HeaderInterceptor())

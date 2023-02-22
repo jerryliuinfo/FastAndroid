@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
+import androidx.core.math.MathUtils
 import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.KtGrammerBinding
@@ -66,6 +67,11 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
+
+        mBinding.btnMathClamp.setOnClickListener {
+            mathClampUsage()
+        }
+
         mBinding.btnSingleInstance.setOnClickListener {
             singleInstance()
         }
@@ -276,9 +282,14 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
 
+    }
 
-
-
+    private fun mathClampUsage() {
+        val min = 2
+        val max = 8
+        val maxValue = MathUtils.clamp(10,min,max)
+        val minValue = MathUtils.clamp(1,min,max)
+        println("maxValue:${maxValue},minValue:$minValue")
     }
 
     private fun javaCallKotlin() {

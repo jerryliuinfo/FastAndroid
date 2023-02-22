@@ -137,6 +137,13 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             -->
 
 
+<!--    位置权限-->
+
+    <!-- Always include this permission -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Include only if your app benefits from precise location access. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 
 
@@ -174,6 +181,11 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             android:theme="@style/Splashscreen">
 
             <intent-filter>
+<!--                android.intent.action.MAIN：决定应用程序最先启动的Activity
+                    android.intent.category.LAUNCHER：决定应用程序是否显示在程序列表里，
+                    Main和LAUNCHER同时设定才有意义
+                    如果你的 activity支持接收隐式启动的话就一定要在intent filter中加入android.intent.category.DEFAULT,不然将导致 Intent 匹配失败。
+                    -->
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

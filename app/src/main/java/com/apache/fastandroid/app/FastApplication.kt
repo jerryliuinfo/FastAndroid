@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDex
 import com.apache.fastandroid.AppSetting
 import com.apache.fastandroid.R
+import com.apache.fastandroid.artemis.ui.app.ComApplication
 import com.apache.fastandroid.component.once.Once
 import com.apache.fastandroid.crash.Fabric.init
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor
@@ -67,7 +68,7 @@ import kotlin.system.measureTimeMillis
  * Created by jerryliu on 2017/3/26.
  */
 @HiltAndroidApp
-class FastApplication : Application(), ViewModelStoreOwner {
+class FastApplication : ComApplication(), ViewModelStoreOwner {
 
     private var mFactory: ViewModelProvider.Factory? = null
 
