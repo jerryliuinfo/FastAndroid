@@ -50,6 +50,7 @@ import com.wanjian.cockroach.Cockroach
 import com.wanjian.cockroach.DebugSafeModeUI
 import com.wanjian.cockroach.ExceptionHandler
 import dagger.hilt.android.HiltAndroidApp
+import dev.b3nedikt.viewpump.ViewPump
 import dev.b3nedikt.viewpump.ViewPump.init
 import jp.wasabeef.takt.Seat
 import jp.wasabeef.takt.Takt
@@ -315,7 +316,7 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
     }
 
     private fun initViewPump() {
-        init(TextUpdatingInterceptor(), CustomTextViewInterceptor())
+       init(TextUpdatingInterceptor(), CustomTextViewInterceptor())
     }
 
     override fun getApplicationContext(): Context {

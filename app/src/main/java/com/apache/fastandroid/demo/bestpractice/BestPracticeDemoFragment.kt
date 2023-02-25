@@ -2,6 +2,7 @@ package com.apache.fastandroid.demo.bestpractice
 
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
+import com.apache.fastandroid.demo.bestpractice.network.NetworkDemoFragment
 import com.apache.fastandroid.demo.cheese.CheeseActivity
 import com.apache.fastandroid.demo.material.ThemeSummaryFragment
 
@@ -13,6 +14,7 @@ class BestPracticeDemoFragment: BaseListFragment() {
         return arrayListOf(
             ViewItemBean("Cheese", "夜间模式最佳实践",null, CheeseActivity::class.java,addTitleBar = false)
             ,ViewItemBean("MaterailTheme", "MaterailTheme",ThemeSummaryFragment::class.java)
+            ,ViewItemBean("网络监听", "网络监听",NetworkDemoFragment::class.java)
 
         )
     }

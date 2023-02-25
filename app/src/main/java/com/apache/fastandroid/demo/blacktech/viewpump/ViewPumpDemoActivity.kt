@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.blacktech
+package com.apache.fastandroid.demo.blacktech.viewpump
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
@@ -28,9 +28,7 @@ class ViewPumpDemoActivity :
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
 
-        button.setOnClickListener {
 
-        }
     }
 
 

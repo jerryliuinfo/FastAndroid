@@ -20,18 +20,27 @@ package com.tesla.framework.ui.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.tesla.framework.component.viewbinding.FragmentBinding
 import com.tesla.framework.component.viewbinding.FragmentBindingDelegate
+import com.tesla.framework.ui.fragment.BaseFragment
 
 /**
  * @author Dylan Cai
  */
-abstract class BaseBindingFragment<VB : ViewBinding> : Fragment(),
+abstract class BaseVBFragment2<VB : ViewBinding> : BaseFragment(),
   FragmentBinding<VB> by FragmentBindingDelegate() {
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
-    createViewWithBinding(inflater, container)
+
+  override fun inflateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View? {
+    return createViewWithBinding(inflater, container)
+  }
+
 }

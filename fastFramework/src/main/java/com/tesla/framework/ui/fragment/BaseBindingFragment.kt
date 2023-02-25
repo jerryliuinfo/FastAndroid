@@ -26,7 +26,7 @@ abstract class BaseBindingFragment<T : ViewBinding>(val inflater: (inflater: Lay
 
 
     companion object{
-        val TAG = "BaseBindingFragment"
+        val TAG = "BaseVBFragment"
     }
 
 }

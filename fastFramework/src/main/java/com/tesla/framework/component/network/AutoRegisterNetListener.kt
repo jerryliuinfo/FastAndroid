@@ -1,8 +1,8 @@
-package com.zwb.lib_base.utils.network
+package com.tesla.framework.component.network
 
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.*
+import com.zwb.lib_base.utils.network.NetworkStateChangeListener
+import com.zwb.lib_base.utils.network.NetworkStateClient
 
 /**
  * 自动注册网络状态监听
@@ -12,7 +12,7 @@ import androidx.lifecycle.OnLifecycleEvent
  * @since 2021/7/11 4:56 下午
  */
 class AutoRegisterNetListener constructor(listener: NetworkStateChangeListener) :
-    LifecycleObserver {
+    DefaultLifecycleObserver {
 
     /**
      * 当前需要自动注册的监听器
@@ -23,19 +23,17 @@ class AutoRegisterNetListener constructor(listener: NetworkStateChangeListener) 
         mListener = listener
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    fun register() {
+    override fun onCreate(owner: LifecycleOwner) {
+        super.onCreate(owner)
         mListener?.run { NetworkStateClient.setListener(this) }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    fun unregister() {
-        NetworkStateClient.removeListener()
-    }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun clean() {
+    override fun onDestroy(owner: LifecycleOwner) {
+        super.onDestroy(owner)
         NetworkStateClient.removeListener()
         mListener = null
     }
+
+
 }

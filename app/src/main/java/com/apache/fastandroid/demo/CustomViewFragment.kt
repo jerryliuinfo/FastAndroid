@@ -9,7 +9,9 @@ import com.apache.fastandroid.demo.drawable.DrawableListFragment
 import com.apache.fastandroid.demo.nodrawable.LoadingDrawableFragment
 import com.apache.fastandroid.demo.nodrawable.NoDrawableFragment
 import com.apache.fastandroid.demo.other.ClipChildFragment
+import com.apache.fastandroid.demo.other.ClipChildFragment2
 import com.apache.fastandroid.demo.other.ClipToPaddingFragment
+import com.apache.fastandroid.demo.other.UserfulPropertyFragment
 import com.apache.fastandroid.demo.roudview.RoundViewDemoFragment
 import com.apache.fastandroid.demo.shapeimageview.ShapeImageviewDemoFragment
 import com.apache.fastandroid.demo.snaphelper.LinerSnapHelperDemoFragment
@@ -33,8 +35,10 @@ class CustomViewFragment:BaseListFragment() {
                 ViewItemBean("ConstraintLayout", "约束布局", ConstraintLayoutDemoFragment::class.java),
                 ViewItemBean("CoordinatorLayout", "CoordinatorLayout", CoordinatorLayoutDemoFragment::class.java),
                 ViewItemBean("ClipChild", "ClipChildFragment", ClipChildFragment::class.java),
-                ViewItemBean("ClipToPadding", "ClipToPaddingFragment", ClipToPaddingFragment::class.java)
-                ,ViewItemBean("SpanableString", "SpanableString", SpanableStringFragment::class.java)
+                ViewItemBean("ClipChild2", "ClipChildFragment2", ClipChildFragment2::class.java),
+                ViewItemBean("ClipToPadding", "ClipToPaddingFragment", ClipToPaddingFragment::class.java),
+                ViewItemBean("有用的属性", "有用的属性", UserfulPropertyFragment::class.java),
+                ViewItemBean("SpanableString", "SpanableString", SpanableStringFragment::class.java)
                 ,ViewItemBean("EditText", "EditText", EditTextFragment::class.java)
                 ,ViewItemBean("NestedScrollView", "NestedScrollView", NestedScrollViewFragment::class.java)
                 ,ViewItemBean("NoDrawable", "NoDrawable", NoDrawableFragment::class.java)

@@ -25,10 +25,8 @@ import android.view.*
 import android.widget.FrameLayout
 import android.widget.SearchView
 import android.widget.TextView
-import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
-import androidx.annotation.DimenRes
-import androidx.annotation.DrawableRes
+import android.widget.Toast
+import androidx.annotation.*
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
@@ -689,5 +687,13 @@ fun View.showOrHide(show: Boolean) = if (show) show() else hide()
 fun View.dimenFloat(@DimenRes res: Int) = resources.getDimension(res)
 
 fun View.dimenInt(@DimenRes res: Int) = resources.getDimensionPixelSize(res)
+
+
+fun Activity.finishWithErrorToast(@StringRes errorRes: Int, vararg formatArgs: String) {
+    val text = getString(errorRes, *formatArgs)
+    Toast.makeText(this, text, Toast.LENGTH_LONG).show()
+    finish()
+}
+
 
 

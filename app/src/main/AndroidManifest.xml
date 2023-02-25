@@ -263,7 +263,10 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             android:name=".jetpack.livedata.LiveDataWrongUsageActivity"
             android:exported="false" />
         <activity
-            android:name=".demo.blacktech.ViewPumpDemoActivity"
+            android:name=".demo.blacktech.viewpump.ViewPumpDemoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".demo.blacktech.viewpump.ViewPumpDemoActivity"
             android:exported="false" />
         <activity
             android:name=".setting.AboutActivity"

@@ -18,7 +18,7 @@ import com.tesla.framework.common.util.AndroidBugFixUtils
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseFragment
 import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
-import com.zwb.lib_base.utils.network.AutoRegisterNetListener
+import com.tesla.framework.component.network.AutoRegisterNetListener
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
 import com.zwb.lib_base.utils.network.NetworkTypeEnum
 import java.lang.ref.WeakReference

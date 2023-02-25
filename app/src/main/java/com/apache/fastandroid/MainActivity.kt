@@ -15,15 +15,12 @@ import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.guide.appdata.AppDataDemoFragment
-import com.apache.fastandroid.demo.location.LocationDemoFragment
-import com.apache.fastandroid.demo.searchPreference.SearchPreferenceDemoListFragment
-import com.apache.fastandroid.jetpack.livedata.LiveDataLoaderFragment
+import com.apache.fastandroid.demo.blacktech.viewpump.ViewPumpDemoActivity
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
-import com.tesla.framework.ui.activity.FragmentContainerActivity
 import timber.log.Timber
 
 class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
@@ -131,7 +128,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, FlowDemoListFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, ApiDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, CustomViewFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, CustomViewFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, NetworkDemoFragment::class.java,null,addTitleBar = false)
+//        FragmentContainerActivity.launch(this, NetworkDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, DrakeetDemoListFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, KotlinTrapDemoFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, LambdaDemoFragment::class.java,null,addTitleBar = false)
@@ -148,7 +146,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, SearchPreferenceDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, AppDataDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, LiveDataLoaderFragment::class.java,null,addTitleBar = true)
-        FragmentContainerActivity.launch(this, LocationDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, LocationDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 
@@ -163,6 +161,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
 //        launchActivity<TasksActivity>(this)
 //        launchActivity<MaterialDialogDemoActivity>(this)
+//        launchActivity<ViewPumpDemoActivity>(this)
 
     //        launchActivity<CheeseActivity>(this)
 //            launchActivity<ManifestDemoActivity>(this)
