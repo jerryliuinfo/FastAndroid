@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.progress
+package com.tesla.framework.component.progress
 
 /**
  * Created by Jerry on 2023/3/4.

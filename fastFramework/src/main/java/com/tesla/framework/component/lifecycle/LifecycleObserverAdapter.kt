@@ -1,5 +1,6 @@
 package com.tesla.framework.component.lifecycle
 
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -11,7 +12,7 @@ import androidx.lifecycle.OnLifecycleEvent
 /**
  * Created by Jerry on 2020/12/10.
  */
-class LifecycleObserverAdapter(private val mLifecycleOwner: LifecycleOwner, private val mObserver: FullLifecycleObserver):LifecycleObserver {
+class LifecycleObserverAdapter(private val mLifecycleOwner: LifecycleOwner, private val mObserver: DefaultLifecycleObserver):LifecycleObserver {
 
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)

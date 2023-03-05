@@ -3,7 +3,9 @@ package com.apache.fastandroid.demo.temp
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.LayoutInflaterDemoFragment
+import com.apache.fastandroid.demo.countdown.CountDownDemoFragment
 import com.apache.fastandroid.demo.launchermode.LaunchModeDemoFragment
+import com.apache.fastandroid.demo.progress.ProgressDemoFragment
 import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity
 import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity2
 import com.apache.fastandroid.demo.style.FitSystemWindowFrameLayoutDemoActivity
@@ -48,7 +50,8 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("ActivityStyle", "给Activity设置style",  SaveStateHandleFragment::class.java)
                 ,ViewItemBean("ActivityStyle", "给Activity设置style",  SaveStateHandleFragment::class.java)
                 ,ViewItemBean("ViewBinding用法", "ViewBinding用法",  ViewBindingUsageDemo::class.java)
-                ,ViewItemBean("进度条组件", "进度条组件",  ViewBindingUsageDemo::class.java)
+                ,ViewItemBean("进度条组件", "进度条组件",  ProgressDemoFragment::class.java)
+                ,ViewItemBean("倒计时组件", "各种倒计时方案实现",  CountDownDemoFragment::class.java)
 
         )
     }

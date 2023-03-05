@@ -15,12 +15,13 @@ import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.blacktech.viewpump.ViewPumpDemoActivity
+import com.apache.fastandroid.demo.countdown.CountDownDemoFragment
+import com.apache.fastandroid.demo.progress.ProgressDemoFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
-import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
+import com.tesla.framework.ui.activity.FragmentContainerActivity
 import timber.log.Timber
 
 class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
@@ -147,6 +148,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, AppDataDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, LiveDataLoaderFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, LocationDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, ProgressDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, CountDownDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 
@@ -156,7 +159,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
 //        launchActivity<TasksActivity>(this)
 
-//        launchActivity<com.example.hellojnicallback.MainActivity>(this)
+//        launchActivity<com.example.hellojnicallback.RewordDemoActivity>(this)
 
 
 //        launchActivity<TasksActivity>(this)
