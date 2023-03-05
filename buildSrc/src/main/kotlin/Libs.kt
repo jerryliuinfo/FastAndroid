@@ -124,6 +124,11 @@ object Libs {
         "com.github.skydoves:bundler:1.0.4",
         //SearchPreference
         "com.github.ByteHamster:SearchPreference:v2.3.0",
+//
+//        "dev.b3nedikt.reword:reword:4.0.4",
+
+        "dev.b3nedikt.restring:restring:5.2.2"
+
     )
 
 
@@ -172,7 +177,6 @@ object Libs {
 
     const val restring = "dev.b3nedikt.restring:restring:5.1.4"
     const val viewPump = "dev.b3nedikt.viewpump:viewpump:4.0.10"
-    const val reword = "dev.b3nedikt.reword:reword:4.0.1"
     const val bundler = "com.github.skydoves:bundler:1.0.4"
 
 

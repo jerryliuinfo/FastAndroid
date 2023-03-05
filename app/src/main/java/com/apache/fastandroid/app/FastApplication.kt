@@ -50,6 +50,7 @@ import com.wanjian.cockroach.Cockroach
 import com.wanjian.cockroach.DebugSafeModeUI
 import com.wanjian.cockroach.ExceptionHandler
 import dagger.hilt.android.HiltAndroidApp
+import dev.b3nedikt.restring.Restring
 import dev.b3nedikt.viewpump.ViewPump
 import dev.b3nedikt.viewpump.ViewPump.init
 import jp.wasabeef.takt.Seat
@@ -116,6 +117,7 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
             //初始化crash统计
             initHttp()
             initViewPump()
+            initReword()
             LeakCanary.install(this)
             LaunchTimer.endRecord("Application end ")
             initLoadSir()
@@ -313,6 +315,11 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
             .setReportMainThreadOnly()
             .setAnrInterceptor { duration -> 3000 - duration }.build()
                 AnrManager.getInstance().start(config);*/
+    }
+
+    private fun initReword(){
+        Restring.init(this)
+//        ViewPump.init(RewordInterceptor)
     }
 
     private fun initViewPump() {

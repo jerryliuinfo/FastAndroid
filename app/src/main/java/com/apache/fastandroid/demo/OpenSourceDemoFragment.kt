@@ -30,7 +30,7 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("PermissionX", "PermissionX", PermissionXFragment::class.java)
                 ,ViewItemBean("LoadSir", "LoadSir", LoadSirDemoListFragment::class.java)
                 ,ViewItemBean("logger", "LoadSir", LoggerDemoFragment::class.java)
-                ,ViewItemBean("BestPay", "BestPay", BestPayDemoFragment::class.java)
+                ,ViewItemBean("BestPaySdk", "BestPaySdk", BestPayDemoFragment::class.java)
                 ,ViewItemBean("Hawk", "Hawk", HawkDemoFragment::class.java)
                 ,ViewItemBean("MMKV", "MMKV", MMKVFragment::class.java)
                 ,ViewItemBean("MMKV KTX", "MMKV KTX", MMKVKtxFragment::class.java)

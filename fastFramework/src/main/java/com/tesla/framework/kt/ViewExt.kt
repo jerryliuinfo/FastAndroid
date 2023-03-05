@@ -36,6 +36,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import androidx.viewpager.widget.ViewPager
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.google.android.material.snackbar.Snackbar
@@ -697,3 +698,66 @@ fun Activity.finishWithErrorToast(@StringRes errorRes: Int, vararg formatArgs: S
 
 
 
+/**
+ * Update the texts of a view.
+ *
+ * @param resId  the id of the text to update
+ * @param setTextFunction function which updates the text of the view T
+ * @return the transformed view.
+ */
+fun View.updateTexts(resId: Int, setTextFunction: (CharSequence) -> Unit) {
+    setTextFunction(resources.getText(resId))
+}
+
+
+
+/**
+ * ViewPager选中
+ */
+fun ViewPager.doSelected(selected: (Int) -> Unit) {
+    addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        override fun onPageScrollStateChanged(state: Int) {}
+
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
+        }
+
+        override fun onPageSelected(position: Int) {
+            selected.invoke(position)
+        }
+
+    })
+}
+
+
+
+/**
+ * 防止重复点击,可同时注册多个view
+ */
+fun setNoRepeatClick(vararg views: View, interval: Long = 400, onClick: (View) -> Unit) {
+    views.forEach {
+        it.clickNoRepeat(interval = interval) { view ->
+            onClick.invoke(view)
+        }
+    }
+}
+
+/**
+ * 防止重复点击
+ * @param interval 重复间隔
+ * @param onClick  事件响应
+ */
+var lastTime = 0L
+fun View.clickNoRepeat(interval: Long = 400, onClick: (View) -> Unit) {
+    setOnClickListener {
+        val currentTime = System.currentTimeMillis()
+        if (lastTime != 0L && (currentTime - lastTime < interval)) {
+            return@setOnClickListener
+        }
+        lastTime = currentTime
+        onClick(it)
+    }
+}
