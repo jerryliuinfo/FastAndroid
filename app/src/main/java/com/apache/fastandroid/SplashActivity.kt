@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.apache.fastandroid.app.FastApplication
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.databinding.ActivitySplashBinding
+import com.tesla.framework.component.countdown.ICountDownAction
+import com.tesla.framework.component.countdown.ICountDownAdapter
+import com.tesla.framework.component.countdown.ICountDownListener
+import com.tesla.framework.component.countdown.LifeCycleCountDownByTimer
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.activity.BaseVBActivity
 
@@ -15,6 +19,8 @@ import com.tesla.framework.ui.activity.BaseVBActivity
  */
 class SplashActivity : BaseVBActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
 
+
+    private var mTimer: ICountDownAction? = null
 
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
@@ -25,6 +31,25 @@ class SplashActivity : BaseVBActivity<ActivitySplashBinding>(ActivitySplashBindi
                 AppCompatDelegate.setDefaultNightMode(it)
             }
         }
+
+
+        mTimer = LifeCycleCountDownByTimer(
+            lifecycleOwner = this,
+            listener = object : ICountDownListener {
+                override fun onTick(count: Long) {
+                    val remainTime = "跳过|$count S"
+                    mBinding.tvCountDown.apply {
+                        text = remainTime
+                        visibility = View.VISIBLE
+                    }
+
+                }
+
+                override fun onFinish() {
+                    toMain()
+                }
+
+            })
 
         mCountDownTimer.start()
 
@@ -45,7 +70,7 @@ class SplashActivity : BaseVBActivity<ActivitySplashBinding>(ActivitySplashBindi
         }
     }
 
-    private var mCountDownTimer = object : CountDownTimer(3000, 1000) {
+    private var mCountDownTimer = object : CountDownTimer(4000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             val remainTime = "跳过|${millisUntilFinished / 1000} S"
             mBinding.tvCountDown.text = remainTime

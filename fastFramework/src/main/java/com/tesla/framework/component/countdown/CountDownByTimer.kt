@@ -33,7 +33,7 @@ open class CountDownByTimer(private var count: Long, private val delay:Long, pri
     override fun start():ICountDownAction {
         cancel()
         mTimer = Timer().apply {
-            schedule(CountDownTask(), 0, period)
+            schedule(CountDownTask(), delay, period)
         }
         return this
     }

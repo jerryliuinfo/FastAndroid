@@ -36,7 +36,8 @@ class FragmentBindingDelegate<VB : ViewBinding> : FragmentBinding<VB> {
   private val handler by lazy { Handler(Looper.getMainLooper()) }
 
   override val mBinding: VB
-    get() = requireNotNull(_binding) { "The property of binding has been destroyed." }
+//    get() = requireNotNull(_binding) { "The property of binding has been destroyed." }
+    get() = _binding!!
 
   override fun Fragment.createViewWithBinding(inflater: LayoutInflater, container: ViewGroup?): View {
     if (_binding == null) {

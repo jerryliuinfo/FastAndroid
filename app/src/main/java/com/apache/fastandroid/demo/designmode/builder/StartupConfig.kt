@@ -16,13 +16,13 @@ class StartupConfig private constructor(
         }
 
 
-        fun setAwaitTimeout(timeoutMilliSeconds: Long) = apply {
+        fun setAwaitTimeout(timeoutMilliSeconds: Long):Builder = apply {
             mAwaitTimeout = timeoutMilliSeconds
         }
 
 
 
-        fun setOpenStatistics(openStatistic: Boolean) = apply {
+        fun setOpenStatistics(openStatistic: Boolean):Builder = apply {
             mOpenStatistics = openStatistic
         }
 

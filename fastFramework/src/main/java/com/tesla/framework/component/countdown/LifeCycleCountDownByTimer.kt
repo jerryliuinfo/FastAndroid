@@ -11,7 +11,7 @@ import java.util.TimerTask
  * Created by Jerry on 2023/3/5.
  */
 class LifeCycleCountDownByTimer(
-    count: Long, delay:Long, period: Long,
+    count: Long = 3000, delay:Long = 0, period: Long = 1000,
 
     lifecycleOwner: LifecycleOwner,
     listener:ICountDownListener?= null):

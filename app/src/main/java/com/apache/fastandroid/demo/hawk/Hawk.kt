@@ -110,10 +110,10 @@ object Hawk {
      * @return true if correctly initialised and built. False otherwise.
      */
     fun isBuilt(): Boolean {
-        return hawkFacade!!.isBuilt()
+        return hawkFacade?.isBuilt() == true
     }
 
     fun destroy() {
-        hawkFacade!!.destroy()
+        hawkFacade?.destroy()
     }
 }

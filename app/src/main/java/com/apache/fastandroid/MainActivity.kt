@@ -149,7 +149,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, LiveDataLoaderFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, LocationDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ProgressDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, CountDownDemoFragment::class.java,null,addTitleBar = true)
+        FragmentContainerActivity.launch(this, CountDownDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 
