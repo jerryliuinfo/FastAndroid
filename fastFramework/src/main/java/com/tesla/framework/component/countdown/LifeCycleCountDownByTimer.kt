@@ -22,7 +22,6 @@ class LifeCycleCountDownByTimer(
 
     override fun onDestroy(owner: LifecycleOwner) {
         super.onDestroy(owner)
-
         Logger.d("LifeCycleCountDownByTimer onDestroy")
         stop()
     }
