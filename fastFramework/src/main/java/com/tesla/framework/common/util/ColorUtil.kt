@@ -29,7 +29,6 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.tesla.framework.R
 import com.tesla.framework.applike.FApplication
-import com.tesla.framework.common.util.log.NLog
 
 /**
  * Utility methods for working with colors.
@@ -119,7 +118,6 @@ object ColorUtil {
      * Check that the lightness value (0–1)
      */
     fun isDark(hsl: FloatArray): Boolean { // @Size(3)
-        NLog.d(TAG, "hsl[2] is " + hsl[2])
         return hsl[2] < 0.8f
     }
 

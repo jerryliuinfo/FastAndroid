@@ -1676,13 +1676,13 @@ com.tesla.framework.component.livedata.callback.UnPeekLiveData$Builder -> com.te
     1:1:void <init>():29:29 -> <init>
     1:1:com.tesla.framework.component.livedata.callback.UnPeekLiveData$Builder setAllowNullValue(boolean):37:37 -> a
     2:3:com.tesla.framework.component.livedata.callback.UnPeekLiveData create():42:43 -> a
-com.tesla.framework.component.logger.AndroidLogAdapter -> com.tesla.framework.component.f.a:
-    com.tesla.framework.component.logger.FormatStrategy formatStrategy -> a
+com.tesla.framework.component.logger.adapter.AndroidLogAdapter -> com.tesla.framework.component.f.a:
+    com.tesla.framework.component.logger.format.FormatStrategy formatStrategy -> a
     1:2:void <init>():25:26 -> <init>
-    3:4:void <init>(com.tesla.framework.component.logger.FormatStrategy):29:30 -> <init>
+    3:4:void <init>(com.tesla.framework.component.logger.format.FormatStrategy):29:30 -> <init>
     boolean isLoggable(int,java.lang.String) -> a
     1:1:void log(int,java.lang.String,java.lang.String):38:38 -> a
-com.tesla.framework.component.logger.CsvFormatStrategy -> com.tesla.framework.component.f.b:
+com.tesla.framework.component.logger.format.CsvFormatStrategy -> com.tesla.framework.component.f.b:
     java.lang.String SEPARATOR -> g
     java.lang.String NEW_LINE_REPLACEMENT -> f
     java.util.Date date -> a
@@ -1691,44 +1691,44 @@ com.tesla.framework.component.logger.CsvFormatStrategy -> com.tesla.framework.co
     java.text.SimpleDateFormat dateFormat -> b
     java.lang.String tag -> d
     1:1:void <clinit>():24:24 -> <clinit>
-    1:1:void <init>(com.tesla.framework.component.logger.CsvFormatStrategy$Builder,com.tesla.framework.component.logger.CsvFormatStrategy$1):22:22 -> <init>
-    2:8:void <init>(com.tesla.framework.component.logger.CsvFormatStrategy$Builder):33:39 -> <init>
-    1:1:com.tesla.framework.component.logger.CsvFormatStrategy$Builder newBuilder():43:43 -> a
+    1:1:void <init>(com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder,com.tesla.framework.component.logger.format.CsvFormatStrategy$1):22:22 -> <init>
+    2:8:void <init>(com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder):33:39 -> <init>
+    1:1:com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder newBuilder():43:43 -> a
     2:36:void log(int,java.lang.String,java.lang.String):47:81 -> a
     37:40:java.lang.String formatTag(java.lang.String):85:88 -> a
-com.tesla.framework.component.logger.CsvFormatStrategy$1 -> com.tesla.framework.component.f.b$a:
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder -> com.tesla.framework.component.f.b$b:
+com.tesla.framework.component.logger.format.CsvFormatStrategy$1 -> com.tesla.framework.component.f.b$a:
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder -> com.tesla.framework.component.f.b$b:
     java.util.Date date -> a
     com.tesla.framework.component.logger.LogStrategy logStrategy -> c
     int MAX_BYTES -> e
     java.text.SimpleDateFormat dateFormat -> b
     java.lang.String tag -> d
-    1:1:void <init>(com.tesla.framework.component.logger.CsvFormatStrategy$1):91:91 -> <init>
+    1:1:void <init>(com.tesla.framework.component.logger.format.CsvFormatStrategy$1):91:91 -> <init>
     2:2:void <init>():99:99 -> <init>
     3:3:void <init>():97:97 -> <init>
-    1:1:com.tesla.framework.component.logger.CsvFormatStrategy$Builder date(java.util.Date):103:103 -> a
-    2:2:com.tesla.framework.component.logger.CsvFormatStrategy$Builder dateFormat(java.text.SimpleDateFormat):108:108 -> a
-    3:3:com.tesla.framework.component.logger.CsvFormatStrategy$Builder logStrategy(com.tesla.framework.component.logger.LogStrategy):113:113 -> a
-    4:4:com.tesla.framework.component.logger.CsvFormatStrategy$Builder tag(java.lang.String):118:118 -> a
-    5:20:com.tesla.framework.component.logger.CsvFormatStrategy build():123:138 -> a
-com.tesla.framework.component.logger.DiskLogAdapter -> com.tesla.framework.component.f.c:
-    com.tesla.framework.component.logger.FormatStrategy formatStrategy -> a
+    1:1:com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder date(java.util.Date):103:103 -> a
+    2:2:com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder dateFormat(java.text.SimpleDateFormat):108:108 -> a
+    3:3:com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder logStrategy(com.tesla.framework.component.logger.LogStrategy):113:113 -> a
+    4:4:com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder tag(java.lang.String):118:118 -> a
+    5:20:com.tesla.framework.component.logger.format.CsvFormatStrategy build():123:138 -> a
+com.tesla.framework.component.logger.adapter.DiskLogAdapter -> com.tesla.framework.component.f.c:
+    com.tesla.framework.component.logger.format.FormatStrategy formatStrategy -> a
     1:2:void <init>():16:17 -> <init>
-    3:4:void <init>(com.tesla.framework.component.logger.FormatStrategy):20:21 -> <init>
+    3:4:void <init>(com.tesla.framework.component.logger.format.FormatStrategy):20:21 -> <init>
     boolean isLoggable(int,java.lang.String) -> a
     1:1:void log(int,java.lang.String,java.lang.String):29:29 -> a
-com.tesla.framework.component.logger.DiskLogStrategy -> com.tesla.framework.component.f.d:
+com.tesla.framework.component.logger.output.DiskLogStrategy -> com.tesla.framework.component.f.d:
     android.os.Handler handler -> a
     1:2:void <init>(android.os.Handler):26:27 -> <init>
     1:4:void log(int,java.lang.String,java.lang.String):31:34 -> a
-com.tesla.framework.component.logger.DiskLogStrategy$WriteHandler -> com.tesla.framework.component.f.d$a:
+com.tesla.framework.component.logger.output.DiskLogStrategy$WriteHandler -> com.tesla.framework.component.f.d$a:
     java.lang.String folder -> a
     int maxFileSize -> b
     1:3:void <init>(android.os.Looper,java.lang.String,int):43:45 -> <init>
     1:4:void writeLog(java.io.FileWriter,java.lang.String):80:83 -> a
     5:26:java.io.File getLogFile(java.lang.String,java.lang.String):87:108 -> a
     1:17:void handleMessage(android.os.Message):50:66 -> handleMessage
-com.tesla.framework.component.logger.FormatStrategy -> com.tesla.framework.component.f.e:
+com.tesla.framework.component.logger.format.FormatStrategy -> com.tesla.framework.component.f.e:
     void log(int,java.lang.String,java.lang.String) -> a
 com.tesla.framework.component.logger.LogAdapter -> com.tesla.framework.component.f.f:
     void doInit(android.content.Context) -> a
@@ -1736,7 +1736,7 @@ com.tesla.framework.component.logger.LogAdapter -> com.tesla.framework.component
     void log(int,java.lang.String,java.lang.String) -> a
 com.tesla.framework.component.logger.LogStrategy -> com.tesla.framework.component.f.g:
     void log(int,java.lang.String,java.lang.String) -> a
-com.tesla.framework.component.logger.LogcatLogStrategy -> com.tesla.framework.component.f.h:
+com.tesla.framework.component.logger.output.LogcatLogStrategy -> com.tesla.framework.component.f.h:
     java.lang.String DEFAULT_TAG -> a
     1:1:void <init>():15:15 -> <init>
     1:7:void log(int,java.lang.String,java.lang.String):20:26 -> a
@@ -1787,7 +1787,7 @@ com.tesla.framework.component.logger.LoggerPrinter -> com.tesla.framework.compon
     1:1:void d(java.lang.String,java.lang.Object[]):49:49 -> e
     1:1:void e(java.lang.String,java.lang.Object[]):57:57 -> f
     1:1:java.lang.String createMessage(java.lang.String,java.lang.Object[]):179:179 -> g
-com.tesla.framework.component.logger.PrettyFormatStrategy -> com.tesla.framework.component.f.k:
+com.tesla.framework.component.logger.format.PrettyFormatStrategy -> com.tesla.framework.component.f.k:
     char TOP_LEFT_CORNER -> h
     char MIDDLE_CORNER -> j
     char BOTTOM_LEFT_CORNER -> i
@@ -1804,9 +1804,9 @@ com.tesla.framework.component.logger.PrettyFormatStrategy -> com.tesla.framework
     int methodCount -> a
     boolean showThreadInfo -> c
     java.lang.String tag -> e
-    1:1:void <init>(com.tesla.framework.component.logger.PrettyFormatStrategy$Builder,com.tesla.framework.component.logger.PrettyFormatStrategy$1):37:37 -> <init>
-    2:9:void <init>(com.tesla.framework.component.logger.PrettyFormatStrategy$Builder):70:77 -> <init>
-    1:1:com.tesla.framework.component.logger.PrettyFormatStrategy$Builder newBuilder():81:81 -> a
+    1:1:void <init>(com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder,com.tesla.framework.component.logger.format.PrettyFormatStrategy$1):37:37 -> <init>
+    2:9:void <init>(com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder):70:77 -> <init>
+    1:1:com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder newBuilder():81:81 -> a
     2:28:void log(int,java.lang.String,java.lang.String):85:111 -> a
     29:62:void logHeaderContent(int,java.lang.String,int):120:153 -> a
     63:63:void logBottomBorder(int,java.lang.String):158:158 -> a
@@ -1817,22 +1817,22 @@ com.tesla.framework.component.logger.PrettyFormatStrategy -> com.tesla.framework
     5:8:java.lang.String getSimpleClassName(java.lang.String):181:184 -> b
     1:1:void logTopBorder(int,java.lang.String):115:115 -> c
     2:6:void logContent(int,java.lang.String,java.lang.String):166:170 -> c
-com.tesla.framework.component.logger.PrettyFormatStrategy$1 -> com.tesla.framework.component.f.k$a:
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder -> com.tesla.framework.component.f.k$b:
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$1 -> com.tesla.framework.component.f.k$a:
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder -> com.tesla.framework.component.f.k$b:
     com.tesla.framework.component.logger.LogStrategy logStrategy -> d
     int methodOffset -> b
     boolean showThreadInfo -> c
     java.lang.String tag -> e
     int methodCount -> a
-    1:1:void <init>(com.tesla.framework.component.logger.PrettyFormatStrategy$1):213:213 -> <init>
+    1:1:void <init>(com.tesla.framework.component.logger.format.PrettyFormatStrategy$1):213:213 -> <init>
     2:2:void <init>():220:220 -> <init>
     3:7:void <init>():214:218 -> <init>
-    1:1:com.tesla.framework.component.logger.PrettyFormatStrategy$Builder methodCount(int):224:224 -> a
-    2:2:com.tesla.framework.component.logger.PrettyFormatStrategy$Builder showThreadInfo(boolean):234:234 -> a
-    3:3:com.tesla.framework.component.logger.PrettyFormatStrategy$Builder logStrategy(com.tesla.framework.component.logger.LogStrategy):239:239 -> a
-    4:4:com.tesla.framework.component.logger.PrettyFormatStrategy$Builder tag(java.lang.String):244:244 -> a
-    5:8:com.tesla.framework.component.logger.PrettyFormatStrategy build():249:252 -> a
-    1:1:com.tesla.framework.component.logger.PrettyFormatStrategy$Builder methodOffset(int):229:229 -> b
+    1:1:com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder methodCount(int):224:224 -> a
+    2:2:com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder showThreadInfo(boolean):234:234 -> a
+    3:3:com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder logStrategy(com.tesla.framework.component.logger.LogStrategy):239:239 -> a
+    4:4:com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder tag(java.lang.String):244:244 -> a
+    5:8:com.tesla.framework.component.logger.format.PrettyFormatStrategy build():249:252 -> a
+    1:1:com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder methodOffset(int):229:229 -> b
 com.tesla.framework.component.logger.Printer -> com.tesla.framework.component.f.l:
     void addAdapter(com.tesla.framework.component.logger.LogAdapter) -> a
     void clearLogAdapters() -> a

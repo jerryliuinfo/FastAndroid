@@ -1,6 +1,6 @@
 package com.apache.fastandroid.demo.temp.concurry;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.component.logger.Logger;
 
 /**
  * Created by Jerry on 2021/11/8.
@@ -24,22 +24,21 @@ public class PlayerNew implements Runnable {
 
    private void play(){
       if ("zhangsan".equals(name)){
-         NLog.d(TAG, "zhangsan play");
+         Logger.d(  "zhangsan play");
 
          synchronized (car){
-            NLog.d(TAG, "zhangsan 获得玩具车");
+            Logger.d( "zhangsan 获得玩具车");
             synchronized (sword){
-               NLog.d(TAG, "zhangsan 获得 sword 锁");
+               Logger.d(  "zhangsan 获得 sword 锁");
 
             }
          }
 
       }else  if ("lisi".equals(name)){
-         NLog.d(TAG, "lisi play");
          synchronized (sword){
-            NLog.d(TAG, "lisi 获得 sword 锁");
+            Logger.d("lisi 获得 sword 锁");
             synchronized (car){
-               NLog.d(TAG, "lisi 获得 car 锁");
+               Logger.d("lisi 获得 car 锁");
 
             }
          }

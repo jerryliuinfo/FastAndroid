@@ -2,6 +2,9 @@ package com.tesla.framework.component.logger;
 
 import android.content.Context;
 
+import com.tesla.framework.component.logger.adapter.AndroidLogAdapter;
+import com.tesla.framework.component.logger.adapter.DiskLogAdapter;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

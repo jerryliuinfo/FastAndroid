@@ -1,7 +1,5 @@
 package com.apache.fastandroid.demo.designmode.proxy
 
-import com.apache.fastandroid.demo.designmode.proxy.InnerServiceApi
-import com.tesla.framework.common.util.log.NLog
 
 /**
  * Created by Jerry on 2021/9/21.

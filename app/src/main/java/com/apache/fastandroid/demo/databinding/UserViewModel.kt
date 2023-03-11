@@ -8,7 +8,6 @@ import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.jetpack.reporsity.UserDao
 import com.apache.fastandroid.jetpack.reporsity.UserNetwork
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.logger.Logger
 import kotlinx.coroutines.launch
 
@@ -38,17 +37,14 @@ class UserViewModel:ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        NLog.d(TAG, "UserViewModel onCleared")
     }
 
 
 
     fun refresh(){
         var age  = java.util.Random().nextInt(100)
-        NLog.d(TAG, "refresh age: %s", age)
         users.value!!.apply {
             name = "zhangsan:$age"
-            NLog.d(TAG, "refresh user: ${users.value}")
         }
 //        users.value = UserBean("zhangsan:$age")
     }

@@ -3,7 +3,6 @@ package com.apache.fastandroid.demo.hitpit
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCommonBinding
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
@@ -23,14 +22,11 @@ class DataClassPitDemoFragment:BaseBindingFragment<FragmentCommonBinding>(Fragme
         val map = mutableMapOf<SampleBean,String>()
         map[sample] = "1"
         //可以拿到 value:!
-        NLog.d(TAG,"before modify:"+ map[sample])
 
         sample.id = 2
 
         //拿不到 value 了
-        NLog.d(TAG,"after modify:"+ map[sample])
 
         //但对象还是同一个
-        NLog.d(TAG,"is the same obj:"+ (map.keys.first() == sample))
     }
 }

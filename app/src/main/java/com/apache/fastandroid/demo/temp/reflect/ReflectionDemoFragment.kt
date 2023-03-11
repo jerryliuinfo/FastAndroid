@@ -8,7 +8,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.TempReflectionBinding
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.temp_reflection.*
 
@@ -26,25 +25,20 @@ class ReflectionDemoFragment:BaseBindingFragment<TempReflectionBinding>(TempRefl
         drawerLayout = findViewById(R.id.drawer)
         drawerLayout.addDrawerListener(object :DrawerLayout.DrawerListener{
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-                NLog.d(TAG, "onDrawerSlide --->")
             }
 
             override fun onDrawerOpened(drawerView: View) {
-                NLog.d(TAG, "onDrawerOpened --->")
             }
 
             override fun onDrawerClosed(drawerView: View) {
-                NLog.d(TAG, "onDrawerClosed --->")
             }
 
             override fun onDrawerStateChanged(newState: Int) {
-                NLog.d(TAG, "onDrawerStateChanged --->")
 
             }
         })
         btn_reflect_field.setOnClickListener {
             var drawerListeners = getDrawerListeners()
-            NLog.d(TAG, "drawerListeners size: ${drawerListeners!!.size}")
         }
         btn_reflect_method.setOnClickListener {
             drawerLayout.openDrawer(Gravity.LEFT,true)

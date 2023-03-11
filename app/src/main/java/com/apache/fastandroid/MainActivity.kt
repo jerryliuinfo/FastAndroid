@@ -15,10 +15,8 @@ import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.countdown.CountDownDemoFragment
-import com.apache.fastandroid.demo.progress.ProgressDemoFragment
+import com.apache.fastandroid.demo.elegant.ElegantDemoFragment
 import com.blankj.utilcode.util.ToastUtils
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
@@ -149,7 +147,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, LiveDataLoaderFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, LocationDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ProgressDemoFragment::class.java,null,addTitleBar = true)
-        FragmentContainerActivity.launch(this, CountDownDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, CountDownDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, ElegantDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 
@@ -209,8 +208,6 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
         val user = intent.getSerializableExtra("user")
         if (user != null) {
             val userBean = user as UserBean
-            NLog.d(TAG, "onNewIntent key: %s", key)
-            NLog.d(TAG, "userBean: %s", userBean)
         }
     }
 

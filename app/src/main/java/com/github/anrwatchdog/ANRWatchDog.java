@@ -28,7 +28,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
-import com.tesla.framework.common.util.log.NLog;
+
 
 /**
  * A watchdog timer thread that detects when the UI thread has frozen.
@@ -262,7 +262,6 @@ public class ANRWatchDog extends Thread {
             if (_tick != 0 && !_reported) {
                 //noinspection ConstantConditions
                 if (!_ignoreDebugger && (Debug.isDebuggerConnected() || Debug.waitingForDebugger())) {
-                    NLog.w(TAG, "An ANR was detected but ignored because the debugger is connected (you can prevent this with setIgnoreDebugger(true))");
                     _reported = true;
                     continue ;
                 }

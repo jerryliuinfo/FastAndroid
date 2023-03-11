@@ -13,7 +13,6 @@ import android.widget.TextView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentAgentWebInActivityBinding
 import com.just.agentweb.*
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
@@ -35,13 +34,11 @@ open class AgentWebFragment:BaseBindingFragment<FragmentAgentWebInActivityBindin
     protected val mWebChromeClient: WebChromeClient = object : WebChromeClient() {
         override fun onReceivedTitle(view: WebView, title: String) {
             super.onReceivedTitle(view, title)
-            NLog.d(TAG, "onReceivedTitle title: %s", title)
             titleText.text = title
         }
 
         override fun onProgressChanged(view: WebView?, newProgress: Int) {
             super.onProgressChanged(view, newProgress)
-            NLog.d(TAG, "onProgressChanged newProgress: %s,view: %s", newProgress,view)
         }
 
         override fun onJsAlert(
@@ -50,18 +47,15 @@ open class AgentWebFragment:BaseBindingFragment<FragmentAgentWebInActivityBindin
             message: String?,
             result: JsResult?
         ): Boolean {
-            NLog.d(TAG, "onJsAlert url: %s, message: %s",url,message)
             return super.onJsAlert(view, url, message, result)
         }
     }
     private val mWebViewClient: WebViewClient = object : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
-            NLog.d(TAG, "shouldOverrideUrlLoading request: %s", request)
             return super.shouldOverrideUrlLoading(view, request)
         }
 
         override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
-            NLog.d(TAG, "onPageStarted url: %s", url)
         }
     }
 
@@ -96,7 +90,6 @@ open class AgentWebFragment:BaseBindingFragment<FragmentAgentWebInActivityBindin
          * @param action
          * @return true 该Url对应页面请求权限进行拦截 ，false 表示不拦截。
          */
-        NLog.d( TAG, "mUrl:" + url + "  permission:" + permissions+ " action:" + action)
         false
     }
 

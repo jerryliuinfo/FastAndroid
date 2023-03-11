@@ -38,7 +38,6 @@ import com.apache.fastandroid.util.DateUtil
 import com.kingja.loadsir.core.LoadSir
 import com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator
 import com.tesla.framework.common.util.HideTextWatcher
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.*
 import com.tesla.framework.ui.fragment.BaseBindingFragment
@@ -967,7 +966,7 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
             if (it == "bb") {
                 return@onEach
             }
-            NLog.d(TAG, it)
+            Logger.d(it)
         }
         return "Hello"
     }

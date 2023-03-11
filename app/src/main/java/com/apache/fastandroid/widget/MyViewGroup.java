@@ -9,8 +9,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tesla.framework.common.util.log.NLog;
-
 public  class MyViewGroup extends ViewGroup {
     public static final String TAG = MyViewGroup.class.getSimpleName();
     public MyViewGroup(Context context, AttributeSet attrs) {
@@ -23,7 +21,6 @@ public  class MyViewGroup extends ViewGroup {
 //        int left = (r-l)/2 - child.getMeasuredWidth() / 2;
         int centerX = (r-l)/2 ;
         int centerY = (b-t)/2 ;
-        NLog.d(TAG, "onLayout child width:%s, height: %s",child.getMeasuredWidth(),child.getMeasuredHeight());
         child.layout(centerX-100,centerY - 100, centerX+100,centerY + 100);
     }
 

@@ -5,8 +5,6 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 
-import com.tesla.framework.common.util.log.NLog;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -47,7 +45,6 @@ public class BlockMonitor {
             if (!mBlockStackTrace.contains(s)) {
                 mBlockStackTrace.add(s);
                 //BlockLogUtils.e(TAG, s);
-                NLog.e(TAG, "stackTrace = %s", s);
             }
         }
     };

@@ -8,7 +8,6 @@ import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
 import com.just.agentweb.AgentWeb;
-import com.tesla.framework.common.util.log.NLog;
 
 /**
  * Created by cenxiaozhong on 2017/5/14.
@@ -31,11 +30,9 @@ public class AndroidInterface {
 
     @JavascriptInterface
     public void callAndroid(final String msg) {
-        NLog.d(TAG, "callAndroid --->");
         deliver.post(new Runnable() {
             @Override
             public void run() {
-                NLog.d(TAG, "callAndroid msg: %s, thread: %s",msg, Thread.currentThread());
                 Toast.makeText(context.getApplicationContext(), "" + msg, Toast.LENGTH_LONG).show();
             }
         });

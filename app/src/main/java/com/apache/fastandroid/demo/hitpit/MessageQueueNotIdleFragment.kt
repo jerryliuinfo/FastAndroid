@@ -5,7 +5,6 @@ import android.os.Looper
 import android.os.MessageQueue
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentHitPitBinding
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
@@ -24,7 +23,6 @@ class MessageQueueNotIdleFragment:BaseBindingFragment<FragmentHitPitBinding>(Fra
         super.layoutInit(inflater, savedInstanceState)
         Looper.getMainLooper().queue.addIdleHandler(object :MessageQueue.IdleHandler{
             override fun queueIdle(): Boolean {
-                NLog.d(TAG, "queueIdle do something")
                 return false
             }
 

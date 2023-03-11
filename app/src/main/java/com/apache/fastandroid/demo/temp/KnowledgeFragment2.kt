@@ -10,7 +10,6 @@ import com.apache.fastandroid.databinding.FragmentTempKnowledge2Binding
 import com.apache.fastandroid.demo.temp.adapter.KnowlegeAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
 import kotlinx.android.synthetic.main.fragment_temp_knowledge2.*
@@ -62,7 +61,6 @@ class KnowledgeFragment2: BaseBindingFragment<FragmentTempKnowledge2Binding>(Fra
             paramBuilder.append(key).append("=").append(map[key])
             appendAnd = true
         }
-        NLog.d(TAG, "msg: %s", paramBuilder.toString())
     }
 
     private fun addOnPredrawListener(){

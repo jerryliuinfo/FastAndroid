@@ -1,5 +1,7 @@
 package com.tesla.framework.component.logger;
 
+import com.tesla.framework.component.logger.format.FormatStrategy;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

@@ -10,7 +10,6 @@ import com.apache.fastandroid.network.response.BaseResponse
 import com.apache.fastandroid.network.response.EmptyResponse
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.blankj.utilcode.util.NetworkUtils
-import com.tesla.framework.common.util.log.NLog
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -65,7 +64,6 @@ class CoroutineVewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        NLog.d(TAG, "onCleared viewModelJob.cancel()--->")
     }
 
 

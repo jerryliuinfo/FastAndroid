@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ScrollView;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.component.logger.Logger;
+
 
 /**
  * Created by Jerry on 2021/8/6.
@@ -36,7 +37,7 @@ public class OuterInterceptScrollView extends ScrollView {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        NLog.d(TAG, "CustomScrollView onInterceptTouchEvent ");
+        Logger.d( "CustomScrollView onInterceptTouchEvent ");
 
         boolean intercept = false;
         switch (ev.getAction()) {
@@ -50,19 +51,19 @@ public class OuterInterceptScrollView extends ScrollView {
                 if (listView.getFirstVisiblePosition() == 0 && (ev.getY() - mLastY) > 0) {
                     //scrollView拦截事件
                     intercept = true;
-                    NLog.d(TAG, "list view's first position, interrupt");
+                    Logger.d(  "list view's first position, interrupt");
 
                 }
                 //listView滑动到底部，如果继续上滑，就让scrollView拦截事件
                 else if (listView.getLastVisiblePosition() == listView.getCount() - 1 && (ev.getY() - mLastY) < 0) {
                     //scrollView拦截事件
                     intercept = true;
-                    NLog.d(TAG, "list view's last position, interrupt");
+                    Logger.d(  "list view's last position, interrupt");
 
                 } else {
                     //不允许scrollView拦截事件
                     intercept = false;
-                    NLog.d(TAG, "list view's range, don't intercept");
+                    Logger.d( "list view's range, don't intercept");
 
                 }
                 mLastY = ev.getY();
@@ -72,7 +73,7 @@ public class OuterInterceptScrollView extends ScrollView {
                 break;
         }
 
-        NLog.d(TAG, "CustomScrollView onInterceptTouchEvent intercept: %s",intercept);
+        Logger.d(  "CustomScrollView onInterceptTouchEvent intercept: %s",intercept);
         return intercept;
 
 

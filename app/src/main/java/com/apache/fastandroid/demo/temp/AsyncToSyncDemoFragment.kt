@@ -3,7 +3,6 @@ package com.apache.fastandroid.demo.temp
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.TempAsynctosyncUsageDemoBinding
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.temp_asynctosync_usage_demo.*
 import java.util.concurrent.CountDownLatch
@@ -33,13 +32,11 @@ class AsyncToSyncDemoFragment:BaseBindingFragment<TempAsynctosyncUsageDemoBindin
         for (index in 0 until 3){
             thread {
                 Thread.sleep(1000 + ThreadLocalRandom.current().nextInt(1000).toLong())
-                NLog.d(TAG, "finish ${index} + ${Thread.currentThread().name}")
                 countDownLatch.countDown()
             }
         }
 
         countDownLatch.await()
-        NLog.d(TAG, "主线程执行完毕")
     }
 
 

@@ -1,7 +1,7 @@
 package com.apache.fastandroid.network.interceptor;
 
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.component.logger.Logger;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -38,15 +38,15 @@ public class NetLogInterceptor implements Interceptor {
             if (contentType != null) {
                 charset = contentType.charset(UTF8);
             }
-            NLog.d(TAG, "发送请求 %s on %s %n%s%s",request.url(), request.method(), request.headers(), this.isPlaintext(buffer) ? buffer.readString(charset) : "" );
+            Logger.d( "发送请求 %s on %s %n%s%s",request.url(), request.method(), request.headers(), this.isPlaintext(buffer) ? buffer.readString(charset) : "" );
         } else {
-            NLog.d(TAG, "发送请求 %s on %s %n%s\"", request.url(), request.method(), request.headers());
+            Logger.d(  "发送请求 %s on %s %n%s\"", request.url(), request.method(), request.headers());
         }
 
         Response response = chain.proceed(request);
         long t2 = System.nanoTime();
         ResponseBody responseBody = response.peekBody(1048576L);
-        NLog.d(TAG, "接收响应(%.1fms): [%s] %n%s%s",  (double)(t2 - t1) / 1000000.0D, response.request().url(), response.headers(), responseBody.string());
+        Logger.d(  "接收响应(%.1fms): [%s] %n%s%s",  (double)(t2 - t1) / 1000000.0D, response.request().url(), response.headers(), responseBody.string());
 
         return response;
     }

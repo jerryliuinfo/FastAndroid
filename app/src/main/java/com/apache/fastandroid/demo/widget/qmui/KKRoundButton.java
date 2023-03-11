@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
-import com.tesla.framework.common.util.log.NLog;
 
 /**
  * Created by Jerry on 2021/5/4.
@@ -29,6 +28,5 @@ public class KKRoundButton extends QMUIRoundButton {
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        NLog.d(TAG, "setPressed pressed: %s",pressed);
     }
 }

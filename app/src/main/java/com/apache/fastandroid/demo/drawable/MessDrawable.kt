@@ -2,7 +2,6 @@ package com.apache.fastandroid.demo.drawable
 
 import android.graphics.*
 import android.graphics.drawable.Drawable
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.kt.dp
 
 private val INTERVAL = 50.dp
@@ -59,6 +58,5 @@ class MessDrawable(): Drawable() {
 
     override fun onBoundsChange(bounds: Rect) {
         super.onBoundsChange(bounds)
-        NLog.d(TAG, "onBoundsChange : %s",bounds)
     }
 }

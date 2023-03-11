@@ -1,10 +1,6 @@
 package com.apache.fastandroid.jetpack.reporsity
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.apache.fastandroid.demo.kt.sealed.User
-import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
-import com.tesla.framework.common.util.log.NLog
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber

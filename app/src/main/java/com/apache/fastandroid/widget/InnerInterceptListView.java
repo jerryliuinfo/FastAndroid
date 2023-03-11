@@ -6,8 +6,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ListView;
 
-import com.tesla.framework.common.util.log.NLog;
-
 /**
  * Created by Jerry on 2021/8/6.
  */
@@ -19,7 +17,6 @@ public class InnerInterceptListView extends ListView {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        NLog.d(TAG, "InnerInterceptListView onTouchEvent action: %s", ev.getAction());
 
         return super.onTouchEvent(ev);
     }
@@ -42,14 +39,12 @@ public class InnerInterceptListView extends ListView {
                 if (getFirstVisiblePosition() == 0 && (ev.getY() - mLastY) > 0) {
                     //允许父ScrollView拦截事件
                     getParent().requestDisallowInterceptTouchEvent(false);
-                    NLog.d(TAG, "已经滑动到lisview第一个item了, 允许父view拦截事件");
 
                 }
                 //满足listView滑动到底部，如果继续上滑，允许scrollView拦截事件
                 else if (getLastVisiblePosition() == getCount() - 1 && (ev.getY() - mLastY) < 0) {
                     //允许ScrollView拦截事件
                     getParent().requestDisallowInterceptTouchEvent(false);
-                    NLog.d(TAG, "已经滑动到lisview最后一个item了, 允许父view拦截事件");
                 } else {
                     //其它情形时不允ScrollView拦截事件
                     getParent().requestDisallowInterceptTouchEvent(true);
@@ -69,7 +64,6 @@ public class InnerInterceptListView extends ListView {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        NLog.d(TAG, "CustomListView onInterceptTouchEvent action: %s", ev.getAction());
         return super.onInterceptTouchEvent(ev);
     }
 }

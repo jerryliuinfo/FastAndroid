@@ -12,6 +12,11 @@ class ProgressCalculator: ICalculator {
         val result =  tasks.sumOf {
             it.weight
         }
+
+        val i = 10
+        if (i in 0..20){
+
+        }
         return if (result > 100) 100 else result
     }
 

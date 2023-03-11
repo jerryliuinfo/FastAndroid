@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.tesla.framework.applike.FApplication
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.logger.Logger
 
 /**
  * Created by Jerry on 2021/4/23.
@@ -32,13 +32,11 @@ class NetworkLiveData:LiveData<Int>() {
 
     override fun onActive() {
         super.onActive()
-        NLog.d(TAG, "onActive --->")
         manager.registerNetworkCallback(request, networkCallback)
     }
 
     override fun onInactive() {
         super.onInactive()
-        NLog.d(TAG, "onInactive --->")
 
         manager.unregisterNetworkCallback(networkCallback)
     }
@@ -66,13 +64,13 @@ class NetworkLiveData:LiveData<Int>() {
 
         override fun onAvailable(network: Network) {
             super.onAvailable(network)
-            NLog.d(TAG,"onAvailable: ", "网络已连接")
+            Logger.d("onAvailable: ", "网络已连接")
             getInstance().postValue(NetworkState.CONNECT)
         }
 
         override fun onLost(network: Network) {
             super.onLost(network)
-            NLog.d(TAG,"onLost 网络断开")
+            Logger.d("onLost 网络断开")
             getInstance().postValue(NetworkState.NONE)
         }
 
@@ -82,10 +80,10 @@ class NetworkLiveData:LiveData<Int>() {
         ) {
             super.onCapabilitiesChanged(network, networkCapabilities)
             if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                NLog.d(TAG,"WIFI已连接")
+                Logger.d("WIFI已连接")
                 getInstance().postValue(NetworkState.WIFI)
             } else if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-                NLog.d(TAG,"移动网络已连接")
+                Logger.d("移动网络已连接")
                 getInstance().postValue(NetworkState.CELLULAR)
             }
         }

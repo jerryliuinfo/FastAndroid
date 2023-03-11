@@ -6,6 +6,10 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.tesla.framework.component.logger.*
+import com.tesla.framework.component.logger.adapter.AndroidLogAdapter
+import com.tesla.framework.component.logger.adapter.DiskLogAdapter
+import com.tesla.framework.component.logger.format.FormatStrategy
+import com.tesla.framework.component.logger.format.PrettyFormatStrategy
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.util.*
 

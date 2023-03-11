@@ -1,9 +1,14 @@
-package com.tesla.framework.component.logger;
+package com.tesla.framework.component.logger.adapter;
+
+import com.tesla.framework.component.logger.format.CsvFormatStrategy;
+import com.tesla.framework.component.logger.format.FormatStrategy;
+import com.tesla.framework.component.logger.LogAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import static com.tesla.framework.component.logger.Utils.checkNotNull;
+
 
 /**
  * This is used to saves log messages to the disk.

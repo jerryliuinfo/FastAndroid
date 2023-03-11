@@ -2,7 +2,6 @@ package com.apache.fastandroid.jetpack.livedata
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData
-import com.tesla.framework.common.util.log.NLog
 import java.math.BigDecimal
 
 /**
@@ -20,13 +19,11 @@ class StockLiveData(symbol:String): LiveData<BigDecimal>() {
 
     override fun onActive() {
         super.onActive()
-        NLog.d(TAG, "onActive")
         stockMananger.requestPriceUpdates(mListener)
     }
 
     override fun onInactive() {
         super.onInactive()
-        NLog.d(TAG, "onAconInactivetive")
         stockMananger.removeUpdates(mListener)
 
     }

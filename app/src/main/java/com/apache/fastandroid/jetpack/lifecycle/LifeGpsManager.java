@@ -3,8 +3,6 @@ package com.apache.fastandroid.jetpack.lifecycle;
 import android.os.Handler;
 import android.os.Message;
 
-import com.tesla.framework.common.util.log.NLog;
-
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
@@ -36,13 +34,11 @@ public class LifeGpsManager implements DefaultLifecycleObserver {
 
     @Override
     public void onPause(@NonNull LifecycleOwner owner) {
-        NLog.d(TAG, "LifeGpsManager onPause");
         setActive(owner.getLifecycle());
     }
 
     @Override
     public void onResume(@NonNull LifecycleOwner owner) {
-        NLog.d(TAG, "LifeGpsManager onResume");
         setActive(owner.getLifecycle());
         calculte();
     }
@@ -55,7 +51,6 @@ public class LifeGpsManager implements DefaultLifecycleObserver {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            NLog.d(TAG, "handleMessage");
         }
     };
 
@@ -64,7 +59,6 @@ public class LifeGpsManager implements DefaultLifecycleObserver {
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-                        NLog.d(TAG, "accept aLong: %s",aLong);
                     }
                 });
     }

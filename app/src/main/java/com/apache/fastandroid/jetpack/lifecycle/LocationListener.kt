@@ -2,7 +2,7 @@ package com.apache.fastandroid.jetpack.lifecycle
 
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.logger.Logger
 
 /**
  * Created by Jerry on 2020/11/1.
@@ -19,13 +19,13 @@ class LocationListener(lifecycleOwner: LifecycleOwner, private val onLocationCha
     }
 
     override fun onCreate(owner: LifecycleOwner) {
-        NLog.d(TAG, "JetPackLifeCycleListener onCreate")
+        Logger.d("JetPackLifeCycleListener onCreate")
         initLocationMannager()
     }
 
 
     override fun onDestroy(owner: LifecycleOwner) {
-        NLog.d(TAG, "JetPackLifeCycleListener onDestroy")
+        Logger.d( "JetPackLifeCycleListener onDestroy")
     }
 
     override fun onStart(owner: LifecycleOwner) {
@@ -41,15 +41,15 @@ class LocationListener(lifecycleOwner: LifecycleOwner, private val onLocationCha
     }
 
     private fun initLocationMannager(){
-        NLog.d(TAG, "initLocationMannager  -->")
+        Logger.d( "initLocationMannager  -->")
     }
 
     private fun startLocation(){
-        NLog.d(TAG, "startLocation  -->")
+        Logger.d( "startLocation  -->")
     }
 
     private fun stopLocation() {
-        NLog.d(TAG, "stopLocation  -->")
+        Logger.d( "stopLocation  -->")
 
     }
 

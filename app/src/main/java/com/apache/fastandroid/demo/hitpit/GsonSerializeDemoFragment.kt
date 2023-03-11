@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCommonBinding
 import com.apache.fastandroid.demo.bean.Person
 import com.blankj.utilcode.util.GsonUtils
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
@@ -24,13 +24,13 @@ class GsonSerializeDemoFragment:BaseBindingFragment<FragmentCommonBinding>(Fragm
 
         val person = Person("zhangsan", 18)
         //{"age":18,"name":"zhangsan"}
-        NLog.d(TAG, GsonUtils.toJson(person))
+        Logger.d(GsonUtils.toJson(person))
 
         val json = "{\"age\":18}"
 
         //虽然没有传 name 值，但是反序列化不会报错，只是 name的值为 null
         val person2 = GsonUtils.fromJson(json,Person::class.java)
-        NLog.d(TAG, "person2:${person2}")
+        Logger.d("person2:${person2}")
 
 
     }

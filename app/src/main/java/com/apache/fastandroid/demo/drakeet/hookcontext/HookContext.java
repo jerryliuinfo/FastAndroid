@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.Resources;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.component.logger.Logger;
 
 
 /**
@@ -28,7 +28,7 @@ public class HookContext extends ContextWrapper {
       }
       if (!hookResource.getConfiguration().equals(originalResources.getConfiguration())
               || !hookResource.getDisplayMetrics().equals(originalResources.getDisplayMetrics())){
-         NLog.d(TAG, "配置发生了改变");
+         Logger.d( "配置发生了改变");
          hookResource.updateConfiguration(originalResources.getConfiguration(),originalResources.getDisplayMetrics());
       }
       return hookResource;

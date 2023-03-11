@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDex
 import com.apache.fastandroid.AppSetting
-import com.apache.fastandroid.R
 import com.apache.fastandroid.artemis.ui.app.ComApplication
 import com.apache.fastandroid.component.once.Once
 import com.apache.fastandroid.crash.Fabric.init
@@ -42,27 +41,19 @@ import com.tencent.mmkv.MMKV
 import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.device.DeviceName
 import com.tesla.framework.common.util.LaunchTimer
-import com.tesla.framework.common.util.log.NLog
-import com.tesla.framework.component.logger.AndroidLogAdapter
-import com.tesla.framework.component.logger.DiskLogAdapter
+import com.tesla.framework.component.logger.adapter.AndroidLogAdapter
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.component.logger.format.SimpleFormatStrategy
 import com.wanjian.cockroach.Cockroach
 import com.wanjian.cockroach.DebugSafeModeUI
 import com.wanjian.cockroach.ExceptionHandler
 import dagger.hilt.android.HiltAndroidApp
 import dev.b3nedikt.restring.Restring
-import dev.b3nedikt.viewpump.ViewPump
 import dev.b3nedikt.viewpump.ViewPump.init
 import jp.wasabeef.takt.Seat
 import jp.wasabeef.takt.Takt
 import me.drakeet.floo.Floo
 import me.drakeet.floo.Target
-import me.drakeet.floo.extensions.LogInterceptor
-import me.drakeet.floo.extensions.OpenDirectlyHandler
-import me.drakeet.floo.sample.PureSchemeInterceptor
-import me.drakeet.floo.sample.TargetNotFoundToaster
-import me.drakeet.floo.sample.WebHandler
-import timber.log.TimerLogger
 import java.io.File
 import kotlin.system.measureTimeMillis
 
@@ -263,11 +254,10 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
      */
     private fun initHttp() {}
     private fun initLog() {
-        Logger.addLogAdapter(DiskLogAdapter())
-        Logger.addLogAdapter(AndroidLogAdapter())
+//        Logger.addLogAdapter(DiskLogAdapter())
+        Logger.addLogAdapter(AndroidLogAdapter(SimpleFormatStrategy.newBuilder().build()))
         //添加 Timer
-        Logger.addLogAdapter(TimerLogger())
-        NLog.setDebug(true, com.tesla.framework.common.util.log.Logger.DEBUG)
+//        Logger.addLogAdapter(TimerLogger())
     }
 
     private val logPath: String

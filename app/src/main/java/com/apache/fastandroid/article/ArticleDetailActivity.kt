@@ -13,7 +13,6 @@ import com.apache.fastandroid.databinding.ActivityArticleDetailBinding
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.WebChromeClient
 import com.just.agentweb.WebViewClient
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.activity.BaseBindingActivity
 
 /**
@@ -29,19 +28,16 @@ class ArticleDetailActivity : BaseBindingActivity<ActivityArticleDetailBinding>(
     private val mWebChromeClient: WebChromeClient = object : WebChromeClient() {
         override fun onReceivedTitle(view: WebView, title: String) {
             super.onReceivedTitle(view, title)
-            NLog.d(TAG, "onReceivedTitle title: %s", title)
             //            articleDetailViewModel.title.set(title);
             mBinding.customBar.detailTitle.text = title
         }
     }
     private val mWebViewClient: WebViewClient = object : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
-            NLog.d(TAG, "shouldOverrideUrlLoading request: %s", request)
             return super.shouldOverrideUrlLoading(view, request)
         }
 
         override fun onPageStarted(view: WebView, url: String, favicon: Bitmap) {
-            NLog.d(TAG, "onPageStarted url: %s", url)
         }
     }
 

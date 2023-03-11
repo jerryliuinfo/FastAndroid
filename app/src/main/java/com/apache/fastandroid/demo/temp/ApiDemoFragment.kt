@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.databinding.TempApiUsageDemoBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.Dispatchers
@@ -74,17 +74,14 @@ class ApiDemoFragment:BaseBindingFragment<TempApiUsageDemoBinding>(TempApiUsageD
     private fun testArchTaskExecutor(){
         ArchTaskExecutor.getInstance().executeOnDiskIO {
 
-            NLog.d(TAG, "executeOnDiskIO thread:%s--->",Thread.currentThread().name)
         }
         ArchTaskExecutor.getInstance().executeOnMainThread() {
-            NLog.d(TAG, "executeOnMainThread thread:%s--->",Thread.currentThread().name)
         }
     }
 
     private fun testStream(){
         var function: (Int) -> Boolean = { it % 2 == 0 }
         var filterList = arrayListOf(1, 3, 4, 6, 7, 8).stream().filter(function)
-        NLog.d(TAG, "filterList: %s",filterList)
     }
 
     private fun testBreakPoint(){
@@ -101,7 +98,7 @@ class ApiDemoFragment:BaseBindingFragment<TempApiUsageDemoBinding>(TempApiUsageD
 
     fun scaleTouchSlop(){
         var scaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
-        NLog.d(TAG, "scaledTouchSlop value:${scaledTouchSlop}")
+        Logger.d( "scaledTouchSlop value:${scaledTouchSlop}")
     }
 
     fun getLayoutDirection(){
@@ -123,7 +120,6 @@ class ApiDemoFragment:BaseBindingFragment<TempApiUsageDemoBinding>(TempApiUsageD
                 thread {
                     countDownLatch.await()
                     val parter = "[ index:${index}, ${Thread.currentThread().name} ]"
-                    NLog.d(TAG, "${parter} 开始执行")
                 }
             }
             Thread.sleep(2000)
@@ -175,12 +171,12 @@ class ApiDemoFragment:BaseBindingFragment<TempApiUsageDemoBinding>(TempApiUsageD
             for (index in 0 until count){
                 thread {
                     Thread.sleep((1000 + ThreadLocalRandom.current().nextInt(1000)).toLong())
-                    NLog.d(TAG, "finish ${index} + ${Thread.currentThread().name}")
+                    Logger.d("finish ${index} + ${Thread.currentThread().name}")
                     countDownLatch.countDown()
                 }
             }
             countDownLatch.await()
-            NLog.d(TAG, "主线程在所有任务完成后进行汇总")
+            Logger.d( "主线程在所有任务完成后进行汇总")
         }
 
     }

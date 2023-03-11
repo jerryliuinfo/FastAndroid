@@ -43,7 +43,7 @@ com.tesla.framework.R$dimen: int mtrl_progress_circular_size_medium
 com.tesla.framework.R$attr: int rv_backgroundSelectedColor
 com.tesla.framework.R$style: int Widget_AppCompat_CompoundButton_CheckBox
 com.tesla.framework.common.util.log.Logger: com.tesla.framework.common.util.log.Logger getLogger(java.lang.String)
-com.tesla.framework.component.logger.FormatStrategy: void log(int,java.lang.String,java.lang.String)
+com.tesla.framework.component.logger.format.FormatStrategy: void log(int,java.lang.String,java.lang.String)
 com.tesla.framework.R$styleable: int QMUIFontFitTextView_qmui_maxTextSize
 com.tesla.framework.R$string: int load_failed
 com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder thenAnimate(android.view.View[])
@@ -378,7 +378,7 @@ com.tesla.framework.R$styleable: int DesignTheme_bottomSheetDialogTheme
 com.tesla.framework.component.eventbus.FastBus: void unregiste(java.lang.Object)
 com.tesla.framework.R$color: int material_grey_300
 com.tesla.framework.R$string: int comm_content_empty
-com.tesla.framework.component.logger.DiskLogAdapter
+com.tesla.framework.component.logger.adapter.DiskLogAdapter
 com.tesla.framework.R$color: int qmui_config_color_pressed
 com.tesla.framework.R$id: int homeAsUp
 com.tesla.framework.R$attr: int qmui_radiusBottomLeft
@@ -417,7 +417,7 @@ com.tesla.framework.R$color: int design_snackbar_background_color
 com.tesla.framework.component.navigator.HiFragmentNavigator$Extras$Builder
 com.tesla.framework.R$style: int Base_V7_Theme_AppCompat_Dialog
 com.tesla.framework.R$string: int mtrl_picker_text_input_date_range_end_hint
-com.tesla.framework.component.logger.PrettyFormatStrategy: void logTopBorder(int,java.lang.String)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: void logTopBorder(int,java.lang.String)
 com.tesla.framework.R$style: int Base_Widget_AppCompat_TextView
 com.tesla.framework.R$layout: int text_view_with_theme_line_height
 com.tesla.framework.R$bool: int abc_action_bar_embed_tabs_pre_jb
@@ -443,7 +443,7 @@ com.tesla.framework.R$attr: int qmui_dialog_min_width
 com.tesla.framework.common.util.HttpsCompat$Tls12SocketFactory: java.net.Socket createSocket(java.net.InetAddress,int,java.net.InetAddress,int)
 com.tesla.framework.R$styleable: int[] QMUIDialogMenuTextStyleDef
 com.tesla.framework.R$string: int material_motion_easing_accelerated
-com.tesla.framework.component.logger.DiskLogAdapter: DiskLogAdapter(com.tesla.framework.component.logger.FormatStrategy)
+com.tesla.framework.component.logger.adapter.DiskLogAdapter: DiskLogAdapter(com.tesla.framework.component.logger.format.FormatStrategy)
 com.tesla.framework.R$styleable: int AppCompatTheme_actionBarTabStyle
 com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder: long getExceedLimitThreshold()
 com.tesla.framework.common.device.DeviceName$1
@@ -476,7 +476,7 @@ com.tesla.framework.R$styleable: int MaterialComponentsTheme_textAppearanceHeadl
 com.tesla.framework.R$id: int progress_circular
 com.tesla.framework.kt.ExtensionsKt: void echo()
 com.tesla.framework.R$attr: int cornerFamilyTopLeft
-com.tesla.framework.component.logger.PrettyFormatStrategy: java.lang.String formatTag(java.lang.String)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: java.lang.String formatTag(java.lang.String)
 com.tesla.framework.ui.activity.BaseStatusActivity: void hideLoadErrorView()
 com.tesla.framework.R$bool: int mtrl_btn_textappearance_all_caps
 com.tesla.framework.support.action.IAction: java.lang.String TAG
@@ -593,7 +593,7 @@ com.tesla.framework.component.handler.FLooper: java.lang.Thread mThread
 com.tesla.framework.R$attr: int iconStartPadding
 com.tesla.framework.R$styleable: int QMUIRoundRelativeLayout_qmui_backgroundColor
 com.tesla.framework.R$dimen: int mtrl_navigation_bar_item_default_margin
-com.tesla.framework.component.logger.LogcatLogStrategy
+com.tesla.framework.component.logger.output.LogcatLogStrategy
 com.tesla.framework.R$styleable: int NavAction_popUpToInclusive
 com.tesla.framework.R$anim: int btn_radio_to_off_mtrl_ring_outer_path_animation
 com.tesla.framework.ui.fragment.BaseFragment: androidx.appcompat.app.AppCompatActivity mActivity
@@ -846,7 +846,7 @@ com.github.florent37.viewanimator.AnimationListener$Start: void onStart()
 com.tesla.framework.R$attr: int buttonBarPositiveButtonStyle
 com.tesla.framework.R$attr: int expandedTitleMargin
 com.tesla.framework.R$dimen: int mtrl_btn_focused_z
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.PrettyFormatStrategy$Builder showThreadInfo(boolean)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder showThreadInfo(boolean)
 com.tesla.framework.ui.activity.BaseStatusActivity: void hideNoContentView()
 com.tesla.framework.R$id: int action_bar_spinner
 com.tesla.framework.common.device.DeviceName$DeviceInfo: java.lang.String toString()
@@ -1133,7 +1133,7 @@ com.tesla.framework.component.lifecycle.FullLifecycleObserverNew: void onResume(
 com.tesla.framework.R$styleable: int RoundAttrs_round_corner_bottom_left
 com.tesla.framework.R$styleable: int KeyTimeCycle_android_scaleX
 com.tesla.framework.ui.fragment.ARecycleViewFragmentNew$2: ARecycleViewFragmentNew$2(com.tesla.framework.ui.fragment.ARecycleViewFragmentNew)
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: java.util.Date date
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: java.util.Date date
 com.tesla.framework.R$styleable: int AppCompatTheme_radioButtonStyle
 com.tesla.framework.ui.widget.CircleImageView: android.graphics.Paint mBitmapPaint
 com.tesla.framework.R$attr: int tickMarkTintMode
@@ -1222,7 +1222,7 @@ com.tesla.framework.R$styleable: int RoundLinearLayout_rv_backgroundColor
 com.tesla.framework.R$styleable: int MaterialComponentsTheme_colorSecondary
 com.microsoft.office.outlook.magnifierlib.memory.MemoryUtils: long readVss()
 com.tesla.framework.R$attr: int qmui_empty_view_title_text_size
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.CsvFormatStrategy$Builder logStrategy(com.tesla.framework.component.logger.LogStrategy)
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder logStrategy(com.tesla.framework.component.logger.LogStrategy)
 com.tesla.framework.R$attr: int qmui_scroll_to_trigger_offset_after_touch_up
 com.tesla.framework.R$styleable: int Toolbar_contentInsetLeft
 com.tesla.framework.ui.widget.CircleImageView: void setImageResource(int)
@@ -1234,7 +1234,7 @@ com.tesla.framework.R$attr: int tabRippleColor
 com.tesla.framework.R$styleable: int Constraint_layout_constraintEnd_toStartOf
 com.tesla.framework.R$styleable: int KitkatViewGroup_insetStatusForeground
 com.tesla.framework.R$style: int Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.CsvFormatStrategy build()
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.format.CsvFormatStrategy build()
 com.tesla.framework.R$layout: int library_bottom_dialog
 com.tesla.framework.R$id: int mtrl_calendar_day_selector_frame
 com.tesla.framework.R$styleable: int NavDeepLink_mimeType
@@ -1263,7 +1263,7 @@ com.tesla.framework.R$styleable: int QMUIDialogActionStyleDef_android_background
 com.tesla.framework.R$attr: int qmui_skin_support_bottom_sheet_cancel_bg
 com.tesla.framework.component.imageloader.ImageLoaderOptions$ImageSize: int getWidth()
 com.tesla.framework.R$dimen: int abc_text_size_large_material
-com.tesla.framework.component.logger.CsvFormatStrategy$1
+com.tesla.framework.component.logger.format.CsvFormatStrategy$1
 com.tesla.framework.common.util.log.Logger: java.lang.Object mLogLock
 com.tesla.framework.databinding.CommLayFooterviewBinding: android.widget.LinearLayout layLoading
 com.tesla.framework.R$dimen: int sp_15
@@ -1282,7 +1282,7 @@ com.tesla.framework.R$styleable: int ConstraintLayout_Layout_layout_constraintHe
 com.tesla.framework.common.util.CommonUtil: boolean isAtLeastO()
 com.tesla.framework.R$styleable: int AppCompatTheme_buttonBarButtonStyle
 com.tesla.framework.R$style: int ThemeOverlay_MaterialComponents_ActionBar_Surface
-com.tesla.framework.component.logger.DiskLogStrategy: DiskLogStrategy(android.os.Handler)
+com.tesla.framework.component.logger.output.DiskLogStrategy: DiskLogStrategy(android.os.Handler)
 com.tesla.framework.R$attr: int chipSurfaceColor
 com.tesla.framework.R$styleable: int Constraint_android_layout_height
 com.tesla.framework.R$attr: int buttonBarNeutralButtonStyle
@@ -1464,7 +1464,7 @@ com.tesla.framework.R$id: int action_divider
 com.tesla.framework.R$style: int TextAppearance_AppCompat_Widget_Button_Inverse
 com.tesla.framework.R$styleable: int KeyTimeCycle_motionTarget
 com.tesla.framework.component.handler.HandlerTest: void main(java.lang.String[])
-com.tesla.framework.component.logger.PrettyFormatStrategy: int methodCount
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: int methodCount
 com.tesla.framework.ui.widget.edgeeffect.GlowingEdgeEffect: android.graphics.Paint mPaint
 com.tesla.framework.R$animator: int mtrl_card_state_list_anim
 com.tesla.framework.ui.activity.BaseVmActivity: void setUpActionBar()
@@ -1541,7 +1541,7 @@ com.drakeet.years.widget.CustomLayout: java.util.Map _$_findViewCache
 com.tesla.framework.component.navigator.HiFragmentNavigator: HiFragmentNavigator(android.content.Context,androidx.fragment.app.FragmentManager,int)
 com.tesla.framework.R$attr: int autoSizeMinTextSize
 com.tesla.framework.databinding.CommUiRecycleviewNewBindingImpl
-com.tesla.framework.component.logger.DiskLogStrategy$WriteHandler
+com.tesla.framework.component.logger.output.DiskLogStrategy$WriteHandler
 com.tesla.framework.R$styleable: int ConstraintSet_animate_relativeTo
 com.tesla.framework.ui.activity.FragmentContainerActivity: void launch(android.app.Activity,java.lang.Class,com.tesla.framework.ui.activity.FragmentArgs)
 com.tesla.framework.ui.fragment.ATabsTabLayoutFragmentNew$1: ATabsTabLayoutFragmentNew$1(com.tesla.framework.ui.fragment.ATabsTabLayoutFragmentNew,androidx.fragment.app.FragmentManager,int,java.util.List)
@@ -1701,7 +1701,7 @@ com.drakeet.years.widget.CustomLayout$LayoutParams: CustomLayout$LayoutParams(in
 com.tesla.framework.R$style: int Widget_Design_AppBarLayout
 com.tesla.framework.R$attr: int collapseIcon
 com.tesla.framework.R$attr: int exitAnim
-com.tesla.framework.component.logger.CsvFormatStrategy: java.lang.String tag
+com.tesla.framework.component.logger.format.CsvFormatStrategy: java.lang.String tag
 com.tesla.framework.R$styleable: int[] QMUIFontFitTextView
 com.tesla.framework.R$styleable: int SearchView_searchIcon
 com.tesla.framework.component.livedata.callback.ProtectedUnPeekLiveData: void observe(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Observer)
@@ -1735,7 +1735,7 @@ com.tesla.framework.R$attr: int fabCradleRoundedCornerRadius
 com.tesla.framework.R$styleable: int AppCompatImageView_tintMode
 com.tesla.framework.R$styleable: int QMUILayout_android_maxHeight
 com.tesla.framework.R$dimen: int anylayer_toast_corner_radius
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: java.text.SimpleDateFormat dateFormat
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: java.text.SimpleDateFormat dateFormat
 com.tesla.framework.ui.fragment.ARecycleViewFragmentNew$3: com.tesla.framework.ui.fragment.ARecycleViewFragmentNew this$0
 com.tesla.framework.R$attr: int tint
 com.tesla.framework.R$styleable: int Constraint_android_scaleX
@@ -1819,7 +1819,7 @@ com.tesla.framework.R$styleable: int QMUITopBar_qmui_topbar_text_btn_color_state
 com.tesla.framework.R$attr: int layout_constraintWidth_percent
 com.tesla.framework.applike.FApplication: FApplication()
 com.tesla.framework.component.livedata.NetworkLiveData$NetworkLiveDataHolder: com.tesla.framework.component.livedata.NetworkLiveData getINSTANCE()
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.LogStrategy logStrategy
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.LogStrategy logStrategy
 com.tesla.framework.R$style: int Widget_MaterialComponents_Button
 com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createAsyncSamplers$topHitThreadSampler$1: void invoke(com.microsoft.office.outlook.magnifierlib.memory.ThreadInfo)
 com.tesla.framework.R$styleable: int SwitchCompat_android_textOff
@@ -1844,7 +1844,7 @@ com.tesla.framework.R$styleable: int MaterialCalendarItem_android_insetTop
 com.microsoft.office.outlook.magnifierlib.frame.FrameViewer: FrameViewer(android.app.Application,float,float,float)
 com.tesla.framework.R$styleable: int KeyTimeCycle_transitionEasing
 com.tesla.framework.R$drawable: int material_ic_menu_arrow_down_black_24dp
-com.tesla.framework.component.logger.CsvFormatStrategy: java.lang.String SEPARATOR
+com.tesla.framework.component.logger.format.CsvFormatStrategy: java.lang.String SEPARATOR
 com.tesla.framework.R$dimen: int anylayer_notification_label_text_size
 com.tesla.framework.R$styleable: int AppCompatTheme_editTextStyle
 com.tesla.framework.R$style: int Widget_MaterialComponents_MaterialCalendar_Day_Today
@@ -1860,7 +1860,7 @@ com.tesla.framework.R$attr: int materialThemeOverlay
 com.tesla.framework.R$style: int Base_Widget_AppCompat_PopupMenu
 com.tesla.framework.component.imageloader.ImageLoaderManager: void showImage(android.view.View,java.lang.String,android.content.Context)
 com.tesla.framework.R$styleable: int StateListDrawable_android_constantSize
-com.tesla.framework.component.logger.AndroidLogAdapter: AndroidLogAdapter(com.tesla.framework.component.logger.FormatStrategy)
+com.tesla.framework.component.logger.adapter.AndroidLogAdapter: AndroidLogAdapter(com.tesla.framework.component.logger.format.FormatStrategy)
 com.tesla.framework.R$styleable: int LinearLayoutCompat_measureWithLargestChild
 com.tesla.framework.R$styleable: int QMUIEmptyView_qmui_show_loading
 com.tesla.framework.R$styleable: int ActionBar_backgroundStacked
@@ -2085,7 +2085,7 @@ com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory: MemorySa
 com.tesla.framework.component.imageloader.ImageLoaderOptions$1: java.lang.Object newInstance(java.lang.Object)
 com.tesla.framework.R$attr: int autoSizeTextType
 com.tesla.framework.R$attr: int checkedTextViewStyle
-com.tesla.framework.component.logger.DiskLogAdapter: boolean isLoggable(int,java.lang.String)
+com.tesla.framework.component.logger.adapter.DiskLogAdapter: boolean isLoggable(int,java.lang.String)
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_layout_constraintWidth_default
 com.tesla.framework.R$attr: int qmui_skin_alpha
 com.tesla.framework.R$id: int bottom_sheet
@@ -2271,7 +2271,7 @@ com.tesla.framework.common.util.N: boolean isEqual(java.lang.String,java.lang.St
 com.tesla.framework.R$style: int QMUI_Animation
 com.tesla.framework.R$color: int qmui_config_color_gray_5
 com.tesla.framework.component.livedata.LiveDataBus$StickyLiveData: java.lang.Object mStickyData
-com.tesla.framework.component.logger.PrettyFormatStrategy: com.tesla.framework.component.logger.PrettyFormatStrategy$Builder newBuilder()
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder newBuilder()
 com.tesla.framework.R$styleable: int CollapsingToolbarLayout_expandedTitleMarginTop
 com.tesla.framework.R$attr: int activityChooserViewStyle
 com.tesla.framework.R$styleable: int QMUILayout_qmui_useThemeGeneralShadowElevation
@@ -2414,11 +2414,11 @@ com.tesla.framework.R$styleable: int RoundTextView_rv_strokeWidth
 com.tesla.framework.R$layout: int mtrl_calendar_months
 com.tesla.framework.R$dimen: int mtrl_calendar_day_corner
 timber.log.Timber$Forest: void d(java.lang.Throwable,java.lang.String,java.lang.Object[])
-com.tesla.framework.component.logger.PrettyFormatStrategy: int getStackOffset(java.lang.StackTraceElement[])
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: int getStackOffset(java.lang.StackTraceElement[])
 com.tesla.framework.R$integer: int config_tooltipAnimTime
 com.tesla.framework.R$styleable: int[] ConstraintLayout_Layout
 com.tesla.framework.R$attr: int qmui_topbar_title_container_padding_horizontal
-com.tesla.framework.component.logger.PrettyFormatStrategy: void logContent(int,java.lang.String,java.lang.String)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: void logContent(int,java.lang.String,java.lang.String)
 com.tesla.framework.kt.ExtensionsKt: java.lang.String getName(int)
 com.tesla.framework.R$string: int material_motion_easing_standard
 com.tesla.framework.R$style: int Base_V14_ThemeOverlay_MaterialComponents_MaterialAlertDialog
@@ -2640,7 +2640,7 @@ com.tesla.framework.common.util.toast.ToastCompat: int getYOffset()
 com.tesla.framework.R$styleable: int ConstraintSet_layout_constraintWidth_percent
 com.tesla.framework.R$attr: int popUpTo
 com.tesla.framework.R$style: int Base_ThemeOverlay_AppCompat_Dark_ActionBar
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: boolean showThreadInfo
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: boolean showThreadInfo
 com.tesla.framework.R$attr: int behavior_hideable
 com.tesla.framework.R$drawable: int abc_ic_star_half_black_48dp
 com.tesla.framework.R$dimen: int mtrl_calendar_month_horizontal_padding
@@ -2659,7 +2659,7 @@ com.tesla.framework.R$styleable: int QMUISkinDef_qmui_skin_alpha
 com.tesla.framework.ui.activity.BaseActivity
 com.tesla.framework.R$style: int Base_V7_Theme_AppCompat
 com.tesla.framework.support.bean.TabItem: java.io.Serializable getTag()
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.CsvFormatStrategy$Builder date(java.util.Date)
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder date(java.util.Date)
 com.tesla.framework.R$attr: int qmui_accessory_type
 com.tesla.framework.R$attr: int switchMinWidth
 com.tesla.framework.R$styleable: int QMUISkinDef_qmui_skin_border
@@ -2730,7 +2730,7 @@ com.tesla.framework.R$id: int spacer
 com.tesla.framework.R$style: int Widget_MaterialComponents_MaterialCalendar_HeaderCancelButton
 com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor
 com.tesla.framework.R$attr: int qmui_skin_support_topbar_bg
-com.tesla.framework.component.logger.FormatStrategy
+com.tesla.framework.component.logger.format.FormatStrategy
 com.tesla.framework.R$styleable: int ActionMode_background
 com.tesla.framework.R$id: int qmui_dialog_title_id
 com.tesla.framework.R$style: int ListView_Compat
@@ -2882,7 +2882,7 @@ com.tesla.framework.R$attr: int tabSelectedTextColor
 com.tesla.framework.R$styleable: int AppCompatImageView_tint
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_android_padding
 com.tesla.framework.R$styleable: int Constraint_layout_constraintVertical_bias
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.PrettyFormatStrategy$Builder logStrategy(com.tesla.framework.component.logger.LogStrategy)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder logStrategy(com.tesla.framework.component.logger.LogStrategy)
 com.tesla.framework.R$id: int textinput_counter
 com.tesla.framework.R$color: int checkbox_themeable_attribute_color
 com.tesla.framework.R$color: int material_slider_halo_color
@@ -3056,7 +3056,7 @@ com.tesla.framework.common.util.toast.ToastCompat: void setText(int)
 com.tesla.framework.R$attr: int qmui_bottom_sheet_grid_item_padding_top
 com.tesla.framework.common.device.DeviceName: java.lang.String getDeviceName()
 com.tesla.framework.R$attr: int colorSurface
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.PrettyFormatStrategy build()
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.format.PrettyFormatStrategy build()
 com.tesla.framework.R$id: int mtrl_picker_text_input_range_start
 com.tesla.framework.R$style: int TextAppearance_AppCompat_Widget_TextView_SpinnerItem
 com.tesla.framework.R$id: int group_list_item_tips_new
@@ -3106,7 +3106,7 @@ com.tesla.framework.R$style: int Base_Theme_MaterialComponents_Light_DialogWhenL
 com.tesla.framework.R$id: int dragDown
 com.tesla.framework.common.util.AnimateUtil$1: android.view.View val$view
 com.tesla.framework.R$styleable: int ForegroundLinearLayout_foregroundInsidePadding
-com.tesla.framework.component.logger.CsvFormatStrategy: void log(int,java.lang.String,java.lang.String)
+com.tesla.framework.component.logger.format.CsvFormatStrategy: void log(int,java.lang.String,java.lang.String)
 com.tesla.framework.R$style: int Base_Widget_MaterialComponents_CheckedTextView
 com.tesla.framework.R$style: int Theme_MaterialComponents_DayNight_Dialog
 com.tesla.framework.databinding.CommUiFragmentContainerBinding: android.view.View getRoot()
@@ -3324,7 +3324,7 @@ com.tesla.framework.R$styleable: int ConstraintSet_layout_goneMarginRight
 com.tesla.framework.R$color: int mtrl_navigation_item_icon_tint
 com.tesla.framework.kt.ColorUtil: int calculateGradient(float,java.lang.Object,int)
 com.tesla.framework.R$drawable: int abc_ic_menu_paste_mtrl_am_alpha
-com.tesla.framework.component.logger.PrettyFormatStrategy: void logDivider(int,java.lang.String)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: void logDivider(int,java.lang.String)
 com.tesla.framework.R$layout: int mtrl_alert_select_dialog_multichoice
 com.tesla.framework.R$style: int Base_Widget_MaterialComponents_AutoCompleteTextView
 com.tesla.framework.databinding.CommUiRecycleviewNewBinding: com.tesla.framework.databinding.CommUiRecycleviewNewBinding bind(android.view.View,java.lang.Object)
@@ -3356,7 +3356,7 @@ com.tesla.framework.common.util.log.NLog: void e(java.lang.String,java.lang.Stri
 com.tesla.framework.R$dimen: int abc_text_size_headline_material
 com.tesla.framework.R$styleable: int Chip_closeIconVisible
 com.tesla.framework.R$attr: int qmui_empty_view_loading_size
-com.tesla.framework.component.logger.PrettyFormatStrategy: void logBottomBorder(int,java.lang.String)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: void logBottomBorder(int,java.lang.String)
 com.tesla.framework.R$attr: int itemShapeAppearance
 com.tesla.framework.component.livedata.LiveDataBus$StickyLiveData$WrapperObserver: boolean mSticky
 com.tesla.framework.R$style: int Widget_MaterialComponents_PopupMenu_Overflow
@@ -3405,7 +3405,7 @@ com.tesla.framework.R$style: int Theme_MaterialComponents_DayNight_Dialog_MinWid
 com.tesla.framework.R$styleable: int ViewBackgroundHelper_backgroundTintMode
 com.tesla.framework.R$styleable: int Constraint_layout_constraintVertical_chainStyle
 com.tesla.framework.component.imageloader.ImageLoaderOptions$Builder: ImageLoaderOptions$Builder(com.tesla.framework.component.imageloader.ImageLoaderOptions$1)
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: java.lang.String tag
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: java.lang.String tag
 com.tesla.framework.R$attr: int flow_verticalAlign
 com.tesla.framework.R$attr: int saturation
 com.tesla.framework.component.livedata.callback.ProtectedUnPeekLiveData$ObserverWrapper: void onChanged(java.lang.Object)
@@ -3429,7 +3429,7 @@ com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimato
 com.tesla.framework.R$id: int qmui_do_not_intercept_keyboard_inset
 com.tesla.framework.R$styleable: int Constraint_layout_constraintTop_toTopOf
 com.tesla.framework.ui.activity.BaseVmActivityNew: java.util.Map fragmentRefs
-com.tesla.framework.component.logger.PrettyFormatStrategy: int CHUNK_SIZE
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: int CHUNK_SIZE
 com.tesla.framework.common.util.DrakeetUtils: void triggerRestart$default(com.tesla.framework.common.util.DrakeetUtils,android.content.Context,android.content.Intent,int,java.lang.Object)
 com.tesla.framework.R$attr: int layout_constraintEnd_toEndOf
 com.tesla.framework.ui.fragment.ARecycleViewFragmentNew$1: ARecycleViewFragmentNew$1(com.tesla.framework.ui.fragment.ARecycleViewFragmentNew)
@@ -3466,7 +3466,7 @@ com.tesla.framework.ui.fragment.ATabsTabLayoutFragmentNew$1: com.tesla.framework
 com.tesla.framework.R$styleable: int ActionMode_backgroundSplit
 com.tesla.framework.R$styleable: int Slider_android_value
 com.tesla.framework.R$layout: int anylayer_toast_content
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: int methodOffset
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: int methodOffset
 com.tesla.framework.ui.activity.BaseVmActivityNew: boolean isActive
 com.tesla.framework.R$attr: int layout_goneMarginStart
 com.tesla.framework.R$attr: int fontFamily
@@ -3476,7 +3476,7 @@ com.tesla.framework.R$string: int material_hour_selection
 com.tesla.framework.R$styleable: int QMUIQQFaceView_android_maxLines
 com.github.florent37.viewanimator.ViewAnimator: void cancel()
 com.tesla.framework.databinding.FragmentTablayoutBinding: com.tesla.framework.databinding.FragmentTablayoutBinding inflate(android.view.LayoutInflater,java.lang.Object)
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.LogStrategy logStrategy
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.LogStrategy logStrategy
 com.tesla.framework.component.logger.Printer: void e(java.lang.String,java.lang.Object[])
 com.tesla.framework.component.lifecycle.FullLifecycleObserverNew: void onStart(androidx.lifecycle.LifecycleOwner)
 com.InternalFieldKt: java.lang.String filed2
@@ -3850,7 +3850,7 @@ com.tesla.framework.ui.activity.BaseActivity: void layoutInit(android.os.Bundle)
 com.tesla.framework.R$dimen: int abc_text_size_display_3_material
 com.drakeet.years.widget.CustomLayout: android.view.ViewGroup$LayoutParams generateDefaultLayoutParams()
 com.tesla.framework.R$styleable: int ConstraintSet_android_scaleX
-com.tesla.framework.component.logger.CsvFormatStrategy: CsvFormatStrategy(com.tesla.framework.component.logger.CsvFormatStrategy$Builder)
+com.tesla.framework.component.logger.format.CsvFormatStrategy: CsvFormatStrategy(com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder)
 com.tesla.framework.R$styleable: int TextInputLayout_placeholderText
 com.tesla.framework.R$id: int material_clock_period_pm_button
 com.tesla.framework.component.imageloader.ImageLoaderOptions$Builder: com.tesla.framework.component.imageloader.ImageLoaderOptions$Builder asGif(boolean)
@@ -3896,7 +3896,7 @@ com.tesla.framework.R$style: int ThemeOverlay_MaterialComponents_Toolbar_Surface
 com.tesla.framework.R$attr: int qmui_shadowAlpha
 com.tesla.framework.R$attr: int behavior_saveFlags
 com.tesla.framework.R$style: int Base_Widget_AppCompat_ProgressBar_Horizontal
-com.tesla.framework.component.logger.LogcatLogStrategy: LogcatLogStrategy()
+com.tesla.framework.component.logger.output.LogcatLogStrategy: LogcatLogStrategy()
 com.tesla.framework.R$attr: int qmui_outlineInsetLeft
 com.tesla.framework.R$attr: int textInputLayoutFocusedRectEnabled
 com.tesla.framework.R$id: int split_action_bar
@@ -4084,7 +4084,7 @@ com.tesla.framework.R$styleable: int[] ActionMode
 com.tesla.framework.R$layout: int material_clock_period_toggle_land
 com.tesla.framework.R$attr: int srcCompat
 com.tesla.framework.R$styleable: int[] OnSwipe
-com.tesla.framework.component.logger.DiskLogStrategy$WriteHandler: int maxFileSize
+com.tesla.framework.component.logger.output.DiskLogStrategy$WriteHandler: int maxFileSize
 com.tesla.framework.R$styleable: int QMUIQQFaceView_qmui_more_action_color
 com.tesla.framework.R$color: int secondary_text_default_material_dark
 com.tesla.framework.R$style: int Base_Widget_AppCompat_ListView
@@ -4147,7 +4147,7 @@ com.tesla.framework.R$id: int listMode
 com.tesla.framework.R$style: int Platform_V21_AppCompat
 com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createAsyncSamplers$topHitFileSampler$1: com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config
 com.tesla.framework.ui.activity.FragmentContainerActivity: void onCreate(android.os.Bundle)
-com.tesla.framework.component.logger.PrettyFormatStrategy: com.tesla.framework.component.logger.LogStrategy logStrategy
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: com.tesla.framework.component.logger.LogStrategy logStrategy
 com.tesla.framework.R$drawable: int abc_ic_commit_search_api_mtrl_alpha
 com.tesla.framework.R$style: int Base_TextAppearance_AppCompat_Widget_PopupMenu_Large
 com.tesla.framework.R$attr: int qmui_skin_support_slider_thumb_border_color
@@ -4219,7 +4219,7 @@ com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Builder: java.l
 com.tesla.framework.databinding.CommLayFooterviewBinding: com.tesla.framework.databinding.CommLayFooterviewBinding inflate(android.view.LayoutInflater)
 com.tesla.framework.R$color: int background_dim_overlay
 com.tesla.framework.R$styleable: int RecyclerView_fastScrollVerticalTrackDrawable
-com.tesla.framework.component.logger.PrettyFormatStrategy: java.lang.String DOUBLE_DIVIDER
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: java.lang.String DOUBLE_DIVIDER
 com.tesla.framework.component.lifecycle.FullLifecycleObserverNew: void onPause(androidx.lifecycle.LifecycleOwner)
 com.tesla.framework.R$styleable: int MaterialComponentsTheme_navigationViewStyle
 com.tesla.framework.component.handler.FMessageQueue: FMessageQueue()
@@ -4235,7 +4235,7 @@ com.tesla.framework.ui.widget.CircleImageView: android.graphics.Bitmap$Config BI
 com.tesla.framework.R$styleable: int MaterialComponentsTheme_textAppearanceSubtitle2
 com.tesla.framework.R$styleable: int QMUICollapsingTopBarLayout_qmui_collapsedTitleGravity
 com.tesla.framework.R$color: int primary_text_disabled_material_dark
-com.tesla.framework.component.logger.DiskLogStrategy: android.os.Handler handler
+com.tesla.framework.component.logger.output.DiskLogStrategy: android.os.Handler handler
 com.tesla.framework.R$drawable: int abc_ratingbar_small_material
 com.tesla.framework.R$id: int tabLayout
 com.tesla.framework.R$color: int mtrl_fab_icon_text_color_selector
@@ -4353,7 +4353,7 @@ com.tesla.framework.R$style: int TextAppearance_AppCompat_Widget_ActionMode_Titl
 com.tesla.framework.R$id: int topPanel
 com.tesla.framework.R$style: int Base_TextAppearance_AppCompat_Widget_PopupMenu_Header
 com.tesla.framework.R$styleable: int QMUISlider_qmui_slider_bar_normal_color
-com.tesla.framework.component.logger.PrettyFormatStrategy: boolean showThreadInfo
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: boolean showThreadInfo
 com.tesla.framework.component.logger.LoggerPrinter: java.util.List logAdapters
 com.tesla.framework.R$layout: int comm_lay_toolbar
 com.tesla.framework.R$style: int Base_Widget_AppCompat_Light_PopupMenu_Overflow
@@ -4370,7 +4370,7 @@ com.tesla.framework.common.util.anim.SlideInBottomAnimation: android.animation.A
 com.tesla.framework.databinding.CommUiRecycleviewNewBinding: com.tesla.framework.databinding.CommUiRecycleviewNewBinding bind(android.view.View)
 com.tesla.framework.R$styleable: int LinearConstraintLayout_android_orientation
 com.tesla.framework.R$styleable: int QMUIDialogMenuContainerStyleDef_qmui_dialog_menu_container_single_padding_vertical
-com.tesla.framework.component.logger.AndroidLogAdapter: void log(int,java.lang.String,java.lang.String)
+com.tesla.framework.component.logger.adapter.AndroidLogAdapter: void log(int,java.lang.String,java.lang.String)
 com.tesla.framework.ui.widget.CustomRoundTextView: int selectorNormalColor
 com.tesla.framework.component.imageloader.ImageLoaderOptions: com.tesla.framework.component.imageloader.ImageLoaderOptions$DiskCacheStrategy getDiskCacheStrategy()
 com.tesla.framework.ui.widget.CircleImageView: int mBorderWidth
@@ -4412,7 +4412,7 @@ com.tesla.framework.R$id: int search_voice_btn
 com.tesla.framework.R$styleable: int BaseProgressIndicator_hideAnimationBehavior
 com.tesla.framework.R$styleable: int[] MockView
 com.tesla.framework.R$attr: int qmui_skin_support_common_list_separator_color
-com.tesla.framework.component.logger.CsvFormatStrategy: java.text.SimpleDateFormat dateFormat
+com.tesla.framework.component.logger.format.CsvFormatStrategy: java.text.SimpleDateFormat dateFormat
 com.tesla.framework.R$styleable: int ActionBar_indeterminateProgressStyle
 com.tesla.framework.R$attr: int cornerFamilyBottomRight
 com.tesla.framework.ui.fragment.ATabsTabLayoutFragmentNew$1: androidx.fragment.app.Fragment getFragmentByPosition(int,com.tesla.framework.support.bean.ITabItem)
@@ -4490,7 +4490,7 @@ com.tesla.framework.R$attr: int editTextColor
 com.tesla.framework.R$anim: int fragment_open_enter
 com.drakeet.purewriter.widget.StretchEdgeEffect: int RECEDE_TIME
 com.tesla.framework.DataBinderMapperImpl: androidx.databinding.ViewDataBinding getDataBinder(androidx.databinding.DataBindingComponent,android.view.View,int)
-com.tesla.framework.component.logger.PrettyFormatStrategy: void log(int,java.lang.String,java.lang.String)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: void log(int,java.lang.String,java.lang.String)
 com.tesla.framework.R$styleable: int AppBarLayout_elevation
 com.tesla.framework.R$interpolator: int btn_checkbox_unchecked_mtrl_animation_interpolator_1
 com.tesla.framework.R$color: int accent_material_dark
@@ -4669,7 +4669,7 @@ com.tesla.framework.R$styleable: int AppCompatTheme_popupMenuStyle
 com.tesla.framework.R$attr: int motionEasingLinear
 com.tesla.framework.R$styleable: int ActionBar_backgroundSplit
 com.tesla.framework.R$styleable: int RecyclerView_fastScrollHorizontalTrackDrawable
-com.tesla.framework.component.logger.PrettyFormatStrategy: java.lang.String getSimpleClassName(java.lang.String)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: java.lang.String getSimpleClassName(java.lang.String)
 com.tesla.framework.component.imageloader.ImageLoaderOptions: com.tesla.framework.component.imageloader.ImageLoaderOptions$Builder obtainBuilder(java.lang.String)
 com.tesla.framework.databinding.CommonViewStubHolderBinding: com.tesla.framework.databinding.CommLayLoadingBinding layoutLoading
 com.tesla.framework.R$layout: int abc_screen_content_include
@@ -4807,7 +4807,7 @@ com.tesla.framework.R$styleable: int CollapsingToolbarLayout_expandedTitleTextAp
 com.tesla.framework.ui.activity.BaseVmActivity: java.util.Map fragmentRefs
 com.tesla.framework.R$style: int Base_TextAppearance_AppCompat_Large_Inverse
 com.tesla.framework.R$style: int Widget_AppCompat_Light_ListView_DropDown
-com.tesla.framework.component.logger.PrettyFormatStrategy: char TOP_LEFT_CORNER
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: char TOP_LEFT_CORNER
 com.tesla.framework.component.imageloader.ImageLoaderOptions: int getEmptyUrlId()
 com.tesla.framework.R$styleable: int KeyTimeCycle_android_rotationY
 com.tesla.framework.ui.widget.CircleImageView: int COLORDRAWABLE_DIMENSION
@@ -4913,9 +4913,9 @@ com.tesla.framework.common.util.log.Logger: int INFO
 com.tesla.framework.R$style: int Widget_MaterialComponents_TimePicker_Display_TextInputEditText
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_layout_goneMarginTop
 com.microsoft.office.outlook.magnifierlib.memory.TimingSamplePolicy
-com.tesla.framework.component.logger.DiskLogStrategy: void log(int,java.lang.String,java.lang.String)
+com.tesla.framework.component.logger.output.DiskLogStrategy: void log(int,java.lang.String,java.lang.String)
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_layout_constraintTag
-com.tesla.framework.component.logger.PrettyFormatStrategy: void logChunk(int,java.lang.String,java.lang.String)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: void logChunk(int,java.lang.String,java.lang.String)
 com.tesla.framework.R$attr: int layout_constraintBottom_toBottomOf
 com.tesla.framework.R$attr: int AutoLinkStyleTextView_type
 com.tesla.framework.R$styleable: int MaterialButton_shapeAppearance
@@ -4991,7 +4991,7 @@ com.tesla.framework.R$style: int Widget_MaterialComponents_Slider
 com.tesla.framework.R$dimen: int abc_dialog_fixed_height_minor
 com.tesla.framework.ui.fragment.adpater.PageTabAdapter: androidx.fragment.app.Fragment getFragmentByPosition(int,com.tesla.framework.support.bean.ITabItem)
 com.tesla.framework.R$attr: int drawPath
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder
 com.tesla.framework.R$style: int Base_Widget_AppCompat_Button_Borderless
 com.tesla.framework.R$styleable: int NavigationView_itemIconPadding
 com.tesla.framework.kt.ColorUtil: int[] ACCENT_COLORS
@@ -5051,7 +5051,7 @@ com.tesla.framework.R$color: int qmui_config_color_50_white
 com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder: boolean component3()
 com.tesla.framework.common.util.DrakeetUtils
 com.tesla.framework.R$attr: int windowFixedWidthMinor
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.PrettyFormatStrategy$Builder tag(java.lang.String)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder tag(java.lang.String)
 com.tesla.framework.R$styleable: int QMUITabSegment_qmui_tab_space
 com.tesla.framework.R$color: int comm_tab_selected_strip
 com.tesla.framework.R$styleable: int RoundAttrs_round_stroke_color
@@ -5059,7 +5059,7 @@ com.tesla.framework.R$attr: int appInsetForeground
 com.tesla.framework.R$attr: int popupMenuStyle
 com.tesla.framework.R$attr: int qmui_need_receive_fling_from_target_view
 com.tesla.framework.R$layout: int test_design_radiobutton
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.PrettyFormatStrategy$Builder methodOffset(int)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder methodOffset(int)
 com.tesla.framework.R$styleable: int Layout_layout_constraintTop_creator
 com.tesla.framework.R$styleable: int TabLayout_tabPaddingEnd
 com.tesla.framework.component.imageloader.ImageLoaderOptions$Builder
@@ -5260,7 +5260,7 @@ com.tesla.framework.R$id: int autoCompleteToEnd
 com.tesla.framework.R$styleable: int[] KeyTimeCycle
 com.tesla.framework.R$string: R$string()
 com.tesla.framework.R$styleable: int Layout_layout_constraintHorizontal_weight
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: PrettyFormatStrategy$Builder(com.tesla.framework.component.logger.PrettyFormatStrategy$1)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: PrettyFormatStrategy$Builder(com.tesla.framework.component.logger.format.PrettyFormatStrategy$1)
 com.tesla.framework.ui.fragment.BaseDatebindingFragment: android.widget.TextView mTvStrictModeTip
 com.tesla.framework.R$layout: int qmui_common_list_item
 com.tesla.framework.R$styleable: int CardView_contentPaddingRight
@@ -5315,7 +5315,7 @@ com.tesla.framework.support.bean.DataBindingConfig: int getVmVariableId()
 com.tesla.framework.kt.ExtensionsKt: java.lang.String networkStatus(int)
 com.tesla.framework.R$id: int snackbar_text
 com.tesla.framework.R$attr: int iconGravity
-com.tesla.framework.component.logger.DiskLogAdapter: DiskLogAdapter()
+com.tesla.framework.component.logger.adapter.DiskLogAdapter: DiskLogAdapter()
 com.drakeet.years.widget.CustomLayout: void onMeasure(int,int)
 com.drakeet.purewriter.widget.StretchEdgeEffect: android.view.View view
 com.tesla.framework.R$attr: int materialCardViewStyle
@@ -5427,7 +5427,7 @@ com.tesla.framework.R$attr: int customIntegerValue
 com.tesla.framework.R$attr: int cornerSizeTopRight
 com.tesla.framework.R$styleable: int LinearLayoutCompat_dividerPadding
 com.tesla.framework.R$attr: int titleMarginEnd
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.CsvFormatStrategy$Builder tag(java.lang.String)
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder tag(java.lang.String)
 com.tesla.framework.R$color: int hint_foreground_material_dark
 com.tesla.framework.R$style: int ThemeOverlay_MaterialComponents_MaterialAlertDialog_Centered
 com.tesla.framework.R$attr: int contentDescription
@@ -5574,7 +5574,7 @@ com.tesla.framework.R$string: int material_slider_range_start
 com.tesla.framework.R$animator: int linear_indeterminate_line1_head_interpolator
 com.tesla.framework.R$styleable: int AppCompatTextView_drawableTintMode
 com.tesla.framework.R$styleable: int Layout_layout_constraintRight_creator
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder
 com.tesla.framework.R$drawable: int mtrl_ic_error
 com.tesla.framework.component.logger.Logger: void wtf(java.lang.String,java.lang.Object[])
 com.tesla.framework.R$dimen: int abc_dialog_padding_top_material
@@ -5676,7 +5676,7 @@ com.microsoft.office.outlook.magnifierlib.memory.ImmediateSamplePolicy: Immediat
 com.tesla.framework.databinding.CommLayEmptyviewBinding: android.widget.TextView txtLoadEmpty
 com.tesla.framework.R$attr: int qmui_alpha_pressed
 com.tesla.framework.R$style: int MaterialAlertDialog_MaterialComponents_Title_Text
-com.tesla.framework.component.logger.CsvFormatStrategy: java.lang.String NEW_LINE_REPLACEMENT
+com.tesla.framework.component.logger.format.CsvFormatStrategy: java.lang.String NEW_LINE_REPLACEMENT
 com.tesla.framework.R$color: int mtrl_btn_stroke_color_selector
 com.tesla.framework.component.handler.FMessageQueue
 com.tesla.framework.R$attr: int listPreferredItemHeight
@@ -5711,7 +5711,7 @@ com.tesla.framework.R$styleable: int AppCompatTheme_dialogPreferredPadding
 com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder translationY(float[])
 com.tesla.framework.component.lifecycle.LifecycleHandler: LifecycleHandler(android.os.Looper,androidx.lifecycle.LifecycleOwner)
 com.tesla.framework.R$styleable: int QMUILayout_qmui_topDividerInsetRight
-com.tesla.framework.component.logger.PrettyFormatStrategy: char BOTTOM_LEFT_CORNER
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: char BOTTOM_LEFT_CORNER
 com.tesla.framework.R$styleable: int ConstraintSet_layout_constraintVertical_chainStyle
 com.tesla.framework.R$style: int TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 com.tesla.framework.R$attr: int queryHint
@@ -5772,7 +5772,7 @@ com.tesla.framework.component.startup.StartupManager: java.util.List waitOnMainT
 com.tesla.framework.R$drawable: int abc_text_select_handle_left_mtrl_dark
 com.tesla.framework.component.eventbus.SubsribeMethod: java.lang.Class type
 com.tesla.framework.R$styleable: int QMUIDialogActionContainerCustomDef_qmui_dialog_action_container_justify_content
-com.tesla.framework.component.logger.PrettyFormatStrategy: int methodOffset
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: int methodOffset
 com.tesla.framework.R$style: int Widget_Design_BottomNavigationView
 com.tesla.framework.R$style: int ThemeOverlay_MaterialComponents_AutoCompleteTextView_FilledBox
 com.tesla.framework.component.logger.Printer: void log(int,java.lang.String,java.lang.String,java.lang.Throwable)
@@ -5796,7 +5796,7 @@ com.tesla.framework.ui.widget.edgeeffect.GlowingEdgeEffect: double ANGLE
 com.tesla.framework.R$dimen: int mtrl_btn_icon_btn_padding_left
 com.tesla.framework.R$styleable: int AppCompatTheme_actionBarTheme
 com.tesla.framework.R$styleable: int Constraint_android_minHeight
-com.tesla.framework.component.logger.PrettyFormatStrategy: java.lang.String tag
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: java.lang.String tag
 com.tesla.framework.R$styleable: int OnSwipe_moveWhenScrollAtTop
 com.tesla.framework.R$id: int uniform
 com.tesla.framework.R$styleable: int RoundRelativeLayout_rv_isWidthHeightEqual
@@ -5961,7 +5961,7 @@ com.tesla.framework.R$id: int action_bar_container
 com.tesla.framework.R$attr: int buttonGravity
 com.tesla.framework.R$style: int QMUI_QQFaceView
 com.tesla.framework.ui.activity.BaseVmActivityNew: void addFragment(java.lang.String,com.tesla.framework.ui.fragment.BaseStatusFragmentNew)
-com.tesla.framework.component.logger.CsvFormatStrategy: CsvFormatStrategy(com.tesla.framework.component.logger.CsvFormatStrategy$Builder,com.tesla.framework.component.logger.CsvFormatStrategy$1)
+com.tesla.framework.component.logger.format.CsvFormatStrategy: CsvFormatStrategy(com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder,com.tesla.framework.component.logger.format.CsvFormatStrategy$1)
 com.tesla.framework.R$attr: int layout_constraintWidth_min
 com.tesla.framework.R$style: int ShapeAppearance_MaterialComponents_LargeComponent
 com.tesla.framework.R$layout: int qmui_bottom_sheet_dialog
@@ -5973,7 +5973,7 @@ com.tesla.framework.R$dimen: int design_bottom_navigation_item_max_width
 com.tesla.framework.R$styleable: int ConstraintSet_barrierAllowsGoneWidgets
 com.tesla.framework.R$styleable: int MaterialComponentsTheme_chipStandaloneStyle
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_layout_constraintCircleAngle
-com.tesla.framework.component.logger.AndroidLogAdapter: boolean isLoggable(int,java.lang.String)
+com.tesla.framework.component.logger.adapter.AndroidLogAdapter: boolean isLoggable(int,java.lang.String)
 com.tesla.framework.R$anim: int abc_fade_in
 com.tesla.framework.component.livedata.LiveDataBus$StickyLiveData: void observerSticky(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Observer,boolean)
 com.tesla.framework.component.navigator.HiFragmentNavigator: java.lang.String KEY_BACK_STACK_IDS
@@ -6003,7 +6003,7 @@ com.tesla.framework.R$drawable: int abc_ic_search_api_material
 com.tesla.framework.component.logger.Printer: void i(java.lang.String,java.lang.Object[])
 com.tesla.framework.R$styleable: int ConstraintSet_flow_lastHorizontalStyle
 com.tesla.framework.R$id: int cancel_button
-com.tesla.framework.component.logger.DiskLogAdapter: void log(int,java.lang.String,java.lang.String)
+com.tesla.framework.component.logger.adapter.DiskLogAdapter: void log(int,java.lang.String,java.lang.String)
 com.tesla.framework.R$styleable: int RoundTextView_rv_backgroundColor
 com.tesla.framework.R$style: int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse
 com.tesla.framework.common.util.AndroidVersion: boolean hasKitkat()
@@ -6026,7 +6026,7 @@ com.tesla.framework.R$styleable: int KeyTimeCycle_android_alpha
 com.tesla.framework.R$layout: int material_timepicker
 com.tesla.framework.R$styleable: int MotionLayout_motionDebug
 com.tesla.framework.R$styleable: int QMUISkinDef_qmui_skin_text_color
-com.tesla.framework.component.logger.CsvFormatStrategy: com.tesla.framework.component.logger.LogStrategy logStrategy
+com.tesla.framework.component.logger.format.CsvFormatStrategy: com.tesla.framework.component.logger.LogStrategy logStrategy
 com.microsoft.office.outlook.magnifierlib.memory.HeapMetricCollector: com.microsoft.office.outlook.magnifierlib.memory.HeapMetricCollector$Companion Companion
 com.tesla.framework.R$style: int Base_Widget_AppCompat_ActionButton
 com.tesla.framework.component.lifecycle.LifecycleObserverAdapter: void onResume()
@@ -6036,7 +6036,7 @@ com.tesla.framework.R$string: int appbar_scrolling_view_behavior
 com.tesla.framework.R$style: int Widget_AppCompat_PopupMenu
 com.tesla.framework.R$drawable: int abc_ic_arrow_drop_right_black_24dp
 com.tesla.framework.R$style: int TextAppearance_StatusBar_EventContent_Time
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: int methodCount
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: int methodCount
 com.tesla.framework.R$styleable: int ShapeAppearance_cornerSizeTopLeft
 com.tesla.framework.R$style: int Base_Widget_AppCompat_CompoundButton_Switch
 com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig: com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Companion Companion
@@ -6135,7 +6135,7 @@ com.tesla.framework.R$styleable: int MaterialCardView_checkedIcon
 com.tesla.framework.R$attr: int backgroundInsetStart
 com.tesla.framework.R$dimen: int mtrl_snackbar_action_text_color_alpha
 com.tesla.framework.component.livedata.SingleTonViewModel: androidx.lifecycle.MutableLiveData getSingleTonLiveData()
-com.tesla.framework.component.logger.LogcatLogStrategy: void log(int,java.lang.String,java.lang.String)
+com.tesla.framework.component.logger.output.LogcatLogStrategy: void log(int,java.lang.String,java.lang.String)
 com.tesla.framework.R$style: int Base_Widget_MaterialComponents_MaterialCalendar_NavigationButton
 com.tesla.framework.R$id: int tv_name
 com.tesla.framework.ui.fragment.ATabsTabLayoutFragmentNew: int getSelectedTabIndex()
@@ -6159,7 +6159,7 @@ timber.log.Timber: timber.log.Timber$Tree[] treeArray
 com.tesla.framework.R$styleable: int AppCompatTheme_textAppearanceListItemSmall
 com.tesla.framework.R$id: int parent_matrix
 com.tesla.framework.R$color: int qmui_btn_blue_text
-com.tesla.framework.component.logger.PrettyFormatStrategy: int MIN_STACK_OFFSET
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: int MIN_STACK_OFFSET
 com.tesla.framework.R$id: int qmui_tab_segment_item_id
 com.tesla.framework.R$style: int Test_Widget_MaterialComponents_MaterialCalendar_Day_Selected
 com.tesla.framework.ui.widget.RoundImageView: android.graphics.RectF mRoundRect
@@ -6195,13 +6195,13 @@ com.tesla.framework.component.imageloader.ImageLoaderOptions$DiskCacheStrategy
 com.tesla.framework.R$attr: int motionDurationMedium2
 com.tesla.framework.R$styleable: int FloatingActionButton_elevation
 com.tesla.framework.common.device.DeviceName: DeviceName()
-com.tesla.framework.component.logger.PrettyFormatStrategy: java.lang.String SINGLE_DIVIDER
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: java.lang.String SINGLE_DIVIDER
 com.tesla.framework.R$style: int Widget_MaterialComponents_CollapsingToolbar
 com.tesla.framework.component.activityforresult.ActivityResultHelper: void startActivityForResult(java.lang.Class,com.tesla.framework.component.activityforresult.ActivityResultHelper$ActivityForResultCallback)
 com.tesla.framework.ui.widget.KitkatViewGroup: KitkatViewGroup(android.content.Context,android.util.AttributeSet)
 com.tesla.framework.ui.widget.CustomRoundTextView: CustomRoundTextView(android.content.Context)
 com.tesla.framework.R$style: int MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: int MAX_BYTES
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: int MAX_BYTES
 com.tesla.framework.common.device.DeviceDatabase: void create()
 com.tesla.framework.R$attr: int mock_label
 com.tesla.framework.R$attr: int qmui_common_list_detail_color
@@ -6442,7 +6442,7 @@ com.tesla.framework.R$style: int Base_Widget_AppCompat_DropDownItem_Spinner
 com.tesla.framework.R$styleable: int QMUIRadiusImageView2_qmui_selected_mask_color
 com.tesla.framework.component.imageloader.ImageLoaderOptions: android.graphics.drawable.Drawable emptyUrlDrawable
 com.tesla.framework.R$styleable: int AppCompatTheme_editTextBackground
-com.tesla.framework.component.logger.CsvFormatStrategy: com.tesla.framework.component.logger.CsvFormatStrategy$Builder newBuilder()
+com.tesla.framework.component.logger.format.CsvFormatStrategy: com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder newBuilder()
 com.tesla.framework.R$styleable: int ConstraintSet_layout_constraintEnd_toStartOf
 com.tesla.framework.R$styleable: int Tooltip_android_text
 com.tesla.framework.R$layout: int mtrl_calendar_days_of_week
@@ -6729,7 +6729,7 @@ com.tesla.framework.R$styleable: int ConstraintSet_android_pivotY
 com.tesla.framework.R$styleable: int QMUIRoundFrameLayout_qmui_radiusBottomRight
 com.tesla.framework.R$styleable: int MenuView_android_itemBackground
 com.tesla.framework.R$dimen: int default_dimension
-com.tesla.framework.component.logger.LogcatLogStrategy: java.lang.String DEFAULT_TAG
+com.tesla.framework.component.logger.output.LogcatLogStrategy: java.lang.String DEFAULT_TAG
 com.tesla.framework.R$attr: int qmui_tab_has_indicator
 com.tesla.framework.R$styleable: int MenuItem_actionProviderClass
 com.tesla.framework.R$id: int standard
@@ -6791,7 +6791,7 @@ com.tesla.framework.R$id: int textWatcher
 com.tesla.framework.component.imageloader.ImageLoaderOptions: int access$1302(com.tesla.framework.component.imageloader.ImageLoaderOptions,int)
 com.tesla.framework.R$color: int accent_material_light
 com.tesla.framework.R$attr: int titleTextStyle
-com.tesla.framework.component.logger.DiskLogStrategy$WriteHandler: DiskLogStrategy$WriteHandler(android.os.Looper,java.lang.String,int)
+com.tesla.framework.component.logger.output.DiskLogStrategy$WriteHandler: DiskLogStrategy$WriteHandler(android.os.Looper,java.lang.String,int)
 com.tesla.framework.R$styleable: int QMUITabSegment_qmui_tab_icon_position
 com.github.florent37.viewanimator.ViewAnimator$1: void onAnimationCancel(android.animation.Animator)
 com.tesla.framework.R$style: int ThemeOverlay_MaterialComponents_AutoCompleteTextView
@@ -7053,7 +7053,7 @@ com.tesla.framework.R$styleable: int TextAppearance_android_textColorLink
 com.tesla.framework.R$string: int mtrl_picker_range_header_unselected
 com.microsoft.office.outlook.magnifierlib.frame.FrameViewer$MovingTouchListener: int initialX
 com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder pivotY(float[])
-com.tesla.framework.component.logger.PrettyFormatStrategy: char MIDDLE_CORNER
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: char MIDDLE_CORNER
 com.microsoft.office.outlook.magnifierlib.frame.FPSMonitor: com.microsoft.office.outlook.magnifierlib.frame.FrameViewer frameViewer
 com.tesla.framework.R$styleable: int QMUILayout_android_minWidth
 com.tesla.framework.R$styleable: int QMUIDialogMenuTextStyleDef_android_textSize
@@ -7072,7 +7072,7 @@ com.tesla.framework.R$styleable: int AppCompatTextView_android_textAppearance
 com.tesla.framework.kt.ColorUtil: int[][] getPRIMARY_COLORS_SUB()
 com.tesla.framework.kt.ExtensionsKt: float getSp(int)
 com.tesla.framework.R$attr: int listPreferredItemHeightSmall
-com.tesla.framework.component.logger.PrettyFormatStrategy$1
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$1
 com.tesla.framework.kt.ExtensionsKt
 com.tesla.framework.kt.ViewExtensionsKt: void gone(android.view.View)
 com.tesla.framework.R$styleable: int ThemeEnforcement_enforceTextAppearance
@@ -7144,7 +7144,7 @@ com.tesla.framework.ui.activity.BaseDatabindingActivity: androidx.databinding.Vi
 com.tesla.framework.R$style: int Widget_MaterialComponents_BottomAppBar_Colored
 com.tesla.framework.component.imageloader.ImageLoaderManager: com.tesla.framework.component.imageloader.IImageLoaderstrategy loaderstrategy
 com.tesla.framework.R$attr: int qmui_skin_tint_color
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: CsvFormatStrategy$Builder()
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: CsvFormatStrategy$Builder()
 com.tesla.framework.R$styleable: int QMUICommonListItemView_qmui_orientation
 com.tesla.framework.R$styleable: int Constraint_layout_goneMarginEnd
 com.tesla.framework.R$style: int Widget_Design_ScrimInsetsFrameLayout
@@ -7338,7 +7338,7 @@ com.tesla.framework.ui.activity.BaseStatusActivity: BaseStatusActivity()
 com.tesla.framework.R$anim: int abc_popup_enter
 com.tesla.framework.R$attr: int qmui_dialog_action_style
 com.tesla.framework.R$dimen: int tooltip_margin
-com.tesla.framework.component.logger.PrettyFormatStrategy: void logHeaderContent(int,java.lang.String,int)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: void logHeaderContent(int,java.lang.String,int)
 com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$SampleType: com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$SampleType[] $VALUES
 com.tesla.framework.common.util.log.NLog
 com.tesla.framework.R$styleable: int MaterialButton_shapeAppearanceOverlay
@@ -7404,7 +7404,7 @@ com.tesla.framework.R$drawable: int ic_website_left_able
 com.tesla.framework.common.util.anim.SlideInRightAnimation: android.animation.Animator[] getAnimators(android.view.View)
 com.tesla.framework.databinding.CommLayEmptyviewBinding: com.tesla.framework.databinding.CommLayEmptyviewBinding inflate(android.view.LayoutInflater,android.view.ViewGroup,boolean)
 com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig: float lowPercentage
-com.tesla.framework.component.logger.AndroidLogAdapter: com.tesla.framework.component.logger.FormatStrategy formatStrategy
+com.tesla.framework.component.logger.adapter.AndroidLogAdapter: com.tesla.framework.component.logger.format.FormatStrategy formatStrategy
 com.tesla.framework.R$styleable: int ConstraintSet_flow_verticalGap
 com.tesla.framework.R$styleable: int AppBarLayout_android_keyboardNavigationCluster
 com.tesla.framework.component.imageloader.ImageLoaderManager: void pause(android.content.Context)
@@ -7513,7 +7513,7 @@ com.tesla.framework.R$attr: int backgroundColor
 com.tesla.framework.R$layout: int comm_ui_list
 com.tesla.framework.component.imageloader.ImageLoaderOptions: int PIC_LARGE
 com.tesla.framework.R$styleable: int QMUISkinDef_qmui_skin_separator_right
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.CsvFormatStrategy$Builder dateFormat(java.text.SimpleDateFormat)
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder dateFormat(java.text.SimpleDateFormat)
 timber.log.Timber$DebugTree$Companion: Timber$DebugTree$Companion()
 com.tesla.framework.R$attr: int layoutManager
 com.tesla.framework.R$styleable: int ConstraintSet_flow_firstHorizontalBias
@@ -7610,7 +7610,7 @@ com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory: int MAX_
 com.tesla.framework.common.util.anim.ScaleInAnimation: ScaleInAnimation()
 com.tesla.framework.component.startup.Startup: kotlin.Lazy countDownLatch$delegate
 com.tesla.framework.R$style: int TextAppearance_AppCompat_Display1
-com.tesla.framework.component.logger.DiskLogStrategy$WriteHandler: java.io.File getLogFile(java.lang.String,java.lang.String)
+com.tesla.framework.component.logger.output.DiskLogStrategy$WriteHandler: java.io.File getLogFile(java.lang.String,java.lang.String)
 com.tesla.framework.R$attr: int toolbarNavigationButtonStyle
 com.tesla.framework.databinding.CommUiFragmentContainerBinding: com.tesla.framework.databinding.CommUiFragmentContainerBinding bind(android.view.View)
 com.tesla.framework.ui.widget.edgeeffect.GlowingEdgeEffect: int STATE_RECEDE
@@ -7632,7 +7632,7 @@ timber.log.Timber$Tree: void w(java.lang.Throwable)
 com.tesla.framework.R$styleable: int ImageFilterView_crossfade
 com.tesla.framework.R$styleable: int MenuItem_contentDescription
 com.tesla.framework.R$styleable: int TextInputLayout_counterTextColor
-com.tesla.framework.component.logger.PrettyFormatStrategy: PrettyFormatStrategy(com.tesla.framework.component.logger.PrettyFormatStrategy$Builder)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: PrettyFormatStrategy(com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder)
 com.tesla.framework.R$style: int ThemeOverlay_MaterialComponents_TextInputEditText
 com.tesla.framework.common.util.HttpsCompat$Tls12SocketFactory: java.net.Socket createSocket(java.net.InetAddress,int)
 com.tesla.framework.R$style: int Widget_MaterialComponents_FloatingActionButton
@@ -7663,7 +7663,7 @@ com.tesla.framework.R$id: int scale
 com.tesla.framework.component.livedata.callback.ProtectedUnPeekLiveData: void observeForever(androidx.lifecycle.Observer)
 com.tesla.framework.R$styleable: int MaterialComponentsTheme_floatingActionButtonStyle
 com.tesla.framework.R$drawable: int abc_ratingbar_indicator_material
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.PrettyFormatStrategy$Builder methodCount(int)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder methodCount(int)
 com.tesla.framework.R$style: int Widget_MaterialComponents_MaterialCalendar_Day_Invalid
 com.tesla.framework.R$style: int Widget_AppCompat_ProgressBar_Horizontal
 com.tesla.framework.R$attr: int qmui_skin_support_activity_background
@@ -7712,7 +7712,7 @@ com.tesla.framework.R$id: int screen
 com.tesla.framework.component.eventbus.SubsribeMethod: SubsribeMethod(java.lang.reflect.Method,com.tesla.framework.component.eventbus.Subscribe,java.lang.Class)
 com.tesla.framework.R$style: int Base_V7_ThemeOverlay_AppCompat_Dialog
 com.tesla.framework.R$attr: int itemTextAppearanceInactive
-com.tesla.framework.component.logger.CsvFormatStrategy: java.util.Date date
+com.tesla.framework.component.logger.format.CsvFormatStrategy: java.util.Date date
 com.tesla.framework.R$string: int abc_searchview_description_search
 com.tesla.framework.R$attr: int civ_circle_background_color
 com.tesla.framework.R$id: int password_toggle
@@ -7882,7 +7882,7 @@ com.tesla.framework.R$attr: int listPreferredItemPaddingStart
 com.tesla.framework.R$color: int material_blue_grey_900
 com.tesla.framework.ui.widget.CustomRoundTextView: void setTopRightRadius(float)
 com.tesla.framework.R$anim: int sheet_hide
-com.tesla.framework.component.logger.DiskLogStrategy
+com.tesla.framework.component.logger.output.DiskLogStrategy
 com.tesla.framework.R$styleable: int Constraint_android_scaleY
 com.tesla.framework.ui.widget.drawable.CircleImageDrawable
 com.tesla.framework.R$attr: int actionViewClass
@@ -7909,7 +7909,7 @@ com.tesla.framework.common.util.log.FastLog$ILogDelegate: void v(java.lang.Strin
 com.tesla.framework.R$id: int titleDividerNoCustom
 com.tesla.framework.R$attr: int qmui_quick_action_item_padding_hor
 com.tesla.framework.support.action.IAction: boolean interrupt()
-com.tesla.framework.component.logger.AndroidLogAdapter: AndroidLogAdapter()
+com.tesla.framework.component.logger.adapter.AndroidLogAdapter: AndroidLogAdapter()
 com.tesla.framework.R$dimen: int anylayer_notification_title_text_size
 com.tesla.framework.R$style: int QMUI_Animation_PopUpMenu_Right
 com.tesla.framework.R$style: int Base_V14_Theme_MaterialComponents
@@ -8046,7 +8046,7 @@ com.tesla.framework.R$style: int Base_V26_Widget_AppCompat_Toolbar
 com.tesla.framework.R$style: int QMUI_CollapsingTopBarLayoutExpanded
 com.tesla.framework.R$anim: int grow_from_bottomleft_to_topright
 com.tesla.framework.R$dimen: int mtrl_extended_fab_min_height
-com.tesla.framework.component.logger.DiskLogAdapter: com.tesla.framework.component.logger.FormatStrategy formatStrategy
+com.tesla.framework.component.logger.adapter.DiskLogAdapter: com.tesla.framework.component.logger.format.FormatStrategy formatStrategy
 com.tesla.framework.R$styleable: int Chip_android_ellipsize
 com.tesla.framework.R$string: int app_name
 com.tesla.framework.R$style: int QMUI_Animation_PopDownMenu_Center
@@ -8131,7 +8131,7 @@ com.tesla.framework.R$drawable: int abc_scrubber_control_to_pressed_mtrl_005
 com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig: long DEFAULT_EXCEED_LIMIT_RATIO_THRESHOLD_10_SECONDS
 com.tesla.framework.R$drawable: int design_bottom_navigation_item_background
 com.microsoft.office.outlook.magnifierlib.Magnifier$memoryMonitor$2: com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor invoke()
-com.tesla.framework.component.logger.DiskLogStrategy$WriteHandler: void handleMessage(android.os.Message)
+com.tesla.framework.component.logger.output.DiskLogStrategy$WriteHandler: void handleMessage(android.os.Message)
 com.tesla.framework.R$id: int beginning
 com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBinding: com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBinding bind(android.view.View,java.lang.Object)
 com.tesla.framework.R$attr: int bottomAppBarStyle
@@ -8233,7 +8233,7 @@ com.tesla.framework.R$styleable: int QMUITextCommonStyleDef_android_maxLines
 com.tesla.framework.R$styleable: int Constraint_layout_constraintGuide_begin
 com.tesla.framework.R$style: int Base_Theme_MaterialComponents_CompactMenu
 com.tesla.framework.databinding.TitleBarBinding: com.tesla.framework.databinding.TitleBarBinding inflate(android.view.LayoutInflater,android.view.ViewGroup,boolean)
-com.tesla.framework.component.logger.AndroidLogAdapter
+com.tesla.framework.component.logger.adapter.AndroidLogAdapter
 com.microsoft.office.outlook.magnifierlib.memory.ThreadMetricCollector: java.lang.Object collect()
 com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo: java.lang.String toString()
 com.tesla.framework.R$attr: int qmui_dialog_inset_hor
@@ -8305,7 +8305,7 @@ com.tesla.framework.R$styleable: int MenuItem_android_alphabeticShortcut
 com.tesla.framework.R$attr: int enableEdgeToEdge
 com.tesla.framework.ui.fragment.BaseFragment: android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
 com.tesla.framework.R$color: int design_default_color_primary_variant
-com.tesla.framework.component.logger.CsvFormatStrategy: java.lang.String NEW_LINE
+com.tesla.framework.component.logger.format.CsvFormatStrategy: java.lang.String NEW_LINE
 com.tesla.framework.ui.widget.RoundImageView: float mRightBottomCornerRadius
 com.tesla.framework.DataBinderMapperImpl: androidx.databinding.ViewDataBinding getDataBinder(androidx.databinding.DataBindingComponent,android.view.View[],int)
 com.tesla.framework.R$attr: int scrimAnimationDuration
@@ -8433,7 +8433,7 @@ com.tesla.framework.component.startup.Startup$countDownLatch$2
 com.tesla.framework.R$styleable: int QMUIFloatLayout_android_maxLines
 com.tesla.framework.R$attr: int sizePercent
 com.tesla.framework.R$styleable: int Spinner_android_popupBackground
-com.tesla.framework.component.logger.CsvFormatStrategy$Builder: CsvFormatStrategy$Builder(com.tesla.framework.component.logger.CsvFormatStrategy$1)
+com.tesla.framework.component.logger.format.CsvFormatStrategy$Builder: CsvFormatStrategy$Builder(com.tesla.framework.component.logger.format.CsvFormatStrategy$1)
 com.microsoft.office.outlook.magnifierlib.Magnifier$memoryMonitor$2: Magnifier$memoryMonitor$2()
 com.tesla.framework.common.util.Preconditions: int checkElementIndex(int,int,java.lang.String)
 com.tesla.framework.R$styleable: int CollapsingToolbarLayout_expandedTitleGravity
@@ -8543,7 +8543,7 @@ com.tesla.framework.R$style: int Base_V14_Theme_MaterialComponents_Light_Dialog_
 com.tesla.framework.R$styleable: int FontFamilyFont_android_fontWeight
 com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBindingImpl: android.util.SparseIntArray sViewsWithIds
 com.tesla.framework.R$styleable: int Toolbar_contentInsetRight
-com.tesla.framework.component.logger.PrettyFormatStrategy: java.lang.String BOTTOM_BORDER
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: java.lang.String BOTTOM_BORDER
 com.tesla.framework.R$styleable: int SnackbarLayout_maxActionInlineWidth
 com.tesla.framework.R$attr: int qmui_tip_dialog_max_width
 com.tesla.framework.R$style: int Widget_Design_FloatingActionButton
@@ -8578,7 +8578,7 @@ com.tesla.framework.R$style: int Theme_MaterialComponents_Light_Dialog_Alert
 com.tesla.framework.R$style: int TextAppearance_AppCompat_Headline
 com.tesla.framework.R$attr: int actionModeCutDrawable
 com.tesla.framework.R$id: int action_text
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: java.lang.String tag
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: java.lang.String tag
 com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder: com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder enableTimingSample(long)
 com.tesla.framework.R$style: int QMUI_BottomSheet_List
 com.tesla.framework.R$styleable: int QMUISkinDef_qmui_skin_text_compound_tint_color
@@ -8590,7 +8590,7 @@ com.tesla.framework.R$styleable: int[] RangeSlider
 com.tesla.framework.R$dimen: int qmui_list_item_height_higher
 com.tesla.framework.R$style: int Base_Widget_AppCompat_ActionBar
 com.tesla.framework.support.thread.CancelableCountDownLatch: CancelableCountDownLatch(int)
-com.tesla.framework.component.logger.DiskLogStrategy$WriteHandler: void writeLog(java.io.FileWriter,java.lang.String)
+com.tesla.framework.component.logger.output.DiskLogStrategy$WriteHandler: void writeLog(java.io.FileWriter,java.lang.String)
 com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder: com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener onSampleListener
 com.tesla.framework.support.action.IAction: void doInterrupt()
 com.tesla.framework.R$style: int Theme_MaterialComponents_DayNight_DialogWhenLarge
@@ -8940,7 +8940,7 @@ com.tesla.framework.R$anim: int abc_fade_out
 com.tesla.framework.R$animator: int nav_default_exit_anim
 com.tesla.framework.common.util.toast.SafeToastContext: com.tesla.framework.common.util.toast.BadTokenListener access$200(com.tesla.framework.common.util.toast.SafeToastContext)
 com.tesla.framework.ui.widget.RoundImageView: float mLeftBottomCornerRadius
-com.tesla.framework.component.logger.PrettyFormatStrategy: java.lang.String TOP_BORDER
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: java.lang.String TOP_BORDER
 com.tesla.framework.R$styleable: int QMUICollapsingTopBarLayout_qmui_contentScrim
 com.tesla.framework.R$attr: int showPaths
 com.tesla.framework.R$integer: int material_motion_duration_short_1
@@ -8975,9 +8975,9 @@ com.tesla.framework.R$attr: int tabMaxWidth
 com.tesla.framework.component.tink.HotFixManager: java.util.Set loadedDex
 com.tesla.framework.kt.ViewExtensionsKt: void runOnUiThreadDelay$lambda-1(kotlin.jvm.functions.Function0)
 com.tesla.framework.R$style: int TextAppearance_AppCompat_Title_Inverse
-com.tesla.framework.component.logger.PrettyFormatStrategy: char HORIZONTAL_LINE
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: char HORIZONTAL_LINE
 com.tesla.framework.R$id: int submit_area
-com.tesla.framework.component.logger.PrettyFormatStrategy$Builder: PrettyFormatStrategy$Builder()
+com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: PrettyFormatStrategy$Builder()
 com.tesla.framework.R$attr: int collapsingToolbarLayoutStyle
 com.tesla.framework.R$string: int abc_menu_ctrl_shortcut_label
 com.tesla.framework.R$styleable: int TextInputLayout_boxStrokeErrorColor
@@ -9048,7 +9048,7 @@ com.tesla.framework.ui.activity.BaseVmActivityNew$Companion
 com.tesla.framework.R$style: int TextAppearance_AppCompat_Subhead_Inverse
 com.tesla.framework.component.livedata.LiveDataBus$StickyLiveData$WrapperObserver: com.tesla.framework.component.livedata.LiveDataBus$StickyLiveData this$0
 com.tesla.framework.ui.widget.CircleImageView: void setBorderWidth(int)
-com.tesla.framework.component.logger.PrettyFormatStrategy: PrettyFormatStrategy(com.tesla.framework.component.logger.PrettyFormatStrategy$Builder,com.tesla.framework.component.logger.PrettyFormatStrategy$1)
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: PrettyFormatStrategy(com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder,com.tesla.framework.component.logger.format.PrettyFormatStrategy$1)
 com.tesla.framework.R$drawable: int abc_switch_thumb_material
 com.tesla.framework.R$color: int cardview_light_background
 com.github.florent37.viewanimator.AnimationBuilder: boolean waitForHeight
@@ -9103,7 +9103,7 @@ com.tesla.framework.R$styleable: int Layout_layout_editor_absoluteX
 com.tesla.framework.R$styleable: int NavigationView_android_background
 com.tesla.framework.R$styleable: int RoundTextView_rv_cornerRadius_BR
 com.tesla.framework.component.DelayInitTaskDispatcher: void setupHandler(android.os.MessageQueue)
-com.tesla.framework.component.logger.CsvFormatStrategy: java.lang.String formatTag(java.lang.String)
+com.tesla.framework.component.logger.format.CsvFormatStrategy: java.lang.String formatTag(java.lang.String)
 com.tesla.framework.R$dimen: int mtrl_textinput_counter_margin_start
 com.tesla.framework.R$attr: int colorPrimaryVariant
 com.tesla.framework.R$styleable: int Layout_layout_constraintBottom_creator
@@ -9169,7 +9169,7 @@ com.tesla.framework.R$styleable: int ClockHandView_clockHandColor
 com.tesla.framework.R$styleable: int KeyAttribute_android_scaleX
 com.tesla.framework.component.livedata.callback.ProtectedUnPeekLiveData$ObserverWrapper
 com.tesla.framework.R$dimen: int mtrl_btn_corner_radius
-com.tesla.framework.component.logger.PrettyFormatStrategy
+com.tesla.framework.component.logger.format.PrettyFormatStrategy
 com.microsoft.office.outlook.magnifierlib.frame.FrameViewer$Companion: FrameViewer$Companion(kotlin.jvm.internal.DefaultConstructorMarker)
 com.tesla.framework.databinding.CommLayFooterviewBinding: CommLayFooterviewBinding(android.widget.LinearLayout,android.widget.TextView,android.widget.LinearLayout,android.widget.TextView)
 com.tesla.framework.R$attr: int motionDurationLong1
@@ -9225,7 +9225,7 @@ com.tesla.framework.ui.widget.CustomToolbar: boolean onTouchEvent(android.view.M
 com.tesla.framework.component.livedata.NetworkLiveData: void register(androidx.lifecycle.LifecycleOwner,com.tesla.framework.component.livedata.NetworkLiveData$NetworkListener)
 com.tesla.framework.R$attr: int QMUIQQFaceStyle
 com.tesla.framework.R$styleable: int SnackbarLayout_elevation
-com.tesla.framework.component.logger.PrettyFormatStrategy: java.lang.String MIDDLE_BORDER
+com.tesla.framework.component.logger.format.PrettyFormatStrategy: java.lang.String MIDDLE_BORDER
 com.tesla.framework.R$style: int TextAppearance_AppCompat_SearchResult_Title
 com.tesla.framework.component.imageloader.ImageLoaderOptions: boolean isBlurImage()
 com.tesla.framework.R$style: int Base_Theme_AppCompat_Dialog_MinWidth
@@ -9351,7 +9351,7 @@ com.tesla.framework.component.livedata.LiveDataBus: LiveDataBus()
 com.tesla.framework.R$styleable: int ThemeEnforcement_enforceMaterialTheme
 com.tesla.framework.R$id: int onAttachStateChangeListener
 com.tesla.framework.R$styleable: int AppCompatTextHelper_android_drawableTop
-com.tesla.framework.component.logger.CsvFormatStrategy
+com.tesla.framework.component.logger.format.CsvFormatStrategy
 com.tesla.framework.ui.widget.edgeeffect.GlowingEdgeEffect: void onPull(float,float)
 com.tesla.framework.common.util.log.Logger: boolean trace(int,java.lang.String)
 com.tesla.framework.R$dimen: int notification_action_text_size
@@ -9362,7 +9362,7 @@ com.tesla.framework.R$style: int ThemeOverlay_AppCompat
 com.tesla.framework.R$attr: int listPreferredItemPaddingRight
 com.tesla.framework.R$attr: int progressBarPadding
 com.tesla.framework.R$styleable: int Layout_layout_goneMarginTop
-com.tesla.framework.component.logger.DiskLogStrategy$WriteHandler: java.lang.String folder
+com.tesla.framework.component.logger.output.DiskLogStrategy$WriteHandler: java.lang.String folder
 com.tesla.framework.R$styleable: int TextInputLayout_placeholderTextAppearance
 com.tesla.framework.R$attr: int layout_constraintHorizontal_chainStyle
 com.tesla.framework.R$attr: int cardCornerRadius

@@ -7,7 +7,6 @@ package com.apache.fastandroid.network.retrofit.convertor;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
-import com.tesla.framework.common.util.log.NLog;
 
 import java.io.IOException;
 
@@ -36,7 +35,6 @@ public final class GsonResponseBodyConverter<T> implements Converter<ResponseBod
             return adapter.read(jsonReader);
         } catch (Exception e){
             e.printStackTrace();
-            NLog.e(TAG, e);
         }finally {
             value.close();
         }return null;

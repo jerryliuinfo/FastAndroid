@@ -10,7 +10,6 @@ import com.apache.fastandroid.jetpack.reporsity.UserDao
 import com.apache.fastandroid.jetpack.reporsity.UserNetwork
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.UserInfoViewModel
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.livedata.NetworkLiveData
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.networkStatus
@@ -134,7 +133,7 @@ class LiveDataBasicFragment : BaseBindingFragment<FragmentJetpackLivedataBinding
         }
         chagneLivedata1 = !chagneLivedata1
         userViewModel.mediatorLiveData.observe (this, Observer {
-            NLog.d("mediaLiveData onChange: %s", it)
+            Logger.d("mediaLiveData onChange: %s", it)
             mBinding.textResult.text = it
 
         })

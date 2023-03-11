@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ListView;
 
-import com.tesla.framework.common.util.log.NLog;
+import com.tesla.framework.component.logger.Logger;
 
 /**
  * Created by Jerry on 2021/8/6.
@@ -19,14 +19,14 @@ public class OuterInterceptListView extends ListView {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        NLog.d(TAG, "CustomListView onTouchEvent action: %s", ev.getAction());
+        Logger.d( "CustomListView onTouchEvent action: %s", ev.getAction());
 
         return super.onTouchEvent(ev);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        NLog.d(TAG, "CustomListView onInterceptTouchEvent action: %s", ev.getAction());
+        Logger.d(  "CustomListView onInterceptTouchEvent action: %s", ev.getAction());
         return super.onInterceptTouchEvent(ev);
     }
 }

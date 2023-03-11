@@ -24,7 +24,7 @@ import androidx.annotation.Nullable;
 
 import static com.tesla.framework.component.logger.Utils.checkNotNull;
 
-class LoggerPrinter implements Printer {
+public class LoggerPrinter implements Printer {
 
   /**
    * It is used for json pretty print

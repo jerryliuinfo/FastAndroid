@@ -1,7 +1,6 @@
 package com.apache.fastandroid.component.anr;
 
 import com.github.anrwatchdog.ANRWatchDog;
-import com.tesla.framework.common.util.log.NLog;
 
 /**
  * Created by Jerry on 2021/9/24.
@@ -20,7 +19,6 @@ public class AnrManager {
    private ANRWatchDog anrWatchDog;
    public void start(AnrConfig anrConfig){
       if (anrWatchDog != null){
-         NLog.d(ANRWatchDog.TAG, "anrWatchDog.isAliv: %s",anrWatchDog.isAlive());
       }
       if (anrWatchDog != null && anrWatchDog.isAlive()){
          anrWatchDog.interrupt();

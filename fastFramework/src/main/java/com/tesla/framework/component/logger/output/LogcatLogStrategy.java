@@ -1,6 +1,8 @@
-package com.tesla.framework.component.logger;
+package com.tesla.framework.component.logger.output;
 
 import android.util.Log;
+
+import com.tesla.framework.component.logger.LogStrategy;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -33,7 +33,6 @@ import com.blankj.utilcode.util.ClickUtils
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.tesla.framework.common.util.log.NLog
 
 /**
  * Create by KunMinX at 19/9/18
@@ -82,7 +81,6 @@ private const val TAG = "CommonBindingAdapter"
 
     @BindingAdapter(value = ["imageUrl", "placeHolder"], requireAll = false)
     fun imageUrl(view: ImageView, url: String?, placeHolder: Drawable?) {
-        NLog.d(TAG, "imageUrl: %s", url)
         Glide.with(view.context).load(url).into(view)
     }
 

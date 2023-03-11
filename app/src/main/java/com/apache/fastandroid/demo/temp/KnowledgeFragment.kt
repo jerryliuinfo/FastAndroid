@@ -24,7 +24,6 @@ import com.blankj.utilcode.util.MetaDataUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.util.hasFragment
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.dialog.DialogSelectFragment
 import com.tesla.framework.component.ignore.IgnoreFirstEventListener
 import com.tesla.framework.component.ignore.IgnoreMultiEventListener
@@ -77,7 +76,6 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
                 items.add("value:${it}")
             }
             items.subList(0,5).shuffle()
-            NLog.d(TAG, "suffle: ${items}")
         }
 
         mBinding.btnMultiChannel.setOnClickListener {

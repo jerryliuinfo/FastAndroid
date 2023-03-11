@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
 import com.apache.fastandroid.R;
-import com.tesla.framework.common.util.log.NLog;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +30,6 @@ public class CustomImageView extends AppCompatImageView {
 
    @Override
    protected void onDraw(Canvas canvas) {
-      NLog.d("CustomImageView", "CustomImageView onDraw");
 
 
       //内部会调用invalidate，导致又会重新 onDraw，会向任务队列内部post一个同步屏障,形成一个无限循环，导致queueIdle永远不会执行

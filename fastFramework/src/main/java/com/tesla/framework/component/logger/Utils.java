@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 /**
  * Provides convenient methods to some common operations
  */
-final class Utils {
+public class Utils {
 
   private Utils() {
     // Hidden constructor.
@@ -25,7 +25,7 @@ final class Utils {
    * @param str the string to be examined
    * @return true if str is null or zero length
    */
-  static boolean isEmpty(CharSequence str) {
+  public static boolean isEmpty(CharSequence str) {
     return str == null || str.length() == 0;
   }
 
@@ -108,7 +108,7 @@ final class Utils {
             simpleName + ": " + rootCause.getLocalizedMessage() : simpleName;
   }
 
-  static String logLevel(int value) {
+  public static String logLevel(int value) {
     switch (value) {
       case Log.VERBOSE:
         return "VERBOSE";
@@ -164,7 +164,7 @@ final class Utils {
     return "Couldn't find a correct type for the object";
   }
 
-  @NonNull static <T> T checkNotNull(@Nullable final T obj) {
+  @NonNull public static <T> T checkNotNull(@Nullable final T obj) {
     if (obj == null) {
       throw new NullPointerException();
     }

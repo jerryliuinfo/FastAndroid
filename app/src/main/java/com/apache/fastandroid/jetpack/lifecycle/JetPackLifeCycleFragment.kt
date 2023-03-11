@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentJetpackLifecycleBinding
 import com.apache.fastandroid.jetpack.lifecycle.LocationListener.OnLocationChangeListener
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.lifeCycleOwner
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
@@ -22,7 +22,7 @@ class JetPackLifeCycleFragment :
         mBinding.tvLocation.setOnClickListener {
             lifecycle.addObserver(LocationListener(this, object : OnLocationChangeListener {
                 override fun onLocationChanged(latitude: Int, longtitude: Int) {
-                    NLog.d(TAG, "onLocationChanged latitude: %s,longtitude:%s", latitude, longtitude)
+                    Logger.d("onLocationChanged latitude: %s,longtitude:%s", latitude, longtitude)
                 }
             }))
             lifecycle.addObserver(LifeGpsManager.getInstance())

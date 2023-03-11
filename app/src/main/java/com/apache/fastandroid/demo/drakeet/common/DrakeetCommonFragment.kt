@@ -27,7 +27,6 @@ import com.tesla.framework.common.util.AndroidVersion
 import com.tesla.framework.common.util.CommonUtil
 import com.tesla.framework.common.util.DrakeetUtils
 import com.tesla.framework.common.util.DrakeetUtils.doOnMainThreadIdle
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.common.util.toast.ToastCompat
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_drakeet_knowledge.*
@@ -70,11 +69,9 @@ class DrakeetCommonFragment:BaseBindingFragment<FragmentDrakeetKnowledgeBinding>
         }
         btn_doOnMainThreadIdle.setOnClickListener {
             btn_doOnMainThreadIdle.doOnMainThreadIdle({
-                  NLog.d(TAG," do something on main Thread idle")
             },4000)
         }
         btn_string_hash_conflict.setOnClickListener {
-            NLog.d(TAG, "Aa's hashCode is:${"Aa".hashCode()}, BB' s hashCode is: ${"BB".hashCode()}")
         }
         var i = 0;
         btn_print_call_chain.setOnClickListener {
@@ -82,7 +79,6 @@ class DrakeetCommonFragment:BaseBindingFragment<FragmentDrakeetKnowledgeBinding>
             if (i > 3){
                 i = 0;
                 var stackTrace = DrakeetUtils.stackTrace(null, 10)
-                NLog.d(TAG, "stackTrace: %s",stackTrace)
             }
         }
         btn_getDeviceName.setOnClickListener {

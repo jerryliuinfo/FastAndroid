@@ -4,7 +4,7 @@ import com.apache.fastandroid.bean.Person
 import com.apache.fastandroid.bean.VersionResponseBean
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.logger.Logger
 
 /**
  * Created by Jerry on 2022/4/30.
@@ -24,7 +24,6 @@ class GsonDemo {
             val jso1 = " {\"code\":0,\"msg\":\"Success\",\"data\":\"\"}"
             val result1 = Gson().fromJson(jso1,
                 VersionResponseBean::class.java)
-            NLog.d(TAG, "result1: %s", result1)
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -38,7 +37,6 @@ class GsonDemo {
             val json2 = "  {\"code\":0,\"msg\":\"Success\",\"data\":{}}"
             val result2 = Gson().fromJson(json2,
                 VersionResponseBean::class.java)
-            NLog.d(TAG, "result2: %s", result2)
         } catch (e: Exception) {
             e.printStackTrace()
 
@@ -56,10 +54,9 @@ class GsonDemo {
         var person = Person("Jerry",10)
 
         val json = gson!!.toJson(person);
-        NLog.d(TAG, "btn3 json: %s",json);
 
         var person2 = gson.fromJson(json, Person::class.java)
-        NLog.d(TAG, "btn3 person2: %s",json)
+        Logger.d("btn3 person2: %s",json)
 
     }
 
@@ -73,10 +70,10 @@ class GsonDemo {
         var person = Person("Jerry",11)
 
         val json = gson.toJson(person);
-        NLog.d(TAG, "btn4 json: %s",json);
+        Logger.d( "btn4 json: %s",json);
 
         var person2 = gson.fromJson(json, Person::class.java)
-        NLog.d(TAG, "btn4 person2: %s",json)
+        Logger.d( "btn4 person2: %s",json)
 
 
     }

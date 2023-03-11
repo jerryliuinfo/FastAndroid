@@ -10,7 +10,6 @@ import android.util.Log
 import android.view.View
 import androidx.annotation.IntRange
 import com.tesla.framework.BuildConfig
-import com.tesla.framework.common.util.log.NLog
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
@@ -62,7 +61,6 @@ object DrakeetUtils {
         val idleHandler = MessageQueue.IdleHandler {
             //移除所有消息，避免post delay消息会被执行
             handler.removeCallbacksAndMessages(null)
-            NLog.d(TAG, "doAction -->")
             action()
             return@IdleHandler false
         }
@@ -73,7 +71,6 @@ object DrakeetUtils {
                     queue.removeIdleHandler(idleHandler)
                     action()
                     if (BuildConfig.DEBUG){
-                        NLog.d(TAG, "${timeout} ms timeout")
                     }
                 },timeout)
             }else{

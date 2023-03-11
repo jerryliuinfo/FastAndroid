@@ -9,7 +9,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.glide_basic_usage_demo.*
 
@@ -76,7 +75,6 @@ class GlideBasicUsageFragment :
                 isFirstResource: Boolean
             ): Boolean {
                 e?.printStackTrace()
-                NLog.d(TAG, "onException")
                 return false
             }
 

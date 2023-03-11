@@ -5,7 +5,7 @@ import androidx.lifecycle.*
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.blankj.utilcode.util.Utils
-import com.tesla.framework.common.util.log.NLog
+import com.tesla.framework.component.logger.Logger
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -33,10 +33,10 @@ class UserInfoViewModel(private val reporsity: UserReporsity):BaseStatusViewMode
 
      fun loadPostCard(address: String){
         launch {
-            NLog.d(NLog.TAG, "thread111: ${Thread.currentThread().name}")
+            Logger.d( "thread111: ${Thread.currentThread().name}")
 
             var result = reporsity.getPostCard(address)
-            NLog.d(NLog.TAG, "thread333: ${Thread.currentThread().name}")
+            Logger.d( "thread333: ${Thread.currentThread().name}")
 
             postCardLiveData.value = result ?: ""
         }
@@ -78,7 +78,6 @@ class UserInfoViewModel(private val reporsity: UserReporsity):BaseStatusViewMode
 
 
     private fun loadUser(){
-        NLog.d(TAG, "loadUser ---->")
         _mUserInfo.postValue(UserBean("Zhangsan",18))
     }
 

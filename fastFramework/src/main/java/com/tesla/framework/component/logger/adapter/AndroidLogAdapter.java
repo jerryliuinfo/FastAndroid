@@ -1,4 +1,8 @@
-package com.tesla.framework.component.logger;
+package com.tesla.framework.component.logger.adapter;
+
+import com.tesla.framework.component.logger.LogAdapter;
+import com.tesla.framework.component.logger.format.FormatStrategy;
+import com.tesla.framework.component.logger.format.PrettyFormatStrategy;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

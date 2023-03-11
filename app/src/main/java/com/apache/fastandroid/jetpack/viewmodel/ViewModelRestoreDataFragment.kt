@@ -6,7 +6,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.apache.fastandroid.databinding.FragmentJetpackViewmodelRestoreDataBinding
 import com.apache.fastandroid.jetpack.InjectUtil
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_jetpack_viewmodel_restore_data.*
 
@@ -26,14 +25,12 @@ class ViewModelRestoreDataFragment: BaseBindingFragment<FragmentJetpackViewmodel
         super.layoutInit(inflater, savedInstanceSate)
 
         userInfoViewModel = ViewModelProvider(this,InjectUtil.getUserModelFactory()).get(UserInfoViewModel::class.java)
-        NLog.d(TAG, "userInfoViewModel: %s,savedInstanceSate:%s",userInfoViewModel,savedInstanceSate)
         btn_change.setOnClickListener {
             userInfoViewModel.plusNew()
         }
 
 
         userInfoViewModel.countLiveData.observe(this, Observer {
-            NLog.d(TAG, "countLiveData onChange: %s", it)
             tv_msg2.text = it.toString()
         })
     }

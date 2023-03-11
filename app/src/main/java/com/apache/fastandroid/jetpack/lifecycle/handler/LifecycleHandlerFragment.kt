@@ -3,7 +3,6 @@ package com.apache.fastandroid.jetpack.lifecycle.handler
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentJetpackLifecycleBinding
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.component.lifecycle.LifecycleHandler
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
@@ -21,7 +20,6 @@ class LifecycleHandlerFragment: BaseBindingFragment<FragmentJetpackLifecycleBind
 
         lifecycleHandler = LifecycleHandler(this)
         lifecycleHandler.postDelayed({
-            NLog.d(TAG,"handler post msg")
         },10000)
 
 

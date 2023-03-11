@@ -1,4 +1,12 @@
-package com.tesla.framework.component.logger;
+package com.tesla.framework.component.logger.format;
+
+import android.text.TextUtils;
+
+import com.tesla.framework.component.logger.LogStrategy;
+import com.tesla.framework.component.logger.output.LogcatLogStrategy;
+import com.tesla.framework.component.logger.Logger;
+import com.tesla.framework.component.logger.LoggerPrinter;
+import com.tesla.framework.component.logger.Utils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -204,7 +212,7 @@ public class PrettyFormatStrategy implements FormatStrategy {
   }
 
   @Nullable private String formatTag(@Nullable String tag) {
-    if (!Utils.isEmpty(tag) && !Utils.equals(this.tag, tag)) {
+    if (!Utils.isEmpty(tag) && !TextUtils.equals(this.tag, tag)) {
       return this.tag + "-" + tag;
     }
     return this.tag;

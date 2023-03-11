@@ -3,7 +3,6 @@ package com.apache.fastandroid.demo.designmode
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCommonBinding
-import com.tesla.framework.common.util.log.NLog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
@@ -24,10 +23,6 @@ class FilterDemoFragment:BaseBindingFragment<FragmentCommonBinding>(FragmentComm
                 return item % 2 == 0
             }
         })
-        NLog.d(TAG, "list:$list")
-
-
-
     }
 
     fun <E> filter(collection: MutableCollection<E>?, predicate: IPredicate<E>?) {

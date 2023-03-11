@@ -1,5 +1,8 @@
 package com.tesla.framework.component.logger;
 
+import com.tesla.framework.component.logger.output.DiskLogStrategy;
+import com.tesla.framework.component.logger.output.LogcatLogStrategy;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

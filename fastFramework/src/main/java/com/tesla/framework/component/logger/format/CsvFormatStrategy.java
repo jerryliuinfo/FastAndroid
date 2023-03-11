@@ -1,8 +1,13 @@
-package com.tesla.framework.component.logger;
+package com.tesla.framework.component.logger.format;
 
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.text.TextUtils;
+
+import com.tesla.framework.component.logger.LogStrategy;
+import com.tesla.framework.component.logger.Utils;
+import com.tesla.framework.component.logger.output.DiskLogStrategy;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -82,7 +87,7 @@ public class CsvFormatStrategy implements FormatStrategy {
   }
 
   @Nullable private String formatTag(@Nullable String tag) {
-    if (!Utils.isEmpty(tag) && !Utils.equals(this.tag, tag)) {
+    if (!Utils.isEmpty(tag) && !TextUtils.equals(this.tag, tag)) {
       return this.tag + "-" + tag;
     }
     return this.tag;
