@@ -1,7 +1,7 @@
 object PluginConfig {
     const val agp = "com.android.tools.build:gradle:${Versions.agp}"
 
-    const val kgp = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val kgp = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kgp}"
 
 
     const val andResGuard = "com.tencent.mm:AndResGuard-gradle-plugin:1.2.21"

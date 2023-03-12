@@ -88,6 +88,11 @@ object Libs {
         "me.drakeet.floo:floo:1.2.0"
     )
 
+    const val restring = "dev.b3nedikt.restring:restring:5.1.4"
+    const val viewPump = "dev.b3nedikt.viewpump:viewpump:4.0.10"
+    const val bundler = "com.github.skydoves:bundler:1.0.4"
+    const val okNetworkMonitor =  "me.linkaipeng:okNetworkMonitor:1.0.0"
+
     val otherThirdLibs = arrayOf(
 //        anyLayer,
 //        "com.github.pengxurui:EasyTrack:v1.0.1",
@@ -127,8 +132,10 @@ object Libs {
 //
 //        "dev.b3nedikt.reword:reword:4.0.4",
 
-        "dev.b3nedikt.restring:restring:5.2.2"
+        "dev.b3nedikt.restring:restring:5.2.2",
 
+        //网络抓包 https://github.com/linkaipeng/OkNetworkMonitor
+        okNetworkMonitor
     )
 
 
@@ -141,7 +148,7 @@ object Libs {
         "com.afollestad.material-dialogs:bottomsheets:${Versions.materialDialog}",
         "com.afollestad.material-dialogs:datetime:${Versions.materialDialog}",
         "com.afollestad:assent:2.3.1",
-        "com.afollestad:date-picker:0.6.1",
+
     )
 
     val blackTech = arrayOf(
@@ -175,9 +182,7 @@ object Libs {
         "androidx.test.espresso:espresso-core:3.4.0"
     )
 
-    const val restring = "dev.b3nedikt.restring:restring:5.1.4"
-    const val viewPump = "dev.b3nedikt.viewpump:viewpump:4.0.10"
-    const val bundler = "com.github.skydoves:bundler:1.0.4"
+
 
 
 }

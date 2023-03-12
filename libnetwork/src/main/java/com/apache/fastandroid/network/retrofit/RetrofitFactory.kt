@@ -50,7 +50,7 @@ class RetrofitFactory private constructor() {
 
     init {
 
-        okHttpClient = initOkHttpClient()
+        okHttpClient = OkHttpClientManager.getOkHttpClient()
 
         mRetrofit = newRetrofitBuilder()
             .baseUrl(ApiConstant.BASE_URL)
@@ -70,43 +70,12 @@ class RetrofitFactory private constructor() {
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                //Retrofit 支持返回 LiveData 数据
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
     }
 
 
-    private fun initOkHttpClient(): OkHttpClient {
 
-        return OkHttpClient.Builder().apply {
-            connectTimeout(TIMEOUT, TimeUnit.SECONDS)
-            readTimeout(TIMEOUT, TimeUnit.SECONDS)
-            retryOnConnectionFailure(true)
-            //https://t.zsxq.com/nUnEune: 优化 android 9.0 上 http 请求的 SocketTimeoutException
-            if (Build.VERSION.SDK_INT >= 28) {
-                pingInterval(3, TimeUnit.SECONDS)
-            }
-            /**
-             * https://t.zsxq.com/0aruxCqjq
-             * 低成本实现网络请求安全方法，例如我们服务器的过期使劲是 2023 年 11 月，我们可以在 2023 年 10 月之前
-             * 总是检查证书的 Pinning，而过了这个时间就不检查证书的 Pining，当证书过期后我们可以放心的进行更换服务端证书
-             */
-            certificatePinner(CertificatePinner.Builder().apply {
-                if (Date() < Date(2023,Calendar.OCTOBER,7)){
-                    add("www.wanandroid.com", "sha256/Jkegy5Sc8Gjzbi65ztVCGTV90JysJOm3uRtbrclTpOc=")
-                }else if (BuildConfig.DEBUG){
-                    ToastUtils.showLong("请更新证书和时间")
-                }
-            }.build())
-
-        }.apply {
-            addInterceptor(HeaderInterceptor())
-            //处理错误码的拦截器 https://juejin.cn/post/6844903975028785159?share_token=c0d3237c-1ab3-4b7c-834f-07b502b865ea
-            addInterceptor(HandleHttpCodeInterceptor())
-            addInterceptor(HandleErrorInterceptor())
-            addInterceptor(NetLogInterceptor())
-            addInterceptor(CookieInterceptor())
-            addInterceptor(LoginInterceptor())
-        }.build()
-    }
 
 
 
@@ -117,7 +86,6 @@ class RetrofitFactory private constructor() {
     }
 
     companion object {
-        private const val TIMEOUT = 10L
         val instance by lazy {
             RetrofitFactory()
         }

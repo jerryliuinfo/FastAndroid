@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.blacktech
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.blacktech.easytrack.EasyTrackDemoFragment
+import com.apache.fastandroid.demo.blacktech.networkmonitor.NetworkMonitorDemoFragment
 import com.apache.fastandroid.demo.blacktech.permissionmonitor.PermissionMonitorFragment
 import com.apache.fastandroid.demo.blacktech.sdkeditor.CommonBlackTechFragment
 import com.apache.fastandroid.demo.blacktech.spwaitkiller.SpWaitKillerDemoFragment
@@ -24,6 +25,7 @@ class BlackTechDemoFragment:BaseListFragment() {
             ,ViewItemBean("敏感词检测","houbb/sensitive-word", SensitiveWordDemoFragment::class.java)
             ,ViewItemBean("SpWaitKiller","解决SP卡顿问题", SpWaitKillerDemoFragment::class.java)
             ,ViewItemBean("ResourcesPoet","生成Android XML", ResourcePoetDemoFragment::class.java)
+            ,ViewItemBean("OkNetworkMonitor","OKHttp 抓包工具", NetworkMonitorDemoFragment::class.java)
         )
     }
 

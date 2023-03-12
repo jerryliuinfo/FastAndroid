@@ -15,6 +15,7 @@ import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.component.ComponentDemoFragment
 import com.apache.fastandroid.demo.elegant.ElegantDemoFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.component.eventbus.FastBus
@@ -149,6 +150,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, ProgressDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, CountDownDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ElegantDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 

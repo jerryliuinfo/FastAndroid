@@ -19,7 +19,6 @@ import com.apache.fastandroid.demo.kt.delegate.DelegateList
 import com.apache.fastandroid.demo.kt.delegate.People
 import com.apache.fastandroid.demo.kt.hignorder.highOrderA
 import com.apache.fastandroid.demo.kt.hignorder.highOrderB
-import com.apache.fastandroid.demo.kt.hignorder.myWith
 import com.apache.fastandroid.demo.kt.inline.PreferenceManager
 import com.apache.fastandroid.demo.kt.inline.onlyIf
 import com.apache.fastandroid.demo.kt.inline.onlyIf2
@@ -28,7 +27,7 @@ import com.apache.fastandroid.demo.kt.refied.RefiedDemo
 import com.apache.fastandroid.demo.kt.sealed.*
 import com.apache.fastandroid.demo.kt.singleton.SingleInstanceSync
 import com.apache.fastandroid.demo.kt.singleton.SingleObject
-import com.apache.fastandroid.demo.kt.singleton.Singleton
+import com.apache.fastandroid.demo.kt.singleton.SingletonByObject
 import com.apache.fastandroid.demo.kt.staticusage.Foo
 import com.apache.fastandroid.demo.kt.staticusage.ObjectClass
 import com.apache.fastandroid.demo.kt.staticusage.topLevelFun1
@@ -44,7 +43,6 @@ import com.tesla.framework.ui.fragment.BaseBindingFragment
 import timber.log.Timber
 import java.io.File
 import java.nio.charset.Charset
-import kotlin.collections.ArrayList
 import kotlin.math.cos
 import kotlin.properties.Delegates
 import kotlin.random.Random
@@ -67,13 +65,13 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+
+
         mBinding.btnMathClamp.setOnClickListener {
             mathClampUsage()
         }
 
-        mBinding.btnSingleInstance.setOnClickListener {
-            singleInstance()
-        }
+
 
         mBinding.btnInitArray.setOnClickListener {
             initArrayElement()
@@ -397,8 +395,8 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
 
 
     private fun singleInstance() {
-        //object 单例
-        Singleton.count()
+
+        SingletonByObject.count()
         SingleInstanceSync.getInstance()
         SingleObject.getInstance()
     }

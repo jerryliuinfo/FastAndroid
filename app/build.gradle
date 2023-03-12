@@ -47,7 +47,7 @@ android {
     //fix bug The minCompileSdk (31) specified in a dependency's AAR metadata  
 
     configurations.all {
-        resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
+        resolutionStrategy { force AndroidX.core_ktx }
     }
     defaultConfig {
         applicationId "com.apache.fastandroid"

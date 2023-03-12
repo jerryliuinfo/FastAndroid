@@ -36,13 +36,14 @@ import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.ServiceLocator
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import com.kingja.loadsir.core.LoadSir
+import com.linkaipeng.oknetworkmonitor.OkNetworkMonitor
 import com.squareup.leakcanary.LeakCanary
 import com.tencent.mmkv.MMKV
 import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.device.DeviceName
 import com.tesla.framework.common.util.LaunchTimer
-import com.tesla.framework.component.logger.adapter.AndroidLogAdapter
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.component.logger.adapter.AndroidLogAdapter
 import com.tesla.framework.component.logger.format.SimpleFormatStrategy
 import com.wanjian.cockroach.Cockroach
 import com.wanjian.cockroach.DebugSafeModeUI
@@ -129,7 +130,13 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
             }))
 
         }
+        initNetworkMonitor()
         println("Application onCreate cost time: $time milles")
+    }
+
+    private fun initNetworkMonitor() {
+        OkNetworkMonitor.context = this
+
     }
 
     private fun initTakt() {

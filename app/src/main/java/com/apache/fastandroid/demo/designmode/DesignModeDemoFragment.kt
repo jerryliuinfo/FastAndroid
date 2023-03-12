@@ -15,7 +15,8 @@ import com.apache.fastandroid.demo.designmode.wrapper.WrapperDesignMode
 class DesignModeDemoFragment:BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-            ViewItemBean("观察者模式","观察者模式",ObserverModeFragment::class.java)
+            ViewItemBean("观察者模式","观察者模式",ObserverModeFragment::class.java),
+            ViewItemBean("单例模式","单例模式",ObserverModeFragment::class.java)
             ,ViewItemBean("LifeCycleOwner","防系统ComponentActivity监听声明周期",ObserverModeFragment::class.java)
             ,ViewItemBean("代理模式","代理模式",ProxyModeDemoFragment::class.java)
             ,ViewItemBean("Builder模式","Builder模式",BuilderModeDemoFragment::class.java)

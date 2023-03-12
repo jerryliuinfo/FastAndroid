@@ -4,6 +4,7 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.agentweb.AgentWebDemoListFragment
 import com.apache.fastandroid.demo.app.MvvmMailDemoFragment
 import com.apache.fastandroid.demo.bestpay.BestPayDemoFragment
+import com.apache.fastandroid.demo.component.ComponentDemoFragment
 import com.apache.fastandroid.demo.component.bundle.BundleDemoActivity
 import com.apache.fastandroid.demo.component.loadsir.LoadSirDemoListFragment
 import com.apache.fastandroid.demo.component.once.OnceFragment
@@ -44,6 +45,7 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("material-dialogs", "material-dialogs", OnceFragment::class.java)
                 ,ViewItemBean("bundler", "https://github.com/skydoves/Bundler", activity=BundleDemoActivity::class.java)
                 ,ViewItemBean("SearchPreference", "https://github.com/ByteHamster/SearchPreference", SearchPreferenceDemoListFragment::class.java)
+                ,ViewItemBean("TimerRecord", "TimerRecord", ComponentDemoFragment::class.java)
 
         )
     }

@@ -5,6 +5,7 @@ import org.apache.tools.ant.taskdefs.condition.JavaVersion
  */
 object Versions {
     const val agp = "7.0.4"
+    const val kgp = "1.8.10"
     const val kotlin = "1.6.10"
 
     const val appCompat = "1.3.1"

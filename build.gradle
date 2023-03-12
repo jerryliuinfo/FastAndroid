@@ -8,7 +8,7 @@ apply from: "gradle_knowledge.gradle"
 buildscript {
 
     ext {
-        kotlin_version = '1.8.20-Beta'
+//        kotlin_version = '1.8.20-Beta'
     }
     repositories {
 

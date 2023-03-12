@@ -13,8 +13,6 @@ import com.apache.fastandroid.demo.kt.staticusage.ObjectClass
 import com.apache.fastandroid.demo.kt.staticusage.topLevelFun1
 import com.apache.fastandroid.demo.kt.staticusage.topLevelFun2
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import com.apache.fastandroid.demo.kt.singleton.test1 as indent4
-import com.apache.fastandroid.demo.kt.staticusage.test1 as indent2
 
 
 class KotlinHotQuestionFragment:BaseBindingFragment<FragmentHotQuestionBinding>(FragmentHotQuestionBinding::inflate) {
@@ -39,10 +37,6 @@ class KotlinHotQuestionFragment:BaseBindingFragment<FragmentHotQuestionBinding>(
             callStaticMemberUsageInKt()
         }
 
-        mBinding.btnCallSameExtension.setOnClickListener {
-            "hello".indent4()
-            "hello".indent2()
-        }
 
 
 
