@@ -93,6 +93,8 @@ object Libs {
     const val bundler = "com.github.skydoves:bundler:1.0.4"
     const val okNetworkMonitor =  "me.linkaipeng:okNetworkMonitor:1.0.0"
 
+
+
     val otherThirdLibs = arrayOf(
 //        anyLayer,
 //        "com.github.pengxurui:EasyTrack:v1.0.1",
@@ -135,7 +137,9 @@ object Libs {
         "dev.b3nedikt.restring:restring:5.2.2",
 
         //网络抓包 https://github.com/linkaipeng/OkNetworkMonitor
-        okNetworkMonitor
+        okNetworkMonitor,
+
+        "com.facebook.network.connectionclass:connectionclass:1.0.1"
     )
 
 

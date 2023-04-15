@@ -19,6 +19,10 @@ import androidx.activity.addCallback
 import androidx.core.app.ActivityCompat
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentTempKnowledgeBinding
+import com.apache.fastandroid.demo.designmode.FilterDemoFragment
+import com.apache.fastandroid.demo.designmode.wrapper.AContext
+import com.apache.fastandroid.demo.designmode.wrapper.AContextWrapper
+import com.apache.fastandroid.demo.designmode.wrapper.MyToast
 import com.apache.fastandroid.demo.temp.concurrency.Player
 import com.blankj.utilcode.util.MetaDataUtils
 import com.blankj.utilcode.util.ToastUtils
@@ -50,6 +54,12 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+        mBinding.btnWrapper.setOnClickListener {
+            wrapperMode()
+        }
+        mBinding.tvFilter.setOnClickListener {
+            filterModeUsage()
+        }
 
         //注意：语言要是非中文才会 生效
         mBinding.tvQuatity.setOnClickListener {
@@ -160,6 +170,35 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
         mBinding.btnIgnoreMultiEvent.setOnClickListener {
             ignoreMultiEventListener.onTrigger()
         }
+    }
+
+    private fun wrapperMode() {
+        AContextWrapper(AContext()).doSomething1()
+
+        MyToast.makeText(context,"I am toast",Toast.LENGTH_SHORT).show()
+    }
+
+
+    interface IPredicate<E> {
+        fun evaluate(item: E): Boolean
+    }
+    private fun filterModeUsage() {
+        fun <E> filter(collection: MutableCollection<E>?, predicate: IPredicate<E>?) {
+            if (collection == null || predicate == null) return
+            val it: MutableIterator<*> = collection.iterator()
+            while (it.hasNext()) {
+                if (!predicate.evaluate(it.next() as E)) {
+                    it.remove()
+                }
+            }
+        }
+        var list = arrayListOf<Int>(1, 2, 4, 5, 6)
+        filter(list,object : IPredicate<Int> {
+            override fun evaluate(item: Int): Boolean {
+                return item % 2 == 0
+            }
+        })
+       println("result:${list.joinToString()}")
     }
 
     private fun metaDataUsage() {

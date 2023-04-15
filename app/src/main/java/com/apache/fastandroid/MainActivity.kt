@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -14,11 +15,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
+import com.apache.fastandroid.demo.ToolsFragment
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.component.ComponentDemoFragment
-import com.apache.fastandroid.demo.elegant.ElegantDemoFragment
+import com.apache.fastandroid.demo.designmode.DesignModeDemoListFragment
+import com.apache.fastandroid.demo.weaknetwork.connectionclass.ConnectionClassActivity
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.component.eventbus.FastBus
+import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import timber.log.Timber
@@ -27,6 +31,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
     private val selecteId = -1
 
     private var mNavController: NavController? = null
+
+    private val mHandler = Handler(Looper.getMainLooper())
 
 
     @CostTime
@@ -42,6 +48,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
             finish()
             return
         }
+
+        Logger.d("MainActivity mHandler:${mHandler}")
 
 
 
@@ -151,9 +159,12 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, CountDownDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ElegantDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, DesignModeDemoListFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, ToolsFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 
+//        launchActivity<ConnectionClassActivity>(this)
 //        launchActivity<ImmerseStatusBarDemoActivity>(this)
 //         launchActivity<HitDemoActivity>(this)
 //         launchActivity<BundleDemoActivity>(this)
@@ -268,5 +279,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
             from.startActivity(intent)
         }
     }
+
+
 
 }

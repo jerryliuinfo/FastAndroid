@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Jerry on 2023/2/22.
  */
-class Interceptor {
+public class Interceptor {
     private List<Handler> handlers = new ArrayList<>();
 
     public void addHandler(Handler handler) {

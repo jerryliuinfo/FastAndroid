@@ -20,11 +20,24 @@
             app:flow_horizontalGap="10dp"
             app:flow_verticalGap="10dp"
             app:flow_wrapMode="aligned"
-            app:constraint_referenced_ids="tv_quatity,tv_message,tv_name,btn_textview_horizontal_scroll,btn_collections_suffle,
+            app:constraint_referenced_ids="btn_wrapper,tv_filter,tv_quatity,tv_message,tv_name,btn_textview_horizontal_scroll,btn_collections_suffle,
         btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs,btn_textview_inputFilter,
         btn_collection_wrapper,btn_verify_init,btn_reflect,btn_concurrence,btn_showDialogWithApplicationContext,
         btn_location_onscreen,btn_list_init,btn_network,btn_monitor_back_key,btn_math_format,btn_timeunit_toMilles,btn_array_join,
         btn_metaData,btn_ignore_firstEvent,btn_ignore_multiEvent,btn_instance"
+            />
+
+        <Button
+            android:id="@+id/btn_wrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="wrapper"
+            />
+        <Button
+            android:id="@+id/tv_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="过滤器"
             />
         <Button
             android:id="@+id/tv_quatity"

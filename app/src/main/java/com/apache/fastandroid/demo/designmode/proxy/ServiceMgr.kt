@@ -1,40 +1,26 @@
-package com.apache.fastandroid.demo.designmode.proxy;
+package com.apache.fastandroid.demo.designmode.proxy
 
 /**
  * Created by Jerry on 2021/9/21.
  */
-public class ServiceMgr {
-   private static final ServiceMgr serviceManager = new ServiceMgr();
+class ServiceMgr private constructor() {
+    private val serviceApi: ServiceApi = ServiceApi()
+    private val serviceApiV2: ServiceApiV2 = ServiceApiV2(serviceApi)
+    private val wechatApi: WechatApi = WechatApi()
 
+    fun <T : IService?> getApi(tClass: Class<T>): T {
+        var ret: IService = serviceApi
+        if (tClass.isAssignableFrom(WechatApi::class.java)) {
+            ret = wechatApi
+        } else if (tClass.isAssignableFrom(ServiceApiV2::class.java)) {
+            ret = serviceApiV2
+        } else if (tClass.isAssignableFrom(ServiceApi::class.java)) {
+            ret = serviceApi
+        }
+        return ret as T
+    }
 
-
-   private ServiceApi serviceApi;
-   private ServiceApiV2 serviceApiV2;
-   private UIRouteApi uiRouteApi;
-   private WechatApi wechatApi;
-
-   private ServiceMgr() {
-      serviceApi = new ServiceApi();
-      serviceApiV2 = new ServiceApiV2(serviceApi);
-      uiRouteApi = new UIRouteApi();
-      wechatApi = new WechatApi();
-   }
-
-   public <T extends IService> T getApi(Class<T> tClass) {
-      IService ret = serviceApi;
-      if (tClass.isAssignableFrom(UIRouteApi.class)) {
-         ret = uiRouteApi;
-      }else if (tClass.isAssignableFrom(WechatApi.class)){
-         ret = wechatApi;
-      }else if (tClass.isAssignableFrom(ServiceApiV2.class)){
-         ret = serviceApiV2;
-      }else if (tClass.isAssignableFrom(ServiceApi.class)){
-         ret = serviceApi;
-      }
-      return (T) ret;
-   }
-
-   public static ServiceMgr getInstance() {
-      return serviceManager;
-   }
+    companion object {
+        val instance = ServiceMgr()
+    }
 }

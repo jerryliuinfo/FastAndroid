@@ -3,6 +3,8 @@ package com.tesla.framework.ui.activity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.TextUtils
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
@@ -13,7 +15,15 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FragmentContainerActivity : BaseVBActivity<CommUiFragmentContainerBinding>(CommUiFragmentContainerBinding::inflate) {
+
+    private val mHandler = Handler(Looper.getMainLooper())
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        Logger.d("FragmentContainerActivity mHandler:${mHandler}")
+
+
+
         val className = intent.getStringExtra(EXTRA_CLASS_NAME)
         if (TextUtils.isEmpty(className)) {
             finish()

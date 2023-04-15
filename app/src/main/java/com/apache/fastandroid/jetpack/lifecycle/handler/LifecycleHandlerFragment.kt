@@ -1,6 +1,7 @@
 package com.apache.fastandroid.jetpack.lifecycle.handler
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentJetpackLifecycleBinding
 import com.tesla.framework.component.lifecycle.LifecycleHandler
@@ -18,9 +19,11 @@ class LifecycleHandlerFragment: BaseBindingFragment<FragmentJetpackLifecycleBind
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
 
-        lifecycleHandler = LifecycleHandler(this)
-        lifecycleHandler.postDelayed({
-        },10000)
+        lifecycleHandler = LifecycleHandler(this).apply {
+            postDelayed({
+                Log.d("tag", "10s 后我将会执行")
+            },10000)
+        }
 
 
 

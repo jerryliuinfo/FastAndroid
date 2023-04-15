@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.DatabindingComBindAdapterBinding
-import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.vm.CommonBindAdapterViewModel
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.BaseDataBindingFragment
@@ -41,13 +40,7 @@ class CommonBindingAdapterDemoFragment:BaseDataBindingFragment<DatabindingComBin
 
     //内部类
     inner class ClickProxy{
-        fun toMain(){
-            //默认持有外部类的引用，直接访问外部类的方法属性
-            var activity = this@CommonBindingAdapterDemoFragment.activity
-            if (activity != null) {
-                FragmentContainerActivity.launch(activity, DesignModeDemoFragment::class.java, null)
-            }
-        }
+
 
         fun clickTestVisible(){
             viewModel.loading.set(true)

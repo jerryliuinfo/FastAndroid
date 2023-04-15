@@ -4,21 +4,21 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
 import com.apache.fastandroid.demo.bestpractice.BestPracticeDemoFragment
 import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
-import com.apache.fastandroid.demo.designmode.DesignModeDemoFragment
+import com.apache.fastandroid.demo.designmode.DesignModeDemoListFragment
 import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
 import com.apache.fastandroid.demo.guide.GuideDemoListFragment
 import com.apache.fastandroid.demo.hitpit.HitPitDemoListFragment
 import com.apache.fastandroid.demo.jni.JniDemoListFragment
-import com.apache.fastandroid.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.demo.lyric.LyricDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.sample.SampleCodeDemoListFragment
 import com.apache.fastandroid.demo.sampleapp.SampleAppDemoFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.transition.TransitionDemoFragment
-import com.apache.fastandroid.demo.widget.property.UIPropertyDemoListFragment
 import com.apache.fastandroid.demo.widget.UIWidgetDemoFragment
 import com.apache.fastandroid.demo.widget.WidgetDemoFragment
+import com.apache.fastandroid.demo.widget.property.UIPropertyDemoListFragment
+import com.apache.fastandroid.jetpack.JetPackDemoFragment
 import com.apache.fastandroid.jetpack.relearnandroid.RelearnAndroidDemoFragment
 
 
@@ -51,7 +51,7 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("Android基础", "Android基础", AndroidBasicDemoFragment::class.java),
             ViewItemBean("开源UI控件", "开源UI控件", WidgetDemoFragment::class.java),
             ViewItemBean("开源框架", "开源框架", OpenSourceDemoFragment::class.java),
-            ViewItemBean("设计模式", "设计模式实战", DesignModeDemoFragment::class.java),
+            ViewItemBean("设计模式", "设计模式实战", DesignModeDemoListFragment::class.java),
             ViewItemBean("重学Android", "重学Android", RelearnAndroidDemoFragment::class.java),
             ViewItemBean("黑科技", "黑科技", BlackTechDemoFragment::class.java),
             ViewItemBean("Drakeet", "Drakeet", DrakeetDemoListFragment::class.java),

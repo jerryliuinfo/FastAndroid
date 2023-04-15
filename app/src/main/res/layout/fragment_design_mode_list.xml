@@ -11,7 +11,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:flow_horizontalAlign="start"
         app:flow_wrapMode="aligned"
-        app:constraint_referenced_ids="btn_singleton"
+        app:constraint_referenced_ids="btn_singleton,btn_observer,btn_factory,btn_abstract_factory,
+        btn_builder,btn_prototype,btn_adapter,btn_bridge,btn_composite,btn_decorator
+        ,btn_facade,btn_filter,btn_chain,btn_chain2,btn_command,btn_interceptor,btn_proxy,
+           btn_template,btn_strategy,btn_visitor,btn_mediator,btn_menento"
         />
 
     <Button
@@ -20,4 +23,150 @@
         android:layout_height="wrap_content"
         android:text="单例模式"
         />
+
+    <Button
+        android:id="@+id/btn_observer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="观察者模式"
+        />
+    <Button
+        android:id="@+id/btn_factory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="工厂模式"
+        />
+    <Button
+        android:id="@+id/btn_abstract_factory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="工厂模式"
+        />
+
+    <Button
+        android:id="@+id/btn_builder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="建造者模式"
+        />
+    <Button
+        android:id="@+id/btn_prototype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="原型模式"
+        />
+
+    <Button
+        android:id="@+id/btn_adapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="适配器模式"
+        />
+
+    <Button
+        android:id="@+id/btn_bridge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="桥接模式"
+        />
+
+    <Button
+        android:id="@+id/btn_composite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="组合模式"
+        />
+
+    <Button
+        android:id="@+id/btn_decorator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="装饰器模式"
+        />
+
+    <Button
+        android:id="@+id/btn_facade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="外观模式"
+        />
+    <Button
+        android:id="@+id/btn_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="过滤器模式"
+        />
+    <Button
+        android:id="@+id/btn_chain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="责任链模式1"
+    />
+    <Button
+        android:id="@+id/btn_chain2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="责任链模式2"
+        />
+    <Button
+        android:id="@+id/btn_command"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="命令模式"
+        />
+
+    <Button
+        android:id="@+id/btn_interceptor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解释器模式"
+        />
+    <Button
+        android:id="@+id/btn_proxy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="代理模式"
+        />
+
+    <Button
+        android:id="@+id/btn_template"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="模板方法模式"
+        />
+
+    <Button
+        android:id="@+id/btn_strategy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="策略模式"
+        />
+
+    <Button
+        android:id="@+id/btn_visitor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="访问者模式"
+        />
+
+    <Button
+        android:id="@+id/btn_mediator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="中介者模式"
+        />
+    <Button
+        android:id="@+id/btn_menento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="备忘录模式"
+        />
+
+    <Button
+        android:id="@+id/btn_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="状态模式"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

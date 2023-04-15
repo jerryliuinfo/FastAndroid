@@ -43,6 +43,10 @@ class KotlinOfficalGramerFragment : BaseBindingFragmentRef<KtOfficialGrammerBind
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+        mBinding.btnCompanionObject.setOnClickListener {
+            companionObjectUsage()
+        }
+
         mBinding.btnElvis.onSingleClick {
             elvisUsage()
         }
@@ -145,6 +149,24 @@ class KotlinOfficalGramerFragment : BaseBindingFragmentRef<KtOfficialGrammerBind
 
     }
 
+    private fun companionObjectUsage() {
+        val f:MyFactory<MyClass> = MyClass
+        println("f:$f")
+    }
+
+    private interface MyFactory<T>{
+        fun create():T
+    }
+
+    class MyClass {
+        companion object:MyFactory<MyClass>{
+            override fun create(): MyClass {
+                return MyClass()
+            }
+
+        }
+    }
+
     private var mPerson: Person? = null
 
     private fun elvisUsage() {
@@ -201,6 +223,25 @@ class KotlinOfficalGramerFragment : BaseBindingFragmentRef<KtOfficialGrammerBind
             apply()
         }
     }
+
+
+    fun IRepository.toMutableRepository():MutableStringRepositoryImp{
+        return this as? MutableStringRepositoryImp ?: error("Your custom repository need to implements MutableStringRepositoryImp")
+    }
+
+    interface IRepository{
+        val supportedLocales: Set<Locale>
+        val strings: Map<Locale, Map<String, CharSequence>>
+    }
+
+    interface MutableStringRepositoryImp : IRepository {
+
+        override val supportedLocales: Set<Locale>
+
+        override val strings: MutableMap<Locale, MutableMap<String, CharSequence>>
+
+    }
+
 
     private fun getMessage(): String? {
         return null

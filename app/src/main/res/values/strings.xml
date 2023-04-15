@@ -76,4 +76,9 @@
     <string name="pure_mosaic">Pure Mosaic</string>
 
 
+    <string name="test_connection">Test Connection</string>
+    <string name="connection_class">Your dynamic connection class is:</string>
+    <string name="initial_class">Your initial connection class is:</string>
+    <string name="out_of_tries">Out of Tries</string>
+
 </resources>

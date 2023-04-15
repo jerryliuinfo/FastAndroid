@@ -28,7 +28,7 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_elvis,btn_circulation,btn_when,btn_range,
+                app:constraint_referenced_ids="btn_companion_object,btn_elvis,btn_circulation,btn_when,btn_range,
                 btn_null_check,btn_type_cast,btn_ifCheck,btn_single_expression,
                 btn_try,btn_com_usage,btn_Infix,btn_generic,btn_constructor
                 ,btn_dataclass,btn_enum,btn_sealdclass,btn_highOrderFunction1
@@ -36,6 +36,14 @@
                 ,btn_destructor,btn_return_break,btn_return_outside,btn_return_inside
                 ,btn_return_nested_innerclass,btn_tryReturnValue,btn_check_require,btn_print_collection"
                 />
+
+            <Button
+                android:id="@+id/btn_companion_object"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="伴生对象"
+                />
+
             <Button
                 android:id="@+id/btn_elvis"
                 android:layout_width="wrap_content"

@@ -3,7 +3,7 @@ package com.apache.fastandroid.demo.designmode.wrapper;
 /**
  * Created by Jerry on 2021/10/13.
  */
-class AContextWrapper extends AContext{
+public class AContextWrapper extends AContext{
    AContext mBase;
 
    public AContextWrapper(AContext mBase) {
