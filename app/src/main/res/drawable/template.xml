@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/button_update" android:state_pressed="true" /> <!-- pressed -->
+    <item android:drawable="@drawable/button_update" android:state_focused="true" /> <!-- focused -->
+    <item android:drawable="@drawable/button_update" android:state_hovered="true" /> <!-- hovered -->
+    <item android:drawable="@drawable/button_update" android:state_selected="true" /> <!-- selected -->
+    <item android:drawable="@drawable/button_update" android:state_checkable="true" /> <!-- checkable -->
+    <item android:drawable="@drawable/button_update" android:state_checked="true" /> <!-- checked -->
+    <item android:drawable="@drawable/button_update" android:state_enabled="true" /> <!-- enabled -->
+    <item android:drawable="@drawable/button_update" android:state_activated="true" /> <!-- activated -->
+    <item android:drawable="@drawable/button_update" android:state_window_focused="true" /> <!-- window_focused -->
+    <item android:drawable="@drawable/button_update" /> <!-- default -->
+</selector>
+

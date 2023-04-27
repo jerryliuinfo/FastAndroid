@@ -2,7 +2,7 @@ package com.apache.fastandroid.demo.app.base
 
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonParseException
-import com.zwb.mvvm_mall.base.viewstate.State
+import com.tesla.framework.component.viewstate.State
 import com.zwb.mvvm_mall.base.viewstate.StateType
 import org.apache.http.conn.ConnectTimeoutException
 import retrofit2.HttpException

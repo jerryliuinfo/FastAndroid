@@ -1,5 +1,7 @@
 apply from: '../base_lib.gradle'
 dependencies {
-    implementation project(':fastFramework')
+
+    implementation project(Modules.fastFramework)
+
 }
 

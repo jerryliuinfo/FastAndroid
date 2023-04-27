@@ -1,14 +1,15 @@
-apply plugin: 'com.android.application'
+//apply plugin: 'com.android.application'
+apply plugin: Plugins.androidApplication
+apply plugin: Plugins.kotlinAndroid
+apply plugin: Plugins.kotlinKapt
+apply plugin: Plugins.kotlinAndroidExtensions
+apply plugin: Plugins.hit
+apply plugin: Plugins.navigationSafeargs
+
+
 apply from: 'and_res_guard.gradle'
 
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-//hit
-apply plugin: 'dagger.hilt.android.plugin'
 
-//Navigation 传递参数插件
-apply plugin: "androidx.navigation.safeargs.kotlin"
-apply plugin: 'kotlin-android-extensions'
 
 println("read Property MethodTraceMan:${readLocalProperty("MethodTraceMan")}")
 
@@ -268,16 +269,13 @@ android {
     }
 
 
-
-
-
-
-
     testOptions {
         unitTests {
             includeAndroidResources = true
         }
     }
+
+
 
 
     buildFeatures {
@@ -422,6 +420,10 @@ dependencies {
 
 //    api fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
 
+    implementation project(Modules.fastFramework)
+    implementation project(Modules.baselib)
+    implementation project(Modules.libnetwork)
+
     fileTree(include: ['*.jar', '*.aar'], dir: 'libs').each {
         def name = it.name
         def index = name.lastIndexOf(".")
@@ -512,17 +514,7 @@ dependencies {
 
 
 
-    implementation project(":fastFramework")
-    implementation project(":baselib")
 
-
-    implementation project(":libnetwork")
-//    implementation project(':hencode_basic')
-//    implementation project(':hencoder_paint')
-//    implementation project(':hencoder_drawtext')
-//    implementation project(':hencoder_plus')
-//    implementation project(':hencoder_clipmatrix')
-//    implementation project(':easypay')
 
 }
 

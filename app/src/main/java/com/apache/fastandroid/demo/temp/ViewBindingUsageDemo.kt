@@ -26,12 +26,7 @@ class ViewBindingUsageDemo:BaseBindingFragment<FragmentViewbindingUsageBinding>(
             "user:$it"
         }
 
-        //存在性能问题
-        mBinding.btnKotlinAndroidExtensions.setOnClickListener {
-            mBinding.recyclerView.apply {
-                adapter = UserAdapter2(users)
-            }
-        }
+
         mBinding.btnViewBinding.setOnClickListener {
             mBinding.recyclerView.apply {
                 adapter = UserAdapter(users)

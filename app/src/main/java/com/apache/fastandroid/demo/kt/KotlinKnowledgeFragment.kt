@@ -35,7 +35,7 @@ import com.apache.fastandroid.demo.kt.staticusage.topLevelFun2
 import com.apache.fastandroid.demo.room.Account
 import com.apache.fastandroid.util.DateUtil
 import com.kingja.loadsir.core.LoadSir
-import com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator
+import com.tesla.framework.performance.omagnifier.frame.FrameCalculator
 import com.tesla.framework.common.util.HideTextWatcher
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.*

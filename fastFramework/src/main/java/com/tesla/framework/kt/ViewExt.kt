@@ -119,7 +119,7 @@ fun Int.getValue(): String = kotlin.run {
 }
 
 
-fun Int.networkStatus(): String {
+fun  Int.networkStatus(): String {
     return when (this) {
         NetworkLiveData.NetworkState.NONE -> "未连接"
         NetworkLiveData.NetworkState.CONNECT -> "已连接"
@@ -760,4 +760,6 @@ fun View.clickNoRepeat(interval: Long = 400, onClick: (View) -> Unit) {
         lastTime = currentTime
         onClick(it)
     }
+    1.getString
 }
+

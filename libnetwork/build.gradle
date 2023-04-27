@@ -14,14 +14,11 @@ android {
 
 dependencies {
 
+    implementation project(Modules.fastFramework)
+
     implementation (*Libs.retrofit)
     implementation (*Libs.okhttp)
-
-
     implementation (Libs.sandwich)
     implementation (Libs.okNetworkMonitor)
-
-
-    implementation project(':fastFramework')
 
 }

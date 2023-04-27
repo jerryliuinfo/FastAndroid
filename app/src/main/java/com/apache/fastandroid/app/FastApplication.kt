@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Color
+import android.hardware.Camera
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
@@ -21,7 +22,6 @@ import com.apache.fastandroid.component.once.Once
 import com.apache.fastandroid.crash.Fabric.init
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor
-import com.apache.fastandroid.demo.component.loadsir.callback.*
 import com.apache.fastandroid.jetpack.flow.api.ApiHelper
 import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
 import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
@@ -38,6 +38,7 @@ import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepo
 import com.kingja.loadsir.core.LoadSir
 import com.linkaipeng.oknetworkmonitor.OkNetworkMonitor
 import com.squareup.leakcanary.LeakCanary
+import com.squareup.picasso.Callback
 import com.tencent.mmkv.MMKV
 import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.device.DeviceName
@@ -353,14 +354,14 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
     }
 
     private fun initLoadSir() {
-        LoadSir.beginBuilder()
-            .addCallback(ErrorCallback()) //添加各种状态页
-            .addCallback(EmptyCallback())
-            .addCallback(LoadingCallback())
-            .addCallback(TimeoutCallback())
-            .addCallback(CustomCallback()) //当注册LoadSir 时如果设置了默认状态页，则会展示默认状态页，否则不展示
-            .setDefaultCallback(LoadingCallback::class.java) //设置默认状态页
-            .commit()
+//        LoadSir.beginBuilder()
+//            .addCallback(ErrorCallback()) //添加各种状态页
+//            .addCallback(Callback.EmptyCallback())
+//            .addCallback(com.apache.fastandroid.demo.component.loadsir.sample.callback.LoadingCallback())
+//            .addCallback(com.apache.fastandroid.demo.component.loadsir.sample.callback.TimeoutCallback())
+//            .addCallback(com.apache.fastandroid.demo.component.loadsir.sample.callback.CustomCallback()) //当注册LoadSir 时如果设置了默认状态页，则会展示默认状态页，否则不展示
+//            .setDefaultCallback(com.apache.fastandroid.demo.component.loadsir.sample.callback.LoadingCallback::class.java) //设置默认状态页
+//            .commit()
     }
 
     // Depends on the flavor,

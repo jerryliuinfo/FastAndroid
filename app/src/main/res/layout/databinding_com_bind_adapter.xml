@@ -61,7 +61,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnTestSelect"
             android:text="按钮防抖点击"
-            onClickWithDebouncing="@{()->click.toMain()}"
             />
 
         <Button

@@ -6,7 +6,7 @@ import com.apache.fastandroid.demo.app.MvvmMailDemoFragment
 import com.apache.fastandroid.demo.bestpay.BestPayDemoFragment
 import com.apache.fastandroid.demo.component.ComponentDemoFragment
 import com.apache.fastandroid.demo.component.bundle.BundleDemoActivity
-import com.apache.fastandroid.demo.component.loadsir.LoadSirDemoListFragment
+import com.apache.fastandroid.demo.component.loadsir.sample.LoadSirDemoListFragment
 import com.apache.fastandroid.demo.component.once.OnceFragment
 import com.apache.fastandroid.demo.glide.GlideDemoFragment
 import com.apache.fastandroid.demo.hawk.HawkDemoFragment

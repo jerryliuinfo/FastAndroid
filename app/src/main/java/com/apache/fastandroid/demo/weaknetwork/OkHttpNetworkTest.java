@@ -28,6 +28,9 @@ public class OkHttpNetworkTest implements INetworkTest {
     private int AVERAGE_BANDWIDTH = 550;
     private int GOOD_BANDWIDTH = 2000;
 
+
+
+
     @Override
     public boolean testNetwork() {
         Request request = new Request.Builder()

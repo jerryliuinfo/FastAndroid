@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.Utils
 
@@ -28,5 +29,5 @@ fun @receiver:ColorInt Int.toColorStateListByColor(): ColorStateList {
     return ColorStateList.valueOf(this)
 }
 
-val Int.getString
+val @receiver:StringRes Int.getString
     get() = Utils.getApp().getString(this)

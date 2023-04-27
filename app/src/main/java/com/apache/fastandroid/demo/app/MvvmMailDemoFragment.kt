@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.databinding.FragmentMvvmMailBinding
+import com.apache.fastandroid.network.model.DataHolder
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import com.zwb.mvvm_mall.base.viewstate.State
+import com.tesla.framework.component.viewstate.State
 import com.zwb.mvvm_mall.base.viewstate.StateType
 
 /**
@@ -24,9 +25,50 @@ class MvvmMailDemoFragment: BaseBindingFragment<FragmentMvvmMailBinding>(Fragmen
         mBinding.btnLoadData.setOnClickListener{
             mViewModel.loadData()
         }
+
+        mBinding.btnDataHolder.setOnClickListener {
+            mViewModel.loadData2()
+        }
+
+
+
+
         mViewModel.topArticleLiveData.observe(this){
             println("data size:${it.size}")
         }
+
+        mViewModel.responseLiveData.observe(this){
+            println("responseLiveData size:${it}")
+
+            when(it){
+                DataHolder.Loading -> {
+                    println("showLoading")
+                }
+                is DataHolder.Success -> {
+                    println("show result:${it.data}")
+                }
+            }
+        }
+
+        mViewModel.connectionStatusLiveData.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is DataHolder.Loading -> {
+                }
+                is DataHolder.Success -> {
+                }
+                is DataHolder.Error -> {
+
+                }
+            }
+
+            for(i in 0 until 10){
+
+            }
+            for(i in 0..10){
+
+            }
+        })
+
 
         mViewModel.loadState.observe(this,observer)
     }

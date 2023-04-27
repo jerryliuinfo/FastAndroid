@@ -38,6 +38,8 @@ import com.tesla.framework.component.network.AutoRegisterNetListener
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
 import com.zwb.lib_base.utils.network.NetworkTypeEnum
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import java.util.concurrent.TimeUnit
 
 
@@ -53,6 +55,11 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
+
+
+        mBinding.btnDynamicProgress.setOnClickListener {
+            dynamicProgress()
+        }
 
         mBinding.btnWrapper.setOnClickListener {
             wrapperMode()
@@ -170,6 +177,70 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
         mBinding.btnIgnoreMultiEvent.setOnClickListener {
             ignoreMultiEventListener.onTrigger()
         }
+    }
+
+    private fun dynamicProgress() {
+        runBlocking {
+            // 定义实际任务进度值和前台任务进度值，两者均为 0
+            var actualProgress = 0
+            var frontendProgress = 0
+
+            // 定义每隔固定时间更新一次前台任务进度值（默认为 1s）
+            var intervalTime = 1000L
+
+            // 定义完成整个任务所需的总时间（假设为 30s）
+            val totalTime = 30000L
+
+            // 定义前台进度从 1% 增加到 100% 的最小时间和最大时间
+            val minTimeToComplete = 5000L
+            val maxTimeToComplete = 10000L
+
+            // 定义每个阶段内每个时间间隔更新的进度值
+            var stepSize = 0
+
+            // 循环更新前台任务进度值，直到达到 100%
+            while (frontendProgress < 100) {
+
+                // 计算从当前前台进度到实际任务进度的剩余时间
+                val timeToComplete = ((actualProgress - frontendProgress) * totalTime) / 100
+
+                // 如果当前前台进度大于实际任务进度，则直接将前台进度加 1
+                if (frontendProgress > actualProgress) {
+                    frontendProgress++
+                }
+                // 如果当前前台进度小于实际任务进度，则需要快速增加到实际任务进度值
+                else if (frontendProgress < actualProgress) {
+                    // 计算每个阶段内每个时间间隔更新的进度值
+                    stepSize = ((actualProgress - frontendProgress) * intervalTime / timeToComplete).toInt()
+                    // 将前台进度快速增加到实际任务进度值
+                    while (frontendProgress < actualProgress) {
+                        frontendProgress += stepSize
+                        delay(intervalTime)
+                    }
+                }
+                // 如果当前前台进度等于实际任务进度，则不做处理，维持当前前台进度不变
+
+                // 更新前台任务进度展示
+                println("Frontend progress: $frontendProgress%")
+
+                // 如果前台进度从 1% 增加到 100% 的时间小于 5s，则将 intervalTime 设置为 5 / 99 秒
+                if (frontendProgress == 1 && timeToComplete < minTimeToComplete) {
+                    stepSize = 1
+                    intervalTime = minTimeToComplete / 99
+                }
+                // 如果前台进度从 1% 增加到 100% 的时间大于 10s，则将 intervalTime 设置为 10 / 99 秒
+                else if (frontendProgress == 1 && timeToComplete > maxTimeToComplete) {
+                    stepSize = 1
+                    intervalTime = maxTimeToComplete / 99
+                }
+                // 否则，按照默认的 intervalTime 继续更新前台任务进度值
+            }
+
+            // 前台进度达到 100%，任务完成
+            println("Task completed!")
+        }
+
+
     }
 
     private fun wrapperMode() {

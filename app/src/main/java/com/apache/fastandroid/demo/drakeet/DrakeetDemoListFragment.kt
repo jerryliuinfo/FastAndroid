@@ -6,6 +6,7 @@ import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.drakeet.aboutpage.AboutPageDemoActivity
 import com.apache.fastandroid.demo.drakeet.hookcontext.HookContextFragment
 import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment
+import com.apache.fastandroid.demo.drakeet.customgroup.CustomViewGroupFragment
 import com.apache.fastandroid.demo.drakeet.foregroundservice.ForegroundServiceFragment
 import com.apache.fastandroid.demo.drakeet.multitype.MultiTypeDemoFragment
 import me.drakeet.floo.sample.FlooMainActivity
@@ -35,6 +36,7 @@ class DrakeetDemoListFragment:BaseListFragment() {
             ,ViewItemBean("流畅动画", "主线程空闲时执行动画", FluentAnimationDemoFragment::class.java, args = Bundle().apply {
                 putBoolean("doOnIdle",true)
             }))
+
     }
 
 

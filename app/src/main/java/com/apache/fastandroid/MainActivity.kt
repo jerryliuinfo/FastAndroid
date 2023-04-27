@@ -15,14 +15,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
-import com.apache.fastandroid.demo.ToolsFragment
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.designmode.DesignModeDemoListFragment
-import com.apache.fastandroid.demo.weaknetwork.connectionclass.ConnectionClassActivity
+import com.apache.fastandroid.demo.recycleview.AutoScrollViewDemoFragment
+import com.apache.fastandroid.demo.weaknetwork.WeaknetWorkFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import timber.log.Timber
@@ -50,9 +48,6 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
         }
 
         Logger.d("MainActivity mHandler:${mHandler}")
-
-
-
 
         setSupportActionBar(mBinding.toolbar)
         setupDrawer(savedInstanceState)
@@ -161,6 +156,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, DesignModeDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ToolsFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, AutoScrollViewDemoFragment::class.java,null,addTitleBar = true)
+        FragmentContainerActivity.launch(this, WeaknetWorkFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 

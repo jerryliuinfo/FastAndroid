@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:padding="@dimen/sp_20"
+    android:gravity="left|center"
+    android:text="Hello World"
+    android:textSize="20sp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/button_update"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+</TextView>

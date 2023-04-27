@@ -28,7 +28,7 @@
                 app:flow_wrapMode="aligned"
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
-                app:constraint_referenced_ids="btn_adb,btn_plugins,btn_weak_network_test"
+                app:constraint_referenced_ids="btn_adb,btn_plugins,btn_ping"
                 />
             <Button
                 android:id="@+id/btn_adb"
@@ -44,7 +44,7 @@
                 />
 
             <Button
-                android:id="@+id/btn_weak_network_test"
+                android:id="@+id/btn_ping"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="弱网检测"

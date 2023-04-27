@@ -11,21 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn_kotlin_android_extensions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="使用kotlin-android-extensions"
-            />
+
 
         <Button
             android:id="@+id/btn_viewBinding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_kotlin_android_extensions"
+            app:layout_constraintTop_toTopOf="parent"
             android:text="使用ViewBinding"
             />
 

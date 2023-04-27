@@ -1,6 +1,6 @@
 
 apply from: '../base_lib.gradle'
-apply plugin: 'publication'
+//apply plugin: 'publication'
 
 //hit
 apply plugin: 'dagger.hilt.android.plugin'

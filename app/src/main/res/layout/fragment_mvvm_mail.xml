@@ -23,5 +23,15 @@
             android:text="加载数据"
             />
 
+        <TextView
+            android:id="@+id/btn_data_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnLoadData"
+            android:text="使用DtaHolder"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

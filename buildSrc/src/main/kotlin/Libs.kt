@@ -139,7 +139,8 @@ object Libs {
         //网络抓包 https://github.com/linkaipeng/OkNetworkMonitor
         okNetworkMonitor,
 
-        "com.facebook.network.connectionclass:connectionclass:1.0.1"
+        "ccom.facebook.network.connectionclass:connectionclass:1.0.1"
+//        "com.github.kirchbergerknorr:PingTools:1.0.4"
     )
 
 

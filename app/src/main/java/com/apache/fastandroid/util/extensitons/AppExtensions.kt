@@ -4,8 +4,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.afollestad.materialdialogs.MaterialDialog
-import com.apache.fastandroid.demo.component.loadsir.callback.EmptyCallback
-import com.apache.fastandroid.demo.component.loadsir.callback.LoadingCallback
+import com.apache.fastandroid.demo.component.loadsir.sample.callback.EmptyCallback
+import com.apache.fastandroid.demo.component.loadsir.sample.callback.LoadingCallback
 import com.blankj.utilcode.util.ThreadUtils
 import com.kingja.loadsir.core.LoadService
 import com.tesla.framework.component.lifecycle.DialogLifeCycleObserver
@@ -14,11 +14,11 @@ import com.tesla.framework.component.lifecycle.DialogLifeCycleObserver
  * Created by Jerry on 2021/12/16.
  */
 fun LoadService<Any>.showLoading(){
-    showCallback(LoadingCallback::class.java)
+    showCallback(com.apache.fastandroid.demo.component.loadsir.sample.callback.LoadingCallback::class.java)
 }
 
 fun LoadService<Any>.showEmpty(){
-    showCallback(EmptyCallback::class.java)
+    showCallback(com.apache.fastandroid.demo.component.loadsir.sample.callback.EmptyCallback::class.java)
 }
 
 fun runOnUIDelay(block: () -> Unit, delay:Long){

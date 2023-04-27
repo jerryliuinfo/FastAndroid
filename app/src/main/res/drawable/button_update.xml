@@ -5,7 +5,10 @@
     <item android:state_pressed="true"
         android:drawable="@drawable/bg_button_pressed"/>
     <item android:state_focused="true"
-        android:drawable="@drawable/bg_button_pressed"/>
+        android:drawable="@drawable/bg_button_focused"/>
+
+    <item android:state_focused="false"
+        android:drawable="@drawable/bg_button_normal"/>
 
     <item android:drawable="@drawable/bg_button_normal"/>
 

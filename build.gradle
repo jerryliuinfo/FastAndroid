@@ -15,8 +15,7 @@ buildscript {
         maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
         mavenCentral()
         google()
-
-        maven { url 'https://jitpack.io' }
+          maven { url 'https://jitpack.io' }
         maven { url "https://plugins.gradle.org/m2/" }
 
 

@@ -3,6 +3,9 @@ package com.tesla.framework.kt
 import androidx.annotation.StringRes
 import androidx.databinding.ObservableInt
 import com.blankj.utilcode.util.ToastUtils
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.InputStream
 import java.io.OutputStream
 import java.lang.StringBuilder
@@ -67,6 +70,12 @@ fun showShortToast(@StringRes resId:Int){
 
 fun showShortToast(msg:String){
     ToastUtils.showShort(msg)
+}
+
+fun CoroutineScope.io(codeBlock: suspend CoroutineScope.() -> Unit) {
+    launch(Dispatchers.IO) {
+        codeBlock()
+    }
 }
 
 

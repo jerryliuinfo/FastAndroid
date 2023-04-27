@@ -265,58 +265,58 @@ com.github.florent37.viewanimator.ViewAnimator$2 -> a.e.a.a.c$b:
     1:1:void <init>(com.github.florent37.viewanimator.ViewAnimator):143:143 -> <init>
     1:2:boolean onPreDraw():146:147 -> onPreDraw
 com.github.florent37.viewanimator.ViewAnimator$RepeatMode -> a.e.a.a.c$c:
-com.microsoft.office.outlook.magnifierlib.Magnifier -> a.f.a.a.a.a:
+com.tesla.framework.performance.omagnifier.Magnifier -> a.f.a.a.a.a:
     kotlin.Lazy fpsMonitor$delegate -> b
     kotlin.Lazy memoryMonitor$delegate -> c
-    com.microsoft.office.outlook.magnifierlib.Magnifier INSTANCE -> a
+    com.tesla.framework.performance.omagnifier.Magnifier INSTANCE -> a
     1:3:void <clinit>():16:18 -> <clinit>
     1:1:void <init>():14:14 -> <init>
-    1:1:com.microsoft.office.outlook.magnifierlib.frame.FPSMonitor getFpsMonitor():16:16 -> a
-    2:2:void startMonitorFPS(com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig):22:22 -> a
-    3:3:void startMonitorMemory(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig):35:35 -> a
-    4:4:void dumpMemoryImmediately(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):43:43 -> a
-    1:1:com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor getMemoryMonitor():18:18 -> b
+    1:1:com.tesla.framework.performance.omagnifier.FPSMonitor getFpsMonitor():16:16 -> a
+    2:2:void startMonitorFPS(com.tesla.framework.performance.omagnifier.FPSMonitorConfig):22:22 -> a
+    3:3:void startMonitorMemory(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig):35:35 -> a
+    4:4:void dumpMemoryImmediately(com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):43:43 -> a
+    1:1:com.tesla.framework.performance.omagnifier.MemoryMonitor getMemoryMonitor():18:18 -> b
     1:1:boolean isEnabledFPSMonitor():31:31 -> c
     1:1:boolean isEnabledMemoryMonitor():47:47 -> d
     1:1:void stopMonitorFPS():27:27 -> e
     1:1:void stopMonitorMemory():39:39 -> f
-com.microsoft.office.outlook.magnifierlib.Magnifier$fpsMonitor$2 -> a.f.a.a.a.a$a:
-    com.microsoft.office.outlook.magnifierlib.Magnifier$fpsMonitor$2 INSTANCE -> a
-    1:1:com.microsoft.office.outlook.magnifierlib.frame.FPSMonitor invoke():16:16 -> a
+com.tesla.framework.performance.omagnifier.Magnifier$fpsMonitor$2 -> a.f.a.a.a.a$a:
+    com.tesla.framework.performance.omagnifier.Magnifier$fpsMonitor$2 INSTANCE -> a
+    1:1:com.tesla.framework.performance.omagnifier.FPSMonitor invoke():16:16 -> a
     1:1:java.lang.Object invoke():16:16 -> invoke
-com.microsoft.office.outlook.magnifierlib.Magnifier$memoryMonitor$2 -> a.f.a.a.a.a$b:
-    com.microsoft.office.outlook.magnifierlib.Magnifier$memoryMonitor$2 INSTANCE -> a
-    1:1:com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor invoke():18:18 -> a
+com.tesla.framework.performance.omagnifier.Magnifier$memoryMonitor$2 -> a.f.a.a.a.a$b:
+    com.tesla.framework.performance.omagnifier.Magnifier$memoryMonitor$2 INSTANCE -> a
+    1:1:com.tesla.framework.performance.omagnifier.MemoryMonitor invoke():18:18 -> a
     1:1:java.lang.Object invoke():18:18 -> invoke
 com.microsoft.office.outlook.magnifierlib.PermissionsKt -> a.f.a.a.a.b:
     1:4:boolean drawOverlaysPermission(android.content.Context):15:18 -> a
     5:9:boolean drawOverlaysPermission(android.content.Context):17:21 -> a
-com.microsoft.office.outlook.magnifierlib.frame.FPSMonitor -> a.f.a.a.a.c.a:
-    com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator frameCalculator -> a
-    com.microsoft.office.outlook.magnifierlib.frame.FrameViewer frameViewer -> b
+com.tesla.framework.performance.omagnifier.FPSMonitor -> a.f.a.a.a.c.a:
+    com.tesla.framework.performance.omagnifier.FrameCalculator frameCalculator -> a
+    com.tesla.framework.performance.omagnifier.FrameViewer frameViewer -> b
     1:1:void <init>():12:12 -> <init>
-    1:1:com.microsoft.office.outlook.magnifierlib.frame.FrameViewer access$getFrameViewer$p(com.microsoft.office.outlook.magnifierlib.frame.FPSMonitor):12:12 -> a
-    2:16:void startMonitorFPS(com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig):22:36 -> a
+    1:1:com.tesla.framework.performance.omagnifier.FrameViewer access$getFrameViewer$p(com.tesla.framework.performance.omagnifier.FPSMonitor):12:12 -> a
+    2:16:void startMonitorFPS(com.tesla.framework.performance.omagnifier.FPSMonitorConfig):22:36 -> a
     17:17:boolean isFPSMonitorEnabled():55:55 -> a
     1:9:void stopMonitorFPS():42:50 -> b
-com.microsoft.office.outlook.magnifierlib.frame.FPSMonitor$startMonitorFPS$1 -> a.f.a.a.a.c.a$a:
-    com.microsoft.office.outlook.magnifierlib.frame.FPSMonitor this$0 -> a
+com.tesla.framework.performance.omagnifier.FPSMonitor$startMonitorFPS$1 -> a.f.a.a.a.c.a$a:
+    com.tesla.framework.performance.omagnifier.FPSMonitor this$0 -> a
     1:1:void invoke(int):32:32 -> a
     1:1:java.lang.Object invoke(java.lang.Object):31:31 -> invoke
-com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig -> a.f.a.a.a.c.b:
+com.tesla.framework.performance.omagnifier.FPSMonitorConfig -> a.f.a.a.a.c.b:
     android.app.Application context -> a
     float FLAG_PERCENTAGE_YELLOW -> g
     float FLAG_PERCENTAGE_RED -> f
     float lowPercentage -> d
     float mediumPercentage -> c
     float refreshRate -> b
-    com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Companion Companion -> e
+    com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Companion Companion -> e
     1:5:void <init>(android.app.Application,float,float,float):12:16 -> <init>
     1:1:android.app.Application getContext():13:13 -> a
     1:1:float getLowPercentage():16:16 -> b
     1:1:float getMediumPercentage():15:15 -> c
     1:1:float getRefreshRate():14:14 -> d
-com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Builder -> a.f.a.a.a.c.b$a:
+com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder -> a.f.a.a.a.c.b$a:
     android.app.Application context -> a
     float refreshRate -> d
     float lowPercentage -> c
@@ -332,14 +332,14 @@ com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Builder -> a.f.
     5:5:void <init>(android.app.Application,float,float,float):23 -> <init>
     6:6:void <init>(android.app.Application):29:29 -> <init>
     7:11:void <init>(android.app.Application):25:29 -> <init>
-    com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Builder copy(android.app.Application,float,float,float) -> a
-    com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Builder copy$default(com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Builder,android.app.Application,float,float,float,int,java.lang.Object) -> a
-    1:1:com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Builder lowPercentage(float):33:33 -> a
-    2:2:com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig build():35:35 -> a
+    com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder copy(android.app.Application,float,float,float) -> a
+    com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder copy$default(com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder,android.app.Application,float,float,float,int,java.lang.Object) -> a
+    1:1:com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder lowPercentage(float):33:33 -> a
+    2:2:com.tesla.framework.performance.omagnifier.FPSMonitorConfig build():35:35 -> a
     android.app.Application component1() -> b
-    1:1:com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Builder mediumPercentage(float):32:32 -> b
+    1:1:com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder mediumPercentage(float):32:32 -> b
     float component2() -> c
-    1:1:com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Builder refreshRate(float):34:34 -> c
+    1:1:com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder refreshRate(float):34:34 -> c
     float component3() -> d
     1:1:void setLowPercentage(float):22:22 -> d
     float component4() -> e
@@ -352,10 +352,10 @@ com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Builder -> a.f.
     1:1:float getMediumPercentage():21 -> h
     1:1:void setRefreshRate(float):23:23 -> i
     1:1:float getRefreshRate():23 -> i
-com.microsoft.office.outlook.magnifierlib.frame.FPSMonitorConfig$Companion -> a.f.a.a.a.c.b$b:
+com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Companion -> a.f.a.a.a.c.b$b:
     1:1:void <init>():38:38 -> <init>
-com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator -> a.f.a.a.a.c.c:
-    com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator$Companion Companion -> e
+com.tesla.framework.performance.omagnifier.FrameCalculator -> a.f.a.a.a.c.c:
+    com.tesla.framework.performance.omagnifier.FrameCalculator$Companion Companion -> e
     java.lang.String MAGNIFIER_FRAME_CALLBACK_THREAD_NAME -> h
     android.os.Handler handler -> d
     long THRESHOLD_IN_MS -> g
@@ -363,24 +363,24 @@ com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator -> a.f.a.a.a.c.c
     android.os.HandlerThread handlerThread -> c
     kotlin.jvm.functions.Function1 listener -> a
     java.util.LinkedList frameList -> b
-    1:1:void access$notifyListener(com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator):14:14 -> <init>
+    1:1:void access$notifyListener(com.tesla.framework.performance.omagnifier.FrameCalculator):14:14 -> <init>
     1:1:void <init>(kotlin.jvm.functions.Function1):14 -> <init>
     2:2:kotlin.jvm.functions.Function1 getListener():15:15 -> <init>
     2:2:void <init>(kotlin.jvm.functions.Function1):15 -> <init>
     3:7:void <init>(kotlin.jvm.functions.Function1):18:22 -> <init>
-    1:1:void access$notifyListener(com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator):14:14 -> a
+    1:1:void access$notifyListener(com.tesla.framework.performance.omagnifier.FrameCalculator):14:14 -> a
     2:2:kotlin.jvm.functions.Function1 getListener():15:15 -> a
     1:3:void notifyListener():51:53 -> b
     1:3:void start():37:39 -> c
     1:5:void stop():43:47 -> d
     1:2:void doFrame(long):32:33 -> doFrame
-com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator$Companion -> a.f.a.a.a.c.c$a:
+com.tesla.framework.performance.omagnifier.FrameCalculator$Companion -> a.f.a.a.a.c.c$a:
     1:1:void <init>():56:56 -> <init>
-com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator$handler$1 -> a.f.a.a.a.c.c$b:
-    com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator this$0 -> a
-    1:1:void <init>(com.microsoft.office.outlook.magnifierlib.frame.FrameCalculator,android.os.Looper):22:22 -> <init>
+com.tesla.framework.performance.omagnifier.FrameCalculator$handler$1 -> a.f.a.a.a.c.c$b:
+    com.tesla.framework.performance.omagnifier.FrameCalculator this$0 -> a
+    1:1:void <init>(com.tesla.framework.performance.omagnifier.FrameCalculator,android.os.Looper):22:22 -> <init>
     1:3:void handleMessage(android.os.Message):24:26 -> handleMessage
-com.microsoft.office.outlook.magnifierlib.frame.FrameViewer -> a.f.a.a.a.c.d:
+com.tesla.framework.performance.omagnifier.FrameViewer -> a.f.a.a.a.c.d:
     android.view.WindowManager windowManager -> e
     int POSITION_X -> h
     int POSITION_L -> i
@@ -389,18 +389,18 @@ com.microsoft.office.outlook.magnifierlib.frame.FrameViewer -> a.f.a.a.a.c.d:
     float lowPercentage -> c
     float mediumPercentage -> b
     float refreshRate -> a
-    com.microsoft.office.outlook.magnifierlib.frame.FrameViewer$Companion Companion -> f
+    com.tesla.framework.performance.omagnifier.FrameViewer$Companion Companion -> f
     1:23:void <init>(android.app.Application,float,float,float):24:46 -> <init>
     24:39:void <init>(android.app.Application,float,float,float):43:58 -> <init>
     40:40:void <init>(android.app.Application,float,float,float):35:35 -> <init>
     41:41:void <init>(android.app.Application,float,float,float):33:33 -> <init>
     1:1:void display(int):62:62 -> a
-    2:12:void display$lambda-0(int,com.microsoft.office.outlook.magnifierlib.frame.FrameViewer):64:74 -> a
+    2:12:void display$lambda-0(int,com.tesla.framework.performance.omagnifier.FrameViewer):64:74 -> a
     13:14:void hide():83:84 -> a
     1:1:void show():79:79 -> b
-com.microsoft.office.outlook.magnifierlib.frame.FrameViewer$Companion -> a.f.a.a.a.c.d$a:
+com.tesla.framework.performance.omagnifier.FrameViewer$Companion -> a.f.a.a.a.c.d$a:
     1:1:void <init>():116:116 -> <init>
-com.microsoft.office.outlook.magnifierlib.frame.FrameViewer$MovingTouchListener -> a.f.a.a.a.c.d$b:
+com.tesla.framework.performance.omagnifier.FrameViewer$MovingTouchListener -> a.f.a.a.a.c.d$b:
     android.view.WindowManager$LayoutParams params -> a
     float initialTouchY -> f
     float initialTouchX -> e
@@ -410,28 +410,28 @@ com.microsoft.office.outlook.magnifierlib.frame.FrameViewer$MovingTouchListener 
     1:3:void <init>(android.view.WindowManager$LayoutParams,android.view.WindowManager):87:89 -> <init>
     1:11:boolean onTouch(android.view.View,android.view.MotionEvent):99:109 -> onTouch
     12:15:boolean onTouch(android.view.View,android.view.MotionEvent):101:104 -> onTouch
-com.microsoft.office.outlook.magnifierlib.memory.ExceedLimitSamplePolicy -> a.f.a.a.a.d.a:
+com.tesla.framework.performance.omagnifier.ExceedLimitSamplePolicy -> a.f.a.a.a.d.a:
     long threshold -> a
     kotlin.jvm.functions.Function0 needSampleFunc -> b
     1:3:void <init>(long,kotlin.jvm.functions.Function0):36:38 -> <init>
     1:1:boolean needSample():41:41 -> a
     boolean needPostDelayed() -> b
     1:1:long postDelayedThreshold():49:49 -> c
-com.microsoft.office.outlook.magnifierlib.memory.FileDescriptorInfo -> a.f.a.a.a.d.b:
+com.tesla.framework.performance.omagnifier.FileDescriptorInfo -> a.f.a.a.a.d.b:
     java.util.List fileDescriptors -> b
     long fdMaxCount -> a
     1:3:void <init>(long,java.util.List):15:17 -> <init>
     long component1() -> a
-    com.microsoft.office.outlook.magnifierlib.memory.FileDescriptorInfo copy(long,java.util.List) -> a
-    com.microsoft.office.outlook.magnifierlib.memory.FileDescriptorInfo copy$default(com.microsoft.office.outlook.magnifierlib.memory.FileDescriptorInfo,long,java.util.List,int,java.lang.Object) -> a
+    com.tesla.framework.performance.omagnifier.FileDescriptorInfo copy(long,java.util.List) -> a
+    com.tesla.framework.performance.omagnifier.FileDescriptorInfo copy$default(com.tesla.framework.performance.omagnifier.FileDescriptorInfo,long,java.util.List,int,java.lang.Object) -> a
     java.util.List component2() -> b
     1:1:long getFdMaxCount():16:16 -> c
     1:1:java.util.List getFileDescriptors():17:17 -> d
-com.microsoft.office.outlook.magnifierlib.memory.FileDescriptorMetricCollector -> a.f.a.a.a.d.c:
+com.tesla.framework.performance.omagnifier.FileDescriptorMetricCollector -> a.f.a.a.a.d.c:
     1:1:void <init>():8:8 -> <init>
     1:1:java.lang.Object collect():8:8 -> a
-    1:1:com.microsoft.office.outlook.magnifierlib.memory.FileDescriptorInfo collect():11:11 -> b
-com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo -> a.f.a.a.a.d.d:
+    1:1:com.tesla.framework.performance.omagnifier.FileDescriptorInfo collect():11:11 -> b
+com.tesla.framework.performance.omagnifier.HeapMemoryInfo -> a.f.a.a.a.d.d:
     long rssMemoryMB -> e
     long usedMemoryMB -> b
     long maxMemoryMB -> a
@@ -439,8 +439,8 @@ com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo -> a.f.a.a.a.d.d
     long pssMemoryMB -> c
     1:6:void <init>(long,long,long,long,long):28:33 -> <init>
     long component1() -> a
-    com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo copy(long,long,long,long,long) -> a
-    com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo copy$default(com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo,long,long,long,long,long,int,java.lang.Object) -> a
+    com.tesla.framework.performance.omagnifier.HeapMemoryInfo copy(long,long,long,long,long) -> a
+    com.tesla.framework.performance.omagnifier.HeapMemoryInfo copy$default(com.tesla.framework.performance.omagnifier.HeapMemoryInfo,long,long,long,long,long,int,java.lang.Object) -> a
     long component2() -> b
     long component3() -> c
     long component4() -> d
@@ -450,220 +450,220 @@ com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo -> a.f.a.a.a.d.d
     1:1:long getRssMemoryMB():33:33 -> h
     1:1:long getUsedMemoryMB():30:30 -> i
     1:1:long getVssMemoryMB():32:32 -> j
-com.microsoft.office.outlook.magnifierlib.memory.HeapMetricCollector -> a.f.a.a.a.d.e:
-    com.microsoft.office.outlook.magnifierlib.memory.HeapMetricCollector$Companion Companion -> a
+com.tesla.framework.performance.omagnifier.HeapMetricCollector -> a.f.a.a.a.d.e:
+    com.tesla.framework.performance.omagnifier.HeapMetricCollector$Companion Companion -> a
     int K -> b
     int M -> c
     1:1:void <init>():10:10 -> <init>
     1:1:java.lang.Object collect():10:10 -> a
-    1:6:com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo collect():13:18 -> b
-    7:7:com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo collect():13:13 -> b
-com.microsoft.office.outlook.magnifierlib.memory.HeapMetricCollector$Companion -> a.f.a.a.a.d.e$a:
+    1:6:com.tesla.framework.performance.omagnifier.HeapMemoryInfo collect():13:18 -> b
+    7:7:com.tesla.framework.performance.omagnifier.HeapMemoryInfo collect():13:13 -> b
+com.tesla.framework.performance.omagnifier.HeapMetricCollector$Companion -> a.f.a.a.a.d.e$a:
     1:1:void <init>():22:22 -> <init>
-com.microsoft.office.outlook.magnifierlib.memory.IMetricCollector -> a.f.a.a.a.d.f:
+com.tesla.framework.performance.omagnifier.IMetricCollector -> a.f.a.a.a.d.f:
     java.lang.Object collect() -> a
-com.microsoft.office.outlook.magnifierlib.memory.ISamplePolicy -> a.f.a.a.a.d.g:
+com.tesla.framework.performance.omagnifier.ISamplePolicy -> a.f.a.a.a.d.g:
     boolean needSample() -> a
     boolean needPostDelayed() -> b
     long postDelayedThreshold() -> c
-com.microsoft.office.outlook.magnifierlib.memory.ImmediateSamplePolicy -> a.f.a.a.a.d.h:
+com.tesla.framework.performance.omagnifier.ImmediateSamplePolicy -> a.f.a.a.a.d.h:
     1:1:void <init>():22:22 -> <init>
     boolean needSample() -> a
     boolean needPostDelayed() -> b
     long postDelayedThreshold() -> c
-com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor -> a.f.a.a.a.d.i:
+com.tesla.framework.performance.omagnifier.MemoryMonitor -> a.f.a.a.a.d.i:
     java.lang.String HANDLER_THREAD_MEMORY_MONITOR -> h
     android.os.HandlerThread handlerThread -> a
     android.os.Handler handler -> b
-    com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory factory -> c
+    com.tesla.framework.performance.omagnifier.MemorySamplersFactory factory -> c
     boolean isMonitorEnabled -> f
     java.util.ArrayList asyncSamplerList -> e
     java.util.ArrayList syncSamplerList -> d
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$Companion Companion -> g
+    com.tesla.framework.performance.omagnifier.MemoryMonitor$Companion Companion -> g
     1:11:void <init>():11:21 -> <init>
-    1:10:void start(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig):29:38 -> a
-    11:13:void dumpImmediately(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):61:63 -> a
-    14:20:void dumpImmediately(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):62:68 -> a
+    1:10:void start(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig):29:38 -> a
+    11:13:void dumpImmediately(com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):61:63 -> a
+    14:20:void dumpImmediately(com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):62:68 -> a
     21:21:boolean isMonitorEnabled():74:74 -> a
     1:11:void stop():45:55 -> b
-com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$Companion -> a.f.a.a.a.d.i$a:
+com.tesla.framework.performance.omagnifier.MemoryMonitor$Companion -> a.f.a.a.a.d.i$a:
     1:1:void <init>():106:106 -> <init>
-com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$IMemoryMonitor -> a.f.a.a.a.d.i$b:
+com.tesla.framework.performance.omagnifier.MemoryMonitor$IMemoryMonitor -> a.f.a.a.a.d.i$b:
     void start() -> a
     void stop() -> b
-com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener -> a.f.a.a.a.d.i$c:
-    void onSampleFile(com.microsoft.office.outlook.magnifierlib.memory.FileDescriptorInfo,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$SampleType) -> a
-    void onSampleHeap(com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$SampleType) -> a
-    void onSampleThread(com.microsoft.office.outlook.magnifierlib.memory.ThreadInfo,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$SampleType) -> a
-com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$SampleType -> a.f.a.a.a.d.i$d:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$SampleType TIMING -> a
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$SampleType EXCEED_LIMIT -> b
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$SampleType IMMEDIATE -> c
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$SampleType[] $VALUES -> d
+com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener -> a.f.a.a.a.d.i$c:
+    void onSampleFile(com.tesla.framework.performance.omagnifier.FileDescriptorInfo,com.tesla.framework.performance.omagnifier.MemoryMonitor$SampleType) -> a
+    void onSampleHeap(com.tesla.framework.performance.omagnifier.HeapMemoryInfo,com.tesla.framework.performance.omagnifier.MemoryMonitor$SampleType) -> a
+    void onSampleThread(com.tesla.framework.performance.omagnifier.ThreadInfo,com.tesla.framework.performance.omagnifier.MemoryMonitor$SampleType) -> a
+com.tesla.framework.performance.omagnifier.MemoryMonitor$SampleType -> a.f.a.a.a.d.i$d:
+    com.tesla.framework.performance.omagnifier.MemoryMonitor$SampleType TIMING -> a
+    com.tesla.framework.performance.omagnifier.MemoryMonitor$SampleType EXCEED_LIMIT -> b
+    com.tesla.framework.performance.omagnifier.MemoryMonitor$SampleType IMMEDIATE -> c
+    com.tesla.framework.performance.omagnifier.MemoryMonitor$SampleType[] $VALUES -> d
     1:1:void <clinit>():103:103 -> <clinit>
     1:1:void <init>(java.lang.String,int):102:102 -> <init>
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$SampleType[] $values() -> a
-com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig -> a.f.a.a.a.d.j:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Companion Companion -> h
+    com.tesla.framework.performance.omagnifier.MemoryMonitor$SampleType[] $values() -> a
+com.tesla.framework.performance.omagnifier.MemoryMonitorConfig -> a.f.a.a.a.d.j:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Companion Companion -> h
     long DEFAULT_TIMING_THRESHOLD_1_MIN -> i
     float DEFAULT_EXCEED_LIMIT_RATIO_80_PERCENTAGE -> j
     long DEFAULT_EXCEED_LIMIT_RATIO_THRESHOLD_10_SECONDS -> k
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType monitorType -> a
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType monitorType -> a
     long exceedLimitThreshold -> f
     float exceedLimitRatio -> e
     long timingThreshold -> d
     boolean openTimingSample -> b
     boolean openExceedLimitSample -> c
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener onSampleListener -> g
-    1:8:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):8:15 -> <init>
+    com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener onSampleListener -> g
+    1:8:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):8:15 -> <init>
     1:1:float getExceedLimitRatio():13:13 -> a
     1:1:long getExceedLimitThreshold():14:14 -> b
-    1:1:com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType getMonitorType():9:9 -> c
-    1:1:com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener getOnSampleListener():15:15 -> d
+    1:1:com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType getMonitorType():9:9 -> c
+    1:1:com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener getOnSampleListener():15:15 -> d
     1:1:boolean getOpenExceedLimitSample():11:11 -> e
     1:1:boolean getOpenTimingSample():10:10 -> f
     1:1:long getTimingThreshold():12:12 -> g
-com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder -> a.f.a.a.a.d.j$a:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType monitorType -> a
+com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder -> a.f.a.a.a.d.j$a:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType monitorType -> a
     long exceedLimitThreshold -> f
     float exceedLimitRatio -> e
     long timingThreshold -> d
     boolean openTimingSample -> b
     boolean openExceedLimitSample -> c
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener onSampleListener -> g
-    1:1:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener,int,kotlin.jvm.internal.DefaultConstructorMarker):18:18 -> <init>
-    1:1:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):18 -> <init>
-    2:2:com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType getMonitorType():19:19 -> <init>
-    2:2:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):19 -> <init>
+    com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener onSampleListener -> g
+    1:1:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener,int,kotlin.jvm.internal.DefaultConstructorMarker):18:18 -> <init>
+    1:1:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):18 -> <init>
+    2:2:com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType getMonitorType():19:19 -> <init>
+    2:2:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):19 -> <init>
     3:3:void setOpenTimingSample(boolean):20:20 -> <init>
-    3:3:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):20 -> <init>
+    3:3:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):20 -> <init>
     4:4:void setOpenExceedLimitSample(boolean):21:21 -> <init>
-    4:4:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):21 -> <init>
+    4:4:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):21 -> <init>
     5:5:void setTimingThreshold(long):22:22 -> <init>
-    5:5:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):22 -> <init>
+    5:5:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):22 -> <init>
     6:6:void setExceedLimitRatio(float):23:23 -> <init>
-    6:6:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):23 -> <init>
+    6:6:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):23 -> <init>
     7:7:void setExceedLimitThreshold(long):24:24 -> <init>
-    7:7:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):24 -> <init>
-    8:8:void setOnSampleListener(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):25:25 -> <init>
-    8:8:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):25 -> <init>
-    9:9:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener,int,kotlin.jvm.internal.DefaultConstructorMarker):18:18 -> <init>
-    10:10:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,int,kotlin.jvm.internal.DefaultConstructorMarker):28:28 -> <init>
-    10:10:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType):28 -> <init>
-    11:11:void <init>(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,int,kotlin.jvm.internal.DefaultConstructorMarker):28:28 -> <init>
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder copy(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener) -> a
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder copy$default(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener,int,java.lang.Object) -> a
+    7:7:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):24 -> <init>
+    8:8:void setOnSampleListener(com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):25:25 -> <init>
+    8:8:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):25 -> <init>
+    9:9:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener,int,kotlin.jvm.internal.DefaultConstructorMarker):18:18 -> <init>
+    10:10:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,int,kotlin.jvm.internal.DefaultConstructorMarker):28:28 -> <init>
+    10:10:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType):28 -> <init>
+    11:11:void <init>(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,int,kotlin.jvm.internal.DefaultConstructorMarker):28:28 -> <init>
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder copy(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener) -> a
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder copy$default(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder,com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,boolean,boolean,long,float,long,com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener,int,java.lang.Object) -> a
     1:1:void setOpenExceedLimitSample(boolean):21:21 -> a
     2:2:void setExceedLimitRatio(float):23:23 -> a
-    3:4:com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder enableTimingSample(long):41:42 -> a
-    5:7:com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder enableExceedLimitSample(float,long):49:51 -> a
-    8:8:com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Builder onSampleListener(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):54:54 -> a
-    9:9:com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig build():57:57 -> a
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType component1() -> b
+    3:4:com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder enableTimingSample(long):41:42 -> a
+    5:7:com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder enableExceedLimitSample(float,long):49:51 -> a
+    8:8:com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder onSampleListener(com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):54:54 -> a
+    9:9:com.tesla.framework.performance.omagnifier.MemoryMonitorConfig build():57:57 -> a
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType component1() -> b
     1:1:void setOpenTimingSample(boolean):20:20 -> b
     2:2:void setExceedLimitThreshold(long):24:24 -> b
-    3:3:void setOnSampleListener(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):25:25 -> b
+    3:3:void setOnSampleListener(com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):25:25 -> b
     boolean component2() -> c
     1:1:void setTimingThreshold(long):22:22 -> c
     boolean component3() -> d
     long component4() -> e
     float component5() -> f
     long component6() -> g
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener component7() -> h
+    com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener component7() -> h
     1:1:void setExceedLimitRatio(float):23:23 -> i
     1:1:float getExceedLimitRatio():23 -> i
     1:1:void setExceedLimitThreshold(long):24:24 -> j
     1:1:long getExceedLimitThreshold():24 -> j
-    1:1:com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType getMonitorType():19:19 -> k
-    1:1:void setOnSampleListener(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener):25:25 -> l
-    1:1:com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitor$OnSampleListener getOnSampleListener():25 -> l
+    1:1:com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType getMonitorType():19:19 -> k
+    1:1:void setOnSampleListener(com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener):25:25 -> l
+    1:1:com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener getOnSampleListener():25 -> l
     1:1:void setOpenExceedLimitSample(boolean):21:21 -> m
     1:1:boolean getOpenExceedLimitSample():21 -> m
     1:1:void setOpenTimingSample(boolean):20:20 -> n
     1:1:boolean getOpenTimingSample():20 -> n
     1:1:void setTimingThreshold(long):22:22 -> o
     1:1:long getTimingThreshold():22 -> o
-com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$Companion -> a.f.a.a.a.d.j$b:
+com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Companion -> a.f.a.a.a.d.j$b:
     1:1:void <init>():64:64 -> <init>
-com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType -> a.f.a.a.a.d.j$c:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType SYNC -> b
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType ASYNC -> a
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType[] $VALUES -> c
+com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType -> a.f.a.a.a.d.j$c:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType SYNC -> b
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType ASYNC -> a
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType[] $VALUES -> c
     1:1:void <clinit>():61:61 -> <clinit>
     1:1:void <init>(java.lang.String,int):60:60 -> <init>
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig$MemoryMonitorType[] $values() -> a
-com.microsoft.office.outlook.magnifierlib.memory.MemorySampler -> a.f.a.a.a.d.k:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType[] $values() -> a
+com.tesla.framework.performance.omagnifier.MemorySampler -> a.f.a.a.a.d.k:
     android.os.Handler handler -> c
-    com.microsoft.office.outlook.magnifierlib.memory.ISamplePolicy policy -> b
-    com.microsoft.office.outlook.magnifierlib.memory.IMetricCollector collector -> a
+    com.tesla.framework.performance.omagnifier.ISamplePolicy policy -> b
+    com.tesla.framework.performance.omagnifier.IMetricCollector collector -> a
     kotlin.jvm.functions.Function1 onSampleListener -> d
-    1:5:void <init>(com.microsoft.office.outlook.magnifierlib.memory.IMetricCollector,com.microsoft.office.outlook.magnifierlib.memory.ISamplePolicy,android.os.Handler,kotlin.jvm.functions.Function1):10:14 -> <init>
+    1:5:void <init>(com.tesla.framework.performance.omagnifier.IMetricCollector,com.tesla.framework.performance.omagnifier.ISamplePolicy,android.os.Handler,kotlin.jvm.functions.Function1):10:14 -> <init>
     1:1:void start():28:28 -> a
     1:1:void stop():32:32 -> b
     1:6:void run():18:23 -> run
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory -> a.f.a.a.a.d.l:
-    com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$Companion Companion -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory -> a.f.a.a.a.d.l:
+    com.tesla.framework.performance.omagnifier.MemorySamplersFactory$Companion Companion -> a
     int MAX_THREADS_COUNT -> b
     1:1:void <init>():10:10 -> <init>
-    1:31:java.util.ArrayList createAsyncSamplers(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig,android.os.Handler):28:58 -> a
-    32:41:java.util.ArrayList createAsyncSamplers(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig,android.os.Handler):57:66 -> a
-    42:50:java.util.ArrayList createAsyncSamplers(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig,android.os.Handler):65:73 -> a
-    51:58:java.util.ArrayList createAsyncSamplers(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig,android.os.Handler):72:79 -> a
-    1:3:java.util.ArrayList createSamplers(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig,android.os.Handler):17:19 -> b
-    4:4:java.util.ArrayList createSamplers(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig,android.os.Handler):18:18 -> b
-    1:18:java.util.ArrayList createSyncSamplers(com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig,android.os.Handler):90:107 -> c
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$Companion -> a.f.a.a.a.d.l$a:
+    1:31:java.util.ArrayList createAsyncSamplers(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig,android.os.Handler):28:58 -> a
+    32:41:java.util.ArrayList createAsyncSamplers(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig,android.os.Handler):57:66 -> a
+    42:50:java.util.ArrayList createAsyncSamplers(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig,android.os.Handler):65:73 -> a
+    51:58:java.util.ArrayList createAsyncSamplers(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig,android.os.Handler):72:79 -> a
+    1:3:java.util.ArrayList createSamplers(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig,android.os.Handler):17:19 -> b
+    4:4:java.util.ArrayList createSamplers(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig,android.os.Handler):18:18 -> b
+    1:18:java.util.ArrayList createSyncSamplers(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig,android.os.Handler):90:107 -> c
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$Companion -> a.f.a.a.a.d.l$a:
     1:1:void <init>():112:112 -> <init>
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$WhenMappings -> a.f.a.a.a.d.l$b:
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$WhenMappings -> a.f.a.a.a.d.l$b:
     int[] $EnumSwitchMapping$0 -> a
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createAsyncSamplers$timingFileSampler$1 -> a.f.a.a.a.d.l$c:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
-    1:1:void invoke(com.microsoft.office.outlook.magnifierlib.memory.FileDescriptorInfo):37:37 -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$timingFileSampler$1 -> a.f.a.a.a.d.l$c:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
+    1:1:void invoke(com.tesla.framework.performance.omagnifier.FileDescriptorInfo):37:37 -> a
     1:1:java.lang.Object invoke(java.lang.Object):36:36 -> invoke
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createAsyncSamplers$timingHeapSampler$1 -> a.f.a.a.a.d.l$d:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
-    1:1:void invoke(com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo):33:33 -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$timingHeapSampler$1 -> a.f.a.a.a.d.l$d:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
+    1:1:void invoke(com.tesla.framework.performance.omagnifier.HeapMemoryInfo):33:33 -> a
     1:1:java.lang.Object invoke(java.lang.Object):32:32 -> invoke
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createAsyncSamplers$timingThreadSampler$1 -> a.f.a.a.a.d.l$e:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
-    1:1:void invoke(com.microsoft.office.outlook.magnifierlib.memory.ThreadInfo):41:41 -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$timingThreadSampler$1 -> a.f.a.a.a.d.l$e:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
+    1:1:void invoke(com.tesla.framework.performance.omagnifier.ThreadInfo):41:41 -> a
     1:1:java.lang.Object invoke(java.lang.Object):40:40 -> invoke
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createAsyncSamplers$topHitFileNeedSampleFunc$1 -> a.f.a.a.a.d.l$f:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$topHitFileNeedSampleFunc$1 -> a.f.a.a.a.d.l$f:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
     1:1:java.lang.Boolean invoke():64:64 -> a
     1:1:java.lang.Object invoke():64:64 -> invoke
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createAsyncSamplers$topHitFileSampler$1 -> a.f.a.a.a.d.l$g:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
-    1:1:void invoke(com.microsoft.office.outlook.magnifierlib.memory.FileDescriptorInfo):67:67 -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$topHitFileSampler$1 -> a.f.a.a.a.d.l$g:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
+    1:1:void invoke(com.tesla.framework.performance.omagnifier.FileDescriptorInfo):67:67 -> a
     1:1:java.lang.Object invoke(java.lang.Object):65:65 -> invoke
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createAsyncSamplers$topHitHeapNeedSampleFunc$1 -> a.f.a.a.a.d.l$h:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$topHitHeapNeedSampleFunc$1 -> a.f.a.a.a.d.l$h:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
     1:2:java.lang.Boolean invoke():54:55 -> a
     3:3:java.lang.Boolean invoke():54:54 -> a
     1:1:java.lang.Object invoke():53:53 -> invoke
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createAsyncSamplers$topHitHeapSampler$1 -> a.f.a.a.a.d.l$i:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
-    1:1:void invoke(com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo):60:60 -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$topHitHeapSampler$1 -> a.f.a.a.a.d.l$i:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
+    1:1:void invoke(com.tesla.framework.performance.omagnifier.HeapMemoryInfo):60:60 -> a
     1:1:java.lang.Object invoke(java.lang.Object):57:57 -> invoke
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createAsyncSamplers$topHitThreadNeedSampleFunc$1 -> a.f.a.a.a.d.l$j:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$topHitThreadNeedSampleFunc$1 -> a.f.a.a.a.d.l$j:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
     1:1:java.lang.Boolean invoke():71:71 -> a
     1:1:java.lang.Object invoke():71:71 -> invoke
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createAsyncSamplers$topHitThreadSampler$1 -> a.f.a.a.a.d.l$k:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
-    1:1:void invoke(com.microsoft.office.outlook.magnifierlib.memory.ThreadInfo):74:74 -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$topHitThreadSampler$1 -> a.f.a.a.a.d.l$k:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
+    1:1:void invoke(com.tesla.framework.performance.omagnifier.ThreadInfo):74:74 -> a
     1:1:java.lang.Object invoke(java.lang.Object):72:72 -> invoke
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createSyncSamplers$immediateFileSampler$1 -> a.f.a.a.a.d.l$l:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
-    1:1:void invoke(com.microsoft.office.outlook.magnifierlib.memory.FileDescriptorInfo):98:98 -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createSyncSamplers$immediateFileSampler$1 -> a.f.a.a.a.d.l$l:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
+    1:1:void invoke(com.tesla.framework.performance.omagnifier.FileDescriptorInfo):98:98 -> a
     1:1:java.lang.Object invoke(java.lang.Object):97:97 -> invoke
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createSyncSamplers$immediateHeapSampler$1 -> a.f.a.a.a.d.l$m:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
-    1:1:void invoke(com.microsoft.office.outlook.magnifierlib.memory.HeapMemoryInfo):94:94 -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createSyncSamplers$immediateHeapSampler$1 -> a.f.a.a.a.d.l$m:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
+    1:1:void invoke(com.tesla.framework.performance.omagnifier.HeapMemoryInfo):94:94 -> a
     1:1:java.lang.Object invoke(java.lang.Object):93:93 -> invoke
-com.microsoft.office.outlook.magnifierlib.memory.MemorySamplersFactory$createSyncSamplers$immediateThreadSampler$1 -> a.f.a.a.a.d.l$n:
-    com.microsoft.office.outlook.magnifierlib.memory.MemoryMonitorConfig $config -> a
-    1:1:void invoke(com.microsoft.office.outlook.magnifierlib.memory.ThreadInfo):102:102 -> a
+com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createSyncSamplers$immediateThreadSampler$1 -> a.f.a.a.a.d.l$n:
+    com.tesla.framework.performance.omagnifier.MemoryMonitorConfig $config -> a
+    1:1:void invoke(com.tesla.framework.performance.omagnifier.ThreadInfo):102:102 -> a
     1:1:java.lang.Object invoke(java.lang.Object):101:101 -> invoke
 com.microsoft.office.outlook.magnifierlib.memory.MemoryUtils -> a.f.a.a.a.d.m:
     int INDEX_PROC_LIMITS -> b
@@ -675,21 +675,21 @@ com.microsoft.office.outlook.magnifierlib.memory.MemoryUtils -> a.f.a.a.a.d.m:
     1:1:long readThreadsCount():30:30 -> c
     1:1:long readVmRss():26:26 -> d
     1:1:long readVss():22:22 -> e
-com.microsoft.office.outlook.magnifierlib.memory.ThreadInfo -> a.f.a.a.a.d.n:
+com.tesla.framework.performance.omagnifier.ThreadInfo -> a.f.a.a.a.d.n:
     java.util.Map threadMap -> b
     long threadsCount -> a
     1:3:void <init>(long,java.util.Map):16:18 -> <init>
     long component1() -> a
-    com.microsoft.office.outlook.magnifierlib.memory.ThreadInfo copy(long,java.util.Map) -> a
-    com.microsoft.office.outlook.magnifierlib.memory.ThreadInfo copy$default(com.microsoft.office.outlook.magnifierlib.memory.ThreadInfo,long,java.util.Map,int,java.lang.Object) -> a
+    com.tesla.framework.performance.omagnifier.ThreadInfo copy(long,java.util.Map) -> a
+    com.tesla.framework.performance.omagnifier.ThreadInfo copy$default(com.tesla.framework.performance.omagnifier.ThreadInfo,long,java.util.Map,int,java.lang.Object) -> a
     java.util.Map component2() -> b
     1:1:java.util.Map getThreadMap():18:18 -> c
     1:1:long getThreadsCount():17:17 -> d
-com.microsoft.office.outlook.magnifierlib.memory.ThreadMetricCollector -> a.f.a.a.a.d.o:
+com.tesla.framework.performance.omagnifier.ThreadMetricCollector -> a.f.a.a.a.d.o:
     1:1:void <init>():8:8 -> <init>
     1:1:java.lang.Object collect():8:8 -> a
-    1:2:com.microsoft.office.outlook.magnifierlib.memory.ThreadInfo collect():11:12 -> b
-com.microsoft.office.outlook.magnifierlib.memory.TimingSamplePolicy -> a.f.a.a.a.d.p:
+    1:2:com.tesla.framework.performance.omagnifier.ThreadInfo collect():11:12 -> b
+com.tesla.framework.performance.omagnifier.TimingSamplePolicy -> a.f.a.a.a.d.p:
     long threshold -> a
     1:1:void <init>(long):8:8 -> <init>
     boolean needSample() -> a

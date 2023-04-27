@@ -21,7 +21,7 @@ public class PingTest implements INetworkTest {
             while ((line = reader.readLine()) != null) {
                 stringBuilder.append(line + "\n");
             }
-            System.out.println(stringBuilder.toString());
+            System.out.println(stringBuilder);
 
             int exitCode = process.waitFor();
             if (exitCode == 0) {

@@ -6,6 +6,7 @@ import com.apache.fastandroid.demo.LayoutInflaterDemoFragment
 import com.apache.fastandroid.demo.countdown.CountDownDemoFragment
 import com.apache.fastandroid.demo.launchermode.LaunchModeDemoFragment
 import com.apache.fastandroid.demo.progress.ProgressDemoFragment
+import com.apache.fastandroid.demo.recycleview.AutoScrollViewDemoFragment
 import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity
 import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity2
 import com.apache.fastandroid.demo.style.FitSystemWindowFrameLayoutDemoActivity
@@ -52,6 +53,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("ViewBinding用法", "ViewBinding用法",  ViewBindingUsageDemo::class.java)
                 ,ViewItemBean("进度条组件", "进度条组件",  ProgressDemoFragment::class.java)
                 ,ViewItemBean("倒计时组件", "各种倒计时方案实现",  CountDownDemoFragment::class.java)
+                ,ViewItemBean("RecycleView滑动到指定位置", "RecycleView滑动到指定位置",  AutoScrollViewDemoFragment::class.java)
 
         )
     }

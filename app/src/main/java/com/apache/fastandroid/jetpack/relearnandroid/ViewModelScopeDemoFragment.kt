@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_viewmodel_scope.*
 /**
  * Created by Jerry on 2021/9/8.
  */
-class ViewModelScopeDemoFragment:BaseDataBindingFragment<FragmentViewmodelScopeBinding>(FragmentViewmodelScopeBindingImpl::inflate) {
+class ViewModelScopeDemoFragment:BaseDataBindingFragment<FragmentViewmodelScopeBinding>(FragmentViewmodelScopeBinding::inflate) {
 
     private lateinit var shareViewModel: ShareViewModel
 
