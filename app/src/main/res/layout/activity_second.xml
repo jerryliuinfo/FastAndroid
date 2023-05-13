@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
+
+  <androidx.appcompat.widget.AppCompatEditText
+      android:id="@+id/input"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="24dp"
+      android:hint="Type something…"
+      android:inputType="text|textCapSentences"
+      android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+      tools:ignore="Autofill,HardcodedText"
+      />
+
+  <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/button1"
+      android:layout_width="match_parent"
+      android:layout_height="56dp"
+      android:text="Success"
+      tools:ignore="HardcodedText"
+      />
+
+  <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/button2"
+      android:layout_width="match_parent"
+      android:layout_height="56dp"
+      android:text="Failure"
+      tools:ignore="HardcodedText"
+      />
+
+</LinearLayout>

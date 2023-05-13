@@ -398,6 +398,7 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
 
         SingletonByObject.count()
         SingleInstanceSync.getInstance()
+        SingleInstanceSync.getInstance2()
         SingleObject.getInstance()
     }
 

@@ -28,8 +28,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.*
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -761,5 +764,26 @@ fun View.clickNoRepeat(interval: Long = 400, onClick: (View) -> Unit) {
         onClick(it)
     }
     1.getString
+}
+
+inline fun FragmentActivity.fragmentTransaction(crossinline block: FragmentTransaction.() -> Unit) {
+    with(supportFragmentManager.beginTransaction()) {
+        block()
+        commit()
+    }
+}
+
+inline fun FragmentActivity.fragmentTransactionWithBackStack(
+    name: String? = null,
+    crossinline block: FragmentTransaction.() -> Unit,
+) {
+    fragmentTransaction {
+        block()
+        addToBackStack(name)
+    }
+}
+
+fun <T : Fragment> T.withArguments(vararg argumentPairs: Pair<String, Any?>) = apply {
+    arguments = bundleOf(*argumentPairs)
 }
 

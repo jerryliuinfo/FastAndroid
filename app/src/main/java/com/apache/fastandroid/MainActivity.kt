@@ -16,8 +16,8 @@ import androidx.navigation.ui.NavigationUI
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.recycleview.AutoScrollViewDemoFragment
-import com.apache.fastandroid.demo.weaknetwork.WeaknetWorkFragment
+import com.apache.fastandroid.demo.component.ComponentDemoFragment
+import com.apache.fastandroid.demo.recycleview.RecycleViewDemoListFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
@@ -48,6 +48,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
         }
 
         Logger.d("MainActivity mHandler:${mHandler}")
+
 
         setSupportActionBar(mBinding.toolbar)
         setupDrawer(savedInstanceState)
@@ -157,7 +158,12 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, DesignModeDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ToolsFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, AutoScrollViewDemoFragment::class.java,null,addTitleBar = true)
-        FragmentContainerActivity.launch(this, WeaknetWorkFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, WeaknetWorkFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, IntervalDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, ActivityResultDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, PerformanceDemoFragment::class.java,null,addTitleBar = true)
+        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 

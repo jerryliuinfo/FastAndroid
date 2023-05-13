@@ -1,0 +1,43 @@
+package com.apache.fastandroid.demo.recycleview
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import com.apache.fastandroid.databinding.FragmentRecycleviewDemoBinding
+import com.apache.fastandroid.demo.bean.MyData
+import com.apache.fastandroid.demo.recycleview.multiitemtype.MultiItemTypeDemoFragment1
+import com.apache.fastandroid.demo.recycleview.multiitemtype.MultiItemTypeDemoFragment2
+import com.apache.fastandroid.demo.recycleview.origin.MyDataAdapter
+import com.apache.fastandroid.demo.recycleview.origin.RecycleViewOriginFragment
+import com.tesla.framework.kt.showToast
+import com.tesla.framework.ui.activity.BaseVBFragment2
+import com.tesla.framework.ui.activity.FragmentContainerActivity
+
+/**
+ * Created by Jerry on 2023/5/10.
+ */
+class RecycleViewDemoListFragment:BaseVBFragment2<FragmentRecycleviewDemoBinding>() {
+
+    private var mAdapter:MyDataAdapter ?= null
+
+
+    override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
+        super.layoutInit(inflater, savedInstanceState)
+
+        mBinding.btnRvMultiItemtype.setOnClickListener {
+            showToast("1111")
+
+            FragmentContainerActivity.launch(requireActivity(),MultiItemTypeDemoFragment1::class.java, addTitleBar = false)
+        }
+
+        mBinding.btnRvMultiItemtype2.setOnClickListener {
+            FragmentContainerActivity.launch(requireActivity(), MultiItemTypeDemoFragment2::class.java, addTitleBar = false)
+        }
+
+        mBinding.btnRvOrigin.setOnClickListener {
+            FragmentContainerActivity.launch(requireActivity(), RecycleViewOriginFragment::class.java, addTitleBar = false)
+        }
+    }
+
+
+
+}

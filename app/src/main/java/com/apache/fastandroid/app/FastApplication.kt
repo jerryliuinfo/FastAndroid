@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Color
-import android.hardware.Camera
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
@@ -27,6 +26,7 @@ import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
 import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
 import com.apache.fastandroid.jetpack.flow.local.DatabaseHelper
 import com.apache.fastandroid.jetpack.flow.local.DatabaseHelperImpl
+import com.apache.fastandroid.jetpack.lifecycle.IAppStateListener
 import com.apache.fastandroid.jetpack.lifecycle.TraditionalProcessLifecycleListener
 import com.apache.fastandroid.network.retrofit.ApiServiceFactory
 import com.apache.fastandroid.util.Global
@@ -35,10 +35,8 @@ import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.ServiceLocator
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
-import com.kingja.loadsir.core.LoadSir
 import com.linkaipeng.oknetworkmonitor.OkNetworkMonitor
 import com.squareup.leakcanary.LeakCanary
-import com.squareup.picasso.Callback
 import com.tencent.mmkv.MMKV
 import com.tesla.framework.applike.FApplication
 import com.tesla.framework.common.device.DeviceName
@@ -119,7 +117,7 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
             initAppDress()
             initFloo()
 
-            Utils.getApp().registerActivityLifecycleCallbacks(TraditionalProcessLifecycleListener(object :TraditionalProcessLifecycleListener.LifecycleCallbackListener{
+            Utils.getApp().registerActivityLifecycleCallbacks(TraditionalProcessLifecycleListener(object :IAppStateListener{
                 override fun onAppForeground() {
                     Logger.d("onAppForeground -->")
                 }

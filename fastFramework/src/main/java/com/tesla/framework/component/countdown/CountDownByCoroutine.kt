@@ -24,17 +24,11 @@ open class CountDownByCoroutine(
         var remainSeconds = totalCount
         mJob = GlobalScope.launch {
             while (remainSeconds > 0) {
-                runOnUiThread {
-                    listener.onTick(remainSeconds)
-                }
-                delay(1000)
+                listener.onTick(remainSeconds)
+                delay(period)
                 remainSeconds--
             }
-            runOnUiThread {
-                listener.onFinish()
-            }
-
-
+            listener.onFinish()
         }
         return this
     }

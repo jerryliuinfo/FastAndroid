@@ -1,7 +1,6 @@
 package com.apache.fastandroid.jetpack.lifecycle;
 
-import android.os.Handler;
-import android.os.Message;
+import com.tesla.framework.component.logger.Logger;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,13 +28,9 @@ public class LifeGpsManager implements DefaultLifecycleObserver {
         return SingletonHolder.INSTANCE;
     }
 
-    private boolean isActive;
+     boolean isActive;
 
 
-    @Override
-    public void onPause(@NonNull LifecycleOwner owner) {
-        setActive(owner.getLifecycle());
-    }
 
     @Override
     public void onResume(@NonNull LifecycleOwner owner) {
@@ -43,16 +38,16 @@ public class LifeGpsManager implements DefaultLifecycleObserver {
         calculte();
     }
 
-    public void setActive(Lifecycle lifecycle) {
-        isActive = lifecycle.getCurrentState().isAtLeast(Lifecycle.State.STARTED);
+    @Override
+    public void onPause(@NonNull LifecycleOwner owner) {
+        setActive(owner.getLifecycle());
     }
 
-    private Handler handler = new Handler(){
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            super.handleMessage(msg);
-        }
-    };
+
+    public void setActive(Lifecycle lifecycle) {
+        isActive = lifecycle.getCurrentState().isAtLeast(Lifecycle.State.STARTED);
+        Logger.d("LifeGpsManager setActive isActive:%s",isActive);
+    }
 
     public void calculte(){
         Observable.interval(1, TimeUnit.SECONDS)

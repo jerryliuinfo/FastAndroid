@@ -12,6 +12,7 @@ import com.apache.fastandroid.demo.other.ClipChildFragment
 import com.apache.fastandroid.demo.other.ClipChildFragment2
 import com.apache.fastandroid.demo.other.ClipToPaddingFragment
 import com.apache.fastandroid.demo.other.UserfulPropertyFragment
+import com.apache.fastandroid.demo.recycleview.RecycleViewDemoListFragment
 import com.apache.fastandroid.demo.roudview.RoundViewDemoFragment
 import com.apache.fastandroid.demo.shapeimageview.ShapeImageviewDemoFragment
 import com.apache.fastandroid.demo.snaphelper.LinerSnapHelperDemoFragment
@@ -61,6 +62,7 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("GridLayoutManager", "SpanSizeLookup", GridLayoutManagerSpanSizeDemoFragment::class.java,addTitleBar = true)
                 ,ViewItemBean("RVListAdapter", "RVListAdapter", ListAdapterFragment::class.java,addTitleBar = true)
                 ,ViewItemBean("WebView", "WebView", WebViewFragment::class.java,addTitleBar = true)
+                ,ViewItemBean("列表组件", "列表组件", RecycleViewDemoListFragment::class.java,addTitleBar = true)
 
 
         )

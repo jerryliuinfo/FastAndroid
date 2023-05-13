@@ -18,6 +18,10 @@ dependencies {
     implementation Libs.gson
     implementation Libs.utilcode
     implementation Libs.brvh
+//    implementation Jetpack.paging
+    api (Jetpack.paging){
+        exclude group: "org.jetbrains.kotlinx"
+    }
 
     implementation Libs.mmkv
 

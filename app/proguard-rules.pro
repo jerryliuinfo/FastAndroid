@@ -182,4 +182,10 @@
 -keep public class com.tencent.bugly.**{*;}
 
 
+# 保持 ViewBinding 子类不被混淆。
+ -keep class * implements androidx.viewbinding.ViewBinding {
+ *;
+ }
+
+
 

@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.guide.activity
 import android.os.Bundle
 import com.apache.fastandroid.databinding.ActivityFinishOntaskLaunchBinding
 import com.tesla.framework.kt.launchActivity
+import com.tesla.framework.kt.startActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
 
 /**
@@ -14,7 +15,8 @@ class FinishOnTaskLaunchActivity:BaseVBActivity<ActivityFinishOntaskLaunchBindin
         super.layoutInit(savedInstanceState)
 
         mBinding.btnFinishOnTaskLaunch.setOnClickListener {
-            launchActivity<FinishOnTaskLaunchActivity>(this)
+            startActivity<FinishOnTaskLaunchActivity>()
+
         }
 
     }

@@ -8,16 +8,15 @@ import androidx.lifecycle.LifecycleOwner
  */
 class LifeCycleListener : DefaultLifecycleObserver {
     override fun onCreate(owner: LifecycleOwner) {
+        println("LifeCycleListener onCreate")
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
+        println("LifeCycleListener onDestroy")
     }
 
     fun addLifecycleObserver(lifecycleOwner: LifecycleOwner) {
         lifecycleOwner.lifecycle.addObserver(this)
     }
 
-    companion object {
-        val TAG = LifeCycleListener::class.java.simpleName
-    }
 }

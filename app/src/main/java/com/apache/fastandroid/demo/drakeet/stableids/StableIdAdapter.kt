@@ -17,6 +17,9 @@ class StableIdAdapter(val items: MutableList<Item>) : RecyclerView.Adapter<Stabl
     return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.drakket_stableids_item, parent, false))
   }
 
+
+
+
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     val item = items[position]
     holder.subjectView.text = item.subject

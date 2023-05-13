@@ -1,8 +1,10 @@
 package com.tesla.framework.kt
 
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.databinding.ObservableInt
 import com.blankj.utilcode.util.ToastUtils
+import com.tesla.framework.BuildConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -79,4 +81,45 @@ fun CoroutineScope.io(codeBlock: suspend CoroutineScope.() -> Unit) {
 }
 
 
+
+
+
+internal fun Any.log(
+    message: String,
+    vararg args: Any?
+) {
+    if (BuildConfig.DEBUG) {
+        try {
+            Log.d(this::class.java.simpleName, message.format(*args))
+        } catch (_: Exception) {
+        }
+    }
+}
+
+internal fun Any.warn(
+    message: String,
+    vararg args: Any?
+) {
+    if (BuildConfig.DEBUG) {
+        try {
+            Log.w(this::class.java.simpleName, message.format(*args))
+        } catch (_: Exception) {
+        }
+    }
+}
+
+internal fun Set<String>.equalsStrings(strings: Set<String>): Boolean {
+    if (this.size != strings.size) {
+        return false
+    }
+    for ((i, value) in this.withIndex()) {
+        if (value != strings.elementAt(i)) {
+            return false
+        }
+    }
+    return true
+}
+
+internal fun Set<String>.allValues(): Array<String> =
+    map { it }.toTypedArray()
 

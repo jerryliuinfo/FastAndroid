@@ -11,7 +11,6 @@ class UIWidgetDemoFragment: BaseTabLayoutFragment() {
     override fun loadPageModels(): MutableList<PageModel> {
         return arrayListOf(
             PageModel(R.layout.layout_pciker, "圆形头像"),
-            PageModel(R.layout.layout_pciker, "圆形头像"),
         )
     }
 

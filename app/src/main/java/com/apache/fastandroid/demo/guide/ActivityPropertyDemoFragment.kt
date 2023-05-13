@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.ActivityPropertyBinding
 import com.apache.fastandroid.demo.guide.activity.FinishOnTaskLaunchActivity
 import com.tesla.framework.kt.launchActivity
+import com.tesla.framework.kt.startActivity
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.util.*
 
@@ -19,7 +20,7 @@ class ActivityPropertyDemoFragment : BaseBindingFragment<ActivityPropertyBinding
         super.layoutInit(inflater, savedInstanceState)
 
         mBinding.btnFinishOnTaskLaunch.setOnClickListener {
-            launchActivity<FinishOnTaskLaunchActivity>(requireContext())
+            requireContext().startActivity<FinishOnTaskLaunchActivity>()
         }
 
         mBinding.btnManifestProperty.setOnClickListener {

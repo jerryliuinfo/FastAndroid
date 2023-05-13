@@ -11,7 +11,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:flow_horizontalAlign="start"
         app:flow_wrapMode="aligned"
-        app:constraint_referenced_ids="btn_broadcastReceiver"
+        app:constraint_referenced_ids="btn_traditional_lifecycle,btn_lifecycle_location,btn_maybeObserveLifecycle,
+        btn_dialog_dismiss,btn_lifecycle_handler,btn_broadcastReceiver,btn_custom_lifecycle"
+        />
+    <Button
+        android:id="@+id/btn_traditional_lifecycle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="传统生命周期监听位置"
+        />
+    <Button
+        android:id="@+id/btn_lifecycle_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LifeCycle监听位置"
+        />
+    <Button
+        android:id="@+id/btn_maybeObserveLifecycle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="任意对象监听生命周期"
+        />
+    <Button
+        android:id="@+id/btn_dialog_dismiss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialog自动dismiss"
+        />
+    <Button
+        android:id="@+id/btn_lifecycle_handler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="不会内存泄漏的Handler"
         />
 
     <Button
@@ -19,6 +50,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="广播注册"
+        />
+
+    <Button
+        android:id="@+id/btn_custom_lifecycle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定义 LifecycleOwner"
         />
 
 

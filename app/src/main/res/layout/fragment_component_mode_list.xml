@@ -11,7 +11,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:flow_horizontalAlign="start"
         app:flow_wrapMode="aligned"
-        app:constraint_referenced_ids="btn_timer_record"
+        app:constraint_referenced_ids="btn_timer_record,btn_Interval,btn_activity_result,btn_dialogChain"
         />
 
     <Button
@@ -20,4 +20,25 @@
         android:layout_height="wrap_content"
         android:text="时间记录"
         />
+
+    <Button
+        android:id="@+id/btn_Interval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interval"
+        />
+
+    <Button
+        android:id="@+id/btn_activity_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ActivityResultHelper"
+        />
+    <Button
+        android:id="@+id/btn_dialogChain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DialogChain"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

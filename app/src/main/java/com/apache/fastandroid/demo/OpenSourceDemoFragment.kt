@@ -45,7 +45,7 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("material-dialogs", "material-dialogs", OnceFragment::class.java)
                 ,ViewItemBean("bundler", "https://github.com/skydoves/Bundler", activity=BundleDemoActivity::class.java)
                 ,ViewItemBean("SearchPreference", "https://github.com/ByteHamster/SearchPreference", SearchPreferenceDemoListFragment::class.java)
-                ,ViewItemBean("TimerRecord", "TimerRecord", ComponentDemoFragment::class.java)
+                ,ViewItemBean("通用组件", "通用组件", ComponentDemoFragment::class.java)
 
         )
     }

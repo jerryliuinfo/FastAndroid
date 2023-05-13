@@ -138,8 +138,9 @@ object Libs {
 
         //网络抓包 https://github.com/linkaipeng/OkNetworkMonitor
         okNetworkMonitor,
+        "com.yuyashuai.frameanimation:frameanimation:2.3.6",
 
-        "ccom.facebook.network.connectionclass:connectionclass:1.0.1"
+//        "ccom.facebook.network.connectionclass:connectionclass:1.0.1"
 //        "com.github.kirchbergerknorr:PingTools:1.0.4"
     )
 
@@ -241,6 +242,7 @@ object Jetpack{
         "androidx.room:room-compiler:${Versions.Room}",
     )
 
+    val paging = "androidx.paging:paging-runtime:3.0.1"
 
     val hit = arrayOf(
         "com.google.dagger:hilt-android:${Versions.hit}",

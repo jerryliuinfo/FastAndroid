@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentWeakNetworkBinding
-import com.apache.fastandroid.demo.weaknetwork.connectionclass.ConnectionClassActivity
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +37,6 @@ class WeaknetWorkFragment:BaseBindingFragment<FragmentWeakNetworkBinding>(Fragme
         }
 
         mBinding.btnConnection.setOnClickListener {
-            requireActivity().startActivity(Intent(requireContext(),ConnectionClassActivity::class.java))
         }
 
         mBinding.btnConnectiveManager2.setOnClickListener {

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:flow_wrapMode="aligned"
+        app:constraint_referenced_ids="btn_rv_multi_itemtype,btn_rv_multi_itemtype2,btn_rv_origin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:flow_horizontalGap="10dp"
+        app:flow_verticalGap="10dp"
+        />
+
+    <Button
+        android:id="@+id/btn_rv_multi_itemtype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rv_multi_itemtype（单 bean 类型对应多样 item） "
+        />
+
+    <Button
+        android:id="@+id/btn_rv_multi_itemtype2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rv_multi_itemtype（多 bean 类型对应多样 item） "
+        />
+
+    <Button
+        android:id="@+id/btn_rv_origin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="原生实现不同类型数据展示不同样式 "
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

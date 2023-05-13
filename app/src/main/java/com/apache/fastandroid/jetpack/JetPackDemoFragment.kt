@@ -7,7 +7,7 @@ import com.apache.fastandroid.demo.room.RoomDemoFragment
 import com.apache.fastandroid.jetpack.coroutine.CoroutineDemoListFragment
 import com.apache.fastandroid.jetpack.flow.FlowDemoListFragment
 import com.apache.fastandroid.jetpack.hit.HitDemoActivity
-import com.apache.fastandroid.jetpack.lifecycle.JetPackLifeCycleDemoFragment
+import com.apache.fastandroid.jetpack.lifecycle.LifeCycleDemoListFragment
 import com.apache.fastandroid.jetpack.livedata.JetPackLiveDataListFragment
 import com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity
 import com.apache.fastandroid.jetpack.navigation.NavigationDrawerDemoActivity2
@@ -21,7 +21,7 @@ import com.apache.fastandroid.jetpack.viewmodel.JetPackViewModelListFragment
 class JetPackDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-                ViewItemBean("LifeCycle应用", "LifeCycle应用", JetPackLifeCycleDemoFragment::class.java)
+                ViewItemBean("LifeCycle应用", "LifeCycle应用", LifeCycleDemoListFragment::class.java)
                 ,ViewItemBean("LiveData", "LiveData", JetPackLiveDataListFragment::class.java)
                 ,ViewItemBean("ViewModel", "ViewModel", JetPackViewModelListFragment::class.java)
                 ,ViewItemBean("DataBindg", "DataBindg", DatabindingDemoFragment::class.java)

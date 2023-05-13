@@ -30,6 +30,12 @@ class SingleInstanceSync {
                 }
             }
         }
+
+        fun getInstance2():SingleInstanceSync{
+            return sInstance ?: SingleInstanceSync().also {
+                    sInstance = it
+                }
+        }
     }
 }
 
