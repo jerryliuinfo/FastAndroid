@@ -42,7 +42,7 @@ class ProgrammaticalySetStyleFragment: BaseBindingFragment<FragmentProgramilySet
         val relativeLayout = RelativeLayout(ContextThemeWrapper(context,R.style.relativeLayoutStyle))
         relativeLayout.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         relativeLayout.layoutParams.apply {
-            height = 100.dp.roundToInt()
+            height = 100.dp
         }
 
         content_container.addView(relativeLayout)

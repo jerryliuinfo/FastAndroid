@@ -16,26 +16,41 @@ class Person private constructor(builder: Builder):Cloneable {
     val address: String?
 
     init {
-        name = builder.mName
-        age = builder.mAge
-        address = builder.mAddress
+        name = builder.name
+        age = builder.age
+        address = builder.address
     }
 
     public override fun clone(): Any {
         return super.clone() as Person
     }
 
+    fun newBuilder():Builder = Builder(this)
+
 
     class Builder {
-        var mName: String? = null
-        var mAge: Int? = null
-        var mAddress: String? = null
 
-        fun setName(name: String) = apply { this.mName = name }
+        var name: String? = null
+        var age: Int? = null
+        var address: String? = null
 
-        fun setAge(age: Int) = apply { this.mAge = age }
+        internal constructor() {
 
-        fun setAddress(address: String) = apply { this.mAddress = address }
+        }
+        internal constructor(person: Person) {
+           this.name = person.name
+            this.age = person.age
+            this.address = person.address
+        }
+
+
+
+
+        fun setName(name: String) = apply { this.name = name }
+
+        fun setAge(age: Int) = apply { this.age = age }
+
+        fun setAddress(address: String) = apply { this.address = address }
 
         fun build(): Person {
             return Person(this)

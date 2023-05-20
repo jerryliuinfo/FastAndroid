@@ -14,7 +14,7 @@ import com.tesla.framework.kt.dpInt
  */
 class CommentItemDecoration(val context:Context): RecyclerView.ItemDecoration() {
     private val marginHorizontal = 2.dp
-    private var RADIS = 10.dp
+    private var RADIS = 10f.dp
 
     private val mCirclePaint = Paint().apply {
         style = Paint.Style.STROKE

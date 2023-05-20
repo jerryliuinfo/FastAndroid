@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:flow_wrapMode="aligned"
-        app:constraint_referenced_ids="btn_rv_multi_itemtype,btn_rv_multi_itemtype2,btn_rv_origin"
+        app:constraint_referenced_ids="btn_rv_multi_itemtype,btn_rv_multi_itemtype2,btn_rv_origin,btn_base_adapter,btn_base_adapter_multi_type"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:flow_horizontalGap="10dp"
@@ -34,6 +34,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="原生实现不同类型数据展示不同样式 "
+        />
+    <Button
+        android:id="@+id/btn_base_adapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BaseAdapter"
+        />
+    <Button
+        android:id="@+id/btn_base_adapter_multi_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支持多种样式"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

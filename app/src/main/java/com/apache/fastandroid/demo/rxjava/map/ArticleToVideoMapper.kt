@@ -2,7 +2,7 @@ package com.apache.fastandroid.demo.rxjava.map
 
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.network.model.ArticleApi
-import com.apache.fastandroid.network.response.BaseResponse
+import com.apache.fastandroid.network.model.result.BaseResponse
 import io.reactivex.rxjava3.functions.Function
 
 /**

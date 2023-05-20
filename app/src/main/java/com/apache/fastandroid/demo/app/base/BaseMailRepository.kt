@@ -1,6 +1,6 @@
 package com.apache.fastandroid.demo.app.base
 
-import com.apache.fastandroid.network.retrofit.ApiService
+import com.apache.fastandroid.network.api.ApiService
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
 
 /**

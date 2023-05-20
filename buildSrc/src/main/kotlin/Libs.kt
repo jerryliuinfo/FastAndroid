@@ -176,7 +176,10 @@ object Libs {
         "com.squareup.retrofit2:retrofit:${Versions.retrofit}",
         "com.squareup.retrofit2:converter-gson:${Versions.retrofit}",
         "com.squareup.retrofit2:converter-scalars:${Versions.retrofit}",
-        "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofitRxjava}"
+        "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofitRxjava}",
+
+//        "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.kotlinxSerializationConverter}",
+//        "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.serializationJson}"
     )
 
 

@@ -53,7 +53,7 @@ class RecycleViewItemDecorationFragment2: BaseBindingFragment<RecycleviewItemDec
                 layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL,false)
 
                 val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-                    strokeWidth = 2.dp
+                    strokeWidth = 2f.dp
                     color = Color.BLUE
                     pathEffect = DashPathEffect(floatArrayOf(25f,0f,25f,0f),0f)
                 }

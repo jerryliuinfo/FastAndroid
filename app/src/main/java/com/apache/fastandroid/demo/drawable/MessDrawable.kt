@@ -13,7 +13,7 @@ class MessDrawable(): Drawable() {
         private const val TAG = "MessDrawable"
     }
     private val mPaint = Paint().apply {
-        strokeWidth = 5.dp
+        strokeWidth = 5f.dp
         color = Color.RED
     }
     override fun draw(canvas: Canvas) {

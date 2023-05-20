@@ -19,7 +19,7 @@ class DrawableView(context: Context?, attrs: AttributeSet?) : View(context, attr
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        drawable.setBounds(20.dp.toInt(),40.dp.toInt(),width,height)
+        drawable.setBounds(20.dp.toInt(), 40.dp,width,height)
         drawable.draw(canvas)
     }
 }

@@ -2,7 +2,7 @@ package com.apache.fastandroid.demo.app.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.apache.fastandroid.network.response.BaseResponse
+import com.apache.fastandroid.network.model.result.BaseResponse
 import com.tesla.framework.component.viewstate.State
 import com.zwb.mvvm_mall.base.viewstate.StateType
 import kotlinx.coroutines.launch

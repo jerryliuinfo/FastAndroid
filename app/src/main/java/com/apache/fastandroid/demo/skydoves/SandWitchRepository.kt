@@ -1,7 +1,7 @@
 package com.apache.fastandroid.demo.skydoves
 
 import com.apache.fastandroid.base.BaseRepository
-import com.apache.fastandroid.network.retrofit.ApiServiceFactory
+import com.apache.fastandroid.network.api.ApiServiceFactory
 
 /**
  * Created by Jerry on 2022/5/1.

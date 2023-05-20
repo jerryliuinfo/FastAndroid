@@ -21,7 +21,7 @@ class RetryInterceptor(private val maxRetry:Int = MAX_RETRIES ) : Interceptor {
         var tryCount = 0
         var backoffTimeMs = INITIAL_BACKOFF_MS
 
-        while (!response.isSuccessful && tryCount < MAX_RETRIES) {
+        while (!response.isSuccessful && tryCount < maxRetry) {
             tryCount++
             response.close()
 

@@ -51,6 +51,7 @@ object OkHttpClientManager {
             addNetworkInterceptor(NetLogInterceptor())
             addNetworkInterceptor(CookieInterceptor())
             addNetworkInterceptor(OkNetworkMonitorInterceptor())
+//            addNetworkInterceptor(RetryInterceptor())
         }.apply {
             addNetworkInterceptor(OkNetworkMonitorInterceptor())
             eventListenerFactory(NetworkEventListener.Companion.FACTORY)

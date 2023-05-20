@@ -61,28 +61,39 @@ import kotlin.math.pow
 /**
  * dp转换成px
  */
-fun Context.dp(dpValue: Float): Float {
-    var scale = resources.displayMetrics.density;
-    return dpValue * scale + 0.5f
-}
+//fun Context.dp(dpValue: Float): Float {
+//    var scale = resources.displayMetrics.density;
+//    return dpValue * scale + 0.5f
+//}
 
-fun Context.dpInt(dpValue: Float): Int {
-    return dp(dpValue).toInt()
-}
+//fun Context.dpInt(dpValue: Float): Int {
+//    return dp(dpValue).toInt()
+//}
 
-val Float.dp
-    get() = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,
-        this,
-        Resources.getSystem().displayMetrics
-    )
+val Float.dp:Float
+    get()  {
+        val scale = Resources.getSystem().displayMetrics.density
+        return (this * scale + 0.5).toFloat()
+    }
 
 
-val Int.dp
-    get() = this.toFloat().dp
+val Int.dp:Int
+    get() {
+        val scale = Resources.getSystem().displayMetrics.density
+        return (this * scale + 0.5).toInt()
+    }
 
-val Int.dpInt
-    get() = this.dp.toInt()
+val Double.dp: Double
+    get() {
+        val scale = Resources.getSystem().displayMetrics.density
+        return this * scale + 0.5
+    }
+
+val Int.dpInt:Int
+    get() = this.dp
+
+
+
 
 
 
@@ -99,27 +110,10 @@ val Int.sp
     get() = this.toFloat().sp
 
 
-fun Float.powWrapp(n: Int): Float = this.pow(n)
 
 
 
-fun Int.getName(): String {
-    return when (this) {
-        1 -> "AAA"
-        2 -> "BBB"
-        3 -> "CCC"
-        else -> "AAA"
-    }
-}
 
-fun Int.getValue(): String = kotlin.run {
-    when (this) {
-        1 -> "AAA"
-        2 -> "BBB"
-        3 -> "CCC"
-        else -> "AAA"
-    }
-}
 
 
 fun  Int.networkStatus(): String {
@@ -737,41 +731,6 @@ fun ViewPager.doSelected(selected: (Int) -> Unit) {
 
 
 
-/**
- * 防止重复点击,可同时注册多个view
- */
-fun setNoRepeatClick(vararg views: View, interval: Long = 400, onClick: (View) -> Unit) {
-    views.forEach {
-        it.clickNoRepeat(interval = interval) { view ->
-            onClick.invoke(view)
-        }
-    }
-}
-
-/**
- * 防止重复点击
- * @param interval 重复间隔
- * @param onClick  事件响应
- */
-var lastTime = 0L
-fun View.clickNoRepeat(interval: Long = 400, onClick: (View) -> Unit) {
-    setOnClickListener {
-        val currentTime = System.currentTimeMillis()
-        if (lastTime != 0L && (currentTime - lastTime < interval)) {
-            return@setOnClickListener
-        }
-        lastTime = currentTime
-        onClick(it)
-    }
-    1.getString
-}
-
-inline fun FragmentActivity.fragmentTransaction(crossinline block: FragmentTransaction.() -> Unit) {
-    with(supportFragmentManager.beginTransaction()) {
-        block()
-        commit()
-    }
-}
 
 inline fun FragmentActivity.fragmentTransactionWithBackStack(
     name: String? = null,
@@ -782,8 +741,3 @@ inline fun FragmentActivity.fragmentTransactionWithBackStack(
         addToBackStack(name)
     }
 }
-
-fun <T : Fragment> T.withArguments(vararg argumentPairs: Pair<String, Any?>) = apply {
-    arguments = bundleOf(*argumentPairs)
-}
-

@@ -1,9 +1,7 @@
 package com.apache.fastandroid.network.util
 
-import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.model.Resource
 import com.tesla.framework.component.logger.Logger
-
 import kotlinx.coroutines.*
 
 

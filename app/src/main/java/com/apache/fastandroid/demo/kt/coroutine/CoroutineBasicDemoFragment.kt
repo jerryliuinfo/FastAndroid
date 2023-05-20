@@ -30,6 +30,8 @@ class CoroutineBasicDemoFragment:BaseBindingFragment<FragmentCoroutineBasicBindi
         super.layoutInit(inflater, savedInstanceState)
 
 
+
+
         mBinding.btnFirstCoroutine.setOnClickListener {
             firstCoroutineExample()
         }

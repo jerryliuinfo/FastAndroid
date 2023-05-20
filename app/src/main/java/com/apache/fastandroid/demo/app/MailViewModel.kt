@@ -10,8 +10,7 @@ import com.apache.fastandroid.home.network.HomeNetwork
 import com.apache.fastandroid.network.model.ArticleApi
 import com.apache.fastandroid.network.model.DataHolder
 import com.apache.fastandroid.network.model.ErrorHolder
-import com.apache.fastandroid.network.response.BaseResponse
-import com.tesla.framework.component.logger.Logger
+import com.apache.fastandroid.network.model.result.BaseResponse
 import com.tesla.framework.kt.io
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch

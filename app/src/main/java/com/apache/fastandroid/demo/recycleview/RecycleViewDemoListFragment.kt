@@ -8,6 +8,8 @@ import com.apache.fastandroid.demo.recycleview.multiitemtype.MultiItemTypeDemoFr
 import com.apache.fastandroid.demo.recycleview.multiitemtype.MultiItemTypeDemoFragment2
 import com.apache.fastandroid.demo.recycleview.origin.MyDataAdapter
 import com.apache.fastandroid.demo.recycleview.origin.RecycleViewOriginFragment
+import com.apache.fastandroid.demo.recycleview.zhy.BaseAdapterMultiItemDemoFragment
+import com.apache.fastandroid.demo.recycleview.zhy.BaseAdapterRecycleViewDemoFragment
 import com.tesla.framework.kt.showToast
 import com.tesla.framework.ui.activity.BaseVBFragment2
 import com.tesla.framework.ui.activity.FragmentContainerActivity
@@ -35,6 +37,12 @@ class RecycleViewDemoListFragment:BaseVBFragment2<FragmentRecycleviewDemoBinding
 
         mBinding.btnRvOrigin.setOnClickListener {
             FragmentContainerActivity.launch(requireActivity(), RecycleViewOriginFragment::class.java, addTitleBar = false)
+        }
+        mBinding.btnBaseAdapter.setOnClickListener {
+            FragmentContainerActivity.launch(requireActivity(), BaseAdapterRecycleViewDemoFragment::class.java, addTitleBar = false)
+        }
+        mBinding.btnBaseAdapterMultiType.setOnClickListener {
+            FragmentContainerActivity.launch(requireActivity(), BaseAdapterMultiItemDemoFragment::class.java, addTitleBar = false)
         }
     }
 

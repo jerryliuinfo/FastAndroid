@@ -6,8 +6,8 @@ import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.db.HomeDatabase
 import com.apache.fastandroid.home.network.HomeNetwork
-import com.apache.fastandroid.network.response.BaseResponse
-import com.apache.fastandroid.network.response.EmptyResponse
+import com.apache.fastandroid.network.model.result.BaseResponse
+import com.apache.fastandroid.network.model.result.EmptyResponse
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.blankj.utilcode.util.NetworkUtils
 import kotlinx.coroutines.*

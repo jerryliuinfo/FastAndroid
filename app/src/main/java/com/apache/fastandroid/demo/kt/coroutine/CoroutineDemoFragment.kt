@@ -12,9 +12,9 @@ import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.db.HomeDatabase
 import com.apache.fastandroid.home.network.HomeNetwork
 import com.apache.fastandroid.network.model.Repo
-import com.apache.fastandroid.network.response.BaseResponse
-import com.apache.fastandroid.network.response.EmptyResponse
-import com.apache.fastandroid.network.retrofit.ApiService
+import com.apache.fastandroid.network.model.result.BaseResponse
+import com.apache.fastandroid.network.model.result.EmptyResponse
+import com.apache.fastandroid.network.api.ApiService
 import com.apache.fastandroid.network.retrofit.convertor.CustomGsonConverterFactory
 import com.apache.fastandroid.util.extensitons.runOnUi
 import com.blankj.utilcode.util.ToastUtils
@@ -129,7 +129,7 @@ class CoroutineDemoFragment :
     private fun callbackToSuspend() {
         mainScope.launch {
             try {
-                val result:BaseResponse<EmptyResponse> = viewModel.callbackToSuspend()
+                val result: BaseResponse<EmptyResponse> = viewModel.callbackToSuspend()
                 println("result:${result}")
             } catch (e: Exception) {
                 e.printStackTrace()

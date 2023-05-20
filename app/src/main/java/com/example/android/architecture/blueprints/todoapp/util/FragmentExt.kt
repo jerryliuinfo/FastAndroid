@@ -90,7 +90,7 @@ inline val Fragment.viewLifecycleScope: LifecycleCoroutineScope
 
 
 private fun Fragment.calculateGridSpanCount(): Int {
-    val displayMetrics: DisplayMetrics = getResources().getDisplayMetrics()
+    val displayMetrics: DisplayMetrics = resources.displayMetrics
     val displayWidth = displayMetrics.widthPixels
     val itemSize: Int = getResources().getDimensionPixelSize(R.dimen.cat_toc_item_size)
     val gridSpanCount = displayWidth / itemSize

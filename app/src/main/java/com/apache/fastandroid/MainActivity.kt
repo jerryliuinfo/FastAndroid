@@ -17,7 +17,9 @@ import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.component.ComponentDemoFragment
+import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.recycleview.RecycleViewDemoListFragment
+import com.apache.fastandroid.demo.showcase.AlbumListFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
@@ -162,7 +164,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, IntervalDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ActivityResultDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, PerformanceDemoFragment::class.java,null,addTitleBar = true)
-        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
+        FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")

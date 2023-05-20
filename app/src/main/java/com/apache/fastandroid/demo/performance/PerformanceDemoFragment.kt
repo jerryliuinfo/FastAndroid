@@ -17,7 +17,7 @@ import com.apache.fastandroid.demo.slimber.SlimberFragment
  */
 class PerformanceDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
-        return arrayListOf(
+        return arrayListOf (
                 ViewItemBean("AnrWatchDog", "AnrWatchDog", AnrWatchDogDemoFragment::class.java)
                 ,ViewItemBean("BlockCancary", "BlockCancary", BlockCancaryDemoFragment::class.java)
                 ,ViewItemBean("LargetImageMonitor", "大图监控", LargeImageDemoFragment::class.java)

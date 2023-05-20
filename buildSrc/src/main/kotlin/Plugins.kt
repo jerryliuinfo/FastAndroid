@@ -8,6 +8,7 @@ object Plugins {
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
     //Navigation 传递参数插件
     const val navigationSafeargs = "androidx.navigation.safeargs.kotlin"
+    const val kotlinSerialization = "org.jetbrains.kotlin.plugin.serialization"
 
 
 

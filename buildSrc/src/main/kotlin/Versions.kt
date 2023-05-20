@@ -36,6 +36,8 @@ object Versions {
     const val okhttp = "4.9.0"
     const val retrofit = "2.9.0"
     const val retrofitRxjava = "2.9.0"
+    const val kotlinxSerializationConverter = "0.8.0"
+    const val serializationJson = "1.5.0"
 
     const val workmanager = "2.2.0"
     const val multidex = "2.0.0"

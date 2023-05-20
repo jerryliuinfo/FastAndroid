@@ -28,7 +28,7 @@ import com.apache.fastandroid.jetpack.flow.local.DatabaseHelper
 import com.apache.fastandroid.jetpack.flow.local.DatabaseHelperImpl
 import com.apache.fastandroid.jetpack.lifecycle.IAppStateListener
 import com.apache.fastandroid.jetpack.lifecycle.TraditionalProcessLifecycleListener
-import com.apache.fastandroid.network.retrofit.ApiServiceFactory
+import com.apache.fastandroid.network.api.ApiServiceFactory
 import com.apache.fastandroid.util.Global
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.ToastUtils

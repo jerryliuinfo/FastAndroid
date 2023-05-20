@@ -1,8 +1,7 @@
 package com.apache.fastandroid.jetpack.flow.api
 
-import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.network.model.ApiUser
-import com.apache.fastandroid.network.retrofit.FlowApiService
+import com.apache.fastandroid.network.api.FlowApiService
 import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

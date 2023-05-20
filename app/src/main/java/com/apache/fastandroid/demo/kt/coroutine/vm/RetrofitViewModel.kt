@@ -1,24 +1,17 @@
 package com.apache.fastandroid.demo.kt.coroutine.vm
 
-import android.view.View
 import androidx.lifecycle.*
 import com.apache.fastandroid.demo.repository.AppRepository
 import com.apache.fastandroid.demo.repository.FollowersRepository
-import com.apache.fastandroid.jetpack.flow.api.ApiHelper
 import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
-import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.network.model.ApiUser
 import com.apache.fastandroid.network.model.Resource
-import com.apache.fastandroid.network.model.Status
-import com.apache.fastandroid.network.retrofit.ApiServiceFactory
-import com.blankj.utilcode.util.ToastUtils
+import com.apache.fastandroid.network.api.ApiServiceFactory
 import com.tesla.framework.component.logger.Logger
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 /**
  * Created by Jerry on 2022/5/16.

@@ -17,6 +17,7 @@ class BestPracticeDemoFragment: BaseListFragment() {
             ,ViewItemBean("MaterailTheme", "MaterailTheme",ThemeSummaryFragment::class.java)
             ,ViewItemBean("网络监听", "网络监听",NetworkDemoFragment::class.java)
             ,ViewItemBean("优雅式例代码", "优雅式例代码",ElegantDemoFragment::class.java)
+            ,ViewItemBean("ShowCase", "ShowCase",ElegantDemoFragment::class.java)
 
         )
     }

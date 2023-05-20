@@ -18,10 +18,10 @@ package com.android.example.github.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.android.example.github.api.ApiEmptyResponse
-import com.android.example.github.api.ApiErrorResponse
-import com.android.example.github.api.ApiResponse
-import com.android.example.github.api.ApiSuccessResponse
+import com.apache.fastandroid.network.model.result.ApiEmptyResponse
+import com.apache.fastandroid.network.model.result.ApiErrorResponse
+import com.apache.fastandroid.network.model.result.ApiResponse
+import com.apache.fastandroid.network.model.result.ApiSuccessResponse
 import com.android.example.github.api.GithubService
 import com.android.example.github.db.GithubDb
 import com.android.example.github.vo.RepoSearchResult

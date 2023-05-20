@@ -30,6 +30,10 @@ import com.android.example.github.ui.search.SearchViewModel
 import com.android.example.github.ui.user.UserViewModel
 import com.apache.fastandroid.demo.kt.coroutine.vm.RetrofitViewModel
 import com.apache.fastandroid.demo.repository.AppRepository
+import com.apache.fastandroid.demo.showcase.AlbumListViewModel
+import com.apache.fastandroid.demo.showcase.repository.AlbumRepositoryImpl
+import com.apache.fastandroid.demo.showcase.service.AlbumRetrofitService
+import com.apache.fastandroid.demo.showcase.usecase.GetAlbumListUseCase
 import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.HomeViewModel
 import com.apache.fastandroid.home.db.HomeDatabase
@@ -47,7 +51,10 @@ import com.apache.fastandroid.jetpack.flow.single.SingleNetworkCallViewModel
 import com.apache.fastandroid.jetpack.flow.stateflow.MutableStateViewModel
 import com.apache.fastandroid.jetpack.flow.task.twotasks.TwoLongRunningTasksViewModel
 import com.apache.fastandroid.jetpack.flow.vm.PostViewModel
-import com.apache.fastandroid.network.retrofit.ApiServiceFactory
+import com.apache.fastandroid.network.api.ApiServiceFactory
+import com.apache.fastandroid.network.api.FlowApiService
+import com.apache.fastandroid.network.retrofit.ApiConstant
+import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTaskViewModel
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
@@ -157,6 +164,16 @@ class ViewModelFactory constructor(
                 MutableStateViewModel(ApiHelperImpl(ApiServiceFactory.flowService))
             }
 
+
+            /*isAssignableFrom(AlbumListViewModel::class.java) ->{
+
+                val apiService: AlbumRetrofitService =  RetrofitFactory.get().create(
+                    AlbumRetrofitService::class.java,
+                    "http://ws.audioscrobbler.com/2.0/"
+                )
+                AlbumListViewModel(SavedStateHandle(), GetAlbumListUseCase(AlbumRepositoryImpl(apiService)))
+            }
+*/
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

@@ -1,6 +1,6 @@
 package com.apache.fastandroid.network.retrofit
 
-import com.apache.fastandroid.network.response.BaseResponse
+import com.apache.fastandroid.network.model.result.BaseResponse
 import com.apache.fastandroid.network.util.ErrorCode
 import com.apache.fastandroid.network.util.NetworkException
 import retrofit2.HttpException

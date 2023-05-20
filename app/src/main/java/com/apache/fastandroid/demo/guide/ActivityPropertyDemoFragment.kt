@@ -24,7 +24,7 @@ class ActivityPropertyDemoFragment : BaseBindingFragment<ActivityPropertyBinding
         }
 
         mBinding.btnManifestProperty.setOnClickListener {
-            launchActivity<ManifestDemoActivity>(requireContext())
+            requireContext().startActivity<ManifestDemoActivity>()
         }
 
         mBinding.btnIntentFilter.setOnClickListener {

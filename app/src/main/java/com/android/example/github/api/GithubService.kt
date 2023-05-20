@@ -20,6 +20,7 @@ import androidx.lifecycle.LiveData
 import com.android.example.github.vo.Contributor
 import com.android.example.github.vo.Repo
 import com.android.example.github.vo.GithubUser
+import com.apache.fastandroid.network.model.result.ApiResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

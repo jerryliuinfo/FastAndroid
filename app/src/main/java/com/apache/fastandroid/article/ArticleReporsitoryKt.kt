@@ -1,6 +1,6 @@
 package com.apache.fastandroid.article
 
-import com.apache.fastandroid.network.response.EmptyResponse
+import com.apache.fastandroid.network.model.result.EmptyResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

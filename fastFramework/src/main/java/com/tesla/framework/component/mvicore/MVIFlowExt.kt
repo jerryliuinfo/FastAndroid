@@ -1,12 +1,8 @@
-package com.zj.mvi.core
+package com.tesla.framework.component.mvicore
 
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenStarted
-import com.tesla.framework.component.mvicore.StateTuple1
-import com.tesla.framework.component.mvicore.StateTuple2
-import com.tesla.framework.component.mvicore.StateTuple3
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlin.reflect.KProperty1

@@ -17,6 +17,8 @@ buildscript {
         google()
           maven { url 'https://jitpack.io' }
         maven { url "https://plugins.gradle.org/m2/" }
+        maven{url "https://oss.sonatype.org/content/repositories/snapshots"}
+
 
 
     }
@@ -31,6 +33,7 @@ buildscript {
         classpath PluginConfig.pablo
         classpath PluginConfig.paranoid
 
+//        classpath PluginConfig.kotlin_serialization
 
 
         //https://github.com/iwhys/sdk-editor-plugin
@@ -92,6 +95,8 @@ allprojects {
         google()
         maven { url "https://jitpack.io" }
         maven { url "https://plugins.gradle.org/m2/" }
+        maven{url "https://oss.sonatype.org/content/repositories/snapshots"}
+
     }
     configurations.all {
         resolutionStrategy.force "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"

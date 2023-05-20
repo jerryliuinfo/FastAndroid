@@ -13,7 +13,7 @@ import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.rxjava.operator.RetryWithDelay
 import com.apache.fastandroid.network.model.FakeToken
 import com.apache.fastandroid.network.model.HomeArticleResponse
-import com.apache.fastandroid.network.response.BaseResponse
+import com.apache.fastandroid.network.model.result.BaseResponse
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.apache.fastandroid.util.AccessDenyException
 import com.apache.fastandroid.util.NetworkException

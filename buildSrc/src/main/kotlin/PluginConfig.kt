@@ -10,4 +10,6 @@ object PluginConfig {
     const val navigation = "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
     const val pablo = "io.michaelrocks.pablo:pablo:1.3.1"
     const val paranoid = "io.michaelrocks:paranoid-gradle-plugin:0.3.7"
+
+//    const val kotlin_serialization = "org.jetbrains.kotlin.plugin.serialization:${Versions.kgp}"
 }

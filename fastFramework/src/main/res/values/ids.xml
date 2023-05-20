@@ -3,4 +3,6 @@
     <item type="id" name="single_click_tag_last_single_click_millis" />
     <item name="tag_view_binding" type="id" />
 
+    <item name="tag_navigation_destination_id" type="id"/>
+
 </resources>

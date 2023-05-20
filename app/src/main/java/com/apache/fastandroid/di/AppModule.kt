@@ -3,14 +3,12 @@ package com.apache.fastandroid.di
 import com.apache.fastandroid.jetpack.flow.api.ApiHelper
 import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
 import com.apache.fastandroid.jetpack.flow.vm.PostViewModel
-import com.apache.fastandroid.jetpack.hit.Repository
-import com.apache.fastandroid.network.retrofit.ApiServiceFactory
-import com.apache.fastandroid.network.retrofit.FlowApiService
+import com.apache.fastandroid.network.api.ApiServiceFactory
+import com.apache.fastandroid.network.api.FlowApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import retrofit2.Retrofit
 import javax.inject.Singleton
 
 /**
