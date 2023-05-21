@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
 import com.seiko.demo.course.CourseType
-import com.tesla.framework.component.imageloader.ImageLoader
+import com.tesla.framework.component.imageloader.ImageLoaderManager
 
 class OnlineActivityLayout @JvmOverloads constructor(
     context: Context,
@@ -29,7 +29,7 @@ class OnlineActivityLayout @JvmOverloads constructor(
     }
 
     init {
-        ImageLoader.load(this, R.mipmap.bg_attend_class)
+        ImageLoaderManager.load(this, R.mipmap.bg_attend_class)
 
         val courseTypes = arrayOf(
             CourseType.Stage,

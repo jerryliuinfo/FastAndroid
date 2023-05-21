@@ -9,7 +9,7 @@ import androidx.core.view.isVisible
 import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
 import com.tesla.framework.common.util.DrawableUtils
-import com.tesla.framework.component.imageloader.ImageLoader
+import com.tesla.framework.component.imageloader.ImageLoaderManager
 
 class WhiteBoardUtilLayout @JvmOverloads constructor(
     context: Context,
@@ -85,17 +85,17 @@ class WhiteBoardUtilLayout @JvmOverloads constructor(
             topLeft = 6.dp,
             bottomLeft = 6.dp
         )
-        ImageLoader.load(btnShowPen, R.mipmap.whiteboard_pen)
-        ImageLoader.load(btnRetreat, R.mipmap.whiteboard_retreat)
-        ImageLoader.load(btnClear, R.mipmap.whiteboard_clear)
-        ImageLoader.load(penColorRed, R.drawable.select_board_red)
-        ImageLoader.load(penColorGreen, R.drawable.select_board_green)
-        ImageLoader.load(penColorOrange, R.drawable.select_board_orange)
-        ImageLoader.load(penColorBlue, R.drawable.select_board_blue)
-        ImageLoader.load(penColorBlack, R.drawable.select_board_black)
-        ImageLoader.load(pen0, R.drawable.select_boardpen1)
-        ImageLoader.load(pen2, R.drawable.select_boardpen2)
-        ImageLoader.load(pen4, R.drawable.select_boardpen4)
+        ImageLoaderManager.load(btnShowPen, R.mipmap.whiteboard_pen)
+        ImageLoaderManager.load(btnRetreat, R.mipmap.whiteboard_retreat)
+        ImageLoaderManager.load(btnClear, R.mipmap.whiteboard_clear)
+        ImageLoaderManager.load(penColorRed, R.drawable.select_board_red)
+        ImageLoaderManager.load(penColorGreen, R.drawable.select_board_green)
+        ImageLoaderManager.load(penColorOrange, R.drawable.select_board_orange)
+        ImageLoaderManager.load(penColorBlue, R.drawable.select_board_blue)
+        ImageLoaderManager.load(penColorBlack, R.drawable.select_board_black)
+        ImageLoaderManager.load(pen0, R.drawable.select_boardpen1)
+        ImageLoaderManager.load(pen2, R.drawable.select_boardpen2)
+        ImageLoaderManager.load(pen4, R.drawable.select_boardpen4)
 
         pen0.isSelected = true
         penColorBlack.isSelected = true

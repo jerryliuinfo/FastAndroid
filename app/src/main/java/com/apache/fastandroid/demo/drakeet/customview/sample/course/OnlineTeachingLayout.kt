@@ -10,7 +10,7 @@ import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
 import com.seiko.demo.course.CourseType
 import com.seiko.demo.course.WhiteBoardUtilLayout
-import com.tesla.framework.component.imageloader.ImageLoader
+import com.tesla.framework.component.imageloader.ImageLoaderManager
 
 class OnlineTeachingLayout @JvmOverloads constructor(
     context: Context,
@@ -65,16 +65,16 @@ class OnlineTeachingLayout @JvmOverloads constructor(
     private val padding = 10.dp
 
     init {
-        ImageLoader.load(teacher.avatar, R.mipmap.ic_default_attend_head)
-        ImageLoader.load(student1.avatar, R.mipmap.ic_default_attend_head)
-        ImageLoader.load(student2.avatar, R.mipmap.ic_default_attend_head)
-        ImageLoader.load(student3.avatar, R.mipmap.ic_default_attend_head)
-        ImageLoader.load(student4.avatar, R.mipmap.ic_default_attend_head)
-        ImageLoader.load(whiteBoardPublic, Color.WHITE, 6.dp)
-        ImageLoader.load(whiteBoardPrivate, Color.WHITE, 6.dp)
-        ImageLoader.load(musicalPreview, R.mipmap.ic_attend_musicscore)
-        ImageLoader.load(musicalKnock, Color.WHITE, 12.dp)
-        ImageLoader.load(courseMedia, "#FED85F", 6.dp)
+        ImageLoaderManager.load(teacher.avatar, R.mipmap.ic_default_attend_head)
+        ImageLoaderManager.load(student1.avatar, R.mipmap.ic_default_attend_head)
+        ImageLoaderManager.load(student2.avatar, R.mipmap.ic_default_attend_head)
+        ImageLoaderManager.load(student3.avatar, R.mipmap.ic_default_attend_head)
+        ImageLoaderManager.load(student4.avatar, R.mipmap.ic_default_attend_head)
+        ImageLoaderManager.load(whiteBoardPublic, Color.WHITE, 6.dp)
+        ImageLoaderManager.load(whiteBoardPrivate, Color.WHITE, 6.dp)
+        ImageLoaderManager.load(musicalPreview, R.mipmap.ic_attend_musicscore)
+        ImageLoaderManager.load(musicalKnock, Color.WHITE, 12.dp)
+        ImageLoaderManager.load(courseMedia, "#FED85F", 6.dp)
         teacher.name.text = "老师"
         student1.name.text = "学生1"
         student2.name.text = "学生2"

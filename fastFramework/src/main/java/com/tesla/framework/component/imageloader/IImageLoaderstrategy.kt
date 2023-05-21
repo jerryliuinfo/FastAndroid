@@ -1,29 +1,22 @@
-package com.tesla.framework.component.imageloader;
+package com.tesla.framework.component.imageloader
 
-import android.content.Context;
-import androidx.annotation.NonNull;
-
+import android.content.Context
+import android.widget.ImageView
 
 /**
  * Created by Administrator on 2017/3/20 0020.
  */
+interface IImageLoaderstrategy {
 
-public interface IImageLoaderstrategy {
+    fun showImage(imageView: ImageView, url: String?, options: ImageOptions?= null)
 
-    void showImage(@NonNull ImageLoaderOptions options);
-
-    void cleanMemory(Context context);
+    fun cleanMemory(context: Context)
 
     /**
      * 有些图片框架显示图片需要做一些初始化配置
      * @param context
      */
-    void init(Context context);
-
-    void pause(Context context);
-
-    void resume(Context context);
-
-
-
+    fun init(context: Context)
+    fun pause(context: Context)
+    fun resume(context: Context)
 }

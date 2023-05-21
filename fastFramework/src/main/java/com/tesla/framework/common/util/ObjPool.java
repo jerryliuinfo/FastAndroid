@@ -44,7 +44,7 @@ public abstract class ObjPool<T, R> {
 		    t = newInstance(r);
 		}
 		if (t != null && t instanceof Initable) {
-			((Initable<R>) t).init(r);
+			((Initable<R>) t).onInit(r);
 		}
 		return t;
 	}
@@ -82,6 +82,6 @@ public abstract class ObjPool<T, R> {
 		void reset();
 	}
 	public interface Initable<R> {
-		void init(R r);
+		void onInit(R r);
 	}
 }

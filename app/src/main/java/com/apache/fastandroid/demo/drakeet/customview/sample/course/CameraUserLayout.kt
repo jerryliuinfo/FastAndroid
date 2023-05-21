@@ -14,7 +14,7 @@ import android.widget.TextView
 import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
 import com.seiko.demo.base.CustomLayoutExtensions.Companion.INVALID_VIEW_SIZE
-import com.tesla.framework.component.imageloader.ImageLoader
+import com.tesla.framework.component.imageloader.ImageLoaderManager
 
 class CameraUserLayout @JvmOverloads constructor(
     context: Context,
@@ -48,15 +48,14 @@ class CameraUserLayout @JvmOverloads constructor(
     }
 
     init {
-        ImageLoader.load(name, "#82000000", 15.dp)
-        ImageLoader.load(networkQuality, R.mipmap.ic_class_net_good)
+        ImageLoaderManager.load(networkQuality, R.mipmap.ic_class_net_good)
     }
 
     fun setNameViewHeightAndTextSize(height: Int = INVALID_VIEW_SIZE, textSize: Float) {
         name.setTextSizePx(textSize)
         name.setViewSize(height = height)
         if (height != INVALID_VIEW_SIZE) {
-            ImageLoader.load(name, "#82000000", height / 2)
+            ImageLoaderManager.load(name, "#82000000", height / 2)
         }
     }
 

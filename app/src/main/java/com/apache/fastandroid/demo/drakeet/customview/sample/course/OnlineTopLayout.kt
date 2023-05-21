@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
-import com.tesla.framework.component.imageloader.ImageLoader
+import com.tesla.framework.component.imageloader.ImageLoaderManager
 
 class OnlineTopLayout @JvmOverloads constructor(
     context: Context,
@@ -64,14 +64,14 @@ class OnlineTopLayout @JvmOverloads constructor(
     )
 
     init {
-        ImageLoader.load(this, "#592FD1")
-        ImageLoader.load(musicLogo, R.mipmap.ic_attend_music)
-        ImageLoader.load(giftBgView, "#4B1FA9", 8.dp)
-        ImageLoader.load(giftFlowerLogo, R.mipmap.ic_gift_flower)
-        ImageLoader.load(giftCrownLogo, R.mipmap.ic_gift_crown)
-        ImageLoader.load(giftMikeLogo, R.mipmap.ic_gift_mike)
-        ImageLoader.load(giftCarLogo, R.mipmap.ic_gift_car)
-        ImageLoader.load(giftPlaneLogo, R.mipmap.ic_gift_plane)
+        ImageLoaderManager.load(this, "#592FD1")
+        ImageLoaderManager.load(musicLogo, R.mipmap.ic_attend_music)
+        ImageLoaderManager.load(giftBgView, "#4B1FA9", 8.dp)
+        ImageLoaderManager.load(giftFlowerLogo, R.mipmap.ic_gift_flower)
+        ImageLoaderManager.load(giftCrownLogo, R.mipmap.ic_gift_crown)
+        ImageLoaderManager.load(giftMikeLogo, R.mipmap.ic_gift_mike)
+        ImageLoaderManager.load(giftCarLogo, R.mipmap.ic_gift_car)
+        ImageLoaderManager.load(giftPlaneLogo, R.mipmap.ic_gift_plane)
         musicTitle.text = "音乐欣赏"
         giftFlowerText.text = "8"
         giftCrownText.text = "8"

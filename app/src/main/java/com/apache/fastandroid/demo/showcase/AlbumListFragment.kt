@@ -13,14 +13,10 @@ import com.apache.fastandroid.demo.showcase.bean.Album
 import com.apache.fastandroid.demo.showcase.repository.AlbumRepositoryImpl
 import com.apache.fastandroid.demo.showcase.service.AlbumRetrofitService
 import com.apache.fastandroid.demo.showcase.usecase.GetAlbumListUseCase
-import com.apache.fastandroid.demo.sunflower.repository.PlantRepository
-import com.apache.fastandroid.demo.sunflower.viewmodel.PlantListViewModelFactory
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
-import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
-import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
-import com.tesla.framework.component.imageloader.display
+import com.tesla.framework.component.imageloader.showImage
 import com.tesla.framework.kt.hide
 import com.tesla.framework.kt.show
 import com.tesla.framework.ui.fragment.BaseBindingFragment
@@ -48,7 +44,7 @@ class AlbumListFragment :BaseBindingFragment<FragmentComRecycleviewBinding>(Frag
         override fun convert(holder: BaseDataBindingHolder<ItemAlbumBinding>, item: Album) {
 
             holder.dataBinding?.icAlbum?.run {
-                display(item.getDefaultImageUrl())
+                showImage(item.getDefaultImageUrl())
             }
 
             holder.setText(R.id.tv_title,item.name)

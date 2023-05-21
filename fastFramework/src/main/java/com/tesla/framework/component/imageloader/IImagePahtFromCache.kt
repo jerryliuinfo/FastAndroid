@@ -1,14 +1,13 @@
-package com.tesla.framework.component.imageloader;
+package com.tesla.framework.component.imageloader
 
-import android.graphics.Bitmap;
+import android.graphics.Bitmap
 
 /**
  * Created by 01370340 on 2017/11/21.
  */
+interface IImagePahtFromCache {
 
-public interface IImagePahtFromCache {
+    fun getImagePahtFromCache(url: String?): String?
 
-    String getImagePahtFromCache(String url);
-
-    Bitmap getBitmapFromCache(String url);
+    fun getBitmapFromCache(url: String?): Bitmap?
 }

@@ -1,113 +1,103 @@
-package com.tesla.framework.component.imageloader;
+package com.tesla.framework.component.imageloader
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.View;
-
-import com.tesla.framework.applike.FApplication;
-
-import androidx.annotation.NonNull;
-
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.view.View
+import android.widget.ImageView
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
+import com.tesla.framework.common.util.DrawableUtils
 
 /**
  * Created by Administrator on 2017/3/22 0022.
  */
-
-public class ImageLoaderManager implements IImageLoaderstrategy,IImagePahtFromCache {
-    private static final ImageLoaderManager INSTANCE = new ImageLoaderManager();
-
-    private  IImageLoaderstrategy loaderstrategy;
-
-    private  ImageLoaderOptions options;
-
-    /**
-     * 如果需要设置一些默认的参数,可以在这里设置
-     * @param options
-     */
-    public void setOptions(ImageLoaderOptions options) {
-        this.options = options;
-    }
-
-    private ImageLoaderManager(){
-    }
-    public static ImageLoaderManager getInstance(){
-        return INSTANCE;
-    }
-
-    public  void setImageLoaderStrategy(IImageLoaderstrategy strategy){
-        loaderstrategy=strategy;
-    }
-
-    /*
-     *   可创建默认的Options设置，假如不需要使用ImageView ，
-     *    请自行new一个Imageview传入即可
-     *  内部只需要获取Context
-     */
-    public static ImageLoaderOptions getDefaultOptions(@NonNull View container, @NonNull String url,Context context){
-        //return new ImageLoaderOptions.Builder(container,url,context).isCrossFade(true).build();
-        return ImageLoaderOptions.obtainBuilder(null).container(container).context(context).url(url).corssFade(true).build();
-    }
+object ImageLoaderManager : IImagePahtFromCache {
+    private var loaderstrategy: IImageLoaderstrategy = GlideImageLoader()
+    private val DEFAULT_OPTION = ImageOptions()
+    private var mOptions = DEFAULT_OPTION
 
     /**
      *
-     * @param options 外面传入options参数
+     * 如果需要设置一些默认的参数,可以在这里设置
+     * @param options
      */
-    @Override
-    public void showImage(@NonNull ImageLoaderOptions options) {
-        if (loaderstrategy != null) {
-            loaderstrategy.showImage(options);
+    fun setOptions(options: ImageOptions) {
+        this.mOptions = options
+    }
+
+    fun setImageLoaderStrategy(strategy: IImageLoaderstrategy) {
+        loaderstrategy = strategy
+    }
+
+    @JvmStatic
+    fun load(imageView: ImageView, @DrawableRes resId: Int) {
+        imageView.setImageResource(resId)
+    }
+
+    @JvmStatic
+    fun load(view: View, @DrawableRes resId: Int) {
+        view.setBackgroundResource(resId)
+    }
+
+    @JvmStatic
+    fun load(view: View, @ColorInt color: Int, radius: Int = 0) {
+        if (radius == 0) {
+            view.setBackgroundColor(color)
+        } else {
+            view.background = DrawableUtils.createRadiusDrawable(color, radius)
         }
     }
 
-    public void showImage(View container, String url,Context context) {
-        ImageLoaderOptions  options = ImageLoaderOptions.obtainBuilder(null).container(container).context(context).url(url).corssFade(true).build();
-        showImage(options);
+    @JvmStatic
+    fun load(view: View, colorString: String, radius: Int = 0) {
+        load(view, Color.parseColor(colorString), radius)
     }
 
-    public void showImage(View container, String url) {
-        showImage(container,url, FApplication.getContext());
+
+    fun loadImage(imageView: ImageView, url: String?, options: ImageOptions? = null) {
+        loaderstrategy.showImage(imageView, url, options ?: mOptions)
     }
 
-    @Override
-    public void cleanMemory(Context context) {
-        if (loaderstrategy != null){
-            loaderstrategy.cleanMemory(context);
+
+
+
+    fun cleanMemory(context: Context) {
+        loaderstrategy.cleanMemory(context)
+    }
+
+    fun init(context: Context) {
+        loaderstrategy.init(context)
+    }
+
+    fun pause(context: Context) {}
+
+    fun resume(context: Context) {}
+
+
+    override fun getImagePahtFromCache(url: String?): String? {
+        if (loaderstrategy is IImagePahtFromCache) {
+            val iImagePahtFromCache = loaderstrategy as IImagePahtFromCache
+            return iImagePahtFromCache.getImagePahtFromCache(url)
         }
+        return null
     }
 
-
-    @Override
-    public void init(Context context) {
-        if (loaderstrategy != null){
-            loaderstrategy.init(context);
+    override fun getBitmapFromCache(url: String?): Bitmap? {
+        if (loaderstrategy is IImagePahtFromCache) {
+            val iImagePahtFromCache = loaderstrategy as IImagePahtFromCache
+            return iImagePahtFromCache.getBitmapFromCache(url)
         }
+
+
+        test()
+        return null
     }
 
-    @Override
-    public void pause(Context context) {
 
-    }
+    fun test(name: String? = "zhangsan") {
+        if (name == null) {
 
-    @Override
-    public void resume(Context context) {
-
-    }
-
-    @Override
-    public String getImagePahtFromCache(String url) {
-        if (loaderstrategy != null && loaderstrategy instanceof IImagePahtFromCache){
-            IImagePahtFromCache iImagePahtFromCache = (IImagePahtFromCache) loaderstrategy;
-            return iImagePahtFromCache.getImagePahtFromCache(url);
         }
-        return null;
-    }
-
-    @Override
-    public Bitmap getBitmapFromCache(String url) {
-        if (loaderstrategy != null && loaderstrategy instanceof IImagePahtFromCache){
-            IImagePahtFromCache iImagePahtFromCache = (IImagePahtFromCache) loaderstrategy;
-            return iImagePahtFromCache.getBitmapFromCache(url);
-        }
-        return null;
     }
 }

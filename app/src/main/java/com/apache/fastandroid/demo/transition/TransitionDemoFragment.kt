@@ -13,6 +13,7 @@ import com.apache.fastandroid.databinding.FragmentTransitionBinding
 import com.google.android.material.transition.platform.MaterialArcMotion
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.tesla.framework.component.imageloader.ImageLoaderManager
+import com.tesla.framework.component.imageloader.showImage
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
@@ -28,7 +29,7 @@ class TransitionDemoFragment: BaseBindingFragment<FragmentTransitionBinding>(Fra
         super.layoutInit(inflater, savedInstanceState)
         val thumbnail = mBinding.thumbnail
         val layout = thumbnail.parent as ConstraintLayout
-        ImageLoaderManager.getInstance().showImage(thumbnail,"https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx3.sinaimg.cn%2Fmw690%2Fc17fd038ly1gw39cvqaooj20u0190n1l.jpg&refer=http%3A%2F%2Fwx3.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639105758&t=8ca673f7f8002024d1234bf9e6a978a4",activity)
+        thumbnail.showImage("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx3.sinaimg.cn%2Fmw690%2Fc17fd038ly1gw39cvqaooj20u0190n1l.jpg&refer=http%3A%2F%2Fwx3.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639105758&t=8ca673f7f8002024d1234bf9e6a978a4")
         thumbnail.setOnClickListener {
             largeImage = ImageView(context)
             thumbnail.isVisible = false
