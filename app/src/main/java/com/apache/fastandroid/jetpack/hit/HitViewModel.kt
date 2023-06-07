@@ -1,7 +1,9 @@
 package com.apache.fastandroid.jetpack.hit
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -12,6 +14,11 @@ class HitViewModel @Inject constructor(private val repository: Repository) : Vie
 
     fun doWork() {
         repository.doRepositoryWork()
+
+
+        viewModelScope.launch {
+
+        }
     }
 
 }

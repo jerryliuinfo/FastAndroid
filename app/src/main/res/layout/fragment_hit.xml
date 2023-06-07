@@ -12,9 +12,9 @@
             android:id="@+id/flow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="btn_not_inject,btn_inject_by_handle,btn_inject_by_handle_multi_param,btn_inject_member,btn_inject_with_param,btn_inject_interface
+            app:constraint_referenced_ids="btn_inject_by_handle_multi_param,btn_inject_member,btn_inject_with_param,btn_inject_interface
             ,btn_inject_interface_multi_param,btn_inject_third_party,btn_inject_third_party_retrofit,btn_component_scope,btn_inject_singleton,
-            btn_builtin_app_qualifier,btn_builtin_activity_qualifier,btn_normal_viewModel_withParamter,btn_inject_viewModel,btn_to_activity2"
+            btn_builtin_app_qualifier,btn_builtin_activity_qualifier,btn_normal_viewModel_withParamter,btn_inject_viewModel,btn_inject_viewModel2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:flow_wrapMode="aligned"
@@ -23,18 +23,7 @@
 
             />
 
-        <Button
-            android:id="@+id/btn_not_inject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="非依赖注入"
-            />
-        <Button
-            android:id="@+id/btn_inject_by_handle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="手动依赖注入单参数"
-            />
+
 
         <Button
             android:id="@+id/btn_inject_by_handle_multi_param"
@@ -47,13 +36,13 @@
             android:id="@+id/btn_inject_member"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="简单依赖注入"
+            android:text="依赖注入(无参数)"
             />
         <Button
             android:id="@+id/btn_inject_with_param"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="带参数依赖注入"
+            android:text="依赖注入(多参数)"
             />
 
         <Button
@@ -89,7 +78,7 @@
             android:id="@+id/btn_component_scope"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="作用于"
+            android:text="作用域"
             />
         <Button
             android:id="@+id/btn_inject_singleton"
@@ -124,14 +113,15 @@
             android:id="@+id/btn_inject_viewModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ViewModel注入"
+            android:text="ViewModel注入(单参数)"
             />
         <Button
-            android:id="@+id/btn_to_activity2"
+            android:id="@+id/btn_inject_viewModel2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="跳转"
+            android:text="ViewModel注入(多参数)"
             />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

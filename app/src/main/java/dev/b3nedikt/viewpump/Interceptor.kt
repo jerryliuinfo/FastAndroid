@@ -9,7 +9,8 @@ package dev.b3nedikt.viewpump
 interface Interceptor {
     fun intercept(chain: Chain): InflateResult
 
-    interface Chain {
+    interface
+    Chain {
         fun request(): InflateRequest
 
         fun proceed(request: InflateRequest): InflateResult

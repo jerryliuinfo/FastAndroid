@@ -215,7 +215,7 @@ class CoroutineCancelTimeoutDemoFragment :
         runBlocking {
 
             val time = measureTimeMillis {
-                val deferredOne = async { doSomethingUsefulOne() }
+                val deferredOne:Deferred<Int> = async { doSomethingUsefulOne() }
                 val deferredTwo = async { doSomethingUsefulTwo() }
                 val one = deferredOne.await()
                 println("one:${one}")
@@ -226,6 +226,7 @@ class CoroutineCancelTimeoutDemoFragment :
             }
             println("Completed in ${time} ms")
         }
+
 
     }
 

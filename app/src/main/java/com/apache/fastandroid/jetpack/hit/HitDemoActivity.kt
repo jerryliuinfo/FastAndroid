@@ -2,6 +2,7 @@ package com.apache.fastandroid.jetpack.hit
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FragmentHitBinding
 import com.apache.fastandroid.demo.bean.*
 import com.apache.fastandroid.jetpack.hit.engine.GasEngine
@@ -9,6 +10,8 @@ import com.apache.fastandroid.jetpack.hit.tyre.ChinaTyre
 import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import javax.inject.Inject
@@ -78,19 +81,6 @@ class HitDemoActivity:BaseVBActivity<FragmentHitBinding>(FragmentHitBinding::inf
     override fun layoutInit(savedInstanceState: Bundle?) {
         super.layoutInit(savedInstanceState)
 
-        //内部构造对象，非依赖注入
-        mBinding.btnNotInject.setOnClickListener {
-            val car = Car()
-            car.start()
-        }
-
-        //外部构造对象，手动依赖注入单参数
-        mBinding.btnInjectByHandle.setOnClickListener {
-//            val car = Car2(ElectricEngine())
-            val car = Car2(GasEngine())
-            car.start()
-        }
-
 
         //外部构造对象，手动依赖注入多 参数
         mBinding.btnInjectByHandleMultiParam.setOnClickListener {
@@ -146,9 +136,6 @@ class HitDemoActivity:BaseVBActivity<FragmentHitBinding>(FragmentHitBinding::inf
         mBinding.btnInjectViewModel.setOnClickListener {
 //            println("inject viewModel :${mHitViewModel}")
 //            mHitViewModel.doWork()
-        }
-        mBinding.btnToActivity2.setOnClickListener {
-            launchActivity<HitDemoActivity2>(this)
         }
 
 

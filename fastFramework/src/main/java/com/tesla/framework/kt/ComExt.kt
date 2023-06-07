@@ -123,3 +123,11 @@ internal fun Set<String>.equalsStrings(strings: Set<String>): Boolean {
 internal fun Set<String>.allValues(): Array<String> =
     map { it }.toTypedArray()
 
+
+inline fun <R> safelyTryCatch( block:() -> R):Result<R>{
+    return try {
+        Result.success(block())
+    }catch (e:Throwable){
+        Result.failure(e)
+    }
+}

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModelProvider
 import com.apache.fastandroid.demo.kt.coroutine.vm.RetrofitViewModel
 import com.apache.fastandroid.jetpack.flow.basic.BaseFlowRecycleViewFragment
 import com.apache.fastandroid.network.model.ApiUser
@@ -27,6 +28,8 @@ class CoroutineRetrofitDemoFragment: BaseFlowRecycleViewFragment() {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
         mViewModel.getUsers()
+
+        val mViewModel:RetrofitViewModel = ViewModelProvider(this).get(RetrofitViewModel::class.java)
     }
 
 

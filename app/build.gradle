@@ -507,7 +507,6 @@ dependencies {
 
     implementation Libs.viewPage2
 
-    implementation(*Libs.coroutine)
 
     implementation(*Libs.blackTech)
 

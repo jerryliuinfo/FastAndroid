@@ -1,4 +1,6 @@
-package com.csd.dialogchain
+package com.tesla.framework.component.dialogchain
+
+import com.csd.dialogchain.DialogChain
 
 /**
 

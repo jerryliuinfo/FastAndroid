@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
 import com.csd.dialogchain.DialogChain
-import com.csd.dialogchain.IDialogInterceptor
+import com.tesla.framework.component.dialogchain.IDialogInterceptor
 
 /**
 

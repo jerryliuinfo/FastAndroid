@@ -20,9 +20,11 @@ import com.apache.fastandroid.demo.component.ComponentDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.recycleview.RecycleViewDemoListFragment
 import com.apache.fastandroid.demo.showcase.AlbumListFragment
+import com.apache.fastandroid.jetpack.hit.HitDemoActivity
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import timber.log.Timber
@@ -165,14 +167,14 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, ActivityResultDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, PerformanceDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
-        FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 
 //        launchActivity<ConnectionClassActivity>(this)
 //        launchActivity<ImmerseStatusBarDemoActivity>(this)
-//         launchActivity<HitDemoActivity>(this)
+         launchActivity<HitDemoActivity>(this)
 //         launchActivity<BundleDemoActivity>(this)
 
 //        launchActivity<TasksActivity>(this)

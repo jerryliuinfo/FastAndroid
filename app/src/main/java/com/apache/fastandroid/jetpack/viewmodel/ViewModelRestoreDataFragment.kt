@@ -33,6 +33,8 @@ class ViewModelRestoreDataFragment: BaseBindingFragment<FragmentJetpackViewmodel
         userInfoViewModel.countLiveData.observe(this, Observer {
             tv_msg2.text = it.toString()
         })
+
+
     }
 
 

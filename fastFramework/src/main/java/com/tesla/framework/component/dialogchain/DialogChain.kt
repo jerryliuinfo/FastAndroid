@@ -2,6 +2,7 @@ package com.csd.dialogchain
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.tesla.framework.component.dialogchain.IDialogInterceptor
 import com.tesla.framework.component.logger.Logger
 import java.util.ArrayList
 

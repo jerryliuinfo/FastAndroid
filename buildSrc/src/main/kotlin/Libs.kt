@@ -220,7 +220,7 @@ object Jetpack{
         "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle_version}",
         //ViewModelScope
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}",
-        //LiveData
+        //LiveDataScope  CoroutineLiveData
         "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}",
         //LifecycleScope
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle_version}",
@@ -250,13 +250,13 @@ object Jetpack{
     val hit = arrayOf(
         "com.google.dagger:hilt-android:${Versions.hit}",
         //hit 对 viewmodel 的支持
-//        "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hit_viewModel}",
+        "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hit_viewModel}",
     )
     val hit_compiler = arrayOf(
         //使用hit 时需要
 //        "com.google.dagger:hilt-android-compiler:${Versions.hit}",
 //        //hit 对 viewmodel 的支持
-//        "androidx.hilt:hilt-compiler:${Versions.hit_viewModel}",
+        "androidx.hilt:hilt-compiler:${Versions.hit_viewModel}",
 
         "com.google.dagger:hilt-compiler:2.38.1"
     )

@@ -1,6 +1,7 @@
 package com.apache.fastandroid.demo
 
 import com.apache.fastandroid.bean.ViewItemBean
+import com.apache.fastandroid.demo.amitshekhar.AmitShekharDemoFragment
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
 import com.apache.fastandroid.demo.bestpractice.BestPracticeDemoFragment
 import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
@@ -62,7 +63,8 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("单元测试", "单元测试", SampleCodeDemoListFragment::class.java),
             ViewItemBean("MVI", "MVI", SampleCodeDemoListFragment::class.java),
             ViewItemBean("各个组件style介绍", "各个组件style介绍", LyricDemoFragment::class.java),
-            ViewItemBean("JNI", "JNI", JniDemoListFragment::class.java)
+            ViewItemBean("JNI", "JNI", JniDemoListFragment::class.java),
+            ViewItemBean("Amit Shekhar", "Amit Shekhar", AmitShekharDemoFragment::class.java),
 
 
         )

@@ -1179,6 +1179,7 @@ open class RxJava3OperatorDemoFragment:BaseBindingFragment<FragmentRxjava3Bindin
 
                 override fun onNext(value: String) {
 //                    textview.append(" onNext: value:$value")
+                    println("thread :${Thread.currentThread().name}")
                     result.append(" onNext: value:$value")
 
                     result.append(LINE_SEPERATOR)
