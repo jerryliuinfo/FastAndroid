@@ -141,7 +141,9 @@ object Libs {
         "com.yuyashuai.frameanimation:frameanimation:2.3.6",
 
 //        "ccom.facebook.network.connectionclass:connectionclass:1.0.1"
-//        "com.github.kirchbergerknorr:PingTools:1.0.4"
+//        "com.github.kirchbergerknorr:PingTools:1.0.4",
+         "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC1"
+
     )
 
 

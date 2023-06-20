@@ -45,55 +45,23 @@ class UserInfoViewModel(private val reporsity: UserReporsity):BaseStatusViewMode
 
 
     private val _mUserInfo: MutableLiveData<UserBean> = MutableLiveData()
-    val mUserInfo:LiveData<UserBean> = _mUserInfo
 
     val mMapLiveData:LiveData<String> = Transformations.map(_mUserInfo){ userBean ->
         userBean.age.toString()
     }
 
-    val mSwitchMapSourceLiveData = MutableLiveData<Boolean>(false)
 
 
     val livedata1 = MutableLiveData<String>().apply {
         value = "LiveData1 数据"
     }
-    val livedata2 = MutableLiveData<String>().apply {
-        value = "LiveData2 数据"
-    }
-    val livedataSwitchMap:LiveData<String> = Transformations.switchMap(mSwitchMapSourceLiveData) {
-        if (it){
-            return@switchMap livedata1
-        }
-        return@switchMap livedata2
-    }
 
-    fun doSwitchMap(){
-        mSwitchMapSourceLiveData.value =  ! mSwitchMapSourceLiveData.value!!
-    }
+
+
 
     val mediatorLiveData = MediatorLiveData<String>()
     val mediatorLiveSource1 = MediatorLiveData<String>()
     val mediatorLiveSource2 = MediatorLiveData<String>()
-
-
-
-    private fun loadUser(){
-        _mUserInfo.postValue(UserBean("Zhangsan",18))
-    }
-
-
-    fun changeAge(){
-        var userInfo = _mUserInfo.value
-        if (userInfo == null){
-            userInfo = UserBean("jerry",18)
-        }
-        userInfo.apply {
-            age = Random.nextInt(10)
-        }
-        _mUserInfo.value = userInfo
-    }
-
-
 
 
 

@@ -5,10 +5,10 @@ import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentDesignModeListBinding
+import com.apache.fastandroid.demo.bean.PersonDto
+import com.apache.fastandroid.demo.bean.ToneDto
 import com.apache.fastandroid.demo.designmode.absfactory.ConcreteAnimalFactory
-import com.apache.fastandroid.demo.designmode.adapter.Adaptee
-import com.apache.fastandroid.demo.designmode.adapter.ClassAdaptee
-import com.apache.fastandroid.demo.designmode.adapter.ObjectAdaptee
+import com.apache.fastandroid.demo.designmode.adapter.*
 import com.apache.fastandroid.demo.designmode.base.AnimalType
 import com.apache.fastandroid.demo.designmode.bridge.ConcreteImplementor1
 import com.apache.fastandroid.demo.designmode.bridge.ConcreteImplementor2
@@ -550,6 +550,14 @@ class DesignModeDemoListFragment:BaseBindingFragment<FragmentDesignModeListBindi
         val objectAdapter = ObjectAdaptee(Adaptee())
         objectAdapter.request()
 
+
+        val personAdapter = PersonAdapter()
+        val ttsRoleList1 = personAdapter.adapter(PersonDto())
+
+
+        val toneAdapter = ToneAdapter()
+        val ttsRoleList2 = toneAdapter.adapter(ToneDto())
+
     }
 
     /**
@@ -570,6 +578,10 @@ class DesignModeDemoListFragment:BaseBindingFragment<FragmentDesignModeListBindi
     private fun buildMode() {
         val person = Person.Builder().setName("zhangsan").setAge(18).setAddress("shenzhen").build()
         Logger.d("person name:${person.name}")
+
+        val newPerson = person.newBuilder().setName("lisi").build()
+        Logger.d("newPerson name:${newPerson.name}")
+
     }
 
     /**

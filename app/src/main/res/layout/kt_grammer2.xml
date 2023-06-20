@@ -29,7 +29,7 @@
                 app:flow_verticalGap="10dp"
                 app:constraint_referenced_ids="btn_let,btn_with,btn_run,btn_apply,btn_also,
                 btn_operator_overload,btn_zhongzui,btn_typeAlias,btn_getter_setter,btn_lambda_interrupt,
-                btn_neilian,btn_crossInline,btn_anonymous,btn_kt_genericity,btn_kt_real_genericity,
+                btn_neilian,btn_no_inline,btn_non_crossInline,btn_crossInline,btn_anonymous,btn_kt_genericity,btn_kt_real_genericity,
                 btn_kt_class_real_genericity,btn_evis_operator"
                 />
 
@@ -107,6 +107,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Inline"
+                />
+
+            <Button
+                android:id="@+id/btn_no_inline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NoInline"
+                />
+
+            <Button
+                android:id="@+id/btn_non_crossInline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NonCrossInline"
                 />
 
             <Button

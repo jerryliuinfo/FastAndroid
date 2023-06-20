@@ -71,8 +71,18 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
             inlineUsage2()
         }
 
+        mBinding.btnNoInline.setOnClickListener {
+            noInlineUsage()
+        }
+
+
+        mBinding.btnNonCrossInline.setOnClickListener {
+            guide()
+        }
+
         mBinding.btnCrossInline.setOnClickListener {
             crossInlineUsage()
+            guide2()
         }
 
         mBinding.btnAnonymous.setOnClickListener {
@@ -116,6 +126,8 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
 
     }
 
+
+
     private fun evisOperatorUsage() {
         arguments?.getString("key")?.takeIf { it.isNotEmpty() } ?: kotlin.run {
             toast("url为空")
@@ -135,7 +147,10 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
 
 
     /**
+     *
+     * crossinline 用于避免非本地返回。
      * crossinline 不允许 inline 的 Lambda 中断外部函数执行,
+     * 不会输出 hello2
      */
     private fun crossInlineUsage() {
         crossinlineFun {
@@ -145,6 +160,68 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
         }
         println("hello2")
     }
+
+
+    /**
+     * 反编译看到的是:
+     *  public final void guide() {
+            String var1 = "guide start";
+
+            String var4 = "teach";
+       }
+
+       不会输出 "guide end", 因为 lambda 中 return掉了，也称 允许本地返回
+     */
+    fun guide(){
+        println("guide start")
+        teach {
+            print("teach")
+            return
+        }
+        println("guide end")
+
+    }
+
+
+    /**
+     * crossInlineTeach 的lambda 中加上 crossInline 之后就不能return 掉了
+     *
+     * public final void guide2() {
+        String var1 = "guide start";
+        String var4 = "teach";
+        var1 = "guide end";
+    }
+     *
+     */
+    fun guide2(){
+        println("guide start")
+        crossInlineTeach {
+            print("teach")
+                //return is not allowed here
+//            return
+        }
+        println("guide end")
+    }
+
+    fun guide3(){
+        println("guide start")
+        crossInlineTeach {
+            print("teach")
+            //return is not allowed here
+            return@crossInlineTeach
+        }
+        println("guide end")
+    }
+
+
+    inline fun teach(abc:() -> Unit){
+        abc()
+    }
+
+    inline fun crossInlineTeach(crossinline abc:() -> Unit){
+        abc()
+    }
+
 
     /**
      *  内部 lambda 是不允许中断外部函数执行的,所以 会打印出下面的hello
@@ -188,7 +265,40 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
         println("hello")
     }
 
+    /**
+     * 反编译结果
+     *
+     * public void guide() {
+        System.out.print("guide start");
+        System.out.print("teach abc");
+        teach(new Function() {
+            @Override
+            public void invoke() {
+            System.out.print("teach xyz");
+            }
+        });
+        System.out.print("guide end");
+    }
+     */
+    private fun noInlineUsage() {
+        print("guide start")
+        teach({
+            print("teach abc")
+        }, {
+            print("teach xyz")
+        })
+        print("guide end")
+    }
 
+    /**
+     * 第一个参数 允许inline，第 2 个lambda 参数不 inline
+     * @param abc Function0<Unit>
+     * @param xyz Function0<Unit>
+     */
+    inline fun teach(abc: () -> Unit, noinline xyz: () -> Unit) {
+        abc()
+        xyz()
+    }
 
 
 

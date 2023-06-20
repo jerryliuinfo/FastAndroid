@@ -5,6 +5,7 @@ package com.apache.fastandroid.demo.designmode.facade
  * MediaPlayer 提供了三个简单的方法 playAudio()、playVideo() 和 playOgg()，隐藏了复杂的实现细节
  */
 class MediaPlayer {
+
     private val audioPlayer = AudioPlayer()
 
     private val videoPlayer = VideoPlayer()

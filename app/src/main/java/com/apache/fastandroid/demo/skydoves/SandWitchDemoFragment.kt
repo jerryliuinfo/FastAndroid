@@ -8,6 +8,7 @@ import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/5/1.
+ * https://github.com/skydoves/sandwich
  */
 class SandWitchDemoFragment:BaseBindingFragment<FragmentSandswitchBinding>(FragmentSandswitchBinding::inflate) {
 

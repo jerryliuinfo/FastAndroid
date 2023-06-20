@@ -3,13 +3,12 @@ package com.apache.fastandroid.network.retrofit
 import android.os.Build
 import com.apache.fastandroid.network.interceptor.*
 import com.blankj.utilcode.util.ToastUtils
+import com.blankj.utilcode.util.Utils
 import com.linkaipeng.oknetworkmonitor.listener.NetworkEventListener
 import com.linkaipeng.oknetworkmonitor.reporter.OkNetworkMonitorInterceptor
 import com.mooc.libnetwork.BuildConfig
-import okhttp3.Callback
-import okhttp3.CertificatePinner
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import okhttp3.*
+import java.io.File
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -36,9 +35,9 @@ object OkHttpClientManager {
              * 总是检查证书的 Pinning，而过了这个时间就不检查证书的 Pining，当证书过期后我们可以放心的进行更换服务端证书
              */
             certificatePinner(CertificatePinner.Builder().apply {
-                if (Date() < Date(2023, Calendar.OCTOBER,7)){
+                if (Date() < Date(2023, Calendar.OCTOBER, 7)) {
                     add("www.wanandroid.com", "sha256/Jkegy5Sc8Gjzbi65ztVCGTV90JysJOm3uRtbrclTpOc=")
-                }else if (BuildConfig.DEBUG){
+                } else if (BuildConfig.DEBUG) {
                     ToastUtils.showLong("请更新证书和时间")
                 }
             }.build())
@@ -46,20 +45,28 @@ object OkHttpClientManager {
         }.apply {
             addNetworkInterceptor(HeaderInterceptor())
             //处理错误码的拦截器 https://juejin.cn/post/6844903975028785159?share_token=c0d3237c-1ab3-4b7c-834f-07b502b865ea
-            addNetworkInterceptor(HandleHttpCodeInterceptor())
-            addNetworkInterceptor(HandleErrorInterceptor())
+            addInterceptor(HandleHttpCodeInterceptor())
+            addInterceptor(HandleErrorInterceptor())
+            addNetworkInterceptor(ErrorInterceptor())
             addNetworkInterceptor(NetLogInterceptor())
-            addNetworkInterceptor(CookieInterceptor())
+//            addInterceptor(CookieInterceptor())
             addNetworkInterceptor(OkNetworkMonitorInterceptor())
 //            addNetworkInterceptor(RetryInterceptor())
         }.apply {
+            addNetworkInterceptor(OkNetworkMonitorInterceptor())
+
+            cache(Cache(File(Utils.getApp().cacheDir, "http-cache"), 10L * 1024L * 1024L)) // 10 MiB
+            addNetworkInterceptor(CacheInterceptor()) //仅当未从服务器启用 Cache-Control 标头时
+            addInterceptor(ForceCacheInterceptor())
+
+
             addNetworkInterceptor(OkNetworkMonitorInterceptor())
             eventListenerFactory(NetworkEventListener.Companion.FACTORY)
         }.build()
     }
 
 
-    fun enqueue(url:String, callback: Callback){
+    fun enqueue(url: String, callback: Callback) {
         val okHttpClient: OkHttpClient = OkHttpClient.Builder()
             .eventListenerFactory(NetworkEventListener.Companion.FACTORY)
             .addNetworkInterceptor(OkNetworkMonitorInterceptor())

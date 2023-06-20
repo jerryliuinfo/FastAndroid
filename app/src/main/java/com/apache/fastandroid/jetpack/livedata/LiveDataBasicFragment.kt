@@ -2,6 +2,7 @@ package com.apache.fastandroid.jetpack.livedata
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.LogUtils
@@ -24,7 +25,6 @@ class LiveDataBasicFragment : BaseBindingFragment<FragmentJetpackLivedataBinding
         val TAG = "LiveDataBasicFragment"
     }
 
-    val nameLiveData = MutableLiveData<String>()
 
     private val userViewModel by lazy {
         UserInfoViewModel(
@@ -32,6 +32,9 @@ class LiveDataBasicFragment : BaseBindingFragment<FragmentJetpackLivedataBinding
             UserDao.getInstance(),
             UserNetwork().getInstance()))
     }
+
+    private val mLiveDataViewModel by viewModels<LiveDataViewModel>()
+
     private lateinit var priceLiveData: StockLiveData
 
 
@@ -39,33 +42,22 @@ class LiveDataBasicFragment : BaseBindingFragment<FragmentJetpackLivedataBinding
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
         super.layoutInit(inflater, savedInstanceSate)
-        userViewModel.mediatorLiveData.addSource(userViewModel.mediatorLiveSource1){
-            Logger.d("mediatorLiveData livedata1 onchange1: ${it}")
-//            Logger.d("mediatorLiveData livedata1 onchange1: ${it}, livedata2: ${userViewModel.livedata2.value}")
-//            val result = it + userViewModel.livedata2.value
-//            val result = it
-            userViewModel.mediatorLiveData.value = it + userViewModel.mediatorLiveSource2.value
-        }
-
-        userViewModel.mediatorLiveData.addSource(userViewModel.mediatorLiveSource2){
-            Logger.d("mediatorLiveData livedata2 onchange1: ${it}")
-//            viewBinding.textResult.text = it.toString() + userViewModel.mediatorLiveSource1.value
-            userViewModel.mediatorLiveData.value = it + userViewModel.mediatorLiveSource1.value
-
-        }
-
-
 
         priceLiveData = StockLiveData.get("")
-        nameLiveData.observe(this, Observer<String> { t -> LogUtils.d("onChanged : $t")
-            mBinding.textResult.text = t
-        })
+
+
         priceLiveData.observe(this){
             mBinding.textResult.text = it.toString()
-
         }
+
+
+        mLiveDataViewModel.mUserInfo.observe(this){
+            mBinding.textResult.text = "${ it.name }:${it.age}"
+        }
+
+
        mBinding.btnChange.setOnClickListener {
-            nameLiveData.value = "jerry"
+           mLiveDataViewModel.changeData()
         }
         mBinding.btnTransformMap.setOnClickListener {
             initTransformationsMap()
@@ -107,35 +99,26 @@ class LiveDataBasicFragment : BaseBindingFragment<FragmentJetpackLivedataBinding
     }
 
     private fun initTransformationsMap(){
-        userViewModel.mMapLiveData.observe(this){
+        mLiveDataViewModel.mAgeLiveData.observe(this){
             Logger.d("initTransformationsMap onchange: $it")
             mBinding.textResult.text = it.toString()
         }
-        userViewModel.changeAge()
-
-
+        mLiveDataViewModel.changeData()
     }
 
     private fun initTransformationsSwitchMap(){
-        userViewModel.livedataSwitchMap.observe(this){
+        mLiveDataViewModel.switchMapLivedata.observe(this){
             mBinding.textResult.text = it.toString()
         }
-        userViewModel.doSwitchMap()
+        mLiveDataViewModel.doSwitchMap()
     }
 
 
-    private var chagneLivedata1 = true
     private fun initMediaLiveData(){
-        if (chagneLivedata1){
-            userViewModel.mediatorLiveSource1.value = "Source1:${Random.nextInt(10)}"
-        }else{
-            userViewModel.mediatorLiveSource2.value = "Source2:${Random.nextInt(10) }"
-        }
-        chagneLivedata1 = !chagneLivedata1
-        userViewModel.mediatorLiveData.observe (this, Observer {
+        mLiveDataViewModel.changeMediaLiveData()
+        mLiveDataViewModel.mediatorLiveData.observe (this, Observer {
             Logger.d("mediaLiveData onChange: %s", it)
             mBinding.textResult.text = it
-
         })
 
     }

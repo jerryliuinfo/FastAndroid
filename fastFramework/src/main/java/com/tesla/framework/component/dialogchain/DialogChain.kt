@@ -84,4 +84,27 @@ open class DialogChain private constructor(
     }
 
 
+    fun doSomething(){
+        //步骤 1
+        if(true){
+            //步骤2：执行弹框动作，同时return 终止往下执行步骤 3
+            showDialog{
+                doRealThing()
+            }
+            return
+        }
+
+        //步骤3：满足条件，执行业务处理
+        doRealThing()
+    }
+
+    private fun showDialog(onConfirm: () -> Unit) {
+        //
+        onConfirm.invoke()
+    }
+
+    private fun doRealThing() {
+
+    }
+
 }

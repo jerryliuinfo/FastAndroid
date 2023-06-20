@@ -69,7 +69,10 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
 
     lateinit var appSetting: AppSetting
 
-
+    val apiHelper:ApiHelper by lazy {
+        ApiHelperImpl(ApiServiceFactory.flowService)
+    }
+    lateinit var  databaseHelper:DatabaseHelper
     override fun onCreate() {
         super.onCreate()
         if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -77,6 +80,7 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
             // You should not init your app in this process.
             return
         }
+        Utils.init(this)
         val time = measureTimeMillis {
             context = this
             instance = this
@@ -366,8 +370,7 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
     val taskRepository: TasksRepository
         get() = ServiceLocator.provideTasksRepository(this)
 
-    val apiHelper:ApiHelper = ApiHelperImpl(ApiServiceFactory.flowService)
-    lateinit var  databaseHelper:DatabaseHelper
+
 
 
     private fun initFloo(){

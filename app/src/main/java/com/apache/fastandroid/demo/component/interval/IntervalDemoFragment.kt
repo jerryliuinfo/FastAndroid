@@ -20,6 +20,8 @@ class IntervalDemoFragment:BaseBindingFragment<FragmentIntervalBinding>(Fragment
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+        setHasOptionsMenu(true)
+
         interval = Interval(0, 1, TimeUnit.SECONDS, 10).life(this) // 自定义计数器个数的轮询器, 当[start]]比[end]值大, 且end不等于-1时, 即为倒计时
         // interval = Interval(1, TimeUnit.SECONDS) // 每秒回调一次, 不会自动结束
         interval.subscribe {

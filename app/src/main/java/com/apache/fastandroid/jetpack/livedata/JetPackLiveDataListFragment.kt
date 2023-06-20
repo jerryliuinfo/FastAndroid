@@ -9,7 +9,7 @@ import com.apache.fastandroid.demo.BaseListFragment
 class JetPackLiveDataListFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
-                ViewItemBean("LiveData基本用法", "LiveData", LiveDataBasicFragment::class.java),
+                ViewItemBean("LiveData基本用法", "LiveData基本用法", LiveDataBasicFragment::class.java),
                 ViewItemBean("LiveData最佳实践️", "手动刷新ui", LiveDataBestPracticeFragment::class.java),
                 ViewItemBean("LiveData最佳实践2️", "LiveData最佳实践", LiveDataBestPracticeFragment2::class.java),
                 ViewItemBean("LiveDat不恰当用法","LiveDat不恰当用法", LiveDataWrongUsageFragment::class.java),

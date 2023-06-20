@@ -21,6 +21,6 @@ class ConcreteSubject:Subject {
     }
 
     fun doSomeLogic(){
-
+        notifyObservers()
     }
 }

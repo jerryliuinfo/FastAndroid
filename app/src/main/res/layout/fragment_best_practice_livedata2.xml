@@ -108,5 +108,7 @@
             android:layout_height="56dp"
             android:onClick="@{() -> viewmodel.onRefresh()}"
             android:text="@string/refresh_label" />
+
+
     </LinearLayout>
 </layout>
