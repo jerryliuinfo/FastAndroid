@@ -17,10 +17,16 @@ import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.component.ComponentDemoFragment
+import com.apache.fastandroid.demo.compress.CompressDemoActivity
+import com.apache.fastandroid.demo.keybordvisibility.KeybordVisibilityDemoActivity
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
+import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.recycleview.RecycleViewDemoListFragment
 import com.apache.fastandroid.demo.showcase.AlbumListFragment
 import com.apache.fastandroid.jetpack.hit.HitDemoActivity
+import com.apache.fastandroid.jetpack.livedata.LiveDataBasicFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
@@ -87,7 +93,6 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, CoroutineCancelDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, CoroutineCancelTimeoutDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, CoroutineContextDispatcherDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, JuejinKtDemoListFragment::class.java,null)
@@ -101,6 +106,11 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, EncryptDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
+//                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
+//                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
+//          FragmentContainerActivity.launch(this, LiveDataBasicFragment::class.java,null)
+
+
 //        FragmentContainerActivity.launch(this, SandWitchDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment2::class.java,null)
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
@@ -124,7 +134,6 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
 //        FragmentContainerActivity.launch(this, JetPackLifeCycleFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinHotQuestionFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
 //        FragmentContainerActivity.launch(this, TempDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, DemoListFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, JniDemoListFragment::class.java,null)
@@ -158,7 +167,6 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, ProgressDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, CountDownDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ElegantDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, DesignModeDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ToolsFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, AutoScrollViewDemoFragment::class.java,null,addTitleBar = true)
@@ -169,15 +177,18 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 
 //        launchActivity<ConnectionClassActivity>(this)
 //        launchActivity<ImmerseStatusBarDemoActivity>(this)
-         launchActivity<HitDemoActivity>(this)
+//         launchActivity<HitDemoActivity>(this)
 //         launchActivity<BundleDemoActivity>(this)
 
 //        launchActivity<TasksActivity>(this)
+//        launchActivity<KeybordVisibilityDemoActivity>(this)
+        launchActivity<CompressDemoActivity>(this)
 
 //        launchActivity<com.example.hellojnicallback.RewordDemoActivity>(this)
 

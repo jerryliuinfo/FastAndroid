@@ -4,6 +4,7 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.amitshekhar.AmitShekharDemoFragment
 import com.apache.fastandroid.demo.basic.AndroidBasicDemoFragment
 import com.apache.fastandroid.demo.bestpractice.BestPracticeDemoFragment
+
 import com.apache.fastandroid.demo.blacktech.BlackTechDemoFragment
 import com.apache.fastandroid.demo.designmode.DesignModeDemoListFragment
 import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment

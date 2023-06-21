@@ -19,7 +19,7 @@ import android.widget.ProgressBar;
 import com.apache.fastandroid.R;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ConvertUtils;
-import com.tesla.framework.kt.ViewExtKt;
+import com.tesla.framework.kt.DimensionsKt;
 
 /**
  * Created by kai.wang on 6/17/14.
@@ -151,7 +151,7 @@ public class WaveView extends View {
             paintR.setAntiAlias(true);
             // 设置画笔的颜色
             paintR.setColor(Color.parseColor("#ffffff"));
-            paintR.setStrokeWidth(ViewExtKt.getDp(1.5f));
+            paintR.setStrokeWidth(DimensionsKt.getDp(1.5f));
             paintR.setStyle(Paint.Style.STROKE);
             paintR.setTextSize(text_default_size);
         }
@@ -177,7 +177,7 @@ public class WaveView extends View {
                 paintT = new Paint();
                 paintT.setAntiAlias(true);
                 paintT.setColor(Color.parseColor("#ffffff"));
-                paintT.setStrokeWidth(ViewExtKt.getDp(1.5f));
+                paintT.setStrokeWidth(DimensionsKt.getDp(1.5));
                 paintT.setTextSize(text_default_size);
 
                 Paint.FontMetricsInt fontMetrics = paintT.getFontMetricsInt();

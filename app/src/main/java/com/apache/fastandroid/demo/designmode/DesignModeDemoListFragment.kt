@@ -50,6 +50,9 @@ import com.apache.fastandroid.demo.designmode.proxy.dynamic.ISubject
 import com.apache.fastandroid.demo.designmode.proxy.dynamic.ProxyHandler
 import com.apache.fastandroid.demo.designmode.proxy.dynamic.ProxySubject
 import com.apache.fastandroid.demo.designmode.proxy.dynamic.RealSubject
+import com.apache.fastandroid.demo.designmode.singleton.SingleInstanceSync
+import com.apache.fastandroid.demo.designmode.singleton.SingleObject
+import com.apache.fastandroid.demo.designmode.singleton.SingletonByObject
 import com.apache.fastandroid.demo.designmode.state.Machine
 import com.apache.fastandroid.demo.designmode.strategy.CreditCardStrategy
 import com.apache.fastandroid.demo.designmode.strategy.PayPalStrategy
@@ -58,9 +61,6 @@ import com.apache.fastandroid.demo.designmode.template.ConcreteClassA
 import com.apache.fastandroid.demo.designmode.template.ConcreteClassB
 import com.apache.fastandroid.demo.designmode.visitor.ConcreteVisitor
 import com.apache.fastandroid.demo.designmode.visitor.ObjectStructure
-import com.apache.fastandroid.demo.kt.singleton.SingleInstanceSync
-import com.apache.fastandroid.demo.kt.singleton.SingleObject
-import com.apache.fastandroid.demo.kt.singleton.SingletonByObject
 import com.apache.fastandroid.demo.memento.Caretaker
 import com.apache.fastandroid.demo.memento.Originator
 import com.tesla.framework.component.logger.Logger

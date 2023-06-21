@@ -36,10 +36,6 @@ fun Fragment.canNavigate(): Boolean {
 }
 
 
-fun <T : Fragment> T.withArguments(vararg argumentPairs: Pair<String, Any?>) = apply {
-    arguments = bundleOf(*argumentPairs)
-}
-
 
 
 

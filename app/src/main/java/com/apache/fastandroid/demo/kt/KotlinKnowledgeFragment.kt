@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.math.MathUtils
-import com.apache.fastandroid.BuildConfig
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.KtGrammerBinding
 import com.apache.fastandroid.demo.bean.ConstructBean
@@ -25,9 +24,6 @@ import com.apache.fastandroid.demo.kt.inline.onlyIf2
 import com.apache.fastandroid.demo.kt.operatoroverload.*
 import com.apache.fastandroid.demo.kt.refied.RefiedDemo
 import com.apache.fastandroid.demo.kt.sealed.*
-import com.apache.fastandroid.demo.kt.singleton.SingleInstanceSync
-import com.apache.fastandroid.demo.kt.singleton.SingleObject
-import com.apache.fastandroid.demo.kt.singleton.SingletonByObject
 import com.apache.fastandroid.demo.kt.staticusage.Foo
 import com.apache.fastandroid.demo.kt.staticusage.ObjectClass
 import com.apache.fastandroid.demo.kt.staticusage.topLevelFun1
@@ -365,9 +361,7 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
 
         println(file.readText())
         //给LoadSir 增加一个方法
-        if (LoadSir.Builder().debug()) {
 
-        }
 
 
     }
@@ -394,13 +388,6 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
     }
 
 
-    private fun singleInstance() {
-
-        SingletonByObject.count()
-        SingleInstanceSync.getInstance()
-        SingleInstanceSync.getInstance2()
-        SingleObject.getInstance()
-    }
 
 
     private class ByMap(val map: Map<String, Any?>) {
@@ -989,7 +976,6 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
     fun File.readTextha(charset: Charset = Charset.defaultCharset()): String =
         readBytes().toString(charset)
 
-    fun LoadSir.Builder.debug() = BuildConfig.DEBUG
 
 
 

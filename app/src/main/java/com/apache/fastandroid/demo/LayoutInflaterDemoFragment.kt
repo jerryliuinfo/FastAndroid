@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentLayoutinflterBinding
+import com.tesla.framework.kt.dp
 import com.tesla.framework.kt.dpInt
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 

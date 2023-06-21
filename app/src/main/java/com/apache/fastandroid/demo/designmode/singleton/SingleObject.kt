@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.kt.singleton
+package com.apache.fastandroid.demo.designmode.singleton
 
 /**
  * Created by Jerry on 2022/1/27.

@@ -58,59 +58,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.pow
 
-/**
- * dp转换成px
- */
-//fun Context.dp(dpValue: Float): Float {
-//    var scale = resources.displayMetrics.density;
-//    return dpValue * scale + 0.5f
-//}
-
-//fun Context.dpInt(dpValue: Float): Int {
-//    return dp(dpValue).toInt()
-//}
-
-val Float.dp:Float
-    get()  {
-        val scale = Resources.getSystem().displayMetrics.density
-        return (this * scale + 0.5).toFloat()
-    }
-
-
-val Int.dp:Int
-    get() {
-        val scale = Resources.getSystem().displayMetrics.density
-        return (this * scale + 0.5).toInt()
-    }
-
-val Double.dp: Double
-    get() {
-        val scale = Resources.getSystem().displayMetrics.density
-        return this * scale + 0.5
-    }
-
-val Int.dpInt:Int
-    get() = this.dp
-
-
-
-
-
-
-
-
-
-val Float.sp
-    get() = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,
-        this,
-        Resources.getSystem().displayMetrics
-    )
-val Int.sp
-    get() = this.toFloat().sp
-
-
-
 
 
 

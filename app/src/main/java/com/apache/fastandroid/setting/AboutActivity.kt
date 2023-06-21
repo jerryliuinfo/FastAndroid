@@ -8,11 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
-import com.apache.fastandroid.BuildConfig
 import com.drakeet.about.*
 import com.apache.fastandroid.R
 
 import com.drakeet.about.provided.PicassoImageLoader
+import com.tesla.framework.kt.appVersionName
 
 /**
  * Created by Jerry on 2022/3/16.
@@ -29,7 +29,7 @@ class AboutActivity: AbsAboutActivity(), OnRecommendationClickedListener, OnCont
     override fun onCreateHeader(icon: ImageView, slogan: TextView, version: TextView) {
         icon.setImageResource(R.mipmap.ic_launcher)
         slogan.text = "About Page By drakeet"
-        version.text = "v" + BuildConfig.VERSION_NAME
+        version.text = "v$appVersionName"
     }
 
     override fun onItemsCreated(items: MutableList<Any?>) {

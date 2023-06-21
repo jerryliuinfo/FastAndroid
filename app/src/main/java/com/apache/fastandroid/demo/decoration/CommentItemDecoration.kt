@@ -13,7 +13,6 @@ import com.tesla.framework.kt.dpInt
  * Created by Jerry on 2021/5/3.
  */
 class CommentItemDecoration(val context:Context): RecyclerView.ItemDecoration() {
-    private val marginHorizontal = 2.dp
     private var RADIS = 10f.dp
 
     private val mCirclePaint = Paint().apply {
