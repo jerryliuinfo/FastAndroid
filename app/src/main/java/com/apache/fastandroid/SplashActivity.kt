@@ -94,7 +94,6 @@ class SplashActivity : BaseVBActivity<ActivitySplashBinding>(ActivitySplashBindi
             MainActivity.launch(this@SplashActivity)
             finish()
         }
-
     }
 
     override fun onDestroy() {
