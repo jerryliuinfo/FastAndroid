@@ -8,6 +8,7 @@ apply plugin: Plugins.navigationSafeargs
 
 
 apply from: 'and_res_guard.gradle'
+apply from: '../playFlavor.gradle'
 
 
 
@@ -65,12 +66,11 @@ android {
         //5.0以下将svg图片生成指定维度的图片
         vectorDrawables.generatedDensities('xhdpi', 'xxhdpi')
 
-        flavorDimensions "env"
+//        flavorDimensions "env"
 
         manifestPlaceholders["appName"] = "Android-"
 
 
-        signingConfig signingConfigs.debug
 
         /**
          * 配置哪些类型的资源才被打包到apk 中，例如配置为 'zh-rCN'，则只有 中文的资源才会被打包到apk中，
@@ -112,18 +112,14 @@ android {
         }
     }
 
-  /*  externalNativeBuild {
-        cmake {
-            path "src/main/cpp/CMakeLists.txt"
-        }
-    }*/
+
 
     signingConfigs {
         release {
             setSigningConfigKey(release, PROD_PROPS)
         }
         debug {
-            setSigningConfigKey(debug, REPO_PROPS)
+            setSigningConfigKey(release, PROD_PROPS)
         }
     }
 
@@ -132,30 +128,7 @@ android {
     }
 
 
-    productFlavors {
-        mock {
-            dimension "env"
-//            applicationIdSuffix = ".mock"
-        }
 
-        prod {
-            dimension "env"
-//            manifestPlaceholders = [UMENG_CHANNEL: "prod"]
-            resValue "string", "appDisplayName", "FastProd"
-            buildConfigField 'String', 'WEB_URL', '"http://www.prod.com"'
-            /**
-             * 将会在 app/build/generated/res/resValues/prodPay/debug/values/gradleResValues.xml
-             * 中生成 channel_tips 字符串
-             */
-            resValue 'string', 'channel_tips', 'prod渠道欢迎你'
-            signingConfig signingConfigs.release
-        }
-    }
-
-    productFlavors.all { flavor ->
-        //动态设置渠道名
-        flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
-    }
 
 
     buildTypes {
@@ -205,6 +178,9 @@ android {
              * 开启了这个开关之后，在构建日志中会看到执行 transformClassesWithShrinkResForRelease
              */
             shrinkResources true
+
+            signingConfig signingConfigs.release
+
 
             /**
              * 获取Android SDK安装目录中，Android为我们提供的默认的Proguard混淆配置文件，路径是android sdk
@@ -468,7 +444,6 @@ dependencies {
     implementation(*Libs.rxJava)
     implementation(*Libs.retrofit)
 
-
     implementation(*Jetpack.lifecycle)
     implementation(*Jetpack.navigation)
 
@@ -477,19 +452,13 @@ dependencies {
 //    //kotlin 用 kapt
 //    kapt Libs.room_compiler
 
-
     implementation(Jetpack.startUp)
     implementation(AndroidTest.espresso_idling)
-
 
     implementation(*AndroidTest.espresso)
 
     implementation(*Jetpack.hit)
     kapt(*Jetpack.hit_compiler)
-
-
-
-
 
     implementation(*Libs.coroutine)
     implementation(*Libs.immersionbar)
@@ -499,23 +468,13 @@ dependencies {
 
 //    debugImplementation 'com.guolindev.glance:glance:1.1.0'
 
-
     implementation Libs.multidex
 
     implementation Jetpack.workManager
 
-
     implementation Libs.viewPage2
 
-
     implementation(*Libs.blackTech)
-
-
-
-
-
-
-
 }
 
 

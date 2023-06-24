@@ -1,33 +1,31 @@
 package com.apache.fastandroid.demo.tablayout
 
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.apache.fastandroid.R
 import com.apache.fastandroid.jetpack.navigation.advance.home.AboutFragment
 import com.apache.fastandroid.jetpack.navigation.advance.home.TitleFragment
 import com.google.android.material.tabs.TabLayout
-import com.tesla.framework.support.bean.ITabItem
 import com.tesla.framework.support.bean.TabItem
-import com.tesla.framework.ui.fragment.ATabsTabLayoutFragmentNew
+import com.tesla.framework.ui.fragment.ATabsTabLayoutFragment
 import com.tesla.framework.ui.fragment.tab.MyFragmentStateAdapter
-import java.util.ArrayList
 
 const val MY_GARDEN_PAGE_INDEX = 0
 const val PLANT_LIST_PAGE_INDEX = 1
 /**
  * Created by Jerry on 2022/3/14.
  */
-class ArticleTabsFragment:ATabsTabLayoutFragmentNew() {
+class ArticleTabsFragment:ATabsTabLayoutFragment() {
+
+
     override fun createTabAdapter(): MyFragmentStateAdapter {
+        return ArticleAdapter(tabItems(),this)
+    }
+
+    override fun tabItems(): List<TabItem> {
         val tabs = mutableListOf(TabItem("0", "garden"), TabItem("1","list"))
-        return ArticleAdapter(tabs,this)
+        return tabs
     }
 
 
-
-    override fun onConfigureTab(tab: TabLayout.Tab, position: Int, tabItem: TabItem) {
-        tab.text = getTabTitle(position)
-    }
 
 
 

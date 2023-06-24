@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDex
 import com.apache.fastandroid.AppSetting
+import com.apache.fastandroid.ClientConfigurator
 import com.apache.fastandroid.artemis.ui.app.ComApplication
 import com.apache.fastandroid.component.once.Once
 import com.apache.fastandroid.crash.Fabric.init
@@ -67,12 +68,22 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
 
     private var mAppViewModelStore: ViewModelStore? = null
 
-    lateinit var appSetting: AppSetting
 
     val apiHelper:ApiHelper by lazy {
         ApiHelperImpl(ApiServiceFactory.flowService)
     }
     lateinit var  databaseHelper:DatabaseHelper
+
+
+
+
+    companion object {
+        val TAG = FastApplication::class.java.simpleName
+        lateinit var instance: FastApplication
+        lateinit var context: Context
+
+        const val DEFAULT_PREFERENCES = "default_preferences"
+    }
     override fun onCreate() {
         super.onCreate()
         if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -80,176 +91,17 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
             // You should not init your app in this process.
             return
         }
-        Utils.init(this)
+        context = this
+        instance = this
+        databaseHelper = DatabaseHelperImpl(DatabaseBuilder.getInstance(this))
+        mAppViewModelStore = ViewModelStore()
+
         val time = measureTimeMillis {
-            context = this
-            instance = this
-
-            initNightMode()
-            databaseHelper = DatabaseHelperImpl(DatabaseBuilder.getInstance(this))
-            mAppViewModelStore = ViewModelStore()
-            initAndroidUtil()
-            initLog()
-            initOnce()
-            initAop()
-            crashReport()
-            initTakt()
-            initLoop()
-            Logger.d("Application onCreate ")
-
-//            NetworkStateClient.register()
-
-            initTaskByStartup()
-            //        initLoop();
-            // data/data/com.apache.fastandroid/files/mmkv
-            initMMKV()
-
-
-            initBlockCancary()
-            initAnr()
-            initImageLoader()
-
-            //初始化crash统计
-            initHttp()
-            initViewPump()
-            initReword()
-            LeakCanary.install(this)
-            LaunchTimer.endRecord("Application end ")
-            initLoadSir()
-            DeviceName.init(this)
-            initPermissionMonitor()
-            initAppDress()
-            initFloo()
-
-            Utils.getApp().registerActivityLifecycleCallbacks(TraditionalProcessLifecycleListener(object :IAppStateListener{
-                override fun onAppForeground() {
-                    Logger.d("onAppForeground -->")
-                }
-
-                override fun onAppBackground() {
-                    Logger.d("onAppForeground -->")
-                }
-
-            }))
-
+            ClientConfigurator.init(this)
         }
-        initNetworkMonitor()
+
         println("Application onCreate cost time: $time milles")
     }
-
-    private fun initNetworkMonitor() {
-        OkNetworkMonitor.context = this
-
-    }
-
-    private fun initTakt() {
-        Takt.stock(this)
-            .seat(Seat.TOP_RIGHT)
-            .interval(250)
-            .color(Color.WHITE)
-            .size(24f)
-            .alpha(.5f)
-            .listener { fps -> Log.d("Excellent!", fps.toString() + " fps") }
-            .useCustomControl()
-    }
-
-    private fun initNightMode() {
-        appSetting = AppSetting(getSharedPreferences(DEFAULT_PREFERENCES,Context.MODE_PRIVATE))
-    }
-
-    private fun initOnce() {
-        Once.initialise(this)
-    }
-
-    private fun initMMKV() {
-        val rootDir = MMKV.initialize(this)
-        Logger.d("mmkv rootDir:%s", rootDir)
-    }
-
-    private fun initAop() {
-//        XAOP.init(this);
-//        XAOP.debug(true);
-    }
-
-    private fun initAndroidUtil() {
-        Utils.init(FApplication.getApplication())
-    }
-
-    private fun initAppDress() {}
-    private fun initPermissionMonitor() {
-        try {
-//            Class.forName("com.hua.permissionmonitor.PermissionMonitor");
-//            PermissionMonitor.start(false);
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun initTaskByAppFaster() {
-
-    }
-
-    private fun initTaskByStartup() {
-
-    }
-
-    private fun initCockroach() {
-        val sysExcepHandler = Thread.getDefaultUncaughtExceptionHandler()
-        val toast = Toast.makeText(this, "", Toast.LENGTH_SHORT)
-        DebugSafeModeUI.init(this)
-        Cockroach.install(this, object : ExceptionHandler() {
-            override fun onUncaughtExceptionHappened(thread: Thread, throwable: Throwable) {
-                Logger.d("AndroidRuntime", "--->onUncaughtExceptionHappened:$thread<---", throwable)
-                Handler(Looper.getMainLooper()).post { ToastUtils.showShort("已经进入安全模式") }
-            }
-
-            override fun onBandageExceptionHappened(throwable: Throwable) {
-                throwable.printStackTrace() //打印警告级别log，该throwable可能是最开始的bug导致的，无需关心
-                toast.setText("Cockroach Worked")
-                toast.show()
-            }
-
-            override fun onEnterSafeMode() {
-                ToastUtils.showShort("已经进入安全模式")
-                DebugSafeModeUI.showSafeModeUI()
-            }
-
-            override fun onMayBeBlackScreen(e: Throwable) {
-                val thread = Looper.getMainLooper().thread
-                Logger.d("AndroidRuntime", "--->onUncaughtExceptionHappened:$thread<---", e)
-                //黑屏时建议直接杀死app
-                sysExcepHandler.uncaughtException(thread, RuntimeException("black screen"))
-            }
-        })
-    }
-
-    private fun crashReport() {
-        init(this)
-//        initCockroach()
-    }
-
-    private fun initImageLoader() {
-        /* String imageLoaderClassName = "";
-        IImageLoaderstrategy loaderstrategy;
-         if (!TextUtils.isEmpty(imageLoaderClassName)) {
-            try {
-                loaderstrategy = (IImageLoaderstrategy) Class.forName(imageLoaderClassName).newInstance();
-            } catch (Exception e) {
-                loaderstrategy = new GlideImageLoader();
-            }
-        } else {
-             loaderstrategy = new GlideImageLoader();
-         }
-        ImageLoaderManager.getInstance().setImageLoaderStrategy(loaderstrategy);
-        ImageLoaderManager.getInstance().init(FApplication.getContext());*/
-    }
-
-    private fun initBlockCancary() {
-        Logger.d(TAG, "initBlockCancary --->")
-        //        BlockCanary.install(this, new AppBlockCanaryContext()).start();
-    }
-
-
 
     override fun attachBaseContext(base: Context) {
         Logger.d("Application attachBaseContext ")
@@ -258,27 +110,6 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
         //HotFixManager.loadDex(base);
         super.attachBaseContext(base)
     }
-
-    /**
-     * 全局请求的统一配置
-     */
-    private fun initHttp() {}
-    private fun initLog() {
-//        Logger.addLogAdapter(DiskLogAdapter())
-        Logger.addLogAdapter(AndroidLogAdapter(SimpleFormatStrategy.newBuilder().build()))
-        //添加 Timer
-//        Logger.addLogAdapter(TimerLogger())
-    }
-
-    private val logPath: String
-        private get() {
-            val dir = context!!.getExternalFilesDir("fastAndroid")!!
-                .absolutePath + File.separator + "log"
-            FileUtils.createOrExistsDir(dir)
-            return dir
-        }
-
-
 
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -305,26 +136,6 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
         return res
     }
 
-    private fun initLoop() {
-       Global.start()
-    }
-
-    private fun initAnr() {
-        /*val config = AnrConfig.with().set_timeoutInterval(2000)
-            .setIgnoreDebugger(true)
-            .setReportMainThreadOnly()
-            .setAnrInterceptor { duration -> 3000 - duration }.build()
-                AnrManager.getInstance().start(config);*/
-    }
-
-    private fun initReword(){
-        Restring.init(this)
-//        ViewPump.init(RewordInterceptor)
-    }
-
-    private fun initViewPump() {
-       init(TextUpdatingInterceptor(), CustomTextViewInterceptor())
-    }
 
     override fun getApplicationContext(): Context {
 //        return super.getApplicationContext();
@@ -355,16 +166,6 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
             ?: throw IllegalStateException("Your activity/fragment is not yet attached to " + "Application. You can't request ViewModel before onCreate call.")
     }
 
-    private fun initLoadSir() {
-//        LoadSir.beginBuilder()
-//            .addCallback(ErrorCallback()) //添加各种状态页
-//            .addCallback(Callback.EmptyCallback())
-//            .addCallback(com.apache.fastandroid.demo.component.loadsir.sample.callback.LoadingCallback())
-//            .addCallback(com.apache.fastandroid.demo.component.loadsir.sample.callback.TimeoutCallback())
-//            .addCallback(com.apache.fastandroid.demo.component.loadsir.sample.callback.CustomCallback()) //当注册LoadSir 时如果设置了默认状态页，则会展示默认状态页，否则不展示
-//            .setDefaultCallback(com.apache.fastandroid.demo.component.loadsir.sample.callback.LoadingCallback::class.java) //设置默认状态页
-//            .commit()
-    }
 
     // Depends on the flavor,
     val taskRepository: TasksRepository
@@ -373,36 +174,4 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
 
 
 
-    private fun initFloo(){
-        val mappings: MutableMap<String, Target> = HashMap()
-        mappings["m.drakeet.me/home"] = Target("floo://drakeet.sdk/target")
-        mappings["m.drakeet.me/link"] = Target("floo://drakeet.sdk/target")
-        mappings["m.drakeet.me/web"] = Target("floo://drakeet.sdk/web")
-        mappings["m.drakeet.me/container"] = Target("floo://m.drakeet.me/container")
-        mappings["mosaic.chunchun.io:8080"] =
-            Target("https://play.google.com/store/apps/details?id=me.drakeet.puremosaic")
-        mappings["PureWriter"] =
-            Target("https://play.google.com/store/apps/details?id=com.drakeet.purewriter")
-
-//        Floo.configuration()
-//            .setDebugEnabled(true)
-//            .addRequestInterceptor(PureSchemeInterceptor(getString(R.string.scheme)))
-//            .addRequestInterceptor(LogInterceptor("Request"))
-//            .addTargetInterceptor(PureSchemeInterceptor(getString(R.string.scheme)))
-//            .addTargetInterceptor(LogInterceptor("Target"))
-//            .addTargetNotFoundHandler(WebHandler())
-//            .addTargetNotFoundHandler(OpenDirectlyHandler())
-//            .addTargetNotFoundHandler(TargetNotFoundToaster())
-
-        Floo.apply(mappings)
-    }
-
-
-    companion object {
-        val TAG = FastApplication::class.java.simpleName
-         lateinit var instance: FastApplication
-         lateinit var context: Context
-
-        const val DEFAULT_PREFERENCES = "default_preferences"
-    }
 }

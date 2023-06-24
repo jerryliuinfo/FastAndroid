@@ -16,14 +16,10 @@ open class CountDownByTimer(private var count: Long, private val delay:Long, pri
     private inner class CountDownTask : TimerTask() {
         override fun run() {
             if (count > 0){
-                runOnUiThread {
-                    listener?.onTick(count)
-                }
+                listener?.onTick(count)
                 count --
             }else{
-                runOnUiThread {
-                    listener?.onTick(count)
-                }
+                listener?.onTick(count)
                 stop()
             }
         }

@@ -26,7 +26,7 @@ class SplashActivity : BaseVBActivity<ActivitySplashBinding>(ActivitySplashBindi
         super.layoutInit(savedInstanceState)
         Logger.d("SplashActivity layoutInit")
 
-        (application as FastApplication).appSetting.nightModeLive.observe(this) { nightMode ->
+        ClientConfigurator.appSetting.nightModeLive.observe(this) { nightMode ->
             nightMode?.let {
                 AppCompatDelegate.setDefaultNightMode(it)
             }
@@ -38,10 +38,13 @@ class SplashActivity : BaseVBActivity<ActivitySplashBinding>(ActivitySplashBindi
             listener = object : ICountDownListener {
                 override fun onTick(count: Long) {
                     val remainTime = "跳过|$count S"
-                    mBinding.tvCountDown.apply {
-                        text = remainTime
-                        visibility = View.VISIBLE
+                    runOnUiThread {
+                        mBinding.tvCountDown.apply {
+                            text = remainTime
+                            visibility = View.VISIBLE
+                        }
                     }
+
 
                 }
 
@@ -87,8 +90,11 @@ class SplashActivity : BaseVBActivity<ActivitySplashBinding>(ActivitySplashBindi
     }
 
     private fun toMain() {
-        MainActivity.launch(this@SplashActivity)
-        finish()
+        runOnUiThread {
+            MainActivity.launch(this@SplashActivity)
+            finish()
+        }
+
     }
 
     override fun onDestroy() {

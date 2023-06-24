@@ -83,4 +83,8 @@
 
     <dimen name="normal_space">12dp</dimen>
 
+
+
+    <dimen name="additional_horizontal_spacing">0dp</dimen>
+
 </resources>

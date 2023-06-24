@@ -1,0 +1,28 @@
+android {
+    flavorDimensions "env"
+
+    productFlavors {
+        mock {
+            dimension "env"
+//            applicationIdSuffix = ".mock"
+        }
+
+        prod {
+            dimension "env"
+//            manifestPlaceholders = [UMENG_CHANNEL: "prod"]
+            resValue "string", "appDisplayName", "FastProd"
+            buildConfigField 'String', 'WEB_URL', '"http://www.prod.com"'
+            /**
+             * 将会在 app/build/generated/res/resValues/prodPay/debug/values/gradleResValues.xml
+             * 中生成 channel_tips 字符串
+             */
+            resValue 'string', 'channel_tips', 'prod渠道欢迎你'
+//            signingConfig signingConfigs.release
+        }
+    }
+
+    productFlavors.all { flavor ->
+        //动态设置渠道名
+        flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
+    }
+}

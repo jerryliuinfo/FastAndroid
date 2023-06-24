@@ -13,26 +13,16 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.component.ComponentDemoFragment
 import com.apache.fastandroid.demo.compress.CompressDemoActivity
-import com.apache.fastandroid.demo.keybordvisibility.KeybordVisibilityDemoActivity
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
-import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
-import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
-import com.apache.fastandroid.demo.recycleview.RecycleViewDemoListFragment
-import com.apache.fastandroid.demo.showcase.AlbumListFragment
-import com.apache.fastandroid.jetpack.hit.HitDemoActivity
-import com.apache.fastandroid.jetpack.livedata.LiveDataBasicFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
-import com.tesla.framework.ui.activity.FragmentContainerActivity
 import timber.log.Timber
 
 class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
@@ -41,6 +31,10 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
     private var mNavController: NavController? = null
 
     private val mHandler = Handler(Looper.getMainLooper())
+
+    private val recycledViewPool = RecyclerView.RecycledViewPool().apply {
+        setMaxRecycledViews(R.id.view_type_recycleView_pool,25)
+    }
 
 
     @CostTime
@@ -75,7 +69,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
 
 
-       /* if (AppConfigUtil.isAppUpdated()){
+     /*   if (AppConfigUtil.isAppUpdated()){
             AppConfigUtil.appVersionCode = BuildConfig.VERSION_CODE.toLong()
         }*/
 
@@ -188,7 +182,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
 //        launchActivity<TasksActivity>(this)
 //        launchActivity<KeybordVisibilityDemoActivity>(this)
-        launchActivity<CompressDemoActivity>(this)
+//        launchActivity<CompressDemoActivity>(this)
 
 //        launchActivity<com.example.hellojnicallback.RewordDemoActivity>(this)
 
@@ -231,7 +225,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
     }
 
     private fun setupNavigationMenu(navController: NavController) {
-        NavigationUI.setupWithNavController(mBinding!!.navigationView, navController)
+        NavigationUI.setupWithNavController(mBinding.navigationView, navController)
     }
 
     override fun onNewIntent(intent: Intent) {

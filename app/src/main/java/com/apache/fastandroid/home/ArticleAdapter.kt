@@ -65,6 +65,10 @@ class ArticleAdapter(data: List<Article>, val listener :(View, Int) -> Unit = { 
         }
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return R.id.item_article_type
+    }
+
 
 
     private fun handleTitle(article: Article?): String {

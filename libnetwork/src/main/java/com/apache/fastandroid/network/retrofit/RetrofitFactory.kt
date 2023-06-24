@@ -29,7 +29,21 @@ class RetrofitFactory private constructor() {
 
      private val apiService2: ApiService
 
-     private val okHttpClient:OkHttpClient = OkHttpClientManager.getOkHttpClient()
+     private val okHttpClient:OkHttpClient by lazy {
+         OkHttpClientManager.getOkHttpClient()
+     }
+
+    init {
+
+        mRetrofit = newRetrofitBuilder()
+            .baseUrl(ApiConstant.BASE_URL)
+            .client(okHttpClient)
+            .build()
+
+        apiService = create(ApiService::class.java)
+
+        apiService2 = create(ApiService::class.java)
+    }
 
 
     fun <T> create(clazz: Class<T>) : T {
@@ -68,17 +82,7 @@ class RetrofitFactory private constructor() {
             .create(serviceClass)
     }
 
-    init {
 
-        mRetrofit = newRetrofitBuilder()
-            .baseUrl(ApiConstant.BASE_URL)
-            .client(okHttpClient)
-            .build()
-
-        apiService = create(ApiService::class.java)
-
-        apiService2 = create(ApiService::class.java)
-    }
 
 
     private fun newRetrofitBuilder():Retrofit.Builder{

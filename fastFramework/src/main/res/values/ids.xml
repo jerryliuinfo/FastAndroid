@@ -5,4 +5,8 @@
 
     <item name="tag_navigation_destination_id" type="id"/>
 
+
+    <item name="view_type_recycleView_pool" type="id"/>
+
+
 </resources>

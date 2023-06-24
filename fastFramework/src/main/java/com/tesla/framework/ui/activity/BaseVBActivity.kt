@@ -21,21 +21,5 @@ abstract class BaseVBActivity<V : ViewBinding>(var inflater: (inflater: LayoutIn
         return mBinding.root
     }
 
-/*
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        fragmentRefs = HashMap()
-        super.onCreate(savedInstanceState)
-        activity = this
-        inflateBinding<V>(layoutInflater).also {
-            mBinding = it
-            setContentView(mBinding.root)
-            root = mBinding.root
-        }
-    }*/
-
-
-
-
 
 }

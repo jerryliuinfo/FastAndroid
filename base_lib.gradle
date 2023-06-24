@@ -47,41 +47,6 @@ android {
         abortOnError false
     }
 
-    /*sourceSets {
-        main {
-            if (BuildConfig.isAppMode) {
-                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
-            } else {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-                //集成开发模式下排除debug文件夹中的所有Java文件
-                java {
-                    exclude 'debug/**'
-                }
-            }
-        }
-    }
-
-    buildTypes {
-        // 对应 ALPHA 版本
-        debug {
-            buildConfigField "String", "VERSION_TYPE", "\"${BuildConfig.VERSION_ALPHA}\""
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-        beta {
-            buildConfigField "String", "VERSION_TYPE", "\"${BuildConfig.VERSION_BETA}\""
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-        release {
-            buildConfigField "String", "VERSION_TYPE", "\"${BuildConfig.VERSION_RELEASE}\""
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-}*/
-
-
 }
 
 dependencies {
@@ -108,6 +73,7 @@ dependencies {
     implementation(*Jetpack.lifecycle)
     implementation(Jetpack.startUp)
 
-
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
 
 }
