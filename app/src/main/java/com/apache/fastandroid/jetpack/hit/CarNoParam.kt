@@ -8,5 +8,6 @@ import javax.inject.Inject
 class CarNoParam @Inject constructor(){
 
     fun start(){
+        println("CarNoParam start")
     }
 }

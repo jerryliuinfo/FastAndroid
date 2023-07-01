@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.databinding.LayoutItemType1Binding
 import com.apache.fastandroid.demo.bean.MyData
 
 /**

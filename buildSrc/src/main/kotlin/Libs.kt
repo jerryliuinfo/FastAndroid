@@ -142,7 +142,9 @@ object Libs {
 
 //        "ccom.facebook.network.connectionclass:connectionclass:1.0.1"
 //        "com.github.kirchbergerknorr:PingTools:1.0.4",
-         "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC1"
+         "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC1",
+        //ViewBinding: https://github.com/androidbroadcast/ViewBindingPropertyDelegate
+//         "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9"
 
     )
 

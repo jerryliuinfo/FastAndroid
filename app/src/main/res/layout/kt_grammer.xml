@@ -33,7 +33,7 @@
              btn_clazz_paramter,btn_kotlin_call_java_notnull,btn_kotlin_call_java_nullable,btn_java_call_kotlin,btn_nested_function,btn_expand_function,btn_closeable_use,btn_expand_collection,btn_expand_function2,
              btn_lambda,btn_inline,btn_campanion_object,btn_sealedClass,btn_sealedClass2,
              btn_deconstruction,btn_iterator,btn_withIndex,btn_takeUnless,btn_takeIf,btn_custom_operator,
-             btn_when_operator,btn_generic_parameter,btn_tail_fun,btn_object_property,btn_proxy_mode,
+             btn_when_operator,btn_generic_parameter,btn_tail_fun,btn_object_property,btn_proxy_mode,btn_ext_receiver,
              btn_template_class,edittext"
                 />
 
@@ -310,6 +310,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="模版类"
+                />
+
+            <Button
+                android:id="@+id/btn_ext_receiver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="扩展类Receiver"
                 />
 
 

@@ -2,6 +2,8 @@ package com.apache.fastandroid.demo.temp
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.SharedPreferences
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.graphics.Rect
 import android.net.ConnectivityManager
 import android.net.Network
@@ -16,10 +18,11 @@ import android.view.LayoutInflater
 import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.annotation.DrawableRes
 import androidx.core.app.ActivityCompat
+import androidx.preference.PreferenceManager
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentTempKnowledgeBinding
-import com.apache.fastandroid.demo.designmode.FilterDemoFragment
 import com.apache.fastandroid.demo.designmode.wrapper.AContext
 import com.apache.fastandroid.demo.designmode.wrapper.AContextWrapper
 import com.apache.fastandroid.demo.designmode.wrapper.MyToast
@@ -33,14 +36,15 @@ import com.tesla.framework.component.ignore.IgnoreFirstEventListener
 import com.tesla.framework.component.ignore.IgnoreMultiEventListener
 import com.tesla.framework.component.livedata.NetworkLiveData
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.tesla.framework.component.network.AutoRegisterNetListener
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
 import com.zwb.lib_base.utils.network.NetworkTypeEnum
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 
 
 /**
@@ -177,6 +181,45 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
         mBinding.btnIgnoreMultiEvent.setOnClickListener {
             ignoreMultiEventListener.onTrigger()
         }
+
+        mBinding.btnObserverSpProperty.setOnClickListener {
+            observerSpProperty()
+        }
+        mBinding.btnAnnotation.setOnClickListener {
+            annotationUsage()
+        }
+    }
+
+
+    private fun annotationUsage(){
+        @DrawableRes val checkIcon:Int = R.drawable.add_icon
+
+        @DrawableRes fun annotateReturnValue():  Int{
+            return R.drawable.add_icon
+        }
+        fun annotateParam(@DrawableRes param:Int):  Int{
+            return R.drawable.add_icon
+        }
+
+    }
+
+
+
+
+    private fun observerSpProperty() {
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        prefs.registerOnSharedPreferenceChangeListener(object :OnSharedPreferenceChangeListener{
+            override fun onSharedPreferenceChanged(
+                sharedPreferences: SharedPreferences?,
+                key: String?
+            ) {
+                println("Sp key:${key} changed to ${prefs.getString("name", "default")}")
+
+            }
+
+        })
+
+        prefs.edit().putString("name", "zhangsan:${Random.nextInt(10)}").apply()
     }
 
     private fun dynamicProgress() {
@@ -301,7 +344,7 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
     private fun onBackKeyPressed() {
         if (!hasFragment(TAG)) {
             DialogSelectFragment.Builder()
-                .setTitle("确认推出应用吗")
+                .setTitle("确认退出应用吗")
                 .setConfirmText("退出")
                 .setCancelText("取消")
                 .setConfirmClickListener {

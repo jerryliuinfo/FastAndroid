@@ -8,7 +8,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:flow_wrapMode="aligned"
-        app:constraint_referenced_ids="btn_rv_multi_itemtype,btn_rv_multi_itemtype2,btn_rv_origin,btn_base_adapter,btn_base_adapter_multi_type"
+        app:constraint_referenced_ids="btn_rv_multi_itemtype,btn_rv_multi_itemtype2,btn_rv_origin,btn_base_adapter,
+        btn_base_adapter_multi_type,btn_diffUtil_itemCallback"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:flow_horizontalGap="10dp"
@@ -46,6 +47,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="支持多种样式"
+        />
+
+    <Button
+        android:id="@+id/btn_diffUtil_itemCallback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DiffUtil.ItemCallback"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

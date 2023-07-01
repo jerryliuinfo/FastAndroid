@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.article.ArticleDetailActivity
 import com.apache.fastandroid.databinding.FragmentHomeBinding
 import com.apache.fastandroid.network.model.Article
+import com.bumptech.glide.Glide
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayout
 import com.kingja.loadsir.core.LoadService
@@ -115,6 +116,13 @@ class HomeFragment:BaseDataBindingFragment<FragmentHomeBinding>(FragmentHomeBind
         fun newInstance():HomeFragment{
             return HomeFragment()
         }
+    }
+
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+
+        Glide.get(requireContext()).clearMemory()
     }
 
 

@@ -2,7 +2,10 @@ package com.apache.fastandroid.jetpack.flow.basic
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FragmentFlowBasicUsageBinding
+import com.apache.fastandroid.jetpack.flow.FlowViewModel
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -17,6 +20,9 @@ import kotlinx.coroutines.launch
 class FlowBasicUsageFragment:BaseBindingFragment<FragmentFlowBasicUsageBinding>(FragmentFlowBasicUsageBinding::inflate) {
 
     private val mainScope = MainScope()
+
+
+    private val mFlowViewModel:FlowViewModel by viewModels()
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
@@ -53,7 +59,21 @@ class FlowBasicUsageFragment:BaseBindingFragment<FragmentFlowBasicUsageBinding>(
             exceptionSingleFailure()
         }
 
+        mBinding.btnEvents.setOnClickListener {
+            eventUsage()
+        }
+
     }
+
+    private fun eventUsage(){
+        lifecycleScope.launchWhenCreated {
+
+
+
+        }
+
+    }
+
 
     /**
      * 只要有一个失败就回调 catch，

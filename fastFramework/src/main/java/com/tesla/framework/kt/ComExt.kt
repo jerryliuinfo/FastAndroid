@@ -1,5 +1,6 @@
 package com.tesla.framework.kt
 
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.annotation.StringRes
 import androidx.databinding.ObservableInt
@@ -100,12 +101,7 @@ internal fun Any.warn(
     message: String,
     vararg args: Any?
 ) {
-    if (BuildConfig.DEBUG) {
-        try {
-            Log.w(this::class.java.simpleName, message.format(*args))
-        } catch (_: Exception) {
-        }
-    }
+
 }
 
 internal fun Set<String>.equalsStrings(strings: Set<String>): Boolean {
@@ -130,4 +126,9 @@ inline fun <R> safelyTryCatch( block:() -> R):Result<R>{
     }catch (e:Throwable){
         Result.failure(e)
     }
+}
+
+
+fun SharedPreferences.getNonNullString(key: String, defValue: String): String {
+    return this.getString(key, defValue) ?: defValue
 }

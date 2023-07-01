@@ -11,6 +11,7 @@ import androidx.core.math.MathUtils
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.KtGrammerBinding
 import com.apache.fastandroid.demo.bean.ConstructBean
+import com.apache.fastandroid.demo.bean.Person
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.kt.annotation.ImAPlant
 import com.apache.fastandroid.demo.kt.bean.*
@@ -262,6 +263,10 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
             proxyMode()
         }
 
+        mBinding.btnExtReceiver.setOnClickListener {
+            extReceiver()
+        }
+
 
 
         mBinding.btnTemplateClass.setOnClickListener {
@@ -275,6 +280,21 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
 
+    }
+
+    private fun extReceiver() {
+        val person = personItem {
+            age = 18
+        }
+        println("person :${person}")
+    }
+
+    private inline fun personItem(block: Person.() -> Unit): Person {
+        return Person()
+            .apply {
+               name = "wangkai"
+            }
+            .apply(block)
     }
 
     private fun mathClampUsage() {

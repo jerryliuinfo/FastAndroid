@@ -1,10 +1,11 @@
-package com.apache.fastandroid.di
+package com.apache.fastandroid.jetpack.hit.module
 
 import com.apache.fastandroid.jetpack.flow.api.ApiHelper
 import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
 import com.apache.fastandroid.jetpack.flow.vm.PostViewModel
 import com.apache.fastandroid.network.api.ApiServiceFactory
 import com.apache.fastandroid.network.api.FlowApiService
+import com.tesla.framework.component.eventbus.flow.EventHub
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,11 +18,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 class AppModule {
-//    @SingletonByObject
-//    @Provides
-//    fun provideRepository(): Repository {
-//        return Repository()
-//    }
 
     @Singleton
     @Provides
@@ -39,5 +35,12 @@ class AppModule {
     @Provides
     fun providePostViewModel(apiHelper: ApiHelper) : PostViewModel {
         return PostViewModel(apiHelper)
+    }
+
+
+    @Singleton
+    @Provides
+    fun provideEventHub() : EventHub {
+        return EventHub()
     }
 }

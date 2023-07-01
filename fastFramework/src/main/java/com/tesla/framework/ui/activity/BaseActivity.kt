@@ -1,6 +1,7 @@
 package com.tesla.framework.ui.activity
 
 import android.app.Activity
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
@@ -11,14 +12,15 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import androidx.preference.PreferenceManager
 import com.blankj.utilcode.util.ToastUtils
 import com.gyf.immersionbar.ktx.immersionBar
 import com.tesla.framework.R
 import com.tesla.framework.common.util.AndroidBugFixUtils
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.component.network.AutoRegisterNetListener
 import com.tesla.framework.ui.fragment.BaseFragment
 import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
-import com.tesla.framework.component.network.AutoRegisterNetListener
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
 import com.zwb.lib_base.utils.network.NetworkTypeEnum
 import java.lang.ref.WeakReference
@@ -120,7 +122,24 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
     }
 
     open fun initView(rootView: View?) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        preferences.getString("statusTextSize", "medium")?.let {
+            theme.applyStyle(textStyle(it), true)
+        }
 
+    }
+
+    private  fun textStyle(name: String): Int {
+        val style: Int
+        when (name) {
+            "smallest" -> style = R.style.TextSizeSmallest
+            "small" -> style = R.style.TextSizeSmall
+            "medium" -> style = R.style.TextSizeMedium
+            "large" -> style = R.style.TextSizeLarge
+            "largest" -> style = R.style.TextSizeLargest
+            else -> style = R.style.TextSizeMedium
+        }
+        return style
     }
     override fun onResume() {
         super.onResume()
@@ -130,6 +149,17 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
     override fun onPause() {
         super.onPause()
         isActive = false
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+
+    }
+
+    open fun startActivityWithSlideInAnimation(intent: Intent?) {
+        super.startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
     @JvmOverloads
@@ -279,13 +309,13 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
 
     companion object {
         const val TAG = "Activity-Base"
-        private const val MOBILE_DESIGN_WIDTH_IN_DP = 375
 
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             finish()
+//            onBackPressedDispatcher.onBackPressed()
             return true
         }
         return super.onOptionsItemSelected(item)

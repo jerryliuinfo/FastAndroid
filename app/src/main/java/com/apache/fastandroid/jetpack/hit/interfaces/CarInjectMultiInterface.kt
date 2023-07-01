@@ -1,4 +1,4 @@
-package com.apache.fastandroid.jetpack.hit
+package com.apache.fastandroid.jetpack.hit.interfaces
 
 import com.apache.fastandroid.jetpack.hit.bind.BindElectricEngine
 import com.apache.fastandroid.jetpack.hit.bind.BindGasEngine
@@ -9,25 +9,19 @@ import javax.inject.Inject
 /**
  * Created by Jerry on 2022/3/20.
  */
-class CarInjectMultiInterface @Inject constructor(private val driver: Driver) {
+class /**/CarInjectMultiInterface @Inject constructor(private val driver: Driver) {
 
+    //注入 燃气类型的 引擎
     @BindGasEngine
     @Inject
     lateinit var gasEngineer: Engine
 
+
+    //注入 电类型的 引擎
     @BindElectricEngine
     @Inject
     lateinit var electricEngineer: Engine
 
-    fun delivery(){
-        println("truck is delivery cargo, drive by${driver}")
-    }
-
-    fun deliveryByEngine(){
-        gasEngineer.start()
-        println("truck is delivery cargo, drive by${driver}")
-        gasEngineer.shutDown()
-    }
 
     fun deliveryByInterfaceWithTwoParams(){
         gasEngineer.start()

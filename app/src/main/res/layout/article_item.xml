@@ -33,7 +33,9 @@
                 android:layout_marginEnd="@dimen/safe_padding"
                 android:text="作者：wjx"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:textSize="13dp"
+
+                android:textSize="?attr/status_text_small"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

@@ -1,4 +1,4 @@
-package com.apache.fastandroid.jetpack.hit
+package com.apache.fastandroid.jetpack.hit.interfaces
 
 import com.apache.fastandroid.jetpack.hit.tyre.Tyre
 import javax.inject.Inject
@@ -7,7 +7,7 @@ import javax.inject.Inject
  * Created by Jerry on 2022/3/20.
  * 注入接口
  */
-class CarInjectInterface @Inject constructor(private val driver: Driver) {
+class CarInjectInterface @Inject constructor() {
 
     @Inject
     lateinit var tyre: Tyre

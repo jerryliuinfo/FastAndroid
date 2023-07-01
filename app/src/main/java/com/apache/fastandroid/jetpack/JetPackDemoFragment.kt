@@ -34,6 +34,8 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("Flow", "Flow", FlowDemoListFragment::class.java)
 
                 ,ViewItemBean("Hit", "Hit", activity=HitDemoActivity::class.java)
+                ,ViewItemBean("WorkManager", "WorkManager", activity=HitDemoActivity::class.java)
+                ,ViewItemBean("Paging", "Paging", activity=HitDemoActivity::class.java)
 
         )
     }

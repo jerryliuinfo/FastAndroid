@@ -23,7 +23,7 @@
                 app:flow_horizontalGap="2dp"
                 app:constraint_referenced_ids="btn_flow_basic,btn_flowOf,btn_asFlow,btn_channelFlow
                 ,btn_zip,btn_handle_exception,btn_catch_exception,btn_exception_allFailure,
-                btn_exception_single_Failure"
+                btn_exception_single_Failure,btn_events"
                 app:flow_wrapMode="aligned"
                 />
             <Button
@@ -76,6 +76,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="异常处理单个失败" />
+
+            <Button
+                android:id="@+id/btn_events"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="事件监听" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

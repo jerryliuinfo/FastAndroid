@@ -1,11 +1,5 @@
 package com.apache.fastandroid.jetpack.hit.module
 
-import com.apache.fastandroid.jetpack.hit.bind.BindElectricEngine
-import com.apache.fastandroid.jetpack.hit.bind.BindGasEngine
-import com.apache.fastandroid.jetpack.hit.engine.ElectricEngine
-import com.apache.fastandroid.jetpack.hit.engine.Engine
-import com.apache.fastandroid.jetpack.hit.engine.GasEngine
-import com.apache.fastandroid.jetpack.hit.tyre.AmericaTyre
 import com.apache.fastandroid.jetpack.hit.tyre.ChinaTyre
 import com.apache.fastandroid.jetpack.hit.tyre.Tyre
 import dagger.Binds

@@ -9,5 +9,8 @@ import javax.inject.Singleton
 @Singleton
 class CarSingleton @Inject constructor() {
 
+    fun test(){
+        println("$this run test")
+    }
 
 }

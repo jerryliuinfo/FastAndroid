@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentRecycleviewDemoBinding
 import com.apache.fastandroid.demo.bean.MyData
+import com.apache.fastandroid.demo.recycleview.diffcallback.DiffUtilItemCallbackDemoFragment
 import com.apache.fastandroid.demo.recycleview.multiitemtype.MultiItemTypeDemoFragment1
 import com.apache.fastandroid.demo.recycleview.multiitemtype.MultiItemTypeDemoFragment2
 import com.apache.fastandroid.demo.recycleview.origin.MyDataAdapter
@@ -43,6 +44,11 @@ class RecycleViewDemoListFragment:BaseVBFragment2<FragmentRecycleviewDemoBinding
         }
         mBinding.btnBaseAdapterMultiType.setOnClickListener {
             FragmentContainerActivity.launch(requireActivity(), BaseAdapterMultiItemDemoFragment::class.java, addTitleBar = false)
+        }
+
+        mBinding.btnDiffUtilItemCallback.setOnClickListener {
+            FragmentContainerActivity.launch(requireActivity(), DiffUtilItemCallbackDemoFragment::class.java, addTitleBar = false)
+
         }
     }
 

@@ -33,7 +33,7 @@ class NetworkModule {
 
 
     /**
-     * 全局单例
+     * 如果将 Retrofit 注入为单例，则依赖参数 OkHttpClient 也必须是单例，否则会编译报错
      */
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {

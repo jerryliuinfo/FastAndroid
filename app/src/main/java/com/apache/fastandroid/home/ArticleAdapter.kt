@@ -17,8 +17,14 @@ import com.tesla.framework.kt.getColor
  * Created by Jerry on 2021/7/1.
  * 警告：将 ViewModel 传入 RecyclerView 适配器是一种不妥的做法，因为它会将适配器与 ViewModel 类紧密耦合。
  */
-class ArticleAdapter(data: List<Article>, val listener :(View, Int) -> Unit = { viwe, position -> } ) :
-    BaseQuickAdapter<Article, BaseDataBindingHolder<ArticleItemBinding>>(R.layout.article_item, data.toMutableList()),
+class ArticleAdapter(
+    data: List<Article>,
+    val listener: (View, Int) -> Unit = { viwe, position -> }
+) :
+    BaseQuickAdapter<Article, BaseDataBindingHolder<ArticleItemBinding>>(
+        R.layout.article_item,
+        data.toMutableList()
+    ),
     LoadMoreModule {
 
     init {
@@ -26,10 +32,6 @@ class ArticleAdapter(data: List<Article>, val listener :(View, Int) -> Unit = { 
     }
 
     override fun convert(holder: BaseDataBindingHolder<ArticleItemBinding>, article: Article) {
-
-        holder.dataBinding?.apply {
-
-        }
 
         holder
             .setText(R.id.item_article_title, handleTitle(article))
@@ -39,13 +41,13 @@ class ArticleAdapter(data: List<Article>, val listener :(View, Int) -> Unit = { 
 
 
         holder.getView<TextView>(R.id.item_article_author).buildSpannableString {
-            if (article.top){
-                append("置顶  "){
+            if (article.top) {
+                append("置顶  ") {
                     setColor(R.color.holo_red_light.getColor(context))
                 }
             }
-            if (article.fresh){
-                append("新  "){
+            if (article.fresh) {
+                append("新  ") {
                     setColor(R.color.holo_red_light.getColor(context))
                 }
             }
@@ -68,7 +70,6 @@ class ArticleAdapter(data: List<Article>, val listener :(View, Int) -> Unit = { 
     override fun getItemViewType(position: Int): Int {
         return R.id.item_article_type
     }
-
 
 
     private fun handleTitle(article: Article?): String {

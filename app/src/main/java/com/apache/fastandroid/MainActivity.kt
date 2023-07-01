@@ -17,12 +17,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.compress.CompressDemoActivity
-import com.blankj.utilcode.util.ToastUtils
+import com.apache.fastandroid.demo.recycleview.diffcallback.DiffUtilItemCallbackDemoFragment
+import com.apache.fastandroid.jetpack.hit.HitDemoActivity
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
+import com.tesla.framework.ui.activity.FragmentContainerActivity
 import timber.log.Timber
 
 class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
@@ -35,6 +36,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
     private val recycledViewPool = RecyclerView.RecycledViewPool().apply {
         setMaxRecycledViews(R.id.view_type_recycleView_pool,25)
     }
+
+
 
 
     @CostTime
@@ -51,7 +54,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
             return
         }
 
-        Logger.d("MainActivity mHandler:${mHandler}")
+        Logger.d("MainActivity mHandler:${mHandler},toolbar:${mBinding.toolbar}, toolbar2:${mBinding.toolbar}")
 
 
         setSupportActionBar(mBinding.toolbar)
@@ -62,7 +65,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
         mNavController = hostFragment!!.navController
         val configuration =
             AppBarConfiguration.Builder(R.id.home_dest, R.id.demo_dest).setOpenableLayout(
-                mBinding!!.drawer
+                mBinding.drawer
             ).build()
         setupActionBar(mNavController!!, configuration)
         setupNavigationMenu(mNavController!!)
@@ -88,7 +91,6 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, CoroutineCancelTimeoutDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, CoroutineContextDispatcherDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, JuejinKtDemoListFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, BottomTabsFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, MvvmMailDemoFragment::class.java,null)
@@ -172,6 +174,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, ViewBindingUsageDemo::class.java,null,addTitleBar = true)
+        FragmentContainerActivity.launch(this, DiffUtilItemCallbackDemoFragment::class.java,null,addTitleBar = true)
 
 //        ListOptions().show(supportFragmentManager,"")
 
@@ -197,12 +201,24 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, CustomLifecycleOwnerFragment::class.java,null,addTitleBar = false)
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
-                if (System.currentTimeMillis() - mExitTime > 2000){
-                    mExitTime = System.currentTimeMillis()
-                    showToast(R.string.main_exit_app)
-                }else{
-                    moveTaskToBack(true)
+
+                when{
+                    mBinding.drawer.isOpen -> {
+                        mBinding.drawer.close()
+                    }
+
+                    else -> {
+                        if (System.currentTimeMillis() - mExitTime > 2000){
+                            mExitTime = System.currentTimeMillis()
+                            showToast(R.string.main_exit_app)
+                        }else{
+                            moveTaskToBack(true)
+                        }
+                    }
                 }
+
+
+
             }
 
         })
@@ -249,8 +265,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
     private fun setupDrawer(savedInstanceState: Bundle?) {
         val drawerToggle = object : ActionBarDrawerToggle(
-            this, mBinding!!.drawer,
-            mBinding!!.toolbar, R.string.draw_open, R.string.draw_close
+            this, mBinding.drawer,
+            mBinding.toolbar, R.string.draw_open, R.string.draw_close
         ) {
             override fun onDrawerClosed(view: View) {
                 super.onDrawerClosed(view)
@@ -263,7 +279,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
         mBinding.drawer.addDrawerListener(drawerToggle)
     }
 
-    private var canFinish = false
+  /*  private var canFinish = false
     override fun onBackClick(): Boolean {
         if (!canFinish) {
             canFinish = true
@@ -272,7 +288,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
             return true
         }
         return super.onBackClick()
-    }
+    }*/
 
     private val result = MutableLiveData<Boolean>()
     override fun onClick(v: View) {

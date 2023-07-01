@@ -9,6 +9,7 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentViewbindingUsageBinding
 import com.apache.fastandroid.databinding.ItemCommentBinding
 import com.blankj.utilcode.util.ToastUtils
+import com.tesla.framework.component.viewbinding.BindingHolder
 import com.tesla.framework.kt.addOnItemClickListener
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.item_comment.view.*
@@ -29,7 +30,8 @@ class ViewBindingUsageDemo:BaseBindingFragment<FragmentViewbindingUsageBinding>(
 
         mBinding.btnViewBinding.setOnClickListener {
             mBinding.recyclerView.apply {
-                adapter = UserAdapter(users)
+//                adapter = UserAdapter(users)
+                adapter = UserAdapter2(users)
             }
         }
 
@@ -63,37 +65,19 @@ class ViewBindingUsageDemo:BaseBindingFragment<FragmentViewbindingUsageBinding>(
         }
     }
 
-    private class UserAdapter2(val users:List<String>): RecyclerView.Adapter<UserAdapter2.ItemViewHolder>() {
-        inner class ItemViewHolder(view:View):RecyclerView.ViewHolder(view)
+    private class UserAdapter2(val users:List<String>): RecyclerView.Adapter<BindingHolder<ItemCommentBinding>>() {
+
+        override fun onBindViewHolder(holder: BindingHolder<ItemCommentBinding>, position: Int) {
+            holder.itemView.tv_title.text = users[position]
+        }
 
         override fun onCreateViewHolder(
             parent: ViewGroup,
             viewType: Int
-        ): UserAdapter2.ItemViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_comment,parent,false)
-            return ItemViewHolder(view)
+        ): BindingHolder<ItemCommentBinding> {
+            return BindingHolder(ItemCommentBinding.inflate(LayoutInflater.from(parent.context),parent,false))
         }
 
-        override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-
-            //反编译后变成, 每次刷新的时候都执行了 findViewById， 影响了性能
-            /**
-             *
-             *  public void onBindViewHolder(@NotNull ViewBindingUsageDemo.UserAdapter2.ItemViewHolder holder, int position) {
-            Intrinsics.checkNotNullParameter(holder, "holder");
-            View var10000 = holder.itemView;
-            Intrinsics.checkNotNullExpressionValue(var10000, "holder.itemView");
-            TextView var3 = (TextView)var10000.findViewById(id.tv_title);
-            Intrinsics.checkNotNullExpressionValue(var3, "holder.itemView.tv_title");
-            var3.setText((CharSequence)this.users.get(position));
-            }
-             *
-             *
-             *
-             */
-
-            holder.itemView.tv_title.text = users[position]
-        }
 
         override fun getItemCount(): Int {
             return users.size
