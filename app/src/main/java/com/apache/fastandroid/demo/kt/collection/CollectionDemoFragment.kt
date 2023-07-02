@@ -78,6 +78,10 @@ class CollectionDemoFragment :
         mBinding.btnFlatmap.setOnClickListener {
             flatMapUsage()
         }
+        mBinding.btnFold.setOnClickListener {
+            foldUsage()
+        }
+
 
         mBinding.btnForEach.setOnClickListener {
             forEachUsage()
@@ -141,6 +145,24 @@ class CollectionDemoFragment :
         mBinding.btnZip.setOnClickListener {
             zipUsage()
         }
+    }
+
+    private fun foldUsage() {
+        val result = users.map {
+           it.name
+        }.fold("fold 初始值"){ name, acc ->
+            "$acc, $name"
+        }
+        Logger.d("fold result:$result")
+
+        val result2 = users.map {
+            it.name
+        }.foldRight("foldRight 初始值"){ name, acc ->
+            "$acc, $name"
+        }
+        Logger.d("foldRight result:$result2")
+
+
     }
 
     private fun partitionUsage() {
@@ -513,6 +535,9 @@ class CollectionDemoFragment :
         Logger.d("component1:${list.component1()},component5:${list.component5()},")
     }
 
+    /**
+     * 将此集合拆分为列表列表，每个列表不超过给定的[大小]。
+     */
     private fun chunkUsage() {
         val words = "one two three four five six seven eight nine ten".split(' ')
         val chunks = words.chunked(3)

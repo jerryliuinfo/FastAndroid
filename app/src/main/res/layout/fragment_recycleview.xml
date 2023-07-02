@@ -14,7 +14,18 @@
             android:id="@+id/btn_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="刷新数据"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="局部刷新数据"
+            />
+
+        <Button
+            android:id="@+id/btn_refresh_notify_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/btn_refresh"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/dp_40"
+            android:text="全局刷新数据"
             />
 
         <androidx.recyclerview.widget.RecyclerView

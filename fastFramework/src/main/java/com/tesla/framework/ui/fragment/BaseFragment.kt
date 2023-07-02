@@ -15,7 +15,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.blankj.utilcode.util.ToastUtils
+import com.google.android.material.transition.MaterialFadeThrough
 import com.kingja.loadsir.core.LoadService
+import com.tesla.framework.R
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.vm.ShareViewModel
 import com.tesla.framework.ui.activity.BaseActivity
@@ -49,6 +51,10 @@ open abstract class BaseFragment:Fragment(),BaseView {
         super.onCreate(savedInstanceState)
         mShareViewModel = getApplicationScopeViewModel(ShareViewModel::class.java)
         initViewModel()
+
+        enterTransition = MaterialFadeThrough().apply {
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+        }
     }
 
 

@@ -22,6 +22,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedDispatcherOwner
+import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.text.HtmlCompat
 import androidx.core.view.GravityCompat
@@ -33,6 +34,7 @@ import com.blankj.utilcode.util.ClickUtils
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.tesla.framework.kt.getDrawableOrNull
 
 /**
  * Create by KunMinX at 19/9/18
@@ -186,4 +188,31 @@ fun View.bindLayoutFullscreen(previousFullscreen: Boolean, fullscreen: Boolean) 
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
     }
+}
+
+
+
+@BindingAdapter(
+    "drawableStart",
+    "drawableLeft",
+    "drawableTop",
+    "drawableEnd",
+    "drawableRight",
+    "drawableBottom",
+    requireAll = false
+)
+fun TextView.bindDrawables(
+    @DrawableRes drawableStart: Int? = null,
+    @DrawableRes drawableLeft: Int? = null,
+    @DrawableRes drawableTop: Int? = null,
+    @DrawableRes drawableEnd: Int? = null,
+    @DrawableRes drawableRight: Int? = null,
+    @DrawableRes drawableBottom: Int? = null
+) {
+    setCompoundDrawablesWithIntrinsicBounds(
+        context.getDrawableOrNull(drawableStart ?: drawableLeft),
+        context.getDrawableOrNull(drawableTop),
+        context.getDrawableOrNull(drawableEnd ?: drawableRight),
+        context.getDrawableOrNull(drawableBottom)
+    )
 }

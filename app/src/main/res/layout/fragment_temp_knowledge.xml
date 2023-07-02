@@ -24,7 +24,8 @@
         btn_collections_suffle,btn_linerlayoutCompat,btn_multi_channel,btn_sisuo,btn_varargs,btn_textview_inputFilter,
         btn_collection_wrapper,btn_verify_init,btn_reflect,btn_concurrence,btn_showDialogWithApplicationContext,
         btn_location_onscreen,btn_list_init,btn_network,btn_monitor_back_key,btn_math_format,btn_timeunit_toMilles,btn_array_join,
-        btn_metaData,btn_ignore_firstEvent,btn_ignore_multiEvent,btn_instance,btn_observer_spProperty,btn_annotation"
+        btn_metaData,btn_ignore_firstEvent,btn_ignore_multiEvent,btn_instance,btn_observer_spProperty,btn_annotation,btn_dead_lock,
+        btn_execute_once_everyday"
             />
 
         <Button
@@ -241,6 +242,18 @@
             android:text="注解用法"
             />
 
+        <Button
+            android:id="@+id/btn_dead_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="模拟死锁发生"
+            />
+        <Button
+            android:id="@+id/btn_execute_once_everyday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="一天只执行一次"
+            />
 
 
 

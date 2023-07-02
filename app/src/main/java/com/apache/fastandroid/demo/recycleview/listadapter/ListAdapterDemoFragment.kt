@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.recycleview.diffcallback
+package com.apache.fastandroid.demo.recycleview.listadapter
 
 /**
  * Created by Jerry on 2023/7/1.
@@ -7,11 +7,12 @@ package com.apache.fastandroid.demo.recycleview.diffcallback
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.recyclerview.widget.DiffUtil
 import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
+import com.apache.fastandroid.demo.recycleview.diffcallback.AsyncListDifferAdapter
+import com.apache.fastandroid.demo.recycleview.diffcallback.DiffItemBean
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
-class DiffUtilItemCallbackDemoFragment : BaseBindingFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
+class ListAdapterDemoFragment : BaseBindingFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
 
 
     val oldList = listOf(
@@ -29,30 +30,21 @@ class DiffUtilItemCallbackDemoFragment : BaseBindingFragment<FragmentRecycleview
     )
 
 
-    private lateinit var mAdapter:MyAdapter
+    private lateinit var mAdapter: MyListAdapter
 
      override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-
-         mAdapter = MyAdapter(oldList)
-
          mBinding.recyclerView.apply {
-             adapter = MyAdapter(oldList).also {
+             adapter = MyListAdapter().also {
                  mAdapter = it
              }
-             mAdapter.notifyDataSetChanged()
+             mAdapter.submitList(oldList)
          }
 
          mBinding.btnRefresh.setOnClickListener {
-
-             mAdapter.datas = newList
-
-             val diffCallback = ItemDiffCallback(oldList,newList)
-             val diffResult = DiffUtil.calculateDiff(diffCallback)
-             diffResult.dispatchUpdatesTo(mAdapter)
+             mAdapter.submitList(newList)
          }
-
 
      }
 }

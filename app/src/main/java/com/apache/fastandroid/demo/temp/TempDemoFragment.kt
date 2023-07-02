@@ -39,7 +39,6 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("反射", "反射", ReflectionDemoFragment::class.java)
                 ,ViewItemBean("Api用法", "Api用法", ApiDemoFragment::class.java)
                 ,ViewItemBean("异步转同步", "异步转同步", AsyncToSyncDemoFragment::class.java)
-                ,ViewItemBean("死锁", "死锁", ConcurrencyDemoFragment::class.java)
                 ,ViewItemBean("启动模式", "启动模式", LaunchModeDemoFragment::class.java)
                 ,ViewItemBean("FitSystemWindow", "FitSystemWindow", activity = FitSystemWindowDemoActivity::class.java)
                 ,ViewItemBean("FitSystemWindow2", "FitSystemWindow2", activity = FitSystemWindowDemoActivity2::class.java)

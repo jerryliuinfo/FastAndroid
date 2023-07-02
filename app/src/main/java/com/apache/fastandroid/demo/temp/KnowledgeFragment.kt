@@ -9,6 +9,7 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
+import android.os.Build
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.Spanned
@@ -19,15 +20,15 @@ import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.annotation.DrawableRes
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.preference.PreferenceManager
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentTempKnowledgeBinding
-import com.apache.fastandroid.demo.designmode.wrapper.AContext
-import com.apache.fastandroid.demo.designmode.wrapper.AContextWrapper
-import com.apache.fastandroid.demo.designmode.wrapper.MyToast
 import com.apache.fastandroid.demo.temp.concurrency.Player
+import com.apache.fastandroid.demo.temp.concurry.PlayerNew
 import com.blankj.utilcode.util.MetaDataUtils
+import com.blankj.utilcode.util.SPUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.util.hasFragment
@@ -40,9 +41,11 @@ import com.tesla.framework.component.network.AutoRegisterNetListener
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
 import com.zwb.lib_base.utils.network.NetworkTypeEnum
+import kotlinx.android.synthetic.main.fragment_best_practice_livedata.*
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
@@ -65,9 +68,7 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
             dynamicProgress()
         }
 
-        mBinding.btnWrapper.setOnClickListener {
-            wrapperMode()
-        }
+
         mBinding.tvFilter.setOnClickListener {
             filterModeUsage()
         }
@@ -188,6 +189,52 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
         mBinding.btnAnnotation.setOnClickListener {
             annotationUsage()
         }
+        mBinding.btnDeadLock.setOnClickListener {
+            mockDeathLock()
+        }
+        mBinding.btnExecuteOnceEveryday.setOnClickListener {
+            executeOnceEveryDay()
+        }
+    }
+
+    private fun executeOnceEveryDay() {
+        val nowTimeStr = getTodayString()
+        val CACHE_TIME_KEY = "lastExecuteTime"
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun isExecuteToday(nowTimeStr:String):Boolean{
+            val lastExecuteTimeStr = SPUtils.getInstance().getString(CACHE_TIME_KEY, "")
+            Logger.d("nowTimeStr:$nowTimeStr,lastExecuteTimeStr:$lastExecuteTimeStr")
+
+            return TextUtils.equals(nowTimeStr,lastExecuteTimeStr)
+        }
+        if (!isExecuteToday(nowTimeStr)){
+            Logger.d("没有执行过，执行")
+            SPUtils.getInstance().put(CACHE_TIME_KEY,nowTimeStr)
+        }else{
+            Logger.d("当天已执行过，无需执行")
+        }
+    }
+
+
+
+    private fun getTodayString():String{
+        val c = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+        c.timeInMillis = System.currentTimeMillis()
+        val timeStr = String.format(
+            "%4d/%02d/%02d",
+            c[Calendar.YEAR],
+            c[Calendar.MONTH] + 1,
+            c[Calendar.DAY_OF_MONTH]
+        )
+        return timeStr
+
+    }
+
+    private fun mockDeathLock() {
+        val zhangsan = PlayerNew("zhangsan")
+        val lisi = PlayerNew("lisi")
+        Thread(zhangsan, "线程1").start()
+        Thread(lisi, "线程2").start()
     }
 
 
@@ -286,11 +333,7 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
 
     }
 
-    private fun wrapperMode() {
-        AContextWrapper(AContext()).doSomething1()
 
-        MyToast.makeText(context,"I am toast",Toast.LENGTH_SHORT).show()
-    }
 
 
     interface IPredicate<E> {

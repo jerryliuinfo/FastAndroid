@@ -29,7 +29,7 @@
                 app:flow_horizontalGap="10dp"
                 app:flow_verticalGap="10dp"
                 app:constraint_referenced_ids="btn_all_any,btn_average,btn_chunk,btn_component,btn_count,btn_distinct
-                    ,btn_drop,btn_element,btn_filter,btn_find,btn_map,btn_flatmap,btn_forEach,btn_groupby,btn_indexOf,
+                    ,btn_drop,btn_element,btn_filter,btn_find,btn_map,btn_flatmap,btn_fold,btn_forEach,btn_groupby,btn_indexOf,
                     btn_joinTo,btn_minmax,btn_minus,btn_partition,btn_random,btn_require_not_null,btn_single,btn_slice,btn_sortBy,
                     btn_sum,btn_take,btn_zip
                 "
@@ -108,6 +108,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="FlatMap"
+                />
+            <Button
+                android:id="@+id/btn_fold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fold"
                 />
             <Button
                 android:id="@+id/btn_forEach"

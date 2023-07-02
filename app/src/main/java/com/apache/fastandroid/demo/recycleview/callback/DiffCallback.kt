@@ -1,11 +1,12 @@
-package com.apache.fastandroid.demo.recycleview.diffcallback
+package com.apache.fastandroid.demo.recycleview.callback
 
 import androidx.recyclerview.widget.DiffUtil
+import com.apache.fastandroid.demo.recycleview.diffcallback.DiffItemBean
 
 /**
  * Created by Jerry on 2023/7/1.
  */
-class ItemDiffCallback(private val oldList: List<DiffItemBean>, private val newList: List<DiffItemBean>) : DiffUtil.Callback() {
+class DiffCallback(private val oldList: List<DiffItemBean>, private val newList: List<DiffItemBean>) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size
     }

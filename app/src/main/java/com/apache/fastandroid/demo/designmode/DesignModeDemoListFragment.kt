@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
+import android.widget.Toast
 import com.apache.fastandroid.databinding.FragmentDesignModeListBinding
 import com.apache.fastandroid.demo.bean.PersonDto
 import com.apache.fastandroid.demo.bean.ToneDto
@@ -61,6 +62,9 @@ import com.apache.fastandroid.demo.designmode.template.ConcreteClassA
 import com.apache.fastandroid.demo.designmode.template.ConcreteClassB
 import com.apache.fastandroid.demo.designmode.visitor.ConcreteVisitor
 import com.apache.fastandroid.demo.designmode.visitor.ObjectStructure
+import com.apache.fastandroid.demo.designmode.wrapper.AContext
+import com.apache.fastandroid.demo.designmode.wrapper.AContextWrapper
+import com.apache.fastandroid.demo.designmode.wrapper.MyToast
 import com.apache.fastandroid.demo.memento.Caretaker
 import com.apache.fastandroid.demo.memento.Originator
 import com.tesla.framework.component.logger.Logger
@@ -448,6 +452,11 @@ class DesignModeDemoListFragment:BaseBindingFragment<FragmentDesignModeListBindi
 
         decoratorA.operation()
         decoratorB.operation()
+
+
+//        AContextWrapper(AContext()).doSomething1()
+//
+//        MyToast.makeText(context,"I am toast", Toast.LENGTH_SHORT).show()
 
 
 

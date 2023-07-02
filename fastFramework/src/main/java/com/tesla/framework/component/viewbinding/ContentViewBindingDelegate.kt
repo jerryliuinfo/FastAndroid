@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.tesla.framework.kt
+package com.tesla.framework.component.viewbinding
 
 
 import android.app.Activity

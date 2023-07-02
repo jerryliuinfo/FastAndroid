@@ -15,13 +15,15 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.annotations.CostTime
+import com.apache.fastandroid.databinding.ActivityMainBinding
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.recycleview.diffcallback.DiffUtilItemCallbackDemoFragment
-import com.apache.fastandroid.jetpack.hit.HitDemoActivity
+import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
+import com.apache.fastandroid.demo.recycleview.RecycleViewDemoListFragment
+import com.apache.fastandroid.demo.temp.KnowledgeFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.kt.launchActivity
+import com.tesla.framework.component.viewbinding.contentView
 import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import timber.log.Timber
@@ -32,6 +34,9 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
     private var mNavController: NavController? = null
 
     private val mHandler = Handler(Looper.getMainLooper())
+
+//    private val binding: ActivityMainNewBinding by contentView(R.layout.activity_main)
+
 
     private val recycledViewPool = RecyclerView.RecycledViewPool().apply {
         setMaxRecycledViews(R.id.view_type_recycleView_pool,25)
@@ -55,6 +60,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
         }
 
         Logger.d("MainActivity mHandler:${mHandler},toolbar:${mBinding.toolbar}, toolbar2:${mBinding.toolbar}")
+//        Logger.d("MainActivity binding:${binding},mBinding:${mBinding}")
 
 
         setSupportActionBar(mBinding.toolbar)
@@ -108,7 +114,6 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
 
 //        FragmentContainerActivity.launch(this, SandWitchDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, CollectionDemoFragment2::class.java,null)
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, ProgressViewDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, OnceFragment::class.java,null)
@@ -175,7 +180,9 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ViewBindingUsageDemo::class.java,null,addTitleBar = true)
-        FragmentContainerActivity.launch(this, DiffUtilItemCallbackDemoFragment::class.java,null,addTitleBar = true)
+        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null)
 
 //        ListOptions().show(supportFragmentManager,"")
 

@@ -27,6 +27,7 @@ import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.*
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
@@ -688,3 +689,17 @@ inline fun FragmentActivity.fragmentTransactionWithBackStack(
         addToBackStack(name)
     }
 }
+
+@Suppress("DEPRECATION")
+fun TextView.setTextAppearanceCompat(resId: Int) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        setTextAppearance(resId)
+    } else {
+        setTextAppearance(context, resId)
+    }
+}
+
+fun Context.getDrawableOrNull(@DrawableRes id: Int?): Drawable? {
+    return if (id == null || id == 0) null else AppCompatResources.getDrawable(this, id)
+}
+

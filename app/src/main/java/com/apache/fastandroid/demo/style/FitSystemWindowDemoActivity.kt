@@ -5,8 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityFitsSystemWindowBinding
-import com.tesla.framework.kt.contentView
-import kotlinx.android.synthetic.main.activity_layout_visualizer.*
+import com.tesla.framework.component.viewbinding.contentView
 
 /**
  * Created by Jerry on 2022/3/10.
