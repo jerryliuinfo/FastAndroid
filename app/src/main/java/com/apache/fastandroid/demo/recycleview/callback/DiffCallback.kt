@@ -1,7 +1,7 @@
 package com.apache.fastandroid.demo.recycleview.callback
 
 import androidx.recyclerview.widget.DiffUtil
-import com.apache.fastandroid.demo.recycleview.diffcallback.DiffItemBean
+import com.apache.fastandroid.demo.recycleview.bean.DiffItemBean
 
 /**
  * Created by Jerry on 2023/7/1.

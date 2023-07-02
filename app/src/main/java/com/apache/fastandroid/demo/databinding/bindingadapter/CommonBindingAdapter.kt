@@ -15,6 +15,7 @@
  */
 package com.apache.fastandroid.demo.databinding.bindingadapter
 
+import android.content.Context
 import android.graphics.drawable.Drawable
 import android.text.method.LinkMovementMethod
 import android.view.View
@@ -216,3 +217,4 @@ fun TextView.bindDrawables(
         context.getDrawableOrNull(drawableBottom)
     )
 }
+

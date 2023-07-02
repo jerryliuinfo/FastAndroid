@@ -8,6 +8,7 @@ package com.apache.fastandroid.demo.recycleview.diffcallback
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
+import com.apache.fastandroid.demo.recycleview.bean.DiffItemBean
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 class AsyncListDifferDemoFragment : BaseBindingFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {

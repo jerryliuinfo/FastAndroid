@@ -2,7 +2,7 @@ package com.apache.fastandroid.demo.recycleview.listadapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.apache.fastandroid.demo.recycleview.diffcallback.DiffItemBean
+import com.apache.fastandroid.demo.recycleview.bean.DiffItemBean
 import com.apache.fastandroid.demo.recycleview.callback.DiffItemCallback
 import com.apache.fastandroid.demo.recycleview.viewholder.DiffItemViewHolder
 

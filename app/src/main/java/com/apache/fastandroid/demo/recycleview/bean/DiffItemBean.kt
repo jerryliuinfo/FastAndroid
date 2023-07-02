@@ -1,4 +1,4 @@
-package com.apache.fastandroid.demo.recycleview.diffcallback
+package com.apache.fastandroid.demo.recycleview.bean
 
 /**
  * Created by Jerry on 2023/7/1.

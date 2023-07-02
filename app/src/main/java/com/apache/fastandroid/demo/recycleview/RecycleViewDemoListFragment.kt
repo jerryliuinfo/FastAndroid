@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentRecycleviewDemoBinding
 import com.apache.fastandroid.demo.recycleview.diffcallback.AsyncListDifferDemoFragment
 import com.apache.fastandroid.demo.recycleview.diffcallback.DifftemCallbackDemoFragment
+import com.apache.fastandroid.demo.recycleview.itemtouch.ItemTouchHelperDemoFragment
 import com.apache.fastandroid.demo.recycleview.listadapter.ListAdapterDemoFragment
 import com.apache.fastandroid.demo.recycleview.multiitemtype.MultiItemTypeDemoFragment1
 import com.apache.fastandroid.demo.recycleview.multiitemtype.MultiItemTypeDemoFragment2
@@ -62,6 +63,15 @@ class RecycleViewDemoListFragment:BaseVBFragment2<FragmentRecycleviewDemoBinding
         mBinding.btnMultiViewType.setOnClickListener {
             FragmentContainerActivity.launch(requireActivity(), MultiViewTypeDemoFragment::class.java, addTitleBar = false)
         }
+        mBinding.btnMultiViewTypeSameBean.setOnClickListener {
+            FragmentContainerActivity.launch(requireActivity(), MultiViewTypeDemoFragment::class.java, addTitleBar = false)
+        }
+
+        mBinding.btnItemTouchHelper.setOnClickListener {
+            FragmentContainerActivity.launch(requireActivity(), ItemTouchHelperDemoFragment::class.java, addTitleBar = false)
+        }
+
+
     }
 
 

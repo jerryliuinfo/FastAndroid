@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.databinding.LayoutRecycleviewItemBinding
-import com.apache.fastandroid.demo.recycleview.diffcallback.DiffItemBean
+import com.apache.fastandroid.demo.recycleview.bean.DiffItemBean
 import com.tesla.framework.component.logger.Logger
 
 /**

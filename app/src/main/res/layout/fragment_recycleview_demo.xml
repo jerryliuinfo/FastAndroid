@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         app:flow_wrapMode="aligned"
         app:constraint_referenced_ids="btn_rv_multi_itemtype,btn_rv_multi_itemtype2,btn_rv_origin,btn_base_adapter,
-        btn_base_adapter_multi_type,btn_diffUtil_itemCallback,btn_AsyncListDiffer,btn_listAdapter,btn_multi_view_type"
+        btn_base_adapter_multi_type,btn_diffUtil_itemCallback,btn_AsyncListDiffer,btn_listAdapter,
+        btn_multi_view_type,btn_multi_view_type_same_bean,btn_itemTouchHelper"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:flow_horizontalGap="10dp"
@@ -72,7 +73,20 @@
         android:id="@+id/btn_multi_view_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="展示多种样式"
+        android:text="展示多种样式(不同类型Bean)"
+        />
+    <Button
+        android:id="@+id/btn_multi_view_type_same_bean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="展示多种样式(同B一种类型ean)"
+        />
+
+    <Button
+        android:id="@+id/btn_itemTouchHelper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ItemTouchHelper"
         />
 
 

@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.recycleview.diffcallback
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
+import com.apache.fastandroid.demo.recycleview.bean.DiffItemBean
 import com.apache.fastandroid.demo.recycleview.callback.DiffItemCallback
 import com.apache.fastandroid.demo.recycleview.viewholder.DiffItemViewHolder
 
@@ -30,7 +31,7 @@ class AsyncListDifferAdapter: RecyclerView.Adapter<DiffItemViewHolder>() {
     }
 
 
-    fun getItem(position: Int):DiffItemBean{
+    fun getItem(position: Int): DiffItemBean {
         return differ.currentList[position]
     }
 
