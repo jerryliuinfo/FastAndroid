@@ -12,7 +12,7 @@ import com.apache.fastandroid.jetpack.flow.datasource.FlowPracticeDataSource
 import com.apache.fastandroid.jetpack.flow.datasource.FlowPracticeRepository
 import com.apache.fastandroid.jetpack.flow.ui_state.PostsUiState
 import com.apache.fastandroid.jetpack.flow.vm.PostViewModel
-import com.apache.fastandroid.widget.SpaceItemDecoration
+import com.tesla.framework.component.divider.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.tesla.framework.component.logger.Logger
@@ -38,7 +38,11 @@ class FlowPracticeDemoFragment :
         val userAdapter = ApiUserAdapter()
         mBinding.recyclerView.apply {
             adapter = userAdapter
-            addItemDecoration(SpaceItemDecoration(10.dpInt))
+            addItemDecoration(
+                SpaceItemDecoration(
+                    10.dpInt
+                )
+            )
         }
 
         lifecycleScope.launchWhenStarted {

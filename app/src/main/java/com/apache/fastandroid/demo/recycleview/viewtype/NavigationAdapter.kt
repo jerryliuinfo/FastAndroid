@@ -10,6 +10,8 @@ private const val VIEW_TYPE_NAV_DIVIDER = 6
 private const val VIEW_TYPE_NAV_EMAIL_FOLDER_ITEM = 5
 
 class NavigationAdapter(
+    private val listener: NavigationAdapterListener
+
 ) : ListAdapter<NavigationModelItem, NavigationViewHolder<NavigationModelItem>>(
     NavigationModelItem.NavModelItemDiff
 ) {
@@ -34,9 +36,9 @@ class NavigationAdapter(
         viewType: Int
     ): NavigationViewHolder<NavigationModelItem> {
         return when (viewType) {
-            VIEW_TYPE_NAV_MENU_ITEM -> NavigationViewHolder.NavMenuItemViewHolder.from(parent)
-            VIEW_TYPE_NAV_DIVIDER -> NavigationViewHolder.NavDividerViewHolder.from(parent)
-            VIEW_TYPE_NAV_EMAIL_FOLDER_ITEM -> NavigationViewHolder.EmailFolderViewHolder.from(parent)
+            VIEW_TYPE_NAV_MENU_ITEM -> NavigationViewHolder.NavMenuItemViewHolder.from(parent,listener)
+            VIEW_TYPE_NAV_DIVIDER -> NavigationViewHolder.NavDividerViewHolder.from(parent,listener)
+            VIEW_TYPE_NAV_EMAIL_FOLDER_ITEM -> NavigationViewHolder.EmailFolderViewHolder.from(parent,listener)
             else -> throw RuntimeException("Unsupported view holder type")
         } as NavigationViewHolder<NavigationModelItem>
     }

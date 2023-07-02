@@ -9,7 +9,7 @@ import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
 import com.apache.fastandroid.databinding.ItemLayoutUserBinding
 import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.network.model.Status
-import com.apache.fastandroid.widget.SpaceItemDecoration
+import com.tesla.framework.component.divider.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
@@ -42,7 +42,11 @@ class RoomDbFragment:BaseBindingFragment<FragmentRecycleviewBinding>(FragmentRec
         mBinding.recyclerView.apply {
 
             adapter = userAdapter
-            addItemDecoration(SpaceItemDecoration(10.dpInt))
+            addItemDecoration(
+                SpaceItemDecoration(
+                    10.dpInt
+                )
+            )
         }
 
         mViewModel.users.observe(this){

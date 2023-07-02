@@ -21,6 +21,9 @@
             name="navMenuItem"
             type="com.apache.fastandroid.demo.recycleview.viewtype.NavigationModelItem.NavMenuItem" />
 
+        <variable
+            name="navListener"
+            type="com.apache.fastandroid.demo.recycleview.viewtype.NavigationAdapter.NavigationAdapterListener" />
     </data>
 
     <CheckedTextView
@@ -31,6 +34,8 @@
         android:paddingRight="4dp"
         android:background="?attr/selectableItemBackground"
         android:gravity="center_vertical|start"
+        android:onClick="@{() -> navListener.onNavMenuItemClicked(navMenuItem)}"
+
         android:ellipsize="end"
         android:lines="1"
         android:text="@{navMenuItem.titleRes}"

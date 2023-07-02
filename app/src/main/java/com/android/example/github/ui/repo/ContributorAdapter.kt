@@ -28,26 +28,6 @@ class ContributorAdapter(
     private val callback: ((Contributor, ImageView) -> Unit)?
 ) : BaseQuickAdapter<Contributor, BaseDataBindingHolder<ContributorItemBinding>>(R.layout.contributor_item){
 
-    /* override fun createBinding(parent: ViewGroup): ContributorItemBinding {
-        val binding = DataBindingUtil
-            .inflate<ContributorItemBinding>(
-                LayoutInflater.from(parent.context),
-                R.layout.contributor_item,
-                parent,
-                false,
-                dataBindingComponent
-            )
-        binding.root.setOnClickListener {
-            binding.contributor?.let {
-                callback?.invoke(it, binding.imageView)
-            }
-        }
-        return binding
-    }
-
-    override fun bind(binding: ContributorItemBinding, item: Contributor) {
-        binding.contributor = item
-    }*/
     override fun convert(holder: BaseDataBindingHolder<ContributorItemBinding>, item: Contributor) {
         holder.dataBinding?.apply {
             contributor = item

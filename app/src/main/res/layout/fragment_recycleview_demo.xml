@@ -21,14 +21,14 @@
         android:id="@+id/btn_rv_multi_itemtype"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="rv_multi_itemtype（单 bean 类型对应多样 item） "
+        android:text="MultiType（单 bean 类型对应多样 item） "
         />
 
     <Button
         android:id="@+id/btn_rv_multi_itemtype2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="rv_multi_itemtype（多 bean 类型对应多样 item） "
+        android:text="MultiType（多 bean 类型对应多样 item） "
         />
 
     <Button

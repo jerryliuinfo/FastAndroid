@@ -7,9 +7,11 @@ package com.apache.fastandroid.demo.recycleview.listadapter
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.core.view.doOnNextLayout
 import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
 import com.apache.fastandroid.demo.recycleview.bean.DiffItemBean
 import com.tesla.framework.ui.fragment.BaseBindingFragment
+import java.util.concurrent.TimeUnit
 
 class ListAdapterDemoFragment : BaseBindingFragment<FragmentRecycleviewBinding>(FragmentRecycleviewBinding::inflate) {
 
@@ -35,11 +37,20 @@ class ListAdapterDemoFragment : BaseBindingFragment<FragmentRecycleviewBinding>(
         super.layoutInit(inflater, savedInstanceState)
 
          mBinding.recyclerView.apply {
-             adapter = MyListAdapter().also {
-                 mAdapter = it
+             adapter = MyListAdapter().apply {
+                 mAdapter = this
+                 submitList(oldList)
+//                 doOnNextLayout {
+//                     submitList(oldList)
+//                     doOnNextLayout {
+//                         startPostponedEnterTransition()
+//                     }
+//                 }
              }
-             mAdapter.submitList(oldList)
+
          }
+         postponeEnterTransition(1000L, TimeUnit.MILLISECONDS)
+
 
          mBinding.btnRefresh.setOnClickListener {
              mAdapter.submitList(newList)

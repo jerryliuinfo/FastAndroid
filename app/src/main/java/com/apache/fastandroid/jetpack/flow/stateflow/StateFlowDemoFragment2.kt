@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
 import com.apache.fastandroid.jetpack.flow.adapter.ApiUserAdapter
 import com.apache.fastandroid.network.model.Status
-import com.apache.fastandroid.widget.SpaceItemDecoration
+import com.tesla.framework.component.divider.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.kt.dpInt
 import com.tesla.framework.ui.fragment.BaseBindingFragment
@@ -28,7 +28,11 @@ class StateFlowDemoFragment2:BaseBindingFragment<FragmentRecycleviewBinding>(Fra
         val userAdapter = ApiUserAdapter()
         mBinding.recyclerView.apply {
             adapter = userAdapter
-            addItemDecoration(SpaceItemDecoration(10.dpInt))
+            addItemDecoration(
+                SpaceItemDecoration(
+                    10.dpInt
+                )
+            )
         }
         lifecycleScope.launchWhenCreated {
             mViewModel.userState.collect{

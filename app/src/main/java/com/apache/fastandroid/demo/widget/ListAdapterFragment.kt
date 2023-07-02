@@ -11,7 +11,7 @@ import com.apache.fastandroid.demo.widget.listadapter.AlbumListAdapter
 import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.jetpack.flow.ui_state.PostsUiState
 import com.apache.fastandroid.jetpack.flow.vm.PostViewModel
-import com.apache.fastandroid.widget.SpaceItemDecoration
+import com.tesla.framework.component.divider.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.tesla.framework.kt.dpInt
@@ -35,7 +35,11 @@ class ListAdapterFragment:BaseBindingFragment<FragmentComRecycleviewBinding>(Fra
 
         mBinding.recyclerView.apply {
             adapter = userAdapter
-            addItemDecoration(SpaceItemDecoration(10.dpInt))
+            addItemDecoration(
+                SpaceItemDecoration(
+                    10.dpInt
+                )
+            )
         }
 
         lifecycleScope.launchWhenStarted {

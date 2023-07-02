@@ -23,7 +23,6 @@ import com.tesla.framework.ui.activity.FragmentContainerActivity
  */
 class RecycleViewDemoListFragment:BaseVBFragment2<FragmentRecycleviewDemoBinding>() {
 
-    private var mAdapter:MyDataAdapter ?= null
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

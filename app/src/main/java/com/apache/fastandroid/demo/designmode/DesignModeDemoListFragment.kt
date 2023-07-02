@@ -623,6 +623,7 @@ class DesignModeDemoListFragment:BaseBindingFragment<FragmentDesignModeListBindi
         val observer1 = ConcreteObserver("zhangsan")
         val observer2 = ConcreteObserver("lisi")
 
+
         subject.attach(observer1)
         subject.attach(observer2)
 
@@ -630,6 +631,9 @@ class DesignModeDemoListFragment:BaseBindingFragment<FragmentDesignModeListBindi
 
         subject.detach(observer1)
         subject.doSomeLogic()
+
+
+
 
     }
 

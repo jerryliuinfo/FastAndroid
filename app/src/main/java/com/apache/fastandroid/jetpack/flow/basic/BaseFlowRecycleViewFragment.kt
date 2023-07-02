@@ -10,7 +10,7 @@ import com.apache.fastandroid.jetpack.flow.adapter.ApiUserAdapter
 import com.apache.fastandroid.network.model.ApiUser
 import com.apache.fastandroid.network.model.Resource
 import com.apache.fastandroid.network.model.Status
-import com.apache.fastandroid.widget.SpaceItemDecoration
+import com.tesla.framework.component.divider.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.kt.dpInt
 import com.tesla.framework.ui.fragment.BaseBindingFragment
@@ -29,7 +29,11 @@ abstract class BaseFlowRecycleViewFragment:BaseBindingFragment<FragmentRecyclevi
         val userAdapter = ApiUserAdapter()
         mBinding.recyclerView.apply {
             adapter = userAdapter
-            addItemDecoration(SpaceItemDecoration(10.dpInt))
+            addItemDecoration(
+                SpaceItemDecoration(
+                    10.dpInt
+                )
+            )
         }
 
         getUserFlowData().observe(this){

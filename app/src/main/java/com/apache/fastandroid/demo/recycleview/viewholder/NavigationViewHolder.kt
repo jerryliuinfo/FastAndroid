@@ -34,18 +34,18 @@ sealed class NavigationViewHolder<T : NavigationModelItem>(
 
     class NavMenuItemViewHolder(
         private val binding: NavMenuItemLayoutBinding,
-        private val listener: NavigationAdapter.NavigationAdapterListener?
+        private val listener: NavigationAdapter.NavigationAdapterListener
     ) : NavigationViewHolder<NavigationModelItem.NavMenuItem>(binding.root) {
 
 
         companion object{
-            fun from(parent:ViewGroup): NavMenuItemViewHolder {
+            fun from(parent:ViewGroup,listener: NavigationAdapter.NavigationAdapterListener): NavMenuItemViewHolder {
                 return NavMenuItemViewHolder(
                     NavMenuItemLayoutBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
-                    ),null)
+                    ),listener)
             }
         }
 
@@ -53,6 +53,7 @@ sealed class NavigationViewHolder<T : NavigationModelItem>(
         override fun bind(navItem: NavigationModelItem.NavMenuItem) {
             binding.run {
                 navMenuItem = navItem
+                navListener = listener
 
                 executePendingBindings()
             }
@@ -60,12 +61,13 @@ sealed class NavigationViewHolder<T : NavigationModelItem>(
     }
 
     class NavDividerViewHolder(
-        private val binding: NavDividerItemLayoutBinding
+        private val binding: NavDividerItemLayoutBinding,
+
 
     ) : NavigationViewHolder<NavigationModelItem.NavDivider>(binding.root) {
 
         companion object{
-            fun from(parent:ViewGroup): NavDividerViewHolder {
+            fun from(parent:ViewGroup,listener: NavigationAdapter.NavigationAdapterListener): NavDividerViewHolder {
                 return NavDividerViewHolder(
                     NavDividerItemLayoutBinding.inflate(
                         LayoutInflater.from(parent.context),
@@ -84,19 +86,19 @@ sealed class NavigationViewHolder<T : NavigationModelItem>(
 
     class EmailFolderViewHolder(
         private val binding: NavEmailFolderItemLayoutBinding,
-        private val listener: NavigationAdapter.NavigationAdapterListener?
+        private val listener: NavigationAdapter.NavigationAdapterListener
     ) : NavigationViewHolder<NavigationModelItem.NavEmailFolder>(binding.root) {
 
 
         companion object{
-            fun from(parent: ViewGroup): EmailFolderViewHolder {
+            fun from(parent: ViewGroup,listener: NavigationAdapter.NavigationAdapterListener): EmailFolderViewHolder {
                 return EmailFolderViewHolder(
                     NavEmailFolderItemLayoutBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
                     ),
-                    null
+                    listener
                 )
             }
         }
@@ -104,6 +106,7 @@ sealed class NavigationViewHolder<T : NavigationModelItem>(
         override fun bind(navItem: NavigationModelItem.NavEmailFolder) {
             binding.run {
                 navEmailFolder = navItem
+                navListener = listener
                 executePendingBindings()
             }
         }

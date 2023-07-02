@@ -1,8 +1,9 @@
-package com.apache.fastandroid.widget;
+package com.tesla.framework.component.divider;
 
 import android.graphics.Rect;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by jerryliu on 2017/4/11.
