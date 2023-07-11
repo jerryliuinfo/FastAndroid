@@ -23,6 +23,7 @@ buildscript {
 
     }
     dependencies {
+
         classpath PluginConfig.agp
         classpath PluginConfig.kgp
         classpath PluginConfig.andResGuard
@@ -46,8 +47,12 @@ buildscript {
         classpath fileTree(dir: './Plugin', include: ['*.jar'])
 
 
-        classpath 'com.smallsoho.mobcase:McImage:1.5.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10"
+        classpath PluginConfig.mcImage
+
+        classpath PluginConfig.ruler
+
+
+
 
 
     }

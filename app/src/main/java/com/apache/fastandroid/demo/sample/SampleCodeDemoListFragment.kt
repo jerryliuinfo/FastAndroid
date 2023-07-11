@@ -20,6 +20,7 @@ class SampleCodeDemoListFragment:BaseListFragment() {
         return arrayListOf(
             ViewItemBean("registerCallback","registerCallback",SampleCode1DemoFragment::class.java)
             ,ViewItemBean("Observable","Observable",SampleCodeDemo2Fragment::class.java)
+            ,ViewItemBean("列表入口","列表入口",SampleCodeDemo2Fragment::class.java)
 
         )
 

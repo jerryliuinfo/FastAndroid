@@ -14,6 +14,7 @@ import com.apache.fastandroid.demo.recycleview.origin.RecycleViewOriginFragment
 import com.apache.fastandroid.demo.recycleview.viewtype.MultiViewTypeDemoFragment
 import com.apache.fastandroid.demo.recycleview.zhy.BaseAdapterMultiItemDemoFragment
 import com.apache.fastandroid.demo.recycleview.zhy.BaseAdapterRecycleViewDemoFragment
+import com.apache.fastandroid.demo.sample.listentry.ListEntryDemoFragment
 import com.tesla.framework.kt.showToast
 import com.tesla.framework.ui.activity.BaseVBFragment2
 import com.tesla.framework.ui.activity.FragmentContainerActivity
@@ -68,6 +69,10 @@ class RecycleViewDemoListFragment:BaseVBFragment2<FragmentRecycleviewDemoBinding
 
         mBinding.btnItemTouchHelper.setOnClickListener {
             FragmentContainerActivity.launch(requireActivity(), ItemTouchHelperDemoFragment::class.java, addTitleBar = false)
+        }
+
+        mBinding.btnListEntry.setOnClickListener {
+            FragmentContainerActivity.launch(requireActivity(), ListEntryDemoFragment::class.java, addTitleBar = false)
         }
 
 

@@ -27,7 +27,7 @@ class PerformanceDemoFragment: BaseListFragment() {
                  ,ViewItemBean("OMagnifier", "OMagnifier", OMagnifierDemoFragment::class.java)
                  ,ViewItemBean("Cockroach", "Cockroach", CockroachDemoFragment::class.java)
                  ,ViewItemBean("CrashReport", "CrashReport", CrashReportDemoFragment::class.java)
-                 ,ViewItemBean("监听fps", "监听fps", FpsDemoFragment::class.java)
+                 ,ViewItemBean("Takt", "监听fps", FpsDemoFragment::class.java)
                  ,ViewItemBean("帧动画原始", "帧动画原始", FrameAnimationDemoFragment::class.java)
                  ,ViewItemBean("帧动画性能优化", "帧动画性能优化", FrameAnimationOptimizeDemoFragment::class.java)
         )

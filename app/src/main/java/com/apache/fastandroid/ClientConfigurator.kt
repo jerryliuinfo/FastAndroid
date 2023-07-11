@@ -1,10 +1,8 @@
 package com.apache.fastandroid
 
-import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.graphics.Color
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import com.apache.fastandroid.app.FastApplication
@@ -23,8 +21,6 @@ import com.apache.fastandroid.network.api.ApiServiceFactory
 import com.apache.fastandroid.util.Global
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.Utils
-import com.example.android.architecture.blueprints.todoapp.ServiceLocator
-import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import com.linkaipeng.oknetworkmonitor.OkNetworkMonitor
 import com.squareup.leakcanary.LeakCanary
 import com.tencent.mmkv.MMKV
@@ -36,8 +32,8 @@ import com.tesla.framework.component.logger.adapter.AndroidLogAdapter
 import com.tesla.framework.component.logger.format.SimpleFormatStrategy
 import dev.b3nedikt.restring.Restring
 import dev.b3nedikt.viewpump.ViewPump
-import jp.wasabeef.takt.Seat
-import jp.wasabeef.takt.Takt
+import com.tesla.framework.performance.takt.Seat
+import com.tesla.framework.performance.takt.Takt
 import me.drakeet.floo.Floo
 import me.drakeet.floo.Target
 import java.io.File
@@ -136,7 +132,7 @@ object ClientConfigurator {
             .color(Color.WHITE)
             .size(24f)
             .alpha(.5f)
-            .listener { fps -> Log.d("Excellent!", "$fps fps") }
+            .listener { fps -> Logger.d("Takt fps:$fps") }
             .useCustomControl()
     }
 

@@ -41,9 +41,7 @@ class ExtensionDemoFragment:BaseBindingFragment<FragmentLambdaBinding>(FragmentL
         mBinding.btnTypeAlias.setOnClickListener {
             typeAliasUsage()
         }
-        mBinding.btnHighOrderFunction.setOnClickListener {
-            highOrderFunction()
-        }
+
         mBinding.btnLambdaReceiver.setOnClickListener {
             lambdaWithReceiver()
         }
@@ -54,17 +52,6 @@ class ExtensionDemoFragment:BaseBindingFragment<FragmentLambdaBinding>(FragmentL
         MyDialog(requireContext()).show {
             message("custom message")
         }
-    }
-
-    private fun highOrderFunction() {
-        request("1", onLoad = {
-            println("onLoad -->")
-        }, onSuccess = { result ->
-            println("onSuccess result:$result")
-        }, onFailed = { code,msg,_ ->
-            println("onFailed code:$code, msg:$msg")
-
-        })
     }
 
     private fun fun1(f:(Int) -> Unit){
@@ -114,21 +101,6 @@ class ExtensionDemoFragment:BaseBindingFragment<FragmentLambdaBinding>(FragmentL
 
     }
 
-
-    private fun request(id:String,
-                        onLoad:() -> Unit = {},
-                        onSuccess:(id:String) -> Unit,
-                        onFailed:(errorCode:Int?, errorMsg:String?, throwable:Throwable? ) -> Unit = { _,_,_ -> }
-    ){
-        onLoad()
-        val randomInt = Random.nextInt(10 ) > 5
-        if (randomInt){
-            onSuccess("$id: $randomInt")
-        }else{
-            onFailed(100, "exception occured",null)
-        }
-
-    }
 
 
 

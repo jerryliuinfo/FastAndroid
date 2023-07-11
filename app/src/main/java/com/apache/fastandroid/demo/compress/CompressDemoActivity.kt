@@ -1,5 +1,6 @@
 package com.apache.fastandroid.demo.compress
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -35,6 +36,11 @@ import kotlin.math.pow
 class CompressDemoActivity : BaseBindingActivity<ActivityCompressDemoBinding>() {
     companion object {
         private const val PICK_IMAGE_REQUEST = 1
+
+        fun getNavigationIntent(
+            context: Context,
+
+        ) = Intent(context, CompressDemoActivity::class.java)
     }
 
     private var actualImage: File? = null

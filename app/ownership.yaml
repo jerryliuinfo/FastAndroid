@@ -1,0 +1,9 @@
+- identifier: :app
+  owner: main-team
+
+- identifier: :libnetwork
+  owner: main-network
+
+- identifier: :fastFramework
+  owner: lib-fastFramework
+

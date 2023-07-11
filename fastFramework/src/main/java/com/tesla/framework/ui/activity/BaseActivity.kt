@@ -19,6 +19,7 @@ import com.tesla.framework.R
 import com.tesla.framework.common.util.AndroidBugFixUtils
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.network.AutoRegisterNetListener
+import com.tesla.framework.performance.takt.Takt
 import com.tesla.framework.ui.fragment.BaseFragment
 import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
@@ -29,7 +30,7 @@ import java.lang.ref.WeakReference
  * Created by Jerry on 2022/11/26.
  */
 open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListener{
-    private lateinit var activityHelper: BaseActivityHelper
+    private  var mDelegate: BaseActivityDelegate ?= null
 
     // 当有Fragment Attach到这个Activity的时候，就会保存
     private var fragmentRefs: MutableMap<String, WeakReference<BaseFragment>>? = null
@@ -53,7 +54,8 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
         fragmentRefs = HashMap()
         super.onCreate(savedInstanceState)
         activity = this
-        activityHelper = BaseActivityHelper(this, this)
+
+
         initViewModel()
         initNetworkListener()
 
@@ -67,7 +69,54 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
 
     }
 
+
+    private fun getHelperDelegate():BaseActivityDelegate{
+        if (mDelegate == null){
+            mDelegate =
+                BaseActivityDelegate(this, this)
+        }
+        return mDelegate!!
+    }
+
+    override fun onStart() {
+        super.onStart()
+        getHelperDelegate().onStart(this)
+        Takt.play()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        isActive = true
+        getHelperDelegate().onResume(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        getHelperDelegate().onPause(this)
+        isActive = false
+    }
+
+    override fun onStop() {
+        super.onStop()
+        getHelperDelegate().onStop(this)
+        Takt.finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        getHelperDelegate().onDestroy(this)
+        activity = null
+        AndroidBugFixUtils.fixSoftInputLeaks(this)
+    }
+
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+
+    }
     open abstract fun inflateView():View
+
 
 
 
@@ -141,21 +190,7 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
         }
         return style
     }
-    override fun onResume() {
-        super.onResume()
-        isActive = true
-    }
 
-    override fun onPause() {
-        super.onPause()
-        isActive = false
-    }
-
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-
-    }
 
     open fun startActivityWithSlideInAnimation(intent: Intent?) {
         super.startActivity(intent)
@@ -211,8 +246,8 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
      }*/
 
     protected fun onHomeClick(): Boolean {
-        if (activityHelper != null) {
-            val handle = activityHelper.onHomeClick()
+        if (mDelegate != null) {
+            val handle = getHelperDelegate().onHomeClick()
             if (handle) return true
         }
         val keys: Set<String> = fragmentRefs!!.keys
@@ -236,8 +271,8 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
     }*/
 
     open fun onBackClick(): Boolean {
-        if (activityHelper != null) {
-            val handle = activityHelper.onBackClick()
+        if (mDelegate != null) {
+            val handle = getHelperDelegate().onBackClick()
             if (handle) return true
         }
         val keys: Set<String> = fragmentRefs!!.keys
@@ -269,11 +304,6 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        activity = null
-        AndroidBugFixUtils.fixSoftInputLeaks(this)
-    }
 
     protected fun <T : ViewModel> getActivityViewModel(modelClass: Class<T>): T {
         if (mActivityProvider == null) {

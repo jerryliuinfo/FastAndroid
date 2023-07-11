@@ -18,6 +18,8 @@ import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainBinding
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
 import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
 import com.apache.fastandroid.demo.recycleview.RecycleViewDemoListFragment
 import com.apache.fastandroid.demo.temp.KnowledgeFragment
@@ -175,12 +177,12 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, IntervalDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ActivityResultDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, PerformanceDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ViewBindingUsageDemo::class.java,null,addTitleBar = true)
         FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null)
 

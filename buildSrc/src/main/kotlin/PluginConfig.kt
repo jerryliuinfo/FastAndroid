@@ -10,6 +10,9 @@ object PluginConfig {
     const val navigation = "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
     const val pablo = "io.michaelrocks.pablo:pablo:1.3.1"
     const val paranoid = "io.michaelrocks:paranoid-gradle-plugin:0.3.7"
+    //https://github.com/spotify/ruler
+    const val ruler = "com.spotify.ruler:ruler-gradle-plugin:1.4.0"
+    const val mcImage = "com.smallsoho.mobcase:McImage:1.5.1"
 
 //    const val kotlin_serialization = "org.jetbrains.kotlin.plugin.serialization:${Versions.kgp}"
 }

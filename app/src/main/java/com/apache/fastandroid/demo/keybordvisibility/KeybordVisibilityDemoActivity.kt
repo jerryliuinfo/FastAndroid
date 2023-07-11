@@ -1,11 +1,14 @@
 package com.apache.fastandroid.demo.keybordvisibility
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.apache.fastandroid.databinding.ActivityKeyboardVisibilityEventBinding
+import com.apache.fastandroid.demo.compress.CompressDemoActivity
 import com.tesla.framework.ui.activity.BaseBindingActivity
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
@@ -21,6 +24,13 @@ class KeybordVisibilityDemoActivity:BaseBindingActivity<ActivityKeyboardVisibili
     private lateinit var textField: EditText
     private lateinit var buttonUnregister: Button
     private lateinit var unregistrar: Unregistrar
+
+    companion object{
+        fun getNavigationIntent(
+            context: Context,
+
+            ) = Intent(context, KeybordVisibilityDemoActivity::class.java)
+    }
 
 
     override fun layoutInit(savedInstanceState: Bundle?) {

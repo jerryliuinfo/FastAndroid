@@ -9,6 +9,7 @@ import com.apache.fastandroid.databinding.KtGrammer2Binding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.kt.bean.KotlinMain
 import com.apache.fastandroid.demo.kt.genericity.*
+import com.apache.fastandroid.demo.widget.listadapter.AlbumListAdapter
 import com.blankj.utilcode.util.GsonUtils
 import com.google.gson.Gson
 import com.tesla.framework.component.logger.Logger
@@ -124,8 +125,18 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
             evisOperatorUsage()
         }
 
+        mBinding.btnTypeAlias.setOnClickListener {
+            tyleAliasUsage()
+        }
+
     }
 
+    private fun tyleAliasUsage() {
+        val adapter = AlbumListAdapter(){}
+        adapter.onItemClickListener = {
+            println("onItemClick")
+        }
+    }
 
 
     private fun evisOperatorUsage() {
@@ -135,6 +146,15 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
     }
 
 
+    /**
+     * stringLengthFunc 包含一个对匿名函数的引用，该函数将 String当做输入，
+     * 将输入 String 的长度作为 Int 类型的返回
+     *
+     */
+    val stringLengthFunc: (String) -> Int = { input ->
+        input.length
+    }
+
     private fun anonymousFun(){
         val test = fun (){
             println("uitest")
@@ -142,6 +162,10 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
             return
         }
         test.invoke()
+
+        val result :Int = stringLengthFunc("hello world")
+        val result2 :Int = stringLengthFunc.invoke("hello world")
+        println()
     }
 
 
@@ -395,7 +419,24 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
         }.let {
             println("The length of the string is $it")
         }
+
+        println("testReturn:${letReturn()}")
+
     }
+
+    private fun letReturn():String?{
+        fun test():String ?{
+            return "Hello"
+        }
+
+        test()?.let {
+            return it
+        }
+        return null
+
+    }
+
+
 
     /**
      * with 比较特殊，不是以扩展方法的形式存在的，而是一个顶级函数

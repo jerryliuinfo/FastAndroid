@@ -843,7 +843,37 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
 
     }
 
+
+    private fun highOrderFunction2() {
+        request("1", onLoad = {
+            println("onLoad -->")
+        }, onSuccess = { result ->
+            println("onSuccess result:$result")
+        }, onFailed = { code,msg,_ ->
+            println("onFailed code:$code, msg:$msg")
+
+        })
+
+    }
+
+    private fun request(id:String,
+                        onLoad:() -> Unit = {},
+                        onSuccess:(id:String) -> Unit,
+                        onFailed:(errorCode:Int?, errorMsg:String?, throwable:Throwable? ) -> Unit = { _,_,_ -> }
+    ){
+        onLoad()
+        val randomInt = Random.nextInt(10 ) > 5
+        if (randomInt){
+            onSuccess("$id: $randomInt")
+        }else{
+            onFailed(100, "exception occured",null)
+        }
+
+    }
+
     private fun highOrderFunction() {
+        highOrderFunction2()
+
         //这里加了两个 ：： 就变成了对象，一个函数类型的对象，kotlin 中函数可以作为参数传递的本质是：函数可以作为对象存在
 //        val result1 =  a(::b)
 //        val result2 = ::b

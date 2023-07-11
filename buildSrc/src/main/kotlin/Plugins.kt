@@ -11,6 +11,9 @@ object Plugins {
     const val kotlinSerialization = "org.jetbrains.kotlin.plugin.serialization"
 
 
+    const val ruler = "com.spotify.ruler"
+
+
 
     const val crashlytics = "com.google.firebase.crashlytics"
     const val googleServices = "com.google.gms.google-services"

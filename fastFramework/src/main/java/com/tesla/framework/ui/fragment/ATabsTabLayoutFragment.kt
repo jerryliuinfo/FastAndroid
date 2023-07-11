@@ -18,6 +18,7 @@ abstract class ATabsTabLayoutFragment : BaseBindingFragment<FragmentTablayoutBin
 
     private lateinit var mAdapter:MyFragmentStateAdapter
 
+    //只公开 get 不公开 set
     var selectedTabIndex = 0
         private set
 

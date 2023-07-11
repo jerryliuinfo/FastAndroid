@@ -11,7 +11,13 @@ import com.bumptech.glide.Glide
 /**
  * Created by Jerry on 2022/7/19.
  */
+
+typealias onAlbumItemClickListener = (User) -> Unit
+
 class AlbumListAdapter(private val listener: (User) -> Unit):ListAdapter<User,UserViewHolder>(User.diffCallback) {
+
+    var onItemClickListener: onAlbumItemClickListener ?= null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         return UserViewHolder(ItemLayoutUser2Binding.inflate(LayoutInflater.from(parent.context)),listener)
     }
@@ -26,8 +32,13 @@ class AlbumListAdapter(private val listener: (User) -> Unit):ListAdapter<User,Us
                 .into(imageViewAvatar)
             textViewUserName.text = user.name
             textViewUserEmail.text = user.email
-
         }
+
+        holder.binding.imageViewAvatar.setOnClickListener {
+            onItemClickListener?.invoke(user)
+        }
+
+
     }
 }
 
@@ -42,6 +53,8 @@ class UserViewHolder(val binding:ItemLayoutUser2Binding, listener: (User) -> Uni
         binding.root.setOnClickListener {
             item?.let {
                 listener(it)
+
+
             }
         }
     }

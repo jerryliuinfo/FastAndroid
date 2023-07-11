@@ -1,4 +1,4 @@
-package jp.wasabeef.takt;
+package com.tesla.framework.performance.takt;
 
 import android.app.Application;
 import android.content.Context;
@@ -15,7 +15,7 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.apache.fastandroid.R;
+import com.tesla.framework.R;
 
 import java.text.DecimalFormat;
 

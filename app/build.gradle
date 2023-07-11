@@ -5,6 +5,7 @@ apply plugin: Plugins.kotlinKapt
 apply plugin: Plugins.kotlinAndroidExtensions
 apply plugin: Plugins.hit
 apply plugin: Plugins.navigationSafeargs
+apply plugin: Plugins.ruler
 
 
 apply from: 'and_res_guard.gradle'
@@ -252,8 +253,6 @@ android {
     }
 
 
-
-
     buildFeatures {
         dataBinding = true
         viewBinding = true
@@ -284,7 +283,6 @@ android {
         exclude 'META-INF/*.kotlin_module'
 
     }
-
 
     useLibrary 'org.apache.http.legacy'
 
@@ -339,6 +337,15 @@ android {
         // 设置最大的线程数量使用当运行 dex-in-process 时,默认值是 4
         maxProcessCount 8
     }
+}
+
+ruler {
+    abi.set("arm64-v8a")
+    locale.set("en")
+    screenDensity.set(480)
+    sdkVersion.set(27)
+
+    ownershipFile.set(project.layout.projectDirectory.file("ownership.yaml"))
 }
 
 kotlin {

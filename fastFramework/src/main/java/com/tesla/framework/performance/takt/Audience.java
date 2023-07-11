@@ -1,4 +1,4 @@
-package jp.wasabeef.takt;
+package com.tesla.framework.performance.takt;
 
 
 public interface Audience {

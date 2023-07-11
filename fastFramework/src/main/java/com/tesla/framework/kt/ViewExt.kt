@@ -22,7 +22,9 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.util.TypedValue
 import android.view.*
+import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
@@ -31,6 +33,8 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
@@ -47,6 +51,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.tesla.framework.R
 import com.tesla.framework.component.livedata.Event
 import com.tesla.framework.component.livedata.NetworkLiveData
+import com.tesla.framework.ui.activity.FragmentContainerActivity
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -704,4 +709,31 @@ fun Context.getDrawableOrNull(@DrawableRes id: Int?): Drawable? {
 }
 
 
+fun release(root:ViewGroup){
+    val childCount = root.childCount
+    for (i in 0 until childCount){
+        val child = root.getChildAt(i)
+        if (child is ViewGroup){
+            child.setBackground(null)
+            release(child)
+        }else{
+            child?.background = null
+            if (child is ImageView){
+                child.setImageDrawable(null)
+            }else if(child is EditText){
+//                child.cleanWatchers()
+            }
+        }
+    }
+}
+
+
+fun View.getString(@StringRes stringRes: Int): String = context.getString(stringRes)
+
+val View.layoutInflater: LayoutInflater get() = LayoutInflater.from(this.context)
+
+fun Class<Fragment>.launch(activity:Activity){
+    FragmentContainerActivity.launch(activity, this, addTitleBar = false)
+
+}
 

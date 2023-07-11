@@ -30,7 +30,7 @@
                 app:constraint_referenced_ids="btn_let,btn_with,btn_run,btn_apply,btn_also,
                 btn_operator_overload,btn_zhongzui,btn_typeAlias,btn_getter_setter,btn_lambda_interrupt,
                 btn_neilian,btn_no_inline,btn_non_crossInline,btn_crossInline,btn_anonymous,btn_kt_genericity,btn_kt_real_genericity,
-                btn_kt_class_real_genericity,btn_evis_operator"
+                btn_kt_class_real_genericity,btn_evis_operator,btn_typealias"
                 />
 
             <Button
@@ -162,6 +162,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Evis操作符"
+                />
+            <Button
+                android:id="@+id/btn_typealias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="typealias"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

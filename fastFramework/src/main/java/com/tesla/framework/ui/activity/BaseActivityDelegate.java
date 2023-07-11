@@ -21,7 +21,7 @@ import androidx.lifecycle.LifecycleOwner;
  *
  * Created by JerryLiu on 17/04/08.
  */
-public class BaseActivityHelper implements DefaultLifecycleObserver {
+public class BaseActivityDelegate implements DefaultLifecycleObserver {
     //当前Activity
     private BaseActivity mActivity;
 
@@ -38,7 +38,7 @@ public class BaseActivityHelper implements DefaultLifecycleObserver {
 
     private LifecycleOwner mLifecycleOwner;
 
-    public BaseActivityHelper(BaseActivity mActivity, LifecycleOwner mLifecycleOwner) {
+    public BaseActivityDelegate(BaseActivity mActivity, LifecycleOwner mLifecycleOwner) {
         this.mActivity = mActivity;
         this.mLifecycleOwner = mLifecycleOwner;
         mLifecycleOwner.getLifecycle().addObserver(new LifecycleObserverAdapter(mLifecycleOwner,this));
