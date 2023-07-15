@@ -99,7 +99,7 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
     override fun onStop() {
         super.onStop()
         getHelperDelegate().onStop(this)
-        Takt.finish()
+//        Takt.finish()
     }
 
     override fun onDestroy() {

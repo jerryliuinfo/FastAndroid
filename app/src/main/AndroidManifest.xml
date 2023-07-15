@@ -460,9 +460,19 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
         <activity
             android:name=".demo.guide.activity.SingleTaskDemoActivity"
             android:exported="false"
-
             android:label="SingleTask"
             android:launchMode="singleTask" />
+
+        <activity
+            android:name=".LoadMultiDexActivity"
+            android:exported="true"
+           />
+
+        <activity
+            android:name=".demo.performance.jankstats.JankLoggingActivity"
+            android:exported="true"
+            android:label="JankLogging"
+         />
 
         <activity
             android:name=".demo.guide.activity.SingleInstanceDemoActivity"

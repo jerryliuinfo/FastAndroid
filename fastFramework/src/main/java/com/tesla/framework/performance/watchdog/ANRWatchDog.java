@@ -1,4 +1,4 @@
-package com.github.anrwatchdog;
+package com.tesla.framework.performance.watchdog;
 
 /*
  * The MIT License (MIT)

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.component.anr.AnrConfig
 import com.apache.fastandroid.component.anr.AnrManager
 import com.apache.fastandroid.databinding.PerformanceAnrWatchdogBinding
-import com.github.anrwatchdog.ANRWatchDog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.performance_anr_watchdog.*
 

@@ -111,6 +111,8 @@ object Libs {
         "com.squareup.leakcanary:leakcanary-support-fragment:1.6.3",
         "com.permissionx.guolindev:permissionx:1.4.0",
         "dev.b3nedikt.viewpump:viewpump:4.0.7",
+
+        //https://github.com/aiceking/AppStartFaster
         "com.github.NoEndToLF:AppStartFaster:1.0.3",
         "com.airbnb.android:lottie:2.8.0",
         "com.github.lygttpod:SuperTextView:2.4.6",
@@ -184,6 +186,10 @@ object Libs {
 
 //        "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.kotlinxSerializationConverter}",
 //        "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.serializationJson}"
+    )
+
+    val performance = arrayOf(
+        "androidx.metrics:metrics-performance:${Versions.jankstats}"
     )
 
 

@@ -129,6 +129,17 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
             tyleAliasUsage()
         }
 
+        mBinding.btnArrayInit.setOnClickListener {
+            initArrayUsage()
+        }
+
+    }
+
+    private fun initArrayUsage() {
+        val messageList = Array<String>(10) {
+            "Message #$it"
+        }.toList()
+        println(messageList)
     }
 
     private fun tyleAliasUsage() {

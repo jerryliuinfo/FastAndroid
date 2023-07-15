@@ -1,6 +1,6 @@
 package com.apache.fastandroid.component.anr;
 
-import com.github.anrwatchdog.ANRWatchDog;
+import com.tesla.framework.performance.watchdog.ANRWatchDog;
 
 /**
  * Created by Jerry on 2021/9/24.

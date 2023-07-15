@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.TextView
+import androidx.annotation.UiThread
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.math.MathUtils
@@ -533,6 +534,17 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
         }
     }
 
+    var isTrackingEnabled: Boolean = true
+        /**
+         * Enabling tracking causes JankStats to listen to system frame-timing information and
+         * record data on a per-frame basis that can later be reported to the JankStats listener.
+         * Tracking is enabled by default at creation time.
+         */
+        @UiThread
+        private set(value) {
+            println("update isTrackingEnabled to ${value}")
+            field = value
+        }
     private fun annotationUsage() {
         val classObj = Account::class
         for (a in classObj.annotations) {
@@ -542,6 +554,8 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
 
         val myAnnotationObject = classObj.findAnnotation<ImAPlant>()
         println(myAnnotationObject)
+
+        isTrackingEnabled = true
     }
 
 

@@ -737,3 +737,13 @@ fun Class<Fragment>.launch(activity:Activity){
 
 }
 
+
+internal fun getRootView(view: View): View {
+    var rootView = view
+    var parent = rootView.parent
+    while (parent is View) {
+        rootView = parent
+        parent = rootView.parent
+    }
+    return rootView
+}

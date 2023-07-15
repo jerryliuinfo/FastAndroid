@@ -84,7 +84,6 @@ object StartupManager {
      */
     private fun checkDependenciesLegal(startup: Startup) {
         val dependencies = startup.dependencies()
-            //没有依赖其他task的必须放在第一个group，否则都放到第二个 group
         if (dependencies.isNullOrEmpty()) {
             if (startup.groupId == 0) {
                 return
@@ -92,14 +91,7 @@ object StartupManager {
             throw Exception("${startup.aliasName} dependencies is illegal,Should be placed in the first group")
         }
         var dependenciesMaxGroupId = 0
-        /*dependencies.forEach { item ->
-            //取最大值
-            dependenciesMaxGroupId =
-                dependenciesMaxGroupId.coerceAtLeast(
-                    startupIdMap[item.simpleName] ?: 0
-                )
-        }*/
-        for ((index,item) in dependencies.withIndex()){
+        dependencies.forEach { item ->
             //取最大值
             dependenciesMaxGroupId =
                 dependenciesMaxGroupId.coerceAtLeast(

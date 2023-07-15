@@ -1,8 +1,13 @@
 package com.apache.fastandroid
 
+import SDK2
+import SDK3
+import SDK4
+import SDK5
 import android.app.Application
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import com.apache.fastandroid.app.FastApplication
@@ -10,6 +15,8 @@ import com.apache.fastandroid.component.once.Once
 import com.apache.fastandroid.crash.Fabric
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor
+import com.apache.fastandroid.demo.performance.startup.SDK1
+import com.apache.fastandroid.demo.performance.taskdispatcher.*
 import com.apache.fastandroid.jetpack.flow.api.ApiHelper
 import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
 import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
@@ -19,6 +26,7 @@ import com.apache.fastandroid.jetpack.lifecycle.IAppStateListener
 import com.apache.fastandroid.jetpack.lifecycle.TraditionalProcessLifecycleListener
 import com.apache.fastandroid.network.api.ApiServiceFactory
 import com.apache.fastandroid.util.Global
+import com.apache.fastandroid.util.MultidexUtils
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.Utils
 import com.linkaipeng.oknetworkmonitor.OkNetworkMonitor
@@ -30,10 +38,13 @@ import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.logger.adapter.AndroidLogAdapter
 import com.tesla.framework.component.logger.format.SimpleFormatStrategy
-import dev.b3nedikt.restring.Restring
-import dev.b3nedikt.viewpump.ViewPump
+import com.tesla.framework.component.startup.StartupManager
+import com.tesla.framework.component.startup.TimeListener
 import com.tesla.framework.performance.takt.Seat
 import com.tesla.framework.performance.takt.Takt
+import com.wxy.appstartfaster.dispatcher.AppStartTaskDispatcher
+import dev.b3nedikt.restring.Restring
+import dev.b3nedikt.viewpump.ViewPump
 import me.drakeet.floo.Floo
 import me.drakeet.floo.Target
 import java.io.File
@@ -82,7 +93,10 @@ object ClientConfigurator {
 
 //            NetworkStateClient.register()
 
-        initTaskByStartup()
+
+        initAppFaster(context)
+
+        initTaskByStartup(context)
         //        initLoop();
         // data/data/com.apache.fastandroid/files/mmkv
         initMMKV(context)
@@ -123,6 +137,22 @@ object ClientConfigurator {
     private fun initNetworkMonitor(context: Context) {
         OkNetworkMonitor.context = context
 
+    }
+
+    private fun initAppFaster(context: Context){
+        if (MultidexUtils.isMainProcess(context)) {
+            AppStartTaskDispatcher.getInstance()
+                .setContext(context)
+                .setShowLog(true)
+                .setAllTaskWaitTimeOut(1000)
+                .addAppStartTask(TestAppStartTaskTwo())
+                .addAppStartTask(TestAppStartTaskFour())
+                .addAppStartTask(TestAppStartTaskFive())
+                .addAppStartTask(TestAppStartTaskThree())
+                .addAppStartTask(TestAppStartTaskOne())
+                .start()
+                .await()
+        }
     }
 
     private fun initTakt(application: Application) {
@@ -173,12 +203,30 @@ object ClientConfigurator {
         }
     }
 
-    private fun initTaskByAppFaster() {
 
-    }
 
-    private fun initTaskByStartup() {
+    private fun initTaskByStartup(context: Context) {
+        StartupManager
+            .addGroup {
+                it.add(SDK1())
+                it.add(SDK2())
+            }
+            .addGroup {
+                it.add(SDK3())
+                it.add(SDK4())
+                it.add(SDK5())
+            }
+            .cost(object : TimeListener {
 
+                override fun itemCost(name: String, time: Long, threadName: String) {
+                    Log.d("startup-", "itemCost:$name time:$time threadName:$threadName")
+                }
+
+                override fun allCost(time: Long) {
+                    Log.d("startup-", "allCost:$time")
+                }
+            })
+            .start(context)
     }
 
     private fun crashReport(application: Application) {

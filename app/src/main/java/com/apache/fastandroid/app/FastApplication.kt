@@ -18,6 +18,7 @@ import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
 import com.apache.fastandroid.jetpack.flow.local.DatabaseHelper
 import com.apache.fastandroid.jetpack.flow.local.DatabaseHelperImpl
 import com.apache.fastandroid.network.api.ApiServiceFactory
+import com.apache.fastandroid.util.MultidexUtils
 import com.example.android.architecture.blueprints.todoapp.ServiceLocator
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import com.squareup.leakcanary.LeakCanary
@@ -72,9 +73,17 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
     }
 
     override fun attachBaseContext(base: Context) {
-        Logger.d("Application attachBaseContext ")
         LaunchTimer.startRecord()
-        MultiDex.install(base)
+//        MultiDex.install(base)
+
+        val isMainProcess: Boolean = MultidexUtils.isMainProcess(base)
+        val isVMMultidexCapable:Boolean = MultidexUtils.isVMMultidexCapable()
+        Logger.d("Application attachBaseContext isMainProcess:$isMainProcess,isVMMultidexCapable:$isVMMultidexCapable")
+        if (isMainProcess && !isVMMultidexCapable) {
+            MultidexUtils.loadMultiDex(base)
+        } else {
+            MultidexUtils.preNewActivity()
+        }
         //HotFixManager.loadDex(base);
         super.attachBaseContext(base)
     }

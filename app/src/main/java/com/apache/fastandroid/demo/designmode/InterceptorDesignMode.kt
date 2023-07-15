@@ -3,7 +3,7 @@ package com.apache.fastandroid.demo.designmode
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCommonBinding
-import com.github.anrwatchdog.ANRWatchDog
+import com.tesla.framework.performance.watchdog.ANRWatchDog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
