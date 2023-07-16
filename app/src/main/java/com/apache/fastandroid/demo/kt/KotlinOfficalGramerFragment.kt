@@ -352,6 +352,10 @@ class KotlinOfficalGramerFragment : BaseBindingFragmentRef<KtOfficialGrammerBind
         val (min, max) = findMinMax(listOf(3, 6, 4, 5))
         println("min:$min, max:$max")
 
+
+        val age = 100L
+        age to "zhangsan"
+
     }
 
     private fun findMinMax(list: List<Int>): Pair<Int, Int> {

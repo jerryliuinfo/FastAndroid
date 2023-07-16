@@ -33,6 +33,7 @@ object Versions {
     const val viewPager2 = "1.0.0"
 
     const val jankstats = "1.0.0-alpha01"
+    const val booster = "4.16.2"
 
 
     const val okhttp = "4.9.0"

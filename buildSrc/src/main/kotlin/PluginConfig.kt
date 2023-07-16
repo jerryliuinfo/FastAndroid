@@ -13,6 +13,7 @@ object PluginConfig {
     //https://github.com/spotify/ruler
     const val ruler = "com.spotify.ruler:ruler-gradle-plugin:1.4.0"
     const val mcImage = "com.smallsoho.mobcase:McImage:1.5.1"
+    const val booster = "com.didiglobal.booster:booster-gradle-plugin:${Versions.booster}"
 
 //    const val kotlin_serialization = "org.jetbrains.kotlin.plugin.serialization:${Versions.kgp}"
 }

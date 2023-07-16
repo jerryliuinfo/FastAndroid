@@ -189,7 +189,7 @@ object Libs {
     )
 
     val performance = arrayOf(
-        "androidx.metrics:metrics-performance:${Versions.jankstats}"
+        "androidx.metrics:metrics-performance:${Versions.jankstats}",
     )
 
 

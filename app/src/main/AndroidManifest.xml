@@ -31,7 +31,6 @@
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
 
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -284,8 +283,9 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
 
         <activity
             android:name=".article.ArticleDetailActivity"
+            android:exported="true"
+
             android:configChanges="orientation|keyboardHidden|navigation|locale"
-            android:exported="false"
             android:launchMode="singleTask"
 
 
@@ -437,6 +437,7 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
 
         <activity
             android:name=".demo.guide.IntentFilterDemoActivity"
+            android:exported="true"
             android:permission="com.google.socialapp.permission.SHARE_POST"
             android:icon="@drawable/ic_arrow"
             android:label="我是定义了IntentFilter的activity"
@@ -565,9 +566,9 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
 
         <receiver
             android:name=".demo.guide.receiver.DemoReceiver"
+            android:exported="true"
             android:directBootAware="true"
             android:enabled="true"
-            android:exported="true"
             android:permission="com.apache.fastframework.author" />
 
         <!--

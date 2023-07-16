@@ -5,7 +5,10 @@
 //include ':hencode_basic'
 include ':libnetwork'
 //include ':app', ':xaop_annotation',':xaop-runtime',   'baselib', ':fastFramework'
-include ':app', 'baselib', ':fastFramework'
+include ':app'
+include ':baselib'
+include ':fastFramework'
+include ':booster-android-api'
 rootProject.name = "Android"
 
 include ':libnetwork'

@@ -2,10 +2,10 @@ android {
     flavorDimensions "env"
 
     productFlavors {
-        mock {
-            dimension "env"
-//            applicationIdSuffix = ".mock"
-        }
+//        mock {
+//            dimension "env"
+////            applicationIdSuffix = ".mock"
+//        }
 
         prod {
             dimension "env"

@@ -6,6 +6,8 @@ apply plugin: Plugins.kotlinAndroidExtensions
 apply plugin: Plugins.hit
 apply plugin: Plugins.navigationSafeargs
 apply plugin: Plugins.ruler
+//apply plugin: 'com.didiglobal.booster' //
+
 
 
 apply from: 'and_res_guard.gradle'

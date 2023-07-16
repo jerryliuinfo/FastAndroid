@@ -12,6 +12,9 @@ import kotlinx.coroutines.asExecutor
 
 /**
  * Created by Jerry on 2023/7/15.
+ * 参考:
+ * https://developer.android.com/studio/profile/jankstats?hl=zh-cn
+ * https://github.com/android/performance-samples/blob/main/JankStatsSample
  */
 class JankLoggingActivity:BaseBindingActivity<FragmentRecycleviewBinding>() {
 

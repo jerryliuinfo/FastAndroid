@@ -51,6 +51,10 @@ buildscript {
 
         classpath PluginConfig.ruler
 
+//        classpath PluginConfig.booster
+        //crash 处理
+//        classpath "com.didiglobal.booster:booster-transform-activity-thread:${Versions.booster}"
+
 
 
 

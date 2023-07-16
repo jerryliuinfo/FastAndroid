@@ -136,10 +136,17 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
     }
 
     private fun initArrayUsage() {
-        val messageList = Array<String>(10) {
+        val messageArray = Array<String>(10) {
             "Message #$it"
-        }.toList()
+        }
+        println(messageArray)
+
+
+        val messageList = List(10) {
+            "Message #$it"
+        }
         println(messageList)
+
     }
 
     private fun tyleAliasUsage() {
