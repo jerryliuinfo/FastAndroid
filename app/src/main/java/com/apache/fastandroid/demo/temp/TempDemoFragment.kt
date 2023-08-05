@@ -15,6 +15,7 @@ import com.apache.fastandroid.demo.temp.activityresult.ActivityResultDemoActivit
 import com.apache.fastandroid.demo.temp.conflict.ScrollConflictInnernterceptDemoFragment
 import com.apache.fastandroid.demo.temp.conflict.ScrollConflictOuterInterceptDemoFragment
 import com.apache.fastandroid.demo.temp.conflict.ViewPageRecycleViewConflictDemoFragment
+import com.apache.fastandroid.demo.temp.localdata.LocalDataTimeDemoFragment
 import com.apache.fastandroid.demo.temp.reflect.ReflectionDemoFragment
 import com.apache.fastandroid.demo.temp.savestate.SaveStateHandleFragment
 
@@ -53,6 +54,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("进度条组件", "进度条组件",  ProgressDemoFragment::class.java)
                 ,ViewItemBean("倒计时组件", "各种倒计时方案实现",  CountDownDemoFragment::class.java)
                 ,ViewItemBean("RecycleView滑动到指定位置", "RecycleView滑动到指定位置",  AutoScrollViewDemoFragment::class.java)
+                ,ViewItemBean("LocalDateTime 用法", "LocalDateTime用法",  LocalDataTimeDemoFragment::class.java)
 
         )
     }

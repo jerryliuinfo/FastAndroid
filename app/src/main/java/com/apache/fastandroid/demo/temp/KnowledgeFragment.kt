@@ -197,6 +197,7 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
         mBinding.btnExecuteOnceEveryday.setOnClickListener {
             executeOnceEveryDay()
         }
+
     }
 
     private fun executeOnceEveryDay() {
