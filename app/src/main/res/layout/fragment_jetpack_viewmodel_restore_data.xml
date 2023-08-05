@@ -10,25 +10,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_msg2"
+        <androidx.constraintlayout.helper.widget.Flow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="计数" />
+            app:flow_horizontalAlign="start"
+            app:flow_wrapMode="aligned"
+            app:constraint_referenced_ids="btn_viewModel_no_args,btn_viewModel_with_args,btn_saveState_viewModel"
+            />
+
 
 
         <Button
-            android:id="@+id/btn_change"
+            android:id="@+id/btn_viewModel_no_args"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_msg2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_msg2"
-            android:text="修改数据" />
+            android:text="不带参数ViewModel" />
+        <Button
+            android:id="@+id/btn_viewModel_with_args"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="带参数ViewModel" />
+
+        <Button
+            android:id="@+id/btn_saveState_viewModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SaveState ViewModel" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

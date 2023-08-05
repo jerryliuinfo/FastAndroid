@@ -488,6 +488,9 @@ dependencies {
     implementation(*Libs.blackTech)
     implementation(*Libs.moshi)
 //    implementation(*Libs.performance)
+
+    implementation Jetpack.paging
+    implementation Jetpack.paging_ktx
 }
 
 

@@ -3,6 +3,8 @@ package com.apache.fastandroid.jetpack
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.databinding.DatabindingDemoFragment
+import com.apache.fastandroid.demo.paging.article.ui.PagingArticleDemoActivity
+import com.apache.fastandroid.demo.paging.poster.ui.PagingPosterDemoActivity
 import com.apache.fastandroid.demo.room.RoomDemoFragment
 import com.apache.fastandroid.jetpack.coroutine.CoroutineDemoListFragment
 import com.apache.fastandroid.jetpack.flow.FlowDemoListFragment
@@ -13,8 +15,7 @@ import com.apache.fastandroid.jetpack.navigation.NavigationDemoActivity
 import com.apache.fastandroid.jetpack.navigation.NavigationDrawerDemoActivity2
 import com.apache.fastandroid.jetpack.navigation.advance.AdvanceNavigationActivity
 import com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity
-import com.apache.fastandroid.jetpack.viewmodel.JetPackViewModelListFragment
-import com.tesla.framework.ui.fragment.BaseBindingFragment
+import com.apache.fastandroid.jetpack.viewmodel.ViewModelDemoFragment
 
 /**
  * Created by Jerry on 2020/11/11.
@@ -24,7 +25,7 @@ class JetPackDemoFragment: BaseListFragment() {
         return arrayListOf(
                 ViewItemBean("LifeCycle应用", "LifeCycle应用", LifeCycleDemoListFragment::class.java)
                 ,ViewItemBean("LiveData", "LiveData", JetPackLiveDataListFragment::class.java)
-                ,ViewItemBean("ViewModel", "ViewModel", JetPackViewModelListFragment::class.java)
+                ,ViewItemBean("ViewModel", "ViewModel", ViewModelDemoFragment::class.java)
                 ,ViewItemBean("DataBindg", "DataBindg", DatabindingDemoFragment::class.java)
                 ,ViewItemBean("Navigation", "Navigation", activity= NavigationDemoActivity::class.java)
                 ,ViewItemBean("NavigationDrawerLayout", "NavigationDrawerLayout", activity= NavigationDrawerDemoActivity::class.java)
@@ -36,7 +37,8 @@ class JetPackDemoFragment: BaseListFragment() {
 
                 ,ViewItemBean("Hit", "Hit", activity=HitDemoActivity::class.java)
                 ,ViewItemBean("WorkManager", "WorkManager", activity=HitDemoActivity::class.java)
-//                ,ViewItemBean("Paging", "Paging",  activity = PagingDemoActivity::class.java)
+                ,ViewItemBean("Paging", "Paging",  activity = PagingArticleDemoActivity::class.java)
+                ,ViewItemBean("Paging", "Paging用法2",  activity = PagingPosterDemoActivity::class.java)
 
         )
     }

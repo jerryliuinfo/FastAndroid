@@ -271,7 +271,8 @@ object Jetpack{
 //        "androidx.paging:paging-runtime:${Versions.paging}",
 //        "androidx.paging:paging-common-ktx:${Versions.paging}"
 //    )
-    val paging = "androidx.paging:paging-runtime:3.0.1"
+    val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+    val paging_ktx = "androidx.paging:paging-common-ktx:${Versions.paging}"
 
 
 
