@@ -87,4 +87,7 @@
     <string name="non_bridge_large_data_scenario_description">without Bridge</string>
 
 
+    <string name="app_name_with_index">aodViewer (%1$d/%2$d)</string>
+
+
 </resources>

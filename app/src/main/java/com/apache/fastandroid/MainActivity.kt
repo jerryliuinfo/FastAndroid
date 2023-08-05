@@ -15,19 +15,13 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.annotations.CostTime
-import com.apache.fastandroid.databinding.ActivityMainBinding
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.component.once.OnceFragment
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
-import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
-import com.apache.fastandroid.demo.recycleview.RecycleViewDemoListFragment
-import com.apache.fastandroid.demo.temp.KnowledgeFragment
+import com.apache.fastandroid.demo.blockstore.BlockStoreDemoFragment
+import com.apache.fastandroid.demo.storage.opendocument.OpenDocumentDemoFragment
+import com.apache.fastandroid.jetpack.JetPackDemoFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.component.viewbinding.contentView
-import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import timber.log.Timber
@@ -188,6 +182,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, LocalDataTimeDemoFragment::class.java,null)
 
 //        ListOptions().show(supportFragmentManager,"")
 
@@ -206,8 +201,14 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        launchActivity<TasksActivity>(this)
 //        launchActivity<MaterialDialogDemoActivity>(this)
 //        launchActivity<ViewPumpDemoActivity>(this)
+//        launchActivity<PagingArticleDemoActivity>(this)
+//        launchActivity<PagingPosterDemoActivity>(this)
+//        FragmentContainerActivity.launch(this, JetPackDemoFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, BlockStoreDemoFragment::class.java,null)
+        FragmentContainerActivity.launch(this, OpenDocumentDemoFragment::class.java,null)
 
-    //        launchActivity<CheeseActivity>(this)
+
+        //        launchActivity<CheeseActivity>(this)
 //            launchActivity<ManifestDemoActivity>(this)
 
 //        FragmentContainerActivity.launch(this, CustomLifecycleOwnerFragment::class.java,null,addTitleBar = false)

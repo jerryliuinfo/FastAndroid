@@ -491,6 +491,8 @@ dependencies {
 
     implementation Jetpack.paging
     implementation Jetpack.paging_ktx
+    implementation Libs.blockstore
+    implementation Libs.coroutines_play_services
 }
 
 
