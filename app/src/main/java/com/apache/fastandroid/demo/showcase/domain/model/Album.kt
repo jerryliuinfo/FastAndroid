@@ -14,3 +14,4 @@ data class Album(
 ) {
     fun getDefaultImageUrl() = images.firstOrNull { it.size == ImageSize.EXTRA_LARGE }?.url
 }
+
