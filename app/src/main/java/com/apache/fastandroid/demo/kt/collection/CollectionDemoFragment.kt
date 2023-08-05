@@ -189,6 +189,8 @@ class CollectionDemoFragment :
             Logger.d("zipWithNextTransform item:${item}")
         }
 
+        val list = mutableListOf<String>()
+        list += "hello"
     }
 
     private fun takeUsage() {

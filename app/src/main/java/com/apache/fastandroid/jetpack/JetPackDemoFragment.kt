@@ -14,6 +14,7 @@ import com.apache.fastandroid.jetpack.navigation.NavigationDrawerDemoActivity2
 import com.apache.fastandroid.jetpack.navigation.advance.AdvanceNavigationActivity
 import com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity
 import com.apache.fastandroid.jetpack.viewmodel.JetPackViewModelListFragment
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2020/11/11.
@@ -35,7 +36,7 @@ class JetPackDemoFragment: BaseListFragment() {
 
                 ,ViewItemBean("Hit", "Hit", activity=HitDemoActivity::class.java)
                 ,ViewItemBean("WorkManager", "WorkManager", activity=HitDemoActivity::class.java)
-                ,ViewItemBean("Paging", "Paging", activity=HitDemoActivity::class.java)
+//                ,ViewItemBean("Paging", "Paging",  activity = PagingDemoActivity::class.java)
 
         )
     }

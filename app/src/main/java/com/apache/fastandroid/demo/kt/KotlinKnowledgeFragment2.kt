@@ -133,6 +133,59 @@ class KotlinKnowledgeFragment2:BaseBindingFragment<KtGrammer2Binding>(KtGrammer2
             initArrayUsage()
         }
 
+        mBinding.btnOperatorOverLoading.setOnClickListener {
+            operatorOverLoadingUsage()
+        }
+    }
+
+     data class Point(val x: Int, val y: Int){
+         val list = mutableListOf<Point>()
+     }
+
+    operator fun Point.unaryMinus() = Point(-x, -y)
+
+    //a + b
+    operator fun Point.plus(point:Point):Point = Point(x + point.x, y + point.y)
+    //a -b
+    operator fun Point.minus(point:Point):Point = Point(x - point.x, y - point.y)
+    // a * b
+    operator fun Point.times(point:Point):Point = Point(x * point.x, y * point.y)
+
+    // a / b
+    operator fun Point.div(point:Point):Point = Point(x / point.x, y / point.y)
+
+    //a ..b
+    operator fun Point.rangeTo(point:Point):Point = Point(x / point.x, y / point.y)
+
+
+    //a += b
+    operator fun Point.plusAssign(point:Point){
+        this.list.add(point)
+    }
+    //a -= b
+    operator fun Point.minusAssign(point:Point){
+        this.list.remove(point)
+    }
+
+    //a *= b
+    operator fun Point.timesAssign(point:Point){
+    }
+
+    //a /= b
+    operator fun Point.divAssign(point:Point){
+    }
+
+
+
+    val point = Point(10, 20)
+    val point2 = Point(1, 2)
+    private fun operatorOverLoadingUsage() {
+
+        println("-Point:${-point}")
+
+        //2元操作运算符
+        println("+result:${point + point2}, -result:${point-point2}, * result:${point*point2}, / result:${point/point2}")
+
     }
 
     private fun initArrayUsage() {

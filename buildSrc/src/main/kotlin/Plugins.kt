@@ -17,4 +17,8 @@ object Plugins {
 
     const val crashlytics = "com.google.firebase.crashlytics"
     const val googleServices = "com.google.gms.google-services"
+    const val kotlin_serialization = "kotlinx-serialization"
+
+
+
 }

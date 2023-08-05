@@ -3,8 +3,8 @@ package com.apache.fastandroid.demo.showcase
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.apache.fastandroid.demo.showcase.usecase.GetAlbumListUseCase
-import com.apache.fastandroid.demo.sunflower.repository.PlantRepository
+import com.apache.fastandroid.demo.showcase.albumlist.AlbumListViewModel
+import com.apache.fastandroid.demo.showcase.domain.usecase.GetAlbumListUseCase
 
 /**
  * Created by Jerry on 2022/3/14.

@@ -6,6 +6,7 @@ apply plugin: Plugins.kotlinAndroidExtensions
 apply plugin: Plugins.hit
 apply plugin: Plugins.navigationSafeargs
 apply plugin: Plugins.ruler
+//apply plugin: Plugins.kotlin_serialization
 //apply plugin: 'com.didiglobal.booster' //
 
 
@@ -408,7 +409,6 @@ dependencies {
     implementation project(Modules.fastFramework)
     implementation project(Modules.baselib)
     implementation project(Modules.libnetwork)
-    implementation 'androidx.paging:paging-common-ktx:3.1.1'
 
     fileTree(include: ['*.jar', '*.aar'], dir: 'libs').each {
         def name = it.name
@@ -436,6 +436,7 @@ dependencies {
     implementation AndroidX.swiperefreshLayout
     implementation AndroidX.palette
     implementation AndroidX.preference
+    implementation AndroidX.kotlinx_serialization
 
     implementation 'androidx.dynamicanimation:dynamicanimation-ktx:1.0.0-alpha03'
 
@@ -455,6 +456,7 @@ dependencies {
 
     implementation(*Jetpack.lifecycle)
     implementation(*Jetpack.navigation)
+//    implementation(*Jetpack.paging)
 
     implementation(*Jetpack.room)
     kapt(*Jetpack.room_compiler)
@@ -484,6 +486,7 @@ dependencies {
     implementation Libs.viewPage2
 
     implementation(*Libs.blackTech)
+    implementation(*Libs.moshi)
 //    implementation(*Libs.performance)
 }
 

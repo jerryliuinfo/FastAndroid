@@ -1,6 +1,6 @@
 package com.apache.fastandroid.network.api
 
-import com.apache.fastandroid.network.retrofit.ApiConstant
+import com.apache.fastandroid.network.util.ApiConstant
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
 
 

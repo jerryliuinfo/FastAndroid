@@ -18,6 +18,7 @@ import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainBinding
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.component.once.OnceFragment
 import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
 import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
 import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
@@ -26,6 +27,7 @@ import com.apache.fastandroid.demo.temp.KnowledgeFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.viewbinding.contentView
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import timber.log.Timber
@@ -119,6 +121,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, ProgressViewDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, OnceFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
 //        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, SerialNetworkFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
@@ -181,7 +184,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ViewBindingUsageDemo::class.java,null,addTitleBar = true)
-        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null)

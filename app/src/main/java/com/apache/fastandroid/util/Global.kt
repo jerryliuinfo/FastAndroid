@@ -6,6 +6,7 @@ import android.util.Log
 import com.blankj.utilcode.util.ToastUtils
 import kotlinx.coroutines.Job
 import timber.log.Timber
+import java.util.concurrent.TimeoutException
 
 object Global {
 
@@ -67,9 +68,14 @@ object Global {
     } else if (stack.contains("ClipboardService")) {
       Timber.w(e)
       ToastUtils.showShort("Cannot access to ClipboardService")
-    } else if (stack.contains("de.robv.android.xposed")) {
+    }else if (stack.contains("ClipboardService")) {
       Timber.w(e)
-      ToastUtils.showShort("Encounter Xposed module crash")
+      ToastUtils.showShort("Cannot access to ClipboardService")
+    }
+    //https://segmentfault.com/a/1190000019373275
+    else if (e is TimeoutException) {
+      Timber.w(e)
+      ToastUtils.showShort("TimeoutException");
     } else {
       throw e
     }

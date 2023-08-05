@@ -8,8 +8,6 @@ import com.apache.fastandroid.demo.recycleview.diffcallback.DifftemCallbackDemoF
 import com.apache.fastandroid.demo.recycleview.itemtouch.ItemTouchHelperDemoFragment
 import com.apache.fastandroid.demo.recycleview.listadapter.ListAdapterDemoFragment
 import com.apache.fastandroid.demo.recycleview.multiitemtype.MultiItemTypeDemoFragment1
-import com.apache.fastandroid.demo.recycleview.multiitemtype.MultiItemTypeDemoFragment2
-import com.apache.fastandroid.demo.recycleview.origin.MyDataAdapter
 import com.apache.fastandroid.demo.recycleview.origin.RecycleViewOriginFragment
 import com.apache.fastandroid.demo.recycleview.viewtype.MultiViewTypeDemoFragment
 import com.apache.fastandroid.demo.recycleview.zhy.BaseAdapterMultiItemDemoFragment
@@ -36,7 +34,7 @@ class RecycleViewDemoListFragment:BaseVBFragment2<FragmentRecycleviewDemoBinding
         }
 
         mBinding.btnRvMultiItemtype2.setOnClickListener {
-            FragmentContainerActivity.launch(requireActivity(), MultiItemTypeDemoFragment2::class.java, addTitleBar = false)
+//            FragmentContainerActivity.launch(requireActivity(), MultiItemTypeDemoFragment2::class.java, addTitleBar = false)
         }
 
         mBinding.btnRvOrigin.setOnClickListener {

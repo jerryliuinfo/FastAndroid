@@ -87,4 +87,7 @@
 
     <dimen name="additional_horizontal_spacing">0dp</dimen>
 
+    <dimen name="article_list_spacing">8dp</dimen>
+
+
 </resources>

@@ -31,6 +31,7 @@ class KotlinDemoListFragment:BaseListFragment()
             ,ViewItemBean("Kotlin踩坑","Kotlin踩坑", KotlinTrapDemoFragment::class.java)
             ,ViewItemBean("Lambda","Lambda", LambdaDemoFragment::class.java)
             ,ViewItemBean("扩展函数","KTX扩展库", ExtensionDemoFragment::class.java)
+            ,ViewItemBean("Kotlin-serialization","Kotlin-serialization", ExtensionDemoFragment::class.java)
 
         )
     }

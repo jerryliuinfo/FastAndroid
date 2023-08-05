@@ -64,17 +64,21 @@ object OkHttpClientManager {
 
             addChuckerInterceptor(this)
 
-            addNetworkInterceptor(ErrorInterceptor())
             addNetworkInterceptor(NetLogInterceptor())
 //            addInterceptor(CookieInterceptor())
             addNetworkInterceptor(OkNetworkMonitorInterceptor())
 //            addNetworkInterceptor(RetryInterceptor())
         }.apply {
+
+            //NetworkInterceptor 是网络层用的拦截器
             addNetworkInterceptor(OkNetworkMonitorInterceptor())
 
 
             addNetworkInterceptor(CacheInterceptor()) //仅当未从服务器启用 Cache-Control 标头时
+            //网络不可用时强制使用缓存数据
             addInterceptor(ForceCacheInterceptor())
+            //错误码处理器
+            addNetworkInterceptor(ErrorInterceptor())
 
 
             addNetworkInterceptor(OkNetworkMonitorInterceptor())

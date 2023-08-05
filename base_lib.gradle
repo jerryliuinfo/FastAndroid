@@ -66,6 +66,7 @@ dependencies {
     implementation AndroidX.cardview
     implementation AndroidX.palette
     implementation AndroidX.preference
+//    implementation AndroidX.kotlinx_serialization
 
     implementation (Libs.gson)
     implementation (Libs.utilcode)

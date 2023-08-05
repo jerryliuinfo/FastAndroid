@@ -21,6 +21,9 @@ object AndroidX {
     const val cardview = "androidx.cardview:cardview:${Versions.cardview}"
     const val palette = "androidx.palette:palette-ktx:1.0.0"
     const val preference = "androidx.preference:preference:${Versions.preference}"
+    const val kotlinx_serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0"
+
+
 }
 
 object Libs {
@@ -57,6 +60,13 @@ object Libs {
 
     const val arouter_api = "com.alibaba:arouter-api:${Versions.arouter_api_versoion}"
 
+    const val moshi_kotlin = "com.squareup.moshi:moshi-kotlin:1.9.3"
+
+
+    val moshi = arrayOf(
+        "com.squareup.moshi:moshi-kotlin:1.9.3",
+        "com.squareup.retrofit2:converter-moshi:2.6.2",
+    )
 
 
     val glide = arrayOf(
@@ -189,7 +199,8 @@ object Libs {
     )
 
     val performance = arrayOf(
-        "androidx.metrics:metrics-performance:${Versions.jankstats}",
+//        "androidx.metrics:metrics-performance:${Versions.jankstats}",
+        "com.didiglobal.booster:booster-transform-activity-thread:${Versions.booster}"
     )
 
 
@@ -218,6 +229,7 @@ object Test{
 
 object Kotlin{
     val kotlin = arrayOf(
+        //Kotlin 1.4 版本后不需要这个依赖了
         "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}",
         "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     )
@@ -255,7 +267,13 @@ object Jetpack{
         "androidx.room:room-compiler:${Versions.Room}",
     )
 
+//    val paging = arrayOf(
+//        "androidx.paging:paging-runtime:${Versions.paging}",
+//        "androidx.paging:paging-common-ktx:${Versions.paging}"
+//    )
     val paging = "androidx.paging:paging-runtime:3.0.1"
+
+
 
     val hit = arrayOf(
         "com.google.dagger:hilt-android:${Versions.hit}",

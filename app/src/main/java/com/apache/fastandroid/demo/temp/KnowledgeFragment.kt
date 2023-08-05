@@ -135,7 +135,9 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
         }
 
         mBinding.btnListInit.setOnClickListener {
+            kotlin.collections.List(10){
 
+            }
         }
         mBinding.btnNetwork.setOnClickListener {
             listenerNetwork()
@@ -198,21 +200,32 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
     }
 
     private fun executeOnceEveryDay() {
-        val nowTimeStr = getTodayString()
+        val todayTimeStr = getTodayString()
         val CACHE_TIME_KEY = "lastExecuteTime"
         @RequiresApi(Build.VERSION_CODES.O)
-        fun isExecuteToday(nowTimeStr:String):Boolean{
+        fun isExecuteToday(todayTimeStr:String):Boolean{
             val lastExecuteTimeStr = SPUtils.getInstance().getString(CACHE_TIME_KEY, "")
-            Logger.d("nowTimeStr:$nowTimeStr,lastExecuteTimeStr:$lastExecuteTimeStr")
+            Logger.d("nowTimeStr:$todayTimeStr,lastExecuteTimeStr:$lastExecuteTimeStr")
 
-            return TextUtils.equals(nowTimeStr,lastExecuteTimeStr)
+            return TextUtils.equals(todayTimeStr,lastExecuteTimeStr)
         }
-        if (!isExecuteToday(nowTimeStr)){
+        if (!isExecuteToday(todayTimeStr)){
             Logger.d("没有执行过，执行")
-            SPUtils.getInstance().put(CACHE_TIME_KEY,nowTimeStr)
+            SPUtils.getInstance().put(CACHE_TIME_KEY,todayTimeStr)
         }else{
             Logger.d("当天已执行过，无需执行")
         }
+
+        val lastDisplayPrivacyVersion = 100
+
+        val serverVersion = 101
+        if (serverVersion > lastDisplayPrivacyVersion  && lastDisplayPrivacyVersion != -1){
+            //need show privacy
+        }else{
+
+        }
+
+
     }
 
 

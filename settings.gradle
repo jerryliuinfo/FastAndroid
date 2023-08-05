@@ -8,7 +8,6 @@ include ':libnetwork'
 include ':app'
 include ':baselib'
 include ':fastFramework'
-include ':booster-android-api'
 rootProject.name = "Android"
 
 include ':libnetwork'

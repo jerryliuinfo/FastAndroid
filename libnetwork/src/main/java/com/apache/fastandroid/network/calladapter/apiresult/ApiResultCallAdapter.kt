@@ -1,7 +1,5 @@
 package com.apache.fastandroid.network.calladapter.apiresult
 
-import com.apache.fastandroid.network.model.result.ApiResult
-import com.apache.fastandroid.network.retrofit.ApiResultCall
 import retrofit2.Call
 import retrofit2.CallAdapter
 import java.lang.reflect.Type

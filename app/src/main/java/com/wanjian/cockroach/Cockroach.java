@@ -14,6 +14,7 @@ import com.wanjian.cockroach.compat.ActivityKillerV28;
 import com.wanjian.cockroach.compat.IActivityKiller;
 
 import java.lang.reflect.Field;
+import java.util.concurrent.TimeoutException;
 
 import me.weishu.reflection.Reflection;
 
@@ -50,6 +51,14 @@ public final class Cockroach {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread t, Throwable e) {
+
+                //https://segmentfault.com/a/1190000019373275
+                if (t.getName().equals("FinalizerWatchdogDaemon") && e instanceof TimeoutException) {
+                     //ignore it
+
+                    return;
+                }
+
                 if (sExceptionHandler != null) {
                     sExceptionHandler.uncaughtExceptionHappened(t, e);
                 }

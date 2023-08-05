@@ -4,8 +4,8 @@ import com.apache.fastandroid.network.api.FakeApi
 import com.apache.fastandroid.network.calladapter.apiresult.ApiResultAdapterFactory
 import com.apache.fastandroid.network.calladapter.livedata.LiveDataCallAdapterFactory
 import com.apache.fastandroid.network.interceptor.AuthenticationInterceptor
-import com.apache.fastandroid.network.interceptor.NetLogInterceptor
 import com.apache.fastandroid.network.interceptor.UserAgentInterceptor
+import com.apache.fastandroid.network.util.ApiConstant
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient

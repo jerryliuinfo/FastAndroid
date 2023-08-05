@@ -15,5 +15,5 @@ object PluginConfig {
     const val mcImage = "com.smallsoho.mobcase:McImage:1.5.1"
     const val booster = "com.didiglobal.booster:booster-gradle-plugin:${Versions.booster}"
 
-//    const val kotlin_serialization = "org.jetbrains.kotlin.plugin.serialization:${Versions.kgp}"
+    const val kotlin_serialization = "org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}"
 }

@@ -32,7 +32,6 @@
 
 
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 
     <!--
@@ -195,7 +194,7 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
 
         <activity
             android:name=".demo.style.ImmerseStatusBarDemoActivity"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait" />
 
 
@@ -443,7 +442,7 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             android:label="我是定义了IntentFilter的activity"
             >
             <intent-filter>
-                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND" android:exported="true"/>
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />
             </intent-filter>
@@ -504,12 +503,14 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             />
 
 <!--        <activity android:name=".demo.weaknetwork.connectionclass.ConnectionClassActivity"-->
-<!--            android:exported="false"-->
+<!--            android:exported="true"-->
 <!--            />-->
 
         <activity android:name=".demo.compress.CompressDemoActivity"
-            android:exported="false"
+            android:exported="true"
             />
+
+
 
         <meta-data
             android:name="appChannel"

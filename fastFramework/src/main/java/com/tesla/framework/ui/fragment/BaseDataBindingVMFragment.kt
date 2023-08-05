@@ -38,8 +38,7 @@ abstract class BaseDataBindingVMFragment<T : ViewDataBinding, M : BaseVM>(val in
     override fun initViewModel() {
         super.initViewModel()
         viewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return getViewModelInstance() as T
             }
         })[getViewModelClass()]

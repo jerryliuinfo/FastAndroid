@@ -27,6 +27,7 @@ import com.apache.fastandroid.jetpack.lifecycle.TraditionalProcessLifecycleListe
 import com.apache.fastandroid.network.api.ApiServiceFactory
 import com.apache.fastandroid.util.Global
 import com.apache.fastandroid.util.MultidexUtils
+import com.blankj.utilcode.util.EncryptUtils
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.Utils
 import com.linkaipeng.oknetworkmonitor.OkNetworkMonitor
@@ -117,6 +118,7 @@ object ClientConfigurator {
         initPermissionMonitor()
         initAppDress()
         initFloo()
+        initBooster()
 
         Utils.getApp()
             .registerActivityLifecycleCallbacks(TraditionalProcessLifecycleListener(object :
@@ -133,6 +135,10 @@ object ClientConfigurator {
         initNetworkMonitor(context)
     }
 
+    private fun initBooster(){
+//        FinalizerWatchdogDaemonKiller.
+
+    }
 
     private fun initNetworkMonitor(context: Context) {
         OkNetworkMonitor.context = context
@@ -162,7 +168,9 @@ object ClientConfigurator {
             .color(Color.WHITE)
             .size(24f)
             .alpha(.5f)
-            .listener { fps -> Logger.d("Takt fps:$fps") }
+            .listener { fps ->
+//                Logger.d("Takt fps:$fps")
+            }
             .useCustomControl()
     }
 

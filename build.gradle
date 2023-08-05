@@ -79,7 +79,9 @@ buildscript {
 //                    details.useVersion "2.4.1"
 //                }
 
-
+                if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
+                    details.useVersion "1.6.10"
+                }
 
                 if (requested.group == 'androidx.appcompat' && requested.name == 'appcompat') {
                     details.useVersion Versions.appCompat
