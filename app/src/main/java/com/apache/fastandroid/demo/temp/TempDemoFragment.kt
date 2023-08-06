@@ -8,6 +8,7 @@ import com.apache.fastandroid.demo.countdown.CountDownDemoFragment
 import com.apache.fastandroid.demo.launchermode.LaunchModeDemoFragment
 import com.apache.fastandroid.demo.progress.ProgressDemoFragment
 import com.apache.fastandroid.demo.recycleview.AutoScrollViewDemoFragment
+import com.apache.fastandroid.demo.storage.documenttree.DocumentTreeDemoActivity
 import com.apache.fastandroid.demo.storage.opendocument.OpenDocumentDemoFragment
 import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity
 import com.apache.fastandroid.demo.style.FitSystemWindowDemoActivity2
@@ -58,7 +59,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("RecycleView滑动到指定位置", "RecycleView滑动到指定位置",  AutoScrollViewDemoFragment::class.java)
                 ,ViewItemBean("LocalDateTime 用法", "LocalDateTime用法",  LocalDataTimeDemoFragment::class.java)
                 ,ViewItemBean("BlockStore 用法", "BlockStore 用法",  BlockStoreDemoFragment::class.java)
-                ,ViewItemBean("Storage 用法", "打开pdf",  OpenDocumentDemoFragment::class.java)
+
 
         )
     }

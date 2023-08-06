@@ -88,6 +88,9 @@
 
 
     <string name="app_name_with_index">aodViewer (%1$d/%2$d)</string>
-
+    <string name="error_no_activity">No activity found to open "%1$s".</string>
+    <string name="rename_title">Rename</string>
+    <string name="rename_okay">Rename</string>
+    <string name="rename_cancel">Cancel</string>
 
 </resources>

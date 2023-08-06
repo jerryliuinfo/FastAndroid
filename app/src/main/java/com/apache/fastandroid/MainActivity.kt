@@ -17,11 +17,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.blockstore.BlockStoreDemoFragment
-import com.apache.fastandroid.demo.storage.opendocument.OpenDocumentDemoFragment
-import com.apache.fastandroid.jetpack.JetPackDemoFragment
+import com.apache.fastandroid.demo.storage.StorageDemoListFragment
+import com.apache.fastandroid.demo.storage.documenttree.DocumentTreeDemoActivity
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import timber.log.Timber
@@ -205,7 +205,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        launchActivity<PagingPosterDemoActivity>(this)
 //        FragmentContainerActivity.launch(this, JetPackDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, BlockStoreDemoFragment::class.java,null)
-        FragmentContainerActivity.launch(this, OpenDocumentDemoFragment::class.java,null)
+        FragmentContainerActivity.launch(this, StorageDemoListFragment::class.java,null)
 
 
         //        launchActivity<CheeseActivity>(this)

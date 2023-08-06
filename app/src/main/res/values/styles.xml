@@ -155,6 +155,8 @@
         <item name="android:layout_marginTop">2dp</item>
 
     </style>
+    <style name="Theme.DirSelect.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <style name="Theme.DirSelect.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

@@ -15,6 +15,7 @@ import com.apache.fastandroid.demo.lyric.LyricDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.sample.SampleCodeDemoListFragment
 import com.apache.fastandroid.demo.sampleapp.SampleAppDemoFragment
+import com.apache.fastandroid.demo.storage.StorageDemoListFragment
 import com.apache.fastandroid.demo.temp.TempDemoFragment
 import com.apache.fastandroid.demo.transition.TransitionDemoFragment
 import com.apache.fastandroid.demo.widget.UIWidgetDemoFragment
@@ -66,6 +67,7 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("各个组件style介绍", "各个组件style介绍", LyricDemoFragment::class.java),
             ViewItemBean("JNI", "JNI", JniDemoListFragment::class.java),
             ViewItemBean("Amit Shekhar", "Amit Shekhar", AmitShekharDemoFragment::class.java),
+            ViewItemBean("StorageSample", "StorageSample", StorageDemoListFragment::class.java),
 
 
         )

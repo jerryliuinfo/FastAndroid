@@ -515,6 +515,9 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
         <activity android:name=".demo.paging.poster.ui.PagingPosterDemoActivity"
             android:exported="false"
             />
+        <activity android:name=".demo.storage.documenttree.DocumentTreeDemoActivity"
+            android:exported="false"
+            />
 
         <meta-data
             android:name="appChannel"

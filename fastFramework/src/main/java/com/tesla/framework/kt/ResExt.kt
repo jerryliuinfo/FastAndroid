@@ -31,3 +31,7 @@ fun @receiver:ColorInt Int.toColorStateListByColor(): ColorStateList {
 
 val @receiver:StringRes Int.getString
     get() = Utils.getApp().getString(this)
+
+fun @receiver:StringRes Int.getString(vararg formatArgs:Any?):String{
+    return Utils.getApp().getString(this,formatArgs)
+}
