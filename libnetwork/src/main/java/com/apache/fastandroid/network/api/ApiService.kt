@@ -60,6 +60,7 @@ interface ApiService {
     fun listReposRx(@Path("user") user: String): Single<List<Repo>>
 
     @GET("article/get/{id}")
+//    suspend fun getArticleById(@Path("id") id: Long): ResultData<Repo>
     suspend fun getArticleById(@Path("id") id: Long): ResultData<Repo>
 
 

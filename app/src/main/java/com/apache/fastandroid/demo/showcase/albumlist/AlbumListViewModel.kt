@@ -76,7 +76,17 @@ internal class AlbumListViewModel(
     }
 
     internal sealed interface UiState : BaseState {
-        data class Content(val albums: List<Album>) : UiState
+        data class Content(val albums: List<Album>) : UiState{
+            override fun toString(): String {
+                return super.toString()
+            }
+
+            override fun equals(other: Any?): Boolean {
+                return super.equals(other)
+            }
+
+
+        }
         object Loading : UiState
         object Error : UiState
     }

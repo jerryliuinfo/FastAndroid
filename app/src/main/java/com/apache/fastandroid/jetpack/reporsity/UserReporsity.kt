@@ -3,7 +3,7 @@ package com.apache.fastandroid.jetpack.reporsity
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 import kotlin.random.Random
 
 /**

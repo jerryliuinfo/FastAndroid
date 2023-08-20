@@ -25,7 +25,7 @@ import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.fragment.view.BaseView
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 
 /**
  * Created by Jerry on 2022/3/10.

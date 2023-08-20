@@ -58,7 +58,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 import java.lang.reflect.ParameterizedType
 import java.text.SimpleDateFormat
 import java.util.*

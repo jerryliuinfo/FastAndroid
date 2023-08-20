@@ -8,7 +8,7 @@ import com.apache.fastandroid.demo.showcase.data.datasource.api.model.toEntityMo
 import com.apache.fastandroid.demo.showcase.data.datasource.api.service.AlbumRetrofitService
 import com.apache.fastandroid.demo.showcase.data.datasource.database.AlbumDao
 import com.apache.fastandroid.demo.showcase.data.datasource.database.model.toDomainModel
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 import com.apache.fastandroid.network.model.result.Result
 
 

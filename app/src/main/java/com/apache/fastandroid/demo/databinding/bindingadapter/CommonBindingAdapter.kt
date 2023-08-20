@@ -84,7 +84,7 @@ private const val TAG = "CommonBindingAdapter"
 
     @BindingAdapter(value = ["imageUrl", "placeHolder"], requireAll = false)
     fun imageUrl(view: ImageView, url: String?, placeHolder: Drawable?) {
-        Glide.with(view.context).load(url).into(view)
+        Glide.with(view.context).load(url).placeholder(placeHolder).into(view)
     }
 
     @BindingAdapter(value = ["visible"], requireAll = false)

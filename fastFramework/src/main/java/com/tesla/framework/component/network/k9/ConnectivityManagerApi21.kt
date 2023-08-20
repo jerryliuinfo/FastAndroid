@@ -4,7 +4,7 @@ import android.net.ConnectivityManager.NetworkCallback
 import android.net.Network
 import android.net.NetworkRequest
 import com.fsck.k9.network.ConnectivityManagerBase
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 import android.net.ConnectivityManager as SystemConnectivityManager
 
 @Suppress("DEPRECATION")

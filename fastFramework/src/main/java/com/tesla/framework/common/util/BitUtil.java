@@ -3,7 +3,7 @@ package com.tesla.framework.common.util;
 /**
  * Created by Jerry on 2023/7/11.
  */
-class BitUtil {
+public class BitUtil {
 
    public static boolean hasFlag(long flags, long value, boolean indexBase) {
       if (indexBase) {

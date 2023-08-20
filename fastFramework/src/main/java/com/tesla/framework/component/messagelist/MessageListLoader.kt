@@ -1,6 +1,6 @@
 package com.tesla.framework.component.messagelist
 
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 
 class MessageListLoader(
 ) {

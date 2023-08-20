@@ -17,7 +17,7 @@ class DelayInitTaskDispatcher {
 
     private val mIdleHandler = MessageQueue.IdleHandler {
         if (mDelayTasks.size > 0){
-            var task = mDelayTasks.poll()
+            val task = mDelayTasks.poll()
             task.get()?.execute()
         }
         //Return true to keep your idle handler active, false  to have it removed

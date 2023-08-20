@@ -121,7 +121,7 @@
 }
 
 # 避免Log打印输出
--assumenosideeffects class timber.log.Timber {
+-assumenosideeffects class com.tesla.framework.component.log.Timber {
    public static *** v(...);
    public static *** d(...);
    public static *** i(...);

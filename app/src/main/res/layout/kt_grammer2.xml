@@ -30,7 +30,9 @@
                 app:constraint_referenced_ids="btn_let,btn_with,btn_run,btn_apply,btn_also,
                 btn_operator_overload,btn_zhongzui,btn_typeAlias,btn_getter_setter,btn_lambda_interrupt,
                 btn_neilian,btn_no_inline,btn_non_crossInline,btn_crossInline,btn_anonymous,btn_kt_genericity,btn_kt_real_genericity,
-                btn_kt_class_real_genericity,btn_evis_operator,btn_typealias,btn_array_init,btn_operatorOverLoading"
+                btn_kt_class_real_genericity,btn_evis_operator,btn_typealias,btn_array_init,btn_operatorOverLoading,
+                btn_ifNotNull,btn_trap_dataclass,btn_tryCatch,btn_tryWithResource,btn_object_expression,btn_integer_division,
+                btn_trim,btn_type_convert,btn_get_when_result,btn_return_break,btn_tryIsExpression"
                 />
 
             <Button
@@ -180,6 +182,76 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="操作符重载"
+                />
+
+            <Button
+                android:id="@+id/btn_ifNotNull"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IfNotNull"
+                />
+
+            <Button
+                android:id="@+id/btn_trap_dataclass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="data class 踩坑"
+                />
+            <Button
+                android:id="@+id/btn_tryCatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="tryCatch表达式"
+                />
+            <Button
+                android:id="@+id/btn_tryWithResource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="tryWithResource"
+                />
+            <Button
+                android:id="@+id/btn_object_expression"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="object表达式"
+                />
+
+            <Button
+                android:id="@+id/btn_integer_division"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="整数除法"
+                />
+            <Button
+                android:id="@+id/btn_trim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trim"
+                />
+
+            <Button
+                android:id="@+id/btn_type_convert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="类型转换操作符"
+                />
+            <Button
+                android:id="@+id/btn_get_when_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="when的表达式捕获到变量中"
+                />
+            <Button
+                android:id="@+id/btn_return_break"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="返回与跳转"
+                />
+            <Button
+                android:id="@+id/btn_tryIsExpression"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="try是一个表达式"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

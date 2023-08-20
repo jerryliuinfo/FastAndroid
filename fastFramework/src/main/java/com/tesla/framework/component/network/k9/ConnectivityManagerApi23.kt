@@ -7,7 +7,7 @@ import android.net.NetworkRequest
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.fsck.k9.network.ConnectivityManagerBase
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 import android.net.ConnectivityManager as SystemConnectivityManager
 
 @RequiresApi(Build.VERSION_CODES.M)

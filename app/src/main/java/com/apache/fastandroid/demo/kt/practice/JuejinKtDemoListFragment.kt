@@ -212,4 +212,29 @@ class JuejinKtDemoListFragment :
     private fun jvmOverloadsUsage() {
         JvmOverloadsDemo.callJavaDefaultParamFunc()
     }
+
+    class NestedInnerClassDemo {
+
+        /**
+         * 嵌套类
+         */
+        class Nested{
+
+            fun test(){
+                Logger.d("Nested test--->")
+            }
+
+        }
+
+
+        /**
+         * 内部类
+         */
+        inner class Inner{
+
+            fun test(){
+                Logger.d("Inner test--->")
+            }
+        }
+    }
 }

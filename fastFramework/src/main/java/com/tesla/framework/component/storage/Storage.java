@@ -4,7 +4,7 @@ package com.tesla.framework.component.storage;
 import java.util.Collections;
 import java.util.Map;
 
-import timber.log.Timber;
+import com.tesla.framework.component.log.Timber;
 
 public class Storage {
     private final Map<String, String> values;

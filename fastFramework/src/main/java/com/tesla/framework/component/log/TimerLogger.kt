@@ -1,11 +1,11 @@
-package timber.log
+package com.tesla.framework.component.log
 
 import android.content.Context
 import android.util.Log
 import com.tesla.framework.component.logger.LogAdapter
 import com.tesla.framework.BuildConfig
-import timber.log.Timber.DebugTree
-import timber.log.Timber.Forest.plant
+import com.tesla.framework.component.log.Timber.DebugTree
+import com.tesla.framework.component.log.Timber.Forest.plant
 
 /**
  * Created by Jerry on 2022/1/19.
@@ -25,7 +25,7 @@ class TimerLogger: LogAdapter {
 
     override fun log(priority: Int, tag: String?, message: String) {
         println("TimerLogger log message:${message}")
-        Timber.log(priority,message)
+        Timber.log(priority, message)
     }
 
 }

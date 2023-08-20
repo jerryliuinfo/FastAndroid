@@ -2,7 +2,7 @@ package com.tesla.framework.component.logger.k9
 
 import android.os.Build
 import java.util.regex.Pattern
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 
 class TimberLogger : ILogger {
     override fun v(message: String?, vararg args: Any?) {

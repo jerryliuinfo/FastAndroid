@@ -4,7 +4,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.pm.PackageManager
 import java.util.concurrent.CopyOnWriteArraySet
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 
 class SystemLocaleManager(context: Context) {
     private val packageManager = context.packageManager

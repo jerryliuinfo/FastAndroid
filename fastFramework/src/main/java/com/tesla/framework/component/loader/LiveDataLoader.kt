@@ -9,7 +9,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 
 const val LOADING_INDICATOR_DELAY = 500L
 

@@ -17,7 +17,7 @@
 package com.android.example.github.db
 
 import androidx.room.TypeConverter
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 
 object GithubTypeConverters {
     @TypeConverter

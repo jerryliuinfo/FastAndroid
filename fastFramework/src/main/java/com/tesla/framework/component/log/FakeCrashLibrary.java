@@ -1,4 +1,4 @@
-package timber.log;
+package com.tesla.framework.component.log;
 
 /** Not a real crash reporting library! */
 public final class FakeCrashLibrary {

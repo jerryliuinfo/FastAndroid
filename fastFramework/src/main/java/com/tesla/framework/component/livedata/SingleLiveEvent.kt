@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.tesla.framework.component.logger.Logger
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**

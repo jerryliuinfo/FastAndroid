@@ -2,7 +2,7 @@ package com.igorwojda.showcase.base.presentation.viewmodel
 
 import com.tesla.framework.component.showcase.BaseAction
 import com.tesla.framework.component.showcase.BaseState
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 import kotlin.reflect.full.memberProperties
 
 /**

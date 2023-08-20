@@ -5,7 +5,7 @@ import androidx.annotation.Nullable
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 import java.util.concurrent.atomic.AtomicBoolean
 
 class LiveEvent<T> : MutableLiveData<T>() {

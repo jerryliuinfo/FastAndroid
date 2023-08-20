@@ -37,7 +37,7 @@ import com.example.android.architecture.blueprints.todoapp.util.setupSnackbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.tesla.framework.component.livedata.EventObserver
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 
 /**
  * Display a grid of [Task]s. User can choose to view all, active or completed tasks.

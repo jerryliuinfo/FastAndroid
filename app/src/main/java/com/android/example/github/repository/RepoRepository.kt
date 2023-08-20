@@ -66,7 +66,7 @@ class RepoRepository constructor(
             }
 
             override fun shouldFetch(data: List<Repo>?): Boolean {
-                return data == null || data.isEmpty() || repoListRateLimit.shouldFetch(owner)
+                return data.isNullOrEmpty() || repoListRateLimit.shouldFetch(owner)
             }
 
             override fun loadFromDb() = repoDao.loadRepositories(owner)

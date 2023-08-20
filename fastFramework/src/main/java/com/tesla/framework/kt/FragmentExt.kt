@@ -8,7 +8,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.tesla.framework.R
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 
 fun Fragment.navigateSafe(directions: NavDirections, navOptions: NavOptions? = null) {
     if (canNavigate()) findNavController().navigate(directions, navOptions)

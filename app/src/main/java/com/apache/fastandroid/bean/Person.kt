@@ -10,6 +10,12 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Person(val name:String, val age:Int? ): MultiItemEntity, Parcelable {
 
+    val children: MutableList<Person> = mutableListOf()
+
+    constructor(name: String,age: Int, parent: Person) : this(name,age) {
+        parent.children.add(this)
+    }
+
     override val itemType: Int
         get() = 2
 

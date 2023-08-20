@@ -6,7 +6,7 @@ import com.apache.fastandroid.databinding.FragmentSlimberBinding
 import com.tesla.framework.component.logD
 import com.tesla.framework.component.logV
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 
 
 /**

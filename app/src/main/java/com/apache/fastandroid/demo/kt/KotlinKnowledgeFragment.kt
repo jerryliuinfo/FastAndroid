@@ -38,7 +38,7 @@ import com.tesla.framework.common.util.HideTextWatcher
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.*
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 import java.io.File
 import java.nio.charset.Charset
 import kotlin.math.cos
@@ -112,7 +112,7 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
             println("costTime:${costTime}")
         }
         mBinding.btnCoerceAtLeast.setOnClickListener {
-            rangeUsage()
+            coerceAtUsage()
         }
 
 
@@ -359,7 +359,7 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
         Logger.d("readText:$readText")
     }
 
-    private fun rangeUsage() {
+    private fun coerceAtUsage() {
         var param = 10
         val minValue = 5
         val maxValue = 20

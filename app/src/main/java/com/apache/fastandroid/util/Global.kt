@@ -5,7 +5,7 @@ import android.os.Looper
 import android.util.Log
 import com.blankj.utilcode.util.ToastUtils
 import kotlinx.coroutines.Job
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 import java.util.concurrent.TimeoutException
 
 object Global {

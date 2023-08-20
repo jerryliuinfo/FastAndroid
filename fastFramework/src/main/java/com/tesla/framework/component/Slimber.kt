@@ -4,7 +4,7 @@ package com.tesla.framework.component
  * Created by Jerry on 2022/5/27.
  */
 
-import timber.log.Timber
+import com.tesla.framework.component.log.Timber
 
 /** Invokes an action if any trees are planted */
 inline fun ifPlanted(action: () -> Unit) {
