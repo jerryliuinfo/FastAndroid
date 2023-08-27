@@ -10,6 +10,9 @@ import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.use
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
+import com.tesla.framework.ui.activity.FragmentArgs
+import com.tesla.framework.ui.activity.FragmentContainerActivity
 import kotlin.reflect.KProperty1
 
 fun Context.toTheme(@StyleRes styleId: Int): Context {
@@ -44,9 +47,16 @@ inline fun <reified T: Activity> launchActivity(context: Context) {
   context.startActivity(intent)
 }
 
+inline fun <reified T : Activity> Activity.launchActivity() {
+  startActivity(Intent(this, T::class.java))
+}
+
 
 inline fun <reified T> launchActivity(context: Context, block: Intent.() -> Unit) {
   val intent = Intent(context, T::class.java).apply(block)
   context.startActivity(intent)
 }
 
+inline fun <reified T : Fragment> Activity.launchFragment(args: FragmentArgs? = null, addTitleBar:Boolean = true) {
+  FragmentContainerActivity.launch(this,T::class.java,args, addTitleBar)
+}

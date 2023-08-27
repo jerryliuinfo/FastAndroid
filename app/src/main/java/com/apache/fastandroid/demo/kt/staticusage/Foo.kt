@@ -24,6 +24,10 @@ class Foo {
 
         }
     }
+
+    fun isValid():Boolean{
+        return true
+    }
 }
 
 

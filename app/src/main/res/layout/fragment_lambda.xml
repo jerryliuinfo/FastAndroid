@@ -21,7 +21,7 @@
             app:flow_horizontalGap="10dp"
             app:flow_verticalGap="10dp"
             app:constraint_referenced_ids="btn_no_param,btn_have_param,btn_anonymous_func,btn_reference_func,btn_reference_func2,btn_lambda_example,
-            btn_typeAlias,btn_high_order_function,btn_lambda_receiver"
+            btn_typeAlias,btn_high_order_function,btn_lambda_receiver,btn_receiver2"
             />
         <Button
             android:id="@+id/btn_no_param"
@@ -78,6 +78,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="lambda参数为有Receiver"
+            />
+
+        <Button
+            android:id="@+id/btn_receiver2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="带有接收者的函数字面值"
             />
 
 

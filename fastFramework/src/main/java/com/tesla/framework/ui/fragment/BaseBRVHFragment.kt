@@ -46,9 +46,10 @@ abstract class BaseBRVHFragment<T,VH : BaseViewHolder>:BaseBindingFragment<Fragm
 
 
     fun getMyAdapter():BaseQuickAdapter<T,VH>{
-        if (mAdapter == null){
-            mAdapter = myAdapter()
+        return mAdapter ?: kotlin.run {
+            myAdapter().also {
+                mAdapter = it
+            }
         }
-        return mAdapter!!
     }
 }

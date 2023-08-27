@@ -10,10 +10,15 @@ import com.apache.fastandroid.databinding.KtGrammer2Binding
 import com.apache.fastandroid.demo.bean.Person
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.kt.bean.KotlinMain
+import com.apache.fastandroid.demo.kt.delegate.BaseImpl
+import com.apache.fastandroid.demo.kt.delegate.Derived
+import com.apache.fastandroid.demo.kt.delegate.Example
 import com.apache.fastandroid.demo.kt.genericity.GenericView
 import com.apache.fastandroid.demo.kt.genericity.GenericityAImpl
 import com.apache.fastandroid.demo.kt.genericity.JavaGeneric
 import com.apache.fastandroid.demo.kt.genericity.KtGenericity
+import com.apache.fastandroid.demo.kt.staticusage.Foo
+import com.apache.fastandroid.demo.kt.staticusage.topLevelFun1
 import com.apache.fastandroid.demo.widget.listadapter.AlbumListAdapter
 import com.apache.fastandroid.network.model.result.Result
 import com.blankj.utilcode.util.GsonUtils
@@ -23,11 +28,15 @@ import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.fromJson2
 import com.tesla.framework.kt.getMySystemService
 import com.tesla.framework.ui.fragment.BaseBindingFragment
+import kotlinx.android.synthetic.main.fragment_best_practice_livedata.time
 import retrofit2.HttpException
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
+import java.util.Collections
 import javax.inject.Inject
+import kotlin.properties.Delegates
+import kotlin.reflect.KProperty
 
 /**
  * Created by Jerry on 2021/10/18.
@@ -192,6 +201,228 @@ class KotlinKnowledgeFragment2 :
 
         mBinding.btnTryIsExpression.setOnClickListener {
             tryIsExpression()
+        }
+
+        mBinding.btnDelegate.setOnClickListener {
+            delegateUsage()
+        }
+
+        mBinding.btnFunction.setOnClickListener {
+            functionUsage()
+        }
+
+        mBinding.btnInfix.setOnClickListener {
+            infixUsage()
+        }
+
+
+    }
+
+
+
+    class IntTransformer:(Int) -> Int{
+        override operator fun invoke(p1: Int): Int {
+            return p1 + 1
+        }
+    }
+
+    class  ValueTransformer<T>:(T) -> List<T>{
+        override fun invoke(p1: T): List<T> {
+            return arrayListOf(p1,p1)
+        }
+
+    }
+
+
+
+
+    /**
+     * 中缀表示法
+        标有 infix 关键字的函数也可以使用中缀表示法（忽略该调用的点与圆括号）调用。 中缀函数必须满足以下要求：
+        它们必须是成员函数或扩展函数。
+        它们必须只有一个参数。
+        其参数不得接受可变数量的参数且不能有默认值。
+     */
+    private fun infixUsage() {
+       val result =  "hello" repeatSelf 2
+        println("infixUsage result:$result")
+    }
+
+    fun <T> singletonList(item:T):List<T>{
+        return Collections.singletonList(item)
+    }
+
+    infix fun String.repeatSelf(times:Int):String{
+        return repeat(times)
+    }
+    private fun functionUsage() {
+        //可变数量的参数（varargs）
+        val a = intArrayOf(1, 2, 3)
+        val list = asList("Hello", *a.toTypedArray())
+        println("list:$list")
+    }
+
+    private fun <T> asList(vararg ts:T ):List<T>{
+        val list = ArrayList<T>()
+        for (t in ts){
+            list.add(t)
+        }
+        return list
+    }
+
+    /**
+     * 实现继承的一个很好的替代方式， 而 Kotlin 可以零样板代码地原生支持它
+     */
+    private fun delegateUsage() {
+        val b = BaseImpl(10)
+
+        Derived(b).print()
+
+
+        //覆盖由委托实现的接口成员
+        val derived = Derived(b)
+        derived.printLine()
+
+        //以这种方式重写的成员不会在委托对象的成员中调用 ，委托对象的成员只能访问其自身对接口成员实现：
+        //所以这里输出的是  BaseImpl: x = 10， 而不是 Message of Derived
+        println(derived.message)
+
+        propertyDelegate()
+    }
+
+    var topLevelInt: Int = 15
+    //给扩展属性设置委托
+    var BaseImpl.excDelegated:Int by ::topLevelInt
+    /**
+     *
+     * https://book.kotlincn.net/text/delegated-properties.html
+     * 属性委托
+     * 延迟属性（lazy properties）: 其值只在首次访问时计算。
+       可观察属性（observable properties）: 监听器会收到有关此属性变更的通知。
+       把多个属性储存在一个映射（map）中，而不是每个存在单独的字段中。
+     */
+
+    private fun propertyDelegate(){
+        val example = Example()
+        println("message before write:${example.message}")
+
+        example.message = "hello"
+        println("message after write:${example.message}")
+
+        /**
+         * 延迟属性: lazy() 是接受一个 lambda 并返回一个 Lazy <T> 实例的函数，返回的实例可以作为实现延迟属性的委托。
+         * 第一次调用 get() 会执行已传递给 lazy() 的 lambda 表达式并记录结果。 后续调用 get() 只是返回记录的结果。
+
+         */
+        val lazyValue:String by lazy {
+            println("computed")
+            "hello"
+        }
+        println("propertyDelegate11:lazyValue:$lazyValue")
+        println("propertyDelegate22:lazyValue:$lazyValue")
+
+        //可观察属性 Observable properties
+
+        var name:String by Delegates.observable("null"){ prop, old, new ->
+            println("name changed prop:$prop, $old to $new")
+        }
+        name = "first"
+        println("name111:$name")
+
+        name = "second"
+        println("name222:$name")
+
+
+        //委托给另一个属性
+
+
+        class ClassWithDelegate(val anotherClassInt: Int)
+        class MyClass(var memInt:Int, val anotherClass:ClassWithDelegate){
+
+            var newName:String = "hello"
+
+            @Deprecated("use newName instead")
+            var oldName:String by this::newName
+
+
+            var delegateToMem:Int by this::memInt
+            var delegateToTopLevel:Int by ::topLevelInt
+
+            val delegateToAnotherClass:Int by anotherClass::anotherClassInt
+
+        }
+
+        val myClass = MyClass(10, ClassWithDelegate((20)))
+        println("delegateToMem:${myClass.delegateToMem}, delegateToTopLevel:${myClass.delegateToTopLevel},delegateToAnotherClass:${myClass.delegateToAnotherClass},excDelegated:${BaseImpl(1).excDelegated}")
+
+
+        //想要以一种向后兼容的方式重命名一个属性的时候：引入一个新的属性、 使用 @Deprecated 注解来注解旧的属性、并委托其实现。
+
+        myClass.oldName = "world"
+        println("newName: ${myClass.newName}")
+
+        //将属性储存在映射中
+        class User(val map:Map<String,Any?>){
+            val name:String by map
+            val age:Int by map
+
+        }
+
+        val user = User(mapOf("name" to "Jim", "age" to 15))
+        println("name:${user.name}, age:${user.age}")
+
+
+        fun condition(str:String):Boolean{
+            return str.length > 5
+        }
+
+        //局部委托属性
+
+        fun localPartyDelegate(computeFoo:() -> String){
+            //memoizedFoo 变量只会在第一次访问时计算。 如果 someCondition 失败，那么该变量根本不会计算。
+            val memoizedFoo:String by lazy {
+                println("init foo")
+                "hello world" }
+
+            if (condition("hi") && memoizedFoo.length > 5){
+                println("length is bigger than 5")
+            }
+        }
+        localPartyDelegate {
+            "world world"
+        }
+
+
+
+        val owner = Owner()
+        owner.varResource = Resource("hello")
+        println("read resouce:${owner.varResource}")
+
+    }
+
+    class Resource(name:String)
+    class Owner{
+        var varResource:Resource by ResourceDelegate()
+    }
+
+    /**
+     * 对于一个只读属性（即 val 声明的），委托必须提供一个操作符函数 getValue()
+     * 对于一个可变属性（即 var 声明的），委托必须额外提供一个操作符函数 setValue()
+     * @property resource Resource
+     * @constructor
+     */
+    class ResourceDelegate(private var resource: Resource = Resource("Default")){
+        operator fun getValue(thisRef:Owner, property:KProperty<*>):Resource{
+            println("ResourceDelegate getValue resource:$resource")
+            return resource
+        }
+
+        operator fun setValue(thisRef:Owner, property:KProperty<*>, value:Any?){
+            println("ResourceDelegate setValue value:$value")
+
+            if (value is Resource){
+                resource = value
+            }
         }
     }
 
@@ -536,6 +767,7 @@ class KotlinKnowledgeFragment2 :
         //2元操作运算符
         println("+result:${point + point2}, -result:${point - point2}, * result:${point * point2}, / result:${point / point2}")
 
+
     }
 
     private fun initArrayUsage() {
@@ -779,6 +1011,10 @@ class KotlinKnowledgeFragment2 :
             println("onItemClick user:$user")
         }
 
+
+        //为函数类型提供另外的别名：
+
+
     }
     //使用 UserList 替代 List<UserBean>
     fun trainUsers(userList: UserList) {
@@ -934,6 +1170,8 @@ class KotlinKnowledgeFragment2 :
 
 
 }
+
+typealias MyHandler = (Int,String,Any) -> Unit
 
 
 //用 A 来代表 File

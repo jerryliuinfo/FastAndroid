@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.annotation.StringRes
 import androidx.databinding.ObservableInt
 import com.blankj.utilcode.util.ToastUtils
-import com.tesla.framework.BuildConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -84,18 +83,6 @@ fun CoroutineScope.io(codeBlock: suspend CoroutineScope.() -> Unit) {
 
 
 
-
-internal fun Any.log(
-    message: String,
-    vararg args: Any?
-) {
-    if (BuildConfig.DEBUG) {
-        try {
-            Log.d(this::class.java.simpleName, message.format(*args))
-        } catch (_: Exception) {
-        }
-    }
-}
 
 internal fun Any.warn(
     message: String,

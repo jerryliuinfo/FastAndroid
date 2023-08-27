@@ -3,10 +3,13 @@ package com.apache.fastandroid.demo.kt.lambda
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentLambdaBinding
+import com.apache.fastandroid.demo.bean.Person
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
 import com.apache.fastandroid.demo.kt.inline.Doggo
 import com.apache.fastandroid.demo.kt.inline.DoggoId
 import com.tesla.framework.kt.MyDialog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
+import kotlinx.android.synthetic.main.view_animator_activity_main.percent
 import kotlin.random.Random
 
 /**
@@ -50,6 +53,25 @@ class LambdaDemoFragment:BaseBindingFragment<FragmentLambdaBinding>(FragmentLamb
             lambdaWithReceiver()
         }
 
+        mBinding.btnReceiver2.setOnClickListener {
+            lambdaReceiver2()
+        }
+    }
+
+    private fun lambdaReceiver2() {
+        val totalSum: Person.(Person) -> Int = { other -> age.plus(other.age) }
+        val totalAge = totalSum(Person("jim",10),Person("lily",5) )
+        println("totalAge:$totalAge")
+
+        formatPerson {
+            println("age is: ${age}")
+        }
+    }
+
+    fun formatPerson(init:Person.() -> Unit):Person{
+        val person = Person("Jim",10)
+        person.init()
+        return person
     }
 
     private fun lambdaWithReceiver() {
@@ -67,7 +89,51 @@ class LambdaDemoFragment:BaseBindingFragment<FragmentLambdaBinding>(FragmentLamb
             println("onFailed code:$code, msg:$msg")
 
         })
+
+
+        val items = listOf(1,2,3,4)
+        val result = items.foldElement(0) { acc, item ->
+            val result = acc + item
+            println("acc:$acc, item:$item, result:$result")
+            result
+        }
+        println("result:$result")
+
+        //函数类型实例化
+        val intFunc:(Int) -> Int = KotlinKnowledgeFragment2.IntTransformer()
+        println("intFunc1:${intFunc(3)}")
+
+        val stringTransformer:(String) -> List<String> = KotlinKnowledgeFragment2.ValueTransformer()
+        val stringResult = stringTransformer.invoke("hello")
+
+        val personTransformer:(Person) -> List<Person> = KotlinKnowledgeFragment2.ValueTransformer()
+        val personResult = personTransformer.invoke(Person("Lucy",18))
+        println("stringResult:${stringResult}, personResult:$personResult" )
+
+        /**
+         * Lambda 表达式的完整语法形式如下：
+         * lambda 表达式总是括在花括号中。
+        完整语法形式的参数声明放在花括号内，并有可选的类型标注。
+        函数体跟在一个 -> 之后。
+        如果推断出的该 lambda 的返回类型不是 Unit，那么该 lambda 主体中的最后一个（或可能是单个）表达式会视为返回值。
+         */
+        val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
+
+        //如果将所有可选标注都留下，看起来如下：
+        val sum2 =  { x: Int, y: Int -> x + y }
+
+        println("sum:${sum(2,3)}")
+        println("sum2:${sum2(2,4)}")
     }
+
+    fun <T,R> Collection<T>.foldElement(initValue:R, combine:(acc:R, nextElement:T) -> R):R{
+        var accumulator:R = initValue
+        for (element in this){
+            accumulator = combine(accumulator,element)
+        }
+        return accumulator
+    }
+
 
     private fun fun1(f:(Int) -> Unit){
 

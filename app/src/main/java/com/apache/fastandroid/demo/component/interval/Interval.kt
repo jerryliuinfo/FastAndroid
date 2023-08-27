@@ -35,6 +35,7 @@ import java.util.concurrent.TimeUnit
 import kotlin.math.max
 
 /**
+ * https://github.com/liangjingkanji/Interval
  * 创建一个轮询器
  *
  * 操作

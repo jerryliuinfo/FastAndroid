@@ -31,10 +31,6 @@ class KotlinPracticeDemoFragment :
         customer.component2()
         val map = mapOf("one" to "xiaoming")
 
-
-
-
-
     }
 
     class Rectangle(var height: Double, var length: Double) {

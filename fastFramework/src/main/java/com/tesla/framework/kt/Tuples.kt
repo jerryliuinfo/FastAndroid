@@ -18,6 +18,13 @@ internal data class LongLongPair(
   val second: Long
 )
 
+/**
+ * 标有 infix 关键字的函数也可以使用中缀表示法（忽略该调用的点与圆括号）调用。 中缀函数必须满足以下要求：
+
+ * @receiver Long
+ * @param that B
+ * @return LongObjectPair<B>
+ */
 internal infix fun <B> Long.to(that: B): LongObjectPair<B> = LongObjectPair(this, that)
 
 internal infix fun <B> Int.to(that: B): IntObjectPair<B> = IntObjectPair(this, that)

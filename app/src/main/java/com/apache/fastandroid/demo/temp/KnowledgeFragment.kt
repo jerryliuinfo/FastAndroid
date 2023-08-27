@@ -23,6 +23,8 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.preference.PreferenceManager
+import com.afollestad.assent.DefaultPrefs
+import com.afollestad.assent.internal.PermissionFragment
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentTempKnowledgeBinding
 import com.apache.fastandroid.demo.temp.concurrency.Player
@@ -38,6 +40,9 @@ import com.tesla.framework.component.ignore.IgnoreMultiEventListener
 import com.tesla.framework.component.livedata.NetworkLiveData
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.network.AutoRegisterNetListener
+import com.tesla.framework.component.pref.createMMKVPreferenceDataStore
+import com.tesla.framework.component.pref.int
+import com.tesla.framework.kt.ConfirmCallback
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
 import com.zwb.lib_base.utils.network.NetworkTypeEnum
@@ -197,6 +202,44 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
         mBinding.btnExecuteOnceEveryday.setOnClickListener {
             executeOnceEveryDay()
         }
+
+        mBinding.btnMmkv.setOnClickListener {
+            mmkvUsage()
+        }
+
+        mBinding.btnDistinctCallback.setOnClickListener {
+           distinctCallbackUsage()
+        }
+
+    }
+
+    internal var fragmentCreator: () -> KnowledgeFragment = {
+        KnowledgeFragment()
+    }
+
+    private fun distinctCallbackUsage(){
+        confirmCallback(true)
+        confirmCallback(false)
+    }
+
+
+    private val confirmCallback = ConfirmCallback{
+        println("callback result:$it")
+    }
+
+    private fun mmkvUsage() {
+        val mmkv = createMMKVPreferenceDataStore("android")
+        mmkv.putInt("age",10)
+        val age = mmkv.getInt("age", 0)
+
+        val age2 = mmkv.int("age",0)
+
+        val prefs = DefaultPrefs(requireContext(), "default")
+        prefs.set("name", "jerry")
+        val name = prefs.get<String>("name")
+        println("age:$age,age2:$age2, name:$name")
+
+
 
     }
 

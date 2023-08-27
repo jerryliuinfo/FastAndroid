@@ -49,5 +49,10 @@ public class HookContext extends ContextWrapper {
          }
          return super.getString(id);
       }
+
+      @Override
+      public CharSequence getText(int id) throws NotFoundException {
+         return super.getText(id);
+      }
    }
 }

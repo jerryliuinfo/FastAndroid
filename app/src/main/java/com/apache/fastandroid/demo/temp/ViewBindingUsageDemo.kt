@@ -9,9 +9,9 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentViewbindingUsageBinding
 import com.apache.fastandroid.databinding.ItemCommentBinding
 import com.blankj.utilcode.util.ToastUtils
-import com.tesla.framework.component.viewbinding.BindingHolder
 import com.tesla.framework.kt.addOnItemClickListener
 import com.tesla.framework.ui.fragment.BaseBindingFragment
+import com.tesla.framework.ui.fragment.adpater.BindingHolder
 import kotlinx.android.synthetic.main.item_comment.view.*
 
 /**

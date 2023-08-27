@@ -11,7 +11,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:flow_horizontalAlign="start"
         app:flow_wrapMode="aligned"
-        app:constraint_referenced_ids="btn_timer_record,btn_Interval,btn_activity_result,btn_dialogChain"
+        app:constraint_referenced_ids="btn_timer_record,btn_Interval,btn_activity_result,btn_dialogChain,btn_bitlz"
         />
 
     <Button
@@ -39,6 +39,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DialogChain"
+        />
+
+    <Button
+        android:id="@+id/btn_bitlz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bitlz"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

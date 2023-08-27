@@ -7,6 +7,7 @@ import com.apache.fastandroid.component.timerecorder.AICheckEventListener
 import com.apache.fastandroid.component.timerecorder.data.AICheckTraceModel
 import com.apache.fastandroid.component.timerecorder.data.AIDataPoolImpl
 import com.apache.fastandroid.databinding.FragmentComponentModeListBinding
+import com.apache.fastandroid.demo.blitz.BlitzDemoFragment
 import com.apache.fastandroid.demo.component.activityresult.ActivityResultDemoFragment
 import com.apache.fastandroid.demo.component.dialogchanin.ADialog
 import com.apache.fastandroid.demo.component.dialogchanin.BDialog
@@ -14,6 +15,7 @@ import com.apache.fastandroid.demo.component.dialogchanin.CDialog
 import com.apache.fastandroid.demo.component.interval.IntervalDemoFragment
 import com.csd.dialogchain.DialogChain
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.launchFragment
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.*
@@ -50,6 +52,10 @@ class ComponentDemoFragment:BaseBindingFragment<FragmentComponentModeListBinding
             Handler().postDelayed({
                 bDialog.onDataCallback("延迟数据回来了！！")
             },10000)
+        }
+
+        mBinding.btnBitlz.setOnClickListener {
+            requireActivity().launchFragment<BlitzDemoFragment>()
         }
 
 

@@ -32,7 +32,8 @@
                 btn_neilian,btn_no_inline,btn_non_crossInline,btn_crossInline,btn_anonymous,btn_kt_genericity,btn_kt_real_genericity,
                 btn_kt_class_real_genericity,btn_evis_operator,btn_typealias,btn_array_init,btn_operatorOverLoading,
                 btn_ifNotNull,btn_trap_dataclass,btn_tryCatch,btn_tryWithResource,btn_object_expression,btn_integer_division,
-                btn_trim,btn_type_convert,btn_get_when_result,btn_return_break,btn_tryIsExpression"
+                btn_trim,btn_type_convert,btn_get_when_result,btn_return_break,btn_tryIsExpression,btn_delegate,btn_function
+                ,btn_infix,btn_highOrder_func"
                 />
 
             <Button
@@ -252,6 +253,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="try是一个表达式"
+                />
+
+            <Button
+                android:id="@+id/btn_delegate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="委托"
+                />
+            <Button
+                android:id="@+id/btn_function"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="函数"
+                />
+            <Button
+                android:id="@+id/btn_infix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="中缀表达式"
+                />
+            <Button
+                android:id="@+id/btn_highOrder_func"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="高阶函数"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
