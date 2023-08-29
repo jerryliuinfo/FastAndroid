@@ -13,8 +13,11 @@ import com.apache.fastandroid.demo.component.dialogchanin.ADialog
 import com.apache.fastandroid.demo.component.dialogchanin.BDialog
 import com.apache.fastandroid.demo.component.dialogchanin.CDialog
 import com.apache.fastandroid.demo.component.interval.IntervalDemoFragment
+import com.apache.fastandroid.demo.viewanimate.ViewAnimatorDemoFragment
+import com.apache.fastandroid.demo.viewanimate.ViewAnimatorDemoFragment2
 import com.csd.dialogchain.DialogChain
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.kt.launchFragment
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.BaseBindingFragment
@@ -56,6 +59,13 @@ class ComponentDemoFragment:BaseBindingFragment<FragmentComponentModeListBinding
 
         mBinding.btnBitlz.setOnClickListener {
             requireActivity().launchFragment<BlitzDemoFragment>()
+        }
+
+        mBinding.btnViewAnimator.setOnClickListener {
+            requireActivity().launchFragment<ViewAnimatorDemoFragment>()
+        }
+        mBinding.btnViewAnimator2.setOnClickListener {
+            launchActivity<ViewAnimatorDemoFragment2>(requireContext())
         }
 
 

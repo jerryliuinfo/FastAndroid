@@ -83,7 +83,7 @@ public class Takt {
 
       listener(fps -> {
         if (fpsText != null) {
-          fpsText.setText(decimal.format(fps));
+//          fpsText.setText(decimal.format(fps));
         }
       });
 

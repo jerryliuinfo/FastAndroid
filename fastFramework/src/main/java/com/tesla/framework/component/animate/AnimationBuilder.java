@@ -1,4 +1,4 @@
-package com.github.florent37.viewanimator;
+package com.tesla.framework.component.animate;
 
 import android.animation.Animator;
 import android.animation.ArgbEvaluator;

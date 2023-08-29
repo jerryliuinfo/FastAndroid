@@ -110,161 +110,161 @@ com.drakeet.years.widget.CustomLayoutKt -> com.drakeet.years.widget.a:
     1:1:android.view.ViewGroup getParentView(android.view.View):110:110 -> a
     1:1:void performHapticFeedbackSafely(android.view.View):114:114 -> b
     1:1:void transparentBackground(android.view.View):107:107 -> c
-com.github.florent37.viewanimator.AnimationBuilder -> a.e.a.a.a:
+com.tesla.framework.component.animate.AnimationBuilder -> a.e.a.a.a:
     android.view.View[] views -> b
     java.util.List animatorList -> c
     boolean nextValueWillBeDp -> e
     android.view.animation.Interpolator singleInterpolator -> f
-    com.github.florent37.viewanimator.ViewAnimator viewAnimator -> a
+    com.tesla.framework.component.animate.ViewAnimator viewAnimator -> a
     boolean waitForHeight -> d
-    1:1:void <init>(com.github.florent37.viewanimator.ViewAnimator,android.view.View[]):38:38 -> <init>
-    2:9:void <init>(com.github.florent37.viewanimator.ViewAnimator,android.view.View[]):33:40 -> <init>
-    1:2:com.github.florent37.viewanimator.AnimationBuilder slideTopIn():453:454 -> A
-    1:4:com.github.florent37.viewanimator.AnimationBuilder slit():433:436 -> B
-    1:7:com.github.florent37.viewanimator.AnimationBuilder standUp():362:368 -> C
-    1:2:com.github.florent37.viewanimator.ViewAnimator start():271:272 -> D
-    1:1:com.github.florent37.viewanimator.AnimationBuilder swing():374:374 -> E
-    1:3:com.github.florent37.viewanimator.AnimationBuilder tada():378:380 -> F
-    1:1:com.github.florent37.viewanimator.AnimationBuilder waitForHeight():199:199 -> G
-    1:7:com.github.florent37.viewanimator.AnimationBuilder wave():385:391 -> H
-    1:5:com.github.florent37.viewanimator.AnimationBuilder wobble():397:401 -> I
-    1:3:com.github.florent37.viewanimator.AnimationBuilder zoomIn():407:409 -> J
-    1:3:com.github.florent37.viewanimator.AnimationBuilder zoomOut():414:416 -> K
-    1:1:com.github.florent37.viewanimator.AnimationBuilder add(android.animation.Animator):49:49 -> a
-    2:3:com.github.florent37.viewanimator.AnimationBuilder property(java.lang.String,float[]):73:74 -> a
-    4:4:com.github.florent37.viewanimator.AnimationBuilder alpha(float[]):88:88 -> a
-    5:6:com.github.florent37.viewanimator.AnimationBuilder pivotX(float):106:107 -> a
-    7:10:com.github.florent37.viewanimator.AnimationBuilder backgroundColor(int[]):142:145 -> a
-    11:21:com.github.florent37.viewanimator.AnimationBuilder custom(com.github.florent37.viewanimator.AnimationListener$Update,float[]):163:173 -> a
-    22:22:com.github.florent37.viewanimator.AnimationBuilder andAnimate(android.view.View[]):208:208 -> a
-    23:23:com.github.florent37.viewanimator.AnimationBuilder duration(long):216:216 -> a
-    24:24:com.github.florent37.viewanimator.AnimationBuilder repeatCount(int):226:226 -> a
-    25:25:com.github.florent37.viewanimator.AnimationBuilder onStart(com.github.florent37.viewanimator.AnimationListener$Start):236:236 -> a
-    26:26:com.github.florent37.viewanimator.AnimationBuilder onStop(com.github.florent37.viewanimator.AnimationListener$Stop):241:241 -> a
-    27:27:com.github.florent37.viewanimator.AnimationBuilder interpolator(android.view.animation.Interpolator):246:246 -> a
-    28:28:com.github.florent37.viewanimator.ViewAnimator accelerate():260:260 -> a
-    29:44:com.github.florent37.viewanimator.AnimationBuilder path(android.graphics.Path):468:483 -> a
-    45:45:com.github.florent37.viewanimator.AnimationBuilder path(android.graphics.Path):469:469 -> a
+    1:1:void <init>(com.tesla.framework.component.animate.ViewAnimator,android.view.View[]):38:38 -> <init>
+    2:9:void <init>(com.tesla.framework.component.animate.ViewAnimator,android.view.View[]):33:40 -> <init>
+    1:2:com.tesla.framework.component.animate.AnimationBuilder slideTopIn():453:454 -> A
+    1:4:com.tesla.framework.component.animate.AnimationBuilder slit():433:436 -> B
+    1:7:com.tesla.framework.component.animate.AnimationBuilder standUp():362:368 -> C
+    1:2:com.tesla.framework.component.animate.ViewAnimator start():271:272 -> D
+    1:1:com.tesla.framework.component.animate.AnimationBuilder swing():374:374 -> E
+    1:3:com.tesla.framework.component.animate.AnimationBuilder tada():378:380 -> F
+    1:1:com.tesla.framework.component.animate.AnimationBuilder waitForHeight():199:199 -> G
+    1:7:com.tesla.framework.component.animate.AnimationBuilder wave():385:391 -> H
+    1:5:com.tesla.framework.component.animate.AnimationBuilder wobble():397:401 -> I
+    1:3:com.tesla.framework.component.animate.AnimationBuilder zoomIn():407:409 -> J
+    1:3:com.tesla.framework.component.animate.AnimationBuilder zoomOut():414:416 -> K
+    1:1:com.tesla.framework.component.animate.AnimationBuilder add(android.animation.Animator):49:49 -> a
+    2:3:com.tesla.framework.component.animate.AnimationBuilder property(java.lang.String,float[]):73:74 -> a
+    4:4:com.tesla.framework.component.animate.AnimationBuilder alpha(float[]):88:88 -> a
+    5:6:com.tesla.framework.component.animate.AnimationBuilder pivotX(float):106:107 -> a
+    7:10:com.tesla.framework.component.animate.AnimationBuilder backgroundColor(int[]):142:145 -> a
+    11:21:com.tesla.framework.component.animate.AnimationBuilder custom(com.tesla.framework.component.animate.AnimationListener$Update,float[]):163:173 -> a
+    22:22:com.tesla.framework.component.animate.AnimationBuilder andAnimate(android.view.View[]):208:208 -> a
+    23:23:com.tesla.framework.component.animate.AnimationBuilder duration(long):216:216 -> a
+    24:24:com.tesla.framework.component.animate.AnimationBuilder repeatCount(int):226:226 -> a
+    25:25:com.tesla.framework.component.animate.AnimationBuilder onStart(com.tesla.framework.component.animate.AnimationListener$Start):236:236 -> a
+    26:26:com.tesla.framework.component.animate.AnimationBuilder onStop(com.tesla.framework.component.animate.AnimationListener$Stop):241:241 -> a
+    27:27:com.tesla.framework.component.animate.AnimationBuilder interpolator(android.view.animation.Interpolator):246:246 -> a
+    28:28:com.tesla.framework.component.animate.ViewAnimator accelerate():260:260 -> a
+    29:44:com.tesla.framework.component.animate.AnimationBuilder path(android.graphics.Path):468:483 -> a
+    45:45:com.tesla.framework.component.animate.AnimationBuilder path(android.graphics.Path):469:469 -> a
     1:6:float[] getValues(float[]):62:67 -> b
-    7:8:com.github.florent37.viewanimator.AnimationBuilder pivotY(float):113:114 -> b
-    9:14:com.github.florent37.viewanimator.AnimationBuilder textColor(int[]):151:156 -> b
-    15:15:com.github.florent37.viewanimator.AnimationBuilder thenAnimate(android.view.View[]):212:212 -> b
-    16:16:com.github.florent37.viewanimator.AnimationBuilder startDelay(long):221:221 -> b
-    17:17:com.github.florent37.viewanimator.AnimationBuilder repeatMode(int):231:231 -> b
-    18:18:com.github.florent37.viewanimator.AnimationBuilder singleInterpolator(android.view.animation.Interpolator):251:251 -> b
-    19:19:com.github.florent37.viewanimator.AnimationBuilder bounce():288:288 -> b
+    7:8:com.tesla.framework.component.animate.AnimationBuilder pivotY(float):113:114 -> b
+    9:14:com.tesla.framework.component.animate.AnimationBuilder textColor(int[]):151:156 -> b
+    15:15:com.tesla.framework.component.animate.AnimationBuilder thenAnimate(android.view.View[]):212:212 -> b
+    16:16:com.tesla.framework.component.animate.AnimationBuilder startDelay(long):221:221 -> b
+    17:17:com.tesla.framework.component.animate.AnimationBuilder repeatMode(int):231:231 -> b
+    18:18:com.tesla.framework.component.animate.AnimationBuilder singleInterpolator(android.view.animation.Interpolator):251:251 -> b
+    19:19:com.tesla.framework.component.animate.AnimationBuilder bounce():288:288 -> b
     1:1:float toDp(float):54:54 -> c
-    2:2:com.github.florent37.viewanimator.AnimationBuilder height(float[]):179:179 -> c
-    3:5:com.github.florent37.viewanimator.AnimationBuilder bounceIn():292:294 -> c
+    2:2:com.tesla.framework.component.animate.AnimationBuilder height(float[]):179:179 -> c
+    3:5:com.tesla.framework.component.animate.AnimationBuilder bounceIn():292:294 -> c
     1:1:float toPx(float):58:58 -> d
-    2:2:com.github.florent37.viewanimator.AnimationBuilder pivotX(float[]):120:120 -> d
-    3:5:com.github.florent37.viewanimator.AnimationBuilder bounceOut():299:301 -> d
-    1:1:com.github.florent37.viewanimator.AnimationBuilder pivotY(float[]):125:125 -> e
+    2:2:com.tesla.framework.component.animate.AnimationBuilder pivotX(float[]):120:120 -> d
+    3:5:com.tesla.framework.component.animate.AnimationBuilder bounceOut():299:301 -> d
+    1:1:com.tesla.framework.component.animate.AnimationBuilder pivotY(float[]):125:125 -> e
     2:2:java.util.List createAnimators():204:204 -> e
-    1:1:com.github.florent37.viewanimator.AnimationBuilder rotation(float[]):138:138 -> f
-    2:2:com.github.florent37.viewanimator.ViewAnimator decelerate():264:264 -> f
-    1:1:com.github.florent37.viewanimator.AnimationBuilder dp():44:44 -> g
-    2:2:com.github.florent37.viewanimator.AnimationBuilder rotationX(float[]):130:130 -> g
-    1:1:com.github.florent37.viewanimator.AnimationBuilder rotationY(float[]):134:134 -> h
-    2:2:com.github.florent37.viewanimator.AnimationBuilder fadeIn():306:306 -> h
-    1:2:com.github.florent37.viewanimator.AnimationBuilder scale(float[]):100:101 -> i
-    3:3:com.github.florent37.viewanimator.AnimationBuilder fadeOut():310:310 -> i
-    1:1:com.github.florent37.viewanimator.AnimationBuilder scaleX(float[]):92:92 -> j
-    2:2:com.github.florent37.viewanimator.AnimationBuilder fall():421:421 -> j
-    1:1:com.github.florent37.viewanimator.AnimationBuilder scaleY(float[]):96:96 -> k
-    2:2:com.github.florent37.viewanimator.AnimationBuilder flash():314:314 -> k
-    1:1:com.github.florent37.viewanimator.AnimationBuilder translationX(float[]):84:84 -> l
-    2:2:com.github.florent37.viewanimator.AnimationBuilder flipHorizontal():318:318 -> l
-    1:1:com.github.florent37.viewanimator.AnimationBuilder translationY(float[]):80:80 -> m
-    2:2:com.github.florent37.viewanimator.AnimationBuilder flipVertical():322:322 -> m
-    1:1:com.github.florent37.viewanimator.AnimationBuilder width(float[]):189:189 -> n
+    1:1:com.tesla.framework.component.animate.AnimationBuilder rotation(float[]):138:138 -> f
+    2:2:com.tesla.framework.component.animate.ViewAnimator decelerate():264:264 -> f
+    1:1:com.tesla.framework.component.animate.AnimationBuilder dp():44:44 -> g
+    2:2:com.tesla.framework.component.animate.AnimationBuilder rotationX(float[]):130:130 -> g
+    1:1:com.tesla.framework.component.animate.AnimationBuilder rotationY(float[]):134:134 -> h
+    2:2:com.tesla.framework.component.animate.AnimationBuilder fadeIn():306:306 -> h
+    1:2:com.tesla.framework.component.animate.AnimationBuilder scale(float[]):100:101 -> i
+    3:3:com.tesla.framework.component.animate.AnimationBuilder fadeOut():310:310 -> i
+    1:1:com.tesla.framework.component.animate.AnimationBuilder scaleX(float[]):92:92 -> j
+    2:2:com.tesla.framework.component.animate.AnimationBuilder fall():421:421 -> j
+    1:1:com.tesla.framework.component.animate.AnimationBuilder scaleY(float[]):96:96 -> k
+    2:2:com.tesla.framework.component.animate.AnimationBuilder flash():314:314 -> k
+    1:1:com.tesla.framework.component.animate.AnimationBuilder translationX(float[]):84:84 -> l
+    2:2:com.tesla.framework.component.animate.AnimationBuilder flipHorizontal():318:318 -> l
+    1:1:com.tesla.framework.component.animate.AnimationBuilder translationY(float[]):80:80 -> m
+    2:2:com.tesla.framework.component.animate.AnimationBuilder flipVertical():322:322 -> m
+    1:1:com.tesla.framework.component.animate.AnimationBuilder width(float[]):189:189 -> n
     2:2:android.view.animation.Interpolator getSingleInterpolator():256:256 -> n
     1:1:android.view.View getView():280:280 -> o
     1:1:android.view.View[] getViews():276:276 -> p
     1:1:boolean isWaitForHeight():284:284 -> q
-    1:3:com.github.florent37.viewanimator.AnimationBuilder newsPaper():426:428 -> r
-    1:2:com.github.florent37.viewanimator.AnimationBuilder pulse():326:327 -> s
-    1:4:com.github.florent37.viewanimator.AnimationBuilder rollIn():332:335 -> t
-    1:4:com.github.florent37.viewanimator.AnimationBuilder rollOut():341:344 -> u
-    1:2:com.github.florent37.viewanimator.AnimationBuilder rubber():350:351 -> v
-    1:2:com.github.florent37.viewanimator.AnimationBuilder shake():356:357 -> w
-    1:2:com.github.florent37.viewanimator.AnimationBuilder slideBottomIn():459:460 -> x
-    1:2:com.github.florent37.viewanimator.AnimationBuilder slideLeftIn():441:442 -> y
-    1:2:com.github.florent37.viewanimator.AnimationBuilder slideRightIn():447:448 -> z
-com.github.florent37.viewanimator.AnimationBuilder$1 -> a.e.a.a.a$a:
+    1:3:com.tesla.framework.component.animate.AnimationBuilder newsPaper():426:428 -> r
+    1:2:com.tesla.framework.component.animate.AnimationBuilder pulse():326:327 -> s
+    1:4:com.tesla.framework.component.animate.AnimationBuilder rollIn():332:335 -> t
+    1:4:com.tesla.framework.component.animate.AnimationBuilder rollOut():341:344 -> u
+    1:2:com.tesla.framework.component.animate.AnimationBuilder rubber():350:351 -> v
+    1:2:com.tesla.framework.component.animate.AnimationBuilder shake():356:357 -> w
+    1:2:com.tesla.framework.component.animate.AnimationBuilder slideBottomIn():459:460 -> x
+    1:2:com.tesla.framework.component.animate.AnimationBuilder slideLeftIn():441:442 -> y
+    1:2:com.tesla.framework.component.animate.AnimationBuilder slideRightIn():447:448 -> z
+com.tesla.framework.component.animate.AnimationBuilder$1 -> a.e.a.a.a$a:
     android.view.View val$view -> b
-    com.github.florent37.viewanimator.AnimationListener$Update val$update -> a
-    com.github.florent37.viewanimator.AnimationBuilder this$0 -> c
-    1:1:void <init>(com.github.florent37.viewanimator.AnimationBuilder,com.github.florent37.viewanimator.AnimationListener$Update,android.view.View):166:166 -> <init>
+    com.tesla.framework.component.animate.AnimationListener$Update val$update -> a
+    com.tesla.framework.component.animate.AnimationBuilder this$0 -> c
+    1:1:void <init>(com.tesla.framework.component.animate.AnimationBuilder,com.tesla.framework.component.animate.AnimationListener$Update,android.view.View):166:166 -> <init>
     1:1:void onAnimationUpdate(android.animation.ValueAnimator):170:170 -> onAnimationUpdate
-com.github.florent37.viewanimator.AnimationBuilder$2 -> a.e.a.a.a$b:
-    com.github.florent37.viewanimator.AnimationBuilder this$0 -> a
-    1:1:void <init>(com.github.florent37.viewanimator.AnimationBuilder):179:179 -> <init>
+com.tesla.framework.component.animate.AnimationBuilder$2 -> a.e.a.a.a$b:
+    com.tesla.framework.component.animate.AnimationBuilder this$0 -> a
+    1:1:void <init>(com.tesla.framework.component.animate.AnimationBuilder):179:179 -> <init>
     1:2:void update(android.view.View,float):182:183 -> a
-com.github.florent37.viewanimator.AnimationBuilder$3 -> a.e.a.a.a$c:
-    com.github.florent37.viewanimator.AnimationBuilder this$0 -> a
-    1:1:void <init>(com.github.florent37.viewanimator.AnimationBuilder):189:189 -> <init>
+com.tesla.framework.component.animate.AnimationBuilder$3 -> a.e.a.a.a$c:
+    com.tesla.framework.component.animate.AnimationBuilder this$0 -> a
+    1:1:void <init>(com.tesla.framework.component.animate.AnimationBuilder):189:189 -> <init>
     1:2:void update(android.view.View,float):192:193 -> a
-com.github.florent37.viewanimator.AnimationBuilder$4 -> a.e.a.a.a$d:
+com.tesla.framework.component.animate.AnimationBuilder$4 -> a.e.a.a.a$d:
     android.graphics.PathMeasure val$pathMeasure -> a
-    com.github.florent37.viewanimator.AnimationBuilder this$0 -> b
-    1:1:void <init>(com.github.florent37.viewanimator.AnimationBuilder,android.graphics.PathMeasure):469:469 -> <init>
+    com.tesla.framework.component.animate.AnimationBuilder this$0 -> b
+    1:1:void <init>(com.tesla.framework.component.animate.AnimationBuilder,android.graphics.PathMeasure):469:469 -> <init>
     1:7:void update(android.view.View,float):475:481 -> a
-com.github.florent37.viewanimator.AnimationListener -> a.e.a.a.b:
+com.tesla.framework.component.animate.AnimationListener -> a.e.a.a.b:
     1:1:void <init>():10:10 -> <init>
-com.github.florent37.viewanimator.AnimationListener$Start -> a.e.a.a.b$a:
+com.tesla.framework.component.animate.AnimationListener$Start -> a.e.a.a.b$a:
     void onStart() -> a
-com.github.florent37.viewanimator.AnimationListener$Stop -> a.e.a.a.b$b:
+com.tesla.framework.component.animate.AnimationListener$Stop -> a.e.a.a.b$b:
     void onStop() -> a
-com.github.florent37.viewanimator.AnimationListener$Update -> a.e.a.a.b$c:
+com.tesla.framework.component.animate.AnimationListener$Update -> a.e.a.a.b$c:
     void update(android.view.View,float) -> a
-com.github.florent37.viewanimator.ViewAnimator -> a.e.a.a.c:
+com.tesla.framework.component.animate.ViewAnimator -> a.e.a.a.c:
     int REVERSE -> n
     android.animation.AnimatorSet animatorSet -> g
     int INFINITE -> o
     int RESTART -> m
-    com.github.florent37.viewanimator.ViewAnimator next -> l
-    com.github.florent37.viewanimator.ViewAnimator prev -> k
+    com.tesla.framework.component.animate.ViewAnimator next -> l
+    com.tesla.framework.component.animate.ViewAnimator prev -> k
     long duration -> b
     int repeatMode -> f
-    com.github.florent37.viewanimator.AnimationListener$Start startListener -> i
+    com.tesla.framework.component.animate.AnimationListener$Start startListener -> i
     android.view.animation.Interpolator interpolator -> d
-    com.github.florent37.viewanimator.AnimationListener$Stop stopListener -> j
+    com.tesla.framework.component.animate.AnimationListener$Stop stopListener -> j
     long startDelay -> c
     int repeatCount -> e
     java.util.List animationList -> a
     android.view.View waitForThisViewHeight -> h
     long DEFAULT_DURATION -> p
     1:22:void <init>():23:44 -> <init>
-    1:1:com.github.florent37.viewanimator.AnimationListener$Start access$000(com.github.florent37.viewanimator.ViewAnimator):23:23 -> a
-    2:2:com.github.florent37.viewanimator.ViewAnimator access$302(com.github.florent37.viewanimator.ViewAnimator,com.github.florent37.viewanimator.ViewAnimator):23:23 -> a
-    3:4:com.github.florent37.viewanimator.AnimationBuilder addAnimationBuilder(android.view.View[]):123:124 -> a
-    5:5:com.github.florent37.viewanimator.ViewAnimator repeatCount(int):132:132 -> a
+    1:1:com.tesla.framework.component.animate.AnimationListener$Start access$000(com.tesla.framework.component.animate.ViewAnimator):23:23 -> a
+    2:2:com.tesla.framework.component.animate.ViewAnimator access$302(com.tesla.framework.component.animate.ViewAnimator,com.tesla.framework.component.animate.ViewAnimator):23:23 -> a
+    3:4:com.tesla.framework.component.animate.AnimationBuilder addAnimationBuilder(android.view.View[]):123:124 -> a
+    5:5:com.tesla.framework.component.animate.ViewAnimator repeatCount(int):132:132 -> a
     6:11:void cancel():158:163 -> a
-    12:12:com.github.florent37.viewanimator.ViewAnimator duration(long):168:168 -> a
-    13:13:com.github.florent37.viewanimator.ViewAnimator onStart(com.github.florent37.viewanimator.AnimationListener$Start):189:189 -> a
-    14:14:com.github.florent37.viewanimator.ViewAnimator onStop(com.github.florent37.viewanimator.AnimationListener$Stop):194:194 -> a
-    15:15:com.github.florent37.viewanimator.ViewAnimator interpolator(android.view.animation.Interpolator):202:202 -> a
-    1:1:com.github.florent37.viewanimator.AnimationListener$Stop access$100(com.github.florent37.viewanimator.ViewAnimator):23:23 -> b
+    12:12:com.tesla.framework.component.animate.ViewAnimator duration(long):168:168 -> a
+    13:13:com.tesla.framework.component.animate.ViewAnimator onStart(com.tesla.framework.component.animate.AnimationListener$Start):189:189 -> a
+    14:14:com.tesla.framework.component.animate.ViewAnimator onStop(com.tesla.framework.component.animate.AnimationListener$Stop):194:194 -> a
+    15:15:com.tesla.framework.component.animate.ViewAnimator interpolator(android.view.animation.Interpolator):202:202 -> a
+    1:1:com.tesla.framework.component.animate.AnimationListener$Stop access$100(com.tesla.framework.component.animate.ViewAnimator):23:23 -> b
     2:36:android.animation.AnimatorSet createAnimatorSet():47:81 -> b
-    37:38:com.github.florent37.viewanimator.AnimationBuilder animate(android.view.View[]):111:112 -> b
-    39:39:com.github.florent37.viewanimator.ViewAnimator startDelay(long):173:173 -> b
-    40:40:com.github.florent37.viewanimator.ViewAnimator repeatMode(int):184:184 -> b
-    1:1:com.github.florent37.viewanimator.ViewAnimator access$200(com.github.florent37.viewanimator.ViewAnimator):23:23 -> c
-    2:5:com.github.florent37.viewanimator.AnimationBuilder thenAnimate(android.view.View[]):116:119 -> c
+    37:38:com.tesla.framework.component.animate.AnimationBuilder animate(android.view.View[]):111:112 -> b
+    39:39:com.tesla.framework.component.animate.ViewAnimator startDelay(long):173:173 -> b
+    40:40:com.tesla.framework.component.animate.ViewAnimator repeatMode(int):184:184 -> b
+    1:1:com.tesla.framework.component.animate.ViewAnimator access$200(com.tesla.framework.component.animate.ViewAnimator):23:23 -> c
+    2:5:com.tesla.framework.component.animate.AnimationBuilder thenAnimate(android.view.View[]):116:119 -> c
     6:21:void start():137:152 -> c
-    1:1:android.animation.AnimatorSet access$400(com.github.florent37.viewanimator.ViewAnimator):23:23 -> d
-    1:1:android.view.View access$500(com.github.florent37.viewanimator.ViewAnimator):23:23 -> e
-com.github.florent37.viewanimator.ViewAnimator$1 -> a.e.a.a.c$a:
-    com.github.florent37.viewanimator.ViewAnimator this$0 -> a
-    1:1:void <init>(com.github.florent37.viewanimator.ViewAnimator):81:81 -> <init>
+    1:1:android.animation.AnimatorSet access$400(com.tesla.framework.component.animate.ViewAnimator):23:23 -> d
+    1:1:android.view.View access$500(com.tesla.framework.component.animate.ViewAnimator):23:23 -> e
+com.tesla.framework.component.animate.ViewAnimator$1 -> a.e.a.a.c$a:
+    com.tesla.framework.component.animate.ViewAnimator this$0 -> a
+    1:1:void <init>(com.tesla.framework.component.animate.ViewAnimator):81:81 -> <init>
     1:4:void onAnimationEnd(android.animation.Animator):89:92 -> onAnimationEnd
     1:1:void onAnimationStart(android.animation.Animator):84:84 -> onAnimationStart
-com.github.florent37.viewanimator.ViewAnimator$2 -> a.e.a.a.c$b:
-    com.github.florent37.viewanimator.ViewAnimator this$0 -> a
-    1:1:void <init>(com.github.florent37.viewanimator.ViewAnimator):143:143 -> <init>
+com.tesla.framework.component.animate.ViewAnimator$2 -> a.e.a.a.c$b:
+    com.tesla.framework.component.animate.ViewAnimator this$0 -> a
+    1:1:void <init>(com.tesla.framework.component.animate.ViewAnimator):143:143 -> <init>
     1:2:boolean onPreDraw():146:147 -> onPreDraw
-com.github.florent37.viewanimator.ViewAnimator$RepeatMode -> a.e.a.a.c$c:
+com.tesla.framework.component.animate.ViewAnimator$RepeatMode -> a.e.a.a.c$c:
 com.tesla.framework.performance.omagnifier.Magnifier -> a.f.a.a.a.a:
     kotlin.Lazy fpsMonitor$delegate -> b
     kotlin.Lazy memoryMonitor$delegate -> c

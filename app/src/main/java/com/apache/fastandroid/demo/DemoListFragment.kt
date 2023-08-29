@@ -10,6 +10,7 @@ import com.apache.fastandroid.demo.designmode.DesignModeDemoListFragment
 import com.apache.fastandroid.demo.drakeet.DrakeetDemoListFragment
 import com.apache.fastandroid.demo.guide.GuideDemoListFragment
 import com.apache.fastandroid.demo.hitpit.HitPitDemoListFragment
+import com.apache.fastandroid.demo.imitative.ImitativeDemoFragment
 import com.apache.fastandroid.demo.jni.JniDemoListFragment
 import com.apache.fastandroid.demo.lyric.LyricDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
@@ -68,6 +69,7 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("JNI", "JNI", JniDemoListFragment::class.java),
             ViewItemBean("Amit Shekhar", "Amit Shekhar", AmitShekharDemoFragment::class.java),
             ViewItemBean("StorageSample", "StorageSample", StorageDemoListFragment::class.java),
+            ViewItemBean("源码仿写", "源码仿写", ImitativeDemoFragment::class.java),
 
 
         )

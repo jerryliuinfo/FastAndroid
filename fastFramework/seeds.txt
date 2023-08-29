@@ -46,7 +46,7 @@ com.tesla.framework.common.util.log.Logger: com.tesla.framework.common.util.log.
 com.tesla.framework.component.logger.format.FormatStrategy: void log(int,java.lang.String,java.lang.String)
 com.tesla.framework.R$styleable: int QMUIFontFitTextView_qmui_maxTextSize
 com.tesla.framework.R$string: int load_failed
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder thenAnimate(android.view.View[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder thenAnimate(android.view.View[])
 com.tesla.framework.R$styleable: int TabItem_android_layout
 com.tesla.framework.R$attr: int qmui_btn_text
 com.tesla.framework.R$string: int path_password_strike_through
@@ -79,7 +79,7 @@ com.tesla.framework.R$style: int Widget_AppCompat_Spinner_DropDown
 com.tesla.framework.R$styleable: int[] ConstraintLayout_placeholder
 com.tesla.framework.component.imageloader.ImageLoaderOptions: android.content.Context getContext()
 com.tesla.framework.R$styleable: int ConstraintSet_android_maxWidth
-com.github.florent37.viewanimator.AnimationBuilder: AnimationBuilder(com.github.florent37.viewanimator.ViewAnimator,android.view.View[])
+com.tesla.framework.component.animate.AnimationBuilder: AnimationBuilder(com.tesla.framework.component.animate.ViewAnimator,android.view.View[])
 com.tesla.framework.R$attr: int qmui_skin_support_color_separator_darken
 com.tesla.framework.R$string: int mtrl_picker_date_header_selected
 com.tesla.framework.common.util.toast.ToastCompat: void setMargin(float,float)
@@ -95,7 +95,7 @@ com.tesla.framework.R$style: int Widget_MaterialComponents_MaterialCalendar_Head
 com.tesla.framework.R$styleable: int RoundFrameLayout_rv_backgroundColor
 com.tesla.framework.performance.omagnifier.MemoryMonitor$Companion: MemoryMonitor$Companion()
 com.tesla.framework.component.logger.Printer: void e(java.lang.Throwable,java.lang.String,java.lang.Object[])
-com.github.florent37.viewanimator.ViewAnimator
+com.tesla.framework.component.animate.ViewAnimator
 com.tesla.framework.R$drawable: int abc_vector_test
 com.tesla.framework.R$drawable: int mtrl_ic_arrow_drop_down
 com.tesla.framework.R$color: int abc_tint_default
@@ -114,7 +114,7 @@ com.tesla.framework.databinding.CommUiListSwiperefreshBinding: com.tesla.framewo
 com.tesla.framework.R$attr: int dividerVertical
 com.tesla.framework.R$attr: int drawerArrowStyle
 com.tesla.framework.ui.widget.CircleImageView: android.widget.ImageView$ScaleType SCALE_TYPE
-com.github.florent37.viewanimator.AnimationBuilder$1: android.view.View val$view
+com.tesla.framework.component.animate.AnimationBuilder$1: android.view.View val$view
 com.tesla.framework.R$styleable: int Constraint_barrierMargin
 com.tesla.framework.ui.activity.BaseVmActivity: androidx.appcompat.widget.Toolbar getToolbar()
 com.tesla.framework.databinding.FragmentTablayoutBindingImpl: boolean hasPendingBindings()
@@ -176,7 +176,7 @@ com.tesla.framework.R$style: int TextAppearance_MaterialComponents_Headline4
 com.tesla.framework.R$styleable: int BottomSheetBehavior_Layout_paddingBottomSystemWindowInsets
 com.tesla.framework.R$style: int Theme_MaterialComponents_Dialog
 com.tesla.framework.R$style: int RtlOverlay_Widget_AppCompat_Search_DropDown
-com.github.florent37.viewanimator.AnimationBuilder: boolean nextValueWillBeDp
+com.tesla.framework.component.animate.AnimationBuilder: boolean nextValueWillBeDp
 com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder: com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder enableExceedLimitSample(float,long)
 com.tesla.framework.R$attr: int qmui_bottomDividerInsetRight
 com.tesla.framework.R$styleable: int KeyTimeCycle_android_rotationX
@@ -193,7 +193,7 @@ com.tesla.framework.R$style: int QMUI_TabSegment
 com.tesla.framework.R$style: int TextAppearance_AppCompat_Caption
 com.tesla.framework.R$styleable: int QMUIRadiusImageView_qmui_border_color
 com.tesla.framework.R$styleable: int QMUILayout_qmui_bottomDividerInsetLeft
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.ViewAnimator access$302(com.github.florent37.viewanimator.ViewAnimator,com.github.florent37.viewanimator.ViewAnimator)
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.ViewAnimator access$302(com.tesla.framework.component.animate.ViewAnimator,com.tesla.framework.component.animate.ViewAnimator)
 com.tesla.framework.databinding.CommonViewStubHolderBinding: android.view.ViewStub badNetworkView
 com.tesla.framework.R$color: int background_floating_material_dark
 com.tesla.framework.R$styleable: int QMUITopBar_qmui_topbar_title_gravity
@@ -272,7 +272,7 @@ com.tesla.framework.R$style: int Theme_MaterialComponents_Light_DialogWhenLarge
 com.tesla.framework.databinding.CommUiListSwiperefreshBinding: com.tesla.framework.databinding.CommLayLoadingBinding layoutLoading
 com.tesla.framework.R$anim: int decelerate_low_factor_interpolator
 com.tesla.framework.R$styleable: int Chip_closeIconStartPadding
-com.github.florent37.viewanimator.ViewAnimator: android.animation.AnimatorSet animatorSet
+com.tesla.framework.component.animate.ViewAnimator: android.animation.AnimatorSet animatorSet
 com.tesla.framework.R$style: int Base_MaterialAlertDialog_MaterialComponents_Title_Text
 com.tesla.framework.R$dimen: int qmui_btn_border_width
 com.tesla.framework.R$styleable: int TabLayout_tabIconTintMode
@@ -344,7 +344,7 @@ com.tesla.framework.R$styleable: int AppCompatTheme_dialogTheme
 com.tesla.framework.R$integer: int mtrl_card_anim_delay_ms
 com.tesla.framework.R$styleable: int ScrollingViewBehavior_Layout_behavior_overlapTop
 timber.log.FakeCrashLibrary
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder zoomIn()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder zoomIn()
 com.tesla.framework.ui.activity.BaseVmActivityNew: com.tesla.framework.ui.activity.BaseActivityHelper activityHelper
 com.tesla.framework.R$styleable: int[] QMUITextAppearance
 com.tesla.framework.R$styleable: int Constraint_android_rotationX
@@ -355,7 +355,7 @@ com.tesla.framework.component.eventbus.SubsribeMethod: void setMethod(java.lang.
 com.tesla.framework.common.util.log.FastLog$DefLog: void i(java.lang.String,java.lang.String,java.lang.Object[])
 com.tesla.framework.R$styleable: int QMUISlider_qmui_slider_bar_thumb_style_attr
 com.tesla.framework.R$style: int Base_V14_Theme_MaterialComponents_Bridge
-com.github.florent37.viewanimator.ViewAnimator$2
+com.tesla.framework.component.animate.ViewAnimator$2
 com.tesla.framework.component.activityforresult.ActivityForResultRouterFragment
 com.tesla.framework.R$attr: int qmui_common_list_item_title_line_space
 com.tesla.framework.R$anim: int fragment_open_exit
@@ -367,7 +367,7 @@ com.tesla.framework.component.imageloader.ImageLoaderOptions: boolean isSkipMemo
 com.tesla.framework.R$attr: int tabPaddingEnd
 com.tesla.framework.R$dimen: int test_navigation_bar_active_item_max_width
 com.tesla.framework.kt.ExtensionsKt: float getSp(float)
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder singleInterpolator(android.view.animation.Interpolator)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder singleInterpolator(android.view.animation.Interpolator)
 com.tesla.framework.common.device.DeviceName$Request$GetDeviceRunnable: com.tesla.framework.common.device.DeviceName$DeviceInfo deviceInfo
 com.tesla.framework.R$id: int layoutReload
 com.tesla.framework.R$attr: int qmui_outerNormalColor
@@ -407,7 +407,7 @@ com.tesla.framework.kt.ExtensionsKt: float getDp(int)
 com.tesla.framework.support.bean.DataBindingConfig: androidx.lifecycle.ViewModel stateViewModel
 com.tesla.framework.R$layout: int design_navigation_item_header
 com.tesla.framework.R$styleable: int MenuGroup_android_checkableBehavior
-com.github.florent37.viewanimator.AnimationBuilder$2: AnimationBuilder$2(com.github.florent37.viewanimator.AnimationBuilder)
+com.tesla.framework.component.animate.AnimationBuilder$2: AnimationBuilder$2(com.tesla.framework.component.animate.AnimationBuilder)
 com.tesla.framework.R$styleable: int QMUITabSegment_qmui_tab_indicator_top
 com.tesla.framework.R$styleable: int QMUITextAppearance_android_textStyle
 com.tesla.framework.R$styleable: int AppCompatTheme_listPreferredItemHeightLarge
@@ -456,7 +456,7 @@ com.tesla.framework.R$anim: int btn_checkbox_to_unchecked_icon_null_animation
 com.tesla.framework.R$style: int Widget_AppCompat_Light_ActionBar_TabText_Inverse
 com.tesla.framework.R$attr: int itemTextAppearanceActive
 com.tesla.framework.R$styleable: int TextInputLayout_errorEnabled
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.ViewAnimator startDelay(long)
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.ViewAnimator startDelay(long)
 com.tesla.framework.R$style: int Base_V7_Theme_AppCompat_Light_Dialog
 com.tesla.framework.common.util.Preconditions: void checkPositionIndexes(int,int,int)
 com.tesla.framework.R$styleable: int TabLayout_tabGravity
@@ -536,7 +536,7 @@ com.tesla.framework.R$styleable: int NavigationView_headerLayout
 com.tesla.framework.R$attr: int behavior_expandedOffset
 com.tesla.framework.component.activityforresult.ActivityForResultRouterFragment: ActivityForResultRouterFragment()
 com.tesla.framework.R$color: int hint_foreground_material_light
-com.github.florent37.viewanimator.AnimationListener
+com.tesla.framework.component.animate.AnimationListener
 com.tesla.framework.R$dimen: int abc_dialog_title_divider_material
 com.tesla.framework.R$anim: int abc_slide_in_bottom
 com.tesla.framework.kt.SPreference$Companion
@@ -568,7 +568,7 @@ timber.log.Timber: void e(java.lang.Throwable,java.lang.String,java.lang.Object[
 com.tesla.framework.component.livedata.NetworkLiveData$NetworkState: NetworkLiveData$NetworkState()
 com.tesla.framework.R$id: int transition_current_scene
 com.tesla.framework.component.imageloader.ImageLoaderOptions: int access$1202(com.tesla.framework.component.imageloader.ImageLoaderOptions,int)
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder tada()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder tada()
 com.tesla.framework.ui.widget.CircleImageView: void init()
 timber.log.Timber$Forest: void uprootAll()
 com.tesla.framework.R$color: int abc_secondary_text_material_dark
@@ -708,7 +708,7 @@ com.tesla.framework.R$id: int immersion_status_bar_view
 com.tesla.framework.R$drawable: int abc_ratingbar_full_material
 com.tesla.framework.R$layout: int comm_ui_tabs
 com.tesla.framework.R$styleable: int[] ActionBar
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder rollOut()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder rollOut()
 com.tesla.framework.R$style: int Widget_AppCompat_Light_PopupMenu_Overflow
 com.tesla.framework.R$styleable: int KeyPosition_curveFit
 com.tesla.framework.R$style: int RtlOverlay_DialogWindowTitle_AppCompat
@@ -768,7 +768,7 @@ com.tesla.framework.R$attr: int chipIconTint
 com.tesla.framework.R$color: int white
 com.tesla.framework.R$attr: int crossfade
 com.tesla.framework.R$style: int Base_Widget_AppCompat_Toolbar
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder scaleX(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder scaleX(float[])
 timber.log.FakeCrashLibrary: FakeCrashLibrary()
 com.tesla.framework.R$attr: int colorOnSurface
 com.drakeet.purewriter.widget.StretchEdgeEffect: float pivotY()
@@ -786,7 +786,7 @@ com.tesla.framework.performance.omagnifier.HeapMetricCollector: int M
 com.tesla.framework.ui.widget.RoundImageView: com.tesla.framework.ui.widget.RoundImageView setRightBottomCornerRadius(int)
 com.tesla.framework.R$drawable: int abc_textfield_search_material
 com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder: boolean getOpenTimingSample()
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder onStart(com.github.florent37.viewanimator.AnimationListener$Start)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder onStart(com.tesla.framework.component.animate.AnimationListener$Start)
 com.tesla.framework.R$dimen: int mtrl_high_ripple_default_alpha
 com.tesla.framework.R$attr: int layout_constraintDimensionRatio
 com.tesla.framework.R$layout: int support_simple_spinner_dropdown_item
@@ -842,7 +842,7 @@ com.tesla.framework.databinding.ItemSnapHelperBinding: com.tesla.framework.datab
 com.tesla.framework.component.startup.Startup$aliasName$2: com.tesla.framework.component.startup.Startup this$0
 com.tesla.framework.ui.fragment.ARecycleViewFragmentNew: androidx.recyclerview.widget.RecyclerView getRefreshView()
 com.tesla.framework.R$attr: int actionModeStyle
-com.github.florent37.viewanimator.AnimationListener$Start: void onStart()
+com.tesla.framework.component.animate.AnimationListener$Start: void onStart()
 com.tesla.framework.R$attr: int buttonBarPositiveButtonStyle
 com.tesla.framework.R$attr: int expandedTitleMargin
 com.tesla.framework.R$dimen: int mtrl_btn_focused_z
@@ -908,7 +908,7 @@ com.tesla.framework.ui.activity.BaseStatusActivity: void loadFailed(java.lang.St
 com.tesla.framework.R$id: int qmui_skin_value
 com.tesla.framework.databinding.CommUiListSwiperefreshBinding: android.widget.RelativeLayout getRoot()
 com.tesla.framework.component.imageloader.ImageLoaderManager: void cleanMemory(android.content.Context)
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.AnimationListener$Start startListener
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.AnimationListener$Start startListener
 com.tesla.framework.R$dimen: int design_snackbar_padding_vertical
 com.tesla.framework.R$styleable: int QMUIRoundButton_qmui_radiusTopLeft
 com.tesla.framework.R$styleable: int[] ClockHandView
@@ -956,7 +956,7 @@ com.tesla.framework.R$styleable: int QMUIQQFaceView_android_maxWidth
 com.tesla.framework.common.util.FrameworkLogUtil: FrameworkLogUtil()
 com.tesla.framework.component.livedata.NetworkLiveData$NetworkLiveDataHolder: NetworkLiveData$NetworkLiveDataHolder()
 com.tesla.framework.R$styleable: int CardView_cardCornerRadius
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder standUp()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder standUp()
 com.tesla.framework.R$style: int ThemeOverlay_MaterialComponents_Toolbar_Primary
 com.tesla.framework.R$styleable: int Transition_duration
 com.tesla.framework.R$style: int Widget_MaterialComponents_CompoundButton_CheckBox
@@ -974,7 +974,7 @@ com.tesla.framework.R$style: int Theme_MaterialComponents_Light_Dialog_MinWidth
 com.tesla.framework.R$styleable: int AppCompatTextView_drawableBottomCompat
 com.tesla.framework.component.livedata.callback.ProtectedUnPeekLiveData$ObserverWrapper: int mVersion
 com.tesla.framework.R$attr: int rv_strokeColor
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder wobble()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder wobble()
 com.tesla.framework.R$dimen: int mtrl_calendar_title_baseline_to_top_fullscreen
 com.tesla.framework.ui.fragment.BaseFragment: void bindUI(android.view.View)
 com.tesla.framework.R$style: int TextAppearance_AppCompat_Display4
@@ -1068,7 +1068,7 @@ com.tesla.framework.R$styleable: int ActionBar_background
 com.microsoft.office.outlook.magnifierlib.memory.MemoryUtils
 com.tesla.framework.R$color: int mtrl_calendar_selected_range
 com.tesla.framework.common.util.toast.ToastCompat: void setView(android.view.View)
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder pulse()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder pulse()
 com.tesla.framework.ui.widget.edgeeffect.GlowingEdgeEffect: int STATE_ABSORB
 timber.log.Timber: void wtf(java.lang.Throwable)
 com.tesla.framework.ui.fragment.ARecycleViewFragmentNew$3: ARecycleViewFragmentNew$3(com.tesla.framework.ui.fragment.ARecycleViewFragmentNew)
@@ -1370,7 +1370,7 @@ com.tesla.framework.R$styleable: int[] AppCompatTextHelper
 com.tesla.framework.R$styleable: int Variant_region_heightLessThan
 com.tesla.framework.R$attr: int AutoLinkStyleTextView_default_color
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_layout_constraintVertical_weight
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder rotation(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder rotation(float[])
 com.tesla.framework.R$dimen: int mtrl_large_touch_target
 com.tesla.framework.R$attr: int spinBars
 com.tesla.framework.R$drawable: int abc_btn_check_to_on_mtrl_000
@@ -1517,7 +1517,7 @@ com.tesla.framework.R$id: int tag_transition_group
 com.tesla.framework.databinding.LibraryBottomDialogBinding: android.widget.FrameLayout bottomDialogCustomView
 com.tesla.framework.R$attr: int round_corner_top_right
 com.tesla.framework.R$styleable: int MaterialCardView_cardForegroundColor
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.AnimationListener$Start access$000(com.github.florent37.viewanimator.ViewAnimator)
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.AnimationListener$Start access$000(com.tesla.framework.component.animate.ViewAnimator)
 com.tesla.framework.R$layout: int notification_action_tombstone
 com.tesla.framework.R$attr: int flow_verticalStyle
 com.tesla.framework.DataBinderMapperImpl$InnerLayoutIdLookup: DataBinderMapperImpl$InnerLayoutIdLookup()
@@ -1623,7 +1623,7 @@ com.tesla.framework.common.util.view.RComputer: RComputer(float,float,float)
 com.tesla.framework.component.startup.Startup: void setGroupId$fastFramework_release(int)
 com.tesla.framework.R$styleable: int BottomSheetBehavior_Layout_behavior_hideable
 com.tesla.framework.ui.activity.BaseVmActivity: android.app.Activity activity
-com.github.florent37.viewanimator.AnimationBuilder: java.util.List createAnimators()
+com.tesla.framework.component.animate.AnimationBuilder: java.util.List createAnimators()
 com.tesla.framework.R$layout: int mtrl_alert_dialog_actions
 com.tesla.framework.R$dimen: int notification_right_icon_size
 com.tesla.framework.R$attr: int qmui_bottom_sheet_list_item_icon_size
@@ -1636,7 +1636,7 @@ com.tesla.framework.R$layout: int test_toolbar
 com.tesla.framework.common.util.toast.SafeToastContext: android.content.Context getApplicationContext()
 com.tesla.framework.support.action.IAction: com.tesla.framework.support.action.IAction getParent()
 com.tesla.framework.R$drawable: int abc_scrubber_control_off_mtrl_alpha
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder height(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder height(float[])
 com.tesla.framework.common.util.SimpleDelayTextWatcher: android.os.Handler mHandler
 com.tesla.framework.R$color: int qmui_s_switch_text_color
 com.tesla.framework.R$style: int Widget_MaterialComponents_ExtendedFloatingActionButton_Icon
@@ -1650,7 +1650,7 @@ com.tesla.framework.R$attr: int colorBackgroundFloating
 com.tesla.framework.R$id: int aligned
 com.tesla.framework.component.livedata.Event: java.lang.Object content
 com.tesla.framework.R$style: int ShapeAppearance_MaterialComponents_MediumComponent
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder waitForHeight()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder waitForHeight()
 com.tesla.framework.R$layout: int mtrl_picker_dialog
 com.tesla.framework.R$attr: int insetStatus
 com.tesla.framework.R$attr: int qmui_skin_support_bottom_sheet_grid_item_text_color
@@ -1679,7 +1679,7 @@ com.tesla.framework.R$string: int mtrl_picker_range_header_selected
 com.tesla.framework.performance.omagnifier.FPSMonitor: void startMonitorFPS(com.tesla.framework.performance.omagnifier.FPSMonitorConfig)
 com.tesla.framework.R$id: int visible
 com.tesla.framework.databinding.LaySkinBinding: LaySkinBinding(androidx.constraintlayout.widget.ConstraintLayout,android.widget.TextView)
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder pivotX(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder pivotX(float[])
 com.tesla.framework.R$dimen: int abc_text_size_caption_material
 com.tesla.framework.component.handler.FLooper: com.tesla.framework.component.handler.FLooper myLooper()
 com.tesla.framework.R$styleable: int OnSwipe_onTouchUp
@@ -1693,7 +1693,7 @@ com.tesla.framework.R$styleable: int RoundRelativeLayout_rv_isRippleEnable
 com.tesla.framework.R$style: int Base_TextAppearance_AppCompat_Body2
 com.tesla.framework.R$attr: int qmui_skin_support_s_list_item_bg_2
 com.drakeet.purewriter.widget.StretchEdgeEffect: int STATE_PULL_DECAY
-com.github.florent37.viewanimator.ViewAnimator: void start()
+com.tesla.framework.component.animate.ViewAnimator: void start()
 com.tesla.framework.R$id: int accessibility_custom_action_27
 com.tesla.framework.R$style: int Widget_MaterialComponents_TextInputLayout_OutlinedBox_ExposedDropdownMenu
 com.tesla.framework.ui.activity.BaseVmActivity: com.tesla.framework.ui.activity.BaseVmActivity$Companion Companion
@@ -1710,7 +1710,7 @@ com.tesla.framework.R$styleable: int PopupWindow_android_popupAnimationStyle
 com.tesla.framework.databinding.LaySkinBinding: androidx.constraintlayout.widget.ConstraintLayout rootView
 com.tesla.framework.common.util.toast.SafeToastContext$ApplicationContextWrapper: SafeToastContext$ApplicationContextWrapper(com.tesla.framework.common.util.toast.SafeToastContext,android.content.Context,com.tesla.framework.common.util.toast.SafeToastContext$1)
 com.tesla.framework.R$drawable: int qmui_switch_thumb
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder duration(long)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder duration(long)
 com.tesla.framework.R$style: int Theme_Design_BottomSheetDialog
 com.tesla.framework.R$layout: int material_clock_period_toggle
 com.tesla.framework.R$styleable: int MockView_mock_label
@@ -1889,7 +1889,7 @@ com.tesla.framework.R$attr: int endIconTintMode
 com.tesla.framework.R$styleable: int CollapsingToolbarLayout_statusBarScrim
 com.tesla.framework.R$attr: int qmui_empty_view_sub_title_margin_hor
 com.tesla.framework.R$id: int qmui_skin_current
-com.github.florent37.viewanimator.ViewAnimator: java.util.List animationList
+com.tesla.framework.component.animate.ViewAnimator: java.util.List animationList
 com.tesla.framework.component.imageloader.ImageLoaderOptions$Builder: com.tesla.framework.component.imageloader.ImageLoaderOptions$Builder diskCacheStrategy(com.tesla.framework.component.imageloader.ImageLoaderOptions$DiskCacheStrategy)
 timber.log.Timber$Forest: void plant(timber.log.Timber$Tree)
 com.tesla.framework.R$layout: int lay_skin
@@ -1985,7 +1985,7 @@ com.tesla.framework.R$color: int colorPrimaryDark
 com.tesla.framework.R$color: int dim_foreground_disabled_material_dark
 com.tesla.framework.R$attr: int collapseContentDescription
 com.tesla.framework.R$dimen: int mtrl_progress_circular_inset
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder repeatCount(int)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder repeatCount(int)
 com.tesla.framework.R$styleable: int RoundTextView_rv_cornerRadius
 com.tesla.framework.R$styleable: int KeyTimeCycle_wavePeriod
 com.tesla.framework.R$attr: int qmui_slider_bar_padding_hor_for_thumb_shadow
@@ -2108,7 +2108,7 @@ com.tesla.framework.R$style: int TextAppearance_AppCompat_Inverse
 com.tesla.framework.R$attr: int qmui_is_target
 com.tesla.framework.ui.activity.BaseVmActivity: void showContent(java.lang.Class)
 com.tesla.framework.R$styleable: int RecyclerView_layoutManager
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.ViewAnimator repeatCount(int)
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.ViewAnimator repeatCount(int)
 com.tesla.framework.component.startup.StartupManager: com.tesla.framework.component.startup.StartupManager addGroup(kotlin.jvm.functions.Function1)
 com.tesla.framework.R$style: int Base_V26_Theme_AppCompat_Light
 com.tesla.framework.R$attr: int cardElevation
@@ -2235,7 +2235,7 @@ com.tesla.framework.common.util.LaunchTimer: LaunchTimer()
 com.tesla.framework.R$animator: int mtrl_btn_unelevated_state_list_anim
 com.tesla.framework.support.action.IAction: com.tesla.framework.support.action.IAction mParent
 com.tesla.framework.R$attr: int qmui_dialog_action_height
-com.github.florent37.viewanimator.ViewAnimator: long duration
+com.tesla.framework.component.animate.ViewAnimator: long duration
 com.tesla.framework.R$styleable: int KeyAttribute_android_translationX
 com.tesla.framework.R$styleable: int MaterialAlertDialogTheme_materialAlertDialogBodyTextStyle
 com.tesla.framework.R$dimen: int abc_text_size_body_1_material
@@ -2351,7 +2351,7 @@ com.tesla.framework.R$attr: int fabAlignmentMode
 com.tesla.framework.ui.fragment.BaseDatebindingFragment: void onCreate(android.os.Bundle)
 com.tesla.framework.R$attr: int constraintSetStart
 com.tesla.framework.R$styleable: int QMUIDialogActionStyleDef_qmui_dialog_positive_action_text_color
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.ViewAnimator decelerate()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.ViewAnimator decelerate()
 com.tesla.framework.R$styleable: int MenuItem_alphabeticModifiers
 com.tesla.framework.component.lifecycle.LifecycleHandler: LifecycleHandler(androidx.lifecycle.LifecycleOwner)
 com.tesla.framework.R$integer: int status_bar_notification_info_maxnum
@@ -2389,16 +2389,16 @@ com.tesla.framework.R$styleable: int[] RoundFrameLayout
 com.tesla.framework.R$styleable: int Slider_labelStyle
 com.tesla.framework.R$color: int material_on_background_disabled
 com.tesla.framework.R$attr: int qmui_selected_mask_color
-com.github.florent37.viewanimator.ViewAnimator: int INFINITE
+com.tesla.framework.component.animate.ViewAnimator: int INFINITE
 com.tesla.framework.R$style: int Widget_MaterialComponents_CompoundButton_Switch
 com.tesla.framework.ui.widget.CircleImageView: int getCircleBackgroundColor()
 com.tesla.framework.R$style: int QMUI_Animation_PopUpMenu_Center
 com.tesla.framework.kt.ColorUtil: int setLastColor$lambda-4(com.tesla.framework.kt.SPreference)
 com.tesla.framework.R$styleable: int TextInputLayout_boxBackgroundMode
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder translationX(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder translationX(float[])
 com.tesla.framework.R$style: int TextAppearance_MaterialComponents_Tooltip
 com.tesla.framework.R$attr: int qmui_config_color_gray_6
-com.github.florent37.viewanimator.AnimationListener$Stop
+com.tesla.framework.component.animate.AnimationListener$Stop
 com.tesla.framework.R$id: int save_scale_type
 com.tesla.framework.common.util.Preconditions: int checkPositionIndex(int,int)
 com.tesla.framework.R$style: int QMUITextAppearance_ListItem
@@ -2430,7 +2430,7 @@ com.tesla.framework.R$style: int TextAppearance_MaterialComponents_Badge
 com.tesla.framework.R$style: int Widget_MaterialComponents_ActionBar_PrimarySurface
 com.tesla.framework.R$attr: int qmui_pull_load_more_loading_size
 com.tesla.framework.support.action.IAction: com.tesla.framework.support.action.IAction getChild()
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder property(java.lang.String,float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder property(java.lang.String,float[])
 com.tesla.framework.DataBinderMapperImpl
 com.tesla.framework.R$id: int accessibility_custom_action_28
 com.tesla.framework.ui.fragment.IView: void bindUI(android.view.View)
@@ -2510,7 +2510,7 @@ com.tesla.framework.R$attr: int errorTextAppearance
 com.tesla.framework.R$styleable: int Constraint_flow_lastVerticalStyle
 com.tesla.framework.R$styleable: int QMUIPullLoadMoreView_qmui_pull_load_more_text_size
 com.tesla.framework.R$styleable: int QMUIRoundRelativeLayout_qmui_radius
-com.github.florent37.viewanimator.ViewAnimator$1: com.github.florent37.viewanimator.ViewAnimator this$0
+com.tesla.framework.component.animate.ViewAnimator$1: com.tesla.framework.component.animate.ViewAnimator this$0
 com.tesla.framework.R$styleable: int[] LinearProgressIndicator
 com.tesla.framework.R$drawable: int mtrl_dropdown_arrow
 com.tesla.framework.R$id: int packed
@@ -2547,7 +2547,7 @@ com.tesla.framework.R$anim: int grow_from_topleft_to_bottomright
 com.tesla.framework.common.util.log.Logger: int d(java.lang.String,java.lang.String)
 com.tesla.framework.R$styleable: int AppCompatTheme_textAppearancePopupMenuHeader
 com.tesla.framework.R$color: int mtrl_btn_text_btn_bg_color_selector
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder pivotX(float)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder pivotX(float)
 com.tesla.framework.R$layout: int test_toolbar_surface
 com.tesla.framework.R$styleable: int QMUIProgressBar_qmui_background_color
 com.tesla.framework.R$style: int Base_Widget_AppCompat_SearchView
@@ -2581,7 +2581,7 @@ com.tesla.framework.common.util.toast.ToastCompat: ToastCompat(android.content.C
 com.tesla.framework.R$attr: int boxStrokeWidth
 com.tesla.framework.R$styleable: int Constraint_android_layout_marginBottom
 com.tesla.framework.R$styleable: int RoundFrameLayout_rv_isRippleEnable
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder dp()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder dp()
 com.drakeet.purewriter.widget.StretchEdgeEffect: float mGlowScaleYFinish
 com.tesla.framework.R$attr: int showText
 com.tesla.framework.common.util.log.NLog: java.lang.String buildWholeMessage(java.lang.String,java.lang.Object[])
@@ -2649,7 +2649,7 @@ com.tesla.framework.R$bool: int abc_action_bar_embed_tabs
 com.tesla.framework.R$styleable: int CircleImageView_civ_fill_color
 com.tesla.framework.common.util.ListMultiMap: int mSize
 com.tesla.framework.ui.fragment.ARecycleViewFragmentNew: void onScrollChange(android.view.View,int,int,int,int)
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder startDelay(long)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder startDelay(long)
 com.tesla.framework.component.startup.StartupManager: void start$lambda-3$lambda-2(com.tesla.framework.component.startup.Startup,android.content.Context)
 com.tesla.framework.R$layout: int select_dialog_item_material
 com.tesla.framework.R$styleable: int Constraint_layout_goneMarginLeft
@@ -2722,7 +2722,7 @@ com.tesla.framework.R$styleable: int Badge_horizontalOffset
 com.tesla.framework.R$attr: int numericModifiers
 com.tesla.framework.R$dimen: int mtrl_fab_elevation
 com.tesla.framework.R$color: int bright_foreground_material_dark
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder rotationX(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder rotationX(float[])
 com.tesla.framework.R$id: int anylayler_dialog_background
 com.tesla.framework.component.network.NetworkStateManager: void onResume(androidx.lifecycle.LifecycleOwner)
 com.tesla.framework.performance.omagnifier.HeapMemoryInfo: long component4()
@@ -2743,7 +2743,7 @@ com.tesla.framework.R$styleable: int KeyCycle_android_elevation
 com.tesla.framework.R$styleable: int CardView_contentPadding
 com.tesla.framework.ui.widget.CustomRoundTextView: void setSelectorColor(android.graphics.drawable.GradientDrawable,int)
 com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder: long exceedLimitThreshold
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.ViewAnimator interpolator(android.view.animation.Interpolator)
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.ViewAnimator interpolator(android.view.animation.Interpolator)
 com.tesla.framework.component.eventbus.SubsribeMethod: com.tesla.framework.component.eventbus.Subscribe subscribe
 com.tesla.framework.R$color: int mtrl_outlined_icon_tint
 com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder: com.tesla.framework.performance.omagnifier.MemoryMonitor$OnSampleListener getOnSampleListener()
@@ -2856,7 +2856,7 @@ com.tesla.framework.R$styleable: int QMUICollapsingTopBarLayout_qmui_expandedTit
 com.tesla.framework.kt.ColorUtil: int randomColor()
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_android_paddingTop
 com.tesla.framework.support.bean.TabItem
-com.github.florent37.viewanimator.AnimationBuilder$1: AnimationBuilder$1(com.github.florent37.viewanimator.AnimationBuilder,com.github.florent37.viewanimator.AnimationListener$Update,android.view.View)
+com.tesla.framework.component.animate.AnimationBuilder$1: AnimationBuilder$1(com.tesla.framework.component.animate.AnimationBuilder,com.tesla.framework.component.animate.AnimationListener$Update,android.view.View)
 com.tesla.framework.R$styleable: int[] CoordinatorLayout_Layout
 com.tesla.framework.R$styleable: int QMUILayout_qmui_topDividerColor
 com.tesla.framework.R$styleable: int Toolbar_menu
@@ -2999,7 +2999,7 @@ com.tesla.framework.R$dimen: int notification_small_icon_background_padding
 com.tesla.framework.R$dimen: int material_clock_period_toggle_width
 com.tesla.framework.R$color: int design_fab_stroke_top_inner_color
 com.tesla.framework.R$dimen: int abc_dialog_fixed_height_major
-com.github.florent37.viewanimator.AnimationBuilder: float toPx(float)
+com.tesla.framework.component.animate.AnimationBuilder: float toPx(float)
 com.tesla.framework.R$drawable: int notification_icon_background
 com.tesla.framework.R$attr: int itemShapeInsetTop
 com.tesla.framework.R$attr: int layout_constraintTop_toBottomOf
@@ -3050,7 +3050,7 @@ com.tesla.framework.R$styleable: int TextInputLayout_passwordToggleTint
 com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$topHitThreadNeedSampleFunc$1: java.lang.Boolean invoke()
 com.tesla.framework.common.util.UniqueKeyTreeMap: UniqueKeyTreeMap(java.lang.String)
 timber.log.Timber$DebugTree: timber.log.Timber$DebugTree$Companion Companion
-com.github.florent37.viewanimator.ViewAnimator: long DEFAULT_DURATION
+com.tesla.framework.component.animate.ViewAnimator: long DEFAULT_DURATION
 com.tesla.framework.R$styleable: int QMUIRoundRelativeLayout_qmui_borderColor
 com.tesla.framework.common.util.toast.ToastCompat: void setText(int)
 com.tesla.framework.R$attr: int qmui_bottom_sheet_grid_item_padding_top
@@ -3239,7 +3239,7 @@ com.tesla.framework.R$styleable: int Toolbar_contentInsetEnd
 com.tesla.framework.common.util.AndroidVersion: boolean hasQ()
 com.tesla.framework.R$attr: int deltaPolarAngle
 com.tesla.framework.R$style: int TestThemeWithLineHeightDisabled
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.ViewAnimator accelerate()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.ViewAnimator accelerate()
 com.tesla.framework.R$dimen: int abc_button_inset_horizontal_material
 com.tesla.framework.R$style: int TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 com.tesla.framework.R$style
@@ -3414,7 +3414,7 @@ com.tesla.framework.databinding.LaySkinBinding: com.tesla.framework.databinding.
 timber.log.Timber$DebugTree: int MAX_TAG_LENGTH
 com.tesla.framework.R$drawable: int qmui_s_checkbox
 com.tesla.framework.R$id: int qmui_dialog_edit_input
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.ViewAnimator viewAnimator
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.ViewAnimator viewAnimator
 com.tesla.framework.component.livedata.Event
 timber.log.Timber: void wtf(java.lang.Throwable,java.lang.String,java.lang.Object[])
 com.tesla.framework.databinding.CommonViewStubHolderBinding: android.view.View rootView
@@ -3425,7 +3425,7 @@ com.microsoft.office.outlook.magnifierlib.memory.MemoryUtils: long readFieldFrom
 com.tesla.framework.R$styleable: int Layout_layout_goneMarginStart
 com.tesla.framework.performance.omagnifier.FPSMonitor
 com.tesla.framework.R$dimen: int sp_16
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.ViewAnimator duration(long)
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.ViewAnimator duration(long)
 com.tesla.framework.R$id: int qmui_do_not_intercept_keyboard_inset
 com.tesla.framework.R$styleable: int Constraint_layout_constraintTop_toTopOf
 com.tesla.framework.ui.activity.BaseVmActivityNew: java.util.Map fragmentRefs
@@ -3452,7 +3452,7 @@ com.drakeet.purewriter.widget.StretchEdgeEffect: android.graphics.Rect mBounds
 com.tesla.framework.component.handler.HandlerTest$2: int val$finalI
 com.tesla.framework.R$attr: int telltales_tailColor
 com.tesla.framework.component.logger.LoggerPrinter: int JSON_INDENT
-com.github.florent37.viewanimator.AnimationBuilder: android.view.View getView()
+com.tesla.framework.component.animate.AnimationBuilder: android.view.View getView()
 com.tesla.framework.R$styleable: int TextInputLayout_passwordToggleContentDescription
 com.tesla.framework.R$drawable: int utils_toast_bg
 com.tesla.framework.R$id: int anylayler_dialog_container
@@ -3460,7 +3460,7 @@ com.tesla.framework.R$attr: int itemIconTint
 com.tesla.framework.R$styleable: int AlertDialog_listLayout
 com.tesla.framework.R$color: int mtrl_chip_text_color
 com.tesla.framework.R$styleable: int[] Insets
-com.github.florent37.viewanimator.AnimationBuilder$1: com.github.florent37.viewanimator.AnimationBuilder this$0
+com.tesla.framework.component.animate.AnimationBuilder$1: com.tesla.framework.component.animate.AnimationBuilder this$0
 com.tesla.framework.R$styleable: int RecyclerView_reverseLayout
 com.tesla.framework.ui.fragment.ATabsTabLayoutFragmentNew$1: com.tesla.framework.ui.fragment.ATabsTabLayoutFragmentNew this$0
 com.tesla.framework.R$styleable: int ActionMode_backgroundSplit
@@ -3474,7 +3474,7 @@ com.tesla.framework.R$styleable: int Tooltip_android_minWidth
 com.tesla.framework.R$dimen: int mtrl_btn_elevation
 com.tesla.framework.R$string: int material_hour_selection
 com.tesla.framework.R$styleable: int QMUIQQFaceView_android_maxLines
-com.github.florent37.viewanimator.ViewAnimator: void cancel()
+com.tesla.framework.component.animate.ViewAnimator: void cancel()
 com.tesla.framework.databinding.FragmentTablayoutBinding: com.tesla.framework.databinding.FragmentTablayoutBinding inflate(android.view.LayoutInflater,java.lang.Object)
 com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder: com.tesla.framework.component.logger.LogStrategy logStrategy
 com.tesla.framework.component.logger.Printer: void e(java.lang.String,java.lang.Object[])
@@ -3494,7 +3494,7 @@ com.tesla.framework.R$attr: int flow_horizontalGap
 com.tesla.framework.support.bean.TabItem: java.lang.String type()
 com.tesla.framework.R$id: int linear
 com.tesla.framework.component.startup.StartupManager$countDownLatch$2: com.tesla.framework.component.startup.StartupManager$countDownLatch$2 INSTANCE
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.ViewAnimator access$200(com.github.florent37.viewanimator.ViewAnimator)
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.ViewAnimator access$200(com.tesla.framework.component.animate.ViewAnimator)
 com.tesla.framework.R$attr: int qmui_skin_support_dialog_action_text_color
 com.tesla.framework.R$styleable: int ForegroundLinearLayout_android_foregroundGravity
 com.tesla.framework.common.util.log.FastLog$ILogDelegate: void d(java.lang.String,java.lang.String,java.lang.Object[])
@@ -3547,7 +3547,7 @@ com.tesla.framework.R$id: int BaseQuickAdapter_viewholder_support
 com.tesla.framework.R$attr: int backgroundSplit
 com.tesla.framework.R$id: int statusbarutil_translucent_view
 com.tesla.framework.R$attr: int hintTextAppearance
-com.github.florent37.viewanimator.ViewAnimator$2: boolean onPreDraw()
+com.tesla.framework.component.animate.ViewAnimator$2: boolean onPreDraw()
 com.tesla.framework.R$style: int Widget_MaterialComponents_TimePicker_ImageButton
 com.tesla.framework.support.KidsException: com.tesla.framework.support.KidsException newException(int,java.lang.String,java.lang.Object[])
 com.tesla.framework.R$attr: int flow_padding
@@ -3567,7 +3567,7 @@ com.tesla.framework.ui.fragment.BaseVMFragment: void checkActivity(androidx.frag
 com.tesla.framework.R$styleable: int MenuItem_numericModifiers
 com.tesla.framework.R$style: int Widget_AppCompat_Button_Borderless
 com.tesla.framework.R$layout: int qmui_group_list_section_layout
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder newsPaper()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder newsPaper()
 com.tesla.framework.performance.omagnifier.MemorySamplersFactory$Companion
 com.tesla.framework.kt.ColorUtil: kotlin.reflect.KProperty[] $$delegatedProperties
 com.tesla.framework.R$anim: int abc_slide_in_top
@@ -3619,7 +3619,7 @@ com.tesla.framework.R$styleable: int ImageFilterView_altSrc
 com.tesla.framework.R$dimen: int material_clock_display_padding
 com.tesla.framework.R$dimen: int mtrl_extended_fab_translation_z_base
 com.tesla.framework.R$attr: int rv_cornerRadius_TL
-com.github.florent37.viewanimator.ViewAnimator: android.animation.AnimatorSet createAnimatorSet()
+com.tesla.framework.component.animate.ViewAnimator: android.animation.AnimatorSet createAnimatorSet()
 com.tesla.framework.performance.omagnifier.FPSMonitor: boolean isFPSMonitorEnabled()
 com.tesla.framework.R$style: int Widget_MaterialComponents_Badge
 com.tesla.framework.ui.fragment.BaseVMFragment: androidx.lifecycle.ViewModel getFragmentScopeViewModel(java.lang.Class)
@@ -3639,7 +3639,7 @@ com.tesla.framework.R$dimen: int tooltip_vertical_padding
 com.tesla.framework.R$attr: int qmui_skin_support_empty_view_btn_text_color
 com.drakeet.years.widget.CustomLayout: int toAtMostMeasureSpec(int)
 com.tesla.framework.R$styleable: int SearchView_searchHintIcon
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder andAnimate(android.view.View[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder andAnimate(android.view.View[])
 com.tesla.framework.R$attr: int qmui_bottom_sheet_height_percent
 com.tesla.framework.R$styleable: int RoundRelativeLayout_rv_strokeColor
 com.tesla.framework.R$styleable: int TextInputLayout_errorIconTint
@@ -3695,7 +3695,7 @@ com.tesla.framework.R$dimen: int test_navigation_bar_item_min_width
 com.tesla.framework.R$id: int fragment_container_view_tag
 com.tesla.framework.component.lifecycle.FullLifecycleObserverNew: void onStop(androidx.lifecycle.LifecycleOwner)
 com.tesla.framework.R$attr: int thumbTintMode
-com.github.florent37.viewanimator.ViewAnimator$1: ViewAnimator$1(com.github.florent37.viewanimator.ViewAnimator)
+com.tesla.framework.component.animate.ViewAnimator$1: ViewAnimator$1(com.tesla.framework.component.animate.ViewAnimator)
 com.tesla.framework.R$attr: int colorOnPrimarySurface
 com.tesla.framework.R$style: int Base_Widget_AppCompat_Spinner_Underlined
 com.tesla.framework.databinding.CommonViewStubHolderBinding: CommonViewStubHolderBinding(android.view.View,android.view.ViewStub,android.view.ViewStub,android.view.ViewStub,com.tesla.framework.databinding.CommLayLoadingBinding)
@@ -3826,7 +3826,7 @@ com.tesla.framework.R$styleable: int Constraint_layout_constraintWidth_min
 com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder: boolean getOpenExceedLimitSample()
 com.tesla.framework.R$dimen: int tooltip_corner_radius
 com.tesla.framework.R$styleable: int AppBarLayout_Layout_layout_scrollFlags
-com.github.florent37.viewanimator.AnimationBuilder$4: android.graphics.PathMeasure val$pathMeasure
+com.tesla.framework.component.animate.AnimationBuilder$4: android.graphics.PathMeasure val$pathMeasure
 com.tesla.framework.R$attr: int path_percent
 com.tesla.framework.R$styleable: int ConstraintSet_flow_horizontalStyle
 com.tesla.framework.ui.widget.NoScrollViewPager: void setCurrentItem(int)
@@ -3914,7 +3914,7 @@ com.tesla.framework.R$color: int design_dark_default_color_error
 com.tesla.framework.R$string: int abc_searchview_description_query
 com.tesla.framework.R$attr: int qmui_empty_view_title_margin_hor
 com.tesla.framework.R$attr: int qmui_skin_support_pull_load_more_arrow_tint_color
-com.github.florent37.viewanimator.AnimationBuilder$4: AnimationBuilder$4(com.github.florent37.viewanimator.AnimationBuilder,android.graphics.PathMeasure)
+com.tesla.framework.component.animate.AnimationBuilder$4: AnimationBuilder$4(com.tesla.framework.component.animate.AnimationBuilder,android.graphics.PathMeasure)
 com.tesla.framework.R$styleable: int AppCompatTheme_dividerVertical
 com.tesla.framework.R$styleable: int CustomAttribute_customIntegerValue
 com.tesla.framework.R$attr: int qmui_common_list_item_detail_v_margin_with_title
@@ -4065,7 +4065,7 @@ com.tesla.framework.databinding.TitleBarBinding: android.widget.LinearLayout roo
 com.tesla.framework.performance.omagnifier.ThreadInfo: long threadsCount
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_layout_constraintBottom_toTopOf
 com.tesla.framework.R$attr: int layout_anchorGravity
-com.github.florent37.viewanimator.AnimationBuilder$3
+com.tesla.framework.component.animate.AnimationBuilder$3
 com.tesla.framework.R$bool: int abc_action_bar_expanded_action_views_exclusive
 com.tesla.framework.performance.omagnifier.MemoryMonitorConfig: boolean openTimingSample
 com.tesla.framework.common.util.log.Logger: java.io.OutputStreamWriter logWriter
@@ -4076,7 +4076,7 @@ com.tesla.framework.R$color: int mtrl_extended_fab_text_color_selector
 com.tesla.framework.R$styleable: int Layout_layout_constraintCircle
 com.tesla.framework.R$attr: int qmui_pull_rate
 com.tesla.framework.R$attr: int qmui_skin_support_topbar_subtitle_color
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder wave()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder wave()
 com.tesla.framework.R$attr: int behavior_peekHeight
 com.tesla.framework.R$attr: int fastScrollVerticalTrackDrawable
 com.tesla.framework.R$id: int pathRelative
@@ -4318,7 +4318,7 @@ com.tesla.framework.databinding.LaySkinBinding: android.view.View getRoot()
 com.tesla.framework.R$dimen: int hint_alpha_material_light
 com.tesla.framework.kt.SPreference: android.content.SharedPreferences preference
 com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder: MemoryMonitorConfig$Builder(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType,int,kotlin.jvm.internal.DefaultConstructorMarker)
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder slit()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder slit()
 com.tesla.framework.databinding.CommUiFragmentContainerBinding: CommUiFragmentContainerBinding(android.widget.LinearLayout,androidx.constraintlayout.widget.ConstraintLayout)
 com.tesla.framework.R$style: int Base_Widget_AppCompat_CompoundButton_RadioButton
 com.tesla.framework.R$attr: int color
@@ -4423,7 +4423,7 @@ com.tesla.framework.R$drawable: int qmui_icon_popup_close
 com.tesla.framework.R$dimen: int compat_notification_large_icon_max_width
 com.tesla.framework.ui.fragment.BaseVMFragment: void _$_clearFindViewByIdCache()
 com.tesla.framework.R$styleable: int Layout_layout_constraintStart_toStartOf
-com.github.florent37.viewanimator.ViewAnimator: ViewAnimator()
+com.tesla.framework.component.animate.ViewAnimator: ViewAnimator()
 com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$topHitFileSampler$1: MemorySamplersFactory$createAsyncSamplers$topHitFileSampler$1(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig)
 com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder: void setExceedLimitThreshold(long)
 com.tesla.framework.R$dimen: int mtrl_tooltip_arrowSize
@@ -4457,7 +4457,7 @@ com.tesla.framework.R$styleable: int Badge_badgeGravity
 com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBindingImpl: boolean onFieldChange(int,java.lang.Object,int)
 com.tesla.framework.R$attr: int gestureInsetBottomIgnored
 com.tesla.framework.component.livedata.NetworkLiveData$NetworkState: com.tesla.framework.component.livedata.NetworkLiveData$NetworkState INSTANCE
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.ViewAnimator prev
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.ViewAnimator prev
 com.tesla.framework.component.eventbus.FastBus: void invoke(com.tesla.framework.component.eventbus.SubsribeMethod,java.lang.Object,java.lang.Object)
 com.tesla.framework.R$style: int Base_Widget_AppCompat_Light_ActionBar_Solid
 com.tesla.framework.R$id: int design_menu_item_text
@@ -4522,7 +4522,7 @@ com.tesla.framework.ui.activity.BaseVmActivity: void onDestroy()
 com.tesla.framework.R$styleable: int MaterialComponentsTheme_textAppearanceHeadline2
 com.tesla.framework.R$attr: int qmui_more_action_text
 com.tesla.framework.R$drawable: int design_ic_visibility
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder slideBottomIn()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder slideBottomIn()
 timber.log.Timber$Forest: void d(java.lang.String,java.lang.Object[])
 com.tesla.framework.R$attr: int thumbRadius
 com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType: com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$MemoryMonitorType valueOf(java.lang.String)
@@ -4561,7 +4561,7 @@ com.tesla.framework.R$id: int anylayler_notification_content_top
 com.drakeet.years.widget.CustomLayoutKt: int matchParent
 com.tesla.framework.R$drawable: int qmui_divider_bottom_bitmap
 timber.log.Timber: void uproot(timber.log.Timber$Tree)
-com.github.florent37.viewanimator.AnimationBuilder: float[] getValues(float[])
+com.tesla.framework.component.animate.AnimationBuilder: float[] getValues(float[])
 com.tesla.framework.kt.ViewExtensionsKt
 com.tesla.framework.R$style: int Theme_AppCompat_Dialog_Alert
 com.tesla.framework.R$id: int parentPanel
@@ -4578,7 +4578,7 @@ com.tesla.framework.R$dimen: int mtrl_navigation_item_shape_horizontal_margin
 com.tesla.framework.component.activityforresult.ActivityResultHelper$ActivityForResultCallback
 com.tesla.framework.R$styleable: int MotionLayout_applyMotionScene
 com.tesla.framework.kt.ColorUtil: void setColor(int)
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder backgroundColor(int[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder backgroundColor(int[])
 com.tesla.framework.DataBinderMapperImpl: android.util.SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP
 com.tesla.framework.R$id: int material_hour_tv
 com.tesla.framework.R$id: int qmui_click_timestamp
@@ -4704,10 +4704,10 @@ com.tesla.framework.R$styleable: int TabLayout_tabIndicator
 com.tesla.framework.R$attr: int textAppearanceCaption
 com.tesla.framework.R$styleable: int BottomSheetBehavior_Layout_behavior_fitToContents
 com.tesla.framework.R$styleable: int[] TextAppearance
-com.github.florent37.viewanimator.AnimationBuilder$1
+com.tesla.framework.component.animate.AnimationBuilder$1
 com.tesla.framework.common.util.view.RComputer: float getCorrectR(android.graphics.Paint)
 com.tesla.framework.R$styleable: int BottomNavigationView_itemBackground
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder add(android.animation.Animator)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder add(android.animation.Animator)
 com.tesla.framework.R$attr: int recyclerViewStyle
 com.tesla.framework.R$attr: int startIconTintMode
 com.tesla.framework.R$styleable: int Chip_hideMotionSpec
@@ -5039,7 +5039,7 @@ com.tesla.framework.R$layout: int abc_popup_menu_item_layout
 com.tesla.framework.R$attr: int qmui_can_over_pull
 com.tesla.framework.R$string: int mtrl_picker_date_header_unselected
 com.tesla.framework.R$attr: int qmui_config_color_gray_8
-com.github.florent37.viewanimator.AnimationBuilder$2: com.github.florent37.viewanimator.AnimationBuilder this$0
+com.tesla.framework.component.animate.AnimationBuilder$2: com.tesla.framework.component.animate.AnimationBuilder this$0
 com.tesla.framework.R$string: int abc_font_family_headline_material
 com.tesla.framework.R$styleable: int MenuGroup_android_id
 com.tesla.framework.R$integer: int abc_config_activityShortDur
@@ -5283,7 +5283,7 @@ com.tesla.framework.R$styleable: int QMUITopBar_android_ellipsize
 com.tesla.framework.support.action.IAction: android.app.Activity getContext()
 com.tesla.framework.R$styleable: int[] QMUIPullLoadMoreView
 com.tesla.framework.R$drawable: int design_snackbar_background
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder rollIn()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder rollIn()
 com.tesla.framework.R$dimen: int material_helper_text_default_padding_top
 com.tesla.framework.R$integer: R$integer()
 com.tesla.framework.ui.activity.BaseVmActivityNew: void showContent(java.lang.Class)
@@ -5327,7 +5327,7 @@ com.tesla.framework.R$style: int Widget_AppCompat_SeekBar
 com.tesla.framework.performance.omagnifier.ISamplePolicy: long postDelayedThreshold()
 com.tesla.framework.R$attr: int qmui_auto_calculate_refresh_end_offset
 com.tesla.framework.R$style: int Base_TextAppearance_AppCompat_Tooltip
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder zoomOut()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder zoomOut()
 com.tesla.framework.R$attr: int QMUITopBarStyle
 com.tesla.framework.R$id: int qmui_dialog_operator_layout_id
 com.tesla.framework.R$style: int Widget_MaterialComponents_MaterialCalendar_HeaderSelection_Fullscreen
@@ -5374,7 +5374,7 @@ com.tesla.framework.R$dimen: int mtrl_btn_snackbar_margin_horizontal
 com.tesla.framework.component.navigator.HiFragmentNavigator$Extras$Builder: HiFragmentNavigator$Extras$Builder()
 com.tesla.framework.R$styleable: int AlertDialog_showTitle
 com.tesla.framework.component.DelayInitTaskDispatcher: java.util.LinkedList mDelayTasks
-com.github.florent37.viewanimator.ViewAnimator$RepeatMode
+com.tesla.framework.component.animate.ViewAnimator$RepeatMode
 com.tesla.framework.component.imageloader.ImageLoaderManager: com.tesla.framework.component.imageloader.ImageLoaderManager getInstance()
 com.tesla.framework.component.logger.Printer: void wtf(java.lang.String,java.lang.Object[])
 com.tesla.framework.R$attr: int contentPadding
@@ -5395,7 +5395,7 @@ com.tesla.framework.R$dimen: int design_tab_scrollable_min_width
 timber.log.Timber$Tree: boolean isLoggable(java.lang.String,int)
 com.tesla.framework.R$styleable: int QMUIDialogMessageTvCustomDef_qmui_paddingTopWhenNotTitle
 com.tesla.framework.R$styleable: int MaterialComponentsTheme_chipGroupStyle
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder flipHorizontal()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder flipHorizontal()
 com.tesla.framework.R$styleable: int KeyAttribute_transitionPathRotate
 com.tesla.framework.R$dimen: int mtrl_navigation_elevation
 com.tesla.framework.ui.activity.BaseVmActivity: boolean isActive()
@@ -5406,7 +5406,7 @@ com.tesla.framework.common.util.AnimateUtil$1: int val$width
 com.tesla.framework.R$styleable: int AppCompatTheme_dropDownListViewStyle
 com.tesla.framework.R$attr: int qmui_skin_support_round_btn_text_color
 com.tesla.framework.R$styleable: int Motion_drawPath
-com.github.florent37.viewanimator.ViewAnimator$1: void onAnimationEnd(android.animation.Animator)
+com.tesla.framework.component.animate.ViewAnimator$1: void onAnimationEnd(android.animation.Animator)
 com.tesla.framework.common.util.toast.ToastCompat: int getDuration()
 com.tesla.framework.R$styleable: int QMUILayout_qmui_outlineInsetBottom
 com.tesla.framework.ui.activity.BaseVmActivity: void setToolbarTitle(java.lang.String)
@@ -5463,13 +5463,13 @@ com.tesla.framework.R$attr: int drawableEndCompat
 com.tesla.framework.R$style: int Base_V26_Theme_AppCompat
 com.tesla.framework.ui.fragment.ARecycleViewSwipeRefreshFragmentNew
 com.tesla.framework.R$styleable: int Constraint_layout_constraintWidth_percent
-com.github.florent37.viewanimator.ViewAnimator: long startDelay
+com.tesla.framework.component.animate.ViewAnimator: long startDelay
 com.tesla.framework.R$string: int mtrl_exceed_max_badge_number_suffix
 com.tesla.framework.component.logger.LoggerPrinter: void d(java.lang.String,java.lang.Object[])
 com.tesla.framework.R$dimen: int mtrl_tooltip_minWidth
 com.tesla.framework.R$integer: int mtrl_calendar_header_orientation
 com.tesla.framework.R$id: int text_input_end_icon
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder swing()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder swing()
 com.tesla.framework.R$styleable: int AppCompatTheme_windowMinWidthMinor
 com.tesla.framework.R$styleable: int Layout_constraint_referenced_ids
 com.tesla.framework.R$styleable: int Constraint_layout_constraintHorizontal_bias
@@ -5708,7 +5708,7 @@ com.tesla.framework.kt.SPreference: java.lang.Object default
 com.tesla.framework.R$id: int mtrl_motion_snapshot_view
 com.tesla.framework.R$style: int QMUITextAppearance_Title_Gray
 com.tesla.framework.R$styleable: int AppCompatTheme_dialogPreferredPadding
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder translationY(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder translationY(float[])
 com.tesla.framework.component.lifecycle.LifecycleHandler: LifecycleHandler(android.os.Looper,androidx.lifecycle.LifecycleOwner)
 com.tesla.framework.R$styleable: int QMUILayout_qmui_topDividerInsetRight
 com.tesla.framework.component.logger.format.PrettyFormatStrategy: char BOTTOM_LEFT_CORNER
@@ -5750,11 +5750,11 @@ com.tesla.framework.R$drawable: int round_corner_stroke_bg
 com.tesla.framework.R$style: int Base_TextAppearance_AppCompat_Inverse
 com.tesla.framework.R$style: int DropDownListView_Compat
 com.tesla.framework.R$styleable: int RoundRelativeLayout_rv_strokeWidth
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder bounceIn()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder bounceIn()
 com.tesla.framework.R$styleable: int QMUISeekBar_qmui_seek_bar_tick_width
 com.tesla.framework.R$drawable: int shadow_mini
 com.tesla.framework.R$attr: int QMUIPullRefreshLayoutStyle
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder repeatMode(int)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder repeatMode(int)
 com.tesla.framework.R$styleable: int Toolbar_contentInsetStart
 androidx.databinding.library.baseAdapters.BR
 com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder: float refreshRate
@@ -5995,7 +5995,7 @@ com.tesla.framework.component.livedata.callback.UnPeekLiveData$Builder: boolean 
 com.tesla.framework.R$styleable: int QMUIPullLoadMoreView_qmui_pull_load_more_loading_size
 com.tesla.framework.component.logger.Logger: Logger()
 com.tesla.framework.R$styleable: int TextInputLayout_android_enabled
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.AnimationBuilder animate(android.view.View[])
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.AnimationBuilder animate(android.view.View[])
 com.tesla.framework.R$styleable: int ActivityNavigator_action
 com.tesla.framework.R$id: int group_list_item_textView
 com.tesla.framework.component.navigator.HiFragmentNavigator$Extras: java.util.LinkedHashMap mSharedElements
@@ -6094,7 +6094,7 @@ com.tesla.framework.R$id: int expanded_menu
 com.tesla.framework.R$dimen: int comm_v_margin
 com.tesla.framework.R$styleable: int MaterialComponentsTheme_textAppearanceCaption
 com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder: float mediumPercentage
-com.github.florent37.viewanimator.AnimationListener$Update
+com.tesla.framework.component.animate.AnimationListener$Update
 com.tesla.framework.R$styleable: int KeyPosition_percentY
 com.tesla.framework.ui.fragment.BaseFragment: void onCreate(android.os.Bundle)
 com.tesla.framework.R$style: int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2
@@ -6125,7 +6125,7 @@ com.tesla.framework.R$attr: int waveVariesBy
 com.tesla.framework.databinding.ItemSnapHelperBinding: android.view.View getRoot()
 com.tesla.framework.R$id: int empty_view_button
 com.tesla.framework.R$color: int mtrl_btn_text_color_selector
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder width(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder width(float[])
 com.tesla.framework.performance.omagnifier.FrameViewer$MovingTouchListener: float initialTouchY
 com.tesla.framework.ui.widget.edgeeffect.GlowingEdgeEffect: float mGlowAlpha
 com.tesla.framework.common.util.N: boolean isEmpty(java.lang.Object)
@@ -6210,7 +6210,7 @@ timber.log.Timber$Tree: java.lang.String getStackTraceString(java.lang.Throwable
 com.tesla.framework.R$dimen: int design_navigation_elevation
 com.tesla.framework.R$attr: int stroke_color
 com.tesla.framework.R$styleable: int Constraint_flow_verticalStyle
-com.github.florent37.viewanimator.AnimationListener: AnimationListener()
+com.tesla.framework.component.animate.AnimationListener: AnimationListener()
 com.tesla.framework.R$dimen: int mtrl_high_ripple_pressed_alpha
 com.tesla.framework.common.util.toast.SafeToastContext$WindowManagerWrapper: SafeToastContext$WindowManagerWrapper(com.tesla.framework.common.util.toast.SafeToastContext,android.view.WindowManager,com.tesla.framework.common.util.toast.SafeToastContext$1)
 com.tesla.framework.R$styleable: int QMUIRoundFrameLayout_qmui_backgroundColor
@@ -6228,7 +6228,7 @@ com.tesla.framework.ui.widget.CircleImageView: int mBitmapWidth
 com.tesla.framework.R$styleable: int DrawerArrowToggle_gapBetweenBars
 com.tesla.framework.R$styleable: int Variant_constraints
 com.tesla.framework.R$attr: int flow_horizontalAlign
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.AnimationListener$Stop access$100(com.github.florent37.viewanimator.ViewAnimator)
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.AnimationListener$Stop access$100(com.tesla.framework.component.animate.ViewAnimator)
 com.tesla.framework.R$dimen: int abc_switch_padding
 com.tesla.framework.ui.widget.edgeeffect.GlowingEdgeEffect: float MAX_GLOW_SCALE
 com.tesla.framework.component.eventbus.ThreadMode: com.tesla.framework.component.eventbus.ThreadMode MAIN
@@ -6323,7 +6323,7 @@ com.tesla.framework.R$attr: int transitionShapeAppearance
 com.tesla.framework.common.util.toast.BadTokenListener: void onBadTokenCaught(android.widget.Toast)
 com.tesla.framework.component.logger.LoggerPrinter: LoggerPrinter()
 com.tesla.framework.R$drawable: int abc_text_select_handle_middle_mtrl_dark
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.ViewAnimator start()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.ViewAnimator start()
 com.tesla.framework.R$drawable: int ic_edit_black_24dp
 com.tesla.framework.R$style: int Base_Theme_MaterialComponents_Light_Bridge
 com.tesla.framework.R$attr: int trackHeight
@@ -6359,7 +6359,7 @@ com.tesla.framework.performance.omagnifier.FPSMonitorConfig: float getMediumPerc
 com.tesla.framework.R$attr: int customDimension
 com.tesla.framework.component.logger.Printer: void addAdapter(com.tesla.framework.component.logger.LogAdapter)
 com.tesla.framework.R$id: int parentRelative
-com.github.florent37.viewanimator.AnimationListener$Update: void update(android.view.View,float)
+com.tesla.framework.component.animate.AnimationListener$Update: void update(android.view.View,float)
 com.tesla.framework.R$attr: int qmui_dialog_menu_container_single_padding_vertical
 com.tesla.framework.R$dimen: int abc_dialog_list_padding_top_no_title
 com.tesla.framework.R$styleable: int SwitchCompat_switchPadding
@@ -6374,7 +6374,7 @@ com.tesla.framework.R$styleable: int TextInputLayout_endIconMode
 com.tesla.framework.R$style: int Widget_Design_Snackbar
 com.tesla.framework.R$styleable: int QMUISkinDef_qmui_skin_more_bg_color
 com.tesla.framework.ui.fragment.BaseFragment: boolean isFirstLoad
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder custom(com.github.florent37.viewanimator.AnimationListener$Update,float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder custom(com.tesla.framework.component.animate.AnimationListener$Update,float[])
 com.tesla.framework.common.util.LaunchTimer: void endRecord()
 com.tesla.framework.performance.omagnifier.FPSMonitorConfig: android.app.Application getContext()
 com.tesla.framework.component.livedata.Event: java.lang.Object getContentIfHandled()
@@ -6400,8 +6400,8 @@ com.tesla.framework.R$styleable: int ImageFilterView_roundPercent
 com.tesla.framework.R$color: int design_dark_default_color_on_secondary
 com.tesla.framework.R$styleable: int ActivityNavigator_data
 com.tesla.framework.R$id: int reverseSawtooth
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder onStop(com.github.florent37.viewanimator.AnimationListener$Stop)
-com.github.florent37.viewanimator.ViewAnimator$1: void onAnimationStart(android.animation.Animator)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder onStop(com.tesla.framework.component.animate.AnimationListener$Stop)
+com.tesla.framework.component.animate.ViewAnimator$1: void onAnimationStart(android.animation.Animator)
 com.tesla.framework.R$style: int TextAppearance_Compat_Notification_Line2
 com.tesla.framework.R$styleable: int BottomAppBar_fabAnimationMode
 com.tesla.framework.R$style: int Widget_AppCompat_Light_ActionBar_Solid_Inverse
@@ -6431,7 +6431,7 @@ com.tesla.framework.R$styleable: int[] RoundRelativeLayout
 com.tesla.framework.R$drawable: int design_password_eye
 com.tesla.framework.R$dimen: int material_filled_edittext_font_2_0_padding_top
 com.tesla.framework.kt.ColorUtil: void setLastColor$lambda-5(com.tesla.framework.kt.SPreference,int)
-com.github.florent37.viewanimator.AnimationListener$Stop: void onStop()
+com.tesla.framework.component.animate.AnimationListener$Stop: void onStop()
 com.tesla.framework.R$style: int Theme_MaterialComponents_Light_BottomSheetDialog
 com.tesla.framework.R$styleable: int AnimatedStateListDrawableCompat_android_dither
 com.tesla.framework.R$dimen: int mtrl_calendar_navigation_height
@@ -6511,7 +6511,7 @@ com.tesla.framework.R$style: int Widget_MaterialComponents_MaterialCalendar_Head
 com.tesla.framework.ui.fragment.BaseVMFragment: android.view.View getRootView()
 com.tesla.framework.R$color: int mtrl_navigation_bar_ripple_color
 com.tesla.framework.R$attr: int motionDurationMedium1
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder pivotY(float)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder pivotY(float)
 com.tesla.framework.R$styleable: int ConstraintSet_android_orientation
 com.tesla.framework.R$dimen: int test_navigation_bar_elevation
 com.tesla.framework.common.device.DeviceName: com.tesla.framework.common.device.DeviceName$DeviceInfo getDeviceInfo(android.content.Context)
@@ -6543,7 +6543,7 @@ com.tesla.framework.R$id: int material_timepicker_container
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_flow_horizontalGap
 com.tesla.framework.ui.activity.BaseVmActivity: void addFragment(java.lang.String,com.tesla.framework.ui.fragment.BaseStatusFragmentNew)
 com.tesla.framework.R$styleable: int BottomSheetBehavior_Layout_shapeAppearanceOverlay
-com.github.florent37.viewanimator.AnimationBuilder: boolean isWaitForHeight()
+com.tesla.framework.component.animate.AnimationBuilder: boolean isWaitForHeight()
 com.tesla.framework.R$styleable: int Layout_layout_constraintWidth_default
 com.tesla.framework.R$attr: int defaultQueryHint
 com.tesla.framework.R$style: int Base_V14_Theme_MaterialComponents_Dialog
@@ -6588,7 +6588,7 @@ com.tesla.framework.R$drawable: int abc_dialog_material_background
 com.tesla.framework.kt.ReifiedKt
 com.drakeet.purewriter.widget.StretchEdgeEffect: int MAX_VELOCITY
 com.tesla.framework.common.util.HttpsCompat$2: void checkClientTrusted(java.security.cert.X509Certificate[],java.lang.String)
-com.github.florent37.viewanimator.AnimationBuilder
+com.tesla.framework.component.animate.AnimationBuilder
 com.tesla.framework.R$drawable: int notification_template_icon_bg
 com.tesla.framework.performance.omagnifier.FrameCalculator: int HANDLE_MSG
 com.tesla.framework.R$attr: int contentInsetStartWithNavigation
@@ -6596,7 +6596,7 @@ com.tesla.framework.R$attr: int searchIcon
 com.tesla.framework.R$attr: int boxCornerRadiusBottomStart
 com.tesla.framework.component.activityforresult.ActivityForResultRouterFragment: void onCreate(android.os.Bundle)
 com.tesla.framework.R$styleable: int[] NavDeepLink
-com.github.florent37.viewanimator.AnimationBuilder: java.util.List animatorList
+com.tesla.framework.component.animate.AnimationBuilder: java.util.List animatorList
 com.tesla.framework.R$layout: int anylayer_toast_layer
 com.tesla.framework.R$style: int Base_TextAppearance_AppCompat_Widget_PopupMenu_Small
 com.tesla.framework.R$attr: int thumbTint
@@ -6687,7 +6687,7 @@ com.tesla.framework.R$styleable: int BottomAppBar_fabCradleRoundedCornerRadius
 com.tesla.framework.R$attr: int round_border_width
 com.tesla.framework.R$string: int abc_shareactionprovider_share_with_application
 com.tesla.framework.performance.omagnifier.Magnifier: com.tesla.framework.performance.omagnifier.Magnifier INSTANCE
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder rubber()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder rubber()
 com.tesla.framework.R$styleable: int QMUISlider_qmui_slider_bar_constraint_thumb_in_moving
 com.tesla.framework.component.livedata.callback.UnPeekLiveData$Builder
 com.tesla.framework.R$drawable: int fps_good
@@ -6705,7 +6705,7 @@ com.drakeet.purewriter.widget.StretchEdgeEffect: void setSize(int,int)
 com.tesla.framework.component.livedata.callback.UnPeekLiveData: void postValue(java.lang.Object)
 com.tesla.framework.R$id: int icon
 com.tesla.framework.R$drawable: int ic_website_left_disable
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder flash()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder flash()
 com.tesla.framework.R$styleable: int QMUIDialogActionStyleDef_qmui_dialog_negative_action_text_color
 com.tesla.framework.R$dimen: int material_clock_face_margin_top
 com.tesla.framework.R$styleable: int NavigationView_itemHorizontalPadding
@@ -6764,13 +6764,13 @@ com.tesla.framework.R$attr: int chipEndPadding
 com.tesla.framework.common.util.DrakeetUtils: java.lang.String TAG
 com.tesla.framework.R$id: int navigation_header_container
 com.tesla.framework.R$id: int switcher
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder slideTopIn()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder slideTopIn()
 com.tesla.framework.R$styleable: int Variant_region_widthMoreThan
 com.tesla.framework.ui.activity.BaseVmActivityNew
 com.tesla.framework.performance.omagnifier.MemoryMonitor$SampleType: com.tesla.framework.performance.omagnifier.MemoryMonitor$SampleType[] values()
 com.tesla.framework.R$styleable: int MaterialTimePicker_keyboardIcon
 com.tesla.framework.component.activityforresult.ActivityResultHelper: java.lang.String TAG
-com.github.florent37.viewanimator.AnimationBuilder: android.view.animation.Interpolator getSingleInterpolator()
+com.tesla.framework.component.animate.AnimationBuilder: android.view.animation.Interpolator getSingleInterpolator()
 com.tesla.framework.R$styleable: int TextInputLayout_passwordToggleTintMode
 com.tesla.framework.component.lifecycle.LifecycleObserverAdapter: void onDestroy()
 com.tesla.framework.performance.omagnifier.ThreadInfo: com.tesla.framework.performance.omagnifier.ThreadInfo copy$default(com.tesla.framework.performance.omagnifier.ThreadInfo,long,java.util.Map,int,java.lang.Object)
@@ -6793,7 +6793,7 @@ com.tesla.framework.R$color: int accent_material_light
 com.tesla.framework.R$attr: int titleTextStyle
 com.tesla.framework.component.logger.output.DiskLogStrategy$WriteHandler: DiskLogStrategy$WriteHandler(android.os.Looper,java.lang.String,int)
 com.tesla.framework.R$styleable: int QMUITabSegment_qmui_tab_icon_position
-com.github.florent37.viewanimator.ViewAnimator$1: void onAnimationCancel(android.animation.Animator)
+com.tesla.framework.component.animate.ViewAnimator$1: void onAnimationCancel(android.animation.Animator)
 com.tesla.framework.R$style: int ThemeOverlay_MaterialComponents_AutoCompleteTextView
 com.tesla.framework.R$style: int Base_V14_Theme_MaterialComponents_Light_Dialog
 com.tesla.framework.R$color: int material_slider_active_track_color
@@ -6808,7 +6808,7 @@ com.tesla.framework.R$attr: int QMUILoadingStyle
 com.tesla.framework.R$styleable: int ActionBar_popupTheme
 com.tesla.framework.applike.FApplication: android.content.Context getContext()
 com.tesla.framework.R$layout: int notification_media_action
-com.github.florent37.viewanimator.AnimationBuilder: float toDp(float)
+com.tesla.framework.component.animate.AnimationBuilder: float toDp(float)
 com.tesla.framework.ui.widget.CustomRoundTextView: void setNormalColor(int)
 com.tesla.framework.R$dimen: int mtrl_alert_dialog_background_inset_bottom
 com.tesla.framework.R$layout: int notification_template_lines
@@ -6833,7 +6833,7 @@ com.tesla.framework.R$attr: int colorAccent
 com.tesla.framework.R$styleable: int TabLayout_tabIndicatorHeight
 com.tesla.framework.R$styleable: int FlowLayout_itemSpacing
 com.tesla.framework.R$styleable: int RoundTextView_rv_cornerRadius_TR
-com.github.florent37.viewanimator.AnimationBuilder$3: AnimationBuilder$3(com.github.florent37.viewanimator.AnimationBuilder)
+com.tesla.framework.component.animate.AnimationBuilder$3: AnimationBuilder$3(com.tesla.framework.component.animate.AnimationBuilder)
 com.tesla.framework.R$attr: int qmui_refresh_end_offset
 com.tesla.framework.R$attr: int qmui_shadowElevation
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_layout_constraintStart_toEndOf
@@ -6854,7 +6854,7 @@ com.tesla.framework.R$attr: int maxWidth
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_flow_horizontalStyle
 com.tesla.framework.R$anim: int abc_slide_out_top
 com.tesla.framework.common.util.ColorUtil: int modifyAlpha(int,float)
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.AnimationBuilder thenAnimate(android.view.View[])
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.AnimationBuilder thenAnimate(android.view.View[])
 com.tesla.framework.R$attr: int qmui_statusBarScrim
 com.tesla.framework.R$styleable: int ConstraintSet_layout_constraintBottom_creator
 com.tesla.framework.R$styleable: int Layout_layout_constraintRight_toRightOf
@@ -6875,7 +6875,7 @@ com.tesla.framework.R$attr: int maxHeight
 com.tesla.framework.R$styleable: int Layout_layout_constraintHeight_default
 com.tesla.framework.R$attr: int qmui_bottomDividerHeight
 com.tesla.framework.DataBinderMapperImpl: int getLayoutId(java.lang.String)
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder fadeIn()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder fadeIn()
 com.tesla.framework.R$styleable: int TextAppearance_android_textStyle
 com.tesla.framework.component.handler.FMessageQueue: java.util.concurrent.locks.Condition notFull
 com.tesla.framework.R$styleable: int AppCompatTheme_listChoiceIndicatorMultipleAnimated
@@ -7029,7 +7029,7 @@ com.tesla.framework.R$styleable: int SearchView_defaultQueryHint
 com.tesla.framework.ui.fragment.BaseDatebindingFragment: com.tesla.framework.support.bean.DataBindingConfig getDataBindingConfig()
 com.tesla.framework.R$attr: int qmui_skin_support_tip_dialog_text_color
 com.tesla.framework.R$dimen: int abc_action_button_min_width_material
-com.github.florent37.viewanimator.AnimationBuilder: android.view.View[] views
+com.tesla.framework.component.animate.AnimationBuilder: android.view.View[] views
 com.tesla.framework.R$style: int ThemeOverlay_AppCompat_Dark_ActionBar
 com.tesla.framework.component.livedata.callback.ProtectedUnPeekLiveData: java.util.concurrent.atomic.AtomicInteger access$000(com.tesla.framework.component.livedata.callback.ProtectedUnPeekLiveData)
 com.tesla.framework.component.imageloader.ImageLoaderOptions: boolean blurImage
@@ -7052,7 +7052,7 @@ com.tesla.framework.R$attr: int qmui_topbar_height
 com.tesla.framework.R$styleable: int TextAppearance_android_textColorLink
 com.tesla.framework.R$string: int mtrl_picker_range_header_unselected
 com.tesla.framework.performance.omagnifier.FrameViewer$MovingTouchListener: int initialX
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder pivotY(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder pivotY(float[])
 com.tesla.framework.component.logger.format.PrettyFormatStrategy: char MIDDLE_CORNER
 com.tesla.framework.performance.omagnifier.FPSMonitor: com.tesla.framework.performance.omagnifier.FrameViewer frameViewer
 com.tesla.framework.R$styleable: int QMUILayout_android_minWidth
@@ -7064,10 +7064,10 @@ com.tesla.framework.R$styleable: int MenuView_preserveIconSpacing
 com.tesla.framework.R$styleable: int BaseProgressIndicator_trackColor
 com.tesla.framework.R$attr: int qmui_skin_support_pull_load_more_loading_tint_color
 com.tesla.framework.R$styleable: int OnSwipe_dragDirection
-com.github.florent37.viewanimator.ViewAnimator$1: void onAnimationRepeat(android.animation.Animator)
+com.tesla.framework.component.animate.ViewAnimator$1: void onAnimationRepeat(android.animation.Animator)
 com.tesla.framework.R$style: int Theme_Design_NoActionBar
 com.tesla.framework.R$attr: int round_stroke_color
-com.github.florent37.viewanimator.AnimationListener$Start
+com.tesla.framework.component.animate.AnimationListener$Start
 com.tesla.framework.R$styleable: int AppCompatTextView_android_textAppearance
 com.tesla.framework.kt.ColorUtil: int[][] getPRIMARY_COLORS_SUB()
 com.tesla.framework.kt.ExtensionsKt: float getSp(int)
@@ -7267,7 +7267,7 @@ com.tesla.framework.R$string: int material_timepicker_select_time
 com.tesla.framework.component.startup.StartupManager: java.util.List getMainResult$fastFramework_release()
 com.tesla.framework.R$attr: int chipStyle
 com.tesla.framework.R$attr: int customColorDrawableValue
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder fall()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder fall()
 com.tesla.framework.R$id: int asConfigured
 com.tesla.framework.R$attr: int firstBaselineToTopHeight
 com.tesla.framework.R$attr: int indeterminateProgressStyle
@@ -7319,7 +7319,7 @@ com.tesla.framework.R$anim: int shrink_from_topleft_to_bottomright
 com.tesla.framework.ui.activity.BaseActivity: androidx.appcompat.widget.Toolbar mToolbar
 com.tesla.framework.R$styleable: int AlertDialog_buttonIconDimen
 com.drakeet.purewriter.widget.StretchEdgeEffect: android.view.View getView()
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder bounceOut()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder bounceOut()
 com.tesla.framework.component.livedata.SingleLiveEvent: java.util.concurrent.atomic.AtomicBoolean access$000(com.tesla.framework.component.livedata.SingleLiveEvent)
 com.tesla.framework.R$styleable: int Transform_android_rotation
 com.tesla.framework.R$attr: int QMUISeekBarStyle
@@ -7355,7 +7355,7 @@ com.tesla.framework.performance.omagnifier.MemoryMonitorConfig$Builder: MemoryMo
 com.tesla.framework.ui.activity.BaseVmActivity: boolean OnToolbarDoubleClick()
 com.tesla.framework.R$styleable: int QMUILoadingView_qmui_loading_view_size
 com.tesla.framework.R$layout: int abc_action_menu_item_layout
-com.github.florent37.viewanimator.AnimationBuilder: android.view.View[] getViews()
+com.tesla.framework.component.animate.AnimationBuilder: android.view.View[] getViews()
 com.tesla.framework.ui.fragment.BaseVMFragment: void onDestroyView()
 com.tesla.framework.R$styleable: int GradientColor_android_startY
 com.tesla.framework.R$integer
@@ -7386,7 +7386,7 @@ com.tesla.framework.R$styleable: int AppCompatTheme_buttonBarNegativeButtonStyle
 com.tesla.framework.common.util.anim.AnimationUtil: java.lang.String PROPERTY_SCALE_y
 com.tesla.framework.R$attr: int paddingBottomNoButtons
 com.tesla.framework.databinding.FragmentTablayoutBindingImpl
-com.github.florent37.viewanimator.AnimationBuilder$1: void onAnimationUpdate(android.animation.ValueAnimator)
+com.tesla.framework.component.animate.AnimationBuilder$1: void onAnimationUpdate(android.animation.ValueAnimator)
 com.tesla.framework.R$drawable: int abc_btn_radio_material
 com.tesla.framework.R$attr: int textAppearanceBody2
 com.tesla.framework.R$styleable: int Layout_layout_constraintGuide_percent
@@ -7396,7 +7396,7 @@ com.tesla.framework.R$style: int Base_V7_Widget_AppCompat_EditText
 com.tesla.framework.common.util.toast.ToastCompat: void setText(java.lang.CharSequence)
 com.tesla.framework.component.eventbus.SubsribeMethod: com.tesla.framework.component.eventbus.Subscribe getSubscribe()
 com.tesla.framework.databinding.LibraryBottomDialogBinding: android.widget.ImageView bottomDialogIcon
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder fadeOut()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder fadeOut()
 com.tesla.framework.R$color: int bright_foreground_inverse_material_dark
 com.tesla.framework.R$styleable: int Constraint_motionStagger
 com.tesla.framework.R$styleable: int TextAppearance_android_typeface
@@ -7430,7 +7430,7 @@ com.tesla.framework.R$attr: int qmui_skin_support_bottom_sheet_list_red_point_co
 com.tesla.framework.R$style: int Widget_MaterialComponents_Snackbar
 com.tesla.framework.R$styleable: int Spinner_android_prompt
 com.tesla.framework.R$styleable: int ActionBar_subtitleTextStyle
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder scaleY(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder scaleY(float[])
 com.tesla.framework.R$id: int fade
 timber.log.Timber$Tree: java.lang.String getTag$fastFramework_release()
 com.tesla.framework.R$styleable: int MaterialComponentsTheme_colorPrimary
@@ -7576,7 +7576,7 @@ com.tesla.framework.R$attr: int textAppearanceSubtitle1
 com.tesla.framework.R$styleable: int[] StateSet
 com.tesla.framework.R$styleable: int TabLayout_tabUnboundedRipple
 com.tesla.framework.R$style: int EmptyTheme
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder flipVertical()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder flipVertical()
 com.tesla.framework.R$style: int Theme_MaterialComponents_Light_LargeTouch
 com.tesla.framework.R$attr: int checkedChip
 com.tesla.framework.R$attr: int hintTextColor
@@ -7614,7 +7614,7 @@ com.tesla.framework.component.logger.output.DiskLogStrategy$WriteHandler: java.i
 com.tesla.framework.R$attr: int toolbarNavigationButtonStyle
 com.tesla.framework.databinding.CommUiFragmentContainerBinding: com.tesla.framework.databinding.CommUiFragmentContainerBinding bind(android.view.View)
 com.tesla.framework.ui.widget.edgeeffect.GlowingEdgeEffect: int STATE_RECEDE
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder shake()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder shake()
 com.tesla.framework.R$styleable: int LinearLayoutCompat_Layout_android_layout_gravity
 com.tesla.framework.kt.ColorUtil: int setColor$lambda-2(com.tesla.framework.kt.SPreference)
 com.tesla.framework.databinding.CommUiTabsTablayoutBinding: CommUiTabsTablayoutBinding(android.widget.LinearLayout,com.google.android.material.tabs.TabLayout,androidx.viewpager.widget.ViewPager)
@@ -7650,7 +7650,7 @@ com.tesla.framework.R$styleable: int ConstraintSet_layout_constraintWidth_min
 com.tesla.framework.R$anim: int grow_from_bottom
 com.tesla.framework.R$styleable: int MockView_mock_labelBackgroundColor
 com.tesla.framework.R$styleable: int Slider_thumbStrokeWidth
-com.github.florent37.viewanimator.ViewAnimator: android.animation.AnimatorSet access$400(com.github.florent37.viewanimator.ViewAnimator)
+com.tesla.framework.component.animate.ViewAnimator: android.animation.AnimatorSet access$400(com.tesla.framework.component.animate.ViewAnimator)
 com.tesla.framework.R$dimen: int design_bottom_navigation_elevation
 com.tesla.framework.R$dimen: int mtrl_navigation_item_icon_size
 com.tesla.framework.ui.activity.BaseStatusActivity: void showBadNetworkView(android.view.View$OnClickListener)
@@ -7670,15 +7670,15 @@ com.tesla.framework.R$attr: int qmui_skin_support_activity_background
 com.tesla.framework.R$id: int left
 com.tesla.framework.R$styleable: int ConstraintSet_layout_constraintLeft_toLeftOf
 com.tesla.framework.R$styleable: int GradientColor_android_type
-com.github.florent37.viewanimator.ViewAnimator: android.view.View access$500(com.github.florent37.viewanimator.ViewAnimator)
-com.github.florent37.viewanimator.ViewAnimator: int repeatMode
+com.tesla.framework.component.animate.ViewAnimator: android.view.View access$500(com.tesla.framework.component.animate.ViewAnimator)
+com.tesla.framework.component.animate.ViewAnimator: int repeatMode
 com.tesla.framework.component.startup.Group
 com.drakeet.years.widget.CustomLayout: int getMeasuredHeightWithMargins(android.view.View)
 com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createSyncSamplers$immediateHeapSampler$1: void invoke(com.tesla.framework.performance.omagnifier.HeapMemoryInfo)
 com.tesla.framework.R$styleable: int CollapsingToolbarLayout_title
 com.tesla.framework.R$styleable: int RadialViewGroup_materialCircleRadius
 com.tesla.framework.R$id: int view_tree_view_model_store_owner
-com.github.florent37.viewanimator.AnimationBuilder$3: com.github.florent37.viewanimator.AnimationBuilder this$0
+com.tesla.framework.component.animate.AnimationBuilder$3: com.tesla.framework.component.animate.AnimationBuilder this$0
 com.tesla.framework.R$id: int material_timepicker_view
 com.tesla.framework.R$styleable: int ConstraintSet_barrierDirection
 com.tesla.framework.R$attr: int coordinatorLayoutStyle
@@ -7694,7 +7694,7 @@ com.tesla.framework.R$styleable: int NavigationView_itemIconSize
 com.tesla.framework.R$style: int Widget_MaterialComponents_TimePicker_Button
 com.tesla.framework.component.startup.Startup: void create(android.content.Context)
 com.tesla.framework.R$dimen: int mtrl_btn_padding_bottom
-com.github.florent37.viewanimator.ViewAnimator$1
+com.tesla.framework.component.animate.ViewAnimator$1
 com.tesla.framework.R$styleable: int Constraint_barrierAllowsGoneWidgets
 com.tesla.framework.R$styleable: int QMUICollapsingTopBarLayout_qmui_expandedTitleTextAppearance
 com.tesla.framework.R$styleable: int QMUIDialogActionStyleDef_android_textStyle
@@ -7877,7 +7877,7 @@ com.tesla.framework.ui.fragment.BaseDatebindingFragment: void onDetach()
 com.tesla.framework.R$color: int mtrl_calendar_item_stroke_color
 com.tesla.framework.R$styleable: int ExtendedFloatingActionButton_Behavior_Layout_behavior_autoHide
 com.tesla.framework.R$id: int showCustom
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder bounce()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder bounce()
 com.tesla.framework.R$attr: int listPreferredItemPaddingStart
 com.tesla.framework.R$color: int material_blue_grey_900
 com.tesla.framework.ui.widget.CustomRoundTextView: void setTopRightRadius(float)
@@ -7937,7 +7937,7 @@ com.tesla.framework.support.KidsException: java.lang.String message
 com.tesla.framework.R$integer: int bottom_sheet_slide_duration
 com.tesla.framework.common.device.DeviceName$Request
 com.tesla.framework.R$style: int TextAppearance_MaterialComponents_Headline6
-com.github.florent37.viewanimator.AnimationBuilder$4: com.github.florent37.viewanimator.AnimationBuilder this$0
+com.tesla.framework.component.animate.AnimationBuilder$4: com.tesla.framework.component.animate.AnimationBuilder this$0
 com.tesla.framework.databinding.CommUiRecycleviewNewBindingImpl: boolean onFieldChange(int,java.lang.Object,int)
 com.tesla.framework.R$id: int anylayler_notification_content_label
 com.tesla.framework.R$styleable: int CircularProgressIndicator_indicatorDirectionCircular
@@ -7949,7 +7949,7 @@ com.tesla.framework.R$interpolator
 com.tesla.framework.R$styleable: int QMUICollapsingTopBarLayout_qmui_scrimVisibleHeightTrigger
 com.tesla.framework.R$styleable: int[] QMUIDialogMessageTvCustomDef
 com.tesla.framework.R$styleable: int QMUIProgressBar_android_textSize
-com.github.florent37.viewanimator.ViewAnimator: int REVERSE
+com.tesla.framework.component.animate.ViewAnimator: int REVERSE
 com.tesla.framework.R$id: int item_touch_helper_previous_elevation
 com.tesla.framework.R$styleable: int QMUILayout_qmui_leftDividerInsetBottom
 com.tesla.framework.R$styleable: int Constraint_layout_constraintBottom_creator
@@ -7974,7 +7974,7 @@ com.tesla.framework.ui.activity.BaseStatusActivity: android.view.View loadingVie
 com.tesla.framework.performance.omagnifier.Magnifier: Magnifier()
 com.tesla.framework.R$styleable: int AppCompatTheme_colorPrimary
 com.tesla.framework.R$styleable: int KeyTrigger_triggerId
-com.github.florent37.viewanimator.ViewAnimator: int RESTART
+com.tesla.framework.component.animate.ViewAnimator: int RESTART
 com.tesla.framework.common.util.AnimateUtil: android.animation.Animator y(android.view.View,int,int)
 com.tesla.framework.component.startup.StartupManager: java.util.List ioResult
 com.tesla.framework.support.bean.TabItem: java.lang.String type
@@ -7994,7 +7994,7 @@ com.tesla.framework.R$dimen: int abc_dialog_list_padding_vertical_material
 com.tesla.framework.R$styleable: int ConstraintSet_layout_constraintBaseline_creator
 com.tesla.framework.R$attr: int flow_verticalBias
 com.tesla.framework.R$attr: int circularProgressIndicatorStyle
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.AnimationListener$Stop stopListener
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.AnimationListener$Stop stopListener
 com.tesla.framework.databinding.TitleBarBinding: android.widget.LinearLayout getRoot()
 com.tesla.framework.R$attr: int switchStyle
 com.tesla.framework.R$styleable: int ActionMode_closeItemLayout
@@ -8025,7 +8025,7 @@ com.tesla.framework.R$dimen: int sp_13
 com.tesla.framework.R$id: int anylayer_float_position
 com.tesla.framework.R$style: int QMUI_GroupListSectionView
 com.tesla.framework.R$color: int anylayer_notification_title_text_color
-com.github.florent37.viewanimator.ViewAnimator$2: com.github.florent37.viewanimator.ViewAnimator this$0
+com.tesla.framework.component.animate.ViewAnimator$2: com.tesla.framework.component.animate.ViewAnimator this$0
 com.tesla.framework.component.imageloader.ImageLoaderManager: java.lang.String getImagePahtFromCache(java.lang.String)
 com.tesla.framework.R$styleable: int TextInputLayout_counterOverflowTextColor
 com.tesla.framework.component.eventbus.FastBus: com.tesla.framework.component.eventbus.FastBus getInstance()
@@ -8063,7 +8063,7 @@ com.tesla.framework.R$styleable: int Chip_chipStrokeWidth
 com.tesla.framework.component.logger.Logger: void i(java.lang.String,java.lang.Object[])
 com.tesla.framework.R$styleable: int Chip_android_text
 com.tesla.framework.R$id: int layoutLoadFailed
-com.github.florent37.viewanimator.AnimationBuilder$2: void update(android.view.View,float)
+com.tesla.framework.component.animate.AnimationBuilder$2: void update(android.view.View,float)
 com.tesla.framework.R$attr: int qmui_skin_support_tip_dialog_icon_success_src
 com.tesla.framework.R$dimen: int highlight_alpha_material_light
 com.tesla.framework.performance.omagnifier.MemoryMonitorConfig
@@ -8087,7 +8087,7 @@ com.tesla.framework.databinding.CommUiRecycleviewNewBinding: com.tesla.framework
 com.tesla.framework.R$color: int material_timepicker_button_background
 com.tesla.framework.R$attr: int civ_border_color
 com.tesla.framework.R$styleable: int QMUITextAppearance_android_textColor
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder textColor(int[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder textColor(int[])
 com.tesla.framework.R$color: int mtrl_popupmenu_overlay_color
 com.tesla.framework.R$attr: int nullable
 com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBindingImpl
@@ -8116,7 +8116,7 @@ com.tesla.framework.R$dimen: int abc_action_bar_stacked_tab_max_width
 com.tesla.framework.R$dimen: int qmui_tab_sign_count_view_min_size_with_text
 com.tesla.framework.R$attr: int qmui_expandedTitleMarginStart
 com.tesla.framework.R$style: int Theme_AppCompat_DialogWhenLarge
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder interpolator(android.view.animation.Interpolator)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder interpolator(android.view.animation.Interpolator)
 com.tesla.framework.R$attr: int qmui_tab_select_no_animation
 com.tesla.framework.R$id: int image
 com.tesla.framework.R$attr: int minWidth
@@ -8172,7 +8172,7 @@ com.tesla.framework.R$style: int Base_Widget_AppCompat_EditText
 com.tesla.framework.R$id: int accessibility_action_clickable_span
 com.tesla.framework.R$styleable: int Motion_pathMotionArc
 com.tesla.framework.R$styleable: int BottomSheetBehavior_Layout_behavior_draggable
-com.github.florent37.viewanimator.AnimationBuilder$3: void update(android.view.View,float)
+com.tesla.framework.component.animate.AnimationBuilder$3: void update(android.view.View,float)
 com.tesla.framework.R$style: int Widget_MaterialComponents_Chip_Entry
 com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createSyncSamplers$immediateFileSampler$1: void invoke(com.tesla.framework.performance.omagnifier.FileDescriptorInfo)
 com.tesla.framework.R$styleable: int MaterialButtonToggleGroup_checkedButton
@@ -8181,7 +8181,7 @@ com.tesla.framework.R$styleable: int ShapeAppearance_cornerSizeTopRight
 com.tesla.framework.R$styleable: int MaterialButton_iconTint
 com.tesla.framework.R$styleable: int SwitchMaterial_useMaterialThemeColors
 com.tesla.framework.R$attr: int qmui_empty_view_btn_normal_margin_top
-com.github.florent37.viewanimator.AnimationBuilder: android.view.animation.Interpolator singleInterpolator
+com.tesla.framework.component.animate.AnimationBuilder: android.view.animation.Interpolator singleInterpolator
 com.tesla.framework.ui.widget.CircleImageView: void onSizeChanged(int,int,int,int)
 com.tesla.framework.R$drawable: int qmui_icon_notify_error
 com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Companion
@@ -8198,7 +8198,7 @@ com.tesla.framework.component.BizFragment: BizFragment()
 com.tesla.framework.R$animator: int fragment_fade_enter
 com.tesla.framework.support.KidsException: KidsException(java.lang.Throwable)
 com.tesla.framework.R$animator: R$animator()
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder slideLeftIn()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder slideLeftIn()
 com.tesla.framework.R$attr: int textAppearanceHeadline4
 com.tesla.framework.R$styleable: int Layout_android_orientation
 com.tesla.framework.R$dimen: int mtrl_calendar_day_width
@@ -8496,7 +8496,7 @@ com.tesla.framework.R$style: int Theme_MaterialComponents_Light_Dialog
 com.tesla.framework.R$id: int left_center
 com.tesla.framework.R$style: int Theme_AppCompat_Light_Dialog
 com.tesla.framework.component.livedata.LiveDataBus$StickyLiveData$1: LiveDataBus$StickyLiveData$1(com.tesla.framework.component.livedata.LiveDataBus$StickyLiveData)
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.ViewAnimator repeatMode(int)
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.ViewAnimator repeatMode(int)
 com.tesla.framework.component.startup.TimeListener: void itemCost(java.lang.String,long,java.lang.String)
 com.tesla.framework.R: R()
 com.tesla.framework.R$style: int ShapeAppearanceOverlay_MaterialComponents_Chip
@@ -8536,7 +8536,7 @@ com.tesla.framework.R$string: int mtrl_picker_range_header_only_start_selected
 com.tesla.framework.R$styleable: int View_paddingStart
 com.tesla.framework.R$styleable: int ActionBar_progressBarStyle
 com.tesla.framework.R$attr: int motionDebug
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.AnimationBuilder addAnimationBuilder(android.view.View[])
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.AnimationBuilder addAnimationBuilder(android.view.View[])
 com.tesla.framework.databinding.CommUiFragmentContainerBinding: android.widget.LinearLayout getRoot()
 com.tesla.framework.R$attr: int maxImageSize
 com.tesla.framework.R$style: int Base_V14_Theme_MaterialComponents_Light_Dialog_Bridge
@@ -8603,7 +8603,7 @@ com.tesla.framework.R$attr: int colorSwitchThumbNormal
 com.tesla.framework.R$styleable: int KeyTrigger_onNegativeCross
 com.tesla.framework.R$drawable: int abc_ic_star_black_36dp
 com.tesla.framework.R$style: int RtlOverlay_Widget_AppCompat_PopupMenuItem
-com.github.florent37.viewanimator.AnimationBuilder$4: void update(android.view.View,float)
+com.tesla.framework.component.animate.AnimationBuilder$4: void update(android.view.View,float)
 com.tesla.framework.R$attr: int qmui_dialog_background_dim_amount
 com.tesla.framework.R$styleable: int QMUIProgressBar_qmui_type
 com.tesla.framework.performance.omagnifier.HeapMetricCollector: int K
@@ -8623,14 +8623,14 @@ com.tesla.framework.databinding.TitleBarBinding: TitleBarBinding(android.widget.
 com.tesla.framework.R$attr: int qmui_tab_sign_count_view_min_size
 com.tesla.framework.ui.fragment.BaseVMFragment: void addDisposable(io.reactivex.rxjava3.disposables.Disposable)
 com.tesla.framework.performance.omagnifier.FrameCalculator: long THRESHOLD_IN_MS
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder slideRightIn()
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder slideRightIn()
 com.tesla.framework.R$attr: int qmui_skin_support_s_dialog_check_drawable
 com.tesla.framework.R$styleable: int Transition_staggered
 com.tesla.framework.R$id: int txtLoadFailed
 com.tesla.framework.R$attr: int materialAlertDialogTitleTextStyle
 com.tesla.framework.R$style: int TextAppearance_Design_Error
 com.tesla.framework.common.device.DeviceName$DeviceInfo: java.lang.String getName()
-com.github.florent37.viewanimator.AnimationBuilder$2
+com.tesla.framework.component.animate.AnimationBuilder$2
 com.tesla.framework.component.livedata.callback.ProtectedUnPeekLiveData$ObserverWrapper: ProtectedUnPeekLiveData$ObserverWrapper(com.tesla.framework.component.livedata.callback.ProtectedUnPeekLiveData,androidx.lifecycle.Observer,int)
 com.tesla.framework.performance.omagnifier.MemorySamplersFactory$createAsyncSamplers$topHitThreadNeedSampleFunc$1: MemorySamplersFactory$createAsyncSamplers$topHitThreadNeedSampleFunc$1(com.tesla.framework.performance.omagnifier.MemoryMonitorConfig)
 com.tesla.framework.ui.activity.BaseDatabindingActivity: int getLayoutId()
@@ -8697,7 +8697,7 @@ com.tesla.framework.R$dimen: int mtrl_calendar_day_today_stroke
 com.tesla.framework.common.util.ListMultiMap: void clear()
 com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder: com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder mediumPercentage(float)
 com.tesla.framework.common.util.view.drawable.DrawableCompatUtil: android.graphics.drawable.Drawable tintDrawable(android.graphics.drawable.Drawable,android.content.res.ColorStateList)
-com.github.florent37.viewanimator.ViewAnimator: android.view.View waitForThisViewHeight
+com.tesla.framework.component.animate.ViewAnimator: android.view.View waitForThisViewHeight
 com.tesla.framework.common.util.log.Logger: int trace
 com.tesla.framework.R$styleable: int MenuView_android_verticalDivider
 com.tesla.framework.R$attr: int behavior_autoShrink
@@ -8713,9 +8713,9 @@ com.tesla.framework.R$color: int mtrl_tabs_colored_ripple_color
 com.tesla.framework.R$anim: int btn_radio_to_on_mtrl_dot_group_animation
 com.drakeet.purewriter.widget.StretchEdgeEffect: long mStartTime
 com.tesla.framework.R$attr: int thumbStrokeColor
-com.github.florent37.viewanimator.AnimationBuilder$1: com.github.florent37.viewanimator.AnimationListener$Update val$update
+com.tesla.framework.component.animate.AnimationBuilder$1: com.tesla.framework.component.animate.AnimationListener$Update val$update
 com.tesla.framework.databinding.CommLayLoadfailedBinding: android.view.View getRoot()
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.ViewAnimator next
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.ViewAnimator next
 com.tesla.framework.common.device.DeviceName$Request$GetDeviceRunnable$1: DeviceName$Request$GetDeviceRunnable$1(com.tesla.framework.common.device.DeviceName$Request$GetDeviceRunnable)
 com.tesla.framework.component.livedata.SingleLiveEvent: void observe(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Observer)
 com.tesla.framework.R$styleable: int MaterialCalendar_dayTodayStyle
@@ -8765,7 +8765,7 @@ com.tesla.framework.DataBinderMapperImpl: int LAYOUT_COMMUIRECYCLEVIEWSWIPEREFRE
 com.tesla.framework.R$styleable: int QMUITopBar_qmui_topbar_subtitle_color
 com.tesla.framework.R$string: int mtrl_picker_day_of_week_column_header
 com.tesla.framework.R$styleable: int ConstraintSet_layout_constraintRight_creator
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.ViewAnimator onStart(com.github.florent37.viewanimator.AnimationListener$Start)
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.ViewAnimator onStart(com.tesla.framework.component.animate.AnimationListener$Start)
 com.tesla.framework.R$attr: int targetId
 com.tesla.framework.R$attr: int layout_constraintBottom_creator
 com.tesla.framework.R$color: int anylayer_text_color_second
@@ -8780,7 +8780,7 @@ com.tesla.framework.R$styleable: int NavigationView_shapeAppearance
 com.tesla.framework.component.logger.Utils: java.lang.String logLevel(int)
 com.tesla.framework.R$style: int Widget_MaterialComponents_Toolbar
 com.tesla.framework.databinding.CommUiTabsBinding
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder rotationY(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder rotationY(float[])
 com.tesla.framework.ui.fragment.BaseFragment: android.view.View findViewById(int)
 com.tesla.framework.common.device.DeviceName$Callback: void onFinished(com.tesla.framework.common.device.DeviceName$DeviceInfo,java.lang.Exception)
 com.tesla.framework.R$integer: int config_navAnimTime
@@ -8891,7 +8891,7 @@ com.tesla.framework.R$styleable: int Toolbar_titleTextAppearance
 com.tesla.framework.R$attr: int qmui_content_padding_horizontal
 com.tesla.framework.ui.widget.drawable.CircleImageDrawable: int mWidth
 com.tesla.framework.ui.fragment.ARecycleViewFragmentNew: com.chad.library.adapter.base.BaseQuickAdapter createAdapter()
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder scale(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder scale(float[])
 com.tesla.framework.R$styleable: int[] ExtendedFloatingActionButton
 com.tesla.framework.R$attr: int qmui_topbar_text_btn_text_size
 com.tesla.framework.R$styleable: int FloatingActionButton_showMotionSpec
@@ -8901,7 +8901,7 @@ com.tesla.framework.R$styleable: int[] BottomAppBar
 com.tesla.framework.R$attr: int qmui_auto_calculate_refresh_init_offset
 com.tesla.framework.R$styleable: int ConstraintSet_android_alpha
 com.tesla.framework.component.imageloader.ImageLoaderOptions$Builder: com.tesla.framework.component.imageloader.ImageLoaderOptions$Builder wifiStrategy(int)
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder path(android.graphics.Path)
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder path(android.graphics.Path)
 com.tesla.framework.R$attr: int menu
 com.tesla.framework.R$id: int layLoading
 com.tesla.framework.component.eventbus.ThreadMode: ThreadMode(java.lang.String,int)
@@ -9019,7 +9019,7 @@ com.tesla.framework.R$styleable: int QMUIDialogMenuCheckDef_qmui_dialog_menu_ite
 com.tesla.framework.R$id: int bottomDialog_title
 com.tesla.framework.R$string: int abc_menu_alt_shortcut_label
 com.tesla.framework.databinding.CommUiRecycleviewNewBindingImpl: androidx.databinding.ViewDataBinding$IncludedLayouts sIncludes
-com.github.florent37.viewanimator.ViewAnimator$2: ViewAnimator$2(com.github.florent37.viewanimator.ViewAnimator)
+com.tesla.framework.component.animate.ViewAnimator$2: ViewAnimator$2(com.tesla.framework.component.animate.ViewAnimator)
 com.tesla.framework.applike.FApplication: java.lang.String getFilePath()
 com.tesla.framework.R$dimen: int notification_large_icon_height
 com.tesla.framework.R$string: int mtrl_picker_toggle_to_year_selection
@@ -9051,7 +9051,7 @@ com.tesla.framework.ui.widget.CircleImageView: void setBorderWidth(int)
 com.tesla.framework.component.logger.format.PrettyFormatStrategy: PrettyFormatStrategy(com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder,com.tesla.framework.component.logger.format.PrettyFormatStrategy$1)
 com.tesla.framework.R$drawable: int abc_switch_thumb_material
 com.tesla.framework.R$color: int cardview_light_background
-com.github.florent37.viewanimator.AnimationBuilder: boolean waitForHeight
+com.tesla.framework.component.animate.AnimationBuilder: boolean waitForHeight
 com.tesla.framework.R$style: int Theme_MaterialComponents_Dialog_MinWidth_Bridge
 com.tesla.framework.R$string: int material_timepicker_pm
 com.tesla.framework.common.util.HttpsCompat$Tls12SocketFactory: javax.net.ssl.SSLSocketFactory delegate
@@ -9089,7 +9089,7 @@ com.tesla.framework.R$attr: int qmui_radiusBottomRight
 com.tesla.framework.R$style: int Base_TextAppearance_AppCompat_Widget_Button
 com.tesla.framework.ui.activity.BaseVmActivityNew: androidx.lifecycle.ViewModelProvider mActivityProvider
 com.tesla.framework.R$attr: int dialogTheme
-com.github.florent37.viewanimator.AnimationBuilder$4
+com.tesla.framework.component.animate.AnimationBuilder$4
 com.tesla.framework.R$style: int QMUI_Dialog_EditContent
 com.tesla.framework.R$id: int outward
 com.tesla.framework.R$style: int Base_V14_Theme_MaterialComponents_Light
@@ -9197,7 +9197,7 @@ com.tesla.framework.R$id: int motion_base
 com.tesla.framework.R$attr: int flow_firstHorizontalBias
 com.tesla.framework.R$attr: int qmui_skin_support_s_dialog_menu_item_bg
 com.tesla.framework.R$styleable: int MaterialAlertDialogTheme_materialAlertDialogTitleTextStyle
-com.github.florent37.viewanimator.AnimationBuilder: com.github.florent37.viewanimator.AnimationBuilder alpha(float[])
+com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder alpha(float[])
 com.tesla.framework.R$styleable: int[] NavArgument
 com.tesla.framework.ui.activity.BaseVmActivityNew: androidx.appcompat.widget.Toolbar getToolbar()
 com.tesla.framework.R$styleable: int TabLayout_tabIndicatorAnimationDuration
@@ -9229,7 +9229,7 @@ com.tesla.framework.component.logger.format.PrettyFormatStrategy: java.lang.Stri
 com.tesla.framework.R$style: int TextAppearance_AppCompat_SearchResult_Title
 com.tesla.framework.component.imageloader.ImageLoaderOptions: boolean isBlurImage()
 com.tesla.framework.R$style: int Base_Theme_AppCompat_Dialog_MinWidth
-com.github.florent37.viewanimator.ViewAnimator: int repeatCount
+com.tesla.framework.component.animate.ViewAnimator: int repeatCount
 com.tesla.framework.R$style: int ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense
 com.tesla.framework.R$styleable: int ImageFilterView_contrast
 com.tesla.framework.R$styleable: int ViewBackgroundHelper_backgroundTint
@@ -9241,7 +9241,7 @@ com.tesla.framework.R$styleable: int TextAppearance_android_fontFamily
 com.tesla.framework.R$attr: int flow_horizontalStyle
 com.tesla.framework.R$layout: int design_text_input_password_icon
 com.tesla.framework.common.util.ColorUtil: boolean isBitmapDark(androidx.palette.graphics.Palette,android.graphics.Bitmap)
-com.github.florent37.viewanimator.ViewAnimator: android.view.animation.Interpolator interpolator
+com.tesla.framework.component.animate.ViewAnimator: android.view.animation.Interpolator interpolator
 timber.log.Timber: void i(java.lang.Throwable,java.lang.String,java.lang.Object[])
 com.tesla.framework.R$string: int abc_searchview_description_submit
 com.tesla.framework.R$dimen: int design_snackbar_padding_vertical_2lines
@@ -9367,7 +9367,7 @@ com.tesla.framework.R$styleable: int TextInputLayout_placeholderTextAppearance
 com.tesla.framework.R$attr: int layout_constraintHorizontal_chainStyle
 com.tesla.framework.R$attr: int cardCornerRadius
 com.tesla.framework.R$attr: int itemIconPadding
-com.github.florent37.viewanimator.ViewAnimator: com.github.florent37.viewanimator.ViewAnimator onStop(com.github.florent37.viewanimator.AnimationListener$Stop)
+com.tesla.framework.component.animate.ViewAnimator: com.tesla.framework.component.animate.ViewAnimator onStop(com.tesla.framework.component.animate.AnimationListener$Stop)
 com.tesla.framework.R$styleable: int AppCompatTextView_drawableRightCompat
 com.tesla.framework.component.livedata.NetworkLiveData$NetworkLiveDataHolder: com.tesla.framework.component.livedata.NetworkLiveData$NetworkLiveDataHolder INSTANCE
 com.tesla.framework.ui.widget.KitkatViewGroup: void draw(android.graphics.Canvas)

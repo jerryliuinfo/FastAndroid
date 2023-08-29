@@ -9,7 +9,6 @@ import com.apache.fastandroid.demo.kt.inline.Doggo
 import com.apache.fastandroid.demo.kt.inline.DoggoId
 import com.tesla.framework.kt.MyDialog
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import kotlinx.android.synthetic.main.view_animator_activity_main.percent
 import kotlin.random.Random
 
 /**

@@ -1,4 +1,4 @@
-package com.github.florent37.viewanimator;
+package com.tesla.framework.component.animate;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -18,6 +18,7 @@ import androidx.annotation.IntRange;
 /**
  * Created by florentchampigny on 22/12/2015.
  * Modified by gzu-liyujiang on 24/01/2016.
+ * https://github.com/florent37/ViewAnimator
  */
 @SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
 public class ViewAnimator {

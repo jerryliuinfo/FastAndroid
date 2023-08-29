@@ -549,6 +549,11 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".demo.viewanimate.ViewAnimatorDemoFragment2"
+            android:exported="false"
+            />
+
         <!--
 
         https://developer.android.com/guide/topics/manifest/activity-element
