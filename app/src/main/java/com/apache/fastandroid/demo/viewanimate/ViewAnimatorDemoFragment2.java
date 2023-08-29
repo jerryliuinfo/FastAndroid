@@ -347,3 +347,4 @@ public class ViewAnimatorDemoFragment2 extends Activity {
     }
 
 }
+
