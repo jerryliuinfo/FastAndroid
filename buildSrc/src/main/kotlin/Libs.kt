@@ -11,7 +11,7 @@
 object AndroidX {
     const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
-    const val material = "com.google.android.material:material:${Versions.material}"
+    const val material  = "com.google.android.material:material:${Versions.material}"
     const val recyclerview = "androidx.recyclerview:recyclerview:1.2.0-alpha02"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
     const val swiperefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
@@ -157,7 +157,7 @@ object Libs {
 
 //        "ccom.facebook.network.connectionclass:connectionclass:1.0.1"
 //        "com.github.kirchbergerknorr:PingTools:1.0.4",
-         "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC1",
+//         "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC1",
         //ViewBinding: https://github.com/androidbroadcast/ViewBindingPropertyDelegate
 //         "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9"
 

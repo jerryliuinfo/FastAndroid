@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.component
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
+import com.apache.fastandroid.component.keyboard.KeyboardVisibilityDemoFragment
 import com.apache.fastandroid.component.timerecorder.AICheckEventListener
 import com.apache.fastandroid.component.timerecorder.data.AICheckTraceModel
 import com.apache.fastandroid.component.timerecorder.data.AIDataPoolImpl
@@ -66,6 +67,11 @@ class ComponentDemoFragment:BaseBindingFragment<FragmentComponentModeListBinding
         }
         mBinding.btnViewAnimator2.setOnClickListener {
             launchActivity<ViewAnimatorDemoFragment2>(requireContext())
+        }
+
+        mBinding.btnKeyboardVisibility.setOnClickListener {
+            requireActivity().launchFragment<KeyboardVisibilityDemoFragment>()
+
         }
 
 

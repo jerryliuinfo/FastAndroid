@@ -3,11 +3,9 @@ package com.tesla.framework.kt
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.app.Activity
-import android.app.Dialog
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.SharedPreferences
-import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Paint
 import android.graphics.Rect
@@ -15,12 +13,10 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import android.os.SystemClock
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
 import android.util.Log
-import android.util.TypedValue
 import android.view.*
 import android.widget.EditText
 import android.widget.FrameLayout
@@ -30,11 +26,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.*
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
-import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
@@ -46,9 +38,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import androidx.viewpager.widget.ViewPager
 import com.blankj.utilcode.util.ToastUtils
-import com.blankj.utilcode.util.Utils
 import com.google.android.material.snackbar.Snackbar
-import com.tesla.framework.R
 import com.tesla.framework.component.livedata.Event
 import com.tesla.framework.component.livedata.NetworkLiveData
 import com.tesla.framework.ui.activity.FragmentContainerActivity
@@ -62,11 +52,7 @@ import com.tesla.framework.component.log.Timber
 import java.lang.reflect.ParameterizedType
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.pow
-
-
-
-
+import kotlin.math.abs
 
 
 fun  Int.networkStatus(): String {
@@ -471,10 +457,28 @@ fun Paint.textCenterX(text: String, orginalCenterX: Float): Float {
     return (orginalCenterX - rect.width() / 2).toFloat()
 }
 
+/**
+ *
+ * @receiver Paint
+ * @param text String
+ * @param baseY Float 矩形中间位置
+ * @return Float
+ */
 fun Paint.textCenterY(text: String, baseY: Float): Float {
     val rect = Rect()
     getTextBounds(text, 0, text.length, rect)
     return baseY + rect.height() / 2
+}
+
+fun Paint.textCenterY2(text: String, baseY: Float): Float {
+    val centerY = baseY + (fontMetrics.bottom - fontMetrics.top) /2 - fontMetrics.bottom
+    return centerY
+}
+
+fun Paint.textCenterY3(text: String, baseY: Float): Float {
+    measureText(text)
+    val distance = abs(ascent() + descent()) / 2
+    return baseY + distance
 }
 
 

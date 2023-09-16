@@ -70,23 +70,6 @@ abstract class BaseListFragment: BaseBindingFragment<FragmentCustomViewBinding>(
             val viewItemBean = MODELS[position]
             holder.txtTitle.text = viewItemBean.title
             holder.txt_description.text = viewItemBean.description
-           /* holder.itemView.setOnClickListener {
-                if (viewItemBean.clazz == null && viewItemBean.activity == null){
-                    return@setOnClickListener
-                }
-                if (viewItemBean.clazz != null){
-                    val args = FragmentArgs.transToArgs(viewItemBean.args)
-                    args.add("title", viewItemBean.title)
-                    this@BaseListFragment.activity?.let { it1 ->
-                        FragmentContainerActivity.launch(
-                            it1,viewItemBean.clazz, args = args, addTitleBar = viewItemBean.addTitleBar)
-                    }
-                }else if (viewItemBean.activity != null){
-                    val intent = Intent(requireActivity(), viewItemBean.activity)
-                    startActivity(intent)
-                }
-
-            }*/
         }
 
         override fun getItemViewType(position: Int): Int {

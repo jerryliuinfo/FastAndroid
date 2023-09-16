@@ -26,12 +26,13 @@ import com.tesla.framework.ui.fragment.view.BaseView
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import com.tesla.framework.component.log.Timber
+import com.tesla.framework.ui.fragment.base.IDynamicView
 
 /**
  * Created by Jerry on 2022/3/10.
  */
 
-open abstract class BaseFragment:Fragment(),BaseView {
+open abstract class BaseFragment:Fragment(),BaseView,IDynamicView {
     private var isFirstLoad = true
     lateinit var mActivity: AppCompatActivity
     lateinit var mContext: Context
@@ -84,10 +85,19 @@ open abstract class BaseFragment:Fragment(),BaseView {
     }
 
 
+    private  var mDynamicView: IDynamicView ?= null
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mActivity = context as AppCompatActivity
         mContext = requireActivity().baseContext
+
+        mDynamicView = try {
+            context as IDynamicView?
+        }catch (e:Exception){
+            e.printStackTrace()
+            null
+        }
     }
 
     override fun onResume() {

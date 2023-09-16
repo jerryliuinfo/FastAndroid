@@ -34,6 +34,7 @@ class Person private constructor(builder: Builder):Cloneable {
         var age: Int? = null
         var address: String? = null
 
+
         internal constructor() {
 
         }
@@ -43,9 +44,6 @@ class Person private constructor(builder: Builder):Cloneable {
             this.address = person.address
         }
 
-
-
-
         fun setName(name: String) = apply { this.name = name }
 
         fun setAge(age: Int) = apply { this.age = age }
@@ -54,19 +52,6 @@ class Person private constructor(builder: Builder):Cloneable {
 
         fun build(): Person {
             return Person(this)
-        }
-    }
-}
-
-
-internal class MyHandler(activity: MainActivity) : Handler() {
-    private val mActivity: WeakReference<MainActivity> = WeakReference(activity)
-
-
-    override fun handleMessage(msg: Message) {
-        val activity: MainActivity? = mActivity.get()
-        if (activity != null) {
-            // 处理消息
         }
     }
 }

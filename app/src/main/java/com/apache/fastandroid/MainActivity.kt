@@ -17,9 +17,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.component.ComponentDemoFragment
 import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
 import com.apache.fastandroid.demo.storage.StorageDemoListFragment
 import com.apache.fastandroid.demo.storage.documenttree.DocumentTreeDemoActivity
+import com.apache.fastandroid.demo.temp.KnowledgeFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.launchActivity
@@ -109,6 +111,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
 //                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
 //                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
+//                FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
+                FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null)
 //          FragmentContainerActivity.launch(this, LiveDataBasicFragment::class.java,null)
 
 

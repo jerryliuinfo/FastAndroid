@@ -11,6 +11,13 @@ public class MultiFlagsSetDemo {
     public static final int FLAG_05     = 0x10;
     public static final int FLAG_06     = 0x20;
 
+    static final int HIDDEN_DEFAULT_PAINT_FLAGS = FLAG_03 | FLAG_04;
+
+
+    public MultiFlagsSetDemo(int flags) {
+        mViewFlags = flags | HIDDEN_DEFAULT_PAINT_FLAGS;
+    }
+
     int mViewFlags;
 
     public void setFlags(int flags, int mask) {
@@ -23,6 +30,7 @@ public class MultiFlagsSetDemo {
         if (changed == 0) {
             return;
         }
+
 
     }
 

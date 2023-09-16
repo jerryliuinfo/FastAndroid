@@ -3,7 +3,6 @@ package com.apache.fastandroid.artemis.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.apache.fastandroid.artemis.ui.PageFragment
 import com.apache.fastandroid.artemis.ui.PageFragmentSingle
 import com.apache.fastandroid.artemis.ui.bean.PageModel
 

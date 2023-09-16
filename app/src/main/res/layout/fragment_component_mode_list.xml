@@ -12,7 +12,7 @@
         app:flow_horizontalAlign="start"
         app:flow_wrapMode="aligned"
         app:constraint_referenced_ids="btn_timer_record,btn_Interval,btn_activity_result,btn_dialogChain
-        ,btn_bitlz,btn_view_animator,btn_view_animator2"
+        ,btn_bitlz,btn_view_animator,btn_view_animator2,btn_keyboard_visibility"
         />
 
     <Button
@@ -59,6 +59,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ViewAnimator2"
+        />
+    <Button
+        android:id="@+id/btn_keyboard_visibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KeyboardVisibilityEvent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

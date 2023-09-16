@@ -8,11 +8,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.apache.fastandroid.databinding.ActivityKeyboardVisibilityEventBinding
-import com.apache.fastandroid.demo.compress.CompressDemoActivity
 import com.tesla.framework.ui.activity.BaseBindingActivity
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
-import net.yslibrary.android.keyboardvisibilityevent.Unregistrar
+import com.tesla.framework.component.keyboardvisibilityevent.KeyboardVisibilityEvent
+import com.tesla.framework.component.keyboardvisibilityevent.KeyboardVisibilityEventListener
+import com.tesla.framework.component.keyboardvisibilityevent.Unregistrar
 
 /**
  * Created by Jerry on 2023/6/20.
@@ -41,7 +40,7 @@ class KeybordVisibilityDemoActivity:BaseBindingActivity<ActivityKeyboardVisibili
         buttonUnregister = mBinding.btnUnregister
 
         unregistrar = KeyboardVisibilityEvent.registerEventListener(this,object :
-            KeyboardVisibilityEventListener{
+            KeyboardVisibilityEventListener {
             override fun onVisibilityChanged(isOpen: Boolean) {
                 updateKeyboardStatusText(isOpen)
             }

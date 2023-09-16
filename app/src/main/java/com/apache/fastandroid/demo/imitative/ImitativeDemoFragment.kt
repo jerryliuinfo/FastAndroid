@@ -7,10 +7,20 @@ import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2023/8/29.
+ *
+ * Animator
+ * MeasureSpec
+ * HandlerThread
+ * AsyncInflater
+ * Paint
  */
 class ImitativeDemoFragment:BaseBindingFragment<FragmentImitativeDemoBinding>(FragmentImitativeDemoBinding::inflate) {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+
+        mBinding.btnAnimator.setOnClickListener {
+
+        }
     }
 }

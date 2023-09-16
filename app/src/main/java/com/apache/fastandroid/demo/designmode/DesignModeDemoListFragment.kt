@@ -16,6 +16,7 @@ import com.apache.fastandroid.demo.designmode.bridge.ConcreteImplementor2
 import com.apache.fastandroid.demo.designmode.bridge.RefinedAbstraction1
 import com.apache.fastandroid.demo.designmode.bridge.RefinedAbstraction2
 import com.apache.fastandroid.demo.designmode.builder.Person
+import com.apache.fastandroid.demo.designmode.builder.Person2
 import com.apache.fastandroid.demo.designmode.chain.FInterceptorChain
 import com.apache.fastandroid.demo.designmode.chain.FRequest
 import com.apache.fastandroid.demo.designmode.chain.interceptors.CustomInterceptor1
@@ -590,6 +591,11 @@ class DesignModeDemoListFragment:BaseBindingFragment<FragmentDesignModeListBindi
 
         val newPerson = person.newBuilder().setName("lisi").build()
         Logger.d("newPerson name:${newPerson.name}")
+
+
+        val person2 = Person2.Builder.obtain().build()
+
+
 
     }
 
