@@ -2,9 +2,8 @@ package com.apache.fastandroid.demo.temp.conflict
 
 import androidx.fragment.app.Fragment
 import com.apache.fastandroid.home.HomeFragment
-import com.google.android.material.tabs.TabLayout
 import com.tesla.framework.support.bean.TabItem
-import com.tesla.framework.ui.fragment.ATabsTabLayoutFragment
+import com.tesla.framework.ui.fragment.tab.ATabsTabLayoutFragment
 import com.tesla.framework.ui.fragment.tab.MyFragmentStateAdapter
 
 /**

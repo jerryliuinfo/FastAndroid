@@ -2,10 +2,10 @@ package com.zwb.lib_base.utils.network
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import androidx.annotation.RequiresPermission
 import com.blankj.utilcode.util.Utils
+import com.tesla.framework.component.network.NetworkTypeEnum
 
 /**
  * 网络状态监听

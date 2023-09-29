@@ -5,7 +5,7 @@ import com.apache.fastandroid.R
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.tesla.framework.component.blitz.setTimeAgo
-import com.tesla.framework.ui.fragment.BaseBRVHFragment
+import com.tesla.framework.ui.fragment.recycleview.BaseBRVHFragment
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

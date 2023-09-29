@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
 import com.apache.fastandroid.demo.bean.MainItem
-import com.apache.fastandroid.demo.compress.CompressDemoActivity
+import com.apache.fastandroid.component.compress.CompressDemoFragment
 import com.apache.fastandroid.demo.keybordvisibility.KeybordVisibilityDemoActivity
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
@@ -31,7 +31,7 @@ class ListEntryDemoFragment :
             MainItem(
                 R.string.large_data_scenario_title,
                 R.string.large_data_scenario_description,
-                CompressDemoActivity.getNavigationIntent(context)
+                CompressDemoFragment.getNavigationIntent(context)
             ),
             MainItem(
                 R.string.non_bridge_large_data_scenario_title,

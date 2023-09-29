@@ -1,6 +1,5 @@
 package com.apache.fastandroid.demo.bestpractice.network
 
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentNetworkDemoBinding
@@ -12,7 +11,7 @@ import com.tesla.framework.component.network.k9.getMyConnectivityManager
 import com.tesla.framework.kt.connectivityManager
 import com.tesla.framework.ui.activity.BaseVBFragment2
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
-import com.zwb.lib_base.utils.network.NetworkTypeEnum
+import com.tesla.framework.component.network.NetworkTypeEnum
 
 /**
  * Created by Jerry on 2023/2/24.

@@ -1,7 +1,7 @@
 package com.tesla.framework.kt
 
 import android.content.SharedPreferences
-import android.util.Log
+import android.database.Cursor
 import androidx.annotation.StringRes
 import androidx.databinding.ObservableInt
 import com.blankj.utilcode.util.ToastUtils
@@ -10,8 +10,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.InputStream
 import java.io.OutputStream
-import java.lang.StringBuilder
-import kotlin.reflect.KProperty
 
 /**
  * Created by Jerry on 2022/4/20.
@@ -118,4 +116,28 @@ inline fun <R> safelyTryCatch( block:() -> R):Result<R>{
 
 fun SharedPreferences.getNonNullString(key: String, defValue: String): String {
     return this.getString(key, defValue) ?: defValue
+}
+
+
+fun Cursor.getColumnValue(columnName:String):String{
+    return getString(getColumnIndex(columnName))
+}
+
+fun getRootCauseMessage(t: Throwable): String? {
+    var rootCause = t
+    var nextCause: Throwable?
+    do {
+        nextCause = rootCause.cause
+        if (nextCause != null) {
+            rootCause = nextCause
+        }
+    } while (nextCause != null)
+//    if (rootCause is MessagingException) {
+//        return rootCause.message
+//    }
+
+    // Remove the namespace on the exception so we have a fighting chance of seeing more of the error in the
+    // notification.
+    val simpleName = rootCause.javaClass.simpleName
+    return if (rootCause.localizedMessage != null) simpleName + ": " + rootCause.localizedMessage else simpleName
 }

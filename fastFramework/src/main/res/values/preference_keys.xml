@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="preference_key_last_run_time_format">%s-lastrun</string>
+    <string name="preference_key_reading_app_install_id">readingAppInstallID</string>
+
+</resources>

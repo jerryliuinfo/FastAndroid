@@ -3,6 +3,7 @@ package com.zwb.lib_base.utils.network
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
+import com.tesla.framework.component.network.NetworkTypeEnum
 
 
 /**

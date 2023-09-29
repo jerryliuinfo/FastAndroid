@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import com.apache.fastandroid.component.keyboard.KeyboardVisibilityDemoFragment
+import com.apache.fastandroid.component.simplestore.SimpleStoreDemoFragment
 import com.apache.fastandroid.component.timerecorder.AICheckEventListener
 import com.apache.fastandroid.component.timerecorder.data.AICheckTraceModel
 import com.apache.fastandroid.component.timerecorder.data.AIDataPoolImpl
@@ -13,7 +14,9 @@ import com.apache.fastandroid.demo.component.activityresult.ActivityResultDemoFr
 import com.apache.fastandroid.demo.component.dialogchanin.ADialog
 import com.apache.fastandroid.demo.component.dialogchanin.BDialog
 import com.apache.fastandroid.demo.component.dialogchanin.CDialog
+import com.apache.fastandroid.demo.component.download.PrDownloadDemoActivity
 import com.apache.fastandroid.demo.component.interval.IntervalDemoFragment
+import com.apache.fastandroid.demo.component.netobserver.NetObserverDemoFragment
 import com.apache.fastandroid.demo.viewanimate.ViewAnimatorDemoFragment
 import com.apache.fastandroid.demo.viewanimate.ViewAnimatorDemoFragment2
 import com.csd.dialogchain.DialogChain
@@ -71,9 +74,26 @@ class ComponentDemoFragment:BaseBindingFragment<FragmentComponentModeListBinding
 
         mBinding.btnKeyboardVisibility.setOnClickListener {
             requireActivity().launchFragment<KeyboardVisibilityDemoFragment>()
-
         }
 
+        mBinding.btnPrDownload.setOnClickListener {
+            requireActivity().launchActivity<PrDownloadDemoActivity>()
+        }
+
+        mBinding.btnNetworkObserver.setOnClickListener {
+            requireActivity().launchFragment<NetObserverDemoFragment>()
+        }
+
+
+        mBinding.btnSimpleStore.setOnClickListener {
+            requireActivity().launchFragment<SimpleStoreDemoFragment>()
+        }
+        mBinding.btnSimpleStore.setOnClickListener {
+            requireActivity().launchFragment<SimpleStoreDemoFragment>()
+        }
+        mBinding.btnCompress.setOnClickListener {
+            requireActivity().launchFragment<SimpleStoreDemoFragment>()
+        }
 
     }
 

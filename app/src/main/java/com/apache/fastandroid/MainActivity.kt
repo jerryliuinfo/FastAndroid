@@ -19,6 +19,7 @@ import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.component.ComponentDemoFragment
 import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
+import com.apache.fastandroid.demo.sample.listentry.ListEntryDemoFragment
 import com.apache.fastandroid.demo.storage.StorageDemoListFragment
 import com.apache.fastandroid.demo.storage.documenttree.DocumentTreeDemoActivity
 import com.apache.fastandroid.demo.temp.KnowledgeFragment
@@ -112,7 +113,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
 //                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
 //                FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
-                FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null)
+//                FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null)
+                FragmentContainerActivity.launch(this, ListEntryDemoFragment::class.java,null)
 //          FragmentContainerActivity.launch(this, LiveDataBasicFragment::class.java,null)
 
 
@@ -198,7 +200,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
 //        launchActivity<TasksActivity>(this)
 //        launchActivity<KeybordVisibilityDemoActivity>(this)
-//        launchActivity<CompressDemoActivity>(this)
+//        launchActivity<CompressDemoFragment>(this)
 
 //        launchActivity<com.example.hellojnicallback.RewordDemoActivity>(this)
 

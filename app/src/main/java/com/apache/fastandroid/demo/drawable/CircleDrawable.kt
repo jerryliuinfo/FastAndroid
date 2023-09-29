@@ -24,7 +24,6 @@ class CircleDrawable:BaseDrawable() {
 				(bounds.height()/2).toFloat(), (bounds.width() /2).toFloat(), paint)
 			text?.let {
 
-				 val fontMetrics: FontMetricsInt = mTextPaint.getFontMetricsInt()
 				 canvas.drawText(it, mTextPaint.textCenterX(it, (bounds.width()/2).toFloat()), mTextPaint.textCenterY(it,
 						(bounds.height()/2).toFloat()
 				 ),mTextPaint )

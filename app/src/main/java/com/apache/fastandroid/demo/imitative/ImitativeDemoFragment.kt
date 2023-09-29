@@ -12,7 +12,11 @@ import com.tesla.framework.ui.fragment.BaseBindingFragment
  * MeasureSpec
  * HandlerThread
  * AsyncInflater
- * Paint
+XCVBNMQWERTYUIOPASDFGHJKLZXCVBNNM * Paint
+ * FutureTask
+ * View#setTag
+ * LifeCycleObserver
+ *
  */
 class ImitativeDemoFragment:BaseBindingFragment<FragmentImitativeDemoBinding>(FragmentImitativeDemoBinding::inflate) {
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
@@ -22,5 +26,18 @@ class ImitativeDemoFragment:BaseBindingFragment<FragmentImitativeDemoBinding>(Fr
         mBinding.btnAnimator.setOnClickListener {
 
         }
+    }
+
+    /**
+     * @sincfi8hwjwjwajsdjjsdjjjaveiKKSDKSDKKSDSPSD
+     * SDKLSD
+     * KKSKLS
+     * SDKLLSDLLSD
+     * SDKKSDLDS
+     * LLDLDLLLLLXLL
+     * ;;;;;;;;;;;;;;;;;AGASDFGFGJKLTQWERTYUIOPZe 2.5.0
+     */
+    private fun test(){
+
     }
 }

@@ -5,4 +5,6 @@ import androidx.viewbinding.ViewBinding
 
 class BindingHolder<VH : ViewBinding>(
     val binding: VH
-) : RecyclerView.ViewHolder(binding.root)
+) : RecyclerView.ViewHolder(binding.root){
+
+}

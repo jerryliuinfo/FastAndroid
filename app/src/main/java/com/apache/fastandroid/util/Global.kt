@@ -68,9 +68,9 @@ object Global {
     } else if (stack.contains("ClipboardService")) {
       Timber.w(e)
       ToastUtils.showShort("Cannot access to ClipboardService")
-    }else if (stack.contains("ClipboardService")) {
+    }else if (stack.contains("de.robv.android.xposed")) {
       Timber.w(e)
-      ToastUtils.showShort("Cannot access to ClipboardService")
+      ToastUtils.showShort("Encounter Xposed module crash")
     }
     //https://segmentfault.com/a/1190000019373275
     else if (e is TimeoutException) {

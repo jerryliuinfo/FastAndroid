@@ -172,6 +172,10 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
         tools:replace="android:theme,android:icon,android:label,android:allowBackup">
 
 
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="a890a3b85ef3d2cde397e8521ebb66f0"/>
+
         <activity
             android:name="com.apache.fastandroid.SplashActivity"
             android:exported="true"
@@ -506,9 +510,7 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
 <!--            android:exported="true"-->
 <!--            />-->
 
-        <activity android:name=".demo.compress.CompressDemoActivity"
-            android:exported="false"
-            />
+
         <activity android:name=".demo.paging.article.ui.PagingArticleDemoActivity"
             android:exported="false"
             />
@@ -551,6 +553,10 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
         </activity>
 
         <activity android:name=".demo.viewanimate.ViewAnimatorDemoFragment2"
+            android:exported="false"
+            />
+
+        <activity android:name=".demo.component.download.PrDownloadDemoActivity"
             android:exported="false"
             />
 

@@ -579,7 +579,7 @@ com.tesla.framework.ui.widget.edgeeffect.GlowingEdgeEffect
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_flow_lastHorizontalStyle
 com.tesla.framework.R$styleable: int ConstraintSet_flow_lastVerticalBias
 com.tesla.framework.R$id: int mtrl_anchor_parent
-com.tesla.framework.ui.fragment.adpater.PageTabAdapter: int getCount()
+com.tesla.framework.ui.fragment.tab.PageTabAdapter: int getCount()
 com.tesla.framework.R$styleable: int ConstraintLayout_Layout_layout_constraintTop_toTopOf
 com.tesla.framework.R$layout: int title_bar
 com.tesla.framework.R$styleable: int Constraint_layout_constraintDimensionRatio
@@ -1209,7 +1209,7 @@ com.tesla.framework.R$id: int shadow
 com.tesla.framework.R$style: int Theme_AppCompat_Light_Dialog_MinWidth
 com.tesla.framework.databinding.ItemSnapHelperBinding: androidx.constraintlayout.widget.ConstraintLayout rootView
 com.tesla.framework.DataBinderMapperImpl$InnerLayoutIdLookup
-com.tesla.framework.ui.fragment.IView: int getLayoutId()
+com.tesla.framework.ui.fragment.base.IView: int getLayoutId()
 com.tesla.framework.ui.widget.CustomRoundTextView: float strokeDashWidth
 com.tesla.framework.R$styleable: int ConstraintSet_android_layout_height
 com.tesla.framework.R$attr: int titleMargin
@@ -2433,7 +2433,7 @@ com.tesla.framework.support.action.IAction: com.tesla.framework.support.action.I
 com.tesla.framework.component.animate.AnimationBuilder: com.tesla.framework.component.animate.AnimationBuilder property(java.lang.String,float[])
 com.tesla.framework.DataBinderMapperImpl
 com.tesla.framework.R$id: int accessibility_custom_action_28
-com.tesla.framework.ui.fragment.IView: void bindUI(android.view.View)
+com.tesla.framework.ui.fragment.base.IView: void bindUI(android.view.View)
 com.tesla.framework.BuildConfig
 com.tesla.framework.performance.omagnifier.FileDescriptorInfo: int hashCode()
 com.tesla.framework.R$id: int view_offset_helper
@@ -3301,7 +3301,7 @@ com.tesla.framework.R$styleable: int KeyCycle_android_translationY
 com.tesla.framework.component.startup.StartupManager: void start(android.content.Context)
 com.tesla.framework.R$dimen: int abc_seekbar_track_background_height_material
 com.tesla.framework.R$string: int abc_action_bar_home_subtitle_description_format
-com.tesla.framework.ui.fragment.adpater.PageTabAdapter
+com.tesla.framework.ui.fragment.tab.PageTabAdapter
 com.tesla.framework.R$attr: int liftOnScroll
 com.tesla.framework.R$integer: int hide_password_duration
 com.tesla.framework.R$style: int TextAppearance_MaterialComponents_Headline3
@@ -4989,7 +4989,7 @@ com.tesla.framework.R$dimen: int mtrl_navigation_rail_text_bottom_margin
 com.tesla.framework.R$id: int accessibility_custom_action_14
 com.tesla.framework.R$style: int Widget_MaterialComponents_Slider
 com.tesla.framework.R$dimen: int abc_dialog_fixed_height_minor
-com.tesla.framework.ui.fragment.adpater.PageTabAdapter: androidx.fragment.app.Fragment getFragmentByPosition(int,com.tesla.framework.support.bean.ITabItem)
+com.tesla.framework.ui.fragment.tab.PageTabAdapter: androidx.fragment.app.Fragment getFragmentByPosition(int,com.tesla.framework.support.bean.ITabItem)
 com.tesla.framework.R$attr: int drawPath
 com.tesla.framework.component.logger.format.PrettyFormatStrategy$Builder
 com.tesla.framework.R$style: int Base_Widget_AppCompat_Button_Borderless
@@ -5321,7 +5321,7 @@ com.drakeet.purewriter.widget.StretchEdgeEffect: android.view.View view
 com.tesla.framework.R$attr: int materialCardViewStyle
 com.tesla.framework.R$attr: int drawableTintMode
 com.tesla.framework.R$dimen: int abc_button_padding_vertical_material
-com.tesla.framework.ui.fragment.adpater.PageTabAdapter: java.util.List tabItems
+com.tesla.framework.ui.fragment.tab.PageTabAdapter: java.util.List tabItems
 com.drakeet.years.widget.CustomLayout: CustomLayout(android.content.Context,android.util.AttributeSet,int)
 com.tesla.framework.R$style: int Widget_AppCompat_SeekBar
 com.tesla.framework.performance.omagnifier.ISamplePolicy: long postDelayedThreshold()
@@ -6313,7 +6313,7 @@ com.tesla.framework.R$string: int abc_activity_chooser_view_see_all
 com.tesla.framework.R$id: int endToStart
 com.tesla.framework.R$styleable: int CollapsingToolbarLayout_expandedTitleMarginEnd
 com.tesla.framework.ui.activity.BaseStatusActivity: void _$_clearFindViewByIdCache()
-com.tesla.framework.ui.fragment.adpater.PageTabAdapter: java.util.List getTabItems()
+com.tesla.framework.ui.fragment.tab.PageTabAdapter: java.util.List getTabItems()
 com.tesla.framework.component.handler.HandlerTest$1
 com.tesla.framework.R$attr: int checkedIconEnabled
 com.tesla.framework.R$styleable: int GradientColor_android_endX
@@ -6641,7 +6641,7 @@ com.tesla.framework.R$attr: int layout_insetEdge
 com.tesla.framework.R$id: int expand_activities_button
 com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder: com.tesla.framework.performance.omagnifier.FPSMonitorConfig$Builder copy(android.app.Application,float,float,float)
 com.tesla.framework.R$attr: int contentInsetLeft
-com.tesla.framework.ui.fragment.adpater.PageTabAdapter: PageTabAdapter(androidx.fragment.app.FragmentManager,int,java.util.List)
+com.tesla.framework.ui.fragment.tab.PageTabAdapter: PageTabAdapter(androidx.fragment.app.FragmentManager,int,java.util.List)
 com.tesla.framework.R$style: int Test_Theme_MaterialComponents_MaterialCalendar
 com.tesla.framework.R$id: int parallax
 com.tesla.framework.R$id: int multiply
@@ -7161,7 +7161,7 @@ com.tesla.framework.R$styleable: int QMUICollapsingTopBarLayout_qmui_titleEnable
 com.tesla.framework.R$id: int month_navigation_next
 com.tesla.framework.R$style: int Widget_MaterialComponents_ProgressIndicator
 com.tesla.framework.R$color: int btn_ghost_blue_text_disabled
-com.tesla.framework.ui.fragment.adpater.PageTabAdapter: java.lang.CharSequence getPageTitle(int)
+com.tesla.framework.ui.fragment.tab.PageTabAdapter: java.lang.CharSequence getPageTitle(int)
 com.tesla.framework.R$attr: int hintEnabled
 com.tesla.framework.component.livedata.LiveDataBus$StickyLiveData: void setValue(java.lang.Object)
 com.tesla.framework.performance.omagnifier.ISamplePolicy: boolean needPostDelayed()
@@ -7444,7 +7444,7 @@ com.tesla.framework.R$color: int design_default_color_on_secondary
 com.tesla.framework.R$styleable: int MaterialTextAppearance_android_letterSpacing
 com.tesla.framework.R$styleable: int FloatingActionButton_shapeAppearance
 com.tesla.framework.R$styleable: int ActionBar_customNavigationLayout
-com.tesla.framework.ui.fragment.adpater.PageTabAdapter: androidx.fragment.app.Fragment getItem(int)
+com.tesla.framework.ui.fragment.tab.PageTabAdapter: androidx.fragment.app.Fragment getItem(int)
 com.tesla.framework.R$styleable: int TextInputLayout_endIconTint
 com.tesla.framework.R$attr: int listPopupWindowStyle
 com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBinding: com.tesla.framework.databinding.CommUiRecycleviewSwiperefreshNewBinding inflate(android.view.LayoutInflater,android.view.ViewGroup,boolean,java.lang.Object)
@@ -7842,7 +7842,7 @@ com.tesla.framework.R$drawable: int ic_clock_black_24dp
 com.tesla.framework.common.util.view.RComputer: void increase(float)
 com.tesla.framework.R$style: int ShapeAppearanceOverlay_TopLeftCut
 com.tesla.framework.R$style: int MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked
-com.tesla.framework.ui.fragment.IView: void layoutInit(android.view.LayoutInflater,android.os.Bundle)
+com.tesla.framework.ui.fragment.base.IView: void layoutInit(android.view.LayoutInflater,android.os.Bundle)
 com.tesla.framework.R$string: int mtrl_picker_confirm
 com.tesla.framework.R$styleable: int CoordinatorLayout_Layout_layout_insetEdge
 com.tesla.framework.R$styleable: int ImageFilterView_brightness
@@ -8077,7 +8077,7 @@ com.tesla.framework.R$attr: int qmui_skin_support_tab_sign_count_view_bg_color
 com.tesla.framework.R$styleable: int BottomNavigationView_labelVisibilityMode
 com.tesla.framework.common.device.DeviceName$DeviceInfo: java.lang.String marketName
 com.tesla.framework.R$attr: int state_collapsible
-com.tesla.framework.ui.fragment.IView
+com.tesla.framework.ui.fragment.base.IView
 com.tesla.framework.ui.widget.CircleImageView: int getBorderWidth()
 com.tesla.framework.R$styleable: int QMUIRadiusImageView2_qmui_corner_radius
 com.tesla.framework.ui.fragment.ARecycleViewFragmentNew: int getFirstVisiblePosition()
@@ -8816,7 +8816,7 @@ com.tesla.framework.common.util.log.NLog: java.lang.String TAG
 com.tesla.framework.R$attr: int qmui_list_item_height
 com.tesla.framework.R$style: int QMUI_Slider
 com.tesla.framework.R$styleable: int Chip_shapeAppearance
-com.tesla.framework.ui.fragment.adpater.PageTabAdapter: int getItemPosition(java.lang.Object)
+com.tesla.framework.ui.fragment.tab.PageTabAdapter: int getItemPosition(java.lang.Object)
 com.tesla.framework.R$attr: int qmui_refresh_init_offset
 com.tesla.framework.R$styleable: int AppCompatTheme_tooltipFrameBackground
 com.tesla.framework.R$string: int hide_bottom_view_on_scroll_behavior

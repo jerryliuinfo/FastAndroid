@@ -2,6 +2,7 @@ package com.apache.fastandroid.app
 
 import android.app.Activity
 import android.app.Application
+import android.content.ComponentCallbacks2
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -31,7 +32,7 @@ import kotlin.system.measureTimeMillis
  * Created by jerryliu on 2017/3/26.
  */
 @HiltAndroidApp
-class FastApplication : ComApplication(), ViewModelStoreOwner {
+class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallbacks2 {
 
     private var mFactory: ViewModelProvider.Factory? = null
 
@@ -149,6 +150,13 @@ class FastApplication : ComApplication(), ViewModelStoreOwner {
         get() = ServiceLocator.provideTasksRepository(this)
 
 
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+    }
 
 
 }

@@ -24,7 +24,7 @@ import com.tesla.framework.ui.fragment.BaseFragment
 import com.tesla.framework.ui.fragment.base.IDynamicView
 import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
-import com.zwb.lib_base.utils.network.NetworkTypeEnum
+import com.tesla.framework.component.network.NetworkTypeEnum
 import java.lang.ref.WeakReference
 
 /**

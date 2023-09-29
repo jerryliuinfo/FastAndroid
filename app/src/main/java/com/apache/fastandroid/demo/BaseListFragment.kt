@@ -81,6 +81,7 @@ abstract class BaseListFragment: BaseBindingFragment<FragmentCustomViewBinding>(
             }
         }
 
+
     }
 
 

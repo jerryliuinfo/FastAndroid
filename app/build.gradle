@@ -137,24 +137,6 @@ android {
 
     buildTypes {
 
-//        debug {
-//            resValue "string", "scheme", "floo-debug"
-//
-//            minifyEnabled false
-//            debuggable = true
-//
-//            shrinkResources false
-//            //应用包名添加.debug后缀
-//            applicationIdSuffix ".debug"
-//            //禁用PNG压缩。
-//            crunchPngs false
-//            //停用Crashlytics，以提高调试 build 的构建速度
-//            ext.enableCrashlytics = false
-//
-//            manifestPlaceholders = [appName: "FastAnd测试版"]
-//
-//        }
-
         named("debug"){
             resValue "string", "scheme", "floo-debug"
 

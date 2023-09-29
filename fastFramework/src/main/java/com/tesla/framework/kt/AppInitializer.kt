@@ -22,6 +22,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import androidx.startup.Initializer
+import com.tesla.framework.ui.activity.FragmentContainerActivity
 import java.util.*
 
 internal val activityCache = LinkedList<Activity>()
@@ -30,11 +31,22 @@ internal val activityCache = LinkedList<Activity>()
 class AppInitializer : Initializer<Unit> {
   private var started = 0
 
+
+  private var haveMainActivity = false
+  var isAnyActivityResumed = false
+
+  fun haveMainActivity(): Boolean {
+    return haveMainActivity
+  }
+
   override fun create(context: Context) {
     application = context as Application
     application.doOnActivityLifecycle(
       onActivityCreated = { activity, _ ->
         activityCache.add(activity)
+        if (activity is FragmentContainerActivity) {
+          haveMainActivity = true
+        }
       },
       onActivityStarted = { activity ->
         started++
@@ -50,6 +62,9 @@ class AppInitializer : Initializer<Unit> {
       },
       onActivityDestroyed = { activity ->
         activityCache.remove(activity)
+        if (activity is FragmentContainerActivity) {
+          haveMainActivity = false
+        }
       }
     )
   }

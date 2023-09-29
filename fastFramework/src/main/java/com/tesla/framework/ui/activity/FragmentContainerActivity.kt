@@ -59,7 +59,7 @@ class FragmentContainerActivity : BaseVBActivity<CommUiFragmentContainerBinding>
             supportFragmentManager.beginTransaction()
                 .add(R.id.fragmentContainer, fragment, FRAGMENT_TAG).commit()
         }
-        showToolbar?.let { showToolbar ->
+        showToolbar.let { showToolbar ->
             if (showToolbar){
                 val toolbarView = LayoutInflater.from(this@FragmentContainerActivity).inflate(R.layout.layout_toolbar,null)
 
@@ -74,6 +74,10 @@ class FragmentContainerActivity : BaseVBActivity<CommUiFragmentContainerBinding>
         }
     }
 
+
+    fun doSomething(){
+
+    }
 
     companion object {
         const val FRAGMENT_TAG = "FRAGMENT_CONTAINER"

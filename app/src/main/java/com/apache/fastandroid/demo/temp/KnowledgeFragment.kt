@@ -24,7 +24,6 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.preference.PreferenceManager
 import com.afollestad.assent.DefaultPrefs
-import com.afollestad.assent.internal.PermissionFragment
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentTempKnowledgeBinding
 import com.apache.fastandroid.demo.temp.concurrency.Player
@@ -45,7 +44,8 @@ import com.tesla.framework.component.pref.int
 import com.tesla.framework.kt.ConfirmCallback
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
-import com.zwb.lib_base.utils.network.NetworkTypeEnum
+import com.tesla.framework.component.network.NetworkTypeEnum
+import com.tesla.framework.ui.activity.FragmentContainerActivity
 import kotlinx.android.synthetic.main.fragment_best_practice_livedata.*
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
 import kotlinx.coroutines.delay
@@ -211,6 +211,18 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
            distinctCallbackUsage()
         }
 
+        mBinding.btnActivityFragmentCommunication.setOnClickListener {
+            activityFragmentCommunicationUsage()
+        }
+
+    }
+
+
+    private fun activityFragmentCommunicationUsage() {
+        // viewModel
+        // 接口回调
+        //fragment 调用 activity
+        ( activity as FragmentContainerActivity).doSomething()
     }
 
     internal var fragmentCreator: () -> KnowledgeFragment = {

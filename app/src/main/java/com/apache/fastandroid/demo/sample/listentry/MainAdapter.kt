@@ -5,8 +5,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.demo.bean.MainItem
 import com.apache.fastandroid.view.MainItemView
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.getString
-import com.tesla.framework.kt.layoutInflater
+import com.tesla.framework.ui.fragment.adpater.DefaultViewHolder
 
 typealias OnMainItemClickListener = (MainItem) -> Unit
 
@@ -15,34 +16,60 @@ class MainAdapter(
 ) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
     var onMainItemClickListener: OnMainItemClickListener? = null
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): MainViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): MainViewHolder {
+
         return MainViewHolder(
-                viewGroup
-                        .layoutInflater
-                        .inflate(
-                                R.layout.view_main_item_inflatable,
-                                viewGroup,
-                                false
-                        ) as MainItemView
+            MainItemView(parent.context)
         )
     }
 
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(viewHolder: MainViewHolder, position: Int) {
-        val mainItem = data[position]
-        val mainItemView = viewHolder.mainItemView
-        mainItemView.setImageResource(
-                if (position % 2 == 0) R.drawable.blue_circle else R.drawable.green_circle
-        )
-        mainItemView.title = mainItemView.getString(mainItem.title)
-        mainItemView.description = mainItemView.getString(mainItem.description)
-        mainItemView.setOnClickListener { onMainItemClickListener?.invoke(mainItem) }
+        viewHolder.bind(data[position])
+    }
+
+
+    private val itemCallback = ItemCallback()
+
+
+    private inner class ItemCallback : MainItemView.Callback<MainItem?> {
+        override fun onClick(item: MainItem?) {
+            Logger.d("onClick item:$item")
+        }
+
+        override fun onLongClick(item: MainItem?): Boolean {
+            Logger.d("onLongClick item:$item")
+
+            return true
+        }
+
+    }
+
+    override fun onViewAttachedToWindow(holder: MainViewHolder) {
+        super.onViewAttachedToWindow(holder)
+
+        holder.view.callback = itemCallback
+    }
+
+    override fun onViewDetachedFromWindow(holder: MainViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        holder.view.callback = null
+
     }
 
     class MainViewHolder(
-        mainItemView: MainItemView
-    ) : RecyclerView.ViewHolder(mainItemView) {
-        val mainItemView: MainItemView get() = itemView as MainItemView
+        itemView: MainItemView<MainItem>
+    ) : DefaultViewHolder<MainItemView<MainItem>>(itemView) {
+
+        fun bind(mainItem: MainItem) {
+            view.apply {
+                item = mainItem
+                setTitle(mainItem.title.getString())
+                setDesc(mainItem.description.getString())
+                setImage(if (position % 2 == 0) R.drawable.blue_circle else R.drawable.green_circle)
+            }
+
+        }
     }
 }

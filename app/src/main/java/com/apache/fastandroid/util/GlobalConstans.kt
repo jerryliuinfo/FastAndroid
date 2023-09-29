@@ -15,7 +15,7 @@ object GlobalConstans {
     }
 
     object SpKey{
-        const val WORK_MODE = "workMode"
+        const val WORK_MODE = "workingMode"
         const val PREF_WEBDAV_HOST = "webdavHost"
 
     }

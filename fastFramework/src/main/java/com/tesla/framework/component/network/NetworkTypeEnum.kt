@@ -1,4 +1,4 @@
-package com.zwb.lib_base.utils.network
+package com.tesla.framework.component.network
 
 /**
  * 网络类型的枚举

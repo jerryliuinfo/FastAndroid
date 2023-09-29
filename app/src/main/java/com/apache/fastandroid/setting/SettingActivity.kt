@@ -19,21 +19,5 @@ class SettingActivity : BaseVBActivity<ActivitySettingsBinding>(ActivitySettings
 
     }
 
-    class SettingFragment:PreferenceFragmentCompat(){
-        init {
 
-        }
-        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-            setPreferencesFromResource(R.xml.settings,rootKey)
-
-            findPreference<ListPreference>(GlobalConstans.SpKey.WORK_MODE)?.apply {
-                setOnPreferenceChangeListener { preference, newValue ->
-                    GlobalValues.workMode = newValue as String
-                    true
-                }
-            }
-        }
-
-
-    }
 }

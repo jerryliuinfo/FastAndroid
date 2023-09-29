@@ -8,6 +8,8 @@
     <!--Draw的Header高度-->
     <attr name="menuHeaderHeight" format="dimension"/>
 
+    <attr name="paper_color" format="color" />
+
 
 
     <declare-styleable name="Themes">

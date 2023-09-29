@@ -21,9 +21,6 @@
       app:summary="配置配置描述"
       app:title="配置配置标题">
 
-      <intent
-        android:targetClass="com.absinthe.anywhere_.ui.settings.DefrostActivity"
-        android:targetPackage="@string/application_id" />
     </Preference>
 
 

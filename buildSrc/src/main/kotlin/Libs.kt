@@ -21,7 +21,7 @@ object AndroidX {
     const val cardview = "androidx.cardview:cardview:${Versions.cardview}"
     const val palette = "androidx.palette:palette-ktx:1.0.0"
     const val preference = "androidx.preference:preference:${Versions.preference}"
-    const val kotlinx_serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0"
+    const val kotlinx_serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
 
 
 }

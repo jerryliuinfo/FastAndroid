@@ -2,6 +2,7 @@ package com.tesla.framework.common.util
 
 import android.app.PendingIntent
 import android.os.Build
+import com.tesla.framework.component.logger.Logger
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
@@ -63,5 +64,21 @@ object CommonUtil {
         get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD
 
 
+    /**
+     * 判断用户是否在取样范围内
+     * @param appInstallID String
+     * @param sampleRate Int
+     * @return Boolean
+     */
+    fun isUserInSamplingGroup(appInstallID: String, sampleRate: Int): Boolean {
+        return try {
+            val lastFourDigits = appInstallID.substring(appInstallID.length - 4).toInt(16)
+            lastFourDigits % sampleRate == 0
+        } catch (e: Exception) {
+            // Should never happen, but don't crash just in case.
+            Logger.e(e.message ?: "")
+            false
+        }
+    }
 
 }

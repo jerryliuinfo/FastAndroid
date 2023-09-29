@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.demo.adapter.StringAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.tesla.framework.ui.fragment.BaseBRVHFragment
+import com.tesla.framework.ui.fragment.recycleview.BaseBRVHFragment
 
 
-class LinerSnapHelperDemoFragment: BaseBRVHFragment<String,BaseViewHolder>(){
+class LinerSnapHelperDemoFragment: BaseBRVHFragment<String, BaseViewHolder>(){
 
     override fun onApplyRecycleView(recyclerView: RecyclerView) {
         super.onApplyRecycleView(recyclerView)

@@ -16,6 +16,7 @@
 
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
 
+        <item name="android:windowBackground">?attr/paper_color</item>
 
 
         <!--        应用程序的次要品牌颜色，通常是主要品牌颜色的重音补充。-->
@@ -29,6 +30,7 @@
         <item name="colorSurface">@color/white</item>
         <item name="colorError">@color/red_600</item>
 
+        <item name="paper_color">@color/white</item>
 
 
 

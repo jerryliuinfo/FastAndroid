@@ -1,5 +1,7 @@
 package com.zwb.lib_base.utils.network
 
+import com.tesla.framework.component.network.NetworkTypeEnum
+
 /**
  * 网络状态改变监听起
  *
