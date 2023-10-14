@@ -2,6 +2,9 @@ package com.apache.fastandroid.demo.kt.coroutine
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.apache.fastandroid.network.calladapter.networkresult.onFailure
+import com.apache.fastandroid.network.calladapter.networkresult.onSuccess
+import com.apache.fastandroid.network.calladapter.networkresult.runCatching
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.db.HomeDatabase
@@ -10,6 +13,7 @@ import com.apache.fastandroid.network.model.result.BaseResponse
 import com.apache.fastandroid.network.model.result.EmptyResponse
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.blankj.utilcode.util.NetworkUtils
+import com.tesla.framework.component.logger.Logger
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -61,10 +65,15 @@ class CoroutineVewModel : ViewModel() {
         }
     }
 
-
-    override fun onCleared() {
-        super.onCleared()
+    fun load(){
+        viewModelScope.launch {
+            runCatching {
+                getArticleById(100)
+            }
+        }
     }
+
+
 
 
     suspend fun getUserInfoById(name: String): UserBean {
@@ -103,7 +112,7 @@ class CoroutineVewModel : ViewModel() {
     }
 
 
-    suspend fun getArticleById(id: Long) {
+    fun getArticleById(id: Long) {
         val result = try {
             Result.success(RetrofitFactory.get().apiService().collect(21613))
         } catch (ex: Exception) {
@@ -112,6 +121,20 @@ class CoroutineVewModel : ViewModel() {
         println("result:${result} thread:${Thread.currentThread().name}")
 
     }
+
+    fun getArticleByIdWithNetworkResult() {
+        viewModelScope.launch {
+            RetrofitFactory.get().apiService().getArticleByIdWithNetworkResult(21613).onSuccess {
+                Logger.d("onSuccess result:${it}")
+            }.onFailure {
+                Logger.d("onFailure:${it.message}")
+
+            }
+        }
+
+    }
+
+
 
     fun getArticleByIdWithRunCatching(id: Long) {
         val result = kotlin.runCatching {

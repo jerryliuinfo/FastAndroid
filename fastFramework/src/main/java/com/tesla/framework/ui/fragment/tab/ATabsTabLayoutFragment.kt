@@ -14,7 +14,7 @@ import com.tesla.framework.ui.fragment.BaseBindingFragment
 abstract class ATabsTabLayoutFragment : BaseBindingFragment<FragmentTablayoutBinding>
     (FragmentTablayoutBinding::inflate) {
 
-    private lateinit var mAdapter:MyFragmentStateAdapter
+    private lateinit var mAdapter:CustomFragmentStateAdapter
 
     //只公开 get 不公开 set
     var selectedTabIndex = 0
@@ -28,7 +28,7 @@ abstract class ATabsTabLayoutFragment : BaseBindingFragment<FragmentTablayoutBin
         setupViewPage()
     }
 
-    abstract fun createTabAdapter(): MyFragmentStateAdapter
+    abstract fun createTabAdapter(): CustomFragmentStateAdapter
 
 
 

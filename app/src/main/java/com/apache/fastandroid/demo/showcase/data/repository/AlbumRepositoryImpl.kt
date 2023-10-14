@@ -64,7 +64,7 @@ internal class AlbumRepositoryImpl(
             }
             is ApiResult.Exception -> {
                 Timber.e(apiResult.throwable)
-
+                //从本地缓存获取
                 val album = albumDao
                     .getAlbum(artistName, albumName, mbId)
                     .toDomainModel()

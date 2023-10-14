@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.tesla.framework.kt.asLiveData
 
 /**
  * Created by Jerry on 2022/5/21.
@@ -20,7 +21,7 @@ class AppSetting(private val sharedPreferences: SharedPreferences) {
 
 
     private val _nightModeLive = MutableLiveData<Int>()
-    val nightModeLive:LiveData<Int> = _nightModeLive
+    val nightModeLive = _nightModeLive.asLiveData()
 
     val isDarkThme:Boolean
         get() = nightMode == AppCompatDelegate.MODE_NIGHT_YES

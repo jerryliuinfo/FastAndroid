@@ -31,6 +31,10 @@ inline fun <reified T : Activity> Context.startActivity() {
   startActivity(Intent(this, T::class.java))
 }
 
+inline fun <reified T : Activity> Activity.launchActivity() {
+  startActivity(Intent(this, T::class.java))
+}
+
 
 inline fun <reified T : AppCompatActivity> Context.startActivity(
   vararg params: Pair<KProperty1<out Any?, Any?>, Any?>,
@@ -47,9 +51,6 @@ inline fun <reified T: Activity> launchActivity(context: Context) {
   context.startActivity(intent)
 }
 
-inline fun <reified T : Activity> Activity.launchActivity() {
-  startActivity(Intent(this, T::class.java))
-}
 
 
 inline fun <reified T> launchActivity(context: Context, block: Intent.() -> Unit) {

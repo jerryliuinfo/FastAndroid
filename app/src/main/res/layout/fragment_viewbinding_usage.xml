@@ -22,11 +22,30 @@
             android:text="使用ViewBinding"
             />
 
+        <Button
+            android:id="@+id/btn_viewBinding_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_viewBinding"
+            android:text="Activity使用 ViewBinding"
+            />
+        <Button
+            android:id="@+id/btn_viewBinding_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_viewBinding_activity"
+            android:text="Fragment 使用 ViewBinding"
+            />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight="1"
+            app:layout_constraintTop_toBottomOf="@+id/btn_viewBinding_fragment"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
 

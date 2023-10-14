@@ -6,8 +6,8 @@ import android.view.View
 /**
  * Created by Jerry on 2023/5/14.
  */
-fun View.setOnDebouncedClickListener(action: () -> Unit) {
-    val actionDebouncer = ActionDebouncer(action)
+fun View.setOnDebouncedClickListener(action: (View) -> Unit) {
+    val actionDebouncer = ActionDebouncer(this,action)
 
     // This is the only place in the project where we should actually use setOnClickListener
     setOnClickListener {
@@ -20,7 +20,7 @@ fun View.removeOnDebouncedClickListener() {
     isClickable = false
 }
 
-private class ActionDebouncer(private val action: () -> Unit) {
+private class ActionDebouncer(private val view: View,private val action: (View) -> Unit) {
 
     private var lastActionTime = 0L
 
@@ -32,7 +32,7 @@ private class ActionDebouncer(private val action: () -> Unit) {
         lastActionTime = now
 
         if (actionAllowed) {
-            action.invoke()
+            action.invoke(view)
         }
     }
 

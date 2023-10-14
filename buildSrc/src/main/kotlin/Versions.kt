@@ -47,7 +47,7 @@ object Versions {
 
     const val workmanager = "2.2.0"
     const val multidex = "2.0.0"
-    const val gson = "2.8.2"
+    const val gson = "2.10.1"
     const val fastjson = "1.2.29"
     const val glide = "3.7.0"
     const val glidePalette = "2.1.2"

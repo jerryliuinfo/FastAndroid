@@ -16,6 +16,7 @@ XCVBNMQWERTYUIOPASDFGHJKLZXCVBNNM * Paint
  * FutureTask
  * View#setTag
  * LifeCycleObserver
+ * FragmentStateAdapter
  *
  */
 class ImitativeDemoFragment:BaseBindingFragment<FragmentImitativeDemoBinding>(FragmentImitativeDemoBinding::inflate) {

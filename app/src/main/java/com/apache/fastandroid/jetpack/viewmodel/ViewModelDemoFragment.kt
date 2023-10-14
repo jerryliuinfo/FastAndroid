@@ -15,6 +15,7 @@ import com.apache.fastandroid.demo.temp.savestate.SaveStateViewModel
 import com.apache.fastandroid.jetpack.InjectUtil
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.factory.ViewModelFactoryWithArgs
+import com.tesla.framework.component.di.KotlinViewModelProvider
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
@@ -43,6 +44,21 @@ class ViewModelDemoFragment: BaseBindingFragment<FragmentJetpackViewmodelRestore
             saveStateViewModelUsage()
         }
 
+        mBinding.btnViewModelProvider.setOnClickListener {
+            viewModelProvider()
+        }
+
+    }
+
+    private fun viewModelProvider() {
+        val fragmentViewModel = KotlinViewModelProvider.of(this){
+            NormalViewModel()
+        }
+
+        val activityViewModel =  KotlinViewModelProvider.of(requireActivity()){
+            NormalViewModel()
+        }
+        println("fragmentViewModel:$fragmentViewModel, activityViewModel:$activityViewModel")
     }
 
     private fun saveStateViewModelUsage() {

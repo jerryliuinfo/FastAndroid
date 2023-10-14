@@ -1,5 +1,6 @@
 package com.apache.fastandroid.demo.temp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentViewbindingUsageBinding
 import com.apache.fastandroid.databinding.ItemCommentBinding
+import com.apache.fastandroid.demo.viewbinding.ViewBindingDemoActivity
+import com.apache.fastandroid.demo.viewbinding.ViewBindingDemoFragment
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.kt.addOnItemClickListener
+import com.tesla.framework.kt.launchActivity
+import com.tesla.framework.kt.launchFragment
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.tesla.framework.ui.fragment.adpater.BindingHolder
 import kotlinx.android.synthetic.main.item_comment.view.*
@@ -34,10 +39,17 @@ class ViewBindingUsageDemo:BaseBindingFragment<FragmentViewbindingUsageBinding>(
                 adapter = UserAdapter2(users)
             }
         }
+        mBinding.btnViewBindingActivity.setOnClickListener {
+            launchActivity<ViewBindingDemoActivity>(requireContext())
+        }
+        mBinding.btnViewBindingFragment.setOnClickListener {
+            requireActivity().launchFragment<ViewBindingDemoFragment>()
+        }
 
         mBinding.recyclerView.addOnItemClickListener { view, position ->
             ToastUtils.showShort("onclick item:$position")
         }
+
 
     }
 

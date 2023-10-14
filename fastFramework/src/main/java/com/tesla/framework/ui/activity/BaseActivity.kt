@@ -3,6 +3,7 @@ package com.tesla.framework.ui.activity
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -172,6 +173,8 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
     }
 
     open fun initView(rootView: View?) {
+        window.statusBarColor = Color.TRANSPARENT // don't draw a status bar, the DrawerLayout and the MaterialDrawerLayout have their own
+
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
         preferences.getString("statusTextSize", "medium")?.let {
             theme.applyStyle(textStyle(it), true)

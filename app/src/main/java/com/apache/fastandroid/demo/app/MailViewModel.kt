@@ -11,6 +11,7 @@ import com.apache.fastandroid.network.model.ArticleApi
 import com.apache.fastandroid.network.model.DataHolder
 import com.apache.fastandroid.network.model.ErrorHolder
 import com.apache.fastandroid.network.model.result.BaseResponse
+import com.tesla.framework.kt.asLiveData
 import com.tesla.framework.kt.io
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
@@ -38,7 +39,7 @@ class MailViewModel() : BaseMailViewModel<MailRepository>() {
 
     private var channel = Channel<WebsocketEvent?>()
     private val _connectionStatusLiveData = MutableLiveData<DataHolder<Unit?>>()
-    val connectionStatusLiveData: LiveData<DataHolder<Unit?>> get() = _connectionStatusLiveData
+    val connectionStatusLiveData: LiveData<DataHolder<Unit?>> get() = _connectionStatusLiveData.asLiveData()
 
     init {
         viewModelScope.io {

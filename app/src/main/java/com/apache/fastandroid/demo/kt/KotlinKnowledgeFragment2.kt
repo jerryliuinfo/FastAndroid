@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View.OnKeyListener
 import android.widget.TextView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.bean.SecondaryDrawerItem
 import com.apache.fastandroid.databinding.KtGrammer2Binding
 import com.apache.fastandroid.demo.bean.Person
 import com.apache.fastandroid.demo.bean.UserBean
@@ -27,6 +28,7 @@ import com.google.gson.JsonElement
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.fromJson2
 import com.tesla.framework.kt.getMySystemService
+import com.tesla.framework.kt.showShortToast
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_best_practice_livedata.time
 import retrofit2.HttpException
@@ -215,9 +217,21 @@ class KotlinKnowledgeFragment2 :
             infixUsage()
         }
 
+        mBinding.btnNewobjectRecevier.setOnClickListener {
+            newObjReceiver()
+        }
+
 
     }
 
+    private fun newObjReceiver() {
+        secondaryDrawerItem {
+            nameRes = R.string.a11y_user_name
+            onClick = {
+                showShortToast("构造对象带接收者")
+            }
+        }
+    }
 
 
     class IntTransformer:(Int) -> Int{
@@ -1181,4 +1195,13 @@ typealias A = File
 typealias UserList = List<UserBean>
 
 typealias MouseClickHandler = (String, Int) -> Unit
+
+private inline fun secondaryDrawerItem(block: SecondaryDrawerItem.() -> Unit): SecondaryDrawerItem {
+    return SecondaryDrawerItem()
+        .apply {
+            isSelectable = false
+        }
+        .apply(block)
+}
+
 

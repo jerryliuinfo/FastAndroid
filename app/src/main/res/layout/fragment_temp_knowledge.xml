@@ -25,7 +25,7 @@
         btn_collection_wrapper,btn_verify_init,btn_reflect,btn_concurrence,btn_showDialogWithApplicationContext,
         btn_location_onscreen,btn_list_init,btn_network,btn_monitor_back_key,btn_math_format,btn_timeunit_toMilles,btn_array_join,
         btn_metaData,btn_ignore_firstEvent,btn_ignore_multiEvent,btn_instance,btn_observer_spProperty,btn_annotation,btn_dead_lock,
-        btn_execute_once_everyday,btn_mmkv,btn_distinct_callback,btn_activity_fragment_communication"
+        btn_execute_once_everyday,btn_mmkv,btn_distinct_callback,btn_activity_fragment_communication,btn_click_anti_shake"
             />
 
         <Button
@@ -272,6 +272,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Activity和Fragment通信"
+            />
+        <Button
+            android:id="@+id/btn_click_anti_shake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="按钮点击防抖"
             />
 
 

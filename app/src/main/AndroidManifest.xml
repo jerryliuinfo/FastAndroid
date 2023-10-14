@@ -219,6 +219,12 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             android:launchMode="singleTop" />
 
         <activity
+            android:name=".demo.viewbinding.ViewBindingDemoActivity"
+            android:exported="true"
+            android:label="Main"
+           />
+
+        <activity
             android:name=".demo.fluidresize.FluidResizeActivity"
             android:exported="false"
             android:label="FluidResize" />

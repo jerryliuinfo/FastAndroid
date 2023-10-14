@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.component
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
+import androidx.fragment.app.viewModels
 import com.apache.fastandroid.component.keyboard.KeyboardVisibilityDemoFragment
 import com.apache.fastandroid.component.simplestore.SimpleStoreDemoFragment
 import com.apache.fastandroid.component.timerecorder.AICheckEventListener
@@ -17,6 +18,7 @@ import com.apache.fastandroid.demo.component.dialogchanin.CDialog
 import com.apache.fastandroid.demo.component.download.PrDownloadDemoActivity
 import com.apache.fastandroid.demo.component.interval.IntervalDemoFragment
 import com.apache.fastandroid.demo.component.netobserver.NetObserverDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineVewModel
 import com.apache.fastandroid.demo.viewanimate.ViewAnimatorDemoFragment
 import com.apache.fastandroid.demo.viewanimate.ViewAnimatorDemoFragment2
 import com.csd.dialogchain.DialogChain
@@ -32,6 +34,9 @@ import kotlinx.coroutines.*
  */
 class ComponentDemoFragment:BaseBindingFragment<FragmentComponentModeListBinding>(FragmentComponentModeListBinding::inflate) {
     private val bDialog by lazy { BDialog(requireContext()) }
+
+    private val viewModel: CoroutineVewModel by viewModels()
+
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
@@ -93,6 +98,10 @@ class ComponentDemoFragment:BaseBindingFragment<FragmentComponentModeListBinding
         }
         mBinding.btnCompress.setOnClickListener {
             requireActivity().launchFragment<SimpleStoreDemoFragment>()
+        }
+
+        mBinding.btnNetworkResult.setOnClickListener {
+            viewModel.getArticleByIdWithNetworkResult()
         }
 
     }

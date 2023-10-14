@@ -62,19 +62,13 @@ android {
         versionCode AndroidConfig.versionCode
         versionName AndroidConfig.versionName
 
-
-
         //dex突破65535的限制
         multiDexEnabled true
         testInstrumentationRunner 'androidx.uitest.runner.AndroidJUnitRunner'
         //5.0以下将svg图片生成指定维度的图片
         vectorDrawables.generatedDensities('xhdpi', 'xxhdpi')
 
-//        flavorDimensions "env"
-
         manifestPlaceholders["appName"] = "Android-"
-
-
 
         /**
          * 配置哪些类型的资源才被打包到apk 中，例如配置为 'zh-rCN'，则只有 中文的资源才会被打包到apk中，
@@ -133,13 +127,10 @@ android {
 
 
 
-
-
     buildTypes {
 
         named("debug"){
             resValue "string", "scheme", "floo-debug"
-
             minifyEnabled false
             debuggable = true
 

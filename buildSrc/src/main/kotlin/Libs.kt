@@ -102,6 +102,8 @@ object Libs {
     const val viewPump = "dev.b3nedikt.viewpump:viewpump:4.0.10"
     const val bundler = "com.github.skydoves:bundler:1.0.4"
     const val okNetworkMonitor =  "me.linkaipeng:okNetworkMonitor:1.0.0"
+    //https://github.com/connyduck/networkresult-calladapter
+    const val networkresult_calladapter =  "at.connyduck:networkresult-calladapter:1.0.0"
 
 
     const val blockstore = "com.google.android.gms:play-services-auth-blockstore:16.0.2"
@@ -161,6 +163,7 @@ object Libs {
         //ViewBinding: https://github.com/androidbroadcast/ViewBindingPropertyDelegate
 //         "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9"
 
+//        networkresult_calladapter
     )
 
 

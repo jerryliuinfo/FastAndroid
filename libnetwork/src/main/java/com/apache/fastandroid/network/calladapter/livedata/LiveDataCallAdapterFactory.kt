@@ -44,4 +44,8 @@ class LiveDataCallAdapterFactory : Factory() {
         val bodyType = getParameterUpperBound(0, observableType)
         return LiveDataCallAdapter<Any>(bodyType)
     }
+    companion object {
+        @JvmStatic
+        fun create(): LiveDataCallAdapterFactory = LiveDataCallAdapterFactory()
+    }
 }

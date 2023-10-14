@@ -17,7 +17,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:flow_horizontalAlign="start"
             app:flow_wrapMode="aligned"
-            app:constraint_referenced_ids="btn_viewModel_no_args,btn_viewModel_with_args,btn_saveState_viewModel"
+            app:constraint_referenced_ids="btn_viewModel_no_args,btn_viewModel_with_args,btn_saveState_viewModel
+            ,btn_viewModel_provider"
             />
 
 
@@ -38,6 +39,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SaveState ViewModel" />
+        <Button
+            android:id="@+id/btn_viewModel_provider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ViewModelProvider获取" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

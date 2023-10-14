@@ -14,6 +14,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
+import com.android.example.github.api.GithubClient
+import com.android.example.github.repository.UserRepository
+import com.android.example.github.ui.user.UserViewModel
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
@@ -23,6 +26,8 @@ import com.apache.fastandroid.demo.sample.listentry.ListEntryDemoFragment
 import com.apache.fastandroid.demo.storage.StorageDemoListFragment
 import com.apache.fastandroid.demo.storage.documenttree.DocumentTreeDemoActivity
 import com.apache.fastandroid.demo.temp.KnowledgeFragment
+import com.apache.fastandroid.demo.viewbinding.ViewBindingDemoFragment
+import com.tesla.framework.component.di.KotlinViewModelProvider
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.launchActivity
@@ -37,13 +42,11 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
     private val mHandler = Handler(Looper.getMainLooper())
 
-//    private val binding: ActivityMainNewBinding by contentView(R.layout.activity_main)
 
 
     private val recycledViewPool = RecyclerView.RecycledViewPool().apply {
         setMaxRecycledViews(R.id.view_type_recycleView_pool,25)
     }
-
 
 
 
@@ -114,7 +117,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
 //                FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //                FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null)
-                FragmentContainerActivity.launch(this, ListEntryDemoFragment::class.java,null)
+//                FragmentContainerActivity.launch(this, ListEntryDemoFragment::class.java,null)
+//                FragmentContainerActivity.launch(this, ViewBindingDemoFragment::class.java,null)
 //          FragmentContainerActivity.launch(this, LiveDataBasicFragment::class.java,null)
 
 
@@ -182,7 +186,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, ActivityResultDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, PerformanceDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
+        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ViewBindingUsageDemo::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
@@ -273,9 +277,6 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
         }
     }
 
-    override fun setContentView(view: View) {
-        super.setContentView(view)
-    }
 
     private fun loadMenuData() {}
     override fun onSaveInstanceState(outState: Bundle) {

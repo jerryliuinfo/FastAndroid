@@ -4,13 +4,13 @@ import androidx.fragment.app.Fragment
 import com.apache.fastandroid.home.HomeFragment
 import com.tesla.framework.support.bean.TabItem
 import com.tesla.framework.ui.fragment.tab.ATabsTabLayoutFragment
-import com.tesla.framework.ui.fragment.tab.MyFragmentStateAdapter
+import com.tesla.framework.ui.fragment.tab.CustomFragmentStateAdapter
 
 /**
  * Created by Jerry on 2022/5/27.
  */
 class ViewPageRecycleViewConflictDemoFragment: ATabsTabLayoutFragment() {
-    override fun createTabAdapter(): MyFragmentStateAdapter {
+    override fun createTabAdapter(): CustomFragmentStateAdapter {
         val tabs = mutableListOf(TabItem("0", "garden"), TabItem("1","list"))
         return DemoAdapter(tabs,this)
     }
@@ -21,7 +21,7 @@ class ViewPageRecycleViewConflictDemoFragment: ATabsTabLayoutFragment() {
     }
 
 
-    private class DemoAdapter(tabItems:List<TabItem>,fragment: Fragment) :MyFragmentStateAdapter(tabItems,fragment) {
+    private class DemoAdapter(tabItems:List<TabItem>,fragment: Fragment) :CustomFragmentStateAdapter(tabItems,fragment) {
 
         override fun newFragment(position: Int, tabItem: TabItem): Fragment {
             return when(position){

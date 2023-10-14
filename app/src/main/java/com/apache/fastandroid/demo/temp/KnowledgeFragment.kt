@@ -16,6 +16,7 @@ import android.text.Spanned
 import android.text.TextUtils
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.activity.addCallback
@@ -33,6 +34,7 @@ import com.blankj.utilcode.util.SPUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.util.hasFragment
+import com.tesla.framework.component.debounce.setOnDebouncedClickListener
 import com.tesla.framework.component.dialog.DialogSelectFragment
 import com.tesla.framework.component.ignore.IgnoreFirstEventListener
 import com.tesla.framework.component.ignore.IgnoreMultiEventListener
@@ -215,6 +217,14 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
             activityFragmentCommunicationUsage()
         }
 
+        mBinding.btnClickAntiShake.setOnDebouncedClickListener {
+            antiShakeUsage(it)
+        }
+
+    }
+
+    private fun antiShakeUsage(view:View) {
+        println("antiShakeUsage view:$view")
     }
 
 

@@ -1,5 +1,6 @@
 package com.apache.fastandroid.network.api
 
+import com.apache.fastandroid.network.calladapter.networkresult.NetworkResult
 import com.apache.fastandroid.network.model.*
 import com.apache.fastandroid.network.model.result.BaseResponse
 import com.apache.fastandroid.network.model.result.EmptyResponse
@@ -39,6 +40,10 @@ interface ApiService {
     @POST("/lg/collect/{id}/json")
     fun collect(@Path("id") id: Int): Call<BaseResponse<EmptyResponse>>
 
+
+
+
+
     @POST("/lg/uncollect_originId/{id}/json")
     fun unCollect(@Path("id") id: Int): Call<BaseResponse<EmptyResponse>>
 
@@ -63,6 +68,8 @@ interface ApiService {
 //    suspend fun getArticleById(@Path("id") id: Long): ResultData<Repo>
     suspend fun getArticleById(@Path("id") id: Long): ResultData<Repo>
 
+    @POST("/lg/collect/{id}/json")
+    suspend fun getArticleByIdWithNetworkResult(@Path("id") id: Long): NetworkResult<ResultData<Repo>>
 
     @GET("DisneyPosters.json")
     suspend fun fetchDisneyPostersByCoroutine(): ApiResponse<List<Poster>>

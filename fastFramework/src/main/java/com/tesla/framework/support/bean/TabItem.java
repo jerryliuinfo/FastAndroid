@@ -14,6 +14,7 @@ public class TabItem implements Serializable,ITabItem{
 
     private String title;
 
+
     private Serializable tag;
 
     //必须要有title属性

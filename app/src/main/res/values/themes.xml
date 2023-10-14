@@ -6,17 +6,26 @@
     <!--https://material.io/develop/android/theming/color-->
     <style name="Base.Theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
-        <!-- 应用程序屏幕和组件上显示最频繁的颜色。应用的主要色调,actionBar默认使用该颜色,Toolbar导航栏的底色，默认值#6200EE      -->
-        <item name="colorPrimary">@color/purple_500</item>
+
+        <item name="android:windowBackground">?attr/paper_color</item>
+
+        <item name="android:textColorPrimary">@color/base10</item>
+        <item name="android:textColorSecondary">@color/base20</item>
+        <item name="android:textColorTertiary">@color/base30</item>
+        <item name="android:textColorHint">@color/base50</item>
+
+
+        <!-- Toolbar color, list overscroll effect -->
+        <item name="colorPrimary">@color/accent50</item>
 
         <!--    原色的色调变化。-->
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
 
         <item name="colorOnPrimary">@color/white</item>
 
-        <item name="android:textColorPrimary">@color/textColorPrimary</item>
 
-        <item name="android:windowBackground">?attr/paper_color</item>
+
+
 
 
         <!--        应用程序的次要品牌颜色，通常是主要品牌颜色的重音补充。-->

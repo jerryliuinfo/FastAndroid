@@ -1,21 +1,20 @@
 package com.tesla.framework.component.imageloader
 
-import android.content.Context
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
+import androidx.annotation.Px
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.tesla.framework.R
 
 /**
- * Created by Jerry on 2023/5/20.
+ * Created by Jerry on 2023/10/14.
  */
-
-
 fun ImageView.showImage(url:String?, placeHolderRes:Int ?= null){
 
     ImageLoaderManager.loadImage(this,url)
 }
-
 
 @BindingAdapter(
     "glideSrc",
@@ -32,3 +31,4 @@ fun ImageView.bindGlideSrc(
 
     ImageLoaderManager.load(this,drawableRes)
 }
+

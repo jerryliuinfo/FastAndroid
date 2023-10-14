@@ -5,7 +5,7 @@ import com.apache.fastandroid.jetpack.navigation.advance.home.AboutFragment
 import com.apache.fastandroid.jetpack.navigation.advance.home.TitleFragment
 import com.tesla.framework.support.bean.TabItem
 import com.tesla.framework.ui.fragment.tab.ATabsTabLayoutFragment
-import com.tesla.framework.ui.fragment.tab.MyFragmentStateAdapter
+import com.tesla.framework.ui.fragment.tab.CustomFragmentStateAdapter
 
 const val MY_GARDEN_PAGE_INDEX = 0
 const val PLANT_LIST_PAGE_INDEX = 1
@@ -15,7 +15,7 @@ const val PLANT_LIST_PAGE_INDEX = 1
 class ArticleTabsFragment: ATabsTabLayoutFragment() {
 
 
-    override fun createTabAdapter(): MyFragmentStateAdapter {
+    override fun createTabAdapter(): CustomFragmentStateAdapter {
         return ArticleAdapter(tabItems(),this)
     }
 
@@ -36,7 +36,7 @@ class ArticleTabsFragment: ATabsTabLayoutFragment() {
         }
     }
 
-    private class ArticleAdapter(tabItems:List<TabItem>,fragment: Fragment) :MyFragmentStateAdapter(tabItems,fragment) {
+    private class ArticleAdapter(tabItems:List<TabItem>,fragment: Fragment) :CustomFragmentStateAdapter(tabItems,fragment) {
 
         override fun newFragment(position: Int, tabItem: TabItem): Fragment {
             return when(position){

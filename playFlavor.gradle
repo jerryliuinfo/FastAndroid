@@ -1,3 +1,4 @@
+
 android {
     flavorDimensions "env"
 
@@ -6,6 +7,13 @@ android {
 //            dimension "env"
 ////            applicationIdSuffix = ".mock"
 //        }
+
+        test{
+            dimension "env"
+            applicationIdSuffix = ".test"
+            versionNameSuffix "-test"
+
+        }
 
         prod {
             dimension "env"
@@ -17,7 +25,6 @@ android {
              * 中生成 channel_tips 字符串
              */
             resValue 'string', 'channel_tips', 'prod渠道欢迎你'
-//            signingConfig signingConfigs.release
         }
     }
 

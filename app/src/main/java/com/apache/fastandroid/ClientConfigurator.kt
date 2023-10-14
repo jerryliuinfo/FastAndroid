@@ -6,6 +6,7 @@ import SDK4
 import SDK5
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
@@ -29,6 +30,7 @@ import com.apache.fastandroid.util.Global
 import com.apache.fastandroid.util.MultidexUtils
 import com.blankj.utilcode.util.EncryptUtils
 import com.blankj.utilcode.util.FileUtils
+import com.blankj.utilcode.util.SPUtils
 import com.blankj.utilcode.util.Utils
 import com.linkaipeng.oknetworkmonitor.OkNetworkMonitor
 import com.squareup.leakcanary.LeakCanary
@@ -66,6 +68,10 @@ object ClientConfigurator {
         ApiHelperImpl(ApiServiceFactory.flowService)
     }
     lateinit var databaseHelper: DatabaseHelper
+    lateinit var sharedPreferences: SharedPreferences
+
+    private const val KEY_SCHEMA_VERSION = "schema_version"
+    private const val SCHEMA_VERSION = 2023022701
 
 
     @Synchronized
@@ -74,6 +80,7 @@ object ClientConfigurator {
             return
         }
         initialized = true
+        initLoop()
 
         val context = application.applicationContext
 
@@ -89,7 +96,6 @@ object ClientConfigurator {
         initAop()
         crashReport(application)
         initTakt(application)
-        initLoop()
         Logger.d("Application onCreate ")
 
 //            NetworkStateClient.register()
@@ -133,6 +139,30 @@ object ClientConfigurator {
 
             }))
         initNetworkMonitor(context)
+
+        sharedPreferences = Utils.getApp().getSharedPreferences("config",Context.MODE_PRIVATE)
+
+        val oldVersion = sharedPreferences.getInt(KEY_SCHEMA_VERSION, 0)
+        if (oldVersion != SCHEMA_VERSION) {
+            upgradeSharedPreferences(oldVersion, SCHEMA_VERSION)
+        }
+    }
+
+    private fun upgradeSharedPreferences(oldVersion: Int, newVersion: Int) {
+        Logger.d("Upgrading shared preferences: $oldVersion -> $newVersion")
+//        val editor = sharedPreferences.edit()
+        val editor = Utils.getApp().getSharedPreferences("config",Context.MODE_PRIVATE).edit()
+
+
+        if (oldVersion < 2023022701) {
+            // These preferences are (now) handled in AccountPreferenceHandler. Remove them from shared for clarity.
+
+            editor.remove("oldkey1")
+            editor.remove("oldkey2")
+        }
+
+        editor.putInt(KEY_SCHEMA_VERSION, newVersion)
+        editor.apply()
     }
 
     private fun initBooster(){

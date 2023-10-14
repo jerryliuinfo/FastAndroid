@@ -1,4 +1,5 @@
 package com.apache.fastandroid.network.retrofit
+import com.apache.fastandroid.network.calladapter.networkresult.NetworkResultCallAdapterFactory
 import com.apache.fastandroid.network.api.ApiService
 import com.apache.fastandroid.network.api.FakeApi
 import com.apache.fastandroid.network.calladapter.apiresult.ApiResultAdapterFactory
@@ -103,7 +104,9 @@ class RetrofitFactory private constructor() {
             .addCallAdapterFactory(ApiResultAdapterFactory())
 
             //Retrofit 支持返回 LiveData 数据
-            .addCallAdapterFactory(LiveDataCallAdapterFactory())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
+            //
+            .addCallAdapterFactory(NetworkResultCallAdapterFactory.create())
     }
 
 
