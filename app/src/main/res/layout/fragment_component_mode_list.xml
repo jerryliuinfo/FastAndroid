@@ -13,7 +13,7 @@
         app:flow_wrapMode="aligned"
         app:constraint_referenced_ids="btn_timer_record,btn_Interval,btn_activity_result,btn_dialogChain
         ,btn_bitlz,btn_view_animator,btn_view_animator2,btn_keyboard_visibility,btn_pr_download,
-        btn_network_observer,btn_simple_store,btn_compress,btn_network_result"
+        btn_network_observer,btn_simple_store,btn_compress,btn_network_result,btn_app_intro"
         />
 
     <Button
@@ -98,6 +98,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="networkResult"
+        />
+    <Button
+        android:id="@+id/btn_app_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AppIntro"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

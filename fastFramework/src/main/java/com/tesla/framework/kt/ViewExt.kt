@@ -11,6 +11,7 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.Editable
@@ -26,6 +27,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.*
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -96,14 +98,14 @@ fun <T> Array<T>.maxCustomize(greater: (T, T) -> Boolean): T? {
 }
 
 
-@Suppress("UNCHECKED_CAST")
-fun <T : ViewBinding> LifecycleOwner.inflateBinding(inflater: LayoutInflater): T {
-    return (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments
-        .filterIsInstance<Class<T>>()
-        .first()
-        .getDeclaredMethod("inflate", LayoutInflater::class.java)
-        .invoke(null, inflater) as T
-}
+//@Suppress("UNCHECKED_CAST")
+//fun <T : ViewBinding> LifecycleOwner.inflateBinding(inflater: LayoutInflater): T {
+//    return (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments
+//        .filterIsInstance<Class<T>>()
+//        .first()
+//        .getDeclaredMethod("inflate", LayoutInflater::class.java)
+//        .invoke(null, inflater) as T
+//}
 
 fun SearchView.getQueryTextChangeStateFlow(): StateFlow<String> {
 
@@ -750,4 +752,21 @@ internal fun getRootView(view: View): View {
         parent = rootView.parent
     }
     return rootView
+}
+
+fun <T : Fragment> T.withArgs(argsBuilder: Bundle.() -> Unit): T {
+    val bundle = arguments ?: Bundle()
+    argsBuilder.invoke(bundle)
+    arguments = bundle
+    return this
+}
+
+fun Fragment.setStatusBarColor(@ColorRes statusBarColor: Int?) {
+    if (statusBarColor == null) {
+        return
+    }
+    val contextNotNull = context ?: return
+    val window: Window = activity?.window ?: return
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    window.statusBarColor = ContextCompat.getColor(contextNotNull, statusBarColor)
 }

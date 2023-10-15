@@ -1,9 +1,14 @@
 package com.tesla.framework.kt
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.database.Cursor
 import androidx.annotation.StringRes
 import androidx.databinding.ObservableInt
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import com.blankj.utilcode.util.ToastUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -140,4 +145,36 @@ fun getRootCauseMessage(t: Throwable): String? {
     // notification.
     val simpleName = rootCause.javaClass.simpleName
     return if (rootCause.localizedMessage != null) simpleName + ": " + rootCause.localizedMessage else simpleName
+}
+
+
+fun Intent.toFullString(): String {
+    val sb = StringBuilder()
+
+    sb.append(toString())
+
+    val localExtras = extras ?: return sb.toString()
+
+    sb.append(". Extras{")
+    localExtras.keySet().map {
+        @Suppress("DEPRECATION")
+        it to localExtras.get(it)
+    }.joinTo(buffer = sb, separator = ",") { "${it.first}=${it.second}" }
+    sb.append('}')
+
+    return sb.toString()
+}
+
+
+fun LifecycleOwner.subscribeOnFirst(lifecycleEvent: Lifecycle.Event, listener: () -> Unit) {
+    lateinit var observer: LifecycleObserver
+    @Suppress("UnusedPrivateMember")
+    observer = LifecycleEventObserver { _, event ->
+        if (event == lifecycleEvent) {
+            listener()
+            lifecycle.removeObserver(observer)
+        }
+    }
+
+    lifecycle.addObserver(observer)
 }

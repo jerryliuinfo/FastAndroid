@@ -9,6 +9,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.viewbinding.ViewBinding
+import java.lang.reflect.ParameterizedType
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
@@ -67,6 +68,16 @@ class FragmentViewBindingDelegate<T : ViewBinding>(
 
         return viewBindingFactory(thisRef.requireView()).also { this.binding = it }
     }
+}
+
+
+@Suppress("UNCHECKED_CAST")
+fun <T : ViewBinding> LifecycleOwner.inflateBinding(inflater: LayoutInflater): T {
+    return (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments
+        .filterIsInstance<Class<T>>()
+        .first()
+        .getDeclaredMethod("inflate", LayoutInflater::class.java)
+        .invoke(null, inflater) as T
 }
 
 

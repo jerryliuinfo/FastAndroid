@@ -164,6 +164,9 @@ object Libs {
 //         "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9"
 
 //        networkresult_calladapter
+
+//        https://github.com/AppIntro/AppIntro
+//        "com.github.AppIntro:AppIntro:6.3.1",
     )
 
 

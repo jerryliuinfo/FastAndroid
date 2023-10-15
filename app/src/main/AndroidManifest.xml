@@ -565,6 +565,10 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
         <activity android:name=".demo.component.download.PrDownloadDemoActivity"
             android:exported="false"
             />
+        <activity android:name=".component.appintro.AppIntroDemoActivity"
+            android:exported="false"
+            />
+
 
         <!--
 

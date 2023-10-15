@@ -7,15 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import androidx.viewbinding.ViewBinding
 import com.tesla.framework.BaseVM
-import com.tesla.framework.component.viewbinding.FragmentBinding
-import com.tesla.framework.component.viewbinding.FragmentBindingDelegate
-import com.tesla.framework.kt.inflateBinding
+import com.tesla.framework.component.viewbinding.inflateBinding
 
 
-abstract class BaseDataBindingVMFragment<T : ViewDataBinding, M : BaseVM>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) :
+abstract class BaseBindingViewModelFragment<T : ViewDataBinding, M : BaseVM>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) :
     BaseFragment() {
 
     protected lateinit var mBinding: T
@@ -28,7 +24,7 @@ abstract class BaseDataBindingVMFragment<T : ViewDataBinding, M : BaseVM>(val in
         savedInstanceState: Bundle?
     ): View {
         mBinding = inflateBinding<T>(layoutInflater).apply {
-            lifecycleOwner = this@BaseDataBindingVMFragment
+            lifecycleOwner = this@BaseBindingViewModelFragment
             setVariable(getVariableId(),viewModel)
         }
         return mBinding.root

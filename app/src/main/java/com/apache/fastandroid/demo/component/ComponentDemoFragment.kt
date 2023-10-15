@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
+import com.apache.fastandroid.component.appintro.AppIntroDemoActivity
 import com.apache.fastandroid.component.keyboard.KeyboardVisibilityDemoFragment
 import com.apache.fastandroid.component.simplestore.SimpleStoreDemoFragment
 import com.apache.fastandroid.component.timerecorder.AICheckEventListener
@@ -102,6 +103,9 @@ class ComponentDemoFragment:BaseBindingFragment<FragmentComponentModeListBinding
 
         mBinding.btnNetworkResult.setOnClickListener {
             viewModel.getArticleByIdWithNetworkResult()
+        }
+        mBinding.btnAppIntro.setOnClickListener {
+            requireActivity().launchActivity<AppIntroDemoActivity>()
         }
 
     }

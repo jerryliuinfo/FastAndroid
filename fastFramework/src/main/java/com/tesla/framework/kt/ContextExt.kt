@@ -3,6 +3,9 @@ package com.tesla.framework.kt
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ApplicationInfo
+import android.os.Build
+import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.appcompat.app.AppCompatActivity
@@ -60,4 +63,11 @@ inline fun <reified T> launchActivity(context: Context, block: Intent.() -> Unit
 
 inline fun <reified T : Fragment> Activity.launchFragment(args: FragmentArgs? = null, addTitleBar:Boolean = true) {
   FragmentContainerActivity.launch(this,T::class.java,args, addTitleBar)
+}
+
+internal fun Context.isDebuggable(): Boolean = (0 != (applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE))
+
+fun Context.isRtl(ctx: Context): Boolean {
+  return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 &&
+          ctx.resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL
 }

@@ -3,7 +3,7 @@ package com.tesla.framework.ui.activity
 import android.view.LayoutInflater
 import android.view.View
 import androidx.viewbinding.ViewBinding
-import com.tesla.framework.kt.inflateBinding
+import com.tesla.framework.component.viewbinding.inflateBinding
 
 /**
  * Created by JerryLiu on 17/04/08.
