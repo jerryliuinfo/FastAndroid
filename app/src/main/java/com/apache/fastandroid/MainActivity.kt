@@ -21,6 +21,7 @@ import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.component.ComponentDemoFragment
+import com.apache.fastandroid.demo.drakeet.customgroup.CustomViewGroupFragment
 import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
 import com.apache.fastandroid.demo.sample.listentry.ListEntryDemoFragment
 import com.apache.fastandroid.demo.storage.StorageDemoListFragment
@@ -186,7 +187,8 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, ActivityResultDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, PerformanceDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null,addTitleBar = true)
-        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
+        FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ViewBindingUsageDemo::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)

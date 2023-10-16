@@ -9,9 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.apache.fastandroid.demo.drakeet.customview.sample.TheLayoutDemoFragment
 import com.apache.fastandroid.demo.drakeet.customview.sample.chat.ChatActivity
 import com.apache.fastandroid.demo.drakeet.customview.sample.course.OnlineActivity
 import com.seiko.demo.base.CustomLayout
+import com.tesla.framework.kt.launchFragment
 
 /**
  * Created by Jerry on 2022/4/29.
@@ -31,6 +33,9 @@ class CustomViewGroupFragment:Fragment() {
         contentView.btnGotoChat.setOnClickListener {
             startActivity(Intent(requireActivity(),OnlineActivity::class.java))
         }
+        contentView.btnTheLayout.setOnClickListener {
+            requireActivity().launchFragment<TheLayoutDemoFragment>()
+        }
         return contentView
     }
 
@@ -40,6 +45,7 @@ class MainLayout(context:Context, attrs:AttributeSet ?= null):CustomLayout(conte
 
     val btnGoOnline = Button(context).autoAddView()
     val btnGotoChat = Button(context).autoAddView()
+    val btnTheLayout = Button(context).autoAddView()
 
     private val btnTest1 = Button(context).autoAddView(){
         setMargins(20.dp,20.dp)
@@ -49,6 +55,7 @@ class MainLayout(context:Context, attrs:AttributeSet ?= null):CustomLayout(conte
     init {
         btnGoOnline.text = "在线直播"
         btnGotoChat.text = "WindowInsets使用"
+        btnTheLayout.text = "TheLayout"
         btnTest1.text = "测试1"
         btnTest2.text = "测试2"
     }
@@ -56,12 +63,12 @@ class MainLayout(context:Context, attrs:AttributeSet ?= null):CustomLayout(conte
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        autoMeasure(btnGoOnline,btnGotoChat,btnTest1,btnTest2)
+        autoMeasure(btnGoOnline,btnGotoChat,btnTheLayout,btnTest1,btnTest2)
 
     }
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
-        layoutCenter(btnGoOnline, btnGotoChat, btnTest1, btnTest2)
+        layoutCenter(btnGoOnline, btnGotoChat, btnTheLayout,btnTest1, btnTest2)
 
     }
 
