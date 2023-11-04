@@ -104,6 +104,7 @@ class ChatLayout(context: Context) : InsetsAnimationCustomLayout(context) {
     messageHolder.autoMeasure()
 
     val parentHeight = MeasureSpec.getSize(heightMeasureSpec)
+    //计算 recycleview 高度
     val recyclerViewHeight = (parentHeight
       - toolbar.measuredHeight - messageHolder.measuredHeight
       - paddingTop - paddingBottom)
@@ -115,6 +116,7 @@ class ChatLayout(context: Context) : InsetsAnimationCustomLayout(context) {
   }
 }
 
+//底部的输入框
 class ChatMessageHolderView(context: Context) : CustomLayout(context) {
 
   @JvmField
@@ -157,6 +159,7 @@ class ChatMessageHolderView(context: Context) : CustomLayout(context) {
 
   override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
     input.layout(0, 0)
+    //按钮在输入框的右边
     btnSend.layout(input.measuredWidth, 0)
   }
 }

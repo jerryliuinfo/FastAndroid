@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
 import com.tesla.framework.component.imageloader.ImageLoaderManager
-
+//顶部布局
 class OnlineTopLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
@@ -26,14 +26,18 @@ class OnlineTopLayout @JvmOverloads constructor(
         setTextSizePx(15.sp)
         maxLines = 1
         paint.isFakeBoldText = true
+        //距离左边 10 dp
         it.leftMargin = 10.dp
     }
-
+    //礼物背景view
     private val giftBgView = ImageView(context).autoAddView(height = 27.dp)
 
     @JvmField
     val giftFlowerText = createGiftText(context)
-    private val giftFlowerLogo = createGiftLogo(context)
+    private val giftFlowerLogo = createGiftLogo(context).apply {
+        ImageLoaderManager.load(this, R.mipmap.ic_gift_flower)
+
+    }
     private val giftFlowerLine = createGiftLine(context)
 
     @JvmField
@@ -64,10 +68,11 @@ class OnlineTopLayout @JvmOverloads constructor(
     )
 
     init {
+        //背景颜色
         ImageLoaderManager.load(this, "#592FD1")
         ImageLoaderManager.load(musicLogo, R.mipmap.ic_attend_music)
         ImageLoaderManager.load(giftBgView, "#4B1FA9", 8.dp)
-        ImageLoaderManager.load(giftFlowerLogo, R.mipmap.ic_gift_flower)
+//        ImageLoaderManager.load(giftFlowerLogo, R.mipmap.ic_gift_flower)
         ImageLoaderManager.load(giftCrownLogo, R.mipmap.ic_gift_crown)
         ImageLoaderManager.load(giftMikeLogo, R.mipmap.ic_gift_mike)
         ImageLoaderManager.load(giftCarLogo, R.mipmap.ic_gift_car)
@@ -93,7 +98,9 @@ class OnlineTopLayout @JvmOverloads constructor(
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         //多 view 横向排列 垂直居中
         layoutHorizontal(musicLogo, musicTitle)
+        //距离 右边 10 dp
         giftBgView.layoutHorizontal(10.dp, fromRight = true)
+        //摆放礼物
         layoutHorizontal(startX = giftBgView.left, *giftViews)
     }
 

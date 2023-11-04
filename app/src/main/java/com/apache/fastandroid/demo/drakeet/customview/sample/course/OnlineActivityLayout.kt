@@ -40,6 +40,7 @@ class OnlineActivityLayout @JvmOverloads constructor(
         var index = 1
         btnChange.setOnClickListener {
             teachingLayout.courseType = courseTypes[index++]
+            btnChange.text = teachingLayout.courseType.name
             if (index >= 4) index = 0
         }
     }

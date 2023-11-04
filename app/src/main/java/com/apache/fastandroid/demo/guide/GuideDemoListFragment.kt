@@ -13,6 +13,7 @@ import com.apache.fastandroid.demo.service.ServiceDemoFragment
 class GuideDemoListFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
+                ViewItemBean("应用基础知识", "应用基础知识", ActivityPropertyDemoFragment::class.java),
                 ViewItemBean("Activity", "Activity属性", ActivityPropertyDemoFragment::class.java),
                 ViewItemBean("Service", "Service", ServiceDemoFragment::class.java),
                 ViewItemBean("Messenger", "Messenger", MessengerDemoFragment::class.java),

@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
+import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -16,21 +17,25 @@ import androidx.core.os.HandlerCompat
 import com.apache.fastandroid.LogUtils
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
+import com.apache.fastandroid.component.keyboard.KeyboardVisibilityDemoFragment
 import com.apache.fastandroid.databinding.FragmentDrakeetKnowledgeBinding
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.drakeet.RecycleviewStabledIdsFragment
 import com.apache.fastandroid.demo.temp.bean.ReflectBean
 import com.apache.fastandroid.jetpack.lifecycle.service.MyService
+import com.apache.fastandroid.network.retrofit.OkHttpClientManager
 import com.blankj.utilcode.util.ReflectUtils
-import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.common.device.DeviceName
 import com.tesla.framework.common.util.AndroidVersion
 import com.tesla.framework.common.util.CommonUtil
 import com.tesla.framework.common.util.DrakeetUtils
 import com.tesla.framework.common.util.DrakeetUtils.doOnMainThreadIdle
 import com.tesla.framework.common.util.toast.ToastCompat
+import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.launchFragment
+import com.tesla.framework.kt.showToast
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.fragment_drakeet_knowledge.*
-import java.lang.Exception
 
 /**
  * Created by Jerry on 2021/10/15.
@@ -46,45 +51,53 @@ class DrakeetCommonFragment:BaseBindingFragment<FragmentDrakeetKnowledgeBinding>
 
         //https://wx.zsxq.com/dweb2/index/topic_detail/581111245444844
 
-        btn_toast.setOnClickListener {
+        mBinding.btnToast.setOnClickListener {
             ToastCompat.makeText(context, "i am toast",ToastCompat.LENGTH_SHORT).show()
         }
-        btn_judge_sdk_version.setOnClickListener {
+        mBinding.btnHookContext.setOnClickListener {
+            hookContextTest()
+        }
+
+        mBinding.btnJudgeSdkVersion.setOnClickListener {
             AndroidVersion.isAndroid12()
         }
 
-        btn_service_ontask_removed.setOnClickListener {
+        mBinding.btnServiceOntaskRemoved.setOnClickListener {
             context?.let { it1 -> MyService.start(it1) }
         }
 
-        btn_samsung_notification_bug.setOnClickListener {
+
+        mBinding.btnSamsungNotificationBug.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 showNotification()
             }
         }
-        btn_chekcsdkIntAtLeast.setOnClickListener {
+
+        mBinding.btnChekcsdkIntAtLeast.setOnClickListener {
             CommonUtil.fromApi(26) {
                 println("api above 26, do something")
             }
+            isAtLeastO()
         }
-        btn_doOnMainThreadIdle.setOnClickListener {
-            btn_doOnMainThreadIdle.doOnMainThreadIdle({
+        mBinding.btnDoOnMainThreadIdle.setOnClickListener {
+            doOnMainThreadIdle({
             },4000)
+
         }
         btn_string_hash_conflict.setOnClickListener {
         }
         var i = 0;
-        btn_print_call_chain.setOnClickListener {
+        mBinding.btnPrintCallChain.setOnClickListener {
             i++
             if (i > 3){
                 i = 0;
                 var stackTrace = DrakeetUtils.stackTrace(null, 10)
             }
         }
-        btn_getDeviceName.setOnClickListener {
+        mBinding.btnGetDeviceName.setOnClickListener {
             //https://t.zsxq.com/bE2znqV
             kotlin.runCatching {
-                var deviceName = DeviceName.getDeviceName("clark", "Unknown device")
+                val deviceName = DeviceName.getDeviceName("clark", "Unknown device")
                 Logger.d("deviceName:${deviceName}")
                 DeviceName.with(context).request { deviceInfo:DeviceName.DeviceInfo?, exception:Exception? ->
                     LogUtils.d("deviceName2:${deviceInfo}")
@@ -99,10 +112,10 @@ class DrakeetCommonFragment:BaseBindingFragment<FragmentDrakeetKnowledgeBinding>
         /**
          *  https://t.zsxq.com/BaiIUv3
          */
-        btn_launchMode.setOnClickListener {
+        mBinding.btnLaunchMode.setOnClickListener {
 
         }
-        btn_restart.setOnClickListener {
+        mBinding.btnRestart.setOnClickListener {
             DrakeetUtils.triggerRestart(requireContext(),null)
         }
         /**
@@ -110,7 +123,7 @@ class DrakeetCommonFragment:BaseBindingFragment<FragmentDrakeetKnowledgeBinding>
          * 从API28开始，Handler类增加了静态方法createAsyn。主要作用是使所有通过这个Handler发送的Message，
          * 都会被设置为FLAG_ASYNCHRONOUS异步消息(默认是同步消息)，在搭配消息屏障使用的情况下，会被优先调用
          */
-        btn_async_handler.setOnClickListener {
+        mBinding.btnAsyncHandler.setOnClickListener {
             if (Build.VERSION.SDK_INT >= 28){
                 HandlerCompat.createAsync(Looper.myLooper()!!).postDelayed({
                     println("post delay with async handler")
@@ -120,10 +133,10 @@ class DrakeetCommonFragment:BaseBindingFragment<FragmentDrakeetKnowledgeBinding>
         }
 
         //https://t.zsxq.com/eeIeU3n
-        btn_reflect.setOnClickListener {
+        mBinding.btnReflect.setOnClickListener {
             ReflectUtils.reflect(ReflectBean::class.java).field("sCacheList", arrayListOf("Jerry","Tom"))
-            var sCacheList:List<String> = ReflectUtils.reflect(ReflectBean::class.java).field("sCacheList").get<List<String> >()
-            com.tesla.framework.component.logger.Logger.d("length:${sCacheList}")
+            val sCacheList:List<String> = ReflectUtils.reflect(ReflectBean::class.java).field("sCacheList").get<List<String> >()
+            Logger.d("length:${sCacheList}")
         }
 
 
@@ -131,10 +144,80 @@ class DrakeetCommonFragment:BaseBindingFragment<FragmentDrakeetKnowledgeBinding>
                 "externalFileDir:${requireContext().getExternalFilesDir(null)}, externalCacheDir:${requireContext().externalCacheDir}",
         )
 
+        mBinding.btnAdbScreenSize.setOnClickListener {
+            modifyScreenSizeByAdb()
+        }
+
+        mBinding.btnNetworkSecurity.setOnClickListener {
+            networkSecurity()
+        }
+
+        mBinding.btnSdkEditor.setOnClickListener {
+            sdkEditorTest()
+        }
+        mBinding.btnStableId.setOnClickListener {
+            requireActivity().launchFragment<RecycleviewStabledIdsFragment>()
+        }
+
+
+    }
+
+    private fun checkSdkInAtLeast() {
+        @ChecksSdkIntAtLeast
+        if (Build.VERSION.SDK_INT >= CommonUtil.ANROID_O) {
+
+        }
+    }
+
+
+    /**
+     * 源自:https://t.zsxq.com/nuJqFY3
+     * 帮助lint识别间接的 DK_INT 检查，在此之前lint有时很愚蠢，它大多数情况下只能识别
+     * 最直接的写法，比如 Build.VERSION.SDK_INT >= Build.VERSION_CODES.O， 但无法识别间接封装的条件，
+     * 即便内容是一样的，这引起的麻烦是我们不得不重复手写  Build.VERSION.SDK_INT >= Build.VERSION_CODES.O 代码
+     *
+     */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.O)
+    fun isAtLeastO(): Boolean {
+        //26
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+    }
+
+
+    var str = "hello_world"
+
+    /**
+     * https://wx.zsxq.com/dweb2/index/topic_detail/118844454482222
+     */
+    private fun sdkEditorTest() {
+        val list = listOf<String>("hello", "world",)
+    }
+
+    private fun networkSecurity() {
+        val okHttpClient = OkHttpClientManager.getOkHttpClient()
+        Logger.d("okHttpClient:$okHttpClient")
     }
 
     /**
-     * https://t.zsxq.com/Nvzjyn2
+     * https://wx.zsxq.com/dweb2/index/topic_detail/582151444451454
+     */
+    private fun modifyScreenSizeByAdb() {
+       //查看设备尺寸  adb shell wm size
+
+        //修改尺寸 adb shell wm size  1080x2220
+
+    }
+
+    /**
+     * https://wx.zsxq.com/dweb2/index/topic_detail/581111245444844
+     */
+    private fun hookContextTest() {
+        val str = requireContext().getString(R.string.text_hook)
+        showToast("hookd text:$str")
+    }
+
+    /**
+     * https://t.zsxq.com/Nvzjyn2  三星 Android 10 系统通知 bug
      */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun showNotification(){
@@ -186,5 +269,9 @@ class DrakeetCommonFragment:BaseBindingFragment<FragmentDrakeetKnowledgeBinding>
         }
         return null
     }
+
+//    override fun getContext(): Context {
+//        return HookContext(super.requireContext())
+//    }
 
 }

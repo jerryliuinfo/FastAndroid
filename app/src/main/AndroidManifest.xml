@@ -169,8 +169,15 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         android:installLocation="preferExternal"
-        tools:replace="android:theme,android:icon,android:label,android:allowBackup">
+        tools:replace="android:theme,android:icon,android:label,android:allowBackup"
 
+
+        >
+
+        <profileable
+            tools:targetApi ="q"
+            android:shell="true"
+            />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -303,9 +310,7 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
         <activity
             android:name=".demo.drakeet.foregroundservice.ForegroundServiceActivity"
             android:exported="false" />
-        <activity
-            android:name=".demo.unitest.UnitTestActivity"
-            android:exported="false" />
+
 
 
         <activity

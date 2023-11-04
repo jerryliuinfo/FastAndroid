@@ -2,6 +2,7 @@ package com.tesla.framework.common.util
 
 import android.app.PendingIntent
 import android.os.Build
+import androidx.annotation.ChecksSdkIntAtLeast
 import com.tesla.framework.component.logger.Logger
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
@@ -14,6 +15,7 @@ import java.lang.reflect.ParameterizedType
  * Created by Jerry on 2021/11/10.
  */
 object CommonUtil {
+    const val ANROID_O = 31
 
     fun <T> getClass(t:Any):Class<T>{
         return (t.javaClass.genericSuperclass as ParameterizedType)
@@ -42,7 +44,7 @@ object CommonUtil {
      * 即便内容是一样的，这引起的麻烦是我们不得不重复手写  Build.VERSION.SDK_INT >= Build.VERSION_CODES.O 代码
      *
      */
-//    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.O)
+   @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.O)
     fun isAtLeastO(): Boolean {
         //26
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
@@ -56,6 +58,8 @@ object CommonUtil {
             action()
         }
     }
+
+
 
 
     // Kotlin property:
@@ -78,6 +82,18 @@ object CommonUtil {
             // Should never happen, but don't crash just in case.
             Logger.e(e.message ?: "")
             false
+        }
+    }
+
+
+    /**
+     * 避免中途断电文件无法写入
+     */
+    fun syncWrite(){
+        try {
+            Runtime.getRuntime().exec("sync")
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 

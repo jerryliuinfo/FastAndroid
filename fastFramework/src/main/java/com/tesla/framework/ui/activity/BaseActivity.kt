@@ -1,8 +1,10 @@
 package com.tesla.framework.ui.activity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
@@ -18,6 +20,8 @@ import com.blankj.utilcode.util.ToastUtils
 import com.gyf.immersionbar.ktx.immersionBar
 import com.tesla.framework.R
 import com.tesla.framework.common.util.AndroidBugFixUtils
+import com.tesla.framework.component.hook.HookContext
+import com.tesla.framework.component.hook.HookResources
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.network.AutoRegisterNetListener
 import com.tesla.framework.performance.takt.Takt
@@ -39,10 +43,7 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
     private var mActivityProvider: ViewModelProvider? = null
     private var mApplicationProvider: ViewModelProvider? = null
 
-    /**
-     * 判断当前Activity是否在前台。
-     */
-    protected var isActive = false
+
 
     /**
      * 当前Activity的实例。
@@ -88,14 +89,12 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
 
     override fun onResume() {
         super.onResume()
-        isActive = true
         getHelperDelegate().onResume(this)
     }
 
     override fun onPause() {
         super.onPause()
         getHelperDelegate().onPause(this)
-        isActive = false
     }
 
     override fun onStop() {
@@ -368,6 +367,30 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
         showToast(getString(msgId))
     }
 
+//    override fun getBaseContext(): Context {
+//        val originContext =  super.getBaseContext()
+//        return HookContext(originContext)
+//    }
+
+
+
+    private var mHookResources: HookResources?= null
+
+
+    override fun getResources(): Resources {
+        val originRes = super.getResources()
+        if (mHookResources == null){
+            mHookResources = HookResources(originRes)
+        }
+        val result = mHookResources!!
+        if (result.configuration != originRes.configuration || result.displayMetrics != originRes.displayMetrics){
+            result.updateConfiguration(originRes.configuration,originRes.displayMetrics)
+        }
+        return result
+    }
+
+
+    fun isActive():Boolean = getHelperDelegate().isActive
 
 
 }

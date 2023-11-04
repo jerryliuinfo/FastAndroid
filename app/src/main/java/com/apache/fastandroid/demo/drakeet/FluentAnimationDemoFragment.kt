@@ -36,7 +36,7 @@ class FluentAnimationDemoFragment: BaseBindingFragment<FragmentFluentAnimationBi
         val doOnIdle:Boolean = arguments?.getBoolean("doOnIdle",false) == true
         if (doOnIdle){
             targetLayer.isInvisible = true
-            targetLayer.doOnMainThreadIdle({
+            doOnMainThreadIdle({
                 TransitionManager.beginDelayedTransition(targetLayer.parent as ViewGroup, Slide(Gravity.BOTTOM)).apply {
                     targetLayer.isInvisible = false
                 }

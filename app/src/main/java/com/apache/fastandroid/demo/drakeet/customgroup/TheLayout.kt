@@ -26,16 +26,11 @@ class TheLayout(context: Context, attrs: AttributeSet? = null) : CustomLayout(co
         addView(this)
     }
 
-    val fab = FloatingActionButton(context).apply {
+
+
+    val fab = FloatingActionButton(context).autoAddView(){
         setImageResource(R.drawable.ic_headset)
-        layoutParams = ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        ).also {
-            setMargins(right = 20)
-        }
-        //这里不会触发 onMeasure 和 onLayout
-        addView(this)
+        setMargins(right = 20.dp)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -50,7 +45,7 @@ class TheLayout(context: Context, attrs: AttributeSet? = null) : CustomLayout(co
         header.layout(0,0)
         fab.let {
 //            it.layout(x = it.marginRight, y = header.bottom - (it.measuredHeight /2), fromRight =true)
-            it.layout(x = 20, y = header.bottom - (it.measuredHeight /2), fromRight =true)
+            it.layout(x = it.marginRight, y = header.bottom - (it.measuredHeight /2), fromRight =true)
         }
     }
 }

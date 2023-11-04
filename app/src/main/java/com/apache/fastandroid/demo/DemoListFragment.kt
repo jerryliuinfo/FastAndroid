@@ -39,11 +39,6 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("Google Sample", "Google Sample", SampleAppDemoFragment::class.java),
             ViewItemBean("最佳实践", "最佳实践", BestPracticeDemoFragment::class.java),
             ViewItemBean("工具", "工具", ToolsFragment::class.java),
-
-//            ViewItemBean("Hencoder", "绘制基础", DrawBasicDemoFragment::class.java),
-//            ViewItemBean("Hencoder", "绘制Paint", DrawPaintDemoFragment::class.java),
-//            ViewItemBean("Hencoder", "绘制文字", DrawTextDemoFragment::class.java),
-//            ViewItemBean("Hencoder", "范围裁切", MatrixDemoFragment::class.java),
             ViewItemBean("UI小控件", "UI小控件", UIWidgetDemoFragment::class.java),
             ViewItemBean("UI属性", "UI属性", UIPropertyDemoListFragment::class.java),
 

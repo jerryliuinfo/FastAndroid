@@ -54,7 +54,7 @@ class MainLayout(context:Context, attrs:AttributeSet ?= null):CustomLayout(conte
 
     init {
         btnGoOnline.text = "在线直播"
-        btnGotoChat.text = "WindowInsets使用"
+        btnGotoChat.text = "聊天"
         btnTheLayout.text = "TheLayout"
         btnTest1.text = "测试1"
         btnTest2.text = "测试2"
@@ -66,7 +66,7 @@ class MainLayout(context:Context, attrs:AttributeSet ?= null):CustomLayout(conte
         autoMeasure(btnGoOnline,btnGotoChat,btnTheLayout,btnTest1,btnTest2)
 
     }
-
+    //垂直居中排列
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         layoutCenter(btnGoOnline, btnGotoChat, btnTheLayout,btnTest1, btnTest2)
 

@@ -101,7 +101,12 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
 
     override fun getResources(): Resources {
         val res = super.getResources()
+
+
+        //
         if (res.configuration.fontScale != 1f) { //非默认值
+
+            //https://wx.zsxq.com/dweb2/index/topic_detail/841115285142582
             val newConfig = Configuration()
             newConfig.setToDefaults()
             //强制字体不随着系统改变而改变

@@ -22,12 +22,17 @@
             android:orientation="horizontal"
             app:flow_horizontalGap="10dp"
             app:flow_verticalGap="10dp"
-            app:constraint_referenced_ids="
-            btn_toast,btn_judge_sdk_version,btn_service_ontask_removed,
+            app:constraint_referenced_ids="btn_toast,btn_hook_context,btn_judge_sdk_version,btn_service_ontask_removed,
             btn_samsung_notification_bug,btn_chekcsdkIntAtLeast,
             btn_print_call_chain,btn_doOnMainThreadIdle,btn_getDeviceName,btn_string_hash_conflict
-            ,btn_launchMode,btn_declare_permission,btn_restart,btn_reflect,btn_smooth_animation"
+            ,btn_launchMode,btn_async_handler,btn_declare_permission,btn_restart,btn_reflect,btn_adb_screen_size,btn_network_security,
+            btn_sdk_editor,btn_stableId"
             />
+        <Button
+            android:id="@+id/btn_hook_context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hook Context" />
 
         <Button
             android:id="@+id/btn_toast"
@@ -120,6 +125,33 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="使用反射解决系统级异常" />
+
+        <Button
+            android:id="@+id/btn_adb_screen_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="使用adb修改屏幕尺寸" />
+        <Button
+            android:id="@+id/btn_network_security"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="网络安全" />
+
+        <Button
+            android:id="@+id/btn_sdk_editor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="sdkeditor" />
+
+        <Button
+            android:id="@+id/btn_stableId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="stableId" />
 
 
 

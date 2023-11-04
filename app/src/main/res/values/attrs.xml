@@ -40,4 +40,9 @@
 
     <attr format="color" name="sample_button_color"/>
     <attr format="color" name="sample_button_text_color"/>
+
+
+    <attr name="toolbarPopupTheme" format="reference"/>
+    <attr name="useHabitColorAsPrimary" format="boolean"/>
+
 </resources>

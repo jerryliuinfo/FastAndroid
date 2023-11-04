@@ -27,9 +27,11 @@ class OnlineTeachingLayout @JvmOverloads constructor(
             }
         }
 
+    //老师
     @JvmField
     val teacher = CameraUserLayout(context).autoAddView()
 
+    //学生1
     @JvmField
     val student1 = CameraUserLayout(context).autoAddView()
 
@@ -70,11 +72,13 @@ class OnlineTeachingLayout @JvmOverloads constructor(
         ImageLoaderManager.load(student2.avatar, R.mipmap.ic_default_attend_head)
         ImageLoaderManager.load(student3.avatar, R.mipmap.ic_default_attend_head)
         ImageLoaderManager.load(student4.avatar, R.mipmap.ic_default_attend_head)
+
         ImageLoaderManager.load(whiteBoardPublic, Color.WHITE, 6.dp)
         ImageLoaderManager.load(whiteBoardPrivate, Color.WHITE, 6.dp)
         ImageLoaderManager.load(musicalPreview, R.mipmap.ic_attend_musicscore)
         ImageLoaderManager.load(musicalKnock, Color.WHITE, 12.dp)
         ImageLoaderManager.load(courseMedia, "#FED85F", 6.dp)
+
         teacher.name.text = "老师"
         student1.name.text = "学生1"
         student2.name.text = "学生2"
@@ -88,13 +92,19 @@ class OnlineTeachingLayout @JvmOverloads constructor(
         whiteBoardPublic.isVisible = courseType == CourseType.WhiteBoard
         whiteBoardUtil.isVisible = courseType == CourseType.WhiteBoard
         lineWhiteBoard.isVisible = courseType == CourseType.WhiteBoard
+
+
         musicalPreview.isVisible = courseType == CourseType.Musical
         musicalKnock.isVisible = courseType == CourseType.Musical
+
         courseMedia.isVisible = courseType == CourseType.CourseWare
+
+
         teacher.name.isVisible = (courseType != CourseType.WhiteBoard
                 && courseType != CourseType.Musical)
         student1.name.isVisible = (courseType != CourseType.WhiteBoard
                 && courseType != CourseType.Musical)
+
         student2.name.isVisible = courseType == CourseType.Stage
         student3.name.isVisible = courseType == CourseType.Stage
         student4.name.isVisible = courseType == CourseType.Stage

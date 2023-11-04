@@ -16,7 +16,8 @@
         app:constraint_referenced_ids="btn_app_exclusive_inner_space,btn_app_exclusive_outer_space,
         btn_openFileOutput,btn_openFileInput,btn_filelist,btn_createTempFile,btn_delete_cache_file,
         btn_delete_file,btn_verify_available,btn_select_physic_storage_position,btn_create_cache_file_in_external,
-        btn_media_storage,btn_installLocation,btn_send_data_to_other_app,btn_text_preview,btn_receive_data"
+        btn_media_storage,btn_installLocation,btn_send_data_to_other_app,btn_text_preview,btn_receive_data
+        ,btn_query_available_space"
         />
 
     <Button
@@ -121,6 +122,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="从其他应用接收简单的数据"
+        />
+    <Button
+        android:id="@+id/btn_query_available_space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="查询可用空间"
         />
 
 

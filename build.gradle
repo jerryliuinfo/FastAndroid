@@ -12,6 +12,12 @@ buildscript {
     }
     repositories {
 
+//        unsplash.dogedoge.com
+//        dribble.dogedoge.com
+
+        maven { url 'unsplash.dogedoge.com' }
+        maven { url 'dribble.dogedoge.com' }
+
         maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
         mavenCentral()
         google()

@@ -45,11 +45,12 @@ class CameraUserLayout @JvmOverloads constructor(
     val networkQuality = ImageView(context).autoAddView(12.dp) {
         it.leftMargin = 5.dp
         it.bottomMargin = 5.dp
+        ImageLoaderManager.load(this, R.mipmap.ic_class_net_good)
     }
 
-    init {
-        ImageLoaderManager.load(networkQuality, R.mipmap.ic_class_net_good)
-    }
+//    init {
+//        ImageLoaderManager.load(networkQuality, R.mipmap.ic_class_net_good)
+//    }
 
     fun setNameViewHeightAndTextSize(height: Int = INVALID_VIEW_SIZE, textSize: Float) {
         name.setTextSizePx(textSize)

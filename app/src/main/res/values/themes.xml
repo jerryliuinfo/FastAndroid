@@ -63,6 +63,10 @@
         <!-- sets the style for the overflow button -->
         <item name="actionOverflowButtonStyle">@style/actionOverflowButtonStyle</item>
 
+        <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat</item>
+
+        <item name="useHabitColorAsPrimary">true</item>
+
     </style>
 
     <style name="Theme.AppTheme.Splash" parent="Theme.AppTheme">
@@ -76,6 +80,9 @@
     <style name="actionOverflowButtonStyle" parent="@style/Widget.AppCompat.ActionButton.Overflow">
         <item name="android:tint">@color/colorAccent</item>
     </style>
+
+
+
 
 
 </resources>
