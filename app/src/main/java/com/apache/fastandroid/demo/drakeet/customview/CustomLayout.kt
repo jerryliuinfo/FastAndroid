@@ -1,9 +1,11 @@
 package com.seiko.demo.base
 
 import android.content.Context
+import android.content.res.Resources
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import com.apache.fastandroid.demo.drakeet.customview.CustomLayoutExtensions
 
 abstract class CustomLayout(
     context: Context,
@@ -60,14 +62,14 @@ abstract class CustomLayout(
     }
 
     /**
-     * 绘制
+     * 布局
      */
     protected fun View.layout(x: Int, y: Int) = layout(
         x, y, x + measuredWidth, y + measuredHeight
     )
 
     /**
-     * 绘制
+     * 布局
      * @param fromRight 从右侧开始
      * @param fromBottom 从底部开始
      */
@@ -82,7 +84,7 @@ abstract class CustomLayout(
     )
 
     /**
-     * 居中
+     * 将某个 View 放到父布局的中心(水平和垂直)
      */
     @Suppress("NOTHING_TO_INLINE")
     protected inline fun View.layoutCenter() = layout(
@@ -91,7 +93,7 @@ abstract class CustomLayout(
     )
 
     /**
-     * 居中
+     * 将某个 View 放到 targetView 的中心(水平和垂直)
      * @param target 目标View
      */
     @Suppress("NOTHING_TO_INLINE")
@@ -100,8 +102,24 @@ abstract class CustomLayout(
         target.top + (target.measuredHeight - measuredHeight) / 2
     )
 
+
     /**
-     * 垂直居中，左右移动  ← →
+     * 多View居中绘制（包括水平和垂直方向都居中）
+     * @param isVertical 是否垂直排列
+     */
+    protected fun layoutCenter(vararg views: View, isVertical: Boolean = true) {
+        if (isVertical) {
+            val topY = (measuredHeight - plusHeightWithMargins(*views)) / 2
+            layoutVertical(topY, *views)
+        } else {
+            val leftX = (measuredWidth - plusWidthWithMargins(*views)) / 2
+            layoutHorizontal(leftX, *views)
+        }
+    }
+
+
+    /**
+     * 在父布局中垂直居中，左右移动  ← →
      */
     @Suppress("NOTHING_TO_INLINE")
     protected inline fun View.layoutHorizontal(x: Int, fromRight: Boolean = false) = layout(
@@ -134,7 +152,7 @@ abstract class CustomLayout(
     )
 
     /**
-     * 与目标View横向居中，上下移动 ↑ ↓
+     * 与目标View横向居中(处于targetView 的水平方向的中间)，上下移动 ↑ ↓
      * @param target 目标View
      */
     @Suppress("NOTHING_TO_INLINE")
@@ -146,22 +164,15 @@ abstract class CustomLayout(
         fromBottom = fromBottom
     )
 
-    /**
-     * 多View居中绘制
-     * @param isVertical 是否垂直排列
-     */
-    protected fun layoutCenter(vararg views: View, isVertical: Boolean = true) {
-        if (isVertical) {
-            val topY = (measuredHeight - plusHeightWithMargins(*views)) / 2
-            layoutVertical(topY, *views)
-        } else {
-            val leftX = (measuredWidth - plusWidthWithMargins(*views)) / 2
-            layoutHorizontal(leftX, *views)
-        }
-    }
+
+    @Suppress("NOTHING_TO_INLINE")
+    protected inline fun View.layoutVertical(
+        target: View, fromBottom: Boolean = false
+    ) = layoutVertical(target.bottom,target, fromBottom)
+
 
     /**
-     * 多view垂直居中 横向排列 →
+     * 多view在垂直居中 横向排列 →
      */
     @Suppress("NOTHING_TO_INLINE")
     protected inline fun layoutHorizontal(vararg views: View): Int {
@@ -198,7 +209,7 @@ abstract class CustomLayout(
     }
 
     /**
-     * 多view横向居中 横向排列 ↓
+     * 多view横向居中(水平居中) 横向排列 ↓， 距离顶部
      */
     protected fun layoutVertical(vararg views: View): Int {
         return layoutVertical(0, *views)
@@ -243,7 +254,7 @@ abstract class CustomLayout(
     }
 
     /**
-     * 与目标View垂直居中
+     * 返回与目标View垂直居中 的 Y 坐标
      * @param target 目标View
      * @return y轴起点
      */
@@ -251,11 +262,19 @@ abstract class CustomLayout(
         return target.top + (target.measuredHeight - measuredHeight) / 2
     }
 
+
+
     protected fun plusWidthWithMargins(vararg views: View): Int {
         return views.sumOf { it.measureWidthWithMargins }
     }
 
     protected fun plusHeightWithMargins(vararg views: View): Int {
+        4 * 3
         return views.sumOf { it.measureHeightWithMargins }
     }
+
+    val Int.dp:Int get() = ( this * (Resources.getSystem().displayMetrics.density + 0.5f)  ).toInt()
+
+
 }
+

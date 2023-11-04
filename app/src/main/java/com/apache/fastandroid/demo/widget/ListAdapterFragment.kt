@@ -11,10 +11,10 @@ import com.apache.fastandroid.demo.widget.listadapter.AlbumListAdapter
 import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.jetpack.flow.ui_state.PostsUiState
 import com.apache.fastandroid.jetpack.flow.vm.PostViewModel
-import com.tesla.framework.component.divider.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
-import com.tesla.framework.kt.dpInt
+import com.tesla.framework.component.divider.SpaceItemDecoration
+import com.tesla.framework.kt.dp
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
@@ -37,7 +37,7 @@ class ListAdapterFragment:BaseBindingFragment<FragmentComRecycleviewBinding>(Fra
             adapter = userAdapter
             addItemDecoration(
                 SpaceItemDecoration(
-                    10.dpInt
+                    10.dp
                 )
             )
         }

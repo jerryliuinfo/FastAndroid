@@ -11,6 +11,8 @@ import com.seiko.demo.base.CustomLayout
 import com.seiko.demo.course.CourseType
 import com.seiko.demo.course.WhiteBoardUtilLayout
 import com.tesla.framework.component.imageloader.ImageLoaderManager
+import com.tesla.framework.kt.dp
+import com.tesla.framework.kt.sp
 
 class OnlineTeachingLayout @JvmOverloads constructor(
     context: Context,
@@ -51,13 +53,13 @@ class OnlineTeachingLayout @JvmOverloads constructor(
     val whiteBoardPrivate = View(context).autoAddView()
 
     @JvmField
-    val whiteBoardUtil = WhiteBoardUtilLayout(context).autoAddView(height = 52.5f.dp)
+    val whiteBoardUtil = WhiteBoardUtilLayout(context).autoAddView(height = 52.dp)
 
     @JvmField
-    val musicalPreview = ImageView(context).autoAddView(560.5f.dp, 165.5f.dp)
+    val musicalPreview = ImageView(context).autoAddView(560.dp, 165.dp)
 
     @JvmField
-    val musicalKnock = ImageView(context).autoAddView(560.5f.dp, 155f.dp)
+    val musicalKnock = ImageView(context).autoAddView(560.dp, 155.dp)
 
     @JvmField
     val courseMedia = View(context).autoAddView(338.dp)
@@ -139,7 +141,7 @@ class OnlineTeachingLayout @JvmOverloads constructor(
                 student4.measureExactly(136.dp, 100.dp)
             }
             CourseType.WhiteBoard -> {
-                val childHeight = 52.5f.dp
+                val childHeight = 52.dp
                 teacher.measureExactly(71.dp, childHeight)
 
                 val whiteBoardUtilWidth: Int
@@ -149,7 +151,7 @@ class OnlineTeachingLayout @JvmOverloads constructor(
                     student2.measureExactly(71.dp, childHeight)
                     student3.measureExactly(71.dp, childHeight)
                     student4.measureExactly(71.dp, childHeight)
-                    whiteBoardPublic.measureExactly(127.5f.dp, childHeight)
+                    whiteBoardPublic.measureExactly(127.dp, childHeight)
                     lineWhiteBoard.autoMeasure()
                 } else {
                     whiteBoardUtilWidth = parentWidth - (parentWidth - 637.dp) / 2 - 71.dp - padding
@@ -158,17 +160,19 @@ class OnlineTeachingLayout @JvmOverloads constructor(
                 whiteBoardUtil.measureExactly(whiteBoardUtilWidth, childHeight)
             }
             CourseType.Musical -> {
-                teacher.measureExactly(81.5f.dp, 60.5f.dp)
-                student1.measureExactly(81.5f.dp, 60.5f.dp)
-                student2.measureExactly(81.5f.dp, 60.5f.dp)
-                student3.measureExactly(81.5f.dp, 60.5f.dp)
-                student4.measureExactly(81.5f.dp, 60.5f.dp)
+                val width = 81.dp
+                val height = 60.dp
+                teacher.measureExactly(width, 60.dp)
+                student1.measureExactly(width, height)
+                student2.measureExactly(width, height)
+                student3.measureExactly(width, height)
+                student4.measureExactly(width, height)
                 musicalPreview.autoMeasure()
                 musicalKnock.autoMeasure()
             }
             CourseType.CourseWare -> {
                 teacher.measureExactly(245.dp, 181.dp)
-                student1.measureExactly(180.dp, 132f.dp)
+                student1.measureExactly(180.dp, 132.dp)
                 student2.measureExactly(55.dp, 42.dp)
                 student3.measureExactly(55.dp, 42.dp)
                 student4.measureExactly(55.dp, 42.dp)
@@ -196,7 +200,7 @@ class OnlineTeachingLayout @JvmOverloads constructor(
                 student4.layout(leftX, topY)
             }
             CourseType.WhiteBoard -> {
-                val topPadding = 8.5f.dp
+                val topPadding = 8.dp
                 val horizontalPadding = (measuredWidth - whiteBoardPrivate.measuredWidth) / 2
 
                 var startX = horizontalPadding
@@ -205,7 +209,7 @@ class OnlineTeachingLayout @JvmOverloads constructor(
                 startX += teacher.measuredWidth + padding
                 if (!whiteBoardUtil.isShowPen) {
                     whiteBoardPublic.layout(startX, topPadding)
-                    startX += whiteBoardPublic.measuredWidth + 24.5f.dp
+                    startX += whiteBoardPublic.measuredWidth + 24.dp
                     lineWhiteBoard.layout(
                         startX,
                         topPadding + (whiteBoardPublic.measuredHeight - lineWhiteBoard.measuredHeight) / 2
@@ -223,7 +227,7 @@ class OnlineTeachingLayout @JvmOverloads constructor(
                 }
 
                 // 白板工具
-                whiteBoardUtil.layout(0, 8.5f.dp, true)
+                whiteBoardUtil.layout(0, 8.dp, true)
 
                 whiteBoardPrivate.layout(
                     horizontalPadding,
@@ -231,7 +235,7 @@ class OnlineTeachingLayout @JvmOverloads constructor(
                 )
             }
             CourseType.Musical -> {
-                val smallPadding = 6.5f.dp
+                val smallPadding = 6.dp
                 val horizontalPadding = (measuredWidth
                         - teacher.measuredWidth
                         - 7.dp
@@ -251,7 +255,7 @@ class OnlineTeachingLayout @JvmOverloads constructor(
                 musicalPreview.layout(horizontalPadding, 0, true)
                 musicalKnock.layout(
                     horizontalPadding,
-                    musicalPreview.measuredHeight + 7.5f.dp, true
+                    musicalPreview.measuredHeight + 7.dp, true
                 )
             }
             CourseType.CourseWare -> {

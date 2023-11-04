@@ -9,6 +9,7 @@ import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
 import com.seiko.demo.course.CourseType
 import com.tesla.framework.component.imageloader.ImageLoaderManager
+import com.tesla.framework.kt.dp
 
 class OnlineActivityLayout @JvmOverloads constructor(
     context: Context,

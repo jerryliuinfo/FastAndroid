@@ -25,9 +25,6 @@
 
 
 
-
-
-
         <!--        应用程序的次要品牌颜色，通常是主要品牌颜色的重音补充。-->
         <item name="colorSecondary">@color/green_200</item>
         <!--        二次色的色调变化。-->

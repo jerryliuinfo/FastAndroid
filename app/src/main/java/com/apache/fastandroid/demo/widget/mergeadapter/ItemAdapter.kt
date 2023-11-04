@@ -1,4 +1,4 @@
-package masteryi.me.mergeadapterdemo
+package com.apache.fastandroid.demo.widget.mergeadapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ItemBinding
+import masteryi.me.mergeadapterdemo.BaseAdapter
+import masteryi.me.mergeadapterdemo.BaseViewHolder
 
 /**
  * @author Ethan Lee

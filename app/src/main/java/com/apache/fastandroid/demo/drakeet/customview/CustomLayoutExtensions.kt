@@ -1,4 +1,4 @@
-package com.seiko.demo.base
+package com.apache.fastandroid.demo.drakeet.customview
 
 import android.content.res.Resources
 import android.util.TypedValue
@@ -9,7 +9,7 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TextView
 import androidx.core.view.setMargins
-import com.apache.fastandroid.demo.drakeet.customview.AdaptScreenUtils
+import com.seiko.demo.base.CustomLayout
 
 interface CustomLayoutExtensions {
 
@@ -37,17 +37,17 @@ interface CustomLayoutExtensions {
     val View.bottomMargin: Int
         get() = (layoutParams as? CustomLayout.LayoutParams)?.bottomMargin ?: 0
 
-    val Int.dp: Int
-        get() = AdaptScreenUtils.pt2Px(getResources(), this.toFloat())
-
-    val Float.dp: Int
-        get() = AdaptScreenUtils.pt2Px(getResources(), this)
-
-    val Int.sp: Float
-        get() = AdaptScreenUtils.pt2Px(getResources(), this.toFloat()).toFloat()
-
-    val Float.sp: Float
-        get() = AdaptScreenUtils.pt2Px(getResources(), this).toFloat()
+    // val Int.dp: Int
+    //     get() = AdaptScreenUtils.pt2Px(getResources(), this.toFloat())
+    //
+    // val Float.dp: Int
+    //     get() = AdaptScreenUtils.pt2Px(getResources(), this)
+    //
+    // val Int.sp: Float
+    //     get() = AdaptScreenUtils.pt2Px(getResources(), this.toFloat()).toFloat()
+    //
+    // val Float.sp: Float
+    //     get() = AdaptScreenUtils.pt2Px(getResources(), this).toFloat()
 
     fun Int.toExactlyMeasureSpec(): Int {
         return MeasureSpec.makeMeasureSpec(this, MeasureSpec.EXACTLY)
@@ -98,8 +98,8 @@ interface CustomLayoutExtensions {
         (layoutParams as? CustomLayout.LayoutParams)?.setMargins(size)
     }
 
-    fun View.setMargins(left: Int = 0, top: Int = 0, right: Int = 0, bottom: Int = 0) {
-        (layoutParams as? CustomLayout.LayoutParams)?.setMargins(left, top, right, bottom)
+    fun View.setMargins(start: Int = 0, top: Int = 0, right: Int = 0, bottom: Int = 0) {
+        (layoutParams as? CustomLayout.LayoutParams)?.setMargins(start, top, right, bottom)
     }
 
     fun Array<View>.setMargins(size: Int) {
@@ -109,4 +109,12 @@ interface CustomLayoutExtensions {
     fun Array<View>.setMargins(left: Int = 0, top: Int = 0, right: Int = 0, bottom: Int = 0) {
         forEach { it.setMargins(left, top, right, bottom) }
     }
+
+
+    //我加的
+    val View.widthMargins
+        get() = leftMargin + rightMargin
+
+    val View.heightMargins
+        get() = topMargin + bottomMargin
 }

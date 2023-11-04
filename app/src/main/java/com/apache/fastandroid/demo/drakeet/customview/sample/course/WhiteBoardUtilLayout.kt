@@ -10,6 +10,7 @@ import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
 import com.tesla.framework.common.util.DrawableUtils
 import com.tesla.framework.component.imageloader.ImageLoaderManager
+import com.tesla.framework.kt.dp
 
 class WhiteBoardUtilLayout @JvmOverloads constructor(
     context: Context,
@@ -25,10 +26,10 @@ class WhiteBoardUtilLayout @JvmOverloads constructor(
             }
         }
 
-    private val btnSize = 27.5f.dp
-    private val btnMargin = 20.5f.dp
+    private val btnSize = 27.dp
+    private val btnMargin = 20.dp
     private val btnPenSize = 24.dp
-    private val lineWidth = 0.5f.dp
+    private val lineWidth = 1.dp
 
     @JvmField
     val btnShowPen = ImageView(context).autoAddView(btnSize)

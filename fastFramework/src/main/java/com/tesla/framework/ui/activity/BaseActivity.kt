@@ -1,7 +1,6 @@
 package com.tesla.framework.ui.activity
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -20,16 +19,15 @@ import com.blankj.utilcode.util.ToastUtils
 import com.gyf.immersionbar.ktx.immersionBar
 import com.tesla.framework.R
 import com.tesla.framework.common.util.AndroidBugFixUtils
-import com.tesla.framework.component.hook.HookContext
 import com.tesla.framework.component.hook.HookResources
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.component.network.AutoRegisterNetListener
+import com.tesla.framework.component.network.NetworkTypeEnum
 import com.tesla.framework.performance.takt.Takt
 import com.tesla.framework.ui.fragment.BaseFragment
 import com.tesla.framework.ui.fragment.base.IDynamicView
 import com.tesla.framework.ui.widget.CustomToolbar.OnToolbarDoubleClickListener
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
-import com.tesla.framework.component.network.NetworkTypeEnum
 import java.lang.ref.WeakReference
 
 /**

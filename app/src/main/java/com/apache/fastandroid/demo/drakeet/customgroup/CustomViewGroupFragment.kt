@@ -24,7 +24,7 @@ class CustomViewGroupFragment:Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val contentView =  MainLayout(requireContext())
         contentView.btnGoOnline.setOnClickListener {
@@ -33,9 +33,6 @@ class CustomViewGroupFragment:Fragment() {
         contentView.btnGotoChat.setOnClickListener {
             startActivity(Intent(requireActivity(),OnlineActivity::class.java))
         }
-        contentView.btnTheLayout.setOnClickListener {
-            requireActivity().launchFragment<TheLayoutDemoFragment>()
-        }
         return contentView
     }
 
@@ -43,33 +40,29 @@ class CustomViewGroupFragment:Fragment() {
 
 class MainLayout(context:Context, attrs:AttributeSet ?= null):CustomLayout(context,attrs){
 
+    /**
+     *   addView 不会导致提前 触发多次layout， 实际并不会， view 和 viewgroup 的 measure 和 layout 是 view 被 attch 到 RootView树中才会被调用
+     */
     val btnGoOnline = Button(context).autoAddView()
     val btnGotoChat = Button(context).autoAddView()
-    val btnTheLayout = Button(context).autoAddView()
+    val btnTheLayout = PersonInfoLayout(context).autoAddView()
 
-    private val btnTest1 = Button(context).autoAddView(){
-        setMargins(20.dp,20.dp)
-    }
-    private val btnTest2 = Button(context).autoAddView()
+
 
     init {
         btnGoOnline.text = "在线直播"
         btnGotoChat.text = "聊天"
-        btnTheLayout.text = "TheLayout"
-        btnTest1.text = "测试1"
-        btnTest2.text = "测试2"
     }
 
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        autoMeasure(btnGoOnline,btnGotoChat,btnTheLayout,btnTest1,btnTest2)
+        autoMeasure(btnGoOnline,btnGotoChat,btnTheLayout)
 
     }
-    //垂直居中排列
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
-        layoutCenter(btnGoOnline, btnGotoChat, btnTheLayout,btnTest1, btnTest2)
-
+        //垂直排列
+        layoutVertical(btnGoOnline, btnGotoChat, btnTheLayout)
     }
 
 }

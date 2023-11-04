@@ -22,7 +22,6 @@ import com.apache.fastandroid.demo.tablayout.ArticleTabsFragment
 import com.apache.fastandroid.demo.temp.SpanableStringFragment
 import com.apache.fastandroid.demo.widget.LinearProgressIndicatorDemoFragment
 import com.apache.fastandroid.demo.widget.ListAdapterFragment
-import com.apache.fastandroid.demo.widget.lyric.LyricFragment
 import com.apache.fastandroid.demo.widget.mergeadapter.MergeAdapterDemoFragment
 import com.apache.fastandroid.demo.widget.spansize.GridLayoutManagerSpanSizeDemoFragment
 import com.apache.fastandroid.demo.widget.system.SystemWidgetFragment
@@ -48,7 +47,6 @@ class CustomViewFragment:BaseListFragment() {
                 ,ViewItemBean("CustomRoundTextview", "CustomRoundTextview", RoundViewDemoFragment::class.java)
                 ,ViewItemBean("Drawable", "Drawable", DrawableListFragment::class.java)
                 ,ViewItemBean("RecycleviewDivider", "RecycleviewDivider", DrawableListFragment::class.java)
-                ,ViewItemBean("Lyric", "Lyric", LyricFragment::class.java)
                 ,ViewItemBean("TabLayoutFragment", "TabLayoutFragment", ArticleTabsFragment::class.java)
                 ,ViewItemBean("BottomTabFragment", "BottomTabFragment", ArticleTabsFragment::class.java)
                 ,ViewItemBean("PreferenceFragment", "PreferenceFragment", PreferenceFragmentDemo::class.java)

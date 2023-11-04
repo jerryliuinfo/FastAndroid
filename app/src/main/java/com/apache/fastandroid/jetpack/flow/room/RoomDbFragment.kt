@@ -9,14 +9,13 @@ import com.apache.fastandroid.databinding.FragmentRecycleviewBinding
 import com.apache.fastandroid.databinding.ItemLayoutUserBinding
 import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.network.model.Status
-import com.tesla.framework.component.divider.SpaceItemDecoration
 import com.blankj.utilcode.util.ToastUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
-import com.tesla.framework.kt.dpInt
+import com.tesla.framework.component.divider.SpaceItemDecoration
+import com.tesla.framework.kt.dp
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-
 
 
 /**
@@ -44,7 +43,7 @@ class RoomDbFragment:BaseBindingFragment<FragmentRecycleviewBinding>(FragmentRec
             adapter = userAdapter
             addItemDecoration(
                 SpaceItemDecoration(
-                    10.dpInt
+                    10.dp
                 )
             )
         }

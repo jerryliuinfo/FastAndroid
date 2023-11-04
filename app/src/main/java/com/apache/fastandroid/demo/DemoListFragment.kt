@@ -12,7 +12,6 @@ import com.apache.fastandroid.demo.guide.GuideDemoListFragment
 import com.apache.fastandroid.demo.hitpit.HitPitDemoListFragment
 import com.apache.fastandroid.demo.imitative.ImitativeDemoFragment
 import com.apache.fastandroid.demo.jni.JniDemoListFragment
-import com.apache.fastandroid.demo.lyric.LyricDemoFragment
 import com.apache.fastandroid.demo.performance.PerformanceDemoFragment
 import com.apache.fastandroid.demo.sample.SampleCodeDemoListFragment
 import com.apache.fastandroid.demo.sampleapp.SampleAppDemoFragment
@@ -60,7 +59,6 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("Sample", "Sample", SampleCodeDemoListFragment::class.java),
             ViewItemBean("单元测试", "单元测试", SampleCodeDemoListFragment::class.java),
             ViewItemBean("MVI", "MVI", SampleCodeDemoListFragment::class.java),
-            ViewItemBean("各个组件style介绍", "各个组件style介绍", LyricDemoFragment::class.java),
             ViewItemBean("JNI", "JNI", JniDemoListFragment::class.java),
             ViewItemBean("Amit Shekhar", "Amit Shekhar", AmitShekharDemoFragment::class.java),
             ViewItemBean("StorageSample", "StorageSample", StorageDemoListFragment::class.java),

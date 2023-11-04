@@ -12,7 +12,6 @@ import com.tesla.framework.databinding.FragmentRecycleview2Binding
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import masteryi.me.mergeadapterdemo.FooterAdapter
 import masteryi.me.mergeadapterdemo.HeaderAdapter
-import masteryi.me.mergeadapterdemo.ItemAdapter
 
 
 /**
@@ -30,7 +29,7 @@ class MergeAdapterDemoFragment:BaseBindingFragment<FragmentRecycleview2Binding>(
         FooterAdapter(requireContext())
     }
 
-    private val mItemAdapter:ItemAdapter by lazy {
+    private val mItemAdapter: ItemAdapter by lazy {
         ItemAdapter(requireContext())
     }
 

@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.view.View
 import com.apache.fastandroid.R
 import com.apache.fastandroid.demo.drawable.CircleDrawable
-import com.tesla.framework.kt.dpInt
 import kotlin.math.min
 
 

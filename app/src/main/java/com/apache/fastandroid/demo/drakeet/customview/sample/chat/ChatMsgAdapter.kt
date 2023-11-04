@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.seiko.demo.base.CustomLayout
 import com.tesla.framework.common.util.DrawableUtils
+import com.tesla.framework.kt.dp
 
 class ChatMsgAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

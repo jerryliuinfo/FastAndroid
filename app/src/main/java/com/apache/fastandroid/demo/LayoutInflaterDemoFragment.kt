@@ -6,7 +6,6 @@ import android.widget.LinearLayout
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentLayoutinflterBinding
 import com.tesla.framework.kt.dp
-import com.tesla.framework.kt.dpInt
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
@@ -27,8 +26,8 @@ class LayoutInflaterDemoFragment:BaseBindingFragment<FragmentLayoutinflterBindin
             val button = LayoutInflater.from(context).inflate(R.layout.layout_button,null)
             //第二个参数为null，意味着没有父布局，此时在 layout_button.xml 中设置的宽高是无用的，
             val params = mBinding.btnRootNull2.layoutParams as LinearLayout.LayoutParams
-            params.width = 600.dpInt
-            params.height = 100.dpInt
+            params.width = 600.dp
+            params.height = 100.dp
             mBinding.rootView.addView(button,params)
         }
 

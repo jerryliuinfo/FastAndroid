@@ -9,6 +9,9 @@ import android.widget.TextView
 import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
 import com.tesla.framework.component.imageloader.ImageLoaderManager
+import com.tesla.framework.kt.dp
+import com.tesla.framework.kt.sp
+
 //顶部布局
 class OnlineTopLayout @JvmOverloads constructor(
     context: Context,
@@ -16,7 +19,7 @@ class OnlineTopLayout @JvmOverloads constructor(
 ) : CustomLayout(context, attrs) {
 
     @JvmField
-    val musicLogo = ImageView(context).autoAddView(17.5f.dp) {
+    val musicLogo = ImageView(context).autoAddView(17.dp) {
         it.leftMargin = 10.dp
     }
 
@@ -119,7 +122,7 @@ class OnlineTopLayout @JvmOverloads constructor(
         }
 
     private fun createGiftLine(context: Context) =
-        View(context).autoAddView(0.5f.dp, 12.dp) {
+        View(context).autoAddView(1.dp, 12.dp) {
             setBackgroundColor(Color.WHITE)
         }
 }

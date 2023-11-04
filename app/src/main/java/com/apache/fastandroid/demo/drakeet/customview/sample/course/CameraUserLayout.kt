@@ -13,8 +13,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
-import com.seiko.demo.base.CustomLayoutExtensions.Companion.INVALID_VIEW_SIZE
+import com.apache.fastandroid.demo.drakeet.customview.CustomLayoutExtensions.Companion.INVALID_VIEW_SIZE
 import com.tesla.framework.component.imageloader.ImageLoaderManager
+import com.tesla.framework.kt.sp
 
 class CameraUserLayout @JvmOverloads constructor(
     context: Context,

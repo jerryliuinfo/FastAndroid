@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.DrawableCustomBinding
 import com.apache.fastandroid.demo.drawable.LoadingDrawable
-import com.tesla.framework.kt.dpInt
+import com.tesla.framework.kt.dp
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.android.synthetic.main.drawable_custom.*
 
@@ -23,9 +23,9 @@ class LoadingDrawableFragment: BaseBindingFragment<DrawableCustomBinding>(Drawab
         val loadingDrawable =
             LoadingDrawable(
                 bitmap,
-                21.dpInt
+                21.dp
             )
-        loadingDrawable.setBounds(0, 0, 78.dpInt, 32.dpInt)
+        loadingDrawable.setBounds(0, 0, 78.dp, 32.dp)
         imageview.setImageDrawable(loadingDrawable)
     }
 }

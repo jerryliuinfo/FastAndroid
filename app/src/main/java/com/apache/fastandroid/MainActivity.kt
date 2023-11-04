@@ -15,29 +15,15 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
-import com.android.example.github.api.GithubClient
-import com.android.example.github.repository.UserRepository
-import com.android.example.github.ui.user.UserViewModel
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.component.ComponentDemoFragment
-import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment
 import com.apache.fastandroid.demo.drakeet.customgroup.CustomViewGroupFragment
-import com.apache.fastandroid.demo.guide.appdata.AppDataDemoFragment
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
-import com.apache.fastandroid.demo.sample.listentry.ListEntryDemoFragment
-import com.apache.fastandroid.demo.storage.StorageDemoListFragment
-import com.apache.fastandroid.demo.storage.documenttree.DocumentTreeDemoActivity
-import com.apache.fastandroid.demo.temp.KnowledgeFragment
-import com.apache.fastandroid.demo.viewbinding.ViewBindingDemoFragment
-import com.tesla.framework.component.di.KotlinViewModelProvider
 import com.tesla.framework.component.eventbus.FastBus
+import com.tesla.framework.component.log.Timber
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
-import com.tesla.framework.component.log.Timber
 
 class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
     private val selecteId = -1
@@ -229,6 +215,9 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //            launchActivity<ManifestDemoActivity>(this)
 
 //        FragmentContainerActivity.launch(this, CustomLifecycleOwnerFragment::class.java,null,addTitleBar = false)
+
+        FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null)
+
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
 

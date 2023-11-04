@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.apache.fastandroid.R
 import com.tesla.framework.databinding.FragmentRecycleview2Binding
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import masteryi.me.mergeadapterdemo.ItemAdapter
+import com.apache.fastandroid.demo.widget.mergeadapter.ItemAdapter
 
 /**
  * Created by Jerry on 2022/6/26.

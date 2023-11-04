@@ -74,7 +74,7 @@ class RecycleViewItemDecorationFragment2: BaseBindingFragment<RecycleviewItemDec
                 val drawableDecoration = HorizontalDividerItemDecoration.Builder(context)
                     .drawable(R.drawable.drawable_divider)
                     .size(15)
-                    .margin(20.dp.toInt())
+                    .margin(20.dp)
                     .visibilityProvider(object :FlexibleDividerDecoration.VisibilityProvider{
                         override fun shouldHideDivider( position:Int, parent:RecyclerView ): Boolean {
                             return position == 1

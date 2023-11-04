@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.dp
-import com.tesla.framework.kt.dpInt
 
 /**
  * Created by Jerry on 2021/5/3.
@@ -89,12 +88,12 @@ class CommentItemDecoration(val context:Context): RecyclerView.ItemDecoration() 
 
         var positon = parent.getChildLayoutPosition(view)
         if (positon == 0){
-            outRect.top = 0.dpInt
+            outRect.top = 0.dp
         }else{
-            outRect.top = 10.dpInt
+            outRect.top = 10.dp
         }
-        outRect.left = 30.dpInt
-        outRect.right = 30.dpInt
+        outRect.left = 30.dp
+        outRect.right = 30.dp
 
     }
 }

@@ -10,10 +10,8 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.FragmentProgramilySetStyleBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.tesla.framework.kt.dp
-import com.tesla.framework.kt.dpInt
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import kotlinx.android.synthetic.main.fragment_programily_set_style.*
-import kotlin.math.roundToInt
+import kotlinx.android.synthetic.main.fragment_programily_set_style.content_container
 
 /**
  * Created by Jerry on 2021/10/15.
@@ -43,7 +41,7 @@ class ProgrammaticalySetStyleFragment: BaseBindingFragment<FragmentProgramilySet
         val relativeLayout = RelativeLayout(ContextThemeWrapper(context,R.style.relativeLayoutStyle))
         relativeLayout.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         relativeLayout.layoutParams.apply {
-            height = 100.dpInt
+            height = 100.dp
         }
 
         content_container.addView(relativeLayout)
