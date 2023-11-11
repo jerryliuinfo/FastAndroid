@@ -16,6 +16,7 @@ dependencies {
 
     implementation (*Libs.glide)
     implementation Libs.gson
+    implementation Libs.weishu
     implementation Libs.utilcode
     implementation Libs.brvh
     implementation Jetpack.paging

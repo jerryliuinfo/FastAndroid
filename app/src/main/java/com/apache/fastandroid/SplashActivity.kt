@@ -4,11 +4,9 @@ import android.content.Intent
 import android.os.*
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
-import com.apache.fastandroid.app.FastApplication
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.databinding.ActivitySplashBinding
 import com.tesla.framework.component.countdown.ICountDownAction
-import com.tesla.framework.component.countdown.ICountDownAdapter
 import com.tesla.framework.component.countdown.ICountDownListener
 import com.tesla.framework.component.countdown.LifeCycleCountDownByTimer
 import com.tesla.framework.component.logger.Logger
@@ -26,7 +24,7 @@ class SplashActivity : BaseVBActivity<ActivitySplashBinding>(ActivitySplashBindi
         super.layoutInit(savedInstanceState)
         Logger.d("SplashActivity layoutInit")
 
-        ClientConfigurator.appSetting.nightModeLive.observe(this) { nightMode ->
+        Initiator.appSetting.nightModeLive.observe(this) { nightMode ->
             nightMode?.let {
                 AppCompatDelegate.setDefaultNightMode(it)
             }

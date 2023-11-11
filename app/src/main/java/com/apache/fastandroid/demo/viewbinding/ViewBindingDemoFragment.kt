@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.apache.fastandroid.databinding.ActivityMainBinding
+import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.tesla.framework.component.viewbinding.viewBinding
 import com.tesla.framework.ui.fragment.BaseFragment
 
@@ -14,7 +14,7 @@ import com.tesla.framework.ui.fragment.BaseFragment
 class ViewBindingDemoFragment:BaseFragment() {
 
 
-    private val binding by viewBinding(ActivityMainBinding::bind)
+    private val binding by viewBinding(ActivityMainNewBinding::bind)
 
     override fun inflateView(
         inflater: LayoutInflater,

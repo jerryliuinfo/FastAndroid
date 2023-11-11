@@ -364,12 +364,12 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             android:exported="false" />
 
 
-        <activity android:name="me.drakeet.floo.sample.FlooMainActivity"
+        <activity android:name=".demo.floo.FlooMainActivity"
             android:exported="false"
             />
 
         <activity
-            android:name="me.drakeet.floo.sample.TargetActivity"
+            android:name=".demo.floo.TargetActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -385,7 +385,7 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
         </activity>
 
         <activity
-            android:name="me.drakeet.floo.sample.WebActivity"
+            android:name=".demo.floo.WebActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -401,7 +401,7 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
         </activity>
 
         <activity
-            android:name="me.drakeet.floo.sample.ContainerActivity"
+            android:name=".demo.floo.ContainerActivity"
             android:exported="true"
             >
             <intent-filter>
@@ -416,7 +416,7 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
                     android:scheme="@string/scheme" />
             </intent-filter>
         </activity>
-        <activity android:name="me.drakeet.floo.sample.NotRegisteredActivity"
+        <activity android:name=".demo.floo.NotRegisteredActivity"
             android:exported="true"
             >
             <intent-filter>

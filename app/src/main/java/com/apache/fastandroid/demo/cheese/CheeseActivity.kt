@@ -10,9 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.apache.fastandroid.ClientConfigurator
+import com.apache.fastandroid.Initiator
 import com.apache.fastandroid.R
-import com.apache.fastandroid.app.FastApplication
 import com.apache.fastandroid.databinding.ActivityCheeseMainBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -136,7 +135,7 @@ class CheeseActivity:BaseVBActivity<ActivityCheeseMainBinding>(ActivityCheeseMai
     }
 
     private fun setNightMode(@AppCompatDelegate.NightMode nightMode: Int) {
-        ClientConfigurator.appSetting.nightMode = nightMode
+        Initiator.appSetting.nightMode = nightMode
 
     }
 

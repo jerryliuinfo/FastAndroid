@@ -10,8 +10,7 @@ import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
-import androidx.multidex.MultiDex
-import com.apache.fastandroid.ClientConfigurator
+import com.apache.fastandroid.Initiator
 import com.apache.fastandroid.artemis.ui.app.ComApplication
 import com.apache.fastandroid.jetpack.flow.api.ApiHelper
 import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
@@ -20,8 +19,10 @@ import com.apache.fastandroid.jetpack.flow.local.DatabaseHelper
 import com.apache.fastandroid.jetpack.flow.local.DatabaseHelperImpl
 import com.apache.fastandroid.network.api.ApiServiceFactory
 import com.apache.fastandroid.util.MultidexUtils
-import com.example.android.architecture.blueprints.todoapp.ServiceLocator
+import com.example.android.architecture.blueprints.todoapp.data.source.DefaultTasksRepository
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
+import com.example.android.architecture.blueprints.todoapp.data.source.local.TasksLocalDataSource
+import com.example.android.architecture.blueprints.todoapp.data.source.local.ToDoDatabase
 import com.squareup.leakcanary.LeakCanary
 import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.component.logger.Logger
@@ -67,7 +68,7 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
         mAppViewModelStore = ViewModelStore()
 
         val time = measureTimeMillis {
-            ClientConfigurator.init(this)
+            Initiator.init(this)
         }
 
         println("Application onCreate cost time: $time milles")
@@ -152,7 +153,11 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
 
     // Depends on the flavor,
     val taskRepository: TasksRepository
-        get() = ServiceLocator.provideTasksRepository(this)
+        get()  {
+            // ServiceLocator.provideTasksRepository(this)
+            val taskDao = ToDoDatabase.getInstance()
+            return DefaultTasksRepository(TasksLocalDataSource(taskDao),TasksLocalDataSource(taskDao))
+        }
 
 
     override fun onTrimMemory(level: Int) {

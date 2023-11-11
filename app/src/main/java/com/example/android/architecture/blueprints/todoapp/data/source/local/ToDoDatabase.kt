@@ -17,7 +17,11 @@
 package com.example.android.architecture.blueprints.todoapp.data.source.local
 
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.apache.fastandroid.demo.room.AccountDao
+import com.apache.fastandroid.demo.room.AccountDatabase
+import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.data.Task
 
 /**
@@ -29,4 +33,22 @@ import com.example.android.architecture.blueprints.todoapp.data.Task
 abstract class ToDoDatabase : RoomDatabase() {
 
     abstract fun taskDao(): TasksDao
+
+
+
+    companion object {
+
+        private val db: ToDoDatabase by lazy {
+            Room.databaseBuilder(
+                Utils.getApp(),
+                ToDoDatabase::class.java, "tasks"
+            )
+                .allowMainThreadQueries().build()
+        }
+
+        fun getInstance(): TasksDao {
+            return db.taskDao()
+        }
+    }
+
 }

@@ -37,7 +37,7 @@ object Libs {
     const val anyLayer = "com.github.goweii:AnyLayer:4.1.4-androidx"
     const val easyTrack = "com.github.pengxurui:EasyTrack:v1.0.1"
     const val permissionMonitor = "com.github.huage2580:PermissionMonitor:1.0.1"
-    const val weishu = "me.weishu:epic:1.0.0"
+    // const val weishu = "me.weishu:epic:1.0.0"
     const val sdk_editor = "com.github.iwhys:sdk-editor-plugin:1.1.7"
 
     const val qmui = "com.qmuiteam:qmui:2.0.0-alpha10"
@@ -98,6 +98,11 @@ object Libs {
         "me.drakeet.floo:floo:1.2.0"
     )
 
+    val weishu = arrayOf(
+        "me.weishu:epic:1.0.0",
+        "me.weishu:free_reflection:3.0.1"
+    )
+
     const val restring = "dev.b3nedikt.restring:restring:5.1.4"
     const val viewPump = "dev.b3nedikt.viewpump:viewpump:4.0.10"
     const val bundler = "com.github.skydoves:bundler:1.0.4"
@@ -114,7 +119,7 @@ object Libs {
 //        anyLayer,
 //        "com.github.pengxurui:EasyTrack:v1.0.1",
         "com.github.huage2580:PermissionMonitor:1.0.1",
-        "me.weishu:epic:1.0.0",
+       *weishu,
         "com.yqritc:recyclerview-flexibledivider:1.4.0",
 
         "com.youth.banner:banner:2.1.0",
@@ -187,7 +192,8 @@ object Libs {
         "org.lsposed.hiddenapibypass:hiddenapibypass:4.2",
 
         //android 11 FreeReflection一个允许你在Android P上使用反射而没有任何限制的库
-        "me.weishu:free_reflection:3.0.1",
+        // "me.weishu:free_reflection:3.0.1",
+        *weishu
     )
 
 

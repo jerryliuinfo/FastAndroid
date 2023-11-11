@@ -8,7 +8,7 @@ import com.apache.fastandroid.demo.drakeet.common.DrakeetCommonFragment
 import com.apache.fastandroid.demo.drakeet.customgroup.CustomViewGroupFragment
 import com.apache.fastandroid.demo.drakeet.foregroundservice.ForegroundServiceFragment
 import com.apache.fastandroid.demo.drakeet.multitype.MultiTypeDemoFragment
-import me.drakeet.floo.sample.FlooMainActivity
+import com.apache.fastandroid.demo.floo.FlooMainActivity
 
 /**
  * Created by Jerry on 2021/9/8.

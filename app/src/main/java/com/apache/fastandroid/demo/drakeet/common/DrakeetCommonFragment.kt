@@ -14,10 +14,8 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.os.HandlerCompat
-import com.apache.fastandroid.LogUtils
 import com.apache.fastandroid.MainActivity
 import com.apache.fastandroid.R
-import com.apache.fastandroid.component.keyboard.KeyboardVisibilityDemoFragment
 import com.apache.fastandroid.databinding.FragmentDrakeetKnowledgeBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.drakeet.RecycleviewStabledIdsFragment
@@ -100,7 +98,6 @@ class DrakeetCommonFragment:BaseBindingFragment<FragmentDrakeetKnowledgeBinding>
                 val deviceName = DeviceName.getDeviceName("clark", "Unknown device")
                 Logger.d("deviceName:${deviceName}")
                 DeviceName.with(context).request { deviceInfo:DeviceName.DeviceInfo?, exception:Exception? ->
-                    LogUtils.d("deviceName2:${deviceInfo}")
 
                 }
             }
