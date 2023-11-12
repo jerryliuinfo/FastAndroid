@@ -32,6 +32,18 @@
                 android:value="androidx.startup" />
         </provider>
 
+        <activity
+            android:name=".component.crashreporter.CrashReporterActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.balsikandar.android.task"
+
+            />
+        <activity
+            android:name=".component.crashreporter.LogMessageActivity"
+            android:exported="false"
+            android:parentActivityName=".component.crashreporter.CrashReporterActivity"
+            />
 
 
     </application>

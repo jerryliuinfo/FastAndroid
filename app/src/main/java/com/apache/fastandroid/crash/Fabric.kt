@@ -2,7 +2,7 @@ package com.apache.fastandroid.crash
 
 import android.app.Application
 import com.apache.fastandroid.BuildConfig
-import com.balsikandar.crashreporter.CrashReporter
+import com.tesla.framework.component.crashreporter.CrashReporter
 import com.tencent.bugly.crashreport.CrashReport
 
 /**

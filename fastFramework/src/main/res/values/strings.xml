@@ -5,4 +5,8 @@
     <string name="enter_your_name_here">Enter your name here</string>
     <string name="text_hook">Hello tcl World</string>
 
+    <plurals name="watering_needs_suffix">
+        <item quantity="one" translation_description="Suffix for the text describing how often a plant should be watered, singular. Used in combination with watering_needs_prefix: 'Watering needs: every day'.">every day</item>
+        <item quantity="other" translation_description="Suffix for the text describing how often a plant should be watered, plural. Used in combination with watering_needs_prefix: 'Watering needs: every 8 days'.">every %d days</item>
+    </plurals>
 </resources>

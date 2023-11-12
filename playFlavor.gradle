@@ -11,7 +11,7 @@ android {
         free{
             dimension "env"
 //            applicationIdSuffix = ".test"
-            versionNameSuffix "-test"
+//            versionNameSuffix "-test"
 
         }
 

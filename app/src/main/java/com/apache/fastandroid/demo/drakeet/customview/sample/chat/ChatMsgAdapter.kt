@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
 import com.tesla.framework.common.util.DrawableUtils
 import com.tesla.framework.kt.dp
+import com.tesla.framework.kt.getDrawable
 
 class ChatMsgAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -58,6 +60,8 @@ class ChatMsgBubbleOtherView(context: Context) : CustomLayout(context) {
   init {
     bubbleMessage.text = "To me"
     layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+    background = R.color.blue_ff.getDrawable(context)
+
   }
 
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -95,6 +99,7 @@ class ChatMsgBubbleSelfView(context: Context) : CustomLayout(context) {
   init {
     bubbleMessage.text = "To you"
     layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+    background = R.color.green.getDrawable(context)
   }
 
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -103,8 +108,10 @@ class ChatMsgBubbleSelfView(context: Context) : CustomLayout(context) {
     setMeasuredDimension(
       widthMeasureSpec,
       (bubbleMessage.measuredHeight
+              //todo  measuredHeight 的值是没有包含 paddingTop 和 paddingBottom 值?
         + bubbleMessage.paddingTop
-        + bubbleMessage.paddingBottom).toExactlyMeasureSpec()
+        + bubbleMessage.paddingBottom
+              ).toExactlyMeasureSpec()
     )
   }
 

@@ -209,14 +209,14 @@ abstract class CustomLayout(
     }
 
     /**
-     * 多view横向居中(水平居中) 横向排列 ↓， 距离顶部
+     * 多view在垂直方向排列
      */
     protected fun layoutVertical(vararg views: View): Int {
         return layoutVertical(0, *views)
     }
 
     /**
-     * 多view横向居中 横向排列 ↓
+     * 多view在垂直方向排列
      * @param startY y轴起点
      */
     protected fun layoutVertical(startY: Int, vararg views: View): Int {

@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.ActivityCrashReportBinding
-import com.balsikandar.crashreporter.CrashReporter
-import com.balsikandar.crashreporter.ui.CrashReporterActivity
+import com.tesla.framework.component.crashreporter.CrashReporter
+import com.tesla.framework.component.crashreporter.CrashReporterActivity
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlin.concurrent.thread
 

@@ -7,7 +7,7 @@ import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2023/8/29.
- *
+ * LiveData
  * Animator
  * MeasureSpec
  * HandlerThread

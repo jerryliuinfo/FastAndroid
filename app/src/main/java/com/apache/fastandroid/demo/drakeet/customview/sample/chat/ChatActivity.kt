@@ -17,10 +17,13 @@ import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.demo.drakeet.insets.EdgeInsetDelegate
+import com.apache.fastandroid.demo.drakeet.insets.InsetsAnimationCustomLayout
+import com.apache.fastandroid.demo.drakeet.insets.doOnApplyWindowInsets
+import com.apache.fastandroid.demo.drakeet.insets.translateDeferringInsetsAnimation
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.textfield.TextInputLayout
 import com.seiko.demo.base.CustomLayout
-import com.tesla.framework.kt.dp
 import com.tesla.framework.kt.getAttrColor
 import com.tesla.framework.kt.toTheme
 
@@ -120,17 +123,20 @@ class ChatLayout(context: Context) : InsetsAnimationCustomLayout(context) {
 //底部的输入框
 class ChatMessageHolderView(context: Context) : CustomLayout(context) {
 
-  @JvmField
-  val inputEdit = AppCompatEditText(context).apply {
-    hint = "Type a message..."
-  }
+
 
   @JvmField
   val input = TextInputLayout(
     context.toTheme(R.style.Base_Theme_InputLayout),
     null,
     R.attr.textInputStyle
-  ).autoAddView(height = MATCH_PARENT)
+  ).autoAddView(height = WRAP_CONTENT)
+
+
+  @JvmField
+  val inputEdit = AppCompatEditText(context).apply {
+    hint = "Type a message..."
+  }
 
   @JvmField
   val btnSend = ImageButton(
@@ -149,6 +155,7 @@ class ChatMessageHolderView(context: Context) : CustomLayout(context) {
 
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
     super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+    //先测量 send 按钮，再测量 input 的宽度
     btnSend.autoMeasure()
 
     val parentWidth = MeasureSpec.getSize(widthMeasureSpec)

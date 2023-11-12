@@ -330,19 +330,7 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             android:windowSoftInputMode="adjustResize">
 
         </activity>
-        <activity
-            android:name="com.balsikandar.crashreporter.ui.CrashReporterActivity"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:taskAffinity="com.balsikandar.android.task"
 
-            />
-        <activity
-            android:name="com.balsikandar.crashreporter.ui.LogMessageActivity"
-            android:exported="false"
-            android:parentActivityName="com.balsikandar.crashreporter.ui.CrashReporterActivity"
-
-            />
 
         <activity
             android:name="com.example.hellojnicallback.JniMainActivity"
@@ -592,7 +580,7 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
         -->
 
         <provider
-            android:name="com.balsikandar.crashreporter.CrashReporterInitProvider"
+            android:name="com.tesla.framework.component.crashreporter.CrashReporterInitProvider"
             android:authorities="${applicationId}.CrashReporterInitProvider"
             android:enabled="true"
             android:exported="false" />
