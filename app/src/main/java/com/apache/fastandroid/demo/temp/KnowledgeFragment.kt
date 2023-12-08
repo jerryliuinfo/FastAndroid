@@ -47,6 +47,7 @@ import com.tesla.framework.kt.ConfirmCallback
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.zwb.lib_base.utils.network.NetworkStateChangeListener
 import com.tesla.framework.component.network.NetworkTypeEnum
+import com.tesla.framework.kt.launchFragment
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import kotlinx.android.synthetic.main.fragment_best_practice_livedata.*
 import kotlinx.android.synthetic.main.fragment_temp_knowledge.*
@@ -219,6 +220,11 @@ class KnowledgeFragment: BaseBindingFragment<FragmentTempKnowledgeBinding>(Fragm
 
         mBinding.btnClickAntiShake.setOnDebouncedClickListener {
             antiShakeUsage(it)
+        }
+
+        //让EditText不自动获取焦点
+        mBinding.btnEdittextFocus.setOnClickListener {
+            requireActivity().launchFragment<AndroidPerformanceDemoFragment>()
         }
 
     }

@@ -20,7 +20,6 @@ class FlowDemoFragment :
 
     }
 
-
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 

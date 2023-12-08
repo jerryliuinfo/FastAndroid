@@ -26,6 +26,7 @@ class BlackTechDemoFragment:BaseListFragment() {
             ,ViewItemBean("SpWaitKiller","解决SP卡顿问题", SpWaitKillerDemoFragment::class.java)
             ,ViewItemBean("ResourcesPoet","生成Android XML", ResourcePoetDemoFragment::class.java)
             ,ViewItemBean("OkNetworkMonitor","OKHttp 抓包工具", NetworkMonitorDemoFragment::class.java)
+            ,ViewItemBean("重启应用 ","重启应用 ProcessPhoenix", BlackTechDemoListFragment::class.java)
         )
     }
 

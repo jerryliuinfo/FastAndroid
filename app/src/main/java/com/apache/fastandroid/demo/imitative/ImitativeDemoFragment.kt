@@ -7,6 +7,7 @@ import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2023/8/29.
+ * AsyncLayoutInflator
  * LiveData
  * Animator
  * MeasureSpec
@@ -17,6 +18,7 @@ XCVBNMQWERTYUIOPASDFGHJKLZXCVBNNM * Paint
  * View#setTag
  * LifeCycleObserver
  * FragmentStateAdapter
+ * Glide
  *
  */
 class ImitativeDemoFragment:BaseBindingFragment<FragmentImitativeDemoBinding>(FragmentImitativeDemoBinding::inflate) {

@@ -29,6 +29,9 @@ class GenericDemoFragment:BaseBindingFragment<FragmentGenericTypeBinding>(Fragme
         mBinding.btnRefied.setOnClickListener {
             refiedUsage()
         }
+        //泛型参数
+
+
     }
 
     private fun refiedUsage() {

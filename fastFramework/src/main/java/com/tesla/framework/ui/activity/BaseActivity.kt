@@ -60,7 +60,6 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
         initViewModel()
         initNetworkListener()
 
-
         inflateView().also {
             root = it
         }

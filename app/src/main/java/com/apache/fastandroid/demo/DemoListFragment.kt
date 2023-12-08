@@ -62,7 +62,7 @@ class DemoListFragment : BaseListFragment() {
             ViewItemBean("JNI", "JNI", JniDemoListFragment::class.java),
             ViewItemBean("Amit Shekhar", "Amit Shekhar", AmitShekharDemoFragment::class.java),
             ViewItemBean("StorageSample", "StorageSample", StorageDemoListFragment::class.java),
-            ViewItemBean("源码仿写", "源码仿写", ImitativeDemoFragment::class.java),
+            ViewItemBean("源码学习", "源码学习", ImitativeDemoFragment::class.java),
 
 
         )

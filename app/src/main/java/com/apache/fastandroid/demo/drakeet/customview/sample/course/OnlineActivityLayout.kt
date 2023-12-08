@@ -9,6 +9,7 @@ import com.apache.fastandroid.R
 import com.seiko.demo.base.CustomLayout
 import com.seiko.demo.course.CourseType
 import com.tesla.framework.component.imageloader.ImageLoaderManager
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.dp
 
 class OnlineActivityLayout @JvmOverloads constructor(
@@ -48,12 +49,16 @@ class OnlineActivityLayout @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        Logger.d("OnlineActivityLayout onMeasure")
+
         topLayout.autoMeasure()
         teachingLayout.autoMeasure()
         btnChange.autoMeasure()
     }
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
+        Logger.d("OnlineActivityLayout onLayout")
+
         layoutVertical(topLayout, teachingLayout)
         btnChange.layout(0, 0, fromBottom = true)
     }

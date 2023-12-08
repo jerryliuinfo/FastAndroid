@@ -31,7 +31,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.findFragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -738,10 +740,7 @@ fun View.getString(@StringRes stringRes: Int): String = context.getString(string
 
 val View.layoutInflater: LayoutInflater get() = LayoutInflater.from(this.context)
 
-fun Class<Fragment>.launch(activity:Activity){
-    FragmentContainerActivity.launch(activity, this, addTitleBar = false)
 
-}
 
 
 internal fun getRootView(view: View): View {
@@ -770,3 +769,6 @@ fun Fragment.setStatusBarColor(@ColorRes statusBarColor: Int?) {
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
     window.statusBarColor = ContextCompat.getColor(contextNotNull, statusBarColor)
 }
+
+
+public fun <F : Fragment> View.findFragment(): F = FragmentManager.findFragment(this)

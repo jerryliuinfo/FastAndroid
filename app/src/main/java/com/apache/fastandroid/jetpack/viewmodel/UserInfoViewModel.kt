@@ -12,7 +12,7 @@ import kotlin.random.Random
 /**
  * Created by Jerry on 2020/11/1.
  */
-class UserInfoViewModel(private val reporsity: UserReporsity):BaseStatusViewModel() {
+class UserInfoViewModel(private val reporsity: UserReporsity):ViewModel() {
 
 
     val countLiveData:MutableLiveData<Int> = MutableLiveData(0)
@@ -75,13 +75,11 @@ class UserInfoViewModel(private val reporsity: UserReporsity):BaseStatusViewMode
 
     private fun launch(block: suspend () -> Unit) = viewModelScope.launch {
         try {
-            showLoading()
+
             block()
-           dismissLoading()
         } catch (t: Throwable) {
             t.printStackTrace()
             Toast.makeText(Utils.getApp(), t.message, Toast.LENGTH_SHORT).show()
-            dismissLoading()
         }
     }
 

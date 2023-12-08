@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-import com.apache.fastandroid.databinding.FragmentComRecycleviewBinding
 import com.apache.fastandroid.demo.recycleview.multiitemtype.bean.ChatMessage
 import com.apache.fastandroid.demo.recycleview.zhy.MultiItemTypeAdapter.OnItemClickListener
 import com.apache.fastandroid.demo.recycleview.zhy.adapter.ChatAdapterForRv
 import com.apache.fastandroid.demo.recycleview.zhy.wrapper.LoadmoreWrapper
+import com.tesla.framework.databinding.FragmentComRecycleviewBinding
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**

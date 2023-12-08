@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.GridLayoutManager
 import com.apache.fastandroid.R
-import com.apache.fastandroid.databinding.FragmentComRecycleviewBinding
 import com.apache.fastandroid.demo.recycleview.zhy.base.ViewHolder
+import com.tesla.framework.databinding.FragmentComRecycleviewBinding
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**

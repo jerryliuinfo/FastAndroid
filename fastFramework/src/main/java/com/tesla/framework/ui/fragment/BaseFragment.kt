@@ -44,6 +44,9 @@ open abstract class BaseFragment:Fragment(),BaseView,IDynamicView {
     private var mActivityProvider: ViewModelProvider? = null
     private var mApplicationProvider: ViewModelProvider? = null
 
+    private var visible = false
+
+
     open abstract fun inflateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):View?
 
     private val compositeDisposable = CompositeDisposable()

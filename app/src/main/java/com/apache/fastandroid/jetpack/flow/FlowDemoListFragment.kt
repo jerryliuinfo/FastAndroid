@@ -6,6 +6,7 @@ import com.apache.fastandroid.jetpack.flow.basic.FlowBasicUsageFragment
 import com.apache.fastandroid.jetpack.flow.completion.CompletionFragment
 import com.apache.fastandroid.jetpack.flow.errorhandling.catch.CatchFragment
 import com.apache.fastandroid.jetpack.flow.errorhandling.emitall.EmitAllFragment
+import com.apache.fastandroid.jetpack.flow.event.FlowEventDemoFragment
 import com.apache.fastandroid.jetpack.flow.filter.FilterFragment
 import com.apache.fastandroid.jetpack.flow.map.MapFragment
 import com.apache.fastandroid.jetpack.flow.parallel.ParallelNetworkFragment
@@ -54,6 +55,7 @@ class FlowDemoListFragment: BaseListFragment() {
             ,ViewItemBean("Flow和 Retrofit 结合","Flow和 Retrofit 结合", FlowRetrofitFragment::class.java)
             ,ViewItemBean("State and Share Flow","State and Share Flow", StateFlowDemoFragment::class.java)
             ,ViewItemBean("StateFlow2","StateFlow2", StateFlowDemoFragment2::class.java)
+            ,ViewItemBean("Flow Event","Flow Event", FlowEventDemoFragment::class.java)
 
         )
     }

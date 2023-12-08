@@ -7,7 +7,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.apache.fastandroid.R
-import com.apache.fastandroid.databinding.FragmentComRecycleviewBinding
 import com.apache.fastandroid.databinding.ItemAlbumBinding
 import com.apache.fastandroid.demo.showcase.AlbumListViewModelFactory
 import com.apache.fastandroid.demo.showcase.data.datasource.api.service.AlbumRetrofitService
@@ -20,6 +19,7 @@ import com.blankj.utilcode.util.Utils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.tesla.framework.component.imageloader.showImage
+import com.tesla.framework.databinding.FragmentComRecycleviewBinding
 import com.tesla.framework.kt.hide
 import com.tesla.framework.kt.show
 import com.tesla.framework.ui.fragment.BaseBindingFragment

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.tesla.framework.component.viewbinding
+package com.tesla.framework.ui.delegate
 
 import android.app.Activity
 import android.view.View

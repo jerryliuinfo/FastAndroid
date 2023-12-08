@@ -3,11 +3,10 @@ package com.apache.fastandroid.demo.drakeet
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.R
-import com.apache.fastandroid.databinding.FragmentComRecycleviewBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.tesla.framework.databinding.FragmentComRecycleviewBinding
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import kotlinx.android.synthetic.main.fragment_com_recycleview.*
 
 
 /**
@@ -32,7 +31,7 @@ class DrakeetEdgeEffectDemoFragment : BaseBindingFragment<FragmentComRecycleview
 						}
 
 				 }
-      recyclerView.adapter = mAdapter
+      mBinding.recyclerView.adapter = mAdapter
       val list = mutableListOf<String>()
       for (i in 0 until 100){
          list.add("item: $i")

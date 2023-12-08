@@ -25,7 +25,7 @@ class RefreshTokenInterceptor : Interceptor {
         return response
     }
 
-    private fun fetchToken():String?{
+    private fun fetchToken():String{
         return ""
     }
 }

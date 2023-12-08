@@ -20,8 +20,8 @@ package com.tesla.framework.ui.activity
 
 import android.view.View
 import androidx.viewbinding.ViewBinding
-import com.tesla.framework.component.viewbinding.ActivityBinding
-import com.tesla.framework.component.viewbinding.ActivityBindingDelegate
+import com.tesla.framework.ui.delegate.ActivityBinding
+import com.tesla.framework.ui.delegate.ActivityBindingDelegate
 
 /**
  * 使用反射创建 ViweBinding

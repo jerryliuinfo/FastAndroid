@@ -23,6 +23,7 @@ import com.example.android.architecture.blueprints.todoapp.data.source.DefaultTa
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import com.example.android.architecture.blueprints.todoapp.data.source.local.TasksLocalDataSource
 import com.example.android.architecture.blueprints.todoapp.data.source.local.ToDoDatabase
+import com.jakewharton.processphoenix.ProcessPhoenix
 import com.squareup.leakcanary.LeakCanary
 import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.component.logger.Logger
@@ -45,9 +46,6 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
     }
     lateinit var  databaseHelper:DatabaseHelper
 
-
-
-
     companion object {
         val TAG = FastApplication::class.java.simpleName
         lateinit var instance: FastApplication
@@ -62,11 +60,13 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
             // You should not init your app in this process.
             return
         }
+        if (ProcessPhoenix.isPhoenixProcess(this)){
+            return
+        }
         context = this
         instance = this
         databaseHelper = DatabaseHelperImpl(DatabaseBuilder.getInstance(this))
         mAppViewModelStore = ViewModelStore()
-
         val time = measureTimeMillis {
             Initiator.init(this)
         }

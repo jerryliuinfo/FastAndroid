@@ -18,26 +18,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.drakeet.customgroup.CustomViewGroupFragment
+import com.apache.fastandroid.demo.temp.AndroidPerformanceDemoFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.log.Timber
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.ui.activity.BaseVBActivity
+import com.tesla.framework.ui.activity.BaseBindingActivity
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 
-class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBinding::inflate), View.OnClickListener {
+class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClickListener {
     private val selecteId = -1
 
     private var mNavController: NavController? = null
 
     private val mHandler = Handler(Looper.getMainLooper())
 
-
-
     private val recycledViewPool = RecyclerView.RecycledViewPool().apply {
         setMaxRecycledViews(R.id.view_type_recycleView_pool,25)
     }
-
 
 
     @CostTime
@@ -116,7 +113,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 //        FragmentContainerActivity.launch(this, SandWitchDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, ProgressViewDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, OnceFragment::class.java,null)
+//        FragmentContainerActivity.launch(this, OnceDemoFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
 //        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, SerialNetworkFragment::class.java,null)
@@ -216,7 +213,12 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
 
 //        FragmentContainerActivity.launch(this, CustomLifecycleOwnerFragment::class.java,null,addTitleBar = false)
 
-        FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null)
+        // FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null)
+        // FragmentContainerActivity.launch(this, PerfettoDemoFragment::class.java,null)
+        // FragmentContainerActivity.launch(this, BlackTechDemoListFragment::class.java,null)
+        // FragmentContainerActivity.launch(this, FlowEventDemoFragment::class.java,null)
+        // FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null)
+        FragmentContainerActivity.launch(this, AndroidPerformanceDemoFragment::class.java,null)
 
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
@@ -322,6 +324,7 @@ class MainActivity : BaseVBActivity<ActivityMainNewBinding>(ActivityMainNewBindi
             from.startActivity(intent)
         }
     }
+
 
 
 

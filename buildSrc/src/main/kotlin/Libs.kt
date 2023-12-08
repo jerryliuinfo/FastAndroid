@@ -172,6 +172,8 @@ object Libs {
 
 //        https://github.com/AppIntro/AppIntro
 //        "com.github.AppIntro:AppIntro:6.3.1",
+
+        "com.jakewharton:process-phoenix:2.1.2"
     )
 
 
@@ -189,7 +191,7 @@ object Libs {
 
     val blackTech = arrayOf(
         //https://github.com/LSPosed/AndroidHiddenApiBypass
-        "org.lsposed.hiddenapibypass:hiddenapibypass:4.2",
+        "org.lsposed.hiddenapibypass:hiddenapibypass:4.3",
 
         //android 11 FreeReflection一个允许你在Android P上使用反射而没有任何限制的库
         // "me.weishu:free_reflection:3.0.1",

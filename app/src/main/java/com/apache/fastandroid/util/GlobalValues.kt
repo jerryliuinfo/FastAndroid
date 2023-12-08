@@ -1,5 +1,8 @@
 package com.apache.fastandroid.util
 
+import android.content.SharedPreferences
+import com.apache.fastandroid.demo.storage.sp.SPDelegates
+import com.apache.fastandroid.demo.storage.sp.SPUtils
 import com.tencent.mmkv.MMKV
 
 /**
@@ -11,6 +14,9 @@ object GlobalValues {
     const val WORKING_MODE_ROOT = "root"
     const val WORKING_MODE_SHIZUKU = "shizuku"
 
+    private fun getPreferences(): SharedPreferences {
+        return SPUtils.sp
+    }
 
 
     val mmkv: MMKV =
@@ -28,4 +34,7 @@ object GlobalValues {
         set(value) {
             mmkv.encode(GlobalConstans.SpKey.PREF_WEBDAV_HOST, value)
         }
+
+    var advancedOptions: Int by SPDelegates("", 10)
+
 }

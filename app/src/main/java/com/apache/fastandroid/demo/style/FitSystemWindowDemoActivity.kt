@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityFitsSystemWindowBinding
-import com.tesla.framework.component.viewbinding.contentView
+import com.tesla.framework.ui.delegate.contentView
 
 /**
  * Created by Jerry on 2022/3/10.
@@ -20,6 +20,8 @@ class FitSystemWindowDemoActivity:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //设置状态栏为透明
         window.statusBarColor = Color.TRANSPARENT
+
+        setContentView(mBinding.root)
 
 //        setContentView(R.layout.activity_fits_system_window)
     }

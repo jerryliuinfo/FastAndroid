@@ -7,7 +7,7 @@ import com.apache.fastandroid.demo.bestpay.BestPayDemoFragment
 import com.apache.fastandroid.demo.component.ComponentDemoFragment
 import com.apache.fastandroid.demo.component.bundle.BundleDemoActivity
 import com.apache.fastandroid.demo.component.loadsir.sample.LoadSirDemoListFragment
-import com.apache.fastandroid.demo.component.once.OnceFragment
+import com.apache.fastandroid.demo.component.once.OnceDemoFragment
 import com.apache.fastandroid.demo.glide.GlideDemoFragment
 import com.apache.fastandroid.demo.hawk.HawkDemoFragment
 import com.apache.fastandroid.demo.logger.LoggerDemoFragment
@@ -41,8 +41,8 @@ class OpenSourceDemoFragment: BaseListFragment() {
                 ,ViewItemBean("MVI模式", "shenzhen2017/android-architecture", MviDemoFragment::class.java)
                 ,ViewItemBean("sandwitch", "sandwitch", SandWitchDemoFragment::class.java)
                 ,ViewItemBean("Bundle", "Bundle", SandWitchDemoFragment::class.java)
-                ,ViewItemBean("Once", "Once", OnceFragment::class.java)
-                ,ViewItemBean("material-dialogs", "material-dialogs", OnceFragment::class.java)
+                ,ViewItemBean("Once", "Once", OnceDemoFragment::class.java)
+                ,ViewItemBean("material-dialogs", "material-dialogs", OnceDemoFragment::class.java)
                 ,ViewItemBean("bundler", "https://github.com/skydoves/Bundler", activity=BundleDemoActivity::class.java)
                 ,ViewItemBean("SearchPreference", "https://github.com/ByteHamster/SearchPreference", SearchPreferenceDemoListFragment::class.java)
                 ,ViewItemBean("通用组件", "通用组件", ComponentDemoFragment::class.java)

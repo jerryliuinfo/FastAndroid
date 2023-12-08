@@ -9,6 +9,7 @@ import com.apache.fastandroid.demo.recycleview.itemtouch.ItemTouchHelperDemoFrag
 import com.apache.fastandroid.demo.recycleview.listadapter.ListAdapterDemoFragment
 import com.apache.fastandroid.demo.recycleview.multiitemtype.MultiItemTypeDemoFragment1
 import com.apache.fastandroid.demo.recycleview.origin.RecycleViewOriginFragment
+import com.apache.fastandroid.demo.recycleview.partyrefresh.PartyRefreshDemoFragment
 import com.apache.fastandroid.demo.recycleview.viewtype.MultiViewTypeDemoFragment
 import com.apache.fastandroid.demo.recycleview.zhy.BaseAdapterMultiItemDemoFragment
 import com.apache.fastandroid.demo.recycleview.zhy.BaseAdapterRecycleViewDemoFragment
@@ -73,6 +74,9 @@ class RecycleViewDemoListFragment:BaseVBFragment2<FragmentRecycleviewDemoBinding
             FragmentContainerActivity.launch(requireActivity(), ListEntryDemoFragment::class.java, addTitleBar = false)
         }
 
+        mBinding.btnPartyRefresh.setOnClickListener {
+            FragmentContainerActivity.launch(requireActivity(), PartyRefreshDemoFragment::class.java, addTitleBar = false)
+        }
 
     }
 

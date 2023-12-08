@@ -16,7 +16,7 @@
 
 @file:Suppress("UNCHECKED_CAST", "unused")
 
-package com.tesla.framework.component.viewbinding
+package com.tesla.framework.ui.delegate
 
 import android.view.LayoutInflater
 import android.view.View

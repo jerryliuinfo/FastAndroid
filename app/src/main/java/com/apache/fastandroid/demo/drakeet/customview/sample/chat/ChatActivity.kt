@@ -17,6 +17,7 @@ import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
+import com.apache.fastandroid.demo.drakeet.customview.sample.course.OnlineActivityLayout
 import com.apache.fastandroid.demo.drakeet.insets.EdgeInsetDelegate
 import com.apache.fastandroid.demo.drakeet.insets.InsetsAnimationCustomLayout
 import com.apache.fastandroid.demo.drakeet.insets.doOnApplyWindowInsets
@@ -24,6 +25,7 @@ import com.apache.fastandroid.demo.drakeet.insets.translateDeferringInsetsAnimat
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.textfield.TextInputLayout
 import com.seiko.demo.base.CustomLayout
+import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.getAttrColor
 import com.tesla.framework.kt.toTheme
 
@@ -47,6 +49,8 @@ class ChatActivity : AppCompatActivity() {
     }
 
     val contentView = ChatLayout(this)
+    val onlineLayout = OnlineActivityLayout(this)
+
     setContentView(contentView)
 
     edgeInsetDelegate.start()
@@ -104,6 +108,7 @@ class ChatLayout(context: Context) : InsetsAnimationCustomLayout(context) {
 
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
     super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+    Logger.d("ChatActivity onMeasure")
     toolbar.autoMeasure()
     messageHolder.autoMeasure()
 

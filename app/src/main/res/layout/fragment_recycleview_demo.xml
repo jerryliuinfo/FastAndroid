@@ -10,7 +10,7 @@
         app:flow_wrapMode="aligned"
         app:constraint_referenced_ids="btn_rv_multi_itemtype,btn_rv_multi_itemtype2,btn_rv_origin,btn_base_adapter,
         btn_base_adapter_multi_type,btn_diffUtil_itemCallback,btn_AsyncListDiffer,btn_listAdapter,
-        btn_multi_view_type,btn_multi_view_type_same_bean,btn_itemTouchHelper,btn_list_entry"
+        btn_multi_view_type,btn_multi_view_type_same_bean,btn_itemTouchHelper,btn_list_entry,btn_party_refresh"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:flow_horizontalGap="10dp"
@@ -96,5 +96,11 @@
         android:text="列表入口"
         />
 
+    <Button
+        android:id="@+id/btn_party_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RecycleView局部刷新机制"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import androidx.viewbinding.ViewBinding
-import com.tesla.framework.component.viewbinding.ViewBindingUtil
+import com.tesla.framework.ui.delegate.ViewBindingUtil
 
 
 /**

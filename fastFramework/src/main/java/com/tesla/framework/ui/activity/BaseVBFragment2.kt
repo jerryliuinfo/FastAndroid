@@ -22,10 +22,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.tesla.framework.component.viewbinding.FragmentBinding
-import com.tesla.framework.component.viewbinding.FragmentBindingDelegate
+import com.tesla.framework.ui.delegate.FragmentBinding
+import com.tesla.framework.ui.delegate.FragmentBindingDelegate
 import com.tesla.framework.ui.fragment.BaseFragment
 
 /**

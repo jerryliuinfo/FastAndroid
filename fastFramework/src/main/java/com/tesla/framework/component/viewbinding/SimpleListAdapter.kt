@@ -21,8 +21,9 @@ package com.tesla.framework.component.viewbinding
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import com.tesla.framework.ui.delegate.ViewBindingUtil
+import com.tesla.framework.ui.fragment.adpater.BindingHolder
 import kotlin.LazyThreadSafetyMode.*
 
 inline fun <reified VB : ViewBinding> simpleIntListAdapter(crossinline onBindViewHolder: VB.(Int) -> Unit) =
@@ -56,23 +57,24 @@ inline fun <T, reified VB : ViewBinding> simpleListAdapter(
 
 abstract class SimpleListAdapter<T, VB : ViewBinding>(
   diffCallback: DiffUtil.ItemCallback<T>
-) : ListAdapter<T, SimpleListAdapter.BindingViewHolder<VB>>(diffCallback) {
+) : ListAdapter<T, BindingHolder<VB>>(diffCallback) {
 
   private var onItemClickListener: OnItemClickListener<T>? = null
   private var onItemLongClickListener: OnItemClickListener<T>? = null
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingViewHolder<VB> =
-    BindingViewHolder(ViewBindingUtil.inflateWithGeneric<VB>(this, parent)).apply {
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder<VB> =
+    BindingHolder(ViewBindingUtil.inflateWithGeneric<VB>(this, parent)).apply {
+      val position = bindingAdapterPosition
       itemView.setOnClickListener {
-        onItemClickListener?.onItemClick(getItem(adapterPosition), adapterPosition)
+        onItemClickListener?.onItemClick(getItem(position), position)
       }
       itemView.setOnLongClickListener {
-        onItemLongClickListener?.onItemClick(getItem(adapterPosition), adapterPosition)
+        onItemLongClickListener?.onItemClick(getItem(position), position)
         onItemLongClickListener != null
       }
     }
 
-  override fun onBindViewHolder(holder: BindingViewHolder<VB>, position: Int) {
+  override fun onBindViewHolder(holder: BindingHolder<VB>, position: Int) {
     onBindViewHolder(holder.binding, getItem(position), position)
   }
 
@@ -86,7 +88,7 @@ abstract class SimpleListAdapter<T, VB : ViewBinding>(
 
   abstract fun onBindViewHolder(binding: VB, item: T, position: Int)
 
-  class BindingViewHolder<VB : ViewBinding>(val binding: VB) : RecyclerView.ViewHolder(binding.root)
+  // class BindingHolder<VB : ViewBinding>(val binding: VB) : RecyclerView.ViewHolder(binding.root)
 
   fun interface OnItemClickListener<T> {
     fun onItemClick(item: T, position: Int)

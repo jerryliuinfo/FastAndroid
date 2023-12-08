@@ -54,6 +54,8 @@ class ArticleAdapter(
             append(handleAuthor(article))
         }
 
+        //模拟卡顿
+        // Thread.sleep(100)
 
         holder.getView<TextView>(R.id.item_article_author).setOnClickListener {
             //方式1 使用回调接口，在 fragment 中调用viewmodel 中的接口

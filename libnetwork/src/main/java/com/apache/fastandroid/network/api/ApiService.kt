@@ -1,6 +1,11 @@
 package com.apache.fastandroid.network.api
 
 import com.apache.fastandroid.network.calladapter.networkresult.NetworkResult
+import com.apache.fastandroid.network.interceptor.GITHUB_API_REPO_INFO
+import com.apache.fastandroid.network.interceptor.HEADER_BASE_URL
+import com.apache.fastandroid.network.interceptor.OWNER
+import com.apache.fastandroid.network.interceptor.REPO
+import com.apache.fastandroid.network.interceptor.REPO_INFO
 import com.apache.fastandroid.network.model.*
 import com.apache.fastandroid.network.model.result.BaseResponse
 import com.apache.fastandroid.network.model.result.EmptyResponse
@@ -11,6 +16,8 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -83,6 +90,12 @@ interface ApiService {
 
 
 
+    @Headers("Accept: application/vnd.github.v3+json", "$HEADER_BASE_URL: $REPO_INFO")
+    @GET(GITHUB_API_REPO_INFO)
+    suspend fun requestRepoInfo(
+        @Header(OWNER) owner: String,
+        @Header(REPO) repo: String
+    ): ApiResponse<List<Poster>>
 
 
 

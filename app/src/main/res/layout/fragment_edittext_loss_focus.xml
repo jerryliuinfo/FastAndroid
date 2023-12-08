@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_name"
+        android:orientation="horizontal"
+        app:flow_wrapMode="aligned"
+        app:flow_horizontalGap="10dp"
+        app:flow_verticalGap="10dp"
+        app:constraint_referenced_ids="btn_set_error,btn_KeypadLettersToDigits,btn_addLink"
+        />
+
+
+
+    <Button
+        android:id="@+id/btn_set_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Error"
+        />
+    <Button
+        android:id="@+id/btn_KeypadLettersToDigits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="convertKeypadLettersToDigits"
+        />
+    <Button
+        android:id="@+id/btn_addLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:text="helle baidu:www.baidu.com jflsjf"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

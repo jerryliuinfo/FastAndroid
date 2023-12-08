@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FragmentFlowBasicUsageBinding
-import com.apache.fastandroid.jetpack.flow.FlowViewModel
+import com.apache.fastandroid.jetpack.flow.FlowEventViewModel
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -22,7 +22,7 @@ class FlowBasicUsageFragment:BaseBindingFragment<FragmentFlowBasicUsageBinding>(
     private val mainScope = MainScope()
 
 
-    private val mFlowViewModel:FlowViewModel by viewModels()
+    private val mFlowViewModel:FlowEventViewModel by viewModels()
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)

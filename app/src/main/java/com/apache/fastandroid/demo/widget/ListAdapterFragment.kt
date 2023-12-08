@@ -6,7 +6,6 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.apache.fastandroid.databinding.FragmentComRecycleviewBinding
 import com.apache.fastandroid.demo.widget.listadapter.AlbumListAdapter
 import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.apache.fastandroid.jetpack.flow.ui_state.PostsUiState
@@ -14,11 +13,14 @@ import com.apache.fastandroid.jetpack.flow.vm.PostViewModel
 import com.blankj.utilcode.util.ToastUtils
 import com.example.android.architecture.blueprints.todoapp.util.getViewModelFactory
 import com.tesla.framework.component.divider.SpaceItemDecoration
+import com.tesla.framework.databinding.FragmentComRecycleviewBinding
 import com.tesla.framework.kt.dp
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/7/19.
+ * 详解 RecyclerView 中的局部刷新机制
+ * https://mp.weixin.qq.com/s/Qi4sxUuc4Zi7zNrGqp9-mw
  */
 class ListAdapterFragment:BaseBindingFragment<FragmentComRecycleviewBinding>(FragmentComRecycleviewBinding::inflate) {
 

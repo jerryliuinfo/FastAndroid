@@ -57,6 +57,8 @@ object ImageLoaderManager : IImagePahtFromCache {
 
     fun loadImage(imageView: ImageView, url: String?, options: ImageOptions? = null) {
         loaderstrategy.showImage(imageView, url, options ?: mOptions)
+
+
     }
 
 
@@ -90,14 +92,8 @@ object ImageLoaderManager : IImagePahtFromCache {
         }
 
 
-        test()
         return null
     }
 
 
-    fun test(name: String? = "zhangsan") {
-        if (name == null) {
-
-        }
-    }
 }

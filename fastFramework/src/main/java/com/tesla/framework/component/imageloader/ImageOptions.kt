@@ -11,6 +11,9 @@ data class ImageOptions(
     @DrawableRes val holderResId: Int? = -1,
     @JvmField
     val holderDrawable: Drawable? = null,
+
+
+
     val errorResId: Int? = -1,
     @JvmField
     val errorDrawable: Drawable? = null,

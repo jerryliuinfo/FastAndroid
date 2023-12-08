@@ -23,8 +23,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.tesla.framework.component.viewbinding.FragmentBinding
-import com.tesla.framework.component.viewbinding.FragmentBindingDelegate
+import com.tesla.framework.ui.delegate.FragmentBinding
+import com.tesla.framework.ui.delegate.FragmentBindingDelegate
 
 /**
  * @author Dylan Cai

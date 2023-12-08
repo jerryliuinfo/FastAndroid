@@ -13,7 +13,7 @@ import com.apache.fastandroid.databinding.FragmentComponentOnceBinding
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.util.concurrent.TimeUnit
 
-class OnceFragment : BaseBindingFragment<FragmentComponentOnceBinding>(FragmentComponentOnceBinding::inflate) {
+class OnceDemoFragment : BaseBindingFragment<FragmentComponentOnceBinding>(FragmentComponentOnceBinding::inflate) {
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
