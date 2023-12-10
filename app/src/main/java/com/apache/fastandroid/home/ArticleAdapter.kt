@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.TextView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ArticleItemBinding
+import com.apache.fastandroid.demo.extension.isNotNullOrEmpty
 import com.apache.fastandroid.network.model.Article
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
@@ -82,7 +83,7 @@ class ArticleAdapter(
     }
 
     private fun handleAuthor(article: Article): String {
-        if (N.isEmpty(article.author) && N.isEmpty(article.shareUser)) {
+        if (article.author.isNotNullOrEmpty() && article.shareUser.isNotNullOrEmpty()) {
             return "匿名用户"
         } else if (N.isEmpty(article.author)) {
             return "作者" + article.shareUser
@@ -95,9 +96,9 @@ class ArticleAdapter(
     private fun handleCategory(article: Article): String {
         if (N.isEmpty(article.superChapterName) && N.isEmpty(article.chapterName)) {
             return ""
-        } else if (N.isEmpty(article.superChapterName)) {
+        } else if (article.superChapterName.isNullOrEmpty()) {
             return "作者" + article.chapterName
-        } else if (N.isEmpty(article.chapterName)) {
+        } else if (article.chapterName.isNullOrEmpty()) {
             return "作者" + article.superChapterName
         }
         return ""

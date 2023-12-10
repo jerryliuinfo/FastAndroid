@@ -8,30 +8,41 @@ object Versions {
     const val kgp = "1.8.10"
     const val kotlin = "1.6.10"
 
-    const val appCompat = "1.3.1"
-    const val material = "1.4.0-alpha01"
-    const val constraintlayout = "2.0.4"
-    const val cardview = "1.0.0"
-    const val recyclerview = "1.1.0"
     const val core_ktx = "1.6.0"
     const val activity_ktx = "1.3.1"
     const val fragment_ktx = "1.3.6"
+
+    const val appCompat = "1.3.1"
+    const val material = "1.4.0-alpha01"
+    const val constraintlayout = "2.0.4"
+
+    const val cardview = "1.0.0"
     const val preference = "1.1.0-alpha04"
+    const val recyclerview = "1.1.0"
     const val palette_ktx = "1.0.0"
+
+
+
+
     const val annotation = "1.0.0"
-//    const val hit = "2.28-alpha"
+
+
     const val hit = "2.39.1"
     const val hit_viewModel = "1.0.0-alpha02"
 
     const val navigationVersion = "2.3.5"
+    /**
+     * lifecycle 升级到 2.4.0， 则要求 compileSdk 升级到 31 (Android 12), Android 12 要求所有activity 显示设置 export属性，
+     * 但是有些依赖库没有设置, 所以 lifecycle 库不能升
+     */
     const val lifecycle_version = "2.3.1"
+    const val coroutines = "1.3.5"
 
     const val paging = "3.0.1"
 
     //room 2.4.0 版本可以不用手动写 migration 了
     const val Room = "2.2.3"
-//    const val Room = "2.4.0-alpha05"
-    const val coroutines = "1.3.5"
+
 
     const val viewPager2 = "1.0.0"
 

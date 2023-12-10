@@ -3,6 +3,7 @@ package com.apache.fastandroid.jetpack.flow.stateflow
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.test.internal.util.LogUtil
 import com.apache.fastandroid.databinding.FragmentFlowShareBinding
@@ -14,6 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 /**
  * Created by Jerry on 2023/12/10.
@@ -63,6 +65,7 @@ class FlowShareDemoFragment:BaseBindingFragment<FragmentFlowShareBinding>(Fragme
                 mBinding.tvResult.text = it.toString()
             }
         }
+
     }
 
     private fun coldFlow(){

@@ -244,23 +244,43 @@ object Test{
 object Kotlin{
     val kotlin = arrayOf(
         //Kotlin 1.4 版本后不需要这个依赖了
-        "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}",
-        "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
+        // "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}",
+        // "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}",
+        //kotlin 标准库
+        "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kgp}"
+
     )
 
 }
 
 object Jetpack{
 
+
+    //https://developer.android.com/jetpack/androidx/releases/lifecycle?hl=zh-cn
     val lifecycle = arrayOf(
-        //DefaultLifecycleObserver
-        "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle_version}",
+        //协程对 LifeCycle 的支持: LifecycleScope, 并不包含 ViewModel 和 LiveData
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle_version}",
+
+
         // 协程对 ViewModel 的支持:ViewModelScope
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}",
         // 协程对 LiveData 的支持:LiveDataScope
         "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}",
-        //协程对 LifeCycle 的支持: LifecycleScope
-        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle_version}",
+
+        //DefaultLifecycleObserver
+        "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle_version}",
+
+
+        //Saved state module for ViewModel
+        "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.lifecycle_version}",
+
+
+        //optional - helpers for implementing LifecycleOwner in a Service
+        "androidx.lifecycle:lifecycle-service:${Versions.lifecycle_version}",
+
+
+        //optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+        "androidx.lifecycle:lifecycle-process:${Versions.lifecycle_version}",
 
     )
 
@@ -268,6 +288,7 @@ object Jetpack{
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}",
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     )
+
     val navigation = arrayOf(
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}",
         "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}",

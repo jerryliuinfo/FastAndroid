@@ -58,10 +58,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kgp}"
 
-    implementation(*Kotlin.kotlin)
+//    implementation(*Kotlin.kotlin)
 
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kgp}"
 
     implementation AndroidX.core_ktx
     implementation AndroidX.appCompat
