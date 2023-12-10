@@ -14,25 +14,15 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
-
     <!-- Storage -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-
     <!-- For background jobs -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.optimize.performance.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-
-
-
-
 
     <!--
     Application 节点设置: https://developer.android.com/guide/topics/manifest/application-element#reparent
@@ -335,7 +325,6 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             android:name="com.example.hellojnicallback.JniMainActivity"
             android:exported="false" />
 
-
         <!-- <meta-data
              android:name="channelId"
              android:value="${UMENG_CHANNEL}" />-->
@@ -344,12 +333,9 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             android:name=".jetpack.hit.HitDemoActivity"
             android:exported="false" />
 
-
-
         <activity
             android:name=".demo.drakeet.aboutpage.AboutPageDemoActivity"
             android:exported="false" />
-
 
         <activity android:name=".demo.floo.FlooMainActivity"
             android:exported="false"

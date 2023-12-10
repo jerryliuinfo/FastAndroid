@@ -19,6 +19,7 @@ import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.temp.AndroidPerformanceDemoFragment
+import com.apache.fastandroid.jetpack.flow.stateflow.FlowShareDemoFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.log.Timber
 import com.tesla.framework.component.logger.Logger
@@ -218,7 +219,8 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
         // FragmentContainerActivity.launch(this, BlackTechDemoListFragment::class.java,null)
         // FragmentContainerActivity.launch(this, FlowEventDemoFragment::class.java,null)
         // FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null)
-        FragmentContainerActivity.launch(this, AndroidPerformanceDemoFragment::class.java,null)
+        // FragmentContainerActivity.launch(this, AndroidPerformanceDemoFragment::class.java,null)
+        FragmentContainerActivity.launch(this, FlowShareDemoFragment::class.java,null)
 
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
             override fun handleOnBackPressed() {

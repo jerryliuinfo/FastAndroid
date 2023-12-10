@@ -8,9 +8,7 @@ import com.apache.fastandroid.databinding.FlowFragmentRetrofitBinding
 import com.apache.fastandroid.home.ArticleAdapter
 import com.apache.fastandroid.home.toArticle
 import com.apache.fastandroid.jetpack.flow.vm.FlowUserViewModel
-import com.tesla.framework.kt.textViewFlow
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import kotlinx.coroutines.flow.collectLatest
 
 /**
  * Created by Jerry on 2022/6/19.
@@ -24,11 +22,11 @@ class FlowRetrofitFragment:BaseBindingFragment<FlowFragmentRetrofitBinding>(Flow
 
 
         lifecycleScope.launchWhenCreated {
-            mBinding.editQuery.textViewFlow().collectLatest {
-                com.tesla.framework.component.logger.Logger.d("query: $it")
-
-                mViewModel.loadTopArticle()
-            }
+            // mBinding.editQuery.textViewFlow().collectLatest {
+            //     com.tesla.framework.component.logger.Logger.d("query: $it")
+            //
+            //     mViewModel.loadTopArticle()
+            // }
         }
         val mAdapter =  ArticleAdapter(emptyList())
         mBinding.recycleView.apply {

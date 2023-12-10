@@ -2,7 +2,6 @@ package com.tesla.framework.component.showcase
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.igorwojda.showcase.base.presentation.viewmodel.StateTimeTravelDebugger
 import com.tesla.framework.BuildConfig
 import com.tesla.framework.component.logger.Logger
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,13 +15,6 @@ abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(init
     private val _uiStateFlow = MutableStateFlow(initialState)
     val uiStateFlow = _uiStateFlow.asStateFlow()
 
-    private var stateTimeTravelDebugger: StateTimeTravelDebugger? = null
-
-    init {
-        if (BuildConfig.DEBUG) {
-            stateTimeTravelDebugger = StateTimeTravelDebugger(this::class.java.simpleName)
-        }
-    }
 
     // Delegate handles state event deduplication (multiple states of the same type holding the same data
     // will not be emitted multiple times to UI)
@@ -32,16 +24,10 @@ abstract class BaseViewModel<State : BaseState, Action : BaseAction<State>>(init
             viewModelScope.launch {
                 _uiStateFlow.value = new
             }
-
-            stateTimeTravelDebugger?.apply {
-                addStateTransition(old, new)
-                logLast()
-            }
         }
     }
 
     protected fun sendAction(action: Action) {
-        stateTimeTravelDebugger?.addAction(action)
         state = action.reduce(state)
     }
 }

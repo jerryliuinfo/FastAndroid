@@ -12,11 +12,16 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import java.util.Timer
+import java.util.TimerTask
 import javax.inject.Inject
 import kotlin.system.measureTimeMillis
 
@@ -80,6 +85,19 @@ class MutableStateViewModel @Inject constructor(private val apiHelper: ApiHelper
     }
 
 
+    private val _stateFlow = MutableStateFlow(0)
+    val stateFlow = _stateFlow.asStateFlow()
 
 
+    private val _shareFlow = MutableSharedFlow<Int>(0)
+    val shareFlow = _stateFlow.asStateFlow()
+
+    fun startTimer(){
+        val timer = Timer()
+        timer.scheduleAtFixedRate(object :TimerTask(){
+            override fun run() {
+                _stateFlow.value += 1
+            }
+        },0,1000)
+    }
 }

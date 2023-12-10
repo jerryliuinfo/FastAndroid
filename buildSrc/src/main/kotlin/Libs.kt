@@ -9,6 +9,7 @@
  * @since 2/27/22
  */
 object AndroidX {
+    //kotlin 核心库
     const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val material  = "com.google.android.material:material:${Versions.material}"
@@ -74,10 +75,6 @@ object Libs {
 //        "com.github.florent37:glidepalette:${Versions.glidePalette}"
     )
 
-    val coroutine = arrayOf(
-        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}",
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
-    )
 
 
     val immersionbar = arrayOf(
@@ -256,16 +253,20 @@ object Kotlin{
 object Jetpack{
 
     val lifecycle = arrayOf(
+        //DefaultLifecycleObserver
         "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle_version}",
-        //ViewModelScope
+        // 协程对 ViewModel 的支持:ViewModelScope
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}",
-        //LiveDataScope  CoroutineLiveData
+        // 协程对 LiveData 的支持:LiveDataScope
         "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}",
-        //LifecycleScope
+        //协程对 LifeCycle 的支持: LifecycleScope
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle_version}",
-//        "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle_version}",
 
-//        "androidx.lifecycle:lifecycle-service:${Versions.lifecycle_version}"
+    )
+
+    val coroutine = arrayOf(
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     )
     val navigation = arrayOf(
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}",

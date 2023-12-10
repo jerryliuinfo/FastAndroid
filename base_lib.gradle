@@ -47,10 +47,18 @@ android {
         abortOnError false
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+        freeCompilerArgs += [
+                "-Xjvm-default=all",
+        ]
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kgp}"
 
     implementation(*Kotlin.kotlin)
 

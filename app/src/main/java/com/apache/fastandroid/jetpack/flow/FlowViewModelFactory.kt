@@ -14,7 +14,7 @@ import com.apache.fastandroid.jetpack.flow.retrywhen.RetryWhenViewModel
  * Created by Jerry on 2022/5/12.
  */
 class FlowViewModelFactory(private val apiHelper: ApiHelper,private val dbHelper: DatabaseHelper):ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
 
         if (modelClass.isAssignableFrom(FilterViewModel::class.java)){
             return FilterViewModel(apiHelper,dbHelper) as T

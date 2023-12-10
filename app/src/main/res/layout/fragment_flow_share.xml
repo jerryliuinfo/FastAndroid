@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/btn_basic_flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_result"
+        android:text="Flow:基本式例"
+        />
+
+    <Button
+        android:id="@+id/btn_cold_flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_basic_flow"
+        android:text="Flow:冷流"
+        />
+
+    <Button
+        android:id="@+id/btn_state_flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cold_flow"
+        android:text="StateFlow基本用法"
+        />
+    <Button
+        android:id="@+id/btn_state_flow_advance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_state_flow"
+        android:text="StateFlow高阶用法"
+        />
+    <Button
+        android:id="@+id/btn_share_flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_state_flow_advance"
+        android:text="ShareFlow"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

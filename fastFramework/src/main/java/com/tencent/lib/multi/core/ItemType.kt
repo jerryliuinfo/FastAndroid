@@ -78,7 +78,7 @@ abstract class ItemType<T, VH : RecyclerView.ViewHolder>() {
      */
     fun registerClickEvent(receiver: Any, holder: VH, view: View, method: String) {
         view.setOnClickListener { v: View ->
-            val position = holder.adapterPosition
+            val position = holder.bindingAdapterPosition
             callTargetMethod(receiver, v, method, position, false)
         }
     }
@@ -98,7 +98,7 @@ abstract class ItemType<T, VH : RecyclerView.ViewHolder>() {
                 receiver,
                 v,
                 method,
-                holder.adapterPosition,
+                holder.bindingAdapterPosition,
                 true
             )
                 ?: false

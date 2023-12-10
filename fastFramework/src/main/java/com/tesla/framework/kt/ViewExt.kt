@@ -616,21 +616,21 @@ fun RecyclerView.addOnItemClickListener(listener:(View, Int) ->Unit = {_,_ -> } 
 }
 
 //写一个flow型的扩展函数
-fun TextView.textViewFlow() = callbackFlow {
+/* fun TextView.textViewFlow() = callbackFlow {
     //edit监听 相当于新建一个接口对象
     val textWatch = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         override fun afterTextChanged(s: Editable?) {
             Log.d("ArticleFragment", s.toString())
-            offer(s.toString())
+            // this@callbackFlow.trySend(s.toString()).isSuccess
         }
     }
     addTextChangedListener(textWatch)
     awaitClose {
         removeTextChangedListener(textWatch)
     }
-}
+} */
 
 
 fun View.show() {
