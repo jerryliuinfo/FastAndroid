@@ -295,8 +295,18 @@ object Jetpack{
         "androidx.navigation:navigation-runtime-ktx:${Versions.navigationVersion}"
     )
 
-    val workManager = "androidx.work:work-runtime-ktx:${Versions.workmanager}"
 
+
+    val workManager = arrayOf(
+        //java only
+        //androidx.work:work-runtime:$work_version
+
+        // Kotlin + coroutines
+        "androidx.work:work-runtime-ktx:${Versions.workmanager}",
+
+        // optional - RxJava2 support
+        // "androidx.work:work-rxjava2:${Versions.workmanager}"
+    )
 
     val room = arrayOf(
         "androidx.room:room-runtime:${Versions.Room}",
@@ -306,13 +316,12 @@ object Jetpack{
         "androidx.room:room-compiler:${Versions.Room}",
     )
 
-//    val paging = arrayOf(
-//        "androidx.paging:paging-runtime:${Versions.paging}",
-//        "androidx.paging:paging-common-ktx:${Versions.paging}"
-//    )
-    val paging = "androidx.paging:paging-runtime:${Versions.paging}"
-    val paging_ktx = "androidx.paging:paging-common-ktx:${Versions.paging}"
-
+   val paging = arrayOf(
+       "androidx.paging:paging-runtime:${Versions.paging}",
+       "androidx.paging:paging-common-ktx:${Versions.paging}"
+   )
+    // val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+    // val paging_ktx = "androidx.paging:paging-common-ktx:${Versions.paging}"
 
 
     val hit = arrayOf(

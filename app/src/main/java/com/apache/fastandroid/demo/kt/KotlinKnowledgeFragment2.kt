@@ -3,7 +3,6 @@ package com.apache.fastandroid.demo.kt
 import android.app.ActivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View.OnKeyListener
 import android.widget.TextView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.bean.SecondaryDrawerItem
@@ -18,8 +17,7 @@ import com.apache.fastandroid.demo.kt.genericity.GenericView
 import com.apache.fastandroid.demo.kt.genericity.GenericityAImpl
 import com.apache.fastandroid.demo.kt.genericity.JavaGeneric
 import com.apache.fastandroid.demo.kt.genericity.KtGenericity
-import com.apache.fastandroid.demo.kt.staticusage.Foo
-import com.apache.fastandroid.demo.kt.staticusage.topLevelFun1
+import com.apache.fastandroid.demo.kt.lazy.LazyApi
 import com.apache.fastandroid.demo.widget.listadapter.AlbumListAdapter
 import com.apache.fastandroid.network.model.result.Result
 import com.blankj.utilcode.util.GsonUtils
@@ -30,8 +28,6 @@ import com.tesla.framework.kt.fromJson2
 import com.tesla.framework.kt.getMySystemService
 import com.tesla.framework.kt.showShortToast
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import kotlinx.android.synthetic.main.fragment_best_practice_livedata.time
-import retrofit2.HttpException
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -221,11 +217,21 @@ class KotlinKnowledgeFragment2 :
             newObjReceiver()
         }
 
+        mBinding.btnLazy.setOnClickListener {
+            lazyUsage()
+        }
 
+    }
+
+    private fun lazyUsage() {
+        val lazyApi1 = LazyApi.instance.value
+        val lazyApi2 = LazyApi.instance.value
+        Logger.d("lazyApi1:$lazyApi1, lazyApi2:$lazyApi2")
     }
 
     private fun newObjReceiver() {
         secondaryDrawerItem {
+            isSelectable = false
             nameRes = R.string.a11y_user_name
             onClick = {
                 showShortToast("构造对象带接收者")

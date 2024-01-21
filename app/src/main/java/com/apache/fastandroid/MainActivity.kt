@@ -18,8 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.temp.AndroidPerformanceDemoFragment
-import com.apache.fastandroid.jetpack.flow.stateflow.FlowShareDemoFragment
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.log.Timber
 import com.tesla.framework.component.logger.Logger
@@ -103,7 +102,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 //        FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
 //                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
-//                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
+               FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
 //                FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //                FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null)
 //                FragmentContainerActivity.launch(this, ListEntryDemoFragment::class.java,null)
@@ -159,7 +158,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 //        FragmentContainerActivity.launch(this, GuideDemoListFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, KotlinDemoListFragment::class.java,null,addTitleBar = false)
 //        FragmentContainerActivity.launch(this, CoroutineNetworkDemoFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, ActivityPropertyDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, AppResourceDemoActivity::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, SearchPreferenceDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, AppDataDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, LiveDataLoaderFragment::class.java,null,addTitleBar = true)
@@ -220,7 +219,9 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
         // FragmentContainerActivity.launch(this, FlowEventDemoFragment::class.java,null)
         // FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null)
         // FragmentContainerActivity.launch(this, AndroidPerformanceDemoFragment::class.java,null)
-        FragmentContainerActivity.launch(this, FlowShareDemoFragment::class.java,null)
+        // FragmentContainerActivity.launch(this, FlowShareDemoFragment::class.java,null)
+        // launchActivity<AppResourceDemoActivity>()
+        // FragmentContainerActivity.launch(this, WorkManagerDemoFragment::class.java,null)
 
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
             override fun handleOnBackPressed() {

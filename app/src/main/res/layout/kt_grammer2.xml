@@ -33,7 +33,7 @@
                 btn_kt_class_real_genericity,btn_evis_operator,btn_typealias,btn_array_init,btn_operatorOverLoading,
                 btn_ifNotNull,btn_trap_dataclass,btn_tryCatch,btn_tryWithResource,btn_object_expression,btn_integer_division,
                 btn_trim,btn_type_convert,btn_get_when_result,btn_return_break,btn_tryIsExpression,btn_delegate,btn_function
-                ,btn_infix,btn_highOrder_func,btn_newobject_recevier"
+                ,btn_infix,btn_highOrder_func,btn_newobject_recevier,btn_lazy"
                 />
 
             <Button
@@ -284,6 +284,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="构造带接收者的对象"
+                />
+            <Button
+                android:id="@+id/btn_lazy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lazy"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

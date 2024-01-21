@@ -48,13 +48,13 @@ object OkHttpClientManager {
              * 低成本实现网络请求安全方法，例如我们服务器的过期使劲是 2023 年 11 月，我们可以在 2023 年 10 月之前
              * 总是检查证书的 Pinning，而过了这个时间就不检查证书的 Pining，当证书过期后我们可以放心的进行更换服务端证书
              */
-            certificatePinner(CertificatePinner.Builder().apply {
-                if (Date() < Date(2023, Calendar.OCTOBER, 7)) {
-                    add("www.wanandroid.com", "sha256/Jkegy5Sc8Gjzbi65ztVCGTV90JysJOm3uRtbrclTpOc=")
-                } else if (BuildConfig.DEBUG) {
-                    ToastUtils.showLong("请更新证书和时间")
-                }
-            }.build())
+            // certificatePinner(CertificatePinner.Builder().apply {
+            //     if (Date() < Date(2024, Calendar.OCTOBER, 7)) {
+            //         add("www.wanandroid.com", "Jkegy5Sc8Gjzbi65ztVCGTV90JysJOm3uRtbrclTpOc=")
+            //     } else if (BuildConfig.DEBUG) {
+            //         ToastUtils.showLong("请更新证书和时间")
+            //     }
+            // }.build())
 
         }.apply {
             addNetworkInterceptor(HeaderInterceptor())

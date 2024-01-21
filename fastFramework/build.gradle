@@ -20,8 +20,10 @@ dependencies {
     implementation Libs.weishu
     implementation Libs.utilcode
     implementation Libs.brvh
-    implementation Jetpack.paging
-    implementation Jetpack.paging_ktx
+
+
+//    implementation Jetpack.paging
+//    implementation Jetpack.paging_ktx
 //    api (Jetpack.paging){
 //        exclude group: "org.jetbrains.kotlinx"
 //    }
@@ -36,6 +38,7 @@ dependencies {
 
     implementation(*Jetpack.lifecycle)
     implementation(*Jetpack.navigation)
+    implementation(*Jetpack.paging)
 
     implementation(*Jetpack.hit)
     kapt(*Jetpack.hit_compiler)

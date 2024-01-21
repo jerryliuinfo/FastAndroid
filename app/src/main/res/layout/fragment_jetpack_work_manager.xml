@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:flow_horizontalGap="10dp"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:constraint_referenced_ids="btn_onetime_work,btn_periodic_work,btn_flexible_interval,btn_constraint,
+        btn_initial_delay,btn_retry_liner,btn_retry_exponential,btn_job_mark_tag,btn_cancel_job_by_tag,btn_task_with_parameter"
+
+
+        />
+
+    <Button
+        android:id="@+id/btn_onetime_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OneTimeWrok"
+        />
+    <Button
+        android:id="@+id/btn_periodic_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="调度定期工作"
+        />
+    <Button
+        android:id="@+id/btn_flexible_interval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="灵活的运行间隔"
+        />
+    <Button
+        android:id="@+id/btn_constraint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="工作约束"
+        />
+
+    <Button
+        android:id="@+id/btn_initial_delay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="延迟工作"
+        />
+    <Button
+        android:id="@+id/btn_retry_liner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重试和退避政策-BackoffPolicy.LINEAR"
+        />
+
+    <Button
+        android:id="@+id/btn_retry_exponential"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重试和退避政策-BackoffPolicy.EXPONENTIAL"
+        />
+
+    <Button
+        android:id="@+id/btn_job_mark_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="标记工作:Tag"
+        />
+    <Button
+        android:id="@+id/btn_cancel_job_by_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="根据Tag取消任务"
+        />
+    <Button
+        android:id="@+id/btn_task_with_parameter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="传递参数"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

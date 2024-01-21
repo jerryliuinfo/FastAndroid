@@ -16,6 +16,7 @@ import com.apache.fastandroid.jetpack.navigation.NavigationDrawerDemoActivity2
 import com.apache.fastandroid.jetpack.navigation.advance.AdvanceNavigationActivity
 import com.apache.fastandroid.jetpack.navigation.drawer.NavigationDrawerDemoActivity
 import com.apache.fastandroid.jetpack.viewmodel.ViewModelDemoFragment
+import com.apache.fastandroid.jetpack.workmanager.WorkManagerDemoFragment
 
 /**
  * Created by Jerry on 2020/11/11.
@@ -36,7 +37,7 @@ class JetPackDemoFragment: BaseListFragment() {
                 ,ViewItemBean("Flow", "Flow", FlowDemoListFragment::class.java)
 
                 ,ViewItemBean("Hit", "Hit", activity=HitDemoActivity::class.java)
-                ,ViewItemBean("WorkManager", "WorkManager", activity=HitDemoActivity::class.java)
+                ,ViewItemBean("WorkManager", "WorkManager", WorkManagerDemoFragment::class.java)
                 ,ViewItemBean("Paging", "Paging",  activity = PagingArticleDemoActivity::class.java)
                 ,ViewItemBean("Paging", "Paging用法2",  activity = PagingPosterDemoActivity::class.java)
 

@@ -22,6 +22,7 @@ class TwoLongRunningTaskFragment:BaseBindingFragment<FragmentCompletionBinding>(
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+        viewModel.startLongRunningTask()
         viewModel.getStatus().observe(this, Observer {
             when (it.status) {
                 Status.SUCCESS -> {

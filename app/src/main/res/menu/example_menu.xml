@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item android:id="@+id/item1"
+        android:title="Item1"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom|withText"/>
+    <group android:id="@+id/group">
+        <item android:id="@+id/group_item1"
+            android:onClick="onGroupItemClick"
+            android:title="GroupItem1"
+            android:icon="@drawable/ic_list"
+            />
+        <item android:id="@+id/group_item2"
+            android:onClick="onGroupItemClick"
+            android:title="GroupItem2"
+            android:icon="@drawable/ic_home"
+            />
+    </group>
+    <item android:id="@+id/submenu"
+        android:title="subTitle"
+        app:showAsAction="ifRoom|withText" >
+        <menu>
+            <item android:id="@+id/submenu_item1"
+                android:title="subTitle1" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:constraint_referenced_ids="btn_runtime_change,btn_partly_translate,btn_find_language_by_context,
+        btn_change_language_by_monitor,btn_animator,btn_anim,btn_animation_list,btn_drawable,btn_quantity_plurals,
+        btn_string_format,btn_string_html,btn_font,btn_result,avator,tv_font"
+            app:flow_horizontalGap="10dp"
+            app:flow_wrapMode="aligned"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_runtime_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="处理配置变更"
+            />
+        <Button
+            android:id="@+id/btn_partly_translate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="本地化应用-标记无需翻译字符串"
+            />
+
+        <Button
+            android:id="@+id/btn_find_language_by_context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="使用 Android Context 对象查找语言区域"
+            />
+        <Button
+            android:id="@+id/btn_change_language_by_monitor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="通过 adb shell 更改模拟器语言区域"
+            />
+        <Button
+            android:id="@+id/btn_animator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Animator 动画"
+            />
+        <Button
+            android:id="@+id/btn_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anim 动画"
+            />
+        <Button
+            android:id="@+id/btn_animation_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AnimationList"
+            />
+
+        <Button
+            android:id="@+id/btn_drawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Drawable"
+            />
+
+        <Button
+            android:id="@+id/btn_quantity_plurals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数量字符串（复数）"
+            />
+        <Button
+            android:id="@+id/btn_string_format"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置字符串格式"
+            />
+        <Button
+            android:id="@+id/btn_string_html"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="使用 HTML 标记设置样式"
+            />
+        <Button
+            android:id="@+id/btn_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Font"
+            />
+        
+
+        <Button
+            android:id="@+id/btn_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:text="动画目标 View"
+            android:textColor="@color/green"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:maxLines="5"
+            />
+        <ImageView
+            android:id="@+id/avator"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_android"
+            />
+
+        <TextView
+            android:id="@+id/tv_font"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="我是字体"
+            android:fontFamily="@font/lobster"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>
+

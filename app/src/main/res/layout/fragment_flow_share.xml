@@ -2,13 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/tv_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:textSize="40sp"
         app:layout_constraintTop_toTopOf="parent"
+        tools:text = "1"
         />
 
     <Button
@@ -18,20 +23,36 @@
         app:layout_constraintTop_toBottomOf="@id/tv_result"
         android:text="Flow:基本式例"
         />
-
     <Button
-        android:id="@+id/btn_cold_flow"
+        android:id="@+id/btn_flow_timer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/btn_basic_flow"
-        android:text="Flow:冷流"
+        android:text="Flow基本用法:计时器"
         />
+
+    <Button
+        android:id="@+id/btn_back_pressure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_flow_timer"
+        android:text="流速不均匀"
+        />
+    <Button
+        android:id="@+id/btn_life_cycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_back_pressure"
+        android:text="生命周期管理"
+        />
+
+
 
     <Button
         android:id="@+id/btn_state_flow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btn_cold_flow"
+        app:layout_constraintTop_toBottomOf="@+id/btn_life_cycle"
         android:text="StateFlow基本用法"
         />
     <Button

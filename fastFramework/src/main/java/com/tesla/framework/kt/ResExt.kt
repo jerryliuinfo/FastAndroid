@@ -8,6 +8,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.blankj.utilcode.util.Utils
 
 /**
@@ -20,6 +21,9 @@ fun @receiver:ColorRes Int.getColor(context: Context): Int = ContextCompat.getCo
 
 fun @receiver:DrawableRes Int.getDrawable(context: Context): Drawable? =
     ContextCompat.getDrawable(context, this)
+
+fun @receiver:DrawableRes Int.getDrawable2(context: Context): Drawable? =
+    ResourcesCompat.getDrawable(context.resources, this,null)
 
 fun @receiver:ColorRes Int.toColorStateList(context: Context): ColorStateList {
     return ColorStateList.valueOf(getColor(context))

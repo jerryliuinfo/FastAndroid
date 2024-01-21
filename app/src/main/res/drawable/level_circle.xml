@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="@drawable/shape_circle_1" android:maxLevel="2000"/>
+    <item android:drawable="@drawable/shape_circle_2" android:maxLevel="4000"/>
+    <item android:drawable="@drawable/shape_circle_3" android:maxLevel="6000"/>
+    <item android:drawable="@drawable/shape_circle_4" android:maxLevel="8000"/>
+    <item android:drawable="@drawable/shape_circle_5" android:maxLevel="10000"/>
+</level-list>

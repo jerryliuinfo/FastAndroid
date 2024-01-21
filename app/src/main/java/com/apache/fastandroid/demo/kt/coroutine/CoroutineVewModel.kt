@@ -83,7 +83,7 @@ class CoroutineVewModel : ViewModel() {
         }
     }
 
-    suspend fun callbackToSuspend() =
+    suspend fun callbackToSuspend():BaseResponse<EmptyResponse> =
         suspendCoroutine<BaseResponse<EmptyResponse>> { continuation ->
             RetrofitFactory.get().apiService().collect(1000).enqueue(object : Callback<BaseResponse<EmptyResponse>> {
                 override fun onResponse(

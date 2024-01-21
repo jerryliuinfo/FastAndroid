@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+<!--    标记消息中不可翻译的部分 https://developer.android.com/guide/topics/resources/localization?hl=zh-cn-->
+    <string name="countdown"><xliff:g id="time" example="5 days">%1$s</xliff:g> until holiday</string>
+
+    <!-- Example placeholder for a special Unicode symbol -->
+    <string name="star_rating">Check out our 5 <xliff:g id="star">\u2605</xliff:g> </string>
+
+    <!-- Example placeholder for a URL -->
+    <string name="app_homeurl">Visit us at <xliff:g id="application_homepage">http://my/app/home.html</xliff:g></string>
+
+    <!-- Example placeholder for a name -->
+    <string name="prod_name">Learn more at <xliff:g id="prod_gamegroup">Game Group</xliff:g></string>
+
+    <string name="promo_message">Please use the "<xliff:g id="promotion_code">ABCDEFG</xliff:g>" to get a discount.</string>
+</resources>

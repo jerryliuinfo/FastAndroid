@@ -2,13 +2,7 @@ package com.apache.fastandroid.demo.kt.practice
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.databinding.FragmentJuejinKtBinding
 import com.apache.fastandroid.databinding.FragmentKotlinPracticeBinding
-import com.apache.fastandroid.demo.kt.extends.PingMsg
-import com.apache.fastandroid.demo.kt.func.JvmOverloadsDemo
-import com.apache.fastandroid.demo.kt.hignorder.FuncAsParamDemo
-import com.tesla.framework.component.logger.Logger
-
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
@@ -62,6 +56,5 @@ class KotlinPracticeDemoFragment :
             println("fits in range")
         }
     }
-
 
 }

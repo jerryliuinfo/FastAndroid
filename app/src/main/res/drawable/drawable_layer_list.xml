@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape >
+            <!-- 实心 -->
+            <solid android:color="@android:color/black" />
+        </shape>
+    </item>
+    <!--模拟背景的padding的size 6dp-->
+    <item
+        android:bottom="10dp"
+        android:left="10dp"
+        android:right="10dp"
+        android:top="10dp"
+        >
+        <!--原来的需求区域-->
+        <shape>
+            <!-- 实心 -->
+            <solid android:color="@android:color/holo_red_dark"/>
+            <!-- 边框 -->
+            <stroke
+                android:width="2dp"
+                android:color="@android:color/holo_green_dark" />
+            <!-- 圆角 -->
+            <corners android:radius="2dp"/>
+        </shape>
+
+
+    </item>
+
+</layer-list>

@@ -71,7 +71,7 @@ android {
         manifestPlaceholders["appName"] = "Android-"
 
         /**
-         * 配置哪些类型的资源才被打包到apk 中，例如配置为 'zh-rCN'，则只有 中文的资源才会被打包到apk中，
+         * 指定您的应用支持中文,配置哪些类型的资源才被打包到apk 中，例如配置为 'zh-rCN'，则只有 中文的资源才会被打包到apk中，
          * 这样我们引用的第三方库，特别是 support library 和 google play services 这两个主要的大库，
          * 因为国际化的问题，他们都支持了几十种语言，但是对于我们的app 来说只需要中文的语言就可以了
          */
@@ -385,6 +385,7 @@ dependencies {
     implementation project(Modules.fastFramework)
     implementation project(Modules.baselib)
     implementation project(Modules.libnetwork)
+    implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.9.9'
 
     fileTree(include: ['*.jar', '*.aar'], dir: 'libs').each {
         def name = it.name
@@ -435,20 +436,30 @@ dependencies {
     implementation(*Jetpack.navigation)
     implementation(*Jetpack.coroutine)
 
+    implementation (*Jetpack.workManager)
+    implementation (*Jetpack.paging)
+
+//    implementation Jetpack.paging
+//    implementation Jetpack.paging_ktx
+
+
 //    implementation(*Jetpack.paging)
 
     implementation(*Jetpack.room)
     kapt(*Jetpack.room_compiler)
-//    //kotlin 用 kapt
-//    kapt Libs.room_compiler
+
+    implementation(*Jetpack.hit)
+    kapt(*Jetpack.hit_compiler)
+
+
+
 
     implementation(Jetpack.startUp)
     implementation(AndroidTest.espresso_idling)
 
     implementation(*AndroidTest.espresso)
 
-    implementation(*Jetpack.hit)
-    kapt(*Jetpack.hit_compiler)
+
 
     implementation(*Libs.immersionbar)
     implementation(*Libs.materialDialogs)
@@ -459,7 +470,6 @@ dependencies {
 
     implementation Libs.multidex
 
-    implementation Jetpack.workManager
 
     implementation Libs.viewPage2
 
@@ -467,8 +477,7 @@ dependencies {
     implementation(*Libs.moshi)
 //    implementation(*Libs.performance)
 
-    implementation Jetpack.paging
-    implementation Jetpack.paging_ktx
+
     implementation Libs.blockstore
     implementation Libs.coroutines_play_services
 }

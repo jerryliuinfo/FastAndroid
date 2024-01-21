@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="numberOfSongsAvailable">
+        <!--
+             As a developer, you should always supply "one" and "other"
+             strings. Your translators will know which strings are actually
+             needed for their language. Always include %d in "one" because
+             translators will need to use %d for languages where "one"
+             doesn't mean 1 (as explained above).
+          -->
+        <item quantity="one">%d song found.</item>
+        <item quantity="few">%d songs found11.</item>
+        <item quantity="other">%d songs found.</item>
+    </plurals>
+
+    <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>
+    <string name="welcome">Welcome to <b>Android</b>!</string>
+    <string name="str_html">我是 <b>粗体</b>! <i>斜体 </i> ! <big>文本放大 25%</big> !
+        <small>文本缩小 20%</small> !我是<strike>删除线</strike>! <u>我是下划线</u> <sup>上标</sup><sub>下标</sub>
+        <ul>列表标记</ul>！我是<br>换行符：</br>
+
+
+    </string>
+
+</resources>

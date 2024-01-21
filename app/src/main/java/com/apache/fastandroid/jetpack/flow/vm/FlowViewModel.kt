@@ -1,39 +1,49 @@
 package com.apache.fastandroid.jetpack.flow.vm
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.tesla.framework.component.logger.Logger
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.stateIn
 import java.util.Timer
 import java.util.TimerTask
 
 /**
  * Created by Jerry on 2023/12/10.
  */
-class FlowShareDemoViewModel : ViewModel() {
+class FlowViewModel : ViewModel() {
 
-    val coldFlow = flow<Int> {
-        emit(1)
-        Logger.d("emit 1 thread:${Thread.currentThread().name}")
-        delay(50)
-        emit(2)
-        Logger.d("emit 2 thread:${Thread.currentThread().name}")
 
-        emit(3)
-        emit(4)
+
+    val timeFlow = flow {
+        var time = 0
+        while (true) {
+            emit(time)
+            Logger.d("timeFlow emit ${time},thread:${Thread.currentThread().name}")
+            delay(1000)
+            time++
+        }
     }
-
-
+    //旋转屏幕不会丢失数据
+    val stateInTimerFlow =
+        timeFlow.stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000),
+            0
+        )
 
     private val _stateFlow = MutableStateFlow<Int> (0)
      val stateFlow = _stateFlow
 
-
+    /**
+     * stateFlow 正常使用
+     */
     fun startCount(){
         val timer = Timer()
         timer.scheduleAtFixedRate(object :TimerTask(){
@@ -43,6 +53,11 @@ class FlowShareDemoViewModel : ViewModel() {
 
         },0,1000)
     }
+
+
+
+
+
 
 
     private val _sharedFlow = MutableSharedFlow<Int>(

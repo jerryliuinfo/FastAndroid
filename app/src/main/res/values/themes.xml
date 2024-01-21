@@ -43,7 +43,7 @@
         <!--        底部栏颜色-->
         <item name="android:navigationBarColor">#40000000</item>
 
-        <item name="android:windowAnimationStyle">@style/anim_slide</item>
+<!--        <item name="android:windowAnimationStyle">@style/anim_slide</item>-->
 
         <item name="textAllCaps">false</item>
 
@@ -63,6 +63,10 @@
         <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat</item>
 
         <item name="useHabitColorAsPrimary">true</item>
+
+    </style>
+
+    <style name="ActivityTheme" parent="Theme.MaterialComponents.Light">
 
     </style>
 

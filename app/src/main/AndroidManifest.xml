@@ -548,6 +548,16 @@ android:testOnly:指示此应用是否仅用于测试目的。例如，它可能
             />
 
 
+<!--
+    添加了该配置，则屏幕旋转等不会重新创建 Activity
+android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"-->
+        <activity android:name=".demo.guide.AppResourceDemoActivity"
+            android:exported="true"
+            android:theme="@style/ActivityTheme"
+
+            />
+
+
         <!--
 
         https://developer.android.com/guide/topics/manifest/activity-element

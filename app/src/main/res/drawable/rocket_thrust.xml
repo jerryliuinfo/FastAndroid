@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@drawable/avatar_1_raster" android:duration="500" />
+    <item android:drawable="@drawable/avatar_2_raster" android:duration="500" />
+    <item android:drawable="@drawable/avatar_3_raster" android:duration="500" />
+</animation-list>

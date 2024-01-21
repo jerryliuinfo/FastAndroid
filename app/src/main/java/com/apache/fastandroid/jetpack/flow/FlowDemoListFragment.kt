@@ -7,8 +7,6 @@ import com.apache.fastandroid.jetpack.flow.completion.CompletionFragment
 import com.apache.fastandroid.jetpack.flow.errorhandling.catch.CatchFragment
 import com.apache.fastandroid.jetpack.flow.errorhandling.emitall.EmitAllFragment
 import com.apache.fastandroid.jetpack.flow.event.FlowEventDemoFragment
-import com.apache.fastandroid.jetpack.flow.filter.FilterFragment
-import com.apache.fastandroid.jetpack.flow.map.MapFragment
 import com.apache.fastandroid.jetpack.flow.parallel.ParallelNetworkFragment
 import com.apache.fastandroid.jetpack.flow.practice.FlowDownloadFragment
 import com.apache.fastandroid.jetpack.flow.practice.FlowRetrofitFragment
@@ -43,8 +41,6 @@ class FlowDemoListFragment: BaseListFragment() {
             ,ViewItemBean("Completion","Completion", CompletionFragment::class.java)
             ,ViewItemBean("Long Running Task","Long Running Task", LongRunningTaskFragment::class.java)
             ,ViewItemBean("Two Long Running Tasks","Two Long Running Tasks", TwoLongRunningTaskFragment::class.java)
-            ,ViewItemBean("Filter","Filter", FilterFragment::class.java)
-            ,ViewItemBean("Map","Map", MapFragment::class.java)
             ,ViewItemBean("Search","Search", SearchFragment::class.java)
             ,ViewItemBean("Retry","Retry", RetryFragment::class.java)
             ,ViewItemBean("RetryWhen","RetryWhen", RetryWhenFragment::class.java)
