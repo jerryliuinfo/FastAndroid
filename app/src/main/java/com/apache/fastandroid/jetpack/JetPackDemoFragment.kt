@@ -38,6 +38,7 @@ class JetPackDemoFragment: BaseListFragment() {
 
                 ,ViewItemBean("Hit", "Hit", activity=HitDemoActivity::class.java)
                 ,ViewItemBean("WorkManager", "WorkManager", WorkManagerDemoFragment::class.java)
+                ,ViewItemBean("闹钟", "AlarmManager", WorkManagerDemoFragment::class.java)
                 ,ViewItemBean("Paging", "Paging",  activity = PagingArticleDemoActivity::class.java)
                 ,ViewItemBean("Paging", "Paging用法2",  activity = PagingPosterDemoActivity::class.java)
 

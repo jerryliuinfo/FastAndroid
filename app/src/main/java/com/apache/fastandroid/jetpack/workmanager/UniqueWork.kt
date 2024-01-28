@@ -7,13 +7,14 @@ import com.apache.fastandroid.jetpack.workmanager.WorkManagerDemoFragment.Compan
 import com.tesla.framework.component.logger.Logger
 
 /**
- * Created by Jerry on 2023/12/26.
+ * Created by Jerry on 2024/1/21.
  */
-class UploadWorker(context: Context, workerParams: WorkerParameters) :
-    Worker(context, workerParams) {
+class UniqueWork(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
     override fun doWork(): Result {
-        Logger.d("$WORK_MANAGER_TAG  UploadWorker doWork")
-        Thread.sleep(10000)
+        Logger.d("$WORK_MANAGER_TAG UniqueWork begin doWork")
+        Thread.sleep(5000)
+        Logger.d("$WORK_MANAGER_TAG UniqueWork finish doWork")
+
         return Result.success()
     }
 }

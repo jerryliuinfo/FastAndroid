@@ -13,7 +13,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:constraint_referenced_ids="btn_onetime_work,btn_periodic_work,btn_flexible_interval,btn_constraint,
-        btn_initial_delay,btn_retry_liner,btn_retry_exponential,btn_job_mark_tag,btn_cancel_job_by_tag,btn_task_with_parameter"
+        btn_initial_delay,btn_retry_liner,btn_retry_exponential,btn_job_mark_tag,
+        btn_task_with_parameter,btn_unique_work,btn_unique_periodic_work,btn_work_observe,btn_cancel_work,
+        btn_work_chain,btn_observe_progress,btn_update_work"
 
 
         />
@@ -69,17 +71,55 @@
         android:layout_height="wrap_content"
         android:text="标记工作:Tag"
         />
-    <Button
-        android:id="@+id/btn_cancel_job_by_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="根据Tag取消任务"
-        />
+
     <Button
         android:id="@+id/btn_task_with_parameter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="传递参数"
+        />
+    <Button
+        android:id="@+id/btn_unique_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="唯一一次性工作"
+        />
+    <Button
+        android:id="@+id/btn_unique_periodic_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="唯一周期性工作"
+        />
+    <Button
+        android:id="@+id/btn_work_observe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="观察工作"
+        />
+    <Button
+        android:id="@+id/btn_cancel_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消和停止工作"
+        />
+
+    <Button
+        android:id="@+id/btn_work_chain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建工作链"
+        />
+    <Button
+        android:id="@+id/btn_observe_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="观察 Work 中间进度"
+        />
+    <Button
+        android:id="@+id/btn_update_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="更新工作"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

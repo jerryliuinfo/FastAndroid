@@ -47,13 +47,7 @@ internal class BlitzAttachListener(
         }
     }
 
-    override fun onViewDetachedFromWindow(v: View?) {
-        target.removeCallbacks(runnable)
-    }
 
-    override fun onViewAttachedToWindow(v: View?) {
-        updateRunnableSubscription()
-    }
 
     fun dropCounter() {
         target.removeCallbacks(runnable)
@@ -63,5 +57,14 @@ internal class BlitzAttachListener(
         target.removeCallbacks(runnable)
         target.post(runnable)
     }
+
+    override fun onViewDetachedFromWindow(v: View) {
+        target.removeCallbacks(runnable)
+    }
+
+    override fun onViewAttachedToWindow(v: View) {
+        updateRunnableSubscription()
+    }
+
 
 }

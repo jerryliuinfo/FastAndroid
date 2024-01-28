@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:flow_horizontalGap="10dp"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:constraint_referenced_ids="btn_inaccuracy_alarm,btn_timer_alarm,btn_periodicity_alarm,btn_exact_alarm,
+        btn_setExactAndAllowWhileIdle_alarm,btn_setAlarmClock"
+        />
+
+    <Button
+        android:id="@+id/btn_inaccuracy_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置不精确闹钟"
+        />
+
+    <Button
+        android:id="@+id/btn_timer_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="定时提醒"
+        />
+    <Button
+        android:id="@+id/btn_periodicity_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="周期性提醒"
+        />
+    <Button
+        android:id="@+id/btn_exact_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置精确闹钟-setExact"
+        />
+    <Button
+        android:id="@+id/btn_setExactAndAllowWhileIdle_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置精确闹钟-setExactAndAllowWhileIdle"
+        />
+    <Button
+        android:id="@+id/btn_setAlarmClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置精确闹钟-setAlarmClock"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

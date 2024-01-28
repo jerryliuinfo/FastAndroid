@@ -1,5 +1,3 @@
-import org.apache.tools.ant.taskdefs.condition.JavaVersion
-
 /**
  * Created by Jerry on 2022/2/26.
  */
@@ -36,6 +34,7 @@ object Versions {
      * 但是有些依赖库没有设置, 所以 lifecycle 库不能升
      */
     const val lifecycle_version = "2.3.1"
+
     const val coroutines = "1.3.5"
 
     const val paging = "3.0.1"
@@ -43,6 +42,7 @@ object Versions {
     //room 2.4.0 版本可以不用手动写 migration 了
     const val Room = "2.2.3"
 
+    const val workmanager = "2.2.0"
 
     const val viewPager2 = "1.0.0"
 
@@ -56,7 +56,6 @@ object Versions {
     const val kotlinxSerializationConverter = "0.8.0"
     const val serializationJson = "1.5.0"
 
-    const val workmanager = "2.2.0"
     const val multidex = "2.0.0"
     const val gson = "2.10.1"
     const val fastjson = "1.2.29"

@@ -2,12 +2,10 @@ package com.tesla.framework.common.util
 
 import android.app.PendingIntent
 import android.os.Build
+import android.text.Html
+import android.text.Spanned
 import androidx.annotation.ChecksSdkIntAtLeast
 import com.tesla.framework.component.logger.Logger
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.io.ObjectInputStream
-import java.io.ObjectOutputStream
 import java.lang.reflect.ParameterizedType
 
 
@@ -94,6 +92,16 @@ object CommonUtil {
             Runtime.getRuntime().exec("sync")
         } catch (e: Exception) {
             e.printStackTrace()
+        }
+    }
+
+    fun fromHtml(input: String): Spanned {
+        return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            Html.fromHtml(input, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            // method deprecated at API 24.
+            @Suppress("DEPRECATION")
+            Html.fromHtml(input)
         }
     }
 

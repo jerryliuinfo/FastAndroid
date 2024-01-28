@@ -1,6 +1,5 @@
 package com.apache.fastandroid.home
 
-import android.text.Html
 import android.view.View
 import android.widget.TextView
 import com.apache.fastandroid.R
@@ -10,6 +9,7 @@ import com.apache.fastandroid.network.model.Article
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
+import com.tesla.framework.common.util.CommonUtil
 import com.tesla.framework.common.util.N
 import com.tesla.framework.common.util.buildSpannableString
 import com.tesla.framework.kt.getColor
@@ -77,7 +77,7 @@ class ArticleAdapter(
 
     private fun handleTitle(article: Article?): String {
         return if (article != null) {
-            Html.fromHtml(article.title, Html.FROM_HTML_MODE_COMPACT)
+            CommonUtil.fromHtml(article.title)
                 .toString()
         } else ""
     }

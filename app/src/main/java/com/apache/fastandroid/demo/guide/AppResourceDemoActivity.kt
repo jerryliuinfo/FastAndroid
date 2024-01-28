@@ -9,8 +9,6 @@ import android.graphics.drawable.Animatable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
-import android.text.Html
-import android.text.Html.FROM_HTML_MODE_LEGACY
 import android.text.Spanned
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -18,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ActivityAppResourcesBinding
 import com.apache.fastandroid.demo.guide.appresource.drawable.DrawableResDemoFragment
+import com.tesla.framework.common.util.CommonUtil
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.launchFragment
 import com.tesla.framework.ui.activity.BaseBindingActivity
@@ -93,7 +92,7 @@ class AppResourceDemoActivity : BaseBindingActivity<ActivityAppResourcesBinding>
 
     private fun stringHtmlUsage() {
         val text: String = getString(R.string.str_html)
-        val styledText: Spanned = Html.fromHtml(text, FROM_HTML_MODE_LEGACY)
+        val styledText: Spanned = CommonUtil.fromHtml(text)
         mBinding.btnResult.text = styledText
     }
 

@@ -1,4 +1,4 @@
-package com.apache.fastandroid.jetpack.workmanager
+package com.apache.fastandroid.jetpack.workmanager.chain
 
 import android.content.Context
 import androidx.work.Worker
@@ -7,13 +7,15 @@ import com.apache.fastandroid.jetpack.workmanager.WorkManagerDemoFragment.Compan
 import com.tesla.framework.component.logger.Logger
 
 /**
- * Created by Jerry on 2023/12/26.
+ * Created by Jerry on 2023/12/27.
  */
-class UploadWorker(context: Context, workerParams: WorkerParameters) :
-    Worker(context, workerParams) {
+
+
+class CacheWork(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
     override fun doWork(): Result {
-        Logger.d("$WORK_MANAGER_TAG  UploadWorker doWork")
-        Thread.sleep(10000)
+
+        Logger.d("$WORK_MANAGER_TAG CacheWork run -------------->")
+        Thread.sleep(3000)
         return Result.success()
     }
 }

@@ -6,12 +6,9 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.tesla.framework.R
-import com.tesla.framework.component.logger.Utils
-import java.util.UUID
 
 /**
  * Created by Jerry on 2024/1/20.

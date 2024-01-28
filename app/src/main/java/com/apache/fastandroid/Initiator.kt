@@ -17,7 +17,11 @@ import com.apache.fastandroid.crash.Fabric
 import com.apache.fastandroid.demo.blacktech.viewpump.CustomTextViewInterceptor
 import com.apache.fastandroid.demo.blacktech.viewpump.TextUpdatingInterceptor
 import com.apache.fastandroid.demo.performance.startup.SDK1
-import com.apache.fastandroid.demo.performance.taskdispatcher.*
+import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskFive
+import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskFour
+import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskOne
+import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskThree
+import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskTwo
 import com.apache.fastandroid.jetpack.flow.api.ApiHelper
 import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
 import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
@@ -74,7 +78,7 @@ object Initiator {
 
     @Synchronized
     fun init(application: Application) {
-        if (initialized){
+        if (initialized) {
             return
         }
         initialized = true
@@ -111,7 +115,7 @@ object Initiator {
         initAnr()
         initImageLoader()
 
-        //初始化crash统计
+        // 初始化crash统计
         initHttp()
         initViewPump()
         initReword(context)
@@ -138,18 +142,26 @@ object Initiator {
             }))
         initNetworkMonitor(context)
 
-        sharedPreferences = Utils.getApp().getSharedPreferences("config",Context.MODE_PRIVATE)
+        sharedPreferences = Utils.getApp().getSharedPreferences("config", Context.MODE_PRIVATE)
 
         val oldVersion = sharedPreferences.getInt(KEY_SCHEMA_VERSION, 0)
         if (oldVersion != SCHEMA_VERSION) {
             upgradeSharedPreferences(oldVersion, SCHEMA_VERSION)
         }
+        initWorkManager(application)
+    }
+
+    private fun initWorkManager(context: Context) {
+        // WorkManager.initialize(
+        //     context,
+        //     Configuration.Builder().setExecutor(Executors.newFixedThreadPool(8)).build()
+        // )
     }
 
     private fun upgradeSharedPreferences(oldVersion: Int, newVersion: Int) {
         Logger.d("Upgrading shared preferences: $oldVersion -> $newVersion")
 //        val editor = sharedPreferences.edit()
-        val editor = Utils.getApp().getSharedPreferences("config",Context.MODE_PRIVATE).edit()
+        val editor = Utils.getApp().getSharedPreferences("config", Context.MODE_PRIVATE).edit()
 
 
         if (oldVersion < 2023022701) {
@@ -163,7 +175,7 @@ object Initiator {
         editor.apply()
     }
 
-    private fun initBooster(){
+    private fun initBooster() {
 //        FinalizerWatchdogDaemonKiller.
 
     }
@@ -173,7 +185,7 @@ object Initiator {
 
     }
 
-    private fun initAppFaster(context: Context){
+    private fun initAppFaster(context: Context) {
         if (MultidexUtils.isMainProcess(context)) {
             AppStartTaskDispatcher.getInstance()
                 .setContext(context)
@@ -240,7 +252,6 @@ object Initiator {
     }
 
 
-
     private fun initTaskByStartup(context: Context) {
         StartupManager
             .addGroup {
@@ -299,7 +310,7 @@ object Initiator {
     private fun initLog() {
 //        Logger.addLogAdapter(DiskLogAdapter())
         Logger.addLogAdapter(AndroidLogAdapter(SimpleFormatStrategy.newBuilder().build()))
-        //添加 Timer
+        // 添加 Timer
 //        Logger.addLogAdapter(TimerLogger())
     }
 
