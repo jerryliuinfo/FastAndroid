@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
+import com.apache.fastandroid.demo.guide.appdata.sharedata.ShareDataDemoFragment
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.log.Timber
 import com.tesla.framework.component.logger.Logger
@@ -102,7 +102,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 //        FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
 //                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
-               FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
+//                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
 //                FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
 //                FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null)
 //                FragmentContainerActivity.launch(this, ListEntryDemoFragment::class.java,null)
@@ -161,6 +161,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 //        FragmentContainerActivity.launch(this, AppResourceDemoActivity::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, SearchPreferenceDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, AppDataDemoFragment::class.java,null,addTitleBar = true)
+       FragmentContainerActivity.launch(this,  ShareDataDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, LiveDataLoaderFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, LocationDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ProgressDemoFragment::class.java,null,addTitleBar = true)

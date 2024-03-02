@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:flow_horizontalGap="10dp"
+            app:flow_wrapMode="aligned"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:constraint_referenced_ids="btn_share_text_data,btn_share_binary_data,btn_share_multiple,btn_add_rich_media,
+            btn_add_custom_operation_to_sharesheet,btn_share_file"
+            />
+
+
+
+        <Button
+            android:id="@+id/btn_share_text_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享文本内容" />
+        <Button
+            android:id="@+id/btn_share_binary_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送二进制内容" />
+
+        <Button
+            android:id="@+id/btn_share_multiple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享多份内容" />
+
+        <Button
+            android:id="@+id/btn_add_rich_media"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="向文本预览添加富媒体内容" />
+        <Button
+            android:id="@+id/btn_add_custom_operation_to_sharesheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="向 Sharesheet 添加自定义操作" />
+
+
+        <Button
+            android:id="@+id/btn_share_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置文件分享" />
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
+

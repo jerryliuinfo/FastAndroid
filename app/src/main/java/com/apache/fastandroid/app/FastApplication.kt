@@ -157,6 +157,7 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
             // ServiceLocator.provideTasksRepository(this)
             val taskDao = ToDoDatabase.getInstance()
             return DefaultTasksRepository(TasksLocalDataSource(taskDao),TasksLocalDataSource(taskDao))
+            return DefaultTasksRepository(TasksLocalDataSource(taskDao),TasksLocalDataSource(taskDao))
         }
 
 

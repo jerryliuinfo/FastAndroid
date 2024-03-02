@@ -107,16 +107,23 @@ class AlarmManagerDemoFragment :
 
     private var alarmReceiver: AlarmReceiver? = null
 
+    private var mRegisted:Boolean = false
+
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
     override fun onStart() {
         super.onStart()
         // 从Android9.0开始，系统不再支持静态广播，应用广播只能通过动态注册
         // 创建一个闹钟的广播接收器
         alarmReceiver = AlarmReceiver().apply {
-            // 创建一个意图过滤器，只处理指定事件来源的广播
-            val filter = IntentFilter(ACTION_ALARM)
+
             // 注册广播接收器，注册之后才能正常接收广播
-            requireContext().registerReceiver(alarmReceiver, filter)
+            mRegisted = try {
+                requireContext().registerReceiver(alarmReceiver, IntentFilter(ACTION_ALARM))
+                true
+            } catch (e: Exception) {
+                e.printStackTrace()
+                false
+            }
         }
 
     }
@@ -124,7 +131,9 @@ class AlarmManagerDemoFragment :
     override fun onStop() {
         super.onStop()
         alarmReceiver?.let {
-            requireContext().unregisterReceiver(it)
+            if (mRegisted){
+                requireContext().unregisterReceiver(it)
+            }
         }
     }
 

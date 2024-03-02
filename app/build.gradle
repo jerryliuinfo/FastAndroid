@@ -108,6 +108,9 @@ android {
                                       "$projectDir/schemas".toString()]
             }
         }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
 
@@ -455,9 +458,9 @@ dependencies {
 
 
     implementation(Jetpack.startUp)
-    implementation(AndroidTest.espresso_idling)
 
-    implementation(*AndroidTest.espresso)
+
+    androidTestImplementation(*AndroidTest.espresso)
 
 
 

@@ -377,11 +377,11 @@ androidTestImplementation "androidx.navigation:navigation-testing:$navigationVer
 
 object AndroidTest{
     val espresso = arrayOf(
-        "androidx.test.espresso:espresso-core:${Versions.espressoVersion}",
-        "androidx.test.espresso:espresso-contrib:${Versions.espressoVersion}",
-        "androidx.test.espresso:espresso-intents:${Versions.espressoVersion}",
-        "androidx.test.espresso.idling:idling-concurrent:${Versions.espressoVersion}",
+        "androidx.test.espresso:espresso-core:${Versions.espresso}",
+        "androidx.test.espresso:espresso-contrib:${Versions.espresso}",
+        "androidx.test.espresso:espresso-intents:${Versions.espresso}",
+        "androidx.test.espresso.idling:idling-concurrent:${Versions.espresso}",
+        "androidx.test.espresso:espresso-idling-resource:${Versions.espresso}"
     )
-    val espresso_idling = "androidx.test.espresso:espresso-idling-resource:${Versions.espressoVersion}"
 
 }

@@ -1,5 +1,6 @@
 package com.apache.fastandroid.demo.guide.appdata
 
+import android.app.usage.StorageStatsManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +10,9 @@ import android.os.storage.StorageManager.ACTION_MANAGE_STORAGE
 import android.view.LayoutInflater
 import androidx.core.content.getSystemService
 import com.apache.fastandroid.databinding.FragmentAppDataBinding
-import com.tencent.bugly.Bugly.applicationContext
+import com.apache.fastandroid.demo.guide.appdata.sharestorage.ShareStorageemoFragment
 import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.kt.print2
+import com.tesla.framework.kt.launchFragment
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.io.File
 import java.util.UUID
@@ -48,6 +49,10 @@ class AppDataDemoFragment :
             fileList()
         }
 
+        mBinding.btnCreateNestDir.setOnClickListener {
+            createNestDir()
+        }
+
         mBinding.btnCreateTempFile.setOnClickListener {
             createTempFileInCacheDir()
         }
@@ -63,9 +68,7 @@ class AppDataDemoFragment :
         mBinding.btnCreateCacheFileInExternal.setOnClickListener {
             createCacheFileInExternal()
         }
-        mBinding.btnCreateCacheFileInExternal.setOnClickListener {
-            createCacheFileInExternal()
-        }
+
         mBinding.btnMediaStorage.setOnClickListener {
             mediaStorage()
         }
@@ -83,6 +86,57 @@ class AppDataDemoFragment :
             queryAvailableSpace()
         }
 
+        mBinding.btnRemoveFile.setOnClickListener {
+            partlyRemoveFile()
+        }
+
+        mBinding.btnRemoveAllCacheFile.setOnClickListener {
+            removeAllCacheFile()
+        }
+
+        mBinding.btnSaveToShareStorage.setOnClickListener {
+            requireActivity().launchFragment<ShareStorageemoFragment>()
+        }
+
+    }
+
+    private fun removeAllCacheFile() {
+
+        try {
+            val intent = Intent(StorageManager.ACTION_CLEAR_APP_CACHE)
+            requireActivity().startActivityForResult(intent,99)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    /**
+     * 让用户移除部分设备文件
+     * 如需请求用户在设备上选择文件进行移除，请调用包含 ACTION_MANAGE_STORAGE 操作的 intent。
+     * 此 intent 会向用户显示提示。如果需要，此提示可以显示设备上的可用空间量。如需显示此人性化信息，
+     * 请使用以下计算结果：
+     *
+     *
+     */
+    private fun partlyRemoveFile() {
+        val storageManager = requireActivity().getSystemService(Context.STORAGE_STATS_SERVICE) as StorageStatsManager
+        val percent = storageManager.getFreeBytes(StorageManager.UUID_DEFAULT).toFloat() / storageManager.getTotalBytes(StorageManager.UUID_DEFAULT)
+        Logger.d("可用空间占比:$percent")
+    }
+
+    /**
+     * 您还可以通过以下方式创建嵌套目录或打开内部目录：在基于 Kotlin 的代码中调用 getDir()，或在基于 Java 的代码中将根目录和新目录名称传递到 File 构造函数：
+     *
+     * 注意 ：filesDir 始终是此新目录的祖先目录。
+     */
+    private fun createNestDir() {
+        val dirName = "hello ${Random.nextInt(50)}"
+        val file = mContext.getDir(dirName, Context.MODE_PRIVATE)
+        if (!file.exists() && file.mkdirs()){
+           Logger.d("$dirName 创建成功")
+        }
+        fileList()
+
     }
 
     /**
@@ -95,12 +149,14 @@ class AppDataDemoFragment :
      */
     private fun queryAvailableSpace() {
 // App needs 10 MB within internal storage.
-         val NUM_BYTES_NEEDED_FOR_MY_APP = 1024 * 1024 * 10L;
+         val NUM_BYTES_NEEDED_FOR_MY_APP = 1024 * 1024 * 10L
 
         val storageManager:StorageManager = requireContext().getSystemService<StorageManager>()!!
         val appSpecificInternalDirUuid: UUID = storageManager.getUuidForPath(requireActivity().filesDir)
         val availableBytes: Long =
             storageManager.getAllocatableBytes(appSpecificInternalDirUuid)
+        Logger.d("queryAvailableSpace availableBytes:$availableBytes")
+
         if (availableBytes >= NUM_BYTES_NEEDED_FOR_MY_APP) {
             storageManager.allocateBytes(
                 appSpecificInternalDirUuid, NUM_BYTES_NEEDED_FOR_MY_APP)
@@ -153,12 +209,14 @@ class AppDataDemoFragment :
     private fun getAppSpecificAlbumStorageDir(context: Context, albumName: String): File? {
         // Get the pictures directory that's inside the app-specific directory on
         // external storage.
-        val file: File? = File(
+        val file: File = File(
             context.getExternalFilesDir(
+                //务必使用 DIRECTORY_PICTURES 等 API 常量提供的目录名称。这些目录名称可确保系统正确处理文件。如果没有适合您文件的预定义子目录名称，您可以改为将 null 传递到 getExternalFilesDir()。这将返回外部存储空间中的应用专属根目录。
                 Environment.DIRECTORY_PICTURES
+                // null
             ), albumName
         )
-        if (file?.mkdirs() == false) {
+        if (!file.mkdirs()) {
             println("Directory not created")
         }
         return file
@@ -168,6 +226,9 @@ class AppDataDemoFragment :
         val child = "test:${Random.nextInt(5, 15)}"
         val externalCacheFile = File(mContext.externalCacheDir, child)
         externalCacheFile.writeText(child)
+
+        val readText = externalCacheFile.readText()
+        Logger.d("write text:$child, readText:${readText}")
     }
 
 
@@ -223,19 +284,20 @@ class AppDataDemoFragment :
 
      */
     private fun createTempFileInCacheDir() {
-        val fileName = "test"
+        val fileName = "test1"
         val tempFile = File.createTempFile(fileName, null, mContext.cacheDir)
-
+        tempFile.writeText(fileName)
         //注意：当设备的内部存储空间不足时，Android 可能会删除这些缓存文件以回收空间。因此，请在读取前检查缓存文件是否存在。
-        val cacheFile = File(mContext.cacheDir, fileName)
-        Logger.d("createTempFileInCacheDir cacheFile exist:${cacheFile.exists()}")
+        // val cacheFile = File(mContext.cacheDir, fileName)
+        Logger.d("createTempFileInCacheDir cacheFile $fileName, exist:${tempFile.exists()}")
 
     }
 
     private fun fileList() {
         val fileList = mContext.fileList()
-        Logger.d("fileList :${fileList.toList().print2 { it }}")
-
+        fileList.toList().forEach {
+            Logger.d("fileList file Name:$it")
+        }
 
     }
 
@@ -261,9 +323,15 @@ class AppDataDemoFragment :
     private fun openFileOutput() {
         val fileName = "myFile"
         val fileContent = "Hello world:${Random.nextInt(5, 20)}"
+        // openFileOutput 会写入 filesDir 目录中的文件的
         mContext.openFileOutput(fileName, Context.MODE_PRIVATE).use {
             it.write(fileContent.toByteArray())
         }
+        //
+        val file = File(context?.filesDir, fileName)
+        val readText = file.readText()
+        Logger.d("openFileOutput readText:$readText")
+
     }
 
     /**
@@ -279,8 +347,11 @@ class AppDataDemoFragment :
 
 
     /**
+     * 从内部存储空间访问，可以使用 getFilesDir() 或 getCacheDir() 方法
+     *
      * 从内部存储空间访问不需要任何权限,注意:
      * 这些目录的空间通常比较小。在将应用专属文件写入内部存储空间之前，应用应查询设备上的可用空间。
+     *
      *
      */
     private fun filesAndCacheDir() {
@@ -300,6 +371,7 @@ class AppDataDemoFragment :
     }
 
     /**
+     * 从外部存储空间访问，可以使用 getExternalFilesDir() 或 getExternalCacheDir() 方法
      * 如果应用在搭载 Android 4.4（API 级别 19）或更高版本的设备上运行，从外部存储空间访问不需要任何权限
      */
     private fun externalFilesAndCacheDir() {
@@ -310,6 +382,7 @@ class AppDataDemoFragment :
         Logger.d("external fileDir:$fileDir, cacheDir:$cacheDir")
 
         val appSpecificExternalDir = File(mContext.getExternalFilesDir(null), "test")
+
 
     }
 }

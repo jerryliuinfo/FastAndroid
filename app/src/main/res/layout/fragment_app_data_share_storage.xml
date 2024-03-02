@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:flow_horizontalGap="10dp"
+            app:flow_wrapMode="aligned"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:constraint_referenced_ids="btn_query_media_list,btn_load_thumbnail,btn_storage_volumn,
+            btn_share_text_data"
+            />
+
+
+        <Button
+            android:id="@+id/btn_query_media_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查询媒体集合" />
+        <Button
+            android:id="@+id/btn_load_thumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加载文件缩略图" />
+
+        <Button
+            android:id="@+id/btn_storage_volumn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="存储卷" />
+
+        <Button
+            android:id="@+id/btn_share_text_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享简单数据" />
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
+

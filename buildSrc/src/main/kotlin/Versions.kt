@@ -75,10 +75,12 @@ object Versions {
 
 
 
-    const val espressoVersion = "3.5.0-alpha04"
     const val materialDialog = "3.3.0"
     const val arouter_api_versoion = "1.4.0"
     const val arouter_compiler_versoion = "1.2.1"
+
+    const val espresso = "3.5.0-alpha04"
+
 
 
 }
