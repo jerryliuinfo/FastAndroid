@@ -56,6 +56,7 @@ buildscript {
         classpath PluginConfig.mcImage
 
         classpath PluginConfig.ruler
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0'
 
 //        classpath PluginConfig.booster
         //crash 处理
@@ -202,5 +203,18 @@ task loadProject{
     }
 }
 
+
+ ext {
+     androidxAnnotationVersion = "1.5.0"
+     robolectricVersion = "4.10.3"
+     guavaVersion = "31.1-android"
+
+
+     extTruthVersion = "1.6.0-alpha01"
+     coreVersion = "1.6.0-alpha01"
+     extJUnitVersion = "1.2.0-alpha01"
+     runnerVersion = "1.6.0-alpha03"
+     espressoVersion = "3.6.0-alpha01"
+ }
 
 

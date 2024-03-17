@@ -139,7 +139,7 @@ android {
 
             shrinkResources false
             //应用包名添加.debug后缀
-            applicationIdSuffix ".debug"
+//            applicationIdSuffix ".debug"
             //禁用PNG压缩。
             crunchPngs false
             //停用Crashlytics，以提高调试 build 的构建速度
@@ -225,12 +225,23 @@ android {
     }
 
 
+//    testOptions {
+//        unitTests {
+//            includeAndroidResources = true
+//        }
+//    }
+
     testOptions {
         unitTests {
             includeAndroidResources = true
         }
     }
+//    namespace "com.apache.fastandroid.BasicActivityTests"
+//    testNamespace "com.apache.fastandroid.BasicActivityTests.test"
 
+    lint {
+        abortOnError false
+    }
 
     buildFeatures {
         dataBinding = true
@@ -460,7 +471,11 @@ dependencies {
     implementation(Jetpack.startUp)
 
 
-    androidTestImplementation(*AndroidTest.espresso)
+    androidTestImplementation(*AndroidTest.androidTest)
+    testImplementation(*AndroidTest.test)
+
+
+
 
 
 

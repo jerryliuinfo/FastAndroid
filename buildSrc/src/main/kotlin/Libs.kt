@@ -376,12 +376,34 @@ androidTestImplementation "androidx.navigation:navigation-testing:$navigationVer
 */
 
 object AndroidTest{
-    val espresso = arrayOf(
+    // val espresso = arrayOf(
+    //     "androidx.test.espresso:espresso-core:${Versions.espresso}",
+    //     "androidx.test.espresso:espresso-contrib:${Versions.espresso}",
+    //     "androidx.test.espresso:espresso-intents:${Versions.espresso}",
+    //     "androidx.test.espresso.idling:idling-concurrent:${Versions.espresso}",
+    //     "androidx.test.espresso:espresso-idling-resource:${Versions.espresso}"
+    // )
+
+
+    val androidTest = arrayOf(
         "androidx.test.espresso:espresso-core:${Versions.espresso}",
-        "androidx.test.espresso:espresso-contrib:${Versions.espresso}",
+
+        
+        "androidx.test:core:${Versions.coreVersion}",
+        "androidx.test:core-ktx:${Versions.coreVersion}",
+        "androidx.test.ext:junit:${Versions.extJUnitVersion}",
+        "androidx.test.ext:junit-ktx:${Versions.extJUnitVersion}",
+        "androidx.test:runner:${Versions.runnerVersion}",
+    )
+
+    val test = arrayOf(
+        "androidx.test.espresso:espresso-core:${Versions.espresso}",
         "androidx.test.espresso:espresso-intents:${Versions.espresso}",
-        "androidx.test.espresso.idling:idling-concurrent:${Versions.espresso}",
-        "androidx.test.espresso:espresso-idling-resource:${Versions.espresso}"
+        "androidx.test:core:${Versions.coreVersion}",
+        "androidx.test.ext:junit:${Versions.extJUnitVersion}",
+        "androidx.test.ext:truth:${Versions.extJUnitVersion}",
+        "junit:junit:4.12",
+        "org.robolectric:robolectric:${Versions.robolectricVersion}",
     )
 
 }

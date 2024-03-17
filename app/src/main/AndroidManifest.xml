@@ -25,7 +25,9 @@
         android:theme="@style/Theme.AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
-        tools:replace="android:theme,android:icon,android:label,android:allowBackup">
+        tools:replace="android:theme,android:icon,android:label,android:allowBackup"
+        >
+
 
         <activity
             android:name="com.apache.fastandroid.SplashActivity"

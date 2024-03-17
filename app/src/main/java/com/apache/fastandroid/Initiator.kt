@@ -8,6 +8,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.os.Debug
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
@@ -53,6 +54,10 @@ import dev.b3nedikt.viewpump.ViewPump
 import me.drakeet.floo.Floo
 import me.drakeet.floo.Target
 import java.io.File
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 /**
  * Created by Jerry on 2023/6/23.
@@ -81,6 +86,9 @@ object Initiator {
         if (initialized) {
             return
         }
+        val dateFormat: DateFormat = SimpleDateFormat("dd_MM_yyyy_hh", Locale.getDefault())
+        val logDate: String = dateFormat.format(Date())
+        // Debug.startMethodTracing("FastAndroid-$logDate")
         initialized = true
         initLoop()
 
@@ -149,6 +157,7 @@ object Initiator {
             upgradeSharedPreferences(oldVersion, SCHEMA_VERSION)
         }
         initWorkManager(application)
+        Debug.stopMethodTracing()
     }
 
     private fun initWorkManager(context: Context) {

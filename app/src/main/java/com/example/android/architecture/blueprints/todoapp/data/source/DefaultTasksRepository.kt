@@ -37,7 +37,7 @@ class DefaultTasksRepository(
 
     override suspend fun getTasks(forceUpdate: Boolean): Result<List<Task>> {
         // Set app as busy while this function executes.
-        wrapEspressoIdlingResource {
+        // wrapEspressoIdlingResource {
 
             if (forceUpdate) {
                 try {
@@ -47,7 +47,7 @@ class DefaultTasksRepository(
                 }
             }
             return tasksLocalDataSource.getTasks()
-        }
+        // }
     }
 
     override suspend fun refreshTasks() {

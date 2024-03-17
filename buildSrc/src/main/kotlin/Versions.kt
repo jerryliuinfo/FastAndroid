@@ -79,7 +79,15 @@ object Versions {
     const val arouter_api_versoion = "1.4.0"
     const val arouter_compiler_versoion = "1.2.1"
 
-    const val espresso = "3.5.0-alpha04"
+
+
+    const val robolectricVersion = "4.10.3"
+    const val coreVersion = "1.6.0-alpha01"
+    const val extJUnitVersion = "1.2.0-alpha01"
+    const val extTruthVersion = "1.6.0-alpha01"
+    const val runnerVersion = "1.6.0-alpha03"
+    const val espresso = "3.6.0-alpha01"
+
 
 
 
