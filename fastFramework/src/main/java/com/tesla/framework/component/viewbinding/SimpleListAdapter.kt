@@ -64,9 +64,8 @@ abstract class SimpleListAdapter<T, VB : ViewBinding>(
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder<VB> =
     BindingHolder(ViewBindingUtil.inflateWithGeneric<VB>(this, parent)).apply {
-      val position = bindingAdapterPosition
       itemView.setOnClickListener {
-        onItemClickListener?.onItemClick(getItem(position), position)
+        onItemClickListener?.onItemClick(getItem(position), bindingAdapterPosition)
       }
       itemView.setOnLongClickListener {
         onItemLongClickListener?.onItemClick(getItem(position), position)

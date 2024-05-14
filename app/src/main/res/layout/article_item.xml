@@ -9,14 +9,16 @@
 
     </data>
 
+<!--    app:strokeColor="?colorPrimaryDark"-->
+<!--    app:strokeWidth="2dp"-->
+
     <androidx.cardview.widget.CardView
         android:id="@+id/article_material_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:cardElevation="4dp"
-        app:strokeColor="?colorPrimaryDark"
-        app:strokeWidth="2dp"
+
         android:background="?attr/selectableItemBackground"
         >
 

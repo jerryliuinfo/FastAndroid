@@ -15,7 +15,7 @@ class NormalViewModel2 (private val repository: Repository2) : ViewModel() {
 
 
     class NormalViewModel2Factory(private val repository: Repository2): ViewModelProvider.NewInstanceFactory() {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return NormalViewModel2(repository) as T
         }
     }

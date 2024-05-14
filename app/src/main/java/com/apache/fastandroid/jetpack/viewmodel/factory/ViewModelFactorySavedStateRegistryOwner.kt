@@ -19,8 +19,6 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import com.apache.fastandroid.demo.paging.article.data.ArticleRepository
-import com.apache.fastandroid.demo.paging.article.ui.ArticleViewModel
 import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.ViewModelWithArgs
 
@@ -32,7 +30,7 @@ class ViewModelFactorySavedStateRegistryOwner(
     private val repository: UserReporsity
 ) : AbstractSavedStateViewModelFactory(owner, null) {
 
-    override fun <T : ViewModel?> create(
+    override fun <T : ViewModel> create(
         key: String,
         modelClass: Class<T>,
         handle: SavedStateHandle

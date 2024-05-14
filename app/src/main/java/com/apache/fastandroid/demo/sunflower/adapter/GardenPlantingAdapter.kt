@@ -21,19 +21,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ListItemGardenPlantingBinding
-import com.apache.fastandroid.demo.sunflower.bean.GardenPlanting
 import com.apache.fastandroid.demo.sunflower.bean.PlantAndGardenPlantings
 import com.apache.fastandroid.demo.sunflower.bean.PlantAndGardenPlantingsViewModel
-import com.apache.fastandroid.demo.sunflower.db.SunFlowDatabase
 import com.apache.fastandroid.demo.sunflower.fragement.PlantDetailFragment
 import com.apache.fastandroid.demo.sunflower.viewmodel.GardenPlantingListViewModel
-import com.blankj.utilcode.util.Utils
 import com.tesla.framework.ui.activity.FragmentArgs
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 
@@ -44,6 +40,7 @@ class GardenPlantingAdapter(private val activity: Activity,private val viewModel
     ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         return ViewHolder(activity,viewModel,
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
@@ -52,6 +49,8 @@ class GardenPlantingAdapter(private val activity: Activity,private val viewModel
                 false
             )
         )
+
+
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

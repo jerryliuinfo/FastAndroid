@@ -30,6 +30,8 @@ fun Context.getAttrColor(@AttrRes attrId: Int): Int {
 }
 
 
+
+
 inline fun <reified T : Activity> Context.startActivity() {
   startActivity(Intent(this, T::class.java))
 }

@@ -10,6 +10,8 @@ import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
+import com.android.androidtech.monitor.time.TimeMonitorConfig
+import com.android.androidtech.monitor.time.TimeMonitorManager
 import com.apache.fastandroid.Initiator
 import com.apache.fastandroid.artemis.ui.app.ComApplication
 import com.apache.fastandroid.jetpack.flow.api.ApiHelper
@@ -39,6 +41,7 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
     private var mFactory: ViewModelProvider.Factory? = null
 
     private var mAppViewModelStore: ViewModelStore? = null
+
 
 
     val apiHelper:ApiHelper by lazy {
@@ -75,6 +78,11 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
     }
 
     override fun attachBaseContext(base: Context) {
+        TimeMonitorManager.getInstance()
+            .resetTimeMonitor(TimeMonitorConfig.TIME_MONITOR_ID_APPLICATION_START)
+        /**
+         * 应用启动最早的时机，早于 [Application.onCreate]
+         */
         LaunchTimer.startRecord()
 //        MultiDex.install(base)
 
@@ -86,14 +94,14 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
         } else {
             MultidexUtils.preNewActivity()
         }
-        //HotFixManager.loadDex(base);
+        // HotFixManager.loadDex(base);
         super.attachBaseContext(base)
     }
 
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        //非默认值
+        // 非默认值
         if (newConfig.fontScale != 1f) {
             resources
         }
@@ -105,12 +113,12 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
 
 
         //
-        if (res.configuration.fontScale != 1f) { //非默认值
+        if (res.configuration.fontScale != 1f) { // 非默认值
 
-            //https://wx.zsxq.com/dweb2/index/topic_detail/841115285142582
+            // https://wx.zsxq.com/dweb2/index/topic_detail/841115285142582
             val newConfig = Configuration()
             newConfig.setToDefaults()
-            //强制字体不随着系统改变而改变
+            // 强制字体不随着系统改变而改变
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 createConfigurationContext(newConfig)
             } else {
@@ -163,10 +171,12 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
 
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
+        Logger.d("onTrimMemory level:$level --->")
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
+        Logger.d("onLowMemory --->")
     }
 
 

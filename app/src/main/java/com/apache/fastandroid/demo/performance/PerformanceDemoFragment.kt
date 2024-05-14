@@ -3,12 +3,11 @@ package com.apache.fastandroid.demo.performance
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.crashreport.CrashReportDemoFragment
-import com.apache.fastandroid.demo.mmkv.MMKVFragment
-import com.apache.fastandroid.demo.mmkv.MMKVKtxFragment
 import com.apache.fastandroid.demo.performance.fps.FpsDemoFragment
 import com.apache.fastandroid.demo.performance.frameanimation.FrameAnimationDemoFragment
 import com.apache.fastandroid.demo.performance.frameanimation.FrameAnimationOptimizeDemoFragment
 import com.apache.fastandroid.demo.performance.largeimage.LargeImageDemoFragment
+import com.apache.fastandroid.demo.performance.muke.MukeDemoFragment
 import com.apache.fastandroid.demo.performance.perfetto.PerfettoDemoFragment
 import com.apache.fastandroid.demo.performance.practice.AnrWatchDogDemoFragment
 import com.apache.fastandroid.demo.slimber.SlimberFragment
@@ -32,6 +31,7 @@ class PerformanceDemoFragment: BaseListFragment() {
                  ,ViewItemBean("帧动画原始", "帧动画原始", FrameAnimationDemoFragment::class.java)
                  ,ViewItemBean("帧动画性能优化", "帧动画性能优化", FrameAnimationOptimizeDemoFragment::class.java)
                  ,ViewItemBean("perfetto", "perfetto", PerfettoDemoFragment::class.java)
+                 ,ViewItemBean("慕课性能优化", "", MukeDemoFragment::class.java)
         )
     }
 }

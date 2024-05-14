@@ -1,6 +1,7 @@
 package com.apache.fastandroid.home
 
 import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.TextView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ArticleItemBinding
@@ -20,7 +21,7 @@ import com.tesla.framework.kt.getColor
  */
 class ArticleAdapter(
     data: List<Article>,
-    val listener: (View, Int) -> Unit = { viwe, position -> }
+    val listener: (View, Int) -> Unit = { viwe, position -> },
 ) :
     BaseQuickAdapter<Article, BaseDataBindingHolder<ArticleItemBinding>>(
         R.layout.article_item,
@@ -32,8 +33,21 @@ class ArticleAdapter(
         setHasStableIds(true)
     }
 
-    override fun convert(holder: BaseDataBindingHolder<ArticleItemBinding>, article: Article) {
 
+    private var mHasRecord = false
+    override fun convert(holder: BaseDataBindingHolder<ArticleItemBinding>, article: Article) {
+        // Feed 流第一个 item 作为用户第一次看见
+        if (holder.bindingAdapterPosition == 0 && !mHasRecord){
+            mHasRecord = true
+            holder.itemView.viewTreeObserver.addOnPreDrawListener(object :ViewTreeObserver.OnPreDrawListener{
+                override fun onPreDraw(): Boolean {
+                    holder.itemView.viewTreeObserver.removeOnPreDrawListener(this)
+                    return false
+                }
+
+            })
+
+        }
         holder
             .setText(R.id.item_article_title, handleTitle(article))
             .setText(R.id.item_article_date, article.niceDate)
@@ -55,11 +69,11 @@ class ArticleAdapter(
             append(handleAuthor(article))
         }
 
-        //模拟卡顿
+        // 模拟卡顿
         // Thread.sleep(100)
 
         holder.getView<TextView>(R.id.item_article_author).setOnClickListener {
-            //方式1 使用回调接口，在 fragment 中调用viewmodel 中的接口
+            // 方式1 使用回调接口，在 fragment 中调用viewmodel 中的接口
             //
 //            listener?.invoke(it, holder.layoutPosition)
             article.loadAuthorInfo()

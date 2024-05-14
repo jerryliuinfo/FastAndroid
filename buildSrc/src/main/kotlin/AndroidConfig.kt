@@ -1,5 +1,5 @@
 object AndroidConfig {
-    //android 12  对应的 compile sdk 为 31 和 32, android 11  对应的 compile sdk 为 30
+    //android 12  对应的 compile sdk 为 31 和 32, android 11  对应的 compile sdk 为 30, Android 12 要求 四大组件一定要申明 export属性
     const val compileSdk = 30
     const val minSdk = 26
     const val targetSdk = 30

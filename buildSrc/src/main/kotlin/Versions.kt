@@ -37,6 +37,8 @@ object Versions {
 
     const val coroutines = "1.3.5"
 
+    const val compose = "1.1.1"
+
     const val paging = "3.0.1"
 
     //room 2.4.0 版本可以不用手动写 migration 了

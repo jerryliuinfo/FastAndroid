@@ -63,7 +63,7 @@ class MviViewModel(val repository: HomeReporsitoryKt):ViewModel() {
     class MviModelFactory(private val repository: HomeReporsitoryKt) : ViewModelProvider.NewInstanceFactory() {
 
         @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return MviViewModel(repository) as T
         }
     }

@@ -6,7 +6,7 @@ import com.apache.fastandroid.network.api.ApiService
 
 class PosterViewModelFactory(private val apiService: ApiService) : ViewModelProvider.Factory {
 
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(PosterViewModel::class.java)) {
             return PosterViewModel(apiService) as T
         }

@@ -213,8 +213,9 @@ object Libs {
     )
 
     val performance = arrayOf(
-//        "androidx.metrics:metrics-performance:${Versions.jankstats}",
-        "com.didiglobal.booster:booster-transform-activity-thread:${Versions.booster}"
+//         "com.didiglobal.booster:booster-transform-activity-thread:${Versions.booster}",
+
+        "androidx.metrics:metrics-performance:1.0.0-alpha01"
     )
 
 
@@ -226,6 +227,11 @@ object Libs {
         "androidx.test.espresso:espresso-core:3.4.0"
     )
 
+    val compose = arrayOf(
+        "androidx.compose.ui:ui:${Versions.compose}",
+        "androidx.compose.material:material:${Versions.compose}",
+        "androidx.compose.ui:ui-tooling:${Versions.compose}"
+    )
 
 
 
@@ -401,7 +407,7 @@ object AndroidTest{
         "androidx.test.espresso:espresso-intents:${Versions.espresso}",
         "androidx.test:core:${Versions.coreVersion}",
         "androidx.test.ext:junit:${Versions.extJUnitVersion}",
-        "androidx.test.ext:truth:${Versions.extJUnitVersion}",
+        // "androidx.test.ext:truth:${Versions.extJUnitVersion}",
         "junit:junit:4.12",
         "org.robolectric:robolectric:${Versions.robolectricVersion}",
     )

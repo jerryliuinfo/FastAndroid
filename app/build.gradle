@@ -47,7 +47,7 @@ final Properties REPO_PROPS = loadProperties(REPO_PROPS_FILE)
 
 
 android {
-    compileSdkVersion AndroidConfig.compileSdk
+    compileSdk AndroidConfig.compileSdk
     ndkVersion AndroidConfig.ndk
 
     //fix bug The minCompileSdk (31) specified in a dependency's AAR metadata  
@@ -416,6 +416,10 @@ dependencies {
 //    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kgp}"
 
 
+//    implementation 'androidx.tracing:tracing-ktx:1.0.0'
+
+
+
     implementation AndroidX.appCompat
     implementation AndroidX.material
     implementation AndroidX.recyclerview
@@ -468,6 +472,7 @@ dependencies {
 
 
 
+
     implementation(Jetpack.startUp)
 
 
@@ -494,6 +499,7 @@ dependencies {
     implementation(*Libs.blackTech)
     implementation(*Libs.moshi)
 //    implementation(*Libs.performance)
+//    implementation(*Libs.compose)
 
 
     implementation Libs.blockstore

@@ -15,10 +15,13 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
+import com.android.androidtech.monitor.time.TimeMonitorConfig
+import com.android.androidtech.monitor.time.TimeMonitorManager
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.guide.appdata.sharedata.ShareDataDemoFragment
+import com.apache.fastandroid.demo.performance.muke.MukeDemoFragment
+import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.log.Timber
 import com.tesla.framework.component.logger.Logger
@@ -40,6 +43,10 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
     @CostTime
     override fun layoutInit(savedInstanceState: Bundle?) {
         Trace.beginSection("MainActivity layoutInit")
+        TimeMonitorManager.getInstance()
+            .getTimeMonitor(TimeMonitorConfig.TIME_MONITOR_ID_APPLICATION_START)
+            .recodingTimeTag("AppStartActivity_create")
+
         super.layoutInit(savedInstanceState)
 
         // If the app's main task was not created using the default launch intent (e.g. from a notification, a widget,
@@ -61,7 +68,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
         loadMenuData()
         val hostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment?
-        mNavController = hostFragment!!.navController
+        mNavController = hostFragment?.navController
         val configuration =
             AppBarConfiguration.Builder(R.id.home_dest, R.id.demo_dest).setOpenableLayout(
                 mBinding.drawer
@@ -161,7 +168,8 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 //        FragmentContainerActivity.launch(this, AppResourceDemoActivity::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, SearchPreferenceDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, AppDataDemoFragment::class.java,null,addTitleBar = true)
-       FragmentContainerActivity.launch(this,  ShareDataDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this,  ShareDataDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this,  InspectPerformanceDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, LiveDataLoaderFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, LocationDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ProgressDemoFragment::class.java,null,addTitleBar = true)
@@ -209,7 +217,6 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 //        FragmentContainerActivity.launch(this, StorageDemoListFragment::class.java,null)
 
 
-        //        launchActivity<CheeseActivity>(this)
 //            launchActivity<ManifestDemoActivity>(this)
 
 //        FragmentContainerActivity.launch(this, CustomLifecycleOwnerFragment::class.java,null,addTitleBar = false)
@@ -223,6 +230,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
         // FragmentContainerActivity.launch(this, FlowShareDemoFragment::class.java,null)
         // launchActivity<AppResourceDemoActivity>()
         // FragmentContainerActivity.launch(this, WorkManagerDemoFragment::class.java,null)
+        FragmentContainerActivity.launch(this, MukeDemoFragment::class.java,null)
 
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
@@ -246,15 +254,27 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
         })
         Trace.endSection()
 
+        TimeMonitorManager.getInstance()
+            .getTimeMonitor(TimeMonitorConfig.TIME_MONITOR_ID_APPLICATION_START)
+            .recodingTimeTag("AppStartActivity_createOver")
+
+
     }
 
+    override fun onStart() {
+        super.onStart()
+        TimeMonitorManager.getInstance()
+            .getTimeMonitor(TimeMonitorConfig.TIME_MONITOR_ID_APPLICATION_START)
+            .end("AppStartActivity_start", false)
+
+    }
 
 
     private var mExitTime:Long = 0
 
     private fun setupActionBar(
         navController: NavController,
-        appBarConfig: AppBarConfiguration
+        appBarConfig: AppBarConfiguration,
     ) {
         /**
          * 当导航的目的地发生变化时， NavigationUI 将会自动切换展示的 label
@@ -329,6 +349,15 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
         }
     }
 
+
+    /**
+     * onWindowFocusChanged Activity 第一帧， 并不是用户看到的真实数据展示时间，对于 Feed 列表来说可以取第一条数据
+     * @param hasFocus Boolean
+     */
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        LaunchTimer.endRecord("onWindowFocusChanged")
+    }
 
 
 

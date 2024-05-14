@@ -12,6 +12,8 @@ import android.os.Debug
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
+import com.android.androidtech.monitor.time.TimeMonitorConfig
+import com.android.androidtech.monitor.time.TimeMonitorManager
 import com.apache.fastandroid.app.FastApplication
 import com.apache.fastandroid.component.once.Once
 import com.apache.fastandroid.crash.Fabric
@@ -80,15 +82,25 @@ object Initiator {
     private const val KEY_SCHEMA_VERSION = "schema_version"
     private const val SCHEMA_VERSION = 2023022701
 
+    private val mCrashTimes = 0
 
     @Synchronized
     fun init(application: Application) {
         if (initialized) {
             return
         }
-        val dateFormat: DateFormat = SimpleDateFormat("dd_MM_yyyy_hh", Locale.getDefault())
-        val logDate: String = dateFormat.format(Date())
-        // Debug.startMethodTracing("FastAndroid-$logDate")
+        if (mCrashTimes > 3) {
+            // 删除文件，恢复到重新安装的状态
+        }
+
+        if (mCrashTimes > 5) {
+            // 清除热修信息
+        }
+
+
+
+
+        initTraceView()
         initialized = true
         initLoop()
 
@@ -128,7 +140,6 @@ object Initiator {
         initViewPump()
         initReword(context)
         LeakCanary.install(application)
-        LaunchTimer.endRecord("Application end ")
         initLoadSir()
         DeviceName.init(application.applicationContext)
         initPermissionMonitor()
@@ -158,6 +169,24 @@ object Initiator {
         }
         initWorkManager(application)
         Debug.stopMethodTracing()
+        // 记录 Application 的 onCreate 方法执行耗时
+        TimeMonitorManager.getInstance()
+            .getTimeMonitor(TimeMonitorConfig.TIME_MONITOR_ID_APPLICATION_START)
+            .recodingTimeTag("ApplicationCreate")
+
+        Debug.stopMethodTracing()
+        LaunchTimer.endRecord("Application end ")
+
+    }
+
+
+    /**
+     * 生成的文件在 sdcard/Android/data/packagename/files
+     */
+    private fun initTraceView(){
+        val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+        val logDate: String = dateFormat.format(Date())
+        Debug.startMethodTracing("FastAndroid-$logDate")
     }
 
     private fun initWorkManager(context: Context) {
