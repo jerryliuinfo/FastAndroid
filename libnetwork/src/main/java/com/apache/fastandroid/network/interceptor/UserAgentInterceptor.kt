@@ -1,6 +1,5 @@
 package com.apache.fastandroid.network.interceptor
 
-import com.blankj.utilcode.util.AppUtils
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -12,7 +11,7 @@ import okhttp3.Response
  * See testing user agent: https://faisalman.github.io/ua-parser-js/
  */
 class UserAgentInterceptor : Interceptor {
-    private val userAgent = "showcase/${AppUtils.getAppVersionName()} ${System.getProperty("http.agent")}"
+    private val userAgent = "showcase/${"0.0.1"} ${System.getProperty("http.agent")}"
 
     override fun intercept(chain: Interceptor.Chain): Response = chain
         .request()

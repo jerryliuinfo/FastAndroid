@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:flow_horizontalGap="@dimen/dp_10"
+        app:flow_verticalGap="@dimen/dp_10"
+        app:constraint_referenced_ids="btn_appcompat_activity,btn_intent_service,btn_viewTreeObserver"
+        />
+
+    <Button
+        android:id="@+id/btn_appcompat_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="appcompat_activity"
+        />
+    <Button
+        android:id="@+id/btn_intent_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Intent Service"
+        />
+
+    <Button
+        android:id="@+id/btn_viewTreeObserver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ViewTreeObserver"
+        />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

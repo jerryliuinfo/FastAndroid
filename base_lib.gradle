@@ -60,7 +60,7 @@ dependencies {
 
 
 //    implementation(*Kotlin.kotlin)
-
+    //Kotlin 1.4 版本后不需要这个依赖了
 //    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kgp}"
 
     implementation AndroidX.core_ktx

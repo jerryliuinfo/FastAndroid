@@ -11,6 +11,7 @@ import android.view.View
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
@@ -50,6 +51,13 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
     private var toolbar: Toolbar? = null
     protected lateinit var root: View
 
+    companion object{
+
+        const val TAG = "Activity-Base"
+
+        val Fragment.mainActivity:BaseActivity?
+            get() = activity as? BaseActivity
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         fragmentRefs = HashMap()
@@ -337,10 +345,6 @@ open abstract class BaseActivity: AppCompatActivity(), OnToolbarDoubleClickListe
 
     protected open fun initViewModel() {}
 
-    companion object {
-        const val TAG = "Activity-Base"
-
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {

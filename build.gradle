@@ -8,17 +8,18 @@ apply from: "gradle_knowledge.gradle"
 buildscript {
 
     ext {
-//        kotlin_version = '1.8.20-Beta'
     }
     repositories {
 
 //        unsplash.dogedoge.com
 //        dribble.dogedoge.com
 
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+
+
         maven { url 'unsplash.dogedoge.com' }
         maven { url 'dribble.dogedoge.com' }
 
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
         mavenCentral()
         google()
           maven { url 'https://jitpack.io' }
@@ -56,6 +57,7 @@ buildscript {
         classpath PluginConfig.mcImage
 
         classpath PluginConfig.ruler
+
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0'
 
 //        classpath PluginConfig.booster
@@ -141,10 +143,8 @@ task archiveOutApks(type: Copy) {
 
 println ("buildDir:${rootProject.buildDir}, name:${rootProject.name}")
 task clean(type: Delete) {
-    println "aaa"
     delete rootProject.buildDir
     delete 'outapk/archives'
-    println "bbb"
 
     doFirst {
         println "删除前2"

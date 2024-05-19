@@ -44,6 +44,7 @@ inline fun <reified T : Activity> Activity.launchActivity() {
 inline fun <reified T : AppCompatActivity> Context.startActivity(
   vararg params: Pair<KProperty1<out Any?, Any?>, Any?>,
 ) {
+  //List 转换成 Array
   val extras = params.map { it.first.name to it.second }.toTypedArray()
   val intent = Intent(this, T::class.java)
   @Suppress("detekt.SpreadOperator")

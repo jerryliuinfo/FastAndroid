@@ -425,6 +425,10 @@
             android:exported="false"
             />
 
+        <activity android:name=".demo.SetConteViewDemoActivity"
+            android:exported="false"
+            />
+
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="a890a3b85ef3d2cde397e8521ebb66f0" />

@@ -40,6 +40,7 @@ internal class AlbumListViewModel(
         job = viewModelScope.launch {
 
             try {
+                //会调用 GetAlbumListUseCase 中的 invoke
                 usecase(query).also { result ->
                     val action = when (result) {
                         is com.apache.fastandroid.network.model.result.Result.Success -> {

@@ -412,12 +412,6 @@ dependencies {
 
     println("isTopicRunAlone:${isTopicRunAlone}")
 
-//    implementation(*Kotlin.kotlin)
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kgp}"
-
-
-//    implementation 'androidx.tracing:tracing-ktx:1.0.0'
-
 
 
     implementation AndroidX.appCompat
@@ -505,6 +499,9 @@ dependencies {
     implementation Libs.blockstore
     implementation Libs.coroutines_play_services
 //    implementation "com.google.guava:guava:31.0.1-android"
+
+
+//    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
 }
 
 

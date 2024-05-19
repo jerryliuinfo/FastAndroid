@@ -31,14 +31,13 @@ import kotlinx.coroutines.flow.collectLatest
  */
 class AlbumListFragment :BaseBindingFragment<FragmentComRecycleviewBinding>(FragmentComRecycleviewBinding::inflate){
 
-//    private val mViewModel:AlbumListViewModel by viewModels {getViewModelFactory()  }
-    private val mViewModel: AlbumListViewModel by viewModels {
-//        getViewModelFactory()
 
-    val apiService: AlbumRetrofitService =  RetrofitFactory.get().createAlbumService(
-        AlbumRetrofitService::class.java,
-        "http://ws.audioscrobbler.com/2.0/"
-    )
+    private val mViewModel: AlbumListViewModel by viewModels {
+
+        val apiService: AlbumRetrofitService =  RetrofitFactory.get().createAlbumService(
+            AlbumRetrofitService::class.java,
+            "http://ws.audioscrobbler.com/2.0/"
+        )
     AlbumListViewModelFactory(GetAlbumListUseCase(AlbumRepositoryImpl(apiService,AlbumDatabase.getInstance(
         Utils.getApp()).albums())), SavedStateHandle())
 
@@ -53,6 +52,10 @@ class AlbumListFragment :BaseBindingFragment<FragmentComRecycleviewBinding>(Frag
             }
 
             holder.setText(R.id.tv_title,item.name)
+            holder.itemView.setOnClickListener {
+                //跳转到详情页面
+            }
+
         }
 
     }
@@ -66,8 +69,6 @@ class AlbumListFragment :BaseBindingFragment<FragmentComRecycleviewBinding>(Frag
             layoutManager = GridLayoutManager(requireContext(),3)
             adapter = mAdapter
         }
-
-
 
         lifecycleScope.launchWhenCreated {
             mViewModel.uiStateFlow.collectLatest { uiState ->

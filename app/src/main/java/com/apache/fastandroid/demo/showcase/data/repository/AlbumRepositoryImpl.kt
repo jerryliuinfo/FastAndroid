@@ -1,15 +1,15 @@
 package com.apache.fastandroid.demo.showcase.data.repository
 
-import com.apache.fastandroid.demo.showcase.domain.model.Album
-import com.apache.fastandroid.demo.showcase.domain.repository.AlbumRepository
-import com.apache.fastandroid.network.calladapter.apiresult.ApiResult
 import com.apache.fastandroid.demo.showcase.data.datasource.api.model.toDomainModel
 import com.apache.fastandroid.demo.showcase.data.datasource.api.model.toEntityModel
 import com.apache.fastandroid.demo.showcase.data.datasource.api.service.AlbumRetrofitService
 import com.apache.fastandroid.demo.showcase.data.datasource.database.AlbumDao
 import com.apache.fastandroid.demo.showcase.data.datasource.database.model.toDomainModel
-import com.tesla.framework.component.log.Timber
+import com.apache.fastandroid.demo.showcase.domain.model.Album
+import com.apache.fastandroid.demo.showcase.domain.repository.AlbumRepository
+import com.apache.fastandroid.network.calladapter.apiresult.ApiResult
 import com.apache.fastandroid.network.model.result.Result
+import com.tesla.framework.component.log.Timber
 
 
 internal class AlbumRepositoryImpl(

@@ -2,6 +2,7 @@ package com.apache.fastandroid.demo.elegant
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.ViewTreeObserver
 import com.apache.fastandroid.databinding.FragmentElegantDemoBinding
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseBindingFragment
@@ -18,6 +19,13 @@ class ElegantDemoFragment:BaseBindingFragment<FragmentElegantDemoBinding>(Fragme
                 override fun onClientChanged(result: String) {
                     Logger.d("client changed: $result")
                     AndroidClient.removeClientChangeListener(this)
+                }
+            })
+
+            it.viewTreeObserver.addOnPreDrawListener (object : ViewTreeObserver.OnPreDrawListener{
+                override fun onPreDraw(): Boolean {
+                    it.viewTreeObserver.removeOnPreDrawListener(this)
+                    return false
                 }
             })
 

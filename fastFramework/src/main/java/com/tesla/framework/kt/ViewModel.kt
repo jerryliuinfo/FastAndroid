@@ -16,7 +16,7 @@
 
 @file:Suppress("unused")
 
-package com.dylanc.longan
+package com.tesla.framework.kt
 
 import androidx.activity.ComponentActivity
 import androidx.annotation.MainThread

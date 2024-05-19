@@ -762,4 +762,11 @@ fun Fragment.setStatusBarColor(@ColorRes statusBarColor: Int?) {
 }
 
 
-public fun <F : Fragment> View.findFragment(): F = FragmentManager.findFragment(this)
+fun <F : Fragment> View.findFragment(): F = FragmentManager.findFragment(this)
+
+fun Animator.release(){
+    this?.let {
+        it.removeAllListeners()
+        it.cancel()
+    }
+}

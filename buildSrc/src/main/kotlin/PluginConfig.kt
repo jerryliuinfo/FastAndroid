@@ -1,9 +1,11 @@
 object PluginConfig {
     const val agp = "com.android.tools.build:gradle:${Versions.agp}"
 
+    //Kotlin插件
     const val kgp = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kgp}"
 
-
+    //Kotlin 序列化插件
+    const val kotlin_serialization = "org.jetbrains.kotlin.plugin.serialization:${Versions.kgp}"
     const val andResGuard = "com.tencent.mm:AndResGuard-gradle-plugin:1.2.21"
     const val hilt = "com.google.dagger:hilt-android-gradle-plugin:2.39.1"
     const val maven_gradle_plugin = "com.github.dcendents:android-maven-gradle-plugin:1.4.1"
@@ -15,5 +17,5 @@ object PluginConfig {
     const val mcImage = "com.smallsoho.mobcase:McImage:1.5.1"
     const val booster = "com.didiglobal.booster:booster-gradle-plugin:${Versions.booster}"
 
-    const val kotlin_serialization = "org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}"
+
 }

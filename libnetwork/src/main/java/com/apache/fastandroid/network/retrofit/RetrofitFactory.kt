@@ -1,9 +1,9 @@
 package com.apache.fastandroid.network.retrofit
-import com.apache.fastandroid.network.calladapter.networkresult.NetworkResultCallAdapterFactory
 import com.apache.fastandroid.network.api.ApiService
 import com.apache.fastandroid.network.api.FakeApi
 import com.apache.fastandroid.network.calladapter.apiresult.ApiResultAdapterFactory
 import com.apache.fastandroid.network.calladapter.livedata.LiveDataCallAdapterFactory
+import com.apache.fastandroid.network.calladapter.networkresult.NetworkResultCallAdapterFactory
 import com.apache.fastandroid.network.interceptor.AuthenticationInterceptor
 import com.apache.fastandroid.network.interceptor.UserAgentInterceptor
 import com.apache.fastandroid.network.util.ApiConstant
@@ -68,7 +68,7 @@ class RetrofitFactory private constructor() {
 
 
 
-
+    //给 AlbumListFragment 用
     fun <Service> createAlbumService(serviceClass: Class<Service>, baseUrl: String): Service {
 
         val okHttpClient = OkHttpClient.Builder()
@@ -89,18 +89,21 @@ class RetrofitFactory private constructor() {
     private fun newRetrofitBuilder():Retrofit.Builder{
         val contentType = "application/json".toMediaType()
 
-//        val json = kotlinx.serialization.json.Json {
-//            // By default Kotlin serialization will serialize all of the keys present in JSON object and throw an
-//            // exception if given key is not present in the Kotlin class. This flag allows to ignore JSON fields
-////            ignoreUnknownKeys = true
-//        }
+
+        // val json = kotlinx.serialization.json.Json {
+        //     // By default Kotlin serialization will serialize all of the keys present in JSON object and throw an
+        //     // exception if given key is not present in the Kotlin class. This flag allows to ignore JSON fields
+        //     ignoreUnknownKeys = true
+        // }
 
 
         return Retrofit.Builder()
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
+
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            //支持返回 ApiResult<T> 的数据
             .addCallAdapterFactory(ApiResultAdapterFactory())
 
             //Retrofit 支持返回 LiveData 数据

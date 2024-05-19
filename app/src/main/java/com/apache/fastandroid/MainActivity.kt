@@ -20,7 +20,7 @@ import com.android.androidtech.monitor.time.TimeMonitorManager
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.performance.muke.MukeDemoFragment
+import com.apache.fastandroid.demo.showcase.albumlist.AlbumListFragment
 import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.log.Timber
@@ -138,6 +138,11 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 //        launchActivity<GithubBrowserMainActivity>(this)
 //        LiveDataWrongUsageActivity.launch(this)
 
+        // launchActivity<SetConteViewDemoActivity>(this)
+        FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null)
+
+
+
 //        FragmentContainerActivity.launch(this, JetPackLifeCycleFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, KotlinHotQuestionFragment::class.java,null)
 //        FragmentContainerActivity.launch(this, TempDemoFragment::class.java,null)
@@ -230,7 +235,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
         // FragmentContainerActivity.launch(this, FlowShareDemoFragment::class.java,null)
         // launchActivity<AppResourceDemoActivity>()
         // FragmentContainerActivity.launch(this, WorkManagerDemoFragment::class.java,null)
-        FragmentContainerActivity.launch(this, MukeDemoFragment::class.java,null)
+        // FragmentContainerActivity.launch(this, MukeDemoFragment::class.java,null)
 
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
