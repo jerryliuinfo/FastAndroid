@@ -22,12 +22,43 @@
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
  >
-    <TextView
+
+    <com.apache.fastandroid.artemis.base.widget.LabelLinkView
+        android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello Type"
-        android:textAppearance="?attr/textAppearanceListItem"
-        />
+        android:layout_marginBottom="@dimen/keyline_4"
+        android:text="Typography scale"
+        app:leadingIcon="@drawable/ic_format_size_24dp"
+        app:linkUrl="https://material.io/design/typography/the-type-system.html#type-scale" />
 
+    <com.apache.fastandroid.artemis.base.widget.TypeAttributeView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="textAppearanceHeadline1"
+        app:previewText="H1"
+        app:previewTextAppearance="?attr/textAppearanceHeadline1"
+        android:layout_marginTop="@dimen/keyline_2"
+        android:layout_marginBottom="@dimen/keyline_2"
+        tools:ignore="HardcodedText" />
+    <com.apache.fastandroid.artemis.base.widget.TypeAttributeView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="textAppearanceHeadline2"
+        app:previewText="H2"
+        app:previewTextAppearance="?attr/textAppearanceHeadline2"
+        android:layout_marginTop="@dimen/keyline_2"
+        android:layout_marginBottom="@dimen/keyline_2"
+        tools:ignore="HardcodedText" />
+
+    <com.apache.fastandroid.artemis.base.widget.TypeAttributeView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="textAppearanceHeadline3"
+        app:previewText="H3"
+        app:previewTextAppearance="?attr/textAppearanceHeadline3"
+        android:layout_marginTop="@dimen/keyline_2"
+        android:layout_marginBottom="@dimen/keyline_2"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

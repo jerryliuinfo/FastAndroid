@@ -33,7 +33,7 @@ object SPUtils {
       is Int -> putInt(name, value)
       is Boolean -> putBoolean(name, value)
       is Float -> putFloat(name, value)
-      else -> throw IllegalArgumentException("This type can't be saved into Preferences")
+      else -> throw IllegalArgumentException("This type can't be saved into IGroup1Preferences")
     }.apply()
   }
 }

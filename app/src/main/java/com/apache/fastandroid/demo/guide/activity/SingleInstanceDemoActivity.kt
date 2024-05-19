@@ -2,9 +2,7 @@ package com.apache.fastandroid.demo.guide.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.ActivityResultLauncher
 import com.apache.fastandroid.databinding.ActivityLaunchmodeSingleinstanceBinding
-import com.apache.fastandroid.databinding.ActivityLaunchmodeSingletaskBinding
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.ui.activity.BaseVBActivity

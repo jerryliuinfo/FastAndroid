@@ -14,6 +14,7 @@ import com.android.androidtech.monitor.time.TimeMonitorConfig
 import com.android.androidtech.monitor.time.TimeMonitorManager
 import com.apache.fastandroid.Initiator
 import com.apache.fastandroid.artemis.ui.app.ComApplication
+import com.apache.fastandroid.demo.preference.DefaultPreferences
 import com.apache.fastandroid.jetpack.flow.api.ApiHelper
 import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
 import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
@@ -21,6 +22,7 @@ import com.apache.fastandroid.jetpack.flow.local.DatabaseHelper
 import com.apache.fastandroid.jetpack.flow.local.DatabaseHelperImpl
 import com.apache.fastandroid.network.api.ApiServiceFactory
 import com.apache.fastandroid.util.MultidexUtils
+import com.blankj.utilcode.util.Utils
 import com.example.android.architecture.blueprints.todoapp.data.source.DefaultTasksRepository
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import com.example.android.architecture.blueprints.todoapp.data.source.local.TasksLocalDataSource
@@ -41,6 +43,8 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
     private var mFactory: ViewModelProvider.Factory? = null
 
     private var mAppViewModelStore: ViewModelStore? = null
+
+    lateinit var mDefaultPreferences: DefaultPreferences
 
 
 
@@ -73,6 +77,8 @@ class FastApplication : ComApplication(), ViewModelStoreOwner, ComponentCallback
         val time = measureTimeMillis {
             Initiator.init(this)
         }
+        mDefaultPreferences = DefaultPreferences(Utils.getApp().getSharedPreferences(DEFAULT_PREFERENCES,Context.MODE_PRIVATE))
+
 
         println("Application onCreate cost time: $time milles")
     }

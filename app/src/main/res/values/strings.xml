@@ -94,7 +94,10 @@
     <string name="rename_cancel">Cancel</string>
 
 
-
+    <!--Main-->
+    <string name="tab_title_instructions">Instructions</string>
+    <string name="tab_title_components">Components</string>
+    <string name="tab_title_theme_summary">Theme summary</string>
 
 
 </resources>

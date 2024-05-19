@@ -15,11 +15,14 @@
         <item name="android:textColorHint">@color/base50</item>
 
 
-        <!-- Toolbar color, list overscroll effect -->
-        <item name="colorPrimary">@color/accent50</item>
+        <!--Material color attributes (light theme) -->
+        <!--colorPrimary colors map to components and elements, such as app bars and buttons. -->
+        <!--colorSecondary colors are most often used as accents on components, such as FABs and -->
+        <!--selection controls.-->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
 
-        <!--    原色的色调变化。-->
-<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+
 
         <item name="colorOnPrimary">@color/white</item>
 
@@ -32,7 +35,13 @@
         <!--        在辅助颜色上绘制时，通过文本/图标可访问性指南的颜色。-->
         <item name="colorOnSecondary">@color/black</item>
 
+
+        <!--colorBackground appears behind scrollable content and is used for the default window-->
+        <!--background. colorSurface is mapped to the surface of components such as cards, sheets-->
+        <!--and menus. colorError is used to indicate an error state for components such as-->
+        <!--text fields.-->
         <item name="android:colorBackground">@color/white</item>
+
         <item name="colorSurface">@color/white</item>
         <item name="colorError">@color/red_600</item>
 

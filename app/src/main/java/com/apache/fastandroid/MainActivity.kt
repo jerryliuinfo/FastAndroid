@@ -20,13 +20,11 @@ import com.android.androidtech.monitor.time.TimeMonitorManager
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.showcase.albumlist.AlbumListFragment
 import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.log.Timber
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.activity.BaseBindingActivity
-import com.tesla.framework.ui.activity.FragmentContainerActivity
 
 class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClickListener {
     private val selecteId = -1
@@ -139,8 +137,9 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 //        LiveDataWrongUsageActivity.launch(this)
 
         // launchActivity<SetConteViewDemoActivity>(this)
-        FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null)
-
+        // FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null)
+        // FragmentContainerActivity.launch(this, Knowledge3Fragment::class.java,null)
+        // launchActivity<MaterialThemeDemoActivity>()
 
 
 //        FragmentContainerActivity.launch(this, JetPackLifeCycleFragment::class.java,null)

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.apache.fastandroid.demo.material
+package com.apache.fastandroid.sample.materialthemebuilder.ui.themesummary
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

@@ -64,12 +64,6 @@ object Libs {
     const val moshi_kotlin = "com.squareup.moshi:moshi-kotlin:1.9.3"
 
 
-    val moshi = arrayOf(
-        "com.squareup.moshi:moshi-kotlin:1.9.3",
-        "com.squareup.retrofit2:converter-moshi:2.6.2",
-    )
-
-
     val glide = arrayOf(
         "com.github.bumptech.glide:glide:${Versions.glide}",
 //        "com.github.florent37:glidepalette:${Versions.glidePalette}"
@@ -163,9 +157,8 @@ object Libs {
 //        "com.github.kirchbergerknorr:PingTools:1.0.4",
 //         "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC1",
         //ViewBinding: https://github.com/androidbroadcast/ViewBindingPropertyDelegate
-//         "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9"
 
-//        networkresult_calladapter
+
 
 //        https://github.com/AppIntro/AppIntro
 //        "com.github.AppIntro:AppIntro:6.3.1",
@@ -200,6 +193,13 @@ object Libs {
         "com.squareup.okhttp3:okhttp:${Versions.okhttp}",
         "com.squareup.okhttp3:okhttp-bom:${Versions.okhttp}",
         "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
+    )
+
+
+
+    val moshi = arrayOf(
+        "com.squareup.moshi:moshi-kotlin:1.9.3",
+        "com.squareup.retrofit2:converter-moshi:2.6.2",
     )
 
     val retrofit = arrayOf(

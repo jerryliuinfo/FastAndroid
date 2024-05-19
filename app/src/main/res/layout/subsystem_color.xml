@@ -22,12 +22,24 @@
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
  >
-    <TextView
+    <com.apache.fastandroid.artemis.base.widget.LabelLinkView
+        android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
-        android:textAppearance="?attr/textAppearanceListItem"
-        />
+        android:layout_marginBottom="@dimen/keyline_4"
+        android:text="Color scheme"
+        app:leadingIcon="@drawable/ic_colorize_24dp"
+        app:linkUrl="https://material.io/design/color/the-color-system.html" />
+
+    <com.apache.fastandroid.artemis.base.widget.ColorAttributeView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="colorPrimary"
+        app:colorFillColor="?attr/colorPrimary"
+        app:colorStrokeColor="?attr/colorOnBackground"
+        android:layout_marginTop="@dimen/keyline_2"
+        android:layout_marginBottom="@dimen/keyline_2"
+        tools:ignore="HardcodedText" />
 
 
 </LinearLayout>

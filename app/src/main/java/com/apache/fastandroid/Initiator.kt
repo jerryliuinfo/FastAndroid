@@ -25,6 +25,7 @@ import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskFo
 import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskOne
 import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskThree
 import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskTwo
+import com.apache.fastandroid.demo.preference.DefaultPreferences
 import com.apache.fastandroid.jetpack.flow.api.ApiHelper
 import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
 import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
@@ -84,6 +85,8 @@ object Initiator {
 
     private val mCrashTimes = 0
 
+
+
     @Synchronized
     fun init(application: Application) {
         if (initialized) {
@@ -96,7 +99,6 @@ object Initiator {
         if (mCrashTimes > 5) {
             // 清除热修信息
         }
-
 
 
 

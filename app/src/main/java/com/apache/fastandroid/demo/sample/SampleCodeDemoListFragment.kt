@@ -3,6 +3,7 @@ package com.apache.fastandroid.demo.sample
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.showcase.albumlist.AlbumListFragment
+import com.apache.fastandroid.sample.materialthemebuilder.ui.MaterialThemeDemoActivity
 
 /**
  * Created by Jerry on 2021/12/12.
@@ -23,6 +24,7 @@ class SampleCodeDemoListFragment:BaseListFragment() {
             ,ViewItemBean("Observable","Observable",SampleCodeDemo2Fragment::class.java)
             ,ViewItemBean("列表入口","列表入口",SampleCodeDemo2Fragment::class.java)
             ,ViewItemBean("ShowCase","ShowCase",AlbumListFragment::class.java)
+            ,ViewItemBean("MaterialThemeBuilder","Material 组件使用",activity = MaterialThemeDemoActivity::class.java)
 
         )
 

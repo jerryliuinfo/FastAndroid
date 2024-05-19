@@ -18,7 +18,11 @@ internal class AlbumRepositoryImpl(
 ) : AlbumRepository {
 
 
-
+    /**
+     * 服务器返回的是 AlbumApiModel， 返回给业务层的是 Album, 往数据库存的是 AlbumEntityModel
+     * @param phrase String?
+     * @return Result<List<Album>>
+     */
     override suspend fun searchAlbum(phrase: String?): Result<List<Album>> =
         when (val apiResult = albumRetrofitService.searchAlbumAsync(phrase)) {
             is ApiResult.Success -> {

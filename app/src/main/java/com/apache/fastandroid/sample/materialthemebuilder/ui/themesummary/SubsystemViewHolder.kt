@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-package com.apache.fastandroid.demo.material
+package com.apache.fastandroid.sample.materialthemebuilder.ui.themesummary
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.R
-
+import com.apache.fastandroid.sample.materialthemebuilder.ui.themesummary.Subsystem.COLOR
+import com.apache.fastandroid.sample.materialthemebuilder.ui.themesummary.Subsystem.SHAPE
+import com.apache.fastandroid.sample.materialthemebuilder.ui.themesummary.Subsystem.TYPE
 
 /**
  * Sealed class to define all [RecyclerView.ViewHolder]s used to display [Subsystem]s.
@@ -47,9 +49,9 @@ sealed class SubsystemViewHolder(val view: View) : RecyclerView.ViewHolder(view)
   companion object {
     fun create(parent: ViewGroup, viewType: Int): SubsystemViewHolder {
       return when (Subsystem.values()[viewType]) {
-        Subsystem.COLOR -> ColorSubsystemViewHolder(parent)
-        Subsystem.TYPE -> TypeSubsystemViewHolder(parent)
-        Subsystem.SHAPE -> ShapeSubsystemViewHolder(parent)
+        COLOR -> ColorSubsystemViewHolder(parent)
+        TYPE -> TypeSubsystemViewHolder(parent)
+        SHAPE -> ShapeSubsystemViewHolder(parent)
       }
     }
 

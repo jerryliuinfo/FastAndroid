@@ -387,6 +387,9 @@
             android:name=".demo.component.download.PrDownloadDemoActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".sample.materialthemebuilder.ui.MaterialThemeDemoActivity"
+            android:exported="false" />
 
         <activity
             android:name=".component.appintro.AppIntroDemoActivity"
@@ -397,7 +400,6 @@
             android:name=".demo.guide.AppResourceDemoActivity"
             android:exported="true"
             android:theme="@style/ActivityTheme"
-
             />
 
         <activity android:name=".demo.guide.appdata.sharedata.ReceiveDataFromOtherActivity"
