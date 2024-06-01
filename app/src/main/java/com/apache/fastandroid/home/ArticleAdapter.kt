@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.tesla.framework.common.util.CommonUtil
+import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.common.util.N
 import com.tesla.framework.common.util.buildSpannableString
 import com.tesla.framework.kt.getColor
@@ -41,7 +42,9 @@ class ArticleAdapter(
             mHasRecord = true
             holder.itemView.viewTreeObserver.addOnPreDrawListener(object :ViewTreeObserver.OnPreDrawListener{
                 override fun onPreDraw(): Boolean {
+                    LaunchTimer.endRecord("Feed Show")
                     holder.itemView.viewTreeObserver.removeOnPreDrawListener(this)
+
                     return false
                 }
 

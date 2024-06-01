@@ -5,6 +5,8 @@ import android.os.Debug
 import android.view.LayoutInflater
 import androidx.core.os.TraceCompat
 import com.apache.fastandroid.databinding.FragmentMukePerformanceBinding
+import com.optimize.performance.launchstarter.TaskDispatcher
+import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -19,6 +21,14 @@ class MukeDemoFragment:BaseBindingFragment<FragmentMukePerformanceBinding>(Fragm
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+        mBinding.btnAsyncOptimize.setOnClickListener {
+            aysncOptimize()
+        }
+
+        mBinding.btnStartupOptimize.setOnClickListener {
+            startupOptimize()
+        }
+
         mBinding.btnTraceView.setOnClickListener {
             traceViewUsage()
         }
@@ -28,11 +38,51 @@ class MukeDemoFragment:BaseBindingFragment<FragmentMukePerformanceBinding>(Fragm
         }
     }
 
+    private fun aysncOptimize() {
+        val dispatcher = TaskDispatcher.createInstance()
+
+        dispatcher
+            .addTask(InitTask(InitTask.TASK1))
+            .addTask(InitTask(InitTask.TASK2))
+            .addTask(InitTask(InitTask.TASK3))
+            .addTask(InitTask(InitTask.TASK4))
+            .addTask(InitTask(InitTask.TASK5))
+            .start()
+
+        dispatcher.await()
+    }
+
+    /**
+     * 启动优化介绍
+     */
+    private fun startupOptimize() {
+
+        // 启动时间测量方式
+        measureAppStartTimeByAdb()
+        measureAppStartTimeByBuryPoint()
+
+        // 优雅获取方法耗时
+
+    }
+
+    private fun measureAppStartTimeByBuryPoint() {
+        LaunchTimer.startRecord ()
+        LaunchTimer.endRecord("appStart")
+
+        // 误区：onWindowFocusChange 只是首帧时间，并不是代表界面已经展示出来了
+
+        // 正解: Feed 第一条展示
+    }
+
+    private fun measureAppStartTimeByAdb() {
+        val command = "adb shell am start -W com.apache.fastandroid/com.apache.fastandroid.MainActivity"
+    }
+
     /**
      * 生成的文件在 sdcard/Android/data/packagename/files
      */
     private fun traceViewUsage(){
-        //将时间作为文件名，避免被覆盖
+        // 将时间作为文件名，避免被覆盖
         val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
         Debug.startMethodTracing(dateFormat.format(Date()))
 

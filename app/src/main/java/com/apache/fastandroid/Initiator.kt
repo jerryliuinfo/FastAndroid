@@ -25,7 +25,6 @@ import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskFo
 import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskOne
 import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskThree
 import com.apache.fastandroid.demo.performance.taskdispatcher.TestAppStartTaskTwo
-import com.apache.fastandroid.demo.preference.DefaultPreferences
 import com.apache.fastandroid.jetpack.flow.api.ApiHelper
 import com.apache.fastandroid.jetpack.flow.api.ApiHelperImpl
 import com.apache.fastandroid.jetpack.flow.local.DatabaseBuilder
@@ -39,6 +38,7 @@ import com.apache.fastandroid.util.MultidexUtils
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.Utils
 import com.linkaipeng.oknetworkmonitor.OkNetworkMonitor
+import com.optimize.performance.launchstarter.TaskDispatcher
 import com.squareup.leakcanary.LeakCanary
 import com.tencent.mmkv.MMKV
 import com.tesla.framework.applike.FApplication
@@ -177,6 +177,8 @@ object Initiator {
             .recodingTimeTag("ApplicationCreate")
 
         Debug.stopMethodTracing()
+
+        TaskDispatcher.init(context)
         LaunchTimer.endRecord("Application end ")
 
     }

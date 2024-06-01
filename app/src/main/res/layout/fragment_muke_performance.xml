@@ -16,11 +16,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:constraint_referenced_ids="btn_trace_view,btn_systrace"
+            app:constraint_referenced_ids="btn_async_optimize,btn_startup_optimize,btn_trace_view,btn_systrace"
             app:flow_horizontalGap="10dp"
             app:flow_wrapMode="aligned"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_async_optimize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="异步优化"
+            />
+
+        <Button
+            android:id="@+id/btn_startup_optimize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="启动优化介绍"
+            />
 
         <Button
             android:id="@+id/btn_trace_view"

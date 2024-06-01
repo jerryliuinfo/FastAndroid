@@ -7,12 +7,7 @@
     <style name="Base.Theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
 
-        <item name="android:windowBackground">?attr/paper_color</item>
 
-        <item name="android:textColorPrimary">@color/base10</item>
-        <item name="android:textColorSecondary">@color/base20</item>
-        <item name="android:textColorTertiary">@color/base30</item>
-        <item name="android:textColorHint">@color/base50</item>
 
 
         <!--Material color attributes (light theme) -->
@@ -23,17 +18,12 @@
         <item name="colorPrimaryVariant">@color/purple_700</item>
 
 
-
-        <item name="colorOnPrimary">@color/white</item>
-
-
-
         <!--        应用程序的次要品牌颜色，通常是主要品牌颜色的重音补充。-->
         <item name="colorSecondary">@color/green_200</item>
         <!--        二次色的色调变化。-->
         <item name="colorSecondaryVariant">@color/green_500</item>
-        <!--        在辅助颜色上绘制时，通过文本/图标可访问性指南的颜色。-->
-        <item name="colorOnSecondary">@color/black</item>
+
+
 
 
         <!--colorBackground appears behind scrollable content and is used for the default window-->
@@ -41,6 +31,23 @@
         <!--and menus. colorError is used to indicate an error state for components such as-->
         <!--text fields.-->
         <item name="android:colorBackground">@color/white</item>
+
+
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!--        在辅助颜色上绘制时，通过文本/图标可访问性指南的颜色。-->
+        <item name="colorOnSecondary">@color/black</item>
+
+
+
+
+        <item name="android:windowBackground">?attr/paper_color</item>
+
+        <item name="android:textColorPrimary">@color/base10</item>
+        <item name="android:textColorSecondary">@color/base20</item>
+        <item name="android:textColorTertiary">@color/base30</item>
+        <item name="android:textColorHint">@color/base50</item>
+
 
         <item name="colorSurface">@color/white</item>
         <item name="colorError">@color/red_600</item>

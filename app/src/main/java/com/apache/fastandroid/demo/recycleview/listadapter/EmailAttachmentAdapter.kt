@@ -40,6 +40,10 @@ abstract class EmailAttachmentAdapter : RecyclerView.Adapter<EmailAttachmentView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmailAttachmentViewHolder {
+        //这里的 viewType 其实就是 layoutId， 因为
+        /**
+         * 这里的 viewType 其实就是 layoutId， 因为 [getItemViewType] 返回的就是 layoutId
+         */
         return EmailAttachmentViewHolder(DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
             viewType,

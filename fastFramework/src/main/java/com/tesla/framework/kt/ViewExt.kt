@@ -49,6 +49,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
 
+@Suppress("DEPRECATION")
+fun TextView.setTextAppearanceCompat(context: Context, resId: Int) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        setTextAppearance(resId)
+    } else {
+        setTextAppearance(context, resId)
+    }
+}
 
 fun  Int.networkStatus(): String {
     return when (this) {
