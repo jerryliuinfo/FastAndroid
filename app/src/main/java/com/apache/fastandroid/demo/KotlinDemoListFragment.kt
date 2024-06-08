@@ -1,7 +1,12 @@
 package com.apache.fastandroid.demo
 
 import com.apache.fastandroid.bean.ViewItemBean
-import com.apache.fastandroid.demo.kt.*
+import com.apache.fastandroid.demo.kt.CodeStandardsFragment
+import com.apache.fastandroid.demo.kt.KotlinExtensionsFragment
+import com.apache.fastandroid.demo.kt.KotlinHotQuestionFragment
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment2
+import com.apache.fastandroid.demo.kt.KotlinOfficalGramerFragment
 import com.apache.fastandroid.demo.kt.collection.CollectionDemoFragment
 import com.apache.fastandroid.demo.kt.delegate.KotlinDelegateFragment
 import com.apache.fastandroid.demo.kt.generics.GenericDemoFragment

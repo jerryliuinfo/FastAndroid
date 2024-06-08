@@ -13,7 +13,7 @@ open class BaseNetwork {
     protected suspend fun <T> getResult(block: suspend () -> BaseResponse<T>): Result<T> {
         for (i in 1..RETRY_COUNT) {
             try {
-                val response = block()
+                val response:BaseResponse<T> = block()
                 if (response.errorCode != ErrorCode.OK) {
                     throw NetworkException.of(response.errorCode, response.errorMsg)
                 }

@@ -40,14 +40,12 @@ interface ApiService {
 
 
     @GET("/article/list/{pageNum}/json")
-    fun loadHomeArticleCo2(@Path("pageNum") pageNum: Int): Observable<BaseResponse<HomeArticleResponse>>
+    fun loadHomeArticleByRxJava(@Path("pageNum") pageNum: Int): Observable<BaseResponse<HomeArticleResponse>>
 
 
     //返回 call 时不要使用 suspend 操作符，否则会报错, 参考:https://stackoverflow.com/questions/58429501/unable-to-invoke-no-args-constructor-for-retrofit2-call
     @POST("/lg/collect/{id}/json")
     fun collect(@Path("id") id: Int): Call<BaseResponse<EmptyResponse>>
-
-
 
 
 

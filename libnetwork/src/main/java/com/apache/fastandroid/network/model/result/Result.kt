@@ -6,6 +6,8 @@ sealed interface Result<out T> {
 
 
     fun isSuccess():Boolean{
+
+
         return this is Success
     }
 }

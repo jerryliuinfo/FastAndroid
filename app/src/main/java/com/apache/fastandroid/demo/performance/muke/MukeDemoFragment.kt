@@ -15,6 +15,7 @@ import java.util.Locale
 
 /**
  * Created by Jerry on 2024/4/20.
+ * 4-3 Android 内存管理机制
  */
 class MukeDemoFragment:BaseBindingFragment<FragmentMukePerformanceBinding>(FragmentMukePerformanceBinding::inflate) {
 

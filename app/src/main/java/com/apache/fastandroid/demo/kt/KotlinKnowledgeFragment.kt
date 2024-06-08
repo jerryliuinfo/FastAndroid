@@ -14,8 +14,17 @@ import com.apache.fastandroid.databinding.KtGrammerBinding
 import com.apache.fastandroid.demo.bean.ConstructBean
 import com.apache.fastandroid.demo.bean.Person
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.demo.kt.KotlinKnowledgeFragment.ICallback
 import com.apache.fastandroid.demo.kt.annotation.ImAPlant
-import com.apache.fastandroid.demo.kt.bean.*
+import com.apache.fastandroid.demo.kt.bean.BehaviorFly
+import com.apache.fastandroid.demo.kt.bean.BehaviorRun
+import com.apache.fastandroid.demo.kt.bean.Bird
+import com.apache.fastandroid.demo.kt.bean.Fruit
+import com.apache.fastandroid.demo.kt.bean.JavaMain
+import com.apache.fastandroid.demo.kt.bean.KotlinMain
+import com.apache.fastandroid.demo.kt.bean.River
+import com.apache.fastandroid.demo.kt.bean.WildFow
+import com.apache.fastandroid.demo.kt.bean.WildFowBy
 import com.apache.fastandroid.demo.kt.delegate.DelegateList
 import com.apache.fastandroid.demo.kt.delegate.People
 import com.apache.fastandroid.demo.kt.hignorder.highOrderA
@@ -23,22 +32,41 @@ import com.apache.fastandroid.demo.kt.hignorder.highOrderB
 import com.apache.fastandroid.demo.kt.inline.PreferenceManager
 import com.apache.fastandroid.demo.kt.inline.onlyIf
 import com.apache.fastandroid.demo.kt.inline.onlyIf2
-import com.apache.fastandroid.demo.kt.operatoroverload.*
+import com.apache.fastandroid.demo.kt.operatoroverload.Choir
+import com.apache.fastandroid.demo.kt.operatoroverload.Point
+import com.apache.fastandroid.demo.kt.operatoroverload.Singer
+import com.apache.fastandroid.demo.kt.operatoroverload.compareTo
+import com.apache.fastandroid.demo.kt.operatoroverload.div
+import com.apache.fastandroid.demo.kt.operatoroverload.minus
+import com.apache.fastandroid.demo.kt.operatoroverload.plusAssign
+import com.apache.fastandroid.demo.kt.operatoroverload.rem
+import com.apache.fastandroid.demo.kt.operatoroverload.times
 import com.apache.fastandroid.demo.kt.refied.RefiedDemo
-import com.apache.fastandroid.demo.kt.sealed.*
+import com.apache.fastandroid.demo.kt.sealed.PlayerUI
+import com.apache.fastandroid.demo.kt.sealed.PlayerViewType
+import com.apache.fastandroid.demo.kt.sealed.SealedResult
+import com.apache.fastandroid.demo.kt.sealed.SealedResult2
+import com.apache.fastandroid.demo.kt.sealed.SeasonNameSealed
+import com.apache.fastandroid.demo.kt.sealed.User
+import com.apache.fastandroid.demo.kt.sealed.doAction1
+import com.apache.fastandroid.demo.kt.sealed.doAction2
 import com.apache.fastandroid.demo.kt.staticusage.Foo
 import com.apache.fastandroid.demo.kt.staticusage.ObjectClass
 import com.apache.fastandroid.demo.kt.staticusage.topLevelFun1
 import com.apache.fastandroid.demo.kt.staticusage.topLevelFun2
 import com.apache.fastandroid.demo.room.Account
 import com.apache.fastandroid.util.DateUtil
-import com.kingja.loadsir.core.LoadSir
-import com.tesla.framework.performance.omagnifier.frame.FrameCalculator
 import com.tesla.framework.common.util.HideTextWatcher
-import com.tesla.framework.component.logger.Logger
-import com.tesla.framework.kt.*
-import com.tesla.framework.ui.fragment.BaseBindingFragment
 import com.tesla.framework.component.log.Timber
+import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.maxCustomize
+import com.tesla.framework.kt.myFilter
+import com.tesla.framework.kt.myMap
+import com.tesla.framework.kt.ofMap
+import com.tesla.framework.kt.plusAssign
+import com.tesla.framework.kt.print
+import com.tesla.framework.performance.omagnifier.frame.FrameCalculator
+import com.tesla.framework.ui.fragment.BaseBindingFragment
 import java.io.File
 import java.nio.charset.Charset
 import kotlin.math.cos
@@ -63,6 +91,9 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
+        mBinding.btnImplicitReceiver.setOnClickListener {
+            implicitReceiver()
+        }
 
 
         mBinding.btnMathClamp.setOnClickListener {
@@ -281,6 +312,36 @@ class KotlinKnowledgeFragment : BaseBindingFragment<KtGrammerBinding>(KtGrammerB
         //关键字冲突 用 反引号转义
         println(JavaMain.`in`)
 
+    }
+
+    private fun implicitReceiver() {
+
+        //方式 1 报错
+        // 3.multipy
+
+
+        val multiplier = IntMultiplier()
+        //方式 2 报错
+        // multiplier.multipy
+
+        //方式3
+        multiplier.runAsBlocker {
+            3.multiply()
+        }
+    }
+
+    /**
+     * 在一个类的内部生命的扩展函数，称为成员扩展函数
+     *  既是成员函数，也是扩展函数
+     * @property time Int
+     * @constructor
+     */
+    class IntMultiplier(var time:Int = 2){
+        fun Int.multiply() = this * time
+
+        fun runAsBlocker(block: IntMultiplier.() -> Unit){
+            block()
+        }
     }
 
     private fun extReceiver() {

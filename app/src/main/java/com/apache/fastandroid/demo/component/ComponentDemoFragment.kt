@@ -13,6 +13,7 @@ import com.apache.fastandroid.component.timerecorder.data.AIDataPoolImpl
 import com.apache.fastandroid.databinding.FragmentComponentModeListBinding
 import com.apache.fastandroid.demo.blitz.BlitzDemoFragment
 import com.apache.fastandroid.demo.component.activityresult.ActivityResultDemoFragment
+import com.apache.fastandroid.demo.component.countdown.CountDownByViewModelDemoFragment
 import com.apache.fastandroid.demo.component.dialogchanin.ADialog
 import com.apache.fastandroid.demo.component.dialogchanin.BDialog
 import com.apache.fastandroid.demo.component.dialogchanin.CDialog
@@ -28,7 +29,11 @@ import com.tesla.framework.kt.launchActivity
 import com.tesla.framework.kt.launchFragment
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * Created by Jerry on 2023/3/12.
@@ -41,6 +46,10 @@ class ComponentDemoFragment:BaseBindingFragment<FragmentComponentModeListBinding
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
+
+        mBinding.btnCountDown.setOnClickListener {
+            requireActivity().launchFragment<CountDownByViewModelDemoFragment>()
+        }
 
         mBinding.btnTimerRecord.setOnClickListener {
             timerRecord()

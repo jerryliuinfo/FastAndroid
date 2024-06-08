@@ -8,14 +8,11 @@
 
 package com.apache.fastandroid.network.calladapter.networkresult
 
-import kotlin.jvm.JvmField
-import kotlin.jvm.JvmName
-
 /**
  * A discriminated union that encapsulates a successful outcome with a value of type [T]
  * or a failure with an arbitrary [Throwable] exception.
  */
-public data class NetworkResult<out T> @PublishedApi internal constructor(
+data class NetworkResult<out T> @PublishedApi internal constructor(
     @PublishedApi
     internal val value: Any?
 ) {
@@ -23,13 +20,13 @@ public data class NetworkResult<out T> @PublishedApi internal constructor(
      * Returns `true` if this instance represents a successful outcome.
      * In this case [isFailure] returns `false`.
      */
-    public val isSuccess: Boolean get() = value !is Failure
+    val isSuccess: Boolean get() = value !is Failure
 
     /**
      * Returns `true` if this instance represents a failed outcome.
      * In this case [isSuccess] returns `false`.
      */
-    public val isFailure: Boolean get() = value is Failure
+    val isFailure: Boolean get() = value is Failure
 
     // value & exception retrieval
 
@@ -40,7 +37,7 @@ public data class NetworkResult<out T> @PublishedApi internal constructor(
      * This function is a shorthand for `getOrElse { null }` (see [getOrElse]) or
      * `fold(onSuccess = { it }, onFailure = { null })` (see [fold]).
      */
-    public inline fun getOrNull(): T? =
+    inline fun getOrNull(): T? =
         when {
             isFailure -> null
             else -> value as T
@@ -52,7 +49,7 @@ public data class NetworkResult<out T> @PublishedApi internal constructor(
      *
      * This function is a shorthand for `fold(onSuccess = { null }, onFailure = { it })` (see [fold]).
      */
-    public fun exceptionOrNull(): Throwable? =
+    fun exceptionOrNull(): Throwable? =
         when (value) {
             is Failure -> value.exception
             else -> null
@@ -63,7 +60,7 @@ public data class NetworkResult<out T> @PublishedApi internal constructor(
      * where `v` is a string representation of the value or a string `Failure(x)` if
      * it is [failure][isFailure] where `x` is a string representation of the exception.
      */
-    public override fun toString(): String =
+    override fun toString(): String =
         when (value) {
             is Failure -> value.toString() // "Failure($exception)"
             else -> "Success($value)"
@@ -75,13 +72,13 @@ public data class NetworkResult<out T> @PublishedApi internal constructor(
      * Companion object for [Result] class that contains its constructor functions
      * [success] and [failure].
      */
-    public companion object {
+    companion object {
         /**
          * Returns an instance that encapsulates the given [value] as successful value.
          */
         @Suppress("INAPPLICABLE_JVM_NAME")
         @JvmName("success")
-        public inline fun <T> success(value: T): NetworkResult<T> =
+        inline fun <T> success(value: T): NetworkResult<T> =
             NetworkResult(value)
 
         /**
@@ -89,7 +86,7 @@ public data class NetworkResult<out T> @PublishedApi internal constructor(
          */
         @Suppress("INAPPLICABLE_JVM_NAME")
         @JvmName("failure")
-        public inline fun <T> failure(exception: Throwable): NetworkResult<T> =
+        inline fun <T> failure(exception: Throwable): NetworkResult<T> =
             NetworkResult(createFailure(exception))
     }
 
@@ -125,7 +122,7 @@ internal fun NetworkResult<*>.throwOnFailure() {
  * Calls the specified function [block] and returns its encapsulated result if invocation was successful,
  * catching any [Throwable] exception that was thrown from the [block] function execution and encapsulating it as a failure.
  */
-public inline fun <R> runCatching(block: () -> R): NetworkResult<R> {
+inline fun <R> runCatching(block: () -> R): NetworkResult<R> {
     return try {
         NetworkResult.success(block())
     } catch (e: Throwable) {
@@ -137,7 +134,7 @@ public inline fun <R> runCatching(block: () -> R): NetworkResult<R> {
  * Calls the specified function [block] with `this` value as its receiver and returns its encapsulated result if invocation was successful,
  * catching any [Throwable] exception that was thrown from the [block] function execution and encapsulating it as a failure.
  */
-public inline fun <T, R> T.runCatching(block: T.() -> R): NetworkResult<R> {
+inline fun <T, R> T.runCatching(block: T.() -> R): NetworkResult<R> {
     return try {
         NetworkResult.success(block())
     } catch (e: Throwable) {
@@ -153,7 +150,7 @@ public inline fun <T, R> T.runCatching(block: T.() -> R): NetworkResult<R> {
  *
  * This function is a shorthand for `getOrElse { throw it }` (see [getOrElse]).
  */
-public inline fun <T> NetworkResult<T>.getOrThrow(): T {
+inline fun <T> NetworkResult<T>.getOrThrow(): T {
     throwOnFailure()
     return value as T
 }
@@ -166,7 +163,7 @@ public inline fun <T> NetworkResult<T>.getOrThrow(): T {
  *
  * This function is a shorthand for `fold(onSuccess = { it }, onFailure = onFailure)` (see [fold]).
  */
-public inline fun <R, T : R> NetworkResult<T>.getOrElse(onFailure: (exception: Throwable) -> R): R {
+inline fun <R, T : R> NetworkResult<T>.getOrElse(onFailure: (exception: Throwable) -> R): R {
     return when (val exception = exceptionOrNull()) {
         null -> value as T
         else -> onFailure(exception)
@@ -179,7 +176,7 @@ public inline fun <R, T : R> NetworkResult<T>.getOrElse(onFailure: (exception: T
  *
  * This function is a shorthand for `getOrElse { defaultValue }` (see [getOrElse]).
  */
-public inline fun <R, T : R> NetworkResult<T>.getOrDefault(defaultValue: R): R {
+inline fun <R, T : R> NetworkResult<T>.getOrDefault(defaultValue: R): R {
     if (isFailure) return defaultValue
     return value as T
 }
@@ -190,7 +187,7 @@ public inline fun <R, T : R> NetworkResult<T>.getOrDefault(defaultValue: R): R {
  *
  * Note, that this function rethrows any [Throwable] exception thrown by [onSuccess] or by [onFailure] function.
  */
-public inline fun <R, T> NetworkResult<T>.fold(
+inline fun <R, T> NetworkResult<T>.fold(
     onSuccess: (value: T) -> R,
     onFailure: (exception: Throwable) -> R
 ): R {
@@ -210,7 +207,7 @@ public inline fun <R, T> NetworkResult<T>.fold(
  * Note, that this function rethrows any [Throwable] exception thrown by [transform] function.
  * See [mapCatching] for an alternative that encapsulates exceptions.
  */
-public inline fun <R, T> NetworkResult<T>.map(transform: (value: T) -> R): NetworkResult<R> {
+inline fun <R, T> NetworkResult<T>.map(transform: (value: T) -> R): NetworkResult<R> {
     return when {
         isSuccess -> NetworkResult.success(transform(value as T))
         else -> NetworkResult(value)
@@ -225,7 +222,7 @@ public inline fun <R, T> NetworkResult<T>.map(transform: (value: T) -> R): Netwo
  * This function catches any [Throwable] exception thrown by [transform] function and encapsulates it as a failure.
  * See [map] for an alternative that rethrows exceptions from `transform` function.
  */
-public inline fun <R, T> NetworkResult<T>.mapCatching(transform: (value: T) -> R): NetworkResult<R> {
+inline fun <R, T> NetworkResult<T>.mapCatching(transform: (value: T) -> R): NetworkResult<R> {
     return when {
         isSuccess -> runCatching { transform(value as T) }
         else -> NetworkResult(value)
@@ -240,7 +237,7 @@ public inline fun <R, T> NetworkResult<T>.mapCatching(transform: (value: T) -> R
  * Note, that this function rethrows any [Throwable] exception thrown by [transform] function.
  * See [recoverCatching] for an alternative that encapsulates exceptions.
  */
-public inline fun <R, T : R> NetworkResult<T>.recover(transform: (exception: Throwable) -> R): NetworkResult<R> {
+inline fun <R, T : R> NetworkResult<T>.recover(transform: (exception: Throwable) -> R): NetworkResult<R> {
     return when (val exception = exceptionOrNull()) {
         null -> this
         else -> NetworkResult.success(transform(exception))
@@ -255,7 +252,7 @@ public inline fun <R, T : R> NetworkResult<T>.recover(transform: (exception: Thr
  * This function catches any [Throwable] exception thrown by [transform] function and encapsulates it as a failure.
  * See [recover] for an alternative that rethrows exceptions.
  */
-public inline fun <R, T : R> NetworkResult<T>.recoverCatching(transform: (exception: Throwable) -> R): NetworkResult<R> {
+inline fun <R, T : R> NetworkResult<T>.recoverCatching(transform: (exception: Throwable) -> R): NetworkResult<R> {
     return when (val exception = exceptionOrNull()) {
         null -> this
         else -> runCatching { transform(exception) }
@@ -268,7 +265,7 @@ public inline fun <R, T : R> NetworkResult<T>.recoverCatching(transform: (except
  * Performs the given [action] on the encapsulated [Throwable] exception if this instance represents [failure][Result.isFailure].
  * Returns the original `Result` unchanged.
  */
-public inline fun <T> NetworkResult<T>.onFailure(action: (exception: Throwable) -> Unit): NetworkResult<T> {
+inline fun <T> NetworkResult<T>.onFailure(action: (exception: Throwable) -> Unit): NetworkResult<T> {
     exceptionOrNull()?.let { action(it) }
     return this
 }
@@ -277,7 +274,7 @@ public inline fun <T> NetworkResult<T>.onFailure(action: (exception: Throwable) 
  * Performs the given [action] on the encapsulated value if this instance represents [success][Result.isSuccess].
  * Returns the original `Result` unchanged.
  */
-public inline fun <T> NetworkResult<T>.onSuccess(action: (value: T) -> Unit): NetworkResult<T> {
+inline fun <T> NetworkResult<T>.onSuccess(action: (value: T) -> Unit): NetworkResult<T> {
     if (isSuccess) action(value as T)
     return this
 }

@@ -100,15 +100,19 @@ class RetrofitFactory private constructor() {
         return Retrofit.Builder()
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
+            //支持返回   类型的数据
+            /**
+             * 支持返回  [ApiResponse] 类型的数据
+             */
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
-
+            //支持返回 RxJava  类型的数据
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            //支持返回 ApiResult<T> 的数据
+            //支持返回 ApiResult<T> 类型的数据
             .addCallAdapterFactory(ApiResultAdapterFactory())
 
-            //Retrofit 支持返回 LiveData 数据
+            //Retrofit 支持返回 LiveData 类型的数据
             .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
-            //
+            //添加支持返回 NetworkResult 类型的数据
             .addCallAdapterFactory(NetworkResultCallAdapterFactory.create())
     }
 

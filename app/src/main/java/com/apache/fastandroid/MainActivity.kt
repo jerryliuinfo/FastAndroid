@@ -177,7 +177,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 //        FragmentContainerActivity.launch(this, LiveDataLoaderFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, LocationDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ProgressDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, CountDownDemoFragment::class.java,null,addTitleBar = true)
+//        FragmentContainerActivity.launch(this, CountDownByViewModelDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ElegantDemoFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, DesignModeDemoListFragment::class.java,null,addTitleBar = true)
 //        FragmentContainerActivity.launch(this, ToolsFragment::class.java,null,addTitleBar = true)
@@ -235,6 +235,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
         // launchActivity<AppResourceDemoActivity>()
         // FragmentContainerActivity.launch(this, WorkManagerDemoFragment::class.java,null)
         // FragmentContainerActivity.launch(this, MukeDemoFragment::class.java,null)
+        // FragmentContainerActivity.launch(this, CountDownDemoFragment::class.java,null)
 
         onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
             override fun handleOnBackPressed() {

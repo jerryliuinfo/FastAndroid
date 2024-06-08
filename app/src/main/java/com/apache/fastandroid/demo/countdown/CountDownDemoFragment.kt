@@ -1,100 +1,49 @@
 package com.apache.fastandroid.demo.countdown
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.databinding.FragmentCountdownTimerBinding
-import com.tesla.framework.component.countdown.*
-import com.tesla.framework.kt.runOnUiThread
-import com.tesla.framework.ui.activity.BaseVBFragment2
+import android.widget.Button
+import com.apache.fastandroid.R
+import com.apache.fastandroid.demo.countdown.coroutine.CoroutineCountdownStrategy
+import com.tesla.framework.databinding.FragmentCountdownBinding
+import com.tesla.framework.ui.fragment.BaseBindingFragmentRef
 
 /**
- * Created by Jerry on 2023/3/4.
+ * Created by Jerry on 2024/6/8.
  */
-class CountDownDemoFragment : BaseVBFragment2<FragmentCountdownTimerBinding>() {
-
-    private var mCountDownTimerTask:ICountDownAction ?= null
-
-    private var mCountDownByCountDownTimer:ICountDownAction ?= null
-
-    private var mLifeCycleCountDownTimerTask:ICountDownAction ?= null
-
-    private var mCountDownByCoroutine:ICountDownAction ?= null
+class CountDownDemoFragment:BaseBindingFragmentRef<FragmentCountdownBinding>() {
 
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
 
-        mBinding.btnTimerTask.setOnClickListener {
-            mCountDownTimerTask?.stop()
-            mCountDownTimerTask = CountDownByTimer(count = 60, delay = 0, period = 1000, object :ICountDownListener{
-                override fun onTick(count: Long) {
-                    runOnUiThread {
-                        mBinding.btnProgress.text = "$count 秒后重发"
-                    }
-                }
-
-                override fun onFinish() {
-                    mCountDownTimerTask = null
-                }
-
-            }).apply {
-                start()
-            }
-        }
-
-
-        mBinding.btnCountDownTimer.setOnClickListener {
-            mCountDownByCountDownTimer?.stop()
-            mCountDownByCountDownTimer = CountDownByCountDownTimer(millsInFuture = 6000, interval = 1000, object :ICountDownListener{
-                override fun onTick(count: Long) {
-                    runOnUiThread {
-                        mBinding.btnProgress.text = "${count/1000} 秒后重发"
-                    }
-                }
-
-                override fun onFinish() {
-                    mCountDownTimerTask = null
-                }
-
-            }).apply {
-                start()
+        val component = CountdownComponent(CoroutineCountdownStrategy(){
+            mBinding.countdownView.text = it.first.toString()
+            if (!it.second) {
+                mBinding.countdownView.setTextColor(Color.RED)
+            } else {
+                mBinding.countdownView.setTextColor(Color.BLACK)
             }
 
+        })
+
+        findViewById<Button>(R.id.start_button).setOnClickListener {
+            component.start(10) // 60秒倒计时
+        }
+        findViewById<Button>(R.id.pause_button).setOnClickListener {
+            component.pause()
+        }
+        findViewById<Button>(R.id.resume_button).setOnClickListener {
+            component.resume()
+        }
+        findViewById<Button>(R.id.restart_button).setOnClickListener {
+            component.reset(10) // 重启60秒倒计时
+        }
+        findViewById<Button>(R.id.stop_button).setOnClickListener {
+            component.stop()
         }
 
-        mBinding.btnLifecycleTimerTask.setOnClickListener {
-            mLifeCycleCountDownTimerTask?.stop()
-            mLifeCycleCountDownTimerTask = LifeCycleCountDownByTimer(count = 60, delay = 0, period = 1000,this, object :ICountDownListener{
-                override fun onTick(count: Long) {
-                    runOnUiThread {
-                        mBinding.btnProgress.text = "$count 秒后重发333"
-                    }
-                }
-
-                override fun onFinish() {
-                    mCountDownTimerTask = null
-                }
-
-            }).apply {
-                start()
-            }
-        }
-
-        mBinding.btnCountDownByCoroutine.setOnClickListener {
-            mCountDownByCoroutine?.stop()
-            mCountDownByCoroutine = CountDownByCoroutine(60,1000,object :ICountDownListener{
-                override fun onTick(count: Long) {
-                    runOnUiThread {
-                        mBinding.btnProgress.text = "$count 秒后重发444"
-                    }
-                }
-
-                override fun onFinish() {
-                }
-
-            }).start()
-        }
     }
-
 }

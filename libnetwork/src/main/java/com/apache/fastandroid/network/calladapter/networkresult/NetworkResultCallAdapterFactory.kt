@@ -22,7 +22,7 @@ import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
-public class NetworkResultCallAdapterFactory internal constructor() : CallAdapter.Factory() {
+class NetworkResultCallAdapterFactory internal constructor() : CallAdapter.Factory() {
 
     override fun get(
         returnType: Type,
@@ -60,8 +60,8 @@ public class NetworkResultCallAdapterFactory internal constructor() : CallAdapte
         return NetworkResultCallAdapter<Any>(successBodyType)
     }
 
-    public companion object {
+    companion object {
         @JvmStatic
-        public fun create(): NetworkResultCallAdapterFactory = NetworkResultCallAdapterFactory()
+        fun create(): NetworkResultCallAdapterFactory = NetworkResultCallAdapterFactory()
     }
 }

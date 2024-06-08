@@ -17,7 +17,7 @@ public class TaskExecutorManager {
     //CPU 核数
     private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
     //线程池线程数
-    private static final int CORE_POOL_SIZE = Math.max(2, Math.min(CPU_COUNT - 1, 5));
+    private static final int CORE_POOL_SIZE = Math.max(2, Math.min(CPU_COUNT - 1, 4));
     //线程池线程数的最大值
     private static final int MAXIMUM_POOL_SIZE = CORE_POOL_SIZE;
     //线程空置回收时间

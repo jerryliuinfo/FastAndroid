@@ -2,9 +2,24 @@ package com.apache.fastandroid.network.util
 
 import com.apache.fastandroid.network.model.Resource
 import com.tesla.framework.component.logger.Logger
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
+/**
+ * 协程发起网络请求，并在 Main 线程回调
+ * @param scope CoroutineScope
+ * @param callback Function1<Resource<T>, Unit>
+ * @param dispatcher CoroutineDispatcher
+ * @param handler CoroutineExceptionHandler?
+ * @param block [@kotlin.ExtensionFunctionType] SuspendFunction1<CoroutineScope, T>
+ * @return Job
+ */
 fun <T> request(
     scope: CoroutineScope,
     callback: (Resource<T>) -> Unit,

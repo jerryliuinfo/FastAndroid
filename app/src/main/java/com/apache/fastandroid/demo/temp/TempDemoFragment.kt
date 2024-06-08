@@ -5,7 +5,7 @@ import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.LayoutInflaterDemoFragment
 import com.apache.fastandroid.demo.SetConteViewDemoActivity
 import com.apache.fastandroid.demo.blockstore.BlockStoreDemoFragment
-import com.apache.fastandroid.demo.countdown.CountDownDemoFragment
+import com.apache.fastandroid.demo.component.countdown.CountDownByViewModelDemoFragment
 import com.apache.fastandroid.demo.launchermode.LaunchModeDemoFragment
 import com.apache.fastandroid.demo.progress.ProgressDemoFragment
 import com.apache.fastandroid.demo.recycleview.AutoScrollViewDemoFragment
@@ -54,7 +54,7 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("ActivityStyle", "给Activity设置style",  SaveStateHandleFragment::class.java)
                 ,ViewItemBean("ViewBinding用法", "ViewBinding用法",  ViewBindingUsageDemo::class.java)
                 ,ViewItemBean("进度条组件", "进度条组件",  ProgressDemoFragment::class.java)
-                ,ViewItemBean("倒计时组件", "各种倒计时方案实现",  CountDownDemoFragment::class.java)
+                ,ViewItemBean("倒计时组件", "各种倒计时方案实现",  CountDownByViewModelDemoFragment::class.java)
                 ,ViewItemBean("RecycleView滑动到指定位置", "RecycleView滑动到指定位置",  AutoScrollViewDemoFragment::class.java)
                 ,ViewItemBean("LocalDateTime 用法", "LocalDateTime用法",  LocalDataTimeDemoFragment::class.java)
                 ,ViewItemBean("BlockStore 用法", "BlockStore 用法",  BlockStoreDemoFragment::class.java)
