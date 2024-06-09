@@ -20,10 +20,12 @@ import com.android.androidtech.monitor.time.TimeMonitorManager
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
+import com.apache.fastandroid.jetpack.JetPackDemoFragment
 import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.log.Timber
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.launchFragment
 import com.tesla.framework.ui.activity.BaseBindingActivity
 
 class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClickListener {
@@ -34,7 +36,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
     private val mHandler = Handler(Looper.getMainLooper())
 
     private val recycledViewPool = RecyclerView.RecycledViewPool().apply {
-        setMaxRecycledViews(R.id.view_type_recycleView_pool,25)
+        setMaxRecycledViews(R.id.view_type_recycleView_pool, 25)
     }
 
 
@@ -75,181 +77,22 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
         setupNavigationMenu(mNavController!!)
 
 
+        //        launchActivity<PagingPosterDemoActivity>(this)
+        launchFragment<JetPackDemoFragment>()
 
-     /*   if (AppConfigUtil.isAppUpdated()){
-            AppConfigUtil.appVersionCode = BuildConfig.VERSION_CODE.toLong()
-        }*/
-
-
-//        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java)
-//        FragmentContainerActivity.launch(this, CoordinatorLayoutDemoFragment::class.java)
-//        FragmentContainerActivity.launch(this, JetPackDemoFragment::class.java)
-//        FragmentContainerActivity.launch(this, LyricDemoFragment::class.java)
-//        FragmentContainerActivity.launch(this, BennyHuoCoroutineDemoFragment::class.java)
-//        FragmentContainerActivity.launch(this, HitDemoFragment::class.java)
-//        FragmentContainerActivity.launch(this, RoomDemoFragment::class.java)
-//        FragmentContainerActivity.launch(this, SunFlowerHomeViewPagerFragment::class.java,null,false)
-//        FragmentContainerActivity.launch(this, CoroutineDemoListFragment::class.java,null,false)
-//        FragmentContainerActivity.launch(this, CoroutineDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, CoroutineCancelDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, CoroutineCancelTimeoutDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, CoroutineContextDispatcherDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, JuejinKtDemoListFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, BottomTabsFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, MvvmMailDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, MviDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, DatabindingViewModelFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, SystemViewFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, LyricFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, EncryptDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
-//                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment::class.java,null)
-//                FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
-//                FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
-//                FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null)
-//                FragmentContainerActivity.launch(this, ListEntryDemoFragment::class.java,null)
-//                FragmentContainerActivity.launch(this, ViewBindingDemoFragment::class.java,null)
-//          FragmentContainerActivity.launch(this, LiveDataBasicFragment::class.java,null)
-
-
-//        FragmentContainerActivity.launch(this, SandWitchDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, ProgressViewDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, OnceDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null)
-//        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, SerialNetworkFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, FlowBasicUsageFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, FlowDemoListFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, CoroutineDemoListFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, BlackTechDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, CrashReportDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, TempDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, MMKVKtxFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, CrashReportDemoFragment::class.java,null)
-
-//        launchActivity<FluidResizeActivity>(this)
-//        launchActivity<GithubBrowserMainActivity>(this)
-//        LiveDataWrongUsageActivity.launch(this)
-
-        // launchActivity<SetConteViewDemoActivity>(this)
-        // FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null)
-        // FragmentContainerActivity.launch(this, Knowledge3Fragment::class.java,null)
-        // launchActivity<MaterialThemeDemoActivity>()
-
-
-//        FragmentContainerActivity.launch(this, JetPackLifeCycleFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, KotlinHotQuestionFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, TempDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, DemoListFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, JniDemoListFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, JetPackLifeCycleDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, ImmerseStatusBarDemoActivity::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, SystemWidgetFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, FlowPracticeDemoFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, FlowDemoListFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, ApiDemoFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, CustomViewFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, NetworkDemoFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, NetworkDemoFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, DrakeetCommonFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, KotlinTrapDemoFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, LambdaDemoFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, KotlinOfficalGramerFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, MMKVKtxFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, DatabindingViewModelFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, ResourcePoetDemoFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, ListAdapterFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, WebViewFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, GuideDemoListFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, KotlinDemoListFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, CoroutineNetworkDemoFragment::class.java,null,addTitleBar = false)
-//        FragmentContainerActivity.launch(this, AppResourceDemoActivity::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, SearchPreferenceDemoListFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, AppDataDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this,  ShareDataDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this,  InspectPerformanceDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, LiveDataLoaderFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, LocationDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, ProgressDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, CountDownByViewModelDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, ElegantDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, DesignModeDemoListFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, ToolsFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, AutoScrollViewDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, WeaknetWorkFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, IntervalDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, ActivityResultDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, PerformanceDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, AlbumListFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, ComponentDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, ViewBindingUsageDemo::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, KotlinKnowledgeFragment2::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, KnowledgeFragment::class.java,null,addTitleBar = true)
-//        FragmentContainerActivity.launch(this, CollectionDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, LocalDataTimeDemoFragment::class.java,null)
-
-//        ListOptions().show(supportFragmentManager,"")
-
-//        launchActivity<ConnectionClassActivity>(this)
-//        launchActivity<ImmerseStatusBarDemoActivity>(this)
-//         launchActivity<HitDemoActivity>(this)
-//         launchActivity<BundleDemoActivity>(this)
-
-//        launchActivity<TasksActivity>(this)
-//        launchActivity<KeybordVisibilityDemoActivity>(this)
-//        launchActivity<CompressDemoFragment>(this)
-
-//        launchActivity<com.example.hellojnicallback.RewordDemoActivity>(this)
-
-
-//        launchActivity<TasksActivity>(this)
-//        launchActivity<MaterialDialogDemoActivity>(this)
-//        launchActivity<ViewPumpDemoActivity>(this)
-//        launchActivity<PagingArticleDemoActivity>(this)
-//        launchActivity<PagingPosterDemoActivity>(this)
-//        FragmentContainerActivity.launch(this, JetPackDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, BlockStoreDemoFragment::class.java,null)
-//        FragmentContainerActivity.launch(this, StorageDemoListFragment::class.java,null)
-
-
-//            launchActivity<ManifestDemoActivity>(this)
-
-//        FragmentContainerActivity.launch(this, CustomLifecycleOwnerFragment::class.java,null,addTitleBar = false)
-
-        // FragmentContainerActivity.launch(this, CustomViewGroupFragment::class.java,null)
-        // FragmentContainerActivity.launch(this, PerfettoDemoFragment::class.java,null)
-        // FragmentContainerActivity.launch(this, BlackTechDemoListFragment::class.java,null)
-        // FragmentContainerActivity.launch(this, FlowEventDemoFragment::class.java,null)
-        // FragmentContainerActivity.launch(this, RecycleViewDemoListFragment::class.java,null)
-        // FragmentContainerActivity.launch(this, AndroidPerformanceDemoFragment::class.java,null)
-        // FragmentContainerActivity.launch(this, FlowShareDemoFragment::class.java,null)
-        // launchActivity<AppResourceDemoActivity>()
-        // FragmentContainerActivity.launch(this, WorkManagerDemoFragment::class.java,null)
-        // FragmentContainerActivity.launch(this, MukeDemoFragment::class.java,null)
-        // FragmentContainerActivity.launch(this, CountDownDemoFragment::class.java,null)
-
-        onBackPressedDispatcher.addCallback(object :OnBackPressedCallback(true){
+        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
 
-                when{
+                when {
                     mBinding.drawer.isOpen -> {
                         mBinding.drawer.close()
                     }
 
                     else -> {
-                        if (System.currentTimeMillis() - mExitTime > 2000){
+                        if (System.currentTimeMillis() - mExitTime > 2000) {
                             mExitTime = System.currentTimeMillis()
                             showToast(R.string.main_exit_app)
-                        }else{
+                        } else {
                             moveTaskToBack(true)
                         }
                     }
@@ -275,7 +118,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
     }
 
 
-    private var mExitTime:Long = 0
+    private var mExitTime: Long = 0
 
     private fun setupActionBar(
         navController: NavController,
@@ -324,16 +167,16 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
         mBinding.drawer.addDrawerListener(drawerToggle)
     }
 
-  /*  private var canFinish = false
-    override fun onBackClick(): Boolean {
-        if (!canFinish) {
-            canFinish = true
-            ToastUtils.showShort("再按一次退出")
-            Handler().postDelayed({ canFinish = false }, 1500)
-            return true
-        }
-        return super.onBackClick()
-    }*/
+    /*  private var canFinish = false
+      override fun onBackClick(): Boolean {
+          if (!canFinish) {
+              canFinish = true
+              ToastUtils.showShort("再按一次退出")
+              Handler().postDelayed({ canFinish = false }, 1500)
+              return true
+          }
+          return super.onBackClick()
+      }*/
 
     private val result = MutableLiveData<Boolean>()
     override fun onClick(v: View) {
@@ -363,7 +206,6 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
         super.onWindowFocusChanged(hasFocus)
         LaunchTimer.endRecord("onWindowFocusChanged")
     }
-
 
 
 }

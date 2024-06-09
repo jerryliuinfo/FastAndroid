@@ -5,7 +5,6 @@ import android.view.ViewTreeObserver
 import android.widget.TextView
 import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ArticleItemBinding
-import com.apache.fastandroid.demo.extension.isNotNullOrEmpty
 import com.apache.fastandroid.network.model.Article
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
@@ -15,6 +14,7 @@ import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.common.util.N
 import com.tesla.framework.common.util.buildSpannableString
 import com.tesla.framework.kt.getColor
+import com.tesla.framework.kt.isNotNullOrEmpty
 
 /**
  * Created by Jerry on 2021/7/1.

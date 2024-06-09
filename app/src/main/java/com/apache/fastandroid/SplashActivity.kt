@@ -63,7 +63,7 @@ class SplashActivity : BaseVBActivity<ActivitySplashBinding>(ActivitySplashBindi
 
         mComponent = CountdownComponent(CoroutineCountdownStrategy(){
             mBinding.tvCountDown.show()
-            mBinding.tvCountDown.text = it.first.toString()
+            mBinding.tvCountDown.text = "跳过|${it.first.toString()} S"
             if (it.first.toInt() == 0){
                 toMain()
             }

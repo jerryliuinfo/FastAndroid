@@ -6,9 +6,8 @@ import androidx.lifecycle.Transformations
 
 /**
  * Created by Jerry on 2022/10/18.
+ * 不会发送相同值的 LiveData
  */
-
-
 
 fun <T> LiveData<T>.distinct(): MediatorLiveData<T> = DistinctLiveData(this)
 

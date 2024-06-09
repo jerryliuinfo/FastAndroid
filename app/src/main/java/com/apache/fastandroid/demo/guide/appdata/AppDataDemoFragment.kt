@@ -351,14 +351,15 @@ class AppDataDemoFragment :
      *
      * 从内部存储空间访问不需要任何权限,注意:
      * 这些目录的空间通常比较小。在将应用专属文件写入内部存储空间之前，应用应查询设备上的可用空间。
-     *
+     *  data/user/0/com.apache.fastandroid.debug/files
+     *  data/user/0/com.apache.fastandroid.debug/cache
      *
      */
     private fun filesAndCacheDir() {
         //data/user/0/com.apache.fastandroid.debug/files
         //data/data/com.apache.fastandroid.debug/files
         val fileDir = mContext.filesDir
-        ///data/user/0/com.apache.fastandroid.debug/cache
+        //data/user/0/com.apache.fastandroid.debug/cache
         val cacheDir = mContext.cacheDir
         Logger.d("fileDir:$fileDir, cacheDir:$cacheDir")
 
@@ -373,6 +374,8 @@ class AppDataDemoFragment :
     /**
      * 从外部存储空间访问，可以使用 getExternalFilesDir() 或 getExternalCacheDir() 方法
      * 如果应用在搭载 Android 4.4（API 级别 19）或更高版本的设备上运行，从外部存储空间访问不需要任何权限
+     * storage/emulated/0/Android/data/com.apache.fastandroid.debug/files
+     * storage/emulated/0/Android/data/com.apache.fastandroid.debug/cache
      */
     private fun externalFilesAndCacheDir() {
         //storage/emulated/0/Android/data/com.apache.fastandroid.debug/files,

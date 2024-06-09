@@ -9,11 +9,12 @@ class MessageRepository() {
 
 
     fun getList():List<String>{
-        val random = Random.nextLong(1000)
+        val value = 3000L
+        val random = Random.nextLong(value)
         println("loadMessageHeader random time:$random")
-        Thread.sleep(random)
-        if (random > 800){
-           throw java.lang.IllegalStateException("time out")
+        if (random > (value / 2)){
+            Thread.sleep(random)
+            throw java.lang.IllegalStateException("time out")
         }
         return listOf("zhangsan")
     }

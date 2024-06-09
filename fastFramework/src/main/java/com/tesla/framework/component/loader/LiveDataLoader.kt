@@ -2,6 +2,7 @@ package com.tesla.framework.component.loader
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.tesla.framework.component.log.Timber
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancelAndJoin
@@ -9,7 +10,6 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import com.tesla.framework.component.log.Timber
 
 const val LOADING_INDICATOR_DELAY = 500L
 

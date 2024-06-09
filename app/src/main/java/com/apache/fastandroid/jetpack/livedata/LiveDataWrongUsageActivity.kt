@@ -100,8 +100,8 @@ class LiveDataWrongUsageActivity : BaseVBActivity<FragmentJetpackLivedataWrongUs
             shareViewModel.goToDetailByEventWrapper("Hello")
         }
         shareViewModel.navigationToDetailEventWrapper.observe(this){
-            var content1 = it.getContentIfNotHandled()
-            var content2 = it.getContentIfNotHandled()
+            val content1 = it.getContentIfNotHandled()
+            val content2 = it.getContentIfNotHandled()
             println("LiveDataWrongUsageFragment useEventWrapper onChange content1:${content1}, content2:${content2}")
             content1?.let {
                 FragmentContainerActivity.launch(this@LiveDataWrongUsageActivity,LiveDataDetailFragment::class.java,null)

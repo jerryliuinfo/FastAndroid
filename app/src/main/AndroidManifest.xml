@@ -311,10 +311,7 @@
             android:exported="true" />
 
 
-        <activity
-            android:name=".demo.performance.jankstats.JankLoggingActivity"
-            android:exported="true"
-            android:label="JankLogging" />
+
 
         <activity
             android:name=".demo.guide.activity.SingleInstanceDemoActivity"
@@ -512,8 +509,7 @@
 
         -->
 
-        <service
-            android:name="com.apache.fastandroid.jetpack.lifecycle.service.MyService"
+
 
             android:exported="false" />
         <service
@@ -538,6 +534,8 @@
             </intent-filter>
 
         </service>
+
+        <service android:name=".jetpack.lifecycle.service.MyLifeCycleService"/>
 
         <!--        Google Play 使用您的应用清单中声明的 <uses-library> 元素，从不符合其库要求的设备中过滤掉您的应用
 
@@ -585,7 +583,7 @@ android:required："true"：如果没有此库，则应用将无法正常运行�
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
+<!--    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>-->
    
 
     <!--

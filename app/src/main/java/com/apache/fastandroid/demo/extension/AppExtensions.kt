@@ -1,30 +1,16 @@
 package com.apache.fastandroid.demo.extension
 
 import android.content.Context
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.Toast
-import androidx.annotation.IntRange
 import java.io.Closeable
-import kotlin.contracts.InvocationKind
-import kotlin.contracts.contract
 import kotlin.math.ceil
 import kotlin.math.min
 
 /**
  * Created by Jerry on 2022/10/18.
  */
-class AppExtensions {
-}
 
-
-fun String?.isNotNullOrEmpty(): Boolean {
-    if (this == null || this == "null") {
-        return false
-    }
-    return !isNullOrEmpty()
-}
 
 fun EditText.setTextAndMaintainSelection(text: CharSequence?) {
     if (text == null) {
@@ -40,40 +26,6 @@ fun EditText.setTextAndMaintainSelection(text: CharSequence?) {
     } else {
         setSelection(formerStart, formerEnd)
     }
-}
-
-fun EditText.onTextChanged(
-    @IntRange(from = 0, to = 10000) debounce: Int = 0,
-    cb: (String) -> Unit
-) {
-    addTextChangedListener(object : TextWatcher {
-        val callbackRunner = Runnable {
-            cb(text.trim().toString())
-        }
-
-        override fun afterTextChanged(s: Editable?) = Unit
-
-        override fun beforeTextChanged(
-            s: CharSequence,
-            start: Int,
-            count: Int,
-            after: Int
-        ) = Unit
-
-        override fun onTextChanged(
-            s: CharSequence,
-            start: Int,
-            before: Int,
-            count: Int
-        ) {
-            removeCallbacks(callbackRunner)
-            if (debounce == 0) {
-                callbackRunner.run()
-            } else {
-                postDelayed(callbackRunner, debounce.toLong())
-            }
-        }
-    })
 }
 
 

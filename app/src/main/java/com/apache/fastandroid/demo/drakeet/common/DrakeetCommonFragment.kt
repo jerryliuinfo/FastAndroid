@@ -20,7 +20,6 @@ import com.apache.fastandroid.databinding.FragmentDrakeetKnowledgeBinding
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.demo.drakeet.RecycleviewStabledIdsFragment
 import com.apache.fastandroid.demo.temp.bean.ReflectBean
-import com.apache.fastandroid.jetpack.lifecycle.service.MyService
 import com.apache.fastandroid.network.retrofit.OkHttpClientManager
 import com.blankj.utilcode.util.ReflectUtils
 import com.tesla.framework.common.device.DeviceName
@@ -61,7 +60,6 @@ class DrakeetCommonFragment:BaseBindingFragment<FragmentDrakeetKnowledgeBinding>
         }
 
         mBinding.btnServiceOntaskRemoved.setOnClickListener {
-            context?.let { it1 -> MyService.start(it1) }
         }
 
 

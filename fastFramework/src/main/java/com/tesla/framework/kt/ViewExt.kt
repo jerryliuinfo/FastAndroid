@@ -14,6 +14,8 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.DisplayMetrics
 import android.view.*
 import android.widget.EditText
@@ -23,6 +25,7 @@ import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.*
+import androidx.annotation.IntRange
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -48,6 +51,49 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
+
+
+/**
+ * 监听 EditText 改变
+ * @receiver EditText
+ * @param debounce Int
+ * @param cb Function1<String, Unit>
+ */
+
+fun EditText.onTextChanged(
+    @IntRange(from = 0, to = 10000) debounce: Int = 0,
+    cb: (String) -> Unit
+) {
+    addTextChangedListener(object : TextWatcher {
+        val callbackRunner = Runnable {
+            cb(text.trim().toString())
+        }
+
+        override fun afterTextChanged(s: Editable?) = Unit
+
+        override fun beforeTextChanged(
+            s: CharSequence,
+            start: Int,
+            count: Int,
+            after: Int
+        ) = Unit
+
+        override fun onTextChanged(
+            s: CharSequence,
+            start: Int,
+            before: Int,
+            count: Int
+        ) {
+            removeCallbacks(callbackRunner)
+            if (debounce == 0) {
+                callbackRunner.run()
+            } else {
+                postDelayed(callbackRunner, debounce.toLong())
+            }
+        }
+    })
+}
+
 
 @Suppress("DEPRECATION")
 fun TextView.setTextAppearanceCompat(context: Context, resId: Int) {

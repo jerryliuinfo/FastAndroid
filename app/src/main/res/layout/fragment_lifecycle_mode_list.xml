@@ -11,7 +11,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:flow_horizontalAlign="start"
         app:flow_wrapMode="aligned"
-        app:constraint_referenced_ids="btn_traditional_lifecycle,btn_lifecycle_location,btn_maybeObserveLifecycle,
+        app:constraint_referenced_ids="btn_traditional_lifecycle,btn_lifecycle_location,btn_lifecycle_service,btn_maybeObserveLifecycle,
         btn_dialog_dismiss,btn_lifecycle_handler,btn_broadcastReceiver,btn_custom_lifecycle"
         />
     <Button
@@ -27,6 +27,12 @@
         android:text="LifeCycle监听位置"
         />
     <Button
+        android:id="@+id/btn_lifecycle_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="感知Service生命周期"
+        />
+    <Button
         android:id="@+id/btn_maybeObserveLifecycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,13 +42,13 @@
         android:id="@+id/btn_dialog_dismiss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dialog自动dismiss"
+        android:text="带生命周期感知的Dialog(自动 dismiss)"
         />
     <Button
         android:id="@+id/btn_lifecycle_handler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="不会内存泄漏的Handler"
+        android:text="带生命周期感知的Handler"
         />
 
     <Button

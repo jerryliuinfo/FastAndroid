@@ -1,30 +1,44 @@
 package com.apache.fastandroid.jetpack.lifecycle
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FragmentLifecycleModeListBinding
 import com.apache.fastandroid.jetpack.lifecycle.customlifecycle.CustomLifecycleOwnerFragment
+import com.apache.fastandroid.jetpack.lifecycle.location.ILocationListener
+import com.apache.fastandroid.jetpack.lifecycle.location.LocationManager
+import com.apache.fastandroid.jetpack.lifecycle.service.MyLifeCycleService
 import com.apache.fastandroid.jetpack.lifecycle.traditional.GpsEngine
+import com.apache.fastandroid.jetpack.lifecycle.traditional.TraditionalLifeCycleFragment
 import com.tesla.framework.component.lifecycle.CustomIntentProvider
-import com.tesla.framework.component.lifecycle.LifeCycleIntentReceiver
+import com.tesla.framework.component.lifecycle.LifeCycleBroadcastReceiver
 import com.tesla.framework.component.lifecycle.LifecycleHandler
 import com.tesla.framework.component.lifecycle.maybeObserveLifecycle2
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.launchFragment
 import com.tesla.framework.kt.lifeCycleOwner
 import com.tesla.framework.kt.showToast
 import com.tesla.framework.ui.activity.FragmentContainerActivity
 import com.tesla.framework.ui.fragment.BaseBindingFragment
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * Created by Jerry on 2020/10/31.
  */
-class LifeCycleDemoListFragment: BaseBindingFragment<FragmentLifecycleModeListBinding>(FragmentLifecycleModeListBinding::inflate) {
+class LifeCycleDemoListFragment :
+    BaseBindingFragment<FragmentLifecycleModeListBinding>(FragmentLifecycleModeListBinding::inflate) {
 
 
-    private  var lifecycleHandler: LifecycleHandler ?= null
+    private var lifecycleHandler: LifecycleHandler? = null
+
+    private val mLocationManager: LocationManager by lazy {
+        LocationManager(this@LifeCycleDemoListFragment)
+    }
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
@@ -33,11 +47,17 @@ class LifeCycleDemoListFragment: BaseBindingFragment<FragmentLifecycleModeListBi
 
 
         mBinding.btnTraditionalLifecycle.setOnClickListener {
-            //在 onResume 和 onPause中手动调用
+            // 在 onResume 和 onPause中手动调用
+
+            activity?.launchFragment<TraditionalLifeCycleFragment>()
         }
 
         mBinding.btnLifecycleLocation.setOnClickListener {
             lifeCycleLocation()
+        }
+
+        mBinding.btnLifecycleService.setOnClickListener {
+            lifeCycleServiceUsage()
         }
 
         mBinding.btnMaybeObserveLifecycle.setOnClickListener {
@@ -61,15 +81,32 @@ class LifeCycleDemoListFragment: BaseBindingFragment<FragmentLifecycleModeListBi
         }
     }
 
+    private fun lifeCycleServiceUsage() {
+
+        lifecycleScope.launch {
+            val serviceIntent = Intent(requireContext(), MyLifeCycleService::class.java)
+            // 启动服务
+            requireContext().startService(serviceIntent)
+
+            // delay
+            delay(5000)
+            // 停止服务
+            requireContext().stopService(serviceIntent)
+        }
+    }
+
     private fun customLifeCycleOwner() {
-        FragmentContainerActivity.launch(activity=requireActivity() ,clazz = CustomLifecycleOwnerFragment::class.java)
+        FragmentContainerActivity.launch(
+            activity = requireActivity(),
+            clazz = CustomLifecycleOwnerFragment::class.java
+        )
     }
 
     private fun lifecycleHandlerTest() {
         lifecycleHandler = LifecycleHandler(this).apply {
             postDelayed({
                 Log.d("tag", "10s 后我将会执行")
-            },10000)
+            }, 10000)
         }
     }
 
@@ -91,20 +128,20 @@ class LifeCycleDemoListFragment: BaseBindingFragment<FragmentLifecycleModeListBi
     }
 
     private fun maybeObserveLifeCycle() {
-        this.maybeObserveLifecycle2(Lifecycle.Event.ON_DESTROY) {
+        this.maybeObserveLifecycle2(Lifecycle.Event.ON_RESUME, Lifecycle.Event.ON_DESTROY) {
             showToast("maybeObserveLifecycle onDestroy event:${it}")
         }
 
     }
 
     private fun lifeCycleLocation() {
-        lifecycle.addObserver(LifeGpsManager.getInstance())
-        lifecycle.addObserver(LocationListener(this, object :
-            LocationListener.OnLocationChangeListener {
-            override fun onLocationChanged(latitude: Int, longtitude: Int) {
-                Logger.d("onLocationChanged latitude: %s,longtitude:%s", latitude, longtitude)
+        mLocationManager.addListener(object : ILocationListener {
+            override fun onLocationChanged(location: Long) {
+                Logger.d("${LocationManager.TAG} onLocationChanged latitude:${location} ")
+
             }
-        }))
+        })
+
     }
 
     override fun onResume() {
@@ -118,7 +155,7 @@ class LifeCycleDemoListFragment: BaseBindingFragment<FragmentLifecycleModeListBi
     }
 
     private fun broadcastReceiverUsage() {
-        val lifecycleReceiver = LifeCycleIntentReceiver(requireContext(), CustomIntentProvider()){
+        val lifecycleReceiver = LifeCycleBroadcastReceiver(requireContext(), CustomIntentProvider()) {
             Logger.d("onReceiver ")
         }
     }

@@ -27,6 +27,7 @@ import java.util.Locale
 
 /**
  * https://developer.android.com/training/basics/firstapp?hl=zh-cn
+ * done
  */
 
 class AppResourceDemoActivity : BaseBindingActivity<ActivityAppResourcesBinding>() {

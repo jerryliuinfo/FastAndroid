@@ -20,6 +20,13 @@ import java.io.OutputStream
  * Created by Jerry on 2022/4/20.
  */
 
+fun String?.isNotNullOrEmpty(): Boolean {
+    // if (this == null || this == "null") {
+    if (this == null || this.equals("null",true)) {
+        return false
+    }
+    return !isNullOrEmpty()
+}
 
 fun ObservableInt.increment(){
     set(this.get() + 1)

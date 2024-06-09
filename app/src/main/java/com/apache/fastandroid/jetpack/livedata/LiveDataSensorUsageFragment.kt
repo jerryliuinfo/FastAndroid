@@ -6,13 +6,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.apache.fastandroid.databinding.FragmentJetpackLivedataSeniorUsageBinding
-import com.apache.fastandroid.demo.extension.onTextChanged
 import com.apache.fastandroid.demo.extension.setTextAndMaintainSelection
 import com.tesla.framework.component.livedata.distinct
 import com.tesla.framework.component.livedata.map
 import com.tesla.framework.component.logger.Logger
+import com.tesla.framework.kt.onTextChanged
 import com.tesla.framework.kt.showToast
-
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
@@ -22,7 +21,6 @@ class LiveDataSensorUsageFragment : BaseBindingFragment<FragmentJetpackLivedataS
 
     val mNameLiveData = MutableLiveData<String>()
 
-    val mValidationMode = MutableLiveData<Boolean>()
 
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceSate: Bundle?) {
