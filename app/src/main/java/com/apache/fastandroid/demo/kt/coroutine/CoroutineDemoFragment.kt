@@ -8,13 +8,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.article.ArticleNetwork
 import com.apache.fastandroid.databinding.FragmentKotlinCouritineBinding
+import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.db.HomeDatabase
 import com.apache.fastandroid.home.network.HomeNetwork
+import com.apache.fastandroid.network.api.ApiService
 import com.apache.fastandroid.network.model.Repo
 import com.apache.fastandroid.network.model.result.BaseResponse
 import com.apache.fastandroid.network.model.result.EmptyResponse
-import com.apache.fastandroid.network.api.ApiService
 import com.apache.fastandroid.network.retrofit.convertor.CustomGsonConverterFactory
 import com.apache.fastandroid.util.extensitons.runOnUi
 import com.blankj.utilcode.util.ToastUtils
@@ -24,7 +25,18 @@ import com.tesla.framework.ui.fragment.BaseBindingFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
@@ -40,7 +52,7 @@ class CoroutineDemoFragment :
         private const val TAG = "CoroutineDemoFragment"
     }
 
-    private val viewModel:CoroutineVewModel by viewModels()
+    private val viewModel: CoroutineVewModel by viewModels()
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
         super.layoutInit(inflater, savedInstanceState)
@@ -98,14 +110,23 @@ class CoroutineDemoFragment :
             }
         }
         mBinding.btnMainscope.setOnClickListener {
-            //使用 MainScope 不用指定Dispatchers.IO了
+            // 使用 MainScope 不用指定Dispatchers.IO了
             mainScope.launch {
-                apiService.listReposKt("rengwuxian")
+                val list = apiService.listReposKt("rengwuxian")
+                showUi(list)
             }
         }
 
         mBinding.btnCoroutineScope.setOnClickListener {
             coroutineScopeRequest()
+        }
+
+        mBinding.btnEnsureCoroutineActive.setOnClickListener {
+            isCoroutineActive()
+        }
+
+        mBinding.btnCancelCoroutine.setOnClickListener {
+
         }
         mBinding.btnAysncToSync.setOnClickListener {
             callbackToSuspend()
@@ -116,16 +137,42 @@ class CoroutineDemoFragment :
         }
     }
 
-    private fun loadMultiUser() {
-        mainScope.launch {
-            val userIds = arrayOf("jerry","zhangsan","lisi")
-            val users = userIds.map { id ->
-                viewModel.getUserInfoById(id)
+    private fun isCoroutineActive() {
+        var job:Job ?= null
+        lifecycleScope.launch {
+            job = lifecycleScope.launch {
+                println("do something 1")
+                delay(20000)
+                println("do something 2")
             }
-            println(users)
+
+            delay(500)
+            job?.cancel()
+            println("do something 3, active:${job?.isActive}")
+
         }
 
+
     }
+
+    private fun showUi(list: List<Repo>) {
+
+    }
+
+    private fun loadMultiUser() {
+        mainScope.launch {
+            val userIds = arrayOf("jerry", "zhangsan", "lisi")
+            val userInfoJobs:List<Deferred<UserBean>> = userIds.map { userId ->
+                async {
+                    viewModel.getUserInfoById(userId)
+                }
+            }
+            // 使用awaitAll等待所有Deferred完成
+            val userInfoList = userInfoJobs.awaitAll()
+            println("loadMultiUser userInfoList:$userInfoList")
+        }
+    }
+
     private fun callbackToSuspend() {
         mainScope.launch {
             try {
@@ -140,7 +187,7 @@ class CoroutineDemoFragment :
 
     private val coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
     private fun coroutineScopeRequest() {
-       viewModel.coroutineScopeRequest()
+        viewModel.coroutineScopeRequest()
     }
 
     private fun doHanleException() {
@@ -153,11 +200,11 @@ class CoroutineDemoFragment :
         lifecycleScope.launch {
             val response = apiService.listReposKtWithErrorHandle("rengwuxian")
             println("result :${response}")
-            if (response.isSuccessful){
+            if (response.isSuccessful) {
                 val repo: List<Repo>? = response.body()
                 println("success repo:$repo")
 
-            }else{
+            } else {
                 println("faile :${response.raw()}")
             }
         }
@@ -185,7 +232,7 @@ class CoroutineDemoFragment :
     val scope = CoroutineScope(Job() + (Dispatchers.Main))
     private fun jobDispatcher() {
         scope.launch {
-            var topList = reporsitoryKt.loadTopArticleCo()
+            val topList = reporsitoryKt.loadTopArticleCo()
             println("thread:${Thread.currentThread()},topList size:${topList?.size}")
         }
     }
@@ -205,12 +252,15 @@ class CoroutineDemoFragment :
     private var job: Job? = null
     private val mainScope = MainScope()
 
-    private val mNetworkApi:ArticleNetwork = ArticleNetwork.getInstance()
+    private val mNetworkApi: ArticleNetwork = ArticleNetwork.getInstance()
 
     private val reporsitoryKt =
         HomeReporsitoryKt(HomeDatabase.getHomeDao(), HomeNetwork.getInstance())
 
 
+    /**
+     * 并行执行请求
+     */
     private fun coroutineAsyncWait() {
         job = lifecycleScope.launch {
             val deferredOne = async { reporsitoryKt.testData1() }
@@ -253,7 +303,7 @@ class CoroutineDemoFragment :
     }
 
     private fun doRetrofitSuspendRequest() {
-        GlobalScope.launch(Dispatchers.Main) {
+        lifecycleScope.launch(Dispatchers.Main) {
             val response = mNetworkApi.collect2(21630)
             response.exceptionOrNull()?.let {
                 ToastUtils.showShort(it.message)
@@ -263,7 +313,7 @@ class CoroutineDemoFragment :
     }
 
     private fun doRetrofitReturnCallRequest() {
-        GlobalScope.launch(Dispatchers.Main) {
+        lifecycleScope.launch(Dispatchers.Main) {
             val response = withContext(Dispatchers.IO) {
                 mNetworkApi.collect(ARTICLE_ID)
             }
@@ -302,38 +352,40 @@ class CoroutineDemoFragment :
     }
 
     private fun coroutineSwitchThread() {
-        //GlobalScope.launc 创建的协程是在后台执行的
+        // GlobalScope.launc 创建的协程是在后台执行的
         GlobalScope.launch(Dispatchers.Main) {
-            ioCode1()
-            uiCode1()
-            ioCode2()
-            uiCode2()
+            val result1 = ioCode1()
+            uiCode1(result1)
+            val result2 = ioCode2()
+            uiCode2(result2)
             ioCode3()
             uiCode3()
         }
     }
 
-    suspend fun ioCode1() {
-        //切到子线程
-        withContext(Dispatchers.IO) {
-            println("Coroutines Camp io1:${Thread.currentThread().name}")
-        }
-
+    suspend fun ioCode1(): String = withContext(Dispatchers.IO) {
+        // 切到子线程
+        println("Coroutines Camp io1:${Thread.currentThread().name}")
+        delay(500)
+        "result1"
     }
 
-    fun uiCode1() {
+    fun uiCode1(str: String? = null) {
         println("Coroutines Camp ui1:${Thread.currentThread().name}")
+        mBinding.tvResult.text = str
     }
 
-    suspend fun ioCode2() {
-        //切到子线程
-        withContext(Dispatchers.IO) {
-            println("Coroutines Camp io2:${Thread.currentThread().name}")
-        }
+    suspend fun ioCode2(): String = withContext(Dispatchers.IO) {
+        // 切到子线程
+        println("Coroutines Camp io2:${Thread.currentThread().name}")
+        delay(1500)
+        "result2"
     }
 
-    fun uiCode2() {
+    fun uiCode2(result: String? = null) {
         println("Coroutines Camp ui2:${Thread.currentThread().name}")
+        mBinding.tvResult.text = result
+
     }
 
     suspend fun ioCode3() {

@@ -1,25 +1,20 @@
 package com.apache.fastandroid.jetpack.viewmodel
 
-import ArticleViewModelFactory
 import ViewModelFactorySavedStateRegistryOwner
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.apache.fastandroid.databinding.FragmentJetpackViewmodelRestoreDataBinding
-import com.apache.fastandroid.demo.kt.coroutine.CoroutineVewModel
-import com.apache.fastandroid.demo.paging.article.data.ArticleRepository
-import com.apache.fastandroid.demo.paging.article.ui.ArticleViewModel
 import com.apache.fastandroid.demo.temp.savestate.SaveStateViewModel
 import com.apache.fastandroid.jetpack.InjectUtil
-import com.apache.fastandroid.jetpack.reporsity.UserReporsity
 import com.apache.fastandroid.jetpack.viewmodel.factory.ViewModelFactoryWithArgs
 import com.tesla.framework.component.di.KotlinViewModelProvider
 import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2020/11/1.
+ * done
  */
 class ViewModelDemoFragment: BaseBindingFragment<FragmentJetpackViewmodelRestoreDataBinding>(FragmentJetpackViewmodelRestoreDataBinding::inflate) {
 

@@ -40,7 +40,7 @@ class RoomDemoFragment: BaseBindingFragment<FragmentJetpackRoomBinding>(Fragment
         }
         mBinding.btnInsert.setOnClickListener {
             operation {
-                val plants = Array<Account>(5){
+                val plants = Array(5){
                     val id = atomicInteger.addAndGet(1)
                     Account("name:$id", "desc:$id", id.toLong(), (id).toLong())
                 }

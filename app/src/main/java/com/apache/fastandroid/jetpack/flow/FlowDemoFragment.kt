@@ -4,8 +4,35 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCoroutineFlowBinding
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.buffer
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.flatMapMerge
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.reduce
+import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.flow.toSet
+import kotlinx.coroutines.flow.transform
+import kotlinx.coroutines.flow.zip
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.system.measureTimeMillis
 
 /**
@@ -440,7 +467,8 @@ class FlowDemoFragment :
     /**
      * 流的收集总是在调用协程的上下文中发生。例如，如果有一个流 simple，
      * 然后以下代码在它的编写者指定的上下文中运行，而无论流 simple 的实现细节如何
-     * 由于 simple().collect 是在主线程调用的，那么 simple 的流主体也是在主线程调用的。 这是快速运行或异步代码的理想默认形式，它不关心执行的上下文并且不会阻塞调用者。
+     * 由于 simple().collect 是在主线程调用的，那么 simple 的流主体也是在主线程调用的。
+     * 这是快速运行或异步代码的理想默认形式，它不关心执行的上下文并且不会阻塞调用者。
      */
     private fun flowContext() {
         runBlocking {

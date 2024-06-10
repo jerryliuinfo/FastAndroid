@@ -6,7 +6,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.apache.fastandroid.databinding.FragmentCoroutineBasicBinding
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import kotlin.concurrent.thread
 
 /**
@@ -202,11 +211,11 @@ class CoroutineBasicDemoFragment:BaseBindingFragment<FragmentCoroutineBasicBindi
     suspend fun doWorld2() = coroutineScope { // this: CoroutineScope
         launch {
             delay(2000L)
-            println("World 2")
+            println("World 2 thread:${Thread.currentThread().name}")
         }
         launch {
             delay(1000L)
-            println("World 1")
+            println("World 1:${Thread.currentThread().name}")
         }
         println("Hello")
     }

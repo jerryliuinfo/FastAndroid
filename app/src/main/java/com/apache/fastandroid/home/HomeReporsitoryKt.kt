@@ -8,7 +8,6 @@ import com.apache.fastandroid.util.extensitons.PageState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-import java.lang.Exception
 import kotlin.random.Random
 
 /**
@@ -18,7 +17,7 @@ class HomeReporsitoryKt(private val homeDao:HomeDao, private val network: HomeNe
 
     suspend fun loadTopArticleCo():List<ArticleApi>{
         println("loadTopArticleCo thread: ${Thread.currentThread().name}")
-        var artices = network.loadTopArticleCo()
+        val artices = network.loadTopArticleCo()
         return artices.data
     }
 

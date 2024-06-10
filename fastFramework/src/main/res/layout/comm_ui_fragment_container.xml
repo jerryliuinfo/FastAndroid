@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--toolbar 根容器id与include id必须相同, 否则，将获取不到根容器对象，即为null-->
-    <!--<include
-            layout="@layout/comm_lay_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-        />-->
+    <data>
+
+    </data>
 
     <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" />
-
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?attr/actionBarSize"-->
-<!--        android:background="?attr/colorPrimary"-->
-<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
-<!--        />-->
-    <!--fragment内容,根容器用-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/fragmentContainer"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        app:layoutFullscreen="@{true}"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
 
-        />
-</LinearLayout>
+        >
+
+        <!--toolbar 根容器id与include id必须相同, 否则，将获取不到根容器对象，即为null-->
+        <!--<include
+                layout="@layout/comm_lay_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+            />-->
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            />
+
+        <!--    <androidx.appcompat.widget.Toolbar-->
+        <!--        android:id="@+id/toolbar"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="?attr/actionBarSize"-->
+        <!--        android:background="?attr/colorPrimary"-->
+        <!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+        <!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+        <!--        />-->
+        <!--fragment内容,根容器用-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+
+            />
+    </LinearLayout>
+</layout>

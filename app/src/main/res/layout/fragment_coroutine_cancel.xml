@@ -13,8 +13,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:flow_wrapMode="aligned"
         app:flow_horizontalGap="10dp"
-        app:constraint_referenced_ids="btn_ensure_coroutine_active,btn_cancel_coroutine,btn_cancel_all_coroutine
-        ,btn_cancel_job1,btn_cancel_normal,btn_cancel_immediately,btn_deferred_cancel,btn_handle_cancel,
+        app:constraint_referenced_ids="btn_ensure_coroutine_active,btn_cancel_all_coroutine,btn_cancel_coroutine,
+        btn_cancel_job1,btn_cancel_normal,btn_cancel_immediately,btn_deferred_cancel,btn_handle_cancel,
         btn_handleByCatch,btn_cancel_callSuspend"
 
         tools:ignore="NotSibling" />

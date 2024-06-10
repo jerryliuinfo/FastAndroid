@@ -2,29 +2,31 @@ package com.apache.fastandroid.demo.kt.coroutine
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.apache.fastandroid.network.calladapter.networkresult.onFailure
-import com.apache.fastandroid.network.calladapter.networkresult.onSuccess
-import com.apache.fastandroid.network.calladapter.networkresult.runCatching
 import com.apache.fastandroid.demo.bean.UserBean
 import com.apache.fastandroid.home.HomeReporsitoryKt
 import com.apache.fastandroid.home.db.HomeDatabase
 import com.apache.fastandroid.home.network.HomeNetwork
+import com.apache.fastandroid.network.calladapter.networkresult.onFailure
+import com.apache.fastandroid.network.calladapter.networkresult.onSuccess
+import com.apache.fastandroid.network.calladapter.networkresult.runCatching
 import com.apache.fastandroid.network.model.result.BaseResponse
 import com.apache.fastandroid.network.model.result.EmptyResponse
 import com.apache.fastandroid.network.retrofit.RetrofitFactory
 import com.blankj.utilcode.util.NetworkUtils
 import com.tesla.framework.component.logger.Logger
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.HttpException
 import retrofit2.Response
-import java.lang.Exception
 import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
 
 /**
  * Created by Jerry on 2021/10/28.
@@ -84,7 +86,11 @@ class CoroutineVewModel : ViewModel() {
     }
 
     suspend fun callbackToSuspend():BaseResponse<EmptyResponse> =
-        suspendCoroutine<BaseResponse<EmptyResponse>> { continuation ->
+        suspendCancellableCoroutine { continuation ->
+            continuation.invokeOnCancellation {
+                //协程被取消时
+            }
+
             RetrofitFactory.get().apiService().collect(1000).enqueue(object : Callback<BaseResponse<EmptyResponse>> {
                 override fun onResponse(
                     call: Call<BaseResponse<EmptyResponse>>,

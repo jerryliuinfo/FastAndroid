@@ -2,10 +2,21 @@ package com.apache.fastandroid.jetpack.coroutine
 
 import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
-import com.apache.fastandroid.demo.kt.coroutine.*
+import com.apache.fastandroid.demo.kt.coroutine.BennyHuoCoroutineDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineBasicDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineCancelDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineCancelTimeoutDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineContextDispatcherDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineExceptionDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineNetworkDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineRetrofitDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineRxjavaDemoFragment
+import com.apache.fastandroid.demo.kt.coroutine.CoroutineSuspendFuncDemoFragment
 
 /**
  * Created by Jerry on 2020/10/31.
+ * done
  */
 class CoroutineDemoListFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
@@ -13,7 +24,6 @@ class CoroutineDemoListFragment: BaseListFragment() {
             ViewItemBean("协程基础","协程基础", CoroutineBasicDemoFragment::class.java),
             ViewItemBean("协程","协程", CoroutineDemoFragment::class.java),
 
-            ViewItemBean("协程最佳实践","协程最佳实践在Frament中", CoroutineBestPracticeFragment::class.java),
             ViewItemBean("协程取消","协程取消", CoroutineCancelDemoFragment::class.java),
             ViewItemBean("协程取消与超时","协程取消与超时", CoroutineCancelTimeoutDemoFragment::class.java),
             ViewItemBean("组合挂起函数","组合挂起函数", CoroutineSuspendFuncDemoFragment::class.java),

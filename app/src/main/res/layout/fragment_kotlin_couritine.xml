@@ -21,9 +21,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:orientation="horizontal"
                 app:flow_horizontalGap="2dp"
-                app:constraint_referenced_ids="btn_traditional_switch_thread,btn_coroutine_switch_thread,btn_retrofit_suspend,btn_retrofit_call,btn_retrofit_handleException,
-            btn_handleException2,btn_suspendCoroutine,
-            btn_job_dispatcher,
+                app:constraint_referenced_ids="btn_traditional_switch_thread,btn_suspendCoroutine,btn_job_dispatcher,btn_coroutine_switch_thread,btn_retrofit_suspend,btn_retrofit_call,btn_retrofit_handleException,
+            btn_handleException2,
+
             btn_rxjava_signle,btn_rxjava_zip,
             btn_couroutine_zip,btn_awaitAll,btn_couroutine_cance_job,btn_mainscope,
             btn_coroutineScope,btn_ensure_coroutine_active,btn_cancel_coroutine,
@@ -58,7 +58,7 @@
                 android:id="@+id/btn_retrofit_suspend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RSuspend修饰" />
+                android:text="Retrofit Suspend修饰" />
             <Button
                 android:id="@+id/btn_retrofit_call"
                 android:layout_width="wrap_content"
@@ -142,10 +142,9 @@
 
             <TextView
                 android:id="@+id/tv_result"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="48dp"
                 android:text="Hello"
                 style="@style/textView_black_16sp"
                 />
