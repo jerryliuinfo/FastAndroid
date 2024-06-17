@@ -8,10 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.apache.fastandroid.databinding.ListItemPlantBinding
 import com.apache.fastandroid.demo.sunflower.bean.Plant
-import com.apache.fastandroid.demo.sunflower.fragement.PlantDetailFragment
-import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.ui.activity.FragmentArgs
-import com.tesla.framework.ui.activity.FragmentContainerActivity
 
 /**
  * Created by Jerry on 2022/4/3.
@@ -38,7 +35,7 @@ class PlantAdapterNew(val activity: Activity):ListAdapter<Plant,PlantAdapterNew.
                     val args = FragmentArgs().apply {
                         add("plantId", it.plantId)
                     }
-                    FragmentContainerActivity.launch(activity,PlantDetailFragment::class.java,args,false)
+                    // FragmentContainerActivity.launch(activity,PlantDetailFragment::class.java,args,false)
                 }
             }
         }

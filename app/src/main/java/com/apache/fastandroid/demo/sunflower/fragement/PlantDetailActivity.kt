@@ -1,8 +1,8 @@
 package com.apache.fastandroid.demo.sunflower.fragement
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
@@ -15,37 +15,47 @@ import com.apache.fastandroid.demo.sunflower.repository.PlantRepository
 import com.apache.fastandroid.demo.sunflower.viewmodel.PlantDetailViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import com.tesla.framework.ui.fragment.BaseDataBindingFragment
+import com.tesla.framework.ui.activity.BaseBindingActivity
 
 /**
- * Created by Jerry on 2022/4/3.
+ * Created by Jerry on 2024/6/10.
  */
-class PlantDetailFragment:BaseDataBindingFragment<FragmentPlantDetailBinding>(FragmentPlantDetailBinding::inflate) {
+class PlantDetailActivity:BaseBindingActivity<FragmentPlantDetailBinding>() {
 
     private lateinit var plantDetailViewModel: PlantDetailViewModel
 
+    companion object{
+        fun launch(context:Context, plantId:String){
+            context.startActivity(Intent(context,PlantDetailActivity::class.java).apply {
+                putExtra("plantId",plantId)
+            })
+        }
+    }
 
-    override fun initViewModel() {
-        super.initViewModel()
-
-        val plantId = arguments?.getString("plantId")
-        val plantDao = SunFlowDatabase.getInstance(requireContext()).plantDao()
-        val gardenPlantingDao = SunFlowDatabase.getInstance(requireContext()).gardenPlantingDao()
 
 
-        val factory = PlantDetailViewModel.provideFactory(PlantRepository.getInstance(plantDao),
+    override fun layoutInit(savedInstanceState: Bundle?) {
+        super.layoutInit(savedInstanceState)
+
+        val plantId = intent.getStringExtra("plantId")
+
+        val plantDao = SunFlowDatabase.getInstance(this).plantDao()
+        val gardenPlantingDao = SunFlowDatabase.getInstance(this).gardenPlantingDao()
+
+
+        val factory = PlantDetailViewModel.provideFactory(
+            PlantRepository.getInstance(plantDao),
             GardenPlantingRepository.getInstance(gardenPlantingDao), plantId?:"")
 
         plantDetailViewModel = ViewModelProvider(this, factory).get(PlantDetailViewModel::class.java)
-    }
 
-    override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {
-        super.layoutInit(inflater, savedInstanceState)
-        setHasOptionsMenu(true)
+
+
+        // setHasOptionsMenu(true)
         mBinding.apply {
             viewModel = plantDetailViewModel
-            lifecycleOwner = viewLifecycleOwner
-            callback = Callback{ plant ->
+            lifecycleOwner = this@PlantDetailActivity
+            callback = Callback { plant ->
                 hideAppBarFab(mBinding.fab)
                 plantDetailViewModel.addPlantToGarden()
                 Snackbar.make(root, R.string.added_plant_to_garden, Snackbar.LENGTH_LONG)
@@ -53,7 +63,7 @@ class PlantDetailFragment:BaseDataBindingFragment<FragmentPlantDetailBinding>(Fr
             }
 
             toolbar.setNavigationOnClickListener {
-                requireActivity().finish()
+                this@PlantDetailActivity.finish()
             }
             toolbar.setOnMenuItemClickListener {  item ->
                 when(item.itemId){
@@ -79,7 +89,7 @@ class PlantDetailFragment:BaseDataBindingFragment<FragmentPlantDetailBinding>(Fr
                 getString(R.string.share_text_plant, plant.name)
             }
         }
-        val shareIntent = ShareCompat.IntentBuilder.from(requireActivity())
+        val shareIntent = ShareCompat.IntentBuilder.from(this)
             .setText(shareText)
             .setType("text/plain")
             .createChooserIntent()
@@ -87,7 +97,7 @@ class PlantDetailFragment:BaseDataBindingFragment<FragmentPlantDetailBinding>(Fr
         startActivity(shareIntent)
     }
 
-    private fun hideAppBarFab(fab:FloatingActionButton){
+    private fun hideAppBarFab(fab: FloatingActionButton){
         val params = fab.layoutParams as CoordinatorLayout.LayoutParams
         val behavior = params.behavior as FloatingActionButton.Behavior
         behavior.isAutoHideEnabled = false
@@ -95,6 +105,7 @@ class PlantDetailFragment:BaseDataBindingFragment<FragmentPlantDetailBinding>(Fr
     }
 
     fun interface Callback{
-        fun add(plant:Plant)
+        fun add(plant: Plant)
     }
+
 }

@@ -13,6 +13,7 @@ import com.tesla.framework.ui.fragment.BaseBindingFragment
 
 /**
  * Created by Jerry on 2022/3/14.
+ * done
  */
 class SunFlowerHomeViewPagerFragment :BaseBindingFragment<FragmentViewPagerBinding>(FragmentViewPagerBinding::inflate){
 

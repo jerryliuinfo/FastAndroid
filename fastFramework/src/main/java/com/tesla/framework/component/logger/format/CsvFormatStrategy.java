@@ -87,7 +87,7 @@ public class CsvFormatStrategy implements FormatStrategy {
   }
 
   @Nullable private String formatTag(@Nullable String tag) {
-    if (!Utils.isEmpty(tag) && !TextUtils.equals(this.tag, tag)) {
+    if (!TextUtils.isEmpty(tag) && !TextUtils.equals(this.tag, tag)) {
       return this.tag + "-" + tag;
     }
     return this.tag;

@@ -20,7 +20,7 @@ import com.android.androidtech.monitor.time.TimeMonitorManager
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.jetpack.JetPackDemoFragment
+import com.apache.fastandroid.demo.sunflower.fragement.SunFlowerHomeViewPagerFragment
 import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.log.Timber
@@ -78,7 +78,8 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 
 
         //        launchActivity<PagingPosterDemoActivity>(this)
-        launchFragment<JetPackDemoFragment>()
+        // launchFragment<JetPackDemoFragment>()
+        launchFragment<SunFlowerHomeViewPagerFragment>(addTitleBar = false)
 
         onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

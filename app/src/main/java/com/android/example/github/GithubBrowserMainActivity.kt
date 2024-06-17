@@ -24,6 +24,9 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.GithubBrowserActivityMainBinding
 import com.tesla.framework.ui.activity.BaseVBActivity
 
+/**
+ * https://github.com/android/architecture-components-samples/tree/main/GithubBrowserSample
+ */
 class GithubBrowserMainActivity : BaseVBActivity<GithubBrowserActivityMainBinding>(GithubBrowserActivityMainBinding::inflate),
     NavController.OnDestinationChangedListener {
 

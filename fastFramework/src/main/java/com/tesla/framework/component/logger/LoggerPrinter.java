@@ -1,5 +1,6 @@
 package com.tesla.framework.component.logger;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -78,7 +79,7 @@ public class LoggerPrinter implements Printer {
   }
 
   @Override public void json(@Nullable String json) {
-    if (Utils.isEmpty(json)) {
+    if (TextUtils.isEmpty(json)) {
       d("Empty/Null json content");
       return;
     }
@@ -103,7 +104,7 @@ public class LoggerPrinter implements Printer {
   }
 
   @Override public void xml(@Nullable String xml) {
-    if (Utils.isEmpty(xml)) {
+    if (TextUtils.isEmpty(xml)) {
       d("Empty/Null xml content");
       return;
     }
@@ -130,7 +131,7 @@ public class LoggerPrinter implements Printer {
     if (throwable != null && message == null) {
       message = Utils.getStackTraceString(throwable);
     }
-    if (Utils.isEmpty(message)) {
+    if (TextUtils.isEmpty(message)) {
       message = "Empty/NULL log message";
     }
 

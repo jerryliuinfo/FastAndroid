@@ -54,7 +54,6 @@ import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepo
 import com.example.android.architecture.blueprints.todoapp.statistics.StatisticsViewModel
 import com.example.android.architecture.blueprints.todoapp.taskdetail.TaskDetailViewModel
 import com.example.android.architecture.blueprints.todoapp.tasks.TasksViewModel
-import java.util.concurrent.Executors
 
 /**
  * Factory for all ViewModels.
@@ -72,9 +71,7 @@ class ViewModelFactory constructor(
         handle: SavedStateHandle
     ) = with(modelClass) {
         val executor = AppExecutors(
-            Executors.newSingleThreadExecutor(),
-            Executors.newFixedThreadPool(3),
-            AppExecutors.MainThreadExecutor()
+
         )
         val db = GithubDb.getInstance(Utils.getApp())
         val repoDao = db.repoDao()

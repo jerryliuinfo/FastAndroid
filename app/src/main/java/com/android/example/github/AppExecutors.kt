@@ -18,12 +18,8 @@ package com.android.example.github
 
 import android.os.Handler
 import android.os.Looper
-
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
-
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Global executor pools for the whole application.
@@ -37,12 +33,11 @@ open class AppExecutors(
     private val mainThread: Executor
 ) {
 
-    /*@Inject
     constructor() : this(
         Executors.newSingleThreadExecutor(),
         Executors.newFixedThreadPool(3),
         MainThreadExecutor()
-    )*/
+    )
 
     fun diskIO(): Executor {
         return diskIO

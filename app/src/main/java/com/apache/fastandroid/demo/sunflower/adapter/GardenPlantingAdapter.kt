@@ -28,10 +28,9 @@ import com.apache.fastandroid.R
 import com.apache.fastandroid.databinding.ListItemGardenPlantingBinding
 import com.apache.fastandroid.demo.sunflower.bean.PlantAndGardenPlantings
 import com.apache.fastandroid.demo.sunflower.bean.PlantAndGardenPlantingsViewModel
-import com.apache.fastandroid.demo.sunflower.fragement.PlantDetailFragment
+import com.apache.fastandroid.demo.sunflower.fragement.PlantDetailActivity
 import com.apache.fastandroid.demo.sunflower.viewmodel.GardenPlantingListViewModel
 import com.tesla.framework.ui.activity.FragmentArgs
-import com.tesla.framework.ui.activity.FragmentContainerActivity
 
 
 class GardenPlantingAdapter(private val activity: Activity,private val viewModel: GardenPlantingListViewModel) :
@@ -77,7 +76,9 @@ class GardenPlantingAdapter(private val activity: Activity,private val viewModel
             val args = FragmentArgs().apply {
                 add("plantId", plantId)
             }
-            FragmentContainerActivity.launch(activity, PlantDetailFragment::class.java,args,false)
+            // FragmentContainerActivity.launch(activity, PlantDetailFragment::class.java,args,false)
+
+            PlantDetailActivity.launch(activity,plantId)
         }
 
         fun bind(plantings: PlantAndGardenPlantings) {

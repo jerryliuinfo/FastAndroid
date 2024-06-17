@@ -13,8 +13,7 @@ class SampleAppDemoFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
             ViewItemBean("SunFlower", "SunFlower", SunFlowerHomeViewPagerFragment::class.java,addTitleBar = false)
-            ,ViewItemBean("ToUserDaodoApp", "https://github.com/android/architecture-samples", activity = TasksActivity::class.java,addTitleBar = false)
-            ,ViewItemBean("Architecture-component", "https://github.com/android/architecture-samples", activity = TasksActivity::class.java,addTitleBar = false)
+            ,ViewItemBean("ToUserDaodoApp",         "https://github.com/android/architecture-samples", activity = TasksActivity::class.java,addTitleBar = false)
             ,ViewItemBean("GithubBrowser", "GithubBrowser", activity = GithubBrowserMainActivity::class.java,addTitleBar = true)
 
         )
