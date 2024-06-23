@@ -21,6 +21,7 @@ import com.apache.fastandroid.demo.kt.coroutine.CoroutineSuspendFuncDemoFragment
 class CoroutineDemoListFragment: BaseListFragment() {
     override fun initDatas(): ArrayList<ViewItemBean> {
         return arrayListOf(
+            ViewItemBean("扔物线协程","扔物线协程", CoroutineBasicDemoFragment::class.java),
             ViewItemBean("协程基础","协程基础", CoroutineBasicDemoFragment::class.java),
             ViewItemBean("协程","协程", CoroutineDemoFragment::class.java),
 

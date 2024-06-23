@@ -31,7 +31,7 @@ class OpenDocumentDemoFragment:BaseBindingFragment<FragmentOpenPdfBinding>(Fragm
     companion object{
         const val DOCUMENT_FRAGMENT_TAG = "com.example.android.actionopendocument.tags.DOCUMENT_FRAGMENT"
         private const val OPEN_DOCUMENT_REQUEST_CODE = 0x33
-        private const val TAG = "MainActivity"
+        private const val TAG = "PagingDemoFragment"
         private const val LAST_OPENED_URI_KEY =
             "com.example.android.actionopendocument.pref.LAST_OPENED_URI_KEY"
     }

@@ -50,7 +50,6 @@ object Libs {
 //    const val agp = "com.android.tools.build:gradle:${Versions.agp}"
 //    const val kgp = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
 
-    const val room_compiler = "androidx.room:room-compiler:${Versions.Room}"
     const val viewPage2 = "androidx.viewpager2:viewpager2:${Versions.viewPager2}"
 
     const val loadSir = "com.kingja.loadsir:loadsir:1.3.8"
@@ -316,7 +315,9 @@ object Jetpack{
 
     val room = arrayOf(
         "androidx.room:room-runtime:${Versions.Room}",
-        "androidx.room:room-ktx:${Versions.Room}"
+        "androidx.room:room-ktx:${Versions.Room}",
+        // "androidx.room:room-paging:${Versions.Room}"
+        // "androidx.room:room-paging:2.4.3"
     )
     val room_compiler = arrayOf(
         "androidx.room:room-compiler:${Versions.Room}",
@@ -324,7 +325,11 @@ object Jetpack{
 
    val paging = arrayOf(
        "androidx.paging:paging-runtime:${Versions.paging}",
-       "androidx.paging:paging-common-ktx:${Versions.paging}"
+       // Paging的KTX扩展
+       "androidx.paging:paging-common-ktx:${Versions.paging}",
+
+       // 对于使用LiveData
+       "androidx.paging:paging-runtime-ktx:${Versions.paging}"
    )
     // val paging = "androidx.paging:paging-runtime:${Versions.paging}"
     // val paging_ktx = "androidx.paging:paging-common-ktx:${Versions.paging}"

@@ -2,9 +2,13 @@ package com.apache.fastandroid.demo.mmkv
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.apache.fastandroid.component.mmkv.*
+import com.apache.fastandroid.component.mmkv.MMKVOwner
+import com.apache.fastandroid.component.mmkv.mmkvBool
+import com.apache.fastandroid.component.mmkv.mmkvInt
+import com.apache.fastandroid.component.mmkv.mmkvLong
+import com.apache.fastandroid.component.mmkv.mmkvString
+import com.apache.fastandroid.component.mmkv.mmkvStringSet
 import com.apache.fastandroid.databinding.FragmentMmkvKtxBinding
-import com.apache.fastandroid.jetpack.flow.data.bean.User
 import com.tencent.mmkv.MMKV
 import com.tesla.framework.component.logger.Logger
 import com.tesla.framework.ui.fragment.BaseBindingFragment
@@ -32,8 +36,7 @@ class MMKVKtxFragment: BaseBindingFragment<FragmentMmkvKtxBinding>(FragmentMmkvK
     private var s2 by mmkvString(default = "")
     private var set1 by mmkvStringSet()
 
-    private var user1 by mmkvParcelable<User>()
-    private var user2 by mmkvParcelable(default = User(0, "Admin"))
+    // private var user1 by mmkvParcelable<User>()
 
     override val kv: MMKV = MMKV.mmkvWithID("repo")
 
@@ -118,9 +121,9 @@ class MMKVKtxFragment: BaseBindingFragment<FragmentMmkvKtxBinding>(FragmentMmkvK
 
 
     fun putParcelable1() {
-        Logger.d("putParcelable1 before:$user1")
-        user1 = User(1, "DylanCai")
-        Logger.d("putParcelable1 after:$user1")
+        // Logger.d("putParcelable1 before:$user1")
+        // user1 = User(1, "DylanCai")
+        // Logger.d("putParcelable1 after:$user1")
 
     }
 

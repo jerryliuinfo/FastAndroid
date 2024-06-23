@@ -12,7 +12,7 @@ import com.tesla.framework.ui.fragment.BaseDataBindingFragment
  * Created by Jerry on 2020/11/5.
  * https://github.com/android/architecture-components-samples/tree/main/LiveDataSample
  */
-class LiveDataBestPracticeFragment2 : BaseDataBindingFragment<FragmentBestPracticeLivedata2Binding>(FragmentBestPracticeLivedata2Binding::inflate){
+class LiveDataSampleFragment : BaseDataBindingFragment<FragmentBestPracticeLivedata2Binding>(FragmentBestPracticeLivedata2Binding::inflate){
     companion object{
         val TAG = "LiveDataBestPracticeFragment"
     }

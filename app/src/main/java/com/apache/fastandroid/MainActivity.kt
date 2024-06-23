@@ -20,7 +20,7 @@ import com.android.androidtech.monitor.time.TimeMonitorManager
 import com.apache.fastandroid.annotations.CostTime
 import com.apache.fastandroid.databinding.ActivityMainNewBinding
 import com.apache.fastandroid.demo.bean.UserBean
-import com.apache.fastandroid.demo.sunflower.fragement.SunFlowerHomeViewPagerFragment
+import com.apache.fastandroid.jetpack.JetPackDemoFragment
 import com.tesla.framework.common.util.LaunchTimer
 import com.tesla.framework.component.eventbus.FastBus
 import com.tesla.framework.component.log.Timber
@@ -42,7 +42,7 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 
     @CostTime
     override fun layoutInit(savedInstanceState: Bundle?) {
-        Trace.beginSection("MainActivity layoutInit")
+        Trace.beginSection("PagingDemoFragment layoutInit")
         TimeMonitorManager.getInstance()
             .getTimeMonitor(TimeMonitorConfig.TIME_MONITOR_ID_APPLICATION_START)
             .recodingTimeTag("AppStartActivity_create")
@@ -59,8 +59,8 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
             return
         }
 
-        Logger.d("MainActivity mHandler:${mHandler},toolbar:${mBinding.toolbar}, toolbar2:${mBinding.toolbar}")
-//        Logger.d("MainActivity binding:${binding},mBinding:${mBinding}")
+        Logger.d("PagingDemoFragment mHandler:${mHandler},toolbar:${mBinding.toolbar}, toolbar2:${mBinding.toolbar}")
+//        Logger.d("PagingDemoFragment binding:${binding},mBinding:${mBinding}")
 
 
         setSupportActionBar(mBinding.toolbar)
@@ -78,8 +78,8 @@ class MainActivity : BaseBindingActivity<ActivityMainNewBinding>(), View.OnClick
 
 
         //        launchActivity<PagingPosterDemoActivity>(this)
-        // launchFragment<JetPackDemoFragment>()
-        launchFragment<SunFlowerHomeViewPagerFragment>(addTitleBar = false)
+        launchFragment<JetPackDemoFragment>()
+        // launchFragment<SunFlowerHomeViewPagerFragment>(addTitleBar = false)
 
         onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

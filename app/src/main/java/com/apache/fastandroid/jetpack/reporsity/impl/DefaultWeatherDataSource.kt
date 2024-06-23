@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger
 /**
  * Created by Jerry on 2022/3/9.
  */
-class DefaultWeatherDataSource(private val dispatcher: CoroutineDispatcher):WeatherDataSource {
+class DefaultWeatherDataSource(private val ioDispatcher: CoroutineDispatcher):WeatherDataSource {
 
     override fun getCurrentTime(): LiveData<Long> =
         liveData {
@@ -48,7 +48,7 @@ class DefaultWeatherDataSource(private val dispatcher: CoroutineDispatcher):Weat
 
 
     private var count = AtomicInteger(0)
-    private suspend fun simulateNetworkDataFetch():String = withContext(Dispatchers.IO){
+    private suspend fun simulateNetworkDataFetch():String = withContext(ioDispatcher){
         delay(3000)
         "new data from request:${count.addAndGet(1)}"
     }

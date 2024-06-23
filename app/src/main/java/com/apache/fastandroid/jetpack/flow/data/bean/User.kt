@@ -1,21 +1,18 @@
 package com.apache.fastandroid.jetpack.flow.data.bean
 
-import android.os.Parcel
-import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
 @Entity
 data class User(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "name") val name: String?,
     @ColumnInfo(name = "email") val email: String? = null,
     @ColumnInfo(name = "avatar") val avatar: String? = null
-): Parcelable{
+){
 
 
     companion object{
@@ -32,10 +29,4 @@ data class User(
         }
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-    }
 }

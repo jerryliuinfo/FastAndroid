@@ -84,7 +84,7 @@ class CompressDemoFragment : BaseBindingFragment<ActivityCompressDemoBinding>(Ac
         actualImage?.let { imageFile ->
             lifecycleScope.launch {
                 // Default compression with custom destination file
-                /*compressedImage = Compressor.compress(this@MainActivity, imageFile) {
+                /*compressedImage = Compressor.compress(this@PagingDemoFragment, imageFile) {
                     default()
                     getExternalFilesDir(Environment.DIRECTORY_PICTURES)?.also {
                         val file = File("${it.absolutePath}${File.separator}my_image.${imageFile.extension}")

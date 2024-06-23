@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_magnifier.*
 class OMagnifierDemoFragment:BaseBindingFragment<FragmentMagnifierBinding>(FragmentMagnifierBinding::inflate) {
 
     companion object {
-        private const val TAG = "MainActivity"
+        private const val TAG = "PagingDemoFragment"
     }
 
     override fun layoutInit(inflater: LayoutInflater?, savedInstanceState: Bundle?) {

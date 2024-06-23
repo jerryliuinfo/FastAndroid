@@ -400,7 +400,8 @@ dependencies {
     implementation project(Modules.baselib)
     implementation project(Modules.libnetwork)
     implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.9.9'
-    implementation 'com.google.android.engage:engage-core:1.5.1'
+
+//    implementation 'com.google.android.engage:engage-core:1.5.1'
 
     fileTree(include: ['*.jar', '*.aar'], dir: 'libs').each {
         def name = it.name
@@ -458,8 +459,11 @@ dependencies {
 
 //    implementation(*Jetpack.paging)
 
-    implementation(*Jetpack.room)
+
     kapt(*Jetpack.room_compiler)
+    implementation(*Jetpack.room)
+
+
 
     implementation(*Jetpack.hit)
     kapt(*Jetpack.hit_compiler)

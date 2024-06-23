@@ -76,7 +76,7 @@ class MukeDemoFragment:BaseBindingFragment<FragmentMukePerformanceBinding>(Fragm
     }
 
     private fun measureAppStartTimeByAdb() {
-        val command = "adb shell am start -W com.apache.fastandroid/com.apache.fastandroid.MainActivity"
+        val command = "adb shell am start -W com.apache.fastandroid/com.apache.fastandroid.PagingDemoFragment"
     }
 
     /**
