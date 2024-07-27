@@ -1,4 +1,4 @@
- // Top-level build file where you can add configuration options common to all sub-projects/modules.
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from: "version_config.gradle"
 apply from: "version.gradle"
 apply from: "gradletest.gradle"
@@ -10,39 +10,27 @@ buildscript {
     ext {
     }
     repositories {
-
-//        unsplash.dogedoge.com
-//        dribble.dogedoge.com
-
         maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
-
-
         maven { url 'unsplash.dogedoge.com' }
         maven { url 'dribble.dogedoge.com' }
 
         mavenCentral()
         google()
-          maven { url 'https://jitpack.io' }
+        maven { url 'https://jitpack.io' }
         maven { url "https://plugins.gradle.org/m2/" }
-        maven{url "https://oss.sonatype.org/content/repositories/snapshots"}
-
-
-
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
     dependencies {
-
         classpath PluginConfig.agp
         classpath PluginConfig.kgp
         classpath PluginConfig.andResGuard
         classpath PluginConfig.hilt
-
         classpath PluginConfig.maven_gradle_plugin
         classpath PluginConfig.navigation
         classpath PluginConfig.pablo
         classpath PluginConfig.paranoid
 
 //        classpath PluginConfig.kotlin_serialization
-
 
         //https://github.com/iwhys/sdk-editor-plugin
         classpath 'com.github.iwhys:sdk-editor-plugin:1.1.7'
@@ -52,7 +40,6 @@ buildscript {
 
 
         classpath fileTree(dir: './Plugin', include: ['*.jar'])
-
 
         classpath PluginConfig.mcImage
 
@@ -65,9 +52,6 @@ buildscript {
 //        classpath "com.didiglobal.booster:booster-transform-activity-thread:${Versions.booster}"
 
 
-
-
-
     }
 
 //    给所有的子工程统一配置
@@ -77,7 +61,7 @@ buildscript {
                 def requested = details.requested
 //                println "group: ${requested.group}, name:${requested.name}, version:${details.useVersion}"
                 if (requested.group == 'androidx.core'
-                        && !requested.name.contains('androidx') ) {
+                        && !requested.name.contains('androidx')) {
                     details.useVersion "1.6.0"
                 }
 
@@ -110,14 +94,13 @@ allprojects {
         google()
         maven { url "https://jitpack.io" }
         maven { url "https://plugins.gradle.org/m2/" }
-        maven{url "https://oss.sonatype.org/content/repositories/snapshots"}
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
 
     }
     configurations.all {
         resolutionStrategy.force "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
 
     }
-
 
 
     tasks.withType(Javadoc) {
@@ -144,7 +127,7 @@ task archiveOutApks(type: Copy) {
     into('./outapk/archives')
 }
 
-println ("buildDir:${rootProject.buildDir}, name:${rootProject.name}")
+println("buildDir:${rootProject.buildDir}, name:${rootProject.name}")
 task clean(type: Delete) {
     delete rootProject.buildDir
     delete 'outapk/archives'
@@ -166,25 +149,22 @@ task clean(type: Delete) {
 }
 
 
-
-task bumpVersion(){
+task bumpVersion() {
     doFirst {
         def versionPropsFile = file("version.properties")
         def versionProps = new Properties()
         versionProps.load(new FileInputStream(versionPropsFile))
-        def codeBumped = versionProps["VERSION_CODE"].toInteger()+1
+        def codeBumped = versionProps["VERSION_CODE"].toInteger() + 1
         versionProps["VERSION_CODE"] = codeBumped.toString()
         versionProps.store(versionPropsFile.newWriter(), null)
     }
 }
 
-task bumpVersionAndNotify(dependsOn: bumpVersion){
+task bumpVersionAndNotify(dependsOn: bumpVersion) {
     doLast {
-       println "升级完成"
+        println "升级完成"
     }
 }
-
-
 
 
 //Finaby
@@ -199,25 +179,24 @@ afterEvaluate {
 }
 
 
-
-task loadProject{
+task loadProject {
     getChildProjects().each {
         println "${it.key}:${it.value}"
     }
 }
 
 
- ext {
-     androidxAnnotationVersion = "1.5.0"
-     robolectricVersion = "4.10.3"
-     guavaVersion = "31.1-android"
+ext {
+    androidxAnnotationVersion = "1.5.0"
+    robolectricVersion = "4.10.3"
+    guavaVersion = "31.1-android"
 
 
-     extTruthVersion = "1.6.0-alpha01"
-     coreVersion = "1.6.0-alpha01"
-     extJUnitVersion = "1.2.0-alpha01"
-     runnerVersion = "1.6.0-alpha03"
-     espressoVersion = "3.6.0-alpha01"
- }
+    extTruthVersion = "1.6.0-alpha01"
+    coreVersion = "1.6.0-alpha01"
+    extJUnitVersion = "1.2.0-alpha01"
+    runnerVersion = "1.6.0-alpha03"
+    espressoVersion = "3.6.0-alpha01"
+}
 
 

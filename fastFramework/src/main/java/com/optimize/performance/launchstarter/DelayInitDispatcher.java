@@ -11,6 +11,7 @@ import java.util.Queue;
 
 public class DelayInitDispatcher {
 
+    //
     private Queue<Task> mDelayTasks = new LinkedList<>();
 
     private MessageQueue.IdleHandler mIdleHandler = new MessageQueue.IdleHandler() {
@@ -20,6 +21,7 @@ public class DelayInitDispatcher {
                 Task task = mDelayTasks.poll();
                 new DispatchRunnable(task).run();
             }
+            //返回 true 代表保持 Handler 活跃
             return !mDelayTasks.isEmpty();
         }
     };

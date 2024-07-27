@@ -502,7 +502,6 @@ dependencies {
 
 
     implementation Libs.blockstore
-    implementation Libs.coroutines_play_services
 //    implementation "com.google.guava:guava:31.0.1-android"
 
 

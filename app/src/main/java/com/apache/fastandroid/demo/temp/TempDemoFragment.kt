@@ -4,7 +4,6 @@ import com.apache.fastandroid.bean.ViewItemBean
 import com.apache.fastandroid.demo.BaseListFragment
 import com.apache.fastandroid.demo.LayoutInflaterDemoFragment
 import com.apache.fastandroid.demo.SetConteViewDemoActivity
-import com.apache.fastandroid.demo.blockstore.BlockStoreDemoFragment
 import com.apache.fastandroid.demo.component.countdown.CountDownByViewModelDemoFragment
 import com.apache.fastandroid.demo.launchermode.LaunchModeDemoFragment
 import com.apache.fastandroid.demo.progress.ProgressDemoFragment
@@ -57,7 +56,6 @@ class TempDemoFragment:BaseListFragment() {
                 ,ViewItemBean("倒计时组件", "各种倒计时方案实现",  CountDownByViewModelDemoFragment::class.java)
                 ,ViewItemBean("RecycleView滑动到指定位置", "RecycleView滑动到指定位置",  AutoScrollViewDemoFragment::class.java)
                 ,ViewItemBean("LocalDateTime 用法", "LocalDateTime用法",  LocalDataTimeDemoFragment::class.java)
-                ,ViewItemBean("BlockStore 用法", "BlockStore 用法",  BlockStoreDemoFragment::class.java)
                 ,ViewItemBean("不用手动调用setContentView", "不用手动调用setContentView",  activity = SetConteViewDemoActivity::class.java)
 
 

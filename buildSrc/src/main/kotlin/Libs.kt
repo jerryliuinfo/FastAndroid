@@ -102,7 +102,6 @@ object Libs {
 
 
     const val blockstore = "com.google.android.gms:play-services-auth-blockstore:16.0.2"
-    const val coroutines_play_services =  "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.3"
 
 
     val otherThirdLibs = arrayOf(

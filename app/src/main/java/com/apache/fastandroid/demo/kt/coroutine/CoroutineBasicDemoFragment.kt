@@ -25,8 +25,6 @@ import kotlin.concurrent.thread
  */
 class CoroutineBasicDemoFragment:BaseBindingFragment<FragmentCoroutineBasicBinding>(FragmentCoroutineBasicBinding::inflate) {
     companion object{
-        private const val TAG = "CoroutineCancelDemoFragment"
-        private const val ARTICLE_ID = 21613L
 
     }
 
