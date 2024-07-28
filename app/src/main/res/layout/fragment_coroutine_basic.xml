@@ -14,8 +14,11 @@
         app:flow_wrapMode="aligned"
         app:flow_horizontalGap="10dp"
         app:constraint_referenced_ids="btn_firstCoroutine,btn_suspend,btn_coroutineScope,
-        btn_jobJoin,btn_performance_coroutine,btn_performance_thread,btn_cancel_timeout,
-        btn_ensure_active,btn_doInFinaly,btn_nonCancable"
+        btn_jobJoin,btn_performance_coroutine,btn_performance_thread,btn_cancel_job,
+        btn_cancel_is_cooperative,btn_cancel_cooperative_canceable,
+        btn_ensure_active,btn_doInFinally,btn_nonCancable,btn_withTimeout,btn_withTimeoutOrNull,
+        btn_Asynchronous_timeout_resources,btn_Asynchronous_timeout_resources2,
+        btn_suspend_sequence_execute,btn_suspend_async,btn_lazy_async"
 
         tools:ignore="NotSibling" />
 
@@ -50,31 +53,85 @@
         android:id="@+id/btn_performance_thread"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="协程性能" />
+        android:text="线程性能" />
 
     <Button
-        android:id="@+id/btn_cancel_timeout"
+        android:id="@+id/btn_cancel_job"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="取消与超时" />
+        android:text="取消协程的执行" />
+    <Button
+        android:id="@+id/btn_cancel_is_cooperative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消是协作的(无法取消)" />
+
+    <Button
+        android:id="@+id/btn_cancel_cooperative_canceable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消是协作的(可取消)" />
+
+
 
     <Button
         android:id="@+id/btn_ensure_active"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="检查取消" />
+        android:text="使计算代码可被取消" />
     <Button
-        android:id="@+id/btn_doInFinaly"
+        android:id="@+id/btn_doInFinally"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Finaly释放资源" />
+        android:text="Finally中释放资源" />
     <Button
         android:id="@+id/btn_nonCancable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="nonCancable" />
+        android:text="运行不能取消的代码块" />
+
+    <Button
+        android:id="@+id/btn_withTimeout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="超时" />
+
+    <Button
+        android:id="@+id/btn_withTimeoutOrNull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="超时2" />
+
+    <Button
+        android:id="@+id/btn_Asynchronous_timeout_resources"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="异步超时资源" />
+
+    <Button
+        android:id="@+id/btn_Asynchronous_timeout_resources2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="异步超时资源2" />
 
 
+    <Button
+        android:id="@+id/btn_suspend_sequence_execute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="挂起函数-顺序执行" />
+
+    <Button
+        android:id="@+id/btn_suspend_async"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用 async 并发" />
+
+    <Button
+        android:id="@+id/btn_lazy_async"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lazy async" />
 
 
 

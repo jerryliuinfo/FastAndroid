@@ -185,3 +185,5 @@ fun LifecycleOwner.subscribeOnFirst(lifecycleEvent: Lifecycle.Event, listener: (
 
     lifecycle.addObserver(observer)
 }
+
+val getThreadName:String get() = Thread.currentThread().name

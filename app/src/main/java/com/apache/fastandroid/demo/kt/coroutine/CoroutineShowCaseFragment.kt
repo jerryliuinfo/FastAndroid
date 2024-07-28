@@ -46,7 +46,7 @@ import kotlin.concurrent.thread
  * Created by Jerry on 2021/10/28.
  * 协程
  */
-class CoroutineDemoListFragment :
+class CoroutineShowCaseFragment :
     BaseBindingFragment<FragmentKotlinCouritineBinding>(FragmentKotlinCouritineBinding::inflate) {
     companion object {
         private const val TAG = "CoroutineDemoListFragment"

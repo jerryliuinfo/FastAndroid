@@ -5,7 +5,21 @@ import android.view.LayoutInflater
 import com.apache.fastandroid.databinding.FragmentCoroutineCancelBinding
 import com.blankj.utilcode.util.ToastUtils
 import com.tesla.framework.ui.fragment.BaseBindingFragment
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.async
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.yield
 
 /**
  * Created by Jerry on 2021/10/28.
@@ -32,9 +46,7 @@ class CoroutineCancelDemoFragment:BaseBindingFragment<FragmentCoroutineCancelBin
             startCoroutine()
         }
         mBinding.btnCancelCoroutine.setOnClickListener {
-            job?.let {
-                it.cancel()
-            }
+            job?.cancel()
         }
 
         mBinding.btnCancelAllCoroutine.setOnClickListener {
@@ -42,9 +54,7 @@ class CoroutineCancelDemoFragment:BaseBindingFragment<FragmentCoroutineCancelBin
         }
 
         mBinding.btnCancelJob1.setOnClickListener {
-            job1?.let {
-                it.cancel()
-            }
+            job1?.cancel()
         }
         mBinding.btnCancelNormal.setOnClickListener {
             normalCancel()
