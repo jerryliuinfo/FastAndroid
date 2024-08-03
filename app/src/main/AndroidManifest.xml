@@ -539,6 +539,10 @@
 
         </service>
 
+        <provider
+            android:authorities="com.apache.fastandoird.MyContentProvider"
+            android:name=".app.MyContentProvider"/>
+
         <service android:name=".jetpack.lifecycle.service.MyLifeCycleService"/>
 
         <!--        Google Play 使用您的应用清单中声明的 <uses-library> 元素，从不符合其库要求的设备中过滤掉您的应用
